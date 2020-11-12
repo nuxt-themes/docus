@@ -1,0 +1,15 @@
+{
+  "title": "Nuxt Docs Theme",
+  "url": "https://docs-theme.nuxtjs.org",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "nuxt/docs-theme",
+  "twitter": "nuxt_js",
+  "defaultBranch": "master",
+  "algolia": {
+    "apiKey": "3677e049d48c83792ba0d2cb0715a12f",
+    "indexName": "nuxtjs_docs_theme"
+  }
+}

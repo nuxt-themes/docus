@@ -1,0 +1,10 @@
+# Common
+node_modules
+dist
+.nuxt
+coverage
+sw.js
+
+# Packages
+packages/content/templates
+packages/create-nuxt-content-docs/template
