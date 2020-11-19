@@ -1,10 +1,9 @@
-# @nuxt/content-theme-docs
+# @nuxt/docs-theme
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 
-> Create your documentation with @nuxt/content docs theme in seconds!
-
+> Create your documentation with the Nuxt Docs theme in seconds!
 ## Getting Started
 
 ```bash
@@ -24,11 +23,11 @@ It's as simple as that!
 MIT
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxt/content-theme-docs/latest.svg
-[npm-version-href]: https://npmjs.com/package/@nuxt/content-theme-docs
+[npm-version-src]: https://img.shields.io/npm/v/@nuxt/docs-theme/latest.svg
+[npm-version-href]: https://npmjs.com/package/@nuxt/docs-theme
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt/content-theme-docs.svg
-[npm-downloads-href]: https://npmjs.com/package/@nuxt/content-theme-docs
+[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt/docs-theme.svg
+[npm-downloads-href]: https://npmjs.com/package/@nuxt/docs-theme
 
 [license-src]: https://img.shields.io/npm/l/@nuxt/content.svg
 [license-href]: https://npmjs.com/package/@nuxt/content

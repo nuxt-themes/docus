@@ -26,6 +26,7 @@
         </div>
       </article>
     </div>
+
     <AppToc :toc="toc" />
   </div>
 </template>
@@ -36,6 +37,11 @@ import { mapGetters } from 'vuex'
 export default {
   layout ({ store }) {
     return store.state.settings.layout || 'default'
+  },
+  head () {
+    return {
+      title: 'Releases'
+    }
   },
   computed: {
     ...mapGetters([
@@ -53,11 +59,6 @@ export default {
       const date = new Date(release.date)
 
       return date.toLocaleDateString(this.$i18n.locale)
-    }
-  },
-  head () {
-    return {
-      title: 'Releases'
     }
   }
 }

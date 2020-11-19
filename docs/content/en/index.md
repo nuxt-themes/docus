@@ -6,11 +6,39 @@ description: 'Create your documentation with @nuxt/content docs theme in seconds
 position: 1
 ---
 
-  <alert type="info">
 
-  Checkout the [live example](/examples/docs-theme)
+1. Init the documentation in the current directory
 
-  </alert>
+```bash
+npx docus init
+```
+
+2. Start your docs in development
+
+```bash
+yarn dev
+```
+
+3. Generate the docs for production (full static and PWA ready)
+
+```bash
+yarn build
+```
+
+Listen on http://localhost:3001
+
+
+```json
+{
+  "scripts": {
+    "dev": "docus",
+    "build": "docus build"
+  },
+  "devDependencies": {
+    "docus": "^v1.0.0"
+  }
+}
+
 
 To get started quickly you can use the [create-nuxt-content-docs](https://github.com/nuxt/content/tree/dev/packages/create-nuxt-content-docs) package.
 

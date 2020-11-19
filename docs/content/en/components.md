@@ -106,14 +106,14 @@ This component uses `slots`, refer to `code-block` below.
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add @nuxt/content-theme-docs
+  yarn add @nuxt/docs-theme
   \```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm install @nuxt/content-theme-docs
+  npm install @nuxt/docs-theme
   \```
 
   </code-block>
@@ -126,14 +126,14 @@ This component uses `slots`, refer to `code-block` below.
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add @nuxt/content-theme-docs
+  yarn add @nuxt/docs-theme
   ```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm install @nuxt/content-theme-docs
+  npm install @nuxt/docs-theme
   ```
 
   </code-block>

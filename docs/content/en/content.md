@@ -15,7 +15,7 @@ The first level of directories in the `content/` folder are the locales used wit
 You can override the locales in your `nuxt.config.js`:
 
 ```js[nuxt.config.js]
-import theme from '@nuxt/content-theme-docs'
+import theme from '@nuxt/docs-theme'
 
 export default theme({
   i18n: {

@@ -1,6 +1,7 @@
-module.exports = {
+import themeModule from './module'
+
+export default docsOptions => ({
   target: 'static',
-  name: 'docs',
   ssr: true,
   srcDir: __dirname,
   privateRuntimeConfig: {
@@ -17,20 +18,19 @@ module.exports = {
     routes: ['/']
   },
   transpile: [
-    __dirname // transpile node_modules/@nuxt/content-theme-docs
+    __dirname // transpile node_modules/@nuxt/docs-theme
   ],
   css: [
-    '@/assets/css/main.css'
+    '~/assets/css/main.css'
   ],
   plugins: [
     '@/plugins/markdown',
     '@/plugins/init',
     '@/plugins/i18n.client',
-    '@/plugins/vue-scrollactive',
     '@/plugins/menu.client'
   ],
   buildModules: [
-    require.resolve('./module'),
+    themeModule,
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
@@ -40,18 +40,12 @@ module.exports = {
     'nuxt-i18n',
     '@nuxt/content'
   ],
-  components: [
-    { path: '@/components/app' },
-    { path: '@/components/global', global: true }
-  ],
-  docs: {
-    primaryColor: '#00CD81'
-  },
+  components: true,
   loading: {
-    color: undefined
+    color: docsOptions.primaryColor
   },
   meta: {
-    theme_color: undefined
+    theme_color: docsOptions.primaryColor
   },
   content: {
     markdown: {
@@ -80,4 +74,4 @@ module.exports = {
     }
   },
   tailwindcss: {}
-}
+})

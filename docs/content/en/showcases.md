@@ -1,9 +1,8 @@
 ---
 title: Showcases
 category: Docs Theme
-
+fullscreen: true
 position: 6
-
 showcases:
   - https://strapi.nuxtjs.org
   - https://tailwindcss.nuxtjs.org

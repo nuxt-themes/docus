@@ -12,20 +12,20 @@ The theme is a classic NuxtJS app, you need:
 
 > This file can be created with `npm init`.
 
-Install `nuxt` and `@nuxt/content-theme-docs`:
+Install `nuxt` and `@nuxt/docs-theme`:
 
 <code-group>
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add nuxt @nuxt/content-theme-docs
+  yarn add nuxt @nuxt/docs-theme
   ```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm install nuxt @nuxt/content-theme-docs
+  npm install nuxt @nuxt/docs-theme
   ```
 
   </code-block>
@@ -44,7 +44,7 @@ Install `nuxt` and `@nuxt/content-theme-docs`:
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxt/content-theme-docs": "^0.1.3",
+    "@nuxt/docs-theme": "^0.1.3",
     "nuxt": "^2.14.0"
   }
 }
@@ -52,10 +52,10 @@ Install `nuxt` and `@nuxt/content-theme-docs`:
 
 ### `nuxt.config.js`
 
-Import the theme function from `@nuxt/content-theme-docs`:
+Import the theme function from `@nuxt/docs-theme`:
 
 ```js[nuxt.config.js]
-import theme from '@nuxt/content-theme-docs'
+import theme from '@nuxt/docs-theme'
 
 export default theme({
   // [additional nuxt configuration]
@@ -69,7 +69,7 @@ The theme exports a function to setup the `nuxt.config.js` and allows you to add
 **Example**
 
 ```js[nuxt.config.js]
-import theme from '@nuxt/content-theme-docs'
+import theme from '@nuxt/docs-theme'
 
 export default theme({
   docs: {
