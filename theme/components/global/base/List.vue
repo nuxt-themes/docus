@@ -57,7 +57,7 @@ export default {
 }
 /* Warning */
 .list-warning {
-  @apply text-amber-500;
+  @apply text-orange-500;
 }
 /* Danger */
 .list-danger {
