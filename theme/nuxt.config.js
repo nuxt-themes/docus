@@ -50,7 +50,7 @@ export default docsOptions => ({
   content: {
     markdown: {
       prism: {
-        theme: 'prism-themes/themes/prism-material-oceanic.css'
+        theme: ''
       }
     }
   },
@@ -69,8 +69,7 @@ export default docsOptions => ({
   },
   googleFonts: {
     families: {
-      'DM+Sans': true,
-      'DM+Mono': true
+      Inter: true
     }
   },
   tailwindcss: {}

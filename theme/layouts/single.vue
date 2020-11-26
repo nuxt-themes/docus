@@ -35,7 +35,7 @@ export default {
         return this.settings.title
       },
       bodyAttrs: {
-        class: [...this.bodyClass, 'antialiased text-gray-700 leading-normal bg-white dark:bg-gray-900 dark:text-gray-300']
+        class: [...this.bodyClass]
       },
       ...i18nSeo,
       meta: (i18nSeo.meta || []).concat([

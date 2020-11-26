@@ -1,6 +1,6 @@
 ---
 title: Showcases
-category: Docs Theme
+category: Getting Started
 fullscreen: true
 position: 6
 showcases:

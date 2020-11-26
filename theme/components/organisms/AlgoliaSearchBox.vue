@@ -1,5 +1,5 @@
 <template>
-  <div id="docsearch" class="lg:w-full" />
+  <div id="docsearch" />
 </template>
 
 <script>
@@ -155,11 +155,19 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full ml-0 rounded-md px-3 !important;
+  @apply w-full ml-0 rounded-md bg-white border-0 text-gray-500 hover:text-gray-700 ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
   @apply px-3 !important;
+}
+
+.DocSearch-Search-Icon {
+  @apply text-current !important;
+}
+
+.DocSearch-Button-Key {
+  @apply bg-none border border-gray-200 shadow-none p-1 text-xs mr-px !important;
 }
 
 .DocSearch-Screen-Icon > svg {

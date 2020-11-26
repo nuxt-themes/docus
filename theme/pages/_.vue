@@ -1,30 +1,22 @@
 <template>
-  <div
-    class="flex flex-wrap-reverse"
-    :class="{
-      'lg:-mx-8': settings.layout === 'single'
-    }"
-  >
-    <div
-      class="w-full py-4 lg:pt-8 lg:pb-4 dark:border-gray-800"
-      :class="{
-        'lg:w-3/4': !document.fullscreen,
-        'lg:border-l lg:border-r': settings.layout !== 'single'
-      }"
-    >
-      <article class="prose dark:prose-dark max-w-none lg:px-8">
-        <h1 class="flex items-center justify-between">
+  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
+    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
+      <div class="mb-10" :class="{ 'border-b border-gray-200 pb-10': document.subtitle }">
+        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 tracking-tight">
           {{ document.title }}
-          <Badge v-if="document.badge">{{ document.badge }}</Badge>
+          <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
         </h1>
-        <div v-if="document.subtitle" class="-mt-4">
-          <p class="text-gray-600 dark:text-gray-400">{{ document.subtitle }}</p>
-        </div>
+        <p v-if="document.subtitle" class="mt-1 text-lg text-gray-500">{{ document.subtitle }}</p>
+      </div>
 
+      <div class="prose prose-primary dark:prose-dark max-w-none">
         <NuxtContent :document="document" />
-      </article>
+      </div>
 
       <AppGithubLink :document="document" />
+
+      <hr class="border-gray-200 mt-10 mb-4">
+
       <AppPrevNext :prev="prev" :next="next" />
     </div>
 
@@ -36,7 +28,7 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
-import AppCopyButton from '~/components/app/AppCopyButton'
+import CopyButton from '~/components/molecules/CopyButton'
 
 export default {
   name: 'PageSlug',
@@ -95,8 +87,8 @@ export default {
       const blocks = document.getElementsByClassName('nuxt-content-highlight')
 
       for (const block of blocks) {
-        const CopyButton = Vue.extend(AppCopyButton)
-        const component = new CopyButton().$mount()
+        const Button = Vue.extend(CopyButton)
+        const component = new Button().$mount()
         block.appendChild(component.$el)
       }
     }, 100)

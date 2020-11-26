@@ -1,8 +1,8 @@
 <template>
-  <AppDropdown v-if="availableLocales.length" class="inline-flex">
+  <Dropdown v-if="availableLocales.length" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
-        class="rounded-md hover:text-primary-500 focus:outline-none"
+        class="text-gray-400 hover:text-gray-500 focus:outline-none"
         :class="{ 'text-primary-500': open }"
         @touchstart.stop.prevent="toggle"
       >
@@ -19,7 +19,7 @@
         >{{ locale.name }}</nuxt-link>
       </li>
     </ul>
-  </AppDropdown>
+  </Dropdown>
 </template>
 
 <script>

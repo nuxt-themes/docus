@@ -1,3 +1,11 @@
+/*! purgecss start ignore */
+@import './prism.css';
+/*! purgecss end ignore */
+
+body {
+  @apply antialiased text-gray-500 bg-white dark:bg-gray-900;
+}
+
 .dark-mode .light-img {
   display: none;
 }
@@ -42,6 +50,7 @@
         }
       }
     }
+
     &:hover {
       & > a::before {
         @apply opacity-100;
@@ -84,6 +93,6 @@
   /* Force style on pre elements */
   & pre[class*="language-"] {
     /* Make pre static so the relative goes to the parent (.nuxt-content-highlight) */
-    @apply bg-gray-800 static;
+    @apply bg-gray-800 static rounded-md;
   }
 }

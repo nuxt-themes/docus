@@ -1,6 +1,15 @@
 {
-  "title": "DOCUS",
-  "url": "https://docs-theme.nuxtjs.org",
+  "title": "Nuxt Content",
+  "url": "https://content.nuxtjs.org",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
   "github": "nuxt/content",
-  "defaultBranch": "master"
+  "twitter": "nuxt_js",
+  "defaultBranch": "dev",
+  "algolia": {
+    "apiKey": "3677e049d48c83792ba0d2cb0715a12f",
+    "indexName": "nuxtjs_content"
+  }
 }
