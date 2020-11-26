@@ -106,25 +106,25 @@ export default {
 /* Warning */
 
 .alert-warning {
-  @apply bg-yellow-100 border-yellow-400;
+  @apply bg-orange-100 border-orange-400;
 }
 .alert-warning code {
-  @apply bg-yellow-200 shadow-none border-0 text-current;
+  @apply bg-orange-200 shadow-none border-0 text-current;
 }
 .alert-warning .alert-icon {
-  @apply text-yellow-400;
+  @apply text-orange-400;
 }
 .alert-warning .alert-content {
-  @apply text-yellow-700;
+  @apply text-orange-700;
 }
 .dark-mode .alert-warning {
-  @apply bg-yellow-900 border-yellow-700;
+  @apply bg-orange-900 border-orange-700;
 }
 .dark-mode .alert-warning code {
-  @apply bg-yellow-800;
+  @apply bg-orange-800;
 }
 .dark-mode .alert-warning .alert-content {
-  @apply text-yellow-300;
+  @apply text-orange-300;
 }
 
 /* Danger */

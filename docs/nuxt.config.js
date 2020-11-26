@@ -1,4 +1,4 @@
-import theme from '@nuxt/docs-theme'
+import theme from '@nuxt/docus'
 
 export default theme({
   buildModules: [
