@@ -10,18 +10,6 @@ const colors = require('tailwindcss/colors')
 const { getColors } = require('theme-colors')
 
 module.exports = ({ nuxt }) => {
-  let primary = colors.blue
-
-  if (nuxt.options.docs.primaryColor) {
-    if (colors[nuxt.options.docs.primaryColor]) {
-      primary = colors[nuxt.options.docs.primaryColor]
-    } else {
-      primary = getColors(nuxt.options.docs.primaryColor)
-    }
-  }
-
-  console.log('primary', primary)
-
   return {
     darkMode: 'class',
     theme: {
@@ -54,7 +42,7 @@ module.exports = ({ nuxt }) => {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
         colors: {
-          primary
+          primary: getColors(nuxt.options.docs.primaryColor)
         },
         spacing: {
           18: '4.5rem'
@@ -138,17 +126,17 @@ module.exports = ({ nuxt }) => {
               'h2, h3': {
                 'scroll-margin-block': `${(70 + 40) / 16}rem`
               },
-              'ul > li': {
-                paddingLeft: '1.5em'
-              },
-              'ul > li::before': {
-                width: '0.75em',
-                height: '0.125em',
-                top: 'calc(0.875em - 0.0625em)',
-                left: 0,
-                borderRadius: 0,
-                backgroundColor: theme('colors.gray.300')
-              },
+              // 'ul > li': {
+              //   paddingLeft: '1.5em'
+              // },
+              // 'ul > li::before': {
+              //   width: '0.75em',
+              //   height: '0.125em',
+              //   top: 'calc(0.875em - 0.0625em)',
+              //   left: 0,
+              //   borderRadius: 0,
+              //   backgroundColor: theme('colors.gray.300')
+              // },
               a: {
                 color: theme('colors.primary.700'),
                 fontWeight: theme('fontWeight.medium'),

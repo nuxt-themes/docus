@@ -1,21 +1,32 @@
+.token,
 .token.tag,
 .token.class-name,
 .token.selector,
-.token.selector .class,
-.token.function {
-  @apply text-fuchsia-400;
+.token.parameter,
+.token.attr-value,
+.token.selector .class {
+  @apply text-red-400;
 }
 
-.token.attr-name,
+.token.function {
+  @apply text-light-blue-400;
+}
+
+.token.attr-name {
+  @apply text-amber-400;
+}
+
+.token.operator {
+  @apply text-cyan-300;
+}
+
 .token.keyword,
 .token.rule,
-.token.operator,
 .token.pseudo-class,
 .token.important {
-  @apply text-cyan-400;
+  @apply text-purple-400;
 }
 
-.token.attr-value,
 .token.class,
 .token.string,
 .token.number,
@@ -24,10 +35,13 @@
   @apply text-lime-300;
 }
 
-.token.punctuation,
+.token.punctuation {
+  @apply text-white;
+}
+
 .token.module,
 .token.property {
-  @apply text-blue-200;
+  @apply text-purple-400;
 }
 
 .token.atapply .token:not(.rule):not(.important) {
