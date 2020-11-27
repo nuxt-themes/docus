@@ -54,6 +54,9 @@ export default docsOptions => ({
       }
     }
   },
+  colorMode: {
+    classSuffix: ''
+  },
   i18n: {
     locales: [{
       code: 'en',

@@ -3,13 +3,13 @@
 /*! purgecss end ignore */
 
 body {
-  @apply antialiased text-gray-500 bg-white dark:bg-gray-900;
+  @apply antialiased text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900;
 }
 
-.dark-mode .light-img {
+.dark .light-img {
   display: none;
 }
-.dark-mode .dark-img {
+.dark .dark-img {
   display: block;
 }
 .dark-img {
@@ -23,16 +23,6 @@ body {
   @apply break-words;
 
   & h2, & h3 {
-    /* Fix anchor scrollTo */
-    &::before {
-      display: block;
-      content: " ";
-      margin-top: -85px;
-      height: 85px;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       @apply ml-5;
@@ -73,7 +63,7 @@ body {
 
     /* Style copy button added in `pages/_.vue` */
     & > .copy {
-      @apply hidden absolute right-0 bottom-0 leading-none shadow-lg px-2 py-2 text-white bg-gray-800 text-sm uppercase rounded-md border border-white font-semibold mr-3 mb-3;
+      @apply hidden absolute right-0 bottom-0 leading-none shadow-lg px-1.5 py-1.5 text-white bg-gray-800 text-sm uppercase rounded-md border border-white font-semibold mr-3 mb-3;
 
       &:hover {
         @apply bg-gray-700;
@@ -83,6 +73,7 @@ body {
         @apply outline-none bg-gray-600;
       }
     }
+
     &:hover {
       & > .copy {
         @apply block;
@@ -91,8 +82,8 @@ body {
   }
 
   /* Force style on pre elements */
-  & pre[class*="language-"] {
+  /* & pre[class*="language-"] { */
     /* Make pre static so the relative goes to the parent (.nuxt-content-highlight) */
-    @apply bg-gray-800 static rounded-md;
-  }
+    /* @apply bg-gray-800 static rounded-md; */
+  /* } */
 }

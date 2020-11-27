@@ -2,16 +2,14 @@
   <div v-if="toc.length" class="hidden xl:text-sm xl:block flex-none w-64 pl-8 mr-8">
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
       <div class="mb-8">
-        <h5 class="text-gray-900 uppercase tracking-wide font-semibold mb-3 text-sm lg:text-xs">{{ $t('toc.title') }}</h5>
+        <h5 class="text-gray-900 dark:text-gray-100 uppercase tracking-wide font-semibold mb-3 text-sm lg:text-xs">{{ $t('toc.title') }}</h5>
 
-        <Scrollactive highlight-first-item active-class="text-primary-500" class="overflow-x-hidden font-medium" :offset="0" tag="ul">
+        <ul class="overflow-x-hidden font-medium">
           <li
             v-for="link of toc"
             :key="link.id"
-            class="text-gray-500 hover:text-gray-900"
-            :class="{
-              'border-t border-dashed dark:border-gray-800 first:border-t-0 pt-1 mt-1 first:pt-0 first:mt-0': link.depth === 2
-            }"
+            class="hover:text-gray-900 dark:hover:text-gray-100"
+            :class="{ 'text-primary-500 hover:text-primary-500': $route.hash === `#${link.id}` }"
           >
             <a
               :href="`#${link.id}`"
@@ -24,20 +22,16 @@
               }"
             >{{ link.text }}</a>
           </li>
-        </Scrollactive>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Scrollactive from 'vue-scrollactive/src/scrollactive.vue'
 import { mapGetters } from 'vuex'
 
 export default {
-  components: {
-    Scrollactive
-  },
   props: {
     toc: {
       type: Array,

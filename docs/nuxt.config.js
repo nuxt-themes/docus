@@ -1,6 +1,9 @@
 import theme from '@nuxt/docus'
 
 export default theme({
+  content: {
+    liveEdit: false
+  },
   buildModules: [
     'nuxt-ackee'
   ],

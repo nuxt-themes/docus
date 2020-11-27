@@ -1,21 +1,21 @@
 <template>
   <div class="pt-10 pb-24 lg:pb-16 w-full flex">
     <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
-      <div class="mb-10" :class="{ 'border-b border-gray-200 pb-10': document.subtitle }">
-        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 tracking-tight">
+      <div class="mb-10" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-10': document.subtitle }">
+        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
           {{ document.title }}
           <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
         </h1>
         <p v-if="document.subtitle" class="mt-1 text-lg text-gray-500">{{ document.subtitle }}</p>
       </div>
 
-      <div class="prose prose-primary dark:prose-dark max-w-none">
+      <div class="prose dark:prose-dark max-w-none">
         <NuxtContent :document="document" />
       </div>
 
       <AppGithubLink :document="document" />
 
-      <hr class="border-gray-200 mt-10 mb-4">
+      <hr class="border-gray-200 dark:border-gray-800 mt-10 mb-4">
 
       <AppPrevNext :prev="prev" :next="next" />
     </div>

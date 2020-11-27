@@ -18,24 +18,11 @@ module.exports = ({ nuxt }) => {
         current: 'currentColor',
         black: '#000',
         white: '#fff',
-        amber: colors.amber,
-        blue: colors.blue,
-        cyan: colors.cyan,
-        emerald: colors.emerald,
-        fuchsia: colors.fuchsia,
-        gray: colors.coolGray,
-        green: colors.green,
-        indigo: colors.indigo,
-        'light-blue': colors.lightBlue,
-        lime: colors.lime,
-        orange: colors.orange,
-        pink: colors.pink,
-        purple: colors.purple,
+        blue: colors.lightBlue,
+        green: colors.emerald,
         red: colors.red,
-        rose: colors.rose,
-        teal: colors.teal,
-        violet: colors.violet,
-        yellow: colors.yellow
+        orange: colors.orange,
+        gray: colors.coolGray
       },
       extend: {
         fontFamily: {
@@ -59,57 +46,9 @@ module.exports = ({ nuxt }) => {
         inset: {
           18: '4.5rem'
         },
-        transitionProperty: {
-          padding: 'padding'
-        },
         typography: theme => ({
           DEFAULT: {
             css: {
-              // h2: {
-              //   paddingBottom: theme('padding.2'),
-              //   borderBottomWidth: '1px',
-              //   borderBottomColor: theme('colors.gray.200')
-              // },
-              // h3: {
-              //   paddingBottom: theme('padding.2'),
-              //   borderBottomWidth: '1px',
-              //   borderBottomColor: theme('colors.gray.200')
-              // },
-              // blockquote: {
-              //   fontWeight: '400',
-              //   color: theme('colors.gray.600'),
-              //   fontStyle: 'normal',
-              //   quotes: '"\\201C""\\201D""\\2018""\\2019"'
-              // },
-              // 'blockquote p:first-of-type::before': {
-              //   content: ''
-              // },
-              // 'blockquote p:last-of-type::after': {
-              //   content: ''
-              // },
-              // code: {
-              //   fontWeight: '400',
-              //   backgroundColor: theme('colors.gray.100'),
-              //   padding: theme('padding.1'),
-              //   borderWidth: 1,
-              //   borderColor: theme('colors.gray.200'),
-              //   borderRadius: theme('borderRadius.default')
-              // },
-              // 'code::before': {
-              //   content: ''
-              // },
-              // 'code::after': {
-              //   content: ''
-              // },
-              // 'h3 code': {
-              //   fontWeight: '600'
-              // },
-              // 'pre code': {
-              //   // fontFamily: 'DM Mono'
-              // },
-              // 'a code': {
-              //   color: theme('colors.primary.500')
-              // }
               maxWidth: 'none',
               color: theme('colors.gray.500'),
               '> :first-child': { marginTop: '-' },
@@ -126,22 +65,14 @@ module.exports = ({ nuxt }) => {
               'h2, h3': {
                 'scroll-margin-block': `${(70 + 40) / 16}rem`
               },
-              // 'ul > li': {
-              //   paddingLeft: '1.5em'
-              // },
-              // 'ul > li::before': {
-              //   width: '0.75em',
-              //   height: '0.125em',
-              //   top: 'calc(0.875em - 0.0625em)',
-              //   left: 0,
-              //   borderRadius: 0,
-              //   backgroundColor: theme('colors.gray.300')
-              // },
+              'h3 code': {
+                color: 'inherit',
+                fontWeight: 'inherit'
+              },
               a: {
-                color: theme('colors.primary.700'),
+                color: theme('colors.primary.500'),
                 fontWeight: theme('fontWeight.medium'),
-                textDecoration: 'none',
-                boxShadow: theme('boxShadow.link')
+                textDecoration: 'none'
               },
               'a code': {
                 color: 'inherit',
@@ -156,19 +87,23 @@ module.exports = ({ nuxt }) => {
                 fontWeight: 'inherit'
               },
               code: {
-                fontWeight: '400',
-                color: theme('colors.violet.600')
+                fontWeight: theme('fontWeight.medium'),
+                backgroundColor: theme('colors.gray.50'),
+                padding: theme('padding.1'),
+                borderWidth: 1,
+                borderColor: theme('colors.gray.200'),
+                borderRadius: theme('borderRadius.md')
               },
               'code::before': {
-              // content: 'none',
+                content: ''
               },
               'code::after': {
-              // content: 'none',
+                content: ''
               },
               pre: {
-                backgroundColor: '-',
+                backgroundColor: theme('colors.gray.800'),
                 color: theme('colors.white'),
-                borderRadius: 0,
+                borderRadius: theme('borderRadius.md'),
                 marginTop: 0,
                 marginBottom: 0
               },
@@ -192,63 +127,61 @@ module.exports = ({ nuxt }) => {
               },
               'tbody code': {
                 fontSize: theme('fontSize.xs')[0]
+              },
+              'blockquote p:first-of-type::before': {
+                content: ''
+              },
+              'blockquote p:last-of-type::after': {
+                content: ''
               }
             }
           },
           dark: {
             css: {
-              // color: theme('colors.gray.300'),
-              // '[class~="lead"]': {
-              //   color: theme('colors.gray.300')
-              // },
-              // strong: {
-              //   color: theme('colors.gray.100')
-              // },
-              // 'ol > li::before': {
-              //   color: theme('colors.gray.400')
-              // },
-              // 'ul > li::before': {
-              //   backgroundColor: theme('colors.gray.600')
-              // },
-              // hr: {
-              //   borderColor: theme('colors.gray.700')
-              // },
-              // blockquote: {
-              //   color: theme('colors.gray.400'),
-              //   borderLeftColor: theme('colors.gray.700')
-              // },
-              // h1: {
-              //   color: theme('colors.gray.100')
-              // },
-              // h2: {
-              //   color: theme('colors.gray.100'),
-              //   borderBottomColor: theme('colors.gray.800')
-              // },
-              // h3: {
-              //   color: theme('colors.gray.100'),
-              //   borderBottomColor: theme('colors.gray.800')
-              // },
-              // h4: {
-              //   color: theme('colors.gray.100')
-              // },
-              // 'figure figcaption': {
-              //   color: theme('colors.gray.400')
-              // },
-              // code: {
-              //   color: theme('colors.gray.100'),
-              //   backgroundColor: theme('colors.gray.800'),
-              //   borderWidth: 0
-              // },
-              // 'a code': {
-              //   color: theme('colors.primary.500')
-              // },
-              // thead: {
-              //   color: theme('colors.gray.100'),
-              //   borderBottomColor: theme('colors.gray.600')
-              // },
-              // 'tbody tr': {
-              //   borderBottomColor: theme('colors.gray.700')
-              // }
+              color: theme('colors.gray.400'),
+              strong: {
+                color: theme('colors.gray.100')
+              },
+              'ol > li::before': {
+                color: theme('colors.gray.400')
+              },
+              'ul > li::before': {
+                backgroundColor: theme('colors.gray.600')
+              },
+              hr: {
+                borderColor: theme('colors.gray.700')
+              },
+              blockquote: {
+                color: theme('colors.gray.400'),
+                borderLeftColor: theme('colors.gray.700')
+              },
+              h1: {
+                color: theme('colors.gray.100')
+              },
+              h2: {
+                color: theme('colors.gray.100')
+              },
+              h3: {
+                color: theme('colors.gray.100')
+              },
+              h4: {
+                color: theme('colors.gray.100')
+              },
+              'figure figcaption': {
+                color: theme('colors.gray.400')
+              },
+              code: {
+                color: theme('colors.gray.100'),
+                backgroundColor: theme('colors.gray.800'),
+                borderColor: 'transparent'
+              },
+              thead: {
+                color: theme('colors.gray.100'),
+                borderBottomColor: theme('colors.gray.600')
+              },
+              'tbody tr': {
+                borderBottomColor: theme('colors.gray.700')
+              }
             }
           }
         })

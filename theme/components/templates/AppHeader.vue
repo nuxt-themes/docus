@@ -1,9 +1,9 @@
 <template>
-  <nav class="sticky top-0 z-40 lg:z-50 w-full max-w-8xl mx-auto bg-white flex-none flex" @click="scrollToTop">
-    <div class="flex-none pl-4 sm:pl-6 xl:pl-8 flex items-center border-b border-gray-200 lg:border-b-0 lg:w-60 xl:w-72">
+  <div class="sticky top-0 z-40 lg:z-50 w-full max-w-8xl mx-auto app-header flex-none flex" @click="scrollToTop">
+    <div class="flex-none pl-4 sm:pl-6 xl:pl-8 flex items-center border-b border-gray-200 dark:border-gray-800 lg:border-b-0 lg:w-60 xl:w-72">
       <NuxtLink
         :to="localePath('/')"
-        class="overflow-hidden w-10 md:w-auto"
+        class="overflow-hidden w-auto"
         :aria-label="settings.title"
       >
         <span v-if="logo" class="sr-only">{{ settings.title }}</span>
@@ -18,21 +18,30 @@
         <img v-if="logo" :src="logo.dark" class="h-8 w-auto dark-img" :alt="settings.title" />
       </NuxtLink>
     </div>
-    <div class="flex-auto border-b border-gray-200 h-18 flex items-center justify-between px-4 sm:px-6 lg:mx-6 lg:px-0 xl:mx-8 space-x-6">
-      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" />
-      <!-- <AppSearch v-else class="hidden lg:block" /> -->
+    <div class="flex-auto border-b border-gray-200 dark:border-gray-800 h-18 flex items-center justify-between px-4 sm:px-6 lg:mx-6 lg:px-0 xl:mx-8 space-x-6">
+      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="hidden lg:block" />
+
+      <span class="block" />
 
       <div class="flex items-center space-x-4">
         <NuxtLink
           v-if="lastRelease"
           to="/releases"
-          class="text-gray-400 hover:text-gray-500 font-medium"
+          class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 font-medium hidden lg:block"
           exact-active-class="text-primary-500"
         >{{ lastRelease.name }}</NuxtLink>
 
-        <LangSwitcher />
+        <LangSwitcher
+          :class="{
+            'hidden lg:flex': settings.layout !== 'single'
+          }"
+        />
 
-        <ColorSwitcher />
+        <ColorSwitcher
+          :class="{
+            'hidden lg:flex': settings.layout !== 'single'
+          }"
+        />
 
         <a
           v-if="settings.twitter"
@@ -41,7 +50,7 @@
           rel="noopener noreferrer"
           title="Twitter"
           name="Twitter"
-          class="text-gray-400 hover:text-gray-500"
+          class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
           :class="{
             'hidden lg:block': settings.layout !== 'single'
           }"
@@ -56,7 +65,7 @@
           rel="noopener noreferrer"
           title="Github"
           name="Github"
-          class="text-gray-400 hover:text-gray-500"
+          class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
           :class="{
             'hidden lg:block': settings.layout !== 'single'
           }"
@@ -66,89 +75,22 @@
 
         <button
           v-if="settings.layout !== 'single'"
-          class="lg:hidden focus:outline-none text-gray-400 hover:text-gray-500"
+          class="lg:hidden focus:outline-none text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
           aria-label="Menu"
           @click.stop="menu = !menu"
         >
-          <IconX v-if="menu" class="w-5 h-5" />
-          <IconMenu v-else class="w-5 h-5" />
+          <IconX v-if="menu" class="w-6 h-6" />
+          <IconMenu v-else class="w-6 h-6" />
         </button>
       </div>
     </div>
-
-    <!-- <div class="container mx-auto flex-1 px-4 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="lg:w-1/5 flex items-center pr-4" @click.stop="noop">
-
-        </div>
-        <div v-if="settings.layout !== 'single'" class="flex-1 flex justify-start w-4/6">
-
-        </div>
-        <div
-          class="lg:w-1/5 flex items-center pl-4 lg:pl-8"
-          :class="{ 'justify-between': lastRelease && settings.layout !== 'single', 'justify-end': !lastRelease || settings.layout === 'single' }"
-        >
-          <NuxtLink
-            v-if="lastRelease"
-            to="/releases"
-            class="font-semibold leading-none text-gray-700 dark:text-gray-300 hover:text-primary-500 dark-hover:text-primary-500 text-base mr-4"
-            exact-active-class="text-primary-500"
-          >{{ lastRelease.name }}</NuxtLink>
-          <div class="flex items-center">
-            <a
-              v-if="settings.twitter"
-              :href="`https://twitter.com/${settings.twitter}`"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Twitter"
-              name="Twitter"
-              class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark-hover:text-primary-500 ml-4"
-              :class="{
-                'hidden lg:block': settings.layout !== 'single'
-              }"
-            >
-              <IconTwitter class="w-5 h-5" />
-            </a>
-            <a
-              v-if="settings.github"
-              :href="githubUrls.repo"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Github"
-              name="Github"
-              class="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark-hover:text-primary-500 ml-4"
-              :class="{
-                'hidden lg:block': settings.layout !== 'single'
-              }"
-            >
-              <IconGithub class="w-5 h-5" />
-            </a>
-
-            <button
-              v-if="settings.layout !== 'single'"
-              class="lg:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 focus:outline-none -mr-2"
-              aria-label="Menu"
-              @click.stop="menu = !menu"
-            >
-              <IconX v-if="menu" class="w-5 h-5" />
-              <IconMenu v-else class="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-  </nav>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
 export default {
-  // data () {
-  //   return {
-  //     scrolled: 0
-  //   }
-  // },
   computed: {
     ...mapGetters([
       'settings',
@@ -178,23 +120,26 @@ export default {
       }
     }
   },
-  // beforeMount () {
-  //   window.addEventListener('scroll', this.handleScroll)
-  // },
-  // beforeDestroy () {
-  //   window.removeEventListener('scroll', this.handleScroll)
-  // },
   methods: {
-    // handleScroll () {
-    //   this.scrolled = window.scrollY > 0
-    // },
     scrollToTop () {
       if (window.innerWidth >= 1280) {
         return
       }
       window.scrollTo(0, 0)
     }
-    // noop () { }
   }
 }
 </script>
+
+<style>
+.app-header {
+  backdrop-filter: blur(12px);
+  background-color: hsla(0,0%,100%,.75);
+}
+
+.dark {
+  & .app-header {
+    background-color: rgba(17, 24, 39, 0.75);
+  }
+}
+</style>

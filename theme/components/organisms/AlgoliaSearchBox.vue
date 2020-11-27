@@ -155,7 +155,7 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full ml-0 rounded-md bg-white border-0 text-gray-500 hover:text-gray-700 ring-0 px-3 !important;
+  @apply w-full ml-0 rounded-md bg-transparent border-0 text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
@@ -167,14 +167,14 @@ export default {
 }
 
 .DocSearch-Button-Key {
-  @apply bg-none border border-gray-200 shadow-none p-1 text-xs mr-px !important;
+  @apply bg-none border border-gray-200 dark:border-gray-800 shadow-none p-1 text-xs mr-px !important;
 }
 
 .DocSearch-Screen-Icon > svg {
   display: inline !important;
 }
 
-.dark-mode {
+.dark {
   & .DocSearch {
     --docsearch-text-color: var(--color-gray-300);
     --docsearch-container-background: rgba(9,10,17,0.8);

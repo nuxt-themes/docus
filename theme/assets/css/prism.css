@@ -1,47 +1,33 @@
-.token,
 .token.tag,
 .token.class-name,
 .token.selector,
-.token.parameter,
-.token.attr-value,
-.token.selector .class {
-  @apply text-red-400;
-}
-
+.token.selector .class,
 .token.function {
-  @apply text-light-blue-400;
+  color: #E879F9;
 }
 
-.token.attr-name {
-  @apply text-amber-400;
-}
-
-.token.operator {
-  @apply text-cyan-300;
-}
-
+.token.attr-name,
 .token.keyword,
 .token.rule,
+.token.operator,
 .token.pseudo-class,
 .token.important {
-  @apply text-purple-400;
+  color: #22D3EE;
 }
 
+.token.attr-value,
 .token.class,
 .token.string,
 .token.number,
 .token.unit,
 .token.color {
-  @apply text-lime-300;
+  color: #BEF264;
 }
 
-.token.punctuation {
-  @apply text-white;
-}
-
+.token.punctuation,
 .token.module,
 .token.property {
-  @apply text-purple-400;
+  color: #E0F2FE;
 }
 
 .token.atapply .token:not(.rule):not(.important) {
@@ -60,7 +46,7 @@
   @apply text-gray-400;
 }
 
-.token.deleted:not(.prefix) {
+/* .token.deleted:not(.prefix) {
   @apply relative block -mx-4 px-4;
 }
 
@@ -74,9 +60,9 @@
 }
 
 .token.inserted:not(.prefix) {
-  @apply block bg-emerald-700 bg-opacity-50 -mx-4 px-4;
+  @apply block bg-green-700 bg-opacity-50 -mx-4 px-4;
 }
 
 .token.inserted.prefix {
-  @apply text-emerald-200 text-opacity-75 select-none;
-}
+  @apply text-green-200 text-opacity-75 select-none;
+} */

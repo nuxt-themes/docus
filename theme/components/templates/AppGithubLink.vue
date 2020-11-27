@@ -4,7 +4,7 @@
       :href="link"
       target="_blank"
       rel="noopener"
-      class="text-gray-500 hover:underline font-medium flex items-center"
+      class="hover:underline font-medium flex items-center"
     >
       {{ $t('article.github') }}
       <IconExternalLink class="w-4 h-4 ml-1" />

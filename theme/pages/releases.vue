@@ -1,19 +1,11 @@
 <template>
-  <div
-    class="flex flex-wrap-reverse"
-    :class="{
-      'lg:-mx-8': settings.layout === 'single'
-    }"
-  >
-    <div
-      class="w-full lg:w-3/4 py-4 lg:pt-8 lg:pb-4 dark:border-gray-800"
-      :class="{
-        'lg:border-l lg:border-r': settings.layout !== 'single'
-      }"
-    >
-      <article class="prose dark:prose-dark max-w-none lg:px-8">
-        <h1>Releases</h1>
+  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
+    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
+      <div class="mb-10">
+        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 tracking-tight">Releases</h1>
+      </div>
 
+      <div class="prose dark:prose-dark max-w-none">
         <div v-for="release of releases" :key="release.name">
           <h2 :id="release.name" class="flex items-center justify-between">
             {{ release.name }}
@@ -24,7 +16,7 @@
 
           <div class="nuxt-content" v-html="release.body" />
         </div>
-      </article>
+      </div>
     </div>
 
     <AppToc :toc="toc" />
