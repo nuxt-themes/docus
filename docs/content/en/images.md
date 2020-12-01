@@ -1,6 +1,6 @@
 ---
 title: Images
-category: Docs Theme
+category: Getting Started
 position: 4
 ---
 
@@ -18,4 +18,4 @@ You can apply `dark-img` and `light-img` classes to your images when you have tw
 <img src="/logo-light.svg" class="light-img" alt="Logo light" />
 <img src="/logo-dark.svg" class="dark-img" alt="Logo dark" />
 
-<p class="flex items-center">Try switching between light and dark mode:&nbsp;<app-color-switcher class="inline-flex ml-2"></app-color-switcher></p>
+<p class="flex items-center">Try switching between light and dark mode:&nbsp;<color-switcher class="inline-flex ml-2"></color-switcher></p>

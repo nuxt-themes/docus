@@ -1,6 +1,6 @@
 ---
 title: Settings
-category: Docs Theme
+category: Getting Started
 position: 3
 ---
 

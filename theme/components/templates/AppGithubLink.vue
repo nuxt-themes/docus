@@ -1,10 +1,10 @@
 <template>
-  <div v-if="link" class="pt-4 pb-4 lg:px-8 flex">
+  <div v-if="link" class="flex mt-10 mb-4">
     <a
       :href="link"
       target="_blank"
       rel="noopener"
-      class="text-gray-600 dark:text-gray-400 text-sm font-medium hover:underline flex items-center"
+      class="hover:underline font-medium flex items-center"
     >
       {{ $t('article.github') }}
       <IconExternalLink class="w-4 h-4 ml-1" />

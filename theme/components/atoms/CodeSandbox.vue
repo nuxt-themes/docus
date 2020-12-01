@@ -56,6 +56,6 @@ export default {
 .codesandbox,
 .codesandbox iframe {
   @apply w-full rounded-md overflow-hidden h-64;
-  height: 500px;
+  height: 650px;
 }
 </style>

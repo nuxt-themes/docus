@@ -1,12 +1,8 @@
 .nuxt-content-editor {
   @apply p-4 !important;
-  @apply rounded-md bg-gray-200;
+  @apply rounded-md bg-gray-100 dark:bg-gray-800;
 
   &:focus {
     @apply outline-none;
   }
-}
-
-.dark-mode .nuxt-content-editor {
-  @apply bg-gray-800;
 }

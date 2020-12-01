@@ -1,6 +1,6 @@
 ---
 title: Components
-category: Docs Theme
+category: Getting Started
 position: 5
 ---
 

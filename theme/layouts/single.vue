@@ -1,12 +1,14 @@
 <template>
-  <div class="pt-16">
+  <div>
     <AppHeader />
 
-    <main class="container mx-auto px-4 lg:px-8">
-      <Nuxt />
-    </main>
-
-    <AppFooter />
+    <div class="w-full max-w-8xl mx-auto">
+      <div class="lg:flex">
+        <div class="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible">
+          <Nuxt />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,14 +16,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  computed: {
-    ...mapGetters([
-      'settings'
-    ]),
-    bodyClass () {
-      return this.$store.state.menu.open ? ['h-screen lg:h-auto overflow-y-hidden lg:overflow-y-auto'] : []
-    }
-  },
   head () {
     const i18nSeo = this.$nuxtI18nSeo()
     const previewUrl = this.settings.url.replace(/\/$/, '') + '/preview.png'
@@ -35,7 +29,7 @@ export default {
         return this.settings.title
       },
       bodyAttrs: {
-        class: [...this.bodyClass, 'antialiased text-gray-700 leading-normal bg-white dark:bg-gray-900 dark:text-gray-300']
+        class: [...this.bodyClass]
       },
       ...i18nSeo,
       meta: (i18nSeo.meta || []).concat([
@@ -51,6 +45,14 @@ export default {
         { hid: 'twitter:image', name: 'twitter:image', content: previewUrl },
         { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.settings.title }
       ])
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'settings'
+    ]),
+    bodyClass () {
+      return this.$store.state.menu.open ? ['h-screen lg:h-auto overflow-y-hidden lg:overflow-y-auto'] : []
     }
   }
 }

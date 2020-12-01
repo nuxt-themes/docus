@@ -1,16 +1,16 @@
 <template>
-  <div class="pt-16">
+  <div>
     <AppHeader />
 
-    <main class="container mx-auto px-4 lg:px-8">
-      <div class="flex flex-wrap relative">
-        <AppNav />
+    <div class="w-full max-w-8xl mx-auto">
+      <div class="lg:flex">
+        <AppAside />
 
-        <Nuxt class="w-full lg:w-4/5" />
+        <div class="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible">
+          <Nuxt />
+        </div>
       </div>
-    </main>
-
-    <AppFooter />
+    </div>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
         return this.settings.title
       },
       bodyAttrs: {
-        class: [...this.bodyClass, 'antialiased text-gray-700 leading-normal bg-white dark:bg-gray-900 dark:text-gray-300']
+        class: [...this.bodyClass]
       },
       ...i18nSeo,
       meta: (i18nSeo.meta || []).concat([

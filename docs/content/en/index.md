@@ -1,6 +1,6 @@
 ---
-title: Getting Started
-category: Docs Theme
+title: Introduction
+category: Getting Started
 subtitle: 'Create a beautiful documentation like this website in seconds ✨'
 description: 'Create your documentation with @nuxt/content docs theme in seconds!'
 position: 1
@@ -90,4 +90,3 @@ It will ask you some questions (name, title, url, repository, etc.), when answer
 </code-group>
 
 The application is now running on [http://localhost:3000](http://localhost:3000). Well done!
-

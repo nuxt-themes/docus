@@ -1,6 +1,6 @@
 ---
 title: Manual Setup
-category: Docs Theme
+category: Getting Started
 position: 2
 ---
 
@@ -165,8 +165,3 @@ static/
 nuxt.config.js
 package.json
 ```
-
-
-
-
-

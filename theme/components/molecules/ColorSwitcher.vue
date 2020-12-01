@@ -1,7 +1,7 @@
 <template>
   <span class="inline-flex">
     <button
-      class="rounded-md hover:text-primary-500 focus:outline-none transition ease-in-out duration-150"
+      class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 focus:outline-none"
       aria-label="Color Mode"
       @click="$colorMode.value === 'dark' ? $colorMode.preference = 'light' : $colorMode.preference = 'dark'"
     >

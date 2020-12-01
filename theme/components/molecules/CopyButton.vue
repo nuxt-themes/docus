@@ -1,7 +1,7 @@
 <template>
   <button ref="copy" class="copy">
-    <IconClipboardCheck v-if="state === 'copied'" class="w-5 h-5" />
-    <IconClipboardCopy v-else class="w-5 h-5" />
+    <IconClipboardCheck v-if="state === 'copied'" class="w-4 h-4" />
+    <IconClipboardCopy v-else class="w-4 h-4" />
   </button>
 </template>
 

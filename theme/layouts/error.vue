@@ -1,9 +1,7 @@
 <template>
-  <div class="flex flex-wrap-reverse">
-    <div class="w-full lg:w-3/4 py-4 lg:pt-8 lg:pb-4 dark:border-gray-800 lg:border-l lg:border-r">
-      <article class="lg:px-8">
-        <h1 class="text-4xl font-black mb-4 leading-none">{{ error.message }}</h1>
-      </article>
+  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
+    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
+      <h1 class="text-3xl font-black mb-4 leading-none">{{ error.message }}</h1>
     </div>
   </div>
 </template>
