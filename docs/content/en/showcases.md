@@ -1,8 +1,8 @@
 ---
 title: Showcases
-category: Getting Started
+category: More
 fullscreen: true
-position: 6
+position: 7
 showcases:
   - https://strapi.nuxtjs.org
   - https://tailwindcss.nuxtjs.org

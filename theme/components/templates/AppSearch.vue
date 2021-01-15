@@ -42,7 +42,7 @@
           :to="localePath(result.to)"
           class="flex px-4 py-2 items-center leading-5 transition ease-in-out duration-150"
           :class="{
-            'text-primary-500 bg-gray-200 dark:bg-gray-800': focusIndex === index
+            'text-primary-500 dark:text-primary-400 bg-gray-200 dark:bg-gray-800': focusIndex === index
           }"
           @click="focus = false"
         >

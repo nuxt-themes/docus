@@ -1,23 +1,22 @@
 <template>
   <aside
-    class="fixed z-40 inset-0 flex-none h-full bg-black bg-opacity-25 w-full lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
+    class="fixed inset-0 z-40 flex-none w-full h-full bg-black bg-opacity-25 lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
     :class="{ 'hidden': !menu }"
     @click="menu = false"
   >
-    <div class="h-full overflow-y-auto lg:h-auto lg:block lg:sticky lg:bg-transparent overflow-hidden lg:top-18 bg-white dark:bg-gray-900 mr-24 lg:mr-0">
-      <div class="hidden lg:block h-12 pointer-events-none absolute inset-x-0 z-10 bg-gradient-to-b from-white dark:from-gray-900"></div>
+    <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0">
+      <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
       <nav class="px-1 pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-        <ul class="lg:hidden space-y-8 mb-8">
+        <ul v-if="settings.algolia || lastRelease" class="mb-8 space-y-8 lg:hidden">
           <li v-if="settings.algolia">
             <AlgoliaSearchBox :options="settings.algolia" :settings="settings" />
           </li>
-          <li>
+          <li v-if="lastRelease">
             <NuxtLink
-              v-if="lastRelease"
               to="/releases"
-              class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 font-medium px-3 py-2"
-              exact-active-class="text-primary-500"
+              class="px-3 py-2 font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+              exact-active-class="text-primary-500 dark:text-primary-400"
             >{{ lastRelease.name }}</NuxtLink>
           </li>
         </ul>
@@ -30,21 +29,21 @@
               'active': isCategoryActive(docs)
             }"
           >
-            <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900 dark:text-gray-100">{{ category }}</h5>
+            <h5 v-if="category !== 'undefined'" class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
 
             <ul>
-              <li v-for="doc of docs" :key="doc.slug" class="text-gray-700 dark:text-gray-300">
+              <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="localePath(doc.to)"
-                  class="px-3 py-2 transition-colors duration-200 relative block text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md"
-                  exact-active-class="text-primary-500 dark:text-primary-500 hover:text-primary-500 bg-primary-50 dark:bg-transparent dark:hover:text-primary-500"
+                  class="relative block px-3 py-2 transition-colors duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
+                  exact-active-class="text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-transparent dark:hover:text-primary-400"
                 >
                   {{ doc.menuTitle || doc.title }}
 
                   <client-only>
                     <span
                       v-if="isDocumentNew(doc)"
-                      class="animate-pulse rounded-full bg-primary-500 opacity-75 h-2 w-2"
+                      class="w-2 h-2 rounded-full opacity-75 animate-pulse bg-primary-500"
                     />
                   </client-only>
                 </NuxtLink>
@@ -53,9 +52,9 @@
           </li>
 
           <li class="lg:hidden">
-            <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900 dark:text-gray-100">More</h5>
+            <h5 class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">More</h5>
 
-            <div class="flex items-center space-x-4 px-3 py-2">
+            <div class="flex items-center px-3 py-2 space-x-4">
               <a
                 v-if="settings.twitter"
                 :href="`https://twitter.com/${settings.twitter}`"
@@ -63,7 +62,7 @@
                 rel="noopener noreferrer"
                 title="Twitter"
                 name="Twitter"
-                class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+                class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               >
                 <IconTwitter class="w-5 h-5" />
               </a>
@@ -74,7 +73,7 @@
                 rel="noopener noreferrer"
                 title="Github"
                 name="Github"
-                class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+                class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               >
                 <IconGithub class="w-5 h-5" />
               </a>

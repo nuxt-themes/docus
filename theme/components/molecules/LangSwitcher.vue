@@ -3,7 +3,7 @@
     <template #trigger="{ open, toggle }">
       <button
         class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 focus:outline-none"
-        :class="{ 'text-primary-500': open }"
+        :class="{ 'text-primary-500 dark:text-primary-400': open }"
         @touchstart.stop.prevent="toggle"
       >
         <IconTranslate class="w-6 h-6" />
@@ -15,7 +15,7 @@
         <nuxt-link
           v-if="$i18n.locale !== locale.code"
           :to="switchLocalePath(locale.code)"
-          class="flex px-4 items-center hover:text-primary-500 leading-7 whitespace-no-wrap"
+          class="flex px-4 items-center hover:text-primary-500 dark:hover:text-primary-400 leading-7 whitespace-no-wrap"
         >{{ locale.name }}</nuxt-link>
       </li>
     </ul>

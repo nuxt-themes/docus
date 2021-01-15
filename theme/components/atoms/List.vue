@@ -45,22 +45,22 @@ export default {
 <style>
 /* Primary */
 .list-primary {
-  @apply text-primary-500;
+  @apply text-primary-500 dark:text-primary-400;
 }
 /* Info */
 .list-info {
-  @apply text-blue-500;
+  @apply text-blue-500 dark:text-blue-400;
 }
 /* Success */
 .list-success {
-  @apply text-green-500;
+  @apply text-green-500 dark:text-green-400;
 }
 /* Warning */
 .list-warning {
-  @apply text-orange-500;
+  @apply text-orange-500 dark:text-orange-400;
 }
 /* Danger */
 .list-danger {
-  @apply text-red-500;
+  @apply text-red-500 dark:text-red-400;
 }
 </style>

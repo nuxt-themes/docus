@@ -1,119 +1,115 @@
 ---
 title: Components
-category: Getting Started
-position: 5
+menuTitle: Components
+category: Usage
+position: 4
 ---
 
 The theme comes with some default Vue.js components you can use directly in your markdown content.
 
-> You can create your own components in the `components/global/` folder, check out [this section](/writing#vue-components). <badge>v0.3.0+</badge>
+> You can create your own components in the `components/global/` folder, check out [this section](/writing#vue-components).
 
 ### `<alert>`
 
-**Props**
+<code-group>
+<code-block label="Preview" active>
+<div class="p-4 pb-0 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+<alert>
 
-- `type`
-  - Type: `String`
-  - Default: `'info'`
-  - Values: `['info', 'success', 'warning', 'danger']`
+Check out an info alert with a `codeblock` and a [link](/)!
 
-**Example**
+</alert>
+</div>
+</code-block>
+<code-block label="Code">
 
 ```md
 <alert>
 
-Check out an info alert with a `codeblock` and a [link](/themes/docs)!
+Check out an info alert with a `codeblock` and a [link](/)!
 
 </alert>
 ```
 
-**Result**
+</code-block>
+</code-group>
 
-<alert>
-
-Check out an info alert with a `codeblock` and a [link](/themes/docs)!
-
-</alert>
+| Prop | Type | Default | Values |
+|---------|------|-------------| ---|
+| `type` | `String` | `'info'` | `['info', 'success', 'warning', 'danger']` |
 
 ### `<list>`
 
-**Props**
+<code-group>
+<code-block label="Preview" active>
 
-- `items`
-  - Type: `Array`
-  - Default: `[]`
-- `type` <badge>v0.7.0+</badge>
-  - Type: `String`
-  - Default: `'primary'`
-  - Values: `['primary', 'info', 'success', 'warning', 'danger']`
-- `icon` <badge>v0.7.0+</badge>
-  - Type: `String`
-  - *Can be used to override the default `type` icon, check out the [icons available](https://github.com/nuxt/content/tree/dev/packages/theme-docs/src/components/global/icons)*
+<div class="p-4 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+  <list :items="['Nuxt', 'Docus', 'TailwindCSS']"></list>
+</div>
 
-**Example**
+</code-block>
+<code-block label="Code">
 
 ```md
 ---
 items:
-  - Item1
-  - Item2
-  - Item3
+  - Nuxt
+  - Docus
+  - TailwindCSS
 ---
 
 <list :items="items"></list>
 ```
 
-**Result**
+</code-block>
+</code-group>
 
-<list :items="['Item1', 'Item2', 'Item3']"></list>
-
+| Prop | Type | Default | Values |
+|---------|------|-------------| ---|
+| `items` | `Array` | `[]` | Array of string |
+| `type` | `String` | `'primary'` | `['primary', 'info', 'success', 'warning', 'danger']` |
+| `icon` | `String` | `null` | Used to override the default `type` icon, check out the [icons available](https://github.com/nuxt/content/tree/dev/packages/theme-docs/src/components/global/icons) |
 
 ### `<badge>`
 
-<badge>v0.5.0+</badge>
-
-**Example**
+<code-group>
+  <code-block label="Preview" active>
+    <div class="p-4 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+      <badge>v1.2+</badge>
+    </div>
+  </code-block>
+  <code-block label="Code">
 
 ```md
 <badge>v1.2+</badge>
 ```
 
-**Result**
-
-<badge>v1.2+</badge>
+  </code-block>
+</code-group>
 
 ### `<code-group>`
 
-This component uses `slots`, refer to `code-block` below.
+This component uses `slots`, refer to [`code-block`](#code-block) below.
 
 ### `<code-block>`
-
-**Props**
-
-- `label`
-  - Type: `String`
-  - `required`
-- `active`
-  - Type: `Boolean`
-  - Default: `false`
 
 **Example**
 
 ```html
-# Backslashes are for demonstration
+ℹ️ Backslashes are for demonstration
 
 <code-group>
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add @nuxt/docs-theme
+  yarn add docus
   \```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm install @nuxt/docs-theme
+  npm install docus
   \```
 
   </code-block>
@@ -126,28 +122,35 @@ This component uses `slots`, refer to `code-block` below.
   <code-block label="Yarn" active>
 
   ```bash
-  yarn add @nuxt/docs-theme
+  yarn add docus
   ```
 
   </code-block>
   <code-block label="NPM">
 
   ```bash
-  npm install @nuxt/docs-theme
+  npm install docus
   ```
 
   </code-block>
 </code-group>
 
+| Prop | Type | Required | Default | Description |
+|---------|------|-------------| ---| -- |
+| `label` | `String` | yes | | Label to display for the tab |
+| `active` | `Boolean` | no | `false` | Select which tab should be active |
+
 ### `<code-sandbox>`
 
-**Props**
+Embed CodeSandbox easily in your documentation with great performances, using the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to load when visible in the viewport.
 
-- `src`
-  - Type: `String`
-  - `required`
-
-**Example**
+<code-group>
+  <code-block label="Preview" active>
+    <div class="p-4 pb-0 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+      <code-sandbox src="https://codesandbox.io/embed/nuxt-content-l164h?hidenavigation=1&theme=dark"></code-sandbox>
+    </div>
+  </code-block>
+  <code-block label="Code">
 
 ```md
 ---
@@ -157,6 +160,9 @@ link: https://codesandbox.io/embed/nuxt-content-l164h?hidenavigation=1&theme=dar
 <code-sandbox :src="link"></code-sandbox>
 ```
 
-**Result**
+  </code-block>
+</code-group>
 
-<code-sandbox src="https://codesandbox.io/embed/nuxt-content-l164h?hidenavigation=1&theme=dark"></code-sandbox>
+| Prop | Type | Required | Value |
+|---------|------|-------------| ---|
+| `src` | `String` | `true` | Url to CodeSandbox embed |

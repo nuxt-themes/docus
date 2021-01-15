@@ -21,7 +21,8 @@ module.exports = ({ nuxt }) => {
         blue: colors.lightBlue,
         green: colors.emerald,
         red: colors.red,
-        orange: colors.orange,
+        orange: colors.amber,
+        violet: colors.violet,
         gray: colors.coolGray
       },
       extend: {
@@ -87,18 +88,8 @@ module.exports = ({ nuxt }) => {
                 fontWeight: 'inherit'
               },
               code: {
-                fontWeight: theme('fontWeight.medium'),
-                backgroundColor: theme('colors.gray.50'),
-                padding: theme('padding.1'),
-                borderWidth: 1,
-                borderColor: theme('colors.gray.200'),
-                borderRadius: theme('borderRadius.md')
-              },
-              'code::before': {
-                content: ''
-              },
-              'code::after': {
-                content: ''
+                fontWeight: '400',
+                color: theme('colors.violet.500')
               },
               pre: {
                 backgroundColor: theme('colors.gray.800'),
@@ -138,9 +129,12 @@ module.exports = ({ nuxt }) => {
           },
           dark: {
             css: {
-              color: theme('colors.gray.400'),
+              color: theme('colors.gray.300'),
               strong: {
                 color: theme('colors.gray.100')
+              },
+              a: {
+                color: theme('colors.primary.400')
               },
               'ol > li::before': {
                 color: theme('colors.gray.400')
@@ -171,9 +165,10 @@ module.exports = ({ nuxt }) => {
                 color: theme('colors.gray.400')
               },
               code: {
-                color: theme('colors.gray.100'),
-                backgroundColor: theme('colors.gray.800'),
-                borderColor: 'transparent'
+                color: theme('colors.primary.400')
+              },
+              'pre code': {
+                color: theme('colors.gray.100')
               },
               thead: {
                 color: theme('colors.gray.100'),

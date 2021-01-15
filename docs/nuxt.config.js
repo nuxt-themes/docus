@@ -1,6 +1,9 @@
-import theme from '@nuxt/docus'
+import withDocus from 'docus'
 
-export default theme({
+export default withDocus({
+  docs: {
+    primaryColor: '#3B82F6'
+  },
   content: {
     liveEdit: false
   },

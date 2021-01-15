@@ -176,6 +176,7 @@ export default {
 
 .dark {
   & .DocSearch {
+    --docsearch-primary-color: var(--color-primary-400);
     --docsearch-text-color: var(--color-gray-300);
     --docsearch-container-background: rgba(9,10,17,0.8);
     --docsearch-modal-background: var(--color-gray-900);

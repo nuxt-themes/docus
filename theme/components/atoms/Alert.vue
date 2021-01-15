@@ -1,8 +1,8 @@
 <template>
-  <div class="alert border-l-4 p-4 mb-4 mt-4" :class="`alert-${type}`">
+  <div class="p-4 mt-4 mb-4 border-l-4 alert" :class="`alert-${type}`">
     <div class="flex items-start">
       <div class="flex-shrink-0">
-        <component :is="icon" class="alert-icon mt-px w-6 h-6" />
+        <component :is="icon" class="w-6 h-6 mt-px alert-icon" />
       </div>
       <div class="flex-grow ml-2 overflow-auto alert-content">
         <slot />
@@ -88,7 +88,7 @@ export default {
 /* Warning */
 
 .alert-warning {
-  @apply bg-orange-100 dark:bg-orange-900 border-orange-400 dark:border-orange-600;
+  @apply bg-orange-100 dark:bg-orange-800 border-orange-400 dark:border-orange-600;
 }
 .alert-warning code {
   @apply bg-orange-200 dark:bg-orange-800 shadow-none border-0 text-current;

@@ -18,7 +18,7 @@ export default docsOptions => ({
     routes: ['/']
   },
   transpile: [
-    __dirname // transpile node_modules/@nuxt/docs-theme
+    __dirname // transpile node_modules/docus
   ],
   css: [
     '~/assets/css/main.css'
@@ -75,5 +75,8 @@ export default docsOptions => ({
       Inter: true
     }
   },
-  tailwindcss: {}
+  tailwindcss: {},
+  server: {
+    port: 3001
+  }
 })

@@ -1,12 +1,12 @@
 <template>
-  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
-    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
+  <div class="flex w-full pt-10 pb-24 lg:pb-16">
+    <div class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
       <div class="mb-10" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-10': document.subtitle }">
-        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
+        <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
           {{ document.title }}
           <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
         </h1>
-        <p v-if="document.subtitle" class="mt-1 text-lg text-gray-500">{{ document.subtitle }}</p>
+        <p v-if="document.subtitle" class="mt-2 text-lg text-gray-500 dark:text-gray-300">{{ document.subtitle }}</p>
       </div>
 
       <div class="prose dark:prose-dark max-w-none">
@@ -15,7 +15,7 @@
 
       <AppGithubLink :document="document" />
 
-      <hr class="border-gray-200 dark:border-gray-800 mt-10 mb-4">
+      <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
 
       <AppPrevNext :prev="prev" :next="next" />
     </div>

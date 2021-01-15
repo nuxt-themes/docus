@@ -1,92 +1,25 @@
 ---
 title: Introduction
 category: Getting Started
-subtitle: 'Create a beautiful documentation like this website in seconds ✨'
+subtitle: 'Create beautiful documentations with Markdown, Vue and TailwindCSS ✨'
 description: 'Create your documentation with @nuxt/content docs theme in seconds!'
 position: 1
+features:
+  - Powered by Markdown
+  - Built using Vue and Nuxt
+  - Designed with TailwindCSS
+  - Ready for translations
+  - Add Algolia Docsearch
+  - Blazing fast editing experience
 ---
 
+Docus makes it easy to create beautiful documentation, it is using [Vue](https://vuejs.org), [Nuxt](https://nuxtjs.org), [Content](https://content.nuxtjs.org) and [TailwindCSS](https://tailwindcss.com) under the hood.
 
-1. Init the documentation in the current directory
+Create a new docs with `npx docus init` and start writing markdown in a beautiful documentation, live preview your changes and use [components](/components).
+## Features
 
-```bash
-npx docus init
-```
+<list :items="features"></list>
 
-2. Start your docs in development
+## Videos
 
-```bash
-yarn dev
-```
-
-3. Generate the docs for production (full static and PWA ready)
-
-```bash
-yarn build
-```
-
-Listen on http://localhost:3001
-
-
-```json
-{
-  "scripts": {
-    "dev": "docus",
-    "build": "docus build"
-  },
-  "devDependencies": {
-    "docus": "^v1.0.0"
-  }
-}
-
-
-To get started quickly you can use the [create-nuxt-content-docs](https://github.com/nuxt/content/tree/dev/packages/create-nuxt-content-docs) package.
-
-<code-group>
-  <code-block label="Yarn" active>
-
-  ```bash
-  yarn create nuxt-content-docs <project-name>
-  ```
-
-  </code-block>
-  <code-block label="NPX">
-
-  ```bash
-  # Make sure you have npx installed (npx is shipped by default since NPM 5.2.0) or npm v6.1 or yarn.
-  npx create-nuxt-content-docs <project-name>
-  ```
-
-  </code-block>
-  <code-block label="NPM">
-
-  ```bash
-  # Starting with npm v6.1 you can do:
-  npm init nuxt-content-docs <project-name>
-  ```
-
-  </code-block>
-</code-group>
-
-It will ask you some questions (name, title, url, repository, etc.), when answered the dependencies will be installed. The next step is to navigate to the project folder and launch it:
-
-<code-group>
-  <code-block label="Yarn" active>
-
-  ```bash
-  cd <project-name>
-  yarn dev
-  ```
-
-  </code-block>
-  <code-block label="NPM">
-
-  ```bash
-  cd <project-name>
-  npm run dev
-  ```
-
-  </code-block>
-</code-group>
-
-The application is now running on [http://localhost:3000](http://localhost:3000). Well done!
+TODO

@@ -9,7 +9,7 @@
             v-for="link of toc"
             :key="link.id"
             class="hover:text-gray-900 dark:hover:text-gray-100"
-            :class="{ 'text-primary-500 hover:text-primary-500': $route.hash === `#${link.id}` }"
+            :class="{ 'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': $route.hash === `#${link.id}` }"
           >
             <a
               :href="`#${link.id}`"
