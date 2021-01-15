@@ -7,7 +7,7 @@ position: 4
 
 The theme comes with some default Vue.js components you can use directly in your markdown content.
 
-> You can create your own components in the `components/global/` folder, check out [this section](/writing#vue-components).
+> You can create your own components in the `components/global/` folder, check out [this section](https://content.nuxtjs.org/writing#vue-components).
 
 ### `<alert>`
 
