@@ -1,5 +1,0 @@
-[build]
-  base    = "docs"
-  command = "yarn generate"
-  publish = "dist"
-  # ignore  = "git diff --quiet HEAD^ HEAD . ../package.json"
