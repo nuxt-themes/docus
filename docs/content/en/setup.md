@@ -42,7 +42,7 @@ Start docus in development mode:
 yarn dev
 ```
 
-The development server will listen on [http://localhost:3001](http://localhost:3001)
+The development server will listen on [http://localhost:4000](http://localhost:4000)
 
 ## Manual setup
 
@@ -126,4 +126,4 @@ To start the development server with hot module replacement, run the following c
 npm run dev
 ```
 
-The docus server will be listening on [http://localhost:3001]([http://localhost:3001]).
+The docus server will be listening on [http://localhost:4000]([http://localhost:4000]).

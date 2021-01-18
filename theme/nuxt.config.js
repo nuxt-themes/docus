@@ -77,6 +77,6 @@ export default docusOptions => ({
   },
   tailwindcss: {},
   server: {
-    port: 3001
+    port: 4000
   }
 })
