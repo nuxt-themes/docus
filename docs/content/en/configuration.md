@@ -60,6 +60,8 @@ Take a look at the [@nuxt/content](https://github.com/algolia/docsearch-configs/
 
 You can checkout the [default nuxt.config.js](https://github.com/nuxt/docus/blob/main/theme/nuxt.config.js) from docus. We use [defu.arrayFn](https://github.com/nuxt-contrib/defu#array-function-merger) to merge the default configuration with the one provided.
 
+The theme design is based on a `primary` color to make it easy to override, you can specify it using `docus.colors.primary` in your `nuxt.config.js`, the color palette (50 to 900) is generated using [theme-colors](https://github.com/nuxt-contrib/theme-colors). Also the codeblocks color can be overriden in the same way with `docus.colors.code`.
+
 Example with custom configuration:
 
 ```js [nuxt.config.js]
@@ -96,19 +98,13 @@ export default withDocus({
 
 ## TailwindCSS
 
-The theme design is based on a `primary` color to make it easy to override, you can specify it using `docus.colors.primary` in your `nuxt.config.js`, the color palette (50 to 900) is generated using [theme-colors](https://github.com/nuxt-contrib/theme-colors). Also the codeblocks color can be overriden in the same way with `docus.colors.code`.
-
 You can override the [default Tailwind config](https://github.com/nuxt/docus/blob/main/theme/tailwind.config.js) by creating your own `tailwind.config.js`.
 
 ```js[tailwind.config.js]
 module.exports = {
   theme: {
     extend: {
-      colors: {
-        primary: {
-          // ...
-        }
-      }
+      // ...
     }
   }
 }
