@@ -46,6 +46,7 @@
     "eslint": "^7.18.0",
     "nuxt": "^2.14.12",
     "postcss": "^7",
+    "standard-version": "^9.1.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-plausible": "^1.1.2"
   }
