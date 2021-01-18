@@ -41,7 +41,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxtjs/eslint-config": "^5.0.0",
-    "autoprefixer": "^9",
+    "autoprefixer": "^10",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "nuxt": "^2.14.12",
