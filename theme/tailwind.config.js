@@ -21,8 +21,7 @@ module.exports = ({ nuxt }) => {
         blue: colors.lightBlue,
         green: colors.emerald,
         red: colors.red,
-        orange: colors.amber,
-        violet: colors.violet,
+        yellow: colors.amber,
         gray: colors.coolGray
       },
       extend: {
@@ -30,7 +29,8 @@ module.exports = ({ nuxt }) => {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
         colors: {
-          primary: getColors(nuxt.options.docs.primaryColor)
+          primary: getColors(nuxt.options.docus.colors.primary),
+          code: getColors(nuxt.options.docus.colors.code)
         },
         spacing: {
           18: '4.5rem'
@@ -66,6 +66,10 @@ module.exports = ({ nuxt }) => {
               'h2, h3': {
                 'scroll-margin-block': `${(70 + 40) / 16}rem`
               },
+              'h2 code': {
+                color: 'inherit',
+                fontWeight: 'inherit'
+              },
               'h3 code': {
                 color: 'inherit',
                 fontWeight: 'inherit'
@@ -75,9 +79,14 @@ module.exports = ({ nuxt }) => {
                 fontWeight: theme('fontWeight.medium'),
                 textDecoration: 'none'
               },
+              'a:hover': {
+                borderBottomWidth: 2,
+                borderBottomColor: theme('colors.primary.500'),
+                paddingBottom: '1px'
+              },
               'a code': {
                 color: 'inherit',
-                fontWeight: 'inherit'
+                fontWeight: theme('fontWeight.medium')
               },
               strong: {
                 color: theme('colors.gray.900'),
@@ -89,7 +98,7 @@ module.exports = ({ nuxt }) => {
               },
               code: {
                 fontWeight: '400',
-                color: theme('colors.violet.500')
+                color: theme('colors.code.500')
               },
               pre: {
                 backgroundColor: theme('colors.gray.800'),
@@ -161,14 +170,26 @@ module.exports = ({ nuxt }) => {
               h4: {
                 color: theme('colors.gray.100')
               },
+              'h2 code': {
+                color: 'inherit',
+                fontWeight: 'inherit'
+              },
+              'h3 code': {
+                color: 'inherit',
+                fontWeight: 'inherit'
+              },
               'figure figcaption': {
                 color: theme('colors.gray.400')
               },
               code: {
-                color: theme('colors.primary.400')
+                color: theme('colors.code.400')
               },
               'pre code': {
                 color: theme('colors.gray.100')
+              },
+              'a code': {
+                color: 'inherit',
+                fontWeight: theme('fontWeight.medium')
               },
               thead: {
                 color: theme('colors.gray.100'),

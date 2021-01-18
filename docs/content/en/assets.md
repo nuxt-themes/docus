@@ -14,7 +14,7 @@ In order to display an image for a specific mode, you can use `dark-img` and `li
 <code-group>
 <code-block label="Preview" active>
 
-<div class="p-4 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+<div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
   <img src="/logo-light.svg" class="light-img" alt="Logo light" style="margin:0;"/>
   <img src="/logo-dark.svg" class="dark-img" alt="Logo dark" style="margin:0;" />
   <p class="flex items-center" style="margin-bottom:0;">Switch between light and dark mode:&nbsp;<color-switcher class="inline-flex ml-2"></color-switcher></p>

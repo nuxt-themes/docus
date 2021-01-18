@@ -1,10 +1,7 @@
 <template>
-  <div class="p-4 mt-4 mb-4 border-l-4 alert" :class="`alert-${type}`">
+  <div class="p-4 mt-4 mb-4 rounded-md alert" :class="`alert-${type}`">
     <div class="flex items-start">
-      <div class="flex-shrink-0">
-        <component :is="icon" class="w-6 h-6 mt-px alert-icon" />
-      </div>
-      <div class="flex-grow ml-2 overflow-auto alert-content">
+      <div class="flex-grow overflow-auto alert-content">
         <slot />
       </div>
     </div>
@@ -21,16 +18,6 @@ export default {
         return ['info', 'success', 'warning', 'danger'].includes(value)
       }
     }
-  },
-  computed: {
-    icon () {
-      return ({
-        info: 'IconInformationCircle',
-        success: 'IconCheckCircle',
-        warning: 'IconExclamationCircle',
-        danger: 'IconXCircle'
-      })[this.type]
-    }
   }
 }
 </script>
@@ -40,28 +27,32 @@ export default {
   @apply m-0 !important;
 }
 
-.alert a {
-  @apply text-gray-700 !important;
-}
-.dark .alert a {
-  @apply text-gray-300 !important;
+.alert .alert-content strong {
+  @apply text-current;
 }
 
-.alert strong {
-  @apply text-current;
+.alert-content a {
+  @apply text-current hover:border-current font-semibold;
+}
+.dark .alert-content a {
+  @apply text-current hover:border-current font-semibold;
 }
 
 .alert-content pre code {
   background-color: inherit !important;
 }
 
+.dark .alert-content code {
+  @apply text-current;
+}
+
 /* Info */
 
 .alert-info {
-  @apply bg-blue-100 dark:bg-blue-900 border-blue-400 dark:border-blue-600;
+  @apply bg-blue-100 dark:bg-blue-800 border-blue-400 dark:border-blue-600;
 }
 .alert-info code {
-  @apply bg-blue-200 dark:bg-blue-800 shadow-none border-0 text-current;
+  @apply bg-blue-200 dark:bg-blue-700 shadow-none border-0 text-current;
 }
 .alert-info .alert-icon {
   @apply text-blue-400 dark:text-blue-300;
@@ -73,10 +64,10 @@ export default {
 /* Success */
 
 .alert-success {
-  @apply bg-green-100 dark:bg-green-900 border-green-400 dark:border-green-600;
+  @apply bg-green-100 dark:bg-green-800 border-green-400 dark:border-green-600;
 }
 .alert-success code {
-  @apply bg-green-200 dark:bg-green-800 shadow-none border-0 text-current;
+  @apply bg-green-200 dark:bg-green-700 shadow-none border-0 text-current;
 }
 .alert-success .alert-icon {
   @apply text-green-400 dark:text-green-300;
@@ -88,25 +79,25 @@ export default {
 /* Warning */
 
 .alert-warning {
-  @apply bg-orange-100 dark:bg-orange-800 border-orange-400 dark:border-orange-600;
+  @apply bg-yellow-100 dark:bg-yellow-800 border-yellow-400 dark:border-yellow-600;
 }
 .alert-warning code {
-  @apply bg-orange-200 dark:bg-orange-800 shadow-none border-0 text-current;
+  @apply bg-yellow-200 dark:bg-yellow-700 shadow-none border-0 text-current;
 }
 .alert-warning .alert-icon {
-  @apply text-orange-400 dark:text-orange-300;
+  @apply text-yellow-400 dark:text-yellow-300;
 }
 .alert-warning .alert-content {
-  @apply text-orange-700 dark:text-orange-300;
+  @apply text-yellow-700 dark:text-yellow-300;
 }
 
 /* Danger */
 
 .alert-danger {
-  @apply bg-red-100 dark:bg-red-900 border-red-400 dark:border-red-600;
+  @apply bg-red-100 dark:bg-red-800 border-red-400 dark:border-red-600;
 }
 .alert-danger code {
-  @apply bg-red-200 dark:bg-red-800 shadow-none border-0 text-current;
+  @apply bg-red-200 dark:bg-red-700 shadow-none border-0 text-current;
 }
 .alert-danger .alert-icon {
   @apply text-red-400 dark:text-red-300;

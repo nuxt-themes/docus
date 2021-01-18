@@ -67,7 +67,10 @@ import withDocus from 'docus'
 
 export default withDocus({
   docus: {
-    primaryColor: '#E24F55'
+    colors: {
+      primary: '#E24F55',
+      code: '#8B5CF6'
+    }
   },
   i18n: {
     locales: () => [{
@@ -93,8 +96,7 @@ export default withDocus({
 
 ## TailwindCSS
 
-The theme design is based on a `primary` color to make it easy to override, you can specify it using `docus.primaryColor` in your `nuxt.config.js`, the color palette (50 to 900) is generated using [theme-colors](https://github.com/nuxt-contrib/theme-colors).
-
+The theme design is based on a `primary` color to make it easy to override, you can specify it using `docus.colors.primary` in your `nuxt.config.js`, the color palette (50 to 900) is generated using [theme-colors](https://github.com/nuxt-contrib/theme-colors). Also the codeblocks color can be overriden in the same way with `docus.colors.code`.
 
 You can override the [default Tailwind config](https://github.com/nuxt/docus/blob/main/theme/tailwind.config.js) by creating your own `tailwind.config.js`.
 

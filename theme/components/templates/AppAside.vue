@@ -15,7 +15,7 @@
           <li v-if="lastRelease">
             <NuxtLink
               to="/releases"
-              class="px-3 py-2 font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+              class="px-3 py-2 font-medium text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               exact-active-class="text-primary-500 dark:text-primary-400"
             >{{ lastRelease.name }}</NuxtLink>
           </li>
@@ -35,8 +35,8 @@
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="localePath(doc.to)"
-                  class="relative block px-3 py-2 transition-colors duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
-                  exact-active-class="text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-transparent dark:hover:text-primary-400"
+                  class="relative block px-3 py-2 transition duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
+                  :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': $route.path === doc.to }"
                 >
                   {{ doc.menuTitle || doc.title }}
 
@@ -62,7 +62,7 @@
                 rel="noopener noreferrer"
                 title="Twitter"
                 name="Twitter"
-                class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+                class="text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               >
                 <IconTwitter class="w-5 h-5" />
               </a>
@@ -73,7 +73,7 @@
                 rel="noopener noreferrer"
                 title="Github"
                 name="Github"
-                class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+                class="text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               >
                 <IconGithub class="w-5 h-5" />
               </a>

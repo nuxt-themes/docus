@@ -57,7 +57,7 @@ export default {
 }
 /* Warning */
 .list-warning {
-  @apply text-orange-500 dark:text-orange-400;
+  @apply text-yellow-500 dark:text-yellow-400;
 }
 /* Danger */
 .list-danger {

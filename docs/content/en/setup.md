@@ -90,8 +90,8 @@ Then install the depencies:
 
 Create a `nuxt.config.js` and use `docus`:
 
-```js[nuxt.config.js]
-import withDocus from 'docus'
+```js [nuxt.config.js]
+import { withDocus } from 'docus'
 
 export default withDocus({
   // Additional nuxt configuration

@@ -9,7 +9,7 @@ Once you've setup your documentation, you can directly start writing your conten
 
 <alert type="info">
 
-Check Nuxt Content documentation on [writing markdown content](https://content.nuxtjs.org/writing#markdown).
+Checkout Nuxt Content documentation on [writing markdown content](https://content.nuxtjs.org/writing#markdown).
 
 </alert>
 

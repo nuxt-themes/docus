@@ -13,10 +13,25 @@ The theme comes with some default Vue.js components you can use directly in your
 
 <code-group>
 <code-block label="Preview" active>
-<div class="p-4 pb-0 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
-<alert>
+<div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
+<alert type="info" style="margin-top: 0;">
 
-Check out an info alert with a `codeblock` and a [link](/)!
+Check out an **info** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="success">
+
+Check out a **success** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="warning">
+
+Check out a **warning** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="danger" style="margin-bottom: 0;">
+
+Check out a **danger** alert with a `codeblock` and a [link](/).
 
 </alert>
 </div>
@@ -24,9 +39,24 @@ Check out an info alert with a `codeblock` and a [link](/)!
 <code-block label="Code">
 
 ```md
-<alert>
+<alert type="info">
 
-Check out an info alert with a `codeblock` and a [link](/)!
+Check out an **info** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="success">
+
+Check out a **success** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="warning">
+
+Check out a **warning** alert with a `codeblock` and a [link](/).
+
+</alert>
+<alert type="danger">
+
+Check out a **danger** alert with a `codeblock` and a [link](/).
 
 </alert>
 ```
@@ -43,7 +73,7 @@ Check out an info alert with a `codeblock` and a [link](/)!
 <code-group>
 <code-block label="Preview" active>
 
-<div class="p-4 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+<div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
   <list :items="['Nuxt', 'Docus', 'TailwindCSS']"></list>
 </div>
 
@@ -74,7 +104,7 @@ items:
 
 <code-group>
   <code-block label="Preview" active>
-    <div class="p-4 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+    <div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
       <badge>v1.2+</badge>
     </div>
   </code-block>
@@ -146,7 +176,7 @@ Embed CodeSandbox easily in your documentation with great performances, using th
 
 <code-group>
   <code-block label="Preview" active>
-    <div class="p-4 pb-0 border-2 border-t-0 dark:border-gray-700 rounded-b-md">
+    <div class="p-4 pb-0 border-2 border-t-0 border-gray-700 rounded-b-md">
       <code-sandbox src="https://codesandbox.io/embed/nuxt-content-l164h?hidenavigation=1&theme=dark"></code-sandbox>
     </div>
   </code-block>

@@ -7,11 +7,11 @@
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="label"
-        class="px-4 py-3 font-mono font-bold text-gray-400"
-        :class="[activeTabIndex === i && 'active']"
+        class="px-4 py-3 font-mono font-bold"
+        :class="[activeTabIndex === i ? 'active text-white' : 'text-gray-300']"
         @click="updateTabs(i)"
       >{{ label }}</button>
-      <span ref="highlight-underline" class="highlight-underline bg-primary-500 dark:bg-primary-400 absolute" />
+      <span ref="highlight-underline" class="absolute highlight-underline bg-primary-500 dark:bg-primary-400" />
     </div>
     <slot />
   </div>

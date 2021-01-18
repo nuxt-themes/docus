@@ -1,6 +1,6 @@
 import themeModule from './module'
 
-export default docsOptions => ({
+export default docusOptions => ({
   target: 'static',
   ssr: true,
   srcDir: __dirname,
@@ -42,10 +42,10 @@ export default docsOptions => ({
   ],
   components: true,
   loading: {
-    color: docsOptions.primaryColor
+    color: docusOptions.colors.primary
   },
   meta: {
-    theme_color: docsOptions.primaryColor
+    theme_color: docusOptions.colors.primary
   },
   content: {
     markdown: {

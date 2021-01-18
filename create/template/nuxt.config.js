@@ -1,7 +1,9 @@
 import theme from '@nuxt/docs-theme'
 
 export default theme({
-  docs: {
-    primaryColor: '#E24F55'
+  docus: {
+    colors: {
+      primary: '#E24F55'
+    }
   }
 })

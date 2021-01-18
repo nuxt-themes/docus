@@ -6,7 +6,7 @@ import tailwindConfig from './tailwind.config'
 
 const fs = gracefulFs.promises
 
-export default function () {
+export default function docusModule () {
   // wait for nuxt options to be normalized
   const { nuxt } = this
   const { options, hook } = this.nuxt

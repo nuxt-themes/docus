@@ -1,14 +1,17 @@
 import defu from 'defu'
 import nuxtConfig from './nuxt.config'
 
-const defaultConfig = docsOptions => nuxtConfig(docsOptions)
+const defaultConfig = docusOptions => nuxtConfig(docusOptions)
 
-export default (userConfig) => {
-  userConfig.docs = defu(userConfig.docs, {
-    primaryColor: '#00CD81'
+export function withDocus (userConfig) {
+  userConfig.docus = defu(userConfig.docus, {
+    colors: {
+      primary: '#06B6D4',
+      code: '#8B5CF6'
+    }
   })
 
-  const config = defu.arrayFn(userConfig, defaultConfig(userConfig.docs))
+  const config = defu.arrayFn(userConfig, defaultConfig(userConfig.docus))
 
   if (userConfig.env && userConfig.env.GITHUB_TOKEN) {
     // eslint-disable-next-line no-console
