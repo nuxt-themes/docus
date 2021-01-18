@@ -5,7 +5,27 @@ category: Usage
 position: 5
 ---
 
-## Images
+## Favicon and PWA Icon
+
+You can add a `static/icon.png` image to enable [nuxt-pwa](https://pwa.nuxtjs.org) and generate a favicon automatically.
+
+<alert>
+
+`icon.png` should be a square of at least 512x512px/
+
+</alert>
+
+## Social preview
+
+You can add a `static/preview.png` image to have a social preview image in your metas.
+
+<alert>
+
+`preview.png` should be at least 640×320px (1280×640px for best display).
+
+</alert>
+
+## Images with dark mode
 
 Docus support light and dark mode 🌗.
 
@@ -30,24 +50,3 @@ In order to display an image for a specific mode, you can use `dark-img` and `li
 
 </code-block>
 </code-group>
-
-
-### `static/`
-
-This is where you put your static assets like the logo.
-
-<alert type="info">
-
-You can add a `static/icon.png` file to enable [nuxt-pwa](https://pwa.nuxtjs.org/) and generate a favicon automatically.
-
-*Icon should be a square of at least 512x512*
-
-</alert>
-
-<alert type="info">
-
-You can add a `static/preview.png` file to have a social preview image in your metas.
-
-*Image should be at least 640×320px (1280×640px for best display).*
-
-</alert>
