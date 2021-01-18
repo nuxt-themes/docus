@@ -1,6 +1,5 @@
 /*! purgecss start ignore */
 @import './prism.css';
-/*! purgecss end ignore */
 
 body {
   @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
@@ -84,10 +83,5 @@ body {
       }
     }
   }
-
-  /* Force style on pre elements */
-  /* & pre[class*="language-"] { */
-    /* Make pre static so the relative goes to the parent (.nuxt-content-highlight) */
-    /* @apply static bg-gray-800 rounded-md; */
-  /* } */
 }
+/*! purgecss end ignore */
