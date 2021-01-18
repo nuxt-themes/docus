@@ -53,6 +53,6 @@
     "sao": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-multiselect": "^2.1.6",
-    "vue-plausible": "^1.1.2"
+    "vue-plausible": "^1.1.1"
   }
 }
