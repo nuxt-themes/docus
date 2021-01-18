@@ -9,6 +9,7 @@ export default withDocus({
   ],
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
-    domain: 'docus.dev'
+    domain: 'docus.dev',
+    apiHost: 'https://plausible.io'
   }
 })
