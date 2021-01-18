@@ -19,7 +19,7 @@ You can create a `content/settings.json` file to configure the theme.
 | `githubApi` | `String` | For GitHub Enterprise, in addition to `github`, you have to assign a API full url of your project without a trailing slash. Example: `https://hostname/api/v3/repos/owner/name`. Releases are fetched from `${githubApi}/releases`. |
 | `twitter` | `String` | Twitter username `@username` you want to link. Example: `@nuxt_js`. |
 | `defaultBranch` | `String` | The default branch for the GitHub repository of your project, used in the `Edit this page on GitHub link` on each page (defaults to `main` if it cannot be detected). |
-| `defaultDir` | `String` | The default dir of your project, used in the `Edit this page on GitHub link` on each page (defaults to `docs`. Can be an empty string eg. `""` |
+| `defaultDir` | `String` | The default dir of your project, used in the `Edit this page on GitHub link` on each page (defaults to `docs`). Can be an empty string eg. `""` |
 | `layout` | `String` | The layout of your documentation (defaults to `default`). Can be changed to `single` to have a one-page doc. |
 | `algolia` | `Object` | This option allows you to use [Algolia DocSearch](https://docsearch.algolia.com) to replace the simple built-in search. In order to enable it, you need to provide at least the `apiKey` and the `indexName`, see example below. |
 
