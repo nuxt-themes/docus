@@ -41,7 +41,7 @@ Take a look at the [@nuxt/content](https://github.com/algolia/docsearch-configs/
 
 ### Example
 
-```json[content/settings.json]
+```json [content/settings.json]
 {
   "title": "Nuxt Content",
   "url": "https://content.nuxtjs.org",
@@ -100,7 +100,7 @@ export default withDocus({
 
 You can override the [default Tailwind config](https://github.com/nuxt/docus/blob/main/theme/tailwind.config.js) by creating your own `tailwind.config.js`.
 
-```js[tailwind.config.js]
+```js [tailwind.config.js]
 module.exports = {
   theme: {
     extend: {
