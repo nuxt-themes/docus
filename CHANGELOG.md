@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/nuxt/docus/compare/v0.0.2...v0.0.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* move tailwind to dependencies ([3e5f5cb](https://github.com/nuxt/docus/commit/3e5f5cbc6031cdc20c7a0b562cb9c3ac05d0e259))
+
 ### 0.0.2 (2021-01-18)
 
 
