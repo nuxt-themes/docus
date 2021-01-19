@@ -52,4 +52,37 @@ export default theme({
 </code-block>
 </code-group>
 
+If you specified a primary color, you need to change from `docs.primaryColor` to `docus.colors.primary`:
+
+<code-group>
+  <code-block label="New" active>
+
+```ts
+import { withDocus } from 'docus'
+
+export default withDocus({
+  docus: {
+    colors: {
+      primary: '#E24F55'
+    }
+  }
+})
+```
+
+</code-block>
+<code-block label="Old">
+
+```ts
+import theme from '@nuxt/content-theme-docs'
+
+export default theme({
+  docs: {
+    primaryColor: '#E24F55'
+  }
+})
+```
+
+</code-block>
+</code-group>
+
 You can now redeploy your application to take advantage of `docus` and its new features!
