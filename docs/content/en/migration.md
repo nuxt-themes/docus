@@ -2,9 +2,26 @@
 title: Migrate from @nuxt/content-theme-docs
 menuTitle: Migration
 category: More
-description: 'Migrate from @nuxt/content-theme-docs'
+description: 'Migrate from @nuxt/content-theme-docs to Docus'
 position: 17
 ---
+
+By migrating to docus, you will have a fresh new design for your documentation ✨
+
+<div class="flex flex-wrap">
+  <div class="w-full md:pr-2 md:w-1/2">
+    <h3 style="margin-top: 0;">Before</h3>
+    <a href="https://user-images.githubusercontent.com/904724/105030429-11f5b480-5a54-11eb-9f40-7c18a0d5dafc.png">
+      <img src="https://user-images.githubusercontent.com/904724/105030429-11f5b480-5a54-11eb-9f40-7c18a0d5dafc.png" alt="before docus" style="margin: 0;"/>
+    </a>
+  </div>
+  <div class="w-full md:pl-2 md:w-1/2">
+    <h3 style="margin-top: 0;">After</h3>
+    <a href="https://user-images.githubusercontent.com/904724/105030439-1326e180-5a54-11eb-9f33-ead9a2d2aa15.png">
+      <img src="https://user-images.githubusercontent.com/904724/105030439-1326e180-5a54-11eb-9f33-ead9a2d2aa15.png" alt="with docus" style="margin: 0;"/>
+    </a>
+  </div>
+</div>
 
 In order to move from `@nuxt/content-theme-docs` to `docus` you need to install the new package:
 
