@@ -2,7 +2,7 @@
 name: Question
 about: Ask a question about the module.
 title: ''
-labels: 'question'
+labels: question
 assignees: ''
 
 ---

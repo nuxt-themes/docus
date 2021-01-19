@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea or enhancement for the module.
 title: ''
-labels: 'enhancement'
+labels: enhancement
 assignees: ''
 
 ---

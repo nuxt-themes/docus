@@ -2,7 +2,7 @@
 name: Bug report
 about: Report a bug report to help us improve the module.
 title: ''
-labels: 'bug'
+labels: bug
 assignees: ''
 
 ---
@@ -12,11 +12,13 @@ Before reporting a bug, please make sure that you have read through our document
 
 ### Version
 nuxt: <!-- ex: v2.12.0 -->
+docus: <!-- ex: v0.3.0 -->
 
 ### Reproduction Link
 <!--
-A minimal test case based on one of:
-- a GitHub repository that can reproduce the bug
+A minimal reproduction based on one of:
+- a GitHub repository
+- a CodeSandbox
 -->
 
 ### Steps to reproduce
