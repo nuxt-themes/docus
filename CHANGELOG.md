@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/nuxt/docus/compare/v0.0.3...v0.0.4) (2021-01-19)
+
+
+### Bug Fixes
+
+* add dark mode for release title ([c6a7be5](https://github.com/nuxt/docus/commit/c6a7be5f0ada72532047c5807d4fc3eac6400560))
+
 ### [0.0.3](https://github.com/nuxt/docus/compare/v0.0.2...v0.0.3) (2021-01-19)
 
 
