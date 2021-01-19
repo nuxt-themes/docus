@@ -34,8 +34,10 @@
     "lodash.groupby": "^4.6.0",
     "marked": "^1.2.7",
     "nuxt-i18n": "^6.18.0",
+    "postcss": "^7",
     "prism-themes": "^1.5.0",
     "tailwind-css-variables": "^2.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "theme-colors": "^0.0.5"
   },
   "devDependencies": {
@@ -45,9 +47,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
     "nuxt": "^2.14.12",
-    "postcss": "^7",
     "standard-version": "^9.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-plausible": "^1.1.2"
   }
 }
