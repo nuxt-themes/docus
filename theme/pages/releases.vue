@@ -1,8 +1,8 @@
 <template>
-  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
-    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
+  <div class="flex w-full pt-10 pb-24 lg:pb-16">
+    <div class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
       <div class="mb-10">
-        <h1 class="flex items-center justify-between text-3xl font-extrabold text-gray-900 tracking-tight">Releases</h1>
+        <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">Releases</h1>
       </div>
 
       <div class="prose dark:prose-dark max-w-none">
