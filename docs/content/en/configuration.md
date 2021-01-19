@@ -64,7 +64,7 @@ The theme design is based on a `primary` color to make it easy to override, you 
 
 Example with custom configuration:
 
-```js [nuxt.config.js]
+```ts [nuxt.config.js]
 import withDocus from 'docus'
 
 export default withDocus({

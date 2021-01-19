@@ -30,7 +30,7 @@ Then, instead of importing `@nuxt/content-theme-docs`, you need to import `docus
 <code-group>
   <code-block label="New" active>
 
-```js
+```ts
 import { withDocus } from 'docus'
 
 export default withDocus({
@@ -41,7 +41,7 @@ export default withDocus({
 </code-block>
 <code-block label="Old">
 
-```js
+```ts
 import theme from '@nuxt/content-theme-docs'
 
 export default theme({

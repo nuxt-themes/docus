@@ -53,8 +53,8 @@ By default, only the default `en` locale is defined, **you have to create a `con
 
 You can override the locales in your `nuxt.config.js`:
 
-```js [nuxt.config.js]
-import withDocus from 'docus'
+```ts [nuxt.config.js]
+import { withDocus } from 'docus'
 
 export default withDocus({
   i18n: {
