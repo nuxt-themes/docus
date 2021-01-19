@@ -3,6 +3,7 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![license][license-src]][license-href]
 
 Write your documentation with [Nuxt](https://nuxtjs.org) and [TailwindCSS](https://tailwindcss.com)
 ## Quick Start
