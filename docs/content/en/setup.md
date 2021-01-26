@@ -1,6 +1,6 @@
 ---
 title: Setup
-subtitle: 'Setting up a beautiful documentation with Docus is one command away 🤙'
+description: 'Setting up a beautiful documentation with Docus is one command away 🤙'
 category: Getting Started
 position: 2
 ---

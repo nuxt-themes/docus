@@ -1,8 +1,7 @@
 ---
 title: Introduction
 category: Getting Started
-subtitle: 'Create beautiful documentations with Markdown, Vue and TailwindCSS ✨'
-description: 'Create your documentation with @nuxt/content docs theme in seconds!'
+description: 'Create beautiful documentations with Markdown, Vue and TailwindCSS ✨'
 position: 1
 features:
   - Powered by Markdown

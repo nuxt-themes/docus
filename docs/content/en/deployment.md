@@ -1,8 +1,7 @@
 ---
 title: Deployment
 category: More
-subtitle: 'Deploy your documentation with Docus to any static hosting 🪶'
-description: 'Create your documentation with @nuxt/content docs theme in seconds!'
+description: 'Deploy your documentation with Docus to any static hosting 🪶'
 position: 16
 ---
 

@@ -19,14 +19,13 @@ Every markdown file should define properties in the front-matter in order to wor
 
 | Key | Type | Required | Description |
 |---------|------|--------| -----|
-| `title` | `String` | **yes** | Title of the page will be injected in metas |
-| `description` | `String` | **yes** | Description of the page, will be injected into the metas |
+| `title` | `String` | **yes** | Title of the page (will also be injected in metas) |
+| `description` | `String` | **yes** | Description of the page, will be added below the title and injected into the metas |
 | `position` | `Number` | **yes** | Sort the documents in the sidebar navigation |
 | `category` | `String` |  | This will be used to group the documents in the navigation |
 | `version` | `Float` |  | Alert users that the page is new with a badge. Once the page is seen, the version is stored in the local storage until you increment it |
 | `fullscreen` | `Boolean` |  | Grows the page and hides the table of contents |
 | `menuTitle` | `String` |  | Overwrites the title of the page that will be displayed in the left menu (defaults to `title`) |
-| `subtitle` | `String` |  | Adds a subtitle under the page title |
 | `badge` | `String` |  | Adds a badge next to the page title |
 
 ### Example
