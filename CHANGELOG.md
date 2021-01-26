@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/nuxt/docus/compare/v0.0.4...v0.0.5) (2021-01-26)
+
+
+### Features
+
+* remove subtitle and use description ([e63cf28](https://github.com/nuxt/docus/commit/e63cf28301e257eed9ae6f5e84f0f4337390e0fc))
+
 ### [0.0.4](https://github.com/nuxt/docus/compare/v0.0.3...v0.0.4) (2021-01-19)
 
 
