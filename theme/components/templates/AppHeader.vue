@@ -26,7 +26,7 @@
       <div class="flex items-center space-x-4">
         <NuxtLink
           v-if="lastRelease"
-          to="/releases"
+          :to="localePath('/releases')"
           class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 font-medium hidden lg:block"
           exact-active-class="text-primary-500 dark:text-primary-400"
         >{{ lastRelease.name }}</NuxtLink>
