@@ -4,9 +4,6 @@
 
 <style lang="postcss">
 .prose a.button-link {
-  @apply px-3 py-3 font-semibold text-white bg-green-600 rounded;
-  &:hover {
-    @apply border-none;
-  }
+  @apply px-4 py-2.5 font-semibold text-lg text-primary-500 bg-transparent border-2 border-primary-500 hover:bg-primary-500 hover:text-white rounded-md;
 }
 </style>
