@@ -11,7 +11,7 @@ You can add a `static/icon.png` image to enable [nuxt-pwa](https://pwa.nuxtjs.or
 
 <alert>
 
-`icon.png` should be a square of at least 512x512px/
+`icon.png` should be a square of at least 512x512px
 
 </alert>
 
