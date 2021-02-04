@@ -68,7 +68,28 @@ export default docusOptions => ({
     parsePages: false,
     lazy: true,
     seo: false,
-    langDir: 'i18n/'
+    langDir: 'i18n/',
+    vueI18n: {
+      fallbackLocale: 'en',
+      dateTimeFormats: {
+        en: {
+          long: {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            weekday: 'short'
+          }
+        },
+        fr: {
+          long: {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            weekday: 'short'
+          }
+        }
+      }
+    }
   },
   googleFonts: {
     families: {

@@ -13,7 +13,7 @@
         <NuxtContent :document="document" />
       </div>
 
-      <AppGithubLink :document="document" />
+      <AppPageBottom :document="document" />
 
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
 
