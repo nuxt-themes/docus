@@ -24,25 +24,25 @@ package.json
 
 ## Quick start
 
-<alert type="warning">
+### GitHub Template
 
-`npx docus init` is not ready yet, please use the [manual setup](#manual-setup) instructions.
+Start your documentation in a new GitHub repository by using our [GitHub template](https://github.com/nuxtlabs/docus-starter):
 
-</alert>
+<github-generate-link>Create a repo with the Docus starter</github-generate-link>
 
-Bootsrap the documentation in the current directory:
+Once your repository setup done, checkout the [Usage](/usage) section 👌
 
-```bash
-npx docus init
+### Download locally
+
+You can download the starter locally using [degit](https://github.com/Rich-Harris/degit), this allows you to add the documentation inside your existing repository.
+
+```
+npx degit nuxtlabs/docus-starter#main docs
 ```
 
-Start docus in development mode:
+This command will create a new folder named `docs/` and download the Docus starter inside.
 
-```bash
-yarn dev
-```
-
-The development server will listen on [http://localhost:4000](http://localhost:4000)
+Next, checkout the [Usage](/usage) section 👌
 
 ## Manual setup
 
