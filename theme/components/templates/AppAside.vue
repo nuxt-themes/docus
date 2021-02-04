@@ -29,7 +29,7 @@
               'active': isCategoryActive(docs)
             }"
           >
-            <h5 v-if="category !== 'undefined'" class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
+            <h5 v-if="category" class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
 
             <ul>
               <li v-for="doc of docs" :key="doc.slug">
