@@ -36,7 +36,7 @@
                 <NuxtLink
                   :to="localePath(doc.to)"
                   class="relative block px-3 py-2 transition duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
-                  :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': $route.path === doc.to }"
+                  :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
                 >
                   {{ doc.menuTitle || doc.title }}
 
@@ -112,7 +112,10 @@ export default {
   },
   methods: {
     isCategoryActive (documents) {
-      return documents.some(document => document.to === this.$route.fullPath)
+      return documents.some(document => this.isLinkActive(document))
+    },
+    isLinkActive (doc) {
+      return (this.$route.path.replace(/\/+$/, '') || '/') === doc.to
     },
     isDocumentNew (document) {
       if (process.server) {
