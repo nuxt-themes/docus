@@ -1,7 +1,10 @@
 {
   "title": "Docus",
   "url": "https://docus.dev",
-  "github": "nuxt/docus",
   "twitter": "nuxt_js",
-  "defaultBranch": "dev"
+  "github": {
+    "repo": "nuxtlabs/docus",
+    "branch": "main",
+    "dir": "docs"
+  }
 }
