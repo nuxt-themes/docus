@@ -20,8 +20,6 @@ Start your documentation in a new GitHub repository by using our [GitHub templat
 
 <github-generate-link>Create a repo with the Docus starter</github-generate-link>
 
-Once your repository setup done, checkout the [Usage](/usage) section 👌
-
 ### Download locally
 
 You can download the starter locally using [degit](https://github.com/Rich-Harris/degit), this allows you to add the documentation inside your existing repository.
@@ -31,8 +29,6 @@ npx degit nuxtlabs/docus-starter#main docs
 ```
 
 This command will create a new folder named `docs/` and download the Docus starter inside.
-
-Next, checkout the [Usage](/usage) section 👌
 
 ## Directory Structure
 
