@@ -15,7 +15,7 @@ export default async function ({ store, app }) {
   if (process.client && !store.state.categories[app.i18n.locale]) {
     await store.dispatch('fetchCategories')
   }
-  if (process.client && !store.state.settings.defaultBranch) {
+  if (process.client && !store.state.settings.github.branch) {
     await store.dispatch('fetchDefaultBranch')
   }
   // Hot reload on development

@@ -6,10 +6,15 @@ export const state = () => ({
   categories: {},
   releases: [],
   settings: {
-    title: 'Nuxt Content Docs',
+    title: 'Docus',
     url: '',
-    defaultDir: 'docs',
-    defaultBranch: '',
+    github: {
+      repo: '',
+      branch: '',
+      url: 'https://github.com',
+      apiUrl: 'https://api.github.com',
+      dir: ''
+    },
     filled: false
   }
 })
@@ -18,34 +23,14 @@ export const getters = {
   settings (state) {
     return state.settings
   },
-  githubUrls (state) {
-    const { github = '', githubApi = '' } = state.settings
-
-    // GitHub Enterprise
-    if (github.startsWith('http') && githubApi.startsWith('http')) {
-      return {
-        repo: github,
-        api: {
-          repo: githubApi,
-          releases: `${githubApi}/releases`
-        }
-      }
-    }
-
-    // GitHub
-    return {
-      repo: `https://github.com/${github}`,
-      api: {
-        repo: `https://api.github.com/repos/${github}`,
-        releases: `https://api.github.com/repos/${github}/releases`
-      }
-    }
-  },
   releases (state) {
     return state.releases
   },
   lastRelease (state) {
     return state.releases[0]
+  },
+  repositoryUrl (state) {
+    return `${state.settings.github.url}/${state.settings.github.repo}`
   }
 }
 
@@ -58,10 +43,17 @@ export const mutations = {
     state.releases = releases
   },
   SET_DEFAULT_BRANCH (state, branch) {
-    state.settings.defaultBranch = branch
+    state.settings.github.branch = branch
   },
   SET_SETTINGS (state, settings) {
+    if (typeof settings.github === 'string') {
+      settings.github = {
+        repo: settings.github
+      }
+    }
+
     state.settings = defu({ filled: true }, settings, state.settings)
+
     if (!state.settings.url) {
       // eslint-disable-next-line no-console
       console.warn('Please provide the `url` property in `content/setting.json`')
@@ -83,10 +75,12 @@ export const actions = {
 
     commit('SET_CATEGORIES', categories)
   },
-  async fetchReleases ({ commit, state, getters }) {
-    if (!state.settings.github) {
+  async fetchReleases ({ commit, state }) {
+    if (!state.settings.github && !state.settings.github.repo) {
       return
     }
+
+    const { apiUrl, repo } = state.settings.github
 
     const options = {}
     if (this.$config.githubToken) {
@@ -94,7 +88,7 @@ export const actions = {
     }
     let releases = []
     try {
-      const data = await fetch(getters.githubUrls.api.releases, options).then((res) => {
+      const data = await fetch(`${apiUrl}/${repo}/releases`, options).then((res) => {
         if (!res.ok) {
           throw new Error(res.statusText)
         }
@@ -122,9 +116,11 @@ export const actions = {
     commit('SET_RELEASES', releases)
   },
   async fetchDefaultBranch ({ commit, state, getters }) {
-    if (!state.settings.github || state.settings.defaultBranch) {
+    if ((!state.settings.github && !state.settings.github.repo) || state.settings.github.branch) {
       return
     }
+
+    const { apiUrl, repo } = state.settings.github
 
     const options = {}
     if (this.$config.githubToken) {
@@ -132,7 +128,7 @@ export const actions = {
     }
     let defaultBranch
     try {
-      const data = await fetch(getters.githubUrls.api.repo, options).then((res) => {
+      const data = await fetch(`${apiUrl}/${repo}`, options).then((res) => {
         if (!res.ok) {
           throw new Error(res.statusText)
         }

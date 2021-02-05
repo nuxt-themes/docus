@@ -29,7 +29,7 @@ export default {
   computed: {
     ...mapGetters([
       'settings',
-      'githubUrls'
+      'repositoryUrl'
     ]),
     link () {
       if (!this.settings.github) {
@@ -37,12 +37,13 @@ export default {
       }
 
       return [
-        this.githubUrls.repo,
+        this.repositoryUrl,
         'edit',
-        this.settings.defaultBranch,
-        this.settings.defaultDir,
-        `content${this.document.path}${this.document.extension}`
-      ].filter(path => !!path).join('/')
+        this.settings.github.branch,
+        this.settings.github.dir,
+        'content',
+        `${this.document.path}${this.document.extension}`.replace(/^\//g, '')
+      ].filter(Boolean).join('/')
     }
   }
 }

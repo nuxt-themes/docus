@@ -67,8 +67,8 @@
                 <IconTwitter class="w-5 h-5" />
               </a>
               <a
-                v-if="settings.github"
-                :href="githubUrls.repo"
+                v-if="settings.github.repo"
+                :href="repositoryUrl"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github"
@@ -95,7 +95,7 @@ export default {
   computed: {
     ...mapGetters([
       'settings',
-      'githubUrls',
+      'repositoryUrl',
       'lastRelease'
     ]),
     menu: {
