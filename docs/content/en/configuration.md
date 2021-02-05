@@ -15,11 +15,13 @@ You can create a `content/settings.json` file to configure the theme.
 | `title` | `String` | Documentation title |
 | `url` | `String` | Url of your deployed documentation. |
 | `logo` | `String` `Object` | Logo of the project, can be an `Object` to set a logo per [color mode](https://github.com/nuxt-community/color-mode-module). |
-| `github` | `String` | GitHub repository of the project `owner/name` to display the last version, the releases page, the link at the top and the `Edit this page on GitHub link` on each page Example: `nuxt/content`. |
-| `githubApi` | `String` | For GitHub Enterprise, in addition to `github`, you have to assign a API full url of your project without a trailing slash. Example: `https://hostname/api/v3/repos/owner/name`. Releases are fetched from `${githubApi}/releases`. |
 | `twitter` | `String` | Twitter username `@username` you want to link. Example: `@nuxt_js`. |
-| `defaultBranch` | `String` | The default branch for the GitHub repository of your project, used in the `Edit this page on GitHub link` on each page (defaults to `main` if it cannot be detected). |
-| `defaultDir` | `String` | The default dir of your project, used in the `Edit this page on GitHub link` on each page (defaults to `docs`). Can be an empty string eg. `""` |
+| `github` | `Object` or `String` | Can be a `String` to act as `github.repo` if no other config is needed. |
+| `github.repo` | `String` | GitHub repository of the project `owner/name` to display the last version, the releases page, the link at the top and the `Edit this page on GitHub link` on each page Example: `nuxt/content`. |
+| `github.url` | `String` | For GitHub Enterprise, in addition to `github.repo`, you have to assign an url. Example: `https://hostname`. Defaults to `https://github.com`. |
+| `github.apiUrl` | `String` | For GitHub Enterprise, in addition to `github.repo`, you have to assign an api url. Example: `https://hostname/api/v3/repos`. Defaults to `https://api.github.com`. |
+| `github.branch` | `String` | The default branch for the GitHub repository of your project, used in the `Edit this page on GitHub link` on each page (defaults to `main` if it cannot be detected). |
+| `github.dir` | `String` | The default dir of your project, used in the `Edit this page on GitHub link` on each page (defaults to `''`). Change it if docus is not at the root of your repository. |
 | `layout` | `String` | The layout of your documentation (defaults to `default`). Can be changed to `single` to have a one-page doc. |
 | `algolia` | `Object` | This option allows you to use [Algolia DocSearch](https://docsearch.algolia.com). In order to enable it, you need to provide at least the `apiKey` and the `indexName`, see example below. |
 
