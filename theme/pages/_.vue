@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full pt-10 pb-24 lg:pb-16">
-    <div class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
+    <article class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
       <div class="mb-10" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-10': document.description }">
         <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
           {{ document.title }}
@@ -18,7 +18,7 @@
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
 
       <AppPrevNext :prev="prev" :next="next" />
-    </div>
+    </article>
 
     <AppToc v-if="!document.fullscreen" :toc="document.toc" />
   </div>
