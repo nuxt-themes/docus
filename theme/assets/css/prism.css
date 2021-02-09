@@ -46,7 +46,8 @@
   @apply text-gray-400;
 }
 
-/* .token.deleted:not(.prefix) {
+
+.token.deleted:not(.prefix) {
   @apply relative block -mx-4 px-4;
 }
 
@@ -65,4 +66,5 @@
 
 .token.inserted.prefix {
   @apply text-green-200 text-opacity-75 select-none;
-} */
+}
+
