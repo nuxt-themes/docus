@@ -16,7 +16,7 @@ const isJsNode = (node, customProsElements = []) => {
   )
 }
 
-module.exports = ({ prosElements = [], proseClass }) => {
+module.exports = ({ prosElements = [], proseClass = '' }) => {
   return (tree) => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {
