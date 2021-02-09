@@ -1,8 +1,3 @@
-import 'prismjs/plugins/diff-highlight/prism-diff-highlight'
-import Prism from 'prismjs'
-import u from 'unist-builder'
-import escapeHtml from 'escape-html'
-
 import themeModule from './module'
 
 export default docusOptions => ({
@@ -56,53 +51,6 @@ export default docusOptions => ({
     markdown: {
       prism: {
         theme: ''
-      },
-      highlighter: (rawCode, language, { lineHighlights, fileName }, { h, node }) => {
-        let lang = language === 'vue' ? 'html' : language
-        let grammer = Prism.languages[lang]
-        const diffWithLanguageHightlighting = lang.match(/diff-(.*)/)
-        if (diffWithLanguageHightlighting) {
-          grammer = Prism.languages.diff
-        }
-
-        let code = grammer
-          ? Prism.highlight(rawCode, grammer, lang)
-          : rawCode
-
-        if (!lang || !grammer) {
-          lang = 'text'
-          code = escapeHtml(code)
-        }
-
-        const props = {
-          className: [
-            `language-${lang}`,
-            'line-numbers',
-            diffWithLanguageHightlighting ? 'diff-highlight' : '' // highlight diff lines if language highlighting is enable
-          ]
-        }
-
-        if (lineHighlights) {
-          props.dataLine = lineHighlights
-        }
-
-        const childs = []
-
-        /**
-         * If filename, then set span as a first child
-         */
-        if (fileName) {
-          childs.push(h(node, 'span', { className: ['filename'] }, [u('text', fileName)]))
-        }
-
-        /**
-         * Set pre as a child
-         */
-        childs.push(h(node, 'pre', props, [
-          h(node, 'code', [u('raw', code)])
-        ]))
-
-        return h(node.position, 'div', { className: ['nuxt-content-highlight'] }, childs)
       }
     }
   },
