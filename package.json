@@ -5,9 +5,6 @@
   "repository": "nuxt/docus",
   "license": "MIT",
   "main": "theme/index.js",
-  "bin": {
-    "docus": "cli/docus.js"
-  },
   "files": [
     "theme"
   ],
