@@ -21,6 +21,7 @@ module.exports = ({ nuxt }) => {
         blue: colors.lightBlue,
         green: colors.emerald,
         red: colors.red,
+        rose: colors.rose,
         yellow: colors.amber,
         gray: colors.coolGray
       },
