@@ -27,7 +27,7 @@ module.exports = ({ prosElements = [], proseClass = '' }) => {
       if (!insideProse && !isJsNode(node, prosElements)) {
         insideProse = true
         return [
-          { type: 'html', value: `<div className="prose ${proseClass}">` },
+          { type: 'html', value: `<div class="prose ${proseClass}">` },
           node,
           ...(i === tree.children.length - 1 ? [{ type: 'html', value: '</div>' }] : [])
         ]
