@@ -1,19 +1,30 @@
-const isJsNode = (node) => {
+
+const PROSE_ELEMENTS = [
+  // HTML tags
+  'div', 'p', 'ul'
+
+  // Global tags
+]
+
+const isJsNode = (node, customProsElements = []) => {
+  const match = node.value && node.value.match(/^<([a-z]+)(>|\s)/) // make sure html starts with a tag
   return (
+    match &&
     ['html'].includes(node.type) &&
-    /^<[a-z]+(>|\s)/.test(node.value)
+    !PROSE_ELEMENTS.includes(match[1]) && // ensure tag is not a valid prose tag
+    !customProsElements.includes(match[1])
   )
 }
 
-module.exports = () => {
+module.exports = ({ prosElements = [] }) => {
   return (tree) => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {
-      if (insideProse && isJsNode(node)) {
+      if (insideProse && isJsNode(node, prosElements)) {
         insideProse = false
         return [{ type: 'html', value: '</div>' }, node]
       }
-      if (!insideProse && !isJsNode(node)) {
+      if (!insideProse && !isJsNode(node, prosElements)) {
         insideProse = true
         return [
           { type: 'html', value: '<div className="prose">' },
