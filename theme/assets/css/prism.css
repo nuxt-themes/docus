@@ -20,8 +20,13 @@
 .token.string,
 .token.number,
 .token.unit,
-.token.color {
+.token.color,
+.token.inserted {
   color: #BEF264;
+}
+
+.token.deleted {
+  color: #d92765
 }
 
 .token.punctuation,
@@ -46,6 +51,17 @@
   @apply text-gray-400;
 }
 
+.diff-highlight .token.deleted:not(.prefix) {
+	background-color: rgba(255, 0, 0, .1);
+	color: inherit;
+	display: block;
+}
+
+.diff-highlight .token.inserted:not(.prefix) {
+	background-color: rgba(0, 255, 128, .1);
+	color: inherit;
+	display: block;
+}
 /* .token.deleted:not(.prefix) {
   @apply relative block -mx-4 px-4;
 }
@@ -66,3 +82,4 @@
 .token.inserted.prefix {
   @apply text-green-200 text-opacity-75 select-none;
 } */
+
