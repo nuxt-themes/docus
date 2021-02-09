@@ -16,7 +16,7 @@ const isJsNode = (node, customProsElements = []) => {
   )
 }
 
-module.exports = ({ prosElements = [] }) => {
+module.exports = ({ prosElements = [], proseClass }) => {
   return (tree) => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {
@@ -27,7 +27,7 @@ module.exports = ({ prosElements = [] }) => {
       if (!insideProse && !isJsNode(node, prosElements)) {
         insideProse = true
         return [
-          { type: 'html', value: '<div className="prose">' },
+          { type: 'html', value: `<div className="prose ${proseClass}">` },
           node,
           ...(i === tree.children.length - 1 ? [{ type: 'html', value: '</div>' }] : [])
         ]

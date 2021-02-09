@@ -9,7 +9,7 @@
         <p v-if="document.description" class="mt-2 text-lg text-gray-500 dark:text-gray-300">{{ document.description }}</p>
       </div>
 
-      <div class="prose dark:prose-dark max-w-none">
+      <div class="max-w-none">
         <NuxtContent :document="document" />
       </div>
 

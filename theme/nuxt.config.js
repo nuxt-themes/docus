@@ -53,7 +53,9 @@ export default docusOptions => ({
         theme: ''
       },
       remarkPlugins: [
-        '~/utils/remark-prose'
+        ['~/utils/remark-prose', {
+          proseClass: 'dark:prose-dark'
+        }]
       ]
     }
   },
