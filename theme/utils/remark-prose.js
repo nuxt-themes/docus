@@ -7,7 +7,7 @@ const PROSE_ELEMENTS = [
 ]
 
 const isJsNode = (node, customProsElements = []) => {
-  const match = node.value && node.value.match(/^<([a-z]+)(>|\s)/) // make sure html starts with a tag
+  const match = node.value && node.value.match(/^<\/?([a-z]+)(>|\s)/) // make sure html starts with a tag
   return (
     match &&
     ['html'].includes(node.type) &&
