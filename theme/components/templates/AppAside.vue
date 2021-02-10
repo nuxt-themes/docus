@@ -115,7 +115,7 @@ export default {
       return documents.some(document => this.isLinkActive(document))
     },
     isLinkActive (doc) {
-      return (this.$route.path.replace(/\/+$/, '') || '/') === doc.to
+      return (this.$route.path.replace(/\/+$/, '') || '/') === this.localePath(doc.to)
     },
     isDocumentNew (document) {
       if (process.server) {
