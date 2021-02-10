@@ -1,6 +1,17 @@
 <template>
-  <a href="https://github.com/nuxtlabs/docus-starter/generate" target="_blank" rel="noopener" class="button-link"><slot /></a>
+  <a :href="href" target="_blank" rel="noopener" class="button-link"><slot /></a>
 </template>
+
+<script>
+export default {
+  props: {
+    href: {
+      type: String,
+      default: ''
+    }
+  }
+}
+</script>
 
 <style lang="postcss">
 .prose a.button-link {
