@@ -30,6 +30,20 @@ npx degit nuxtlabs/docus-starter#main docs
 
 This command will create a new folder named `docs/` and download the Docus starter inside.
 
+### Vercel Template
+
+Vercel let's you setup the starter to your favorite Git provider (GitHub, GitLab and Bitbucket) as well as deploying for free.
+
+<button><a href="https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fnuxtlabs%2Fdocus-starter" target="_blank" rel="noopener" class="px-6 py-3 font-medium rounded-md shadow-sm text-primary-500 dark:text-primary-400 bg-primary-100 dark:bg-primary-900 hover:bg-primary-200 dark:hover:bg-primary-800">Create and deploy using Vercel</a></button>
+
+**See it in action**:
+
+<video poster="https://res.cloudinary.com/nuxt/video/upload/v1612886404/docus/docus-vercel_wwaryz.jpg" loop playsinline controls class="md:w-2/3">
+  <source src="https://res.cloudinary.com/nuxt/video/upload/q_auto/v1612886404/docus/docus-vercel_wwaryz.webm" type="video/webm" />
+  <source src="https://res.cloudinary.com/nuxt/video/upload/q_auto/v1612886404/docus/docus-vercel_wwaryz.mp4" type="video/mp4" />
+  <source src="https://res.cloudinary.com/nuxt/video/upload/q_auto/v1612886404/docus/docus-vercel_wwaryz.ogv" type="video/ogg" />
+</video>
+
 ## Directory Structure
 
 The directory structure of a minimal Docus project is the following:

@@ -51,7 +51,12 @@ export default docusOptions => ({
     markdown: {
       prism: {
         theme: ''
-      }
+      },
+      remarkPlugins: [
+        ['~/utils/remark-prose', {
+          proseClass: 'prose dark:prose-dark'
+        }]
+      ]
     }
   },
   colorMode: {
