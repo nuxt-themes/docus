@@ -1,4 +1,4 @@
-
+const TAG_REGEX = /^<\/?([A-Za-z0-9-_]+) ?[^>]*>/
 const PROSE_ELEMENTS = [
   // HTML tags
   'div', 'p', 'ul'
@@ -7,10 +7,15 @@ const PROSE_ELEMENTS = [
 ]
 
 const isJsNode = (node, customProsElements = []) => {
-  const match = node.value && node.value.match(/^<\/?([a-z]+)(>|\s)/) // make sure html starts with a tag
+  let match
+  if (node.type === 'html') {
+    match = node.value.match(TAG_REGEX)
+  }
+  if (!match && node.children && node.children[0] && node.children[0].type === 'html') {
+    match = node.children[0].value.match(TAG_REGEX)
+  }
   return (
     match &&
-    ['html'].includes(node.type) &&
     !PROSE_ELEMENTS.includes(match[1]) && // ensure tag is not a valid prose tag
     !customProsElements.includes(match[1])
   )
