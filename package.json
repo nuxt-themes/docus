@@ -2,7 +2,7 @@
   "name": "docus",
   "version": "0.0.6",
   "description": "",
-  "repository": "nuxt/docus",
+  "repository": "nuxtlabs/docus",
   "license": "MIT",
   "main": "theme/index.js",
   "files": [
