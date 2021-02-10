@@ -11,7 +11,7 @@ const isJsNode = (node, customProsElements = []) => {
   if (node.type === 'html') {
     match = node.value.match(TAG_REGEX)
   }
-  if (node.children && node.children[0] && node.children[0].type === 'html') {
+  if (!match && node.children && node.children[0] && node.children[0].type === 'html') {
     match = node.children[0].value.match(TAG_REGEX)
   }
   return (
