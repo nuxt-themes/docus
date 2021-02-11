@@ -21,31 +21,44 @@
 export default {
   data () {
     return {
-      tabs: [],
       activeTabIndex: 0
+    }
+  },
+  computed: {
+    tabs () {
+      return this.$slots.default.map((slot) => {
+        const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+        return {
+          label: attrs.label,
+          active: typeof attrs.active !== 'undefined',
+          attrs,
+          slot
+        }
+      }).filter(slot => Boolean(slot.label))
     }
   },
   watch: {
     activeTabIndex (newValue, oldValue) {
-      this.switchTab(newValue)
+      this.tabs[oldValue].slot.elm.classList.remove('active')
+      this.tabs[newValue].slot.elm.classList.add('active')
+    }
+  },
+  created () {
+    const index = this.tabs.findIndex(tab => tab.active)
+    if (index < 0) {
+      /**
+       * Mark first tab as active if active tab not found
+       */
+      this.tabs[0].active = true
+      this.tabs[0].attrs.active = ''
+    } else {
+      this.activeTabIndex = index
     }
   },
   mounted () {
-    this.tabs = this.$slots.default.filter(slot => Boolean(slot.componentOptions)).map((slot) => {
-      return {
-        label: slot.componentOptions.propsData.label,
-        elm: slot.elm
-      }
-    })
-    this.$nextTick(this.updateHighlighteUnderlinePosition)
+    this.updateHighlighteUnderlinePosition()
   },
   methods: {
-    switchTab (i) {
-      this.tabs.forEach((tab) => {
-        tab.elm.classList.remove('active')
-      })
-      this.tabs[i].elm.classList.add('active')
-    },
     updateTabs (i) {
       this.activeTabIndex = i
       this.updateHighlighteUnderlinePosition()
