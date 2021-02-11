@@ -1,4 +1,4 @@
-const TAG_REGEX = /^<\/?([A-Za-z0-9-_]+) ?[^>]*>/
+const TAG_REGEX = /^\s*<\/?([A-Za-z0-9-_]+) ?[^>]*>/
 const PROSE_ELEMENTS = [
   // HTML tags
   'div', 'p', 'ul'
