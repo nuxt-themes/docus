@@ -12,7 +12,7 @@ The theme comes with some default Vue.js components you can use directly in your
 ### `<alert>`
 
 <code-group>
-<code-block label="Preview" active>
+<code-block label="Preview">
 <div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
 <alert type="info" style="margin-top: 0;">
 

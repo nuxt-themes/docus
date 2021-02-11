@@ -1,5 +1,5 @@
 <template>
-  <div class="code-group">
+  <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
       class="relative px-2 text-sm text-white bg-gray-800 border-b-2 border-gray-700 rounded-t-md h-12"
     >
@@ -21,31 +21,44 @@
 export default {
   data () {
     return {
-      tabs: [],
       activeTabIndex: 0
+    }
+  },
+  computed: {
+    tabs () {
+      return this.$slots.default.map((slot) => {
+        const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+        return {
+          label: attrs.label,
+          active: typeof attrs.active !== 'undefined',
+          attrs,
+          slot
+        }
+      }).filter(slot => Boolean(slot.label))
     }
   },
   watch: {
     activeTabIndex (newValue, oldValue) {
-      this.switchTab(newValue)
+      this.tabs[oldValue].slot.elm.classList.remove('active')
+      this.tabs[newValue].slot.elm.classList.add('active')
+    }
+  },
+  created () {
+    const index = this.tabs.findIndex(tab => tab.active)
+    if (index < 0) {
+      /**
+       * SSR: Mark first tab as active if active tab not found
+       */
+      this.tabs[0].active = true
+      this.tabs[0].attrs.active = true
+    } else {
+      this.activeTabIndex = index
     }
   },
   mounted () {
-    this.tabs = this.$slots.default.filter(slot => Boolean(slot.componentOptions)).map((slot) => {
-      return {
-        label: slot.componentOptions.propsData.label,
-        elm: slot.elm
-      }
-    })
-    this.$nextTick(this.updateHighlighteUnderlinePosition)
+    this.updateHighlighteUnderlinePosition()
   },
   methods: {
-    switchTab (i) {
-      this.tabs.forEach((tab) => {
-        tab.elm.classList.remove('active')
-      })
-      this.tabs[i].elm.classList.add('active')
-    },
     updateTabs (i) {
       this.activeTabIndex = i
       this.updateHighlighteUnderlinePosition()
@@ -66,6 +79,10 @@ export default {
 <style scoped>
 button {
   outline: none;
+}
+
+.first-tab .code-block:nth-child(2) {
+  display: block;
 }
 
 .highlight-underline {
