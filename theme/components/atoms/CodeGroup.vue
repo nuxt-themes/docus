@@ -1,5 +1,5 @@
 <template>
-  <div class="code-group">
+  <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
       class="relative px-2 text-sm text-white bg-gray-800 border-b-2 border-gray-700 rounded-t-md h-12"
     >
@@ -47,10 +47,10 @@ export default {
     const index = this.tabs.findIndex(tab => tab.active)
     if (index < 0) {
       /**
-       * Mark first tab as active if active tab not found
+       * SSR: Mark first tab as active if active tab not found
        */
       this.tabs[0].active = true
-      this.tabs[0].attrs.active = ''
+      this.tabs[0].attrs.active = true
     } else {
       this.activeTabIndex = index
     }
@@ -79,6 +79,10 @@ export default {
 <style scoped>
 button {
   outline: none;
+}
+
+.first-tab .code-block:nth-child(2) {
+  display: block;
 }
 
 .highlight-underline {
