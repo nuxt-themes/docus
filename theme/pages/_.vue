@@ -41,8 +41,9 @@ export default {
     }
   },
   async asyncData ({ $content, store, app, params, error }) {
-    const path = `/${app.i18n.locale}/${params.pathMatch || 'index'}`
-    const [document] = await $content({ deep: true }).where({ path }).fetch()
+    const dir = `/${app.i18n.locale}`
+    const slug = params.pathMatch || 'index'
+    const [document] = await $content({ deep: true }).where({ dir, slug }).fetch()
     if (!document) {
       return error({ statusCode: 404, message: 'Page not found' })
     }

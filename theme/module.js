@@ -15,6 +15,15 @@ export default function docusModule () {
   options.content.dir = path.resolve(options.rootDir, options.content.dir || 'content')
   // Configure `static/ dir
   options.dir.static = path.resolve(options.rootDir, options.dir.static || 'static')
+
+  nuxt.hook('content:file:beforeInsert', (item, database) => {
+    const match = item.slug.match(/^(\d+)\./)
+    if (match) {
+      item.slug = item.slug.replace(/(\/?)(\d+)\.([^/]*)/, '$1$3')
+      item.position = parseInt(match[1])
+    }
+  })
+
   // Configure `components/` dir
   hook('components:dirs', async (dirs) => {
     dirs.push({
