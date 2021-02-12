@@ -3,6 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
+import { generatePosition, generateSlug } from './utils/document'
 
 const fs = gracefulFs.promises
 
@@ -15,14 +16,6 @@ export default function docusModule () {
   options.content.dir = path.resolve(options.rootDir, options.content.dir || 'content')
   // Configure `static/ dir
   options.dir.static = path.resolve(options.rootDir, options.dir.static || 'static')
-
-  nuxt.hook('content:file:beforeInsert', (item, database) => {
-    const match = item.slug.match(/^(\d+)\./)
-    if (match) {
-      item.slug = item.slug.replace(/(\/?)(\d+)\.([^/]*)/, '$1$3')
-      item.position = parseInt(match[1])
-    }
-  })
 
   // Configure `components/` dir
   hook('components:dirs', async (dirs) => {
@@ -64,10 +57,16 @@ export default function docusModule () {
     const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
-    const _slug = slug.replace(/^index/, '')
+    const _language = dir.replace(_dir, '')
     const _category = category && typeof category === 'string' ? category : ''
+    const _to = `${_dir}/${slug}`
 
-    document.to = `${_dir}/${_slug}`
+    const position = generatePosition(_to)
+
+    document.slug = generateSlug(slug)
+    document.position = position
+    document.to = generateSlug(_to)
+    document.language = _language
     document.category = _category
   })
   // Extend `/` route
