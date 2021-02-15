@@ -17,18 +17,11 @@ export default function docusModule () {
   options.dir.static = path.resolve(options.rootDir, options.dir.static || 'static')
   // Configure `components/` dir
   hook('components:dirs', async (dirs) => {
-    dirs.push({
-      path: '~/components/atoms',
-      global: true
-    })
-    dirs.push({
-      path: '~/components/molecules',
-      global: true
-    })
-    dirs.push({
-      path: '~/components/icons',
-      global: true
-    })
+    dirs.push({ path: '~/components/atoms' })
+    dirs.push({ path: '~/components/molecules' })
+    dirs.push({ path: '~/components/icons' })
+    dirs.push({ path: '~/components/templates' })
+    dirs.push({ path: '~/components/organisms' })
     const componentsDirPath = path.resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
