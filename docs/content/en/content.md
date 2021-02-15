@@ -42,9 +42,6 @@ menuTitle: 'Intro'
 ---
 
 Introducing my awesome Nuxt module!
-
-## Installation
-
 ```
 
 ## Locales
