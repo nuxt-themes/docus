@@ -30,7 +30,7 @@ Every markdown file should define properties in the front-matter in order to wor
 
 ### Example
 
-```bash[content/en/index.md]
+```md[content/en/index.md]
 ---
 title: 'Introduction'
 description: 'Empower your NuxtJS application with this awesome module.'
@@ -42,6 +42,9 @@ menuTitle: 'Intro'
 ---
 
 Introducing my awesome Nuxt module!
+
+## Installation
+
 ```
 
 ## Locales
