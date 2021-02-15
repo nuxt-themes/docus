@@ -2,7 +2,7 @@
   <div v-if="prev || next" class="flex justify-between leading-7 font-medium">
     <NuxtLink
       v-if="prev"
-      :to="localePath(prev.to)"
+      :to="$contentLocalePath(prev.to)"
       class="text-primary-500 dark:text-primary-400 hover:underline flex items-center justify-start"
     >
       <IconArrowLeft class="w-4 h-4 mr-1 flex-shrink-0" />
@@ -12,7 +12,7 @@
 
     <NuxtLink
       v-if="next"
-      :to="localePath(next.to)"
+      :to="$contentLocalePath(next.to)"
       class="text-primary-500 dark:text-primary-400 hover:underline flex items-center justify-end"
     >
       <span class="truncate">{{ next.title }}</span>

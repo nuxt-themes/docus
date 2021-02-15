@@ -26,7 +26,7 @@ export default docusOptions => ({
   plugins: [
     '@/plugins/markdown',
     '@/plugins/init',
-    '@/plugins/i18n.client',
+    '@/plugins/i18n',
     '@/plugins/menu.client'
   ],
   buildModules: [

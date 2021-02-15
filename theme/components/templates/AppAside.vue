@@ -34,7 +34,7 @@
             <ul>
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
-                  :to="localePath(doc.to)"
+                  :to="$contentLocalePath(doc.to)"
                   class="relative block px-3 py-2 transition duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
                   :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
                 >
@@ -115,7 +115,7 @@ export default {
       return documents.some(document => this.isLinkActive(document))
     },
     isLinkActive (doc) {
-      return (this.$route.path.replace(/\/+$/, '') || '/') === this.localePath(doc.to)
+      return (this.$route.path || '/') === this.$contentLocalePath(doc.to)
     },
     isDocumentNew (document) {
       if (process.server) {
