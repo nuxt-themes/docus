@@ -13,14 +13,14 @@
         <NuxtContent :document="document" />
       </div>
 
-      <TemplateAppPageBottom :document="document" />
+      <AppPageBottom :document="document" />
 
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
 
-      <TemplateAppPrevNext :prev="prev" :next="next" />
+      <AppPrevNext :prev="prev" :next="next" />
     </article>
 
-    <TemplateAppToc v-if="!document.fullscreen" :toc="document.toc" />
+    <AppToc v-if="!document.fullscreen" :toc="document.toc" />
   </div>
 </template>
 

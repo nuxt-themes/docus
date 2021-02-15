@@ -1,10 +1,10 @@
 <template>
   <div>
-    <TemplateAppHeader />
+    <AppHeader />
 
     <div class="w-full max-w-8xl mx-auto">
       <div class="lg:flex">
-        <TemplateAppAside />
+        <AppAside />
 
         <div class="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible">
           <Nuxt />

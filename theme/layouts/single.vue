@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TemplateAppHeader />
+    <AppHeader />
 
     <div class="w-full max-w-8xl mx-auto">
       <div class="lg:flex">

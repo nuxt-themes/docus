@@ -10,7 +10,7 @@
       <nav class="px-1 pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
         <ul v-if="settings.algolia || lastRelease" class="mb-8 space-y-8 lg:hidden">
           <li v-if="settings.algolia">
-            <OrganismAlgoliaSearchBox :options="settings.algolia" :settings="settings" />
+            <AlgoliaSearchBox :options="settings.algolia" :settings="settings" />
           </li>
           <li v-if="lastRelease">
             <NuxtLink
@@ -32,7 +32,7 @@
             <h5 v-if="category" class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
 
             <ul>
-              <li v-for="doc of docs" :key="doc.to">
+              <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="localePath(doc.to)"
                   class="relative block px-3 py-2 transition duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
