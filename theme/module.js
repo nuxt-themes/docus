@@ -31,6 +31,14 @@ export default function docusModule () {
       path: '~/components/icons',
       global: true
     })
+    dirs.push({
+      path: '~/components/templates',
+      global: true
+    })
+    dirs.push({
+      path: '~/components/organisms',
+      global: true
+    })
     const componentsDirPath = path.resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
