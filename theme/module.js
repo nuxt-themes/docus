@@ -62,13 +62,15 @@ export default function docusModule () {
   })
   // Configure content after each hook
   hook('content:file:beforeInsert', (document) => {
+    if (document.extension !== '.md') {
+      return
+    }
     const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
     const _language = dir.replace(_dir, '')
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`
-
     const position = generatePosition(_to, document)
 
     document.slug = generateSlug(slug)
