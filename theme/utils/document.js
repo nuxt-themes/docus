@@ -1,9 +1,10 @@
-export function generatePosition (path) {
+export function generatePosition (path, doc) {
   const position = path.split('/').filter(Boolean).map((part) => {
     const match = part.match(/^(\d+)\./)
-    return match
-      ? paddLeft(match[1], 4)
-      : '9999' // Parts wihtout a position are going down to the bottom
+    if (match) {
+      return paddLeft(match[1], 4)
+    }
+    return doc.position ? paddLeft(doc.position, 4) : '9999' // Parts without a position are going down to the bottom
   }).join('')
   return paddRight(position, 12)
 }
@@ -16,7 +17,7 @@ export function generateSlug (path) {
 }
 
 function paddLeft (value, length) {
-  return ('0'.repeat(length) + value).substr(value.length)
+  return ('0'.repeat(length) + value).substr(String(value).length)
 }
 
 function paddRight (value, length) {

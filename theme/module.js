@@ -69,7 +69,7 @@ export default function docusModule () {
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`
 
-    const position = generatePosition(_to)
+    const position = generatePosition(_to, document)
 
     document.slug = generateSlug(slug)
     document.position = position
