@@ -19,7 +19,7 @@
       </NuxtLink>
     </div>
     <div class="flex-auto border-b border-gray-200 dark:border-gray-800 h-18 flex items-center justify-between px-4 sm:px-6 lg:mx-6 lg:px-0 xl:mx-8 space-x-6">
-      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="hidden lg:block" />
+      <OrganismAlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="hidden lg:block" />
 
       <span class="block" />
 
