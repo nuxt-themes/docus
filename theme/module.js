@@ -68,9 +68,9 @@ export default function docusModule () {
     const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
-    const _language = dir.replace(_dir, '')
+    const _language = dir.replace(_dir, '').replace(/\//, '') || options.i18n.defaultLocale
     const _category = category && typeof category === 'string' ? category : ''
-    const _to = `${_dir}/${slug}`
+    const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
     document.slug = generateSlug(slug)

@@ -67,7 +67,12 @@ export const actions = {
     if (process.dev === false && state.categories[this.$i18n.locale]) {
       return
     }
-    const docs = await this.$content(this.$i18n.locale, { deep: true }).only(['title', 'menuTitle', 'category', 'slug', 'version', 'to']).sortBy('position', 'asc').fetch()
+    const docs = await this.$content('/', { deep: true })
+      .where({ language: this.$i18n.locale })
+      .only(['title', 'menuTitle', 'category', 'slug', 'version', 'to'])
+      .sortBy('position', 'asc')
+      .fetch()
+
     if (state.releases.length > 0) {
       docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
     }
