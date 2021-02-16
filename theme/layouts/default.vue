@@ -1,6 +1,7 @@
 <template>
   <div>
     <AppHeader />
+    <AppMenuButton />
 
     <div class="w-full max-w-8xl mx-auto">
       <div class="lg:flex">

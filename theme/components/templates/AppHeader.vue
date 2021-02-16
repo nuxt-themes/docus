@@ -1,6 +1,12 @@
 <template>
   <div class="sticky top-0 z-40 lg:z-50 w-full max-w-8xl mx-auto app-header flex-none flex" @click="scrollToTop">
-    <div class="flex-none pl-4 sm:pl-6 xl:pl-8 flex items-center border-b border-gray-200 dark:border-gray-800 lg:border-b-0 lg:w-60 xl:w-72">
+    <div
+      class="flex-none pl-4 sm:pl-6 lg:ml-6 lg:pl-0 xl:ml-8 flex items-center border-b border-gray-200 dark:border-gray-800"
+      :class="{
+        'lg:border-b-0 lg:w-60 xl:w-72': settings.layout !== 'single',
+        'lg:pr-6 xl:pr-8': settings.layout === 'single'
+      }"
+    >
       <NuxtLink
         :to="localePath('/')"
         class="overflow-hidden w-auto"
@@ -18,10 +24,10 @@
         <img v-if="logo" :src="logo.dark" class="h-8 w-auto dark-img" :alt="settings.title" />
       </NuxtLink>
     </div>
-    <div class="flex-auto border-b border-gray-200 dark:border-gray-800 h-18 flex items-center justify-between px-4 sm:px-6 lg:mx-6 lg:px-0 xl:mx-8 space-x-6">
-      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="hidden lg:block" />
-
-      <span class="block" />
+    <div
+      class="flex-auto border-b border-gray-200 dark:border-gray-800 h-18 flex items-center justify-between px-4 sm:px-6 lg:mr-6 lg:px-0 xl:mr-8 space-x-6"
+    >
+      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" />
 
       <div class="flex items-center space-x-4">
         <NuxtLink
@@ -31,17 +37,9 @@
           exact-active-class="text-primary-500 dark:text-primary-400"
         >{{ lastRelease.name }}</NuxtLink>
 
-        <LangSwitcher
-          :class="{
-            'hidden lg:flex': settings.layout !== 'single'
-          }"
-        />
+        <LangSwitcher />
 
-        <ColorSwitcher
-          :class="{
-            'hidden lg:flex': settings.layout !== 'single'
-          }"
-        />
+        <ColorSwitcher />
 
         <a
           v-if="settings.twitter"
@@ -51,9 +49,6 @@
           title="Twitter"
           name="Twitter"
           class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-          :class="{
-            'hidden lg:block': settings.layout !== 'single'
-          }"
         >
           <IconTwitter class="w-5 h-5" />
         </a>
@@ -66,22 +61,9 @@
           title="Github"
           name="Github"
           class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-          :class="{
-            'hidden lg:block': settings.layout !== 'single'
-          }"
         >
           <IconGithub class="w-5 h-5" />
         </a>
-
-        <button
-          v-if="settings.layout !== 'single'"
-          class="lg:hidden focus:outline-none text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-          aria-label="Menu"
-          @click.stop="menu = !menu"
-        >
-          <IconX v-if="menu" class="w-6 h-6" />
-          <IconMenu v-else class="w-6 h-6" />
-        </button>
       </div>
     </div>
   </div>

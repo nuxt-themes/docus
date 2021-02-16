@@ -10,7 +10,7 @@
       <IconExternalLink class="w-4 h-4 ml-1" />
     </a>
 
-    <span class="text-gray-600 dark:text-gray-400 text-sm font-medium flex items-center mt-4 sm:mt-0">
+    <span class="text-gray-500 dark:text-gray-300 text-sm font-medium flex items-center mt-4 sm:mt-0">
       {{ $t("article.updatedAt") }} {{ $d(Date.parse(document.updatedAt), "long") }}
     </span>
   </div>

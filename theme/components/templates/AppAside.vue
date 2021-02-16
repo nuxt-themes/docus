@@ -4,18 +4,15 @@
     :class="{ 'hidden': !menu }"
     @click="menu = false"
   >
-    <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0">
+    <div class="h-full mr-24 sm:mr-64 overflow-hidden overflow-y-auto bg-white lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0">
       <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
-      <nav class="px-1 pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-        <ul v-if="settings.algolia || lastRelease" class="mb-8 space-y-8 lg:hidden">
-          <li v-if="settings.algolia">
-            <AlgoliaSearchBox :options="settings.algolia" :settings="settings" />
-          </li>
+      <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
+        <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
           <li v-if="lastRelease">
             <NuxtLink
               to="/releases"
-              class="px-3 py-2 font-medium text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+              class="px-4 py-2 font-medium text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               exact-active-class="text-primary-500 dark:text-primary-400"
             >{{ lastRelease.name }}</NuxtLink>
           </li>
@@ -29,13 +26,13 @@
               'active': isCategoryActive(docs)
             }"
           >
-            <h5 v-if="category" class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
+            <h5 v-if="category" class="px-4 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
 
             <ul>
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="$contentLocalePath(doc.to)"
-                  class="relative block px-3 py-2 transition duration-200 rounded-md hover:text-gray-900 dark:hover:text-gray-100"
+                  class="relative block px-4 py-2 transition duration-200 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100"
                   :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
                 >
                   {{ doc.menuTitle || doc.title }}
@@ -49,38 +46,6 @@
                 </NuxtLink>
               </li>
             </ul>
-          </li>
-
-          <li class="lg:hidden">
-            <h5 class="px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">More</h5>
-
-            <div class="flex items-center px-3 py-2 space-x-4">
-              <a
-                v-if="settings.twitter"
-                :href="`https://twitter.com/${settings.twitter}`"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Twitter"
-                name="Twitter"
-                class="text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-              >
-                <IconTwitter class="w-5 h-5" />
-              </a>
-              <a
-                v-if="settings.github.repo"
-                :href="repositoryUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Github"
-                name="Github"
-                class="text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-              >
-                <IconGithub class="w-5 h-5" />
-              </a>
-
-              <LangSwitcher />
-              <ColorSwitcher />
-            </div>
           </li>
         </ul>
       </nav>
