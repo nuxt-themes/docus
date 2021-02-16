@@ -5,10 +5,10 @@ import { joinURL, withoutTrailingSlash } from 'ufo'
 import { $fetch } from 'ohmyfetch/node'
 import { compile } from '../utils/markdown'
 
-export default async function ({ app, $content, $config }, inject) {
+export default async function ({ app, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
   const $docus = new Vue({
     data () {
-      return {
+      return nuxtState.docus || {
         categories: {},
         releases: null,
         settings: null
@@ -127,8 +127,10 @@ export default async function ({ app, $content, $config }, inject) {
 
   if (process.server) {
     await $docus.fetch()
+    beforeNuxtRender(({ nuxtState }) => {
+      nuxtState.docus = $docus.$data
+    })
   }
-  // TODO: inject state and get back on client
   // Spa Fallback
   if (process.client && !$docus.settings) {
     await $docus.fetch()
