@@ -41,7 +41,7 @@ export default {
         'edit',
         this.settings.github.branch,
         this.settings.github.dir,
-        'content',
+        this.$config.contentDir,
         `${this.document.path}${this.document.extension}`.replace(/^\//g, '')
       ].filter(Boolean).join('/')
     }

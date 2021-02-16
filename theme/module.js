@@ -12,6 +12,8 @@ export default function docusModule () {
   const { nuxt } = this
   const { options, hook } = this.nuxt
 
+  // Inject content dir in private runtime config
+  options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
   // Configure `content/` dir
   options.content.dir = path.resolve(options.rootDir, options.content.dir || 'content')
   // Configure `static/ dir
