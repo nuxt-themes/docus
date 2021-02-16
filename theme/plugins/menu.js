@@ -5,12 +5,12 @@ export default ({ app }, inject) => {
     open: false
   })
   if (process.client) {
-  // For mobile navigation when clicking on a menu link
+    // For mobile navigation when clicking on a menu link
     app.router.afterEach(() => {
       if ($menu.open) {
         setTimeout(() => {
           $menu.open = false
-        }, 100)
+        }, 50)
       }
     })
   }

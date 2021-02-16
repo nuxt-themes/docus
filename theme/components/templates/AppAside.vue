@@ -4,7 +4,7 @@
     :class="{ 'hidden': !$menu.open }"
     @click="$menu.open = false"
   >
-    <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white sm:mr-64 lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0">
+    <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white sm:mr-64 lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0" @click.stop>
       <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
       <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
