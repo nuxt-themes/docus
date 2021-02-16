@@ -31,7 +31,7 @@ import CopyButton from '../components/molecules/CopyButton'
 export default {
   name: 'PageSlug',
   layout ({ $docus }) {
-    return $docus.settings.layout || 'docus'
+    return $docus.settings.layout
   },
   middleware ({ app, params, redirect }) {
     if (params.pathMatch === 'index') {

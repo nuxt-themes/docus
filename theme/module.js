@@ -48,11 +48,11 @@ export default function docusModule () {
       global: true
     })
     dirs.push({
-      path: '~/components/templates',
+      path: r('components/templates'),
       global: true
     })
     dirs.push({
-      path: '~/components/organisms',
+      path: r('components/organisms'),
       global: true
     })
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')

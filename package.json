@@ -45,7 +45,7 @@
     "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.0",
     "standard-version": "^9.1.0",
     "vue-plausible": "^1.1.2"
   }

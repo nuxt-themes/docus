@@ -1,6 +1,6 @@
 <template>
   <button
-    class="fixed z-50 bottom-0 right-0 p-4 bg-primary-500 rounded-full mb-4 mr-4 shadow lg:hidden focus:outline-none text-white"
+    class="fixed bottom-0 right-0 z-50 p-4 mb-4 mr-4 text-white rounded-full shadow bg-primary-500 lg:hidden focus:outline-none"
     aria-label="Menu"
     @click.stop="menu = !menu"
   >
@@ -19,10 +19,10 @@ export default {
     ]),
     menu: {
       get () {
-        return this.$store.state.menu.open
+        return this.$menu.open
       },
       set (val) {
-        this.$store.commit('menu/toggle', val)
+        this.$menu.open = val
       }
     }
   }
