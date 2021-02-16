@@ -54,7 +54,6 @@ export default {
     history.scrollRestoration = 'manual'
   },
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
     document
       .querySelectorAll('.nuxt-content h2[id], .nuxt-content h3[id]')
       .forEach((section) => {
@@ -64,7 +63,15 @@ export default {
           top: section.offsetTop
         })
       })
-    this.onScroll()
+    const hash = window.location.hash.replace('#', '')
+    const hashIndex = this.sections.findIndex(section => section.id === hash)
+    if (hash && hashIndex >= 0) {
+      scrollTo(0, document.querySelector(location.hash).offsetTop - 110) // 110 is the deafult value for `top-margin-scroll` in tailwind prose
+      this.setActive(hashIndex)
+    } else {
+      this.onScroll()
+    }
+    window.addEventListener('scroll', this.onScroll)
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll, true)
@@ -89,6 +96,9 @@ export default {
       }
     },
     setActive (index) {
+      if (!this.sections[index]) {
+        return
+      }
       this.exactActiveLink = this.sections[index].id
       this.activeLink = this.sections[index].id
       if (this.sections[index].level === '3') {
