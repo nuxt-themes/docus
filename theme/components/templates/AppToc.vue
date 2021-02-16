@@ -29,8 +29,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   props: {
     toc: {
@@ -46,9 +44,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'settings'
-    ])
+    settings () {
+      return this.$docus.settings
+    }
   },
   beforeMount () {
     history.scrollRestoration = 'manual'

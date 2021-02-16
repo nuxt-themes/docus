@@ -31,11 +31,13 @@
     "lodash.groupby": "^4.6.0",
     "marked": "^2.0.0",
     "nuxt-i18n": "^6.20.0",
+    "ohmyfetch": "^0.1.6",
     "postcss": "^7",
     "prism-themes": "^1.5.0",
     "tailwind-css-variables": "^2.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "theme-colors": "^0.0.5"
+    "theme-colors": "^0.0.5",
+    "ufo": "^0.6.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
@@ -43,7 +45,7 @@
     "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.0",
     "standard-version": "^9.1.0",
     "vue-plausible": "^1.1.2"
   }

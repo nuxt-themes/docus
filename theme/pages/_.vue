@@ -26,14 +26,12 @@
 
 <script>
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
-
-import CopyButton from '~/components/molecules/CopyButton'
+import CopyButton from '../components/molecules/CopyButton'
 
 export default {
   name: 'PageSlug',
-  layout ({ store }) {
-    return store.state.settings.layout || 'default'
+  layout ({ $docus }) {
+    return $docus.settings.layout
   },
   middleware ({ app, params, redirect }) {
     if (params.pathMatch === 'index') {
@@ -75,9 +73,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'settings'
-    ])
+    settings () {
+      return this.$docus.settings
+    }
   },
   mounted () {
     if (this.document.version) {

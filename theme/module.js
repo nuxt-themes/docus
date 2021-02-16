@@ -1,4 +1,4 @@
-import path from 'path'
+import { resolve, join, relative } from 'path'
 import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
@@ -6,60 +6,64 @@ import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug } from './utils/document'
 
 const fs = gracefulFs.promises
+const r = (...args) => resolve(__dirname, ...args)
 
 export default function docusModule () {
   // wait for nuxt options to be normalized
-  const { nuxt } = this
+  const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
   // Inject content dir in private runtime config
   options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
-  // Configure `content/` dir
-  options.content.dir = path.resolve(options.rootDir, options.content.dir || 'content')
-  // Configure `static/ dir
-  options.dir.static = path.resolve(options.rootDir, options.dir.static || 'static')
+
+  // Add layouts
+  hook('build:before', () => {
+    addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
+    addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
+  })
+
+  // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
+  hook('build:before', async () => {
+    // To support older version of Nuxt
+    const pagesDirPath = resolve(options.srcDir, options.dir.pages)
+    const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
+    if (!pagesDirExists) {
+      this.nuxt.options.build.createRoutes = () => ([])
+      nuxt.options.watch.push(pagesDirPath)
+    }
+  })
 
   // Configure `components/` dir
   hook('components:dirs', async (dirs) => {
     dirs.push({
-      path: '~/components/atoms',
+      path: r('components/atoms'),
       global: true
     })
     dirs.push({
-      path: '~/components/molecules',
+      path: r('components/molecules'),
       global: true
     })
     dirs.push({
-      path: '~/components/icons',
+      path: r('components/icons'),
       global: true
     })
     dirs.push({
-      path: '~/components/templates',
+      path: r('components/templates'),
       global: true
     })
     dirs.push({
-      path: '~/components/organisms',
+      path: r('components/organisms'),
       global: true
     })
-    const componentsDirPath = path.resolve(nuxt.options.rootDir, 'components')
+    const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
       dirs.push({
-        path: componentsDirPath
-      })
-    } else {
-      nuxt.options.watch.push(componentsDirPath)
-    }
-
-    const globalComponentsDirPath = path.resolve(nuxt.options.rootDir, 'components/global')
-    const globalComponentsDirStat = await fs.stat(globalComponentsDirPath).catch(() => null)
-    if (globalComponentsDirStat && globalComponentsDirStat.isDirectory()) {
-      dirs.push({
-        path: globalComponentsDirPath,
+        path: componentsDirPath,
         global: true
       })
     } else {
-      nuxt.options.watch.push(globalComponentsDirPath)
+      nuxt.options.watch.push(componentsDirPath)
     }
   })
   // Configure content after each hook
@@ -83,23 +87,38 @@ export default function docusModule () {
   })
   // Extend `/` route
   hook('build:extendRoutes', (routes) => {
-    const allRoute = routes.find(route => route.name === 'all')
+    const hasRoute = name => routes.some(route => route.name === name)
 
-    routes.push({
-      ...allRoute,
-      path: '/',
-      name: 'index'
-    })
+    if (!hasRoute('index')) {
+      routes.push({
+        path: '/',
+        name: 'index',
+        component: r('pages/_.vue')
+      })
+    }
+    if (!hasRoute('releases')) {
+      routes.push({
+        path: '/',
+        name: 'releases',
+        component: r('pages/releases.vue')
+      })
+    }
+    if (!hasRoute('all')) {
+      routes.push({
+        path: '/*',
+        name: 'all',
+        component: r('pages/_.vue')
+      })
+    }
   })
   // Override editor style on dev mode
   if (options.dev) {
-    options.css.push(path.resolve(__dirname, 'assets/css/main.dev.css'))
+    options.css.push(r('assets/css/main.dev.css'))
   }
-  // Configure `tailwind.config.js` path
-  options.tailwindcss.configPath = options.tailwindcss.configPath || path.resolve(options.rootDir, 'tailwind.config.js')
-  options.tailwindcss.cssPath = options.tailwindcss.cssPath || path.resolve(options.rootDir, options.dir.assets, 'css', 'tailwind.css')
   // Configure TailwindCSS
   hook('tailwindcss:config', function (defaultTailwindConfig) {
     Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
   })
+  // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
+  options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
 }
