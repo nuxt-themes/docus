@@ -8089,6 +8089,13 @@ object.values@^1.1.0, object.values@^1.1.1:
     function-bind "^1.1.1"
     has "^1.0.3"
 
+ohmyfetch@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ohmyfetch/-/ohmyfetch-0.1.6.tgz#fe137b46ee5b5598815f988315bb4254e2b5cb12"
+  integrity sha512-pUPZmTCtLdxqGefAhkdTbOVLQmbwt0wydZj21T5u+vmH3UcZ63lN0m5tJE7luHN+9deDG78XI1rFVULhzNUBww==
+  dependencies:
+    node-fetch "^2.6.1"
+
 on-finished@^2.3.0, on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -11211,6 +11218,11 @@ ua-parser-js@^0.7.22:
   version "0.7.22"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.22.tgz#960df60a5f911ea8f1c818f3747b99c6e177eae3"
   integrity sha512-YUxzMjJ5T71w6a8WWVcMGM6YWOTX27rCoIQgLXiWaxqXSx9D7DNjiGWn1aJIRSQ5qr0xuhra77bSIh6voR/46Q==
+
+ufo@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.6.6.tgz#6bc4b4de19ff9a9cb68134719190196b0cc7353b"
+  integrity sha512-HDhml2KskY1VVtQGckmaf/p3rTuleC2M7qL9Wf1dJZMw7glFk6oVjRsddf6LJp0I+pHERZzfttVmBMq1nR3PGA==
 
 uglify-js@^3.1.4:
   version "3.12.4"

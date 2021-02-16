@@ -2,6 +2,7 @@
 title: Writing content for the docs
 menuTitle: Content
 category: Usage
+version: 1.1
 position: 3
 ---
 
@@ -21,7 +22,6 @@ Every markdown file should define properties in the front-matter in order to wor
 |---------|------|--------| -----|
 | `title` | `String` | **yes** | Title of the page (will also be injected in metas) |
 | `description` | `String` | **yes** | Description of the page, will be added below the title and injected into the metas |
-| `position` | `Number` | **yes** | Sort the documents in the sidebar navigation |
 | `category` | `String` |  | Group documents in the navigation, if `category` is falsy or not a string, it is coerced to be an empty string, and isn't renderd in the sidebar |
 | `version` | `Float` |  | Alert users that the page is new with a badge. Once the page is seen, the version is stored in the local storage until you increment it |
 | `fullscreen` | `Boolean` |  | Grows the page and hides the table of contents |

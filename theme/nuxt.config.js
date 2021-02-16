@@ -1,9 +1,11 @@
+import { resolve } from 'path'
 import themeModule from './module'
+
+const r = path => resolve(__dirname, path)
 
 export default docusOptions => ({
   target: 'static',
   ssr: true,
-  srcDir: __dirname,
   privateRuntimeConfig: {
     githubToken: process.env.GITHUB_TOKEN
   },
@@ -17,17 +19,18 @@ export default docusOptions => ({
     fallback: '404.html',
     routes: ['/']
   },
-  transpile: [
-    __dirname // transpile node_modules/docus
-  ],
+  build: {
+    transpile: [
+      'docus'
+    ]
+  },
   css: [
-    '~/assets/css/main.css'
+    r('assets/css/main.css')
   ],
   plugins: [
-    '@/plugins/markdown',
-    '@/plugins/init',
-    '@/plugins/i18n.client',
-    '@/plugins/menu.client'
+    r('plugins/docus'),
+    r('plugins/menu'),
+    r('plugins/i18n.client')
   ],
   buildModules: [
     themeModule,
@@ -53,7 +56,7 @@ export default docusOptions => ({
         theme: ''
       },
       remarkPlugins: [
-        ['~/utils/remark-prose', {
+        [r('utils/remark-prose'), {
           proseClass: 'prose dark:prose-dark'
         }]
       ]
@@ -73,7 +76,6 @@ export default docusOptions => ({
     parsePages: false,
     lazy: true,
     seo: false,
-    langDir: 'i18n/',
     vueI18n: {
       fallbackLocale: 'en',
       dateTimeFormats: {

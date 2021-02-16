@@ -1,24 +1,22 @@
 <template>
-  <div v-if="link" class="flex flex-col sm:flex-row justify-between mt-10 mb-4">
+  <div v-if="link" class="flex flex-col justify-between mt-10 mb-4 sm:flex-row">
     <a
       :href="link"
       target="_blank"
       rel="noopener"
-      class="hover:underline font-medium flex items-center"
+      class="flex items-center font-medium hover:underline"
     >
       {{ $t('article.github') }}
       <IconExternalLink class="w-4 h-4 ml-1" />
     </a>
 
-    <span class="text-gray-600 dark:text-gray-400 text-sm font-medium flex items-center mt-4 sm:mt-0">
+    <span class="flex items-center mt-4 text-sm font-medium text-gray-600 dark:text-gray-400 sm:mt-0">
       {{ $t("article.updatedAt") }} {{ $d(Date.parse(document.updatedAt), "long") }}
     </span>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   props: {
     document: {
@@ -27,17 +25,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'settings',
-      'repositoryUrl'
-    ]),
+    settings () {
+      return this.$docus.settings
+    },
     link () {
       if (!this.settings.github) {
         return
       }
 
       return [
-        this.repositoryUrl,
+        this.$docus.repoUrl,
         'edit',
         this.settings.github.branch,
         this.settings.github.dir,

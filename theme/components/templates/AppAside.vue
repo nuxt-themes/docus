@@ -1,8 +1,8 @@
 <template>
   <aside
     class="fixed inset-0 z-40 flex-none w-full h-full bg-black bg-opacity-25 lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
-    :class="{ 'hidden': !menu }"
-    @click="menu = false"
+    :class="{ 'hidden': !$menu.open }"
+    @click="$menu.open = false"
   >
     <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0">
       <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
@@ -68,7 +68,7 @@
               </a>
               <a
                 v-if="settings.github.repo"
-                :href="repositoryUrl"
+                :href="$docus.repoUrl"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github"
@@ -89,25 +89,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   computed: {
-    ...mapGetters([
-      'settings',
-      'repositoryUrl',
-      'lastRelease'
-    ]),
-    menu: {
-      get () {
-        return this.$store.state.menu.open
-      },
-      set (val) {
-        this.$store.commit('menu/toggle', val)
-      }
+    settings () {
+      return this.$docus.settings
     },
     categories () {
-      return this.$store.state.categories[this.$i18n.locale]
+      return this.$docus.categories[this.$i18n.locale]
+    },
+    lastRelease () {
+      return this.$docus.lastRelease
     }
   },
   methods: {

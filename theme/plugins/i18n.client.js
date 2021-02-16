@@ -1,3 +1,3 @@
-export default function ({ app, store }) {
-  app.i18n.onLanguageSwitched = () => store.dispatch('fetchCategories')
+export default function ({ app, $docus }) {
+  app.i18n.onLanguageSwitched = () => $docus.fetchCategories()
 }
