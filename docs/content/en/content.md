@@ -2,7 +2,6 @@
 title: Writing content for the docs
 menuTitle: Content
 category: Usage
-version: 1.1
 position: 3
 ---
 
