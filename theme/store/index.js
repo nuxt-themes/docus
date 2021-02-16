@@ -67,7 +67,7 @@ export const actions = {
     if (process.dev === false && state.categories[this.$i18n.locale]) {
       return
     }
-    const docs = await this.$content('/', { deep: true })
+    const docs = await this.$content({ deep: true })
       .where({ language: this.$i18n.locale })
       .only(['title', 'menuTitle', 'category', 'slug', 'version', 'to'])
       .sortBy('position', 'asc')
