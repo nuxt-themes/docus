@@ -11,6 +11,7 @@
 .token.rule,
 .token.operator,
 .token.pseudo-class,
+.token.key,
 .token.important {
   color: #22D3EE;
 }

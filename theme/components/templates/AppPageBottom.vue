@@ -10,7 +10,7 @@
       <IconExternalLink class="w-4 h-4 ml-1" />
     </a>
 
-    <span class="flex items-center mt-4 text-sm font-medium text-gray-600 dark:text-gray-400 sm:mt-0">
+    <span class="flex items-center mt-4 text-sm font-medium text-gray-500 dark:text-gray-300 sm:mt-0">
       {{ $t("article.updatedAt") }} {{ $d(Date.parse(document.updatedAt), "long") }}
     </span>
   </div>
@@ -38,7 +38,7 @@ export default {
         'edit',
         this.settings.github.branch,
         this.settings.github.dir,
-        'content',
+        this.$config.contentDir,
         `${this.document.path}${this.document.extension}`.replace(/^\//g, '')
       ].filter(Boolean).join('/')
     }

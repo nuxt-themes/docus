@@ -1,6 +1,5 @@
 <template>
   <div
-    v-click-away="'close'"
     class="relative inline-block text-left"
     @mouseenter="open = true"
     @mouseleave="open = false"
@@ -18,9 +17,9 @@
     >
       <div
         v-show="open"
-        class="absolute bottom-0 right-0 z-50 w-auto mt-2 origin-top-right rounded-md shadow-lg"
+        class="absolute top-0 right-0 z-50 w-auto origin-top-right rounded-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-800"
       >
-        <div class="bg-white rounded-md shadow-xs dark:bg-gray-800">
+        <div class="bg-white rounded-md dark:bg-gray-800">
           <slot />
         </div>
       </div>
@@ -29,13 +28,8 @@
 </template>
 
 <script>
-import ClickAway from 'docus/theme/directives/click-away'
-
 export default {
   name: 'Dropdown',
-  directives: {
-    'click-away': ClickAway
-  },
   data () {
     return {
       open: false

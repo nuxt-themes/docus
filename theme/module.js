@@ -3,6 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
+import { generatePosition, generateSlug } from './utils/document'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -11,6 +12,9 @@ export default function docusModule () {
   // wait for nuxt options to be normalized
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
+
+  // Inject content dir in private runtime config
+  options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
 
   // Add layouts
   hook('build:before', () => {
@@ -44,15 +48,14 @@ export default function docusModule () {
       global: true
     })
     dirs.push({
-      path: r('components/organisms'),
+      path: '~/components/templates',
       global: true
     })
     dirs.push({
-      path: r('components/templates'),
+      path: '~/components/organisms',
       global: true
     })
-    // Make optional the components dir
-    const componentsDirPath = resolve(options.srcDir, 'components')
+    const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
       dirs.push({
@@ -65,13 +68,21 @@ export default function docusModule () {
   })
   // Configure content after each hook
   hook('content:file:beforeInsert', (document) => {
+    if (document.extension !== '.md') {
+      return
+    }
     const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
-    const _slug = slug.replace(/^index/, '')
+    const _language = dir.replace(_dir, '')
     const _category = category && typeof category === 'string' ? category : ''
+    const _to = `${_dir}/${slug}`
+    const position = generatePosition(_to, document)
 
-    document.to = `${_dir}/${_slug}`
+    document.slug = generateSlug(slug)
+    document.position = position
+    document.to = generateSlug(_to)
+    document.language = _language
     document.category = _category
   })
   // Extend `/` route

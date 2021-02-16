@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/nuxtlabs/docus/compare/v0.0.7...v0.0.8) (2021-02-15)
+
+
+### Features
+
+* order convention ([#49](https://github.com/nuxtlabs/docus/issues/49)) ([8326bc2](https://github.com/nuxtlabs/docus/commit/8326bc260c18c86dbec5ee098955b777563e3cb4))
+
+
+### Bug Fixes
+
+* Nuxt 2.15 support ([#56](https://github.com/nuxtlabs/docus/issues/56)) ([1a0c4d4](https://github.com/nuxtlabs/docus/commit/1a0c4d4cf7a2060f47e0a07597dec0d58f4eebd0))
+* **CodeGroup:** improve ssr ([#46](https://github.com/nuxtlabs/docus/issues/46)) ([42e2fd6](https://github.com/nuxtlabs/docus/commit/42e2fd62b51bd3fa42a630abf4995abe6c6edb71))
+* **prism:** highlight `key` token ([#62](https://github.com/nuxtlabs/docus/issues/62)) ([a17b210](https://github.com/nuxtlabs/docus/commit/a17b210bfa6ea58d3c5e8faf97533ab51f966888))
+* **remark-prose:** fix node detection ([#44](https://github.com/nuxtlabs/docus/issues/44)) ([217bd8d](https://github.com/nuxtlabs/docus/commit/217bd8d7c65e44ff044326296417af39747c966b))
+* **remark-prose:** handle html starting with spaces ([#48](https://github.com/nuxtlabs/docus/issues/48)) ([405cb53](https://github.com/nuxtlabs/docus/commit/405cb53ffdcdf1317376c3746b5cf854723d63ce))
+* create external link component ([#42](https://github.com/nuxtlabs/docus/issues/42)) ([dd51ddb](https://github.com/nuxtlabs/docus/commit/dd51ddb55802eb66bc8ce34f8db319d14df20994))
+
 ### [0.0.7](https://github.com/nuxtlabs/docus/compare/v0.0.6...v0.0.7) (2021-02-10)
 
 ### [0.0.6](https://github.com/nuxt/docus/compare/v0.0.5...v0.0.6) (2021-02-10)

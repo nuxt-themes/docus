@@ -170,6 +170,12 @@ export default {
   @apply bg-none border border-gray-300 dark:border-gray-700 shadow-none p-1 text-xs mr-px !important;
 }
 
+@media (max-width: 750px) {
+  .DocSearch-Button-Placeholder {
+      display: flex !important;
+  }
+}
+
 .DocSearch-Screen-Icon > svg {
   display: inline !important;
 }

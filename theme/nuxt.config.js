@@ -30,7 +30,7 @@ export default docusOptions => ({
   plugins: [
     r('plugins/docus'),
     r('plugins/menu'),
-    r('plugins/i18n.client')
+    r('plugins/i18n')
   ],
   buildModules: [
     themeModule,
@@ -59,7 +59,10 @@ export default docusOptions => ({
         [r('utils/remark-prose'), {
           proseClass: 'prose dark:prose-dark'
         }]
-      ]
+      ],
+      remarkAutolinkHeadings: {
+        behavior: 'wrap'
+      }
     }
   },
   colorMode: {
