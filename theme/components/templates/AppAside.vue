@@ -12,7 +12,7 @@
           <li v-if="lastRelease">
             <NuxtLink
               to="/releases"
-              class="px-4 py-2 font-medium text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+              class="px-4 lg:px-3 py-2 font-medium text-gray-400 transition duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
               exact-active-class="text-primary-500 dark:text-primary-400"
             >{{ lastRelease.name }}</NuxtLink>
           </li>
@@ -26,13 +26,13 @@
               'active': isCategoryActive(docs)
             }"
           >
-            <h5 v-if="category" class="px-4 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
+            <h5 v-if="category" class="px-4 lg:px-3 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
 
             <ul>
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="$contentLocalePath(doc.to)"
-                  class="relative block px-4 py-2 transition duration-200 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100"
+                  class="relative block px-4 lg:px-3 py-2 transition duration-200 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100"
                   :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
                 >
                   {{ doc.menuTitle || doc.title }}
