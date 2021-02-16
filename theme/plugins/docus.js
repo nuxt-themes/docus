@@ -31,7 +31,6 @@ export default async function ({ app, $content, $config }, inject) {
         await Promise.all([
           this.fetchReleases(),
           this.fetchCategories()
-          // this.fetchDefaultBranch()
         ])
       },
       async fetchSettings () {
