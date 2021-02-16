@@ -32,7 +32,7 @@
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
                   :to="$contentLocalePath(doc.to)"
-                  class="relative block px-4 lg:px-3 py-2 transition duration-200 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100"
+                  class="relative px-4 lg:px-3 py-2 transition duration-200 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100 flex items-center justify-between"
                   :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
                 >
                   {{ doc.menuTitle || doc.title }}
