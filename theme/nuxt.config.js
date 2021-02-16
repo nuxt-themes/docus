@@ -56,7 +56,10 @@ export default docusOptions => ({
         ['~/utils/remark-prose', {
           proseClass: 'prose dark:prose-dark'
         }]
-      ]
+      ],
+      remarkAutolinkHeadings: {
+        behavior: 'wrap'
+      }
     }
   },
   colorMode: {

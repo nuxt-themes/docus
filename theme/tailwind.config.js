@@ -75,15 +75,25 @@ module.exports = ({ nuxt }) => {
                 color: 'inherit',
                 fontWeight: 'inherit'
               },
+              'h2 > a, h3 > a': {
+                color: 'inherit',
+                fontWeight: 'inherit',
+                '&:hover': {
+                  borderBottomWidth: 1,
+                  borderStyle: 'dashed',
+                  borderBottomColor: theme('colors.gray.900'),
+                  paddingBottom: '2px'
+                }
+              },
               a: {
                 color: theme('colors.primary.500'),
                 fontWeight: theme('fontWeight.medium'),
-                textDecoration: 'none'
-              },
-              'a:hover': {
-                borderBottomWidth: 2,
-                borderBottomColor: theme('colors.primary.500'),
-                paddingBottom: '1px'
+                textDecoration: 'none',
+                '&:hover': {
+                  borderBottomWidth: 2,
+                  borderBottomColor: theme('colors.primary.500'),
+                  paddingBottom: '1px'
+                }
               },
               'a code': {
                 color: 'inherit',
@@ -178,6 +188,13 @@ module.exports = ({ nuxt }) => {
               'h3 code': {
                 color: 'inherit',
                 fontWeight: 'inherit'
+              },
+              'h2 > a, h3 > a': {
+                color: 'inherit',
+                fontWeight: 'inherit',
+                '&:hover': {
+                  borderBottomColor: theme('colors.gray.100')
+                }
               },
               'figure figcaption': {
                 color: theme('colors.gray.400')
