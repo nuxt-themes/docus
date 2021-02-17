@@ -1,6 +1,5 @@
 import defu from 'defu'
 import nuxtConfig from './nuxt.config'
-import { processUserConfig } from './utils/config'
 
 const defaultConfig = docusOptions => nuxtConfig(docusOptions)
 
@@ -13,7 +12,7 @@ export function withDocus (userConfig) {
   })
 
   const config = defu.arrayFn(
-    processUserConfig(userConfig),
+    userConfig,
     defaultConfig(userConfig.docus)
   )
 

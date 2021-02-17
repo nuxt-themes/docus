@@ -1,6 +1,5 @@
 <template>
   <div
-    v-click-away="'close'"
     class="relative inline-block text-left"
     @mouseenter="open = true"
     @mouseleave="open = false"
@@ -9,18 +8,18 @@
     <slot name="trigger" :toggle="toggle" :open="open" />
 
     <transition
-      enter-class="transform opacity-0 scale-95"
-      enter-active-class="transition ease-out duration-100"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75"
-      leave-to-class="transform opacity-0 scale-95"
+      enter-class="transform scale-95 opacity-0"
+      enter-active-class="transition duration-100 ease-out"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-75 ease-in"
+      leave-to-class="transform scale-95 opacity-0"
     >
       <div
         v-show="open"
-        class="mt-2 w-auto rounded-md shadow-lg z-50 origin-top-right absolute bottom-0 right-0"
+        class="absolute top-0 right-0 z-50 w-auto origin-top-right rounded-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-800"
       >
-        <div class="rounded-md bg-white dark:bg-gray-800 shadow-xs">
+        <div class="bg-white rounded-md dark:bg-gray-800">
           <slot />
         </div>
       </div>
@@ -29,13 +28,8 @@
 </template>
 
 <script>
-import ClickAway from '~/directives/click-away'
-
 export default {
   name: 'Dropdown',
-  directives: {
-    'click-away': ClickAway
-  },
   data () {
     return {
       open: false

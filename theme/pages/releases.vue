@@ -24,11 +24,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   layout ({ store }) {
-    return store.state.settings.layout || 'default'
+    return store.state.settings.layout || 'docus'
   },
   head () {
     return {
@@ -36,11 +34,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'settings'
-    ]),
+    settings () {
+      return this.$docus.settings
+    },
     releases () {
-      return this.$store.state.releases
+      return this.$docus.releases
     },
     toc () {
       return this.releases.map(release => ({ id: release.name, depth: 2, text: release.name }))
