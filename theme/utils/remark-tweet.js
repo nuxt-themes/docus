@@ -48,6 +48,20 @@ function mapAST (ast) {
         type: 'paragraph', children: mapAST(node.nodes)
       }
     }
+
+    // qoute
+    if (node.tag === 'blockquote') {
+      const { data, nodes } = node.data.ast[0]
+      return [
+        {
+          type: 'html',
+          value: `<Tweet class="tweet tweet-quote" layout="quote" id="${data.id}" avatar="${data.avatar.normal}" :created-at="${data.createdAt}" heart-count="${data.heartCount}" name="${data.name}" username="${data.username}">`
+        },
+        ...mapAST(nodes),
+        { type: 'html', value: '</Tweet>' }
+      ]
+    }
+
     return { type: 'text', value: '?' }
   })
 }
