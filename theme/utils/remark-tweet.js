@@ -56,20 +56,30 @@ function mapAST (ast) {
   })
 }
 
+const tweetCache = {}
+
 module.exports = () => {
   return async (tree) => {
     const modified = tree.children.map(async (node, i) => {
       if (node.value && node.value.startsWith('<Tweet')) {
         const match = node.value.match(/id=['"](\d*)['"]/)
-        try {
-          const tweet = await fetchTweetAst(match[1])
-          const { nodes, data } = tweet[0]
-          return createTweetNode(data, nodes)
-        } catch (e) {
+        if (!match) {
           // eslint-disable-next-line no-console
-          console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
-          return { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` }
+          console.error('Invalid tweet id')
+          return { type: 'html', value: '<!-- Invalid tweet id -->' }
         }
+        if (!tweetCache[match[1]]) {
+          try {
+            const tweet = await fetchTweetAst(match[1])
+            const { nodes, data } = tweet[0]
+            tweetCache[match[1]] = createTweetNode(data, nodes)
+          } catch (e) {
+          // eslint-disable-next-line no-console
+            console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
+            return { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` }
+          }
+        }
+        return tweetCache[match[1]]
       }
       return Promise.resolve(node)
     })
