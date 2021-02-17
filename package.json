@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "nuxt dev docs",
-    "generate": "nuxt generate docs",
+    "generate": "nuxt generate --force-build docs",
     "lint": "eslint --ext .js,.vue .",
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",

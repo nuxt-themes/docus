@@ -39,14 +39,15 @@ export default {
     }
   },
   async asyncData ({ $content, store, app, params, error }) {
-    const language = `/${app.i18n.locale}`
+    const language = app.i18n.locale
     const to = `/${params.pathMatch || ''}`
     const [document] = await $content({ deep: true }).where({ language, to }).fetch()
     if (!document) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
 
-    const [prev, next] = await $content(app.i18n.locale, { deep: true })
+    const [prev, next] = await $content({ deep: true })
+      .where({ language })
       .only(['title', 'slug', 'to'])
       .sortBy('position', 'asc')
       .surround(document.slug, { before: 1, after: 1 })
