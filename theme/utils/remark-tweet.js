@@ -61,7 +61,7 @@ const tweetCache = {}
 module.exports = () => {
   return async (tree) => {
     const modified = tree.children.map(async (node, i) => {
-      if (node.value && node.value.startsWith('<Tweet')) {
+      if (node.type === 'html' && node.value && node.value.match(/^\s*<[t|T]weet\s+/)) {
         const match = node.value.match(/id=['"](\d*)['"]/)
         if (!match) {
           // eslint-disable-next-line no-console
