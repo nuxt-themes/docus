@@ -58,7 +58,8 @@ export default docusOptions => ({
       remarkPlugins: [
         [r('utils/remark-prose'), {
           proseClass: 'prose dark:prose-dark'
-        }]
+        }],
+        [r('utils/remark-tweet'), {}]
       ],
       remarkAutolinkHeadings: {
         behavior: 'wrap'

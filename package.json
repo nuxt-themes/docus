@@ -34,6 +34,7 @@
     "ohmyfetch": "^0.1.6",
     "postcss": "^7",
     "prism-themes": "^1.5.0",
+    "static-tweets": "^0.2.7",
     "tailwind-css-variables": "^2.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "theme-colors": "^0.0.5",
