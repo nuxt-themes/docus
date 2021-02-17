@@ -47,6 +47,7 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/composition-api": "0.22.1",
+    "@nuxt/image": "^0.4.1",
     "@nuxtjs/pwa": "^3.3.5",
     "@types/graceful-fs": "^4.1.5",
     "@vue/composition-api": "^1.0.0-rc.6",
