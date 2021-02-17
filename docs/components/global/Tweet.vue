@@ -90,7 +90,7 @@ export default {
 }
 .tweet .image-container-2 .media-image {
   height: 300px;
-  @applu object-cover;
+  @apply object-cover;
 }
 
 .tweet .image-container-3 {
@@ -98,7 +98,7 @@ export default {
 }
 .tweet .image-container-3 .media-image {
   height: 150px;
-  @applu object-cover;
+  @apply object-cover;
 }
 .tweet .image-container-3 .media-image:nth-child(3n+2) {
   height: 100%;
@@ -110,6 +110,6 @@ export default {
 }
 .tweet .image-container-4 .media-image {
   height: 150px;
-  @applu object-cover;
+  @apply object-cover;
 }
 </style>
