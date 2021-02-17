@@ -1,5 +1,5 @@
-export default function ({ app, store }, inject) {
-  app.i18n.onLanguageSwitched = () => store.dispatch('fetchCategories')
+export default function ({ app, $docus }, inject) {
+  app.i18n.onLanguageSwitched = () => $docus.fetchCategories()
 
   // Generate local path for static contents.
   // This helper does not respect `router.trailingSlash`
