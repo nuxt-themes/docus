@@ -51,6 +51,7 @@ export default nuxtConfig({
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
     '@nuxtjs/pwa',
+    'nuxt-image',
     // Local modules
     r('module'),
     r('../settings'),
