@@ -38,7 +38,7 @@ export default {
     /**
      * @ignore
      */
-    json: {
+    data: {
       type: String,
       default: '{}'
     },
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     component () {
-      return JSON.parse(decodeURI(this.json))
+      return JSON.parse(decodeURI(this.data))
     },
     props () {
       // hide ignored properties
