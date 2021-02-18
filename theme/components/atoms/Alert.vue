@@ -11,6 +11,9 @@
 <script>
 export default {
   props: {
+    /**
+     * @values info, success, warning, danger
+     */
     type: {
       type: String,
       default: 'info',

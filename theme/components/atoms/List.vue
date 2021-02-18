@@ -12,10 +12,17 @@
 <script>
 export default {
   props: {
+    /**
+     * Array of string
+     */
     items: {
       type: Array,
       default: () => []
     },
+    /**
+     * Used to override the default <code>type</code> icon, check out the
+     *  <a href="https://github.com/nuxt/content/tree/dev/packages/theme-docs/src/components/global/icons">icons available</a>
+     */
     icon: {
       type: String,
       default: null
