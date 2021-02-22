@@ -3,7 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
-import { generatePosition, generateSlug } from './utils/document'
+import { generatePosition, generateSlug, isDraft } from './utils/document'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -84,6 +84,7 @@ export default function docusModule () {
     document.to = generateSlug(_to)
     document.language = _language
     document.category = _category
+    document.draft = document.draft || isDraft(slug)
   })
   // Extend `/` route
   hook('build:extendRoutes', (routes) => {

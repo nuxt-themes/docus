@@ -116,7 +116,12 @@ export default async function ({ app, $content, $config, nuxtState = {}, beforeN
         if (process.dev === false && this.categories[app.i18n.locale]) {
           return
         }
-        const docs = await $content({ deep: true }).where({ language: app.i18n.locale }).only(['title', 'menuTitle', 'category', 'slug', 'version', 'to']).sortBy('position', 'asc').fetch()
+        const docs = await $content({ deep: true })
+          .where({ language: app.i18n.locale, draft: false })
+          .only(['title', 'menuTitle', 'category', 'slug', 'version', 'to'])
+          .sortBy('position', 'asc')
+          .fetch()
+
         if (this.lastRelease) {
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }

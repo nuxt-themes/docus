@@ -16,6 +16,10 @@ export function generateSlug (path) {
     .join('/')
 }
 
+export function isDraft (path) {
+  return !!path.match(/(\.draft)$/, '$2')
+}
+
 function paddLeft (value, length) {
   return ('0'.repeat(length) + value).substr(String(value).length)
 }

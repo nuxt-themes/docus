@@ -76,7 +76,7 @@ export default {
         return
       }
       this.searching = true
-      this.results = await this.$content(this.$i18n.locale, { deep: true }).sortBy('position', 'asc').only(['title', 'slug', 'category', 'to']).limit(12).search(q).fetch()
+      this.results = await this.$content({ deep: true }).where({ language: this.$i18n.locale, draft: false }).sortBy('position', 'asc').only(['title', 'slug', 'category', 'to']).limit(12).search(q).fetch()
       this.searching = false
     }
   },
