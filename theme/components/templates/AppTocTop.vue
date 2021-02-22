@@ -1,7 +1,9 @@
 <template>
-  <div v-if="showPlaceholder" class="flex items-center justify-center bg-gray-400 h-24 mb-6">
-    AppTocTop
-  </div>
+  <client-only>
+    <div v-if="showPlaceholder" class="flex items-center justify-center bg-gray-200 dark:bg-gray-700 mb-6 h-24">
+      AppTocTop
+    </div>
+  </client-only>
 </template>
 
 <script>
