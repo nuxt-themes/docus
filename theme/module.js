@@ -37,23 +37,28 @@ export default function docusModule () {
   hook('components:dirs', async (dirs) => {
     dirs.push({
       path: r('components/atoms'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/molecules'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/icons'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/templates'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/organisms'),
-      global: true
+      global: true,
+      level: 2
     })
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
