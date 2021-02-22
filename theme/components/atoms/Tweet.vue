@@ -1,8 +1,8 @@
 <template>
-  <div class="tweet">
+  <blockquote class="tweet">
     <div class="author flex mb-4">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer">
-        <img :src="avatar" class="w-6 h-6 rounded-full" :class="{'h-12 w-12': layout === 'tweet'}" />
+        <img :src="avatar" :alt="name" class="w-6 h-6 rounded-full" :class="{'h-12 w-12': layout === 'tweet'}" />
       </a>
       <div class="ml-2 flex-1">
         <a :href="profileUrl" target="_blank" rel="noopener noreferrer">
@@ -19,7 +19,7 @@
         </template>
       </div>
       <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer">
-        <IconTwitter class="text-blue-500" />
+        <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
       </a>
     </div>
     <div class="content">
@@ -34,7 +34,7 @@
         {{ $d(createdAt, "long") }}
       </a>
     </div>
-  </div>
+  </blockquote>
 </template>
 
 <script>
