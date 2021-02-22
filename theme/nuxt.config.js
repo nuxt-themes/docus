@@ -70,6 +70,7 @@ export default docusOptions => ({
     classSuffix: ''
   },
   i18n: {
+    baseUrl: process.env.DOCUS_BASE_URL || '',
     locales: [{
       code: 'en',
       iso: 'en-US',
