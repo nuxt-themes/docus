@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <AppToc :toc="toc" />
+    <Toc :toc="toc" />
   </div>
 </template>
 

@@ -8,7 +8,7 @@
       <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
       <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-        <AppAsideTop />
+        <AsideTop />
         <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
           <li v-if="lastRelease">
             <NuxtLink
@@ -48,7 +48,7 @@
             </ul>
           </li>
         </ul>
-        <AppAsideBottom />
+        <AsideBottom />
       </nav>
     </div>
   </aside>
