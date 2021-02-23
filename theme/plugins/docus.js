@@ -116,7 +116,17 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         if (process.dev === false && this.categories[app.i18n.locale]) {
           return
         }
-        const docs = await $content({ deep: true }).where({ language: app.i18n.locale }).only(['title', 'menuTitle', 'category', 'slug', 'version', 'to']).sortBy('position', 'asc').fetch()
+        const draft = this.ui?.draft ? undefined : false
+        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to']
+        if (process.dev) {
+          fields.push('draft')
+        }
+        const docs = await $content({ deep: true })
+          .where({ language: app.i18n.locale, draft })
+          .only(fields)
+          .sortBy('position', 'asc')
+          .fetch()
+
         if (this.lastRelease) {
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
