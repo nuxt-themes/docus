@@ -1,12 +1,10 @@
 import defu from 'defu'
 import nuxtConfig from './nuxt.config'
 
-const defaultConfig = docusOptions => nuxtConfig(docusOptions)
-
 export function withDocus (userConfig) {
   const config = defu.arrayFn(
     userConfig,
-    defaultConfig(userConfig.docus)
+    nuxtConfig
   )
 
   if (userConfig.env && userConfig.env.GITHUB_TOKEN) {

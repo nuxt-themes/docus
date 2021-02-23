@@ -3,7 +3,7 @@ import themeModule from './module'
 
 const r = path => resolve(__dirname, path)
 
-export default docusOptions => ({
+export default {
   target: 'static',
   ssr: true,
   privateRuntimeConfig: {
@@ -48,7 +48,11 @@ export default docusOptions => ({
     color: 'var(--primary-500)'
   },
   meta: {
-    theme_color: 'var(--primary-500)'
+    /**
+     * Default theme color
+     * Will override by docus primary color
+     */
+    theme_color: '#06B6D4'
   },
   content: {
     markdown: {
@@ -112,4 +116,4 @@ export default docusOptions => ({
   server: {
     port: 4000
   }
-})
+}
