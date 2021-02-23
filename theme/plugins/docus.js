@@ -6,7 +6,7 @@ import { $fetch } from 'ohmyfetch/node'
 import { getColors } from 'theme-colors'
 import { compile } from '../utils/markdown'
 
-export default async function ({ app, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
+export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
   const $docus = new Vue({
     data () {
       return nuxtState.docus || {
@@ -97,7 +97,7 @@ export default async function ({ app, $content, $config, nuxtState = {}, beforeN
           console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
           if (err.response.status === 403) {
             // eslint-disable-next-line no-console
-            console.info('Make sure to provide GITHUB_TOKEN environment in \`.env\`')
+            console.info('Make sure to provide GITHUB_TOKEN environment in `.env`')
           } else {
             // eslint-disable-next-line no-console
             console.info('To disable fetching releases, set `github.releases` to `false` in `content/settings.json`')
@@ -130,7 +130,17 @@ export default async function ({ app, $content, $config, nuxtState = {}, beforeN
         if (process.dev === false && this.categories[app.i18n.locale]) {
           return
         }
-        const docs = await $content({ deep: true }).where({ language: app.i18n.locale }).only(['title', 'menuTitle', 'category', 'slug', 'version', 'to']).sortBy('position', 'asc').fetch()
+        const draft = this.ui?.draft ? undefined : false
+        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to']
+        if (process.dev) {
+          fields.push('draft')
+        }
+        const docs = await $content({ deep: true })
+          .where({ language: app.i18n.locale, draft })
+          .only(fields)
+          .sortBy('position', 'asc')
+          .fetch()
+
         if (this.lastRelease) {
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }

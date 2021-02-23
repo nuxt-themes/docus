@@ -12,8 +12,12 @@ export function generatePosition (path, doc) {
 export function generateSlug (path) {
   return path
     .split('/')
-    .map(part => part.replace(/(\d+\.)?(.*)(\.draft)?/, '$2').replace(/^index/, ''))
+    .map(part => part.replace(/(\d+\.)?(.*)/, '$2').replace(/^index/, '').replace(/\.draft/, ''))
     .join('/')
+}
+
+export function isDraft (path) {
+  return !!path.match(/(\.draft)$/, '$2')
 }
 
 function paddLeft (value, length) {
