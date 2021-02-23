@@ -34,7 +34,7 @@
         <h2 class="mt-16 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">What’s included?</h2>
         <ul class="grid grid-cols-2 gap-4 font-semibold text-center text-gray-900 dark:text-gray-100 sm:grid-cols-3 xl:grid-cols-4 sm:gap-6 xl:gap-8">
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border border-gray-100 shadow-sm rounded-xl dark:border-gray-700 ring-opacity-5" to="/usage/content">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/usage/content">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 26 26"
@@ -45,7 +45,7 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/usage/components">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/usage/components">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
@@ -56,7 +56,7 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/get-started/configuration#nuxt">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/get-started/configuration#nuxt">
               <svg viewBox="0 0 200 200" class="h-16 max-w-full mx-auto mb-3" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M198.441 157.168L140.864 54.401C136.129 46.0311 123.859 46.0311 119.114 54.3912L112.954 65.3742L120.106 78.0763L130.058 60.6489L187.478 162.718H167.025C168.086 169.221 162.466 175.577 154.46 175.577H187.556C197.017 175.587 202.999 165.302 198.441 157.168Z" fill="#00DC82" />
                 <path d="M59.4345 162.718H12.5848L83.3063 36.8557L106.284 77.369L112.964 65.384L92.855 29.6647C88.5719 22.0905 77.8934 22.12 73.6495 29.704L1.44464 158.769C-2.78941 166.333 2.79051 175.587 11.5926 175.587H71.9991C63.9927 175.587 58.3735 169.231 59.4345 162.718Z" fill="#00DC82" />
@@ -66,7 +66,7 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/get-started/configuration#tailwindcss">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/get-started/configuration#tailwindcss">
               <svg class="h-16 max-w-full mx-auto mb-3" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M27 11C19.8 11 15.3 14.6 13.5 21.8C16.2 18.2 19.35 16.85 22.95 17.75C25.004 18.263 26.472 19.754 28.097 21.403C30.744 24.09 33.808 27.2 40.5 27.2C47.7 27.2 52.2 23.6 54 16.4C51.3 20 48.15 21.35 44.55 20.45C42.496 19.937 41.028 18.446 39.403 16.797C36.756 14.11 33.692 11 27 11ZM13.5 27.2C6.3 27.2 1.8 30.8 0 38C2.7 34.4 5.85 33.05 9.45 33.95C11.504 34.464 12.972 35.954 14.597 37.603C17.244 40.29 20.308 43.4 27 43.4C34.2 43.4 38.7 39.8 40.5 32.6C37.8 36.2 34.65 37.55 31.05 36.65C28.996 36.137 27.528 34.646 25.903 32.997C23.256 30.31 20.192 27.2 13.5 27.2Z" fill="#06B6D4" />
               </svg>
@@ -74,7 +74,7 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/more/deployment">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/more/deployment">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 100"
@@ -88,13 +88,13 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/more/performances">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/more/performances">
               <IconLightHouse class="h-16 max-w-full mx-auto mb-3" />
               Perfect Lighthouse Score
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/more/smart-generation">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/more/smart-generation">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -106,7 +106,7 @@
             </NuxtLink>
           </li>
           <li class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 shadow-sm rounded-xl ring-1 ring-black ring-opacity-5" to="/usage/template">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/usage/template">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
