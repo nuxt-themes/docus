@@ -32,6 +32,9 @@ export default {
         class: [...this.bodyClass]
       },
       ...i18nSeo,
+      style: [
+        { hid: 'docus-theme', cssText: this.$docus.themeStyles, type: 'text/css' }
+      ],
       meta: (i18nSeo.meta || []).concat([
         // Open Graph
         { hid: 'og:site_name', property: 'og:site_name', content: this.settings.title },

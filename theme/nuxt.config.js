@@ -45,10 +45,10 @@ export default docusOptions => ({
   ],
   components: true,
   loading: {
-    color: docusOptions.colors.primary
+    color: 'var(--primary-500)'
   },
   meta: {
-    theme_color: docusOptions.colors.primary
+    theme_color: 'var(--primary-500)'
   },
   content: {
     markdown: {
