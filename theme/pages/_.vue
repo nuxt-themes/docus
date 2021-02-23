@@ -3,12 +3,12 @@
     <article class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
       <div class="mb-10" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-10': document.description }">
         <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
-          {{ document.title }}
+          <span class="flex-1">{{ document.title }}</span>
+          <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
           <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
         </h1>
         <p v-if="document.description" class="mt-2 text-lg text-gray-500 dark:text-gray-300">{{ document.description }}</p>
       </div>
-
       <div class="max-w-none">
         <NuxtContent :document="document" />
       </div>
@@ -38,16 +38,17 @@ export default {
       redirect(app.localePath('/'))
     }
   },
-  async asyncData ({ $content, store, app, params, error }) {
+  async asyncData ({ $content, $docus, app, params, error }) {
     const language = app.i18n.locale
     const to = `/${params.pathMatch || ''}`
-    const [document] = await $content({ deep: true }).where({ language, to, draft: false }).fetch()
+    const draft = $docus.ui?.draft ? undefined : false
+    const [document] = await $content({ deep: true }).where({ language, to, draft }).fetch()
     if (!document) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
 
     const [prev, next] = await $content({ deep: true })
-      .where({ language, draft: false })
+      .where({ language, draft })
       .only(['title', 'slug', 'to'])
       .sortBy('position', 'asc')
       .surround(document.slug, { before: 1, after: 1 })

@@ -6,16 +6,20 @@ import DocusUI from '../components/dev-templates/DocusUI'
 
 const COOKIE_NAME = 'docus.ui'
 
-export default function ({ $docus, ssrContext }) {
+export default async function ({ $docus, ssrContext }) {
   const useUniversalCookies = createCookies(ssrContext?.req)
   const cookies = useUniversalCookies()
   const ui = cookies.get(COOKIE_NAME) || {}
 
   // UI data (universal storage)
   $docus.ui = reactive(defu(ui, {
-    slots: false
+    slots: false,
+    draft: false
   }))
-  watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
+  if (process.client) {
+    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
+    watch(() => $docus.ui.draft, () => $docus.fetchCategories())
+  }
 
   // Mount DocusUI widget on client-side
   if (process.client) {
@@ -25,5 +29,10 @@ export default function ({ $docus, ssrContext }) {
       ...DocusUI,
       $docus
     }).$mount(el)
+  }
+
+  // Re-fetch categories
+  if (process.server) {
+    await $docus.fetchCategories()
   }
 }
