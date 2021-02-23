@@ -37,24 +37,36 @@ export default function docusModule () {
   hook('components:dirs', async (dirs) => {
     dirs.push({
       path: r('components/atoms'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/molecules'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/icons'),
-      global: true
-    })
-    dirs.push({
-      path: r('components/templates'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/organisms'),
-      global: true
+      global: true,
+      level: 2
     })
+    dirs.push({
+      path: r('components/templates'),
+      global: true,
+      level: 3
+    })
+    if (options.dev) {
+      dirs.push({
+        path: r('components/dev-templates'),
+        global: true,
+        level: 2
+      })
+    }
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
@@ -122,4 +134,8 @@ export default function docusModule () {
   })
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
+  // Docus Devtools
+  if (options.dev) {
+    options.plugins.push(r('plugins/docus.ui.js'))
+  }
 }

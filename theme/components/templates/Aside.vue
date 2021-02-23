@@ -8,6 +8,7 @@
       <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
       <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
+        <AsideTop />
         <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
           <li v-if="lastRelease">
             <NuxtLink
@@ -27,7 +28,6 @@
             }"
           >
             <h5 v-if="category" class="px-4 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:px-3 lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
-
             <ul>
               <li v-for="doc of docs" :key="doc.slug">
                 <NuxtLink
@@ -48,6 +48,7 @@
             </ul>
           </li>
         </ul>
+        <AsideBottom />
       </nav>
     </div>
   </aside>
