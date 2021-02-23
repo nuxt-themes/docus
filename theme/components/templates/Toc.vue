@@ -1,5 +1,6 @@
 <template>
   <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block">
+    <TocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
       <div class="mb-8">
         <h5 class="mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-gray-100 lg:text-xs">{{ $t('toc.title') }}</h5>
@@ -24,6 +25,7 @@
           </li>
         </ul>
       </div>
+      <TocBottom />
     </div>
   </div>
 </template>
