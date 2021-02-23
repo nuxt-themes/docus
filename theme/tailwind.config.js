@@ -262,8 +262,8 @@ module.exports = ({ nuxt }) => {
       // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
       enabled: process.env.NODE_ENV === 'production',
       content: [
-        path.join(nuxt.options.rootDir, 'content/**/*.md'),
-        path.join(nuxt.options.rootDir, 'components/**/*.vue'),
+        path.join(nuxt.options.srcDir, 'content/**/*.md'),
+        path.join(nuxt.options.srcDir, 'components/**/*.vue'),
         path.join(nuxt.options.rootDir, 'nuxt.config.js'),
         path.join(__dirname, 'components/**/*.vue'),
         path.join(__dirname, 'layouts/**/*.vue'),

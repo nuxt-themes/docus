@@ -1,0 +1,17 @@
+<template>
+  <div class="flex w-full pt-10 pb-24 lg:pb-16">
+    <article class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8" :class="prose ? 'prose dark:prose-dark' : ''"><slot /></article>
+    <slot name="toc" />
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    prose: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+</script>

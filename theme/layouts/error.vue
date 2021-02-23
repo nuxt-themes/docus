@@ -1,9 +1,10 @@
 <template>
-  <div class="pt-10 pb-24 lg:pb-16 w-full flex">
-    <div class="min-w-0 flex-auto px-4 sm:px-6 xl:px-8">
-      <h1 class="text-3xl font-black mb-4 leading-none">{{ error.message }}</h1>
-    </div>
-  </div>
+  <Container aside>
+    <Page class="prose">
+      <h1>{{ error.message }}</h1>
+      <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
+    </Page>
+  </Container>
 </template>
 
 <script>

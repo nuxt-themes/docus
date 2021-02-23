@@ -1,17 +1,7 @@
 <template>
-  <div>
-    <Header />
-    <MenuButton />
-
-    <div class="w-full mx-auto max-w-8xl">
-      <div class="lg:flex">
-        <Aside />
-        <div class="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
-          <Nuxt />
-        </div>
-      </div>
-    </div>
-  </div>
+  <Container aside>
+    <Nuxt />
+  </Container>
 </template>
 
 <script>
