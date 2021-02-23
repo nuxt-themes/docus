@@ -70,7 +70,7 @@ export default docusOptions => ({
     classSuffix: ''
   },
   i18n: {
-    baseUrl: ({ $docus }) => $docus?.settings?.url || '',
+    baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
     locales: [{
       code: 'en',
       iso: 'en-US',
