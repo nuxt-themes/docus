@@ -1,6 +1,6 @@
 <template>
   <Container aside>
-    <Page class="prose">
+    <Page prose>
       <h1>{{ error.message }}</h1>
       <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
     </Page>

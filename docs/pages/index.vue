@@ -4,7 +4,7 @@
       <h1
         class="mt-10 mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl lg:text-7xl sm:mt-14 sm:mb-10"
       >
-        Docus is a documentation generator based on Nuxt and Tailwind.
+        Documentation generator<br>based on Nuxt and Tailwind.
       </h1>
       <h3 class="mb-10 text-lg font-medium text-gray-800 sm:text-2xl sm:leading-10 sm:mb-11 dark:text-gray-200">
         Write using with Markdown and Vue components, add style with TailwindCSS
