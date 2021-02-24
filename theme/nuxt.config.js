@@ -3,7 +3,7 @@ import themeModule from './module'
 
 const r = path => resolve(__dirname, path)
 
-export default docusOptions => ({
+export default {
   target: 'static',
   ssr: true,
   privateRuntimeConfig: {
@@ -45,10 +45,14 @@ export default docusOptions => ({
   ],
   components: true,
   loading: {
-    color: docusOptions.colors.primary
+    color: 'var(--primary-500)'
   },
   meta: {
-    theme_color: docusOptions.colors.primary
+    /**
+     * Default theme color
+     * Will override by docus primary color
+     */
+    theme_color: '#06B6D4'
   },
   content: {
     markdown: {
@@ -70,7 +74,7 @@ export default docusOptions => ({
     classSuffix: ''
   },
   i18n: {
-    baseUrl: ({ $docus }) => $docus?.settings?.url || '',
+    baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
     locales: [{
       code: 'en',
       iso: 'en-US',
@@ -112,4 +116,4 @@ export default docusOptions => ({
   server: {
     port: 4000
   }
-})
+}

@@ -13,6 +13,16 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  // read docus settings
+  const settingsPath = resolve(options.srcDir, 'content/settings.json')
+  try {
+    const docusSettings = require(settingsPath)
+
+    if (docusSettings.colors && docusSettings.colors.primary) {
+      options.meta.theme_color = docusSettings.colors.primary
+    }
+  } catch (err) { /* settings not found */ }
+
   // Inject content dir in private runtime config
   options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
 

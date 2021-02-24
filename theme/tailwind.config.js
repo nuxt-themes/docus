@@ -7,7 +7,6 @@
 const path = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
-const { getColors } = require('theme-colors')
 
 module.exports = ({ nuxt }) => {
   return {
@@ -30,8 +29,30 @@ module.exports = ({ nuxt }) => {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
         colors: {
-          primary: getColors(nuxt.options.docus.colors.primary),
-          code: getColors(nuxt.options.docus.colors.code)
+          primary: {
+            50: 'var(--primary-50)',
+            100: 'var(--primary-100)',
+            200: 'var(--primary-200)',
+            300: 'var(--primary-300)',
+            400: 'var(--primary-400)',
+            500: 'var(--primary-500)',
+            600: 'var(--primary-600)',
+            700: 'var(--primary-700)',
+            800: 'var(--primary-800)',
+            900: 'var(--primary-900)'
+          },
+          code: {
+            50: 'var(--code-50)',
+            100: 'var(--code-100)',
+            200: 'var(--code-200)',
+            300: 'var(--code-300)',
+            400: 'var(--code-400)',
+            500: 'var(--code-500)',
+            600: 'var(--code-600)',
+            700: 'var(--code-700)',
+            800: 'var(--code-800)',
+            900: 'var(--code-900)'
+          }
         },
         spacing: {
           18: '4.5rem'
@@ -86,12 +107,12 @@ module.exports = ({ nuxt }) => {
                 }
               },
               a: {
-                color: theme('colors.primary.500'),
+                color: 'var(--primary-500)',
                 fontWeight: theme('fontWeight.medium'),
                 textDecoration: 'none',
                 '&:hover': {
                   borderBottomWidth: 2,
-                  borderBottomColor: theme('colors.primary.500'),
+                  borderBottomColor: 'var(--primary-500)',
                   paddingBottom: '1px'
                 }
               },
@@ -154,7 +175,7 @@ module.exports = ({ nuxt }) => {
                 color: theme('colors.gray.100')
               },
               a: {
-                color: theme('colors.primary.400')
+                color: 'var(--primary-400)'
               },
               'ol > li::before': {
                 color: theme('colors.gray.400')

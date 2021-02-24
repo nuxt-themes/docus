@@ -3,6 +3,7 @@ import defu from 'defu'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'
 import { $fetch } from 'ohmyfetch/node'
+import { getColors } from 'theme-colors'
 import { compile } from '../utils/markdown'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
@@ -23,6 +24,15 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       },
       lastRelease () {
         return this.releases && this.releases[0]
+      },
+      themeStyles () {
+        const colors = Object.entries(this.settings.colors).map(([key, color]) => [key, getColors(color)])
+        const styles = colors.map(([color, map]) => {
+          return Object.entries(map).map(([variant, value]) => {
+            return `--${color}-${variant}: ${value};`
+          }).join('')
+        }).join('')
+        return `:root {${styles}}`
       }
     },
     methods: {
@@ -45,9 +55,13 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
             apiUrl: 'https://api.github.com',
             dir: '',
             releases: true
+          },
+          colors: {
+            primary: '#06B6D4',
+            code: '#8B5CF6'
           }
         }
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia']).fetch().catch((e) => {
+        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
