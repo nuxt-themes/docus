@@ -2,7 +2,11 @@
   <div class="md:flex flex-row-reverse mb-4 border-gray-700 border-2 rounded-b-md">
     <div class="flex-1 relative p-4 text-sm  rounded-r-md" :class="wrapperClass">
       <component :is="tag" v-bind="propsData">
-        <template v-for="slot in slots" :name="slot.name">{{ slotData[slot.name] }}</template>
+        <template v-for="slot in slots" #[slot.name]>
+          <div :key="slot.name">
+            {{ slotData[slot.name] }}
+          </div>
+        </template>
       </component>
     </div>
     <div class="p-4 prose dark:prose-dark bg-gray-800">
