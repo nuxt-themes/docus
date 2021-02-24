@@ -1,16 +1,16 @@
 <template>
   <code-group :key="id">
-    <code-block :label="firstTabName" v-bind="{active: activeTab == 1 || undefined}">
+    <code-block :label="labelFirstTab" v-bind="{active: activeTab == 1 || undefined}">
 
       <div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
-        <slot name="firstTabContent" />
+        <slot name="contentFirstTab" />
       </div>
 
     </code-block>
-    <code-block :label="secondTabName" v-bind="{active: activeTab == 2 || undefined}">
+    <code-block :label="labelSecondTab" v-bind="{active: activeTab == 2 || undefined}">
 
       <div class="p-4 border-2 border-t-0 border-gray-700 rounded-b-md">
-        <slot name="secondTabContent" />
+        <slot name="contentSecondTab" />
       </div>
 
     </code-block>
@@ -20,11 +20,11 @@
 <script>
 export default {
   props: {
-    firstTabName: {
+    labelFirstTab: {
       type: String,
       default: 'Yarn'
     },
-    secondTabName: {
+    labelSecondTab: {
       type: String,
       default: 'NPM'
     },
@@ -45,10 +45,10 @@ export default {
     }
   },
   watch: {
-    firstTabName () {
+    labelFirstTab () {
       this.id += 1
     },
-    secondTabName () {
+    labelSecondTab () {
       this.id += 1
     },
     activeTab () {
