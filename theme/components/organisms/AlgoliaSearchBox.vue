@@ -1,5 +1,22 @@
 <template>
-  <div id="docsearch" />
+  <div id="docsearch">
+    <button type="button" class="DocSearch-Button" aria-label="Search">
+      <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+        <path
+          d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+          stroke="currentColor"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+
+      <span class="DocSearch-Button-Placeholder">Search</span>
+      <span class="DocSearch-Button-Key">⌘</span>
+      <span class="DocSearch-Button-Key">K</span>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -155,19 +172,20 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full ml-0 rounded-md bg-transparent border-0 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 ring-0 px-3 !important;
+  @apply w-full relative ml-0 rounded-md flex items-center bg-transparent border-0 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply px-3 !important;
+  @apply px-3 font-medium !important;
 }
 
 .DocSearch-Search-Icon {
   @apply text-current !important;
+  stroke-width: 1.6;
 }
 
 .DocSearch-Button-Key {
-  @apply bg-none border border-gray-300 dark:border-gray-700 shadow-none p-1 text-xs mr-px !important;
+  @apply bg-none font-medium -top-px relative rounded h-5 w-5 flex items-center justify-center border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-px !important;
 }
 
 @media (max-width: 750px) {
