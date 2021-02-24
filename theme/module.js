@@ -3,7 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
-import { generatePosition, generateSlug, isDraft } from './utils/document'
+import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -90,6 +90,8 @@ export default function docusModule () {
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
+
+    processDocumentInfo(document)
 
     document.slug = generateSlug(slug)
     document.position = position
