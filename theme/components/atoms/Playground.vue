@@ -1,5 +1,10 @@
 <template>
-  <div class="flex mb-4 border-gray-700 border-2 rounded-b-md">
+  <div class="md:flex flex-row-reverse mb-4 border-gray-700 border-2 rounded-b-md">
+    <div class="flex-1 relative p-4 text-sm  rounded-r-md" :class="wrapperClass">
+      <component :is="tag" v-bind="propsData">
+        <template v-for="slot in slots" :name="slot.name">{{ slotData[slot.name] }}</template>
+      </component>
+    </div>
     <div class="p-4 prose dark:prose-dark bg-gray-800">
       <div v-for="prop in props" :key="prop.name" class="mb-2">
         <div>
@@ -20,11 +25,6 @@
         </div>
         <input v-model="slotData[slot.name]" type="text" class="rounded-md text-gray-700 px-2 py-1 w-64 h-8" />
       </div>
-    </div>
-    <div class="flex-1 relative p-4 text-sm  rounded-r-md" :class="wrapperClass">
-      <component :is="tag" v-bind="propsData">
-        <template v-for="slot in slots" :name="slot.name">{{ slotData[slot.name] }}</template>
-      </component>
     </div>
   </div>
 </template>
