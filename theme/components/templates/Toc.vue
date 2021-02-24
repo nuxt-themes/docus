@@ -64,8 +64,11 @@ export default {
     const hash = window.location.hash.replace('#', '')
     const hashIndex = this.sections.findIndex(section => section.id === hash)
     if (hash && hashIndex >= 0) {
-      scrollTo(0, document.querySelector(location.hash).offsetTop - 110) // 110 is the deafult value for `top-margin-scroll` in tailwind prose
-      this.setActive(hashIndex)
+      const offset = document.querySelector(location.hash).offsetTop - 110 // 110 is the deafult value for `top-margin-scroll` in tailwind prose
+      this.$nextTick().then(() => {
+        scrollTo(0, offset)
+        this.setActive(hashIndex)
+      })
     } else {
       this.onScroll()
     }
