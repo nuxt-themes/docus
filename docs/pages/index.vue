@@ -7,8 +7,8 @@
         Documentation generator<br>based on Nuxt and Tailwind.
       </h1>
       <h3 class="mb-10 text-lg font-medium text-gray-800 sm:text-2xl sm:leading-10 sm:mb-11 dark:text-gray-200">
-        Write using with Markdown and Vue components, add style with TailwindCSS
-        and enjoy Nuxt power.
+        Write in markdown, use Vue components, add style with TailwindCSS
+        and enjoy the power of Nuxt.
       </h3>
       <div
         class="flex flex-wrap space-y-4 text-center sm:space-y-0 sm:space-x-4"
