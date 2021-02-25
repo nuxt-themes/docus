@@ -38,6 +38,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     methods: {
       async fetch () {
         await this.fetchSettings()
+        this.addThemeStyles()
         await Promise.all([
           this.fetchReleases(),
           this.fetchCategories()
@@ -145,6 +146,10 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.categories[app.i18n.locale] = groupBy(docs, 'category')
+      },
+
+      addThemeStyles () {
+        app.head.style.push({ hid: 'docus-theme', cssText: this.themeStyles, type: 'text/css' })
       }
     }
   })
