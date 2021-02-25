@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lg:flex lg:flex-1">
     <aside
       class="fixed inset-0 z-40 flex-none w-full h-full bg-black bg-opacity-25 lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
       :class="{ 'hidden': !$menu.open }"
