@@ -35,6 +35,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         try {
           colors = Object.entries(this.settings.colors).map(([key, color]) => [key, getColors(color)])
         } catch (e) {
+          // eslint-disable-next-line no-console
           console.warn('Could not parse custom colors:', e.message)
           colors = Object.entries(DEFAULT_THEME_COLORS).map(([key, color]) => [key, getColors(color)])
         }
