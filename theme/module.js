@@ -3,7 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
-import { generatePosition, generateSlug, isDraft } from './utils/document'
+import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -12,6 +12,16 @@ export default function docusModule () {
   // wait for nuxt options to be normalized
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
+
+  // read docus settings
+  const settingsPath = resolve(options.srcDir, 'content/settings.json')
+  try {
+    const docusSettings = require(settingsPath)
+
+    if (docusSettings.colors && docusSettings.colors.primary) {
+      options.meta.theme_color = docusSettings.colors.primary
+    }
+  } catch (err) { /* settings not found */ }
 
   // Inject content dir in private runtime config
   options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
@@ -99,6 +109,8 @@ export default function docusModule () {
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
+
+    processDocumentInfo(document)
 
     document.slug = generateSlug(slug)
     document.position = position
