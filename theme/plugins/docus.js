@@ -6,6 +6,11 @@ import { $fetch } from 'ohmyfetch/node'
 import { getColors } from 'theme-colors'
 import { compile } from '../utils/markdown'
 
+const DEFAULT_THEME_COLORS = {
+  primary: '#06B6D4',
+  code: '#8B5CF6'
+}
+
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
   const $docus = new Vue({
     data () {
@@ -26,7 +31,13 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         return this.releases && this.releases[0]
       },
       themeStyles () {
-        const colors = Object.entries(this.settings.colors).map(([key, color]) => [key, getColors(color)])
+        let colors
+        try {
+          colors = Object.entries(this.settings.colors).map(([key, color]) => [key, getColors(color)])
+        } catch (e) {
+          console.warn('Could not parse custom colors:', e.message)
+          colors = Object.entries(DEFAULT_THEME_COLORS).map(([key, color]) => [key, getColors(color)])
+        }
         const styles = colors.map(([color, map]) => {
           return Object.entries(map).map(([variant, value]) => {
             return `--${color}-${variant}: ${value};`
@@ -56,10 +67,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
             dir: '',
             releases: true
           },
-          colors: {
-            primary: '#06B6D4',
-            code: '#8B5CF6'
-          }
+          colors: DEFAULT_THEME_COLORS
         }
         const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
@@ -73,6 +81,10 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           settings.layout = 'readme'
         }
         this.settings = defu(settings, defaults)
+        // Update injected styles on HMR
+        if (process.dev && process.client) {
+          this.addThemeStyles()
+        }
       },
       async fetchReleases () {
         if (!this.settings.github && !this.settings.github.repo) {
@@ -145,6 +157,19 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.categories[app.i18n.locale] = groupBy(docs, 'category')
+      },
+
+      addThemeStyles () {
+        if (!Array.isArray(app.head.style)) {
+          app.head.style = []
+        }
+        // Avoid duplicates (seems vue-meta don't handle it for style)
+        app.head.style = app.head.style.filter(s => s.hid !== 'docus-theme')
+        app.head.style.push({
+          hid: 'docus-theme',
+          cssText: this.themeStyles,
+          type: 'text/css'
+        })
       }
     }
   })
@@ -165,6 +190,9 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       window.$nuxt.$on('content:update', () => $docus.fetch())
     })
   }
+
+  // Inject colors as css variables
+  $docus.addThemeStyles()
 
   inject('docus', $docus)
 }
