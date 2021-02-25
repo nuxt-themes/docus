@@ -38,6 +38,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     methods: {
       async fetch () {
         await this.fetchSettings()
+        // Server side and HMR
         this.addThemeStyles()
         await Promise.all([
           this.fetchReleases(),
@@ -169,6 +170,10 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     window.onNuxtReady(() => {
       window.$nuxt.$on('content:update', () => $docus.fetch())
     })
+  }
+
+  if (process.client) {
+    $docus.addThemeStyles()
   }
 
   inject('docus', $docus)
