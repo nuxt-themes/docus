@@ -6,7 +6,7 @@
       <div class="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
         <slot />
       </div>
-      </slot></div>
+    </div>
     <slot name="footer" />
   </div>
 </template>
