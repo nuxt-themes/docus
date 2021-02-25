@@ -150,6 +150,9 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       },
 
       addThemeStyles () {
+        if (!Array.isArray(app.head.style)) {
+          app.head.style = []
+        }
         app.head.style.push({ hid: 'docus-theme', cssText: this.themeStyles, type: 'text/css' })
       }
     }
