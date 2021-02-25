@@ -2,10 +2,7 @@
   <div class="sticky top-0 z-40 flex flex-none w-full mx-auto lg:z-50 max-w-8xl app-header" @click="scrollToTop">
     <div
       class="flex items-center flex-none pl-4 border-b border-gray-200 sm:pl-6 lg:ml-6 lg:pl-0 xl:ml-8 dark:border-gray-800"
-      :class="{
-        'lg:border-b-0 lg:w-60 xl:w-72': settings.layout === 'docs',
-        'lg:pr-6 xl:pr-8': settings.layout === 'readme'
-      }"
+      :class="aside ? 'lg:border-b-0 lg:w-60 xl:w-72' : 'lg:pr-6 xl:pr-8'"
     >
       <NuxtLink
         :to="localePath('/')"
@@ -71,6 +68,12 @@
 
 <script>
 export default {
+  props: {
+    aside: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     settings () {
       return this.$docus.settings

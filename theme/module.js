@@ -32,6 +32,15 @@ export default function docusModule () {
     addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
   })
 
+  // Add default error page if not defined
+  hook('build:before', async () => {
+    const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
+    const errorPageExists = await fs.stat(errorPagePath).catch(() => false)
+    if (!errorPageExists) {
+      options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
+    }
+  })
+
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
   hook('build:before', async () => {
     // To support older version of Nuxt
