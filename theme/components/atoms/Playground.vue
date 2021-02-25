@@ -1,5 +1,5 @@
 <template>
-  <div class="md:flex flex-row-reverse mb-4 border-gray-700 border-2 rounded-b-md">
+  <div class="md:flex flex-row-reverse mb-4 border-gray-700 border-2 rounded-md">
     <div class="flex-1 relative p-4 text-sm  rounded-r-md" :class="wrapperClass">
       <component :is="tag" v-bind="propsData">
         <template v-for="slot in slots" #[slot.name]>
@@ -9,7 +9,7 @@
         </template>
       </component>
     </div>
-    <div class="p-4 prose dark:prose-dark bg-gray-800">
+    <div class="p-4 prose dark:prose-dark bg-gray-800 rounded-b-md md:rounded-l-md md:rounded-b-none">
       <div v-for="prop in props" :key="prop.name" class="mb-2">
         <div>
           <span class="text-gray-100">{{ prop.name }}</span>
