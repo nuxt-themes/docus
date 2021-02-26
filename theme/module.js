@@ -4,6 +4,7 @@ import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
+import { fetchReleases, releasesMiddleware } from './utils/releases'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -13,13 +14,19 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  this.addServerMiddleware({ path: '/_docus/releases', handler: releasesMiddleware })
+
   // read docus settings
   const settingsPath = resolve(options.srcDir, 'content/settings.json')
   try {
-    const docusSettings = require(settingsPath)
-
-    if (docusSettings.colors && docusSettings.colors.primary) {
-      options.meta.theme_color = docusSettings.colors.primary
+    nuxt.$docus = require(settingsPath)
+    if (nuxt.$docus.github && nuxt.$docus.github.releases) {
+      hook('content:ready', ($content) => {
+        fetchReleases({ $content, $docus: nuxt.$docus, githubToken: options.privateRuntimeConfig.githubToken })
+      })
+    }
+    if (nuxt.$docus.colors && nuxt.$docus.colors.primary) {
+      options.meta.theme_color = nuxt.$docus.colors.primary
     }
   } catch (err) { /* settings not found */ }
 
@@ -132,7 +139,7 @@ export default function docusModule () {
     }
     if (!hasRoute('releases')) {
       routes.push({
-        path: '/',
+        path: '/releases',
         name: 'releases',
         component: r('pages/releases.vue')
       })

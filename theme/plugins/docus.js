@@ -2,9 +2,7 @@ import Vue from 'vue'
 import defu from 'defu'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'
-import { $fetch } from 'ohmyfetch/node'
 import { getColors } from 'theme-colors'
-import { compile } from '../utils/markdown'
 
 const DEFAULT_THEME_COLORS = {
   primary: '#06B6D4',
@@ -16,7 +14,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     data () {
       return nuxtState.docus || {
         categories: {},
-        releases: null,
         settings: null
       }
     },
@@ -26,9 +23,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       },
       previewUrl () {
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
-      },
-      lastRelease () {
-        return this.releases && this.releases[0]
       },
       themeStyles () {
         let colors
@@ -51,7 +45,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       async fetch () {
         await this.fetchSettings()
         await Promise.all([
-          this.fetchReleases(),
           this.fetchCategories()
         ])
       },
@@ -87,57 +80,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           this.addThemeStyles()
         }
       },
-      async fetchReleases () {
-        if (!this.settings.github && !this.settings.github.repo) {
-          return
-        }
-        if (!this.settings.github.releases) {
-          return
-        }
-        // If already has releases in dev (HMR, don't fetch again)
-        if (this.releases && this.releases.length) {
-          return
-        }
-        const { apiUrl, repo } = this.settings.github
-
-        const options = {}
-        if ($config.githubToken) {
-          options.headers = { Authorization: `token ${$config.githubToken}` }
-        }
-        const url = `${apiUrl}/${repo}/releases`
-        let releases = await $fetch(url, options).catch((err) => {
-          // eslint-disable-next-line no-console
-          console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
-          if (err.response.status === 403) {
-            // eslint-disable-next-line no-console
-            console.info('Make sure to provide GITHUB_TOKEN environment in `.env`')
-          } else {
-            // eslint-disable-next-line no-console
-            console.info('To disable fetching releases, set `github.releases` to `false` in `content/settings.json`')
-          }
-          return []
-        })
-        releases = releases.filter(r => !r.draft).map((release) => {
-          return {
-            name: (release.name || release.tag_name).replace('Release ', ''),
-            date: release.published_at,
-            body: compile(release.body)
-          }
-        })
-
-        const getMajorVersion = r => r.name && Number(r.name.substring(1, 2))
-        releases.sort((a, b) => {
-          const aMajorVersion = getMajorVersion(a)
-          const bMajorVersion = getMajorVersion(b)
-          if (aMajorVersion !== bMajorVersion) {
-            return bMajorVersion - aMajorVersion
-          }
-          return new Date(b.date) - new Date(a.date)
-        })
-
-        this.releases = []
-      },
-
       async fetchCategories () {
         // Avoid re-fetching in production
         if (process.dev === false && this.categories[app.i18n.locale]) {
@@ -154,7 +96,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           .sortBy('position', 'asc')
           .fetch()
 
-        if (this.lastRelease) {
+        if (this.settings.github.releases) {
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.categories[app.i18n.locale] = groupBy(docs, 'category')
