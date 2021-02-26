@@ -29,7 +29,7 @@
         <h2 class="mt-16 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">What’s included?</h2>
         <ul class="grid grid-cols-2 gap-4 font-semibold text-center text-gray-900 dark:text-gray-100 sm:grid-cols-3 xl:grid-cols-4 sm:gap-6 xl:gap-8">
           <li v-for="feature of features" :key="feature.title" class="flex">
-            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" to="/usage/content">
+            <NuxtLink class="relative w-full px-6 pt-8 pb-6 border-2 border-gray-100 rounded-xl dark:border-gray-800" :to="feature.url">
               <component :is="feature.icon" v-if="feature.icon" class="h-16 max-w-full mx-auto mb-3" />
               <h2>{{ feature.title }}</h2>
             </NuxtLink>
@@ -50,35 +50,43 @@ export default {
       features: [
         {
           icon: 'IconMarkdown',
-          title: 'Write Markdown'
+          title: 'Write Markdown',
+          url: '/usage/template'
         },
         {
           icon: 'IconVue',
-          title: 'Vue Components'
+          title: 'Vue Components',
+          url: '/usage/components'
         },
         {
           icon: 'IconNuxt',
-          title: 'Nuxt Architecture'
+          title: 'Nuxt Architecture',
+          url: '/get-started/configuration#nuxt'
         },
         {
           icon: 'IconTailwind',
-          title: 'Tailwind CSS'
+          title: 'Tailwind CSS',
+          url: '/get-started/configuration#tailwindcss'
         },
         {
           icon: 'IconSSG',
-          title: 'Static Generation'
+          title: 'Static Generation',
+          url: '/more/deployment'
         },
         {
           icon: 'IconLighthouse',
-          title: 'Lighthouse Optimised'
+          title: 'Lighthouse Optimised',
+          url: '/more/performances'
         },
         {
           icon: 'IconZap',
-          title: 'Smart Generation'
+          title: 'Smart Generation',
+          url: '/more/performances#smart-generation'
         },
         {
           icon: 'IconPuzzle',
-          title: 'Extensible'
+          title: 'Extensible',
+          url: '/usage/template'
         }
       ]
     }

@@ -221,9 +221,23 @@ module.exports = ({ nuxt }) => {
                 color: theme('colors.gray.400')
               },
               code: {
-                color: theme('colors.code.400')
+                fontWeight: '400',
+                backgroundColor: theme('colors.code.500'),
+                padding: theme('padding.1'),
+                borderWidth: 1,
+                borderColor: theme('colors.code.200'),
+                borderRadius: theme('borderRadius.default')
+              },
+              'code::before': {
+                content: ''
+              },
+              'code::after': {
+                content: ''
               },
               'pre code': {
+                backgroundColor: 'transparent',
+                borderColor: 'transparent',
+                borderWidth: 0,
                 color: theme('colors.gray.100')
               },
               'a code': {
