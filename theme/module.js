@@ -21,14 +21,17 @@ export default function docusModule () {
   const settingsPath = resolve(options.srcDir, 'content/settings.json')
   try {
     const userSettings = require(settingsPath)
-    nuxt.$docus = useDefaults(userSettings)
+    const $docus = useDefaults(userSettings)
 
     hook('content:ready', ($content) => {
-      fetchReleases({ $content, $docus: nuxt.$docus, config: options.privateRuntimeConfig })
+      fetchReleases({ $content, $docus, config: options.privateRuntimeConfig })
     })
 
-    if (nuxt.$docus.colors && nuxt.$docus.colors.primary) {
-      options.meta.theme_color = nuxt.$docus.colors.primary
+    // default title and description for pages
+    options.meta.name = `${$docus.title} - ${$docus.tagline}`
+    options.meta.description = $docus.description
+    if ($docus.colors && $docus.colors.primary) {
+      options.meta.theme_color = $docus.colors.primary
     }
   } catch (err) { /* settings not found */ }
 

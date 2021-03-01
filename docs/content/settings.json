@@ -1,5 +1,7 @@
 {
   "title": "Docus",
+  "tagline": "Documentation generator based on Nuxt and Tailwind.",
+  "description": "Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.",
   "url": "https://docus.dev",
   "twitter": "nuxt_js",
   "github": {
