@@ -21,6 +21,9 @@ export default function docusModule () {
     // default title and description for pages
     options.meta.name = `${docusSettings.title} - ${docusSettings.tagline}`
     options.meta.description = docusSettings.description
+    if (docusSettings.colors && docusSettings.colors.primary) {
+      options.meta.theme_color = docusSettings.colors.primary
+    }
   } catch (err) { /* settings not found */ }
 
   // Inject content dir in private runtime config
