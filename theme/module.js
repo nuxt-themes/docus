@@ -22,7 +22,7 @@ export default function docusModule () {
     nuxt.$docus = require(settingsPath)
     if (nuxt.$docus.github && nuxt.$docus.github.releases) {
       hook('content:ready', ($content) => {
-        fetchReleases({ $content, $docus: nuxt.$docus, githubToken: options.privateRuntimeConfig.githubToken })
+        fetchReleases({ $content, $docus: nuxt.$docus, config: options.privateRuntimeConfig })
       })
     }
     if (nuxt.$docus.colors && nuxt.$docus.colors.primary) {
@@ -166,4 +166,15 @@ export default function docusModule () {
   if (options.dev) {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
+
+  // Inject `internalUrl` into ssrContext
+  // Using `internalUrl` componets can request data from server-middlewares on server side
+  let internalUrl = ''
+  nuxt.hook('vue-renderer:context', (ssrContext) => {
+    ssrContext.internalUrl = internalUrl
+  })
+
+  nuxt.hook('listen', (_, listener) => {
+    internalUrl = `http://localhost:${listener.port}`
+  })
 }

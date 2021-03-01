@@ -1,23 +1,38 @@
 import { $fetch } from 'ohmyfetch/node'
 
-const releaseCache = {
-  releases: [],
-  lastCheck: null
+let releaseCache = []
+
+export async function fetchReleases ({ $content, $docus, config }) {
+  let releases = []
+
+  if ($docus.github && $docus.github.releases && $docus.github.repo) {
+    const { apiUrl, repo } = $docus.github
+    releases = await fetchGithubReleases({ apiUrl, repo, token: config.githubToken })
+  }
+
+  const compile = markdown => $content.database.markdown.toJSON(markdown)
+  releases = await Promise.all(releases.map(async (r) => {
+    r.body = await compile(r.body)
+    return r
+  }))
+
+  const getMajorVersion = r => r.name && Number(r.name.substring(1, 2))
+  releases.sort((a, b) => {
+    const aMajorVersion = getMajorVersion(a)
+    const bMajorVersion = getMajorVersion(b)
+    if (aMajorVersion !== bMajorVersion) {
+      return bMajorVersion - aMajorVersion
+    }
+    return new Date(b.date) - new Date(a.date)
+  })
+
+  releaseCache = releases
+  return releases
 }
 
-export async function fetchReleases ({ $content, $docus, githubToken }) {
-  if (!$docus.github && !$docus.github.repo) {
-    return []
-  }
-  if (!$docus.github.releases) {
-    return []
-  }
-
-  const { apiUrl, repo } = $docus.github
-
-  const options = {}
-  if (githubToken) {
-    options.headers = { Authorization: `token ${githubToken}` }
+export async function fetchGithubReleases ({ apiUrl, repo, token }) {
+  const options = {
+    headers: { Authorization: `token ${token}` }
   }
   const url = `${apiUrl}/${repo}/releases`
   let releases = await $fetch(url, options).catch((err) => {
@@ -32,32 +47,18 @@ export async function fetchReleases ({ $content, $docus, githubToken }) {
     }
     return []
   })
-  releases = releases.filter(r => !r.draft).map(async (release) => {
+  releases = releases.filter(r => !r.draft).map((release) => {
     return {
       name: (release.name || release.tag_name).replace('Release ', ''),
       date: release.published_at,
-      body: await $content.database.markdown.toJSON(release.body)
+      body: release.body
     }
   })
 
-  releases = await Promise.all(releases)
-
-  const getMajorVersion = r => r.name && Number(r.name.substring(1, 2))
-  releases.sort((a, b) => {
-    const aMajorVersion = getMajorVersion(a)
-    const bMajorVersion = getMajorVersion(b)
-    if (aMajorVersion !== bMajorVersion) {
-      return bMajorVersion - aMajorVersion
-    }
-    return new Date(b.date) - new Date(a.date)
-  })
-
-  releaseCache.releases = releases
-  releaseCache.lastCheck = Date.now()
   return releases
 }
 
 export function releasesMiddleware (req, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' })
-  res.end(JSON.stringify(releaseCache.releases))
+  res.end(JSON.stringify(releaseCache))
 }
