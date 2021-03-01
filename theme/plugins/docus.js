@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'
+import { $fetch } from 'ohmyfetch/node'
 import { useColors, useDefaults } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
@@ -8,6 +9,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     data () {
       return nuxtState.docus || {
         categories: {},
+        lastRelease: null,
         settings: null
       }
     },
@@ -32,7 +34,8 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       async fetch () {
         await this.fetchSettings()
         await Promise.all([
-          this.fetchCategories()
+          this.fetchCategories(),
+          this.fetchLastRelease()
         ])
       },
       async fetchSettings () {
@@ -73,6 +76,24 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.categories[app.i18n.locale] = groupBy(docs, 'category')
+      },
+
+      fetchReleases () {
+        if (process.dev === false && this.lastRelease) {
+          return
+        }
+        let baseURL = ''
+        if (process.server) {
+          baseURL = ssrContext.internalUrl
+        }
+        return $fetch(joinURL(baseURL, '/api/docus/releases'))
+      },
+
+      async fetchLastRelease () {
+        const [lastRelease] = await this.fetchReleases()
+        if (lastRelease) {
+          this.lastRelease = lastRelease.name
+        }
       },
 
       updateHead () {

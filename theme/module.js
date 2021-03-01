@@ -4,7 +4,7 @@ import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
-import { fetchReleases, releasesMiddleware } from './utils/releases'
+import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
@@ -15,23 +15,23 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
-  this.addServerMiddleware({ path: '/_docus/releases', handler: releasesMiddleware })
+  this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
   // read docus settings
   const settingsPath = resolve(options.srcDir, 'content/settings.json')
   try {
     const userSettings = require(settingsPath)
-    const $docus = useDefaults(userSettings)
+    const settings = useDefaults(userSettings)
 
     hook('content:ready', ($content) => {
-      fetchReleases({ $content, $docus, config: options.privateRuntimeConfig })
+      releases.fetch({ $content, settings })
     })
 
     // default title and description for pages
-    options.meta.name = `${$docus.title} - ${$docus.tagline}`
-    options.meta.description = $docus.description
-    if ($docus.colors && $docus.colors.primary) {
-      options.meta.theme_color = $docus.colors.primary
+    options.meta.name = `${settings.title} - ${settings.tagline}`
+    options.meta.description = settings.description
+    if (settings.colors && settings.colors.primary) {
+      options.meta.theme_color = settings.colors.primary
     }
   } catch (err) { /* settings not found */ }
 

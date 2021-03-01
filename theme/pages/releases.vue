@@ -5,7 +5,7 @@
         <span class="flex-1">Releases</span>
       </h1>
     </div>
-    <div class="max-w-none prose dark:prose-dark nuxt-content">
+    <div class="prose max-w-none dark:prose-dark nuxt-content">
       <div v-for="release of releases" :key="release.name">
         <h2 :id="release.name" class="flex items-center justify-between">
           <a :href="`#${release.name}`">
@@ -27,22 +27,14 @@
 </template>
 
 <script>
-import { $fetch } from 'ohmyfetch/node'
-import { joinURL } from 'ufo'
-
 export default {
   layout ({ $docus }) {
     return $docus.settings.layout
   },
-  async asyncData (context) {
-    let baseURL = ''
-    if (process.server) {
-      baseURL = context.ssrContext.internalUrl
-    }
-    const releases = await $fetch(joinURL(baseURL, '/_docus/releases'))
-    return {
-      releases
-    }
+  async asyncData ({ $docus }) {
+    const releases = await $docus.fetchReleases()
+
+    return { releases }
   },
   head () {
     return {
