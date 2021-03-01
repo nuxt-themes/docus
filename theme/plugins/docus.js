@@ -148,7 +148,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           fields.push('draft')
         }
         const docs = await $content({ deep: true })
-          .where({ language: app.i18n.locale, draft, menuTitle: { $ne: false } })
+          .where({ language: app.i18n.locale, draft, menu: { $ne: false } })
           .only(fields)
           .sortBy('position', 'asc')
           .fetch()
