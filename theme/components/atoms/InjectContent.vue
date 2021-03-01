@@ -8,7 +8,7 @@ export default {
     query: { type: String, required: true }
   },
   data: () => ({
-    page: []
+    page: {}
   }),
   async fetch () {
     this.page = await this.$content(this.query).fetch()
