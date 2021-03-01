@@ -31,8 +31,9 @@ export async function fetchReleases ({ $content, $docus, config }) {
 }
 
 export async function fetchGithubReleases ({ apiUrl, repo, token }) {
-  const options = {
-    headers: { Authorization: `token ${token}` }
+  const options = {}
+  if (token) {
+    options.headers = { Authorization: `token ${token}` }
   }
   const url = `${apiUrl}/${repo}/releases`
   let releases = await $fetch(url, options).catch((err) => {

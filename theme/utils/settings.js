@@ -14,7 +14,7 @@ const DEFAULT_SETTINGS = {
     repo: '',
     branch: '',
     url: 'https://github.com',
-    apiUrl: 'https://api.github.com',
+    apiUrl: 'https://api.github.com/repos',
     dir: '',
     releases: true
   },
