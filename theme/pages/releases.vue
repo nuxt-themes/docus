@@ -28,7 +28,6 @@
 
 <script>
 import { $fetch } from 'ohmyfetch/node'
-import getURL from 'requrl'
 import { joinURL } from 'ufo'
 
 export default {
@@ -38,7 +37,7 @@ export default {
   async asyncData (context) {
     let baseURL = ''
     if (process.server) {
-      baseURL = getURL(context.ssrContext.req)
+      baseURL = context.ssrContext.internalUrl
     }
     const releases = await $fetch(joinURL(baseURL, '/_docus/releases'))
     return {
