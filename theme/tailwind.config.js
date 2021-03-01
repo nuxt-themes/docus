@@ -40,18 +40,6 @@ module.exports = ({ nuxt }) => {
             700: 'var(--primary-700)',
             800: 'var(--primary-800)',
             900: 'var(--primary-900)'
-          },
-          code: {
-            50: 'var(--code-50)',
-            100: 'var(--code-100)',
-            200: 'var(--code-200)',
-            300: 'var(--code-300)',
-            400: 'var(--code-400)',
-            500: 'var(--code-500)',
-            600: 'var(--code-600)',
-            700: 'var(--code-700)',
-            800: 'var(--code-800)',
-            900: 'var(--code-900)'
           }
         },
         spacing: {
@@ -130,7 +118,16 @@ module.exports = ({ nuxt }) => {
               },
               code: {
                 fontWeight: '400',
-                color: theme('colors.code.500')
+                padding: theme('padding.1'),
+                color: 'inherit',
+                backgroundColor: theme('colors.gray.100'),
+                borderRadius: theme('borderRadius.md')
+              },
+              'code::before': {
+                content: ''
+              },
+              'code::after': {
+                content: ''
               },
               pre: {
                 backgroundColor: theme('colors.gray.800'),
@@ -138,6 +135,9 @@ module.exports = ({ nuxt }) => {
                 borderRadius: theme('borderRadius.md'),
                 marginTop: 0,
                 marginBottom: 0
+              },
+              'pre code': {
+                backgroundColor: 'transparent'
               },
               table: {
                 fontSize: theme('fontSize.sm')[0],
@@ -222,11 +222,9 @@ module.exports = ({ nuxt }) => {
               },
               code: {
                 fontWeight: '400',
-                backgroundColor: theme('colors.code.500'),
-                padding: theme('padding.1'),
-                borderWidth: 1,
-                borderColor: theme('colors.code.200'),
-                borderRadius: theme('borderRadius.default')
+                color: 'inherit',
+                backgroundColor: theme('colors.gray.800'),
+                borderRadius: theme('borderRadius.md')
               },
               'code::before': {
                 content: ''
@@ -236,8 +234,6 @@ module.exports = ({ nuxt }) => {
               },
               'pre code': {
                 backgroundColor: 'transparent',
-                borderColor: 'transparent',
-                borderWidth: 0,
                 color: theme('colors.gray.100')
               },
               'a code': {

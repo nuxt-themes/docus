@@ -7,8 +7,7 @@ import { getColors } from 'theme-colors'
 import { compile } from '../utils/markdown'
 
 const DEFAULT_THEME_COLORS = {
-  primary: '#06B6D4',
-  code: '#8B5CF6'
+  primary: '#06B6D4'
 }
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
