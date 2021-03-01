@@ -18,6 +18,9 @@ export default function docusModule () {
   try {
     const docusSettings = require(settingsPath)
 
+    // default title and description for pages
+    options.meta.name = `${docusSettings.title} - ${docusSettings.tagline}`
+    options.meta.description = docusSettings.description
     if (docusSettings.colors && docusSettings.colors.primary) {
       options.meta.theme_color = docusSettings.colors.primary
     }

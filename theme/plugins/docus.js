@@ -84,7 +84,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         this.settings = defu(settings, defaults)
         // Update injected styles on HMR
         if (process.dev && process.client) {
-          this.addThemeStyles()
+          this.updateHead()
         }
       },
       async fetchReleases () {
@@ -160,9 +160,12 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         this.categories[app.i18n.locale] = groupBy(docs, 'category')
       },
 
-      addThemeStyles () {
+      updateHead () {
         if (!Array.isArray(app.head.style)) {
           app.head.style = []
+        }
+        if (!Array.isArray(app.head.meta)) {
+          app.head.meta = []
         }
         // Avoid duplicates (seems vue-meta don't handle it for style)
         app.head.style = app.head.style.filter(s => s.hid !== 'docus-theme')
@@ -171,6 +174,11 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           cssText: this.themeStyles,
           type: 'text/css'
         })
+
+        app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
+        app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
+        app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
+        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
       }
     }
   })
@@ -192,8 +200,8 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     })
   }
 
-  // Inject colors as css variables
-  $docus.addThemeStyles()
+  // Update app head, Inject colors as css variables
+  $docus.updateHead()
 
   inject('docus', $docus)
 }
