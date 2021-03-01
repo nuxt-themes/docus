@@ -28,14 +28,19 @@
 
 <script>
 import { $fetch } from 'ohmyfetch/node'
+import getURL from 'requrl'
+import { joinURL } from 'ufo'
 
 export default {
   layout ({ $docus }) {
     return $docus.settings.layout
   },
-  async asyncData () {
-    // TODO: find loopback url
-    const releases = await $fetch('http://localhost:4000/_docus/releases')
+  async asyncData (context) {
+    let baseURL = ''
+    if (process.server) {
+      baseURL = getURL(context.ssrContext.req)
+    }
+    const releases = await $fetch(joinURL(baseURL, '/_docus/releases'))
     return {
       releases
     }
