@@ -79,17 +79,16 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       },
 
       fetchReleases () {
-        if (process.dev === false && this.lastRelease) {
-          return
-        }
-        let baseURL = ''
         if (process.server) {
-          baseURL = ssrContext.internalUrl
+          return ssrContext.docus.releases
         }
-        return $fetch(joinURL(baseURL, '/api/docus/releases'))
+        return $fetch('/api/docus/releases')
       },
 
       async fetchLastRelease () {
+        if (process.dev === false && this.lastRelease) {
+          return
+        }
         const [lastRelease] = await this.fetchReleases()
         if (lastRelease) {
           this.lastRelease = lastRelease.name

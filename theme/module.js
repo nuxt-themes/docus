@@ -172,15 +172,11 @@ export default function docusModule () {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
 
-  // Inject `internalUrl` into ssrContext
-  // Using `internalUrl` components can request data from server-middlewares on server side
-  // TODO: this could be removed when using $fetch with @nuxt/nitro
-  let internalUrl = ''
+  // Inject `docus` into ssrContext (for releases)
+  // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
   nuxt.hook('vue-renderer:context', (ssrContext) => {
-    ssrContext.internalUrl = internalUrl
-  })
-
-  nuxt.hook('listen', (_, listener) => {
-    internalUrl = `http://localhost:${listener.port}`
+    ssrContext.docus = {
+      releases: releases.get()
+    }
   })
 }

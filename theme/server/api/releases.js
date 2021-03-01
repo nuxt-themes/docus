@@ -2,6 +2,10 @@ import { $fetch } from 'ohmyfetch/node'
 
 let cachedReleases = []
 
+export function get () {
+  return cachedReleases
+}
+
 export async function fetch ({ $content, settings }) {
   let releases = []
 
