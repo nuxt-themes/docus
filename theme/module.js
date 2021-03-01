@@ -22,11 +22,11 @@ export default function docusModule () {
   try {
     const userSettings = require(settingsPath)
     nuxt.$docus = useDefaults(userSettings)
-    if (nuxt.$docus.github && nuxt.$docus.github.releases) {
-      hook('content:ready', ($content) => {
-        fetchReleases({ $content, $docus: nuxt.$docus, config: options.privateRuntimeConfig })
-      })
-    }
+
+    hook('content:ready', ($content) => {
+      fetchReleases({ $content, $docus: nuxt.$docus, config: options.privateRuntimeConfig })
+    })
+
     if (nuxt.$docus.colors && nuxt.$docus.colors.primary) {
       options.meta.theme_color = nuxt.$docus.colors.primary
     }
