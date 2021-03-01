@@ -1,13 +1,7 @@
 import Vue from 'vue'
-import defu from 'defu'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'
-import { getColors } from 'theme-colors'
-
-const DEFAULT_THEME_COLORS = {
-  primary: '#06B6D4',
-  code: '#8B5CF6'
-}
+import { useColors, useDefaults } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
   const $docus = new Vue({
@@ -25,14 +19,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
       },
       themeStyles () {
-        let colors
-        try {
-          colors = Object.entries(this.settings.colors).map(([key, color]) => [key, getColors(color)])
-        } catch (e) {
-          // eslint-disable-next-line no-console
-          console.warn('Could not parse custom colors:', e.message)
-          colors = Object.entries(DEFAULT_THEME_COLORS).map(([key, color]) => [key, getColors(color)])
-        }
+        const colors = useColors(this.settings.colors)
         const styles = colors.map(([color, map]) => {
           return Object.entries(map).map(([variant, value]) => {
             return `--${color}-${variant}: ${value};`
@@ -49,20 +36,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         ])
       },
       async fetchSettings () {
-        const defaults = {
-          title: 'Docus',
-          layout: 'docs',
-          url: '',
-          github: {
-            repo: '',
-            branch: '',
-            url: 'https://github.com',
-            apiUrl: 'https://api.github.com',
-            dir: '',
-            releases: true
-          },
-          colors: DEFAULT_THEME_COLORS
-        }
         const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
@@ -74,7 +47,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         if (settings.layout === 'single') {
           settings.layout = 'readme'
         }
-        this.settings = defu(settings, defaults)
+        this.settings = useDefaults(settings)
         // Update injected styles on HMR
         if (process.dev && process.client) {
           this.addThemeStyles()

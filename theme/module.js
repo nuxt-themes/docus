@@ -5,6 +5,7 @@ import gracefulFs from 'graceful-fs'
 import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import { fetchReleases, releasesMiddleware } from './utils/releases'
+import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -19,7 +20,8 @@ export default function docusModule () {
   // read docus settings
   const settingsPath = resolve(options.srcDir, 'content/settings.json')
   try {
-    nuxt.$docus = require(settingsPath)
+    const userSettings = require(settingsPath)
+    nuxt.$docus = useDefaults(userSettings)
     if (nuxt.$docus.github && nuxt.$docus.github.releases) {
       hook('content:ready', ($content) => {
         fetchReleases({ $content, $docus: nuxt.$docus, config: options.privateRuntimeConfig })

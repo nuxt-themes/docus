@@ -5,9 +5,7 @@
   "github": {
     "repo": "nuxtlabs/docus",
     "branch": "main",
-    "dir": "docs",
-    "apiUrl": "https://api.github.com/repos",
-    "releases": true
+    "dir": "docs"
   },
   "algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
