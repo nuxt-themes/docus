@@ -1,12 +1,13 @@
 {
   "title": "Docus",
+  "tagline": "Documentation generator based on Nuxt and Tailwind.",
+  "description": "Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.",
   "url": "https://docus.dev",
   "twitter": "nuxt_js",
   "github": {
     "repo": "nuxtlabs/docus",
     "branch": "main",
-    "dir": "docs",
-    "releases": false
+    "dir": "docs"
   },
   "algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
