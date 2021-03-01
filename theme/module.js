@@ -173,7 +173,8 @@ export default function docusModule () {
   }
 
   // Inject `internalUrl` into ssrContext
-  // Using `internalUrl` componets can request data from server-middlewares on server side
+  // Using `internalUrl` components can request data from server-middlewares on server side
+  // TODO: this could be removed when using $fetch with @nuxt/nitro
   let internalUrl = ''
   nuxt.hook('vue-renderer:context', (ssrContext) => {
     ssrContext.internalUrl = internalUrl

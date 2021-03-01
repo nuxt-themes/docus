@@ -39,10 +39,9 @@ export async function fetchGithubReleases ({ apiUrl, repo, token }) {
   let releases = await $fetch(url, options).catch((err) => {
     // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
-    if (err.response.status === 403) {
-      // eslint-disable-next-line no-console
-      console.info('Make sure to provide GITHUB_TOKEN environment in `.env`')
-    } else {
+    // eslint-disable-next-line no-console
+    console.info('Make sure to provide GITHUB_TOKEN environment in `.env`')
+    if (err.response.status !== 403) {
       // eslint-disable-next-line no-console
       console.info('To disable fetching releases, set `github.releases` to `false` in `content/settings.json`')
     }
