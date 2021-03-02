@@ -166,7 +166,6 @@ module.exports = ({ nuxt }) => {
               'blockquote p:last-of-type::after': {
                 content: ''
               }
-
             }
           },
           dark: {

@@ -118,8 +118,6 @@ export default {
     port: 4000
   },
   vite: {
-    vue: {
-      include: [/\.vue$/, /\.md$/]
-    }
+    vue: {}
   }
 }

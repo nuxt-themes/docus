@@ -176,6 +176,7 @@ export default function docusModule () {
   if (options.dev) {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
+
   // Inject `docus` into ssrContext (for releases)
   // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
   nuxt.hook('vue-renderer:context', (ssrContext) => {
