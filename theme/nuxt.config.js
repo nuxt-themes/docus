@@ -34,7 +34,7 @@ export default {
   ],
   buildModules: [
     themeModule,
-    '@nuxtjs/tailwindcss',
+    'nuxt-vite',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     '@nuxtjs/google-fonts'
@@ -55,6 +55,7 @@ export default {
     theme_color: '#06B6D4'
   },
   content: {
+    watch: false, // !! `true` incompatible with vite because of `require`
     markdown: {
       prism: {
         theme: ''
@@ -83,7 +84,7 @@ export default {
     }],
     defaultLocale: 'en',
     parsePages: false,
-    lazy: true,
+    lazy: false, // !! `true` incompatible with vite
     seo: false,
     vueI18n: {
       fallbackLocale: 'en',
@@ -115,5 +116,10 @@ export default {
   tailwindcss: {},
   server: {
     port: 4000
+  },
+  vite: {
+    vue: {
+      include: [/\.vue$/, /\.md$/]
+    }
   }
 }

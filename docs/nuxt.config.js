@@ -5,7 +5,7 @@ export default withDocus({
     liveEdit: false
   },
   buildModules: [
-    'vue-plausible'
+    // 'vue-plausible' // !! incompatible with vite
   ],
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration

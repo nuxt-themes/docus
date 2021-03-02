@@ -116,15 +116,13 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style>
 .app-header {
   backdrop-filter: blur(12px);
   background-color: hsla(0,0%,100%,.75);
 }
 
-.dark {
-  & .app-header {
-    background-color: rgba(17, 24, 39, 0.75);
-  }
+.dark .app-header {
+  background-color: rgba(17, 24, 39, 0.75);
 }
 </style>

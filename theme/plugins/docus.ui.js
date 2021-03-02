@@ -1,25 +1,25 @@
 import Vue from 'vue'
-import { reactive, watch } from 'vue-demi'
-import { createCookies } from '@vueuse/integrations'
+// import { reactive, watch } from 'vue-demi'
+// import vui from '@vueuse/integrations'
 import defu from 'defu'
 import DocusUI from '../components/dev-templates/DocusUI'
 
 const COOKIE_NAME = 'docus.ui'
 
 export default async function ({ $docus, ssrContext }) {
-  const useUniversalCookies = createCookies(ssrContext?.req)
-  const cookies = useUniversalCookies()
-  const ui = cookies.get(COOKIE_NAME) || {}
+  // const useUniversalCookies = vui.createCookies(ssrContext?.req)
+  // const cookies = useUniversalCookies()
+  // const ui = cookies.get(COOKIE_NAME) || {}
 
   // UI data (universal storage)
-  $docus.ui = reactive(defu(ui, {
+  $docus.ui = ({
     slots: false,
     draft: false
-  }))
-  if (process.client) {
-    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
-    watch(() => $docus.ui.draft, () => $docus.fetchCategories())
-  }
+  })
+  // if (process.client) {
+  //   watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
+  //   watch(() => $docus.ui.draft, () => $docus.fetchCategories())
+  // }
 
   // Mount DocusUI widget on client-side
   if (process.client) {

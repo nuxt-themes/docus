@@ -198,24 +198,22 @@ export default {
   display: inline !important;
 }
 
-.dark {
-  & .DocSearch {
-    --docsearch-primary-color: var(--color-primary-400);
-    --docsearch-text-color: var(--color-gray-300);
-    --docsearch-container-background: rgba(9,10,17,0.8);
-    --docsearch-modal-background: var(--color-gray-900);
-    --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40,0 3px 8px 0 #000309;
-    --docsearch-searchbox-background: var(--color-gray-800);
-    --docsearch-searchbox-focus-background: var(--color-gray-800);
-    --docsearch-hit-color: var(--color-gray-300);
-    --docsearch-hit-shadow: none;
-    --docsearch-hit-background: var(--color-gray-800);
-    --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
-    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
-    --docsearch-footer-background: var(--color-gray-800);
-    --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73,76,106,0.5),0 -4px 8px 0 rgba(0,0,0,0.2);
-    --docsearch-logo-color: #fff;
-    --docsearch-muted-color: var(--color-gray-500);
-  }
+.dark .DocSearch {
+  --docsearch-primary-color: var(--color-primary-400);
+  --docsearch-text-color: var(--color-gray-300);
+  --docsearch-container-background: rgba(9,10,17,0.8);
+  --docsearch-modal-background: var(--color-gray-900);
+  --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40,0 3px 8px 0 #000309;
+  --docsearch-searchbox-background: var(--color-gray-800);
+  --docsearch-searchbox-focus-background: var(--color-gray-800);
+  --docsearch-hit-color: var(--color-gray-300);
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: var(--color-gray-800);
+  --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
+  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
+  --docsearch-footer-background: var(--color-gray-800);
+  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73,76,106,0.5),0 -4px 8px 0 rgba(0,0,0,0.2);
+  --docsearch-logo-color: #fff;
+  --docsearch-muted-color: var(--color-gray-500);
 }
 </style>
