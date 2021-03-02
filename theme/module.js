@@ -1,7 +1,8 @@
 import { resolve, join, relative } from 'path'
+import defu from 'defu'
 import gracefulFs from 'graceful-fs'
-import WindiCSS from 'vite-plugin-windicss'
 
+import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
@@ -13,27 +14,6 @@ export default function docusModule () {
   // wait for nuxt options to be normalized
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
-
-  // register windicss
-  options.vite.plugins = Array.isArray(options.vite.plugins) ? options.vite.plugins : []
-  options.vite.plugins.push(
-    WindiCSS({
-      preflight: true,
-      config: r('./tailwind.config.js'),
-      scan: {
-        fileExtensions: ['html', 'vue', 'md'],
-        dirs: [
-          resolve(options.srcDir, 'content'),
-          resolve(options.srcDir, 'components'),
-          resolve('./docs/components'),
-          r('./'),
-          r('./components'),
-          r('./plugins'),
-          r('./layouts')
-        ]
-      }
-    })
-  )
 
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
@@ -188,7 +168,10 @@ export default function docusModule () {
   if (options.dev) {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
-
+  // Configure TailwindCSS
+  hook('tailwindcss:config', function (defaultTailwindConfig) {
+    Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
+  })
   // Inject `docus` into ssrContext (for releases)
   // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
   nuxt.hook('vue-renderer:context', (ssrContext) => {

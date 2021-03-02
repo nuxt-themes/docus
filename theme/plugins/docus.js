@@ -1,4 +1,3 @@
-import 'windi.css'
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'

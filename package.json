@@ -23,16 +23,22 @@
     "@nuxtjs/color-mode": "^2.0.3",
     "@nuxtjs/google-fonts": "1.2.0",
     "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/typography": "^0.4.0",
     "@vue/composition-api": "^1.0.0-rc.2",
     "@vueuse/integrations": "^4.2.1",
     "clipboard": "^2.0.6",
     "defu": "^3.2.2",
     "lodash.groupby": "^4.6.0",
     "nuxt-i18n": "^6.20.0",
-    "nuxt-vite": "^0.0.21",
+    "nuxt-vite": "^0.0.28",
     "ohmyfetch": "^0.1.6",
+    "postcss": "^7",
     "prism-themes": "^1.5.0",
     "static-tweets": "^0.2.7",
+    "tailwind-css-variables": "^2.0.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "theme-colors": "^0.0.5",
     "ufo": "^0.6.7",
     "universal-cookie": "^4.0.4"
@@ -40,11 +46,11 @@
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxtjs/eslint-config": "^5.0.0",
+    "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
     "nuxt": "^2.15.2",
     "standard-version": "^9.1.0",
-    "vite-plugin-windicss": "^0.6.2",
     "vue-plausible": "^1.1.3"
   }
 }
