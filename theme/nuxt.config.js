@@ -55,7 +55,6 @@ export default {
     theme_color: '#06B6D4'
   },
   content: {
-    watch: false, // !! `true` incompatible with vite because of `require`
     markdown: {
       prism: {
         theme: ''
