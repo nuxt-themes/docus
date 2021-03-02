@@ -15,12 +15,13 @@ export default function docusModule () {
   const { options, hook } = this.nuxt
 
   // register windicss
-  options.vite.plugins = Array.isArray(options.vite.plugins) || []
+  options.vite.plugins = Array.isArray(options.vite.plugins) ? options.vite.plugins : []
   options.vite.plugins.push(
     WindiCSS({
       preflight: true,
       config: r('./tailwind.config.js'),
       scan: {
+        fileExtensions: ['html', 'vue', 'md'],
         dirs: [
           resolve(options.srcDir, 'content'),
           resolve(options.srcDir, 'components'),
