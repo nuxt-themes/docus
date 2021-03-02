@@ -15,6 +15,11 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  // Disable SSR in dev
+  if (options.dev) {
+    options.ssr = false
+  }
+
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
   // read docus settings
