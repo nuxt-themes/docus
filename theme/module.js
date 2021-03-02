@@ -14,6 +14,11 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  // Disable SSR in dev
+  if (options.dev) {
+    options.ssr = false
+  }
+
   // register windicss
   options.vite.plugins = Array.isArray(options.vite.plugins) ? options.vite.plugins : []
   options.vite.plugins.push(
