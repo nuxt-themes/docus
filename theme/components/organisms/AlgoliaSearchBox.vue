@@ -1,5 +1,6 @@
 <template>
-  <div id="docsearch">
+  <div id="docsearch" >
+    <!-- DO NOT CHANGE: this code is just a placeholder -->
     <button type="button" class="DocSearch-Button" aria-label="Search">
       <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
         <path
@@ -172,11 +173,11 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full relative ml-0 rounded-md flex items-center bg-transparent border-0 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
+  @apply w-full h-12 relative ml-0 rounded-md flex items-center bg-transparent md:bg-gray-100 md:dark:bg-gray-800 border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 md:hover:bg-gray-50 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply px-3 font-medium !important;
+  @apply hidden md:inline-block px-3 font-medium !important;
 }
 
 .DocSearch-Search-Icon {
@@ -185,13 +186,7 @@ export default {
 }
 
 .DocSearch-Button-Key {
-  @apply bg-none font-medium -top-px relative rounded h-5 w-5 flex items-center justify-center border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-px !important;
-}
-
-@media (max-width: 750px) {
-  .DocSearch-Button-Placeholder {
-      display: flex !important;
-  }
+  @apply hidden md:flex bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5	 !important;
 }
 
 .DocSearch-Screen-Icon > svg {

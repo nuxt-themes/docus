@@ -1,67 +1,71 @@
 <template>
-  <div class="sticky top-0 z-40 flex flex-none w-full mx-auto lg:z-50 max-w-8xl app-header" @click="scrollToTop">
-    <div
-      class="flex items-center flex-none pl-4 border-b border-gray-200 sm:pl-6 lg:ml-6 lg:pl-0 xl:ml-8 dark:border-gray-800"
-      :class="aside ? 'lg:border-b-0 lg:w-60 xl:w-72' : 'lg:pr-6 xl:pr-8'"
-    >
-      <NuxtLink
-        :to="localePath('/')"
-        class="w-auto overflow-hidden"
-        :aria-label="settings.title"
+  <div class="sticky top-0 z-40 w-full px-4 border-b border-gray-100 lg:z-50 app-header dark:border-gray-800" @click="scrollToTop">
+    <div class="flex flex-none mx-auto max-w-8xl">
+
+      <div 
+        class="flex items-center flex-none lg:w-60 xl:w-72"
       >
-        <span v-if="logo" class="sr-only">{{ settings.title }}</span>
-        <span v-if="!logo" class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ settings.title }}</span>
-
-        <img
-          v-if="logo"
-          :src="logo.light"
-          class="w-auto h-8 light-img"
-          :alt="settings.title"
-        />
-        <img v-if="logo" :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
-      </NuxtLink>
-    </div>
-    <div
-      class="flex items-center justify-between flex-auto px-4 space-x-6 border-b border-gray-200 dark:border-gray-800 h-18 sm:px-6 lg:mr-6 lg:px-0 xl:mr-8"
-    >
-      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" />
-
-      <div class="flex items-center space-x-4">
         <NuxtLink
-          v-if="lastRelease"
-          :to="localePath('/releases')"
-          class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
-          exact-active-class="text-primary-500 dark:text-primary-400"
-        >{{ lastRelease.name }}</NuxtLink>
-
-        <LangSwitcher />
-
-        <ColorSwitcher />
-
-        <a
-          v-if="settings.twitter"
-          :href="`https://twitter.com/${settings.twitter}`"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Twitter"
-          name="Twitter"
-          class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+          :to="localePath('/')"
+          class="w-auto overflow-hidden"
+          :aria-label="settings.title"
         >
-          <IconTwitter class="w-5 h-5" />
-        </a>
+          <span v-if="logo" class="sr-only">{{ settings.title }}</span>
+          <span v-if="!logo" class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ settings.title }}</span>
 
-        <a
-          v-if="settings.github.repo"
-          :href="$docus.repoUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Github"
-          name="Github"
-          class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-        >
-          <IconGithub class="w-5 h-5" />
-        </a>
+          <img
+            v-if="logo"
+            :src="logo.light"
+            class="w-auto h-8 light-img"
+            :alt="settings.title"
+          />
+          <img v-if="logo" :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
+        </NuxtLink>
       </div>
+
+      <div
+        class="flex items-center justify-end flex-auto h-18 "
+      >
+        <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="md:flex-1 md:px-4 lg:px-2"/>
+
+        <div class="flex items-center justify-end space-x-2 md:space-x-4 lg:w-64">
+          <NuxtLink
+            v-if="lastRelease"
+            :to="localePath('/releases')"
+            class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
+            exact-active-class="text-primary-500 dark:text-primary-400"
+          >{{ lastRelease.name }}</NuxtLink>
+
+          <LangSwitcher />
+
+          <ColorSwitcher />
+
+          <a
+            v-if="settings.twitter"
+            :href="`https://twitter.com/${settings.twitter}`"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Twitter"
+            name="Twitter"
+            class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+          >
+            <IconTwitter class="w-4 h-4 md:w-5 md:h-5" />
+          </a>
+
+          <a
+            v-if="settings.github.repo"
+            :href="$docus.repoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Github"
+            name="Github"
+            class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+          >
+            <IconGithub class="w-4 h-4 md:w-5 md:h-5" />
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -118,7 +122,7 @@ export default {
 <style lang="postcss">
 .app-header {
   backdrop-filter: blur(12px);
-  background-color: hsla(0,0%,100%,.75);
+  background-color: hsla(0,0%,100%,.9);
 }
 
 .dark {
