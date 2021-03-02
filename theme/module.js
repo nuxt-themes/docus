@@ -166,17 +166,16 @@ export default function docusModule () {
   if (options.dev) {
     options.css.push(r('assets/css/main.dev.css'))
   }
-
+  // Configure TailwindCSS
+  hook('tailwindcss:config', function (defaultTailwindConfig) {
+    Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
+  })
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
   // Docus Devtools
   if (options.dev) {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
-  // Configure TailwindCSS
-  hook('tailwindcss:config', function (defaultTailwindConfig) {
-    Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
-  })
   // Inject `docus` into ssrContext (for releases)
   // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
   nuxt.hook('vue-renderer:context', (ssrContext) => {
