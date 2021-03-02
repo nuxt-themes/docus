@@ -19,7 +19,7 @@
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
-    "@nuxt/content": "^1.13.1",
+    "@nuxt/content": "^1.14.0",
     "@nuxtjs/color-mode": "^2.0.3",
     "@nuxtjs/google-fonts": "1.2.0",
     "@nuxtjs/pwa": "^3.3.5",
@@ -45,6 +45,6 @@
     "nuxt": "^2.15.2",
     "standard-version": "^9.1.0",
     "vite-plugin-windicss": "^0.6.2",
-    "vue-plausible": "^1.1.2"
+    "vue-plausible": "^1.1.3"
   }
 }
