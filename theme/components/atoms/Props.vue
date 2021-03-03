@@ -42,18 +42,30 @@ export default {
       type: Object,
       default: () => ({})
     },
+    /**
+     * Toggle required column.
+     */
     required: {
       type: Boolean,
       default: undefined
     },
+    /**
+     * Toggle values column.
+     */
     values: {
       type: Boolean,
       default: undefined
     },
+    /**
+     * Toggle description column.
+     */
     description: {
       type: Boolean,
       default: undefined
     },
+    /**
+     * Toglle default column.
+     */
     defaultValue: {
       type: Boolean,
       default: undefined
