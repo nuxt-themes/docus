@@ -1,10 +1,11 @@
+const hasha = require('hasha')
 const propsHandler = require('./tag-handlers/props')
 
 const handlers = [
   ['props', propsHandler]
 ]
 
-async function enrichTag (node, tag, handler) {
+async function enrichTag (node, tag, handler, documentData) {
   if (node.type === 'html' || (node.children && node.children[0] && node.children[0].type === 'html')) {
     const TAG_REGEX = new RegExp(`\\s*<${tag}\\s+`, 'i')
     let _node
@@ -16,17 +17,19 @@ async function enrichTag (node, tag, handler) {
     }
     if (_node) {
       const data = await handler(_node)
-      _node.value = _node.value.replace(TAG_REGEX, `<${tag} data="${encodeURI(JSON.stringify(data))}" `)
+      const dataKey = `docus_${tag}_${hasha(JSON.stringify(data)).substr(0, 8)}`
+      documentData[dataKey] = data
+      _node.value = _node.value.replace(TAG_REGEX, `<${tag} :data="${dataKey}" `)
     }
   }
   return node
 }
 
 module.exports = () => {
-  return async (tree, file) => {
+  return async (tree, { data }) => {
     const modified = tree.children.map(async (node, i) => {
       return await handlers.reduce(async (node, [tag, handler]) => {
-        return await enrichTag(node, tag, handler)
+        return await enrichTag(node, tag, handler, data)
       }, node)
     })
     tree.children = (await Promise.all(modified)).flat()

@@ -39,8 +39,8 @@ export default {
      * @ignore
      */
     data: {
-      type: String,
-      default: '{}'
+      type: Object,
+      default: () => ({})
     },
     required: {
       type: Boolean,
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     component () {
-      return JSON.parse(decodeURI(this.data))
+      return this.data
     },
     props () {
       // hide ignored properties
