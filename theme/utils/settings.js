@@ -8,6 +8,8 @@ const DEFAULT_THEME_COLORS = {
 
 const DEFAULT_SETTINGS = {
   title: 'Docus',
+  tagline: '',
+  description: '',
   layout: 'docs',
   url: '',
   github: {

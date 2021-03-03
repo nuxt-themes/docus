@@ -28,7 +28,7 @@ export default function docusModule () {
     })
 
     // default title and description for pages
-    options.meta.name = `${settings.title} - ${settings.tagline}`
+    options.meta.name = settings.tagline ? `${settings.title} - ${settings.tagline}` : settings.title
     options.meta.description = settings.description
     if (settings.colors && settings.colors.primary) {
       options.meta.theme_color = settings.colors.primary
