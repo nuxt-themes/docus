@@ -2,7 +2,7 @@
   <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block">
     <TocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
-      <h5 class="flex items-center mb-3">
+      <h5 class="flex items-center mb-1">
         <svg class="w-5 h-5 mr-2 text-gray-400" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg>
         <span class="text-sm font-semibold text-gray-600 uppercase dark:text-gray-100 lg:text-xs">{{ $t('toc.title') }}</span>
       </h5>

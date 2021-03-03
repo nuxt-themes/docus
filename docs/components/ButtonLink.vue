@@ -1,6 +1,10 @@
 <template>
-  <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="size"><slot /></NuxtLink>
-  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot /></a>
+  <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="size"
+    ><slot
+  /></NuxtLink>
+  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"
+    ><slot
+  /></a>
 </template>
 
 <script>
@@ -8,7 +12,7 @@ export default {
   props: {
     href: {
       type: String,
-      default: ''
+      default: ""
     },
     blank: {
       type: Boolean,
@@ -16,26 +20,26 @@ export default {
     },
     size: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   computed: {
-    isInternal () {
-      return this.href.startsWith('/') && this.href.startsWith('//') === false
+    isInternal() {
+      return this.href.startsWith("/") && this.href.startsWith("//") === false;
     },
-    linkAttrs () {
+    linkAttrs() {
       if (this.blank) {
-        return { rel: 'noopener', target: '_blank' }
+        return { rel: "noopener", target: "_blank" };
       }
-      return {}
+      return {};
     }
   }
-}
+};
 </script>
 
 <style lang="postcss">
 a.button-link {
-  @apply flex-none w-full px-4 py-2.5 leading-4 text-base font-semibold text-white transition-colors duration-200 border border-transparent bg-primary-500 sm:w-auto hover:bg-primary-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none;
+  @apply inline-flex flex-none px-4 py-2.5 leading-4 text-base font-semibold text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none;
   &.large {
     @apply px-6 py-3 leading-6 text-lg rounded-md;
   }
