@@ -172,6 +172,19 @@ export default {
   --docsearch-muted-color: var(--color-gray-500);
 }
 
+.DocSearch-Container {
+  @apply p-4;
+  backdrop-filter: blur(8px);
+}
+
+.DocSearch-Modal {
+  @apply h-auto rounded overflow-hidden !important;
+}
+
+.DocSearch-Footer {
+  @apply relative !important;
+}
+
 .DocSearch-Button {
   @apply w-full h-12 relative ml-0 rounded-md flex items-center bg-transparent md:bg-gray-100 md:dark:bg-gray-800 border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 md:hover:bg-gray-50 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
 }
@@ -181,7 +194,7 @@ export default {
 }
 
 .DocSearch-Search-Icon {
-  @apply text-current !important;
+  @apply text-current w-4 h-4 md:w-5 md:h-5 text-gray-400 !important;
   stroke-width: 1.6;
 }
 

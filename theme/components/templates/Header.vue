@@ -28,7 +28,7 @@
       >
         <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="md:flex-1 md:px-4 lg:px-2"/>
 
-        <div class="flex items-center justify-end space-x-2 md:space-x-4 lg:w-64">
+        <div class="flex items-center justify-end space-x-2 md:space-x-4 xl:w-64">
           <NuxtLink
             v-if="lastRelease"
             :to="localePath('/releases')"
