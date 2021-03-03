@@ -1,19 +1,10 @@
 import defu from 'defu'
 import nuxtConfig from './nuxt.config'
 
-const defaultConfig = docusOptions => nuxtConfig(docusOptions)
-
 export function withDocus (userConfig) {
-  userConfig.docus = defu(userConfig.docus, {
-    colors: {
-      primary: '#06B6D4',
-      code: '#8B5CF6'
-    }
-  })
-
   const config = defu.arrayFn(
     userConfig,
-    defaultConfig(userConfig.docus)
+    nuxtConfig
   )
 
   if (userConfig.env && userConfig.env.GITHUB_TOKEN) {

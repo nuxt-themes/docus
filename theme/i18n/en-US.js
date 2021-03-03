@@ -1,4 +1,5 @@
 export default {
+  documentation: 'Documentation',
   search: {
     placeholder: 'Search the docs (Press "/" to focus)'
   },

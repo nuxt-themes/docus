@@ -7,7 +7,6 @@
 const path = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
-const { getColors } = require('theme-colors')
 
 module.exports = ({ nuxt }) => {
   return {
@@ -30,8 +29,18 @@ module.exports = ({ nuxt }) => {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
         colors: {
-          primary: getColors(nuxt.options.docus.colors.primary),
-          code: getColors(nuxt.options.docus.colors.code)
+          primary: {
+            50: 'var(--primary-50)',
+            100: 'var(--primary-100)',
+            200: 'var(--primary-200)',
+            300: 'var(--primary-300)',
+            400: 'var(--primary-400)',
+            500: 'var(--primary-500)',
+            600: 'var(--primary-600)',
+            700: 'var(--primary-700)',
+            800: 'var(--primary-800)',
+            900: 'var(--primary-900)'
+          }
         },
         spacing: {
           18: '4.5rem'
@@ -86,12 +95,12 @@ module.exports = ({ nuxt }) => {
                 }
               },
               a: {
-                color: theme('colors.primary.500'),
+                color: 'var(--primary-500)',
                 fontWeight: theme('fontWeight.medium'),
                 textDecoration: 'none',
                 '&:hover': {
                   borderBottomWidth: 2,
-                  borderBottomColor: theme('colors.primary.500'),
+                  borderBottomColor: 'var(--primary-500)',
                   paddingBottom: '1px'
                 }
               },
@@ -109,7 +118,16 @@ module.exports = ({ nuxt }) => {
               },
               code: {
                 fontWeight: '400',
-                color: theme('colors.code.500')
+                padding: theme('padding.1'),
+                color: 'inherit',
+                backgroundColor: theme('colors.gray.100'),
+                borderRadius: theme('borderRadius.md')
+              },
+              'code::before': {
+                content: ''
+              },
+              'code::after': {
+                content: ''
               },
               pre: {
                 backgroundColor: theme('colors.gray.800'),
@@ -117,6 +135,9 @@ module.exports = ({ nuxt }) => {
                 borderRadius: theme('borderRadius.md'),
                 marginTop: 0,
                 marginBottom: 0
+              },
+              'pre code': {
+                backgroundColor: 'transparent'
               },
               table: {
                 fontSize: theme('fontSize.sm')[0],
@@ -154,7 +175,7 @@ module.exports = ({ nuxt }) => {
                 color: theme('colors.gray.100')
               },
               a: {
-                color: theme('colors.primary.400')
+                color: 'var(--primary-400)'
               },
               'ol > li::before': {
                 color: theme('colors.gray.400')
@@ -200,9 +221,19 @@ module.exports = ({ nuxt }) => {
                 color: theme('colors.gray.400')
               },
               code: {
-                color: theme('colors.code.400')
+                fontWeight: '400',
+                color: 'inherit',
+                backgroundColor: theme('colors.gray.800'),
+                borderRadius: theme('borderRadius.md')
+              },
+              'code::before': {
+                content: ''
+              },
+              'code::after': {
+                content: ''
               },
               'pre code': {
+                backgroundColor: 'transparent',
                 color: theme('colors.gray.100')
               },
               'a code': {
@@ -262,8 +293,8 @@ module.exports = ({ nuxt }) => {
       // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
       enabled: process.env.NODE_ENV === 'production',
       content: [
-        path.join(nuxt.options.rootDir, 'content/**/*.md'),
-        path.join(nuxt.options.rootDir, 'components/**/*.vue'),
+        path.join(nuxt.options.srcDir, 'content/**/*.md'),
+        path.join(nuxt.options.srcDir, 'components/**/*.vue'),
         path.join(nuxt.options.rootDir, 'nuxt.config.js'),
         path.join(__dirname, 'components/**/*.vue'),
         path.join(__dirname, 'layouts/**/*.vue'),

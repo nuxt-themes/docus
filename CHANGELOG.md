@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/nuxtlabs/docus/compare/v0.0.8...v0.0.9) (2021-02-25)
+
+
+### Features
+
+* color settings ([#92](https://github.com/nuxtlabs/docus/issues/92)) ([57af79d](https://github.com/nuxtlabs/docus/commit/57af79dd5a56e3fc134c75366e384c5cb7134b8d))
+* detect title and description of document ([#98](https://github.com/nuxtlabs/docus/issues/98)) ([d0ff5c9](https://github.com/nuxtlabs/docus/commit/d0ff5c986e0061f5a0a906be0ba9ef8904122f77))
+* draft ([#91](https://github.com/nuxtlabs/docus/issues/91)) ([2d3d5be](https://github.com/nuxtlabs/docus/commit/2d3d5be26a17677c0f9d5d2215eefe5d090a998a))
+* **slots:** support customizable slots ([#85](https://github.com/nuxtlabs/docus/issues/85)) ([fb46de3](https://github.com/nuxtlabs/docus/commit/fb46de3812985301749e13cd671ca90f6fc1645e))
+* optional default language directory ([#68](https://github.com/nuxtlabs/docus/issues/68)) ([7bcd794](https://github.com/nuxtlabs/docus/commit/7bcd79441bbc3fb77256330cf7c1e925d068d52a))
+* theme refactoring ([#73](https://github.com/nuxtlabs/docus/issues/73)) ([60e86b2](https://github.com/nuxtlabs/docus/commit/60e86b2b373ba03cb4eead7cf718263948ca5762))
+* twitter card ([#80](https://github.com/nuxtlabs/docus/issues/80)) ([060361b](https://github.com/nuxtlabs/docus/commit/060361b134ed5981ab2c714f3ef6a322854df1af))
+* **theme:** inject content dir option in config for "Edit on GitHub" link ([6d2ddfd](https://github.com/nuxtlabs/docus/commit/6d2ddfd1650f15e991b8acf9f8376747275ea817))
+
+
+### Bug Fixes
+
+* move theme style into Docus plugin ([#101](https://github.com/nuxtlabs/docus/issues/101)) ([615da9c](https://github.com/nuxtlabs/docus/commit/615da9c05188e0b62fef7e0ee0eda830e9db87aa))
+* **anchor-scroll:** scroll inside `nextTick` ([#99](https://github.com/nuxtlabs/docus/issues/99)) ([c516288](https://github.com/nuxtlabs/docus/commit/c516288a048a417c87e2e2b8445ef490d895afd0))
+* add spacing for table ([5280262](https://github.com/nuxtlabs/docus/commit/5280262e0fc2c4c2d5acc5166fc34c07a384b9c1))
+* **theme:** overflow on prev/next links ([fcc5260](https://github.com/nuxtlabs/docus/commit/fcc52605c1eb56e34c21b715804e07605e1797bb))
+* **theme:** padding on sidebar in lg screen ([7200194](https://github.com/nuxtlabs/docus/commit/7200194cb1d9bf781705d71403c69c09c548158f))
+* **theme:** version badge on nav display ([bb46c29](https://github.com/nuxtlabs/docus/commit/bb46c2942f666e572abdd5488b439c706daa2ea0))
+* **TOC:** scroll to currect position when `location.hash` locating a header ([#69](https://github.com/nuxtlabs/docus/issues/69)) ([e37c4f3](https://github.com/nuxtlabs/docus/commit/e37c4f323ffecca8c1e340d2e1948971908b69cb))
+* backward support position ([2f81f49](https://github.com/nuxtlabs/docus/commit/2f81f490db826640fec173ba982fe091109325ac))
+* detect active and exact active link ([#64](https://github.com/nuxtlabs/docus/issues/64)) ([44ba5f8](https://github.com/nuxtlabs/docus/commit/44ba5f8a42c3b07503ad61d5a3a12bc8ee324ee0))
+* don't generate position to non-markdown files ([c4980c2](https://github.com/nuxtlabs/docus/commit/c4980c29ab0361328e6079e1f5d03070e727da3d))
+
 ### [0.0.8](https://github.com/nuxtlabs/docus/compare/v0.0.7...v0.0.8) (2021-02-15)
 
 

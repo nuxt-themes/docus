@@ -3,7 +3,9 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
-import { generatePosition, generateSlug } from './utils/document'
+import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
+import * as releases from './server/api/releases'
+import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -13,6 +15,26 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
+
+  // read docus settings
+  const settingsPath = resolve(options.srcDir, 'content/settings.json')
+  try {
+    const userSettings = require(settingsPath)
+    const settings = useDefaults(userSettings)
+
+    hook('content:ready', ($content) => {
+      releases.fetch({ $content, settings })
+    })
+
+    // default title and description for pages
+    options.meta.name = `${settings.title} - ${settings.tagline}`
+    options.meta.description = settings.description
+    if (settings.colors && settings.colors.primary) {
+      options.meta.theme_color = settings.colors.primary
+    }
+  } catch (err) { /* settings not found */ }
+
   // Inject content dir in private runtime config
   options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
 
@@ -20,6 +42,15 @@ export default function docusModule () {
   hook('build:before', () => {
     addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
     addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
+  })
+
+  // Add default error page if not defined
+  hook('build:before', async () => {
+    const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
+    const errorPageExists = await fs.stat(errorPagePath).catch(() => false)
+    if (!errorPageExists) {
+      options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
+    }
   })
 
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
@@ -37,24 +68,36 @@ export default function docusModule () {
   hook('components:dirs', async (dirs) => {
     dirs.push({
       path: r('components/atoms'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/molecules'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/icons'),
-      global: true
-    })
-    dirs.push({
-      path: r('components/templates'),
-      global: true
+      global: true,
+      level: 2
     })
     dirs.push({
       path: r('components/organisms'),
-      global: true
+      global: true,
+      level: 2
     })
+    dirs.push({
+      path: r('components/templates'),
+      global: true,
+      level: 3
+    })
+    if (options.dev) {
+      dirs.push({
+        path: r('components/dev-templates'),
+        global: true,
+        level: 2
+      })
+    }
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
     if (componentsDirStat && componentsDirStat.isDirectory()) {
@@ -79,11 +122,14 @@ export default function docusModule () {
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
+    processDocumentInfo(document)
+
     document.slug = generateSlug(slug)
     document.position = position
     document.to = generateSlug(_to)
     document.language = _language
     document.category = _category
+    document.draft = document.draft || isDraft(slug)
   })
   // Extend `/` route
   hook('build:extendRoutes', (routes) => {
@@ -98,7 +144,7 @@ export default function docusModule () {
     }
     if (!hasRoute('releases')) {
       routes.push({
-        path: '/',
+        path: '/releases',
         name: 'releases',
         component: r('pages/releases.vue')
       })
@@ -121,4 +167,16 @@ export default function docusModule () {
   })
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
+  // Docus Devtools
+  if (options.dev) {
+    options.plugins.push(r('plugins/docus.ui.js'))
+  }
+
+  // Inject `docus` into ssrContext (for releases)
+  // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
+  nuxt.hook('vue-renderer:context', (ssrContext) => {
+    ssrContext.docus = {
+      releases: releases.get()
+    }
+  })
 }

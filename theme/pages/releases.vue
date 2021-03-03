@@ -1,32 +1,40 @@
 <template>
-  <div class="flex w-full pt-10 pb-24 lg:pb-16">
-    <div class="flex-auto min-w-0 px-4 sm:px-6 xl:px-8">
-      <div class="mb-10">
-        <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">Releases</h1>
-      </div>
-
-      <div class="prose dark:prose-dark max-w-none">
-        <div v-for="release of releases" :key="release.name">
-          <h2 :id="release.name" class="flex items-center justify-between">
+  <Page>
+    <div class="mb-10">
+      <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+        <span class="flex-1">Releases</span>
+      </h1>
+    </div>
+    <div class="prose max-w-none dark:prose-dark nuxt-content">
+      <div v-for="release of releases" :key="release.name">
+        <h2 :id="release.name" class="flex items-center justify-between">
+          <a :href="`#${release.name}`">
             {{ release.name }}
-            <span
-              class="text-base font-normal text-gray-500"
-            >{{ formatDate(release) }}</span>
-          </h2>
+          </a>
+          <span
+            class="text-base font-normal text-gray-500"
+          >{{ formatDate(release) }}</span>
+        </h2>
 
-          <div class="nuxt-content" v-html="release.body" />
-        </div>
+        <NuxtContent :document="release.body" />
       </div>
     </div>
-
-    <AppToc :toc="toc" />
-  </div>
+    <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
+    <template #toc>
+      <Toc :toc="toc" />
+    </template>
+  </Page>
 </template>
 
 <script>
 export default {
-  layout ({ store }) {
-    return store.state.settings.layout || 'docus'
+  layout ({ $docus }) {
+    return $docus.settings.layout
+  },
+  async asyncData ({ $docus }) {
+    const releases = await $docus.fetchReleases()
+
+    return { releases }
   },
   head () {
     return {
@@ -36,9 +44,6 @@ export default {
   computed: {
     settings () {
       return this.$docus.settings
-    },
-    releases () {
-      return this.$docus.releases
     },
     toc () {
       return this.releases.map(release => ({ id: release.name, depth: 2, text: release.name }))

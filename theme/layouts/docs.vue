@@ -1,18 +1,7 @@
 <template>
-  <div>
-    <AppHeader />
-    <AppMenuButton />
-
-    <div class="w-full mx-auto max-w-8xl">
-      <div class="lg:flex">
-        <AppAside />
-
-        <div class="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
-          <Nuxt />
-        </div>
-      </div>
-    </div>
-  </div>
+  <Container aside>
+    <Nuxt />
+  </Container>
 </template>
 
 <script>

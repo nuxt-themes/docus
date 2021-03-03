@@ -1,21 +1,21 @@
 <template>
-  <div class="w-full relative flex flex-col justify-between">
+  <div class="relative flex flex-col justify-between w-full">
     <div
-      class="w-full relative"
+      class="relative w-full"
       @keydown.down="increment"
       @keydown.up="decrement"
       @keydown.enter="go"
     >
       <label for="search" class="sr-only">Search</label>
       <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <IconSearch class="h-5 w-5 text-gray-500" />
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <IconSearch class="w-5 h-5 text-gray-500" />
         </div>
         <input
           id="search"
           ref="search"
           v-model="q"
-          class="block w-full pl-10 pr-3 py-2 truncate leading-5 placeholder-gray-500 border border-transparent text-gray-700 dark:text-white dark-focus:text-white focus:border-gray-300 dark-focus:border-gray-700 rounded-md focus:outline-none focus:bg-white dark-focus:bg-gray-900 bg-gray-200 dark:bg-gray-800"
+          class="block w-full py-2 pl-10 pr-3 leading-5 text-gray-700 placeholder-gray-500 truncate bg-gray-200 border border-transparent rounded-md dark:text-white dark-focus:text-white focus:border-gray-300 dark-focus:border-gray-700 focus:outline-none focus:bg-white dark-focus:bg-gray-900 dark:bg-gray-800"
           :class="{ 'rounded-b-none': focus && (searching || results.length) }"
           :placeholder="$t('search.placeholder')"
           type="search"
@@ -27,7 +27,7 @@
     </div>
     <ul
       v-show="focus && (searching || results.length)"
-      class="z-10 absolute w-full flex-1 top-0 bg-white dark:bg-gray-900 rounded-md border border-gray-300 dark:border-gray-700 overflow-hidden"
+      class="absolute top-0 z-10 flex-1 w-full overflow-hidden bg-white border border-gray-300 rounded-md dark:bg-gray-900 dark:border-gray-700"
       :class="{ 'rounded-t-none': focus && (searching || results.length) }"
       style="margin-top: 37px;"
     >
@@ -40,7 +40,7 @@
       >
         <NuxtLink
           :to="$contentLocalePath(result.to)"
-          class="flex px-4 py-2 items-center leading-5 transition ease-in-out duration-150"
+          class="flex items-center px-4 py-2 leading-5 transition duration-150 ease-in-out"
           :class="{
             'text-primary-500 dark:text-primary-400 bg-gray-200 dark:bg-gray-800': focusIndex === index
           }"
@@ -76,7 +76,8 @@ export default {
         return
       }
       this.searching = true
-      this.results = await this.$content(this.$i18n.locale, { deep: true }).sortBy('position', 'asc').only(['title', 'slug', 'category', 'to']).limit(12).search(q).fetch()
+      const draft = this.$docus.ui?.draft ? undefined : false
+      this.results = await this.$content({ deep: true }).where({ language: this.$i18n.locale, draft }).sortBy('position', 'asc').only(['title', 'slug', 'category', 'to']).limit(12).search(q).fetch()
       this.searching = false
     }
   },
