@@ -17,8 +17,8 @@
       <li v-for="doc of docs" :key="doc.slug">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative flex items-center justify-between px-4 py-1 transition duration-200 border-l hover:text-gray-900 dark:hover:text-gray-100"
-          :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400': isLinkActive(doc) }"
+          class="relative flex items-center justify-between px-4 py-1 transition duration-200 border-l border-gray-200 dark:border-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
+          :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 border-primary-500 dark:border-primary-500': isLinkActive(doc) }"
         >
           {{ doc.menuTitle || doc.title }}
 
