@@ -3,7 +3,7 @@ export default {
     placeholder: 'Search the docs (Press "/" to focus)'
   },
   toc: {
-    title: 'On this page'
+    title: 'Contents'
   },
   article: {
     github: 'Edit this page on GitHub',
