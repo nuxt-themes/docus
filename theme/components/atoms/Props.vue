@@ -31,9 +31,7 @@
 </template>
 
 <script>
-import TableContainer from '../../../docs/components/TableContainer.vue'
 export default {
-  components: { TableContainer },
   props: {
     of: {
       type: String,
