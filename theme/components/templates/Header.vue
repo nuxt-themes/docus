@@ -1,40 +1,29 @@
 <template>
-  <div class="sticky top-0 z-40 w-full px-4 border-b border-gray-100 lg:z-50 app-header dark:border-gray-800" @click="scrollToTop">
+  <div
+    class="sticky top-0 z-40 w-full px-4 border-b border-gray-100 lg:z-50 app-header dark:border-gray-800"
+    @click="scrollToTop"
+  >
     <div class="flex flex-none mx-auto max-w-8xl">
+      <Logo :settings="settings" />
 
-      <div 
-        class="flex items-center flex-none lg:w-60 xl:w-72"
-      >
-        <NuxtLink
-          :to="localePath('/')"
-          class="w-auto overflow-hidden"
-          :aria-label="settings.title"
+      <div class="flex items-center justify-end flex-auto h-18 ">
+        <AlgoliaSearchBox
+          v-if="settings.algolia"
+          :options="settings.algolia"
+          :settings="settings"
+          class="md:flex-1 md:px-4 lg:px-2"
+        />
+
+        <div
+          class="flex items-center justify-end space-x-2 md:space-x-4 xl:w-64"
         >
-          <span v-if="logo" class="sr-only">{{ settings.title }}</span>
-          <span v-if="!logo" class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ settings.title }}</span>
-
-          <img
-            v-if="logo"
-            :src="logo.light"
-            class="w-auto h-8 light-img"
-            :alt="settings.title"
-          />
-          <img v-if="logo" :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
-        </NuxtLink>
-      </div>
-
-      <div
-        class="flex items-center justify-end flex-auto h-18 "
-      >
-        <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" class="md:flex-1 md:px-4 lg:px-2"/>
-
-        <div class="flex items-center justify-end space-x-2 md:space-x-4 xl:w-64">
           <NuxtLink
             v-if="lastRelease"
             :to="localePath('/releases')"
             class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
             exact-active-class="text-primary-500 dark:text-primary-400"
-          >{{ lastRelease.name }}</NuxtLink>
+            >{{ lastRelease.name }}</NuxtLink
+          >
 
           <LangSwitcher />
 
@@ -65,7 +54,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -79,50 +67,36 @@ export default {
     }
   },
   computed: {
-    settings () {
-      return this.$docus.settings
+    settings() {
+      return this.$docus.settings;
     },
-    lastRelease () {
-      return this.$docus.lastRelease
+    lastRelease() {
+      return this.$docus.lastRelease;
     },
     menu: {
-      get () {
-        return this.$menu.open
+      get() {
+        return this.$menu.open;
       },
-      set (val) {
-        this.$menu.open = val
-      }
-    },
-    logo () {
-      if (!this.settings.logo) {
-        return
-      }
-
-      if (typeof this.settings.logo === 'object') {
-        return this.settings.logo
-      }
-
-      return {
-        light: this.settings.logo,
-        dark: this.settings.logo
+      set(val) {
+        this.$menu.open = val;
       }
     }
   },
   methods: {
-    scrollToTop () {
+    scrollToTop() {
       if (window.innerWidth >= 1280) {
-        return
+        return;
       }
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
   }
-}
+};
 </script>
 
 <style lang="postcss">
 .app-header {
   backdrop-filter: blur(12px);
-  background-color: hsla(0,0%,100%,.9);
+  background-color: hsla(0, 0%, 100%, 0.9);
 }
 
 .dark {

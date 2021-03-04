@@ -11,5 +11,13 @@
   "algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
     "indexName": "docus"
+  },
+  "logo": {
+    "dark": "/logo-dark.svg",
+    "light": "/logo-light.svg"
+  },
+  "header": {
+    "logo": true,
+    "title": true
   }
 }

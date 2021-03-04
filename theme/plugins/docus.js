@@ -68,9 +68,13 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
             dir: '',
             releases: true
           },
-          colors: DEFAULT_THEME_COLORS
+          colors: DEFAULT_THEME_COLORS,
+          header: {
+            logo: false,
+            title: true
+          }
         }
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
+        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors', 'header']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
