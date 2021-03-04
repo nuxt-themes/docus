@@ -91,6 +91,11 @@ export default {
       ]
     }
   },
+  head () {
+    return {
+      title: 'Docus - Documentation generator based on Nuxt and Tailwind.'
+    }
+  },
   mounted () {
     this.setupCopyInstall()
   },
