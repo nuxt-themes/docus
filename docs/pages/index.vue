@@ -97,7 +97,7 @@ export default {
   methods: {
     setupCopyInstall () {
       if (!this.$refs.copyInstall) {
-        return this.$nextTick(this.setupCopyInstall)
+        return setTimeout(this.setupCopyInstall, 100)
       }
       const copyInstall = new Clipboard(this.$refs.copyInstall)
       copyInstall.on('success', () => {
