@@ -9,9 +9,9 @@
       class="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full"
     >
       <div
-        class="absolute top-0 left-0 w-full h-full bg-white opacity-75 dark:bg-gray-900"
+        class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-75"
       ></div>
-      <div class="z-10 text-lg font-medium text-gray-900 dark:text-gray-100">
+      <div class="z-10 text-lg font-medium text-gray-100">
         Copied!
       </div>
     </div>
