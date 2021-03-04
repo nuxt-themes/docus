@@ -17,7 +17,7 @@
     "light": "/logo-light.svg"
   },
   "header": {
-    "logo": true,
+    "logo": false,
     "title": true
   }
 }

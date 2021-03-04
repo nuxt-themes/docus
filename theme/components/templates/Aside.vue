@@ -1,32 +1,23 @@
 <template>
-  <div class="lg:flex lg:flex-1">
-    <aside
-      class="fixed inset-0 z-40 flex-none w-full h-full bg-black bg-opacity-25 lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
-      :class="{ 'hidden': !$menu.open }"
-      @click="$menu.open = false"
-    >
-      <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white sm:mr-64 lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0" @click.stop>
-        <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
+  <div class="relative z-50 lg:z-40">
+    <div class="fixed top-0 left-0 w-full h-screen pointer-events-none lg:h-full lg:static">
+      <!-- desktop aside -->
+      <AsideNavigation class="hidden lg:block" />
 
-        <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-4 xl:px-6 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-          <AsideTop />
-          <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
-            <li v-if="lastRelease">
-              <NuxtLink
-                to="/releases"
-                class="px-4 py-2 font-medium text-gray-400 transition duration-200 lg:px-3 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-                exact-active-class="text-primary-500 dark:text-primary-400"
-              >{{ lastRelease.name }}</NuxtLink>
-            </li>
-          </ul>
+      <!-- mobile aside -->
+      <transition name="slide-from-left-to-left">
+        <AsideNavigation v-if="$menu.open" />
+      </transition>
 
-          <ul>
-            <CategoryItem v-for="(docs, category) in categories" :key="category" :category="category" :docs="docs"/>
-          </ul>
-          <AsideBottom />
-        </nav>
-      </div>
-    </aside>
+      <!-- scrim -->
+      <transition name="fade">
+        <div
+          v-if="$menu.open"
+          @click.stop="menu = !menu"
+          class="absolute w-full h-full pointer-events-auto scrim lg:hidden"
+        ></div>
+      </transition>
+    </div>
     <MenuButton />
   </div>
 </template>
@@ -34,15 +25,45 @@
 <script>
 export default {
   computed: {
-    settings () {
-      return this.$docus.settings
-    },
-    categories () {
-      return this.$docus.categories[this.$i18n.locale]
-    },
-    lastRelease () {
-      return this.$docus.lastRelease
+    menu: {
+      get() {
+        return this.$menu.open;
+      },
+      set(val) {
+        this.$menu.open = val;
+      }
     }
   }
-}
+};
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-from-left-to-left-enter-active,
+.slide-from-left-to-left-leave-active {
+  transition: transform 200ms, opacity 200ms linear;
+}
+.slide-from-left-to-left-enter,
+.slide-from-left-to-left-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.light .scrim {
+  backdrop-filter: blur(8px); 
+  background: rgba(101,108,133,.8);
+}
+
+.dark .scrim {
+  backdrop-filter: blur(8px); 
+  background: rgba(9,10,17,0.8);
+}
+</style>
