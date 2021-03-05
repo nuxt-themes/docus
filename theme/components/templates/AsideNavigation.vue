@@ -34,22 +34,6 @@
           />
         </ul>
 
-        <ul>
-          <CategoryItem
-            v-for="(docs, category) in categories"
-            :key="category"
-            :category="category"
-            :docs="docs"
-          />
-        </ul>
-        <ul>
-          <CategoryItem
-            v-for="(docs, category) in categories"
-            :key="category"
-            :category="category"
-            :docs="docs"
-          />
-        </ul>
         <AsideBottom />
       </nav>
       <div
