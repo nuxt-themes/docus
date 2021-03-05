@@ -33,9 +33,11 @@
     "lodash.groupby": "^4.6.0",
     "nuxt-i18n": "^6.20.0",
     "ohmyfetch": "^0.1.6",
+    "postcss": "^8.2.7",
     "prism-themes": "^1.5.0",
     "static-tweets": "^0.2.7",
     "tailwind-css-variables": "^2.0.3",
+    "tailwindcss": "^2.0.3",
     "theme-colors": "^0.0.5",
     "ufo": "^0.6.7",
     "universal-cookie": "^4.0.4",
@@ -44,12 +46,10 @@
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxtjs/eslint-config": "^5.0.0",
-    "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
-    "nuxt": "^2.15.0",
+    "nuxt-edge": "^2.16.0-26916117.94fff623",
     "standard-version": "^9.1.0",
-    "tailwindcss": "^2.0.3",
     "vue-plausible": "^1.1.2"
   }
 }
