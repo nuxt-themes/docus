@@ -49,6 +49,7 @@
     "eslint": "^7.19.0",
     "nuxt": "^2.15.0",
     "standard-version": "^9.1.0",
+    "tailwindcss": "^2.0.3",
     "vue-plausible": "^1.1.2"
   }
 }
