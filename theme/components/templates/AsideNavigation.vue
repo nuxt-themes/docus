@@ -1,10 +1,17 @@
 <template>
-  <aside class="fixed top-0 left-0 z-10 h-full pointer-events-auto lg:static lg:w-60 xl:w-72">
+  <aside
+    class="fixed top-0 left-0 w-auto h-screen overflow-auto pointer-events-auto lg:sticky lg:top-18 lg:w-60 xl:w-72"
+  >
     <div
-      class="h-screen pl-4 pr-12 overflow-auto bg-white dark:bg-gray-900 lg:sticky lg:bg-transparent lg:top-18"
+      class="w-auto overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
     >
+      <div class="flex items-center w-full px-4 lg:hidden h-18 ">
+        <button class="p-4 focus:outline-none" @click.stop="menu = !menu">
+          <IconX class="w-6 h-6" />
+        </button>
+      </div>
       <nav
-        class="pt-6 overflow-y-auto font-medium text-base sm:px-4 xl:px-6 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)"
+        class="pb-10 pl-4 pr-12 ml-4 overflow-y-auto text-base font-medium h-(screen-36) lg:h-(screen-18) xl:px-6 lg:text-sm lg:pt-10 lg:pb-16"
       >
         <AsideTop />
         <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
@@ -26,8 +33,31 @@
             :docs="docs"
           />
         </ul>
+
+        <ul>
+          <CategoryItem
+            v-for="(docs, category) in categories"
+            :key="category"
+            :category="category"
+            :docs="docs"
+          />
+        </ul>
+        <ul>
+          <CategoryItem
+            v-for="(docs, category) in categories"
+            :key="category"
+            :category="category"
+            :docs="docs"
+          />
+        </ul>
         <AsideBottom />
       </nav>
+      <div
+        class="flex items-center justify-center w-full space-x-2 h-18 lg:hidden md:space-x-4"
+      >
+        <ColorSwitcher />
+        <SocialIcons />
+      </div>
     </div>
   </aside>
 </template>
@@ -40,6 +70,14 @@ export default {
     },
     lastRelease() {
       return this.$docus.lastRelease;
+    },
+    menu: {
+      get() {
+        return this.$menu.open;
+      },
+      set(val) {
+        this.$menu.open = val;
+      }
     }
   }
 };

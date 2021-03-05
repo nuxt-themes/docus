@@ -1,6 +1,15 @@
 <template>
-  <div class="relative z-50 lg:z-40">
-    <div class="fixed top-0 left-0 w-full h-screen pointer-events-none lg:h-full lg:static">
+  <div class="fixed z-50 lg:z-0 lg:static">
+    <div class="h-full overflow-auto pointer-events-none lg:overflow-visible ">
+      <!-- scrim -->
+      <transition name="fade">
+        <div
+          v-if="$menu.open"
+          @click.stop="menu = !menu"
+          class="fixed top-0 left-0 z-0 w-full h-full pointer-events-auto scrim lg:hidden"
+        ></div>
+      </transition>
+
       <!-- desktop aside -->
       <AsideNavigation class="hidden lg:block" />
 
@@ -8,17 +17,7 @@
       <transition name="slide-from-left-to-left">
         <AsideNavigation v-if="$menu.open" />
       </transition>
-
-      <!-- scrim -->
-      <transition name="fade">
-        <div
-          v-if="$menu.open"
-          @click.stop="menu = !menu"
-          class="absolute w-full h-full pointer-events-auto scrim lg:hidden"
-        ></div>
-      </transition>
     </div>
-    <MenuButton />
   </div>
 </template>
 
@@ -58,12 +57,12 @@ export default {
 }
 
 .light .scrim {
-  backdrop-filter: blur(8px); 
-  background: rgba(101,108,133,.8);
+  backdrop-filter: blur(8px);
+  background: rgba(101, 108, 133, 0.8);
 }
 
 .dark .scrim {
-  backdrop-filter: blur(8px); 
-  background: rgba(9,10,17,0.8);
+  backdrop-filter: blur(8px);
+  background: rgba(9, 10, 17, 0.8);
 }
 </style>

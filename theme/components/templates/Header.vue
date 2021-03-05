@@ -4,18 +4,27 @@
     @click="scrollToTop"
   >
     <div class="flex flex-none mx-auto max-w-8xl">
-      <Logo :settings="settings" />
+      <button
+        class="flex items-center justify-center p-4 lg:hidden focus:outline-none"
+        @click.stop="menu = !menu"
+      >
+        <IconMenuAlt class="w-6 h-6 " />
+      </button>
 
-      <div class="flex items-center justify-end flex-auto h-18 ">
+      <div class="flex items-center justify-center flex-1 lg:flex-none">
+        <Logo :settings="settings" />
+      </div>
+
+      <div class="flex items-center justify-end lg:flex-auto h-18 ">
         <AlgoliaSearchBox
           v-if="settings.algolia"
           :options="settings.algolia"
           :settings="settings"
-          class="md:flex-1 md:px-4 lg:px-2"
+          class="w-14 lg:flex-1 lg:px-2"
         />
 
         <div
-          class="flex items-center justify-end space-x-2 md:space-x-4 xl:w-64"
+          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
         >
           <NuxtLink
             v-if="lastRelease"
@@ -29,29 +38,7 @@
 
           <ColorSwitcher />
 
-          <a
-            v-if="settings.twitter"
-            :href="`https://twitter.com/${settings.twitter}`"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Twitter"
-            name="Twitter"
-            class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-          >
-            <IconTwitter class="w-4 h-4 md:w-5 md:h-5" />
-          </a>
-
-          <a
-            v-if="settings.github.repo"
-            :href="$docus.repoUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Github"
-            name="Github"
-            class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-          >
-            <IconGithub class="w-4 h-4 md:w-5 md:h-5" />
-          </a>
+          <SocialIcons />
         </div>
       </div>
     </div>
