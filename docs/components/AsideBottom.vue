@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-8">
-    <h5 class="py-2 font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100">Resources</h5>
+  <div>
+    <h5 class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100">Resources</h5>
     <ul>
       <li v-for="resource of resources" :key="resource.title">
         <a :href="resource.url" target="_blank" rel="noopener" class="flex items-center py-2 group dark:hover:text-gray-100 hover:text-gray-900 ">

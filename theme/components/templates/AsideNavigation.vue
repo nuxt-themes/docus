@@ -1,17 +1,23 @@
 <template>
   <aside
-    class="fixed top-0 left-0 w-auto h-screen overflow-auto pointer-events-auto lg:sticky lg:top-18 lg:w-60 xl:w-72"
+    class="fixed top-0 left-0 w-auto h-screen overflow-auto pointer-events-auto lg:sticky lg:top-18 lg:w-60"
   >
     <div
       class="w-auto overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
     >
-      <div class="flex items-center w-full px-4 lg:hidden h-18 ">
-        <button class="p-4 focus:outline-none" @click.stop="menu = !menu">
-          <IconX class="w-6 h-6" />
+      <div class="flex items-center w-full px-4 lg:hidden h-18 bg-gray-50 dark:bg-gray-800">
+        <button class="flex-1 focus:outline-none" @click.stop="menu = !menu">
+          <IconArrowLeft class="w-5 h-5" />
         </button>
+         <div
+            class="flex items-center justify-end w-full px-2 space-x-3 h-18 lg:hidden"
+          >
+            <ColorSwitcher />
+            <SocialIcons />
+          </div>
       </div>
       <nav
-        class="pb-10 pl-4 pr-12 ml-4 overflow-y-auto text-base font-medium h-(screen-36) lg:h-(screen-18) xl:px-6 lg:text-sm lg:pt-10 lg:pb-16"
+        class="py-4 pr-24 lg:pr-0 ml-4 max-w-sm overflow-y-auto text-base font-medium h-(screen-18) lg:h-(screen-18) lg:text-sm lg:pt-10 lg:pb-16"
       >
         <AsideTop />
         <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
@@ -36,12 +42,6 @@
 
         <AsideBottom />
       </nav>
-      <div
-        class="flex items-center justify-center w-full space-x-2 h-18 lg:hidden md:space-x-4"
-      >
-        <ColorSwitcher />
-        <SocialIcons />
-      </div>
     </div>
   </aside>
 </template>

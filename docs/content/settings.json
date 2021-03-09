@@ -6,9 +6,9 @@
     "repo": "nuxtlabs/docus",
     "branch": "main",
     "dir": "docs",
-    "releases": false
+    "releases": true
   },
-  "algolia": {
+  "_algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
     "indexName": "docus"
   },

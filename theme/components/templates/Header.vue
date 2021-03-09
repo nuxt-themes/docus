@@ -4,17 +4,19 @@
     @click="scrollToTop"
   >
     <div class="flex flex-none mx-auto max-w-8xl">
+      <!-- Left section -->
+      <!-- Mobile menu button -->
       <button
         class="flex items-center justify-center p-4 lg:hidden focus:outline-none"
         @click.stop="menu = !menu"
       >
         <IconMenuAlt class="w-6 h-6 " />
       </button>
-
       <div class="flex items-center justify-center flex-1 lg:flex-none">
         <Logo :settings="settings" />
       </div>
 
+      <!-- Middle section -->
       <div class="flex items-center justify-end lg:flex-auto h-18 ">
         <AlgoliaSearchBox
           v-if="settings.algolia"
@@ -22,10 +24,15 @@
           :settings="settings"
           class="w-14 lg:flex-1 lg:px-2"
         />
+        <div v-else class="lg:hidden">
+          <ColorSwitcher/>
+        </div>
 
+        <!-- Desktop: Right section -->
         <div
           class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
         >
+          <slot name="desktop-right" />
           <NuxtLink
             v-if="lastRelease"
             :to="localePath('/releases')"
@@ -35,9 +42,7 @@
           >
 
           <LangSwitcher />
-
           <ColorSwitcher />
-
           <SocialIcons />
         </div>
       </div>
@@ -47,12 +52,6 @@
 
 <script>
 export default {
-  props: {
-    aside: {
-      type: Boolean,
-      default: false
-    }
-  },
   computed: {
     settings() {
       return this.$docus.settings;

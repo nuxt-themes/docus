@@ -1,23 +1,21 @@
 <template>
   <li
     :class="{
-      'active': isCategoryActive(docs)
+      'active': isCategoryActive()
     }"
   >
     <h5 
       v-if="category" 
-      @click="collapse = !collapse"
-      class="py-2 font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100" 
-      :class="{
-        'text-primary-500 dark:text-primary-400': isCategoryActive(docs)
-      }">
+      @click="collapseCategory"
+      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100" 
+      >
       {{ category }}
     </h5>
-    <ul v-if="!collapse" class="mb-2">
+    <ul v-if="!collapse || isCategoryActive()" class="mb-2">
       <li v-for="doc of docs" :key="doc.slug">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative flex items-center justify-between px-4 py-1 transition duration-200 border-l border-gray-200 dark:border-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
+          class="relative inline-flex items-center justify-between px-4 py-1 transition duration-200 border-l-2 border-gray-100 dark:border-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
           :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 border-primary-500 dark:border-primary-500': isLinkActive(doc) }"
         >
           {{ doc.menuTitle || doc.title }}
@@ -56,8 +54,12 @@ export default {
     }
   },
   methods: {
-    isCategoryActive (documents) {
-      return documents.some(document => this.isLinkActive(document))
+    collapseCategory() {
+      if (this.isCategoryActive()) return
+      this.collapse = !this.collapse
+    },
+    isCategoryActive () {
+      return this.docs.some(document => this.isLinkActive(document))
     },
     isLinkActive (doc) {
       return withTrailingSlash(this.$route.path) === withTrailingSlash(this.$contentLocalePath(doc.to))

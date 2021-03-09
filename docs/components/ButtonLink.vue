@@ -2,9 +2,7 @@
   <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="size"
     ><slot
   /></NuxtLink>
-  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"
-    ><slot
-  /></a>
+  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot/><IconExternalLink class="w-4 h-4 ml-2" v-if="blank"/></a>
 </template>
 
 <script>
@@ -39,7 +37,7 @@ export default {
 
 <style lang="postcss">
 a.button-link {
-  @apply inline-flex flex-none px-4 py-2.5 leading-4 text-base font-semibold text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-700 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none;
+  @apply inline-flex items-center flex-none px-4 py-2.5 leading-4 text-base font-semibold text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary-600 focus:outline-none;
   &.large {
     @apply px-6 py-3 leading-6 text-lg rounded-md;
   }
