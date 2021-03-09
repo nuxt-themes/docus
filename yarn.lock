@@ -1553,10 +1553,10 @@
     serve-static "^1.14.1"
     workbox-cdn "^5.1.4"
 
-"@nuxtjs/tailwindcss@^4.0.0-3":
-  version "4.0.0-3"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-4.0.0-3.tgz#e764d7c317847d5d99a06758fc0fe57369a11539"
-  integrity sha512-oPrtF93puhlgefZX3SWfwL9gle++LWpFpceA5csaMm7dQNmRoCObWD67ZQxf8fqxBcXC/wub31pRyubHqTSb9Q==
+"@nuxtjs/tailwindcss@^4.0.0-4":
+  version "4.0.0-4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-4.0.0-4.tgz#bc5de6253159b774f1f39261a5b06aafc9abad08"
+  integrity sha512-SfOYuMCbewA0w6igab3zXsx+AxQLG1ahE1xJztzl3fjwr9flyX87JBvmvlBwG1WkehR7OEXdaZ2b/LJn/bSIKg==
   dependencies:
     autoprefixer "^10.2.4"
     chalk "^4.1.0"
