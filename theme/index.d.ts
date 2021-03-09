@@ -1,3 +1,3 @@
 import { NuxtConfig } from '@nuxt/types'
 
-export default (_config: NuxtConfig) => NuxtConfig
+export declare const withDocus: (_config: NuxtConfig) => NuxtConfig

@@ -25,7 +25,7 @@
           class="w-14 lg:flex-1 lg:px-2"
         />
         <div v-else class="lg:hidden">
-          <ColorSwitcher/>
+          <ColorSwitcher />
         </div>
 
         <!-- Desktop: Right section -->
@@ -38,8 +38,7 @@
             :to="localePath('/releases')"
             class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
             exact-active-class="text-primary-500 dark:text-primary-400"
-            >{{ lastRelease.name }}</NuxtLink
-          >
+          >{{ lastRelease }}</NuxtLink>
 
           <LangSwitcher />
           <ColorSwitcher />
@@ -53,30 +52,30 @@
 <script>
 export default {
   computed: {
-    settings() {
-      return this.$docus.settings;
+    settings () {
+      return this.$docus.settings
     },
-    lastRelease() {
-      return this.$docus.lastRelease;
+    lastRelease () {
+      return this.$docus.lastRelease
     },
     menu: {
-      get() {
-        return this.$menu.open;
+      get () {
+        return this.$menu.open
       },
-      set(val) {
-        this.$menu.open = val;
+      set (val) {
+        this.$menu.open = val
       }
     }
   },
   methods: {
-    scrollToTop() {
+    scrollToTop () {
       if (window.innerWidth >= 1280) {
-        return;
+        return
       }
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     }
   }
-};
+}
 </script>
 
 <style lang="postcss">

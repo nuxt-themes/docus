@@ -8,7 +8,7 @@
       </Header>
     </template>
     <template #aside>
-      <Aside class="block lg:hidden"/>
+      <Aside class="block lg:hidden" />
     </template>
     <section class="px-4 mx-auto my-24 max-w-8xl">
       <h1
@@ -40,7 +40,6 @@
         </div>
       </div>
     </section>
-
     <section class="py-24 bg-gray-50 dark:bg-gray-800">
       <div class="px-4 mx-auto max-w-8xl">
         <h2
@@ -52,10 +51,7 @@
           class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
         >
           <li v-for="feature of features" :key="feature.title" class="flex">
-            <NuxtLink
-              class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg"
-              to="/usage/content"
-            >
+            <div class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg">
               <component
                 :is="feature.icon"
                 v-if="feature.icon"
@@ -64,54 +60,53 @@
               <h2 class="mb-2 text-xl">{{ feature.title }}</h2>
               <p class="font-normal">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum voluptatibus veritatis maxime est qui blanditiis aut libero quod. Doloremque obcaecati voluptate tenetur quia fuga veniam incidunt rerum voluptatibus iusto earum.</p>
               <!-- TODO: feature.description -->
-            </NuxtLink>
+            </div>
           </li>
         </ul>
       </div>
     </section>
-    <!-- </Page> -->
   </Container>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       features: [
         {
-          icon: "IconMarkdown",
-          title: "Write Markdown"
+          icon: 'IconMarkdown',
+          title: 'Write Markdown'
         },
         {
-          icon: "IconVue",
-          title: "Vue Components"
+          icon: 'IconVue',
+          title: 'Vue Components'
         },
         {
-          icon: "IconNuxt",
-          title: "Nuxt Architecture"
+          icon: 'IconNuxt',
+          title: 'Nuxt Architecture'
         },
         {
-          icon: "IconTailwind",
-          title: "Tailwind CSS"
+          icon: 'IconTailwind',
+          title: 'Tailwind CSS'
         },
         {
-          icon: "IconSSG",
-          title: "Static Generation"
+          icon: 'IconSSG',
+          title: 'Static Generation'
         },
         {
-          icon: "IconLighthouse",
-          title: "Lighthouse Optimised"
+          icon: 'IconLighthouse',
+          title: 'Lighthouse Optimised'
         },
         {
-          icon: "IconZap",
-          title: "Smart Generation"
+          icon: 'IconZap',
+          title: 'Smart Generation'
         },
         {
-          icon: "IconPuzzle",
-          title: "Extensible"
+          icon: 'IconPuzzle',
+          title: 'Extensible'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>

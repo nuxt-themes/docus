@@ -16,6 +16,9 @@
 <script>
 export default {
   props: {
+    /**
+     * Url to CodeSandbox embed
+     */
     src: {
       type: String,
       required: true

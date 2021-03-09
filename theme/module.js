@@ -4,6 +4,8 @@ import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
+import * as releases from './server/api/releases'
+import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -13,13 +15,23 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
+  this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
+
   // read docus settings
   const settingsPath = resolve(options.srcDir, 'content/settings.json')
   try {
-    const docusSettings = require(settingsPath)
+    const userSettings = require(settingsPath)
+    const settings = useDefaults(userSettings)
 
-    if (docusSettings.colors && docusSettings.colors.primary) {
-      options.meta.theme_color = docusSettings.colors.primary
+    hook('content:ready', ($content) => {
+      releases.fetch({ $content, settings })
+    })
+
+    // default title and description for pages
+    options.meta.name = settings.title
+    options.meta.description = settings.description
+    if (settings.colors && settings.colors.primary) {
+      options.meta.theme_color = settings.colors.primary
     }
   } catch (err) { /* settings not found */ }
 
@@ -132,7 +144,7 @@ export default function docusModule () {
     }
     if (!hasRoute('releases')) {
       routes.push({
-        path: '/',
+        path: '/releases',
         name: 'releases',
         component: r('pages/releases.vue')
       })
@@ -159,4 +171,12 @@ export default function docusModule () {
   if (options.dev) {
     options.plugins.push(r('plugins/docus.ui.js'))
   }
+
+  // Inject `docus` into ssrContext (for releases)
+  // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
+  nuxt.hook('vue-renderer:context', (ssrContext) => {
+    ssrContext.docus = {
+      releases: releases.get()
+    }
+  })
 }
