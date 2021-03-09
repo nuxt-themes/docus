@@ -64,7 +64,8 @@ export default {
         [r('utils/remark-prose'), {
           proseClass: 'prose dark:prose-dark'
         }],
-        [r('utils/remark-tweet'), {}]
+        [r('utils/remark-tweet'), {}],
+        [r('utils/remark-vue'), {}]
       ],
       remarkAutolinkHeadings: {
         behavior: 'wrap'

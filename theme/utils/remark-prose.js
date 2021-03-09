@@ -1,9 +1,10 @@
 const TAG_REGEX = /^\s*<\/?([A-Za-z0-9-_]+) ?[^>]*>/
 const PROSE_ELEMENTS = [
   // HTML tags
-  'div', 'p', 'ul'
+  'div', 'p', 'ul',
 
   // Global tags
+  'props'
 ]
 
 const isJsNode = (node, customProsElements = []) => {

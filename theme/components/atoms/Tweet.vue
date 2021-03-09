@@ -40,12 +40,39 @@
 <script>
 export default {
   props: {
-    id: { type: String, default: '' },
+    /**
+     * Tweet id
+     */
+    id: { type: String, required: true },
+    /**
+     *
+     * @ignore
+     */
     name: { type: String, default: '' },
+    /**
+     *
+     * @ignore
+     */
     username: { type: String, default: '' },
+    /**
+     *
+     * @ignore
+     */
     avatar: { type: String, default: '' },
+    /**
+     *
+     * @ignore
+     */
     heartCount: { type: String, default: '' },
+    /**
+     *
+     * @ignore
+     */
     createdAt: { type: Number, default: 0 },
+    /**
+     *
+     * @ignore
+     */
     layout: { type: String, default: 'tweet' }
   },
   computed: {

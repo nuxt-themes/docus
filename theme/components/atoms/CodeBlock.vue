@@ -7,10 +7,16 @@
 <script>
 export default {
   props: {
+    /**
+     * Label to display for the tab
+     */
     label: {
       type: String,
       required: true
     },
+    /**
+     * Select which tab should be active
+     */
     active: {
       type: Boolean,
       default: false
