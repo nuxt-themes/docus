@@ -19,7 +19,11 @@ const DEFAULT_SETTINGS = {
     dir: '',
     releases: true
   },
-  colors: DEFAULT_THEME_COLORS
+  colors: DEFAULT_THEME_COLORS,
+  header: {
+    logo: false,
+    title: true
+  }
 }
 
 export function useDefaults (settings) {

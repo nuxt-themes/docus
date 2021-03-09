@@ -1,8 +1,11 @@
 <template>
-  <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="size"
-    ><slot
-  /></NuxtLink>
-  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot/><IconExternalLink class="w-4 h-4 ml-2" v-if="blank"/></a>
+  <NuxtLink
+    v-if="isInternal"
+    :to="href"
+    class="button-link"
+    :class="size"
+  ><slot /></NuxtLink>
+  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot /><IconExternalLink v-if="blank" class="w-4 h-4 ml-2" /></a>
 </template>
 
 <script>
@@ -10,7 +13,7 @@ export default {
   props: {
     href: {
       type: String,
-      default: ""
+      default: ''
     },
     blank: {
       type: Boolean,
@@ -18,21 +21,21 @@ export default {
     },
     size: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   computed: {
-    isInternal() {
-      return this.href.startsWith("/") && this.href.startsWith("//") === false;
+    isInternal () {
+      return this.href.startsWith('/') && this.href.startsWith('//') === false
     },
-    linkAttrs() {
+    linkAttrs () {
       if (this.blank) {
-        return { rel: "noopener", target: "_blank" };
+        return { rel: 'noopener', target: '_blank' }
       }
-      return {};
+      return {}
     }
   }
-};
+}
 </script>
 
 <style lang="postcss">

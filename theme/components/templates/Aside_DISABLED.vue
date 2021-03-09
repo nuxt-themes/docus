@@ -11,7 +11,7 @@
         <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-4 xl:px-6 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
           <AsideTop />
           <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
-            <li v-if="lastRelease">
+            <li>
               <NuxtLink
                 to="/releases"
                 class="px-4 py-2 font-medium text-gray-400 transition duration-200 lg:px-3 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
@@ -21,7 +21,7 @@
           </ul>
 
           <ul>
-            <CategoryItem v-for="(docs, category) in categories" :key="category" :category="category" :docs="docs"/>
+            <CategoryItem v-for="(docs, category) in categories" :key="category" :category="category" :docs="docs" />
           </ul>
           <AsideBottom />
         </nav>
