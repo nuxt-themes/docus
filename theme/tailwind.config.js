@@ -76,7 +76,7 @@ module.exports = ({ nuxt }) => {
           DEFAULT: {
             css: {
               maxWidth: "none",
-              color: theme("colors.gray.500"),
+              color: theme("colors.gray.700"),
               "> :first-child": { marginTop: "-" },
               "> :last-child": { marginBottom: "-" },
               "&:first-child > :first-child": {
@@ -86,7 +86,19 @@ module.exports = ({ nuxt }) => {
                 marginBottom: "0"
               },
               "h1, h2": {
-                letterSpacing: "-0.025em"
+                letterSpacing: "-0.025em",
+                fontWeight: theme("fontWeight.bold"),
+              },
+              "h1, h2, h3": {
+                marginTop: '1em',
+                marginBottom: '0.5em',
+              },
+              'h3': {
+                fontWeight: theme("fontWeight.semibold"),
+              },
+              "p": {
+                marginTop: '0.5em',
+                marginBottom: '0.5em',
               },
               "h2, h3": {
                 "scroll-margin-block": `${(70 + 40) / 16}rem`
@@ -108,6 +120,17 @@ module.exports = ({ nuxt }) => {
                   borderBottomColor: theme("colors.gray.900"),
                   paddingBottom: "2px"
                 }
+              },
+              'ul ul, ul ol, ol ul, ol ol': {
+                marginTop: '0.5em',
+                marginBottom: '0.5em'
+              },
+              li: {
+                marginTop: '0.25em',
+                marginBottom: '0.25em',
+              },
+              '> ul > li > *:last-child': {
+                marginBottom: '0.5em'
               },
               a: {
                 color: "var(--primary-500)",
@@ -173,7 +196,7 @@ module.exports = ({ nuxt }) => {
           },
           dark: {
             css: {
-              color: theme("colors.gray.300"),
+              color: theme("colors.gray.50"),
               strong: {
                 color: theme("colors.gray.100")
               },

@@ -1,13 +1,13 @@
 <template>
   <div
-    class="sticky top-0 z-40 w-full px-4 border-b border-gray-100 lg:z-50 app-header dark:border-gray-800"
+    class="sticky top-0 z-40 w-full border-b border-gray-100 lg:z-50 app-header dark:border-gray-800"
     @click="scrollToTop"
   >
-    <div class="flex flex-none mx-auto max-w-8xl">
+    <div class="flex flex-none px-4 mx-auto max-w-8xl ">
       <!-- Left section -->
       <!-- Mobile menu button -->
       <button
-        class="flex items-center justify-center p-4 lg:hidden focus:outline-none"
+        class="flex items-center justify-center sm:p-2 lg:hidden focus:outline-none"
         @click.stop="menu = !menu"
       >
         <IconMenuAlt class="w-6 h-6 " />

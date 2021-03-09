@@ -41,19 +41,19 @@
       </div>
     </section>
 
-    <section class="py-4 my-24 bg-gray-50 dark:bg-gray-800">
-      <div class="px-4 mx-auto max-w-8xl lg:px-0">
+    <section class="py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="px-4 mx-auto max-w-8xl">
         <h2
-          class="mt-16 mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
+          class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
         >
           What’s included?
         </h2>
         <ul
-          class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 xl:gap-8"
+          class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
         >
           <li v-for="feature of features" :key="feature.title" class="flex">
             <NuxtLink
-              class="relative w-full px-6 py-8 bg-white dark:bg-gray-900 rounded shadow hover:shadow-lg"
+              class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg"
               to="/usage/content"
             >
               <component
