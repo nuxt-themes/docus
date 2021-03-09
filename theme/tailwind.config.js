@@ -290,20 +290,16 @@ module.exports = ({ nuxt }) => {
       )
     ],
     purge: {
-      // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
-      enabled: process.env.NODE_ENV === 'production',
       content: [
-        path.join(nuxt.options.srcDir, 'content/**/*.md'),
-        path.join(nuxt.options.srcDir, 'components/**/*.vue'),
-        path.join(nuxt.options.rootDir, 'nuxt.config.js'),
         path.join(__dirname, 'components/**/*.vue'),
         path.join(__dirname, 'layouts/**/*.vue'),
         path.join(__dirname, 'pages/**/*.vue'),
         path.join(__dirname, 'plugins/**/*.js'),
+        path.join(__dirname, 'utils/**/*.js'),
         'nuxt.config.js'
       ],
       options: {
-        whitelist: ['dark-mode']
+        safelist: []
       }
     }
   }
