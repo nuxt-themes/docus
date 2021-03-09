@@ -17,9 +17,9 @@
         Documentation generator<br />based on Nuxt and Tailwind.
       </h1>
       <div class="flex flex-col md:flex-row">
-        <div class="flex flex-col items-start pr-2 pr-8 mb-8 md:w-1/2">
+        <div class="flex flex-col items-start pr-0 mb-8 md:pr-2 lg:pr-8 md:w-1/2">
           <h3
-            class="mb-4 text-lg text-center text-gray-700 md:text-left sm:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-200"
+            class="mb-4 text-lg text-center text-gray-700 md:text-left sm:text-xl md:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-200"
           >
             Write in markdown, use Vue components, add style with TailwindCSS
             and enjoy the power of Nuxt.
