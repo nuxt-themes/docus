@@ -50,7 +50,8 @@ module.exports = ({ nuxt }) => {
         },
         height: theme => ({
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
-          '(screen-36)': `calc(100vh - ${theme('spacing.36')})`
+          '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
+          '(screen-46)': `calc(100vh - ${theme('spacing.46')})`,
         }),
         maxHeight: theme => ({
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
