@@ -44,6 +44,7 @@ module.exports = ({ nuxt }) => {
         },
         spacing: {
           18: '4.5rem',
+          46: '11.5rem',
           '580px': '580px',
           '640px': '640px'
         },

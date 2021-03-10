@@ -17,7 +17,8 @@
         </div>
       </div>
       <nav
-        class="py-4 pr-24 lg:pr-0 ml-4 max-w-sm overflow-y-auto text-base font-medium h-(screen-18) lg:h-(screen-18) lg:text-sm lg:pt-10 lg:pb-16"
+      :class="[heightClass]"
+        class="max-w-sm py-4 pr-24 ml-4 overflow-y-auto text-base font-medium lg:pr-0 lg:text-sm lg:pt-10 lg:pb-16"
       >
         <AsideTop />
         <ul>
@@ -35,8 +36,19 @@
 </template>
 
 <script>
+
+function detectMobileSafari() {
+  const ua = window.navigator.userAgent
+  const isMobile = /iPhone|iPad|iPod/i.test(ua)
+  const isSafari = !/Chrome/i.test(ua) && /Safari/i.test(ua)
+  return isMobile && isSafari 
+}
+
 export default {
   computed: {
+    heightClass() {
+      return process.browser && detectMobileSafari() ? 'h-(screen-46)' : 'h-(screen-18)'
+    },  
     categories () {
       return this.$docus.categories[this.$i18n.locale]
     },
