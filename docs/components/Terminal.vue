@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import Clipboard from "clipboard";
+import Clipboard from 'clipboard'
 
 export default {
   props: {
@@ -46,27 +46,27 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       copied: false
-    };
+    }
   },
-  mounted() {
-    this.setupCopyInstall();
+  mounted () {
+    this.setupCopyInstall()
   },
   methods: {
-    setupCopyInstall() {
+    setupCopyInstall () {
       if (!this.$refs.copyInstall) {
-        return this.$nextTick(this.setupCopyInstall);
+        return this.$nextTick(this.setupCopyInstall)
       }
-      const copyInstall = new Clipboard(this.$refs.copyInstall);
-      copyInstall.on("success", () => {
-        this.copied = true;
+      const copyInstall = new Clipboard(this.$refs.copyInstall)
+      copyInstall.on('success', () => {
+        this.copied = true
         setTimeout(() => {
-          this.copied = false;
-        }, 1000);
-      });
+          this.copied = false
+        }, 1000)
+      })
     }
   }
-};
+}
 </script>
