@@ -1,102 +1,68 @@
 <template>
-  <div class="lg:flex lg:flex-1">
-    <aside
-      class="fixed inset-0 z-40 flex-none w-full h-full bg-black bg-opacity-25 lg:bg-white lg:dark:bg-gray-900 lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block"
-      :class="{ 'hidden': !$menu.open }"
-      @click="$menu.open = false"
-    >
-      <div class="h-full mr-24 overflow-hidden overflow-y-auto bg-white sm:mr-64 lg:h-auto lg:block lg:sticky lg:bg-transparent lg:top-18 dark:bg-gray-900 lg:mr-0" @click.stop>
-        <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
+  <aside class="fixed z-50 lg:z-0 lg:static">
+    <div class="h-full overflow-auto pointer-events-none lg:overflow-visible ">
+      <!-- scrim -->
+      <transition name="fade">
+        <div
+          v-if="$menu.open"
+          @click.stop="menu = !menu"
+          class="fixed top-0 left-0 z-0 w-full h-full bg-gray-400 pointer-events-auto scrim dark:bg-gray-900 dark:bg-opacity-80 bg-opacity-80 lg:hidden"
+        ></div>
+      </transition>
 
-        <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-3 xl:px-5 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-          <AsideTop />
-          <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
-            <li v-if="lastRelease">
-              <NuxtLink
-                to="/releases"
-                class="px-4 py-2 font-medium text-gray-400 transition duration-200 lg:px-3 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-                exact-active-class="text-primary-500 dark:text-primary-400"
-              >{{ lastRelease.name }}</NuxtLink>
-            </li>
-          </ul>
+      <!-- desktop aside -->
+      <AsideNavigation class="hidden lg:block" />
 
-          <ul class="space-y-8">
-            <li
-              v-for="(docs, category) in categories"
-              :key="category"
-              :class="{
-                'active': isCategoryActive(docs)
-              }"
-            >
-              <h5 v-if="category" class="px-4 mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase lg:px-3 lg:mb-3 lg:text-xs dark:text-gray-100">{{ category }}</h5>
-              <ul>
-                <li v-for="doc of docs" :key="doc.slug">
-                  <NuxtLink
-                    :to="$contentLocalePath(doc.to)"
-                    class="relative flex items-center justify-between px-4 py-2 transition duration-200 lg:px-3 lg:rounded-md hover:text-gray-900 dark:hover:text-gray-100"
-                    :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 bg-primary-50 dark:bg-primary-900 dark:hover:text-primary-400': isLinkActive(doc) }"
-                  >
-                    {{ doc.menuTitle || doc.title }}
-
-                    <client-only>
-                      <span
-                        v-if="doc.draft"
-                        class="w-2 h-2 bg-yellow-500 rounded-full opacity-75"
-                      />
-                      <span
-                        v-else-if="isDocumentNew(doc)"
-                        class="w-2 h-2 rounded-full opacity-75 animate-pulse bg-primary-500"
-                      />
-                    </client-only>
-                  </NuxtLink>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <AsideBottom />
-        </nav>
-      </div>
-    </aside>
-    <MenuButton />
-  </div>
+      <!-- mobile aside -->
+      <transition name="slide-from-left-to-left">
+        <AsideNavigation v-if="$menu.open" />
+      </transition>
+    </div>
+  </aside>
 </template>
 
 <script>
-import { withTrailingSlash } from 'ufo'
 export default {
   computed: {
-    settings () {
-      return this.$docus.settings
-    },
-    categories () {
-      return this.$docus.categories[this.$i18n.locale]
-    },
-    lastRelease () {
-      return this.$docus.lastRelease
-    }
-  },
-  methods: {
-    isCategoryActive (documents) {
-      return documents.some(document => this.isLinkActive(document))
-    },
-    isLinkActive (doc) {
-      return withTrailingSlash(this.$route.path) === withTrailingSlash(this.$contentLocalePath(doc.to))
-    },
-    isDocumentNew (document) {
-      if (process.server) {
-        return
+    menu: {
+      get() {
+        return this.$menu.open;
+      },
+      set(val) {
+        this.$menu.open = val;
       }
-      if (!document.version || document.version <= 0) {
-        return
-      }
-
-      const version = localStorage.getItem(`document-${document.slug}-version`)
-      if (document.version > Number(version)) {
-        return true
-      }
-
-      return false
     }
   }
-}
+};
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-from-left-to-left-enter-active,
+.slide-from-left-to-left-leave-active {
+  transition: transform 200ms, opacity 200ms linear;
+}
+.slide-from-left-to-left-enter,
+.slide-from-left-to-left-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.light .scrim {
+  backdrop-filter: blur(8px);
+  /* background: rgba(101, 108, 133, 0.8); */
+}
+
+.dark .scrim {
+  backdrop-filter: blur(8px);
+  /* background: rgba(9, 10, 17, 0.8); */
+}
+</style>
