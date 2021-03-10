@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="preview-box shadow-md rounded-md overflow-hidden bg-gray-800 mx-2 mb-4"
-    :style="{width: '400px',height: '370px'}"
-  >
+  <div class="preview-box shadow-md rounded-md overflow-hidden bg-gray-800 mb-4">
     <div class="px-3 h-8 flex justify-between items-center">
       <div class="flex w-16">
         <div class="circle mx-1 w-3 h-3 rounded-full bg-gray-700"></div>
@@ -18,7 +15,7 @@
         </a>
       </div>
     </div>
-    <div class="flex p-1 h-full">
+    <div class="flex h-full">
       <iframe ref="preview" class="bg-white w-full h-full" />
     </div>
     <div ref="container" class="hidden">
@@ -142,3 +139,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.preview-box {
+  width: 400px;
+  height: 370px;
+  @apply max-w-full;
+}
+</style>

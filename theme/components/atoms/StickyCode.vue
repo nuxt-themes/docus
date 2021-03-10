@@ -111,7 +111,7 @@ export default {
     const stickySidebar = h('CodePreview', { style: { top: '100px' }, staticClass: 'sticky', props: { layout: 'vertical', preview: this.preview } }, [ activeGroup ])
 
     return h('div', { staticClass: 'sticky-code flex' }, [
-      h('div', { staticClass: 'flex-1' }, [content]),
+      h('div', { staticClass: 'flex-1 max-w-full' }, [content]),
       h('div', { staticClass: 'ml-4 hidden lg:block' }, [stickySidebar])
     ])
   }
