@@ -17,9 +17,6 @@ export default {
 
         return this.settings.title
       },
-      bodyAttrs: {
-        class: [...this.bodyClass]
-      },
       ...i18nSeo,
       meta: (i18nSeo.meta || []).concat([
         // Open Graph
@@ -40,9 +37,32 @@ export default {
     settings () {
       return this.$docus.settings
     },
-    bodyClass () {
-      return this.$menu.open ? ['h-screen lg:h-auto overflow-y-hidden lg:overflow-y-auto'] : []
+    menu () {
+      return this.$menu.open
     }
+  },
+  watch: {
+    menu (val) {
+      if (val) {
+        this.blockBodyScroll()
+      } else {
+        this.unblockBodyScroll()
+      }
+    }
+  },
+  methods: {
+    blockBodyScroll() {
+      const scrollBarGap =
+        window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollBarGap}px`
+    },
+    unblockBodyScroll() {
+      setTimeout(() => {
+        document.body.style.overflow = null
+        document.body.style.paddingRight = null
+      }, 16)
+    },
   }
 }
 </script>
