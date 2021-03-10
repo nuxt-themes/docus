@@ -1,7 +1,7 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
-      class="sticky top-0 z-50 px-2 text-sm text-white bg-gray-800 border-b-2 border-gray-700 rounded-t-md h-12"
+      class="sticky top-0 z-20 px-2 text-sm text-white bg-gray-800 border-b-2 border-gray-700 rounded-t-md h-12"
     >
       <button
         v-for="({ label }, i) in tabs"
