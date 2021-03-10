@@ -2,8 +2,7 @@ import defu from 'defu'
 import { getColors } from 'theme-colors'
 
 const DEFAULT_THEME_COLORS = {
-  primary: '#06B6D4',
-  code: '#8B5CF6'
+  primary: '#3073F1'
 }
 
 const DEFAULT_SETTINGS = {
