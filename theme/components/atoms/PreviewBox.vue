@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shadow-md rounded-md overflow-hidden bg-gray-800 mx-2 mb-4"
+    class="preview-box shadow-md rounded-md overflow-hidden bg-gray-800 mx-2 mb-4"
     :style="{width: '400px',height: '370px'}"
   >
     <div class="px-3 h-8 flex justify-between items-center">
@@ -142,9 +142,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.sticky {
-  top: 100px;
-}
-</style>
