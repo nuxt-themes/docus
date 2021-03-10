@@ -1,5 +1,5 @@
 <template>
-  <div v-show="open" class="fixed z-50 shadow group bg-gray-50 dark:bg-gray-800 bottom-6 left-6 w-36">
+  <div v-show="open" class="fixed z-50 overflow-hidden rounded shadow group bg-gray-50 dark:bg-gray-800 bottom-6 left-6 w-36">
     <h1 class="flex items-center p-2 font-bold bg-gray-100 dark:bg-gray-700">
       <span class="flex-1">Docus UI</span>
       <IconX class="w-4 h-4 transition-opacity opacity-0 cursor-pointer group-hover:opacity-80" @click.native="open = false" />
