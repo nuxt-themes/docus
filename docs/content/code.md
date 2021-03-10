@@ -144,3 +144,15 @@ export default {
 
 </CodePreview>
 
+
+## React
+
+<CodePreview title="React Hello World!">
+
+```jsx [App.js]
+export default function HelloReact () {
+    return <h1>Hello World</h1>
+}
+```
+
+</CodePreview>

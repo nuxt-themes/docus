@@ -9,20 +9,12 @@
         <div class="circle mx-1 w-3 h-3 rounded-full bg-gray-700"></div>
         <div class="circle mx-1 w-3 h-3 rounded-full bg-gray-700"></div>
       </div>
-      <div>
-        Preview
+      <div class="text-sm">
+        {{ title }}
       </div>
       <div class="w-16">
         <a class="block w-4 ml-auto" title="Open in CodeSandbox" :href="codeSandBoxLink" target="_blank" rel="noopener noreferrer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4"
-            stroke="currentColor"
-            fill="currentColor"
-            viewBox="0 0 512 512"
-          >
-            <path d="M234.4 452V267.5L75.6 176.1v105.2l72.7 42.2v79.1l86.1 49.4zm41.2 1.1l87.6-50.5v-81l73.2-42.4V175.3l-160.8 92.8v185zm139.6-313.2l-84.5-49-74.2 43.1-74.8-43.1-85.3 49.6 159.1 91.6 159.7-92.2zM34.4 384.7V129L256 0l221.6 128.4v255.9L256 512 34.4 384.7z"></path>
-          </svg>
+          <IconCodeSandBox class="h-4 w-4" />
         </a>
       </div>
     </div>
@@ -39,7 +31,38 @@
 import { SandpackClient } from 'smooshpack'
 import { getParameters } from 'codesandbox-import-utils/lib/api/define'
 
+const templates = {
+  vue: files => ({
+    files: {
+      ...files,
+      '/index.js': { code: 'import Vue from "vue"; import App from "./src/App.vue"; Vue.config.productionTip = false; new Vue({ render: h => h(App) }).$mount("#app");' },
+      '/public/index.html': { code: '<div id="app"></div>' }
+    },
+    dependencies: { vue: '^2.6.11', '@vue/cli-plugin-babel': '4.1.1' },
+    entry: '/index.js',
+    main: '/src/App.vue',
+    environment: 'vue-cli'
+  }),
+  react: files => ({
+    files: {
+      ...files,
+      '/index.js': { code: 'import React, { StrictMode } from "react"; import ReactDOM from "react-dom"; import App from "./src/App"; const rootElement = document.getElementById("root"); ReactDOM.render(<StrictMode><App /></StrictMode>,rootElement);' },
+      '/public/index.html': { code: '<div id="root"></div>' }
+    },
+    dependencies: { react: '^17.0.0', 'react-dom': '^17.0.0', 'react-scripts': '^4.0.0' },
+    entry: '/index.js',
+    main: '/App.js',
+    environment: 'create-react-app'
+  })
+}
+
 export default {
+  props: {
+    title: {
+      type: String,
+      default: 'Preview'
+    }
+  },
   data () {
     return {
       files: {},
@@ -48,17 +71,10 @@ export default {
   },
   computed: {
     config () {
-      return {
-        files: {
-          ...this.files,
-          '/src/main.js': { code: 'import Vue from "vue"; import App from "./App.vue"; Vue.config.productionTip = false; new Vue({ render: h => h(App) }).$mount("#app");' },
-          '/public/index.html': { code: '<div id="app"></div>' }
-        },
-        dependencies: { vue: '^2.6.11', '@vue/cli-plugin-babel': '4.1.1' },
-        entry: '/src/main.js',
-        main: '/src/App.vue',
-        environment: 'vue-cli'
-      }
+      const filenames = Object.keys(this.files)
+      const isVue = filenames.find(name => name.match(/\.vue$/))
+      const template = isVue ? templates.vue : templates.react
+      return template(this.files)
     },
     clientOptions () {
       return {
@@ -86,7 +102,7 @@ export default {
         {}
       )
       const params = getParameters({ files: normalized })
-      const activePath = '/src/App.vue'
+      const activePath = Object.keys(this.files).shift()
       return `https://codesandbox.io/api/v1/sandboxes/define?parameters=${params}&query=file=${activePath}%26from-sandpack=true`
     },
     update () {
