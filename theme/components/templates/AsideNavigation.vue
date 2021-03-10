@@ -37,17 +37,18 @@
 
 <script>
 
-function detectMobileSafari() {
-  const ua = window.navigator.userAgent
-  const isMobile = /iPhone|iPad|iPod/i.test(ua)
-  const isSafari = !/Chrome/i.test(ua) && /Safari/i.test(ua)
-  return isMobile && isSafari 
-}
+// function detectMobileSafari() {
+//   const ua = window.navigator.userAgent
+//   const isMobile = /iPhone|iPad|iPod/i.test(ua)
+//   const isSafari = !/Chrome/i.test(ua) && /Safari/i.test(ua)
+//   return isMobile && isSafari 
+// }
 
 export default {
   computed: {
     heightClass() {
-      return process.browser && detectMobileSafari() ? 'h-(screen-46)' : 'h-(screen-18)'
+      return 'h-(screen-18)'
+      // return process.browser && detectMobileSafari() ? 'h-(screen-46)' : 'h-(screen-18)'
     },  
     categories () {
       return this.$docus.categories[this.$i18n.locale]
