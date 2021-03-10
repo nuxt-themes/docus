@@ -72,7 +72,9 @@ export default {
 <style scoped>
 .try-hack {
   /* h-screen  */
-  height: -webkit-fill-available;  
+  /* height: -webkit-fill-available;   */
+  min-height: -webkit-fill-available;
+  height: 100%;
   /* max-height: -webkit-fill-available; */
 }
 
