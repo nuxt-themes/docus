@@ -49,12 +49,16 @@ module.exports = ({ nuxt }) => {
           '640px': '640px'
         },
         height: theme => ({
+          '(full-18)': `calc(100% - ${theme('spacing.18')})`,
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
           '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
           '(screen-46)': `calc(100vh - ${theme('spacing.46')})`,
         }),
         maxHeight: theme => ({
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
+        }),
+        minHeight: theme => ({
+          'fill-available': '-webkit-fill-available'
         }),
         maxWidth: {
           '8xl': '90rem'
