@@ -22,7 +22,7 @@ module.exports = ({ nuxt }) => {
         red: colors.red,
         rose: colors.rose,
         yellow: colors.amber,
-        gray: colors.trueGray
+        gray: colors.warmGray
       },
       extend: {
         fontFamily: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-40 w-full border-b border-gray-100 lg:z-50 app-header dark:border-gray-800"
+    class="sticky top-0 z-40 w-full border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-80"
     @click="scrollToTop"
   >
     <div class="flex flex-none px-4 mx-auto max-w-8xl ">
@@ -24,7 +24,7 @@
           :settings="settings"
           class="w-14 lg:flex-1 lg:px-2"
         />
-        <div v-else class="lg:hidden">
+        <div v-else class="flex lg:hidden">
           <ColorSwitcher />
         </div>
 
@@ -81,12 +81,12 @@ export default {
 <style lang="postcss">
 .app-header {
   backdrop-filter: blur(12px);
-  background-color: hsla(0, 0%, 100%, 0.9);
+  /* background-color: hsla(0, 0%, 100%, 0.9); */
 }
 
 .dark {
   & .app-header {
-    background-color: rgba(17, 24, 39, 0.75);
+    /* background-color: rgba(17, 24, 39, 0.75); */
   }
 }
 </style>

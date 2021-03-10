@@ -6,7 +6,7 @@
         <div
           v-if="$menu.open"
           @click.stop="menu = !menu"
-          class="fixed top-0 left-0 z-0 w-full h-full pointer-events-auto scrim lg:hidden"
+          class="fixed top-0 left-0 z-0 w-full h-full bg-gray-400 pointer-events-auto scrim dark:bg-gray-900 dark:bg-opacity-80 bg-opacity-80 lg:hidden"
         ></div>
       </transition>
 
@@ -58,11 +58,11 @@ export default {
 
 .light .scrim {
   backdrop-filter: blur(8px);
-  background: rgba(101, 108, 133, 0.8);
+  /* background: rgba(101, 108, 133, 0.8); */
 }
 
 .dark .scrim {
   backdrop-filter: blur(8px);
-  background: rgba(9, 10, 17, 0.8);
+  /* background: rgba(9, 10, 17, 0.8); */
 }
 </style>
