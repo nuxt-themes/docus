@@ -1,9 +1,9 @@
 <template>
-  <aside
-    class="fixed top-0 left-0 w-auto h-screen overflow-auto pointer-events-auto lg:sticky lg:top-18 lg:w-60"
+  <div
+    class="fixed top-0 left-0 w-auto overflow-auto pointer-events-auto try-hack lg:sticky lg:top-18 lg:w-60"
   >
     <div
-      class="w-auto overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
+      class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
     >
       <div class="flex items-center w-full px-4 lg:hidden h-18 bg-gray-50 dark:bg-gray-800">
         <button class="flex-1 focus:outline-none" @click.stop="menu = !menu">
@@ -18,7 +18,7 @@
       </div>
       <nav
       :class="[heightClass]"
-        class="max-w-sm py-4 pr-24 ml-4 overflow-y-auto text-base font-medium lg:pr-0 lg:text-sm lg:pt-10 lg:pb-16"
+        class="max-w-sm py-4 pr-24 ml-4 overflow-y-auto text-base font-medium try-hack-height lg:pr-0 lg:text-sm lg:pt-10 lg:pb-16"
       >
         <AsideTop />
         <ul>
@@ -32,7 +32,7 @@
         <AsideBottom />
       </nav>
     </div>
-  </aside>
+  </div>
 </template>
 
 <script>
@@ -47,7 +47,8 @@
 export default {
   computed: {
     heightClass() {
-      return 'h-(screen-18)'
+      return ''
+      // return 'h-(screen-18)'
       // return process.browser && detectMobileSafari() ? 'h-(screen-46)' : 'h-(screen-18)'
     },  
     categories () {
@@ -67,3 +68,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.try-hack {
+  /* h-screen  */
+  height: -webkit-fill-available;  
+  /* max-height: -webkit-fill-available; */
+}
+
+.try-hack-height {
+  height: calc(100% - theme('spacing.18'))
+}
+</style>

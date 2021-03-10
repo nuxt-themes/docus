@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed z-50 lg:z-0 lg:static">
+  <aside class="fixed z-50 lg:z-0 lg:static">
     <div class="h-full overflow-auto pointer-events-none lg:overflow-visible ">
       <!-- scrim -->
       <transition name="fade">
@@ -18,7 +18,7 @@
         <AsideNavigation v-if="$menu.open" />
       </transition>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>
