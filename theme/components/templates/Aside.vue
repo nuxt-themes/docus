@@ -5,8 +5,8 @@
       <transition name="fade">
         <div
           v-if="$menu.open"
-          @click.stop="menu = !menu"
           class="fixed top-0 left-0 z-0 w-full h-full bg-gray-400 pointer-events-auto scrim dark:bg-gray-900 dark:bg-opacity-80 bg-opacity-80 lg:hidden"
+          @click.stop="menu = !menu"
         ></div>
       </transition>
 
@@ -25,15 +25,15 @@
 export default {
   computed: {
     menu: {
-      get() {
-        return this.$menu.open;
+      get () {
+        return this.$menu.open
       },
-      set(val) {
-        this.$menu.open = val;
+      set (val) {
+        this.$menu.open = val
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

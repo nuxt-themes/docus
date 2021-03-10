@@ -58,18 +58,18 @@ export default {
     }
   },
   computed: {
-    logo() {
+    logo () {
       if (!this.settings.logo) {
-        return;
+        return
       }
-      if (typeof this.settings.logo === "object") {
-        return this.settings.logo;
+      if (typeof this.settings.logo === 'object') {
+        return this.settings.logo
       }
       return {
         light: this.settings.logo,
         dark: this.settings.logo
-      };
+      }
     }
   }
-};
+}
 </script>

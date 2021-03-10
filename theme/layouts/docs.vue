@@ -51,18 +51,18 @@ export default {
     }
   },
   methods: {
-    blockBodyScroll() {
+    blockBodyScroll () {
       const scrollBarGap =
         window.innerWidth - document.documentElement.clientWidth
       document.body.style.overflow = 'hidden'
       document.body.style.paddingRight = `${scrollBarGap}px`
     },
-    unblockBodyScroll() {
+    unblockBodyScroll () {
       setTimeout(() => {
         document.body.style.overflow = null
         document.body.style.paddingRight = null
       }, 16)
-    },
+    }
   }
 }
 </script>

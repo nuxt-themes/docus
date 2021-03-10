@@ -1,14 +1,10 @@
 <template>
-  <li
-    :class="{
-      'active': isCategoryActive()
-    }"
-  >
-    <h5 
-      v-if="category" 
+  <li :class="{ 'active': isCategoryActive() }">
+    <h5
+      v-if="category"
+      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
       @click="collapseCategory"
-      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100" 
-      >
+    >
       {{ category }}
     </h5>
     <ul v-if="!collapse || isCategoryActive()" class="mb-2">
@@ -42,10 +38,12 @@ import { withTrailingSlash } from 'ufo'
 export default {
   props: {
     category: {
-      type: String
+      type: String,
+      default: ''
     },
     docs: {
-      type: Array
+      type: Array,
+      required: true
     }
   },
   data () {
@@ -54,8 +52,8 @@ export default {
     }
   },
   methods: {
-    collapseCategory() {
-      if (this.isCategoryActive()) return
+    collapseCategory () {
+      if (this.isCategoryActive()) { return }
       this.collapse = !this.collapse
     },
     isCategoryActive () {

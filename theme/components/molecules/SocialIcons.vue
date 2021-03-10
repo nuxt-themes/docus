@@ -28,9 +28,9 @@
 <script>
 export default {
   computed: {
-    settings() {
-      return this.$docus.settings;
+    settings () {
+      return this.$docus.settings
     }
   }
-};
+}
 </script>
