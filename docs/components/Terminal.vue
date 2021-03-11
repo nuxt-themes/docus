@@ -2,7 +2,7 @@
   <div
     ref="copyInstall"
     :data-clipboard-text="snippet"
-    class="relative flex flex-col w-full h-64 overflow-hidden text-gray-600 bg-gray-800 rounded-lg cursor-pointer"
+    class="relative flex flex-col w-full h-64 overflow-hidden text-gray-600 bg-gray-800 rounded-lg cursor-pointer group"
   >
     <div
       v-if="copied"
@@ -29,10 +29,11 @@
         Bash
       </div>
     </div>
-    <div class="flex p-4 font-mono">
+    <div class="flex flex-1 p-4 font-mono">
       <span class="inline-block mr-2 font-bold select-none">$</span>
       <span class="inline-block text-gray-200">{{ snippet }}</span>
     </div>
+    <div class="py-2 text-center transition-opacity opacity-0 group-hover:opacity-100">Click to copy</div>
   </div>
 </template>
 
