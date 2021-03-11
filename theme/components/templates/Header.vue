@@ -3,17 +3,17 @@
     class="sticky top-0 z-40 w-full bg-white border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
     @click="scrollToTop"
   >
-    <div class="flex flex-none px-4 mx-auto max-w-8xl ">
+    <div class="flex flex-none px-4 mx-auto sm:px-6 max-w-8xl ">
       <!-- Left section -->
       <!-- Mobile menu button -->
       <button
         v-if="aside"
-        class="flex items-center justify-center sm:p-2 lg:hidden focus:outline-none"
+        class="flex items-center justify-center lg:hidden focus:outline-none"
         @click.stop="menu = !menu"
       >
         <IconMenuAlt class="w-6 h-6 " />
       </button>
-      <div class="flex items-center justify-center flex-1 lg:flex-none">
+      <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
         <Logo :settings="settings" />
       </div>
 
