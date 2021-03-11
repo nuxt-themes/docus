@@ -3,7 +3,7 @@
     <template #header>
       <Header>
         <template #desktop-right>
-          <ButtonLink href="/get-started/installation">Get started</ButtonLink>
+          <NuxtLink to="/get-started/installation" class="inline-flex items-center flex-none px-3 py-2 text-base font-semibold leading-4 text-white transition-colors duration-200 border border-transparent rounded bg-primary-500 hover:bg-primary-600">Get started</NuxtLink>
         </template>
       </Header>
     </template>
@@ -11,31 +11,32 @@
       <Aside class="block lg:hidden" />
     </template>
     <section class="px-4 mx-auto my-24 max-w-8xl">
-      <h1
-        class="my-8 text-4xl font-semibold leading-none tracking-tight text-center text-gray-900 md:text-left dark:text-gray-100 sm:text-6xl lg:text-8xl sm:my-14"
-      >
-        Documentation generator<br />based on Nuxt and Tailwind.
-      </h1>
-      <div class="flex flex-col md:flex-row">
-        <div class="flex flex-col items-start pr-0 mb-8 md:pr-2 lg:pr-8 md:w-1/2">
-          <h3
-            class="mb-4 text-lg text-center text-gray-700 md:text-left sm:text-xl md:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-200"
+
+      <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col items-center pr-0 mb-8 lg:items-start lg:pr-8 lg:w-2/3">
+          <h1
+            class="my-8 text-4xl font-semibold leading-none tracking-tight text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:my-12"
           >
+            Documentation generator<br />based on Nuxt and Tailwind.
+          </h1>
+          <h3 class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
             Write in markdown, use Vue components, add style with TailwindCSS
             and enjoy the power of Nuxt.
           </h3>
-          <ButtonLink
-            class="mx-auto md:mx-0"
-            size="large"
-            href="/get-started/installation"
-          >
-            Get started
-          </ButtonLink>
-          <!-- TODO: GitHub stars Button -->
-        </div>
-        <div class="w-full m-auto md:w-1/2 sm:w-580px ">
+          <div class="flex items-center space-x-6">
+            <ButtonLink
+              class="mx-auto md:mx-0"
+              size="large"
+              href="/get-started/installation"
+            >
+              Get started
+            </ButtonLink>
+            <a href="https://github.com/nuxtlabs/docus" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
+          </div>
+          </h3\></div>
+        <div class="w-full m-auto lg:w-1/3 sm:w-580px ">
           <div class="md:pl-2">
-            <Terminal snippet="npx degit nuxtlabs/docus-starter" />
+            <Terminal snippet="npx degit nuxtlabs/docus-starter#main docs" />
           </div>
         </div>
       </div>
