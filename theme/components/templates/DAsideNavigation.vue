@@ -7,7 +7,7 @@
     >
       <div class="flex items-center w-full px-4 lg:hidden h-18 bg-gray-50 dark:bg-gray-800">
         <button class="flex-1 focus:outline-none" @click.stop="menu = !menu">
-          <DIconArrowLeft class="w-5 h-5" />
+          <IconArrowLeft class="w-5 h-5" />
         </button>
         <div
           class="flex items-center justify-end w-full px-2 space-x-3 h-18 lg:hidden"

@@ -9,7 +9,7 @@
       <label for="search" class="sr-only">Search</label>
       <div class="relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <DIconSearch class="w-5 h-5 text-gray-500" />
+          <IconSearch class="w-5 h-5 text-gray-500" />
         </div>
         <input
           id="search"
@@ -47,7 +47,7 @@
           @click="focus = false"
         >
           <span v-if="result.category" class="font-bold">{{ result.category }}</span>
-          <DIconChevronRight v-if="result.category" class="w-3 h-3 mx-1" />
+          <IconChevronRight v-if="result.category" class="w-3 h-3 mx-1" />
           {{ result.title }}
         </NuxtLink>
       </li>

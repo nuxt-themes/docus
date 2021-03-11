@@ -19,7 +19,7 @@
         </template>
       </div>
       <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer">
-        <DIconTwitter title="View on Twitter" role="img" class="text-blue-500" />
+        <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
       </a>
     </div>
     <div class="content">
@@ -27,7 +27,7 @@
     </div>
     <div v-if="layout === 'tweet'" class="mt-2 flex">
       <a :href="likeUrl" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-red-600">
-        <DIconHeart class="mr-2" />
+        <IconHeart class="mr-2" />
         {{ heartCount }}
       </a>
       <a :href="tweetUrl" target="_blank" rel="noopener noreferrer" class="ml-4 hover:text-blue-600">

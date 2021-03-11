@@ -10,7 +10,7 @@
         class="flex items-center justify-center sm:p-2 lg:hidden focus:outline-none"
         @click.stop="menu = !menu"
       >
-        <DIconMenuAlt class="w-6 h-6 " />
+        <IconMenuAlt class="w-6 h-6 " />
       </button>
       <div class="flex items-center justify-center flex-1 lg:flex-none">
         <DLogo :settings="settings" />

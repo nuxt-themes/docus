@@ -5,7 +5,7 @@
     class="button-link"
     :class="size"
   ><slot /></NuxtLink>
-  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot /><DIconExternalLink v-if="blank" class="w-4 h-4 ml-2" /></a>
+  <a v-else :href="href" class="button-link" :class="size" v-bind="linkAttrs"><slot /><IconExternalLink v-if="blank" class="w-4 h-4 ml-2" /></a>
 </template>
 
 <script>

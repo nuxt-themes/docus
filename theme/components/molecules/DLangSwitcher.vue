@@ -6,7 +6,7 @@
         :class="{ 'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': open }"
         @touchstart.stop.prevent="toggle"
       >
-        <DIconTranslate class="w-6 h-6" />
+        <IconTranslate class="w-6 h-6" />
       </button>
     </template>
 
