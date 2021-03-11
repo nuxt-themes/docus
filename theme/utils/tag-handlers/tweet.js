@@ -58,32 +58,24 @@ function mapAST (ast) {
 
 const tweetCache = {}
 
-module.exports = () => {
-  return async (tree) => {
-    const modified = tree.children.map(async (node, i) => {
-      if (node.type === 'html' && node.value && node.value.match(/^\s*<(D|d-)[t|T]weet\s+/)) {
-        const match = node.value.match(/id=['"](\d*)['"]/)
-        if (!match) {
-          // eslint-disable-next-line no-console
-          console.error('Invalid tweet id')
-          return { type: 'html', value: '<!-- Invalid tweet id -->' }
-        }
-        if (!tweetCache[match[1]]) {
-          try {
-            const tweet = await fetchTweetAst(match[1])
-            const { nodes, data } = tweet[0]
-            tweetCache[match[1]] = createTweetNode(data, nodes)
-          } catch (e) {
-          // eslint-disable-next-line no-console
-            console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
-            return { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` }
-          }
-        }
-        return tweetCache[match[1]]
-      }
-      return Promise.resolve(node)
-    })
-    tree.children = (await Promise.all(modified)).flat()
-    return null
+module.exports = async (node) => {
+  const match = node.value.match(/id=['"](\d*)['"]/)
+  if (!match) {
+    // eslint-disable-next-line no-console
+    console.error('Invalid tweet id')
+    return { node: { type: 'html', value: '<!-- Invalid tweet id -->' } }
   }
+  console.log(match[1]);
+  if (!tweetCache[match[1]]) {
+    try {
+      const tweet = await fetchTweetAst(match[1])
+      const { nodes, data } = tweet[0]
+      tweetCache[match[1]] = createTweetNode(data, nodes)
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
+      return { node: { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` } }
+    }
+  }
+  return { node: tweetCache[match[1]] }
 }
