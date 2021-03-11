@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 left-0 w-auto h-full overflow-auto pointer-events-auto min-h-fill-available lg:sticky lg:top-18 lg:w-60"
+    class="fixed top-0 left-0 w-auto h-full overflow-auto pointer-events-auto lg:h-screen min-h-fill-available lg:sticky lg:top-18 lg:w-60"
   >
     <div
       class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
