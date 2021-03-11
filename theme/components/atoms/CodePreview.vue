@@ -1,5 +1,5 @@
 <template>
-  <div class="code-preview w-full flex items-center flex-col" :class="{ 'lg:flex-row': layout === 'horizontal' }">
+  <div class="code-preview w-full flex items-center flex-col" :class="[layout, layout === 'horizontal' ? 'lg:flex-row' : '' ]">
     <template v-if="preview">
       <div class="mb-4 mx-2 max-w-full">
         <slot />
@@ -40,6 +40,10 @@ export default {
   height: 370px;
   max-width: 100%;
   @apply bg-gray-800 rounded-md overflow-scroll;
+}
+.code-preview.vertical /deep/ .code-group {
+  max-height: 370px;
+  height: auto;
 }
 .code-preview /deep/ .code-group .nuxt-content-highlight {
   @apply w-auto h-auto
