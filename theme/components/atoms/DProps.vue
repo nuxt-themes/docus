@@ -1,5 +1,5 @@
 <template>
-  <table-container>
+  <d-table-container>
     <table v-if="component">
       <thead>
         <tr>
@@ -27,7 +27,7 @@
         </tr>
       </tbody>
     </table>
-  </table-container>
+  </d-table-container>
 </template>
 
 <script>
