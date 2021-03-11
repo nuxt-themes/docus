@@ -1,5 +1,5 @@
 <template>
-  <Dropdown v-if="availableLocales.length" class="inline-flex">
+  <DDropdown v-if="availableLocales.length" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
         class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 focus:outline-none"
@@ -19,7 +19,7 @@
         >{{ locale.name }}</NuxtLink>
       </li>
     </ul>
-  </Dropdown>
+  </DDropdown>
 </template>
 
 <script>

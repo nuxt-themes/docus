@@ -9,7 +9,7 @@
         <div class="absolute inset-x-0 z-10 hidden h-12 pointer-events-none lg:block bg-gradient-to-b from-white dark:from-gray-900"></div>
 
         <nav class="pt-6 overflow-y-auto font-medium text-base sm:px-4 xl:px-6 lg:text-sm pb-10 lg:pt-10 lg:pb-16 lg:h-(screen-18)">
-          <AsideTop />
+          <DAsideTop />
           <ul v-if="lastRelease" class="mb-8 space-y-8 lg:hidden">
             <li>
               <NuxtLink
@@ -21,13 +21,13 @@
           </ul>
 
           <ul>
-            <CategoryItem v-for="(docs, category) in categories" :key="category" :category="category" :docs="docs" />
+            <DCategoryItem v-for="(docs, category) in categories" :key="category" :category="category" :docs="docs" />
           </ul>
-          <AsideBottom />
+          <DAsideBottom />
         </nav>
       </div>
     </aside>
-    <MenuButton />
+    <DMenuButton />
   </div>
 </template>
 

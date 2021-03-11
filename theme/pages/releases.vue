@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <DPage>
     <div class="mb-10">
       <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">Releases</span>
@@ -21,9 +21,9 @@
     </div>
     <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
     <template #toc>
-      <Toc :toc="toc" />
+      <DToc :toc="toc" />
     </template>
-  </Page>
+  </DPage>
 </template>
 
 <script>

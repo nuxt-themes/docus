@@ -1,14 +1,14 @@
 <template>
-  <Container aside fluid>
+  <DContainer aside fluid>
     <template #header>
-      <Header>
+      <DHeader>
         <template #desktop-right>
           <NuxtLink to="/get-started/installation" class="inline-flex items-center flex-none px-3 py-2 text-base font-semibold leading-4 text-white transition-colors duration-200 border border-transparent rounded bg-primary-500 hover:bg-primary-600">Get started</NuxtLink>
         </template>
-      </Header>
+      </DHeader>
     </template>
     <template #aside>
-      <Aside class="block lg:hidden" />
+      <DAside class="block lg:hidden" />
     </template>
     <section class="px-4 mx-auto my-24 max-w-8xl">
 
@@ -66,7 +66,7 @@
         </ul>
       </div>
     </section>
-  </Container>
+  </DContainer>
 </template>
 
 <script>

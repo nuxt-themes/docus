@@ -35,13 +35,19 @@ module.exports = async function propsHandler (node) {
   if (!match) {
     // eslint-disable-next-line no-console
     console.error('Invalid component')
-    return { type: 'html', value: '<!-- Invalid component -->' }
+    return {
+      node: { type: 'html', value: '<!-- Invalid component -->' }
+    }
   }
   const componentFile = resolvePath(match[1])
   if (!componentFile) {
     // eslint-disable-next-line no-console
     console.error('Component not find. ' + match[1])
-    return { type: 'html', value: '<!-- Invalid component -->' }
+    return {
+      node: { type: 'html', value: '<!-- Invalid component -->' }
+    }
   }
-  return await parse(componentFile)
+  return {
+    data: await parse(componentFile)
+  }
 }
