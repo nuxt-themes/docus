@@ -65,7 +65,6 @@ module.exports = async (node) => {
     console.error('Invalid tweet id')
     return { node: { type: 'html', value: '<!-- Invalid tweet id -->' } }
   }
-  console.log(match[1]);
   if (!tweetCache[match[1]]) {
     try {
       const tweet = await fetchTweetAst(match[1])
