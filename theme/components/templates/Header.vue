@@ -7,6 +7,7 @@
       <!-- Left section -->
       <!-- Mobile menu button -->
       <button
+        v-if="aside"
         class="flex items-center justify-center sm:p-2 lg:hidden focus:outline-none"
         @click.stop="menu = !menu"
       >
@@ -51,6 +52,12 @@
 
 <script>
 export default {
+  props: {
+    aside: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     settings () {
       return this.$docus.settings
