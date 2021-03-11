@@ -25,6 +25,9 @@ module.exports = ({ nuxt }) => {
         gray: colors.warmGray
       },
       extend: {
+        screens: {
+          xs: '414px'
+        },
         fontFamily: {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },

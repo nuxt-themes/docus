@@ -12,7 +12,6 @@
       <NuxtContent :document="document" />
     </div>
     <DPageBottom :document="document" />
-    <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
     <DPagePrevNext :prev="prev" :next="next" />
     <template #toc>
       <DToc v-if="!document.fullscreen" :toc="document.toc" />
