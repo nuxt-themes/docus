@@ -1,7 +1,13 @@
 <template>
   <div id="docsearch">
+    <!-- DO NOT CHANGE: this code is just a placeholder -->
     <button type="button" class="DocSearch-Button" aria-label="Search">
-      <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+      <svg
+        width="20"
+        height="20"
+        class="DocSearch-Search-Icon"
+        viewBox="0 0 20 20"
+      >
         <path
           d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
           stroke="currentColor"
@@ -71,81 +77,77 @@ export default {
         docsearch = docsearch.default
 
         docsearch(
-          Object.assign(
-            {},
-            userOptions,
-            {
-              container: '#docsearch',
-              searchParameters: Object.assign(
-                {},
-                lang && {
-                  facetFilters: [`${userOptions.langAttribute || 'language'}:${lang.iso}`].concat(
-                    userOptions.facetFilters || []
-                  )
-                }
-              ),
-              navigator: {
-                navigate: ({ suggestionUrl }) => {
-                  const { pathname: hitPathname } = new URL(
+          Object.assign({}, userOptions, {
+            container: '#docsearch',
+            searchParameters: Object.assign(
+              {},
+              lang && {
+                facetFilters: [
+                  `${userOptions.langAttribute || 'language'}:${lang.iso}`
+                ].concat(userOptions.facetFilters || [])
+              }
+            ),
+            navigator: {
+              navigate: ({ suggestionUrl }) => {
+                const { pathname: hitPathname } = new URL(
+                  window.location.origin + suggestionUrl
+                )
+
+                // Vue Router doesn't handle same-page navigation so we use
+                // the native browser location API for anchor navigation.
+                if (this.$router.history.current.path === hitPathname) {
+                  window.location.assign(
                     window.location.origin + suggestionUrl
                   )
-
-                  // Vue Router doesn't handle same-page navigation so we use
-                  // the native browser location API for anchor navigation.
-                  if (this.$router.history.current.path === hitPathname) {
-                    window.location.assign(
-                      window.location.origin + suggestionUrl
-                    )
-                  } else {
-                    this.$router.push(suggestionUrl)
-                  }
+                } else {
+                  this.$router.push(suggestionUrl)
                 }
-              },
-              transformItems: (items) => {
-                return items.map((item) => {
-                  return Object.assign({}, item, {
-                    url: this.getRelativePath(item.url)
-                  })
+              }
+            },
+            transformItems: (items) => {
+              return items.map((item) => {
+                return Object.assign({}, item, {
+                  url: this.getRelativePath(item.url)
                 })
-              },
-              hitComponent: ({ hit, children }) => {
-                return {
-                  type: 'a',
-                  ref: undefined,
-                  constructor: undefined,
-                  key: undefined,
-                  props: {
-                    href: hit.url,
-                    onClick: (event) => {
-                      if (isSpecialClick(event)) {
-                        return
-                      }
+              })
+            },
+            hitComponent: ({ hit, children }) => {
+              return {
+                type: 'a',
+                ref: undefined,
+                constructor: undefined,
+                key: undefined,
+                props: {
+                  href: hit.url,
+                  onClick: (event) => {
+                    if (isSpecialClick(event)) {
+                      return
+                    }
 
-                      // We rely on the native link scrolling when user is
-                      // already on the right anchor because Vue Router doesn't
-                      // support duplicated history entries.
-                      if (this.$router.history.current.fullPath === hit.url) {
-                        return
-                      }
+                    // We rely on the native link scrolling when user is
+                    // already on the right anchor because Vue Router doesn't
+                    // support duplicated history entries.
+                    if (this.$router.history.current.fullPath === hit.url) {
+                      return
+                    }
 
-                      const { pathname: hitPathname } = new URL(
-                        window.location.origin + hit.url
-                      )
+                    const { pathname: hitPathname } = new URL(
+                      window.location.origin + hit.url
+                    )
 
-                      // If the hits goes to another page, we prevent the native link behavior
-                      // to leverage the Vue Router loading feature.
-                      if (this.$router.history.current.path !== hitPathname) {
-                        event.preventDefault()
-                      }
+                    // If the hits goes to another page, we prevent the native link behavior
+                    // to leverage the Vue Router loading feature.
+                    if (this.$router.history.current.path !== hitPathname) {
+                      event.preventDefault()
+                    }
 
-                      this.$router.push(hit.url)
-                    },
-                    children
-                  }
+                    this.$router.push(hit.url)
+                  },
+                  children
                 }
               }
             }
-          )
+          })
         )
       })
     },
@@ -157,7 +159,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss">
 .DocSearch {
   --docsearch-primary-color: var(--color-primary-500);
   --docsearch-highlight-color: var(--docsearch-primary-color);
@@ -171,27 +173,34 @@ export default {
   --docsearch-muted-color: var(--color-gray-500);
 }
 
+.DocSearch-Container {
+  @apply p-4;
+  backdrop-filter: blur(8px);
+}
+
+.DocSearch-Modal {
+  @apply h-auto rounded overflow-hidden !important;
+}
+
+.DocSearch-Footer {
+  @apply relative !important;
+}
+
 .DocSearch-Button {
-  @apply w-full relative ml-0 rounded-md flex items-center bg-transparent border-0 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
+  @apply w-full h-12 relative ml-0 rounded-lg flex items-center justify-center lg:justify-start bg-transparent lg:bg-gray-100 lg:dark:bg-gray-800 border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 lg:hover:bg-gray-50 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply px-3 font-medium !important;
+  @apply hidden lg:inline-block px-3 font-medium !important;
 }
 
 .DocSearch-Search-Icon {
-  @apply text-current !important;
+  @apply text-current w-4 h-4 lg:w-5 lg:h-5 text-gray-400 !important;
   stroke-width: 1.6;
 }
 
 .DocSearch-Button-Key {
-  @apply bg-none font-medium -top-px relative rounded h-5 w-5 flex items-center justify-center border border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-px !important;
-}
-
-@media (max-width: 750px) {
-  .DocSearch-Button-Placeholder {
-      display: flex !important;
-  }
+  @apply hidden lg:flex bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5 !important;
 }
 
 .DocSearch-Screen-Icon > svg {
@@ -202,18 +211,20 @@ export default {
   & .DocSearch {
     --docsearch-primary-color: var(--color-primary-400);
     --docsearch-text-color: var(--color-gray-300);
-    --docsearch-container-background: rgba(9,10,17,0.8);
+    --docsearch-container-background: rgba(9, 10, 17, 0.8);
     --docsearch-modal-background: var(--color-gray-900);
-    --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40,0 3px 8px 0 #000309;
+    --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
     --docsearch-searchbox-background: var(--color-gray-800);
     --docsearch-searchbox-focus-background: var(--color-gray-800);
     --docsearch-hit-color: var(--color-gray-300);
     --docsearch-hit-shadow: none;
     --docsearch-hit-background: var(--color-gray-800);
-    --docsearch-key-gradient: linear-gradient(-26.5deg,#565872,#31355b);
-    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55,inset 0 0 1px 1px #51577d,0 2px 2px 0 rgba(3,4,9,0.3);
+    --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
+    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d,
+      0 2px 2px 0 rgba(3, 4, 9, 0.3);
     --docsearch-footer-background: var(--color-gray-800);
-    --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73,76,106,0.5),0 -4px 8px 0 rgba(0,0,0,0.2);
+    --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
+      0 -4px 8px 0 rgba(0, 0, 0, 0.2);
     --docsearch-logo-color: #fff;
     --docsearch-muted-color: var(--color-gray-500);
   }

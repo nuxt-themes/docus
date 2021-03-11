@@ -1,67 +1,49 @@
 <template>
-  <div class="sticky top-0 z-40 flex flex-none w-full mx-auto lg:z-50 max-w-8xl app-header" @click="scrollToTop">
-    <div
-      class="flex items-center flex-none pl-4 border-b border-gray-200 sm:pl-6 lg:ml-6 lg:pl-0 xl:ml-8 dark:border-gray-800"
-      :class="aside ? 'lg:border-b-0 lg:w-60 xl:w-72' : 'lg:pr-6 xl:pr-8'"
-    >
-      <NuxtLink
-        :to="localePath('/')"
-        class="w-auto overflow-hidden"
-        :aria-label="settings.title"
+  <div
+    class="sticky top-0 z-40 w-full border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-80"
+    @click="scrollToTop"
+  >
+    <div class="flex flex-none px-4 mx-auto max-w-8xl ">
+      <!-- Left section -->
+      <!-- Mobile menu button -->
+      <button
+        class="flex items-center justify-center sm:p-2 lg:hidden focus:outline-none"
+        @click.stop="menu = !menu"
       >
-        <span v-if="logo" class="sr-only">{{ settings.title }}</span>
-        <span v-if="!logo" class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ settings.title }}</span>
+        <IconMenuAlt class="w-6 h-6 " />
+      </button>
+      <div class="flex items-center justify-center flex-1 lg:flex-none">
+        <Logo :settings="settings" />
+      </div>
 
-        <img
-          v-if="logo"
-          :src="logo.light"
-          class="w-auto h-8 light-img"
-          :alt="settings.title"
+      <!-- Middle section -->
+      <div class="flex items-center justify-end lg:flex-auto h-18 ">
+        <AlgoliaSearchBox
+          v-if="settings.algolia"
+          :options="settings.algolia"
+          :settings="settings"
+          class="w-14 lg:flex-1 lg:px-2"
         />
-        <img v-if="logo" :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
-      </NuxtLink>
-    </div>
-    <div
-      class="flex items-center justify-between flex-auto px-4 space-x-6 border-b border-gray-200 dark:border-gray-800 h-18 sm:px-6 lg:mr-6 lg:px-0 xl:mr-8"
-    >
-      <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" :settings="settings" />
+        <div v-else class="flex lg:hidden">
+          <ColorSwitcher />
+        </div>
 
-      <div class="flex items-center space-x-4">
-        <HeaderRight />
-        <NuxtLink
-          v-if="lastRelease"
-          :to="localePath('/releases')"
-          class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
-          exact-active-class="text-primary-500 dark:text-primary-400"
-        >{{ lastRelease }}</NuxtLink>
-
-        <LangSwitcher />
-
-        <ColorSwitcher />
-
-        <a
-          v-if="settings.twitter"
-          :href="`https://twitter.com/${settings.twitter}`"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Twitter"
-          name="Twitter"
-          class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
+        <!-- Desktop: Right section -->
+        <div
+          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
         >
-          <IconTwitter class="w-5 h-5" />
-        </a>
+          <slot name="desktop-right" />
+          <NuxtLink
+            v-if="lastRelease"
+            :to="localePath('/releases')"
+            class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
+            exact-active-class="text-primary-500 dark:text-primary-400"
+          >{{ lastRelease }}</NuxtLink>
 
-        <a
-          v-if="settings.github.repo"
-          :href="$docus.repoUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Github"
-          name="Github"
-          class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
-        >
-          <IconGithub class="w-5 h-5" />
-        </a>
+          <LangSwitcher />
+          <ColorSwitcher />
+          <SocialIcons />
+        </div>
       </div>
     </div>
   </div>
@@ -69,12 +51,6 @@
 
 <script>
 export default {
-  props: {
-    aside: {
-      type: Boolean,
-      default: false
-    }
-  },
   computed: {
     settings () {
       return this.$docus.settings
@@ -88,20 +64,6 @@ export default {
       },
       set (val) {
         this.$menu.open = val
-      }
-    },
-    logo () {
-      if (!this.settings.logo) {
-        return
-      }
-
-      if (typeof this.settings.logo === 'object') {
-        return this.settings.logo
-      }
-
-      return {
-        light: this.settings.logo,
-        dark: this.settings.logo
       }
     }
   },
@@ -119,12 +81,12 @@ export default {
 <style lang="postcss">
 .app-header {
   backdrop-filter: blur(12px);
-  background-color: hsla(0,0%,100%,.75);
+  /* background-color: hsla(0, 0%, 100%, 0.9); */
 }
 
 .dark {
   & .app-header {
-    background-color: rgba(17, 24, 39, 0.75);
+    /* background-color: rgba(17, 24, 39, 0.75); */
   }
 }
 </style>

@@ -14,9 +14,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters([
-      'settings'
-    ]),
+    ...mapGetters(['settings']),
     menu: {
       get () {
         return this.$menu.open

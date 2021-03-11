@@ -1,9 +1,9 @@
 /*
-** TailwindCSS Configuration File
-**
-** Docs: https://tailwindcss.com/docs/configuration
-** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
-*/
+ ** TailwindCSS Configuration File
+ **
+ ** Docs: https://tailwindcss.com/docs/configuration
+ ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
+ */
 const path = require('path')
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
@@ -22,7 +22,7 @@ module.exports = ({ nuxt }) => {
         red: colors.red,
         rose: colors.rose,
         yellow: colors.amber,
-        gray: colors.coolGray
+        gray: colors.warmGray
       },
       extend: {
         fontFamily: {
@@ -43,13 +43,22 @@ module.exports = ({ nuxt }) => {
           }
         },
         spacing: {
-          18: '4.5rem'
+          18: '4.5rem',
+          46: '11.5rem',
+          '580px': '580px',
+          '640px': '640px'
         },
         height: theme => ({
-          '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
+          '(full-18)': `calc(100% - ${theme('spacing.18')})`,
+          '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+          '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
+          '(screen-46)': `calc(100vh - ${theme('spacing.46')})`
         }),
         maxHeight: theme => ({
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
+        }),
+        minHeight: theme => ({
+          'fill-available': '-webkit-fill-available'
         }),
         maxWidth: {
           '8xl': '90rem'
@@ -61,7 +70,7 @@ module.exports = ({ nuxt }) => {
           DEFAULT: {
             css: {
               maxWidth: 'none',
-              color: theme('colors.gray.500'),
+              color: theme('colors.gray.700'),
               '> :first-child': { marginTop: '-' },
               '> :last-child': { marginBottom: '-' },
               '&:first-child > :first-child': {
@@ -71,7 +80,19 @@ module.exports = ({ nuxt }) => {
                 marginBottom: '0'
               },
               'h1, h2': {
-                letterSpacing: '-0.025em'
+                letterSpacing: '-0.025em',
+                fontWeight: theme('fontWeight.bold')
+              },
+              'h1, h2, h3': {
+                marginTop: '1em',
+                marginBottom: '0.5em'
+              },
+              h3: {
+                fontWeight: theme('fontWeight.semibold')
+              },
+              p: {
+                marginTop: '0.5em',
+                marginBottom: '0.5em'
               },
               'h2, h3': {
                 'scroll-margin-block': `${(70 + 40) / 16}rem`
@@ -93,6 +114,17 @@ module.exports = ({ nuxt }) => {
                   borderBottomColor: theme('colors.gray.900'),
                   paddingBottom: '2px'
                 }
+              },
+              'ul ul, ul ol, ol ul, ol ol': {
+                marginTop: '0.5em',
+                marginBottom: '0.5em'
+              },
+              li: {
+                marginTop: '0.25em',
+                marginBottom: '0.25em'
+              },
+              '> ul > li > *:last-child': {
+                marginBottom: '0.5em'
               },
               a: {
                 color: 'var(--primary-500)',
@@ -170,7 +202,7 @@ module.exports = ({ nuxt }) => {
           },
           dark: {
             css: {
-              color: theme('colors.gray.300'),
+              color: theme('colors.gray.50'),
               strong: {
                 color: theme('colors.gray.100')
               },
@@ -263,31 +295,29 @@ module.exports = ({ nuxt }) => {
     plugins: [
       require('@tailwindcss/typography'),
       require('@tailwindcss/aspect-ratio'),
-      require('tailwind-css-variables')(
-        {
-          colors: 'color',
-          screens: false,
-          fontFamily: false,
-          fontSize: false,
-          fontWeight: false,
-          lineHeight: false,
-          letterSpacing: false,
-          backgroundSize: false,
-          borderWidth: false,
-          borderRadius: false,
-          width: false,
-          height: false,
-          minWidth: false,
-          minHeight: false,
-          maxWidth: false,
-          maxHeight: false,
-          padding: false,
-          margin: false,
-          boxShadow: false,
-          zIndex: false,
-          opacity: false
-        }
-      )
+      require('tailwind-css-variables')({
+        colors: 'color',
+        screens: false,
+        fontFamily: false,
+        fontSize: false,
+        fontWeight: false,
+        lineHeight: false,
+        letterSpacing: false,
+        backgroundSize: false,
+        borderWidth: false,
+        borderRadius: false,
+        width: false,
+        height: false,
+        minWidth: false,
+        minHeight: false,
+        maxWidth: false,
+        maxHeight: false,
+        padding: false,
+        margin: false,
+        boxShadow: false,
+        zIndex: false,
+        opacity: false
+      })
     ],
     purge: {
       content: [

@@ -1,8 +1,10 @@
 <template>
-  <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block">
+  <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block ">
     <TocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
-      <h5 class="mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-gray-100 lg:text-xs">{{ $t('toc.title') }}</h5>
+      <h5 class="flex items-center mb-1">
+        <span class="text-sm font-semibold text-gray-600 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
+      </h5>
 
       <ul class="overflow-x-hidden font-medium">
         <li
@@ -13,12 +15,11 @@
         >
           <a
             :href="`#${link.id}`"
-            class="block py-2 transition-colors duration-100 transform scrollactive-item"
+            class="block py-1 transition-colors duration-100 transform scrollactive-item"
             :class="{
-              'ml-2': link.depth === 3,
-              'ml-3': link.depth === 4,
-              'ml-4': link.depth === 5,
-              'ml-5': link.depth === 6
+              'mt-2 mb-1': link.depth === 2,
+              'border-l-2 border-gray-100 dark:border-gray-800 pl-3 text-gray-400': link.depth === 3,
+              'dark:border-primary-500 border-primary-500 text-primary-400': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
           >{{ link.text }}</a>
         </li>

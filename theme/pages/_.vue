@@ -1,12 +1,12 @@
 <template>
   <Page>
-    <div class="mb-10" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-10': document.description }">
-      <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+    <div class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': document.description }">
+      <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">{{ document.title }}</span>
         <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
         <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
       </h1>
-      <p v-if="document.description" class="mt-2 text-lg text-gray-500 dark:text-gray-300">{{ document.description }}</p>
+      <p v-if="document.description" class="mt-2 text-lg text-gray-600 dark:text-gray-300">{{ document.description }}</p>
     </div>
     <div class="max-w-none">
       <NuxtContent :document="document" />
