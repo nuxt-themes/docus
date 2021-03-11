@@ -38,11 +38,11 @@ export default {
   computed: {
     iconName () {
       return this.icon || ({
-        primary: 'IconBadgeCheck',
-        info: 'IconInformationCircle',
-        success: 'IconCheckCircle',
-        warning: 'IconExclamationCircle',
-        danger: 'IconXCircle'
+        primary: 'DIconBadgeCheck',
+        info: 'DIconInformationCircle',
+        success: 'DIconCheckCircle',
+        warning: 'DIconExclamationCircle',
+        danger: 'DIconXCircle'
       })[this.type]
     }
   }

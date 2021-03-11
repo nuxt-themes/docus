@@ -9,7 +9,7 @@
       name="Twitter"
       class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
     >
-      <IconTwitter class="w-5 h-5" />
+      <DIconTwitter class="w-5 h-5" />
     </a>
     <a
       v-if="settings.github.repo"
@@ -20,7 +20,7 @@
       name="Github"
       class="text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400"
     >
-      <IconGithub class="w-5 h-5" />
+      <DIconGithub class="w-5 h-5" />
     </a>
   </div>
 </template>

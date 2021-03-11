@@ -5,7 +5,7 @@
       :to="$contentLocalePath(prev.to)"
       class="flex items-center justify-start truncate text-primary-500 dark:text-primary-400 hover:underline"
     >
-      <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-1" />
+      <DIconArrowLeft class="flex-shrink-0 w-4 h-4 mr-1" />
       <span class="truncate">{{ prev.title }}</span>
     </NuxtLink>
     <span v-else>&nbsp;</span>
@@ -16,7 +16,7 @@
       class="flex items-center justify-end truncate text-primary-500 dark:text-primary-400 hover:underline"
     >
       <span class="truncate">{{ next.title }}</span>
-      <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-1" />
+      <DIconArrowRight class="flex-shrink-0 w-4 h-4 ml-1" />
     </NuxtLink>
     <span v-else>&nbsp;</span>
   </div>

@@ -4,10 +4,10 @@ function createTweetNode (data, content, layout = 'tweet') {
   return [
     {
       type: 'html',
-      value: `<Tweet class="tweet tweet-${layout}" layout="${layout}" id="${data.id}" avatar="${data.avatar.normal}" :created-at="${data.createdAt}" heart-count="${data.heartCount}" name="${data.name}" username="${data.username}">`
+      value: `<DTweet class="tweet tweet-${layout}" layout="${layout}" id="${data.id}" avatar="${data.avatar.normal}" :created-at="${data.createdAt}" heart-count="${data.heartCount}" name="${data.name}" username="${data.username}">`
     },
     ...mapAST(content),
-    { type: 'html', value: '</Tweet>' }
+    { type: 'html', value: '</DTweet>' }
   ]
 }
 
@@ -61,7 +61,7 @@ const tweetCache = {}
 module.exports = () => {
   return async (tree) => {
     const modified = tree.children.map(async (node, i) => {
-      if (node.type === 'html' && node.value && node.value.match(/^\s*<[t|T]weet\s+/)) {
+      if (node.type === 'html' && node.value && node.value.match(/^\s*<(D|d-)[t|T]weet\s+/)) {
         const match = node.value.match(/id=['"](\d*)['"]/)
         if (!match) {
           // eslint-disable-next-line no-console

@@ -7,7 +7,7 @@
       class="flex items-center font-medium hover:underline"
     >
       {{ $t('article.github') }}
-      <IconExternalLink class="w-4 h-4 ml-1" />
+      <DIconExternalLink class="w-4 h-4 ml-1" />
     </a>
 
     <span class="flex items-center mt-4 text-sm font-medium text-gray-500 dark:text-gray-300 sm:mt-0">

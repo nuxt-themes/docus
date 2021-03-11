@@ -4,8 +4,8 @@
     aria-label="Menu"
     @click.stop="menu = !menu"
   >
-    <IconX v-if="menu" class="w-6 h-6" />
-    <IconMenuAlt v-else class="w-6 h-6" />
+    <DIconX v-if="menu" class="w-6 h-6" />
+    <DIconMenuAlt v-else class="w-6 h-6" />
   </button>
 </template>
 

@@ -2,7 +2,7 @@
   <div v-show="open" class="fixed z-50 overflow-hidden rounded-md shadow group bg-gray-50 dark:bg-gray-800 bottom-6 left-6 w-36">
     <h1 class="flex items-center p-2 font-bold bg-gray-100 dark:bg-gray-700">
       <span class="flex-1">Docus UI</span>
-      <IconX class="w-4 h-4 transition-opacity opacity-0 cursor-pointer group-hover:opacity-80" @click.native="open = false" />
+      <DIconX class="w-4 h-4 transition-opacity opacity-0 cursor-pointer group-hover:opacity-80" @click.native="open = false" />
     </h1>
     <ul class="p-2">
       <li class="flex items-center pb-1 font-medium">

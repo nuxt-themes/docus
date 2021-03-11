@@ -1,12 +1,12 @@
 <template>
-  <Dropdown v-if="availableLocales.length" class="inline-flex">
+  <DDropdown v-if="availableLocales.length" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
         class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 focus:outline-none"
         :class="{ 'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': open }"
         @touchstart.stop.prevent="toggle"
       >
-        <IconTranslate class="w-6 h-6" />
+        <DIconTranslate class="w-6 h-6" />
       </button>
     </template>
 
@@ -19,7 +19,7 @@
         >{{ locale.name }}</NuxtLink>
       </li>
     </ul>
-  </Dropdown>
+  </DDropdown>
 </template>
 
 <script>

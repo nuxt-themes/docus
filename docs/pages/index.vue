@@ -1,14 +1,14 @@
 <template>
-  <Container aside fluid>
+  <DContainer aside fluid>
     <template #header>
-      <Header>
+      <DHeader>
         <template #desktop-right>
           <ButtonLink href="/get-started/installation">Get started</ButtonLink>
         </template>
-      </Header>
+      </DHeader>
     </template>
     <template #aside>
-      <Aside class="block lg:hidden" />
+      <DAside class="block lg:hidden" />
     </template>
     <section class="px-4 mx-auto my-24 max-w-8xl">
       <h1
@@ -65,7 +65,7 @@
         </ul>
       </div>
     </section>
-  </Container>
+  </DContainer>
 </template>
 
 <script>

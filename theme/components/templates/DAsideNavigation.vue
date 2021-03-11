@@ -7,28 +7,28 @@
     >
       <div class="flex items-center w-full px-4 lg:hidden h-18 bg-gray-50 dark:bg-gray-800">
         <button class="flex-1 focus:outline-none" @click.stop="menu = !menu">
-          <IconArrowLeft class="w-5 h-5" />
+          <DIconArrowLeft class="w-5 h-5" />
         </button>
         <div
           class="flex items-center justify-end w-full px-2 space-x-3 h-18 lg:hidden"
         >
-          <ColorSwitcher />
-          <SocialIcons />
+          <DColorSwitcher />
+          <DSocialIcons />
         </div>
       </div>
       <nav
         class="max-w-sm py-4 pr-24 ml-4 overflow-y-auto text-base font-medium h-(full-18) lg:pr-0 lg:text-sm lg:pt-10 lg:pb-16"
       >
-        <AsideTop />
+        <DAsideTop />
         <ul>
-          <CategoryItem
+          <DCategoryItem
             v-for="(docs, category) in categories"
             :key="category"
             :category="category"
             :docs="docs"
           />
         </ul>
-        <AsideBottom />
+        <DAsideBottom />
       </nav>
     </div>
   </div>
