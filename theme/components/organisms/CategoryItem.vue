@@ -14,16 +14,18 @@
           class="relative inline-flex items-center justify-between px-4 py-1 transition duration-200 border-l-2 border-gray-100 dark:border-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
           :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 border-primary-500 dark:border-primary-500': isLinkActive(doc) }"
         >
-          {{ doc.menuTitle || doc.title }}
+          <span>
+            {{ doc.menuTitle || doc.title }}
+          </span>
 
           <client-only>
             <span
               v-if="doc.draft"
-              class="w-2 h-2 bg-yellow-500 rounded-full opacity-75"
+              class="w-2 h-2 m-1 bg-yellow-500 rounded-full opacity-75"
             />
             <span
               v-else-if="isDocumentNew(doc)"
-              class="w-2 h-2 rounded-full opacity-75 animate-pulse bg-primary-500"
+              class="w-2 h-2 m-1 rounded-full opacity-75 animate-pulse bg-primary-500"
             />
           </client-only>
         </NuxtLink>
