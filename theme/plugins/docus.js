@@ -44,7 +44,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
         if (typeof settings.github === 'string') {
-          settings.gitub = { repo: settings.github }
+          settings.github = { repo: settings.github }
         }
         // backward compat for 'single' layout
         if (settings.layout === 'single') {
