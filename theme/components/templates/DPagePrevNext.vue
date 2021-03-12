@@ -4,7 +4,7 @@
       <NuxtLink
         v-if="prev"
         :to="$contentLocalePath(prev.to)"
-        class="group inline-flex min-w-1/2 items-center justify-end w-full xs:w-auto px-4 py-4 truncate border border-gray-100 rounded xs:justify-end  dark:text-gray-400 dark:border-gray-800 dark:hover:text-primary-400 hover:text-primary-500 hover:border-primary-400"
+        class="group inline-flex min-w-1/2 items-center justify-end w-full xs:w-auto px-4 py-4 truncate border border-gray-100 rounded xs:justify-end  dark:text-gray-400 dark:border-gray-800 dark:hover:text-primary-400 hover:text-primary-500 hover:border-primary-400 dark:hover:border-gray-700"
       >
         <span class="relative flex flex-col items-end truncate">
           <span class="text-xs leading-tight  text-gray-400 group-hover:text-primary-400">{{ prev.category }}</span>
@@ -20,7 +20,7 @@
       <NuxtLink
         v-if="next"
         :to="$contentLocalePath(next.to)"
-        class="group inline-flex mb-2 xs:mb-0 items-center justify-start w-full xs:w-auto min-w-1/2 px-4 py-4 truncate border border-gray-100 rounded xs:justify-start dark:text-gray-400 dark:border-gray-800 dark:hover:text-primary-400 hover:text-primary-500 hover:border-primary-400"
+        class="group inline-flex mb-2 xs:mb-0 items-center justify-start w-full xs:w-auto min-w-1/2 px-4 py-4 truncate border border-gray-100 rounded xs:justify-start dark:text-gray-400 dark:border-gray-800 dark:hover:text-primary-400 hover:text-primary-500 hover:border-primary-400 dark:hover:border-gray-700"
       >
         <span class="relative flex flex-col items-start truncate">
           <span class="text-xs leading-tight  text-gray-400 group-hover:text-primary-400">{{ next.category }}</span>
