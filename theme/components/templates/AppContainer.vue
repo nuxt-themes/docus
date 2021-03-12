@@ -1,8 +1,8 @@
 <template>
   <div class="w-full">
-    <slot v-if="header" name="header"><DHeader :aside="aside" /></slot>
+    <slot v-if="header" name="header"><AppHeader :aside="aside" /></slot>
     <div class="lg:flex" :class="fluid ? '' : 'mx-auto max-w-8xl'">
-      <slot v-if="aside" name="aside"><DAside /></slot>
+      <slot v-if="aside" name="aside"><AppAside /></slot>
       <div class="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
         <slot />
       </div>

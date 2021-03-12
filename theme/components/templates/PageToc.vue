@@ -1,6 +1,6 @@
 <template>
   <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block ">
-    <DTocTop />
+    <PageTocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
       <h5 class="flex items-center mb-1">
         <span class="text-sm font-semibold text-gray-900 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
@@ -27,7 +27,7 @@
           >{{ link.text }}</a>
         </li>
       </ul>
-      <DTocBottom />
+      <PageTocBottom />
     </div>
   </div>
 </template>

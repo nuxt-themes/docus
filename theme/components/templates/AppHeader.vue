@@ -19,7 +19,7 @@
 
       <!-- Middle section -->
       <div class="flex items-center justify-end lg:flex-auto h-18 ">
-        <DAlgoliaSearchBox
+        <AlgoliaSearchBox
           v-if="settings.algolia"
           :options="settings.algolia"
           :settings="settings"

@@ -1,10 +1,10 @@
 <template>
-  <DContainer aside>
-    <DPage prose>
+  <AppContainer aside>
+    <AppPage prose>
       <h1>{{ error.message }}</h1>
       <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
-    </DPage>
-  </DContainer>
+    </AppPage>
+  </AppContainer>
 </template>
 
 <script>

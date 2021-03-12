@@ -1,14 +1,14 @@
 <template>
-  <DContainer aside fluid>
+  <AppContainer aside fluid>
     <template #header>
-      <DHeader>
+      <AppHeader>
         <template #desktop-right>
           <NuxtLink to="/get-started/installation" class="inline-flex items-center flex-none px-3 py-2 text-base font-semibold leading-4 text-white transition-colors duration-200 border border-transparent rounded bg-primary-500 hover:bg-primary-600">Get started</NuxtLink>
         </template>
-      </DHeader>
+      </AppHeader>
     </template>
     <template #aside>
-      <DAside class="block lg:hidden" />
+      <AppAside class="block lg:hidden" />
     </template>
     <section class="px-4 mx-auto my-24 max-w-8xl">
 
@@ -33,7 +33,7 @@
             </ButtonLink>
             <a href="https://github.com/nuxtlabs/docus" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
           </div>
-          </h3\></div>
+        </div>
         <div class="w-full m-auto lg:w-1/3 sm:w-580px ">
           <div class="md:pl-2">
             <Terminal snippet="npx degit nuxtlabs/docus-starter#main docs" />
@@ -66,7 +66,7 @@
         </ul>
       </div>
     </section>
-  </DContainer>
+  </AppContainer>
 </template>
 
 <script>
