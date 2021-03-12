@@ -17,7 +17,7 @@
             :href="`#${link.id}`"
             class="block py-1 transition-colors duration-100 transform scrollactive-item"
             :class="{
-              'mt-2 mb-1': link.depth === 2,
+              '': link.depth === 2,
               'border-l-2 border-gray-100 dark:border-gray-800 pl-3 text-gray-400': link.depth === 3,
               'dark:border-primary-500 border-primary-500 text-primary-400': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
