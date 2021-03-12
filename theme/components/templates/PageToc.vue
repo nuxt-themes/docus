@@ -1,12 +1,12 @@
 <template>
   <div v-if="toc.length" class="flex-none hidden w-64 pl-8 mr-8 xl:text-sm xl:block ">
-    <PageTocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
+      <PageTocTop />
       <h5 class="flex items-center mb-1">
         <span class="text-sm font-semibold text-gray-900 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
       </h5>
 
-      <ul class="overflow-x-hidden font-medium">
+      <ul class="font-medium">
         <li
           v-for="link of toc"
           :key="link.id"
