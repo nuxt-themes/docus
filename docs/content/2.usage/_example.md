@@ -1,6 +1,5 @@
 ---
 menu: false
-draft: true
 ---
 
 ```js

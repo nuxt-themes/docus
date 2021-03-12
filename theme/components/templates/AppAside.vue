@@ -11,11 +11,11 @@
       </transition>
 
       <!-- desktop aside -->
-      <AppAsideNavigation class="hidden lg:block" />
+      <AsideNavigation class="hidden lg:block" />
 
       <!-- mobile aside -->
       <transition name="slide-from-left-to-left">
-        <AppAsideNavigation v-if="$menu.open" />
+        <AsideNavigation v-if="$menu.open" />
       </transition>
     </div>
   </aside>
