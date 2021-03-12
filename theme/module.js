@@ -22,6 +22,9 @@ export default function docusModule () {
     options.render.ssr = false
   }
 
+  // Inject Docus theme as ~docus
+  nuxt.options.alias['~docus'] = r('theme')
+
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
   // Inject content dir in private runtime config
@@ -97,11 +100,16 @@ export default function docusModule () {
     dirs.push({
       path: r('components/templates'),
       global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('components/slots'),
+      global: true,
       level: 3
     })
     if (options.dev) {
       dirs.push({
-        path: r('components/dev-templates'),
+        path: r('components/dev'),
         global: true,
         level: 2
       })

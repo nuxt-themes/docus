@@ -33,7 +33,7 @@
         <div
           class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
         >
-          <slot name="desktop-right" />
+          <HeaderRightCTA />
           <NuxtLink
             v-if="lastRelease"
             :to="localePath('/releases')"
