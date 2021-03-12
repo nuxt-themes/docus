@@ -16,10 +16,5 @@ export default withDocus({
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
     domain: 'docus.dev'
-  },
-  vite: {
-    optimizeDeps: {
-      exclude: ['@vueuse/integrations', 'vue-demi']
-    }
   }
 })
