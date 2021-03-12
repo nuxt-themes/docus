@@ -25,6 +25,9 @@ module.exports = ({ nuxt }) => {
         gray: colors.warmGray
       },
       extend: {
+        screens: {
+          xs: '414px'
+        },
         fontFamily: {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
@@ -84,7 +87,7 @@ module.exports = ({ nuxt }) => {
                 fontWeight: theme('fontWeight.bold')
               },
               'h1, h2, h3': {
-                marginTop: '1em',
+                marginTop: '1.5em',
                 marginBottom: '0.5em'
               },
               h3: {

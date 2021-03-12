@@ -109,32 +109,9 @@ export default {
       ]
     }
   },
-  computed: {
-    menu () {
-      return this.$menu.open
-    }
-  },
-  watch: {
-    menu (val) {
-      if (val) {
-        this.blockBodyScroll()
-      } else {
-        this.unblockBodyScroll()
-      }
-    }
-  },
-  methods: {
-    blockBodyScroll () {
-      const scrollBarGap =
-        window.innerWidth - document.documentElement.clientWidth
-      document.body.style.overflow = 'hidden'
-      document.body.style.paddingRight = `${scrollBarGap}px`
-    },
-    unblockBodyScroll () {
-      setTimeout(() => {
-        document.body.style.overflow = null
-        document.body.style.paddingRight = null
-      }, 16)
+  head () {
+    return {
+      title: 'Docus - Documentation generator based on Nuxt and Tailwind.'
     }
   }
 }

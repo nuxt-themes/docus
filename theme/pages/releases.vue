@@ -1,7 +1,7 @@
 <template>
   <AppPage>
     <div class="mb-10">
-      <h1 class="flex items-center justify-between text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+      <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">Releases</span>
       </h1>
     </div>

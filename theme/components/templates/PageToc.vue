@@ -3,22 +3,25 @@
     <PageTocTop />
     <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
       <h5 class="flex items-center mb-1">
-        <span class="text-sm font-semibold text-gray-600 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
+        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
       </h5>
 
       <ul class="overflow-x-hidden font-medium">
         <li
           v-for="link of toc"
           :key="link.id"
-          class="hover:text-gray-900 dark:hover:text-gray-100"
-          :class="{ 'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': exactActiveLink === link.id || activeLink === link.id }"
+          class="hover:text-gray-900 dark:hover:text-gray-100 "
+          :class="{ 
+            'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': exactActiveLink === link.id || activeLink === link.id,
+            'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
+          }"
         >
           <a
             :href="`#${link.id}`"
-            class="block py-1 transition-colors duration-100 transform scrollactive-item"
+            class="block py-1 transition-colors duration-100 transform scrollactive-item "
             :class="{
-              'mt-2 mb-1': link.depth === 2,
-              'border-l-2 border-gray-100 dark:border-gray-800 pl-3 text-gray-400': link.depth === 3,
+              '': link.depth === 2,
+              'border-l-2 border-gray-100 dark:border-gray-800 pl-3 text-gray-500 dark:text-gray-400': link.depth === 3,
               'dark:border-primary-500 border-primary-500 text-primary-400': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
           >{{ link.text }}</a>

@@ -16,6 +16,7 @@ export default async function ({ $docus, ssrContext }) {
     slots: false,
     draft: false
   }))
+
   if (process.client) {
     watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
     watch(() => $docus.ui.draft, () => $docus.fetchCategories())
