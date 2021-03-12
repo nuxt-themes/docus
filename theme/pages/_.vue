@@ -45,7 +45,7 @@ export default {
 
     const [prev, next] = await $content({ deep: true })
       .where({ language, draft, menu: { $ne: false } })
-      .only(['title', 'slug', 'to'])
+      .only(['title', 'slug', 'to', 'category'])
       .sortBy('position', 'asc')
       .surround(document.slug, { before: 1, after: 1 })
       .fetch()
