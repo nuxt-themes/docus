@@ -1,0 +1,58 @@
+<template>
+  <section class="py-24 bg-gray-50 dark:bg-gray-800">
+    <div class="px-4 mx-auto max-w-8xl">
+      <h2
+        class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
+      >
+        {{ title }}
+      </h2>
+      <ul
+        class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
+      >
+        <li v-for="(f, index) of features" :key="index" class="flex">
+          <div class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg">
+            <component
+              :is="f.icon"
+              v-if="$docus.isComponent(f.icon)"
+              class="w-16 h-16 mb-3"
+            />
+            <span v-else-if="f.icon" class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
+            <h2 class="mb-2 text-xl">{{ f.title }}</h2>
+            <p class="font-normal">{{ f.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: 'Features'
+    },
+    features: {
+      type: Array,
+      default: () => [
+        {
+          icon: '👀',
+          title: 'Use Emojis',
+          description: 'And add a description for it!'
+        },
+        {
+          icon: 'IconEdit',
+          title: 'Use Components',
+          description: 'By using a component name inside, great for using SVG.'
+        }
+      ]
+    }
+  },
+  methods: {
+    isImage (icon) {
+      return String(icon).includes('.')
+    }
+  }
+}
+</script>

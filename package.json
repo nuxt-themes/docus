@@ -33,7 +33,7 @@
     "graceful-fs": "^4.2.6",
     "lodash.groupby": "^4.6.0",
     "nuxt-i18n": "^6.21.0",
-    "nuxt-vite": "^0.0.32",
+    "nuxt-vite": "^0.0.34",
     "ohmyfetch": "^0.1.8",
     "prism-themes": "^1.5.0",
     "static-tweets": "^0.3.0",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
     "@nuxtjs/eslint-config": "^6.0.0",
-    "@tailwindcss/jit": "^0.0.0-87def1987",
+    "@tailwindcss/jit": "^0.0.0-d7396a7a8",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.21.0",
     "nuxt-edge": "^2.16.0-26925157.f08f4efc",

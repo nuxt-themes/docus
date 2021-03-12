@@ -75,7 +75,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         if (this.settings.github.releases) {
           docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
-        this.categories[app.i18n.locale] = groupBy(docs, 'category')
+        this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
 
       fetchReleases () {
@@ -115,6 +115,11 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
         app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
+      },
+
+      // Utils
+      isComponent (value) {
+        return typeof value === 'string' && Vue.component(value)
       }
     }
   })
