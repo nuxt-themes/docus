@@ -59,8 +59,7 @@
                 class="h-16 max-w-full mb-3"
               />
               <h2 class="mb-2 text-xl">{{ feature.title }}</h2>
-              <p class="font-normal">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum voluptatibus veritatis maxime est qui blanditiis aut libero quod. Doloremque obcaecati voluptate tenetur quia fuga veniam incidunt rerum voluptatibus iusto earum.</p>
-              <!-- TODO: feature.description -->
+              <p class="font-normal">{{ feature.description }}</p>
             </div>
           </li>
         </ul>
@@ -76,35 +75,43 @@ export default {
       features: [
         {
           icon: 'IconMarkdown',
-          title: 'Write Markdown'
+          title: 'Write Markdown',
+          description: 'Getting started with Docus is as simple as writing in Markdown, with simple frontmatter powering advanced layouts, auto-generated table-of-contents and more.'
         },
         {
           icon: 'IconVue',
-          title: 'Vue Components'
+          title: 'Vue Components',
+          description: 'Add interactivity with a suite of out-of-the-box Vue components made for documentation - or take control and use your own components instead.'
         },
         {
           icon: 'IconNuxt',
-          title: 'Nuxt Architecture'
+          title: 'Nuxt Architecture',
+          description: 'Benefit from the entire Nuxt ecosystem - with top performance, SEO optimization, and best practices baked into your site.'
         },
         {
           icon: 'IconTailwind',
-          title: 'Tailwind CSS'
+          title: 'Tailwind CSS',
+          description: 'TailwindCSS 2 (with next-generation JIT compilation) is built in for great developer experience and rapid customization of Docus - no configuration required.'
         },
         {
           icon: 'IconSSG',
-          title: 'Static Generation'
+          title: 'Static Generation',
+          description: 'Docus sites benefit from Nuxt\'s full static mode and can be hosted anywhere from a global CDN to your own static file server.'
         },
         {
           icon: 'IconLighthouse',
-          title: 'Lighthouse Optimised'
+          title: 'Lighthouse Optimised',
+          description: 'Chasing an all-green Lighthouse score? Docus uses best practices to ensure low TTI, FCP and LCP.'
         },
         {
           icon: 'IconZap',
-          title: 'Smart Generation'
+          title: 'Smart Generation',
+          description: 'Docus knows what content has been changed and regeneration takes only seconds when triggered by webhook.'
         },
         {
           icon: 'IconPuzzle',
-          title: 'Extensible'
+          title: 'Extensible',
+          description: 'Docus allows you to customize every aspect of its layout, from adding details in its custom slots, to replacing entire layout elements with your own components.'
         }
       ]
     }
