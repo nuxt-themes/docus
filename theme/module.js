@@ -15,13 +15,6 @@ export default function docusModule () {
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
 
-  // Disable SSR in dev
-  if (options.dev) {
-    options.ssr = false
-    options.build.ssr = false
-    options.render.ssr = false
-  }
-
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
   // Inject content dir in private runtime config

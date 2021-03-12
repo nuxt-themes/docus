@@ -49,12 +49,12 @@
 
 
 .token.deleted:not(.prefix) {
-  @apply relative block px-4 -mx-4;
+  @apply relative block -mx-4 px-4;
 }
 
 .token.deleted:not(.prefix)::after {
   content: '';
-  @apply absolute inset-0 block bg-red-400 bg-opacity-25 pointer-events-none;
+  @apply pointer-events-none absolute inset-0 block bg-rose-400 bg-opacity-25;
 }
 
 .token.deleted.prefix {
@@ -62,7 +62,7 @@
 }
 
 .token.inserted:not(.prefix) {
-  @apply block px-4 -mx-4 bg-green-700 bg-opacity-50;
+  @apply block bg-green-700 bg-opacity-50 -mx-4 px-4;
 }
 
 .token.inserted.prefix {
