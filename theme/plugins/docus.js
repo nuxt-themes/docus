@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { joinURL, withoutTrailingSlash } from 'ufo'
-// import { $fetch } from 'ohmyfetch/node'
+import { $fetch } from 'ohmyfetch'
 import { useColors, useDefaults } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
