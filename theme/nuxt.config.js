@@ -84,7 +84,7 @@ export default {
     }],
     defaultLocale: 'en',
     parsePages: false,
-    lazy: false, // !! `true` incompatible with vite
+    lazy: true,
     seo: false,
     vueI18n: {
       fallbackLocale: 'en',
@@ -118,6 +118,13 @@ export default {
     port: 4000
   },
   vite: {
+    optimizeDeps: {
+      exclude: [
+        'ohmyfetch',
+        'vue-demi',
+        '@vueuse/integrations'
+      ]
+    },
     vue: {}
   }
 }
