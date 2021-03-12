@@ -1605,7 +1605,7 @@
     serve-static "^1.14.1"
     workbox-cdn "^5.1.4"
 
-"@nuxtjs/tailwindcss@^4.0.0-6":
+"@nuxtjs/tailwindcss@4.0.0-6":
   version "4.0.0-6"
   resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-4.0.0-6.tgz#8521ececb946cd6145099f948e722f671fd3e193"
   integrity sha512-mRKF3dKM1cjHNUs7X1jg0wjMHtZj6fnnrJOnUTJfjsoc3n40nJC/5JqkvTPD3Og7K168eiLr/4+YWUrE/DKKeQ==
