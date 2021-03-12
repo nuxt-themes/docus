@@ -9,6 +9,7 @@ const DEFAULT_SETTINGS = {
   title: 'Docus',
   description: '',
   layout: 'docs',
+  logo: null,
   url: '',
   github: {
     repo: '',

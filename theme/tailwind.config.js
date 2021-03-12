@@ -25,6 +25,9 @@ module.exports = ({ nuxt }) => {
         gray: colors.warmGray
       },
       extend: {
+        screens: {
+          xs: '414px'
+        },
         fontFamily: {
           sans: ['Inter var', ...defaultTheme.fontFamily.sans]
         },
@@ -52,7 +55,7 @@ module.exports = ({ nuxt }) => {
           '(full-18)': `calc(100% - ${theme('spacing.18')})`,
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
           '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
-          '(screen-46)': `calc(100vh - ${theme('spacing.46')})`,
+          '(screen-46)': `calc(100vh - ${theme('spacing.46')})`
         }),
         maxHeight: theme => ({
           '(screen-18)': `calc(100vh - ${theme('spacing.18')})`

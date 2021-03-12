@@ -1,7 +1,7 @@
 <template>
-  <Container>
+  <DContainer>
     <Nuxt />
-  </Container>
+  </DContainer>
 </template>
 
 <script>

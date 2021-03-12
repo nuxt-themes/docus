@@ -39,12 +39,12 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         ])
       },
       async fetchSettings () {
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
+        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'header', 'twitter', 'github', 'algolia', 'colors']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
         if (typeof settings.github === 'string') {
-          settings.gitub = { repo: settings.github }
+          settings.github = { repo: settings.github }
         }
         // backward compat for 'single' layout
         if (settings.layout === 'single') {

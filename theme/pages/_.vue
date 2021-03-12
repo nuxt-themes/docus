@@ -1,29 +1,28 @@
 <template>
-  <Page>
+  <DPage>
     <div class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': document.description }">
       <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">{{ document.title }}</span>
         <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
-        <Badge v-if="document.badge" class="font-medium">{{ document.badge }}</Badge>
+        <DBadge v-if="document.badge" class="font-medium">{{ document.badge }}</DBadge>
       </h1>
       <p v-if="document.description" class="mt-2 text-lg text-gray-600 dark:text-gray-300">{{ document.description }}</p>
     </div>
     <div class="max-w-none">
       <NuxtContent :document="document" />
     </div>
-    <PageBottom :document="document" />
-    <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
-    <PagePrevNext :prev="prev" :next="next" />
+    <DPageBottom :document="document" />
+    <DPagePrevNext :prev="prev" :next="next" />
     <template #toc>
-      <Toc v-if="!document.fullscreen" :toc="document.toc" />
+      <DToc v-if="!document.fullscreen" :toc="document.toc" />
     </template>
-  </Page>
+  </DPage>
 </template>
 
 <script>
 import { withoutTrailingSlash } from 'ufo'
 import Vue from 'vue'
-import CopyButton from '../components/molecules/CopyButton'
+import CopyButton from '../components/molecules/DCopyButton'
 
 export default {
   name: 'PageSlug',
@@ -45,7 +44,7 @@ export default {
     }
 
     const [prev, next] = await $content({ deep: true })
-      .where({ language, draft })
+      .where({ language, draft, menu: { $ne: false } })
       .only(['title', 'slug', 'to'])
       .sortBy('position', 'asc')
       .surround(document.slug, { before: 1, after: 1 })

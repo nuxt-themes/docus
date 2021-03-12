@@ -200,7 +200,7 @@ export default {
 }
 
 .DocSearch-Button-Key {
-  @apply hidden lg:flex bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5	 !important;
+  @apply hidden lg:flex bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5 !important;
 }
 
 .DocSearch-Screen-Icon > svg {

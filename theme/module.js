@@ -24,8 +24,12 @@ export default function docusModule () {
 
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
+  // Inject content dir in private runtime config
+  const contentDir = options.content.dir || 'content'
+  options.publicRuntimeConfig.contentDir = contentDir
+
   // read docus settings
-  const settingsPath = resolve(options.srcDir, 'content/settings.json')
+  const settingsPath = resolve(options.srcDir, contentDir, 'settings.json')
   try {
     const userSettings = require(settingsPath)
     const settings = useDefaults(userSettings)
@@ -41,9 +45,6 @@ export default function docusModule () {
       options.meta.theme_color = settings.colors.primary
     }
   } catch (err) { /* settings not found */ }
-
-  // Inject content dir in private runtime config
-  options.publicRuntimeConfig.contentDir = options.content.dir || 'content'
 
   // Add layouts
   hook('build:before', () => {
@@ -171,6 +172,8 @@ export default function docusModule () {
   // Configure TailwindCSS
   hook('tailwindcss:config', function (defaultTailwindConfig) {
     Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
+    // Add content/**/*.md to purge
+    defaultTailwindConfig.purge.content.push(resolve(options.srcDir, contentDir, '**/*.md'))
   })
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
