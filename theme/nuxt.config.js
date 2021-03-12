@@ -34,6 +34,7 @@ export default {
   ],
   buildModules: [
     themeModule,
+    'nuxt-vite',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
@@ -83,7 +84,7 @@ export default {
     }],
     defaultLocale: 'en',
     parsePages: false,
-    lazy: true,
+    lazy: false, // !! `true` incompatible with vite
     seo: false,
     vueI18n: {
       fallbackLocale: 'en',
@@ -115,5 +116,8 @@ export default {
   tailwindcss: {},
   server: {
     port: 4000
+  },
+  vite: {
+    vue: {}
   }
 }
