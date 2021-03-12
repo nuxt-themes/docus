@@ -1,12 +1,6 @@
 import { withDocus } from 'docus'
 
 export default withDocus({
-  alias: {
-    qrcode: require.resolve('./mock/default'),
-    axios: require.resolve('./mock/default'),
-    nprogress: require.resolve('./mock/default'),
-    jwt_decode: require.resolve('./mock/default')
-  },
   content: {
     liveEdit: false
   },
