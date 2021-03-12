@@ -22,42 +22,42 @@ export default {
         {
           icon: 'IconMarkdown',
           title: 'Write Markdown',
-          description: 'Enjoy the power of Markdown to write your documentation.'
+          description: 'Getting started with Docus is as simple as writing in Markdown, with simple frontmatter powering advanced layouts, auto-generated table-of-contents and more.'
         },
         {
           icon: 'IconVue',
           title: 'Vue Components',
-          description: 'Use your components or Docus built-in right inside your content.'
+          description: 'Add interactivity with a suite of out-of-the-box Vue components made for documentation - or take control and use your own components instead.'
         },
         {
           icon: 'IconNuxt',
           title: 'Nuxt Architecture',
-          description: 'Get the Nuxt power by using all the features, Docus is one of the first Nuxt theme.'
+          description: 'Benefit from the entire Nuxt ecosystem - with top performance, SEO optimization, and best practices baked into your site.'
         },
         {
           icon: 'IconTailwind',
           title: 'Tailwind CSS',
-          description: 'Docus style is powered by Tailwind, extend the configuration or start using classes in your code.'
+          description: 'TailwindCSS 2 (with next-generation JIT compilation) is built in for great developer experience and rapid customization of Docus - no configuration required.'
         },
         {
           icon: 'IconSSG',
           title: 'Static Generation',
-          description: 'Generate your documentation as a static website and host it everywhere.'
+          description: 'Docus sites benefit from Nuxt\'s full static mode and can be hosted anywhere from a global CDN to your own static file server.'
         },
         {
           icon: 'IconLighthouse',
           title: 'Lighthouse Optimised',
-          description: 'Start with a blazing fast documentation with a perfect score on lighthouse.'
+          description: 'Chasing an all-green Lighthouse score? Docus uses best practices to ensure low TTI, FCP and LCP.'
         },
         {
           icon: 'IconZap',
           title: 'Smart Generation',
-          description: 'Docus knows if he can skip the Webpack build if you only changed Markdown files.'
+          description: 'Docus knows what content has been changed and regeneration takes only seconds when triggered by webhook.'
         },
         {
           icon: 'IconPuzzle',
           title: 'Extensible',
-          description: 'Customize the whole design, or add components using slots, make it your own.'
+          description: 'Docus allows you to customize every aspect of its layout, from adding details in its custom slots, to replacing entire layout elements with your own components.'
         },
         {
           icon: 'IconGithub',
