@@ -1,10 +1,10 @@
 import Vue from 'vue'
 // import { reactive, watch } from 'vue-demi'
 // import { createCookies } from '@vueuse/integrations'
-import defu from 'defu'
+// import defu from 'defu'
 import DocusUI from '../components/dev-templates/DocusUI'
 
-const COOKIE_NAME = 'docus.ui'
+// const COOKIE_NAME = 'docus.ui'
 
 export default async function ({ $docus, ssrContext }) {
   // const useUniversalCookies = createCookies(ssrContext?.req)
