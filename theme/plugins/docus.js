@@ -82,7 +82,8 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         if (process.server) {
           return ssrContext.docus.releases
         }
-        return $fetch('/api/docus/releases')
+        // return $fetch('/api/docus/releases') //
+        return []
       },
 
       async fetchLastRelease () {

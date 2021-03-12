@@ -90,7 +90,7 @@ export default {
     }],
     defaultLocale: 'en',
     parsePages: false,
-    lazy: true,
+    lazy: false, // !! `true` incompatible with vite
     seo: false,
     vueI18n: {
       fallbackLocale: 'en',
