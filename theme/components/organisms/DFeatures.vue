@@ -15,6 +15,7 @@
               :is="f.icon"
               v-if="$docus.isComponent(f.icon)"
               class="w-16 h-16 mb-3"
+              :class="f.iconClass || ''"
             />
             <span v-else-if="f.icon" class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
             <h2 class="mb-2 text-xl">{{ f.title }}</h2>
