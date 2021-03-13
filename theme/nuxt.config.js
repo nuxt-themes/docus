@@ -119,7 +119,9 @@ export default {
       Inter: true
     }
   },
-  tailwindcss: {},
+  tailwindcss: {
+    jit: true
+  },
   server: {
     port: 4000
   },
