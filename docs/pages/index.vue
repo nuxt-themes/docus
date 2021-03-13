@@ -22,47 +22,47 @@ export default {
         {
           icon: 'IconMarkdown',
           title: 'Write Markdown',
-          description: 'Getting started with Docus is as simple as writing in Markdown, with simple frontmatter powering advanced layouts, auto-generated table-of-contents and more.'
+          description: 'Getting started with Docus is as simple as writing in Markdown, with frontmatter powering advanced layouts, auto-generated table-of-contents and more.'
         },
         {
           icon: 'IconVue',
           title: 'Vue Components',
-          description: 'Add interactivity with a suite of out-of-the-box Vue components made for documentation - or take control and use your own components instead.'
+          description: 'Add interactivity with a suite of out-of-the-box Vue components made for documentation — or take control and use your own components instead.'
         },
         {
           icon: 'IconNuxt',
           title: 'Nuxt Architecture',
-          description: 'Benefit from the entire Nuxt ecosystem - with top performance, SEO optimization, and best practices baked into your site.'
+          description: 'Benefit from the entire Nuxt ecosystem — with top performance, SEO optimization, and best practices baked into your site.'
         },
         {
           icon: 'IconTailwind',
           title: 'Tailwind CSS',
-          description: 'TailwindCSS 2 (with next-generation JIT compilation) is built in for great developer experience and rapid customization of Docus - no configuration required.'
+          description: 'TailwindCSS 2 (with next-generation JIT compilation) is built in for great developer experience and rapid customization of Docus — no configuration required.'
         },
         {
-          icon: 'IconSSG',
-          title: 'Static Generation',
-          description: 'Docus sites benefit from Nuxt\'s full static mode and can be hosted anywhere from a global CDN to your own static file server.'
+          icon: 'IconVite',
+          title: 'Lightning Fast Development',
+          description: 'Using the Vite dev server, development is a breeze — with instant start up and reload, no matter how big your site gets'
         },
         {
           icon: 'IconLighthouse',
-          title: 'Lighthouse Optimised',
+          title: 'Lighthouse Optimized',
           description: 'Chasing an all-green Lighthouse score? Docus uses best practices to ensure low TTI, FCP and LCP.'
         },
         {
           icon: 'IconZap',
-          title: 'Smart Generation',
-          description: 'Docus knows what content has been changed and regeneration takes only seconds when triggered by webhook.'
+          title: 'Smart Static Generation',
+          description: 'Host anywhere, from a global CDN to your own static file server. No need to rebuild when your content changes — and regeneration takes only seconds.'
         },
         {
           icon: 'IconPuzzle',
           title: 'Extensible',
-          description: 'Docus allows you to customize every aspect of its layout, from adding details in its custom slots, to replacing entire layout elements with your own components.'
+          description: 'Docus allows you to fine-tune every detail, whether adding content in custom slots, or replacing entire layout elements.'
         },
         {
           icon: 'IconGithub',
           title: 'Open Source',
-          description: 'Docus is released as MIT license and made with love by the NuxtLabs team.'
+          description: 'Docus is released under the MIT license and made with love by the NuxtLabs team.'
         }
       ]
     }
