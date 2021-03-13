@@ -42,7 +42,7 @@ export default {
         {
           icon: 'IconVite',
           title: 'Lightning Fast Development',
-          description: 'Using the Vite dev server, development is a breeze — with instant start up and reload, no matter how big your site gets'
+          description: 'Using the Vite dev server, development is a breeze — with instant start up and reload, no matter how big your site gets.'
         },
         {
           icon: 'IconLighthouse',
