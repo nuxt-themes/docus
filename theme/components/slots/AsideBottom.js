@@ -1,1 +1,3 @@
-export { component as default } from '~docus/utils/mock'
+import Slot from './SlotBase'
+
+export default Slot
