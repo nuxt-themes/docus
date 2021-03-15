@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/nuxtlabs/docus/compare/v0.1.0...v0.1.1) (2021-03-15)
+
+
+### Features
+
+* add jit by default ([a0fb24e](https://github.com/nuxtlabs/docus/commit/a0fb24ee55f5d507653d9ec831f21f7129dda478))
+
 ## [0.1.0](https://github.com/nuxtlabs/docus/compare/v0.0.10...v0.1.0) (2021-03-15)
 
 
