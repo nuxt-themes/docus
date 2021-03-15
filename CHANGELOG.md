@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/nuxtlabs/docus/compare/v0.1.3...v0.1.4) (2021-03-15)
+
+
+### Bug Fixes
+
+* use correct icon name ([0f95256](https://github.com/nuxtlabs/docus/commit/0f952560465d954dfd6b8ffa358441f2e587d6cc))
+* use nuxt resolver for tailwind config require ([f135ab1](https://github.com/nuxtlabs/docus/commit/f135ab136999bf13b25fe07d916ceb3fb22d03ee))
+
 ### [0.1.3](https://github.com/nuxtlabs/docus/compare/v0.1.2...v0.1.3) (2021-03-15)
 
 ### [0.1.2](https://github.com/nuxtlabs/docus/compare/v0.1.1...v0.1.2) (2021-03-15)
