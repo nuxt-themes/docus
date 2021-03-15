@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/nuxtlabs/docus/compare/v0.1.1...v0.1.2) (2021-03-15)
+
+
+### Bug Fixes
+
+* releases not working ([ef85c3a](https://github.com/nuxtlabs/docus/commit/ef85c3a6ad9b9e03187fa2e5e4ec69099a5f21bd))
+* remove duplicate credits ([afb65fd](https://github.com/nuxtlabs/docus/commit/afb65fddd6a9aa12f83c4547e27fd8442a2320d2))
+* styling ([5547ce4](https://github.com/nuxtlabs/docus/commit/5547ce442b9262d8bc25d4110cdd6616eb90a28b))
+
 ### [0.1.1](https://github.com/nuxtlabs/docus/compare/v0.1.0...v0.1.1) (2021-03-15)
 
 
