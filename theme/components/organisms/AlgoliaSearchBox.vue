@@ -212,7 +212,7 @@ export default {
   & .DocSearch {
     --docsearch-primary-color: var(--color-primary-400);
     --docsearch-text-color: var(--color-gray-300);
-    /* bg-gray-400 with 0.8 opacity */
+    /* bg-gray-900 with 0.8 opacity */
     --docsearch-container-background: rgba(28, 25, 23, 0.8);
     --docsearch-modal-background: var(--color-gray-900);
     --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
