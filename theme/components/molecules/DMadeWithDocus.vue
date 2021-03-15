@@ -1,5 +1,7 @@
 <template>
-  <div class="px-2 py-6 text-sm text-center bg-gray-50">
-    Made with <a href="https://docus.dev" class="font-bold">DOCUS</a>
+  <div class="p-3 text-center border-t border-gray-200 border-dashed dark:border-gray-800 dark:bg-gray-900">
+    <a href="https://docus.dev" class="text-xs text-gray-400 hover:text-gray-600 dark:text-gray-600 group dark:hover:text-gray-400">
+      Powered by <strong class="font-bold">Docus</strong>
+    </a>
   </div>
 </template>

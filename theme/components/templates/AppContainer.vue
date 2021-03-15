@@ -8,6 +8,7 @@
       </div>
     </div>
     <slot name="footer" />
+    <DMadeWithDocus v-if="$docus.settings.credits" />
   </div>
 </template>
 
