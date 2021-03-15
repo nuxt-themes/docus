@@ -14,7 +14,15 @@
         <IconMenuAlt class="w-6 h-6 " />
       </button>
       <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
-        <DLogo :settings="settings" />
+        <div class="flex items-center flex-none text-2xl font-semibold text-gray-900 lg:w-60 xl:w-72 dark:text-gray-100">
+          <NuxtLink
+            :to="localePath('/')"
+            class="w-auto overflow-hidden"
+            :aria-label="settings.title"
+          >
+            <HeaderLogo />
+          </NuxtLink>
+        </div>
       </div>
 
       <!-- Middle section -->
