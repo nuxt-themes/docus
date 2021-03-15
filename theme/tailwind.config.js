@@ -4,11 +4,11 @@
  ** Docs: https://tailwindcss.com/docs/configuration
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
-import path from 'path'
-import defaultTheme from 'tailwindcss/defaultTheme'
-import colors from 'tailwindcss/colors'
+const path = require('path')
 
-export default function ({ nuxt }) {
+module.exports = ({ nuxt }) => {
+  const defaultTheme = nuxt.resolver.requireModule('tailwindcss/defaultTheme')
+  const colors = nuxt.resolver.requireModule('tailwindcss/colors')
   return {
     darkMode: 'class',
     theme: {
