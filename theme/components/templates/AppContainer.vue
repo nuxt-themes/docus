@@ -7,7 +7,7 @@
         <slot />
       </div>
     </div>
-    <slot name="footer" />
+    <slot v-if="footer" name="footer"><AppFooter /></slot>
   </div>
 </template>
 
@@ -19,6 +19,10 @@ export default {
       default: false
     },
     header: {
+      type: Boolean,
+      default: true
+    },
+    footer: {
       type: Boolean,
       default: true
     },
