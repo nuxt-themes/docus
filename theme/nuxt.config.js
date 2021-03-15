@@ -131,6 +131,11 @@ export default {
         'ohmyfetch',
         'vue-demi',
         '@vueuse/integrations'
+      ],
+      include: [
+        'defu',
+        'theme-colors',
+        'lodash.groupby'
       ]
     },
     vue: {}
