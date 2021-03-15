@@ -37,7 +37,7 @@ features:
   - icon: IconPuzzle
     title: Extensible
     description: 'Customize the whole design, or add components using slots, make it your own.'
-  - icon: IconGithub
+  - icon: IconGitHub
     title: Open Source
     description: Docus is released as MIT license and made with love by the NuxtLabs team.
 ---

@@ -60,7 +60,7 @@ export default {
           description: 'Docus allows you to fine-tune every detail, whether adding content in custom slots, or replacing entire layout elements.'
         },
         {
-          icon: 'IconGithub',
+          icon: 'IconGitHub',
           title: 'Open Source',
           description: 'Docus is released under the MIT license and made with love by the NuxtLabs team.'
         }
