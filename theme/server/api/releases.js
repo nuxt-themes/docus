@@ -9,9 +9,9 @@ export function get () {
 export async function fetch ({ $content, settings }) {
   let releases = []
 
-  if (settings.github && settings.github.releases && settings.github.repo) {
+  if (settings.github.releases && settings.github.repo) {
     const { apiUrl, repo } = settings.github
-    releases = await fetchGithubReleases({ apiUrl, repo, token: process.env.GITHUB_TOKEN })
+    releases = await fetchGitHubReleases({ apiUrl, repo, token: process.env.GITHUB_TOKEN })
   }
 
   const compile = markdown => $content.database.markdown.toJSON(markdown)
@@ -34,7 +34,7 @@ export async function fetch ({ $content, settings }) {
   return releases
 }
 
-export async function fetchGithubReleases ({ apiUrl, repo, token }) {
+export async function fetchGitHubReleases ({ apiUrl, repo, token }) {
   const options = {}
   if (token) {
     options.headers = { Authorization: `token ${token}` }

@@ -64,7 +64,11 @@ module.exports = ({ nuxt }) => {
           'fill-available': '-webkit-fill-available'
         }),
         maxWidth: {
-          '8xl': '90rem'
+          '8xl': '90rem',
+          '1/2': '50%'
+        },
+        minWidth: {
+          '1/2': '50%'
         },
         inset: {
           18: '4.5rem'
