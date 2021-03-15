@@ -23,7 +23,8 @@ const DEFAULT_SETTINGS = {
   header: {
     logo: false,
     title: true
-  }
+  },
+  credits: true
 }
 
 export function useDefaults (settings) {
