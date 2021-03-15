@@ -4,6 +4,12 @@ import themeModule from './module'
 const r = path => resolve(__dirname, path)
 
 export default {
+  alias: {
+    qrcode: require.resolve('./mock/default'),
+    axios: require.resolve('./mock/default'),
+    nprogress: require.resolve('./mock/default'),
+    jwt_decode: require.resolve('./mock/default')
+  },
   target: 'static',
   ssr: true,
   privateRuntimeConfig: {
@@ -84,7 +90,7 @@ export default {
     }],
     defaultLocale: 'en',
     parsePages: false,
-    lazy: false, // !! `true` incompatible with vite
+    lazy: true,
     seo: false,
     vueI18n: {
       fallbackLocale: 'en',
@@ -118,6 +124,13 @@ export default {
     port: 4000
   },
   vite: {
+    optimizeDeps: {
+      exclude: [
+        'ohmyfetch',
+        'vue-demi',
+        '@vueuse/integrations'
+      ]
+    },
     vue: {}
   }
 }

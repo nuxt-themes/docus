@@ -22,7 +22,7 @@
       <nav
         class="max-w-sm py-4 pr-24 pl-4 sm:pl-6 overflow-y-auto text-base font-medium h-(full-18) lg:pr-0 lg:text-sm lg:pt-10 lg:pb-16"
       >
-        <DAsideTop />
+        <AsideTop />
         <ul>
           <DCategoryItem
             v-for="(docs, category) in categories"
@@ -31,7 +31,7 @@
             :docs="docs"
           />
         </ul>
-        <DAsideBottom />
+        <AsideBottom />
       </nav>
     </div>
   </div>

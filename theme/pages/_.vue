@@ -1,5 +1,5 @@
 <template>
-  <DPage>
+  <AppPage>
     <div class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': document.description }">
       <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">{{ document.title }}</span>
@@ -11,12 +11,13 @@
     <div class="max-w-none">
       <NuxtContent :document="document" />
     </div>
-    <DPageBottom :document="document" />
-    <DPagePrevNext :prev="prev" :next="next" />
+    <PageBottom :document="document" />
+    <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
+    <PagePrevNext :prev="prev" :next="next" />
     <template #toc>
-      <DToc v-if="!document.fullscreen" :toc="document.toc" />
+      <PageToc v-if="!document.fullscreen" :toc="document.toc" />
     </template>
-  </DPage>
+  </AppPage>
 </template>
 
 <script>
