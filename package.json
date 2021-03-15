@@ -23,7 +23,7 @@
     "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/google-fonts": "1.3.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/tailwindcss": "^4.0.0-6",
+    "@nuxtjs/tailwindcss": "^4.0.0-11",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
     "@vue/composition-api": "^1.0.0-rc.5",
