@@ -1,13 +1,14 @@
 <template>
   <div
-    class="codesandbox w-full mb-6 mx-auto bg-black text-white text-3xl text-center flex items-center justify-center overflow-hidden rounded-md"
+    class="flex items-center justify-center w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl text-center text-white bg-black rounded-md codesandbox"
+    style="background-color: rgb(21, 21, 21);"
   >
     <iframe
       v-if="isIntersecting && src"
       :src="src"
       title="CodeSandbox editor"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      class="w-full overflow-hidden"
+      class="w-full h-full min-h-[500px] overflow-hidden"
     />
     <span v-else>Loading CodeSandbox...</span>
   </div>
