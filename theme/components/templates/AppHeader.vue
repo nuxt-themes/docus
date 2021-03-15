@@ -39,7 +39,7 @@
 
         <!-- Desktop: Right section -->
         <div
-          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
+          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:min-w-64"
         >
           <HeaderRightCTA />
           <NuxtLink

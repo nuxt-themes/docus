@@ -67,9 +67,10 @@ module.exports = ({ nuxt }) => {
           '8xl': '90rem',
           '1/2': '50%'
         },
-        minWidth: {
-          '1/2': '50%'
-        },
+        minWidth: theme => ({
+          '1/2': '50%',
+          64: theme('spacing.64')
+        }),
         inset: {
           18: '4.5rem'
         },
