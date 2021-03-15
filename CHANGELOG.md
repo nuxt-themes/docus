@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/nuxtlabs/docus/compare/v0.1.4...v0.1.5) (2021-03-15)
+
+
+### Bug Fixes
+
+* try another way ([4664a2d](https://github.com/nuxtlabs/docus/commit/4664a2d7a0f8bc5cdc78ea21c55a1b59e28ead9d))
+
 ### [0.1.4](https://github.com/nuxtlabs/docus/compare/v0.1.3...v0.1.4) (2021-03-15)
 
 
