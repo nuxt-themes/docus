@@ -2,7 +2,6 @@ import { resolve, join, relative } from 'path'
 import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
-import tailwindConfig from './tailwind.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
@@ -179,6 +178,7 @@ export default function docusModule () {
   }
   // Configure TailwindCSS
   hook('tailwindcss:config', function (defaultTailwindConfig) {
+    const tailwindConfig = nuxt.resolver.requireModule(r('./tailwind.config.js'))
     Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
     // Add content/**/*.md to purge
     defaultTailwindConfig.purge.content.push(resolve(options.srcDir, contentDir, '**/*.md'))
