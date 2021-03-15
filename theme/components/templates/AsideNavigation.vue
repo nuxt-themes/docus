@@ -24,7 +24,7 @@
       <nav
         class="flex flex-col justify-between lg:justify-start max-w-sm overflow-y-auto text-base font-medium h-(full-18) lg:text-sm "
       >
-        <div class="py-4 pr-24 pl-4 sm:pl-6 lg:pr-0 lg:pt-10 ">
+        <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10 ">
           <AsideTop />
           <ul>
             <DCategoryItem
@@ -36,8 +36,8 @@
           </ul>
           <AsideBottom />
         </div>
-  
-        <DMadeWithDocus v-if="$docus.settings.credits"/>
+
+        <DMadeWithDocus v-if="$docus.settings.credits" />
       </nav>
     </div>
   </div>
@@ -46,20 +46,20 @@
 <script>
 export default {
   computed: {
-    categories() {
-      return this.$docus.categories[this.$i18n.locale];
+    categories () {
+      return this.$docus.categories[this.$i18n.locale]
     },
-    lastRelease() {
-      return this.$docus.lastRelease;
+    lastRelease () {
+      return this.$docus.lastRelease
     },
     menu: {
-      get() {
-        return this.$menu.open;
+      get () {
+        return this.$menu.open
       },
-      set(val) {
-        this.$menu.open = val;
-      },
-    },
-  },
-};
+      set (val) {
+        this.$menu.open = val
+      }
+    }
+  }
+}
 </script>
