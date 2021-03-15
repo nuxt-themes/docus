@@ -27,7 +27,14 @@ const DEFAULT_SETTINGS = {
   credits: true
 }
 
-export function useDefaults (settings) {
+export function useDefaults (settings = {}) {
+  if (typeof settings.github === 'string') {
+    settings.github = { repo: settings.github }
+  }
+  // backward compat for 'single' layout
+  if (settings.layout === 'single') {
+    settings.layout = 'readme'
+  }
   return defu(settings, DEFAULT_SETTINGS)
 }
 

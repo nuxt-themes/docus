@@ -9,7 +9,7 @@ export function get () {
 export async function fetch ({ $content, settings }) {
   let releases = []
 
-  if (settings.github && settings.github.releases && settings.github.repo) {
+  if (settings.github.releases && settings.github.repo) {
     const { apiUrl, repo } = settings.github
     releases = await fetchGitHubReleases({ apiUrl, repo, token: process.env.GITHUB_TOKEN })
   }
