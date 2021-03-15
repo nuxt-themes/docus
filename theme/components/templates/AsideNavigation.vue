@@ -36,8 +36,6 @@
           </ul>
           <AsideBottom />
         </div>
-
-        <DMadeWithDocus v-if="$docus.settings.credits" />
       </nav>
     </div>
   </div>
