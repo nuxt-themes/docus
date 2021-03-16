@@ -138,7 +138,7 @@ module.exports = ({ nuxt }) => {
                 fontWeight: theme('fontWeight.medium'),
                 textDecoration: 'none',
                 '&:hover': {
-                  borderBottomWidth: 2,
+                  borderBottomWidth: 1,
                   borderBottomColor: 'var(--primary-500)',
                   paddingBottom: '1px'
                 }

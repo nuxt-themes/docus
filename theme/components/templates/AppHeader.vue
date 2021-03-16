@@ -8,7 +8,7 @@
       <!-- Mobile menu button -->
       <button
         v-if="aside"
-        class="flex items-center justify-center lg:hidden focus:outline-none"
+        class="flex items-center justify-center text-gray-500 transition-colors duration-200 lg:hidden focus:outline-none dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400 "
         @click.stop="menu = !menu"
       >
         <IconMenuAlt class="w-6 h-6 " />

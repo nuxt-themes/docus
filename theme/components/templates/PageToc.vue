@@ -10,7 +10,7 @@
         <li
           v-for="link of toc"
           :key="link.id"
-          class="hover:text-gray-900 dark:hover:text-gray-100 "
+          class=""
           :class="{
             'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': exactActiveLink === link.id || activeLink === link.id,
             'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
@@ -20,9 +20,10 @@
             :href="`#${link.id}`"
             class="block py-1 transition-colors duration-100 transform scrollactive-item "
             :class="{
-              '': link.depth === 2,
-              'border-l-2 border-gray-100 dark:border-gray-800 pl-3 text-gray-500 dark:text-gray-400': link.depth === 3,
-              'dark:border-primary-500 border-primary-500 text-primary-400': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
+              'hover:text-primary-500 dark:hover:text-primary-400': link.depth === 2,
+              'border-l border-gray-100 dark:border-gray-800 pl-3  hover:text-primary-400 dark:hover:text-primary-400': link.depth === 3,
+              'text-gray-500 dark:text-gray-400': link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
+              'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
           >{{ link.text }}</a>
         </li>
