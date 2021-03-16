@@ -66,7 +66,7 @@ module.exports = ({ nuxt }) => {
         inset: {
           18: '4.5rem'
         },
-        typography: ({
+        typography: {
           DEFAULT: {
             css: {
               maxWidth: 'none',
@@ -281,7 +281,7 @@ module.exports = ({ nuxt }) => {
               }
             }
           }
-        })
+        }
       }
     },
     variants: {
@@ -293,7 +293,7 @@ module.exports = ({ nuxt }) => {
       }
     },
     plugins: [
-      require('windicss/plugin/typography'),
+      require('windicss/plugin/typography')(),
       require('windicss/plugin/aspect-ratio')
     ]
   }
