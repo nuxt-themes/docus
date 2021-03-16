@@ -1,11 +1,11 @@
 <template>
-  <div v-if="toc.length" class="fixed left-0 flex-none w-full pl-4 mr-8 text-sm bg-white backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-18 xl:relative xl:block xl:top-0">
-    <button class="relative z-10 flex items-center py-3 text-sm font-semibold text-gray-900 focus:outline-none xl:hidden dark:text-gray-100" @click="showMobileMenu = !showMobileMenu">
+  <div v-if="toc.length" class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-18 xl:block xl:top-0">
+    <button class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none xl:hidden dark:text-gray-100" @click="showMobileToc = !showMobileToc">
       <span class="mr-2">{{ $t('toc.title') }}</span>
-      <IconChevronRight class="w-4 h-4 text-gray-400 transition-transform duration-100 transform" :class="[showMobileMenu ? 'rotate-90' : 'rotate-0']" />
+      <IconChevronRight class="w-4 h-4 text-gray-400 transition-transform duration-100 transform" :class="[showMobileToc ? 'rotate-90' : 'rotate-0']" />
     </button>
 
-    <div :class="[showMobileMenu ? 'flex' : 'hidden xl:flex']" class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
+    <div :class="[showMobileToc ? 'flex' : 'hidden xl:flex']" class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
       <PageTocTop />
 
       <h5 class="items-center hidden mb-2 xl:flex">
@@ -21,6 +21,7 @@
             'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': exactActiveLink === link.id || activeLink === link.id,
             'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
           }"
+          @click="showMobileToc = false"
         >
           <a
             :href="`#${link.id}`"
@@ -52,7 +53,7 @@ export default {
       activeLink: '',
       exactActiveLink: '',
       sections: [],
-      showMobileMenu: false
+      showMobileToc: false
     }
   },
   computed: {
