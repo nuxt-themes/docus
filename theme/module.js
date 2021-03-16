@@ -3,6 +3,7 @@ import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import tailwindConfig from './tailwind.config'
+import windiConfig from './windi.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
@@ -169,12 +170,27 @@ export default function docusModule () {
   if (options.dev) {
     options.css.push(r('assets/css/main.dev.css'))
   }
-  // Configure TailwindCSS
-  hook('tailwindcss:config', function (defaultTailwindConfig) {
-    Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
-    // Add content/**/*.md to purge
-    defaultTailwindConfig.purge.content.push(resolve(options.srcDir, contentDir, '**/*.md'))
-  })
+
+  if (options.docusCSSModule === 'windicss') {
+    // Configure TailwindCSS
+    hook('windicss:config', function (defaultConfig) {
+      Object.assign(defaultConfig, defu(defaultConfig, windiConfig({ nuxt })))
+
+      defaultConfig.scan.dirs.push(join(__dirname, 'components/'))
+      defaultConfig.scan.dirs.push(join(__dirname, 'layouts/'))
+      defaultConfig.scan.dirs.push(join(__dirname, 'pages/'))
+      defaultConfig.scan.dirs.push(join(__dirname, 'plugins/'))
+      defaultConfig.scan.dirs.push(join(__dirname, 'utils/'))
+    })
+  } else {
+    // Configure TailwindCSS
+    hook('tailwindcss:config', function (defaultConfig) {
+      Object.assign(defaultConfig, defu(defaultConfig, tailwindConfig({ nuxt })))
+      // Add content/**/*.md to purge
+      defaultConfig.purge.content.push(resolve(options.srcDir, contentDir, '**/*.md'))
+    })
+  }
+
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
   // Docus Devtools

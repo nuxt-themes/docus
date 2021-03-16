@@ -41,7 +41,6 @@ export default {
   buildModules: [
     themeModule,
     'nuxt-vite',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     '@nuxtjs/google-fonts'
