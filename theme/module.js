@@ -171,7 +171,7 @@ export default function docusModule () {
     options.css.push(r('assets/css/main.dev.css'))
   }
 
-  if (options.docusCSSModule === 'windicss') {
+  if (options.docusCSSModule === 'nuxt-windicss') {
     // Configure TailwindCSS
     hook('windicss:config', function (defaultConfig) {
       Object.assign(defaultConfig, defu(defaultConfig, windiConfig({ nuxt })))
