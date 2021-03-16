@@ -66,11 +66,11 @@ module.exports = ({ nuxt }) => {
         inset: {
           18: '4.5rem'
         },
-        typography: theme => ({
+        typography: ({
           DEFAULT: {
             css: {
               maxWidth: 'none',
-              color: theme('colors.gray.700'),
+              color: colors.warmGray[700],
               '> :first-child': { marginTop: '-' },
               '> :last-child': { marginBottom: '-' },
               '&:first-child > :first-child': {
@@ -81,14 +81,14 @@ module.exports = ({ nuxt }) => {
               },
               'h1, h2': {
                 letterSpacing: '-0.025em',
-                fontWeight: theme('fontWeight.bold')
+                fontWeight: defaultTheme.fontWeight.bold
               },
               'h1, h2, h3': {
                 marginTop: '1.5em',
                 marginBottom: '0.5em'
               },
               h3: {
-                fontWeight: theme('fontWeight.semibold')
+                fontWeight: defaultTheme.fontWeight.semibold
               },
               p: {
                 marginTop: '0.5em',
@@ -111,7 +111,7 @@ module.exports = ({ nuxt }) => {
                 '&:hover': {
                   borderBottomWidth: 1,
                   borderStyle: 'dashed',
-                  borderBottomColor: theme('colors.gray.900'),
+                  borderBottomColor: colors.warmGray[900],
                   paddingBottom: '2px'
                 }
               },
@@ -128,7 +128,7 @@ module.exports = ({ nuxt }) => {
               },
               a: {
                 color: 'var(--primary-500)',
-                fontWeight: theme('fontWeight.medium'),
+                fontWeight: defaultTheme.fontWeight.medium,
                 textDecoration: 'none',
                 '&:hover': {
                   borderBottomWidth: 2,
@@ -138,11 +138,11 @@ module.exports = ({ nuxt }) => {
               },
               'a code': {
                 color: 'inherit',
-                fontWeight: theme('fontWeight.medium')
+                fontWeight: defaultTheme.fontWeight.medium
               },
               strong: {
-                color: theme('colors.gray.900'),
-                fontWeight: theme('fontWeight.medium')
+                color: colors.warmGray[900],
+                fontWeight: defaultTheme.fontWeight.medium
               },
               'a strong': {
                 color: 'inherit',
@@ -150,10 +150,10 @@ module.exports = ({ nuxt }) => {
               },
               code: {
                 fontWeight: '400',
-                padding: theme('padding.1'),
+                padding: defaultTheme.padding[1],
                 color: 'inherit',
-                backgroundColor: theme('colors.gray.100'),
-                borderRadius: theme('borderRadius.md')
+                backgroundColor: colors.warmGray[100],
+                borderRadius: defaultTheme.borderRadius.md
               },
               'code::before': {
                 content: ''
@@ -162,9 +162,9 @@ module.exports = ({ nuxt }) => {
                 content: ''
               },
               pre: {
-                backgroundColor: theme('colors.gray.800'),
-                color: theme('colors.white'),
-                borderRadius: theme('borderRadius.md'),
+                backgroundColor: colors.warmGray[800],
+                color: colors.white,
+                borderRadius: defaultTheme.borderRadius.md,
                 marginTop: 0,
                 marginBottom: 0
               },
@@ -172,25 +172,25 @@ module.exports = ({ nuxt }) => {
                 backgroundColor: 'transparent'
               },
               table: {
-                fontSize: theme('fontSize.sm')[0],
-                lineHeight: theme('fontSize.sm')[1].lineHeight
+                fontSize: defaultTheme.fontSize.sm[0],
+                lineHeight: defaultTheme.fontSize.sm[1].lineHeight
               },
               thead: {
-                color: theme('colors.gray.600'),
-                borderBottomColor: theme('colors.gray.200')
+                color: colors.warmGray[600],
+                borderBottomColor: colors.warmGray[200]
               },
               'thead th': {
                 paddingTop: 0,
-                fontWeight: theme('fontWeight.semibold')
+                fontWeight: defaultTheme.fontWeight.semibold
               },
               'tbody tr': {
-                borderBottomColor: theme('colors.gray.200')
+                borderBottomColor: colors.warmGray[200]
               },
               'tbody tr:last-child': {
                 borderBottomWidth: '1px'
               },
               'tbody code': {
-                fontSize: theme('fontSize.xs')[0]
+                fontSize: defaultTheme.fontSize.xs[0]
               },
               'blockquote p:first-of-type::before': {
                 content: ''
@@ -202,37 +202,37 @@ module.exports = ({ nuxt }) => {
           },
           dark: {
             css: {
-              color: theme('colors.gray.50'),
+              color: colors.warmGray[50],
               strong: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               a: {
                 color: 'var(--primary-400)'
               },
               'ol > li::before': {
-                color: theme('colors.gray.400')
+                color: colors.warmGray[400]
               },
               'ul > li::before': {
-                backgroundColor: theme('colors.gray.600')
+                backgroundColor: colors.warmGray[600]
               },
               hr: {
-                borderColor: theme('colors.gray.700')
+                borderColor: colors.warmGray[700]
               },
               blockquote: {
-                color: theme('colors.gray.400'),
-                borderLeftColor: theme('colors.gray.700')
+                color: colors.warmGray[400],
+                borderLeftColor: colors.warmGray[700]
               },
               h1: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h2: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h3: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h4: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               'h2 code': {
                 color: 'inherit',
@@ -246,17 +246,17 @@ module.exports = ({ nuxt }) => {
                 color: 'inherit',
                 fontWeight: 'inherit',
                 '&:hover': {
-                  borderBottomColor: theme('colors.gray.100')
+                  borderBottomColor: colors.warmGray[100]
                 }
               },
               'figure figcaption': {
-                color: theme('colors.gray.400')
+                color: colors.warmGray[400]
               },
               code: {
                 fontWeight: '400',
                 color: 'inherit',
-                backgroundColor: theme('colors.gray.800'),
-                borderRadius: theme('borderRadius.md')
+                backgroundColor: colors.warmGray[800],
+                borderRadius: defaultTheme.borderRadius.md
               },
               'code::before': {
                 content: ''
@@ -266,18 +266,18 @@ module.exports = ({ nuxt }) => {
               },
               'pre code': {
                 backgroundColor: 'transparent',
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               'a code': {
                 color: 'inherit',
-                fontWeight: theme('fontWeight.medium')
+                fontWeight: defaultTheme.fontWeight.medium
               },
               thead: {
-                color: theme('colors.gray.100'),
-                borderBottomColor: theme('colors.gray.600')
+                color: colors.warmGray[100],
+                borderBottomColor: colors.warmGray[600]
               },
               'tbody tr': {
-                borderBottomColor: theme('colors.gray.700')
+                borderBottomColor: colors.warmGray[700]
               }
             }
           }

@@ -181,6 +181,7 @@ export default function docusModule () {
       defaultConfig.scan.dirs.push(join(__dirname, 'pages/'))
       defaultConfig.scan.dirs.push(join(__dirname, 'plugins/'))
       defaultConfig.scan.dirs.push(join(__dirname, 'utils/'))
+      defaultConfig.scan.dirs.push(resolve(options.srcDir, contentDir))
     })
   } else {
     // Configure TailwindCSS
