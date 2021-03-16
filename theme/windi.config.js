@@ -242,7 +242,14 @@ module.exports = ({ nuxt }) => {
                 color: 'inherit',
                 fontWeight: 'inherit'
               },
-              'h2 > a, h3 > a': {
+              'h2 > a': {
+                color: 'inherit',
+                fontWeight: 'inherit',
+                '&:hover': {
+                  borderBottomColor: colors.warmGray[100]
+                }
+              },
+              'h3 > a': {
                 color: 'inherit',
                 fontWeight: 'inherit',
                 '&:hover': {
