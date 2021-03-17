@@ -199,8 +199,8 @@ module.exports = ({ nuxt }) => {
                 content: ''
               },
               pre: {
-                backgroundColor: theme('colors.gray.800'),
-                color: theme('colors.white'),
+                backgroundColor: theme('colors.gray.100'),
+                color: theme('colors.gray.800'),
                 borderRadius: theme('borderRadius.md'),
                 marginTop: 0,
                 marginBottom: 0
@@ -306,6 +306,10 @@ module.exports = ({ nuxt }) => {
               },
               'code::after': {
                 content: ''
+              },
+              pre: {
+                backgroundColor: theme('colors.gray.800'),
+                color: theme('colors.white')
               },
               'pre code': {
                 backgroundColor: 'transparent',
