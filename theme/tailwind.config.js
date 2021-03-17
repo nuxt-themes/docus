@@ -115,11 +115,41 @@ module.exports = ({ nuxt }) => {
               'h2 > a, h3 > a': {
                 color: 'inherit',
                 fontWeight: 'inherit',
+                position: 'relative',
+                code: {
+                  border: '1px dashed transparent',
+                  position: 'relative',
+                  zIndex: 0
+                },
                 '&:hover': {
+                  borderBottomWidth: 0,
+                  paddingBottom: 0,
+                  code: {
+                    borderColor: theme('colors.gray.500')
+                  }
+                },
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: 'calc(100% + 4px)'
+                },
+                '&:hover:before': {
                   borderBottomWidth: 1,
                   borderStyle: 'dashed',
-                  borderBottomColor: theme('colors.gray.900'),
-                  paddingBottom: '2px'
+                  borderBottomColor: theme('colors.gray.900')
+                },
+                'code:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: -4,
+                  left: -4,
+                  zIndex: -1,
+                  width: 'calc(100% + 8px)',
+                  height: 'calc(100% + 8px)',
+                  backgroundColor: theme('colors.white')
                 }
               },
               'ul ul, ul ol, ol ul, ol ol': {
@@ -253,7 +283,13 @@ module.exports = ({ nuxt }) => {
                 color: 'inherit',
                 fontWeight: 'inherit',
                 '&:hover': {
-                  borderBottomColor: theme('colors.gray.100')
+                  borderBottomColor: theme('colors.gray.100'),
+                  code: {
+                    borderColor: theme('colors.gray.500')
+                  }
+                },
+                'code:before': {
+                  backgroundColor: theme('colors.gray.900')
                 }
               },
               'figure figcaption': {
