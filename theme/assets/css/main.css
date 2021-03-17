@@ -52,7 +52,7 @@ body {
 
     /* Style copy button added in `pages/_.vue` */
     & > .copy {
-      @apply outline-none absolute right-0 bottom-0 leading-none px-3 py-1.5 text-gray-700 bg-gray-200 text-xs rounded-tl-md border border-b-0 border-r-0 border-gray-300 font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
+      @apply outline-none absolute right-0 bottom-0 px-3 py-1.5 text-gray-700 bg-gray-200 text-xs leading-none rounded-tl-md border border-b-0 border-r-0 border-gray-300 font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
 
       &:hover {
         @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
