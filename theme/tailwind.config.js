@@ -115,11 +115,26 @@ module.exports = ({ nuxt }) => {
               'h2 > a, h3 > a': {
                 color: 'inherit',
                 fontWeight: 'inherit',
+                position: 'relative',
+                code: {
+                  position: 'relative'
+                },
                 '&:hover': {
+                  borderBottomWidth: 0,
+                  paddingBottom: 0
+                },
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: 'calc(100% + 4px)'
+                },
+                '&:hover:before': {
                   borderBottomWidth: 1,
                   borderStyle: 'dashed',
-                  borderBottomColor: theme('colors.gray.900'),
-                  paddingBottom: '2px'
+                  borderBottomColor: theme('colors.gray.900')
                 }
               },
               'ul ul, ul ol, ol ul, ol ol': {
