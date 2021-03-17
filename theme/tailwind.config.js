@@ -202,6 +202,10 @@ module.exports = ({ nuxt }) => {
                 backgroundColor: theme('colors.gray.100'),
                 color: theme('colors.gray.800'),
                 borderRadius: theme('borderRadius.md'),
+                paddingTop: theme('padding.3'),
+                paddingRight: theme('padding.4'),
+                paddingBottom: theme('padding.3'),
+                paddingLeft: theme('padding.4'),
                 marginTop: 0,
                 marginBottom: 0
               },

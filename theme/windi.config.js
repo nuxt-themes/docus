@@ -165,8 +165,13 @@ module.exports = ({ nuxt }) => {
                 backgroundColor: colors.warmGray[800],
                 color: colors.white,
                 borderRadius: defaultTheme.borderRadius.md,
-                marginTop: 0,
-                marginBottom: 0
+                paddingTop: defaultTheme.padding[3],
+                paddingRight: defaultTheme.padding[4],
+                paddingBottom: defaultTheme.padding[3],
+                paddingLeft: defaultTheme.padding[4],
+                marginTop: '0px',
+                marginBottom: '0px'
+
               },
               'pre code': {
                 backgroundColor: 'transparent',
