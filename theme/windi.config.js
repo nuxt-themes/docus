@@ -169,7 +169,8 @@ module.exports = ({ nuxt }) => {
                 marginBottom: 0
               },
               'pre code': {
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                fontFamily: defaultTheme.fontFamily.mono.join()
               },
               table: {
                 fontSize: defaultTheme.fontSize.sm[0],
