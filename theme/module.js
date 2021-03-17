@@ -176,6 +176,10 @@ export default function docusModule () {
     hook('windicss:config', function (defaultConfig) {
       defaultConfig.config = defu(defaultConfig.config || {}, windiConfig({ nuxt }))
 
+      // include docus directory in scan process
+      defaultConfig.scan.include = defaultConfig.scan.include || []
+      defaultConfig.scan.include.push('node_modules/docus')
+
       defaultConfig.scan.dirs.push(join(__dirname, 'components/'))
       defaultConfig.scan.dirs.push(join(__dirname, 'layouts/'))
       defaultConfig.scan.dirs.push(join(__dirname, 'pages/'))
