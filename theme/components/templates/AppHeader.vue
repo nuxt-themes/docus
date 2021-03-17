@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-40 w-full bg-white border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
+    class="sticky top-0 z-40 w-full bg-white border-b border-gray-100 h-18 lg:z-50 app-header dark:border-gray-800 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
     @click="scrollToTop"
   >
     <div class="flex flex-none px-4 mx-auto sm:px-6 max-w-8xl ">
