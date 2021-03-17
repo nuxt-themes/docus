@@ -115,6 +115,11 @@ module.exports = ({ nuxt }) => {
                   paddingBottom: '2px'
                 }
               },
+              'ol, ul': {
+                marginLeft: '0px',
+                marginRight: '0px',
+                padding: '0px'
+              },
               'ul ul, ul ol, ol ul, ol ol': {
                 marginTop: '0.5em',
                 marginBottom: '0.5em'
