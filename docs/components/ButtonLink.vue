@@ -42,7 +42,7 @@ export default {
 a.button-link {
   @apply inline-flex items-center flex-none px-4 py-2.5 leading-4 text-base font-semibold text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-primary-600 focus:outline-none;
   &.large {
-    @apply px-6 py-3 leading-6 text-lg rounded-md;
+    @apply px-6 py-3 text-lg rounded-md leading-6;
   }
 }
 </style>
