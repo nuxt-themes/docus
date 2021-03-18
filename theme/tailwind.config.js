@@ -74,7 +74,7 @@ module.exports = ({ colors, defaultTheme }) => {
           DEFAULT: {
             css: {
               maxWidth: 'none',
-              color: theme('colors.gray.700'),
+              color: colors.gray[700],
               '> :first-child': { marginTop: '-' },
               '> :last-child': { marginBottom: '-' },
               '&:first-child > :first-child': {
@@ -122,7 +122,7 @@ module.exports = ({ colors, defaultTheme }) => {
                   borderBottomWidth: 0,
                   paddingBottom: 0,
                   code: {
-                    borderColor: theme('colors.gray.500')
+                    borderColor: colors.warmGray[500]
                   }
                 },
                 '&:before': {
@@ -136,7 +136,7 @@ module.exports = ({ colors, defaultTheme }) => {
                 '&:hover:before': {
                   borderBottomWidth: 1,
                   borderStyle: 'dashed',
-                  borderBottomColor: theme('colors.gray.900')
+                  borderBottomColor: colors.warmGray[900]
                 },
                 'code:before': {
                   content: '""',
@@ -146,7 +146,7 @@ module.exports = ({ colors, defaultTheme }) => {
                   zIndex: -1,
                   width: 'calc(100% + 8px)',
                   height: 'calc(100% + 8px)',
-                  backgroundColor: theme('colors.white')
+                  backgroundColor: colors.white
                 }
               },
               'ul ul, ul ol, ol ul, ol ol': {
@@ -175,7 +175,7 @@ module.exports = ({ colors, defaultTheme }) => {
                 fontWeight: theme('fontWeight.medium')
               },
               strong: {
-                color: theme('colors.gray.900'),
+                color: colors.warmGray[900],
                 fontWeight: theme('fontWeight.medium')
               },
               'a strong': {
@@ -186,7 +186,7 @@ module.exports = ({ colors, defaultTheme }) => {
                 fontWeight: '400',
                 padding: theme('padding.1'),
                 color: 'inherit',
-                backgroundColor: theme('colors.gray.100'),
+                backgroundColor: colors.warmGray[100],
                 borderRadius: theme('borderRadius.md')
               },
               'code::before': {
@@ -196,8 +196,8 @@ module.exports = ({ colors, defaultTheme }) => {
                 content: ''
               },
               pre: {
-                backgroundColor: theme('colors.gray.100'),
-                color: theme('colors.gray.800'),
+                backgroundColor: colors.warmGray[100],
+                color: colors.warmGray[800],
                 borderRadius: theme('borderRadius.md'),
                 paddingTop: theme('padding.3'),
                 paddingRight: theme('padding.4'),
@@ -207,22 +207,23 @@ module.exports = ({ colors, defaultTheme }) => {
                 marginBottom: 0
               },
               'pre code': {
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                fontFamily: defaultTheme.fontFamily.mono.join()
               },
               table: {
                 fontSize: theme('fontSize.sm')[0],
                 lineHeight: theme('fontSize.sm')[1].lineHeight
               },
               thead: {
-                color: theme('colors.gray.600'),
-                borderBottomColor: theme('colors.gray.200')
+                color: colors.warmGray[600],
+                borderBottomColor: colors.warmGray[200]
               },
               'thead th': {
                 paddingTop: 0,
                 fontWeight: theme('fontWeight.semibold')
               },
               'tbody tr': {
-                borderBottomColor: theme('colors.gray.200')
+                borderBottomColor: colors.warmGray[200]
               },
               'tbody tr:last-child': {
                 borderBottomWidth: '1px'
@@ -240,37 +241,37 @@ module.exports = ({ colors, defaultTheme }) => {
           },
           dark: {
             css: {
-              color: theme('colors.gray.50'),
+              color: colors.warmGray[50],
               strong: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               a: {
                 color: 'var(--primary-400)'
               },
               'ol > li::before': {
-                color: theme('colors.gray.400')
+                color: colors.warmGray[400]
               },
               'ul > li::before': {
-                backgroundColor: theme('colors.gray.600')
+                backgroundColor: colors.warmGray[600]
               },
               hr: {
-                borderColor: theme('colors.gray.700')
+                borderColor: colors.warmGray[700]
               },
               blockquote: {
-                color: theme('colors.gray.400'),
-                borderLeftColor: theme('colors.gray.700')
+                color: colors.warmGray[400],
+                borderLeftColor: colors.warmGray[700]
               },
               h1: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h2: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h3: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               h4: {
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               'h2 code': {
                 color: 'inherit',
@@ -284,22 +285,22 @@ module.exports = ({ colors, defaultTheme }) => {
                 color: 'inherit',
                 fontWeight: 'inherit',
                 '&:hover': {
-                  borderBottomColor: theme('colors.gray.100'),
+                  borderBottomColor: colors.warmGray[100],
                   code: {
-                    borderColor: theme('colors.gray.500')
+                    borderColor: colors.warmGray[500]
                   }
                 },
                 'code:before': {
-                  backgroundColor: theme('colors.gray.900')
+                  backgroundColor: colors.warmGray[900]
                 }
               },
               'figure figcaption': {
-                color: theme('colors.gray.400')
+                color: colors.warmGray[400]
               },
               code: {
                 fontWeight: '400',
                 color: 'inherit',
-                backgroundColor: theme('colors.gray.800'),
+                backgroundColor: colors.warmGray[800],
                 borderRadius: theme('borderRadius.md')
               },
               'code::before': {
@@ -309,23 +310,23 @@ module.exports = ({ colors, defaultTheme }) => {
                 content: ''
               },
               pre: {
-                backgroundColor: theme('colors.gray.800'),
-                color: theme('colors.white')
+                backgroundColor: colors.warmGray[800],
+                color: colors.white
               },
               'pre code': {
                 backgroundColor: 'transparent',
-                color: theme('colors.gray.100')
+                color: colors.warmGray[100]
               },
               'a code': {
                 color: 'inherit',
                 fontWeight: theme('fontWeight.medium')
               },
               thead: {
-                color: theme('colors.gray.100'),
-                borderBottomColor: theme('colors.gray.600')
+                color: colors.warmGray[100],
+                borderBottomColor: colors.warmGray[600]
               },
               'tbody tr': {
-                borderBottomColor: theme('colors.gray.700')
+                borderBottomColor: colors.warmGray[700]
               }
             }
           }

@@ -3,7 +3,6 @@ const defu = require('defu')
 
 module.exports = ({ nuxt, cssModule }) => {
   const configFactory = require('./tailwind.config')
-console.log(cssModule);
   return cssModule === 'nuxt-windicss' ? windicss({ nuxt, configFactory }) : tailwind({ nuxt, configFactory })
 }
 
@@ -24,7 +23,7 @@ function windicss ({ nuxt, configFactory }) {
 
   hook('windicss:config', function (defaultConfig) {
     defaultConfig.config = defu(defaultConfig.config || {}, config)
-    console.log("dsd");
+
     // include docus directory in scan process
     defaultConfig.scan.include = defaultConfig.scan.include || []
     defaultConfig.scan.include.push('node_modules/docus')
