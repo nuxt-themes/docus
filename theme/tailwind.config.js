@@ -4,11 +4,8 @@
  ** Docs: https://tailwindcss.com/docs/configuration
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
-const path = require('path')
 
-module.exports = ({ nuxt }) => {
-  const defaultTheme = nuxt.resolver.requireModule('tailwindcss/defaultTheme')
-  const colors = nuxt.resolver.requireModule('tailwindcss/colors')
+module.exports = ({ colors, defaultTheme }) => {
   return {
     darkMode: 'class',
     theme: {
@@ -341,46 +338,6 @@ module.exports = ({ nuxt }) => {
         padding: ['first'],
         borderWidth: ['first'],
         typography: ['dark']
-      }
-    },
-    plugins: [
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio'),
-      require('tailwind-css-variables')({
-        colors: 'color',
-        screens: false,
-        fontFamily: false,
-        fontSize: false,
-        fontWeight: false,
-        lineHeight: false,
-        letterSpacing: false,
-        backgroundSize: false,
-        borderWidth: false,
-        borderRadius: false,
-        width: false,
-        height: false,
-        minWidth: false,
-        minHeight: false,
-        maxWidth: false,
-        maxHeight: false,
-        padding: false,
-        margin: false,
-        boxShadow: false,
-        zIndex: false,
-        opacity: false
-      })
-    ],
-    purge: {
-      content: [
-        path.join(__dirname, 'components/**/*.vue'),
-        path.join(__dirname, 'layouts/**/*.vue'),
-        path.join(__dirname, 'pages/**/*.vue'),
-        path.join(__dirname, 'plugins/**/*.js'),
-        path.join(__dirname, 'utils/**/*.js'),
-        'nuxt.config.js'
-      ],
-      options: {
-        safelist: []
       }
     }
   }
