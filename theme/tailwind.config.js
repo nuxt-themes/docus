@@ -5,6 +5,9 @@
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 
+/**
+ * Note: This config should be compiler-independent and should work with both Windi and Tailwind
+ */
 module.exports = ({ colors, defaultTheme }) => {
   return {
     darkMode: 'class',
