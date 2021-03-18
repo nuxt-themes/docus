@@ -152,6 +152,11 @@ module.exports = ({ colors, defaultTheme }) => {
                   backgroundColor: colors.white
                 }
               },
+              'ol, ul': {
+                marginLeft: '0px',
+                marginRight: '0px',
+                padding: '0px'
+              },
               'ul ul, ul ol, ol ul, ol ol': {
                 marginTop: '0.5em',
                 marginBottom: '0.5em'
@@ -284,7 +289,20 @@ module.exports = ({ colors, defaultTheme }) => {
                 color: 'inherit',
                 fontWeight: 'inherit'
               },
-              'h2 > a, h3 > a': {
+              'h2 > a': {
+                color: 'inherit',
+                fontWeight: 'inherit',
+                '&:hover': {
+                  borderBottomColor: colors.warmGray[100],
+                  code: {
+                    borderColor: colors.warmGray[500]
+                  }
+                },
+                'code:before': {
+                  backgroundColor: colors.warmGray[900]
+                }
+              },
+              'h3 > a': {
                 color: 'inherit',
                 fontWeight: 'inherit',
                 '&:hover': {
