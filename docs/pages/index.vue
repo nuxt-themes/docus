@@ -10,7 +10,7 @@
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
-    <section class="px-4 mx-auto my-24 max-w-8xl">
+    <section class="px-4 mx-auto my-24 sm:px-6 max-w-8xl">
 
       <div class="flex flex-col lg:flex-row">
         <div class="flex flex-col items-center pr-0 mb-8 lg:items-start lg:pr-8 lg:w-2/3">
