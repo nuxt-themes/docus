@@ -229,8 +229,8 @@ export default {
               paddingRight: theme('padding.4'),
               paddingBottom: theme('padding.3'),
               paddingLeft: theme('padding.4'),
-              marginTop: 0,
-              marginBottom: 0
+              marginTop: '0px',
+              marginBottom: '0px'
             },
             'pre code': {
               backgroundColor: 'transparent',
