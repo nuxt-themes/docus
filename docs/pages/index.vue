@@ -3,14 +3,14 @@
     <template #header>
       <AppHeader>
         <template #desktop-right>
-          <NuxtLink to="/get-started/installation" class="inline-flex items-center flex-none px-3 py-2 text-base font-semibold leading-4 text-white transition-colors duration-200 border border-transparent rounded bg-primary-500 hover:bg-primary-600">Get started</NuxtLink>
+          <DButtonLink href="/get-started/installation">Get started</DButtonLink>
         </template>
       </AppHeader>
     </template>
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
-    <section class="px-4 mx-auto my-24 max-w-8xl">
+    <section class="px-4 mx-auto my-24 sm:px-6 max-w-8xl">
 
       <div class="flex flex-col lg:flex-row">
         <div class="flex flex-col items-center pr-0 mb-8 lg:items-start lg:pr-8 lg:w-2/3">
@@ -24,13 +24,14 @@
             and enjoy the power of Nuxt.
           </h3>
           <div class="flex items-center space-x-6">
-            <ButtonLink
+            <DButtonLink
               class="mx-auto md:mx-0"
               size="large"
+              bold
               href="/get-started/installation"
             >
               Get started
-            </ButtonLink>
+            </DButtonLink>
             <a href="https://github.com/nuxtlabs/docus" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
           </div>
         </div>

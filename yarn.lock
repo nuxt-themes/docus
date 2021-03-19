@@ -12586,7 +12586,7 @@ vue-no-ssr@^1.1.1:
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
 
-vue-plausible@^1.1.3:
+vue-plausible@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/vue-plausible/-/vue-plausible-1.1.4.tgz#c6fc059f081a7b7d7820ad9dcb504d1cf6a3a892"
   integrity sha512-Br7pAxCrnr4t8X6ByOFeMPiyoJAD1dpUyOyh3pEyy0P7Gkt4A7ps2wvDioNmKw6wuWijaMMwU9TCuDmJm9RdTg==

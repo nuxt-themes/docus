@@ -47,6 +47,6 @@
     "eslint": "^7.22.0",
     "nuxt-edge": "^2.16.0-26929477.f08f4efc",
     "standard-version": "^9.1.1",
-    "vue-plausible": "^1.1.3"
+    "vue-plausible": "^1.1.4"
   }
 }

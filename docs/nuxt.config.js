@@ -12,7 +12,7 @@ export default withDocus({
     liveEdit: false
   },
   buildModules: [
-    'vue-plausible/lib/esm'
+    'vue-plausible'
   ],
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
