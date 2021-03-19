@@ -137,11 +137,11 @@ export default {
               code: {
                 border: '1px dashed transparent',
                 position: 'relative',
-                zIndex: 0
+                zIndex: '0'
               },
               '&:hover': {
-                borderBottomWidth: 0,
-                paddingBottom: 0,
+                borderBottomWidth: '0px',
+                paddingBottom: '0px',
                 code: {
                   borderColor: colors.warmGray[500]
                 }
@@ -155,7 +155,7 @@ export default {
                 height: 'calc(100% + 4px)'
               },
               '&:hover:before': {
-                borderBottomWidth: 1,
+                borderBottomWidth: '1px',
                 borderStyle: 'dashed',
                 borderBottomColor: colors.warmGray[900]
               },
@@ -245,7 +245,7 @@ export default {
               borderBottomColor: colors.warmGray[200]
             },
             'thead th': {
-              paddingTop: 0,
+              paddingTop: '0px',
               fontWeight: theme('fontWeight.semibold')
             },
             'tbody tr': {
@@ -311,9 +311,11 @@ export default {
               color: 'inherit',
               fontWeight: 'inherit',
               '&:hover': {
-                borderBottomColor: colors.warmGray[100],
                 code: {
                   borderColor: colors.warmGray[500]
+                },
+                '&:before': {
+                  borderBottomColor: colors.warmGray[100]
                 }
               },
               'code:before': {
@@ -324,9 +326,11 @@ export default {
               color: 'inherit',
               fontWeight: 'inherit',
               '&:hover': {
-                borderBottomColor: colors.warmGray[100],
                 code: {
                   borderColor: colors.warmGray[500]
+                },
+                '&:before': {
+                  borderBottomColor: colors.warmGray[100]
                 }
               },
               'code:before': {
