@@ -77,7 +77,7 @@ export default {
     const hash = window.location.hash.replace('#', '')
     const hashIndex = this.sections.findIndex(section => section.id === hash)
     if (hash && hashIndex >= 0) {
-      const offset = document.querySelector(location.hash).offsetTop - 110 // 110 is the deafult value for `top-margin-scroll` in tailwind prose
+      const offset = document.querySelector(location.hash).offsetTop - 110 // 110 is the default value for `top-margin-scroll` in windi prose
       this.$nextTick().then(() => {
         scrollTo(0, offset)
         this.setActive(hashIndex)

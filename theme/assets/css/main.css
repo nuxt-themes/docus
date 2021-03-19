@@ -1,21 +1,5 @@
-/*! purgecss start ignore */
-@import './prism.css';
-
 body {
   @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
-}
-
-.dark .light-img {
-  display: none;
-}
-.dark .dark-img {
-  display: block;
-}
-.dark-img {
-  display: none;
-}
-.light-img {
-  display: block;
 }
 
 .nuxt-content {
@@ -26,7 +10,7 @@ body {
     & > a {
       &::after {
         content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23111827"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
-        @apply absolute pl-2 w-5 h-5 opacity-0;
+        @apply absolute w-5 h-5 pl-2 opacity-0;
       }
 
       &:hover {
@@ -42,12 +26,12 @@ body {
 
     /* Style filename span added by @nuxt/content */
     & > .filename {
-      @apply absolute top-0 right-0 z-10 mt-3 mr-4 font-mono text-sm leading-none tracking-tight text-gray-100;
+      @apply px-3 pr-4 py-1.5 border border-b-0 dark:border-gray-200 font-mono font-semibold text-xs leading-none tracking-tight text-gray-700 bg-gray-100 rounded-t-md  dark:text-gray-100 dark:bg-gray-800 dark:border-gray-600;
     }
 
     /* Add top padding to code blocks with filename */
     & > .filename + pre[class*="language-"] {
-      @apply pt-8;
+      @apply border rounded-tl-none dark:border-gray-200;
     }
 
     /* Style copy button added in `pages/_.vue` */
@@ -86,4 +70,3 @@ body {
     }
   }
 }
-/*! purgecss end ignore */

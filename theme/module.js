@@ -170,7 +170,7 @@ export default function docusModule () {
     options.css.push(r('assets/css/main.dev.css'))
   }
 
-  themeConfig({ nuxt, cssModule: options.docusCSSModule })
+  themeConfig(nuxt)
 
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')

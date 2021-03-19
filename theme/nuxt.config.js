@@ -40,7 +40,8 @@ export default {
   ],
   buildModules: [
     themeModule,
-    'nuxt-vite',
+    'nuxt-windicss',
+    // 'nuxt-vite',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     '@nuxtjs/google-fonts'
@@ -63,7 +64,7 @@ export default {
   content: {
     markdown: {
       prism: {
-        theme: ''
+        theme: r('assets/css/prism.css')
       },
       remarkPlugins: [
         [r('utils/remark-prose'), {
@@ -117,9 +118,6 @@ export default {
     families: {
       Inter: true
     }
-  },
-  tailwindcss: {
-    jit: true
   },
   server: {
     port: 4000
