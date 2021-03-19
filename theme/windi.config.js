@@ -191,7 +191,7 @@ export default {
               fontWeight: theme('fontWeight.medium'),
               textDecoration: 'none',
               '&:hover': {
-                borderBottomWidth: 1,
+                borderBottomWidth: '2px',
                 borderBottomColor: 'var(--primary-500)',
                 paddingBottom: '1px'
               }
@@ -272,7 +272,10 @@ export default {
               color: colors.warmGray[100]
             },
             a: {
-              color: 'var(--primary-400)'
+              color: 'var(--primary-400)',
+              '&:hover': {
+                borderBottomColor: 'var(--primary-400)'
+              }
             },
             'ol > li::before': {
               color: colors.warmGray[400]

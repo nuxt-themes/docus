@@ -1,5 +1,4 @@
 import { resolve, join, relative } from 'path'
-import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
 import themeConfig from './theme.config'
