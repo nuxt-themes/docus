@@ -149,8 +149,8 @@ export default {
               '&:before': {
                 content: '""',
                 position: 'absolute',
-                top: 0,
-                left: 0,
+                top: '0px',
+                left: '0px',
                 width: '100%',
                 height: 'calc(100% + 4px)'
               },
@@ -162,9 +162,9 @@ export default {
               'code:before': {
                 content: '""',
                 position: 'absolute',
-                top: -4,
-                left: -4,
-                zIndex: -1,
+                top: '-4px',
+                left: '-4px',
+                zIndex: '-1',
                 width: 'calc(100% + 8px)',
                 height: 'calc(100% + 8px)',
                 backgroundColor: colors.white
