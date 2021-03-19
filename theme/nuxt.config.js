@@ -41,7 +41,7 @@ export default {
   buildModules: [
     themeModule,
     'nuxt-windicss',
-    // 'nuxt-vite',
+    'nuxt-vite',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     '@nuxtjs/google-fonts'
