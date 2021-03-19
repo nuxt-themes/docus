@@ -41,12 +41,12 @@ body {
 
     /* Style filename span added by @nuxt/content */
     & > .filename {
-      @apply px-3 pr-4 py-1.5 border border-b-0 dark:border-gray-200 font-mono font-semibold text-xs leading-none tracking-tight text-gray-700 bg-gray-100 rounded-t-md  dark:text-gray-100 dark:bg-gray-800 dark:border-gray-600;
+      @apply px-3 pr-4 py-1.5 border border-b-0 font-mono font-semibold text-xs leading-none tracking-tight text-gray-700 bg-gray-100 rounded-t-md  dark:text-gray-100 dark:bg-gray-800 dark:border-gray-600;
     }
 
     /* Add top padding to code blocks with filename */
     & > .filename + pre[class*="language-"] {
-      @apply border rounded-tl-none dark:border-gray-200;
+      @apply border rounded-tl-none dark:border-gray-600;
     }
 
     /* Style copy button added in `pages/_.vue` */
