@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "nuxt dev docs",
     "generate": "nuxt generate --force-build docs",
+    "start": "nuxt start docs",
     "lint": "eslint --ext .js,.vue .",
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
