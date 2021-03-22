@@ -16,7 +16,7 @@ export default function (nuxt) {
       r('pages/'),
       r('plugins/'),
       r('utils/'),
-      resolve(options.srcDir, options.publicRuntimeConfig.contentDir)
+      resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*')
     )
     windiConfig.scan.include = windiConfig.scan.include || []
     windiConfig.scan.include.push(__dirname)
