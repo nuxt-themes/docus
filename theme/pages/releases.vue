@@ -21,7 +21,7 @@
     </div>
     <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
     <template #toc>
-      <PageToc :toc="toc" />
+      <PageToc :toc="toc" title="Versions" />
     </template>
   </AppPage>
 </template>
