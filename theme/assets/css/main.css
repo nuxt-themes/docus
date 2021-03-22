@@ -2,6 +2,7 @@
 @import './prism.css';
 
 body {
+  scroll-behavior: smooth;
   @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
 }
 
@@ -22,7 +23,10 @@ body {
   @apply break-words;
 
   & h2, & h3 {
-    scroll-margin-block: calc(4.5rem + 2.5rem + 1rem);
+    /* scroll-margin-top: calc(4.5rem + 2.5rem + 1rem); */
+    /* scroll-snap-margin-top: calc(4.5rem + 2.5rem + 1rem); */
+    padding-top: calc(4.5rem + 2.5rem + 1rem);
+    margin-top: calc(calc(-4.5rem + -2.5rem + -1rem) + 1.5em);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
@@ -79,7 +83,9 @@ body {
 @screen xl {
   .nuxt-content {
     & h2, & h3 {
-      scroll-margin-block: calc(4.5rem + 1rem);
+      /* scroll-margin-block: calc(4.5rem + 1rem); */
+      padding-top: calc(4.5rem + 1rem);
+      margin-top: calc(calc(-4.5rem + -1rem) + 1.5em);
     }
   }
 }
