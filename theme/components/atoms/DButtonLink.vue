@@ -34,7 +34,7 @@ export default {
     },
     linkAttrs () {
       if (this.blank) {
-        return { rel: 'noopener', target: '_blank' }
+        return { rel: 'noopener nofollow', target: '_blank' }
       }
       return {}
     }

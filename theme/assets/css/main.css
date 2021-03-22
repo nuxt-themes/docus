@@ -74,6 +74,14 @@ body {
   }
 }
 
+@screen xl {
+  .nuxt-content {
+    & h2, & h3 {
+      scroll-margin-block: calc(4.5rem + 1rem);
+    }
+  }
+}
+
 .dark {
   & .nuxt-content {
     & h2 {
