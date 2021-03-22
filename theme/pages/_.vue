@@ -45,6 +45,12 @@ export default {
     }
     Vue.set($docus, 'page', document)
 
+    // Todo: handle checking if listing
+    // Is `to` also matching a directory?
+    // template: 'blog'
+    // listing: true
+
+    // Should be in templates/docs.vue
     const [prev, next] = await $content({ deep: true })
       .where({ language, draft, menu: { $ne: false } })
       .only(['title', 'slug', 'to', 'category'])
