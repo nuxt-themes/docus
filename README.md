@@ -6,6 +6,7 @@
 [![license][license-src]][license-href]
 
 Write your documentation with [Nuxt](https://nuxtjs.org) and [Windi CSS](https://windicss.org)
+
 ## Quick Start
 
 1. Go to the [docus-starter](https://github.com/nuxt/docus-starter) GitHub template.
