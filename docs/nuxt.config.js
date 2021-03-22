@@ -3,9 +3,6 @@ import { withDocus } from 'docus'
 import windiConfig from './windi.config'
 
 export default withDocus({
-  generate: {
-    dir: 'docs/dist'
-  },
   content: {
     liveEdit: false
   },
