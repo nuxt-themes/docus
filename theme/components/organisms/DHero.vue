@@ -12,14 +12,14 @@
         </h3>
         <div class="flex items-center space-x-6">
           <component :is="cta" v-if="$docus.isComponent(cta)" />
-          <ButtonLink
+          <DButtonLink
             v-else
             class="mx-auto md:mx-0"
             size="large"
             :href="cta[1]"
           >
             {{ cta[0] }}
-          </ButtonLink>
+          </DButtonLink>
           <a v-if="secondary" :href="$docus.repoUrl" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
         </div>
       </div>
