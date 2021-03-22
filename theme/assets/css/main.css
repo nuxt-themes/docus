@@ -22,6 +22,7 @@ body {
   @apply break-words;
 
   & h2, & h3 {
+    scroll-margin-block: calc(4.5rem + 2.5rem + 1rem);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
@@ -71,6 +72,14 @@ body {
       & > .copy {
         @apply block;
       }
+    }
+  }
+}
+
+@screen xl {
+  .nuxt-content {
+    & h2, & h3 {
+      scroll-margin-block: calc(4.5rem + 1rem);
     }
   }
 }
