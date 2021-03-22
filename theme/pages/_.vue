@@ -43,6 +43,7 @@ export default {
     if (!document) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
+    Vue.set($docus, 'page', document)
 
     const [prev, next] = await $content({ deep: true })
       .where({ language, draft, menu: { $ne: false } })

@@ -8,7 +8,7 @@
       title="Documentation generator based on Nuxt and Tailwind."
       description="Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt."
       :cta="['Get started', '/get-started/installation']"
-      :secondary="['Open on Github', $docus.repoUrl]"
+      :secondary="['Open on GitHub', $docus.repoUrl]"
     />
     <DFeatures :features="features" />
   </AppContainer>

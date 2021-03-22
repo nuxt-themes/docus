@@ -8,6 +8,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
   const $docus = new Vue({
     data () {
       return nuxtState.docus || {
+        page: {},
         categories: {},
         lastRelease: null,
         settings: null
@@ -107,11 +108,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
         app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
-      },
-
-      // Utils
-      isComponent (value) {
-        return typeof value === 'string' && Vue.component(value)
       }
     }
   })

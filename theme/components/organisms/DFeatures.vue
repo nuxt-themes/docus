@@ -11,13 +11,10 @@
       >
         <li v-for="(f, index) of features" :key="index" class="flex">
           <div class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg">
-            <component
-              :is="f.icon"
-              v-if="$docus.isComponent(f.icon)"
-              class="w-16 h-16 mb-3"
-              :class="f.iconClass || ''"
-            />
-            <span v-else-if="f.icon" class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
+            <DComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">
+              <img v-if="isImage(f.icon)" :src="f.icon" class="inline-block w-16 h-16 mb-3" />
+              <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
+            </DComponent>
             <h2 class="mb-2 text-xl">{{ f.title }}</h2>
             <p class="font-normal">{{ f.description }}</p>
           </div>
