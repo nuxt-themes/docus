@@ -32,7 +32,7 @@
             >
               Get started
             </DButtonLink>
-            <a href="https://github.com/nuxtlabs/docus" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
+            <a href="https://github.com/nuxtlabs/docus" target="_blank" rel="nofollow noopener" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">Open on GitHub</a>
           </div>
         </div>
         <div class="w-full m-auto lg:w-1/3 sm:w-580px ">
