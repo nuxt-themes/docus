@@ -3,27 +3,12 @@
  **
  ** Docs: https://next.windicss.org/guide/configuration.html
  */
-import { resolve } from 'path'
 import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import typography from 'windicss/plugin/typography'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 
-const r = path => resolve(__dirname, path)
-
 export default {
-  scan: {
-    dirs: [
-      r('components/'),
-      r('layouts/'),
-      r('pages/'),
-      r('plugins/'),
-      r('utils/')
-    ],
-    include: [
-      __dirname
-    ]
-  },
   darkMode: 'class',
   plugins: [
     typography(),
@@ -40,7 +25,7 @@ export default {
       red: colors.red,
       rose: colors.rose,
       yellow: colors.amber,
-      gray: colors.warmGray
+      gray: colors.gray
     },
     extend: {
       screens: {
@@ -95,7 +80,7 @@ export default {
         DEFAULT: {
           css: {
             maxWidth: 'none',
-            color: colors.gray[700],
+            color: theme('colors.gray.700'),
             '> :first-child': { marginTop: '-' },
             '> :last-child': { marginBottom: '-' },
             '&:first-child > :first-child': {
@@ -107,6 +92,9 @@ export default {
             'h1, h2': {
               letterSpacing: '-0.025em',
               fontWeight: theme('fontWeight.bold')
+            },
+            'h1, h2, h3, h4': {
+              color: theme('colors.gray.900')
             },
             'h1, h2, h3': {
               marginTop: '1.5em',
@@ -143,7 +131,7 @@ export default {
                 borderBottomWidth: '0px',
                 paddingBottom: '0px',
                 code: {
-                  borderColor: colors.warmGray[500]
+                  borderColor: theme('colors.gray.500')
                 }
               },
               '&:before': {
@@ -157,7 +145,7 @@ export default {
               '&:hover:before': {
                 borderBottomWidth: '1px',
                 borderStyle: 'dashed',
-                borderBottomColor: colors.warmGray[900]
+                borderBottomColor: theme('colors.gray.900')
               },
               'code:before': {
                 content: '""',
@@ -167,7 +155,7 @@ export default {
                 zIndex: '-1',
                 width: 'calc(100% + 8px)',
                 height: 'calc(100% + 8px)',
-                backgroundColor: colors.white
+                backgroundColor: theme('colors.white')
               }
             },
             'ol, ul': {
@@ -201,7 +189,7 @@ export default {
               fontWeight: theme('fontWeight.medium')
             },
             strong: {
-              color: colors.warmGray[900],
+              color: theme('colors.gray.900'),
               fontWeight: theme('fontWeight.medium')
             },
             'a strong': {
@@ -212,7 +200,7 @@ export default {
               fontWeight: '400',
               padding: theme('padding.1'),
               color: 'inherit',
-              backgroundColor: colors.warmGray[100],
+              backgroundColor: theme('colors.gray.100'),
               borderRadius: theme('borderRadius.md')
             },
             'code::before': {
@@ -222,8 +210,8 @@ export default {
               content: ''
             },
             pre: {
-              backgroundColor: colors.warmGray[100],
-              color: colors.warmGray[800],
+              backgroundColor: theme('colors.gray.100'),
+              color: theme('colors.gray.800'),
               borderRadius: theme('borderRadius.md'),
               paddingTop: theme('padding.3'),
               paddingRight: theme('padding.4'),
@@ -241,15 +229,15 @@ export default {
               lineHeight: theme('fontSize.sm')[1].lineHeight
             },
             thead: {
-              color: colors.warmGray[600],
-              borderBottomColor: colors.warmGray[200]
+              color: theme('colors.gray.600'),
+              borderBottomColor: theme('colors.gray.200')
             },
             'thead th': {
               paddingTop: '0px',
               fontWeight: theme('fontWeight.semibold')
             },
             'tbody tr': {
-              borderBottomColor: colors.warmGray[200]
+              borderBottomColor: theme('colors.gray.200')
             },
             'tbody tr:last-child': {
               borderBottomWidth: '1px'
@@ -267,9 +255,9 @@ export default {
         },
         dark: {
           css: {
-            color: colors.warmGray[50],
+            color: theme('colors.gray.50'),
             strong: {
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             a: {
               color: 'var(--primary-400)',
@@ -278,29 +266,29 @@ export default {
               }
             },
             'ol > li::before': {
-              color: colors.warmGray[400]
+              color: theme('colors.gray.400')
             },
             'ul > li::before': {
-              backgroundColor: colors.warmGray[600]
+              backgroundColor: theme('colors.gray.600')
             },
             hr: {
-              borderColor: colors.warmGray[700]
+              borderColor: theme('colors.gray.700')
             },
             blockquote: {
-              color: colors.warmGray[400],
-              borderLeftColor: colors.warmGray[700]
+              color: theme('colors.gray.400'),
+              borderLeftColor: theme('colors.gray.700')
             },
             h1: {
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             h2: {
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             h3: {
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             h4: {
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             'h2 code': {
               color: 'inherit',
@@ -315,14 +303,14 @@ export default {
               fontWeight: 'inherit',
               '&:hover': {
                 code: {
-                  borderColor: colors.warmGray[500]
+                  borderColor: theme('colors.gray.500')
                 },
                 '&:before': {
-                  borderBottomColor: colors.warmGray[100]
+                  borderBottomColor: theme('colors.gray.100')
                 }
               },
               'code:before': {
-                backgroundColor: colors.warmGray[900]
+                backgroundColor: theme('colors.gray.900')
               }
             },
             'h3 > a': {
@@ -330,23 +318,23 @@ export default {
               fontWeight: 'inherit',
               '&:hover': {
                 code: {
-                  borderColor: colors.warmGray[500]
+                  borderColor: theme('colors.gray.500')
                 },
                 '&:before': {
-                  borderBottomColor: colors.warmGray[100]
+                  borderBottomColor: theme('colors.gray.100')
                 }
               },
               'code:before': {
-                backgroundColor: colors.warmGray[900]
+                backgroundColor: theme('colors.gray.900')
               }
             },
             'figure figcaption': {
-              color: colors.warmGray[400]
+              color: theme('colors.gray.400')
             },
             code: {
               fontWeight: '400',
               color: 'inherit',
-              backgroundColor: colors.warmGray[800],
+              backgroundColor: theme('colors.gray.800'),
               borderRadius: theme('borderRadius.md')
             },
             'code::before': {
@@ -356,23 +344,23 @@ export default {
               content: ''
             },
             pre: {
-              backgroundColor: colors.warmGray[800],
-              color: colors.white
+              backgroundColor: theme('colors.gray.800'),
+              color: theme('colors.white')
             },
             'pre code': {
               backgroundColor: 'transparent',
-              color: colors.warmGray[100]
+              color: theme('colors.gray.100')
             },
             'a code': {
               color: 'inherit',
               fontWeight: theme('fontWeight.medium')
             },
             thead: {
-              color: colors.warmGray[100],
-              borderBottomColor: colors.warmGray[600]
+              color: theme('colors.gray.100'),
+              borderBottomColor: theme('colors.gray.600')
             },
             'tbody tr': {
-              borderBottomColor: colors.warmGray[700]
+              borderBottomColor: theme('colors.gray.700')
             }
           }
         }

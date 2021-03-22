@@ -31,21 +31,21 @@
     "lodash.groupby": "^4.6.0",
     "nuxt-i18n": "^6.21.1",
     "nuxt-vite": "^0.0.36",
-    "nuxt-windicss": "^0.4.2",
+    "nuxt-windicss": "^0.4.6",
     "ohmyfetch": "^0.1.8",
     "prism-themes": "^1.6.0",
     "static-tweets": "^0.3.0",
     "theme-colors": "^0.0.5",
     "ufo": "^0.6.10",
     "universal-cookie": "^4.0.4",
-    "vue-docgen-api": "^4.35.0"
+    "vue-docgen-api": "^4.36.1"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",
     "@nuxtjs/eslint-config": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
-    "nuxt-edge": "^2.16.0-26929477.f08f4efc",
+    "nuxt-edge": "^2.16.0-26939563.9247190c",
     "standard-version": "^9.1.1",
     "vue-plausible": "^1.1.4"
   }

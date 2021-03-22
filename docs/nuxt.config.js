@@ -1,10 +1,8 @@
 import { resolve } from 'path'
 import { withDocus } from 'docus'
+import windiConfig from './windi.config'
 
 export default withDocus({
-  // This is important because windicss resolve files baded on root dir
-  rootDir: resolve(__dirname, '../'),
-  srcDir: __dirname,
   generate: {
     dir: 'docs/dist'
   },
@@ -17,5 +15,10 @@ export default withDocus({
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
     domain: 'docus.dev'
+  },
+  windicss: {
+    root: resolve(__dirname, '..'),
+    // Workaround waiting for https://github.com/windicss/nuxt-windicss-module/issues/30
+    config: windiConfig
   }
 })
