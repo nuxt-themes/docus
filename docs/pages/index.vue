@@ -17,10 +17,10 @@
           <h1
             class="my-8 text-4xl font-semibold leading-none tracking-tight text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:my-12"
           >
-            Documentation generator<br />based on Nuxt and Tailwind.
+            Documentation generator<br />based on Nuxt and Windi CSS.
           </h1>
           <h3 class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
-            Write in markdown, use Vue components, add style with TailwindCSS
+            Write in markdown, use Vue components, add style with Windi CSS
             and enjoy the power of Nuxt.
           </h3>
           <div class="flex items-center space-x-6">
@@ -88,8 +88,8 @@ export default {
           title: 'Nuxt Architecture'
         },
         {
-          icon: 'IconTailwind',
-          title: 'Tailwind CSS'
+          icon: 'IconWindi',
+          title: 'Windi CSS'
         },
         {
           icon: 'IconSSG',

@@ -91,9 +91,7 @@ button {
   transition: left 150ms, width 150ms;
 }
 
-.code-group ::v-deep {
-  & pre[class*="language-"] {
-    @apply rounded-t-none mt-0;
-  }
+.code-group ::v-deep  pre[class*="language-"] {
+  @apply rounded-t-none mt-0;
 }
 </style>

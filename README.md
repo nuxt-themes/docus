@@ -5,7 +5,8 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![license][license-src]][license-href]
 
-Write your documentation with [Nuxt](https://nuxtjs.org) and [TailwindCSS](https://tailwindcss.com)
+Write your documentation with [Nuxt](https://nuxtjs.org) and [Windi CSS](https://windicss.org)
+
 ## Quick Start
 
 1. Go to the [docus-starter](https://github.com/nuxt/docus-starter) GitHub template.

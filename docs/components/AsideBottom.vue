@@ -19,11 +19,6 @@ export default {
     return {
       resources: [
         {
-          title: 'Tailwind CSS',
-          url: 'https://tailwindcss.com',
-          icon: 'IconTailwind'
-        },
-        {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
           icon: 'IconNuxt'
@@ -32,6 +27,11 @@ export default {
           title: 'Vue',
           url: 'https://vuejs.org',
           icon: 'IconVue'
+        },
+        {
+          title: 'Windi CSS',
+          url: 'https://windicss.org',
+          icon: 'IconWindi'
         },
         {
           title: 'Nuxt Content',

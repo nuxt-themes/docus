@@ -1,33 +1,31 @@
-/*! purgecss start ignore */
-@import './prism.css';
-
 body {
   @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
 }
 
-.dark .light-img {
-  display: none;
-}
-.dark .dark-img {
-  display: block;
-}
-.dark-img {
-  display: none;
-}
-.light-img {
-  display: block;
-}
-
 .nuxt-content {
   @apply break-words;
-
-  & h2, & h3 {
-    scroll-margin-block: calc(4.5rem + 2.5rem + 1rem);
+  & h2 {
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
         content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23111827"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
-        @apply absolute pl-2 w-5 h-5 opacity-0;
+        @apply absolute w-5 h-5 pl-2 opacity-0;
+      }
+
+      &:hover {
+        &::after {
+          @apply opacity-100;
+        }
+      }
+    }
+  }
+
+  & h3 {
+    /* Style anchor links on headings added by @nuxt/content */
+    & > a {
+      &::after {
+        content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23111827"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
+        @apply absolute w-5 h-5 pl-2 opacity-0;
       }
 
       &:hover {
@@ -43,17 +41,17 @@ body {
 
     /* Style filename span added by @nuxt/content */
     & > .filename {
-      @apply absolute top-0 right-0 z-10 mt-3 mr-4 font-mono text-sm leading-none tracking-tight text-gray-100;
+      @apply absolute top-0 right-0 z-10 mt-3 mr-4 font-mono text-xs leading-none tracking-tight text-gray-600 dark:text-gray-200;
     }
 
     /* Add top padding to code blocks with filename */
     & > .filename + pre[class*="language-"] {
-      @apply pt-8;
+      @apply pt-6;
     }
 
     /* Style copy button added in `pages/_.vue` */
     & > .copy {
-      @apply outline-none absolute right-0 bottom-0 leading-none px-3 py-1.5 text-gray-700 bg-gray-200 text-xs rounded-tl-md border border-b-0 border-r-0 border-gray-300 font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
+      @apply outline-none absolute right-0 bottom-0 px-3 py-1.5 text-gray-700 bg-gray-200 text-xs leading-none rounded-tl-md border border-b-0 border-r-0 border-gray-300 font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
 
       &:hover {
         @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
@@ -86,7 +84,14 @@ body {
 
 .dark {
   & .nuxt-content {
-    & h2, & h3 {
+    & h2 {
+      & > a {
+        &::after {
+          content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
+        }
+      }
+    }
+    & h3 {
       & > a {
         &::after {
           content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
@@ -95,4 +100,3 @@ body {
     }
   }
 }
-/*! purgecss end ignore */
