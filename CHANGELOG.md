@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/nuxtlabs/docus/compare/v0.1.4...v0.1.5) (2021-03-15)
+
+
+### Bug Fixes
+
+* try another way ([4664a2d](https://github.com/nuxtlabs/docus/commit/4664a2d7a0f8bc5cdc78ea21c55a1b59e28ead9d))
+
+### [0.1.4](https://github.com/nuxtlabs/docus/compare/v0.1.3...v0.1.4) (2021-03-15)
+
+
+### Bug Fixes
+
+* use correct icon name ([0f95256](https://github.com/nuxtlabs/docus/commit/0f952560465d954dfd6b8ffa358441f2e587d6cc))
+* use nuxt resolver for tailwind config require ([f135ab1](https://github.com/nuxtlabs/docus/commit/f135ab136999bf13b25fe07d916ceb3fb22d03ee))
+
+### [0.1.3](https://github.com/nuxtlabs/docus/compare/v0.1.2...v0.1.3) (2021-03-15)
+
+### [0.1.2](https://github.com/nuxtlabs/docus/compare/v0.1.1...v0.1.2) (2021-03-15)
+
+
+### Bug Fixes
+
+* releases not working ([ef85c3a](https://github.com/nuxtlabs/docus/commit/ef85c3a6ad9b9e03187fa2e5e4ec69099a5f21bd))
+* remove duplicate credits ([afb65fd](https://github.com/nuxtlabs/docus/commit/afb65fddd6a9aa12f83c4547e27fd8442a2320d2))
+* styling ([5547ce4](https://github.com/nuxtlabs/docus/commit/5547ce442b9262d8bc25d4110cdd6616eb90a28b))
+
 ### [0.1.1](https://github.com/nuxtlabs/docus/compare/v0.1.0...v0.1.1) (2021-03-15)
 
 

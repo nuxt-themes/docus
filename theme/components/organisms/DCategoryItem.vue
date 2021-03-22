@@ -2,7 +2,7 @@
   <li :class="{ 'active': isCategoryActive() }">
     <h5
       v-if="category"
-      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
+      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400"
       @click="collapseCategory"
     >
       {{ category }}
@@ -11,7 +11,7 @@
       <li v-for="doc of docs" :key="doc.slug">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between px-4 py-1 transition duration-200 border-l-2 border-gray-100 dark:border-gray-800 hover:text-gray-900 dark:hover:text-gray-100"
+          class="relative inline-flex items-center justify-between px-4 py-1 transition duration-200 border-l border-gray-100 dark:border-gray-800 hover:text-primary-500 dark:hover:text-primary-400"
           :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 border-primary-500 dark:border-primary-500': isLinkActive(doc) }"
         >
           <span>

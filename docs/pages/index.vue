@@ -35,9 +35,9 @@ export default {
           description: 'Benefit from the entire Nuxt ecosystem — with top performance, SEO optimization, and best practices baked into your site.'
         },
         {
-          icon: 'IconTailwind',
-          title: 'Tailwind CSS',
-          description: 'TailwindCSS 2 (with next-generation JIT compilation) is built in for great developer experience and rapid customization of Docus — no configuration required.'
+          icon: 'IconWindi',
+          title: 'Windi CSS',
+          description: 'Windi CSS is built in for great developer experience and rapid customization of Docus — no configuration required. And it\'s fully compatible with TailwindCSS configuration.'
         },
         {
           icon: 'IconVite',

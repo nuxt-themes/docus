@@ -1,14 +1,14 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
-      class="relative px-2 text-sm text-white bg-gray-800 border-b-2 border-gray-700 rounded-t-md h-12"
+      class="relative px-2 text-sm text-white bg-gray-100 border-b-2 border-gray-300 rounded-t-md h-12 dark:bg-gray-800 dark:border-gray-700"
     >
       <button
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="label"
         class="px-4 py-3 font-mono font-bold h-12"
-        :class="[activeTabIndex === i ? 'active text-white' : 'text-gray-300']"
+        :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
         @click="updateTabs(i)"
       >{{ label }}</button>
       <span ref="highlight-underline" class="absolute highlight-underline bg-primary-500 dark:bg-primary-400" />
@@ -91,9 +91,7 @@ button {
   transition: left 150ms, width 150ms;
 }
 
-.code-group ::v-deep {
-  & pre[class*="language-"] {
-    @apply rounded-t-none mt-0;
-  }
+.code-group ::v-deep  pre[class*="language-"] {
+  @apply rounded-t-none mt-0;
 }
 </style>

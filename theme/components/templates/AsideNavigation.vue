@@ -9,7 +9,7 @@
       <div
         class="flex items-center w-full px-4 sm:px-6 lg:hidden h-18 bg-gray-50 dark:bg-gray-800"
       >
-        <button class="flex-1 focus:outline-none" @click.stop="menu = !menu">
+        <button class="flex-1 text-gray-500 transition-colors duration-200 focus:outline-none lg:hidden dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400" @click.stop="menu = !menu">
           <IconArrowLeft class="w-5 h-5" />
         </button>
         <div

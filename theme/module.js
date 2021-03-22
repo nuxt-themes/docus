@@ -1,7 +1,7 @@
 import { resolve, join, relative } from 'path'
-import defu from 'defu'
 import gracefulFs from 'graceful-fs'
 
+import themeConfig from './theme.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
@@ -176,13 +176,9 @@ export default function docusModule () {
   if (options.dev) {
     options.css.push(r('assets/css/main.dev.css'))
   }
-  // Configure TailwindCSS
-  hook('tailwindcss:config', function (defaultTailwindConfig) {
-    const tailwindConfig = nuxt.resolver.requireModule(r('./tailwind.config.js'))
-    Object.assign(defaultTailwindConfig, defu(defaultTailwindConfig, tailwindConfig({ nuxt })))
-    // Add content/**/*.md to purge
-    defaultTailwindConfig.purge.content.push(resolve(options.srcDir, contentDir, '**/*.md'))
-  })
+
+  themeConfig(nuxt)
+
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
   // Docus Devtools
