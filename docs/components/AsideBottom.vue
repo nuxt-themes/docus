@@ -21,7 +21,7 @@ export default {
         {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
-          icon: 'IconNuxt'
+          icon: 'LogoNuxt'
         },
         {
           title: 'Vue',
