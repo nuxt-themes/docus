@@ -2,7 +2,7 @@
   <footer class="py-6">
     <div class="max-w-8xl px-4 mx-auto sm:px-6">
       <div class="flex flex-col sm:flex-row justify-between items-center">
-        <a href="https://nuxtlabs.com" target="_blank" class="flex items-end text-gray-900 hover:text-gray-600 mb-3 sm:mb-0">
+        <a href="https://nuxtlabs.com" target="_blank" class="flex items-end text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-600 mb-3 sm:mb-0">
           <IconNuxtLabs class="mr-2" />
           <p class="font-bold text-xs">Made by Nuxt Labs</p>
         </a>
