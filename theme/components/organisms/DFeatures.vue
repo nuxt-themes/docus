@@ -1,6 +1,6 @@
 <template>
   <section class="py-24 bg-gray-50 dark:bg-gray-800">
-    <div class="px-4 mx-auto max-w-8xl">
+    <div class="d-container">
       <h2
         class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
       >

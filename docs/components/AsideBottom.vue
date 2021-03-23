@@ -4,9 +4,22 @@
     <ul>
       <li v-for="resource of resources" :key="resource.title">
         <a :href="resource.url" target="_blank" rel="noopener nofollow" class="flex items-center py-2 group dark:hover:text-gray-100 hover:text-gray-900 ">
-          <component :is="resource.icon" v-if="resource.icon" class="w-5 h-5 mr-2" />
+          <component
+            :is="resource.icon"
+            v-if="resource.icon"
+            class="w-5 h-5 mr-2"
+            :class="resource.iconClass"
+          />
           <span>{{ resource.title }}</span>
-          <IconExternalLink class="w-4 h-4 ml-2 text-gray-400 opacity-0 group-hover:opacity-100" />
+          <IconExternalLink
+            class="
+            w-4
+            h-4
+            ml-2
+            text-gray-400
+            opacity-0
+            group-hover:opacity-100"
+          />
         </a>
       </li>
     </ul>
@@ -21,7 +34,8 @@ export default {
         {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
-          icon: 'IconNuxt'
+          icon: 'IconNuxt',
+          iconClass: 'text-green-500'
         },
         {
           title: 'Vue',
