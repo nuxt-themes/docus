@@ -137,6 +137,23 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
     })
   }
 
+  // Workaround for Nuxt 2 using async layout inside the page
+  // https://github.com/nuxt/nuxt.js/issues/3510#issuecomment-736757419
+  if (process.client) {
+    window.onNuxtReady((nuxt) => {
+    // Workaround since in full static mode, asyncData is not called anymore
+      app.router.beforeEach(async (to, from, next) => {
+        const payload = nuxt._pagePayload || {}
+        payload.data = payload.data || []
+        if (payload.data[0]?.page?.template && typeof Vue.component(payload.data[0].page.template) === 'function') {
+          // Preload the component on client-side navigation
+          await Vue.component(payload.data[0].page.template)()
+        }
+        next()
+      })
+    })
+  }
+
   // Update app head, Inject colors as css variables
   $docus.updateHead()
 

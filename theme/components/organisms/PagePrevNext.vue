@@ -1,5 +1,5 @@
 <template>
-  <div v-if="prev || next" class="flex flex-col justify-between py-4 font-medium leading-7 xs:space-x-2 xs:flex-row">
+  <div v-if="prev || next" class="flex flex-col justify-between font-medium leading-7 xs:space-x-2 xs:flex-row">
     <div class="flex justify-start w-full xs:w-1/2">
       <NuxtLink
         v-if="prev"
@@ -39,11 +39,11 @@ export default {
   props: {
     prev: {
       type: Object,
-      default: () => null
+      default: null
     },
     next: {
       type: Object,
-      default: () => null
+      default: null
     }
   }
 }

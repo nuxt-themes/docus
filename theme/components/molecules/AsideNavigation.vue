@@ -16,7 +16,7 @@
           class="flex items-center justify-end w-full px-2 space-x-3 h-18 lg:hidden"
         >
           <DColorSwitcher />
-          <DSocialIcons />
+          <SocialIcons />
         </div>
       </div>
 
@@ -27,7 +27,7 @@
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10 ">
           <AsideTop />
           <ul>
-            <DCategoryItem
+            <AsideNavigationItem
               v-for="(docs, category) in categories"
               :key="category"
               :category="category"

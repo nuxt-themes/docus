@@ -3,7 +3,7 @@
     class="sticky top-0 z-40 w-full overflow-hidden bg-white border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
     @click="scrollToTop"
   >
-    <div class="flex flex-none d-container">
+    <div class="flex flex-none d-container-content">
       <!-- Left section -->
       <!-- Mobile menu button -->
       <button
@@ -45,7 +45,7 @@
           <HeaderRightCTA />
           <DLangSwitcher />
           <DColorSwitcher />
-          <DSocialIcons />
+          <SocialIcons />
         </div>
       </div>
     </div>

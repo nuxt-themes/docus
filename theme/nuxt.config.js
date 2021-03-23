@@ -127,6 +127,7 @@ export default {
       exclude: [
         'ohmyfetch',
         'vue-demi',
+        'scule',
         '@vueuse/integrations'
       ],
       include: [

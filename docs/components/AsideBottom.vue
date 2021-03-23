@@ -12,13 +12,7 @@
           />
           <span>{{ resource.title }}</span>
           <IconExternalLink
-            class="
-            w-4
-            h-4
-            ml-2
-            text-gray-400
-            opacity-0
-            group-hover:opacity-100"
+            class="w-4 h-4 ml-2 text-gray-400 opacity-0  group-hover:opacity-100"
           />
         </a>
       </li>
@@ -35,7 +29,7 @@ export default {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
           icon: 'IconNuxt',
-          iconClass: 'text-green-500'
+          iconClass: 'text-green-400'
         },
         {
           title: 'Vue',

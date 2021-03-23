@@ -1,29 +1,16 @@
 <template>
-  <AppPage>
-    <div class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': document.description }">
-      <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-        <span class="flex-1">{{ document.title }}</span>
-        <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
-        <DBadge v-if="document.badge" class="font-medium">{{ document.badge }}</DBadge>
-      </h1>
-      <p v-if="document.description" class="mt-2 text-lg text-gray-600 dark:text-gray-300">{{ document.description }}</p>
-    </div>
+  <component :is="page.template" :page="page">
     <div class="max-w-none">
-      <NuxtContent :document="document" />
+      <NuxtContent :document="page" />
     </div>
-    <PageBottom :document="document" />
-    <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800">
-    <PagePrevNext :prev="prev" :next="next" />
-    <template #toc>
-      <PageToc v-if="!document.fullscreen" :toc="document.toc" />
-    </template>
-  </AppPage>
+  </component>
 </template>
 
 <script>
 import { withoutTrailingSlash } from 'ufo'
 import Vue from 'vue'
-import CopyButton from '../components/molecules/DCopyButton'
+import { pascalCase } from 'scule'
+import CopyButton from '../components/atoms/DCopyButton'
 
 export default {
   name: 'PageSlug',
@@ -39,39 +26,41 @@ export default {
     const language = app.i18n.locale
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`)
     const draft = $docus.ui?.draft ? undefined : false
-    const [document] = await $content({ deep: true }).where({ language, to, draft }).fetch()
-    if (!document) {
+    const [page] = await $content({ deep: true }).where({ language, to, draft }).fetch()
+    if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
-    Vue.set($docus, 'page', document)
+    console.log('page template', page.template, $docus.settings.template)
+    page.template = pascalCase(page.template || $docus.settings.template)
+    if (!Vue.component(page.template)) {
+      // eslint-disable-next-line no-console
+      console.error(`Template ${page.template} does not exists.`)
+      page.template = 'Page'
+    }
+
+    // Preload the component on client-side navigation
+    await Vue.component(page.template)()
 
     // Todo: handle checking if listing
     // Is `to` also matching a directory?
     // template: 'blog'
     // listing: true
 
-    // Should be in templates/docs.vue
-    const [prev, next] = await $content({ deep: true })
-      .where({ language, draft, menu: { $ne: false } })
-      .only(['title', 'slug', 'to', 'category'])
-      .sortBy('position', 'asc')
-      .surround(document.slug, { before: 1, after: 1 })
-      .fetch()
-
+    return { page }
+  },
+  data () {
     return {
-      document,
-      prev,
-      next
+      page: {}
     }
   },
   head () {
     return {
-      title: this.document.title,
+      title: this.page.title,
       meta: [
         // Open Graph
-        { hid: 'og:title', property: 'og:title', content: this.document.title },
+        { hid: 'og:title', property: 'og:title', content: this.page.title },
         // Twitter Card
-        { hid: 'twitter:title', name: 'twitter:title', content: this.document.title },
+        { hid: 'twitter:title', name: 'twitter:title', content: this.page.title },
         ...this.descriptionMeta()
       ]
     }
@@ -82,8 +71,8 @@ export default {
     }
   },
   mounted () {
-    if (this.document.version) {
-      localStorage.setItem(`document-${this.document.slug}-version`, this.document.version)
+    if (this.page.version) {
+      localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
     }
 
     setTimeout(() => {
@@ -98,15 +87,15 @@ export default {
   },
   methods: {
     descriptionMeta () {
-      if (!this.document.description) {
+      if (!this.page.description) {
         return []
       }
       return [
-        { hid: 'description', name: 'description', content: this.document.description },
+        { hid: 'description', name: 'description', content: this.page.description },
         // Open Graph
-        { hid: 'og:description', property: 'og:description', content: this.document.description },
+        { hid: 'og:description', property: 'og:description', content: this.page.description },
         // Twitter Card
-        { hid: 'twitter:description', name: 'twitter:description', content: this.document.description }
+        { hid: 'twitter:description', name: 'twitter:description', content: this.page.description }
       ]
     }
   }

@@ -19,7 +19,7 @@
       >
         <IconVueTelescope class="w-5 h-5" />
       </a>
-      <DSocialIcons size="w-5 h-5" space-between="space-x-2" />
+      <SocialIcons size="w-5 h-5" space-between="space-x-2" />
     </div>
   </div>
 </template>

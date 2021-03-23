@@ -1,6 +1,6 @@
 ---
 menu: false
-home: true
+template: page
 title: Documentation generator based on Nuxt and Tailwind.
 description: Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.
 hero:
@@ -14,6 +14,7 @@ features:
     title: Vue Components
     description: Use your components or Docus built-in right inside your content.
   - icon: IconNuxt
+    iconClass: text-green-400
     title: Nuxt Architecture
     description: >-
       Get the Nuxt power by using all the features, Docus is one of the first Nuxt
@@ -37,10 +38,9 @@ features:
     title: Extensible
     description: 'Customize the whole design, or add components using slots, make it your own.'
   - icon: IconGitHub
-    iconClass: text-red-400
     title: Open Source
     description: Docus is released as MIT license and made with love by the NuxtLabs team.
 ---
 
-<d-hero v-bind="hero"></d-hero>
-<d-features :features="features"></d-features>
+<block-hero :title="title" :description="description" v-bind="hero"></block-hero>
+<block-features title="What's included?" :features="features"></block-features>
