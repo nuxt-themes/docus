@@ -18,7 +18,7 @@
       </div>
 
       <!-- Middle section -->
-      <div class="flex items-center justify-end lg:flex-auto h-18 ">
+      <div class="flex items-center justify-end lg:flex-auto h-18" @click.stop>
         <AlgoliaSearchBox
           v-if="settings.algolia"
           :options="settings.algolia"
@@ -32,6 +32,7 @@
         <!-- Desktop: Right section -->
         <div
           class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
+          @click.stop
         >
           <slot name="desktop-right" />
           <NuxtLink

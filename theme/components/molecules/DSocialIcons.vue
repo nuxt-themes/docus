@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-x-3">
+  <div class="flex" :class="spaceBetween">
     <a
       v-if="settings.twitter"
       :href="`https://twitter.com/${settings.twitter}`"
@@ -9,7 +9,7 @@
       name="Twitter"
       class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
     >
-      <IconTwitter class="w-6 h-6" />
+      <IconTwitter :class="size" />
     </a>
     <a
       v-if="settings.github.repo"
@@ -20,13 +20,23 @@
       name="GitHub"
       class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
     >
-      <IconGithub class="w-6 h-6" />
+      <IconGithub :class="size" />
     </a>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    size: {
+      type: String,
+      default: 'w-6 h-6'
+    },
+    spaceBetween: {
+      type: String,
+      default: 'space-x-3'
+    }
+  },
   computed: {
     settings () {
       return this.$docus.settings
