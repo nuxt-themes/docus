@@ -26,17 +26,17 @@ export default {
         {
           title: 'Vue',
           url: 'https://vuejs.org',
-          icon: 'IconVue'
+          icon: 'LogoVue'
         },
         {
           title: 'Windi CSS',
           url: 'https://windicss.org',
-          icon: 'IconWindi'
+          icon: 'LogoWindi'
         },
         {
           title: 'Nuxt Content',
           url: 'https://content.nuxtjs.org',
-          icon: 'IconNuxtContent'
+          icon: 'LogoNuxtContent'
         }
       ]
     }
