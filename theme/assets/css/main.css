@@ -5,6 +5,7 @@ body {
 .nuxt-content {
   @apply break-words;
   & h2 {
+    scroll-margin-block: calc(4.5rem + 2.5rem + 1rem);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
@@ -21,6 +22,7 @@ body {
   }
 
   & h3 {
+    scroll-margin-block: calc(4.5rem + 2.5rem + 1rem);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {

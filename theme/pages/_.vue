@@ -12,7 +12,7 @@
       <NuxtContent :document="document" />
     </div>
     <PageBottom :document="document" />
-    <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800">
+    <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800">
     <PagePrevNext :prev="prev" :next="next" />
     <template #toc>
       <PageToc v-if="!document.fullscreen" :toc="document.toc" />
