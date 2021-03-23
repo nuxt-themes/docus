@@ -46,7 +46,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         })
         this.settings = useDefaults(settings)
         // Update injected styles on HMR
-        if (process.dev && process.client) {
+        if (process.dev && process.client && window.$nuxt) {
           this.updateHead()
         }
       },
@@ -90,14 +90,22 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       },
 
       updateHead () {
+        // Update when editing content/settings.json
+        if (process.dev && process.client && window.$nuxt) {
+          const style = window.$nuxt.$options.head.style.find(s => s.hid === 'docus-theme')
+          if (style) {
+            style.cssText = this.themeStyles
+            window.$nuxt.$meta().refresh()
+          }
+          return
+        }
+        // Add head keys
         if (!Array.isArray(app.head.style)) {
           app.head.style = []
         }
         if (!Array.isArray(app.head.meta)) {
           app.head.meta = []
         }
-        // Avoid duplicates (seems vue-meta don't handle it for style)
-        app.head.style = app.head.style.filter(s => s.hid !== 'docus-theme')
         app.head.style.push({
           hid: 'docus-theme',
           cssText: this.themeStyles,
