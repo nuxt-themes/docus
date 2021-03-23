@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
-import { joinURL, withoutTrailingSlash } from 'ufo'
 import { $fetch } from 'ohmyfetch'
+import { joinURL, withoutTrailingSlash } from 'ufo'
 import { useColors, useDefaults } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
@@ -43,13 +43,6 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
-        if (typeof settings.github === 'string') {
-          settings.github = { repo: settings.github }
-        }
-        // backward compat for 'single' layout
-        if (settings.layout === 'single') {
-          settings.layout = 'readme'
-        }
         this.settings = useDefaults(settings)
         // Update injected styles on HMR
         if (process.dev && process.client) {
@@ -82,8 +75,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         if (process.server) {
           return ssrContext.docus.releases
         }
-        // return $fetch('/api/docus/releases') //
-        return []
+        return $fetch('/api/docus/releases')
       },
 
       async fetchLastRelease () {

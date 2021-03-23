@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/nuxtlabs/docus/compare/v0.1.4...v0.1.5) (2021-03-15)
+
+
+### Bug Fixes
+
+* try another way ([4664a2d](https://github.com/nuxtlabs/docus/commit/4664a2d7a0f8bc5cdc78ea21c55a1b59e28ead9d))
+
+### [0.1.4](https://github.com/nuxtlabs/docus/compare/v0.1.3...v0.1.4) (2021-03-15)
+
+
+### Bug Fixes
+
+* use correct icon name ([0f95256](https://github.com/nuxtlabs/docus/commit/0f952560465d954dfd6b8ffa358441f2e587d6cc))
+* use nuxt resolver for tailwind config require ([f135ab1](https://github.com/nuxtlabs/docus/commit/f135ab136999bf13b25fe07d916ceb3fb22d03ee))
+
+### [0.1.3](https://github.com/nuxtlabs/docus/compare/v0.1.2...v0.1.3) (2021-03-15)
+
+### [0.1.2](https://github.com/nuxtlabs/docus/compare/v0.1.1...v0.1.2) (2021-03-15)
+
+
+### Bug Fixes
+
+* releases not working ([ef85c3a](https://github.com/nuxtlabs/docus/commit/ef85c3a6ad9b9e03187fa2e5e4ec69099a5f21bd))
+* remove duplicate credits ([afb65fd](https://github.com/nuxtlabs/docus/commit/afb65fddd6a9aa12f83c4547e27fd8442a2320d2))
+* styling ([5547ce4](https://github.com/nuxtlabs/docus/commit/5547ce442b9262d8bc25d4110cdd6616eb90a28b))
+
+### [0.1.1](https://github.com/nuxtlabs/docus/compare/v0.1.0...v0.1.1) (2021-03-15)
+
+
+### Features
+
+* add jit by default ([a0fb24e](https://github.com/nuxtlabs/docus/commit/a0fb24ee55f5d507653d9ec831f21f7129dda478))
+
+## [0.1.0](https://github.com/nuxtlabs/docus/compare/v0.0.10...v0.1.0) (2021-03-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* add 'D' prefix to all components (#148)
+
+### Features
+
+* add 'D' prefix to all components ([#148](https://github.com/nuxtlabs/docus/issues/148)) ([b6b02b8](https://github.com/nuxtlabs/docus/commit/b6b02b8a6b4064fd048a2429863e7910c1c6ef83))
+* MadeWithDocus ([#173](https://github.com/nuxtlabs/docus/issues/173)) ([6de302a](https://github.com/nuxtlabs/docus/commit/6de302a3a577f4ff71b4a10478809cd9894fba7a))
+* redesign prev/next ([#155](https://github.com/nuxtlabs/docus/issues/155)) ([f0ab164](https://github.com/nuxtlabs/docus/commit/f0ab164ed3357e03912c50627a271ebf2e1bbd00))
+* vite fixes ([#160](https://github.com/nuxtlabs/docus/issues/160)) ([31d3ef0](https://github.com/nuxtlabs/docus/commit/31d3ef0990f18651feda6ba2ac43eb8e4372564c))
+* vite support ([#122](https://github.com/nuxtlabs/docus/issues/122)) ([ba9fe62](https://github.com/nuxtlabs/docus/commit/ba9fe62ad3380e0927e8e3ae426b0802b360c8a9))
+
+
+### Bug Fixes
+
+* add category to prev/next; improve styling ([#164](https://github.com/nuxtlabs/docus/issues/164)) ([1ef2595](https://github.com/nuxtlabs/docus/commit/1ef2595ad607077f56e314a4b03768581c23fe75))
+* add credits setting to docs ([#177](https://github.com/nuxtlabs/docus/issues/177)) ([2eb20b7](https://github.com/nuxtlabs/docus/commit/2eb20b7841c6142b6a697f0b3e0c071697da0073))
+* add more space to docs typography ([#158](https://github.com/nuxtlabs/docus/issues/158)) ([5bcc28e](https://github.com/nuxtlabs/docus/commit/5bcc28e89ca3ab030a61f20f49c8286f4b4c2b15))
+* article padding for readme ([#176](https://github.com/nuxtlabs/docus/issues/176)) ([4f1f5ef](https://github.com/nuxtlabs/docus/commit/4f1f5ef3fa8dda3cfd95b8a0b2b53d7633bb2d85))
+* badge rendering ([#145](https://github.com/nuxtlabs/docus/issues/145)) ([a751b03](https://github.com/nuxtlabs/docus/commit/a751b03cb88e2bca11b1cef6fddfe4f554177244))
+* button ring in dark mode ([#143](https://github.com/nuxtlabs/docus/issues/143)) ([1ece51e](https://github.com/nuxtlabs/docus/commit/1ece51e05bf571fd785d360650d3c7849eb3d2c8))
+* color contrast for toc and header icons ([#161](https://github.com/nuxtlabs/docus/issues/161)) ([929be34](https://github.com/nuxtlabs/docus/commit/929be346151c6894e97b15a4bc45eff1ad23ce81))
+* do not show hidden pages in next/prev links ([#153](https://github.com/nuxtlabs/docus/issues/153)) ([cad8714](https://github.com/nuxtlabs/docus/commit/cad8714bb0c70a2c5c960c36ee875bdd4cb270a5))
+* enable Nuxt I18n lazy ([#165](https://github.com/nuxtlabs/docus/issues/165)) ([2696b5a](https://github.com/nuxtlabs/docus/commit/2696b5aa3c6b52345efa16537cd7b08b19d2798f))
+* github typo when fallback for string ([461697c](https://github.com/nuxtlabs/docus/commit/461697cbd2179024370403b3c80237ec3cd6582d))
+* landing page body scroll lock ([#144](https://github.com/nuxtlabs/docus/issues/144)) ([fed57fc](https://github.com/nuxtlabs/docus/commit/fed57fcf6389c7e14372467afe394579cda3ccfc))
+* missing header bg color in light mode ([#142](https://github.com/nuxtlabs/docus/issues/142)) ([605d9dd](https://github.com/nuxtlabs/docus/commit/605d9dd587b8d0bda0bb670460f03f18a26df911))
+* readme header ([#150](https://github.com/nuxtlabs/docus/issues/150)) ([c7cb511](https://github.com/nuxtlabs/docus/commit/c7cb5115ec176f5e763d9252149a8bbc5d7381df))
+* rename components again ([#151](https://github.com/nuxtlabs/docus/issues/151)) ([58dccfe](https://github.com/nuxtlabs/docus/commit/58dccfe62a86998a33341f66e20be24c777710e5))
+* sticky aside ([#147](https://github.com/nuxtlabs/docus/issues/147)) ([ce1a1da](https://github.com/nuxtlabs/docus/commit/ce1a1da46e4717ca144377d0db18a3a8f7a34cf6))
+* update header icons optical sizes ([#156](https://github.com/nuxtlabs/docus/issues/156)) ([118ecbc](https://github.com/nuxtlabs/docus/commit/118ecbc5e6eb8e1e4f33f6246bd5ca2c43c39b41))
+
 ### [0.0.10](https://github.com/nuxtlabs/docus/compare/v0.0.8...v0.0.10) (2021-03-10)
 
 

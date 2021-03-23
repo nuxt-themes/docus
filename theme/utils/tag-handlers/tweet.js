@@ -49,7 +49,7 @@ function mapAST (ast) {
     // qoute
     if (node.tag === 'blockquote') {
       const { data, nodes } = node.data.ast[0]
-      return createTweetNode(data, nodes, 'tweet tweet-quote')
+      return createTweetNode(data, nodes, 'quote')
     }
 
     return { type: 'text', value: '?' }

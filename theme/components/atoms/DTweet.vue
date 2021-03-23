@@ -1,11 +1,11 @@
 <template>
   <blockquote class="tweet">
-    <div class="author flex mb-4">
-      <a :href="profileUrl" target="_blank" rel="noopener noreferrer">
-        <img :src="avatar" :alt="name" class="w-6 h-6 rounded-full" :class="{'h-12 w-12': layout === 'tweet'}" />
+    <div class="flex mb-4 author">
+      <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
+        <img :src="avatar" :alt="name" class="rounded-full" :class="{'h-12 w-12': layout === 'tweet', 'w-6 h-6': layout === 'quote'}" />
       </a>
-      <div class="ml-2 flex-1">
-        <a :href="profileUrl" target="_blank" rel="noopener noreferrer">
+      <div class="flex-1 ml-2">
+        <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
           <span class="font-bold text-black dark:text-white" :class="{'block': layout === 'tweet'}">
             {{ name }}
           </span>
@@ -13,24 +13,24 @@
         </a>
         <template v-if="layout !== 'tweet'">
           ·
-          <a :href="tweetUrl" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-blue-600">
+          <a :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow" class="text-sm hover:text-blue-600">
             {{ $d(createdAt, "long") }}
           </a>
         </template>
       </div>
-      <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer">
+      <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow">
         <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
       </a>
     </div>
     <div class="content">
       <slot />
     </div>
-    <div v-if="layout === 'tweet'" class="mt-2 flex">
-      <a :href="likeUrl" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-red-600">
+    <div v-if="layout === 'tweet'" class="flex mt-2">
+      <a :href="likeUrl" target="_blank" rel="noopener noreferrer nofollow" class="flex items-center hover:text-red-600">
         <IconHeart class="mr-2" />
         {{ heartCount }}
       </a>
-      <a :href="tweetUrl" target="_blank" rel="noopener noreferrer" class="ml-4 hover:text-blue-600">
+      <a :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow" class="ml-4 hover:text-blue-600">
         {{ $d(createdAt, "long") }}
       </a>
     </div>
