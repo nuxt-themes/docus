@@ -2,7 +2,7 @@
   "title": "Docus",
   "description": "Write in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt.",
   "url": "https://docus.dev",
-  "twitter": "nuxt_js",
+  "twitter": "nuxtlabs",
   "github": {
     "repo": "nuxtlabs/docus",
     "branch": "main",
@@ -15,13 +15,5 @@
   "_algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
     "indexName": "docus"
-  },
-  "logo": {
-    "dark": "/logo-dark.svg",
-    "light": "/logo-light.svg"
-  },
-  "header": {
-    "logo": false,
-    "title": true
   }
 }
