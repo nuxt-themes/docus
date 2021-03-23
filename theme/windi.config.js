@@ -107,9 +107,6 @@ export default {
               marginTop: '0.5em',
               marginBottom: '0.5em'
             },
-            'h2, h3': {
-              'scroll-margin-block': `${(70 + 40) / 16}rem`
-            },
             'h2 code': {
               color: 'inherit',
               fontWeight: 'inherit'
