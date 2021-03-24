@@ -67,7 +67,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           .fetch()
 
         if (this.settings.github.releases) {
-          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases', icon: '🗞' })
+          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
