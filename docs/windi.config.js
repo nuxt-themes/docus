@@ -1,9 +1,9 @@
-// import colors from 'windicss/colors'
+import colors from 'windicss/colors'
 
 export default {
-  // theme: {
-  //   colors: {
-  //     gray: colors.red
-  //   }
-  // }
+  theme: {
+    colors: {
+      gray: colors.red
+    }
+  }
 }

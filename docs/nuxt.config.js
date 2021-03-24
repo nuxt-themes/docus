@@ -14,8 +14,6 @@ export default withDocus({
     domain: 'docus.dev'
   },
   windicss: {
-    root: resolve(__dirname, '..'),
-    // Workaround waiting for https://github.com/windicss/nuxt-windicss-module/issues/30
-    config: windiConfig
+    root: resolve(__dirname, '..')
   }
 })
