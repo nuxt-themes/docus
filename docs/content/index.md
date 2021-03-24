@@ -1,6 +1,6 @@
 ---
 menu: false
-template: page
+template: landing
 title: Documentation generator based on Nuxt and Tailwind.
 description: Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.
 hero:

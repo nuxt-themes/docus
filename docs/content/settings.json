@@ -3,7 +3,7 @@
   "description": "Write in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt.",
   "url": "https://docus.dev",
   "twitter": "nuxtlabs",
-  "template": "page",
+  "template": "docs",
   "credits": false,
   "github": {
     "repo": "nuxtlabs/docus",

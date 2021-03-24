@@ -40,7 +40,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         ])
       },
       async fetchSettings () {
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits']).fetch().catch((e) => {
+        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'template', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
           console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
         })
@@ -56,7 +56,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           return
         }
         const draft = this.ui?.draft ? undefined : false
-        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to']
+        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'icon']
         if (process.dev) {
           fields.push('draft')
         }
@@ -67,7 +67,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           .fetch()
 
         if (this.settings.github.releases) {
-          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
+          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases', icon: '🗞' })
         }
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },

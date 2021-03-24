@@ -366,8 +366,9 @@ export default {
   },
   shortcuts: {
     'd-container': 'max-w-8xl mx-auto',
-    'd-container-content': 'd-container px-4 sm:px-6',
-    'light-img': 'block dark:hidden',
-    'dark-img': 'hidden dark:block'
+    'd-container-content': 'max-w-8xl mx-auto px-4 sm:px-6',
+    'd-bleed': '-mx-4 sm:-mx-6',
+    'light-img': 'dark:hidden',
+    'dark-img': 'light:hidden'
   }
 }

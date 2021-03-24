@@ -13,7 +13,7 @@
     </a>
 
     <span class="flex items-center text-sm text-gray-500 font-base dark:text-gray-400 ">
-      {{ $t("article.updatedAt") }} {{ $d(Date.parse(document.updatedAt), "long") }}
+      {{ $t("article.updatedAt") }} {{ $d(Date.parse(page.updatedAt), "long") }}
     </span>
   </div>
 </template>
@@ -21,7 +21,7 @@
 <script>
 export default {
   props: {
-    document: {
+    page: {
       type: Object,
       required: true
     }
@@ -41,7 +41,7 @@ export default {
         this.settings.github.branch,
         this.settings.github.dir,
         this.$config.contentDir,
-        `${this.document.path}${this.document.extension}`.replace(/^\//g, '')
+        `${this.page.path}${this.page.extension}`.replace(/^\//g, '')
       ].filter(Boolean).join('/')
     }
   }

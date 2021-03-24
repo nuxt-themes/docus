@@ -1,9 +1,5 @@
 <template>
-  <component :is="page.template" :page="page">
-    <div class="max-w-none">
-      <NuxtContent :document="page" />
-    </div>
-  </component>
+  <component :is="page.template" :page="page" />
 </template>
 
 <script>
