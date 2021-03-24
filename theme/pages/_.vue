@@ -10,9 +10,6 @@ import CopyButton from '../components/atoms/DCopyButton'
 
 export default {
   name: 'PageSlug',
-  layout ({ $docus }) {
-    return $docus.settings.layout
-  },
   middleware ({ app, params, redirect }) {
     if (params.pathMatch === 'index') {
       redirect(app.localePath('/'))
@@ -26,7 +23,6 @@ export default {
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
-    console.log('page template', page.template, $docus.settings.template)
     page.template = pascalCase(page.template || $docus.settings.template)
     if (!Vue.component(page.template)) {
       // eslint-disable-next-line no-console
