@@ -6,11 +6,13 @@ const r = path => resolve(__dirname, path)
 export default function (nuxt) {
   const { hook, options } = nuxt
 
-  hook('windicss:config', function (windiConfig) {
-    windiConfig.config = defu.arrayFn(windiConfig.config || {}, defaultWindiConfig)
-
+  hook('windicss:options', function (windiOptions) {
+    // avoid duplicate scans on re-parse
+    if (windiOptions.__docuResolved) {
+      return windiOptions
+    }
     // include user content directory in scan process
-    windiConfig.scan.dirs.push(
+    windiOptions.scanOptions.dirs.push(
       r('components/'),
       r('layouts/'),
       r('pages/'),
@@ -18,18 +20,23 @@ export default function (nuxt) {
       r('utils/'),
       resolve(options.srcDir, options.publicRuntimeConfig.contentDir)
     )
-    windiConfig.scan.include = windiConfig.scan.include || []
-    windiConfig.scan.include.push(__dirname)
+    windiOptions.scanOptions.include = windiOptions.scanOptions.include || []
+    windiOptions.scanOptions.include.push(__dirname)
+
+    windiOptions.__docuResolved = true
+  })
+
+  hook('windicss:config', function (config) {
+    config = defu.arrayFn(config || {}, defaultWindiConfig)
 
     // Workaround for typography plugin not being a function supporting theme
-    if (typeof windiConfig.config.theme.extend.typography === 'function') {
+    if (typeof config.theme.extend.typography === 'function') {
       const defaultTheme = nuxt.resolver.requireModule('windicss/defaultTheme')
       const theme = (key) => {
         const keys = key.split('.')
-        return keys.reduce((res, _key) => res[_key], defu(windiConfig.config.theme, defaultTheme))
+        return keys.reduce((res, _key) => res[_key], defu(config.theme, defaultTheme))
       }
-      windiConfig.config.theme.extend.typography = windiConfig.config.theme.extend.typography(theme)
+      config.theme.extend.typography = config.theme.extend.typography(theme)
     }
-    // console.log(windiConfig.config.theme.colors)
   })
 }

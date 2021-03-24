@@ -11,7 +11,7 @@ import aspectRatio from 'windicss/plugin/aspect-ratio'
 export default {
   darkMode: 'class',
   plugins: [
-    typography(),
+    typography,
     aspectRatio
   ],
   theme: {
