@@ -9,7 +9,7 @@ export default function (nuxt) {
   hook('windicss:options', function (windiOptions) {
     // avoid duplicate scans on re-parse
     if (windiOptions.__docuResolved) {
-      return windiOptions
+      return
     }
     // include user content directory in scan process
     windiOptions.scanOptions.dirs.push(
