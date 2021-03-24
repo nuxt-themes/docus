@@ -1,8 +1,9 @@
 ---
 menu: false
 template: landing
-title: Documentation generator based on Nuxt and Tailwind.
-description: Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.
+title: Documentation Generator based on Nuxt and Windi.
+description: >-
+  Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
 hero:
   cta: [Get started, /get-started/installation]
   secondary: [Open on GitHub, https://github.com/nuxtlabs/docus]
@@ -14,7 +15,7 @@ features:
     title: Vue Components
     description: Use your components or Docus built-in right inside your content.
   - icon: IconNuxt
-    iconClass: text-green-400
+    iconClass: 'text-hex-00DC82'
     title: Nuxt Architecture
     description: >-
       Get the Nuxt power by using all the features, Docus is one of the first Nuxt

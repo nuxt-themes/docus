@@ -29,7 +29,7 @@ export default {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
           icon: 'IconNuxt',
-          iconClass: 'text-green-400'
+          iconClass: 'text-hex-00DC82'
         },
         {
           title: 'Vue',
