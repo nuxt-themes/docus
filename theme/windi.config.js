@@ -49,6 +49,7 @@ export default {
         }
       },
       spacing: {
+        header: 'var(--header-height)',
         18: '4.5rem',
         46: '11.5rem',
         '580px': '580px',
@@ -56,12 +57,15 @@ export default {
       },
       height: theme => ({
         '(full-18)': `calc(100% - ${theme('spacing.18')})`,
+        '(full-header)': `calc(100% - ${theme('spacing.header')})`,
         '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+        '(screen-header)': `calc(100vh - ${theme('spacing.header')})`,
         '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
         '(screen-46)': `calc(100vh - ${theme('spacing.46')})`
       }),
       maxHeight: theme => ({
-        '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
+        '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+        '(screen-header)': `calc(100vh - ${theme('spacing.header')})`
       }),
       minHeight: theme => ({
         'fill-available': '-webkit-fill-available'
