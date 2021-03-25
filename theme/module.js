@@ -52,6 +52,7 @@ export default function docusModule () {
   hook('build:before', () => {
     addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
     addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
+    addLayout({ src: r('layouts/blog.vue'), filename: 'layouts/blog.vue' })
   })
 
   // Add default error page if not defined
