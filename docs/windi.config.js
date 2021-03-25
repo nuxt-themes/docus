@@ -1,9 +1,9 @@
-import colors from 'windicss/colors'
+//const colors = require('windicss/colors')
 
-export default {
-  theme: {
-    colors: {
-      gray: colors.red
-    }
-  }
+module.exports = {
+  // theme: {
+  //   colors: {
+  //     //gray: colors.red
+  //   }
+  // }
 }

@@ -1,7 +1,7 @@
-import { resolve } from 'path'
+import { resolve, relative } from 'path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
-const r = path => resolve(__dirname, path)
+
 
 export default function (nuxt) {
   const { hook, options } = nuxt
@@ -11,6 +11,8 @@ export default function (nuxt) {
     if (windiOptions.__docuResolved) {
       return
     }
+
+    const r = path => relative(windiOptions.root, resolve(__dirname, path))
     // include user content directory in scan process
     windiOptions.scanOptions.dirs.push(
       r('components/'),
@@ -20,8 +22,12 @@ export default function (nuxt) {
       r('utils/'),
       resolve(options.srcDir, options.publicRuntimeConfig.contentDir)
     )
-    windiOptions.scanOptions.include = windiOptions.scanOptions.include || []
-    windiOptions.scanOptions.include.push(__dirname)
+
+    // avoid scanning everything in the root folder
+    const rootScanEntry = windiOptions.scanOptions.dirs.indexOf('./');
+    if (rootScanEntry !== -1) {
+      windiOptions.scanOptions.dirs.splice(rootScanEntry, 1);
+    }
 
     windiOptions.__docuResolved = true
   })
