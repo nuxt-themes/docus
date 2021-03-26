@@ -2388,16 +2388,27 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@windicss/plugin-utils@0.9.11":
-  version "0.9.11"
-  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.9.11.tgz#9b8951ff1495e1deb8a094098a343eb8babb9b3b"
-  integrity sha512-gGLe3/Ud63fcpj1FTq+0/feP/UM34j9W+iSyBtpPnmfLx8mi2a9g9vhZrojqL9X9IYY+ZhHczZ8Fn9qcHdzWVw==
+"@windicss/plugin-utils@0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.10.1.tgz#8b1a8f1e045138e5f8295dff01fe3f1adb97cceb"
+  integrity sha512-oh9wJyfn/+cHRX/Xl0uVPDaU/sWiy+8IfMQl7rwpXMMFuIt4EQVnh4nthrbxl92jTLQ9n0dBw1OZGwR5CovvJQ==
   dependencies:
     debug "^4.3.2"
     fast-glob "^3.2.5"
     micromatch "^4.0.2"
     sucrase "^3.17.1"
-    windicss "^2.5.4"
+    windicss "^2.5.5"
+
+"@windicss/plugin-utils@0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@windicss/plugin-utils/-/plugin-utils-0.10.2.tgz#d4a79c41f02c1704b54510a2bd2deaa43c905a7d"
+  integrity sha512-IeKaZEZ1Ww3KO5C3AxWLotMX3aGxhrj0MsTmiyMS1H5KXm6HOgfk+zsRiB0ysxGKrGZ4pMLe2H3Riku8o7YfuQ==
+  dependencies:
+    debug "^4.3.2"
+    fast-glob "^3.2.5"
+    micromatch "^4.0.2"
+    sucrase "^3.17.1"
+    windicss "^2.5.5"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -8572,18 +8583,18 @@ nuxt-vite@^0.0.36:
     vite "^2.0.5"
     vite-plugin-vue2 "^1.4.0"
 
-nuxt-windicss@^0.4.10:
-  version "0.4.10"
-  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.4.10.tgz#742f7357a5b3fa71bfbb4857f7155b49951d7b08"
-  integrity sha512-76AfXW8mGlBSfnY8UqOdszwJUruoIpQlwKd3kQs+UPWTV/0gePQ7OVwAtEhEynmM3BDdT+gOtOCtXN15yJ6BGA==
+nuxt-windicss@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.5.0.tgz#f41fa30bf2896bb355e55ec5851b41a7be44019f"
+  integrity sha512-tGlnameI7RJAcEFiPv07j5yWCVdGcklBL6Z/dmUgHDMUfmXl0llOMsda3oBbkvjklK9kFmwpWHmyy4VJ3AJB6A==
   dependencies:
     clear-module "^4.1.1"
     defu "^3.2.2"
     rimraf "^3.0.2"
-    semver "^7.3.4"
+    semver "^7.3.5"
     upath "^2.0.1"
-    vite-plugin-windicss "^0.9.11"
-    windicss-webpack-plugin "^0.2.7"
+    vite-plugin-windicss "^0.10.1"
+    windicss-webpack-plugin "^0.2.8"
 
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -10968,6 +10979,13 @@ semver@^7.1.1, semver@^7.2.1, semver@^7.3.2, semver@^7.3.4:
   dependencies:
     lru-cache "^6.0.0"
 
+semver@^7.3.5:
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
+  integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
+  dependencies:
+    lru-cache "^6.0.0"
+
 send@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
@@ -12448,14 +12466,15 @@ vite-plugin-vue2@^1.4.0:
     vue-template-compiler "^2.6.11"
     vue-template-es2015-compiler "^1.9.1"
 
-vite-plugin-windicss@^0.9.11:
-  version "0.9.11"
-  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.9.11.tgz#46809a7d30d5531f9f3568949cd00646a3178f5b"
-  integrity sha512-wcF2VmglWqvtsi8Zq4kTVVU9jPiiAfdyy91TnlgaJYlgRaBZcwb7QSJ9p5SeOWIyl6RpzjlK2JFWa0djrVmG8w==
+vite-plugin-windicss@^0.10.1:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-windicss/-/vite-plugin-windicss-0.10.2.tgz#126edae552f2bec22273f5f533806e2b5d61c8ff"
+  integrity sha512-+kgzjwW6VNFlMlQvN4C5iCIqCAhSmTLteVz9IA7LjnpyM6X4tpZmWiTiNlLzAeiJt1eUpu9lFcA7GfuZR+OQDA==
   dependencies:
-    "@windicss/plugin-utils" "0.9.11"
+    "@windicss/plugin-utils" "0.10.2"
+    chalk "^4.1.0"
     debug "^4.3.2"
-    windicss "^2.5.4"
+    windicss "^2.5.5"
 
 vite@^2.0.5:
   version "2.1.2"
@@ -12781,23 +12800,23 @@ widest-line@^3.1.0:
   dependencies:
     string-width "^4.0.0"
 
-windicss-webpack-plugin@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.2.7.tgz#fa5826449d58ff3c655ffcfad4b9cd5d377f48eb"
-  integrity sha512-+sX/U9bX/ZQ3zDB9TY8yrZW2F7KqRPJVbh2pLkx4n8+KQfy3ALhUF8aUVXRLZlsnBGporgnJ6u8yU5Los1GHnA==
+windicss-webpack-plugin@^0.2.8:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-0.2.8.tgz#a4b381b83cf0d86f4c7cbf15d5cdcc080c5721e7"
+  integrity sha512-VZxWa+vVKIth1EEMoWTsGp/Fftspjp++AgAC0bybAkLNwouZ0ul6FUGTF9nGEx/S+a83U5NEua50GC5ACR5xOQ==
   dependencies:
-    "@windicss/plugin-utils" "0.9.11"
+    "@windicss/plugin-utils" "0.10.1"
     debug "^4.3.1"
     loader-utils "^2.0.0"
     magic-string "^0.25.7"
     upath "^2.0.1"
     webpack-virtual-modules "^0.4.2"
-    windicss "^2.5.4"
+    windicss "^2.5.5"
 
-windicss@^2.5.4:
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.5.4.tgz#e89cd614cc4a7c2c13cc5af588642959de6746db"
-  integrity sha512-K+w/TOxbY38bIjRyJVgQ29ndZ0xZsbpf4a7wClqyFDQdCTbuCnzChBMpO13BqLmksIaHRzL46TeBRpFyV6n5/A==
+windicss@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-2.5.5.tgz#691cc08e13dc9ee41293cd20cfdb6fed101e1d6a"
+  integrity sha512-tKLYY9qQoFKoxitG2B8toa9QUPAjsBOKjmFrxhDi2i0eaVOFQh+YEPElBCa7N5ma03YVIW9HPVbgVU0Z4JxZ5g==
 
 with@^7.0.0:
   version "7.0.2"

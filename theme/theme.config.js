@@ -1,7 +1,7 @@
 import { resolve, relative } from 'path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
-
+import merge from 'lodash/merge'
 
 export default function (nuxt) {
   const { hook, options } = nuxt
@@ -33,8 +33,9 @@ export default function (nuxt) {
   })
 
   hook('windicss:config', function (config) {
-    // merge default config with provided
-    Object.assign(config, defaultWindiConfig)
+    // merge default config with provided, this is a bit hacky because we need to keep the reference
+    merge(defaultWindiConfig, config)
+    merge(config, defaultWindiConfig)
 
     // Workaround for typography plugin not being a function supporting theme
     if (typeof config.theme.extend.typography === 'function') {
@@ -45,6 +46,5 @@ export default function (nuxt) {
       }
       config.theme.extend.typography = config.theme.extend.typography(theme)
     }
-    console.log(config)
   })
 }

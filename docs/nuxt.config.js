@@ -17,7 +17,7 @@ export default withDocus({
     root: resolve(__dirname, '..'),
     config: resolve(__dirname, 'windi.config.js'),
     scan: {
-      dirs: ['docs'],
+      dirs: ['docs', 'theme'],
       exclude: [
         '.github'
       ]
