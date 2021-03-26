@@ -80,15 +80,15 @@ export default {
           title: 'Write Markdown'
         },
         {
-          icon: 'IconVue',
+          icon: 'LogoVue',
           title: 'Vue Components'
         },
         {
-          icon: 'IconNuxt',
+          icon: 'LogoNuxt',
           title: 'Nuxt Architecture'
         },
         {
-          icon: 'IconWindi',
+          icon: 'LogoWindi',
           title: 'Windi CSS'
         },
         {
