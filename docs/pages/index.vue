@@ -19,10 +19,10 @@
           >
             Documentation generator<br />based on Nuxt and Windi CSS.
           </h1>
-          <h3 class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
+          <p class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
             Write in markdown, use Vue components, add style with Windi CSS
             and enjoy the power of Nuxt.
-          </h3>
+          </p>
           <div class="flex items-center space-x-6">
             <DButtonLink
               class="mx-auto md:mx-0"
