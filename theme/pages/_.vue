@@ -1,6 +1,6 @@
 <template>
   <AppPage>
-    <div class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': document.description }">
+    <div class="mb-6" :class="{ 'border-b border-gray-100 dark:border-gray-800 pb-6': document.description }">
       <h1 class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
         <span class="flex-1">{{ document.title }}</span>
         <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
