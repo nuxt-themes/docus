@@ -1,5 +1,5 @@
 <template>
-  <div class="flex" :class="spaceBetween">
+  <div class="flex">
     <a
       v-if="settings.twitter"
       :href="`https://twitter.com/${settings.twitter}`"
@@ -7,6 +7,7 @@
       rel="noopener noreferrer"
       title="Twitter"
       name="Twitter"
+      :class="[padding]"
       class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
     >
       <IconTwitter :class="size" />
@@ -18,6 +19,7 @@
       rel="noopener noreferrer"
       title="GitHub"
       name="GitHub"
+      :class="[padding]"
       class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
     >
       <IconGithub :class="size" />
@@ -32,9 +34,9 @@ export default {
       type: String,
       default: 'w-6 h-6'
     },
-    spaceBetween: {
+    padding: {
       type: String,
-      default: 'space-x-3'
+      default: 'p-0'
     }
   },
   computed: {

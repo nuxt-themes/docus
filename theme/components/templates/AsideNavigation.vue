@@ -13,10 +13,10 @@
           <IconArrowLeft class="w-5 h-5" />
         </button>
         <div
-          class="flex items-center justify-end w-full px-2 space-x-3 h-header lg:hidden"
+          class="flex items-center justify-end w-full px-2 h-header lg:hidden"
         >
-          <DColorSwitcher />
-          <DSocialIcons />
+          <DColorSwitcher class="p-1.5" />
+          <DSocialIcons padding="p-1.5" />
         </div>
       </div>
 

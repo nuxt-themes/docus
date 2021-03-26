@@ -31,20 +31,20 @@
 
         <!-- Desktop: Right section -->
         <div
-          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
+          class="items-center justify-end hidden lg:flex xl:w-64"
           @click.stop
         >
           <slot name="desktop-right" />
           <NuxtLink
             v-if="lastRelease"
             :to="localePath('/releases')"
-            class="hidden font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
+            class="hidden px-3 font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
             exact-active-class="text-primary-500 dark:text-primary-400"
           >{{ lastRelease }}</NuxtLink>
 
-          <DLangSwitcher />
-          <DColorSwitcher />
-          <DSocialIcons />
+          <DLangSwitcher class="p-1.5" />
+          <DColorSwitcher class="p-1.5" />
+          <DSocialIcons padding="p-1.5" />
         </div>
       </div>
     </div>
