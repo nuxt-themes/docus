@@ -32,7 +32,7 @@ export default {
         xs: '414px'
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+        sans: 'Inter, ' + defaultTheme.fontFamily.sans
       },
       colors: {
         primary: {
