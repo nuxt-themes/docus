@@ -8572,10 +8572,10 @@ nuxt-vite@^0.0.36:
     vite "^2.0.5"
     vite-plugin-vue2 "^1.4.0"
 
-nuxt-windicss@^0.4.9:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.4.9.tgz#0613327c7f41e2595fd6c87bf7d713f56340e085"
-  integrity sha512-03LrN6Xrk08El316faKLgHmzfcRBH4IJyqjPcgLVAdGd6F9Xci9WCRBAMUfcstq8eI9XmzxWXJFQ3gx0D3++xw==
+nuxt-windicss@^0.4.10:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.4.10.tgz#742f7357a5b3fa71bfbb4857f7155b49951d7b08"
+  integrity sha512-76AfXW8mGlBSfnY8UqOdszwJUruoIpQlwKd3kQs+UPWTV/0gePQ7OVwAtEhEynmM3BDdT+gOtOCtXN15yJ6BGA==
   dependencies:
     clear-module "^4.1.1"
     defu "^3.2.2"
@@ -12627,8 +12627,10 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
