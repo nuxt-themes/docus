@@ -1,10 +1,6 @@
 const url = '<%= options.baseUrl %>'
 
 export default function ({ route, app }) {
-  if (!route.matched[0]) {
-    return
-  }
-
   app.head.meta = Array.isArray(app.head.meta) ? app.head.meta : []
   if (app.head.meta.findIndex(l => l.property === 'og:image') < 0) {
     app.head.meta.push({

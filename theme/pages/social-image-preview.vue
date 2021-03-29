@@ -67,7 +67,7 @@ export default {
       description: this.$route.query.description,
       editor: this.$route.query.editor,
 
-      primaryColor: '#3073F1',
+      primaryColor: this.$docus.settings.colors.primary,
       secondaryColor: '#1C1917',
       textColor: '#ffffff',
       brand: this.$route.query.brand || 'docus.dev'
