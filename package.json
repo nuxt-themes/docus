@@ -33,7 +33,7 @@
     "lodash.groupby": "^4.6.0",
     "nuxt-i18n": "^6.21.1",
     "nuxt-vite": "^0.0.36",
-    "nuxt-windicss": "^0.5.1",
+    "nuxt-windicss": "^0.5.2",
     "ohmyfetch": "^0.1.8",
     "prism-themes": "^1.6.0",
     "static-tweets": "^0.3.0",

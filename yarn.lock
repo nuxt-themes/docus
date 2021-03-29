@@ -8574,10 +8574,10 @@ nuxt-vite@^0.0.36:
     vite "^2.0.5"
     vite-plugin-vue2 "^1.4.0"
 
-nuxt-windicss@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.5.1.tgz#a3a4ff979d77545e37d82f58ff2f5309d7b218f0"
-  integrity sha512-RudNIFEDlyEtmpMEKyADzf62Ma6XTl1Yl6X91i6PrvuUsVaH0HNbALmew2lSYQMNELzE4GP7s70p+HOp5KXH1g==
+nuxt-windicss@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.5.2.tgz#8ec72424e1bd1b8d0994ab1d317c746c9f0f633d"
+  integrity sha512-BP6zZoBW27kOiNbbBmT2TvtbXL3o/NDNgLUg97Knv5eKQZaSgZnudGRm7Jlx+Pon8QZzYeCRZCbr/z+RAQHIWQ==
   dependencies:
     clear-module "^4.1.1"
     defu "^3.2.2"
