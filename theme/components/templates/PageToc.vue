@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { convertPropToPixels } from '../../utils/dom'
 
 export default {
   props: {
@@ -131,14 +132,11 @@ export default {
     },
     scrollToHeading (e) {
       const hash = e.target.href.split('#').pop()
-      const scrollMarginBlock = parseInt(getComputedStyle(document.documentElement)
-        .getPropertyValue('--scroll-margin-block-in-px'))
+      // use replaceState to prevent page jusmp when adding hash
+      history.replaceState({}, '', '#' + hash)
       setTimeout(() => {
-        const offset = document.querySelector(`#${hash}`).offsetTop - scrollMarginBlock
+        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
         window.scrollTo(0, offset)
-        setTimeout(() => {
-          this.$router.replace({ hash })
-        }, 50)
       })
     }
   }

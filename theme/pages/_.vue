@@ -76,8 +76,6 @@ export default {
     }
   },
   mounted () {
-    document.documentElement.style.setProperty('--scroll-margin-block-in-px', convertPropToPixels('--scroll-margin-block') + 'px')
-
     if (this.document.version) {
       localStorage.setItem(`document-${this.document.slug}-version`, this.document.version)
     }
@@ -95,9 +93,10 @@ export default {
       headings.map((heading) => {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
-          const scrollMarginBlock = parseInt(getComputedStyle(document.documentElement)
-            .getPropertyValue('--scroll-margin-block-in-px'))
-          const offset = heading.offsetTop - scrollMarginBlock
+          const hash = e.target.href.split('#').pop()
+          const offset = heading.offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+          // use replaceState to prevent page jusmp when adding hash
+          history.replaceState({}, '', '#' + hash)
           scrollTo(0, offset)
         })
       })
