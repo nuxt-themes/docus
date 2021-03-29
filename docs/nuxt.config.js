@@ -1,11 +1,13 @@
+import { resolve } from 'path'
 import { withDocus } from 'docus'
+import windiConfig from './windi.config'
 
 export default withDocus({
   content: {
     liveEdit: false
   },
   buildModules: [
-    'vue-plausible/lib/esm'
+    'vue-plausible'
   ],
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
@@ -16,5 +18,10 @@ export default withDocus({
     chrome: {
       browserWSEndpoint: 'wss://chrome.browserless.io/'
     }
+  },
+  windicss: {
+    root: resolve(__dirname, '..'),
+    // Workaround waiting for https://github.com/windicss/nuxt-windicss-module/issues/30
+    config: windiConfig
   }
 })
