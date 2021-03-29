@@ -7,6 +7,7 @@ import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import typography from 'windicss/plugin/typography'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
+import { relative } from "path";
 
 export default {
   darkMode: 'class',

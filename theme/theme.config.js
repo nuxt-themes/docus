@@ -1,4 +1,4 @@
-import { resolve, relative } from 'path'
+import { resolve } from 'path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
 import merge from 'lodash/merge'
@@ -6,34 +6,21 @@ import merge from 'lodash/merge'
 export default function (nuxt) {
   const { hook, options } = nuxt
 
-  hook('windicss:options', function (windiOptions) {
-    // avoid duplicate scans on re-parse
-    if (windiOptions.__docuResolved) {
-      return
-    }
-
-    const r = path => relative(windiOptions.root, resolve(__dirname, path))
-    // include user content directory in scan process
-    windiOptions.scanOptions.dirs.push(
-      r('components/'),
-      r('layouts/'),
-      r('pages/'),
-      r('plugins/'),
-      r('utils/'),
-      resolve(options.srcDir, options.publicRuntimeConfig.contentDir)
-    )
-
-    // avoid scanning everything in the root folder
-    const rootScanEntry = windiOptions.scanOptions.dirs.indexOf('./');
-    if (rootScanEntry !== -1) {
-      windiOptions.scanOptions.dirs.splice(rootScanEntry, 1);
-    }
-
-    windiOptions.__docuResolved = true
-  })
-
   hook('windicss:config', function (config) {
+    const defaultExtractConfig = {
+      extract: {
+        dirs: [
+          // add users src dir (docs)
+          options.srcDir,
+          // add theme folder (theme)
+          __dirname,
+          // add the content dir
+          resolve(options.srcDir, options.publicRuntimeConfig.contentDir),
+        ]
+      }
+    }
     // merge default config with provided, this is a bit hacky because we need to keep the reference
+    merge(defaultWindiConfig, defaultExtractConfig)
     merge(defaultWindiConfig, config)
     merge(config, defaultWindiConfig)
 
