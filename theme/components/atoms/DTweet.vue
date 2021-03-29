@@ -2,7 +2,7 @@
   <blockquote class="tweet">
     <div class="flex mb-4 author">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
-        <img :src="avatar" :alt="name" class="w-6 h-6 rounded-full" :class="{'h-12 w-12': layout === 'tweet'}" />
+        <img :src="avatar" :alt="name" class="rounded-full" :class="{'h-12 w-12': layout === 'tweet', 'w-6 h-6': layout === 'quote'}" />
       </a>
       <div class="flex-1 ml-2">
         <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">

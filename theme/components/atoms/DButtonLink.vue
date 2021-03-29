@@ -44,12 +44,12 @@ export default {
 
 <style lang="postcss">
 a.button-link {
-  @apply inline-flex items-center flex-none px-3 py-2 leading-4 text-sm text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-primary-600 focus:outline-none;
+  @apply inline-flex items-center flex-none px-3 py-2 text-sm leading-4 text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-primary-600 focus:outline-none;
   &.medium {
-    @apply px-4 py-2.5 leading-4 text-base rounded;
+    @apply px-4 py-2.5 text-base leading-4 rounded;
   }
   &.large {
-    @apply px-6 py-3 leading-6 text-lg rounded;
+    @apply px-6 py-3 text-lg leading-6 rounded;
   }
 }
 </style>
