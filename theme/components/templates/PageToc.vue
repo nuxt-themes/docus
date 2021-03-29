@@ -132,7 +132,8 @@ export default {
     },
     scrollToHeading (e) {
       const hash = e.target.href.split('#').pop()
-      window.location.hash = hash
+      // use replaceState to prevent page jusmp when adding hash
+      history.replaceState({}, '', '#' + hash)
       setTimeout(() => {
         const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
         window.scrollTo(0, offset)

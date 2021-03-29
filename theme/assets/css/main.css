@@ -93,14 +93,6 @@ body {
   }
 }
 
-@screen xl {
-  .nuxt-content {
-    & h2, & h3 {
-      scroll-margin-block: var(--scroll-margin-block);
-    }
-  }
-}
-
 .dark {
   & .nuxt-content {
     & h2 {

@@ -93,7 +93,10 @@ export default {
       headings.map((heading) => {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
+          const hash = e.target.href.split('#').pop()
           const offset = heading.offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+          // use replaceState to prevent page jusmp when adding hash
+          history.replaceState({}, '', '#' + hash)
           scrollTo(0, offset)
         })
       })
