@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve, relative } from 'path'
 import defu from 'defu'
 import defaultWindiConfig from './windi.config'
 import merge from 'lodash/merge'
@@ -16,6 +16,9 @@ export default function (nuxt) {
           __dirname,
           // add the content dir
           resolve(options.srcDir, options.publicRuntimeConfig.contentDir),
+        ],
+        exclude: [
+          relative(options.windicss.root, resolve(options.srcDir, '.nuxt/**/*'))
         ]
       }
     }
