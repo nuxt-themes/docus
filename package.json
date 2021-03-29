@@ -36,6 +36,7 @@
     "nuxt-vite": "^0.0.36",
     "ohmyfetch": "^0.1.8",
     "prism-themes": "^1.6.0",
+    "puppeteer-core": "^8.0.0",
     "static-tweets": "^0.3.0",
     "tailwind-css-variables": "^2.0.3",
     "theme-colors": "^0.0.5",

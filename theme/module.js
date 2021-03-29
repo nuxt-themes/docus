@@ -150,6 +150,13 @@ export default function docusModule () {
         component: r('pages/_.vue')
       })
     }
+    if (!hasRoute('social-image-preview')) {
+      routes.push({
+        path: '/social-image-preview',
+        name: 'social-image-preview',
+        component: r('pages/social-image-preview.vue')
+      })
+    }
     if (!hasRoute('releases')) {
       routes.push({
         path: '/releases',

@@ -10,5 +10,11 @@ export default withDocus({
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
     domain: 'docus.dev'
+  },
+  socialImage: {
+    baseUrl: 'https://docus.dev',
+    chrome: {
+      browserWSEndpoint: 'wss://chrome.browserless.io/'
+    }
   }
 })

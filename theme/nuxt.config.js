@@ -44,7 +44,8 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    r('modules/social-image/module')
   ],
   modules: [
     'nuxt-i18n',
