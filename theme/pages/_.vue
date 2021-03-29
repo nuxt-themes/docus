@@ -76,6 +76,8 @@ export default {
     }
   },
   mounted () {
+    document.documentElement.style.setProperty('--scroll-margin-block-in-px', convertPropToPixels('--scroll-margin-block') + 'px')
+
     if (this.document.version) {
       localStorage.setItem(`document-${this.document.slug}-version`, this.document.version)
     }
@@ -93,7 +95,9 @@ export default {
       headings.map((heading) => {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
-          const offset = heading.offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+          const scrollMarginBlock = parseInt(getComputedStyle(document.documentElement)
+            .getPropertyValue('--scroll-margin-block-in-px'))
+          const offset = heading.offsetTop - scrollMarginBlock
           scrollTo(0, offset)
         })
       })
