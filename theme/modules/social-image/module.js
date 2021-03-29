@@ -11,7 +11,7 @@ export default function socialImageModule (moduleOptions) {
     outDir: '_preview',
     chrome: {
       browserWSEndpoint: undefined,
-      defaultViewport: { width: 2048, height: 1170 },
+      defaultViewport: { width: 1280, height: 640 },
       args: [],
       headless: true,
       executablePath: process.platform === 'win32'
