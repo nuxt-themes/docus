@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
+  @apply antialiased tracking-semitight text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
 }
 
 .nuxt-content {

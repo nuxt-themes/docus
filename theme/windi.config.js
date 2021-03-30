@@ -28,11 +28,14 @@ export default {
       gray: colors.gray
     },
     extend: {
-      screens: {
-        xs: '414px'
-      },
       fontFamily: {
         sans: 'Inter, ' + defaultTheme.fontFamily.sans
+      },
+      letterSpacing: {
+        semitight: '-0.0125em'
+      },
+      screens: {
+        xs: '414px'
       },
       colors: {
         primary: {
@@ -83,6 +86,7 @@ export default {
       typography: theme => ({
         DEFAULT: {
           css: {
+            letterSpacing: '-0.0125em',
             maxWidth: 'none',
             color: theme('colors.gray.700'),
             '> :first-child': { marginTop: '-' },
@@ -94,11 +98,11 @@ export default {
               marginBottom: '0'
             },
             'h1, h2': {
-              letterSpacing: '-0.025em',
               fontWeight: theme('fontWeight.bold')
             },
             'h1, h2, h3, h4': {
-              color: theme('colors.gray.900')
+              color: theme('colors.gray.900'),
+              letterSpacing: theme('letterSpacing.tight')
             },
             'h1, h2, h3': {
               marginTop: '1.5em',

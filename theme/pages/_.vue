@@ -6,7 +6,7 @@
         <span v-if="document.draft" class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400">Draft</span>
         <DBadge v-if="document.badge" class="font-medium">{{ document.badge }}</DBadge>
       </h1>
-      <p v-if="document.description" class="mt-2 text-lg text-gray-600 dark:text-gray-300">{{ document.description }}</p>
+      <p v-if="document.description" class="mt-2 text-lg text-gray-600 dark:text-gray-300 tracking-semitight">{{ document.description }}</p>
     </div>
     <div class="max-w-none">
       <NuxtContent :document="document" />
