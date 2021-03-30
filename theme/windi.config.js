@@ -117,11 +117,13 @@ export default {
             },
             'h2 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h3 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h2 > a, h3 > a': {
               color: 'inherit',
@@ -160,7 +162,8 @@ export default {
                 zIndex: '-1',
                 width: 'calc(100% + 8px)',
                 height: 'calc(100% + 8px)',
-                backgroundColor: theme('colors.white')
+                backgroundColor: theme('colors.white'),
+                pointerEvents: 'none'
               }
             },
             'ol, ul': {

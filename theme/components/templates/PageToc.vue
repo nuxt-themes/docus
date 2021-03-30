@@ -32,6 +32,7 @@
               'text-gray-500 dark:text-gray-400': link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
               'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
+            @click.prevent="scrollToHeading"
           >{{ link.text }}</a>
         </li>
       </ul>
@@ -41,6 +42,8 @@
 </template>
 
 <script>
+import { convertPropToPixels } from '../../utils/dom'
+
 export default {
   props: {
     toc: {
@@ -126,6 +129,15 @@ export default {
           this.activeLink = this.sections[parentIndex].id
         }
       }
+    },
+    scrollToHeading (e) {
+      const hash = e.target.href.split('#').pop()
+      // use replaceState to prevent page jusmp when adding hash
+      history.replaceState({}, '', '#' + hash)
+      setTimeout(() => {
+        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+        window.scrollTo(0, offset)
+      })
     }
   }
 }

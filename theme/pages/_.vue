@@ -24,6 +24,7 @@
 import { withoutTrailingSlash } from 'ufo'
 import Vue from 'vue'
 import CopyButton from '../components/molecules/DCopyButton'
+import { convertPropToPixels } from '../utils/dom'
 
 export default {
   name: 'PageSlug',
@@ -87,6 +88,18 @@ export default {
         const component = new Button().$mount()
         block.appendChild(component.$el)
       }
+
+      const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
+      headings.map((heading) => {
+        heading.addEventListener('click', function (e) {
+          e.preventDefault()
+          const hash = e.target.href.split('#').pop()
+          const offset = heading.offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+          // use replaceState to prevent page jusmp when adding hash
+          history.replaceState({}, '', '#' + hash)
+          scrollTo(0, offset)
+        })
+      })
     }, 100)
   },
   methods: {
