@@ -4,7 +4,7 @@
       <div class="flex flex-col sm:flex-row justify-between items-center">
         <a href="https://nuxtlabs.com" rel="noopener" target="_blank" class="flex items-end text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 hover:text-gray-600 mb-3 sm:mb-0">
           <IconNuxtLabs class="mr-2" />
-          <p class="font-bold text-xs">Made by Nuxt Labs</p>
+          <p class="font-semibold text-xs">Made by Nuxt Labs</p>
         </a>
 
         <div class="flex">

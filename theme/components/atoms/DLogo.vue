@@ -2,11 +2,11 @@
   <div class="flex items-center flex-none lg:w-60 xl:w-72">
     <NuxtLink
       :to="localePath('/')"
-      class="w-auto overflow-hidden"
+      class="w-auto"
       :aria-label="settings.title"
     >
       <template v-if="settings.header.title && !settings.header.logo">
-        <span class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        <span class="text-2xl font-bold text-gray-900 dark:text-gray-100 lowercase tracking-tighter">
           {{ settings.title }}
         </span>
       </template>

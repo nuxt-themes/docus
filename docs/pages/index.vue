@@ -10,20 +10,20 @@
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
-    <section class="px-4 mx-auto my-24 sm:px-6 max-w-8xl">
+    <section class="px-4 mx-auto my-12 md:my-24 sm:px-6 max-w-8xl">
 
       <div class="flex flex-col lg:flex-row">
         <div class="flex flex-col items-center pr-0 mb-8 lg:items-start lg:pr-8 lg:w-2/3">
           <h1
-            class="my-8 text-4xl font-semibold leading-none tracking-tight text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:my-12"
+            class="my-8 text-4xl font-bold leading-none tracking-tight xl:tracking-tighter text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-5xl md:text-6xl xl:text-7xl sm:my-10"
           >
             Documentation generator<br />based on Nuxt and Windi CSS.
           </h1>
-          <p class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
+          <p class="mb-6 tracking-tight text-lg text-center text-gray-700 lg:text-left md:text-xl xl:text-2xl leading-tight sm:mb-8 dark:text-gray-300">
             Write in markdown, use Vue components, add style with Windi CSS
             and enjoy the power of Nuxt.
           </p>
-          <div class="flex items-center space-x-6">
+          <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
             <DButtonLink
               class="mx-auto md:mx-0"
               size="large"
@@ -42,7 +42,8 @@
         </div>
       </div>
     </section>
-    <section class="py-24 bg-gray-50 dark:bg-gray-800">
+
+    <section class="py-12 md:py-24 bg-gray-50 dark:bg-gray-800">
       <div class="px-4 mx-auto max-w-8xl">
         <h2
           class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
