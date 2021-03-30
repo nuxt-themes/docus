@@ -71,8 +71,6 @@ export default {
       secondaryColor: '#1C1917',
       textColor: '#ffffff',
       brand: this.$route.query.brand || 'docus.dev'
-      // title: 'Documentation generator based on Nuxt and Tailwind.',
-      // description: 'Write in markdown, use Vue components, add style with TailwindCSS and enjoy the power of Nuxt.'
     }
   },
   computed: {

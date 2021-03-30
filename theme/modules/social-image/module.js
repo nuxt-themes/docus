@@ -1,10 +1,12 @@
-import { join } from 'path'
+import { join, resolve } from 'path'
 import defu from 'defu'
 import { setupStaticGeneration } from './generate'
 
+const r = (...args) => resolve(__dirname, ...args)
+
 export default function socialImageModule (moduleOptions) {
   const { nuxt, addPlugin } = this
-  const { options: nuxtOptions } = nuxt
+  const { options: nuxtOptions, hook } = nuxt
 
   const defaults = {
     baseUrl: undefined,
@@ -25,8 +27,19 @@ export default function socialImageModule (moduleOptions) {
   const options = defu(moduleOptions, nuxt.options.socialImage, defaults)
   options._outDir = join(nuxtOptions.generate.dir, options.outDir)
 
-  nuxt.hook('listen', (_, listener) => {
+  hook('listen', (_, listener) => {
     options.internalUrl = `http://localhost:${listener.port}`
+  })
+
+  hook('build:extendRoutes', (routes) => {
+    const hasRoute = name => routes.some(route => route.name === name)
+    if (!hasRoute('social-image-preview')) {
+      routes.unshift({
+        path: '/social-image-preview',
+        name: 'social-image-preview',
+        component: r('pages/social-image-preview.vue')
+      })
+    }
   })
 
   setupStaticGeneration(nuxt, options)
