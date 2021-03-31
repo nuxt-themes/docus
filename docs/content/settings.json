@@ -9,9 +9,6 @@
     "dir": "docs",
     "releases": true
   },
-  "colors": {
-    "primary": "#3073F1"
-  },
   "_algolia": {
     "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
     "indexName": "docus"

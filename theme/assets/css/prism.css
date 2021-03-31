@@ -1,105 +1,62 @@
+@import 'prism-theme-vars/base.css';
 
-.token.tag,
-.token.class-name,
-.token.selector,
-.token.selector .class,
-.token.function {
-  color: #9807af
+html:not(.dark) {
+  --prism-class: #9807af;
+  --prism-builtin: #9807af;
+  --prism-function: #9807af;
+
+  --prism-keyword: #096d7c;
+
+  --prism-string: #679c0d;
+  --prism-number: #679c0d;
+  --prism-selector: #679c0d;
+
+  --prism-property: #078ce5;
+
+  --prism-punctuation: #078ce5;
+
+  --prism-foreground: inherit;
+  --prism-background: #1e1e1e;
+  --prism-comment: #758575;
+  --prism-literal: #429988;
+  --prism-boolean: #1c6b48;
+  --prism-variable: #c2b36e;
+  --prism-deleted: #a14f55;
+  --prism-namespace: #db889a;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #444444;
 }
+html.dark {
+  --prism-scheme: dark;
+  --prism-class: #E879F9;
+  --prism-builtin: #E879F9;
+  --prism-function: #E879F9;
 
-.token.attr-name,
-.token.keyword,
-.token.rule,
-.token.operator,
-.token.pseudo-class,
-.token.key,
-.token.important {
-  color: #096d7c;
+  --prism-keyword: #22D3EE;
+
+  --prism-string: #BEF264;
+  --prism-number: #BEF264;
+  --prism-selector: #BEF264;
+
+  --prism-property: #E0F2FE;
+  --prism-punctuation: #E0F2FE;
+
+  --prism-foreground: inherit;
+  --prism-background: #fbfbfb;
+  --prism-comment: #a0ada0;
+  --prism-literal: #2f8a89;
+  --prism-number: #2rgb(56, 155, 241)
+  --prism-boolean: #1c6b48;
+  --prism-constant: #a65e2b;
+  --prism-deleted: #a14f55;
+  --prism-namespace: #b05a78;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #ab5e3f;
+  --prism-json-property: #698c96;
+
 }
-
-.token.attr-value,
-.token.class,
-.token.string,
-.token.number,
-.token.unit,
-.token.color {
-  color: #679c0d
-}
-
-.token.punctuation,
-.token.module,
-.token.property {
-  color: #078ce5;
-}
-
-.dark .token.tag,
-.dark .token.class-name,
-.dark .token.selector,
-.dark .token.selector .class,
-.dark .token.function {
-  color: #E879F9;
-}
-
-.dark .token.attr-name,
-.dark .token.keyword,
-.dark .token.rule,
-.dark .token.operator,
-.dark .token.pseudo-class,
-.dark .token.key,
-.dark .token.important {
-  color: #22D3EE;
-}
-
-.dark .token.attr-value,
-.dark .token.class,
-.dark .token.string,
-.dark .token.number,
-.dark .token.unit,
-.dark .token.color {
-  color: #BEF264;
-}
-
-.dark .token.punctuation,
-.dark .token.module,
-.dark .token.property {
-  color: #E0F2FE;
-}
-
-.token.atapply .token:not(.rule):not(.important) {
-  color: inherit;
-}
-
-.language-shell .token:not(.comment) {
-  color: inherit;
-}
-
-.language-css .token.function {
-  color: inherit;
-}
-
-.token.comment {
-  @apply text-gray-400;
-}
-
-
-.token.deleted:not(.prefix) {
-  @apply relative block px-4 -mx-4;
-}
-
-.token.deleted:not(.prefix)::after {
-  content: '';
-  @apply absolute inset-0 block bg-red-400 bg-opacity-25 pointer-events-none;
-}
-
-.token.deleted.prefix {
-  @apply text-gray-400 select-none;
-}
-
-.token.inserted:not(.prefix) {
-  @apply block px-4 -mx-4 bg-green-700 bg-opacity-50;
-}
-
-.token.inserted.prefix {
-  @apply text-green-200 text-opacity-75 select-none;
-}
-

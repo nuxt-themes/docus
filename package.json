@@ -32,6 +32,7 @@
     "nuxt-vite": "^0.0.36",
     "nuxt-windicss": "^0.4.6",
     "ohmyfetch": "^0.1.8",
+    "prism-theme-vars": "^0.2.2",
     "prism-themes": "^1.6.0",
     "static-tweets": "^0.3.0",
     "theme-colors": "^0.0.5",

@@ -1,0 +1,16 @@
+{
+  "colors": {
+    "light" : {
+      "primary": "#3073F1",
+      "prisma": {
+        "background": "#cf0"
+      }
+    },
+    "dark" : {
+      "primary": "#3073F1",
+      "prisma": {
+        "background": "#cf0"
+      }
+    }
+  }
+}

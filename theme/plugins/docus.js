@@ -2,7 +2,7 @@ import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { $fetch } from 'ohmyfetch'
 import { joinURL, withoutTrailingSlash } from 'ufo'
-import { useColors, useDefaults } from '../utils/settings'
+import { useColors, useCSSVariables, useDefaults, useDefaultsTheme } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
   const $docus = new Vue({
@@ -10,7 +10,8 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
       return nuxtState.docus || {
         categories: {},
         lastRelease: null,
-        settings: null
+        settings: null,
+        theme: null
       }
     },
     computed: {
@@ -21,16 +22,19 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
       },
       themeStyles () {
-        const colors = useColors(this.settings.colors)
-        const styles = colors.map(([color, map]) => {
-          return Object.entries(map).map(([variant, value]) => {
-            return `--${color}-${variant}: ${value};`
-          }).join('')
-        }).join('')
-        return `:root {${styles}}`
+        const lightColors = useColors(this.theme.colors.light)
+        const darkColors = useColors(this.theme.colors.dark)
+        return `html:not(.dark) {${useCSSVariables(lightColors)};}html.dark {${useCSSVariables(darkColors)};}`
       }
     },
     methods: {
+      async fetchJSON (name, fields) {
+        const { path, extension, ...data } = await $content(name).only(fields).fetch().catch((e) => {
+          // eslint-disable-next-line no-console
+          console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
+        })
+        return data
+      },
       async fetch () {
         await this.fetchSettings()
         await Promise.all([
@@ -39,11 +43,13 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         ])
       },
       async fetchSettings () {
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'layout', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits']).fetch().catch((e) => {
-          // eslint-disable-next-line no-console
-          console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
-        })
+        const settings = await this.fetchJSON('settings', ['title', 'url', 'logo', 'layout', 'header', 'twitter', 'github', 'algolia', 'credits'])
         this.settings = useDefaults(settings)
+
+        // load theme settings
+        const theme = await this.fetchJSON('theme', ['colors'])
+        this.theme = useDefaultsTheme(theme)
+
         // Update injected styles on HMR
         if (process.dev && process.client) {
           this.updateHead()
@@ -106,7 +112,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
-        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
+        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.primary })
       }
     }
   })
