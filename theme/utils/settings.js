@@ -3,7 +3,7 @@ import { getColors } from 'theme-colors'
 
 const DEFAULT_THEME_SETTINGS = {
   colors: {
-    light: {
+    default: {
       primary: '#3073F1',
       prism: {
         foreground: 'inherit',
