@@ -170,6 +170,20 @@ export default function docusModule () {
         component: r('pages/releases.vue')
       })
     }
+    if (!hasRoute('blog')) {
+      routes.push({
+        path: '/blog',
+        name: 'blog',
+        component: r('pages/blog/index.vue')
+      })
+    }
+    if (!hasRoute('blog-post')) {
+      routes.push({
+        path: '/blog/:post',
+        name: 'blog-post',
+        component: r('pages/blog/_post.vue')
+      })
+    }
     if (!hasRoute('all')) {
       routes.push({
         path: '/*',

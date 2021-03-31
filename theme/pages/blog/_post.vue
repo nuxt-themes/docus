@@ -1,5 +1,7 @@
 <template>
-  <div>awesome blog</div>
+  <div>
+    post
+  </div>
 </template>
 
 <script>
