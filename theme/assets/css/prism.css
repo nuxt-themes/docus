@@ -10,6 +10,8 @@ html:not(.dark) {
   --prism-string: #679c0d;
   --prism-number: #679c0d;
   --prism-selector: #679c0d;
+  --prism-boolean: #679c0d;
+
 
   --prism-property: #078ce5;
 
@@ -19,7 +21,6 @@ html:not(.dark) {
   --prism-background: #1e1e1e;
   --prism-comment: #758575;
   --prism-literal: #429988;
-  --prism-boolean: #1c6b48;
   --prism-variable: #c2b36e;
   --prism-deleted: #a14f55;
   --prism-namespace: #db889a;
@@ -42,6 +43,7 @@ html.dark {
   --prism-string: #BEF264;
   --prism-number: #BEF264;
   --prism-selector: #BEF264;
+  --prism-boolean: #BEF264;
 
   --prism-property: #E0F2FE;
   --prism-punctuation: #E0F2FE;
@@ -50,13 +52,10 @@ html.dark {
   --prism-background: #fbfbfb;
   --prism-comment: #a0ada0;
   --prism-literal: #2f8a89;
-  --prism-number: #2rgb(56, 155, 241)
-  --prism-boolean: #1c6b48;
   --prism-constant: #a65e2b;
   --prism-deleted: #a14f55;
   --prism-namespace: #b05a78;
   --prism-decorator: #bd8f8f;
   --prism-regex: #ab5e3f;
   --prism-json-property: #698c96;
-
 }
