@@ -1,40 +1,50 @@
 <template>
   <div>
-    <div class="max-w-2xl mx-auto">
-      <article v-for="post in posts" :key="post.slug" class="mb-8">
-        <div class="flex">
-          <div class="w-1/3 flex flex-col">
-            <div class="flex-1">
-              <div class="sticky top-header">{{ formatDateByLocale(post.date) }}</div>
+    <div class="max-w-2xl mx-auto py-24">
+      <div>
+        <h1 class="px-4 sm:px-0 font-bold text-4xl sm:w-2/3 ml-auto mb-12">Blog</h1>
+      </div>
+      <article v-for="post in posts" :key="post.slug" class="mb-16 flex flex-col items-end">
+
+        <div class="flex flex-col sm:flex-row mb-4 w-full">
+          <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
+            <div class="sm:flex-1">
+              <div class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 sm:mb-2 font-medium">{{ formatDateByLocale(post.date) }}</div>
             </div>
-            <div>
+            <div class="flex">
               <span
                 v-for="(author, index) in post.authors"
                 :key="index"
-                class="flex items-center mr-4"
+                class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
               >
                 <img
-                  class="inline-block h-6 w-6 rounded-full mr-2"
+                  class="inline-block h-6 w-6 rounded-full"
                   :src="author.avatarUrl"
                   alt
                 />
-                <span
-                  class="leading-none last:mr-0 light:text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary hover:text-nuxt-lightgreen transition-colors duration-300 ease-linear"
-                >
-                  {{ author.name }}
-                </span>
               </span>
             </div>
-            <!-- <div>{{ post.tags }}</div> -->
           </div>
-          <div class="w-2/3">
+
+          <NuxtLink class="sm:w-2/3" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800">
+              <img :src="post.imgUrl" alt="" />
+            </div>
+          </NuxtLink>
+        </div>
+
+        <div class="sm:w-2/3 px-4 sm:px-0">
+          <div>
             <NuxtLink :to="localePath({name: 'blog-post', params: {post: post.slug}})">
-              <div class="aspect-w-16 aspect-h-9">
-                <img :src="post.imgUrl" alt="" />
-              </div>
-              <h1>{{ post.title }}</h1>
+              <h1 class="text-2xl font-semibold mb-2">{{ post.title }}</h1>
+            </NuxtLink>
+
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{{ post.description }}</p>
+            <NuxtLink :to="localePath({name: 'blog-post', params: {post: post.slug}})" class="font-medium">
+              <span>Read More →</span>
             </NuxtLink>
           </div>
+
         </div>
       </article>
     </div>
@@ -46,7 +56,6 @@ export default {
   layout: 'blog',
   async asyncData ({ $content, $docus, app, params, error }) {
     const posts = await $content('blog').fetch()
-    console.log(posts)
     return {
       posts
     }

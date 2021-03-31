@@ -87,41 +87,41 @@ Let’s install necessary packages and discuss how we will build our app next.
 
 For styling we will use the most common CSS pre-processor Sass/SCSS and leverage Vue.js [Scoped CSS](https://vue-loader.vuejs.org/guide/scoped-css.html) feature, to keep our components styles encapsulated. To [use Sass/SCSS with Nuxt](/docs/2.x/features/configuration#pre-processors) run:
 
-<code-group>
-  <code-block label="Yarn" active>
+<d-code-group>
+  <d-code-block label="Yarn" active>
 
 ```bash
 yarn add sass sass-loader@10 -D
 ```
 
-  </code-block>
-  <code-block label="npm">
+  </d-code-block>
+  <d-code-block label="npm">
 
 ```bash
 npm install sass sass-loader@10 --save-dev
 ```
 
-  </code-block>
-</code-group>
+  </d-code-block>
+</d-code-group>
 
 We also will use [@nuxtjs/style-resources](https://github.com/nuxt-community/style-resources-module) module that will help us to use our design tokens defined in SCSS variables in any Vue file without the necessity of using `@import` statements in each file.
 
-<code-group>
-  <code-block label="Yarn" active>
+<d-code-group>
+  <d-code-block label="Yarn" active>
 
 ```bash
 yarn add @nuxtjs/style-resources
 ```
 
-  </code-block>
-  <code-block label="npm">
+  </d-code-block>
+  <d-code-block label="npm">
 
 ```bash
 npm install @nuxtjs/style-resources
 ```
 
-  </code-block>
-</code-group>
+  </d-code-block>
+</d-code-group>
 
 Now tell Nuxt to use it by adding this code to `nuxt.config.js`
 
@@ -153,22 +153,22 @@ I am not going to describe the styling aspect of this application in detail, but
 
 For SVG icons lets use [@nuxt/svg](https://github.com/nuxt-community/svg-module). This module allows us to import `.svg` files as inline SVG, while keeping SVG sources in single place and not polluting Vue template markup with loads of SVG code.
 
-<code-group>
-  <code-block label="Yarn" active>
+<d-code-group>
+  <d-code-block label="Yarn" active>
 
 ```bash
 yarn add @nuxtjs/svg -D
 ```
 
-  </code-block>
-  <code-block label="npm">
+  </d-code-block>
+  <d-code-block label="npm">
 
 ```bash
 npm install @nuxtjs/svg -D
 ```
 
-  </code-block>
-</code-group>
+  </d-code-block>
+</d-code-group>
 
 ```js{}[nuxt.config.js]
 buildModules: ['@nuxtjs/svg', '@nuxtjs/style-resources']
