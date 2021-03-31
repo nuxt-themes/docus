@@ -59,18 +59,34 @@ export default {
     }
   },
   head () {
-    return {
+    const head = {
       title: this.document.title,
-      meta: [
+      meta: [],
+      ...(this.document.head || {})
+    }
+    this.mergeMeta(head.meta, this.pageMeta)
+    return head
+  },
+  computed: {
+    pageMeta () {
+      return [
         // Open Graph
         { hid: 'og:title', property: 'og:title', content: this.document.title },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: this.document.title },
-        ...this.descriptionMeta()
+        ...(
+          this.document.description
+            ? [
+                { hid: 'description', name: 'description', content: this.document.description },
+                // Open Graph
+                { hid: 'og:description', property: 'og:description', content: this.document.description },
+                // Twitter Card
+                { hid: 'twitter:description', name: 'twitter:description', content: this.document.description }
+              ]
+            : []
+        )
       ]
-    }
-  },
-  computed: {
+    },
     settings () {
       return this.$docus.settings
     }
@@ -103,17 +119,14 @@ export default {
     }, 100)
   },
   methods: {
-    descriptionMeta () {
-      if (!this.document.description) {
-        return []
-      }
-      return [
-        { hid: 'description', name: 'description', content: this.document.description },
-        // Open Graph
-        { hid: 'og:description', property: 'og:description', content: this.document.description },
-        // Twitter Card
-        { hid: 'twitter:description', name: 'twitter:description', content: this.document.description }
-      ]
+    mergeMeta (to, from) {
+      from.forEach((newMeta) => {
+        const key = newMeta.hid || newMeta.name || newMeta.property
+        const index = to.findIndex(meta => meta.hid === key || meta.name === key || meta.property === key)
+        if (index < 0) {
+          to.push(newMeta)
+        }
+      })
     }
   }
 }
