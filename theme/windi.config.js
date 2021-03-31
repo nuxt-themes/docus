@@ -218,8 +218,8 @@ export default {
               content: ''
             },
             pre: {
-              backgroundColor: theme('colors.gray.100'),
-              color: theme('colors.gray.800'),
+              backgroundColor: false,
+              color: false,
               borderRadius: theme('borderRadius.md'),
               paddingTop: theme('padding.3'),
               paddingRight: theme('padding.4'),
@@ -350,10 +350,6 @@ export default {
             },
             'code::after': {
               content: ''
-            },
-            pre: {
-              backgroundColor: theme('colors.gray.800'),
-              color: theme('colors.white')
             },
             'pre code': {
               backgroundColor: 'transparent',
