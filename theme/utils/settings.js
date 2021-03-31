@@ -25,12 +25,13 @@ const DEFAULT_THEME_SETTINGS = {
 
         comment: '#758575',
         literal: '#429988',
-        variable: '#c2b36e',
+        variable: 'inherit',
+        constant: '#9807af',
         deleted: '#a14f55',
-        namespace: '#db889a',
-        decorator: '#bd8f8f',
-        regex: '#ab5e3f',
-        'json-property': '#6b8b9e',
+        namespace: '#9807af',
+        decorator: '#9807af',
+        regex: '#679c0d',
+        'json-property': '#078ce5',
         'line-number': '#888888',
         'line-number-gutter': '#eeeeee',
         'line-highlight-background': '#444444',
@@ -59,11 +60,16 @@ const DEFAULT_THEME_SETTINGS = {
 
         comment: '#a0ada0',
         literal: '#2f8a89',
-        constant: '#a65e2b',
+        constant: '#E879F9',
         deleted: '#a14f55',
-        namespace: '#b05a78',
-        decorator: '#bd8f8f',
-        regex: '#ab5e3f'
+        namespace: '#E879F9',
+        decorator: '#E879F9',
+        regex: '#BEF264',
+        'json-property': '#22D3EE',
+        'line-number': '#888888',
+        'line-number-gutter': '#eeeeee',
+        'line-highlight-background': '#444444',
+        'selection-background': '#444444'
       }
     }
   }
