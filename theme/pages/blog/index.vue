@@ -30,7 +30,7 @@
 
           </div>
 
-          <NuxtLink class="sm:w-2/3" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
+          <NuxtLink class="sm:w-2/3 hover:opacity-75 transition-opacity duration-100" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
             <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800">
               <img :src="post.imgUrl" alt="" />
             </div>
@@ -40,7 +40,7 @@
         <div class="flex flex-col sm:flex-row w-full">
           <div class="hidden sm:flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
             <!-- only show sticky author on desktop layout -->
-            <div class="sticky top-header flex py-2 -my-1.5">
+            <div class="sticky top-header flex items-center py-2 -my-1.5">
               <span
                 v-for="(author, index) in post.authors"
                 :key="index"
@@ -54,12 +54,12 @@
               </span>
             </div></div>
           <div class="sm:w-2/3 px-4 sm:px-0">
-            <NuxtLink :to="localePath({name: 'blog-post', params: {post: post.slug}})">
+            <NuxtLink class="hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
               <h1 class="text-2xl font-semibold mb-2">{{ post.title }}</h1>
             </NuxtLink>
 
             <p class="text-gray-600 dark:text-gray-400 mb-4">{{ post.description }}</p>
-            <NuxtLink :to="localePath({name: 'blog-post', params: {post: post.slug}})" class="font-medium">
+            <NuxtLink class="font-medium hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
               <span>Read More →</span>
             </NuxtLink>
           </div>
