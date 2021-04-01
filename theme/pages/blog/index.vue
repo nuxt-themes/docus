@@ -13,6 +13,21 @@
               <div class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2">{{ formatDateByLocale(post.date) }}</div>
             </div>
 
+            <!-- only show author on mobile layout -->
+            <div class="flex sm:hidden">
+              <span
+                v-for="(author, index) in post.authors"
+                :key="index"
+                class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
+              >
+                <img
+                  class="inline-block h-6 w-6 rounded-full"
+                  :src="author.avatarUrl"
+                  alt
+                />
+              </span>
+            </div>
+
           </div>
 
           <NuxtLink class="sm:w-2/3" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
@@ -23,8 +38,9 @@
         </div>
 
         <div class="flex flex-col sm:flex-row w-full">
-          <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
-            <div class="sticky top-header flex py-2 -my-2">
+          <div class="hidden sm:flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
+            <!-- only show sticky author on desktop layout -->
+            <div class="sticky top-header flex py-2 -my-1.5">
               <span
                 v-for="(author, index) in post.authors"
                 :key="index"
