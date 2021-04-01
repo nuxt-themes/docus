@@ -11,8 +11,8 @@
         </p>
 
         <div class="flex sm:flex-row items-center">
-          <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500">{{ formatDateByLocale(post.date) }}</div>
-          <div class="text-sm text-gray-400 dark:text-gray-500">|</div>
+          <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-600">{{ formatDateByLocale(post.date) }}</div>
+          <div class="text-sm text-gray-400 dark:text-gray-700">|</div>
           <div class="flex ml-4">
             <span
               v-for="(author, index) in post.authors"

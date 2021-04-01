@@ -4,26 +4,15 @@
       <div>
         <h1 class="px-4 sm:px-0 font-bold text-4xl sm:w-2/3 ml-auto mb-12">Blog</h1>
       </div>
+
       <article v-for="post in posts" :key="post.slug" class="mb-16 flex flex-col items-end">
 
         <div class="flex flex-col sm:flex-row mb-4 w-full">
           <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
             <div class="sm:flex-1">
-              <div class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 sm:mb-2 font-medium">{{ formatDateByLocale(post.date) }}</div>
+              <div class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2">{{ formatDateByLocale(post.date) }}</div>
             </div>
-            <div class="flex">
-              <span
-                v-for="(author, index) in post.authors"
-                :key="index"
-                class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
-              >
-                <img
-                  class="inline-block h-6 w-6 rounded-full"
-                  :src="author.avatarUrl"
-                  alt
-                />
-              </span>
-            </div>
+
           </div>
 
           <NuxtLink class="sm:w-2/3" :to="localePath({name: 'blog-post', params: {post: post.slug}})">
@@ -33,8 +22,22 @@
           </NuxtLink>
         </div>
 
-        <div class="sm:w-2/3 px-4 sm:px-0">
-          <div>
+        <div class="flex flex-col sm:flex-row w-full">
+          <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
+            <div class="sticky top-header flex py-2 -my-2">
+              <span
+                v-for="(author, index) in post.authors"
+                :key="index"
+                class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-600"
+              >
+                <img
+                  class="inline-block h-6 w-6 rounded-full"
+                  :src="author.avatarUrl"
+                  alt
+                />
+              </span>
+            </div></div>
+          <div class="sm:w-2/3 px-4 sm:px-0">
             <NuxtLink :to="localePath({name: 'blog-post', params: {post: post.slug}})">
               <h1 class="text-2xl font-semibold mb-2">{{ post.title }}</h1>
             </NuxtLink>
@@ -44,7 +47,6 @@
               <span>Read More →</span>
             </NuxtLink>
           </div>
-
         </div>
       </article>
     </div>
