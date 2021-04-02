@@ -22,9 +22,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
       },
       themeStyles () {
-        const colors = useColors(this.theme.colors.default)
-        const darkColors = useColors(this.theme.colors.dark)
-        return `:root {${useCSSVariables(colors)}} html.dark {${useCSSVariables(darkColors)}}`
+        return useCSSVariables(this.theme.colors, { code: 'prism' })
       }
     },
     methods: {
@@ -112,7 +110,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
-        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.default.primary })
+        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.primary })
       }
     }
   })
