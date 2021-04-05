@@ -166,24 +166,15 @@ export default {
   @apply absolute top-0 right-0 left-0 bottom-0;
 }
 .tweet .Icon--playCircle {
-  background: rgb(29, 161, 242);
-  width: 80px;
-  height: 80px;
-  position: absolute;
+  width: 150px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  border: 6px solid white;
-  @apply cursor-pointer rounded-full;
+  @apply absolute cursor-pointer rounded-full bg-gray-600 text-white bg-opacity-80 p-4;
 
   &:after {
-    content: ' ';
-    border-top: 16px solid transparent;
-    border-bottom: 16px solid transparent;
-    border-left: 32px solid white;
-    left: calc(50% - 10px);
-    top: calc(50% - 16px);
-    @apply w-0 h-0 absolute block;
+    content: 'Load Video';
+    @apply flex items-center justify-center;
   }
 }
 </style>

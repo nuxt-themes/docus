@@ -118,7 +118,7 @@ function mapAST (ast) {
       const { props } = node
       return {
         type: 'html',
-        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${props.alt}" class="media-image" width="${props.width}" height="${props.height}" />`
+        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${props.alt}" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
       }
     }
     if (node.tag === 'div') {
