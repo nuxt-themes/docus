@@ -1,8 +1,8 @@
 const hasha = require('hasha')
-const propsHandler = require('./tag-handlers/props')
+const tweetHandler = require('./tweet-tag')
 
 const handlers = [
-  ['props', propsHandler]
+  ['tweet', tweetHandler]
 ]
 
 async function enrichTag (node, tag, handler, documentData) {

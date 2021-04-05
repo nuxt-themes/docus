@@ -22,9 +22,7 @@
         <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
       </a>
     </div>
-    <div class="content">
-      <slot />
-    </div>
+    <slot />
     <div v-if="layout === 'tweet'" class="flex mt-2">
       <a :href="likeUrl" target="_blank" rel="noopener noreferrer nofollow" class="flex items-center hover:text-red-600">
         <IconHeart class="mr-2" />
@@ -85,15 +83,38 @@ export default {
     likeUrl () {
       return `https://twitter.com/intent/like?tweet_id=${this.id}`
     }
+  },
+  mounted () {
+    const playButton = this.$el.querySelector('.Icon--playCircle')
+    if (playButton) {
+      playButton.addEventListener('click', this.playVideo)
+    }
+  },
+  methods: {
+    playVideo ({ target }) {
+      const wrapper = target.parentNode.parentNode
+      const size = wrapper.getBoundingClientRect()
+      const iframe = document.createElement('iframe')
+      iframe.setAttribute('src', `https://twitter.com/i/videos/${this.id}?embed_source=facebook`)
+      iframe.setAttribute('width', size.width)
+      iframe.setAttribute('referrerpolicy', 'no-referrer')
+      iframe.setAttribute('allow', 'autoplay')
+      iframe.setAttribute('height', size.height)
+      wrapper.innerHTML = ''
+      wrapper.appendChild(iframe)
+    }
   }
 }
 </script>
 
-<style>
+<style lang="postcss">
 .tweet {
   @apply my-5 p-6 pb-3 border border-gray-300 rounded-md mx-auto;
   @apply dark:border-gray-700;
   width: calc(min(100%, 550px))!important;
+}
+.tweet .link {
+  @apply block;
 }
 .tweet.tweet-quote {
   @apply p-3;
@@ -104,39 +125,65 @@ export default {
 .tweet .content p > a {
   @apply text-blue-600;
 }
-
-.tweet .image-container-1 {
-  @apply mt-2 flex flex-wrap rounded-md overflow-hidden;
+.tweet .media-image {
+  @apply m-0;
 }
-.tweet .image-container-1 .media-image {
+.tweet .NaturalImage {
+  @apply mt-2 flex flex-wrap rounded-md overflow-hidden relative;
+}
+.tweet .NaturalImage .media-image {
   @apply w-full object-cover;
 }
 
-.tweet .image-container-2 {
+.tweet .ImageGrid--2 {
   @apply mt-2 grid grid-cols-2 gap-1 rounded-md overflow-hidden;
 }
-.tweet .image-container-2 .media-image {
+.tweet .ImageGrid--2 .media-image {
   height: 300px;
   @apply object-cover;
 }
 
-.tweet .image-container-3 {
+.tweet .ImageGrid--3 {
   @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
 }
-.tweet .image-container-3 .media-image {
+.tweet .ImageGrid--3 .media-image {
   height: 150px;
   @apply object-cover;
 }
-.tweet .image-container-3 .media-image:nth-child(3n+2) {
+.tweet .ImageGrid--3 .media-image:nth-child(3n+2) {
   height: 100%;
   @apply row-span-2;
 }
 
-.tweet .image-container-4 {
+.tweet .ImageGrid--4 {
   @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
 }
-.tweet .image-container-4 .media-image {
+.tweet .ImageGrid--4 .media-image {
   height: 150px;
   @apply object-cover;
+}
+.tweet .PlayButton--centered {
+  @apply absolute top-0 right-0 left-0 bottom-0;
+}
+.tweet .Icon--playCircle {
+  background: rgb(29, 161, 242);
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 6px solid white;
+  @apply cursor-pointer rounded-full;
+
+  &:after {
+    content: ' ';
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-left: 32px solid white;
+    left: calc(50% - 10px);
+    top: calc(50% - 16px);
+    @apply w-0 h-0 absolute block;
+  }
 }
 </style>
