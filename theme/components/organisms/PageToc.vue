@@ -18,8 +18,8 @@
           :key="link.id"
           class=""
           :class="{
-            'text-primary hover:text-primary': exactActiveLink === link.id || activeLink === link.id,
-            'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
+            'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': activeTitles.includes(link.id),
+            'text-gray-700 dark:text-gray-200': !(activeTitles.includes(link.id))
           }"
           @click="showMobileToc = false"
         >
@@ -29,10 +29,10 @@
             :class="{
               'hover:text-primary': link.depth === 2,
               'border-l border-gray-100 dark:border-gray-800 pl-3  hover:text-primary-400 dark:hover:text-primary-400': link.depth === 3,
-              'text-gray-500 dark:text-gray-400': link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
-              'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
+              'text-gray-500 dark:text-gray-400': link.depth === 3 && !(activeTitles.includes(link.id)),
+              'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (activeTitles.includes(link.id))
             }"
-            @click.prevent="scrollToHeading"
+            @click.prevent="scrollToHeading(link.id)"
           >{{ link.text }}</a>
         </li>
       </ul>
@@ -59,83 +59,39 @@ export default {
     return {
       activeLink: '',
       exactActiveLink: '',
-      sections: [],
+      activeTitles: [],
       showMobileToc: false
     }
   },
-  computed: {
-    settings () {
-      return this.$docus.settings
-    }
-  },
-  beforeMount () {
-    history.scrollRestoration = 'manual'
-  },
   mounted () {
-    document
-      .querySelectorAll('.nuxt-content h2[id], .nuxt-content h3[id]')
-      .forEach((section) => {
-        this.sections.push({
-          level: section.tagName.replace(/h/i, ''),
-          id: section.getAttribute('id'),
-          top: section.offsetTop
-        })
-      })
     const hash = window.location.hash.replace('#', '')
-    const hashIndex = this.sections.findIndex(section => section.id === hash)
-    if (hash && hashIndex >= 0) {
-      const offset = document.querySelector(location.hash).offsetTop - 110 // 110 is the default value for `top-margin-scroll` in windi prose
-      this.$nextTick().then(() => {
-        scrollTo(0, offset)
-        this.setActive(hashIndex)
-      })
-    } else {
-      this.onScroll()
+    if (hash) {
+      this.scrollToHeading(hash)
     }
-    window.addEventListener('scroll', this.onScroll)
-  },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll, true)
+    const observerCallback = (entries) => {
+      entries.map((entry) => {
+        const hash = entry.target.id
+        if (entry.isIntersecting) {
+          this.activeTitles.push(hash)
+        } else {
+          this.activeTitles = this.activeTitles.filter(t => t !== hash)
+        }
+        return null
+      })
+    }
+    const observer = new IntersectionObserver(observerCallback)
+
+    const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
+    setTimeout(() => {
+      headings.map((heading) => {
+        observer.observe(heading)
+        return null
+      })
+    })
   },
   methods: {
-    onScroll () {
-      const yOffset = window.pageYOffset
-      const windowHeight = window.innerHeight
-      if (yOffset === 0) {
-        this.setActive(0)
-      } else if (yOffset + windowHeight >= document.body.scrollHeight) {
-        return this.setActive(this.sections.length - 1)
-      } else {
-        const targetPoint = yOffset + windowHeight / 2
-        let index = 0
-        for (let i = 0; i < this.sections.length; i++) {
-          if (this.sections[i].top <= targetPoint) {
-            index = i
-          }
-        }
-        this.setActive(index)
-      }
-    },
-    setActive (index) {
-      if (!this.sections[index]) {
-        return
-      }
-      this.exactActiveLink = this.sections[index].id
-      this.activeLink = this.sections[index].id
-      if (this.sections[index].level === '3') {
-        let parentIndex = -1
-        for (let i = 0; i < index; i++) {
-          if (this.sections[i].level === '2') {
-            parentIndex = i
-          }
-        }
-        if (parentIndex >= 0) {
-          this.activeLink = this.sections[parentIndex].id
-        }
-      }
-    },
-    scrollToHeading (e) {
-      const hash = e.target.href.split('#').pop()
+    scrollToHeading (id) {
+      const hash = id
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
       setTimeout(() => {
