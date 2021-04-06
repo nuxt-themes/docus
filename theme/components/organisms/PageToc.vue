@@ -87,15 +87,16 @@ export default {
         return null
       })
     }
-    const observer = new IntersectionObserver(observerCallback)
+    this.observer = new IntersectionObserver(observerCallback)
 
     const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
-    setTimeout(() => {
-      headings.map((heading) => {
-        observer.observe(heading)
-        return null
-      })
+    headings.map((heading) => {
+      this.observer.observe(heading)
+      return null
     })
+  },
+  beforeDestroy () {
+    this.observer.disconnect()
   },
   methods: {
     scrollToHeading (id) {
