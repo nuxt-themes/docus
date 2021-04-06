@@ -77,22 +77,20 @@ export default {
       this.scrollToHeading(hash)
     }
     const observerCallback = (entries) => {
-      entries.map((entry) => {
+      entries.forEach((entry) => {
         const hash = entry.target.id
         if (entry.isIntersecting) {
           this.visibleTitles.push(hash)
         } else {
           this.visibleTitles = this.visibleTitles.filter(t => t !== hash)
         }
-        return null
       })
     }
     this.observer = new IntersectionObserver(observerCallback)
 
     const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
-    headings.map((heading) => {
+    headings.forEach((heading) => {
       this.observer.observe(heading)
-      return null
     })
   },
   beforeDestroy () {
