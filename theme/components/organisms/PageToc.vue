@@ -57,10 +57,18 @@ export default {
   },
   data () {
     return {
-      activeLink: '',
-      exactActiveLink: '',
+      visibleTitles: [],
       activeTitles: [],
       showMobileToc: false
+    }
+  },
+  watch: {
+    visibleTitles (val, oldVal) {
+      if (val.length === 0) {
+        this.activeTitles = oldVal
+      } else {
+        this.activeTitles = val
+      }
     }
   },
   mounted () {
@@ -72,9 +80,9 @@ export default {
       entries.map((entry) => {
         const hash = entry.target.id
         if (entry.isIntersecting) {
-          this.activeTitles.push(hash)
+          this.visibleTitles.push(hash)
         } else {
-          this.activeTitles = this.activeTitles.filter(t => t !== hash)
+          this.visibleTitles = this.visibleTitles.filter(t => t !== hash)
         }
         return null
       })
