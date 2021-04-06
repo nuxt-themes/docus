@@ -5,6 +5,7 @@ import themeConfig from './theme.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
+import useMarkdownParser from './utils/markdown'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
@@ -26,6 +27,11 @@ export default function docusModule () {
   // Inject content dir in private runtime config
   const contentDir = options.content.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
+
+  const markdownParser = useMarkdownParser(options.content.markdown)
+  options.content.extendParser = {
+    '.md': markdownParser
+  }
 
   // read docus settings
   const settingsPath = resolve(options.srcDir, contentDir, 'settings.json')
