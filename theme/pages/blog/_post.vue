@@ -29,9 +29,11 @@
         </div>
       </div>
 
-      <div class="sm:-mx-12 md:-mx-18 lg:-mx-24 aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
+      <div class="md:-mx-18 lg:-mx-24 aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
         <img :src="post.imgUrl" alt="" class="object-cover" />
       </div>
+
+      <BlogpostToc :toc="post.toc" class="mb-8" />
 
       <NuxtContent :document="post" class="px-4" />
     </div>
@@ -56,3 +58,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.nuxt-content h2, .nuxt-content h3 {
+  scroll-margin-block: var(--blogpost-scroll-margin-block);
+}
+</style>
