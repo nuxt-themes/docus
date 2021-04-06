@@ -2,25 +2,14 @@
   <div id="docsearch">
     <!-- DO NOT CHANGE: this code is just a placeholder -->
     <button type="button" class="DocSearch-Button" aria-label="Search">
-      <svg
-        width="20"
-        height="20"
-        class="DocSearch-Search-Icon"
-        viewBox="0 0 20 20"
-      >
-        <path
-          d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-          stroke="currentColor"
-          fill="none"
-          fill-rule="evenodd"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-
-      <span class="DocSearch-Button-Placeholder">Search</span>
-      <span class="DocSearch-Button-Key">⌘</span>
-      <span class="DocSearch-Button-Key">K</span>
+      <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path
+        d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+        stroke="currentColor"
+        fill="none"
+        fill-rule="evenodd"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path></svg>
     </button>
   </div>
 </template>
@@ -175,8 +164,7 @@ export default {
 }
 
 .DocSearch-Container {
-  @apply p-4;
-  backdrop-filter: blur(8px);
+  @apply p-4 blur-8;
 }
 
 .DocSearch-Modal {
@@ -188,20 +176,20 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full h-12 relative ml-0 rounded-lg flex items-center justify-center lg:justify-start bg-transparent lg:bg-gray-100 lg:dark:bg-gray-800 border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 lg:hover:bg-gray-50 dark:hover:text-gray-300 transition-colors ring-0 px-3 !important;
+  @apply w-full h-12 relative ml-0 rounded-lg flex items-center justify-center bg-transparent border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 transition-colors ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply hidden lg:inline-block px-3 font-medium !important;
+  @apply hidden px-3 font-medium !important;
 }
 
 .DocSearch-Search-Icon {
-  @apply text-current w-4 h-4 lg:w-5 lg:h-5 text-gray-400 !important;
-  stroke-width: 1.6;
+  @apply text-current w-5 h-5 d-icon !important;
+  stroke-width: 2;
 }
 
 .DocSearch-Button-Key {
-  @apply hidden lg:flex bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5 !important;
+  @apply hidden bg-none font-medium top-0 relative rounded h-5 w-5 items-center justify-center border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 shadow-none p-1 text-xs mr-0.5 !important;
 }
 
 .DocSearch-Screen-Icon > svg {

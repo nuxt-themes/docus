@@ -9,11 +9,11 @@ export function generatePosition (path, doc) {
   return paddRight(position, 12)
 }
 
-export function generateSlug (path) {
-  return path
-    .split('/')
-    .map(part => part.replace(/(\d+\.)?(.*)/, '$2').replace(/^index/, '').replace(/\.draft/, ''))
-    .join('/')
+export function generateSlug (name) {
+  return name.replace(/(\d+\.)?(.*)/, '$2').replace(/^index/, '').replace(/\.draft/, '')
+}
+export function generateTo (path) {
+  return path.split('/').map(generateSlug).join('/')
 }
 
 export function isDraft (path) {

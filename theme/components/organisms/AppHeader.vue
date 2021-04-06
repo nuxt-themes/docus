@@ -1,20 +1,9 @@
 <template>
-  <div
-    class="sticky top-0 z-40 w-full overflow-hidden bg-white border-b border-gray-100 lg:z-50 app-header dark:border-gray-800 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
-    @click="scrollToTop"
-  >
-    <div class="flex flex-none d-container-content">
-      <!-- Left section -->
-      <!-- Mobile menu button -->
-      <button
-        v-if="aside"
-        class="flex items-center justify-center text-gray-500 transition-colors duration-200 lg:hidden focus:outline-none dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400 "
-        @click.stop="menu = !menu"
-      >
-        <IconMenuAlt class="w-6 h-6 " />
-      </button>
-      <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
-        <div class="flex items-center flex-none text-2xl font-semibold text-gray-900 lg:w-60 xl:w-72 dark:text-gray-100">
+  <div class="d-header" @click="scrollToTop">
+    <div class="flex flex-1 h-18 d-container-content items-center">
+      <NavigationButton />
+      <div class="flex flex-1 justify-center items-center lg:flex-none">
+        <div class="flex flex-none font-semibold text-2xl text-gray-900 items-center dark:text-gray-100">
           <NuxtLink
             :to="localePath('/')"
             class="w-auto overflow-hidden"
@@ -24,14 +13,16 @@
           </NuxtLink>
         </div>
       </div>
-
+      <div class="hidden lg:flex lg:flex-1">
+        <HeaderNavigation />
+      </div>
       <!-- Middle section -->
-      <div class="flex items-center justify-end lg:flex-auto h-18" @click.stop>
+      <div class="flex items-center justify-end lg:flex-none" @click.stop>
         <AlgoliaSearchBox
           v-if="settings.algolia"
           :options="settings.algolia"
           :settings="settings"
-          class="w-14 lg:flex-1 lg:px-2"
+          class="w-14 lg:flex-1 lg:px-1.5"
         />
         <div v-else class="flex lg:hidden">
           <DColorSwitcher />
@@ -39,10 +30,9 @@
 
         <!-- Desktop: Right section -->
         <div
-          class="items-center justify-end hidden space-x-2 lg:flex md:space-x-4 xl:w-64"
+          class="space-x-2 items-center justify-end hidden md:space-x-4 lg:flex"
           @click.stop
         >
-          <HeaderRightCTA />
           <DLangSwitcher />
           <DColorSwitcher />
           <SocialIcons />
@@ -66,14 +56,6 @@ export default {
     },
     lastRelease () {
       return this.$docus.lastRelease
-    },
-    menu: {
-      get () {
-        return this.$menu.open
-      },
-      set (val) {
-        this.$menu.open = val
-      }
     }
   },
   methods: {
@@ -86,16 +68,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss">
-.app-header {
-  backdrop-filter: blur(12px);
-  /* background-color: hsla(0, 0%, 100%, 0.9); */
-}
-
-.dark {
-  & .app-header {
-    /* background-color: rgba(17, 24, 39, 0.75); */
-  }
-}
-</style>

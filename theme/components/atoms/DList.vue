@@ -52,7 +52,7 @@ export default {
 <style>
 /* Primary */
 .list-primary {
-  @apply text-primary-500 dark:text-primary-400;
+  @apply text-primary;
 }
 /* Info */
 .list-info {

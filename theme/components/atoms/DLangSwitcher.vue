@@ -1,9 +1,11 @@
 <template>
-  <DDropdown v-if="availableLocales.length" class="inline-flex">
+  <DDropdown v-if="$i18n.locales.length > 1" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
-        class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200 focus:outline-none"
-        :class="{ 'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': open }"
+        class="text-icon"
+        :class="{
+          'text-gray-700 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-400': open
+        }"
         @touchstart.stop.prevent="toggle"
       >
         <IconTranslate class="w-6 h-6" />
@@ -11,23 +13,13 @@
     </template>
 
     <ul class="py-1">
-      <li v-for="locale in availableLocales" :key="locale.code">
+      <li v-for="locale in $i18n.locales" :key="locale.code">
         <NuxtLink
-          v-if="$i18n.locale !== locale.code"
           :to="switchLocalePath(locale.code)"
-          class="px-4 py-1 flex items-center hover:text-primary-500 dark:hover:text-primary-400 whitespace-no-wrap"
+          class="px-4 py-1 flex items-center whitespace-no-wrap"
+          :class="[$i18n.locale === locale.code ? 'font-semibold cursor-default text-gray-800 dark:text-gray-200': 'hover:text-primary']"
         >{{ locale.name }}</NuxtLink>
       </li>
     </ul>
   </DDropdown>
 </template>
-
-<script>
-export default {
-  computed: {
-    availableLocales () {
-      return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
-    }
-  }
-}
-</script>

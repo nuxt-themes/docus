@@ -17,7 +17,7 @@
             </DButtonLink>
           </DComponent>
           <DComponent v-if="secondary" :component="secondary">
-            <a :href="secondary[1]" class="pt-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">
+            <a :href="secondary[1]" class="py-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">
               {{ secondary[0] }}
             </a>
           </DComponent>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 left-0 w-auto h-full overflow-auto pointer-events-auto lg:h-screen min-h-fill-available lg:sticky lg:top-18 lg:w-60"
+    class="fixed top-0 left-0 w-auto min-w-60 h-full overflow-auto pointer-events-auto lg:h-screen min-h-fill-available lg:sticky lg:top-18 lg:w-60"
   >
     <div
       class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
@@ -15,6 +15,7 @@
         <div
           class="flex items-center justify-end w-full px-2 space-x-3 h-18 lg:hidden"
         >
+          <DLangSwitcher />
           <DColorSwitcher />
           <SocialIcons />
         </div>
@@ -22,7 +23,7 @@
 
       <!-- aside navigation -->
       <nav
-        class="flex flex-col justify-between lg:justify-start max-w-sm overflow-y-auto text-base font-medium h-(full-18) lg:text-sm "
+        class="flex flex-col justify-between lg:justify-start max-w-sm overflow-y-auto text-base font-medium h-(full-18) lg:text-sm"
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10 ">
           <AsideTop />

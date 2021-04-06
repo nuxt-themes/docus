@@ -39,13 +39,10 @@
 
 <script>
 export default {
-  props: {
-    settings: {
-      type: Object,
-      required: true
-    }
-  },
   computed: {
+    settings() {
+      return this.$docus.settings
+    },
     logo () {
       if (!this.settings.logo) {
         return

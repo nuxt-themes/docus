@@ -7,7 +7,7 @@
       rel="noopener noreferrer"
       title="Twitter"
       name="Twitter"
-      class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
+      class="d-icon"
     >
       <IconTwitter :class="size" />
     </a>
@@ -18,7 +18,7 @@
       rel="noopener noreferrer"
       title="GitHub"
       name="GitHub"
-      class="text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
+      class="d-icon"
     >
       <IconGitHub :class="size" />
     </a>

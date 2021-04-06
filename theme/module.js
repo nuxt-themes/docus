@@ -2,7 +2,7 @@ import { resolve, join, relative } from 'path'
 import gracefulFs from 'graceful-fs'
 
 import themeConfig from './theme.config'
-import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
 
@@ -141,7 +141,7 @@ export default function docusModule () {
 
     document.slug = generateSlug(slug)
     document.position = position
-    document.to = generateSlug(_to)
+    document.to = generateTo(_to)
     document.language = _language
     document.category = _category
     document.draft = document.draft || isDraft(slug)

@@ -34,9 +34,9 @@ export default {
     r('assets/css/main.css')
   ],
   plugins: [
+    r('plugins/i18n'),
     r('plugins/docus'),
-    r('plugins/menu'),
-    r('plugins/i18n')
+    r('plugins/menu')
   ],
   buildModules: [
     themeModule,

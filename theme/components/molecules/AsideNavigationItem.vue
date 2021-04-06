@@ -12,8 +12,8 @@
       <li v-for="doc of docs" :key="doc.slug">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between pl-3 py-1.5 transition duration-200 border-l border-gray-100 dark:border-gray-800 hover:text-primary-500 dark:hover:text-primary-400"
-          :class="{ 'text-primary-500 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-400 border-primary-500 dark:border-primary-500': isLinkActive(doc) }"
+          class="relative inline-flex items-center justify-between pl-3 py-1.5 transition duration-200 border-l border-gray-100 dark:border-gray-800 hover:text-primary"
+          :class="{ 'text-primary dark:text-primary-400 hover:text-primary border-primary-500 dark:border-primary-500': $docus.isLinkActive(doc.to) }"
         >
           <DComponent v-if="doc.icon" :component="doc.icon" class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem">{{ doc.icon }}</DComponent>
           <span>
@@ -37,8 +37,6 @@
 </template>
 
 <script>
-import { withTrailingSlash } from 'ufo'
-
 export default {
   props: {
     category: {
@@ -57,16 +55,13 @@ export default {
   },
   computed: {
     isCategoryActive () {
-      return this.docs.some(document => this.isLinkActive(document))
+      return this.docs.some(document => this.$docus.isLinkActive(document.to))
     }
   },
   methods: {
     collapseCategory () {
       if (this.isCategoryActive) { return }
       this.collapse = !this.collapse
-    },
-    isLinkActive (doc) {
-      return withTrailingSlash(this.$route.path) === withTrailingSlash(this.$contentLocalePath(doc.to))
     },
     isDocumentNew (document) {
       if (process.server) {

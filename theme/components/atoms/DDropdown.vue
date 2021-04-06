@@ -17,7 +17,7 @@
     >
       <div
         v-show="open"
-        class="absolute top-0 right-0 z-50 w-auto origin-top-right rounded-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-800"
+        class="absolute top-6 z-50 w-auto origin-top-right rounded-md shadow-lg ring-1 ring-gray-200 dark:ring-gray-800"
       >
         <div class="bg-white rounded-md dark:bg-gray-800">
           <slot />
