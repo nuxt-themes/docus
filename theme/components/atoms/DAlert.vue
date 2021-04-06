@@ -17,7 +17,7 @@ export default {
     type: {
       type: String,
       default: 'info',
-      validator (value) {
+      validator(value) {
         return ['info', 'success', 'warning', 'danger'].includes(value)
       }
     }
@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="postcss">
 .alert p {
   @apply m-0 !important;
 }

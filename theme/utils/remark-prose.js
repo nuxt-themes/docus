@@ -1,10 +1,13 @@
 const TAG_REGEX = /^\s*<\/?([A-Za-z0-9-_]+) ?[^>]*>/
 const PROSE_ELEMENTS = [
   // HTML tags
-  'div', 'p', 'ul',
+  'div',
+  'p',
+  'ul',
 
   // Global tags
-  'd-props', 'DProps'
+  'd-props',
+  'DProps'
 ]
 
 const isJsNode = (node, customProsElements = []) => {
@@ -23,7 +26,7 @@ const isJsNode = (node, customProsElements = []) => {
 }
 
 module.exports = ({ prosElements = [], proseClass = 'prose' }) => {
-  return (tree) => {
+  return tree => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {
       if (insideProse && isJsNode(node, prosElements)) {

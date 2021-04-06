@@ -12,8 +12,10 @@
       </span>
     </a>
 
-    <span class="flex items-center text-sm text-gray-500 font-base dark:text-gray-400 ">
-      {{ $t("article.updatedAt") }} {{ $d(Date.parse(page.updatedAt), "long") }}
+    <span
+      class="flex items-center text-sm text-gray-500 font-base dark:text-gray-400"
+    >
+      {{ $t('article.updatedAt') }} {{ $d(Date.parse(page.updatedAt), 'long') }}
     </span>
   </div>
 </template>
@@ -27,10 +29,10 @@ export default {
     }
   },
   computed: {
-    settings () {
+    settings() {
       return this.$docus.settings
     },
-    link () {
+    link() {
       if (!this.settings.github) {
         return
       }
@@ -42,7 +44,9 @@ export default {
         this.settings.github.dir,
         this.$config.contentDir,
         `${this.page.path}${this.page.extension}`.replace(/^\//g, '')
-      ].filter(Boolean).join('/')
+      ]
+        .filter(Boolean)
+        .join('/')
     }
   }
 }

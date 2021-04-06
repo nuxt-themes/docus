@@ -2,23 +2,29 @@ import { $fetch } from 'ohmyfetch/node'
 
 let cachedReleases = []
 
-export function get () {
+export function get() {
   return cachedReleases
 }
 
-export async function fetch ({ $content, settings }) {
+export async function fetch({ $content, settings }) {
   let releases = []
 
   if (settings.github.releases && settings.github.repo) {
     const { apiUrl, repo } = settings.github
-    releases = await fetchGitHubReleases({ apiUrl, repo, token: process.env.GITHUB_TOKEN })
+    releases = await fetchGitHubReleases({
+      apiUrl,
+      repo,
+      token: process.env.GITHUB_TOKEN
+    })
   }
 
   const compile = markdown => $content.database.markdown.toJSON(markdown)
-  releases = await Promise.all(releases.map(async (r) => {
-    r.body = await compile(r.body)
-    return r
-  }))
+  releases = await Promise.all(
+    releases.map(async r => {
+      r.body = await compile(r.body)
+      return r
+    })
+  )
 
   const getMajorVersion = r => r.name && Number(r.name.substring(1, 2))
   releases.sort((a, b) => {
@@ -34,13 +40,13 @@ export async function fetch ({ $content, settings }) {
   return releases
 }
 
-export async function fetchGitHubReleases ({ apiUrl, repo, token }) {
+export async function fetchGitHubReleases({ apiUrl, repo, token }) {
   const options = {}
   if (token) {
     options.headers = { Authorization: `token ${token}` }
   }
   const url = `${apiUrl}/${repo}/releases`
-  let releases = await $fetch(url, options).catch((err) => {
+  let releases = await $fetch(url, options).catch(err => {
     // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
     // eslint-disable-next-line no-console
@@ -51,18 +57,20 @@ export async function fetchGitHubReleases ({ apiUrl, repo, token }) {
     }
     return []
   })
-  releases = releases.filter(r => !r.draft).map((release) => {
-    return {
-      name: (release.name || release.tag_name).replace('Release ', ''),
-      date: release.published_at,
-      body: release.body
-    }
-  })
+  releases = releases
+    .filter(r => !r.draft)
+    .map(release => {
+      return {
+        name: (release.name || release.tag_name).replace('Release ', ''),
+        date: release.published_at,
+        body: release.body
+      }
+    })
 
   return releases
 }
 
-export function handler (req, res) {
+export function handler(req, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(cachedReleases))
 }

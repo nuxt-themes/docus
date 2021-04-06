@@ -8,6 +8,6 @@ renderer.link = function (href, title, text) {
     : '<a target="_blank" rel="noopener nofollow" href="' + href + '">' + text + '</a>'
 }
 
-export function compile (markdown = '') {
+export function compile(markdown = '') {
   return marked(markdown, { renderer })
 }

@@ -24,7 +24,7 @@ export default function (nuxt) {
     // Workaround for typography plugin not being a function supporting theme
     if (typeof windiConfig.config.theme.extend.typography === 'function') {
       const defaultTheme = nuxt.resolver.requireModule('windicss/defaultTheme')
-      const theme = (key) => {
+      const theme = key => {
         const keys = key.split('.')
         return keys.reduce((res, _key) => res[_key], defu(windiConfig.config.theme, defaultTheme))
       }

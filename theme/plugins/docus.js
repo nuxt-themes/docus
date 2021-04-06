@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { $fetch } from 'ohmyfetch'
@@ -7,10 +6,21 @@ import { useCSSVariables, useDefaults, useDefaultsTheme } from '../utils/setting
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 
-export default async function ({ app, ssrContext, $content, $contentLocalePath, route, nuxtState = {}, beforeNuxtRender }, inject) {
+export default async function (
+  {
+    app,
+    ssrContext,
+    $content,
+    $contentLocalePath,
+    route,
+    nuxtState = {},
+    beforeNuxtRender
+  },
+  inject
+) {
   let $nuxt = null
   const $docus = new Vue({
-    data () {
+    data() {
       if (nuxtState.docus) {
         return nuxtState.docus
       }
@@ -28,28 +38,33 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
       return data
     },
     computed: {
-      currentNav () {
+      currentNav() {
         return this.nav[app.i18n.locale]
       },
-      repoUrl () {
+      repoUrl() {
         return joinURL(this.settings.github.url, this.settings.github.repo)
       },
-      previewUrl () {
+      previewUrl() {
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
       },
-      themeStyles () {
+      themeStyles() {
         return useCSSVariables(this.theme.colors, { code: 'prism' })
       }
     },
     methods: {
-      async fetchJSON (name, fields) {
-        const { path, extension, ...data } = await $content(name).only(fields).fetch().catch((e) => {
-          // eslint-disable-next-line no-console
-          console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
-        })
+      async fetchJSON(name, fields) {
+        const { path, extension, ...data } = await $content(name)
+          .only(fields)
+          .fetch()
+          .catch(e => {
+            // eslint-disable-next-line no-console
+            console.warn(
+              `Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`
+            )
+          })
         return data
       },
-      async fetch () {
+      async fetch() {
         await this.fetchSettings()
         await Promise.all([
           this.fetchNavigation(),
@@ -58,8 +73,19 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         ])
       },
 
-      async fetchSettings () {
-        const settings = await this.fetchJSON('settings', ['title', 'url', 'logo', 'template', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits'])
+      async fetchSettings() {
+        const settings = await this.fetchJSON('settings', [
+          'title',
+          'url',
+          'logo',
+          'template',
+          'header',
+          'twitter',
+          'github',
+          'algolia',
+          'colors',
+          'credits'
+        ])
         this.settings = useDefaults(settings)
 
         // load theme settings
@@ -71,13 +97,24 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           this.updateHead()
         }
       },
-      async fetchNavigation () {
+      async fetchNavigation() {
         // Avoid re-fetching in production
         if (process.dev === false && this.nav[app.i18n.locale].links) {
           return
         }
         const draft = this.ui?.draft ? undefined : false
-        const fields = ['title', 'dir', 'nav', 'category', 'slug', 'version', 'to', 'icon', 'description', 'template']
+        const fields = [
+          'title',
+          'dir',
+          'nav',
+          'category',
+          'slug',
+          'version',
+          'to',
+          'icon',
+          'description',
+          'template'
+        ]
         if (process.dev) {
           fields.push('draft')
         }
@@ -98,7 +135,7 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           ...page.nav
         })
         // Add each page to navigation
-        pages.forEach((page) => {
+        pages.forEach(page => {
           page.nav = page.nav || {}
           if (typeof page.nav === 'string') {
             page.nav = { slot: page.nav }
@@ -108,7 +145,9 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
             return
           }
           // to: '/docs/guide/hello.md' -> dirs: ['docs', 'guide']
-          page.dirs = withoutTrailingSlash(page.to).split('/').filter(_ => _)
+          page.dirs = withoutTrailingSlash(page.to)
+            .split('/')
+            .filter(_ => _)
           // Remove the file part (except if index.md)
           if (page.slug !== '') {
             page.dirs = page.dirs.slice(0, -1)
@@ -121,7 +160,9 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           let link = null
           page.dirs.forEach((dir, index) => {
             // If children has been disabled (nav.children = false)
-            if (!currentLinks) { return }
+            if (!currentLinks) {
+              return
+            }
             if (index > depth) {
               depth = index
             }
@@ -137,7 +178,9 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
               currentLinks = currentLinks[currentLinks.length - 1].children
             }
           })
-          if (!currentLinks) { return }
+          if (!currentLinks) {
+            return
+          }
           // If index page, merge also with parent for metadata
           if (!page.slug) {
             if (page.dirs.length === 1) {
@@ -164,13 +207,13 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           links
         }
       },
-      getPageTemplate (page) {
+      getPageTemplate(page) {
         let template = page.template
         if (!template) {
           // fetch from nav (root to link) and fallback to settings.template
           const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
           let links = this.currentNav.links || []
-          slugs.forEach((slug) => {
+          slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
               template = link.template
@@ -185,18 +228,28 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         template = pascalCase(template)
         if (!Vue.component(template)) {
           // eslint-disable-next-line no-console
-          console.error(`Template ${template} does not exists, fallback to Page template.`)
+          console.error(
+            `Template ${template} does not exists, fallback to Page template.`
+          )
           template = 'Page'
         }
         return template
       },
-      async fetchCategories () {
+      async fetchCategories() {
         // Avoid re-fetching in production
         if (process.dev === false && this.categories[app.i18n.locale]) {
           return
         }
         const draft = this.ui?.draft ? undefined : false
-        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'icon']
+        const fields = [
+          'title',
+          'menuTitle',
+          'category',
+          'slug',
+          'version',
+          'to',
+          'icon'
+        ]
         if (process.dev) {
           fields.push('draft')
         }
@@ -207,19 +260,24 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           .fetch()
 
         if (this.settings.github.releases) {
-          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
+          docs.push({
+            slug: 'releases',
+            title: 'Releases',
+            category: 'Community',
+            to: '/releases'
+          })
         }
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
 
-      fetchReleases () {
+      fetchReleases() {
         if (process.server) {
           return ssrContext.docus.releases
         }
         return $fetch('/api/docus/releases')
       },
 
-      async fetchLastRelease () {
+      async fetchLastRelease() {
         if (process.dev === false && this.lastRelease) {
           return
         }
@@ -229,10 +287,12 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         }
       },
 
-      updateHead () {
+      updateHead() {
         // Update when editing content/settings.json
         if (process.dev && process.client && window.$nuxt) {
-          const style = window.$nuxt.$options.head.style.find(s => s.hid === 'docus-theme')
+          const style = window.$nuxt.$options.head.style.find(
+            s => s.hid === 'docus-theme'
+          )
           if (style) {
             style.cssText = this.themeStyles
             window.$nuxt.$meta().refresh()
@@ -252,12 +312,22 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
           type: 'text/css'
         })
 
-        app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
-        app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
+        app.head.meta = app.head.meta.filter(
+          s => s.hid !== 'apple-mobile-web-app-title'
+        )
+        app.head.meta.push({
+          hid: 'apple-mobile-web-app-title',
+          name: 'apple-mobile-web-app-title',
+          content: this.settings.title
+        })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
-        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.primary })
+        app.head.meta.push({
+          hid: 'theme-color',
+          name: 'theme-color',
+          content: this.theme.colors.primary
+        })
       },
-      isLinkActive (to) {
+      isLinkActive(to) {
         const path = $nuxt?.$route.path || route.path
         return withTrailingSlash(path) === withTrailingSlash($contentLocalePath(to))
       }
@@ -284,13 +354,16 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
   // Workaround for Nuxt 2 using async layout inside the page
   // https://github.com/nuxt/nuxt.js/issues/3510#issuecomment-736757419
   if (process.client) {
-    window.onNuxtReady((nuxt) => {
+    window.onNuxtReady(nuxt => {
       $nuxt = nuxt
       // Workaround since in full static mode, asyncData is not called anymore
       app.router.beforeEach(async (to, from, next) => {
         const payload = nuxt._pagePayload || {}
         payload.data = payload.data || []
-        if (payload.data[0]?.page?.template && typeof Vue.component(payload.data[0].page.template) === 'function') {
+        if (
+          payload.data[0]?.page?.template &&
+          typeof Vue.component(payload.data[0].page.template) === 'function'
+        ) {
           // Preload the component on client-side navigation
           await Vue.component(payload.data[0].page.template)()
         }

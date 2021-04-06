@@ -5,17 +5,12 @@
  */
 import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
-import typography from 'windicss/plugin/typography'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 import filters from 'windicss/plugin/filters'
 
 export default {
   darkMode: 'class',
-  plugins: [
-    typography,
-    filters,
-    aspectRatio
-  ],
+  plugins: [typography, filters, aspectRatio],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -385,7 +380,8 @@ export default {
     'border-primary': 'border-primary-500 dark:border-primary-400',
     'bg-primary': 'bg-primary-500 dark:bg-primary-400',
     // Icons
-    'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
+    'text-icon':
+      'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
     'd-icon': 'text-icon transition-colors duration-200 focus:outline-none',
     // Images utils
     'light-img': 'dark:hidden',

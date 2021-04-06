@@ -7,7 +7,7 @@
   >
     <slot name="trigger" :toggle="toggle" :open="open" />
 
-    <transition
+    <Transition
       enter-class="transform scale-95 opacity-0"
       enter-active-class="transition duration-100 ease-out"
       enter-to-class="transform scale-100 opacity-100"
@@ -23,23 +23,23 @@
           <slot />
         </div>
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Dropdown',
-  data () {
+  data() {
     return {
       open: false
     }
   },
   methods: {
-    toggle () {
+    toggle() {
       this.open = !this.open
     },
-    close () {
+    close() {
       this.open = false
     }
   }

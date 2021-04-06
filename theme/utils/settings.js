@@ -60,7 +60,7 @@ const DEFAULT_SETTINGS = {
   credits: true
 }
 
-export function useDefaults (settings = {}) {
+export function useDefaults(settings = {}) {
   if (typeof settings.github === 'string') {
     settings.github = { repo: settings.github }
   }
@@ -73,13 +73,16 @@ export function useDefaults (settings = {}) {
   return defu(settings, DEFAULT_SETTINGS)
 }
 
-export function useDefaultsTheme (settings = {}) {
+export function useDefaultsTheme(settings = {}) {
   return defu(settings, DEFAULT_THEME_SETTINGS)
 }
 
-export function useColors (colors, aliases = {}) {
+export function useColors(colors, aliases = {}) {
   try {
-    return Object.entries(colors).map(([key, color]) => [aliases[key] || key, typeof color === 'string' ? getColors(color) : color])
+    return Object.entries(colors).map(([key, color]) => [
+      aliases[key] || key,
+      typeof color === 'string' ? getColors(color) : color
+    ])
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn('Could not parse custom colors:', e.message)
@@ -87,22 +90,23 @@ export function useColors (colors, aliases = {}) {
   }
 }
 
-export function useCSSVariables (colors, aliases = {}) {
+export function useCSSVariables(colors, aliases = {}) {
   const { put, generate } = useCssVaribaleStore(['dark'])
   colors = useColors(colors, aliases)
   colors.forEach(([color, map]) => {
-    Object.entries(map)
-      .forEach(([variant, value]) => put(`${color}-${variant}`, value))
+    Object.entries(map).forEach(([variant, value]) =>
+      put(`${color}-${variant}`, value)
+    )
   })
   return generate()
 }
 
-function useCssVaribaleStore (scopes = ['dark']) {
+function useCssVaribaleStore(scopes = ['dark']) {
   scopes = ['default', ...scopes]
   const _store = scopes.reduce((obj, scope) => ({ [scope]: {}, ...obj }), {})
   const getScope = scope => _store[scope] || null
 
-  const putSingle = key => (value) => {
+  const putSingle = key => value => {
     const _arr = value.split(':')
     const _value = _arr.pop()
     const _scope = getScope(_arr.pop() || 'default')
@@ -117,7 +121,7 @@ function useCssVaribaleStore (scopes = ['dark']) {
 
   const generateVar = ([key, value]) => `--${key}: ${value}`
 
-  const generateScope = (scope) => {
+  const generateScope = scope => {
     const vars = Object.entries(getScope(scope)).map(generateVar).join(';')
     return scope === 'default' ? `:root {${vars}}` : `html.${scope} {${vars}}`
   }

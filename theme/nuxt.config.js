@@ -21,7 +21,11 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+      },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ]
   },
@@ -30,18 +34,10 @@ export default {
     routes: ['/']
   },
   build: {
-    transpile: [
-      'docus'
-    ]
+    transpile: ['docus']
   },
-  css: [
-    r('assets/css/main.css')
-  ],
-  plugins: [
-    r('plugins/i18n'),
-    r('plugins/docus'),
-    r('plugins/menu')
-  ],
+  css: [r('assets/css/main.css')],
+  plugins: [r('plugins/i18n'), r('plugins/docus'), r('plugins/menu')],
   buildModules: [
     themeModule,
     'nuxt-windicss',
@@ -51,10 +47,7 @@ export default {
     r('modules/social-image/module'),
     r('modules/twitter/module')
   ],
-  modules: [
-    'nuxt-i18n',
-    '@nuxt/content'
-  ],
+  modules: ['nuxt-i18n', '@nuxt/content'],
   components: true,
   loading: {
     color: 'var(--primary-500)'
@@ -72,9 +65,12 @@ export default {
         theme: r('assets/css/prism.css')
       },
       remarkPlugins: [
-        [r('utils/remark-prose'), {
-          proseClass: 'prose dark:prose-dark'
-        }],
+        [
+          r('utils/remark-prose'),
+          {
+            proseClass: 'prose dark:prose-dark'
+          }
+        ],
         [r('utils/remark-vue'), {}]
       ],
       remarkAutolinkHeadings: {
@@ -86,13 +82,16 @@ export default {
     classSuffix: ''
   },
   i18n: {
-    baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
-    locales: [{
-      code: 'en',
-      iso: 'en-US',
-      file: 'en-US.js',
-      name: 'English'
-    }],
+    baseUrl: ({ $docus }) =>
+      ($docus && $docus.settings && $docus.settings.url) || '',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js',
+        name: 'English'
+      }
+    ],
     defaultLocale: 'en',
     parsePages: false,
     lazy: true,
@@ -124,17 +123,8 @@ export default {
   },
   vite: {
     optimizeDeps: {
-      exclude: [
-        'ohmyfetch',
-        'vue-demi',
-        'scule',
-        '@vueuse/integrations'
-      ],
-      include: [
-        'defu',
-        'theme-colors',
-        'lodash.groupby'
-      ]
+      exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations'],
+      include: ['defu', 'theme-colors', 'lodash.groupby']
     },
     vue: {}
   }

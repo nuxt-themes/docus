@@ -9,19 +9,19 @@
 import Clipboard from 'clipboard'
 
 export default {
-  data () {
+  data() {
     return {
       state: 'init'
     }
   },
-  mounted () {
+  mounted() {
     const copyCode = new Clipboard(this.$refs.copy, {
-      target (trigger) {
+      target(trigger) {
         return trigger.previousElementSibling
       }
     })
 
-    copyCode.on('success', (event) => {
+    copyCode.on('success', event => {
       event.clearSelection()
       this.state = 'copied'
       window.setTimeout(() => {

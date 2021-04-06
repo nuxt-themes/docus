@@ -1,5 +1,5 @@
 <template>
-  <component :is="page.template" :page="page" />
+  <Component :is="page.template" :page="page" />
 </template>
 
 <script>
@@ -10,16 +10,18 @@ import { convertPropToPixels } from '../utils/dom'
 
 export default {
   name: 'PageSlug',
-  middleware ({ app, params, redirect }) {
+  middleware({ app, params, redirect }) {
     if (params.pathMatch === 'index') {
       redirect(app.localePath('/'))
     }
   },
-  async asyncData ({ $content, $docus, app, params, error }) {
+  async asyncData({ $content, $docus, app, params, error }) {
     const language = app.i18n.locale
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
     const draft = $docus.ui?.draft ? undefined : false
-    const [page] = await $content({ deep: true }).where({ language, to, draft }).fetch()
+    const [page] = await $content({ deep: true })
+      .where({ language, to, draft })
+      .fetch()
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
@@ -30,12 +32,12 @@ export default {
 
     return { page }
   },
-  data () {
+  data() {
     return {
       page: {}
     }
   },
-  head () {
+  head() {
     const head = {
       title: this.page.title,
       meta: [],
@@ -45,30 +47,40 @@ export default {
     return head
   },
   computed: {
-    pageMeta () {
+    pageMeta() {
       return [
         // Open Graph
         { hid: 'og:title', property: 'og:title', content: this.page.title },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: this.page.title },
-        ...(
-          this.page.description
-            ? [
-                { hid: 'description', name: 'description', content: this.page.description },
-                // Open Graph
-                { hid: 'og:description', property: 'og:description', content: this.page.description },
-                // Twitter Card
-                { hid: 'twitter:description', name: 'twitter:description', content: this.page.description }
-              ]
-            : []
-        )
+        ...(this.page.description
+          ? [
+              {
+                hid: 'description',
+                name: 'description',
+                content: this.page.description
+              },
+              // Open Graph
+              {
+                hid: 'og:description',
+                property: 'og:description',
+                content: this.page.description
+              },
+              // Twitter Card
+              {
+                hid: 'twitter:description',
+                name: 'twitter:description',
+                content: this.page.description
+              }
+            ]
+          : [])
       ]
     },
-    settings () {
+    settings() {
       return this.$docus.settings
     }
   },
-  mounted () {
+  mounted() {
     if (this.page.version) {
       localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
     }
@@ -82,12 +94,17 @@ export default {
         block.appendChild(component.$el)
       }
 
-      const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
-      headings.forEach((heading) => {
+      const headings = [
+        ...document.querySelectorAll('.nuxt-content h2'),
+        ...document.querySelectorAll('.nuxt-content h3')
+      ]
+      headings.forEach(heading => {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
           const hash = e.target.href.split('#').pop()
-          const offset = heading.offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
+          const offset =
+            heading.offsetTop -
+            parseInt(convertPropToPixels('--docs-scroll-margin-block'))
           // use replaceState to prevent page jusmp when adding hash
           history.replaceState({}, '', '#' + hash)
           scrollTo(0, offset)
@@ -96,10 +113,12 @@ export default {
     }, 100)
   },
   methods: {
-    mergeMeta (to, from) {
-      from.forEach((newMeta) => {
+    mergeMeta(to, from) {
+      from.forEach(newMeta => {
         const key = newMeta.hid || newMeta.name || newMeta.property
-        const index = to.findIndex(meta => meta.hid === key || meta.name === key || meta.property === key)
+        const index = to.findIndex(
+          meta => meta.hid === key || meta.name === key || meta.property === key
+        )
         if (index < 0) {
           to.push(newMeta)
         }

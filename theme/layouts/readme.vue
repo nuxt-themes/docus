@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  head () {
+  head() {
     const i18nSeo = this.$nuxtI18nSeo()
 
     return {
-      titleTemplate: (chunk) => {
+      titleTemplate: chunk => {
         if (chunk) {
           return `${chunk} - ${this.settings.title}`
         }
@@ -23,24 +23,48 @@ export default {
       ...i18nSeo,
       meta: (i18nSeo.meta || []).concat([
         // Open Graph
-        { hid: 'og:site_name', property: 'og:site_name', content: this.settings.title },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: this.settings.title
+        },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         { hid: 'og:url', property: 'og:url', content: this.settings.url },
         { hid: 'og:image', property: 'og:image', content: this.$docus.previewUrl },
         // Twitter Card
-        { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-        { hid: 'twitter:site', name: 'twitter:site', content: this.settings.twitter },
-        { hid: 'twitter:title', name: 'twitter:title', content: this.settings.title },
-        { hid: 'twitter:image', name: 'twitter:image', content: this.$docus.previewUrl },
-        { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: this.settings.title }
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          content: this.settings.twitter
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.settings.title
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.$docus.previewUrl
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: this.settings.title
+        }
       ])
     }
   },
   computed: {
-    settings () {
+    settings() {
       return this.$docus.settings
     },
-    bodyClass () {
+    bodyClass() {
       return this.$menu.open ? ['h-screen lg:h-auto overflow-y-hidden lg:overflow-y-auto'] : []
     }
   }

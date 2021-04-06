@@ -5,7 +5,7 @@ const handlers = [
   ['props', propsHandler]
 ]
 
-async function enrichTag (node, tag, handler, documentData) {
+async function enrichTag(node, tag, handler, documentData) {
   if (node.type === 'html' || (node.children && node.children[0] && node.children[0].type === 'html')) {
     const TAG_REGEX = new RegExp(`^\\s*<(d-${tag}|D${tag})\\s+`, 'i')
 
