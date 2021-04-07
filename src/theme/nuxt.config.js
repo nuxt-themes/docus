@@ -1,11 +1,10 @@
 import { resolve } from 'path'
-import type { NuxtConfig } from '@nuxt/types'
 
 import themeModule from './module'
 
 const r = path => resolve(__dirname, path)
 
-export default <NuxtConfig>{
+export default {
   alias: {
     qrcode: require.resolve('./mock/default'),
     axios: require.resolve('./mock/default'),

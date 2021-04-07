@@ -1,7 +1,7 @@
 import defu from 'defu'
 import type { NuxtConfig } from '@nuxt/types'
 
-import nuxtConfig from 'docus/theme/nuxt.config.js'
+import nuxtConfig from './theme/nuxt.config.js'
 
 export function withDocus(userConfig: NuxtConfig): NuxtConfig {
   const config = defu.arrayFn(userConfig, nuxtConfig)
@@ -13,5 +13,5 @@ export function withDocus(userConfig: NuxtConfig): NuxtConfig {
     delete userConfig.env.GITHUB_TOKEN
   }
 
-  return config
+  return config as NuxtConfig
 }
