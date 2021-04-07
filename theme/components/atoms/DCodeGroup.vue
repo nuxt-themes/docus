@@ -106,7 +106,7 @@ button {
 }
 .first-tab  {
   & > .code-block:nth-child(2),
-  & > .prose:nth-child(2) > .nuxt-content-highlight {
+  & > .prose:nth-child(2) > .nuxt-content-highlight:nth-child(1) {
     display: block;
   }
 }
