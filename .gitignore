@@ -9,3 +9,6 @@ coverage
 dist
 sw.*
 .env
+/theme
+/index.js
+/index.d.ts

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "strict": false,
+    "sourceMap": true,
+    "target": "ESNext",
+    "allowJs": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["ESNext", "DOM"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "@nuxt/types"],
+    "paths": {
+      "docus/theme/*": ["./src/theme/*"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

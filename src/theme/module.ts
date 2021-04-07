@@ -1,6 +1,8 @@
 import { resolve, join, relative } from 'path'
 import gracefulFs from 'graceful-fs'
 
+import type { Module } from '@nuxt/types'
+
 import themeConfig from './theme.config'
 import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
@@ -9,7 +11,7 @@ import { useDefaults } from './utils/settings'
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
 
-export default function docusModule () {
+export default <Module> function docusModule () {
   // wait for nuxt options to be normalized
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
