@@ -87,7 +87,7 @@ export default {
         .map((slot) => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
           return {
-            label: (attrs.label || slot.children[0]?.children[0].text || 'untitled').split('/').pop(),
+            label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
             active: typeof attrs.active !== 'undefined'
           }
         })
