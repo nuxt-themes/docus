@@ -34,10 +34,14 @@ const processPlugins = (type, markdown, resolvePath) => {
       options = markdown[camelCase(name)]
     } else if (Array.isArray(plugin)) {
       [name, options] = plugin
+    } else if (typeof plugin === 'object') {
+      instance = plugin.instance
+      name = plugin.name
+      options = plugin.options
     }
 
     try {
-      instance = require(resolvePath(name))
+      instance = instance || require(resolvePath(name))
 
       plugins.push({ instance, name, options })
     } catch (e) {

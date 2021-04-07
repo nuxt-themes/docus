@@ -2,7 +2,7 @@ import unified from 'unified'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 
-import htmlDirectives from './directive'
+import directive from './directive'
 import handlers from './handlers'
 import compiler from './compiler'
 import { flattenNodeText } from './utils'
@@ -35,7 +35,7 @@ export async function generateBody (content, options) {
     let stream = unified().use(parse)
 
     stream = usePlugins(options.remarkPlugins, stream)
-    stream = stream.use(htmlDirectives)
+    stream = stream.use(directive)
     stream = stream.use(remark2rehype, rehypeOptions)
     stream = usePlugins(options.rehypePlugins, stream)
 

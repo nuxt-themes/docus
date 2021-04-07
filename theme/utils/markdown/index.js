@@ -7,6 +7,7 @@ import { generateBody, generateDescription } from './content'
 const DEFAULTS = {
   tocDepth: 3,
   remarkPlugins: [
+    'remark-emoji',
     'remark-directive',
     'remark-squeeze-paragraphs',
     'remark-slug',
