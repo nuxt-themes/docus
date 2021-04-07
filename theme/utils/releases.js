@@ -62,7 +62,7 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }) {
   return releases
 }
 
-export function releasesMiddleware(req, res) {
+export function releasesMiddleware(_, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(releaseCache))
 }

@@ -37,7 +37,7 @@ export default {
     }
 
     this.__observer = new window.IntersectionObserver(entries => {
-      entries.forEach(({ intersectionRatio, target: el }) => {
+      entries.forEach(({ intersectionRatio }) => {
         if (intersectionRatio > 0) {
           this.isIntersecting = true
           this.__observer.disconnect()

@@ -73,7 +73,7 @@ export default {
         '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
         '(screen-header)': `calc(100vh - ${theme('spacing.header')})`
       }),
-      minHeight: theme => ({
+      minHeight: () => ({
         'fill-available': '-webkit-fill-available'
       }),
       maxWidth: {

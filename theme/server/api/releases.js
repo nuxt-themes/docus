@@ -70,7 +70,7 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }) {
   return releases
 }
 
-export function handler(req, res) {
+export function handler(_, res) {
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(cachedReleases))
 }

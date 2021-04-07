@@ -56,7 +56,7 @@ export default async function (
         const { path, extension, ...data } = await $content(name)
           .only(fields)
           .fetch()
-          .catch(e => {
+          .catch(() =>
             // eslint-disable-next-line no-console
             console.warn(
               `Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`

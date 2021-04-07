@@ -30,7 +30,7 @@ async function enrichTag(node, tag, handler, documentData) {
 
 module.exports = () => {
   return async (tree, { data }) => {
-    const modified = tree.children.map(async (node, i) => {
+    const modified = tree.children.map(async node => {
       return await handlers.reduce(async (node, [tag, handler]) => {
         const _node = await node
         return await enrichTag(_node, tag, handler, data)
