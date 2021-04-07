@@ -1,11 +1,14 @@
 import defu from 'defu'
 import matter from 'gray-matter'
 import { processOptions } from './utils'
-import generateToc from './toc'
+import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
 
 const DEFAULTS = {
-  tocDepth: 3,
+  toc: {
+    depth: 3,
+    searchDepth: 2
+  },
   remarkPlugins: [
     'remark-emoji',
     'remark-directive',

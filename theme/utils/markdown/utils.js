@@ -1,20 +1,19 @@
 const logger = require('consola').withScope('@docus')
 const { camelCase } = require('change-case')
 
-const processTocDepth = (markdown) => {
-  const { tocDepth } = markdown
+const processTocDepth = ({ depth }) => {
   const tocTags = []
 
-  if (tocDepth < 1) {
-    logger.info(`content.markdown.tocDepth is set as ${tocDepth}. Table of contents of markdown files will be empty.`)
+  if (depth < 1) {
+    logger.info(`toc.depth is set as ${depth}. Table of contents of markdown files will be empty.`)
     return tocTags
   }
 
-  if (tocDepth > 6) {
-    logger.info(`content.markdown.tocDepth is set as ${tocDepth}. Table of contents of markdown files will include all the headings.`)
+  if (depth > 6) {
+    logger.info(`toc.depth is set as ${depth}. Table of contents of markdown files will include all the headings.`)
   }
 
-  for (let i = 2; i <= tocDepth; i++) {
+  for (let i = 2; i <= depth; i++) {
     tocTags.push(`h${i}`)
   }
 
@@ -56,7 +55,7 @@ export const processOptions = (options, resolvePath) => {
   if (!resolvePath) {
     resolvePath = path => path
   }
-  options.tocTags = processTocDepth(options)
+  options.toc.tags = processTocDepth(options.toc)
   options.remarkPlugins = processPlugins('remark', options, resolvePath)
   options.rehypePlugins = processPlugins('rehype', options, resolvePath)
 }
@@ -71,12 +70,12 @@ export function flattenNodeText (node) {
   }
 }
 
-export function flattenNode (node, maxDepth = 2, depth = 0) {
-  if (!Array.isArray(node.children) || depth === maxDepth) {
+export function flattenNode (node, maxDepth = 2, _depth = 0) {
+  if (!Array.isArray(node.children) || _depth === maxDepth) {
     return [node]
   }
   return [
     node,
-    ...node.children.reduce((acc, child) => acc.concat(flattenNode(child, maxDepth, depth + 1)), [])
+    ...node.children.reduce((acc, child) => acc.concat(flattenNode(child, maxDepth, _depth + 1)), [])
   ]
 }
