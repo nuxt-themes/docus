@@ -14,26 +14,40 @@
 
       <ul class="font-medium">
         <li
-          v-for="link of toc"
+          v-for="link of mockedToc"
           :key="link.id"
-          class=""
-          :class="{
-            'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400': activeTitles.includes(link.id),
-            'text-gray-700 dark:text-gray-200': !(activeTitles.includes(link.id))
-          }"
           @click="showMobileToc = false"
         >
           <a
             :href="`#${link.id}`"
-            class="block py-1 transition-colors duration-100 transform scrollactive-item "
+            class="block py-1 transition-colors duration-100 transform "
             :class="{
-              'hover:text-primary': link.depth === 2,
-              'border-l border-gray-100 dark:border-gray-800 pl-3  hover:text-primary-400 dark:hover:text-primary-400': link.depth === 3,
-              'text-gray-500 dark:text-gray-400': link.depth === 3 && !(activeTitles.includes(link.id)),
-              'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (activeTitles.includes(link.id))
+              'text-primary-500 dark:text-primary-400 hover:text-primary-400 dark:hover:text-primary-300': activeHeadings.includes(link.id) || isActiveParent(link),
+              'text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400': !(activeHeadings.includes(link.id)) && !isActiveParent(link)
             }"
             @click.prevent="scrollToHeading(link.id)"
-          >{{ link.text }}</a>
+          >
+            {{ link.text }}
+          </a>
+
+          <ul v-if="link.children" class="overflow-x-hidden font-medium">
+            <li
+              v-for="childLink in link.children"
+              :key="childLink.id"
+            >
+              <a
+                :href="`#${childLink.id}`"
+                :class="{
+                  'dark:border-primary-500 border-primary-500 dark:text-primary-400 text-primary-500 hover:text-primary-400 dark:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(childLink.id),
+                  'text-gray-500 dark:text-gray-400 hover:text-primary-500': !(activeHeadings.includes(childLink.id))
+                }"
+                class="border-l border-gray-100 dark:border-gray-800 pl-3 block py-1 transition-colors duration-100 transform"
+                @click.prevent="scrollToHeading(childLink.id)"
+              >
+                {{ childLink.text }}
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
       <PageTocBottom />
@@ -57,32 +71,45 @@ export default {
   },
   data () {
     return {
-      visibleTitles: [],
-      activeTitles: [],
-      showMobileToc: false
+      visibleHeadings: [],
+      activeHeadings: [],
+      showMobileToc: false,
+      mockedToc: []
     }
   },
   watch: {
-    visibleTitles (val, oldVal) {
+    visibleHeadings (val, oldVal) {
       if (val.length === 0) {
-        this.activeTitles = oldVal
+        this.activeHeadings = oldVal
       } else {
-        this.activeTitles = val
+        this.activeHeadings = val
       }
     }
   },
   mounted () {
-    const hash = window.location.hash.replace('#', '')
-    if (hash) {
+    // temporary mock structured toc
+    this.toc.map((item, i) => {
+      if (item.depth === 2) {
+        this.mockedToc.push(item)
+      } else if (item.depth === 3) {
+        const parent = this.mockedToc[this.mockedToc.length - 1]
+        if (!parent.children) { parent.children = [] }
+        parent.children.push(item)
+      }
+    })
+
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '')
       this.scrollToHeading(hash)
     }
+
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        const hash = entry.target.id
+        const id = entry.target.id
         if (entry.isIntersecting) {
-          this.visibleTitles.push(hash)
+          this.visibleHeadings.push(id)
         } else {
-          this.visibleTitles = this.visibleTitles.filter(t => t !== hash)
+          this.visibleHeadings = this.visibleHeadings.filter(t => t !== id)
         }
       })
     }
@@ -101,10 +128,11 @@ export default {
       const hash = id
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
-      setTimeout(() => {
-        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
-        window.scrollTo(0, offset)
-      })
+      const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+      window.scrollTo(0, offset)
+    },
+    isActiveParent (link) {
+      return link.children && link.children.some(child => this.activeHeadings.includes(child.id))
     }
   }
 }
