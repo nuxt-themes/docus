@@ -9,7 +9,13 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['prettier'],
-  extends: ['@nuxtjs', 'prettier', 'plugin:prettier/recommended', 'plugin:nuxt/recommended'],
+  extends: [
+    '@nuxtjs',
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:nuxt/recommended',
+    '@nuxtjs/eslint-config-typescript'
+  ],
   rules: {
     // Vue rules
     'vue/component-name-in-template-casing': [
