@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { convertPropToPixels } from '../../utils/dom'
+
 export default {
   layout: 'blog',
   async asyncData ({ $content, $docus, app, params, error }) {
@@ -48,6 +50,19 @@ export default {
     return {
       post
     }
+  },
+  mounted () {
+    const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
+    headings.forEach((heading) => {
+      heading.addEventListener('click', function (e) {
+        e.preventDefault()
+        const hash = e.target.href.split('#').pop()
+        const offset = heading.offsetTop - parseInt(convertPropToPixels('--blogpost-scroll-margin-block'))
+        // use replaceState to prevent page jusmp when adding hash
+        history.replaceState({}, '', '#' + hash)
+        scrollTo(0, offset)
+      })
+    })
   },
   methods: {
     formatDateByLocale (d) {
@@ -60,7 +75,7 @@ export default {
 </script>
 
 <style scoped>
-.nuxt-content h2, .nuxt-content h3 {
+/* .nuxt-content h2, .nuxt-content h3 {
   scroll-margin-block: var(--blogpost-scroll-margin-block);
-}
+} */
 </style>

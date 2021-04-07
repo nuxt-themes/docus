@@ -83,7 +83,7 @@ export default {
       }
 
       const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
-      headings.map((heading) => {
+      headings.forEach((heading) => {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
           const hash = e.target.href.split('#').pop()
@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style scoped>
-.nuxt-content h2, .nuxt-content h3 {
+/* .nuxt-content h2, .nuxt-content h3 {
   scroll-margin-block: var(--docs-scroll-margin-block);
-}
+} */
 </style>
