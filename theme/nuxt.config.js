@@ -40,12 +40,14 @@ export default {
   plugins: [r('plugins/i18n'), r('plugins/docus'), r('plugins/menu')],
   buildModules: [
     themeModule,
-    'nuxt-windicss',
     'nuxt-vite',
+    '@nuxt/typescript-build',
+    'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     r('modules/social-image/module'),
     r('modules/twitter/module')
+    '@nuxtjs/composition-api'
   ],
   modules: ['nuxt-i18n', '@nuxt/content'],
   components: true,
