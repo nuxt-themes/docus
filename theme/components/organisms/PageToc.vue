@@ -93,8 +93,12 @@ export default {
         this.mockedToc.push(item)
       } else if (item.depth === 3) {
         const parent = this.mockedToc[this.mockedToc.length - 1]
-        if (!parent.children) { parent.children = [] }
-        parent.children.push(item)
+        if (parent && parent.depth === 2) {
+          if (!parent.children) { parent.children = [] }
+          parent.children.push(item)
+        } else {
+          this.mockedToc.push(item)
+        }
       }
     })
 
