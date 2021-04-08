@@ -35,6 +35,7 @@ module.exports = {
     // Prettier rules
     'no-console': [1],
     'space-before-function-paren': [0],
-    'arrow-parens': [0]
+    'arrow-parens': [0],
+    curly: [0]
   }
 }
