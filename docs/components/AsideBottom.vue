@@ -28,23 +28,22 @@ export default {
         {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
-          icon: 'IconNuxt',
-          iconClass: 'text-hex-00DC82'
+          icon: 'LogoNuxt'
         },
         {
           title: 'Vue',
           url: 'https://vuejs.org',
-          icon: 'IconVue'
+          icon: 'LogoVue'
         },
         {
           title: 'Windi CSS',
           url: 'https://windicss.org',
-          icon: 'IconWindi'
+          icon: 'LogoWindi'
         },
         {
           title: 'Nuxt Content',
           url: 'https://content.nuxtjs.org',
-          icon: 'IconNuxtContent'
+          icon: 'LogoNuxtContent'
         }
       ]
     }

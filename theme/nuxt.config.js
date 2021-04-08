@@ -19,6 +19,10 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ],
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ]
   },
   generate: {
@@ -43,8 +47,7 @@ export default {
     'nuxt-windicss',
     'nuxt-vite',
     '@nuxtjs/color-mode',
-    '@nuxtjs/pwa',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/pwa'
   ],
   modules: [
     'nuxt-i18n',
@@ -112,11 +115,6 @@ export default {
           }
         }
       }
-    }
-  },
-  googleFonts: {
-    families: {
-      Inter: true
     }
   },
   server: {

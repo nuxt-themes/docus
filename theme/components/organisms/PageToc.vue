@@ -1,11 +1,11 @@
 <template>
-  <div v-if="toc.length" class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 blur-12 bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 dark:lg:bg-transparent lg:left-60 lg:border-0 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-18 xl:block xl:top-0">
+  <div v-if="toc.length" class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-header xl:block xl:top-0">
     <button class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none xl:hidden dark:text-gray-100" @click="showMobileToc = !showMobileToc">
       <span class="mr-2">{{ title || $t('toc.title') }}</span>
       <IconChevronRight class="w-4 h-4 text-gray-400 transition-transform duration-100 transform" :class="[showMobileToc ? 'rotate-90' : 'rotate-0']" />
     </button>
 
-    <div :class="[showMobileToc ? 'flex' : 'hidden xl:flex']" class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) -mt-10 pt-10 pb-4 top-18">
+    <div :class="[showMobileToc ? 'flex' : 'hidden xl:flex']" class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-header) -mt-10 pt-10 pb-4 top-header">
       <PageTocTop />
 
       <h5 class="items-center hidden mb-2 xl:flex">
@@ -32,6 +32,7 @@
               'text-gray-500 dark:text-gray-400': link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
               'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
+            @click.prevent="scrollToHeading"
           >{{ link.text }}</a>
         </li>
       </ul>
@@ -41,6 +42,8 @@
 </template>
 
 <script>
+import { convertPropToPixels } from '../../utils/dom'
+
 export default {
   props: {
     toc: {
@@ -130,6 +133,15 @@ export default {
           this.activeLink = this.sections[parentIndex].id
         }
       }
+    },
+    scrollToHeading (e) {
+      const hash = e.target.href.split('#').pop()
+      // use replaceState to prevent page jusmp when adding hash
+      history.replaceState({}, '', '#' + hash)
+      setTimeout(() => {
+        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+        window.scrollTo(0, offset)
+      })
     }
   }
 }

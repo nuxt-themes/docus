@@ -1,5 +1,5 @@
 <template>
-  <div class="flex" :class="spaceBetween">
+  <div class="flex">
     <a
       v-if="settings.twitter"
       :href="`https://twitter.com/${settings.twitter}`"
@@ -8,6 +8,7 @@
       title="Twitter"
       name="Twitter"
       class="d-icon"
+      :class="[padding]"
     >
       <IconTwitter :class="size" />
     </a>
@@ -32,9 +33,9 @@ export default {
       type: String,
       default: 'w-6 h-6'
     },
-    spaceBetween: {
+    padding: {
       type: String,
-      default: 'space-x-3'
+      default: 'p-0'
     }
   },
   computed: {

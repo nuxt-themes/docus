@@ -92,6 +92,11 @@ export default function docusModule () {
       level: 2
     })
     dirs.push({
+      path: r('components/logos'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
       path: r('components/organisms'),
       global: true,
       level: 2

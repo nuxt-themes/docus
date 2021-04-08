@@ -6,6 +6,7 @@
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
 import CopyButton from '../components/atoms/DCopyButton'
+import { convertPropToPixels } from '../utils/dom'
 
 export default {
   name: 'PageSlug',
@@ -35,18 +36,34 @@ export default {
     }
   },
   head () {
-    return {
+    const head = {
       title: this.page.title,
-      meta: [
+      meta: [],
+      ...(this.page.head || {})
+    }
+    this.mergeMeta(head.meta, this.pageMeta)
+    return head
+  },
+  computed: {
+    pageMeta () {
+      return [
         // Open Graph
         { hid: 'og:title', property: 'og:title', content: this.page.title },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: this.page.title },
-        ...this.descriptionMeta()
+        ...(
+          this.page.description
+            ? [
+                { hid: 'description', name: 'description', content: this.page.description },
+                // Open Graph
+                { hid: 'og:description', property: 'og:description', content: this.page.description },
+                // Twitter Card
+                { hid: 'twitter:description', name: 'twitter:description', content: this.page.description }
+              ]
+            : []
+        )
       ]
-    }
-  },
-  computed: {
+    },
     settings () {
       return this.$docus.settings
     }
@@ -64,20 +81,29 @@ export default {
         const component = new Button().$mount()
         block.appendChild(component.$el)
       }
+
+      const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
+      headings.map((heading) => {
+        heading.addEventListener('click', function (e) {
+          e.preventDefault()
+          const hash = e.target.href.split('#').pop()
+          const offset = heading.offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+          // use replaceState to prevent page jusmp when adding hash
+          history.replaceState({}, '', '#' + hash)
+          scrollTo(0, offset)
+        })
+      })
     }, 100)
   },
   methods: {
-    descriptionMeta () {
-      if (!this.page.description) {
-        return []
-      }
-      return [
-        { hid: 'description', name: 'description', content: this.page.description },
-        // Open Graph
-        { hid: 'og:description', property: 'og:description', content: this.page.description },
-        // Twitter Card
-        { hid: 'twitter:description', name: 'twitter:description', content: this.page.description }
-      ]
+    mergeMeta (to, from) {
+      from.forEach((newMeta) => {
+        const key = newMeta.hid || newMeta.name || newMeta.property
+        const index = to.findIndex(meta => meta.hid === key || meta.name === key || meta.property === key)
+        if (index < 0) {
+          to.push(newMeta)
+        }
+      })
     }
   }
 }

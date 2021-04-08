@@ -36,11 +36,14 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        sans: 'Inter, ' + defaultTheme.fontFamily.sans
+      },
+      letterSpacing: {
+        semitight: '-0.0125em'
+      },
       screens: {
         xs: '414px'
-      },
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       colors: {
         primary: {
@@ -57,6 +60,7 @@ export default {
         }
       },
       spacing: {
+        header: 'var(--header-height)',
         18: '4.5rem',
         46: '11.5rem',
         '580px': '580px',
@@ -64,12 +68,15 @@ export default {
       },
       height: theme => ({
         '(full-18)': `calc(100% - ${theme('spacing.18')})`,
+        '(full-header)': `calc(100% - ${theme('spacing.header')})`,
         '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+        '(screen-header)': `calc(100vh - ${theme('spacing.header')})`,
         '(screen-36)': `calc(100vh - ${theme('spacing.36')})`,
         '(screen-46)': `calc(100vh - ${theme('spacing.46')})`
       }),
       maxHeight: theme => ({
-        '(screen-18)': `calc(100vh - ${theme('spacing.18')})`
+        '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+        '(screen-header)': `calc(100vh - ${theme('spacing.header')})`
       }),
       minHeight: theme => ({
         'fill-available': '-webkit-fill-available'
@@ -87,6 +94,7 @@ export default {
       typography: theme => ({
         DEFAULT: {
           css: {
+            letterSpacing: '-0.0125em',
             maxWidth: 'none',
             color: theme('colors.gray.700'),
             '> :first-child': { marginTop: '-' },
@@ -98,11 +106,11 @@ export default {
               marginBottom: '0'
             },
             'h1, h2': {
-              letterSpacing: '-0.025em',
               fontWeight: theme('fontWeight.bold')
             },
             'h1, h2, h3, h4': {
-              color: theme('colors.gray.900')
+              color: theme('colors.gray.900'),
+              letterSpacing: theme('letterSpacing.tight')
             },
             'h1, h2, h3': {
               marginTop: '1.5em',
@@ -117,11 +125,13 @@ export default {
             },
             'h2 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h3 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h2 > a, h3 > a': {
               color: 'inherit',
@@ -160,7 +170,8 @@ export default {
                 zIndex: '-1',
                 width: 'calc(100% + 8px)',
                 height: 'calc(100% + 8px)',
-                backgroundColor: theme('colors.white')
+                backgroundColor: theme('colors.white'),
+                pointerEvents: 'none'
               }
             },
             'ol, ul': {
