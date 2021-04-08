@@ -3,7 +3,7 @@ import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { $fetch } from 'ohmyfetch'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
-import { useColors, useDefaults } from '../utils/settings'
+import { useCSSVariables, useDefaults, useDefaultsTheme } from '../utils/settings'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 
@@ -19,6 +19,7 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         categories: {},
         lastRelease: null,
         settings: null,
+        theme: null,
         nav: {}
       }
       app.i18n.locales.forEach(({ code }) => {
@@ -37,16 +38,17 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         return withoutTrailingSlash(this.settings.url) + '/preview.png'
       },
       themeStyles () {
-        const colors = useColors(this.settings.colors)
-        const styles = colors.map(([color, map]) => {
-          return Object.entries(map).map(([variant, value]) => {
-            return `--${color}-${variant}: ${value};`
-          }).join('')
-        }).join('')
-        return `:root {${styles}}`
+        return useCSSVariables(this.theme.colors, { code: 'prism' })
       }
     },
     methods: {
+      async fetchJSON (name, fields) {
+        const { path, extension, ...data } = await $content(name).only(fields).fetch().catch((e) => {
+          // eslint-disable-next-line no-console
+          console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
+        })
+        return data
+      },
       async fetch () {
         await this.fetchSettings()
         await Promise.all([
@@ -57,12 +59,13 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
       },
 
       async fetchSettings () {
-        const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'template', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits']).fetch().catch((e) => {
-          // eslint-disable-next-line no-console
-          console.warn('Please add a `settings.json` file inside the `content/` folder to customize this theme.')
-          return {}
-        })
+        const settings = await this.fetchJSON('settings', ['title', 'url', 'logo', 'template', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits'])
         this.settings = useDefaults(settings)
+
+        // load theme settings
+        const theme = await this.fetchJSON('theme', ['colors'])
+        this.theme = useDefaultsTheme(theme)
+
         // Update injected styles on HMR
         if (process.dev && process.client && window.$nuxt) {
           this.updateHead()
@@ -252,7 +255,7 @@ export default async function ({ app, ssrContext, $content, $contentLocalePath, 
         app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
-        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
+        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.primary })
       },
       isLinkActive (to) {
         const path = $nuxt?.$route.path || route.path
