@@ -48,6 +48,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "nuxt-edge": "^2.16.0-26939563.9247190c",
+    "plausible-tracker": "^0.3.1",
     "standard-version": "^9.1.1",
     "vue-plausible": "^1.1.4"
   }
