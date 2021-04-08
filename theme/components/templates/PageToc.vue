@@ -135,7 +135,7 @@ export default {
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
       setTimeout(() => {
-        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
         window.scrollTo(0, offset)
       })
     }

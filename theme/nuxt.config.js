@@ -38,16 +38,18 @@ export default {
     r('assets/css/main.css')
   ],
   plugins: [
+    r('plugins/i18n'),
     r('plugins/docus'),
-    r('plugins/menu'),
-    r('plugins/i18n')
+    r('plugins/menu')
   ],
   buildModules: [
     themeModule,
     'nuxt-windicss',
     'nuxt-vite',
     '@nuxtjs/color-mode',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    r('modules/social-image/module'),
+    r('modules/twitter/module')
   ],
   modules: [
     'nuxt-i18n',
@@ -125,6 +127,7 @@ export default {
       exclude: [
         'ohmyfetch',
         'vue-demi',
+        'scule',
         '@vueuse/integrations'
       ],
       include: [

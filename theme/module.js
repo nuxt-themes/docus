@@ -2,7 +2,7 @@ import { resolve, join, relative } from 'path'
 import gracefulFs from 'graceful-fs'
 
 import themeConfig from './theme.config'
-import { generatePosition, generateSlug, isDraft, processDocumentInfo } from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
 
@@ -20,6 +20,9 @@ export default function docusModule () {
     options.build.ssr = false
     options.render.ssr = false
   }
+
+  // Inject Docus theme as ~docus
+  nuxt.options.alias['~docus'] = r('theme')
 
   this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
 
@@ -49,6 +52,7 @@ export default function docusModule () {
   hook('build:before', () => {
     addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
     addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
+    addLayout({ src: r('layouts/blog.vue'), filename: 'layouts/blog.vue' })
   })
 
   // Add default error page if not defined
@@ -101,11 +105,16 @@ export default function docusModule () {
     dirs.push({
       path: r('components/templates'),
       global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('components/slots'),
+      global: true,
       level: 3
     })
     if (options.dev) {
       dirs.push({
-        path: r('components/dev-templates'),
+        path: r('components/dev'),
         global: true,
         level: 2
       })
@@ -138,7 +147,7 @@ export default function docusModule () {
 
     document.slug = generateSlug(slug)
     document.position = position
-    document.to = generateSlug(_to)
+    document.to = generateTo(_to)
     document.language = _language
     document.category = _category
     document.draft = document.draft || isDraft(slug)
@@ -159,6 +168,20 @@ export default function docusModule () {
         path: '/releases',
         name: 'releases',
         component: r('pages/releases.vue')
+      })
+    }
+    if (!hasRoute('blog')) {
+      routes.push({
+        path: '/blog',
+        name: 'blog',
+        component: r('pages/blog/index.vue')
+      })
+    }
+    if (!hasRoute('blog-post')) {
+      routes.push({
+        path: '/blog/:post',
+        name: 'blog-post',
+        component: r('pages/blog/_post.vue')
       })
     }
     if (!hasRoute('all')) {

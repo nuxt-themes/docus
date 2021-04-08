@@ -42,7 +42,7 @@ const DEFAULT_THEME_SETTINGS = {
 const DEFAULT_SETTINGS = {
   title: 'Docus',
   description: '',
-  layout: 'docs',
+  template: 'docs',
   logo: null,
   url: '',
   github: {
@@ -64,9 +64,11 @@ export function useDefaults (settings = {}) {
   if (typeof settings.github === 'string') {
     settings.github = { repo: settings.github }
   }
-  // backward compat for 'single' layout
-  if (settings.layout === 'single') {
-    settings.layout = 'readme'
+  if (settings.layout) {
+    // eslint-disable-next-line no-console
+    console.warn('`layout` has been renamed to `template` in settings.json')
+    settings.template = settings.layout
+    delete settings.layout
   }
   return defu(settings, DEFAULT_SETTINGS)
 }
@@ -77,7 +79,7 @@ export function useDefaultsTheme (settings = {}) {
 
 export function useColors (colors, aliases = {}) {
   try {
-    return Object.entries(colors).map(([key, color]) => [aliases[key || key], typeof color === 'string' ? getColors(color) : color])
+    return Object.entries(colors).map(([key, color]) => [aliases[key] || key, typeof color === 'string' ? getColors(color) : color])
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn('Could not parse custom colors:', e.message)
