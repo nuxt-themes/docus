@@ -21,9 +21,7 @@
       <PageTocTop />
 
       <h5 class="items-center hidden mb-2 xl:flex">
-        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">{{
-          $t('toc.title')
-        }}</span>
+        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">{{ $t('toc.title') }}</span>
       </h5>
 
       <ul class="overflow-x-hidden font-medium">
@@ -34,9 +32,7 @@
           :class="{
             'text-primary-500 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-400':
               exactActiveLink === link.id || activeLink === link.id,
-            'text-gray-700 dark:text-gray-200': !(
-              exactActiveLink === link.id || activeLink === link.id
-            )
+            'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
           }"
           @click="showMobileToc = false"
         >
@@ -48,11 +44,9 @@
               'border-l border-gray-100 dark:border-gray-800 pl-3  hover:text-primary-400 dark:hover:text-primary-400':
                 link.depth === 3,
               'text-gray-500 dark:text-gray-400':
-                link.depth === 3 &&
-                !(exactActiveLink === link.id || activeLink === link.id),
+                link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
               'dark:border-primary-500 border-primary-500 dark:text-primary-400 ':
-                link.depth === 3 &&
-                (exactActiveLink === link.id || activeLink === link.id)
+                link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
             }"
             @click.prevent="scrollToHeading"
             >{{ link.text }}</a
@@ -91,15 +85,13 @@ export default {
     history.scrollRestoration = 'manual'
   },
   mounted() {
-    document
-      .querySelectorAll('.nuxt-content h2[id], .nuxt-content h3[id]')
-      .forEach(section => {
-        this.sections.push({
-          level: section.tagName.replace(/h/i, ''),
-          id: section.getAttribute('id'),
-          top: section.offsetTop
-        })
+    document.querySelectorAll('.nuxt-content h2[id], .nuxt-content h3[id]').forEach(section => {
+      this.sections.push({
+        level: section.tagName.replace(/h/i, ''),
+        id: section.getAttribute('id'),
+        top: section.offsetTop
       })
+    })
     const hash = window.location.hash.replace('#', '')
     const hashIndex = this.sections.findIndex(section => section.id === hash)
     if (hash && hashIndex >= 0) {
@@ -159,8 +151,7 @@ export default {
       history.replaceState({}, '', '#' + hash)
       setTimeout(() => {
         const offset =
-          document.querySelector(`#${hash}`).offsetTop -
-          parseInt(convertPropToPixels('--docs-scroll-margin-block'))
+          document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
         window.scrollTo(0, offset)
       })
     }

@@ -19,9 +19,7 @@ export default {
     const language = app.i18n.locale
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
     const draft = $docus.ui?.draft ? undefined : false
-    const [page] = await $content({ deep: true })
-      .where({ language, to, draft })
-      .fetch()
+    const [page] = await $content({ deep: true }).where({ language, to, draft }).fetch()
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
@@ -102,9 +100,7 @@ export default {
         heading.addEventListener('click', function (e) {
           e.preventDefault()
           const hash = e.target.href.split('#').pop()
-          const offset =
-            heading.offsetTop -
-            parseInt(convertPropToPixels('--docs-scroll-margin-block'))
+          const offset = heading.offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
           // use replaceState to prevent page jusmp when adding hash
           history.replaceState({}, '', '#' + hash)
           scrollTo(0, offset)
@@ -116,9 +112,7 @@ export default {
     mergeMeta(to, from) {
       from.forEach(newMeta => {
         const key = newMeta.hid || newMeta.name || newMeta.property
-        const index = to.findIndex(
-          meta => meta.hid === key || meta.name === key || meta.property === key
-        )
+        const index = to.findIndex(meta => meta.hid === key || meta.name === key || meta.property === key)
         if (index < 0) {
           to.push(newMeta)
         }

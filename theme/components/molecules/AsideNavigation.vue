@@ -2,13 +2,9 @@
   <div
     class="fixed top-0 left-0 w-auto h-full overflow-auto pointer-events-auto lg:h-screen min-h-fill-available lg:sticky lg:top-header lg:w-60"
   >
-    <div
-      class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent"
-    >
+    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent">
       <!-- aside header -->
-      <div
-        class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800"
-      >
+      <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800">
         <button
           class="flex-1 text-gray-500 transition-colors duration-200 focus:outline-none lg:hidden dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400"
           @click.stop="menu = !menu"

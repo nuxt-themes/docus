@@ -11,32 +11,19 @@
       </a>
       <div class="flex-1 ml-2">
         <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
-          <span
-            class="font-bold text-black dark:text-white"
-            :class="{ block: layout === 'tweet' }"
-          >
+          <span class="font-bold text-black dark:text-white" :class="{ block: layout === 'tweet' }">
             {{ name }}
           </span>
           <span class="text-sm text-gray-400">@{{ username }}</span>
         </a>
         <template v-if="layout !== 'tweet'">
           ·
-          <a
-            :href="tweetUrl"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            class="text-sm hover:text-blue-600"
-          >
+          <a :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow" class="text-sm hover:text-blue-600">
             {{ $d(createdAt, 'long') }}
           </a>
         </template>
       </div>
-      <a
-        v-if="layout === 'tweet'"
-        :href="tweetUrl"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-      >
+      <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow">
         <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
       </a>
     </div>
@@ -51,12 +38,7 @@
         <IconHeart class="mr-2" />
         {{ heartCount }}
       </a>
-      <a
-        :href="tweetUrl"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        class="ml-4 hover:text-blue-600"
-      >
+      <a :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow" class="ml-4 hover:text-blue-600">
         {{ $d(createdAt, 'long') }}
       </a>
     </div>
@@ -123,10 +105,7 @@ export default {
       const wrapper = target.parentNode.parentNode
       const size = wrapper.getBoundingClientRect()
       const iframe = document.createElement('iframe')
-      iframe.setAttribute(
-        'src',
-        `https://twitter.com/i/videos/${this.id}?embed_source=facebook`
-      )
+      iframe.setAttribute('src', `https://twitter.com/i/videos/${this.id}?embed_source=facebook`)
       iframe.setAttribute('width', size.width)
       iframe.setAttribute('referrerpolicy', 'no-referrer')
       iframe.setAttribute('allow', 'autoplay')

@@ -8,19 +8,12 @@
         ref="tabs"
         :key="`${counter}${label}`"
         class="px-4 py-3 font-mono font-bold h-12"
-        :class="[
-          activeTabIndex === i
-            ? 'active text-gray-800 dark:text-white'
-            : 'text-gray-600 dark:text-gray-300'
-        ]"
+        :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
         @click="updateTabs(i)"
       >
         {{ label }}
       </button>
-      <span
-        ref="highlight-underline"
-        class="absolute highlight-underline bg-primary-500 dark:bg-primary-400"
-      />
+      <span ref="highlight-underline" class="absolute highlight-underline bg-primary-500 dark:bg-primary-400" />
     </div>
     <slot />
   </div>
@@ -46,9 +39,7 @@ export default {
   },
   watch: {
     activeTabIndex(newValue, oldValue) {
-      const tabs = this.$el.querySelectorAll(
-        '.code-group > .code-block, .code-group > .prose .nuxt-content-highlight'
-      )
+      const tabs = this.$el.querySelectorAll('.code-group > .code-block, .code-group > .prose .nuxt-content-highlight')
       if (oldValue < tabs.length) {
         tabs[oldValue].classList.remove('active')
       }
@@ -91,9 +82,7 @@ export default {
     },
     calculateTabs() {
       const components = this.$slots.default
-        .flatMap(slot =>
-          slot.data?.attrs?.class?.includes('prose') ? slot.children : slot
-        )
+        .flatMap(slot => (slot.data?.attrs?.class?.includes('prose') ? slot.children : slot))
         .filter(
           slot =>
             slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
@@ -101,8 +90,7 @@ export default {
             slot.asyncMeta?.tag === 'd-code-block'
         )
         .map(slot => {
-          const attrs =
-            slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+          const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
           return {
             label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
             active: typeof attrs.active !== 'undefined'

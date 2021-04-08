@@ -38,26 +38,27 @@ export default function ({ route, app, ssrContext }) {
   }
 }
 
-const createCustomHead = ({ options, addSocialImage, imageName, route }) => function socialImageCustomHead () {
-  let head
-  switch (typeof options.__pageHead) {
-    case 'function':
-      head = options.__pageHead.call(this)
-      break
-    case 'object':
-      head = { ...options.__pageHead }
-      break
-    default:
-      head = {}
+const createCustomHead = ({ options, addSocialImage, imageName, route }) =>
+  function socialImageCustomHead() {
+    let head
+    switch (typeof options.__pageHead) {
+      case 'function':
+        head = options.__pageHead.call(this)
+        break
+      case 'object':
+        head = { ...options.__pageHead }
+        break
+      default:
+        head = {}
+    }
+    if (head.title) {
+      const metaDescription = findMeta(head.meta || [], 'description')
+      addSocialImage({
+        title: head.title,
+        description: metaDescription ? metaDescription.content : '',
+        imageName,
+        route
+      })
+    }
+    return head
   }
-  if (head.title) {
-    const metaDescription = findMeta(head.meta || [], 'description')
-    addSocialImage({
-      title: head.title,
-      description: metaDescription ? metaDescription.content : '',
-      imageName,
-      route
-    })
-  }
-  return head
-}

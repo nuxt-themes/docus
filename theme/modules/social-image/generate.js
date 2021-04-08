@@ -2,12 +2,14 @@ import { join } from 'path'
 import fs from 'fs'
 import { takeScreenshot, cleanup } from './chromium'
 
-export function setupStaticGeneration (nuxt, options) {
+export function setupStaticGeneration(nuxt, options) {
   const { hook } = nuxt
   const images = {}
 
-  hook('vue-renderer:context', (ssrContext) => {
-    ssrContext.addSocialImage = (options) => { images[options.imageName] = options }
+  hook('vue-renderer:context', ssrContext => {
+    ssrContext.addSocialImage = options => {
+      images[options.imageName] = options
+    }
   })
 
   hook('generate:done', async () => {
@@ -21,13 +23,13 @@ export function setupStaticGeneration (nuxt, options) {
       const file = await takeScreenshot(options.chrome, url)
       // write file
       const path = join(options._outDir, shot.imageName)
-      await new Promise((resolve, reject) => fs.writeFile(path, file, resolve))
+      await new Promise(resolve => fs.writeFile(path, file, resolve))
     }, Promise.resolve())
 
     await cleanup()
   })
 
-  hook('generate:page', (page) => {
+  hook('generate:page', page => {
     const { route } = page
 
     // exclude social preview page from generation

@@ -14,9 +14,7 @@
             <a :href="`#${release.name}`">
               {{ release.name }}
             </a>
-            <span class="text-base font-normal text-gray-500">{{
-              formatDate(release)
-            }}</span>
+            <span class="text-base font-normal text-gray-500">{{ formatDate(release) }}</span>
           </h2>
 
           <NuxtContent :document="release.body" />

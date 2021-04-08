@@ -4,11 +4,7 @@
       <NavigationButton />
       <div class="flex flex-1 justify-center items-center lg:flex-none">
         <div class="flex flex-none font-semibold text-2xl text-gray-900 items-center dark:text-gray-100">
-          <NuxtLink
-            :to="localePath('/')"
-            class="w-auto overflow-hidden"
-            :aria-label="settings.title"
-          >
+          <NuxtLink :to="localePath('/')" class="w-auto overflow-hidden" :aria-label="settings.title">
             <HeaderLogo />
           </NuxtLink>
         </div>
@@ -29,10 +25,7 @@
         </div>
 
         <!-- Desktop: Right section -->
-        <div
-          class="space-x-2 items-center justify-end hidden md:space-x-4 lg:flex"
-          @click.stop
-        >
+        <div class="space-x-2 items-center justify-end hidden md:space-x-4 lg:flex" @click.stop>
           <DLangSwitcher />
           <DColorSwitcher />
           <SocialIcons />
@@ -51,15 +44,15 @@ export default {
     }
   },
   computed: {
-    settings () {
+    settings() {
       return this.$docus.settings
     },
-    lastRelease () {
+    lastRelease() {
       return this.$docus.lastRelease
     }
   },
   methods: {
-    scrollToTop () {
+    scrollToTop() {
       if (window.innerWidth >= 1280) {
         return
       }

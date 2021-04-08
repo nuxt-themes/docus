@@ -16,15 +16,11 @@ export default {
     githubToken: process.env.GITHUB_TOKEN
   },
   head: {
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ],
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
       },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ]
@@ -46,7 +42,7 @@ export default {
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     r('modules/social-image/module'),
-    r('modules/twitter/module')
+    r('modules/twitter/module'),
     '@nuxtjs/composition-api'
   ],
   modules: ['nuxt-i18n', '@nuxt/content'],
@@ -84,8 +80,7 @@ export default {
     classSuffix: ''
   },
   i18n: {
-    baseUrl: ({ $docus }) =>
-      ($docus && $docus.settings && $docus.settings.url) || '',
+    baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
     locales: [
       {
         code: 'en',

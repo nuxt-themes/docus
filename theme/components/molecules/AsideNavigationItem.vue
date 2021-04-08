@@ -3,9 +3,7 @@
     <h5
       v-if="category"
       class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
-      :class="[
-        isCategoryActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400'
-      ]"
+      :class="[isCategoryActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
       @click="collapseCategory"
     >
       {{ category }}
@@ -32,10 +30,7 @@
           </span>
 
           <ClientOnly>
-            <span
-              v-if="doc.draft"
-              class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75"
-            />
+            <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
             <span
               v-else-if="isDocumentNew(doc)"
               class="w-2 h-2 ml-2 rounded-full opacity-75 animate-pulse bg-primary-500"

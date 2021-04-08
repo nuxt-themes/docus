@@ -16,9 +16,7 @@
           <path d="M1280 640H728L1280 573V640Z" :fill="primaryLightColor" />
         </svg>
 
-        <div
-          class="relative z-10 flex flex-col justify-between w-3/4 h-full px-16 py-24 text-white"
-        >
+        <div class="relative z-10 flex flex-col justify-between w-3/4 h-full px-16 py-24 text-white">
           <div>
             <h1 class="mb-12 text-6xl font-semibold">{{ title }}</h1>
             <p class="mb-8 text-3xl">{{ description }}</p>
@@ -28,7 +26,9 @@
             :style="{
               color: primaryLightColor
             }"
-          >{{ brand }}</div>
+          >
+            {{ brand }}
+          </div>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
 import Color from 'color'
 
 export default {
-  data () {
+  data() {
     return {
       title: this.$route.query.title,
       description: this.$route.query.description,
@@ -49,10 +49,8 @@ export default {
     }
   },
   computed: {
-    primaryLightColor () {
-      return Color(this.primaryColor)
-        .lighten(0.10)
-        .hex()
+    primaryLightColor() {
+      return Color(this.primaryColor).lighten(0.1).hex()
     }
   }
 }

@@ -15,16 +15,19 @@ export default withDocus({
     }
   },
   i18n: {
-    locales: () => [{
-      code: 'fr',
-      iso: 'fr-FR',
-      file: 'fr-FR.js',
-      name: 'Français'
-    }, {
-      code: 'en',
-      iso: 'en-US',
-      file: 'en-US.js',
-      name: 'English'
-    }]
+    locales: () => [
+      {
+        code: 'fr',
+        iso: 'fr-FR',
+        file: 'fr-FR.js',
+        name: 'Français'
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.js',
+        name: 'English'
+      }
+    ]
   }
 })

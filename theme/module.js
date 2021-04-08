@@ -2,13 +2,7 @@ import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import * as releases from './server/api/releases'
 import themeConfig from './theme.config'
-import {
-  generatePosition,
-  generateSlug,
-  generateTo,
-  isDraft,
-  processDocumentInfo
-} from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
@@ -145,14 +139,10 @@ export default function docusModule() {
     if (document.extension !== '.md') {
       return
     }
-    const regexp = new RegExp(
-      `^/(${options.i18n.locales.map(locale => locale.code).join('|')})`,
-      'gi'
-    )
+    const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
-    const _language =
-      dir.replace(_dir, '').replace(/\//, '') || options.i18n.defaultLocale
+    const _language = dir.replace(_dir, '').replace(/\//, '') || options.i18n.defaultLocale
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)

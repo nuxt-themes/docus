@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h5
-      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
-    >
+    <h5 class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100">
       Resources
     </h5>
     <ul>
@@ -13,16 +11,9 @@
           rel="noopener nofollow"
           class="flex items-center py-2 group dark:hover:text-gray-100 hover:text-gray-900"
         >
-          <Component
-            :is="resource.icon"
-            v-if="resource.icon"
-            class="w-5 h-5 mr-2"
-            :class="resource.iconClass"
-          />
+          <Component :is="resource.icon" v-if="resource.icon" class="w-5 h-5 mr-2" :class="resource.iconClass" />
           <span>{{ resource.title }}</span>
-          <IconExternalLink
-            class="w-4 h-4 ml-2 text-gray-400 opacity-0 group-hover:opacity-100"
-          />
+          <IconExternalLink class="w-4 h-4 ml-2 text-gray-400 opacity-0 group-hover:opacity-100" />
         </a>
       </li>
     </ul>

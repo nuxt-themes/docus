@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { $fetch } from 'ohmyfetch'
@@ -7,15 +8,7 @@ import { useCSSVariables, useDefaults, useDefaultsTheme } from '../utils/setting
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 
 export default async function (
-  {
-    app,
-    ssrContext,
-    $content,
-    $contentLocalePath,
-    route,
-    nuxtState = {},
-    beforeNuxtRender
-  },
+  { app, ssrContext, $content, $contentLocalePath, route, nuxtState = {}, beforeNuxtRender },
   inject
 ) {
   let $nuxt = null
@@ -53,24 +46,19 @@ export default async function (
     },
     methods: {
       async fetchJSON(name, fields) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { path, extension, ...data } = await $content(name)
           .only(fields)
           .fetch()
           .catch(() =>
             // eslint-disable-next-line no-console
-            console.warn(
-              `Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`
-            )
-          })
+            console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
+          )
         return data
       },
       async fetch() {
         await this.fetchSettings()
-        await Promise.all([
-          this.fetchNavigation(),
-          this.fetchCategories(),
-          this.fetchLastRelease()
-        ])
+        await Promise.all([this.fetchNavigation(), this.fetchCategories(), this.fetchLastRelease()])
       },
 
       async fetchSettings() {
@@ -103,18 +91,7 @@ export default async function (
           return
         }
         const draft = this.ui?.draft ? undefined : false
-        const fields = [
-          'title',
-          'dir',
-          'nav',
-          'category',
-          'slug',
-          'version',
-          'to',
-          'icon',
-          'description',
-          'template'
-        ]
+        const fields = ['title', 'dir', 'nav', 'category', 'slug', 'version', 'to', 'icon', 'description', 'template']
         if (process.dev) {
           fields.push('draft')
         }
@@ -228,9 +205,7 @@ export default async function (
         template = pascalCase(template)
         if (!Vue.component(template)) {
           // eslint-disable-next-line no-console
-          console.error(
-            `Template ${template} does not exists, fallback to Page template.`
-          )
+          console.error(`Template ${template} does not exists, fallback to Page template.`)
           template = 'Page'
         }
         return template
@@ -241,15 +216,7 @@ export default async function (
           return
         }
         const draft = this.ui?.draft ? undefined : false
-        const fields = [
-          'title',
-          'menuTitle',
-          'category',
-          'slug',
-          'version',
-          'to',
-          'icon'
-        ]
+        const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'icon']
         if (process.dev) {
           fields.push('draft')
         }
@@ -260,12 +227,7 @@ export default async function (
           .fetch()
 
         if (this.settings.github.releases) {
-          docs.push({
-            slug: 'releases',
-            title: 'Releases',
-            category: 'Community',
-            to: '/releases'
-          })
+          docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
         }
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
@@ -290,9 +252,7 @@ export default async function (
       updateHead() {
         // Update when editing content/settings.json
         if (process.dev && process.client && window.$nuxt) {
-          const style = window.$nuxt.$options.head.style.find(
-            s => s.hid === 'docus-theme'
-          )
+          const style = window.$nuxt.$options.head.style.find(s => s.hid === 'docus-theme')
           if (style) {
             style.cssText = this.themeStyles
             window.$nuxt.$meta().refresh()
@@ -312,20 +272,14 @@ export default async function (
           type: 'text/css'
         })
 
-        app.head.meta = app.head.meta.filter(
-          s => s.hid !== 'apple-mobile-web-app-title'
-        )
+        app.head.meta = app.head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
         app.head.meta.push({
           hid: 'apple-mobile-web-app-title',
           name: 'apple-mobile-web-app-title',
           content: this.settings.title
         })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
-        app.head.meta.push({
-          hid: 'theme-color',
-          name: 'theme-color',
-          content: this.theme.colors.primary
-        })
+        app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.theme.colors.primary })
       },
       isLinkActive(to) {
         const path = $nuxt?.$route.path || route.path
@@ -357,13 +311,10 @@ export default async function (
     window.onNuxtReady(nuxt => {
       $nuxt = nuxt
       // Workaround since in full static mode, asyncData is not called anymore
-      app.router.beforeEach(async (to, from, next) => {
+      app.router.beforeEach(async (_, __, next) => {
         const payload = nuxt._pagePayload || {}
         payload.data = payload.data || []
-        if (
-          payload.data[0]?.page?.template &&
-          typeof Vue.component(payload.data[0].page.template) === 'function'
-        ) {
+        if (payload.data[0]?.page?.template && typeof Vue.component(payload.data[0].page.template) === 'function') {
           // Preload the component on client-side navigation
           await Vue.component(payload.data[0].page.template)()
         }

@@ -20,10 +20,7 @@
           @click="$docus.ui.draft = !$docus.ui.draft"
         >
           <span class="sr-only">Show drafts</span>
-          <span
-            aria-hidden="true"
-            class="absolute w-full h-full rounded-md pointer-events-none"
-          ></span>
+          <span aria-hidden="true" class="absolute w-full h-full rounded-md pointer-events-none"></span>
           <span
             aria-hidden="true"
             :class="drafts ? 'bg-primary-500' : 'bg-gray-200'"
@@ -36,12 +33,7 @@
           ></span>
         </button>
 
-        <span
-          class="ml-2 cursor-pointer"
-          @click="$docus.ui.draft = !$docus.ui.draft"
-        >
-          Drafts
-        </span>
+        <span class="ml-2 cursor-pointer" @click="$docus.ui.draft = !$docus.ui.draft"> Drafts </span>
       </li>
 
       <li class="flex items-center font-medium">
@@ -52,10 +44,7 @@
           @click="$docus.ui.slots = !$docus.ui.slots"
         >
           <span class="sr-only">Show slots</span>
-          <span
-            aria-hidden="true"
-            class="absolute w-full h-full rounded-md pointer-events-none"
-          ></span>
+          <span aria-hidden="true" class="absolute w-full h-full rounded-md pointer-events-none"></span>
           <span
             aria-hidden="true"
             :class="slots ? 'bg-primary-500' : 'bg-gray-200'"
@@ -68,12 +57,7 @@
           ></span>
         </button>
 
-        <span
-          class="ml-2 cursor-pointer"
-          @click="$docus.ui.slots = !$docus.ui.slots"
-        >
-          Slots
-        </span>
+        <span class="ml-2 cursor-pointer" @click="$docus.ui.slots = !$docus.ui.slots"> Slots </span>
       </li>
     </ul>
   </div>

@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="max-w-2xl mx-auto py-24 relative">
-      <NuxtLink :to="localePath({name: 'blog'})" class="absolute top-0 left-0 px-4 mt-12 leading-none text-gray-400 dark:text-gray-600 hover:text-gray-500 hover:dark:text-gray-400 font-medium transition-color duration-100">
+      <NuxtLink
+        :to="localePath({ name: 'blog' })"
+        class="absolute top-0 left-0 px-4 mt-12 leading-none text-gray-400 dark:text-gray-600 hover:text-gray-500 hover:dark:text-gray-400 font-medium transition-color duration-100"
+      >
         <span class="">← Back</span>
       </NuxtLink>
       <div class="mb-6 px-4">
@@ -11,7 +14,9 @@
         </p>
 
         <div class="flex sm:flex-row items-center">
-          <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-600">{{ formatDateByLocale(post.date) }}</div>
+          <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-600">
+            {{ formatDateByLocale(post.date) }}
+          </div>
           <div class="text-sm text-gray-400 dark:text-gray-700">|</div>
           <div class="flex ml-4">
             <span
@@ -19,11 +24,7 @@
               :key="index"
               class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
             >
-              <img
-                class="inline-block h-6 w-6 rounded-full"
-                :src="author.avatarUrl"
-                alt
-              />
+              <img class="inline-block h-6 w-6 rounded-full" :src="author.avatarUrl" alt />
             </span>
           </div>
         </div>
@@ -45,15 +46,18 @@ import { convertPropToPixels } from '../../utils/dom'
 
 export default {
   layout: 'blog',
-  async asyncData ({ $content, $docus, app, params, error }) {
+  async asyncData({ $content, params }) {
     const post = await $content('blog', params.post).fetch()
     return {
       post
     }
   },
-  mounted () {
-    const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
-    headings.forEach((heading) => {
+  mounted() {
+    const headings = [
+      ...document.querySelectorAll('.nuxt-content h2'),
+      ...document.querySelectorAll('.nuxt-content h3')
+    ]
+    headings.forEach(heading => {
       heading.addEventListener('click', function (e) {
         e.preventDefault()
         const hash = e.target.href.split('#').pop()
@@ -65,7 +69,7 @@ export default {
     })
   },
   methods: {
-    formatDateByLocale (d) {
+    formatDateByLocale(d) {
       const currentLocale = this.$i18n.locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(d).toLocaleDateString(currentLocale, options)

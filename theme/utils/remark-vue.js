@@ -1,9 +1,7 @@
 const hasha = require('hasha')
 const propsHandler = require('./tag-handlers/props')
 
-const handlers = [
-  ['props', propsHandler]
-]
+const handlers = [['props', propsHandler]]
 
 async function enrichTag(node, tag, handler, documentData) {
   if (node.type === 'html' || (node.children && node.children[0] && node.children[0].type === 'html')) {

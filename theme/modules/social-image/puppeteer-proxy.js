@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 const cache = {}
 
-async function _fetch (request) {
+async function _fetch(request) {
   const url = request.url()
   let result = cache[url]
   if (!result) {
@@ -24,9 +24,9 @@ async function _fetch (request) {
   return result
 }
 
-export async function useProxy (page) {
+export async function useProxy(page) {
   await page.setRequestInterception(true)
-  page.on('request', async (request) => {
+  page.on('request', async request => {
     try {
       const response = await _fetch(request)
       await request.respond(response)

@@ -94,9 +94,7 @@ export function useCSSVariables(colors, aliases = {}) {
   const { put, generate } = useCssVaribaleStore(['dark'])
   colors = useColors(colors, aliases)
   colors.forEach(([color, map]) => {
-    Object.entries(map).forEach(([variant, value]) =>
-      put(`${color}-${variant}`, value)
-    )
+    Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value))
   })
   return generate()
 }

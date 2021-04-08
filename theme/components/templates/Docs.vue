@@ -2,7 +2,7 @@
   <AppContainer aside>
     <AppPage>
       <PageContent :page="page" />
-      <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800">
+      <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800" />
       <PagePrevNext :prev="prev" :next="next" />
       <template #toc>
         <PageToc v-if="!page.hideToc" :title="page.tocTitle" :toc="page.toc" />
@@ -19,13 +19,13 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       prev: null,
       next: null
     }
   },
-  async fetch () {
+  async fetch() {
     const language = this.$i18n.locale
     const draft = this.$docus.ui?.draft ? undefined : false
     const [prev, next] = await this.$content({ deep: true })

@@ -1,4 +1,4 @@
-export default function ({ app, $docus }, inject) {
+export default function ({ app }, inject) {
   if (process.client) {
     app.i18n.onLanguageSwitched = () => {
       window.$nuxt.$docus.fetchNavigation()

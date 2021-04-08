@@ -2,7 +2,7 @@ import { createCookies } from '@vueuse/integrations'
 import defu from 'defu'
 import Vue from 'vue'
 import { reactive, watch } from 'vue-demi'
-import DocusUI from '../components/dev-templates/DocusUI'
+import DocusUI from '../components/dev/DocusUI'
 
 const COOKIE_NAME = 'docus.ui'
 

@@ -2,11 +2,12 @@ import { $fetch } from 'ohmyfetch/node'
 import parseHtml from './html-parser'
 
 const SYNDICATION_URL = 'https://syndication.twitter.com'
-export async function fetchTweetHtml (id) {
+export async function fetchTweetHtml(id) {
   try {
     const result = await $fetch(`${SYNDICATION_URL}/tweets.json?ids=${id}`)
     return result[id] || {}
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error('Cannot fetch tweet data,' + e)
     return {}
   }
@@ -15,8 +16,10 @@ export async function fetchTweetHtml (id) {
 const get = (obj, key, defu = '') => key.split('.').reduce((o, k) => (o && o[k]) || defu, obj)
 const matchScribe = scribe => node => node && node.props && node.props.dataScribe === scribe
 const matchClass = cls => node => node && node.props && node.props.className && node.props.className.includes(cls)
-function findNode (root, predicate) {
-  if (!root) { return }
+function findNode(root, predicate) {
+  if (!root) {
+    return
+  }
   const nodes = [...root.nodes]
   let theNode
   while (nodes.length && !theNode) {
@@ -30,7 +33,7 @@ function findNode (root, predicate) {
   return theNode
 }
 
-async function fetchTweetAst (id, layout = 'tweet') {
+async function fetchTweetAst(id, layout = 'tweet') {
   const html = await fetchTweetHtml(id)
   if (!html) {
     return {}
@@ -39,7 +42,7 @@ async function fetchTweetAst (id, layout = 'tweet') {
   return await processTweetAst(ast, layout)
 }
 
-async function processTweetAst (ast, layout) {
+async function processTweetAst(ast, layout) {
   const blockquote = findNode(ast, node => node.tag === 'blockquote')
   const root = findNode(blockquote, matchScribe('component:tweet'))
   const theTweetHeader = findNode(blockquote, matchClass('Tweet-header'))
@@ -73,7 +76,10 @@ async function processTweetAst (ast, layout) {
       type: 'html',
       value: `<DTweet class="tweet tweet-${layout}" layout="${layout}" id="${id}" avatar="${avatar}" name="${name}" heart-count="${heartCount}" username="${username}" :created-at="${createdAt}">`
     },
-    { type: 'html', value: `<div class="content prose dark:prose-dark" dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">` },
+    {
+      type: 'html',
+      value: `<div class="content prose dark:prose-dark" dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">`
+    },
     ...mapAST(theTweet.nodes),
     ...medias.flatMap(media => mapAST([media])),
     { type: 'html', value: '</div>' },
@@ -82,11 +88,11 @@ async function processTweetAst (ast, layout) {
   ]
 }
 
-function mapAST (ast) {
+function mapAST(ast) {
   if (!ast) {
     return [{ type: 'html', value: '' }]
   }
-  return ast.flatMap((node) => {
+  return ast.flatMap(node => {
     if (typeof node === 'string') {
       return { type: 'text', value: node }
     }
@@ -113,12 +119,17 @@ function mapAST (ast) {
     }
     if (node.tag === 'img') {
       if (matchClass('Emoji--forText')(node)) {
-        return { type: 'html', value: `<img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28" />` }
+        return {
+          type: 'html',
+          value: `<img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28" />`
+        }
       }
       const { props } = node
       return {
         type: 'html',
-        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${props.alt}" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
+        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${
+          props.alt
+        }" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
       }
     }
     if (node.tag === 'div') {
@@ -146,7 +157,7 @@ function mapAST (ast) {
 
 const tweetCache = {}
 
-module.exports = async (node) => {
+module.exports = async node => {
   const match = node.value.match(/id=['"](\d*)['"]/)
   if (!match) {
     // eslint-disable-next-line no-console
@@ -157,7 +168,6 @@ module.exports = async (node) => {
     try {
       tweetCache[match[1]] = await fetchTweetAst(match[1])
     } catch (e) {
-      console.log(e)
       // eslint-disable-next-line no-console
       console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
       return { node: { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` } }

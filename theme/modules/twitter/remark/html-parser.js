@@ -1,15 +1,17 @@
 const unified = require('unified')
 const parse = require('rehype-parse')
 
-function rehypeMinify () {
-  function minifyAst (ast) {
+function rehypeMinify() {
+  function minifyAst(ast) {
     if (Array.isArray(ast)) {
       return ast.reduce((nodes, node) => {
         const n = minifyAst(node)
         // Empty new lines aren't required
         const isNoise = n === '\n' && nodes[nodes.length - 1] && nodes[nodes.length - 1].tag !== 'span'
 
-        if (!isNoise) { nodes.push(n) }
+        if (!isNoise) {
+          nodes.push(n)
+        }
 
         return nodes
       }, [])
@@ -44,12 +46,9 @@ function rehypeMinify () {
 }
 
 let _processor
-module.exports = async function parseHtml (file, context = {}) {
+module.exports = async function parseHtml(file) {
   if (!_processor) {
-    _processor = unified()
-      .use(parse)
-      .use(rehypeMinify)
-      .freeze()()
+    _processor = unified().use(parse).use(rehypeMinify).freeze()()
   }
   try {
     const { contents } = await _processor.process(file)
