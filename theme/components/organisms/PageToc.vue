@@ -22,8 +22,8 @@
             :href="`#${link.id}`"
             class="block py-1 transition-colors duration-100 transform "
             :class="{
-              'text-primary-500 dark:text-primary-400 hover:text-primary-400 dark:hover:text-primary-300': activeHeadings.includes(link.id) || isActiveParent(link),
-              'text-gray-700 dark:text-gray-200 hover:text-primary-500 dark:hover:text-primary-400': !(activeHeadings.includes(link.id)) && !isActiveParent(link)
+              'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(link.id) || isActiveParent(link),
+              'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400': !(activeHeadings.includes(link.id)) && !isActiveParent(link)
             }"
             @click.prevent="scrollToHeading(link.id)"
           >
@@ -38,10 +38,10 @@
               <a
                 :href="`#${childLink.id}`"
                 :class="{
-                  'dark:border-primary-500 border-primary-500 dark:text-primary-400 text-primary-500 hover:text-primary-400 dark:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(childLink.id),
-                  'text-gray-500 dark:text-gray-400 hover:text-primary-500': !(activeHeadings.includes(childLink.id))
+                  'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(childLink.id),
+                  'text-gray-400 dark:text-gray-500 hover:text-primary-500': !(activeHeadings.includes(childLink.id))
                 }"
-                class="border-l border-gray-100 dark:border-gray-800 pl-3 block py-1 transition-colors duration-100 transform"
+                class=" pl-3 block py-1 transition-colors duration-100 transform"
                 @click.prevent="scrollToHeading(childLink.id)"
               >
                 {{ childLink.text }}
