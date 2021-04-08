@@ -52,6 +52,7 @@ export default function docusModule () {
   hook('build:before', () => {
     addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
     addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
+    addLayout({ src: r('layouts/blog.vue'), filename: 'layouts/blog.vue' })
   })
 
   // Add default error page if not defined
@@ -167,6 +168,20 @@ export default function docusModule () {
         path: '/releases',
         name: 'releases',
         component: r('pages/releases.vue')
+      })
+    }
+    if (!hasRoute('blog')) {
+      routes.push({
+        path: '/blog',
+        name: 'blog',
+        component: r('pages/blog/index.vue')
+      })
+    }
+    if (!hasRoute('blog-post')) {
+      routes.push({
+        path: '/blog/:post',
+        name: 'blog-post',
+        component: r('pages/blog/_post.vue')
       })
     }
     if (!hasRoute('all')) {
