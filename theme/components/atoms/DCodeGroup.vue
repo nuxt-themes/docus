@@ -6,11 +6,13 @@
       <button
         v-for="({ label }, i) in tabs"
         ref="tabs"
-        :key="label"
+        :key="`${counter}${label}`"
         class="px-4 py-3 font-mono font-bold h-12"
         :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
         @click="updateTabs(i)"
-      >{{ label }}</button>
+      >
+        {{ label }}
+      </button>
       <span ref="highlight-underline" class="absolute highlight-underline bg-primary-500 dark:bg-primary-400" />
     </div>
     <slot />
@@ -21,44 +23,50 @@
 export default {
   data () {
     return {
-      activeTabIndex: 0
+      activeTabIndex: 0,
+      /**
+       * A simple number that increases on every changes
+       */
+      counter: 0
     }
   },
   computed: {
     tabs () {
-      return this.$slots.default.map((slot) => {
-        const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
-        return {
-          label: attrs.label,
-          active: typeof attrs.active !== 'undefined',
-          attrs,
-          slot
-        }
-      }).filter(slot => Boolean(slot.label))
+      // eslint-disable-next-line no-unused-expressions
+      this.counter
+      return this.calculateTabs()
     }
   },
   watch: {
     activeTabIndex (newValue, oldValue) {
-      this.tabs[oldValue].slot.elm.classList.remove('active')
-      this.tabs[newValue].slot.elm.classList.add('active')
+      const tabs = this.$el.querySelectorAll('.code-group > .code-block, .code-group > .prose .nuxt-content-highlight')
+      if (oldValue < tabs.length) {
+        tabs[oldValue].classList.remove('active')
+      }
+      tabs[newValue].classList.add('active')
+    }
+  },
+  updated () {
+    const newTabs = this.calculateTabs()
+    if (JSON.stringify(newTabs) !== JSON.stringify(this.tabs)) {
+      this.counter += 1
+      this.$nextTick(() => {
+        this.updateActiveTab()
+        this.updateHighlighteUnderlinePosition()
+      })
     }
   },
   created () {
-    const index = this.tabs.findIndex(tab => tab.active)
-    if (index < 0) {
-      /**
-       * SSR: Mark first tab as active if active tab not found
-       */
-      this.tabs[0].active = true
-      this.tabs[0].attrs.active = true
-    } else {
-      this.activeTabIndex = index
-    }
+    this.updateActiveTab()
   },
   mounted () {
     this.updateHighlighteUnderlinePosition()
   },
   methods: {
+    updateActiveTab () {
+      const index = this.tabs.findIndex(tab => tab.active)
+      this.activeTabIndex = index < 0 ? 0 : index
+    },
     updateTabs (i) {
       this.activeTabIndex = i
       this.updateHighlighteUnderlinePosition()
@@ -71,27 +79,51 @@ export default {
       const highlightUnderline = this.$refs['highlight-underline']
       highlightUnderline.style.left = `${activeTab.offsetLeft}px`
       highlightUnderline.style.width = `${activeTab.clientWidth}px`
+    },
+    calculateTabs () {
+      const components = this.$slots.default
+        .flatMap(slot => slot.data?.attrs?.class?.includes('prose') ? slot.children : slot)
+        .filter(slot => slot.data?.attrs?.class?.includes('nuxt-content-highligh') || slot.componentOptions?.tag === 'd-code-block' || slot.asyncMeta?.tag === 'd-code-block')
+        .map((slot) => {
+          const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+          return {
+            label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
+            active: typeof attrs.active !== 'undefined'
+          }
+        })
+      return components
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 button {
   outline: none;
 }
-
-.first-tab .code-block:nth-child(2) {
-  display: block;
+.prose > .nuxt-content-highlight:not(.active) {
+  display: none;
 }
-
+.first-tab  {
+  & > .code-block:nth-child(2),
+  & > .prose:nth-child(2) > .nuxt-content-highlight:nth-child(1) {
+    display: block;
+  }
+}
 .highlight-underline {
   bottom: -2px;
   height: 2px;
   transition: left 150ms, width 150ms;
 }
-
-.code-group ::v-deep  pre[class*="language-"] {
-  @apply rounded-t-none mt-0;
+.code-group ::v-deep {
+  & pre[class*="language-"] {
+    @apply rounded-t-none mt-0;
+  }
+  & > .prose > .nuxt-content-highlight .filename {
+    display: none;
+    & + pre[class*="language-"] {
+      @apply pt-3
+    }
+  }
 }
 </style>
