@@ -14,26 +14,40 @@
 
       <ul class="font-medium">
         <li
-          v-for="link of toc"
+          v-for="link of mockedToc"
           :key="link.id"
-          class=""
-          :class="{
-            'text-primary hover:text-primary': exactActiveLink === link.id || activeLink === link.id,
-            'text-gray-700 dark:text-gray-200': !(exactActiveLink === link.id || activeLink === link.id)
-          }"
           @click="showMobileToc = false"
         >
           <a
             :href="`#${link.id}`"
-            class="block py-1 transition-colors duration-100 transform scrollactive-item "
+            class="block py-1 transition-colors duration-100 transform "
             :class="{
-              'hover:text-primary': link.depth === 2,
-              'border-l border-gray-100 dark:border-gray-800 pl-3  hover:text-primary-400 dark:hover:text-primary-400': link.depth === 3,
-              'text-gray-500 dark:text-gray-400': link.depth === 3 && !(exactActiveLink === link.id || activeLink === link.id),
-              'dark:border-primary-500 border-primary-500 dark:text-primary-400 ': link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
+              'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(link.id) || isActiveParent(link),
+              'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400': !(activeHeadings.includes(link.id)) && !isActiveParent(link)
             }"
-            @click.prevent="scrollToHeading"
-          >{{ link.text }}</a>
+            @click.prevent="scrollToHeading(link.id)"
+          >
+            {{ link.text }}
+          </a>
+
+          <ul v-if="link.children" class="overflow-x-hidden font-medium">
+            <li
+              v-for="childLink in link.children"
+              :key="childLink.id"
+            >
+              <a
+                :href="`#${childLink.id}`"
+                :class="{
+                  'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(childLink.id),
+                  'text-gray-400 dark:text-gray-500 hover:text-primary-500': !(activeHeadings.includes(childLink.id))
+                }"
+                class=" pl-3 block py-1 transition-colors duration-100 transform"
+                @click.prevent="scrollToHeading(childLink.id)"
+              >
+                {{ childLink.text }}
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
       <PageTocBottom />
@@ -57,91 +71,72 @@ export default {
   },
   data () {
     return {
-      activeLink: '',
-      exactActiveLink: '',
-      sections: [],
-      showMobileToc: false
+      visibleHeadings: [],
+      activeHeadings: [],
+      showMobileToc: false,
+      mockedToc: []
     }
   },
-  computed: {
-    settings () {
-      return this.$docus.settings
+  watch: {
+    visibleHeadings (val, oldVal) {
+      if (val.length === 0) {
+        this.activeHeadings = oldVal
+      } else {
+        this.activeHeadings = val
+      }
     }
-  },
-  beforeMount () {
-    history.scrollRestoration = 'manual'
   },
   mounted () {
-    document
-      .querySelectorAll('.nuxt-content h2[id], .nuxt-content h3[id]')
-      .forEach((section) => {
-        this.sections.push({
-          level: section.tagName.replace(/h/i, ''),
-          id: section.getAttribute('id'),
-          top: section.offsetTop
-        })
-      })
-    const hash = window.location.hash.replace('#', '')
-    const hashIndex = this.sections.findIndex(section => section.id === hash)
-    if (hash && hashIndex >= 0) {
-      const offset = document.querySelector(location.hash).offsetTop - 110 // 110 is the default value for `top-margin-scroll` in windi prose
-      this.$nextTick().then(() => {
-        scrollTo(0, offset)
-        this.setActive(hashIndex)
-      })
-    } else {
-      this.onScroll()
+    // temporary mock structured toc
+    this.toc.map((item, i) => {
+      if (item.depth === 2) {
+        this.mockedToc.push(item)
+      } else if (item.depth === 3) {
+        const parent = this.mockedToc[this.mockedToc.length - 1]
+        if (parent && parent.depth === 2) {
+          if (!parent.children) { parent.children = [] }
+          parent.children.push(item)
+        } else {
+          this.mockedToc.push(item)
+        }
+      }
+    })
+
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '')
+      this.scrollToHeading(hash)
     }
-    window.addEventListener('scroll', this.onScroll)
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id
+        if (entry.isIntersecting) {
+          this.visibleHeadings.push(id)
+        } else {
+          this.visibleHeadings = this.visibleHeadings.filter(t => t !== id)
+        }
+      })
+    }
+    this.observer = new IntersectionObserver(observerCallback)
+
+    const headings = [...document.querySelectorAll('.nuxt-content h2'), ...document.querySelectorAll('.nuxt-content h3')]
+    headings.forEach((heading) => {
+      this.observer.observe(heading)
+    })
   },
   beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll, true)
+    this.observer.disconnect()
   },
   methods: {
-    onScroll () {
-      const yOffset = window.pageYOffset
-      const windowHeight = window.innerHeight
-      if (yOffset === 0) {
-        this.setActive(0)
-      } else if (yOffset + windowHeight >= document.body.scrollHeight) {
-        return this.setActive(this.sections.length - 1)
-      } else {
-        const targetPoint = yOffset + windowHeight / 2
-        let index = 0
-        for (let i = 0; i < this.sections.length; i++) {
-          if (this.sections[i].top <= targetPoint) {
-            index = i
-          }
-        }
-        this.setActive(index)
-      }
-    },
-    setActive (index) {
-      if (!this.sections[index]) {
-        return
-      }
-      this.exactActiveLink = this.sections[index].id
-      this.activeLink = this.sections[index].id
-      if (this.sections[index].level === '3') {
-        let parentIndex = -1
-        for (let i = 0; i < index; i++) {
-          if (this.sections[i].level === '2') {
-            parentIndex = i
-          }
-        }
-        if (parentIndex >= 0) {
-          this.activeLink = this.sections[parentIndex].id
-        }
-      }
-    },
-    scrollToHeading (e) {
-      const hash = e.target.href.split('#').pop()
+    scrollToHeading (id) {
+      const hash = id
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
-      setTimeout(() => {
-        const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
-        window.scrollTo(0, offset)
-      })
+      const offset = document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
+      window.scrollTo(0, offset)
+    },
+    isActiveParent (link) {
+      return link.children && link.children.some(child => this.activeHeadings.includes(child.id))
     }
   }
 }
