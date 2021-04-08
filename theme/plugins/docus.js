@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { $fetch } from 'ohmyfetch'
-import { joinURL, withoutTrailingSlash } from 'ufo'
+import { joinURL, withoutTrailingSlash, withTrailingSlash } from 'ufo'
 import { useColors, useDefaults } from '../utils/settings'
 
 export default async function ({ app, ssrContext, $content, $config, nuxtState = {}, beforeNuxtRender }, inject) {
@@ -39,6 +39,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           this.fetchLastRelease()
         ])
       },
+
       async fetchSettings () {
         const { path, extension, ...settings } = await $content('settings').only(['title', 'url', 'logo', 'template', 'header', 'twitter', 'github', 'algolia', 'colors', 'credits']).fetch().catch((e) => {
           // eslint-disable-next-line no-console
@@ -50,6 +51,7 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
           this.updateHead()
         }
       },
+
       async fetchCategories () {
         // Avoid re-fetching in production
         if (process.dev === false && this.categories[app.i18n.locale]) {
@@ -116,6 +118,10 @@ export default async function ({ app, ssrContext, $content, $config, nuxtState =
         app.head.meta.push({ hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: this.settings.title })
         app.head.meta = app.head.meta.filter(s => s.hid !== 'theme-color')
         app.head.meta.push({ hid: 'theme-color', name: 'theme-color', content: this.settings.colors.primary })
+      },
+
+      isLinkActive (path) {
+        return withTrailingSlash(app.router.path) === withTrailingSlash(app.$contentLocalePath(path))
       }
     }
   })
