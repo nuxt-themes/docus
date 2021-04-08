@@ -48,7 +48,8 @@ export default {
     'nuxt-vite',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
-    r('modules/social-image/module')
+    r('modules/social-image/module'),
+    r('modules/twitter/module')
   ],
   modules: [
     'nuxt-i18n',
