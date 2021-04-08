@@ -1,5 +1,6 @@
 :root {
   --header-height: theme('spacing.14');
+  --scroll-margin-block: calc(var(--header-height) + 2.5rem + 1rem);
 }
 
 @screen md {
@@ -8,14 +9,20 @@
   }
 }
 
+@screen xl {
+  :root {
+    --scroll-margin-block: calc(var(--header-height) + 1rem);
+  }
+}
+
 body {
-  @apply antialiased text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
+  @apply antialiased tracking-semitight text-gray-500 bg-white dark:text-gray-300 dark:bg-gray-900;
 }
 
 .nuxt-content {
   @apply break-words;
   & h2 {
-    scroll-margin-block: calc(var(--header-height) + 2.5rem + 1rem);
+    scroll-margin-block: var(--scroll-margin-block);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
@@ -32,7 +39,7 @@ body {
   }
 
   & h3 {
-    scroll-margin-block: calc(var(--header-height) + 2.5rem + 1rem);
+    scroll-margin-block: var(--scroll-margin-block);
     /* Style anchor links on headings added by @nuxt/content */
     & > a {
       &::after {
@@ -82,14 +89,6 @@ body {
       & > .copy {
         @apply block;
       }
-    }
-  }
-}
-
-@screen xl {
-  .nuxt-content {
-    & h2, & h3 {
-      scroll-margin-block: calc(var(--header-height) + 1rem);
     }
   }
 }

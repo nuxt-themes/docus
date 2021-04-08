@@ -7,11 +7,13 @@ import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import typography from 'windicss/plugin/typography'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
+import filters from 'windicss/plugin/filters'
 
 export default {
   darkMode: 'class',
   plugins: [
-    typography(),
+    typography,
+    filters,
     aspectRatio
   ],
   theme: {
@@ -27,12 +29,21 @@ export default {
       yellow: colors.amber,
       gray: colors.gray
     },
+    backdropFilter: {
+      blur: {
+        sm: 'blur(8px)',
+        DEFAULT: 'blur(12px)'
+      }
+    },
     extend: {
+      fontFamily: {
+        sans: 'Inter, ' + defaultTheme.fontFamily.sans
+      },
+      letterSpacing: {
+        semitight: '-0.0125em'
+      },
       screens: {
         xs: '414px'
-      },
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       colors: {
         primary: {
@@ -83,6 +94,7 @@ export default {
       typography: theme => ({
         DEFAULT: {
           css: {
+            letterSpacing: '-0.0125em',
             maxWidth: 'none',
             color: theme('colors.gray.700'),
             '> :first-child': { marginTop: '-' },
@@ -94,11 +106,11 @@ export default {
               marginBottom: '0'
             },
             'h1, h2': {
-              letterSpacing: '-0.025em',
               fontWeight: theme('fontWeight.bold')
             },
             'h1, h2, h3, h4': {
-              color: theme('colors.gray.900')
+              color: theme('colors.gray.900'),
+              letterSpacing: theme('letterSpacing.tight')
             },
             'h1, h2, h3': {
               marginTop: '1.5em',
@@ -113,11 +125,13 @@ export default {
             },
             'h2 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h3 code': {
               color: 'inherit',
-              fontWeight: 'inherit'
+              fontWeight: 'inherit',
+              pointerEvents: 'none'
             },
             'h2 > a, h3 > a': {
               color: 'inherit',
@@ -156,7 +170,8 @@ export default {
                 zIndex: '-1',
                 width: 'calc(100% + 8px)',
                 height: 'calc(100% + 8px)',
-                backgroundColor: theme('colors.white')
+                backgroundColor: theme('colors.white'),
+                pointerEvents: 'none'
               }
             },
             'ol, ul': {
@@ -180,7 +195,7 @@ export default {
               fontWeight: theme('fontWeight.medium'),
               textDecoration: 'none',
               '&:hover': {
-                borderBottomWidth: '2px',
+                borderBottomWidth: '1px',
                 borderBottomColor: 'var(--primary-500)',
                 paddingBottom: '1px'
               }
@@ -369,7 +384,25 @@ export default {
     }
   },
   shortcuts: {
-    'light-img': 'block dark:hidden',
-    'dark-img': 'hidden dark:block'
+    // Primary
+    'text-primary': 'text-primary-500 dark:text-primary-400',
+    'border-primary': 'border-primary-500 dark:border-primary-400',
+    'bg-primary': 'bg-primary-500 dark:bg-primary-400',
+    // Icons
+    'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
+    'd-icon': 'text-icon transition-colors duration-200 focus:outline-none',
+    // Images utils
+    'light-img': 'dark:hidden',
+    'dark-img': 'light:hidden',
+    // Container
+    'max-w-container': 'max-w-8xl',
+    'px-container': 'px-4 sm:px-6',
+    'd-container': 'max-w-container mx-auto',
+    'd-container-content': 'd-container px-container',
+    // Header
+    'blur-header': 'blur-12',
+    'bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
+    'border-header': 'border-b border-gray-100 dark:border-gray-800',
+    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header'
   }
 }
