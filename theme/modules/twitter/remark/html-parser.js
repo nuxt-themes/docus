@@ -52,8 +52,8 @@ module.exports = async function parseHtml (file, context = {}) {
       .freeze()()
   }
   try {
-    const { result } = await _processor.process(file)
-    return result.pop()
+    const { contents } = await _processor.process(file)
+    return contents.pop()
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`HTML to AST error: ${error}`)
