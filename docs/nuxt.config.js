@@ -3,9 +3,6 @@ import { withDocus } from 'docus'
 import windiConfig from './windi.config'
 
 export default withDocus({
-  content: {
-    liveEdit: false
-  },
   buildModules: [
     'vue-plausible'
   ],
