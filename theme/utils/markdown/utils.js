@@ -1,24 +1,6 @@
-const logger = require('consola').withScope('@docus')
 const { camelCase } = require('change-case')
 
-const processTocDepth = ({ depth }) => {
-  const tocTags = []
-
-  if (depth < 1) {
-    logger.info(`toc.depth is set as ${depth}. Table of contents of markdown files will be empty.`)
-    return tocTags
-  }
-
-  if (depth > 6) {
-    logger.info(`toc.depth is set as ${depth}. Table of contents of markdown files will include all the headings.`)
-  }
-
-  for (let i = 2; i <= depth; i++) {
-    tocTags.push(`h${i}`)
-  }
-
-  return tocTags
-}
+export const logger = require('consola').withScope('@docus')
 
 const processPlugins = (type, markdown, resolvePath) => {
   const plugins = []
@@ -55,7 +37,6 @@ export const processOptions = (options, resolvePath) => {
   if (!resolvePath) {
     resolvePath = path => path
   }
-  options.toc.tags = processTocDepth(options.toc)
   options.remarkPlugins = processPlugins('remark', options, resolvePath)
   options.rehypePlugins = processPlugins('rehype', options, resolvePath)
 }
@@ -76,6 +57,9 @@ export function flattenNode (node, maxDepth = 2, _depth = 0) {
   }
   return [
     node,
-    ...node.children.reduce((acc, child) => acc.concat(flattenNode(child, maxDepth, _depth + 1)), [])
+    ...node.children.reduce(
+      (acc, child) => acc.concat(flattenNode(child, maxDepth, _depth + 1)),
+      []
+    )
   ]
 }

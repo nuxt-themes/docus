@@ -9,7 +9,7 @@
       <PageTocTop />
 
       <h5 class="items-center hidden mb-2 xl:flex">
-        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100 ">{{ $t('toc.title') }}</span>
+        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100 ">{{ title || $t('toc.title') }}</span>
       </h5>
 
       <ul class="overflow-x-hidden font-medium">
@@ -46,6 +46,10 @@ import { convertPropToPixels } from '../../utils/dom'
 
 export default {
   props: {
+    title: {
+      type: String,
+      default: ''
+    },
     toc: {
       type: Array,
       default: () => []

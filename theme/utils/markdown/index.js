@@ -6,7 +6,7 @@ import { generateBody, generateDescription } from './content'
 
 const DEFAULTS = {
   toc: {
-    depth: 3,
+    depth: 2,
     searchDepth: 2
   },
   remarkPlugins: [
@@ -36,8 +36,14 @@ async function parse (file, options) {
   // Compile markdown from file content to JSON
   const body = await generateBody(content, { ...options, data: documentData })
 
-  // Generate toc from body
-  const toc = generateToc(body, options)
+  /**
+   * generate toc if it is not disabled in front-matter
+   */
+  let toc
+  if (data.toc !== false) {
+    const tocOption = defu(data.toc || {}, options.toc)
+    toc = generateToc(body, tocOption)
+  }
 
   let excerpt
   let description

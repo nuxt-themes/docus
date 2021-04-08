@@ -15,7 +15,7 @@
     <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800">
     <PagePrevNext :prev="prev" :next="next" />
     <template #toc>
-      <PageToc v-if="!document.fullscreen" :toc="document.toc" />
+      <PageToc v-if="!document.fullscreen" :toc="document.toc.links" :title="document.toc.title" />
     </template>
   </AppPage>
 </template>

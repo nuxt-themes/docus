@@ -1,12 +1,18 @@
-import { flattenNode, flattenNodeText } from './utils'
+import { flattenNode, flattenNodeText, logger } from './utils'
 
-const getHeaderDepth = node => ({
-  h2: 2,
-  h3: 3,
-  h4: 4,
-  h5: 5,
-  h6: 6
-})[node.tag]
+const TOC_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6']
+const TOC_TAGS_DEPTH = { h2: 2, h3: 3, h4: 4 }
+
+const getHeaderDepth = node => TOC_TAGS_DEPTH[node.tag]
+
+const getTocTags = (depth) => {
+  if (depth < 1 || depth > 5) {
+    logger.warn(`toc.depth is set to ${depth}. It should be a muber between 1 and 5. `)
+    depth = 1
+  }
+
+  return TOC_TAGS.slice(0, depth)
+}
 
 function nestHeaders (headers) {
   if (headers.length <= 1) {
@@ -34,20 +40,24 @@ function nestHeaders (headers) {
 }
 
 export function generateFlatToc (body, options) {
-  const { toc: { tags, searchDepth } } = options
-
+  const { searchDepth, depth, title = '' } = options
+  const tags = getTocTags(depth)
   const headers = flattenNode(body, searchDepth)
     .filter(node => tags.includes(node.tag))
 
-  return headers.map(node => ({
+  const links = headers.map(node => ({
     id: node.props.id,
     depth: getHeaderDepth(node),
     text: flattenNodeText(node)
   }))
+  return {
+    title,
+    links
+  }
 }
 
 export function generateToc (body, options) {
-  const flatToc = generateFlatToc(body, options)
-  const toc = nestHeaders(flatToc)
+  const toc = generateFlatToc(body, options)
+  toc.links = nestHeaders(toc.links)
   return toc
 }
