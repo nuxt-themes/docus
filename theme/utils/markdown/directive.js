@@ -29,13 +29,13 @@ export default function htmlDirectives () {
   function ondirective (node) {
     const data = node.data || (node.data = {})
     const hast = h(node.name, node.attributes)
-    if (node.name === 'd-list') {
+    if (node.name === 'list') {
       hast.properties = {
         ...hast.properties,
         ...toData(node)
       }
     }
-    data.hName = hast.tagName
+    data.hName = `d-${hast.tagName}`
     data.hProperties = hast.properties
   }
 }
