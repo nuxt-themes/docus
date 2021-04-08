@@ -47,7 +47,8 @@ export default {
     'nuxt-windicss',
     'nuxt-vite',
     '@nuxtjs/color-mode',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    r('modules/twitter/module')
   ],
   modules: [
     'nuxt-i18n',
