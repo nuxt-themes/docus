@@ -3,9 +3,8 @@
 </template>
 
 <script>
-import { withoutTrailingSlash } from 'ufo'
 import Vue from 'vue'
-import { pascalCase } from 'scule'
+import { withoutTrailingSlash } from 'ufo'
 import CopyButton from '../components/atoms/DCopyButton'
 
 export default {
@@ -17,26 +16,16 @@ export default {
   },
   async asyncData ({ $content, $docus, app, params, error }) {
     const language = app.i18n.locale
-    const to = withoutTrailingSlash(`/${params.pathMatch || ''}`)
+    const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
     const draft = $docus.ui?.draft ? undefined : false
     const [page] = await $content({ deep: true }).where({ language, to, draft }).fetch()
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
-    page.template = pascalCase(page.template || $docus.settings.template)
-    if (!Vue.component(page.template)) {
-      // eslint-disable-next-line no-console
-      console.error(`Template ${page.template} does not exists.`)
-      page.template = 'Page'
-    }
+    page.template = $docus.getPageTemplate(page)
 
     // Preload the component on client-side navigation
     await Vue.component(page.template)()
-
-    // Todo: handle checking if listing
-    // Is `to` also matching a directory?
-    // template: 'blog'
-    // listing: true
 
     return { page }
   },

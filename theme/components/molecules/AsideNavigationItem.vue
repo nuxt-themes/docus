@@ -9,7 +9,7 @@
       {{ category }}
     </h5>
     <ul v-if="!collapse || isCategoryActive" class="mb-2">
-      <li v-for="doc of docs" :key="doc.slug">
+      <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
           class="relative inline-flex items-center justify-between pl-3 py-1.5 transition duration-200 border-l border-gray-100 dark:border-gray-800 hover:text-primary"

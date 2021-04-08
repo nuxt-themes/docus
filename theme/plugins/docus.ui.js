@@ -20,6 +20,7 @@ export default async function ({ $docus, ssrContext }) {
   if (process.client) {
     watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
     watch(() => $docus.ui.draft, () => $docus.fetchCategories())
+    watch(() => $docus.ui.draft, () => $docus.fetchNavigation())
   }
 
   // Mount DocusUI widget on client-side
@@ -35,5 +36,6 @@ export default async function ({ $docus, ssrContext }) {
   // Re-fetch categories
   if (process.server) {
     await $docus.fetchCategories()
+    await $docus.fetchNavigation()
   }
 }

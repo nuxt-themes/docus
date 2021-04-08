@@ -1,3 +1,5 @@
+import { withoutTrailingSlash } from 'ufo'
+
 export function generatePosition (path, doc) {
   const position = path.split('/').filter(Boolean).map((part) => {
     const match = part.match(/^(\d+)\./)
@@ -13,7 +15,7 @@ export function generateSlug (name) {
   return name.replace(/(\d+\.)?(.*)/, '$2').replace(/^index/, '').replace(/\.draft/, '')
 }
 export function generateTo (path) {
-  return path.split('/').map(generateSlug).join('/')
+  return withoutTrailingSlash(path.split('/').map(generateSlug).join('/'))
 }
 
 export function isDraft (path) {
