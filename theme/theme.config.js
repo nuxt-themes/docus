@@ -20,15 +20,5 @@ export default function (nuxt) {
     )
     windiOptions.scan.include = windiOptions.scan.include || []
     windiOptions.scan.include.push(__dirname)
-
-    // Workaround for typography plugin not being a function supporting theme
-    if (typeof windiOptions.config.theme.extend.typography === 'function') {
-      const defaultTheme = nuxt.resolver.requireModule('windicss/defaultTheme')
-      const theme = key => {
-        const keys = key.split('.')
-        return keys.reduce((res, _key) => res[_key], defu(windiOptions.config.theme, defaultTheme))
-      }
-      windiOptions.config.theme.extend.typography = windiOptions.config.theme.extend.typography(theme)
-    }
   })
 }
