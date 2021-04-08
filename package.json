@@ -11,6 +11,8 @@
   "scripts": {
     "dev": "nuxt dev docs",
     "generate": "nuxt generate --force-build docs",
+    "start": "nuxt start docs",
+    "play": "nuxt playground",
     "lint": "eslint --ext .js,.vue .",
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
@@ -33,6 +35,7 @@
     "nuxt-windicss": "^0.4.6",
     "ohmyfetch": "^0.1.8",
     "prism-themes": "^1.6.0",
+    "scule": "^0.1.1",
     "static-tweets": "^0.3.0",
     "theme-colors": "^0.0.5",
     "ufo": "^0.6.10",
@@ -45,6 +48,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "nuxt-edge": "^2.16.0-26939563.9247190c",
+    "plausible-tracker": "^0.3.1",
     "standard-version": "^9.1.1",
     "vue-plausible": "^1.1.4"
   }
