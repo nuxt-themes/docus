@@ -33,7 +33,7 @@ export default {
     transpile: ['docus']
   },
   css: [r('../theme/assets/css/main.css')],
-  plugins: [r('../engine/i18n'), r('../engine/docus'), r('../engine/menu')],
+  plugins: [r('../engine/docus'), r('../engine/menu')],
   buildModules: [
     themeModule,
     'nuxt-vite',
@@ -45,7 +45,7 @@ export default {
     r('../../plugins/twitter/module'),
     '@nuxtjs/composition-api'
   ],
-  modules: ['nuxt-i18n', '@nuxt/content'],
+  modules: ['@nuxt/content', r('../../plugins/i18n')],
   components: true,
   loading: {
     color: 'var(--primary-500)'
@@ -78,42 +78,6 @@ export default {
   },
   colorMode: {
     classSuffix: ''
-  },
-  i18n: {
-    baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
-    locales: [
-      {
-        code: 'en',
-        iso: 'en-US',
-        file: r('./i18n/en-US.js'),
-        name: 'English'
-      }
-    ],
-    defaultLocale: 'en',
-    parsePages: false,
-    lazy: true,
-    seo: false,
-    vueI18n: {
-      fallbackLocale: 'en',
-      dateTimeFormats: {
-        en: {
-          long: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            weekday: 'short'
-          }
-        },
-        fr: {
-          long: {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            weekday: 'short'
-          }
-        }
-      }
-    }
   },
   server: {
     port: process.env.PORT || 4000
