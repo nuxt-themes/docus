@@ -4,15 +4,21 @@ import themeConfig from '../theme/src'
 import * as releases from '../../plugins/github/src'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './src/lib/document'
 import { useDefaults } from './src/lib/settings'
+import { contentConfig } from './lib/utils'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
 
 export default function docusModule() {
   // wait for nuxt options to be normalized
-  const { nuxt, addLayout } = this
+  const { nuxt, addLayout, requireModule, addPlugin } = this
   const { options, hook } = this.nuxt
 
+  requireModule(['@nuxt/content', contentConfig])
+  addPlugin({
+    src: r('./runtime/docus.js'),
+    filename: 'docus.js'
+  })
   // Disable SSR in dev
   if (options.dev) {
     options.ssr = false

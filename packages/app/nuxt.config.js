@@ -45,7 +45,7 @@ export default {
     r('../../plugins/twitter/module'),
     '@nuxtjs/composition-api'
   ],
-  modules: ['@nuxt/content', r('../../plugins/i18n')],
+  modules: [r('../../plugins/i18n/src/index'), r('../../package/core/src/index')],
   components: true,
   loading: {
     color: 'var(--primary-500)'
@@ -56,25 +56,6 @@ export default {
      * Will override by docus primary color
      */
     theme_color: '#06B6D4'
-  },
-  content: {
-    markdown: {
-      prism: {
-        theme: r('../theme/assets/css/prism.css')
-      },
-      remarkPlugins: [
-        [
-          r('../engine/utils/remark-prose'),
-          {
-            proseClass: 'prose dark:prose-dark'
-          }
-        ],
-        [r('../engine/utils/remark-vue'), {}]
-      ],
-      remarkAutolinkHeadings: {
-        behavior: 'wrap'
-      }
-    }
   },
   colorMode: {
     classSuffix: ''

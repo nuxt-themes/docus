@@ -1,3 +1,6 @@
 {
-  "name": "@docus/i18n"
+  "name": "@docus/i18n",
+  "dependencies": {
+    "nuxt-i18n": "^6.24.0"
+  }
 }
