@@ -15,10 +15,6 @@ Write your documentation with [Nuxt](https://nuxtjs.org) and [Windi CSS](https:/
 
 Read more on [docus.dev](https://docus.dev).
 
-## License
-
-[MIT](./LICENSE)
-
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/docus/latest.svg
 [npm-version-href]: https://npmjs.com/package/docus
