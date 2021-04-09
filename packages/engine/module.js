@@ -1,7 +1,7 @@
 import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
+import themeConfig from '../theme/theme.config'
 import * as releases from './server/api/releases'
-import themeConfig from './theme.config'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import { useDefaults } from './utils/settings'
 
@@ -54,9 +54,9 @@ export default function docusModule() {
 
   // Add layouts
   hook('build:before', () => {
-    addLayout({ src: r('layouts/docs.vue'), filename: 'layouts/docs.vue' })
-    addLayout({ src: r('layouts/readme.vue'), filename: 'layouts/readme.vue' })
-    addLayout({ src: r('layouts/blog.vue'), filename: 'layouts/blog.vue' })
+    addLayout({ src: r('../theme/layouts/docs.vue'), filename: 'layouts/docs.vue' })
+    addLayout({ src: r('../theme/layouts/readme.vue'), filename: 'layouts/readme.vue' })
+    addLayout({ src: r('../theme/layouts/blog.vue'), filename: 'layouts/blog.vue' })
   })
 
   // Add default error page if not defined
@@ -64,7 +64,7 @@ export default function docusModule() {
     const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
     const errorPageExists = await fs.stat(errorPagePath).catch(() => false)
     if (!errorPageExists) {
-      options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
+      options.ErrorPage = options.ErrorPage || r('../theme/layouts/error.vue')
     }
   })
 
@@ -82,43 +82,43 @@ export default function docusModule() {
   // Configure `components/` dir
   hook('components:dirs', async dirs => {
     dirs.push({
-      path: r('components/atoms'),
+      path: r('../theme/components/atoms'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/molecules'),
+      path: r('../theme/components/molecules'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/icons'),
+      path: r('../theme/components/icons'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/logos'),
+      path: r('../theme/components/logos'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/organisms'),
+      path: r('../theme/components/organisms'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/templates'),
+      path: r('../theme/components/templates'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('components/slots'),
+      path: r('../theme/components/slots'),
       global: true,
       level: 3
     })
     if (options.dev) {
       dirs.push({
-        path: r('components/dev'),
+        path: r('../theme/components/dev'),
         global: true,
         level: 2
       })
@@ -164,41 +164,41 @@ export default function docusModule() {
       routes.push({
         path: '/',
         name: 'index',
-        component: r('pages/_.vue')
+        component: r('../app/pages/_.vue')
       })
     }
     if (!hasRoute('releases')) {
       routes.push({
         path: '/releases',
         name: 'releases',
-        component: r('pages/releases.vue')
+        component: r('../app/pages/releases.vue')
       })
     }
     if (!hasRoute('blog')) {
       routes.push({
         path: '/blog',
         name: 'blog',
-        component: r('pages/blog/index.vue')
+        component: r('../app/pages/blog/index.vue')
       })
     }
     if (!hasRoute('blog-post')) {
       routes.push({
         path: '/blog/:post',
         name: 'blog-post',
-        component: r('pages/blog/_post.vue')
+        component: r('../app/pages/blog/_post.vue')
       })
     }
     if (!hasRoute('all')) {
       routes.push({
         path: '/*',
         name: 'all',
-        component: r('pages/_.vue')
+        component: r('../app/pages/_.vue')
       })
     }
   })
   // Override editor style on dev mode
   if (options.dev) {
-    options.css.push(r('assets/css/main.dev.css'))
+    options.css.push(r('../theme/assets/css/main.dev.css'))
   }
 
   themeConfig(nuxt)
@@ -207,7 +207,7 @@ export default function docusModule() {
   options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
   // Docus Devtools
   if (options.dev) {
-    options.plugins.push(r('plugins/docus.ui.js'))
+    options.plugins.push(r('docus.ui.js'))
   }
 
   // Inject `docus` into ssrContext (for releases)

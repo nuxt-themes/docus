@@ -1,14 +1,14 @@
 import { resolve } from 'path'
-import themeModule from './module'
+import themeModule from '../engine/module'
 
 const r = path => resolve(__dirname, path)
 
 export default {
   alias: {
-    qrcode: require.resolve('./mock/default'),
-    axios: require.resolve('./mock/default'),
-    nprogress: require.resolve('./mock/default'),
-    jwt_decode: require.resolve('./mock/default')
+    qrcode: require.resolve('./mock.js'),
+    axios: require.resolve('./mock.js'),
+    nprogress: require.resolve('./mock.js'),
+    jwt_decode: require.resolve('./mock.js')
   },
   target: 'static',
   ssr: true,
@@ -32,8 +32,8 @@ export default {
   build: {
     transpile: ['docus']
   },
-  css: [r('assets/css/main.css')],
-  plugins: [r('plugins/i18n'), r('plugins/docus'), r('plugins/menu')],
+  css: [r('../theme/assets/css/main.css')],
+  plugins: [r('../engine/i18n'), r('../engine/docus'), r('../engine/menu')],
   buildModules: [
     themeModule,
     'nuxt-vite',
@@ -41,8 +41,8 @@ export default {
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
-    r('modules/social-image/module'),
-    r('modules/twitter/module'),
+    r('../social-image/module'),
+    r('../twitter/module'),
     '@nuxtjs/composition-api'
   ],
   modules: ['nuxt-i18n', '@nuxt/content'],
@@ -60,16 +60,16 @@ export default {
   content: {
     markdown: {
       prism: {
-        theme: r('assets/css/prism.css')
+        theme: r('../theme/assets/css/prism.css')
       },
       remarkPlugins: [
         [
-          r('utils/remark-prose'),
+          r('../engine/utils/remark-prose'),
           {
             proseClass: 'prose dark:prose-dark'
           }
         ],
-        [r('utils/remark-vue'), {}]
+        [r('../engine/utils/remark-vue'), {}]
       ],
       remarkAutolinkHeadings: {
         behavior: 'wrap'
@@ -85,7 +85,7 @@ export default {
       {
         code: 'en',
         iso: 'en-US',
-        file: 'en-US.js',
+        file: r('./i18n/en-US.js'),
         name: 'English'
       }
     ],

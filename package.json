@@ -4,7 +4,7 @@
   "description": "",
   "repository": "nuxtlabs/docus",
   "license": "MIT",
-  "main": "theme/index.js",
+  "main": "packages/app/index.js",
   "files": [
     "theme"
   ],
