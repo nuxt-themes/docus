@@ -1,15 +1,14 @@
-import { resolve, join, relative } from 'path'
+import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-
+import * as releases from './server/api/releases'
 import themeConfig from './theme.config'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import * as releases from './server/api/releases'
 import { useDefaults } from './utils/settings'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
 
-export default function docusModule () {
+export default function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, addLayout } = this
   const { options, hook } = this.nuxt
@@ -24,7 +23,10 @@ export default function docusModule () {
   // Inject Docus theme as ~docus
   nuxt.options.alias['~docus'] = r('theme')
 
-  this.addServerMiddleware({ path: '/api/docus/releases', handler: releases.handler })
+  this.addServerMiddleware({
+    path: '/api/docus/releases',
+    handler: releases.handler
+  })
 
   // Inject content dir in private runtime config
   const contentDir = options.content.dir || 'content'
@@ -36,7 +38,7 @@ export default function docusModule () {
     const userSettings = require(settingsPath)
     const settings = useDefaults(userSettings)
 
-    hook('content:ready', ($content) => {
+    hook('content:ready', $content => {
       releases.fetch({ $content, settings })
     })
 
@@ -46,7 +48,9 @@ export default function docusModule () {
     if (settings.colors && settings.colors.primary) {
       options.meta.theme_color = settings.colors.primary
     }
-  } catch (err) { /* settings not found */ }
+  } catch (err) {
+    /* settings not found */
+  }
 
   // Add layouts
   hook('build:before', () => {
@@ -70,13 +74,13 @@ export default function docusModule () {
     const pagesDirPath = resolve(options.srcDir, options.dir.pages)
     const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
     if (!pagesDirExists) {
-      this.nuxt.options.build.createRoutes = () => ([])
+      this.nuxt.options.build.createRoutes = () => []
       nuxt.options.watch.push(pagesDirPath)
     }
   })
 
   // Configure `components/` dir
-  hook('components:dirs', async (dirs) => {
+  hook('components:dirs', async dirs => {
     dirs.push({
       path: r('components/atoms'),
       global: true,
@@ -131,7 +135,7 @@ export default function docusModule () {
     }
   })
   // Configure content after each hook
-  hook('content:file:beforeInsert', (document) => {
+  hook('content:file:beforeInsert', document => {
     if (document.extension !== '.md') {
       return
     }
@@ -153,7 +157,7 @@ export default function docusModule () {
     document.draft = document.draft || isDraft(slug)
   })
   // Extend `/` route
-  hook('build:extendRoutes', (routes) => {
+  hook('build:extendRoutes', routes => {
     const hasRoute = name => routes.some(route => route.name === name)
 
     if (!hasRoute('index')) {
@@ -208,7 +212,7 @@ export default function docusModule () {
 
   // Inject `docus` into ssrContext (for releases)
   // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
-  nuxt.hook('vue-renderer:context', (ssrContext) => {
+  nuxt.hook('vue-renderer:context', ssrContext => {
     ssrContext.docus = {
       releases: releases.get()
     }

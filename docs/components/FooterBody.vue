@@ -1,6 +1,10 @@
 <template>
   <div class="py-6 flex flex-col sm:flex-row justify-between items-center">
-    <a href="https://nuxtlabs.com" target="_blank" class="flex items-end dark:text-gray-200 text-gray-800 hover:text-black dark:hover:text-white mb-2 sm:mb-0">
+    <a
+      href="https://nuxtlabs.com"
+      target="_blank"
+      class="flex items-end dark:text-gray-200 text-gray-800 hover:text-black dark:hover:text-white mb-2 sm:mb-0"
+    >
       <IconNuxtLabs class="mr-2" />
       <p class="font-semibold text-xs">Made by Nuxt Labs</p>
     </a>

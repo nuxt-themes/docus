@@ -1,5 +1,11 @@
 <template>
-  <div class="code-block" :class="{active: active, 'p-4 border-2 border-t-0 border-gray-300 dark:border-gray-700 rounded-b-md': preview}">
+  <div
+    class="code-block"
+    :class="{
+      active: active,
+      'p-4 border-2 border-t-0 border-gray-300 dark:border-gray-700 rounded-b-md': preview
+    }"
+  >
     <slot />
   </div>
 </template>

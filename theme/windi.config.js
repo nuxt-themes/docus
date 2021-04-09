@@ -5,17 +5,13 @@
  */
 import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
-import typography from 'windicss/plugin/typography'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 import filters from 'windicss/plugin/filters'
+import typography from 'windicss/plugin/typography'
 
 export default {
   darkMode: 'class',
-  plugins: [
-    typography,
-    filters,
-    aspectRatio
-  ],
+  plugins: [typography(), filters, aspectRatio],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -78,7 +74,7 @@ export default {
         '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
         '(screen-header)': `calc(100vh - ${theme('spacing.header')})`
       }),
-      minHeight: theme => ({
+      minHeight: () => ({
         'fill-available': '-webkit-fill-available'
       }),
       maxWidth: {

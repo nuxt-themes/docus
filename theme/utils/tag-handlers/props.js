@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const {
-  parse
-} = require('vue-docgen-api')
+const { parse } = require('vue-docgen-api')
 
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
@@ -10,14 +8,14 @@ const directories = [
   path.resolve(__dirname, '../../components') // components directory of Docus
 ]
 
-function fileName (file) {
+function fileName(file) {
   if (!file.match(/\.vue$/)) {
     return file + '.vue'
   }
   return file
 }
 
-function resolvePath (file) {
+function resolvePath(file) {
   file = fileName(file)
   if (fs.existsSync(path.resolve(file))) {
     return path.resolve(file)
@@ -30,7 +28,7 @@ function resolvePath (file) {
   return null
 }
 
-module.exports = async function propsHandler (node) {
+module.exports = async function propsHandler(node) {
   const match = node.value.match(/of=['"]([^'"]*)['"]/)
   if (!match) {
     // eslint-disable-next-line no-console

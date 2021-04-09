@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  head () {
+  head() {
     const i18nSeo = this.$nuxtI18nSeo()
 
     return {
-      titleTemplate: (chunk) => {
+      titleTemplate: chunk => {
         if (chunk) {
           return `${chunk} - ${this.settings.title}`
         }
@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-    settings () {
+    settings() {
       return this.$docus.settings
     }
   }

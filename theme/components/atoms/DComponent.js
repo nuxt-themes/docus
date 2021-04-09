@@ -12,7 +12,7 @@ export default {
       default: 'span'
     }
   },
-  render (h, { props, data, slots, children }) {
+  render(h, { props, data, slots, children }) {
     if (typeof props.component === 'string' && Vue.component(props.component)) {
       return h(props.component, data, children)
     }

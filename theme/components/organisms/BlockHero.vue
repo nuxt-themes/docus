@@ -7,7 +7,9 @@
         >
           {{ title }}
         </h2>
-        <h3 class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300">
+        <h3
+          class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300"
+        >
           {{ description }}
         </h3>
         <div class="flex items-center space-x-6">
@@ -17,13 +19,16 @@
             </DButtonLink>
           </DComponent>
           <DComponent v-if="secondary" :component="secondary">
-            <a :href="secondary[1]" class="py-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100">
+            <a
+              :href="secondary[1]"
+              class="py-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100"
+            >
               {{ secondary[0] }}
             </a>
           </DComponent>
         </div>
       </div>
-      <div class="w-full m-auto lg:w-1/3 sm:w-580px ">
+      <div class="w-full m-auto lg:w-1/3 sm:w-580px">
         <div class="md:pl-2">
           <Terminal snippet="npx degit nuxtlabs/docus-starter#main docs" />
         </div>

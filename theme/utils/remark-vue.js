@@ -1,11 +1,9 @@
 const hasha = require('hasha')
 const propsHandler = require('./tag-handlers/props')
 
-const handlers = [
-  ['props', propsHandler]
-]
+const handlers = [['props', propsHandler]]
 
-async function enrichTag (node, tag, handler, documentData) {
+async function enrichTag(node, tag, handler, documentData) {
   if (node.type === 'html' || (node.children && node.children[0] && node.children[0].type === 'html')) {
     const TAG_REGEX = new RegExp(`^\\s*<(d-${tag}|D${tag})\\s+`, 'i')
 
@@ -30,7 +28,7 @@ async function enrichTag (node, tag, handler, documentData) {
 
 module.exports = () => {
   return async (tree, { data }) => {
-    const modified = tree.children.map(async (node, i) => {
+    const modified = tree.children.map(async node => {
       return await handlers.reduce(async (node, [tag, handler]) => {
         const _node = await node
         return await enrichTag(_node, tag, handler, data)

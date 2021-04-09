@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       activeTabIndex: 0,
       /**
@@ -31,14 +31,14 @@ export default {
     }
   },
   computed: {
-    tabs () {
+    tabs() {
       // eslint-disable-next-line no-unused-expressions
       this.counter
       return this.calculateTabs()
     }
   },
   watch: {
-    activeTabIndex (newValue, oldValue) {
+    activeTabIndex(newValue, oldValue) {
       const tabs = this.$el.querySelectorAll('.code-group > .code-block, .code-group > .prose .nuxt-content-highlight')
       if (oldValue < tabs.length) {
         tabs[oldValue].classList.remove('active')
@@ -46,7 +46,7 @@ export default {
       tabs[newValue].classList.add('active')
     }
   },
-  updated () {
+  updated() {
     const newTabs = this.calculateTabs()
     if (JSON.stringify(newTabs) !== JSON.stringify(this.tabs)) {
       this.counter += 1
@@ -56,22 +56,22 @@ export default {
       })
     }
   },
-  created () {
+  created() {
     this.updateActiveTab()
   },
-  mounted () {
+  mounted() {
     this.updateHighlighteUnderlinePosition()
   },
   methods: {
-    updateActiveTab () {
+    updateActiveTab() {
       const index = this.tabs.findIndex(tab => tab.active)
       this.activeTabIndex = index < 0 ? 0 : index
     },
-    updateTabs (i) {
+    updateTabs(i) {
       this.activeTabIndex = i
       this.updateHighlighteUnderlinePosition()
     },
-    updateHighlighteUnderlinePosition () {
+    updateHighlighteUnderlinePosition() {
       const activeTab = this.$refs.tabs[this.activeTabIndex]
       if (!activeTab) {
         return
@@ -80,11 +80,16 @@ export default {
       highlightUnderline.style.left = `${activeTab.offsetLeft}px`
       highlightUnderline.style.width = `${activeTab.clientWidth}px`
     },
-    calculateTabs () {
+    calculateTabs() {
       const components = this.$slots.default
-        .flatMap(slot => slot.data?.attrs?.class?.includes('prose') ? slot.children : slot)
-        .filter(slot => slot.data?.attrs?.class?.includes('nuxt-content-highligh') || slot.componentOptions?.tag === 'd-code-block' || slot.asyncMeta?.tag === 'd-code-block')
-        .map((slot) => {
+        .flatMap(slot => (slot.data?.attrs?.class?.includes('prose') ? slot.children : slot))
+        .filter(
+          slot =>
+            slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
+            slot.componentOptions?.tag === 'd-code-block' ||
+            slot.asyncMeta?.tag === 'd-code-block'
+        )
+        .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
           return {
             label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
@@ -104,7 +109,7 @@ button {
 .prose > .nuxt-content-highlight:not(.active) {
   display: none;
 }
-.first-tab  {
+.first-tab {
   & > .code-block:nth-child(2),
   & > .prose:nth-child(2) > .nuxt-content-highlight:nth-child(1) {
     display: block;
@@ -116,13 +121,13 @@ button {
   transition: left 150ms, width 150ms;
 }
 .code-group ::v-deep {
-  & pre[class*="language-"] {
+  & pre[class*='language-'] {
     @apply rounded-t-none mt-0;
   }
   & > .prose > .nuxt-content-highlight .filename {
     display: none;
-    & + pre[class*="language-"] {
-      @apply pt-3
+    & + pre[class*='language-'] {
+      @apply pt-3;
     }
   }
 }

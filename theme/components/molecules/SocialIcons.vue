@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    settings () {
+    settings() {
       return this.$docus.settings
     }
   }

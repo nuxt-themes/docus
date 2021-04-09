@@ -3,7 +3,7 @@ import { useProxy } from './puppeteer-proxy'
 let _browser
 let _page
 
-async function getPage (options) {
+async function getPage(options) {
   if (!_page) {
     // ensure browser is available
     const remoteBrowser = options.browserWSEndpoint
@@ -21,14 +21,14 @@ async function getPage (options) {
   return _page
 }
 
-export async function takeScreenshot (options, url, type = 'jpeg') {
+export async function takeScreenshot(options, url, type = 'jpeg') {
   const page = await getPage(options)
   await page.goto(url)
   const file = await page.screenshot({ type })
   return file
 }
 
-export async function cleanup () {
+export async function cleanup() {
   if (_page) {
     await _page.close()
     _page = null

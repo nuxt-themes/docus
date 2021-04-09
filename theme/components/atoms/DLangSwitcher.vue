@@ -17,8 +17,13 @@
         <NuxtLink
           :to="switchLocalePath(locale.code)"
           class="px-4 py-1 flex items-center whitespace-no-wrap"
-          :class="[$i18n.locale === locale.code ? 'font-semibold cursor-default text-gray-800 dark:text-gray-200': 'hover:text-primary']"
-        >{{ locale.name }}</NuxtLink>
+          :class="[
+            $i18n.locale === locale.code
+              ? 'font-semibold cursor-default text-gray-800 dark:text-gray-200'
+              : 'hover:text-primary'
+          ]"
+          >{{ locale.name }}</NuxtLink
+        >
       </li>
     </ul>
   </DDropdown>

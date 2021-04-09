@@ -1,5 +1,5 @@
 <template>
-  <nuxt-content :document="page" />
+  <NuxtContent :document="page" />
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   data: () => ({
     page: {}
   }),
-  async fetch () {
+  async fetch() {
     this.page = await this.$content(this.query).fetch()
   }
 }

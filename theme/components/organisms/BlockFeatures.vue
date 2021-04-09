@@ -1,9 +1,7 @@
 <template>
   <section class="py-12 lg:py-24 bg-gray-50 dark:bg-gray-800">
     <div class="d-container-content">
-      <h2
-        class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100"
-      >
+      <h2 class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
         {{ title }}
       </h2>
       <ul
@@ -48,7 +46,7 @@ export default {
     }
   },
   methods: {
-    isImage (icon) {
+    isImage(icon) {
       return String(icon).includes('.')
     }
   }

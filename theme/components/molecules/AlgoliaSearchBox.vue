@@ -2,27 +2,23 @@
   <div id="docsearch">
     <!-- DO NOT CHANGE: this code is just a placeholder -->
     <button type="button" class="DocSearch-Button" aria-label="Search">
-      <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path
-        d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-        stroke="currentColor"
-        fill="none"
-        fill-rule="evenodd"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path></svg>
+      <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+        <path
+          d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+          stroke="currentColor"
+          fill="none"
+          fill-rule="evenodd"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
     </button>
   </div>
 </template>
 
 <script>
-function isSpecialClick (event) {
-  return (
-    event.button === 1 ||
-    event.altKey ||
-    event.ctrlKey ||
-    event.metaKey ||
-    event.shiftKey
-  )
+function isSpecialClick(event) {
+  return event.button === 1 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
 }
 
 export default {
@@ -37,26 +33,26 @@ export default {
     }
   },
   watch: {
-    '$i18n.locale' (newValue) {
+    '$i18n.locale'(newValue) {
       this.update(this.options, newValue)
     },
-    options (newValue) {
+    options(newValue) {
       this.update(newValue, this.$i18n.locale)
     }
   },
-  mounted () {
+  mounted() {
     this.initialize(this.options, this.$i18n.locale)
   },
   methods: {
-    stripTrailingSlash (url) {
+    stripTrailingSlash(url) {
       return url.replace(/\/$|\/(?=\?)|\/(?=#)/g, '')
     },
-    getRelativePath (absoluteUrl) {
+    getRelativePath(absoluteUrl) {
       const { pathname, hash } = new URL(absoluteUrl)
       const url = pathname.replace(this.settings.url, '/') + hash
       return this.stripTrailingSlash(url)
     },
-    initialize (userOptions, code) {
+    initialize(userOptions, code) {
       const lang = this.$i18n.locales.find(locale => locale.code === code)
 
       Promise.all([
@@ -71,30 +67,26 @@ export default {
             searchParameters: Object.assign(
               {},
               lang && {
-                facetFilters: [
-                  `${userOptions.langAttribute || 'language'}:${lang.iso}`
-                ].concat(userOptions.facetFilters || [])
+                facetFilters: [`${userOptions.langAttribute || 'language'}:${lang.iso}`].concat(
+                  userOptions.facetFilters || []
+                )
               }
             ),
             navigator: {
               navigate: ({ suggestionUrl }) => {
-                const { pathname: hitPathname } = new URL(
-                  window.location.origin + suggestionUrl
-                )
+                const { pathname: hitPathname } = new URL(window.location.origin + suggestionUrl)
 
                 // Vue Router doesn't handle same-page navigation so we use
                 // the native browser location API for anchor navigation.
                 if (this.$router.history.current.path === hitPathname) {
-                  window.location.assign(
-                    window.location.origin + suggestionUrl
-                  )
+                  window.location.assign(window.location.origin + suggestionUrl)
                 } else {
                   this.$router.push(suggestionUrl)
                 }
               }
             },
-            transformItems: (items) => {
-              return items.map((item) => {
+            transformItems: items => {
+              return items.map(item => {
                 return Object.assign({}, item, {
                   url: this.getRelativePath(item.url)
                 })
@@ -108,7 +100,7 @@ export default {
                 key: undefined,
                 props: {
                   href: hit.url,
-                  onClick: (event) => {
+                  onClick: event => {
                     if (isSpecialClick(event)) {
                       return
                     }
@@ -120,9 +112,7 @@ export default {
                       return
                     }
 
-                    const { pathname: hitPathname } = new URL(
-                      window.location.origin + hit.url
-                    )
+                    const { pathname: hitPathname } = new URL(window.location.origin + hit.url)
 
                     // If the hits goes to another page, we prevent the native link behavior
                     // to leverage the Vue Router loading feature.
@@ -140,7 +130,7 @@ export default {
         )
       })
     },
-    update (options, lang) {
+    update(options, lang) {
       this.$el.innerHTML = '<div id="docsearch"></div>'
       this.initialize(options, lang)
     }
@@ -160,7 +150,7 @@ export default {
   --docsearch-hit-color: var(--color-gray-700);
   --docsearch-muted-color: var(--color-gray-500);
   /* bg-gray-400 with 0.8 opacity */
-  --docsearch-container-background: rgba(168, 162, 158, 0.8)
+  --docsearch-container-background: rgba(168, 162, 158, 0.8);
 }
 
 .DocSearch-Container {
@@ -210,11 +200,9 @@ export default {
     --docsearch-hit-shadow: none;
     --docsearch-hit-background: var(--color-gray-800);
     --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
-    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d,
-      0 2px 2px 0 rgba(3, 4, 9, 0.3);
+    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, 0.3);
     --docsearch-footer-background: var(--color-gray-800);
-    --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
-      0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+    --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5), 0 -4px 8px 0 rgba(0, 0, 0, 0.2);
     --docsearch-logo-color: #fff;
     --docsearch-muted-color: var(--color-gray-500);
   }

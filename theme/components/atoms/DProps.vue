@@ -1,5 +1,5 @@
 <template>
-  <d-table-container>
+  <DTableContainer>
     <table v-if="component">
       <thead>
         <tr>
@@ -13,10 +13,16 @@
       </thead>
       <tbody>
         <tr v-for="prop in props" :key="prop.name">
-          <td><code>{{ prop.name }}</code></td>
-          <td><code>{{ prop.type && prop.type.name }}</code></td>
-          <td v-if="showRequired">{{ prop.required ? "Yes" : "No" }}</td>
-          <td v-if="showDefault"><code v-if="prop.defaultValue">{{ prop.defaultValue && prop.defaultValue.value }}</code></td>
+          <td>
+            <code>{{ prop.name }}</code>
+          </td>
+          <td>
+            <code>{{ prop.type && prop.type.name }}</code>
+          </td>
+          <td v-if="showRequired">{{ prop.required ? 'Yes' : 'No' }}</td>
+          <td v-if="showDefault">
+            <code v-if="prop.defaultValue">{{ prop.defaultValue && prop.defaultValue.value }}</code>
+          </td>
           <td v-if="showValues">
             <code v-if="prop.values">{{ prop.values && JSON.stringify(prop.values).replace(/,/g, ', ') }}</code>
             <span v-else>-</span>
@@ -27,7 +33,7 @@
         </tr>
       </tbody>
     </table>
-  </d-table-container>
+  </DTableContainer>
 </template>
 
 <script>
@@ -74,32 +80,32 @@ export default {
     }
   },
   computed: {
-    component () {
+    component() {
       return this.data
     },
-    props () {
+    props() {
       // hide ignored properties
       return this.component.props.filter(prop => !prop.tags?.ignore)
     },
-    showRequired () {
+    showRequired() {
       if (this.required !== undefined) {
         return this.required
       }
       return this.props.find(prop => prop.required !== undefined)
     },
-    showValues () {
+    showValues() {
       if (this.values !== undefined) {
         return this.values
       }
       return this.props.find(prop => prop.values)
     },
-    showDescription () {
+    showDescription() {
       if (this.description !== undefined) {
         return this.description
       }
       return this.props.find(prop => prop.description)
     },
-    showDefault () {
+    showDefault() {
       if (this.defaultValue !== undefined) {
         return this.defaultValue
       }

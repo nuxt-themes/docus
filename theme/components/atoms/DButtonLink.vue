@@ -1,11 +1,12 @@
 <template>
-  <NuxtLink
-    v-if="isInternal"
-    :to="href"
-    class="button-link"
-    :class="[size, bold ? 'font-semibold' : 'font-medium']"
-  ><slot /></NuxtLink>
-  <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs"><slot /><IconExternalLink v-if="blank" class="w-4 h-4 ml-2" /></a>
+  <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
+    <slot />
+  </NuxtLink>
+
+  <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
+    <slot />
+    <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
+  </a>
 </template>
 
 <script>
@@ -29,10 +30,10 @@ export default {
     }
   },
   computed: {
-    isInternal () {
+    isInternal() {
       return this.href.startsWith('/') && this.href.startsWith('//') === false
     },
-    linkAttrs () {
+    linkAttrs() {
       if (this.blank) {
         return { rel: 'noopener nofollow', target: '_blank' }
       }

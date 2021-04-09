@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex items-center justify-center w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl text-center text-white bg-black rounded-md codesandbox"
-    style="background-color: rgb(21, 21, 21);"
+    style="background-color: rgb(21, 21, 21)"
   >
     <iframe
       v-if="isIntersecting && src"
@@ -25,19 +25,19 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       isIntersecting: false
     }
   },
-  mounted () {
+  mounted() {
     if (!window.IntersectionObserver) {
       this.isIntersecting = true
       return
     }
 
-    this.__observer = new window.IntersectionObserver((entries) => {
-      entries.forEach(({ intersectionRatio, target: el }) => {
+    this.__observer = new window.IntersectionObserver(entries => {
+      entries.forEach(({ intersectionRatio }) => {
         if (intersectionRatio > 0) {
           this.isIntersecting = true
           this.__observer.disconnect()
@@ -47,7 +47,7 @@ export default {
     })
     this.__observer.observe(this.$el)
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.__observer) {
       this.__observer.disconnect()
       delete this.__observer
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .codesandbox,
 .codesandbox iframe {
   @apply w-full rounded-md overflow-hidden h-64;
