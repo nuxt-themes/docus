@@ -121,9 +121,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* .nuxt-content h2, .nuxt-content h3 {
-  scroll-margin-block: var(--docs-scroll-margin-block);
-} */
-</style>

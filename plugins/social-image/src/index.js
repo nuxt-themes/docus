@@ -1,6 +1,6 @@
 import { join, resolve } from 'path'
 import defu from 'defu'
-import { setupStaticGeneration } from './generate'
+import { setupStaticGeneration } from './lib/generate'
 
 const r = (...args) => resolve(__dirname, ...args)
 
@@ -39,7 +39,7 @@ export default function socialImageModule(moduleOptions) {
       routes.unshift({
         path: '/social-image-preview',
         name: 'social-image-preview',
-        component: r('pages/social-image-preview.vue')
+        component: r('components/social-image-preview.vue')
       })
     }
   })

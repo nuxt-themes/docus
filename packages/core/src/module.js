@@ -1,9 +1,9 @@
 import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-import themeConfig from '../theme/theme.config'
-import * as releases from '../../plugins/github/releases'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import { useDefaults } from './utils/settings'
+import themeConfig from '../theme/src'
+import * as releases from '../../plugins/github/src'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './src/lib/document'
+import { useDefaults } from './src/lib/settings'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)

@@ -1,0 +1,7 @@
+{
+  "name": "@docus/twitter",
+  "dependencies": {
+    "rehype-parse": "^7.0.1",
+    "ohmyfetch": "^0.1.8"
+  }
+}

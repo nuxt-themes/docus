@@ -1,0 +1,7 @@
+{
+  "name": "@docus/theme",
+  "dependencies": {
+    "nuxt-windicss": "^0.5.3",
+    "defu": "^3.2.2"
+  }
+}

@@ -1,5 +1,6 @@
 import { resolve } from 'path'
-import twitterRemarkPlugin from './remark'
+import twitterRemarkPlugin from './lib'
+
 const r = (...args) => resolve(__dirname, ...args)
 
 export function docusTwitterModule() {
@@ -16,7 +17,7 @@ export function docusTwitterModule() {
 
   hook('components:dirs', dirs => {
     dirs.push({
-      path: r('runtime/components'),
+      path: r('components'),
       global: true,
       level: 2
     })

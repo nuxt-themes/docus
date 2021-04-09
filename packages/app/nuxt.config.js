@@ -5,10 +5,10 @@ const r = path => resolve(__dirname, path)
 
 export default {
   alias: {
-    qrcode: require.resolve('./mock.js'),
-    axios: require.resolve('./mock.js'),
-    nprogress: require.resolve('./mock.js'),
-    jwt_decode: require.resolve('./mock.js')
+    qrcode: () => null,
+    axios: () => null,
+    nprogress: () => null,
+    jwt_decode: () => null
   },
   target: 'static',
   ssr: true,
