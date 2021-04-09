@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import themeModule from '../engine/module'
+import themeModule from '../core/module'
 
 const r = path => resolve(__dirname, path)
 
@@ -41,8 +41,8 @@ export default {
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
-    r('../social-image/module'),
-    r('../twitter/module'),
+    r('../../plugins/social-image/module'),
+    r('../../plugins/twitter/module'),
     '@nuxtjs/composition-api'
   ],
   modules: ['nuxt-i18n', '@nuxt/content'],

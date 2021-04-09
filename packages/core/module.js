@@ -1,7 +1,7 @@
 import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import themeConfig from '../theme/theme.config'
-import * as releases from './server/api/releases'
+import * as releases from '../../plugins/github/releases'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import { useDefaults } from './utils/settings'
 
