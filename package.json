@@ -3,7 +3,7 @@
   "version": "0.1.5",
   "description": "",
   "repository": "nuxtlabs/docus",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "main": "theme/index.js",
   "files": [
     "theme"
