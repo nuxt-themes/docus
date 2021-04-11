@@ -1,3 +1,19 @@
 {
-  "name": "@docus/app"
+  "name": "@docus/app",
+  "version": "1.0.0-alpha",
+  "dependencies": {
+    "nuxt-edge": "^2.16.0-26965461.9212d34e",
+    "@nuxtjs/color-mode": "^2.0.5",
+    "@nuxtjs/composition-api": "0.22.1",
+    "@vue/composition-api": "^1.0.0-rc.6",
+    "@nuxt/types": "^2.15.4",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@vueuse/integrations": "^4.8.1",
+    "nuxt-vite": "^0.0.36",
+    "nuxt-windicss": "^0.5.3",
+    "defu": "^3.2.2",
+    "ufo": "^0.6.11",
+    "plausible-tracker": "^0.3.1",
+    "vue-plausible": "^1.1.4"
+  }
 }

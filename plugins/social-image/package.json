@@ -1,5 +1,6 @@
 {
   "name": "@docus/social-image",
+  "version": "1.0.0-alpha",
   "dependencies": {
     "color": "^3.1.3",
     "puppeteer-core": "^8.0.0",

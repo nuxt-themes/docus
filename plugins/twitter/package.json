@@ -1,7 +1,9 @@
 {
   "name": "@docus/twitter",
+  "version": "1.0.0-alpha",
   "dependencies": {
     "rehype-parse": "^7.0.1",
-    "ohmyfetch": "^0.1.8"
+    "ohmyfetch": "^0.1.8",
+    "defu": "^3.2.2"
   }
 }

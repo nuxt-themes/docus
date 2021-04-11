@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import themeModule from '../core/module'
+import themeModule from '@docus/theme'
 
 const r = path => resolve(__dirname, path)
 

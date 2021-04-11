@@ -1,12 +1,13 @@
 {
+  "private": true,
   "name": "docus",
   "version": "0.1.5",
-  "description": "",
   "repository": "nuxtlabs/docus",
   "license": "MIT",
   "main": "packages/app/index.js",
-  "files": [
-    "theme"
+  "workspaces": [
+    "packages/*",
+    "plugins/*"
   ],
   "scripts": {
     "dev": "nuxt dev docs",
@@ -18,29 +19,7 @@
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && echo 'TODO tests'"
   },
-  "dependencies": {
-    "@docsearch/css": "^1.0.0-alpha.28",
-    "@docsearch/js": "^1.0.0-alpha.28",
-    "@nuxtjs/color-mode": "^2.0.5",
-    "@nuxtjs/composition-api": "0.22.1",
-    "@nuxtjs/pwa": "^3.3.5",
-    "@vue/composition-api": "^1.0.0-rc.6",
-    "@vueuse/integrations": "^4.8.1",
-    "clipboard": "^2.0.8",
-    "defu": "^3.2.2",
-    "graceful-fs": "^4.2.6",
-    "nuxt-vite": "^0.0.36",
-    "nuxt-windicss": "^0.5.3",
-    "ohmyfetch": "^0.1.8",
-    "prism-theme-vars": "^0.2.2",
-    "prism-themes": "^1.6.0",
-    "ufo": "^0.6.11",
-    "universal-cookie": "^4.0.4",
-    "vue-docgen-api": "^4.37.0"
-  },
   "devDependencies": {
-    "@nuxt/types": "^2.15.4",
-    "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
     "babel-eslint": "^10.1.0",
@@ -48,10 +27,7 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "nuxt-edge": "^2.16.0-26965461.9212d34e",
-    "plausible-tracker": "^0.3.1",
     "prettier": "^2.2.1",
-    "standard-version": "^9.2.0",
-    "vue-plausible": "^1.1.4"
+    "standard-version": "^9.2.0"
   }
 }

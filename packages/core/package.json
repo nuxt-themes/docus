@@ -1,5 +1,6 @@
 {
   "name": "@docus/core",
+  "version": "1.0.0-alpha",
   "dependencies": {
     "@nuxt/content": "^1.14.0",
     "defu": "^3.2.2",
@@ -9,6 +10,8 @@
     "rehype-parse": "^7.0.1",
     "scule": "^0.1.1",
     "theme-colors": "^0.0.5",
-    "ufo": "^0.6.11"
+    "ufo": "^0.6.11",
+    "graceful-fs": "^4.2.6",
+    "vue-docgen-api": "^4.37.0"
   }
 }

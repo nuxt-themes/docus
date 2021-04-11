@@ -1,7 +1,9 @@
 {
   "name": "@docus/theme",
+  "version": "1.0.0-alpha",
   "dependencies": {
     "nuxt-windicss": "^0.5.3",
-    "defu": "^3.2.2"
+    "defu": "^3.2.2",
+    "prism-theme-vars": "^0.2.2"
   }
 }

@@ -1,5 +1,6 @@
 {
   "name": "@docus/github-plugin",
+  "version": "1.0.0-alpha",
   "dependencies": {
     "ohmyfetch": "^0.1.8"
   }
