@@ -34,6 +34,7 @@ export default {
   css: ['@docus/theme/src/css/main.css'],
   plugins: [r('../core/src/runtime/docus'), r('plugins/menu')],
   buildModules: [
+    r('./module'),
     'nuxt-vite',
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build',

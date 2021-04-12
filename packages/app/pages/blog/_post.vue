@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../../../engine/utils/dom'
+import { convertPropToPixels } from '../../utils/dom'
 
 export default {
   layout: 'blog',

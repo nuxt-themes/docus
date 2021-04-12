@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve, join, relative } from 'path'
 
 const r = path => resolve(__dirname, path)
 
@@ -40,7 +40,11 @@ const config = {
 }
 
 export default function docusI18n() {
-  const { requireModule, addPlugin } = this
+  const { requireModule, addPlugin, nuxt } = this
+  const { options } = nuxt
+
+  // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
+  config.langDir = join(relative(options.srcDir, r('i18n')), '/')
 
   requireModule(['nuxt-i18n', config])
   addPlugin({

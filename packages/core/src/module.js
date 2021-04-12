@@ -1,7 +1,7 @@
-import { join, relative, resolve } from 'path'
+import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import * as releases from '@docus/github'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
+// import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
 import { useDefaults } from './lib/settings'
 import { contentConfig } from './lib/utils'
 
@@ -10,7 +10,7 @@ const r = (...args) => resolve(__dirname, ...args)
 
 export default function docusModule() {
   // wait for nuxt options to be normalized
-  const { nuxt, addLayout, requireModule, addPlugin } = this
+  const { nuxt, requireModule, addPlugin } = this
   const { options, hook } = this.nuxt
 
   requireModule(['@nuxt/content', contentConfig])
@@ -56,22 +56,6 @@ export default function docusModule() {
   } catch (err) {
     /* settings not found */
   }
-
-  // Add layouts
-  hook('build:before', () => {
-    addLayout({ src: r('../../app/layouts/docs.vue'), filename: 'layouts/docs.vue' })
-    addLayout({ src: r('../../app/layouts/readme.vue'), filename: 'layouts/readme.vue' })
-    addLayout({ src: r('../../app/layouts/blog.vue'), filename: 'layouts/blog.vue' })
-  })
-
-  // Add default error page if not defined
-  hook('build:before', async () => {
-    const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
-    const errorPageExists = await fs.stat(errorPagePath).catch(() => false)
-    if (!errorPageExists) {
-      options.ErrorPage = options.ErrorPage || r('../theme/layouts/error.vue')
-    }
-  })
 
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
   hook('build:before', async () => {
@@ -163,47 +147,6 @@ export default function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
   */
-
-  // Extend `/` route
-  hook('build:extendRoutes', routes => {
-    const hasRoute = name => routes.some(route => route.name === name)
-
-    if (!hasRoute('index')) {
-      routes.push({
-        path: '/',
-        name: 'index',
-        component: r('../app/pages/_.vue')
-      })
-    }
-    if (!hasRoute('releases')) {
-      routes.push({
-        path: '/releases',
-        name: 'releases',
-        component: r('../app/pages/releases.vue')
-      })
-    }
-    if (!hasRoute('blog')) {
-      routes.push({
-        path: '/blog',
-        name: 'blog',
-        component: r('../app/pages/blog/index.vue')
-      })
-    }
-    if (!hasRoute('blog-post')) {
-      routes.push({
-        path: '/blog/:post',
-        name: 'blog-post',
-        component: r('../app/pages/blog/_post.vue')
-      })
-    }
-    if (!hasRoute('all')) {
-      routes.push({
-        path: '/*',
-        name: 'all',
-        component: r('../app/pages/_.vue')
-      })
-    }
-  })
 
   // Override editor style on dev mode
   if (options.dev) {
