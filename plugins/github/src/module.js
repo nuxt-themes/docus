@@ -1,4 +1,4 @@
-import { get, handler } from './lib'
+import { get, handler, fetch } from './lib'
 
 export default function docusGithubModule() {
   const { nuxt, addServerMiddleware } = this
@@ -15,14 +15,9 @@ export default function docusGithubModule() {
     }
   })
 
-  /**
-   * TODO:
-   * 1. docus core hook
-   * 2. docus core parser helpers
-   */
-  //   hook('docus:setting:ready', settings => {
-  //     fetch({ $content, settings })
-  //   })
+  hook('docus:content:ready', ({ $content, settings }) => {
+    fetch({ $content, settings })
+  })
 
   addServerMiddleware({
     path: '/api/docus/releases',

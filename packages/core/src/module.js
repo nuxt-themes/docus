@@ -11,7 +11,7 @@ const r = (...args) => resolve(__dirname, ...args)
 export default async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
-  const { options, hook } = this.nuxt
+  const { options, hook, callHook } = this.nuxt
 
   // Disable SSR in dev
   if (options.dev) {
@@ -32,6 +32,10 @@ export default async function docusModule() {
   try {
     const userSettings = require(settingsPath)
     const settings = useDefaults(userSettings)
+
+    hook('content:ready', $content => {
+      callHook('docus:content:ready', { settings, $content })
+    })
 
     // default title and description for pages
     options.meta.name = settings.title
