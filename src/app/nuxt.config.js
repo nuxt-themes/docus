@@ -61,5 +61,10 @@ export default {
       include: ['defu', 'theme-colors', 'lodash.groupby']
     },
     vue: {}
+  },
+  typeCheck: {
+    eslint: {
+      files: './**/*.{ts,js,vue}'
+    }
   }
 }
