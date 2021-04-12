@@ -1,23 +1,18 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-import * as releases from '@docus/github'
 // import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
 import { useDefaults } from './lib/settings'
 import { contentConfig } from './lib/utils'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
 
 const fs = gracefulFs.promises
 const r = (...args) => resolve(__dirname, ...args)
 
-export default function docusModule() {
+export default async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
   const { options, hook } = this.nuxt
 
-  requireModule(['@nuxt/content', contentConfig])
-  addPlugin({
-    src: r('./runtime/docus.js'),
-    filename: 'docus.js'
-  })
   // Disable SSR in dev
   if (options.dev) {
     options.ssr = false
@@ -26,12 +21,7 @@ export default function docusModule() {
   }
 
   // Inject Docus theme as ~docus
-  nuxt.options.alias['~docus'] = r('theme')
-
-  this.addServerMiddleware({
-    path: '/api/docus/releases',
-    handler: releases.handler
-  })
+  nuxt.options.alias['~docus'] = r('runtime')
 
   // Inject content dir in private runtime config
   const contentDir = options.content.dir || 'content'
@@ -42,10 +32,6 @@ export default function docusModule() {
   try {
     const userSettings = require(settingsPath)
     const settings = useDefaults(userSettings)
-
-    hook('content:ready', $content => {
-      releases.fetch({ $content, settings })
-    })
 
     // default title and description for pages
     options.meta.name = settings.title
@@ -67,72 +53,19 @@ export default function docusModule() {
       nuxt.options.watch.push(pagesDirPath)
     }
   })
-
-  // Configure `components/` dir
-  hook('components:dirs', async dirs => {
-    dirs.push({
-      path: r('../../components/atoms'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/molecules'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/icons'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/logos'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/organisms'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/templates'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../../components/slots'),
-      global: true,
-      level: 3
-    })
-    if (options.dev) {
-      dirs.push({
-        path: r('../../components/dev'),
-        global: true,
-        level: 2
-      })
-    }
-    const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
-    const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
-    if (componentsDirStat && componentsDirStat.isDirectory()) {
-      dirs.push({
-        path: componentsDirPath,
-        global: true
-      })
-    } else {
-      nuxt.options.watch.push(componentsDirPath)
-    }
-  })
-  /*
   // Configure content after each hook
   hook('content:file:beforeInsert', document => {
     if (document.extension !== '.md') {
       return
     }
-    const regexp = new RegExp(`^/(${options.i18n.locales.map(locale => locale.code).join('|')})`, 'gi')
+
+    const locales = options.i18n?.locales.map(locale => locale.code).join('|') || 'en'
+    const defaultLocale = options.i18n?.defaultLocale || 'en'
+
+    const regexp = new RegExp(`^/(${locales})`, 'gi')
     const { dir, slug, category } = document
     const _dir = dir.replace(regexp, '')
-    const _language = dir.replace(_dir, '').replace(/\//, '') || options.i18n.defaultLocale
+    const _language = dir.replace(_dir, '').replace(/\//, '') || defaultLocale
     const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
@@ -146,26 +79,11 @@ export default function docusModule() {
     document.category = _category
     document.draft = document.draft || isDraft(slug)
   })
-  */
 
-  // Override editor style on dev mode
-  if (options.dev) {
-    options.css.push(r('../../theme/src/css/main.dev.css'))
-  }
-
-  // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
-  // options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
-
-  // Docus Devtools
-  if (options.dev) {
-    options.plugins.push(r('../../admin/docus.ui.js'))
-  }
-
-  // Inject `docus` into ssrContext (for releases)
-  // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
-  nuxt.hook('vue-renderer:context', ssrContext => {
-    ssrContext.docus = {
-      releases: releases.get()
-    }
+  addPlugin({
+    src: r('./runtime/plugin.js'),
+    filename: 'docus.js'
   })
+
+  await requireModule(['@nuxt/content', contentConfig])
 }

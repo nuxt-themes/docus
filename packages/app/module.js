@@ -62,4 +62,60 @@ export default function docusAppModule() {
       })
     }
   })
+
+  // Configure `components/` dir
+  hook('components:dirs', async dirs => {
+    dirs.push({
+      path: r('../components/atoms'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/molecules'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/icons'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/logos'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/organisms'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/templates'),
+      global: true,
+      level: 2
+    })
+    dirs.push({
+      path: r('../components/slots'),
+      global: true,
+      level: 3
+    })
+    if (options.dev) {
+      dirs.push({
+        path: r('../components/dev'),
+        global: true,
+        level: 2
+      })
+    }
+    const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
+    const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
+    if (componentsDirStat && componentsDirStat.isDirectory()) {
+      dirs.push({
+        path: componentsDirPath,
+        global: true
+      })
+    } else {
+      nuxt.options.watch.push(componentsDirPath)
+    }
+  })
 }

@@ -44,7 +44,7 @@ export default {
     '@docus/social-image',
     '@docus/twitter'
   ],
-  modules: ['@docus/i18n', '@docus/core/src/module'],
+  modules: ['@docus/i18n', '@docus/core'],
   components: true,
   loading: {
     color: 'var(--primary-500)'

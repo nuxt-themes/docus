@@ -35,4 +35,9 @@ export default function () {
       windiOptions.config.theme.extend.typography = windiOptions.config.theme.extend.typography(theme)
     }
   })
+
+  // Override editor style on dev mode
+  if (options.dev) {
+    options.css.push(r('./css/main.dev.css'))
+  }
 }

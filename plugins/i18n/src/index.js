@@ -1,4 +1,5 @@
 import { resolve, join, relative } from 'path'
+import defu from 'defu'
 
 const r = path => resolve(__dirname, path)
 
@@ -45,10 +46,14 @@ export default function docusI18n() {
 
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   config.langDir = join(relative(options.srcDir, r('i18n')), '/')
+  options.i18n = defu(options.i18n, config)
 
-  requireModule(['nuxt-i18n', config])
-  addPlugin({
-    src: r('./runtime/plugin.js'),
-    filename: 'docus-i18n.js'
+  nuxt.hook('build:before', () => {
+    addPlugin({
+      src: r('./runtime/plugin.js'),
+      filename: 'docus-i18n.js'
+    })
+
+    requireModule('nuxt-i18n')
   })
 }

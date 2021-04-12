@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/export
-export * from './module'
+export { default } from './module'

@@ -7,10 +7,15 @@ import { useCSSVariables, useDefaults, useDefaultsTheme } from '../lib/settings'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 
-export default async function (
-  { app, ssrContext, $content, $contentLocalePath, route, nuxtState = {}, beforeNuxtRender },
-  inject
-) {
+export async function createDocus({
+  app,
+  ssrContext,
+  $content,
+  $contentLocalePath,
+  route,
+  nuxtState = {},
+  beforeNuxtRender
+}) {
   let $nuxt = null
   const $docus = new Vue({
     data() {
@@ -326,5 +331,5 @@ export default async function (
   // Update app head, Inject colors as css variables
   $docus.updateHead()
 
-  inject('docus', $docus)
+  return $docus
 }
