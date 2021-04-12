@@ -1,6 +1,6 @@
-import { get, handler } from './'
+import { get, handler } from './lib'
 
-export function docusGithubModule() {
+export default function docusGithubModule() {
   const { nuxt, addServerMiddleware } = this
   const { hook } = nuxt
   // Inject `docus` into ssrContext (for releases)

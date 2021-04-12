@@ -42,7 +42,8 @@ export default {
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
     '@docus/social-image',
-    '@docus/twitter'
+    '@docus/twitter',
+    '@docus/github'
   ],
   modules: ['@docus/i18n', '@docus/core'],
   components: true,

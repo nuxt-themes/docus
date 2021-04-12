@@ -6,6 +6,7 @@
     "@docus/social-image": "1.0.0-alpha",
     "@docus/twitter": "1.0.0-alpha",
     "@docus/core": "1.0.0-alpha",
+    "@docus/github": "1.0.0-alpha",
     "@docus/i18n": "1.0.0-alpha",
     "@nuxt/types": "^2.15.4",
     "@nuxt/typescript-build": "^2.1.0",
