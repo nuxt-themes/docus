@@ -4,10 +4,10 @@ const r = path => resolve(__dirname, path)
 
 export default {
   alias: {
-    qrcode: () => null,
-    axios: () => null,
-    nprogress: () => null,
-    jwt_decode: () => null
+    qrcode: r('mock/default'),
+    axios: r('mock/default'),
+    nprogress: r('mock/default'),
+    jwt_decode: r('mock/default')
   },
   target: 'static',
   ssr: true,

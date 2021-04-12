@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../../../engine/utils/dom'
+import { convertPropToPixels } from '../utils'
 
 export default {
   props: {
