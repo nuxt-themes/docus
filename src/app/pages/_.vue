@@ -5,8 +5,8 @@
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
-import CopyButton from '@docus/components/atoms/DCopyButton.vue'
-import { convertPropToPixels } from '@docus/components/utils'
+import CopyButton from '../../components/atoms/DCopyButton.vue'
+import { convertPropToPixels } from '../../components/utils'
 
 export default {
   name: 'PageSlug',

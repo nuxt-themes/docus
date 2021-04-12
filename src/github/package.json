@@ -1,8 +1,0 @@
-{
-  "name": "@docus/github",
-  "version": "1.0.0-alpha",
-  "main": "src/index.js",
-  "dependencies": {
-    "ohmyfetch": "^0.1.8"
-  }
-}

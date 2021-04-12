@@ -35,12 +35,12 @@ export default {
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
     '@nuxtjs/pwa',
-    '@docus/theme',
-    '@docus/social-image',
-    '@docus/twitter',
-    '@docus/github'
+    r('../theme'),
+    r('../social-image'),
+    r('../twitter'),
+    r('../github')
   ],
-  modules: ['@docus/i18n', '@docus/core'],
+  modules: [r('../i18n'), r('../core')],
   components: true,
   loading: {
     color: 'var(--primary-500)'

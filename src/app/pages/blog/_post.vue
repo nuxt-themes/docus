@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '@docus/components/utils'
+import { convertPropToPixels } from '../../../components/utils'
 
 export default {
   layout: 'blog',
