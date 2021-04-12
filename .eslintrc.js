@@ -4,10 +4,6 @@ module.exports = {
     browser: true,
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-    sourceType: 'module'
-  },
   plugins: ['prettier'],
   extends: [
     '@nuxtjs',
@@ -36,6 +32,7 @@ module.exports = {
     'no-console': [1],
     'space-before-function-paren': [0],
     'arrow-parens': [0],
-    curly: [0]
+    curly: [0],
+    'keyword-spacing': [0]
   }
 }
