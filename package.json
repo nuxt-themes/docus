@@ -3,7 +3,7 @@
   "name": "docus",
   "version": "0.1.5",
   "repository": "nuxtlabs/docus",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "main": "src/app/index.js",
   "scripts": {
     "dev": "nuxt dev docs",
