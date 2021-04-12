@@ -32,9 +32,9 @@ export default {
     transpile: ['docus']
   },
   css: ['@docus/theme/src/css/main.css'],
-  plugins: [r('../core/src/runtime/docus'), r('plugins/menu')],
+  plugins: [r('plugins/menu')],
   buildModules: [
-    r('./module'),
+    r('module'),
     'nuxt-vite',
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
