@@ -51,8 +51,8 @@ module.exports = async function parseHtml(file) {
     _processor = unified().use(parse).use(rehypeMinify).freeze()()
   }
   try {
-    const { contents } = await _processor.process(file)
-    return contents.pop()
+    const { result } = await _processor.process(file)
+    return result.pop()
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(`HTML to AST error: ${error}`)
