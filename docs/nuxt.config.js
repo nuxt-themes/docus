@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { withDocus } from 'docus'
+import { withDocus } from '../src'
 
 export default withDocus({
   content: {
