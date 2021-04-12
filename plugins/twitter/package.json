@@ -1,6 +1,7 @@
 {
   "name": "@docus/twitter",
   "version": "1.0.0-alpha",
+  "main": "src/index.js",
   "dependencies": {
     "rehype-parse": "^7.0.1",
     "ohmyfetch": "^0.1.8",

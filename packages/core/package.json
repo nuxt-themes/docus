@@ -1,7 +1,9 @@
 {
   "name": "@docus/core",
   "version": "1.0.0-alpha",
+  "main": "src/index.js",
   "dependencies": {
+    "@docus/theme": "1.0.0-alpha",
     "@nuxt/content": "^1.14.0",
     "defu": "^3.2.2",
     "hasha": "^5.2.2",

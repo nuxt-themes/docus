@@ -1,6 +1,7 @@
 {
   "name": "@docus/theme",
   "version": "1.0.0-alpha",
+  "main": "src/index.js",
   "dependencies": {
     "nuxt-windicss": "^0.5.3",
     "defu": "^3.2.2",

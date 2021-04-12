@@ -11,10 +11,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"],
-      "~~/*": ["./*"],
-      "@@/*": ["./*"]
+      "@docus/*": ["packages/*", "plugins/*"]
     },
     "types": ["@types/node", "@nuxt/types"]
   },

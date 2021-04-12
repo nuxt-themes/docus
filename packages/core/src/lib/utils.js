@@ -9,12 +9,12 @@ export const contentConfig = {
     },
     remarkPlugins: [
       [
-        r('./lib/remark-prose'),
+        r('remark-prose'),
         {
           proseClass: 'prose dark:prose-dark'
         }
       ],
-      [r('./lib/remark-vue'), {}]
+      [r('remark-vue'), {}]
     ],
     remarkAutolinkHeadings: {
       behavior: 'wrap'

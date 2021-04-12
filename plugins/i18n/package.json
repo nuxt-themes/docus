@@ -1,6 +1,7 @@
 {
   "name": "@docus/i18n",
   "version": "1.0.0-alpha",
+  "main": "src/index.js",
   "dependencies": {
     "nuxt-i18n": "^6.24.0"
   }

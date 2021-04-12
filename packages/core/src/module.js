@@ -1,9 +1,8 @@
 import { join, relative, resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-import themeConfig from '../theme/src'
-import * as releases from '../../plugins/github/src'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './src/lib/document'
-import { useDefaults } from './src/lib/settings'
+import * as releases from '@docus/github'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
+import { useDefaults } from './lib/settings'
 import { contentConfig } from './lib/utils'
 
 const fs = gracefulFs.promises
@@ -60,9 +59,9 @@ export default function docusModule() {
 
   // Add layouts
   hook('build:before', () => {
-    addLayout({ src: r('../theme/layouts/docs.vue'), filename: 'layouts/docs.vue' })
-    addLayout({ src: r('../theme/layouts/readme.vue'), filename: 'layouts/readme.vue' })
-    addLayout({ src: r('../theme/layouts/blog.vue'), filename: 'layouts/blog.vue' })
+    addLayout({ src: r('../../app/layouts/docs.vue'), filename: 'layouts/docs.vue' })
+    addLayout({ src: r('../../app/layouts/readme.vue'), filename: 'layouts/readme.vue' })
+    addLayout({ src: r('../../app/layouts/blog.vue'), filename: 'layouts/blog.vue' })
   })
 
   // Add default error page if not defined
@@ -88,43 +87,43 @@ export default function docusModule() {
   // Configure `components/` dir
   hook('components:dirs', async dirs => {
     dirs.push({
-      path: r('../theme/components/atoms'),
+      path: r('../../components/atoms'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/molecules'),
+      path: r('../../components/molecules'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/icons'),
+      path: r('../../components/icons'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/logos'),
+      path: r('../../components/logos'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/organisms'),
+      path: r('../../components/organisms'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/templates'),
+      path: r('../../components/templates'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../theme/components/slots'),
+      path: r('../../components/slots'),
       global: true,
       level: 3
     })
     if (options.dev) {
       dirs.push({
-        path: r('../theme/components/dev'),
+        path: r('../../components/dev'),
         global: true,
         level: 2
       })
@@ -140,6 +139,7 @@ export default function docusModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
+  /*
   // Configure content after each hook
   hook('content:file:beforeInsert', document => {
     if (document.extension !== '.md') {
@@ -162,6 +162,8 @@ export default function docusModule() {
     document.category = _category
     document.draft = document.draft || isDraft(slug)
   })
+  */
+
   // Extend `/` route
   hook('build:extendRoutes', routes => {
     const hasRoute = name => routes.some(route => route.name === name)
@@ -202,18 +204,18 @@ export default function docusModule() {
       })
     }
   })
+
   // Override editor style on dev mode
   if (options.dev) {
-    options.css.push(r('../theme/assets/css/main.dev.css'))
+    options.css.push(r('../../theme/src/css/main.dev.css'))
   }
 
-  themeConfig(nuxt)
-
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
-  options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
+  // options.i18n.langDir = join(relative(options.srcDir, r('i18n')), '/')
+
   // Docus Devtools
   if (options.dev) {
-    options.plugins.push(r('docus.ui.js'))
+    options.plugins.push(r('../../admin/docus.ui.js'))
   }
 
   // Inject `docus` into ssrContext (for releases)

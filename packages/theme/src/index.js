@@ -3,7 +3,9 @@ import defu from 'defu'
 import defaultWindiConfig from './windi.config'
 const r = path => resolve(__dirname, path)
 
-export default function (nuxt) {
+export default function () {
+  // wait for nuxt options to be normalized
+  const nuxt = this
   const { hook, options } = nuxt
 
   hook('windicss:options', function (windiOptions) {

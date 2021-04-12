@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import themeModule from '@docus/theme'
 
 const r = path => resolve(__dirname, path)
 
@@ -32,20 +31,19 @@ export default {
   build: {
     transpile: ['docus']
   },
-  css: [r('../theme/assets/css/main.css')],
-  plugins: [r('../engine/docus'), r('../engine/menu')],
+  css: ['@docus/theme/src/css/main.css'],
+  plugins: [r('../core/src/runtime/docus'), r('plugins/menu')],
   buildModules: [
-    themeModule,
     'nuxt-vite',
+    '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
     'nuxt-windicss',
     '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
-    r('../../plugins/social-image/module'),
-    r('../../plugins/twitter/module'),
-    '@nuxtjs/composition-api'
+    '@docus/social-image',
+    '@docus/twitter'
   ],
-  modules: [r('../../plugins/i18n/src/index'), r('../../package/core/src/index')],
+  modules: ['@docus/i18n', '@docus/core/src/module'],
   components: true,
   loading: {
     color: 'var(--primary-500)'
