@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha",
   "main": "src/index.js",
   "dependencies": {
+    "@nuxtjs/color-mode": "^2.0.5",
     "nuxt-windicss": "^0.5.3",
     "defu": "^3.2.2",
     "prism-theme-vars": "^0.2.2"

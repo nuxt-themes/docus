@@ -3,17 +3,8 @@ import { resolve } from 'path'
 const r = path => resolve(__dirname, path)
 
 export default {
-  alias: {
-    qrcode: r('mock/default'),
-    axios: r('mock/default'),
-    nprogress: r('mock/default'),
-    jwt_decode: r('mock/default')
-  },
   target: 'static',
   ssr: true,
-  privateRuntimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN
-  },
   head: {
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [
@@ -24,6 +15,12 @@ export default {
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ]
   },
+  alias: {
+    qrcode: r('mock/default'),
+    axios: r('mock/default'),
+    nprogress: r('mock/default'),
+    jwt_decode: r('mock/default')
+  },
   generate: {
     fallback: '404.html',
     routes: ['/']
@@ -31,16 +28,14 @@ export default {
   build: {
     transpile: ['docus']
   },
-  css: ['@docus/theme/src/css/main.css'],
   plugins: [r('plugins/menu')],
   buildModules: [
     r('module'),
     'nuxt-vite',
     '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
-    'nuxt-windicss',
-    '@nuxtjs/color-mode',
     '@nuxtjs/pwa',
+    '@docus/theme',
     '@docus/social-image',
     '@docus/twitter',
     '@docus/github'
@@ -56,9 +51,6 @@ export default {
      * Will override by docus primary color
      */
     theme_color: '#06B6D4'
-  },
-  colorMode: {
-    classSuffix: ''
   },
   server: {
     port: process.env.PORT || 4000

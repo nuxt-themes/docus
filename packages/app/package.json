@@ -10,7 +10,6 @@
     "@docus/i18n": "1.0.0-alpha",
     "@nuxt/types": "^2.15.4",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/composition-api": "0.22.1",
     "@nuxtjs/pwa": "^3.3.5",
     "@vue/composition-api": "^1.0.0-rc.6",
@@ -18,7 +17,6 @@
     "defu": "^3.2.2",
     "nuxt-edge": "^2.16.0-26965461.9212d34e",
     "nuxt-vite": "^0.0.36",
-    "nuxt-windicss": "^0.5.3",
     "plausible-tracker": "^0.3.1",
     "ufo": "^0.6.11",
     "vue-plausible": "^1.1.4"
