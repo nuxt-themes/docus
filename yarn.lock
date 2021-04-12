@@ -8637,14 +8637,12 @@ object.values@^1.1.0, object.values@^1.1.1:
     es-abstract "^1.18.0-next.2"
     has "^1.0.3"
 
-ohmyfetch@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ohmyfetch/-/ohmyfetch-0.2.0.tgz#09c03a6c107ddfe6a75c83f0a9cdaa59fb31e54b"
-  integrity sha512-tbrMD8LauY8xivHmDJItpfth/caVDHmDljeZE+4DzA2sbSp72Vzb//NJD1LtAm3pEnK5hY48i4V/zcraeiS3FQ==
+ohmyfetch@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/ohmyfetch/-/ohmyfetch-0.1.8.tgz#b8e46f709fb07ab5e5d642d0b461a0e22b904851"
+  integrity sha512-QG1pbloSyd/hqvZeyVspQ9T5KC55IyK+jN2WHTRnSA7lr9CWJxoVWVi6tLNbTJVwcF1miG/c06VCCMnxPh8xxw==
   dependencies:
-    destr "^1.1.0"
     node-fetch "^2.6.1"
-    ufo "^0.6.10"
 
 on-finished@^2.3.0, on-finished@~2.3.0:
   version "2.3.0"

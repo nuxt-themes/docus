@@ -5,15 +5,16 @@
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
-    ".": "./index.js",
+    ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "theme",
-    "index.js",
-    "index.d.ts"
+    "src",
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "build": "siroc build",
@@ -49,7 +50,7 @@
     "nuxt-i18n": "^6.24.0",
     "nuxt-vite": "^0.0.36",
     "nuxt-windicss": "^0.5.4",
-    "ohmyfetch": "^0.2.0",
+    "ohmyfetch": "^0.1.8",
     "plausible-tracker": "^0.3.1",
     "prism-theme-vars": "^0.2.2",
     "puppeteer-core": "^8.0.0",
