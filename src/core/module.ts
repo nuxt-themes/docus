@@ -25,7 +25,7 @@ export default <Module> async function docusModule() {
   options.alias['~docus'] = r('runtime')
 
   // Inject content dir in private runtime config
-  const contentDir = options.content.dir || 'content'
+  const contentDir = options?.content?.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
 
   // read docus settings

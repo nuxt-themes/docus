@@ -24,6 +24,12 @@ export default <Module> function docusThemeModule() {
     windiOptions.scan.include = windiOptions.scan.include || []
     windiOptions.scan.include.push(__dirname)
 
+    // Include the npm dependency
+    windiOptions.scanOptions.include.push(options.rootDir + '/node_modules/docus/dist')
+    windiOptions.scanOptions.include.push(
+      options.rootDir + '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'
+    )
+
     // Workaround for typography plugin not being a function supporting theme
     if (typeof windiOptions.config.theme.extend.typography === 'function') {
       const defaultTheme = nuxt.resolver.requireModule('windicss/defaultTheme')
