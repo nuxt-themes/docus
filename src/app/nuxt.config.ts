@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 
-const r = path => resolve(__dirname, path)
+const r = (path: any) => resolve(__dirname, path)
 
 export default {
   target: 'static',
@@ -28,7 +28,7 @@ export default {
   build: {
     transpile: ['docus']
   },
-  plugins: [r('plugins/menu')],
+  plugins: [r('plugins/menu'), r('../admin/docus.ui')],
   buildModules: [
     r('module'),
     'nuxt-vite',
@@ -61,5 +61,10 @@ export default {
       include: ['defu', 'theme-colors', 'lodash.groupby']
     },
     vue: {}
+  },
+  typeCheck: {
+    eslint: {
+      files: './**/*.{ts,js,vue}'
+    }
   }
 }

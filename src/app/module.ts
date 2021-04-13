@@ -1,10 +1,11 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
+import { Module } from '@nuxt/types'
 
 const fs = gracefulFs.promises
-const r = (...args) => resolve(__dirname, ...args)
+const r = (...args: any[]) => resolve(__dirname, ...args)
 
-export default function docusAppModule() {
+export default <Module>function docusAppModule() {
   const { addLayout, nuxt } = this
   const { hook, options } = nuxt
 

@@ -24,7 +24,7 @@ export default async function docusModule() {
   nuxt.options.alias['~docus'] = r('runtime')
 
   // Inject content dir in private runtime config
-  const contentDir = options.content.dir || 'content'
+  const contentDir = options?.content?.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
 
   // read docus settings
