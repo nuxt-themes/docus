@@ -28,7 +28,7 @@ export default {
   build: {
     transpile: ['docus']
   },
-  plugins: [r('plugins/menu')],
+  plugins: [r('plugins/menu'), r('../admin/docus.ui')],
   buildModules: [
     r('module'),
     'nuxt-vite',
