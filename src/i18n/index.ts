@@ -1,10 +1,12 @@
 import { resolve, join, relative } from 'path'
 import defu from 'defu'
+import { Module } from '@nuxt/types'
 
-const r = path => resolve(__dirname, path)
+const r = (...args: string[]) => resolve(__dirname, ...args)
 
 const config = {
-  baseUrl: ({ $docus }) => ($docus && $docus.settings && $docus.settings.url) || '',
+  langDir: "",
+  baseUrl: ({ $docus }: any) => ($docus && $docus.settings && $docus.settings.url) || '',
   locales: [
     {
       code: 'en',
@@ -40,7 +42,7 @@ const config = {
   }
 }
 
-export default function docusI18n() {
+export default <Module> function docusI18n() {
   const { requireModule, addPlugin, nuxt } = this
   const { options } = nuxt
 
