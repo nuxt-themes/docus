@@ -119,4 +119,13 @@ export default <Module>function docusAppModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
+
+  if (options.dev) {
+    options.plugins.push(r('../admin/docus.ui'))
+
+    // Disable SSR in dev
+    options.ssr = false
+    options.build.ssr = false
+    options.render.ssr = false
+  }
 }

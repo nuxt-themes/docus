@@ -14,13 +14,6 @@ export default <Module>async function docusModule() {
   const { nuxt, requireModule, addPlugin } = this
   const { options, hook, callHook } = nuxt
 
-  // Disable SSR in dev
-  if (options.dev) {
-    options.ssr = false
-    options.build.ssr = false
-    options.render.ssr = false
-  }
-
   // Inject Docus theme as ~docus
   options.alias['~docus'] = r('runtime')
 
