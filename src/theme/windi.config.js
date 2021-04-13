@@ -395,6 +395,6 @@ export default {
     'blur-header': 'blur-12',
     'bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
     'border-header': 'border-b border-gray-100 dark:border-gray-800',
-    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header'
+    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header h-header'
   }
 }
