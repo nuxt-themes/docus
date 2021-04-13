@@ -1,11 +1,19 @@
 {
   "name": "docus",
-  "version": "0.1.5",
-  "private": true,
+  "version": "0.2.0-alpha.2",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
     ".": "./dist/index.js",
+    "./src/app/*": "./dist/app/*",
+    "./src/admin/*": "./dist/admin/*",
+    "./src/components/*": "./dist/components/*",
+    "./src/core/*": "./dist/core/*",
+    "./src/github/*": "./dist/github/*",
+    "./src/i18n/*": "./dist/i18n/*",
+    "./src/social-image/*": "./dist/social-image/*",
+    "./src/twitter/*": "./dist/twitter/*",
+    "./src/theme/*": "./dist/theme/*",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
