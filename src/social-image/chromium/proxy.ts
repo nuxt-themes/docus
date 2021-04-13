@@ -1,8 +1,15 @@
 import fetch from 'node-fetch'
+import { HTTPRequest, Page } from 'puppeteer-core'
 
-const cache = {}
+interface Cache {
+    status: number,
+    contentType: string | null,
+    headers: any,
+    body: Buffer
+}
+const cache: { [url: string]: Cache } = {}
 
-async function _fetch(request) {
+async function _fetch(request: HTTPRequest) {
   const url = request.url()
   let result = cache[url]
   if (!result) {
@@ -24,7 +31,7 @@ async function _fetch(request) {
   return result
 }
 
-export async function useProxy(page) {
+export async function useProxy(page: Page) {
   await page.setRequestInterception(true)
   page.on('request', async request => {
     try {
