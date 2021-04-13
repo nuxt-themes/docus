@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="toc.length"
-    class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-header xl:block xl:top-0"
+    class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-header xl:block xl:top-0"
   >
     <button
       class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none xl:hidden dark:text-gray-100"
@@ -48,7 +48,9 @@
                   'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(
                     childLink.id
                   ),
-                  'text-gray-400 dark:text-gray-500 hover:text-primary-500': !activeHeadings.includes(childLink.id)
+                  'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400': !activeHeadings.includes(
+                    childLink.id
+                  )
                 }"
                 class="pl-3 block py-1 transition-colors duration-100 transform"
                 @click.prevent="scrollToHeading(childLink.id)"
@@ -115,7 +117,11 @@ export default {
 
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '')
-      this.scrollToHeading(hash)
+
+      // do not remove setTimeout
+      setTimeout(() => {
+        this.scrollToHeading(hash)
+      }, 100)
     }
 
     const observerCallback = entries => {
@@ -146,9 +152,13 @@ export default {
       const hash = id
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
-      const offset =
-        document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
-      window.scrollTo(0, offset)
+
+      // do not remove setTimeout
+      setTimeout(() => {
+        const offset =
+          document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
+        window.scrollTo(0, offset)
+      })
     },
     isActiveParent(link) {
       return link.children && link.children.some(child => this.activeHeadings.includes(child.id))

@@ -74,6 +74,8 @@ export default {
       const hash = e.target.href.split('#').pop()
       // use replaceState to prevent page jusmp when adding hash
       history.replaceState({}, '', '#' + hash)
+
+      // do not remove setTimeout
       setTimeout(() => {
         const offset =
           document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--blogpost-scroll-margin-block'))
