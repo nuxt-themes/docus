@@ -382,7 +382,7 @@ export default {
     'bg-primary': 'bg-primary-500 dark:bg-primary-400',
     // Icons
     'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
-    'd-icon': 'text-icon transition-colors duration-200 focus:outline-none',
+    'd-icon': 'text-icon focus:outline-none',
     // Images utils
     'light-img': 'dark:hidden',
     'dark-img': 'light:hidden',
