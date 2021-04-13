@@ -35,7 +35,7 @@
               'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
                 !activeHeadings.includes(link.id) && !isActiveParent(link)
             }"
-            @click.prevent="scrollToHeading(link.id)"
+            @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
           >
             {{ link.text }}
           </a>
@@ -53,7 +53,7 @@
                   )
                 }"
                 class="pl-3 block py-1 transition-colors duration-100 transform"
-                @click.prevent="scrollToHeading(childLink.id)"
+                @click.prevent="scrollToHeading(childLink.id, '--docs-scroll-margin-block')"
               >
                 {{ childLink.text }}
               </a>
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../utils'
+import { scrollToHeading } from '../utils'
 
 export default {
   props: {
@@ -82,6 +82,7 @@ export default {
   },
   data() {
     return {
+      scrollToHeading,
       visibleHeadings: [],
       activeHeadings: [],
       showMobileToc: false,
@@ -115,15 +116,6 @@ export default {
       }
     })
 
-    if (window.location.hash) {
-      const hash = window.location.hash.replace('#', '')
-
-      // do not remove setTimeout
-      setTimeout(() => {
-        this.scrollToHeading(hash)
-      }, 100)
-    }
-
     const observerCallback = entries => {
       entries.forEach(entry => {
         const id = entry.target.id
@@ -148,18 +140,6 @@ export default {
     this.observer.disconnect()
   },
   methods: {
-    scrollToHeading(id) {
-      const hash = id
-      // use replaceState to prevent page jusmp when adding hash
-      history.replaceState({}, '', '#' + hash)
-
-      // do not remove setTimeout
-      setTimeout(() => {
-        const offset =
-          document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
-        window.scrollTo(0, offset)
-      })
-    },
     isActiveParent(link) {
       return link.children && link.children.some(child => this.activeHeadings.includes(child.id))
     }

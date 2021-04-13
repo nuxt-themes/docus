@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
 import CopyButton from '../../components/atoms/DCopyButton.vue'
-import { convertPropToPixels } from '../../components/utils'
+import { scrollToHeading } from '../../components/utils'
 
 export default {
   name: 'PageSlug',
@@ -32,6 +32,7 @@ export default {
   },
   data() {
     return {
+      scrollToHeading,
       page: {}
     }
   },
@@ -83,6 +84,15 @@ export default {
       localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
     }
 
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '')
+
+      // do not remove setTimeout (wrong scroll pos)
+      setTimeout(() => {
+        this.scrollToHeading(hash, '--docs-scroll-margin-block')
+      }, 300)
+    }
+
     setTimeout(() => {
       const blocks = document.getElementsByClassName('nuxt-content-highlight')
 
@@ -97,13 +107,10 @@ export default {
         ...document.querySelectorAll('.nuxt-content h3')
       ]
       headings.forEach(heading => {
-        heading.addEventListener('click', function (e) {
+        heading.addEventListener('click', e => {
           e.preventDefault()
           const hash = e.target.href.split('#').pop()
-          const offset = heading.offsetTop - parseInt(convertPropToPixels('--docs-scroll-margin-block'))
-          // use replaceState to prevent page jusmp when adding hash
-          history.replaceState({}, '', '#' + hash)
-          scrollTo(0, offset)
+          this.scrollToHeading(hash, '--docs-scroll-margin-block')
         })
       })
     }, 100)

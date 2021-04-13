@@ -7,6 +7,7 @@
 @screen md {
   :root {
     --header-height: theme('spacing.18');
+    --blogpost-scroll-margin-block: calc(var(--header-height) - 0.5rem);
   }
 }
 
