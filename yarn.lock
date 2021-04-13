@@ -1271,10 +1271,10 @@
     node-fetch "^2.6.1"
     web-streams-polyfill "^3.0.1"
 
-"@nuxt/image@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.4.1.tgz#b22cf7b671310c6d36c43dd55674ecb6dbe1096a"
-  integrity sha512-4CjvUgincnXR5Sesy8CvyB+L8DdgA3+QZJuDIN8Jm+WN2p/5MkIuK71Nh0MsAjJC4DLmk9YzGwxnu+A+hQElrg==
+"@nuxt/image@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.4.4.tgz#a7f61a6b7a9a0e9cbe799b2db754259022243401"
+  integrity sha512-K+gXIC6hb25Eh2lN5xLlyMid8mN7g5KfpIb2kqKXSX5n2OOrJo2VpjTtnLbO307Qlc9GkwB0+6Iz3vqdZCUKFQ==
   dependencies:
     allowlist "^0.1.1"
     consola "^2.15.3"
@@ -1286,7 +1286,7 @@
     is-https "^3.0.2"
     node-fetch "^2.6.1"
     requrl "^3.0.2"
-    ufo "^0.6.6"
+    ufo "^0.6.11"
     upath "^2.0.1"
 
 "@nuxt/loading-screen@^2.0.3":
