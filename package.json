@@ -14,6 +14,7 @@
     "./dist/social-image/*": "./dist/social-image/*",
     "./dist/twitter/*": "./dist/twitter/*",
     "./dist/theme/*": "./dist/theme/*",
+    "./dist/types/*": "./dist/types/*",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",

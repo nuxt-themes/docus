@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'node:http'
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
-import { DocusSettings } from 'types'
-import { GithubRelease, GithubReleaseOptions } from 'types/github'
+import { DocusSettings } from '../types'
+import { GithubRelease, GithubReleaseOptions } from '../types/github'
 
 interface GithubRawRelease {
   draft: boolean

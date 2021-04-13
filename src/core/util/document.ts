@@ -1,5 +1,5 @@
-import { DocusDocument, DocusMakrdownNode } from 'types'
 import { withoutTrailingSlash } from 'ufo'
+import { DocusDocument, DocusMakrdownNode } from '../../types'
 
 export function generatePosition(path: string, document: DocusDocument): string {
   const position = path

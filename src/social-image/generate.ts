@@ -1,6 +1,6 @@
 import { join } from 'path'
 import fs from 'fs'
-import { ScreenshotCondidate, ScreenshotCondidates, SocialImageModuleOptions } from 'types/social-image'
+import { ScreenshotCondidate, ScreenshotCondidates, SocialImageModuleOptions } from '../types/social-image'
 import { takeScreenshot, cleanup } from './chromium'
 
 interface InternalModuleOptions {

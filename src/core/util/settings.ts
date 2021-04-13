@@ -1,6 +1,6 @@
 import defu from 'defu'
 import { getColors } from 'theme-colors'
-import { Alias, Colors, DocusSettings } from 'types/core'
+import { Alias, Colors, DocusSettings } from '../../types/core'
 
 export const DEFAULT_THEME_SETTINGS = {
   colors: {

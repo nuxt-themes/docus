@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
 import defu from 'defu'
-import { SocialImageModuleOptions } from 'types/social-image'
 import { Module } from '@nuxt/types'
+import { SocialImageModuleOptions } from '../types/social-image'
 import { setupStaticGeneration } from './generate'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)

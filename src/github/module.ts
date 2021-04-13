@@ -1,5 +1,5 @@
 import { Module } from '@nuxt/types'
-import { DocusSettings } from 'types/core'
+import { DocusSettings } from '../types/core'
 import { get, handler, fetch } from './github'
 
 export default <Module>function docusGithubModule() {

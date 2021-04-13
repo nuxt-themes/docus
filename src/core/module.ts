@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-import { DocusDocument } from 'types'
 import { Module } from '@nuxt/types'
+import { DocusDocument } from '../types'
 import { useDefaults } from './util/settings'
 import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
