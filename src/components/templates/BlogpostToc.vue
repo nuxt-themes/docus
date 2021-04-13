@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-header z-10 text-sm bg-white border-dashed border-b border-gray-100 dark:border-gray-800 backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 px-4"
+    class="sticky top-header z-10 text-sm bg-white border-dashed border-b border-gray-100 dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 px-4"
   >
     <button
       class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none dark:text-gray-100"
@@ -37,7 +37,7 @@
             'dark:border-primary-500 border-primary-500 dark:text-primary-400 ':
               link.depth === 3 && (exactActiveLink === link.id || activeLink === link.id)
           }"
-          @click.prevent="scrollToHeading"
+          @click.prevent="scrollToHeading(link.id, '--blogpost-scroll-margin-block')"
           >{{ link.text }}</a
         >
       </li>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../utils'
+import { scrollToHeading } from '../utils'
 
 export default {
   props: {
@@ -57,6 +57,7 @@ export default {
   },
   data() {
     return {
+      scrollToHeading,
       activeLink: '',
       exactActiveLink: '',
       showMobileToc: false
@@ -68,24 +69,6 @@ export default {
       toc.shift()
       return toc
     }
-  },
-  methods: {
-    scrollToHeading(e) {
-      const hash = e.target.href.split('#').pop()
-      // use replaceState to prevent page jusmp when adding hash
-      history.replaceState({}, '', '#' + hash)
-      setTimeout(() => {
-        const offset =
-          document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--blogpost-scroll-margin-block'))
-        window.scrollTo(0, offset)
-      })
-    }
   }
 }
 </script>
-
-<style scoped>
-.backdrop {
-  backdrop-filter: blur(12px);
-}
-</style>

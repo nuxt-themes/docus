@@ -1,18 +1,19 @@
 <template>
   <section class="py-12 lg:py-24 d-container-content">
-    <div class="flex flex-col lg:flex-row">
-      <div class="flex flex-col items-center pr-0 mb-8 lg:items-start lg:pr-8 lg:w-2/3">
+    <div class="flex flex-col lg:flex-row my-8 md:my-16">
+      <div class="flex flex-col items-center pr-0 lg:items-start lg:pr-8 lg:w-2/3">
         <h2
-          class="mb-8 text-4xl font-semibold leading-none tracking-tight text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:my-12"
+          class="mb-4 text-4xl font-semibold sm:leading-none tracking-tighter text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:mb-8"
         >
           {{ title }}
         </h2>
-        <h3
-          class="mb-4 text-lg text-center text-gray-700 lg:text-left sm:text-xl lg:text-2xl sm:leading-tight sm:mb-8 dark:text-gray-300"
+        <p
+          class="mb-8 text-base text-center text-gray-700 lg:text-left sm:text-xl xl:text-2xl leading-base sm:mb-12 dark:text-gray-300"
         >
           {{ description }}
-        </h3>
-        <div class="flex items-center space-x-6">
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-8">
           <DComponent :component="cta">
             <DButtonLink class="mx-auto md:mx-0" size="large" :href="cta[1]">
               {{ cta[0] }}

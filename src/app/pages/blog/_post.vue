@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../../../components/utils'
+import { scrollToHeading } from '../../../components/utils'
 
 export default {
   layout: 'blog',
@@ -52,19 +52,31 @@ export default {
       post
     }
   },
+  data() {
+    return {
+      scrollToHeading
+    }
+  },
   mounted() {
     const headings = [
       ...document.querySelectorAll('.nuxt-content h2'),
       ...document.querySelectorAll('.nuxt-content h3')
     ]
+
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '')
+
+      // do not remove setTimeout (wrong scroll pos)
+      setTimeout(() => {
+        this.scrollToHeading(hash, '--blogpost-scroll-margin-block')
+      }, 300)
+    }
+
     headings.forEach(heading => {
-      heading.addEventListener('click', function (e) {
+      heading.addEventListener('click', e => {
         e.preventDefault()
         const hash = e.target.href.split('#').pop()
-        const offset = heading.offsetTop - parseInt(convertPropToPixels('--blogpost-scroll-margin-block'))
-        // use replaceState to prevent page jusmp when adding hash
-        history.replaceState({}, '', '#' + hash)
-        scrollTo(0, offset)
+        this.scrollToHeading(hash, '--blogpost-scroll-margin-block')
       })
     })
   },
@@ -77,9 +89,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* .nuxt-content h2, .nuxt-content h3 {
-  scroll-margin-block: var(--blogpost-scroll-margin-block);
-} */
-</style>

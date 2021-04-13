@@ -4,7 +4,7 @@
   "url": "https://docus.dev",
   "twitter": "nuxtlabs",
   "template": "docs",
-  "credits": false,
+  "credits": true,
   "github": {
     "repo": "nuxtlabs/docus",
     "branch": "main",
