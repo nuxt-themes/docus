@@ -8,7 +8,9 @@
         class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
       >
         <li v-for="(f, index) of features" :key="index" class="flex">
-          <div class="relative w-full px-6 py-8 bg-white rounded shadow dark:bg-gray-900 hover:shadow-lg">
+          <div
+            class="relative w-full px-6 py-8 bg-white rounded border border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+          >
             <DComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">
               <img v-if="isImage(f.icon)" :src="f.icon" class="inline-block w-16 h-16 mb-3" />
               <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
