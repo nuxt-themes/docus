@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.2.0-alpha.5",
+  "version": "0.2.0-alpha.7",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
