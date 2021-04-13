@@ -39,7 +39,6 @@
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
     "@nuxt/content": "^1.14.0",
-    "@nuxt/types": "^2.15.4",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/composition-api": "0.22.1",
@@ -74,8 +73,11 @@
     "vue-plausible": "^1.1.4"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.15.4",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
+    "@types/graceful-fs": "^4.1.5",
+    "@types/node-fetch": "^2.5.10",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.1.0",

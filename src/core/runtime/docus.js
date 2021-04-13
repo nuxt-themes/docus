@@ -3,7 +3,7 @@ import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { $fetch } from 'ohmyfetch'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
-import { useCSSVariables, useDefaults, useDefaultsTheme } from '../lib/settings'
+import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 

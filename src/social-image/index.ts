@@ -1,10 +1,16 @@
 import { join, resolve } from 'path'
 import defu from 'defu'
-import { setupStaticGeneration } from './lib/generate'
+import { SocialImageModuleOptions } from 'types/social-image'
+import { Module } from '@nuxt/types'
+import { setupStaticGeneration } from './generate'
 
-const r = (...args) => resolve(__dirname, ...args)
+const r = (...args: string[]) => resolve(__dirname, ...args)
+interface InternalModuleOptions {
+  _outDir: string
+  internalUrl: string
+}
 
-export default function socialImageModule(moduleOptions) {
+export default <Module<SocialImageModuleOptions & InternalModuleOptions>>function socialImageModule(moduleOptions) {
   const { nuxt, addPlugin } = this
   const { options: nuxtOptions, hook } = nuxt
 
@@ -14,9 +20,11 @@ export default function socialImageModule(moduleOptions) {
   if (process.platform === 'linux') executablePath = '/usr/bin/google-chrome'
   if (process.platform === 'win32') executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 
-  const defaults = {
+  const defaults: SocialImageModuleOptions & InternalModuleOptions = {
     baseUrl: undefined,
     outDir: '_preview',
+    _outDir: '',
+    internalUrl: '',
     chrome: {
       browserWSEndpoint: undefined,
       defaultViewport: { width: 1280, height: 640 },
@@ -29,17 +37,17 @@ export default function socialImageModule(moduleOptions) {
   const options = defu(moduleOptions, nuxt.options.socialImage, defaults)
   options._outDir = join(nuxtOptions.generate.dir, options.outDir)
 
-  hook('listen', (_, listener) => {
+  hook('listen', (_: any, listener: any) => {
     options.internalUrl = `http://localhost:${listener.port}`
   })
 
-  hook('build:extendRoutes', routes => {
-    const hasRoute = name => routes.some(route => route.name === name)
+  hook('build:extendRoutes', (routes: any[]) => {
+    const hasRoute = (name: string) => routes.some(route => route.name === name)
     if (!hasRoute('social-image-preview')) {
       routes.unshift({
         path: '/social-image-preview',
         name: 'social-image-preview',
-        component: r('components/social-image-preview.vue')
+        component: r('runtime/pages/social-image-preview.vue')
       })
     }
   })
@@ -47,7 +55,7 @@ export default function socialImageModule(moduleOptions) {
   setupStaticGeneration(nuxt, options)
 
   addPlugin({
-    src: join(__dirname, '/lib/plugin.js'),
+    src: r('runtime/plugin.js'),
     fileName: join('social-image.js'),
     options
   })

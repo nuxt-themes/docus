@@ -1,7 +1,8 @@
 import defu from 'defu'
 import { getColors } from 'theme-colors'
+import { Alias, Colors, DocusSettings } from 'types/core'
 
-const DEFAULT_THEME_SETTINGS = {
+export const DEFAULT_THEME_SETTINGS = {
   colors: {
     primary: '#3073F1',
     code: {
@@ -39,11 +40,11 @@ const DEFAULT_THEME_SETTINGS = {
   }
 }
 
-const DEFAULT_SETTINGS = {
+export const DEFAULT_SETTINGS: DocusSettings = {
   title: 'Docus',
   description: '',
   template: 'docs',
-  logo: null,
+  logo: '',
   url: '',
   github: {
     repo: '',
@@ -57,12 +58,13 @@ const DEFAULT_SETTINGS = {
     logo: false,
     title: true
   },
+  layout: '',
   credits: true
 }
 
-export function useDefaults(settings = {}) {
+export function useDefaults(settings: Partial<DocusSettings> = {}): DocusSettings {
   if (typeof settings.github === 'string') {
-    settings.github = { repo: settings.github }
+    settings.github = defu(DEFAULT_SETTINGS.github, { repo: settings.github })
   }
   if (settings.layout) {
     // eslint-disable-next-line no-console
@@ -70,14 +72,14 @@ export function useDefaults(settings = {}) {
     settings.template = settings.layout
     delete settings.layout
   }
-  return defu(settings, DEFAULT_SETTINGS)
+  return defu(settings as DocusSettings, DEFAULT_SETTINGS)
 }
 
 export function useDefaultsTheme(settings = {}) {
   return defu(settings, DEFAULT_THEME_SETTINGS)
 }
 
-export function useColors(colors, aliases = {}) {
+export function useColors(colors: Colors, aliases: Alias = {}) {
   try {
     return Object.entries(colors).map(([key, color]) => [
       aliases[key] || key,
@@ -90,21 +92,21 @@ export function useColors(colors, aliases = {}) {
   }
 }
 
-export function useCSSVariables(colors, aliases = {}) {
+export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
   const { put, generate } = useCssVaribaleStore(['dark'])
-  colors = useColors(colors, aliases)
-  colors.forEach(([color, map]) => {
-    Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value))
+  const colorsList = useColors(colors, aliases)
+  colorsList.forEach(([color, map]) => {
+    Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value as string))
   })
   return generate()
 }
 
 function useCssVaribaleStore(scopes = ['dark']) {
   scopes = ['default', ...scopes]
-  const _store = scopes.reduce((obj, scope) => ({ [scope]: {}, ...obj }), {})
-  const getScope = scope => _store[scope] || null
+  const _store = scopes.reduce((obj, scope) => ({ [scope]: {}, ...obj }), {} as any)
+  const getScope = (scope: string) => _store[scope] || null
 
-  const putSingle = key => value => {
+  const putSingle = (key: string) => (value: string) => {
     const _arr = value.split(':')
     const _value = _arr.pop()
     const _scope = getScope(_arr.pop() || 'default')
@@ -113,13 +115,13 @@ function useCssVaribaleStore(scopes = ['dark']) {
     }
   }
 
-  const put = (key, value) => {
+  const put = (key: string, value: string) => {
     value.split(' ').map(putSingle(key))
   }
 
-  const generateVar = ([key, value]) => `--${key}: ${value}`
+  const generateVar = ([key, value]: [string, any]) => `--${key}: ${value}`
 
-  const generateScope = scope => {
+  const generateScope = (scope: string) => {
     const vars = Object.entries(getScope(scope)).map(generateVar).join(';')
     return scope === 'default' ? `:root {${vars}}` : `html.${scope} {${vars}}`
   }

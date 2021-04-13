@@ -13,7 +13,13 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node", "@nuxt/types"],
+    "types": [
+      "@types/node",
+      "@nuxt/types",
+      "@nuxt/content",
+      "nuxt-i18n",
+      "nuxt-windicss"
+    ],
     "paths": {
       "src/*": ["./src/*"]
     }
