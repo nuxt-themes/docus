@@ -5,7 +5,7 @@ import { Module } from '@nuxt/types'
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
 const config = {
-  langDir: "",
+  langDir: '',
   baseUrl: ({ $docus }: any) => ($docus && $docus.settings && $docus.settings.url) || '',
   locales: [
     {
@@ -42,7 +42,7 @@ const config = {
   }
 }
 
-export default <Module> function docusI18n() {
+export default <Module>function docusI18n() {
   const { requireModule, addPlugin, nuxt } = this
   const { options } = nuxt
 

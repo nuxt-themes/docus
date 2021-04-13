@@ -2,9 +2,9 @@ import fetch from 'node-fetch'
 import { HTTPRequest, Page } from 'puppeteer-core'
 
 interface Cache {
-  status: number,
-  contentType: string | null,
-  headers: any,
+  status: number
+  contentType: string | null
+  headers: any
   body: Buffer
 }
 const cache: { [url: string]: Cache } = {}

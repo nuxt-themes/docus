@@ -1,7 +1,7 @@
 import { join } from 'path'
 import fs from 'fs'
-import { takeScreenshot, cleanup } from './chromium'
 import { ScreenshotCondidate, ScreenshotCondidates, SocialImageModuleOptions } from 'types/social-image'
+import { takeScreenshot, cleanup } from './chromium'
 
 interface InternalModuleOptions {
   _outDir: string
@@ -37,7 +37,7 @@ export function setupStaticGeneration(nuxt: any, options: SocialImageModuleOptio
     await cleanup()
   })
 
-  hook('generate:page', (page: { route: string, exclude: boolean }) => {
+  hook('generate:page', (page: { route: string; exclude: boolean }) => {
     const { route } = page
 
     // exclude social preview page from generation

@@ -2,7 +2,7 @@ import { Module } from '@nuxt/types'
 import { DocusSettings } from 'types/core'
 import { get, handler, fetch } from './github'
 
-export default <Module> function docusGithubModule() {
+export default <Module>function docusGithubModule() {
   const { nuxt, addServerMiddleware } = this
   const { hook, options } = nuxt
 
@@ -17,7 +17,7 @@ export default <Module> function docusGithubModule() {
     }
   })
 
-  hook('docus:content:ready', ({ $content, settings }: { $content: any, settings: DocusSettings }) => {
+  hook('docus:content:ready', ({ $content, settings }: { $content: any; settings: DocusSettings }) => {
     fetch({ $content, settings })
   })
 

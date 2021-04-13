@@ -1,11 +1,11 @@
 import { resolve } from 'path'
 import defu from 'defu'
-import defaultWindiConfig from './windi.config'
 import { Module } from '@nuxt/types'
+import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
-export default <Module> function docusThemeModule() {
+export default <Module>function docusThemeModule() {
   const { nuxt, requireModule } = this
   const { hook, options } = nuxt
 

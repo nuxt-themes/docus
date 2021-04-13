@@ -1,15 +1,15 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
+import { DocusDocument } from 'types'
+import { Module } from '@nuxt/types'
 import { useDefaults } from './util/settings'
 import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { DocusDocument } from 'types'
-import { Module } from '@nuxt/types'
 
 const fs = gracefulFs.promises
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
-export default <Module> async function docusModule() {
+export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
   const { options, hook, callHook } = nuxt

@@ -21,7 +21,11 @@ async function getPage(options: ConnectOptions): Promise<Page> {
   return _page
 }
 
-export async function takeScreenshot(options: ConnectOptions, url: string, type: "jpeg" | "png" | undefined = 'jpeg'): Promise<string | void | Buffer> {
+export async function takeScreenshot(
+  options: ConnectOptions,
+  url: string,
+  type: 'jpeg' | 'png' | undefined = 'jpeg'
+): Promise<string | void | Buffer> {
   const page = await getPage(options)
   await page.goto(url)
   const file = await page.screenshot({ type })

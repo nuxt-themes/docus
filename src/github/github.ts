@@ -1,3 +1,4 @@
+import { IncomingMessage, ServerResponse } from 'node:http'
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
 import { DocusSettings } from 'types'
 import { GithubRelease, GithubReleaseOptions } from 'types/github'
@@ -5,8 +6,10 @@ import { GithubRelease, GithubReleaseOptions } from 'types/github'
 interface GithubRawRelease {
   draft: boolean
   name: string
+  // eslint-disable-next-line camelcase
   tag_name: string
   body: string
+  // eslint-disable-next-line camelcase
   published_at: number
 }
 
@@ -16,18 +19,18 @@ export function get(): GithubRelease[] {
   return cachedReleases
 }
 
-export async function fetch({ $content, settings }: { $content: any, settings: DocusSettings}) {
+export async function fetch({ $content, settings }: { $content: any; settings: DocusSettings }) {
   let releases: GithubRelease[] = []
 
   const compile = (markdown: string) => $content.database.markdown.toJSON(markdown)
-  const getMajorVersion = (r: GithubRelease): number => r.name ? Number(r.name.substring(1, 2)) : 0
+  const getMajorVersion = (r: GithubRelease): number => (r.name ? Number(r.name.substring(1, 2)) : 0)
 
   if (settings.github.releases && settings.github.repo) {
     const { apiUrl, repo } = settings.github
     const girhubReleases = await fetchGitHubReleases({
       apiUrl,
       repo,
-      token: process.env.GITHUB_TOKE || ""
+      token: process.env.GITHUB_TOKE || ''
     })
     releases = await Promise.all(
       girhubReleases.map(async r => {
@@ -38,7 +41,6 @@ export async function fetch({ $content, settings }: { $content: any, settings: D
       })
     )
   }
-
 
   releases.sort((a, b) => {
     const aMajorVersion = getMajorVersion(a)
@@ -53,14 +55,13 @@ export async function fetch({ $content, settings }: { $content: any, settings: D
   return releases
 }
 
-
 export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubReleaseOptions) {
   const options: FetchOptions = {}
   if (token) {
     options.headers = { Authorization: `token ${token}` }
   }
   const url = `${apiUrl}/${repo}/releases`
-  let rawReleases: GithubRawRelease[] = await $fetch(url, options).catch(err => {
+  const rawReleases: GithubRawRelease[] = await $fetch(url, options).catch(err => {
     // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
     // eslint-disable-next-line no-console
@@ -84,7 +85,7 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
   return releases
 }
 
-export function handler(req: any, res: any) {
+export function handler(_req: IncomingMessage, res: ServerResponse) {
   res.writeHead(200, { 'Content-Type': 'application/json' })
   res.end(JSON.stringify(cachedReleases))
 }

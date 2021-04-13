@@ -35,7 +35,7 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
     return document
   }
   const [first, second] = document.body.children
-    .flatMap((node) => (node.children ? node.children : node))
+    .flatMap(node => (node.children ? node.children : node))
     // top level `text` can be ignored
     .filter(node => node.type !== 'text')
 

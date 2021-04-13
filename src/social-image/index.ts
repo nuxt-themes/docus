@@ -1,8 +1,8 @@
 import { join, resolve } from 'path'
 import defu from 'defu'
-import { setupStaticGeneration } from './generate'
 import { SocialImageModuleOptions } from 'types/social-image'
 import { Module } from '@nuxt/types'
+import { setupStaticGeneration } from './generate'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 interface InternalModuleOptions {
@@ -23,8 +23,8 @@ export default <Module<SocialImageModuleOptions & InternalModuleOptions>>functio
   const defaults: SocialImageModuleOptions & InternalModuleOptions = {
     baseUrl: undefined,
     outDir: '_preview',
-    _outDir: "",
-    internalUrl: "",
+    _outDir: '',
+    internalUrl: '',
     chrome: {
       browserWSEndpoint: undefined,
       defaultViewport: { width: 1280, height: 640 },
@@ -41,7 +41,6 @@ export default <Module<SocialImageModuleOptions & InternalModuleOptions>>functio
     options.internalUrl = `http://localhost:${listener.port}`
   })
 
-  
   hook('build:extendRoutes', (routes: any[]) => {
     const hasRoute = (name: string) => routes.some(route => route.name === name)
     if (!hasRoute('social-image-preview')) {
