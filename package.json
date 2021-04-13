@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.2.0-alpha.2",
+  "version": "0.2.0-alpha.5",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -52,6 +52,7 @@
     "defu": "^3.2.2",
     "graceful-fs": "^4.2.6",
     "hasha": "^5.2.2",
+    "jiti": "^1.9.1",
     "lodash.groupby": "^4.6.0",
     "marked": "^2.0.3",
     "nuxt-edge": "^2.16.0-26969781.9212d34e",
