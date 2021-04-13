@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.2.0-alpha.7",
+  "version": "0.2.0-alpha.8",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -19,6 +19,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
+    "tsconfig.json",
     "src",
     "dist",
     "LICENSE",
