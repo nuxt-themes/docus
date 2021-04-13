@@ -7,7 +7,7 @@ import { minify, MinifyOptions } from 'terser'
 
 const glob = pify(_glob)
 
-const MINIFY_VUE = true
+let messageSent = false
 
 export default defineSirocConfig({
   sortDependencies: true,
@@ -15,39 +15,34 @@ export default defineSirocConfig({
     externals: ['./src/app/nuxt.config.js']
   },
   hooks: {
+    // Minify build
     async 'build:done'() {
+      // Wait for mkdist to transpile everything
+      await new Promise(resolve => setTimeout(resolve, 2000))
+
       const jsFiles = await glob('./dist/**/*.js')
-      const vueFiles = MINIFY_VUE ? await glob('./dist/**/*.vue') : []
       const nameCache = {}
       const options: MinifyOptions = {
         nameCache,
         ecma: 2020
       }
-      await Promise.all([
-        ...jsFiles.map(async (file: string) => {
+
+      if (!messageSent) {
+        const filesCount = jsFiles.length
+
+        // eslint-disable-next-line no-console
+        console.log(`🔐Minifying ${filesCount} built files`)
+
+        messageSent = true
+      }
+
+      await Promise.all(
+        jsFiles.map(async (file: string) => {
           const contents = await fs.promises.readFile(file, 'utf-8')
-          const { code } = await minify(contents, options)
+          const { code } = minify(contents, options)
           await fs.promises.writeFile(file, code || contents)
-        }),
-        ...vueFiles.map(async (file: string) => {
-          const contents = await fs.promises.readFile(file, 'utf-8')
-
-          // eslint-disable-next-line
-          const [scriptBlock, _, script] = contents.match(/<script(\s[^>\s]*)*>([\S\s.]*?)<\/script>/) || []
-          if (!scriptBlock || !script) return
-
-          const { code } = await minify(script, {
-            compress: {
-              // Prevents a strange issue with `vite` where `data:()=>({test:0})`
-              // gets transformed to `data:=>({test:0})`
-              arrows: false
-            },
-            ...options
-          })
-
-          await fs.promises.writeFile(file, contents.replace(scriptBlock, `<script>\n${code}</script>`))
         })
-      ])
+      )
     }
   }
 })
