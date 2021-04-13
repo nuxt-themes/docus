@@ -382,7 +382,7 @@ export default {
     'bg-primary': 'bg-primary-500 dark:bg-primary-400',
     // Icons
     'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
-    'd-icon': 'text-icon transition-colors duration-200 focus:outline-none',
+    'd-icon': 'text-icon focus:outline-none',
     // Images utils
     'light-img': 'dark:hidden',
     'dark-img': 'light:hidden',
@@ -395,6 +395,6 @@ export default {
     'blur-header': 'blur-12',
     'bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
     'border-header': 'border-b border-gray-100 dark:border-gray-800',
-    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header'
+    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header h-header'
   }
 }

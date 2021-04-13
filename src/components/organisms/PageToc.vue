@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="toc.length"
-    class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 backdrop bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-header xl:block xl:top-0"
+    class="sticky left-0 flex-none w-full pl-4 mr-8 text-sm bg-white border-b border-gray-100 xl:relative xl:border-0 dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 xl:bg-transparent lg:left-60 xl:left-0 sm:pl-6 xl:pl-8 xl:w-64 top-header xl:block xl:top-0"
   >
     <button
       class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none xl:hidden dark:text-gray-100"
@@ -35,7 +35,7 @@
               'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
                 !activeHeadings.includes(link.id) && !isActiveParent(link)
             }"
-            @click.prevent="scrollToHeading(link.id)"
+            @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
           >
             {{ link.text }}
           </a>
@@ -48,10 +48,12 @@
                   'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(
                     childLink.id
                   ),
-                  'text-gray-400 dark:text-gray-500 hover:text-primary-500': !activeHeadings.includes(childLink.id)
+                  'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400': !activeHeadings.includes(
+                    childLink.id
+                  )
                 }"
                 class="pl-3 block py-1 transition-colors duration-100 transform"
-                @click.prevent="scrollToHeading(childLink.id)"
+                @click.prevent="scrollToHeading(childLink.id, '--docs-scroll-margin-block')"
               >
                 {{ childLink.text }}
               </a>
@@ -65,7 +67,7 @@
 </template>
 
 <script>
-import { convertPropToPixels } from '../utils'
+import { scrollToHeading } from '../utils'
 
 export default {
   props: {
@@ -80,6 +82,7 @@ export default {
   },
   data() {
     return {
+      scrollToHeading,
       visibleHeadings: [],
       activeHeadings: [],
       showMobileToc: false,
@@ -113,11 +116,6 @@ export default {
       }
     })
 
-    if (window.location.hash) {
-      const hash = window.location.hash.replace('#', '')
-      this.scrollToHeading(hash)
-    }
-
     const observerCallback = entries => {
       entries.forEach(entry => {
         const id = entry.target.id
@@ -142,14 +140,6 @@ export default {
     this.observer.disconnect()
   },
   methods: {
-    scrollToHeading(id) {
-      const hash = id
-      // use replaceState to prevent page jusmp when adding hash
-      history.replaceState({}, '', '#' + hash)
-      const offset =
-        document.querySelector(`#${hash}`).offsetTop - parseInt(convertPropToPixels('--scroll-margin-block'))
-      window.scrollTo(0, offset)
-    },
     isActiveParent(link) {
       return link.children && link.children.some(child => this.activeHeadings.includes(child.id))
     }

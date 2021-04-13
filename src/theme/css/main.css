@@ -1,12 +1,13 @@
 :root {
   --header-height: theme('spacing.14');
-  --docs-scroll-margin-block: calc(var(--header-height) + 2.5rem + 1.5rem);
+  --docs-scroll-margin-block: calc(var(--header-height) + 4rem);
   --blogpost-scroll-margin-block: calc(var(--header-height));
 }
 
 @screen md {
   :root {
     --header-height: theme('spacing.18');
+    --blogpost-scroll-margin-block: calc(var(--header-height) - 0.5rem);
   }
 }
 

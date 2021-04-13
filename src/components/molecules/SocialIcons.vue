@@ -20,6 +20,7 @@
       title="GitHub"
       name="GitHub"
       class="d-icon"
+      :class="[padding]"
     >
       <IconGitHub :class="size" />
     </a>

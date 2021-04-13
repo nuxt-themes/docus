@@ -11,16 +11,16 @@
         >
           <IconArrowLeft class="w-5 h-5" />
         </button>
-        <div class="flex items-center justify-end w-full px-2 h-header lg:hidden">
+        <div class="flex items-center justify-end w-full h-header lg:hidden">
           <DLangSwitcher />
-          <DColorSwitcher />
-          <SocialIcons />
+          <DColorSwitcher size="w-5 h-5" padding="p-1" />
+          <SocialIcons size="w-5 h-5" padding="p-1" />
         </div>
       </div>
 
       <!-- aside navigation -->
       <nav
-        class="flex flex-col justify-between lg:justify-start max-w-sm overflow-y-auto text-base font-medium h-(full-header) lg:text-sm"
+        class="flex flex-col justify-between lg:justify-start max-w-sm overflow-y-auto text-sm font-medium h-(full-header)"
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
           <AsideTop />
@@ -55,6 +55,28 @@ export default {
       set(val) {
         this.$menu.open = val
       }
+    }
+  },
+  watch: {
+    menu(val) {
+      if (val) {
+        this.blockBodyScroll()
+      } else {
+        this.unblockBodyScroll()
+      }
+    }
+  },
+  methods: {
+    blockBodyScroll() {
+      const scrollBarGap = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollBarGap}px`
+    },
+    unblockBodyScroll() {
+      setTimeout(() => {
+        document.body.style.overflow = null
+        document.body.style.paddingRight = null
+      }, 16)
     }
   }
 }

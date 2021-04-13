@@ -1,38 +1,44 @@
 <template>
-  <div class="d-header" @click="scrollToTop">
-    <div class="flex flex-1 h-18 d-container-content items-center">
-      <NavigationButton />
-      <div class="flex flex-1 justify-center items-center lg:flex-none">
-        <div class="flex flex-none font-semibold text-2xl text-gray-900 items-center dark:text-gray-100">
-          <NuxtLink :to="localePath('/')" class="w-auto overflow-hidden" :aria-label="settings.title">
-            <HeaderLogo />
-          </NuxtLink>
-        </div>
+  <header class="d-header">
+    <div class="flex flex-none h-full d-container-content">
+      <NavigationButton v-if="aside" />
+
+      <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
+        <DLogo :settings="settings" />
       </div>
-      <div class="hidden lg:flex lg:flex-1">
+
+      <div class="hidden lg:flex lg:flex-1 items-center">
         <HeaderNavigation />
       </div>
-      <!-- Middle section -->
-      <div class="flex items-center justify-end lg:flex-none" @click.stop>
+
+      <div class="flex items-center justify-end lg:flex-none">
         <AlgoliaSearchBox
           v-if="settings.algolia"
           :options="settings.algolia"
           :settings="settings"
-          class="w-14 lg:flex-1 lg:px-1.5"
+          class="w-14 lg:flex-1 lg:px-2"
         />
+
         <div v-else class="flex lg:hidden">
           <DColorSwitcher />
         </div>
 
         <!-- Desktop: Right section -->
-        <div class="space-x-2 items-center justify-end hidden md:space-x-4 lg:flex" @click.stop>
-          <DLangSwitcher />
-          <DColorSwitcher />
-          <SocialIcons />
+        <div class="items-center justify-end hidden lg:flex">
+          <NuxtLink
+            v-if="lastRelease"
+            :to="localePath('/releases')"
+            class="hidden px-3 font-medium text-gray-400 transition-colors duration-200 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 lg:block"
+            exact-active-class="text-primary-500 dark:text-primary-400"
+            >{{ lastRelease }}</NuxtLink
+          >
+          <DLangSwitcher class="p-1.5" />
+          <DColorSwitcher class="p-1.5" />
+          <SocialIcons padding="p-1.5" />
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -49,14 +55,6 @@ export default {
     },
     lastRelease() {
       return this.$docus.lastRelease
-    }
-  },
-  methods: {
-    scrollToTop() {
-      if (window.innerWidth >= 1280) {
-        return
-      }
-      window.scrollTo(0, 0)
     }
   }
 }
