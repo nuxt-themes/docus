@@ -48,6 +48,7 @@ export default <Module>function docusAppModule() {
         component: r('pages/blog/index.vue')
       })
     }
+
     if (!hasRoute('blog-post')) {
       routes.push({
         path: '/blog/:post',
@@ -55,6 +56,7 @@ export default <Module>function docusAppModule() {
         component: r('pages/blog/_post.vue')
       })
     }
+
     if (!hasRoute('all')) {
       routes.push({
         path: '/*',
@@ -120,8 +122,9 @@ export default <Module>function docusAppModule() {
     }
   })
 
+  // Inject Admin UI
   if (options.dev) {
-    options.plugins.push(r('../admin/docus.ui'))
+    options.plugins.push(r('../admin/index'))
 
     // Disable SSR in dev
     options.ssr = false

@@ -44,5 +44,5 @@ features:
 ---
 
 <block-hero :title="title" :description="description" v-bind="hero"></block-hero>
-<block-features title="What's included?" :features="features"></block-features>
 
+<block-features title="What's included?" :features="features"></block-features>

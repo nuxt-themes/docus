@@ -16,6 +16,7 @@ export default {
     if (typeof props.component === 'string' && Vue.component(props.component)) {
       return h(props.component, data, children)
     }
+
     return h(props.tag, data, slots().default)
   }
 }
