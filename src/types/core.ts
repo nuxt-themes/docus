@@ -65,10 +65,10 @@ export interface DocusSettings {
   template: string
 }
 
-export interface Colors {
-  [key: string]: string | Colors
+export interface StringMap {
+  [key: string]: string
 }
 
-export interface Alias {
-  [key: string]: string
+export interface Colors {
+  [key: string]: string | StringMap
 }

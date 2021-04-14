@@ -1,6 +1,6 @@
 import defu from 'defu'
 import { getColors } from 'theme-colors'
-import { Alias, Colors, DocusSettings } from '../../types/core'
+import { Colors, DocusSettings, StringMap } from '../../types/core'
 
 export const DEFAULT_THEME_SETTINGS = {
   colors: {
@@ -79,7 +79,7 @@ export function useDefaultsTheme(settings = {}) {
   return defu(settings, DEFAULT_THEME_SETTINGS)
 }
 
-export function useColors(colors: Colors, aliases: Alias = {}) {
+export function useColors(colors: Colors, aliases: StringMap = {}) {
   try {
     return Object.entries(colors).map(([key, color]) => [
       aliases[key] || key,
@@ -92,7 +92,7 @@ export function useColors(colors: Colors, aliases: Alias = {}) {
   }
 }
 
-export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
+export function useCSSVariables(colors: Colors, aliases: StringMap = {}) {
   const { put, generate } = useCssVaribaleStore(['dark'])
   const colorsList = useColors(colors, aliases)
   colorsList.forEach(([color, map]) => {
