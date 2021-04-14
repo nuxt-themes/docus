@@ -69,13 +69,9 @@ export default <Module>function docusAppModule() {
 
   // Configure `components/` dir
   hook('components:dirs', async (dirs: any) => {
+    // Atoms
     dirs.push({
       path: r('../components/atoms'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../components/molecules'),
       global: true,
       level: 2
     })
@@ -84,16 +80,22 @@ export default <Module>function docusAppModule() {
       global: true,
       level: 2
     })
+
+    // Molecules
     dirs.push({
-      path: r('../components/logos'),
+      path: r('../components/molecules'),
       global: true,
       level: 2
     })
+
+    // Organisms
     dirs.push({
       path: r('../components/organisms'),
       global: true,
       level: 2
     })
+
+    // Templates
     dirs.push({
       path: r('../components/templates'),
       global: true,
