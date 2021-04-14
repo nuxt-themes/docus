@@ -2,11 +2,11 @@ import { createCookies } from '@vueuse/integrations'
 import defu from 'defu'
 import Vue from 'vue'
 import { reactive, watch } from 'vue-demi'
-import DocusUI from './components/DocusUI'
+import DocusUI from './components/DocusUI.vue'
 
 const COOKIE_NAME = 'docus.ui'
 
-export default async function ({ $docus, ssrContext }) {
+export default async function ({ $docus, ssrContext }: any) {
   const useUniversalCookies = createCookies(ssrContext?.req)
   const cookies = useUniversalCookies()
   const ui = cookies.get(COOKIE_NAME) || {}
@@ -20,6 +20,7 @@ export default async function ({ $docus, ssrContext }) {
   )
 
   if (process.client) {
+    // Watch drafts, refresh data once updated
     watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
     watch(
       () => $docus.ui.draft,
@@ -29,16 +30,18 @@ export default async function ({ $docus, ssrContext }) {
       () => $docus.ui.draft,
       () => $docus.fetchNavigation()
     )
-  }
 
-  // Mount DocusUI widget on client-side
-  if (process.client) {
+    // Mount DocusUI widget on client-side
     const el = document.createElement('div')
+
     document.body.appendChild(el)
-    new Vue({
+
+    const instanceData: any = {
       ...DocusUI,
       $docus
-    }).$mount(el)
+    }
+
+    new Vue(instanceData).$mount(el)
   }
 
   // Re-fetch categories
