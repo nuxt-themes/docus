@@ -37,8 +37,8 @@ const DEFAULTS = {
   }
 }
 
-async function parseFrontMatter(file) {
-  const { data, content, ...rest } = await matter(file, { excerpt: true, excerpt_separator: '<!--more-->' })
+function parseFrontMatter(file) {
+  const { data, content, ...rest } = matter(file, { excerpt: true, excerpt_separator: '<!--more-->' })
 
   return {
     content,

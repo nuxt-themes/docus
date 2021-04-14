@@ -1,10 +1,15 @@
 import hastToMarkdown from 'mdast-util-to-markdown'
-import matter from 'gray-matter'
 import visit from 'unist-util-visit'
 import h from 'hastscript'
+import { useMarkdownParser } from '.'
+
+const toFrontMatter = (yamlString: string) => `---
+${yamlString}
+---`
 
 export default function htmlDirectives() {
   const toMarkdownExtensions = this.data().toMarkdownExtensions
+  const parser = useMarkdownParser()
 
   function toMarkdown(node) {
     return node.children
@@ -19,18 +24,15 @@ export default function htmlDirectives() {
 
   function toData(node) {
     const markdown = toMarkdown(node)
-    const { data } = matter(`---\n${markdown}\n---`)
+    const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
+
     return Object.keys(data).reduce((acc, key) => {
       acc[`:${key}`] = JSON.stringify(data[key])
       return acc
     }, {})
   }
-  return transform
-  function transform(tree) {
-    visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], ondirective)
-  }
 
-  function ondirective(node) {
+  function visitDirective(node) {
     const data = node.data || (node.data = {})
     const hast = h(node.name, node.attributes)
     if (node.name === 'list') {
@@ -41,5 +43,9 @@ export default function htmlDirectives() {
     }
     data.hName = `d-${hast.tagName}`
     data.hProperties = hast.properties
+  }
+
+  return tree => {
+    visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], visitDirective)
   }
 }
