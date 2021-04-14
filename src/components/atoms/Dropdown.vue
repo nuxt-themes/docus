@@ -29,7 +29,6 @@
 
 <script>
 export default {
-  name: 'Dropdown',
   data() {
     return {
       open: false

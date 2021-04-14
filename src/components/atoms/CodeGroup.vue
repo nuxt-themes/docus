@@ -86,8 +86,8 @@ export default {
         .filter(
           slot =>
             slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
-            slot.componentOptions?.tag === 'd-code-block' ||
-            slot.asyncMeta?.tag === 'd-code-block'
+            slot.componentOptions?.tag === 'code-block' ||
+            slot.asyncMeta?.tag === 'code-block'
         )
         .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}

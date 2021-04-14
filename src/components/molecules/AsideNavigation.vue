@@ -12,8 +12,8 @@
           <IconArrowLeft class="w-5 h-5" />
         </button>
         <div class="flex items-center justify-end w-full h-header lg:hidden">
-          <DLangSwitcher />
-          <DColorSwitcher size="w-5 h-5" padding="p-1" />
+          <LangSwitcher />
+          <ColorSwitcher size="w-5 h-5" padding="p-1" />
           <SocialIcons size="w-5 h-5" padding="p-1" />
         </div>
       </div>

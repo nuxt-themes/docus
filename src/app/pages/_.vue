@@ -5,7 +5,7 @@
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
-import CopyButton from '../../components/atoms/DCopyButton.vue'
+import CopyButton from '../../components/atoms/CopyButton.vue'
 import { scrollToHeading } from '../../components/utils'
 
 export default {

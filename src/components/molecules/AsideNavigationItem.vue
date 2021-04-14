@@ -19,12 +19,14 @@
               : 'text-gray-700 dark:text-gray-400'
           ]"
         >
-          <DComponent
+          <InjectComponent
             v-if="doc.icon"
             :component="doc.icon"
             class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem"
-            >{{ doc.icon }}</DComponent
           >
+            {{ doc.icon }}
+          </InjectComponent>
+
           <span>
             {{ doc.menuTitle || doc.title }}
           </span>

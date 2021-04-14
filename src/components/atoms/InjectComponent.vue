@@ -1,3 +1,4 @@
+<script>
 import Vue from 'vue'
 
 export default {
@@ -20,3 +21,4 @@ export default {
     return h(props.tag, data, slots().default)
   }
 }
+</script>

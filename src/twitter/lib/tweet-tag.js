@@ -74,7 +74,7 @@ async function processTweetAst(ast, layout) {
   return [
     {
       type: 'html',
-      value: `<DTweet class="tweet tweet-${layout}" layout="${layout}" id="${id}" avatar="${avatar}" name="${name}" heart-count="${heartCount}" username="${username}" :created-at="${createdAt}">`
+      value: `<Tweet class="tweet tweet-${layout}" layout="${layout}" id="${id}" avatar="${avatar}" name="${name}" heart-count="${heartCount}" username="${username}" :created-at="${createdAt}">`
     },
     {
       type: 'html',
@@ -84,7 +84,7 @@ async function processTweetAst(ast, layout) {
     ...medias.flatMap(media => mapAST([media])),
     { type: 'html', value: '</div>' },
     ...quotes.flatMap(node => node),
-    { type: 'html', value: '</DTweet>' }
+    { type: 'html', value: '</Tweet>' }
   ]
 }
 
