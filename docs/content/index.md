@@ -11,7 +11,7 @@ features:
   - icon: IconMarkdown
     title: Write Markdown
     description: Enjoy the power of Markdown to write your documentation.
-  - icon: LogoVue
+  - icon: IconVue
     title: Vue Components
     description: Use your components or Docus built-in right inside your content.
   - icon: IconNuxt
@@ -20,7 +20,7 @@ features:
     description: >-
       Get the Nuxt power by using all the features, Docus is one of the first Nuxt
       theme.
-  - icon: LogoWindi
+  - icon: IconWindi
     title: Windi CSS
     description: >-
       Windi CSS is built in for great developer experience and rapid customization of Docus — no configuration required compatible with TailwindCSS.

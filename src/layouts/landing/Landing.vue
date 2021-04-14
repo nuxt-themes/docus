@@ -3,6 +3,7 @@
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
+
     <NuxtContent :document="page" />
   </AppContainer>
 </template>

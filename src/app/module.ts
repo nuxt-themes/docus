@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
+import { glob } from 'siroc'
 
 const fs = gracefulFs.promises
 const r = (...args: any[]) => resolve(__dirname, ...args)
@@ -79,7 +80,7 @@ export default <Module>function docusAppModule() {
       level: 2
     })
     dirs.push({
-      path: r('../components/icons'),
+      path: r('../components/atoms/icons'),
       global: true,
       level: 2
     })
@@ -103,6 +104,7 @@ export default <Module>function docusAppModule() {
       global: true,
       level: 3
     })
+
     if (options.dev) {
       dirs.push({
         path: r('../components/dev'),
@@ -110,14 +112,23 @@ export default <Module>function docusAppModule() {
         level: 2
       })
     }
+
+    // Get the user root `components` folder
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
+
     if (componentsDirStat && componentsDirStat.isDirectory()) {
+      // Register the root `components` directory
       dirs.push({
         path: componentsDirPath,
         global: true
       })
+      // Check for sub directories
+      const subDirs = await glob(componentsDirPath + '/*/')
+      // Register each subdirectories
+      subDirs.forEach((path: string) => dirs.push({ path, global: true }))
     } else {
+      // Watch existence of root `components` directory
       nuxt.options.watch.push(componentsDirPath)
     }
   })
