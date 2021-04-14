@@ -1,6 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
+import { DocusDocument, DocusMakrdownNode } from '../../types'
 
-export function generatePosition(path, doc) {
+export function generatePosition(path: string, document: DocusDocument): string {
   const position = path
     .split('/')
     .filter(Boolean)
@@ -9,27 +10,27 @@ export function generatePosition(path, doc) {
       if (match) {
         return paddLeft(match[1], 4)
       }
-      return doc.position ? paddLeft(doc.position, 4) : '9999' // Parts without a position are going down to the bottom
+      return document.position ? paddLeft(document.position, 4) : '9999' // Parts without a position are going down to the bottom
     })
     .join('')
   return paddRight(position, 12)
 }
 
-export function generateSlug(name) {
+export function generateSlug(name: string): string {
   return name
     .replace(/(\d+\.)?(.*)/, '$2')
     .replace(/^index/, '')
     .replace(/\.draft/, '')
 }
-export function generateTo(path) {
+export function generateTo(path: string): string {
   return withoutTrailingSlash(path.split('/').map(generateSlug).join('/'))
 }
 
-export function isDraft(path) {
-  return !!path.match(/(\.draft)$/, '$2')
+export function isDraft(path: string): boolean {
+  return !!path.match(/(\.draft)$/)
 }
 
-export function processDocumentInfo(document) {
+export function processDocumentInfo(document: DocusDocument): DocusDocument {
   if (document.title && document.description) {
     return document
   }
@@ -68,7 +69,7 @@ export function processDocumentInfo(document) {
   return document
 }
 
-function getTextContent(node) {
+function getTextContent(node: DocusMakrdownNode): string {
   let text = node.value || ''
   if (node.children) {
     text = text + node.children.map(child => getTextContent(child)).join('')
@@ -76,10 +77,10 @@ function getTextContent(node) {
   return text
 }
 
-function paddLeft(value, length) {
+function paddLeft(value: string, length: number): string {
   return ('0'.repeat(length) + value).substr(String(value).length)
 }
 
-function paddRight(value, length) {
+function paddRight(value: string, length: number): string {
   return (value + '0'.repeat(length)).substr(0, length)
 }

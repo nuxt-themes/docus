@@ -44,7 +44,7 @@ export default {
       title: this.$route.query.title,
       description: this.$route.query.description,
 
-      primaryColor: this.$docus.settings.colors.primary,
+      primaryColor: this.$docus.settings.colors?.primary || '#3073F1',
       brand: this.$route.query.brand || 'docus.dev'
     }
   },

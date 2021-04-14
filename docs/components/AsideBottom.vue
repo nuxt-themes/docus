@@ -9,7 +9,7 @@
           :href="resource.url"
           target="_blank"
           rel="noopener nofollow"
-          class="flex items-center py-2 group dark:hover:text-gray-100 hover:text-gray-900"
+          class="flex items-center py-1.5 group dark:hover:text-gray-100 hover:text-gray-900"
         >
           <Component :is="resource.icon" v-if="resource.icon" class="w-5 h-5 mr-2" :class="resource.iconClass" />
           <span>{{ resource.title }}</span>

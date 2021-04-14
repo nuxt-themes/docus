@@ -1,10 +1,11 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
+import { Module } from '@nuxt/types'
 
 const fs = gracefulFs.promises
-const r = (...args) => resolve(__dirname, ...args)
+const r = (...args: any[]) => resolve(__dirname, ...args)
 
-export default function docusAppModule() {
+export default <Module>function docusAppModule() {
   const { addLayout, nuxt } = this
   const { hook, options } = nuxt
 
@@ -23,8 +24,8 @@ export default function docusAppModule() {
   })
 
   // Extend `/` route
-  hook('build:extendRoutes', routes => {
-    const hasRoute = name => routes.some(route => route.name === name)
+  hook('build:extendRoutes', (routes: any[]) => {
+    const hasRoute = (name: string) => routes.some(route => route.name === name)
 
     if (!hasRoute('index')) {
       routes.push({
@@ -64,7 +65,7 @@ export default function docusAppModule() {
   })
 
   // Configure `components/` dir
-  hook('components:dirs', async dirs => {
+  hook('components:dirs', async (dirs: any) => {
     dirs.push({
       path: r('../components/atoms'),
       global: true,
@@ -118,4 +119,13 @@ export default function docusAppModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
+
+  if (options.dev) {
+    options.plugins.push(r('../admin/docus.ui'))
+
+    // Disable SSR in dev
+    options.ssr = false
+    options.build.ssr = false
+    options.render.ssr = false
+  }
 }

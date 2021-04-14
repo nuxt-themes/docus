@@ -141,4 +141,7 @@ button {
     }
   }
 }
+.nuxt-content-highlight {
+  margin: 0;
+}
 </style>

@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="relative">
     <template v-if="settings.header.title && !settings.header.logo">
-      {{ settings.title }}
+      <span class="text-2xl font-bold text-gray-900 dark:text-gray-100 lowercase tracking-tighter">
+        {{ settings.title }}
+      </span>
     </template>
-    <template v-else-if="settings.header.title && settings.header.logo">
+
+    <template v-if="settings.header.title && settings.header.logo">
       <div class="flex items-center">
         <span class="mr-4">
           <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
@@ -14,10 +17,19 @@
         </span>
       </div>
     </template>
-    <template v-else-if="!settings.header.title && settings.header.logo">
-      <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
-      <img :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
+
+    <template v-if="!settings.header.title && settings.header.logo">
+      <span>
+        <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
+        <img :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
+      </span>
     </template>
+
+    <span
+      class="absolute top-0 -right-1 transform translate-x-full inline-flex items-center px-1.5 py-0.5 text-xs font-semibold text-white rounded-md bg-primary-500"
+    >
+      beta
+    </span>
   </div>
 </template>
 

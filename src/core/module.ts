@@ -1,31 +1,25 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
-// import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
-import { useDefaults } from './lib/settings'
-import { contentConfig } from './lib/utils'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './lib/document'
+import { Module } from '@nuxt/types'
+import { DocusDocument } from '../types'
+import { useDefaults } from './util/settings'
+import { contentConfig } from './util/configs'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
 import useMarkdownParser from './lib/markdown'
 
 const fs = gracefulFs.promises
-const r = (...args) => resolve(__dirname, ...args)
+const r = (...args: string[]) => resolve(__dirname, ...args)
 
-export default async function docusModule() {
+export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
-  const { options, hook, callHook } = this.nuxt
-
-  // Disable SSR in dev
-  if (options.dev) {
-    options.ssr = false
-    options.build.ssr = false
-    options.render.ssr = false
-  }
+  const { options, hook, callHook } = nuxt
 
   // Inject Docus theme as ~docus
-  nuxt.options.alias['~docus'] = r('runtime')
+  options.alias['~docus'] = r('runtime')
 
   // Inject content dir in private runtime config
-  const contentDir = options.content.dir || 'content'
+  const contentDir = options?.content?.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
 
   // read docus settings
@@ -34,16 +28,16 @@ export default async function docusModule() {
     const userSettings = require(settingsPath)
     const settings = useDefaults(userSettings)
 
-    hook('content:ready', $content => {
+    hook('content:ready', ($content: any) => {
       callHook('docus:content:ready', { settings, $content })
     })
 
     // default title and description for pages
     options.meta.name = settings.title
     options.meta.description = settings.description
-    if (settings.colors && settings.colors.primary) {
-      options.meta.theme_color = settings.colors.primary
-    }
+    // if (settings.colors && settings.colors.primary) {
+    //   options.meta.theme_color = settings.colors.primary
+    // }
   } catch (err) {
     /* settings not found */
   }
@@ -54,17 +48,17 @@ export default async function docusModule() {
     const pagesDirPath = resolve(options.srcDir, options.dir.pages)
     const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
     if (!pagesDirExists) {
-      this.nuxt.options.build.createRoutes = () => []
-      nuxt.options.watch.push(pagesDirPath)
+      options.build.createRoutes = () => []
+      options.watch.push(pagesDirPath)
     }
   })
   // Configure content after each hook
-  hook('content:file:beforeInsert', document => {
+  hook('content:file:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
       return
     }
 
-    const locales = options.i18n?.locales.map(locale => locale.code).join('|') || 'en'
+    const locales = options.i18n?.locales.map(({ code }: { code: string }) => code).join('|') || 'en'
     const defaultLocale = options.i18n?.defaultLocale || 'en'
 
     const regexp = new RegExp(`^/(${locales})`, 'gi')
@@ -91,7 +85,7 @@ export default async function docusModule() {
   })
 
   const markdownParser = useMarkdownParser(contentConfig.markdown)
-  contentConfig.extendParser = {
+  ;(contentConfig as any).extendParser = {
     '.md': markdownParser
   }
   await requireModule(['@nuxt/content', contentConfig])

@@ -1,5 +1,5 @@
 const hasha = require('hasha')
-const propsHandler = require('../tag-handlers/props')
+const propsHandler = require('./tag-handlers/props')
 
 const handlers = [['props', propsHandler]]
 
