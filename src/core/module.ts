@@ -57,7 +57,13 @@ export default <Module>async function docusModule() {
       return
     }
 
-    const locales = options.i18n?.locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+    // Locales or empty array
+    let locales = options.i18n?.locales || []
+    // If locales is function, resolve it
+    locales = typeof locales === 'function' ? locales() : locales
+    // Map locales or default to 'en'
+    locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+    // Get default locale or default to 'en'
     const defaultLocale = options.i18n?.defaultLocale || 'en'
 
     const regexp = new RegExp(`^/(${locales})`, 'gi')
