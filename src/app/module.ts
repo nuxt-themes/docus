@@ -94,6 +94,18 @@ export default <Module>function docusAppModule() {
       global: true,
       level: 2
     })
+    dirs.push({
+      path: r('../components/organisms/slots'),
+      global: true,
+      level: 3
+    })
+    if (options.dev) {
+      dirs.push({
+        path: r('../components/organisms/dev-slots'),
+        global: true,
+        level: 2
+      })
+    }
 
     // Templates
     dirs.push({
@@ -101,19 +113,6 @@ export default <Module>function docusAppModule() {
       global: true,
       level: 2
     })
-    dirs.push({
-      path: r('../components/slots'),
-      global: true,
-      level: 3
-    })
-
-    if (options.dev) {
-      dirs.push({
-        path: r('../components/dev'),
-        global: true,
-        level: 2
-      })
-    }
 
     // Get the user root `components` folder
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
