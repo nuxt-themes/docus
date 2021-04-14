@@ -1,6 +1,7 @@
 import defu from 'defu'
 import matter from 'gray-matter'
 import { Toc } from 'src/types'
+import { r } from '../../util'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
@@ -11,6 +12,13 @@ const DEFAULTS = {
     searchDepth: 2
   },
   remarkPlugins: [
+    r('core/parser/markdown/plugin/remark-vue'),
+    [
+      r('core/parser/markdown/plugin/remark-prose'),
+      {
+        proseClass: 'prose dark:prose-dark'
+      }
+    ],
     'remark-emoji',
     'remark-directive',
     'remark-squeeze-paragraphs',
@@ -23,6 +31,9 @@ const DEFAULTS = {
   rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw'],
   prism: {
     theme: ''
+  },
+  remarkAutolinkHeadings: {
+    behavior: 'wrap'
   }
 }
 
@@ -58,7 +69,7 @@ async function parse(file, options) {
   }
 }
 
-export default function useMarkdownParser(options) {
+export function useMarkdownParser(options = {}) {
   options = defu(options, DEFAULTS)
   processOptions(options)
 

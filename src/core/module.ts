@@ -3,9 +3,8 @@ import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
 import { useDefaults } from './util/settings'
-import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import useMarkdownParser from './parser/markdown'
+import { useMarkdownParser } from './parser'
 import { r } from './util'
 
 const fs = gracefulFs.promises
@@ -24,17 +23,14 @@ export default <Module>async function docusModule() {
 
   // read docus settings
   const settingsPath = resolve(options.srcDir, contentDir, 'settings.json')
+  let docusSettings
   try {
     const userSettings = require(settingsPath)
-    const settings = useDefaults(userSettings)
-
-    hook('content:ready', ($content: any) => {
-      callHook('docus:content:ready', { settings, $content })
-    })
+    docusSettings = useDefaults(userSettings)
 
     // default title and description for pages
-    options.meta.name = settings.title
-    options.meta.description = settings.description
+    options.meta.name = docusSettings.title
+    options.meta.description = docusSettings.description
     // if (settings.colors && settings.colors.primary) {
     //   options.meta.theme_color = settings.colors.primary
     // }
@@ -84,9 +80,20 @@ export default <Module>async function docusModule() {
     filename: 'docus.js'
   })
 
-  const markdownParser = useMarkdownParser(contentConfig.markdown)
-  ;(contentConfig as any).extendParser = {
-    '.md': markdownParser
-  }
-  await requireModule(['@nuxt/content', contentConfig])
+  const markdownParser = useMarkdownParser()
+  callHook('docus:content:ready', docusSettings)
+
+  await requireModule([
+    '@nuxt/content',
+    {
+      extendParser: {
+        '.md': markdownParser
+      },
+      markdown: {
+        prism: {
+          theme: ''
+        }
+      }
+    }
+  ])
 }

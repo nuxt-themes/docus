@@ -1,9 +1,9 @@
-import { DocusMakrdownHtmlNode } from './markdown'
+import { DocusRootNode } from './markdown'
 
 export interface GithubRelease {
   name: string
   date: number
-  body: DocusMakrdownHtmlNode
+  body: DocusRootNode
 }
 
 export interface GithubReleaseOptions {

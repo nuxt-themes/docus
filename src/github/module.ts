@@ -17,8 +17,8 @@ export default <Module>function docusGithubModule() {
     }
   })
 
-  hook('docus:content:ready', ({ $content, settings }: { $content: any; settings: DocusSettings }) => {
-    fetch({ $content, settings })
+  hook('docus:content:ready', (settings: DocusSettings) => {
+    fetch(settings.github)
   })
 
   addServerMiddleware({

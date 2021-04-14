@@ -1,7 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'node:http'
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
-import { DocusSettings } from '../types'
+import { DocusRepositiryOptions } from '../types'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
+import { useMarkdownParser } from '../core'
 
 interface GithubRawRelease {
   draft: boolean
@@ -19,14 +20,14 @@ export function get(): GithubRelease[] {
   return cachedReleases
 }
 
-export async function fetch({ $content, settings }: { $content: any; settings: DocusSettings }) {
+export async function fetch(settings: DocusRepositiryOptions) {
   let releases: GithubRelease[] = []
 
-  const compile = (markdown: string) => $content.database.markdown.toJSON(markdown)
+  const parser = useMarkdownParser()
   const getMajorVersion = (r: GithubRelease): number => (r.name ? Number(r.name.substring(1, 2)) : 0)
 
-  if (settings.github.releases && settings.github.repo) {
-    const { apiUrl, repo } = settings.github
+  if (settings.releases && settings.repo) {
+    const { apiUrl, repo } = settings
     const girhubReleases = await fetchGitHubReleases({
       apiUrl,
       repo,
@@ -36,7 +37,7 @@ export async function fetch({ $content, settings }: { $content: any; settings: D
       girhubReleases.map(async r => {
         return {
           ...r,
-          body: await compile(r.body)
+          body: (await parser(r.body)).body
         }
       })
     )

@@ -41,6 +41,15 @@ export interface DocusDocument {
   updatedAt: Date
 }
 
+export interface DocusRepositiryOptions {
+  repo: string
+  releases: boolean
+  apiUrl: string
+  branch: string
+  url: string
+  dir: string
+}
+
 export interface DocusSettings {
   title: string
   description: string
@@ -51,14 +60,7 @@ export interface DocusSettings {
     logo: boolean
     title: boolean
   }
-  github: {
-    repo: string
-    releases: boolean
-    apiUrl: string
-    branch: string
-    url: string
-    dir: string
-  }
+  github: DocusRepositiryOptions
   layout: string
   template: string
 }
