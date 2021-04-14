@@ -1,11 +1,13 @@
-const path = require('path')
-const fs = require('fs')
-const { parse } = require('vue-docgen-api')
+import path from 'path'
+import fs from 'fs'
+import { parse } from 'vue-docgen-api'
+import { DocusMakrdownNode } from 'src/types'
+import { r } from '../../../util'
 
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
   path.resolve('./components'), // components directory of project docs
-  path.resolve(__dirname, '../../../components') // components directory of Docus
+  r('components') // components directory of Docus
 ]
 
 function fileName(file) {
@@ -15,7 +17,7 @@ function fileName(file) {
   return file
 }
 
-function resolvePath(file) {
+function resolvePath(file: string) {
   file = fileName(file)
   if (fs.existsSync(path.resolve(file))) {
     return path.resolve(file)
@@ -28,7 +30,7 @@ function resolvePath(file) {
   return null
 }
 
-module.exports = async function propsHandler(node) {
+export default async function propsHandler(node: DocusMakrdownNode) {
   const match = node.value.match(/of=['"]([^'"]*)['"]/)
   if (!match) {
     // eslint-disable-next-line no-console

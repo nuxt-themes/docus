@@ -1,4 +1,4 @@
-export function convertPropToPixels (prop) {
+export function convertPropToPixels(prop) {
   const tempDiv = document.createElement('div')
   tempDiv.style.position = 'absolute'
   tempDiv.style.opacity = 0
@@ -9,7 +9,7 @@ export function convertPropToPixels (prop) {
   return pixels
 }
 
-export function scrollToHeading (id, scrollMarginCssVar) {
+export function scrollToHeading(id, scrollMarginCssVar) {
   // use replaceState to prevent page jusmp when adding hash
   history.replaceState({}, '', '#' + id)
 

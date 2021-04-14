@@ -1,8 +1,8 @@
+import { tryRequire, logger } from '../../util'
+
 const { camelCase } = require('change-case')
 
-export const logger = require('consola').withScope('@docus')
-
-const processPlugins = (type, markdown, resolvePath) => {
+const processPlugins = (type, markdown) => {
   const plugins = []
 
   for (const plugin of markdown[`${type}Plugins`]) {
@@ -22,7 +22,7 @@ const processPlugins = (type, markdown, resolvePath) => {
     }
 
     try {
-      instance = instance || require(resolvePath(name))
+      instance = instance || tryRequire(name)
 
       plugins.push({ instance, name, options })
     } catch (e) {
@@ -33,12 +33,9 @@ const processPlugins = (type, markdown, resolvePath) => {
   return plugins
 }
 
-export const processOptions = (options, resolvePath) => {
-  if (!resolvePath) {
-    resolvePath = path => path
-  }
-  options.remarkPlugins = processPlugins('remark', options, resolvePath)
-  options.rehypePlugins = processPlugins('rehype', options, resolvePath)
+export const processOptions = options => {
+  options.remarkPlugins = processPlugins('remark', options)
+  options.rehypePlugins = processPlugins('rehype', options)
 }
 
 export function flattenNodeText(node) {

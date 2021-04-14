@@ -5,10 +5,10 @@ import { DocusDocument } from '../types'
 import { useDefaults } from './util/settings'
 import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import useMarkdownParser from './lib/markdown'
+import useMarkdownParser from './parser/markdown'
+import { r } from './util'
 
 const fs = gracefulFs.promises
-const r = (...args: string[]) => resolve(__dirname, ...args)
 
 export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
@@ -16,7 +16,7 @@ export default <Module>async function docusModule() {
   const { options, hook, callHook } = nuxt
 
   // Inject Docus theme as ~docus
-  options.alias['~docus'] = r('runtime')
+  options.alias['~docus'] = r('core/runtime')
 
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
@@ -80,7 +80,7 @@ export default <Module>async function docusModule() {
   })
 
   addPlugin({
-    src: r('./runtime/plugin.js'),
+    src: r('core/runtime/plugin.js'),
     filename: 'docus.js'
   })
 

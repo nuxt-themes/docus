@@ -3,7 +3,9 @@ import { DocusRootNode } from './markdown'
 
 export interface TocLink {
   id: string
-  name: string
+  text: string
+  depth: number
+  children?: TocLink[]
 }
 
 export interface Toc {

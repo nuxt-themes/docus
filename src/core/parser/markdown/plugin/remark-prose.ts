@@ -25,7 +25,7 @@ const isJsNode = (node, customProsElements = []) => {
   )
 }
 
-module.exports = ({ prosElements = [], proseClass = 'prose' }) => {
+export default ({ prosElements = [], proseClass = 'prose' }) => {
   return tree => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {

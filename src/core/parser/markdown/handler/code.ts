@@ -2,13 +2,10 @@ import Prism from 'prismjs'
 import detab from 'detab'
 import u from 'unist-builder'
 import escapeHtml from 'escape-html'
+import prismComponents from 'prismjs/components/index'
 import { parseThematicBlock } from './utils'
 
-require('prismjs/components/index')()
-
-// enable syntax highlighting on diff language
-require('prismjs/components/prism-diff')
-require('prismjs/plugins/diff-highlight/prism-diff-highlight')
+prismComponents()
 
 const DIFF_HIGHLIGHT_SYNTAX = /^(diff)-([\w-]+)/i
 
@@ -37,7 +34,7 @@ const prismHighlighter = (rawCode, language, { lineHighlights, fileName }, { h, 
     code = escapeHtml(code)
   }
 
-  const props = {
+  const props: any = {
     className: [`language-${lang}`, 'line-numbers']
   }
 

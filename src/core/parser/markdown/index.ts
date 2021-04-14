@@ -1,5 +1,6 @@
 import defu from 'defu'
 import matter from 'gray-matter'
+import { Toc } from 'src/types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
@@ -35,7 +36,7 @@ async function parse(file, options) {
   /**
    * generate toc if it is not disabled in front-matter
    */
-  let toc
+  let toc: Toc
   if (data.toc !== false) {
     const tocOption = defu(data.toc || {}, options.toc)
     toc = generateToc(body, tocOption)

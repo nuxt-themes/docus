@@ -1,8 +1,11 @@
+import { Node } from 'unist'
+import { DocusRootNode, DocusMakrdownNode } from 'src/types'
+
 /**
  * Parses nodes for JSON structure. Attempts to drop
  * unwanted properties.
  */
-function parseAsJSON(node, parent) {
+function parseAsJSON(node: Node, parent: DocusMakrdownNode[]) {
   /**
    * Element node creates an isolated children array to
    * allow nested elements
@@ -13,30 +16,34 @@ function parseAsJSON(node, parent) {
     /**
      * Replace a tag with nuxt-link if relative
      */
-    if (node.tagName === 'a' && (node.properties.href || '').startsWith('/')) {
-      node.tagName = 'nuxt-link'
-      node.properties.to = node.properties.href
-      delete node.properties.href
+    if (node.tagName === 'a') {
+      const properties = node.properties as any
+      if ((properties.href || '').startsWith('/')) {
+        node.tagName = 'nuxt-link'
+        properties.to = properties.href
+        delete properties.href
+      }
     }
 
-    const filtered = {
+    const filtered: DocusMakrdownNode = {
       type: 'element',
-      tag: node.tagName,
+      tag: node.tagName as string,
       props: node.properties,
       children: childs
     }
 
     // Unwrap contents of the template, saving the root level inside content.
     if (node.tagName === 'template') {
+      const children = (node.content as Node).children as Node[]
       const templateContent = []
-      node.content.children.forEach(templateNode => parseAsJSON(templateNode, templateContent))
+      children.forEach(templateNode => parseAsJSON(templateNode, templateContent))
       filtered.content = templateContent
     }
 
     parent.push(filtered)
 
     if (node.children) {
-      node.children.forEach(child => parseAsJSON(child, childs))
+      ;(node.children as Node[]).forEach(child => parseAsJSON(child, childs))
     }
 
     return
@@ -48,7 +55,7 @@ function parseAsJSON(node, parent) {
   if (node.type === 'text') {
     parent.push({
       type: 'text',
-      value: node.value
+      value: node.value as string
     })
     return
   }
@@ -58,7 +65,7 @@ function parseAsJSON(node, parent) {
    * children and doesn't create a new node
    */
   if (node.type === 'root') {
-    node.children.forEach(child => parseAsJSON(child, parent))
+    ;(node.children as Node[]).forEach(child => parseAsJSON(child, parent))
   }
 }
 
@@ -66,7 +73,7 @@ function parseAsJSON(node, parent) {
  * JSON compiler
  */
 export default function () {
-  this.Compiler = function (root) {
+  this.Compiler = function (root): DocusRootNode {
     /**
      * We do not use `map` operation, since each node can be expanded to multiple top level
      * nodes. Instead, we need a array to fill in as many elements inside a single

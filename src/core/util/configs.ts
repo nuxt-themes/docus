@@ -1,6 +1,4 @@
-import { resolve } from 'path'
-
-const r = (...args: string[]) => resolve(__dirname, ...args)
+import { r } from './path'
 
 export const contentConfig = {
   markdown: {
@@ -9,12 +7,12 @@ export const contentConfig = {
     },
     remarkPlugins: [
       [
-        r('../lib/remark-prose'),
+        r('core/parser/markdown/plugin/remark-prose'),
         {
           proseClass: 'prose dark:prose-dark'
         }
       ],
-      [r('../lib/remark-vue'), {}]
+      [r('core/parser/markdown/plugin/remark-vue'), {}]
     ],
     remarkAutolinkHeadings: {
       behavior: 'wrap'

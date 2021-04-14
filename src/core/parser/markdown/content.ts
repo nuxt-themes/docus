@@ -2,8 +2,9 @@ import unified from 'unified'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 
+import { DocusRootNode } from 'src/types'
 import directive from './directive'
-import handlers from './handlers'
+import handlers from './handler'
 import compiler from './compiler'
 import { flattenNodeText } from './utils'
 
@@ -25,7 +26,7 @@ export function generateDescription(excerptContent) {
  * @param {object} data - document data
  * @returns {object} JSON AST body
  */
-export async function generateBody(content, options) {
+export async function generateBody(content, options): Promise<DocusRootNode> {
   const { highlighter, data } = options
   const rehypeOptions = {
     handlers: await handlers(highlighter),
@@ -45,7 +46,7 @@ export async function generateBody(content, options) {
       if (error) {
         return reject(error)
       }
-      resolve(file.result)
+      resolve(file.result as DocusRootNode)
     })
   })
 }

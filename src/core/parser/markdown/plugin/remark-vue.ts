@@ -1,5 +1,5 @@
-const hasha = require('hasha')
-const propsHandler = require('./tag-handlers/props')
+import hasha from 'hasha'
+import propsHandler from '../tag/props'
 
 const handlers = [['props', propsHandler]]
 
@@ -26,7 +26,7 @@ async function enrichTag(node, tag, handler, documentData) {
   return node
 }
 
-module.exports = () => {
+export default () => {
   return async (tree, { data }) => {
     const modified = tree.children.map(async node => {
       return await handlers.reduce(async (node, [tag, handler]) => {
