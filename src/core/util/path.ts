@@ -1,6 +1,9 @@
 import { resolve } from 'path'
 import jiti from 'jiti'
+import gracefulFs from 'graceful-fs'
 import { logger } from './log'
+
+const fs = gracefulFs.promises
 
 export const r = (...args: string[]) => resolve(__dirname, '../..', ...args)
 
@@ -13,4 +16,13 @@ export function tryRequire(name) {
     logger.error(e.toString())
     return null
   }
+}
+
+export function readFile(path: string) {
+  return fs.readFile(path, { encoding: 'utf8' })
+}
+
+export async function exists(path) {
+  const pathExists = await fs.stat(path).catch(() => false)
+  return !!pathExists
 }

@@ -1,16 +1,12 @@
 import { resolve } from 'path'
-import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
 import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { useMarkdownParser } from './parser'
-import { r } from './util'
-
-const fs = gracefulFs.promises
+import { useJSONParser, useMarkdownParser } from './parser'
+import { exists, r, readFile } from './util'
 
 export default <Module>async function docusModule() {
-  // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
   const { options, hook, callHook } = nuxt
 
@@ -22,10 +18,10 @@ export default <Module>async function docusModule() {
   options.publicRuntimeConfig.contentDir = contentDir
 
   // read docus settings
-  const settingsPath = resolve(options.srcDir, contentDir, 'settings.json')
   let docusSettings
   try {
-    const userSettings = require(settingsPath)
+    const content = await readFile(resolve(options.srcDir, contentDir, 'settings.json'))
+    const userSettings = useJSONParser().parse(content)
     docusSettings = useDefaults(userSettings)
 
     // default title and description for pages
@@ -42,7 +38,7 @@ export default <Module>async function docusModule() {
   hook('build:before', async () => {
     // To support older version of Nuxt
     const pagesDirPath = resolve(options.srcDir, options.dir.pages)
-    const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
+    const pagesDirExists = await exists(pagesDirPath)
     if (!pagesDirExists) {
       options.build.createRoutes = () => []
       options.watch.push(pagesDirPath)
@@ -87,7 +83,7 @@ export default <Module>async function docusModule() {
     '@nuxt/content',
     {
       extendParser: {
-        '.md': markdownParser
+        '.md': (content: string) => markdownParser.parse(content)
       },
       markdown: {
         prism: {

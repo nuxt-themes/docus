@@ -37,12 +37,21 @@ const DEFAULTS = {
   }
 }
 
+async function parseFrontMatter(file) {
+  const { data, content, ...rest } = await matter(file, { excerpt: true, excerpt_separator: '<!--more-->' })
+
+  return {
+    content,
+    data: data || {},
+    ...rest
+  }
+}
+
 async function parse(file, options) {
-  const { data, content, ...rest } = matter(file, { excerpt: true, excerpt_separator: '<!--more-->' })
-  const documentData = data || {}
+  const { content, data, ...rest } = await parseFrontMatter(file)
 
   // Compile markdown from file content to JSON
-  const body = await generateBody(content, { ...options, data: documentData })
+  const body = await generateBody(content, { ...options, data })
 
   /**
    * generate toc if it is not disabled in front-matter
@@ -56,12 +65,12 @@ async function parse(file, options) {
   let excerpt
   let description
   if (rest.excerpt) {
-    excerpt = await generateBody(rest.excerpt, { ...options, data: documentData })
+    excerpt = await generateBody(rest.excerpt, { ...options, data })
     description = generateDescription(excerpt)
   }
   return {
     description,
-    ...documentData,
+    ...data,
     toc,
     body,
     text: content,
@@ -73,5 +82,8 @@ export function useMarkdownParser(options = {}) {
   options = defu(options, DEFAULTS)
   processOptions(options)
 
-  return content => parse(content, options)
+  return {
+    parseFrontMatter: (content: string) => parseFrontMatter(content),
+    parse: (content: string) => parse(content, options)
+  }
 }

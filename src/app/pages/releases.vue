@@ -16,8 +16,7 @@
             </a>
             <span class="text-base font-normal text-gray-500">{{ formatDate(release) }}</span>
           </h2>
-
-          <NuxtContent :document="release.body" />
+          <NuxtContent :document="release" />
         </div>
       </div>
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800" />

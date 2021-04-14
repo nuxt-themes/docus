@@ -31,13 +31,13 @@ export async function fetch(settings: DocusRepositiryOptions) {
     const girhubReleases = await fetchGitHubReleases({
       apiUrl,
       repo,
-      token: process.env.GITHUB_TOKE || ''
+      token: process.env.GITHUB_TOKEN || ''
     })
     releases = await Promise.all(
       girhubReleases.map(async r => {
         return {
           ...r,
-          body: (await parser(r.body)).body
+          body: (await parser.parse(r.body)).body
         }
       })
     )
