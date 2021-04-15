@@ -10,7 +10,9 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     href: {
       type: String,
@@ -29,18 +31,17 @@ export default {
       default: false
     }
   },
-  computed: {
-    isInternal() {
-      return this.href.startsWith('/') && this.href.startsWith('//') === false
-    },
-    linkAttrs() {
-      if (this.blank) {
-        return { rel: 'noopener nofollow', target: '_blank' }
-      }
-      return {}
+  setup(props) {
+    const isInternal = computed(() => props.href.startsWith('/') && props.href.startsWith('//') === false)
+
+    const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
+
+    return {
+      isInternal,
+      linkAttrs
     }
   }
-}
+})
 </script>
 
 <style lang="postcss">
