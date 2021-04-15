@@ -25,36 +25,40 @@
 </template>
 
 <script>
+import { defineComponent, nextTick, onMounted, ref } from '@nuxtjs/composition-api'
 import Clipboard from 'clipboard'
 
-export default {
+export default defineComponent({
   props: {
     snippet: {
       type: String,
       required: true
     }
   },
-  data() {
-    return {
-      copied: false
-    }
-  },
-  mounted() {
-    this.setupCopyInstall()
-  },
-  methods: {
-    setupCopyInstall() {
-      if (!this.$refs.copyInstall) {
-        return this.$nextTick(this.setupCopyInstall)
-      }
-      const copyInstall = new Clipboard(this.$refs.copyInstall)
-      copyInstall.on('success', () => {
-        this.copied = true
+  setup() {
+    const copyInstall = ref()
+    const copied = ref(false)
+
+    const setupCopyInstall = () => {
+      if (!copyInstall.value) return nextTick(setupCopyInstall)
+
+      const instance = new Clipboard(copyInstall.value)
+
+      instance.on('success', () => {
+        copied.value = true
+
         setTimeout(() => {
-          this.copied = false
+          copied.value = false
         }, 1000)
       })
     }
+
+    onMounted(() => setupCopyInstall())
+
+    return {
+      copyInstall,
+      copied
+    }
   }
-}
+})
 </script>
