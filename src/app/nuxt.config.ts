@@ -3,8 +3,9 @@ import { resolve } from 'path'
 const r = (path: any) => resolve(__dirname, path)
 
 export default {
-  target: 'static',
-  ssr: true,
+  /**
+   * Default app config
+   */
   head: {
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     link: [
@@ -15,43 +16,50 @@ export default {
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ]
   },
-  alias: {
-    qrcode: r('mock/default'),
-    axios: r('mock/default'),
-    nprogress: r('mock/default'),
-    jwt_decode: r('mock/default')
-  },
-  generate: {
-    fallback: '404.html',
-    routes: ['/']
-  },
-  build: {
-    transpile: ['docus']
-  },
-  plugins: [r('plugins/menu')],
-  buildModules: [
-    r('module'),
-    'nuxt-vite',
-    '@nuxtjs/composition-api',
-    '@nuxt/typescript-build',
-    '@nuxtjs/pwa',
-    r('../theme'),
-    r('../social-image'),
-    r('../twitter'),
-    r('../github')
-  ],
-  modules: [r('../i18n'), r('../core')],
+
+  /**
+   * Docus config
+   */
   components: true,
   loading: {
     color: 'var(--primary-500)'
   },
   meta: {
     /**
-     * Default theme color
-     * Will override by docus primary color
+     * Default theme color.
+     * Overriden by Docus primary color.
      */
     theme_color: '#06B6D4'
   },
+
+  /**
+   * Modules & plugins
+   */
+  buildModules: [
+    // Dependencies
+    'nuxt-vite',
+    '@nuxtjs/composition-api',
+    '@nuxt/typescript-build',
+    '@nuxtjs/pwa',
+    // Local modules
+    r('module'),
+    r('../theme'),
+    r('../social-image'),
+    r('../twitter'),
+    r('../github')
+  ],
+  modules: [
+    // Local modules
+    r('../i18n'),
+    r('../core')
+  ],
+  plugins: [r('plugins/menu')],
+
+  /**
+   * Build configs
+   */
+  target: 'static',
+  ssr: true,
   server: {
     port: process.env.PORT || 4000
   },
@@ -62,9 +70,23 @@ export default {
     },
     vue: {}
   },
+  build: {
+    transpile: ['docus']
+  },
   typeCheck: {
     eslint: {
       files: './**/*.{ts,js,vue}'
     }
+  },
+  generate: {
+    fallback: '404.html',
+    routes: ['/']
+  },
+  // Alias non-Vite compatible dependencies
+  alias: {
+    qrcode: r('mock/default'),
+    axios: r('mock/default'),
+    nprogress: r('mock/default'),
+    jwt_decode: r('mock/default')
   }
 }

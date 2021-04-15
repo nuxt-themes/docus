@@ -8,22 +8,22 @@ hero:
   cta: [Get started, /get-started/installation]
   secondary: [Open on GitHub, https://github.com/nuxtlabs/docus]
 features:
-  - icon: IconMarkdown
-    title: Write Markdown
-    description: Enjoy the power of Markdown to write your documentation.
-  - icon: LogoVue
-    title: Vue Components
-    description: Use your components or Docus built-in right inside your content.
   - icon: IconNuxt
     iconClass: 'text-hex-00DC82'
     title: Nuxt Architecture
     description: >-
       Get the Nuxt power by using all the features, Docus is one of the first Nuxt
       theme.
-  - icon: LogoWindi
+  - icon: IconVue
+    title: Vue Components
+    description: Use your components or Docus built-in right inside your content.
+  - icon: IconMarkdown
+    title: Write Markdown
+    description: Enjoy the power of Markdown to write your documentation.
+  - icon: IconWindi
     title: Windi CSS
     description: >-
-      Windi CSS is built in for great developer experience and rapid customization of Docus — no configuration required compatible with TailwindCSS.
+      Windi CSS is built in for great developer experience and rapid customization of Docus.
   - icon: IconSSG
     title: Static Generation
     description: Generate your documentation as a static website and host it everywhere.
@@ -44,5 +44,5 @@ features:
 ---
 
 <block-hero :title="title" :description="description" v-bind="hero"></block-hero>
-<block-features title="What's included?" :features="features"></block-features>
 
+<block-features title="What's included?" :features="features"></block-features>

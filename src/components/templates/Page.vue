@@ -4,6 +4,7 @@
       <!-- todo: navigation instead -->
       <AppAside class="block lg:hidden" />
     </template>
+
     <AppPage>
       <PageContent :page="page" />
       <template #toc>

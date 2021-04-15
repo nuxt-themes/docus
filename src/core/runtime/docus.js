@@ -299,11 +299,13 @@ export async function createDocus({
       nuxtState.docus = $docus.$data
     })
   }
-  // Spa Fallback
+
+  // SPA Fallback
   if (process.client && !$docus.settings) {
     await $docus.fetch()
   }
-  // Hot reload on development
+
+  // HotReload on development
   if (process.client && process.dev) {
     window.onNuxtReady(() => {
       window.$nuxt.$on('content:update', () => $docus.fetch())

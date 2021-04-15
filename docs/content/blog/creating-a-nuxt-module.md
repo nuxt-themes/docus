@@ -65,22 +65,22 @@ export default {
 
 As we will use the [ngrok npm package](https://www.npmjs.com/package/ngrok) we will need to install as a dev dependency.
 
-<d-code-group>
-  <d-code-block label="Yarn" active>
+<code-group>
+  <code-block label="Yarn" active>
 
 ```bash
 yarn add --dev ngrok
 ```
 
-</d-code-block>
-<d-code-block label="npm">
+</code-block>
+<code-block label="npm">
 
 ```bash
 npm install --dev ngrok
 ```
 
-  </d-code-block>
-</d-code-group>
+  </code-block>
+</code-group>
 
 ## Creating our module
 
@@ -195,11 +195,11 @@ Once we have our token we can set up our `.env` file and add our token.
 NGROK_TOKEN=my-authtoken-from-ngrok
 ```
 
-<d-alert type="warning">
+<alert type="warning">
 
 Don't forget to make sure your `.env`file has been added to your `.gitignore`.
 
-</d-alert>
+</alert>
 
 We can now set a const of `options` equal to the options from the ngrok property of our `nuxt.config.js` or equal to an empty object in case we don't define any options. We also add a const of `authtoken` equal to the `NGROK_TOKEN` from our `.env` file or `options.authtoken` which is the same as `nuxt.options.ngrok.authtoken`, in case this value was defined directly in our `ngrok` property in the our `nuxt.config.js`.
 

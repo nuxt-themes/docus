@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
+import { glob } from 'siroc'
 
 const fs = gracefulFs.promises
 const r = (...args: any[]) => resolve(__dirname, ...args)
@@ -48,6 +49,7 @@ export default <Module>function docusAppModule() {
         component: r('pages/blog/index.vue')
       })
     }
+
     if (!hasRoute('blog-post')) {
       routes.push({
         path: '/blog/:post',
@@ -55,6 +57,7 @@ export default <Module>function docusAppModule() {
         component: r('pages/blog/_post.vue')
       })
     }
+
     if (!hasRoute('all')) {
       routes.push({
         path: '/*',
@@ -66,62 +69,74 @@ export default <Module>function docusAppModule() {
 
   // Configure `components/` dir
   hook('components:dirs', async (dirs: any) => {
+    // Atoms
     dirs.push({
       path: r('../components/atoms'),
       global: true,
       level: 2
     })
     dirs.push({
+      path: r('../components/atoms/icons'),
+      global: true,
+      level: 2
+    })
+
+    // Molecules
+    dirs.push({
       path: r('../components/molecules'),
       global: true,
       level: 2
     })
-    dirs.push({
-      path: r('../components/icons'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../components/logos'),
-      global: true,
-      level: 2
-    })
+
+    // Organisms
     dirs.push({
       path: r('../components/organisms'),
       global: true,
       level: 2
     })
     dirs.push({
-      path: r('../components/templates'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('../components/slots'),
+      path: r('../components/organisms/slots'),
       global: true,
       level: 3
     })
     if (options.dev) {
       dirs.push({
-        path: r('../components/dev'),
+        path: r('../components/organisms/dev-slots'),
         global: true,
         level: 2
       })
     }
+
+    // Templates
+    dirs.push({
+      path: r('../components/templates'),
+      global: true,
+      level: 2
+    })
+
+    // Get the user root `components` folder
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
     const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
+
     if (componentsDirStat && componentsDirStat.isDirectory()) {
+      // Register the root `components` directory
       dirs.push({
         path: componentsDirPath,
         global: true
       })
+      // Check for sub directories
+      const subDirs = await glob(componentsDirPath + '/*/')
+      // Register each subdirectories
+      subDirs.forEach((path: string) => dirs.push({ path, global: true }))
     } else {
+      // Watch existence of root `components` directory
       nuxt.options.watch.push(componentsDirPath)
     }
   })
 
+  // Inject Admin UI
   if (options.dev) {
-    options.plugins.push(r('../admin/docus.ui'))
+    options.plugins.push(r('../admin/index'))
 
     // Disable SSR in dev
     options.ssr = false

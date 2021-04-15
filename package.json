@@ -34,7 +34,8 @@
     "lint": "eslint --ext .ts,.js,.vue .",
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
-    "test": "yarn lint && echo 'TODO tests'"
+    "test": "yarn lint && echo 'TODO tests'",
+    "clean": "rm -rf node_modules dist .nuxt docs/.nuxt docs/dist docs/node_modules playground/.nuxt playground/dist playground/node_modules"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
