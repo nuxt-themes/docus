@@ -45,7 +45,9 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     category: {
       type: String,
@@ -56,38 +58,39 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      collapse: false
-    }
-  },
-  computed: {
-    isCategoryActive() {
-      return this.docs.some(document => this.$docus.isLinkActive(document.to))
-    }
-  },
-  methods: {
-    collapseCategory() {
-      if (this.isCategoryActive) {
-        return
-      }
-      this.collapse = !this.collapse
-    },
-    isDocumentNew(document) {
-      if (process.server) {
-        return
-      }
-      if (!document.version || document.version <= 0) {
+  setup(props) {
+    const { $docus } = useContext()
+
+    const collapse = ref(false)
+
+    const isCategoryActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
+
+    const collapseCategory = () => {
+      if (isCategoryActive.value) {
         return
       }
 
+      collapse.value = !collapse.value
+    }
+
+    const isDocumentNew = document => {
+      if (process.server) return
+
+      if (!document.version || document.version <= 0) return
+
       const version = localStorage.getItem(`document-${document.slug}-version`)
-      if (document.version > Number(version)) {
-        return true
-      }
+
+      if (document.version > Number(version)) return true
 
       return false
     }
+
+    return {
+      collapseCategory,
+      isCategoryActive,
+      collapse,
+      isDocumentNew
+    }
   }
-}
+})
 </script>

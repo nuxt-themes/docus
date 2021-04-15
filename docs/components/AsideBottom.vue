@@ -21,8 +21,10 @@
 </template>
 
 <script>
-export default {
-  data() {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
     return {
       resources: [
         {
@@ -48,5 +50,5 @@ export default {
       ]
     }
   }
-}
+})
 </script>
