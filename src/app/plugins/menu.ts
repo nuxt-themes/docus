@@ -26,24 +26,26 @@ export default defineNuxtPlugin((ctx, inject) => {
   })
 
   // Watch visible and remove overflow so the scrollbar disappears when menu is opened
-  watch(
-    visible,
-    isVisible => {
-      if (isVisible) {
-        const scrollBarGap = window.innerWidth - document.documentElement.clientWidth
-        document.body.style.overflow = 'hidden'
-        document.body.style.paddingRight = `${scrollBarGap}px`
-      } else {
-        setTimeout(() => {
-          document.body.style.overflow = null
-          document.body.style.paddingRight = null
-        }, 16)
+  if (process.client) {
+    watch(
+      visible,
+      isVisible => {
+        if (isVisible) {
+          const scrollBarGap = window.innerWidth - document.documentElement.clientWidth
+          document.body.style.overflow = 'hidden'
+          document.body.style.paddingRight = `${scrollBarGap}px`
+        } else {
+          setTimeout(() => {
+            document.body.style.overflow = null
+            document.body.style.paddingRight = null
+          }, 16)
+        }
+      },
+      {
+        immediate: true
       }
-    },
-    {
-      immediate: true
-    }
-  )
+    )
+  }
 
   // Inject menu
   inject('menu', {
