@@ -13,11 +13,17 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    links() {
-      return this.$docus.currentNav.links?.filter(link => link.slot === 'header')
+import { computed, defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
+    const { $docus } = useContext()
+
+    const links = computed(() => $docus.currentNav.links?.filter(link => link.slot === 'header'))
+
+    return {
+      links
     }
   }
-}
+})
 </script>

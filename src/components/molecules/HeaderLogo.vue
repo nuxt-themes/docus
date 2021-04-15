@@ -32,23 +32,29 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    logo() {
-      if (!this.settings.logo) {
-        return
-      }
-      if (typeof this.settings.logo === 'object') {
-        return this.settings.logo
-      }
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    const logo = computed(() => {
+      if (!settings.value.logo) return
+
+      if (typeof settings.value.logo === 'object') return settings.value.logo
+
       return {
-        light: this.settings.logo,
-        dark: this.settings.logo
+        light: settings.value.logo,
+        dark: settings.value.logo
       }
+    })
+
+    return {
+      settings,
+      logo
     }
   }
-}
+})
 </script>

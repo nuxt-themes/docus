@@ -28,7 +28,9 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     size: {
       type: String,
@@ -39,10 +41,14 @@ export default {
       default: 'p-0'
     }
   },
-  computed: {
-    settings() {
-      return this.$docus.settings
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    return {
+      settings
     }
   }
-}
+})
 </script>
