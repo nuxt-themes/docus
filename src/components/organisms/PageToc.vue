@@ -67,9 +67,10 @@
 </template>
 
 <script>
+import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from '@nuxtjs/composition-api'
 import { scrollToHeading } from '../utils'
 
-export default {
+export default defineComponent({
   props: {
     toc: {
       type: Array,
@@ -80,69 +81,78 @@ export default {
       default: null
     }
   },
-  data() {
-    return {
-      scrollToHeading,
-      visibleHeadings: [],
-      activeHeadings: [],
-      showMobileToc: false,
-      mockedToc: []
-    }
-  },
-  watch: {
-    visibleHeadings(val, oldVal) {
-      if (val.length === 0) {
-        this.activeHeadings = oldVal
-      } else {
-        this.activeHeadings = val
-      }
-    }
-  },
-  mounted() {
-    // temporary mock structured toc
-    this.toc.forEach(item => {
-      if (item.depth === 2) {
-        this.mockedToc.push(item)
-      } else if (item.depth === 3) {
-        const parent = this.mockedToc[this.mockedToc.length - 1]
-        if (parent && parent.depth === 2) {
-          if (!parent.children) {
-            parent.children = []
-          }
-          parent.children.push(item)
-        } else {
-          this.mockedToc.push(item)
-        }
-      }
-    })
+  setup(props) {
+    const observer = ref()
+    const visibleHeadings = ref([])
+    const activeHeadings = ref([])
+    const showMobileToc = ref(false)
+    const mockedToc = ref([])
 
-    const observerCallback = entries => {
-      entries.forEach(entry => {
-        const id = entry.target.id
-        if (entry.isIntersecting) {
-          this.visibleHeadings.push(id)
-        } else {
-          this.visibleHeadings = this.visibleHeadings.filter(t => t !== id)
+    onMounted(() => {
+      // temporary mock structured toc
+      props.toc.forEach(item => {
+        if (item.depth === 2) {
+          mockedToc.value.push(item)
+        } else if (item.depth === 3) {
+          const parent = mockedToc.value[mockedToc.value.length - 1]
+          if (parent && parent.depth === 2) {
+            if (!parent.children) {
+              parent.children = []
+            }
+            parent.children.push(item)
+          } else {
+            mockedToc.value.push(item)
+          }
         }
       })
-    }
-    this.observer = new IntersectionObserver(observerCallback)
 
-    const headings = [
-      ...document.querySelectorAll('.nuxt-content h2'),
-      ...document.querySelectorAll('.nuxt-content h3')
-    ]
-    headings.forEach(heading => {
-      this.observer.observe(heading)
+      const observerCallback = entries => {
+        entries.forEach(entry => {
+          const id = entry.target.id
+          if (entry.isIntersecting) {
+            visibleHeadings.value.push(id)
+          } else {
+            visibleHeadings.value = visibleHeadings.value.filter(t => t !== id)
+          }
+        })
+      }
+
+      observer.value = new IntersectionObserver(observerCallback)
+
+      const headings = [
+        ...document.querySelectorAll('.nuxt-content h2'),
+        ...document.querySelectorAll('.nuxt-content h3')
+      ]
+
+      headings.forEach(heading => {
+        observer.value.observe(heading)
+      })
     })
-  },
-  beforeDestroy() {
-    this.observer.disconnect()
-  },
-  methods: {
-    isActiveParent(link) {
-      return link.children && link.children.some(child => this.activeHeadings.includes(child.id))
+
+    watch(visibleHeadings, (val, oldVal) => {
+      if (val.length === 0) {
+        activeHeadings.value = oldVal
+      } else {
+        activeHeadings.value = val
+      }
+    })
+
+    onBeforeUnmount(() => {
+      observer.value.disconnect()
+    })
+
+    const isActiveParent = link => {
+      return link.children && link.children.some(child => activeHeadings.value.includes(child.id))
+    }
+
+    return {
+      visibleHeadings,
+      activeHeadings,
+      showMobileToc,
+      mockedToc,
+      scrollToHeading,
+      isActiveParent
     }
   }
-}
+})
 </script>
