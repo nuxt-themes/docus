@@ -6,27 +6,35 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { computed, defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     settings: {
-      type: Object,
+      type: Object as any,
       required: true
     }
   },
-  computed: {
-    logo() {
-      if (!this.settings.logo) {
+  setup(props) {
+    const logo = computed(() => {
+      if (!props.settings.logo) {
         return
       }
-      if (typeof this.settings.logo === 'object') {
-        return this.settings.logo
+
+      if (typeof props.settings.logo === 'object') {
+        return props.settings.logo
       }
+
       return {
-        light: this.settings.logo,
-        dark: this.settings.logo
+        light: props.settings.logo,
+        dark: props.settings.logo
       }
+    })
+
+    return {
+      logo
     }
   }
-}
+})
 </script>
