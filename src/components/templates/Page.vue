@@ -1,7 +1,7 @@
 <template>
   <AppContainer aside>
     <template #aside>
-      <!-- todo: navigation instead -->
+      <!-- TODO: navigation instead -->
       <AppAside class="block lg:hidden" />
     </template>
 
@@ -15,12 +15,14 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
     }
   }
-}
+})
 </script>
