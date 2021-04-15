@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="box"
     class="flex items-center justify-center w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl text-center text-white bg-black rounded-md codesandbox"
     style="background-color: rgb(21, 21, 21)"
   >
@@ -14,8 +15,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, onBeforeUnmount, onMounted, ref } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     /**
      * Url to CodeSandbox embed
@@ -25,35 +28,40 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      isIntersecting: false
-    }
-  },
-  mounted() {
-    if (!window.IntersectionObserver) {
-      this.isIntersecting = true
-      return
-    }
+  setup() {
+    const box = ref()
+    const observer = ref(null)
+    const isIntersecting = ref(false)
 
-    this.__observer = new window.IntersectionObserver(entries => {
-      entries.forEach(({ intersectionRatio }) => {
-        if (intersectionRatio > 0) {
-          this.isIntersecting = true
-          this.__observer.disconnect()
-          delete this.__observer
-        }
+    onMounted(() => {
+      if (!window.IntersectionObserver) {
+        isIntersecting.value = true
+        return
+      }
+
+      observer.value = new window.IntersectionObserver(entries => {
+        entries.forEach(({ intersectionRatio }) => {
+          if (intersectionRatio > 0) {
+            isIntersecting.value = true
+            observer.value.disconnect()
+            observer.value = null
+          }
+        })
       })
+
+      observer.value.observe(box.value)
     })
-    this.__observer.observe(this.$el)
-  },
-  beforeDestroy() {
-    if (this.__observer) {
-      this.__observer.disconnect()
-      delete this.__observer
+
+    onBeforeUnmount(() => {
+      if (observer.value) observer.value.disconnect()
+    })
+
+    return {
+      isIntersecting,
+      box
     }
   }
-}
+})
 </script>
 
 <style lang="postcss" scoped>
