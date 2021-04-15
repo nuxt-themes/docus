@@ -9,7 +9,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     /**
      * @values info, success, warning, danger
@@ -22,7 +24,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style lang="postcss">
