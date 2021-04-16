@@ -5,8 +5,6 @@
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
-import CopyButton from '../../components/atoms/CopyButton.vue'
-import { scrollToHeading } from '../../components/utils'
 
 export default {
   name: 'PageSlug',
@@ -29,11 +27,10 @@ export default {
     // Preload the component on client-side navigation
     await Vue.component(page.template)()
 
-    return { page };
+    return { page }
   },
   data() {
     return {
-      scrollToHeading,
       page: {}
     }
   },
@@ -84,37 +81,6 @@ export default {
     if (this.page.version) {
       localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
     }
-
-    if (window.location.hash) {
-      const hash = window.location.hash.replace('#', '')
-
-      // do not remove setTimeout (wrong scroll pos)
-      setTimeout(() => {
-        this.scrollToHeading(hash, '--docs-scroll-margin-block')
-      }, 300)
-    }
-
-    setTimeout(() => {
-      const blocks = document.getElementsByClassName('nuxt-content-highlight')
-
-      for (const block of blocks) {
-        const Button = Vue.extend(CopyButton)
-        const component = new Button().$mount()
-        block.appendChild(component.$el)
-      }
-
-      const headings = [
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
-      ]
-      headings.forEach(heading => {
-        heading.addEventListener('click', e => {
-          e.preventDefault()
-          const hash = e.target.href.split('#').pop()
-          this.scrollToHeading(hash, '--docs-scroll-margin-block')
-        })
-      })
-    }, 100)
   },
   methods: {
     mergeMeta(to, from) {

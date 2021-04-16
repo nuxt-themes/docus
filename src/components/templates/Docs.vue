@@ -15,7 +15,10 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import Vue from 'vue'
+import { defineComponent, ref, useContext, useFetch, onMounted } from '@nuxtjs/composition-api'
+import CopyButton from '../../components/atoms/CopyButton.vue'
+import { scrollToHeading } from '../../components/utils'
 
 export default defineComponent({
   props: {
@@ -28,6 +31,39 @@ export default defineComponent({
     const { $i18n, $docus, $content } = useContext()
     const prev = ref(null)
     const next = ref(null)
+
+    onMounted(() => {
+      if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '')
+
+        // do not remove setTimeout (wrong scroll pos)
+        setTimeout(() => {
+          scrollToHeading(hash, '--docs-scroll-margin-block')
+        }, 300)
+      }
+
+      setTimeout(() => {
+        const blocks = document.getElementsByClassName('nuxt-content-highlight')
+
+        for (const block of blocks) {
+          const Button = Vue.extend(CopyButton)
+          const component = new Button().$mount()
+          block.appendChild(component.$el)
+        }
+
+        const headings = [
+          ...document.querySelectorAll('.nuxt-content h2'),
+          ...document.querySelectorAll('.nuxt-content h3')
+        ]
+        headings.forEach(heading => {
+          heading.addEventListener('click', e => {
+            e.preventDefault()
+            const hash = e.target.href.split('#').pop()
+            scrollToHeading(hash, '--docs-scroll-margin-block')
+          })
+        })
+      }, 100)
+    })
 
     useFetch(async () => {
       const language = $i18n.locale
