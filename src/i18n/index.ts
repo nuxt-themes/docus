@@ -1,20 +1,15 @@
 import { resolve, join, relative } from 'path'
+import fs from 'fs'
 import defu from 'defu'
 import { Module } from '@nuxt/types'
+import languages from './languages'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
 const config = {
   langDir: '',
   baseUrl: ({ $docus }: any) => ($docus && $docus.settings && $docus.settings.url) || '',
-  locales: [
-    {
-      code: 'en',
-      iso: 'en-US',
-      file: r('./languages/en-US.js'),
-      name: 'English'
-    }
-  ],
+  locales: [],
   defaultLocale: 'en',
   parsePages: false,
   lazy: true,
@@ -47,7 +42,19 @@ export default <Module>function docusI18n() {
   const { options } = nuxt
 
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
-  config.langDir = join(relative(options.srcDir, r('i18n')), '/')
+  config.langDir = join(relative(options.srcDir, r('languages')), '/')
+
+  if (!options.i18n?.locales?.length) {
+    const contentDir = resolve(options.srcDir, options?.content?.dir || 'content')
+
+    const languageCodes = languages.map(({ code }) => code)
+    const activeLanguages = fs.readdirSync(contentDir).filter(name => languageCodes.includes(name))
+    activeLanguages.unshift(config.defaultLocale)
+
+    const localeCodes = [...new Set(activeLanguages)]
+    config.locales = languages.filter(language => localeCodes.includes(language.code))
+  }
+
   options.i18n = defu(options.i18n, config)
 
   nuxt.hook('build:before', () => {
