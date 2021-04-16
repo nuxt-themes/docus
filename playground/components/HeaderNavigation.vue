@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
