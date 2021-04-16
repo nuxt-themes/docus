@@ -1,9 +1,9 @@
 import { Module } from '@nuxt/types'
 import { DocusSettings } from '../types/core'
-import { get, handler, fetch } from './github'
+import { get, fetch } from './github'
 
 export default <Module>function docusGithubModule() {
-  const { nuxt, addServerMiddleware } = this
+  const { nuxt } = this
   const { hook, options } = nuxt
 
   options.privateRuntimeConfig = options.privateRuntimeConfig || {}
@@ -18,11 +18,11 @@ export default <Module>function docusGithubModule() {
   })
 
   hook('docus:content:ready', ({ $content, settings }: { $content: any; settings: DocusSettings }) => {
-    fetch({ $content, settings })
-  })
-
-  addServerMiddleware({
-    path: '/api/docus/releases',
-    handler
+    fetch({ $content, settings }).then(releases => {
+      $content.database.items.insert({
+        path: '/_docus/repo/github',
+        releases
+      })
+    })
   })
 }

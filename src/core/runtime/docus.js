@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
-import { $fetch } from 'ohmyfetch'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
 
@@ -190,7 +189,7 @@ export async function createDocus({
         }
       },
       getPageTemplate(page) {
-        let template = page.template
+        let template = page.template?.self || page.template
         if (!template) {
           // fetch from nav (root to link) and fallback to settings.template
           const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
@@ -198,7 +197,7 @@ export async function createDocus({
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
-              template = link.template
+              template = link.template?.children || link.template
             }
             if (!link.children) {
               return
@@ -237,11 +236,12 @@ export async function createDocus({
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
 
-      fetchReleases() {
+      async fetchReleases() {
         if (process.server) {
           return ssrContext.docus.releases
         }
-        return $fetch('/api/docus/releases')
+        const repo = await $content('/_docus/repo/github').fetch()
+        return repo.releases
       },
 
       async fetchLastRelease() {

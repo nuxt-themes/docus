@@ -1,4 +1,3 @@
-import { IncomingMessage, ServerResponse } from 'node:http'
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
 import { DocusSettings } from '../types'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
@@ -30,7 +29,7 @@ export async function fetch({ $content, settings }: { $content: any; settings: D
     const girhubReleases = await fetchGitHubReleases({
       apiUrl,
       repo,
-      token: process.env.GITHUB_TOKE || ''
+      token: process.env.GITHUB_TOKEN || ''
     })
     releases = await Promise.all(
       girhubReleases.map(async r => {
@@ -85,14 +84,8 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
   return releases
 }
 
-export function handler(_req: IncomingMessage, res: ServerResponse) {
-  res.writeHead(200, { 'Content-Type': 'application/json' })
-  res.end(JSON.stringify(cachedReleases))
-}
-
 export default {
   get,
   fetch,
-  fetchGitHubReleases,
-  handler
+  fetchGitHubReleases
 }
