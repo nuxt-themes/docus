@@ -57,16 +57,14 @@ export default defineComponent({
       exactActiveLink: '',
       showMobileToc: false
     })
-
     const { activeHeadings, updateHeadings } = useScrollspy()
 
-    onMounted(() => {
-      const headings = [
+    onMounted(() =>
+      updateHeadings([
         ...document.querySelectorAll('.nuxt-content h2'),
         ...document.querySelectorAll('.nuxt-content h3')
-      ]
-      updateHeadings(headings)
-    })
+      ])
+    )
 
     const filteredToc = computed(() => {
       const toc = [...props.toc]

@@ -85,7 +85,6 @@ export default defineComponent({
   setup(props) {
     const showMobileToc = ref(false)
     const mockedToc = ref([])
-
     const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
 
     // temporary mock structured toc
@@ -105,13 +104,12 @@ export default defineComponent({
       }
     })
 
-    onMounted(() => {
-      const headings = [
+    onMounted(() =>
+      updateHeadings([
         ...document.querySelectorAll('.nuxt-content h2'),
         ...document.querySelectorAll('.nuxt-content h3')
-      ]
-      updateHeadings(headings)
-    })
+      ])
+    )
 
     const isActiveParent = link => {
       return link.children && link.children.some(child => activeHeadings.value.includes(child.id))
