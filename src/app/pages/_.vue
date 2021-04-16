@@ -28,10 +28,14 @@ export default {
     if (page.fetch) {
       await Object.entries(page.fetch).reduce(async (prev, [key, fetch]) => {
         const data = await prev
-        const { query, ...params } = fetch
+        const { query, deep, where, sortBy, only, without, limit } = fetch
 
-        const queryBuilder = $content(query)
-        Object.assign(queryBuilder.params, params)
+        const queryBuilder = $content(query, { deep })
+        if (where) queryBuilder.where(where)
+        if (sortBy) queryBuilder.sortBy(sortBy)
+        if (only) queryBuilder.only(only)
+        if (without) queryBuilder.without(without)
+        if (limit) queryBuilder.limit(limit)
         
         data[key] = await queryBuilder.fetch()
         return data
