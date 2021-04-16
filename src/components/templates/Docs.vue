@@ -2,8 +2,11 @@
   <AppContainer aside>
     <AppPage>
       <PageContent :page="page" />
+
       <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800" />
+
       <PagePrevNext :prev="prev" :next="next" />
+
       <template #toc>
         <PageToc v-if="!page.hideToc" :title="page.toc.title" :toc="page.toc.links" />
       </template>
@@ -12,31 +15,39 @@
 </template>
 
 <script>
-export default {
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
     }
   },
-  data() {
-    return {
-      prev: null,
-      next: null
-    }
-  },
-  async fetch() {
-    const language = this.$i18n.locale
-    const draft = this.$docus.ui?.draft ? undefined : false
-    const [prev, next] = await this.$content({ deep: true })
-      .where({ language, draft, menu: { $ne: false } })
-      .only(['title', 'slug', 'to', 'category'])
-      .sortBy('position', 'asc')
-      .surround(this.page.slug, { before: 1, after: 1 })
-      .fetch()
+  setup() {
+    const { $i18n, $docus, $content } = useContext()
+    const prev = ref(null)
+    const next = ref(null)
 
-    this.prev = prev
-    this.next = next
+    useFetch(async () => {
+      const language = $i18n.locale
+      const draft = $docus.ui?.draft ? undefined : false
+
+      const [prev, next] = await $content({ deep: true })
+        .where({ language, draft, menu: { $ne: false } })
+        .only(['title', 'slug', 'to', 'category'])
+        .sortBy('position', 'asc')
+        .surround(props.page.slug, { before: 1, after: 1 })
+        .fetch()
+
+      prev.value = prev
+      next.value = next
+    })
+
+    return {
+      prev,
+      next
+    }
   }
-}
+})
 </script>

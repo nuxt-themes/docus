@@ -1,9 +1,11 @@
 import { Module } from '@nuxt/types'
+import { logger } from '../core/util'
+import { useStorage } from '../core'
 import { DocusSettings } from '../types/core'
-import { get, handler, fetch } from './github'
+import { get, fetch } from './github'
 
 export default <Module>function docusGithubModule() {
-  const { nuxt, addServerMiddleware } = this
+  const { nuxt } = this
   const { hook, options } = nuxt
 
   options.privateRuntimeConfig = options.privateRuntimeConfig || {}
@@ -17,12 +19,16 @@ export default <Module>function docusGithubModule() {
     }
   })
 
-  hook('docus:content:ready', (settings: DocusSettings) => {
-    fetch(settings.github)
-  })
-
-  addServerMiddleware({
-    path: '/api/docus/releases',
-    handler
+  hook('docus:content:ready', async (settings: DocusSettings) => {
+    try {
+      const releases = await fetch(settings.github)
+      const storage = useStorage()
+      storage.setItem('/_docus/repo/github', {
+        path: '/_docus/repo/github',
+        releases
+      })
+    } catch (err) {
+      logger.error(`Cannot fetch releases from Github, ${err}`)
+    }
   })
 }

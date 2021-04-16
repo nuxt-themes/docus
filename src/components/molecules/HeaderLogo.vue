@@ -1,7 +1,7 @@
 <template>
-  <div class="relative">
+  <div class="flex items-center">
     <template v-if="settings.header.title && !settings.header.logo">
-      <span class="text-2xl font-bold text-gray-900 dark:text-gray-100 lowercase tracking-tighter">
+      <span class="text-2xl font-bold text-gray-900 dark:text-gray-100 tracking-tighter">
         {{ settings.title }}
       </span>
     </template>
@@ -25,32 +25,36 @@
       </span>
     </template>
 
-    <span
-      class="absolute top-0 -right-1 transform translate-x-full inline-flex items-center px-1.5 py-0.5 text-xs font-semibold text-white rounded-md bg-primary-500"
-    >
+    <span class="inline-flex items-center px-2 ml-2 text-xs font-semibold text-white rounded-full bg-primary-500">
       beta
     </span>
   </div>
 </template>
 
 <script>
-export default {
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    logo() {
-      if (!this.settings.logo) {
-        return
-      }
-      if (typeof this.settings.logo === 'object') {
-        return this.settings.logo
-      }
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    const logo = computed(() => {
+      if (!settings.value.logo) return
+
+      if (typeof settings.value.logo === 'object') return settings.value.logo
+
       return {
-        light: this.settings.logo,
-        dark: this.settings.logo
+        light: settings.value.logo,
+        dark: settings.value.logo
       }
+    })
+
+    return {
+      settings,
+      logo
     }
   }
-}
+})
 </script>

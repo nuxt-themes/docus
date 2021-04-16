@@ -6,8 +6,8 @@ const PROSE_ELEMENTS = [
   'ul',
 
   // Global tags
-  'd-props',
-  'DProps'
+  'props',
+  'Props'
 ]
 
 const isJsNode = (node, customProsElements = []) => {

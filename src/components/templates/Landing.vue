@@ -3,17 +3,20 @@
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
+
     <NuxtContent :document="page" />
   </AppContainer>
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
     }
   }
-}
+})
 </script>

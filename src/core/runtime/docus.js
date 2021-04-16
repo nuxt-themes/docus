@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
-import { $fetch } from 'ohmyfetch'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
 
@@ -190,7 +189,7 @@ export async function createDocus({
         }
       },
       getPageTemplate(page) {
-        let template = page.template
+        let template = page.template?.self || page.template
         if (!template) {
           // fetch from nav (root to link) and fallback to settings.template
           const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
@@ -198,7 +197,7 @@ export async function createDocus({
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
-              template = link.template
+              template = link.template?.children || link.template
             }
             if (!link.children) {
               return
@@ -214,6 +213,31 @@ export async function createDocus({
           template = 'Page'
         }
         return template
+      },
+      async fetchPageData(page) {
+        const data = page.data || {}
+        if (page.fetch) {
+          try {
+            await Object.entries(page.fetch).reduce(async (prev, [key, fetch]) => {
+              const data = await prev
+              const { query, deep, where, sortBy, only, without, limit } = fetch
+      
+              // We sould have simple solution instead of multiple checks
+              const queryBuilder = $content(query, { deep })
+              if (where) queryBuilder.where(where)
+              if (sortBy) queryBuilder.sortBy(sortBy)
+              if (only) queryBuilder.only(only)
+              if (without) queryBuilder.without(without)
+              if (limit) queryBuilder.limit(limit)
+              
+              data[key] = await queryBuilder.fetch()
+              return data
+            }, Promise.resolve(data))
+          } catch (err) {
+            console.error(`Fetch error, can't fetch data of page "${page.tilte}"`);
+          }
+        }
+        return data
       },
       async fetchCategories() {
         // Avoid re-fetching in production
@@ -237,11 +261,12 @@ export async function createDocus({
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
 
-      fetchReleases() {
+      async fetchReleases() {
         if (process.server) {
           return ssrContext.docus.releases
         }
-        return $fetch('/api/docus/releases')
+        const repo = await $content('/_docus/repo/github').fetch()
+        return repo.releases
       },
 
       async fetchLastRelease() {
@@ -299,11 +324,13 @@ export async function createDocus({
       nuxtState.docus = $docus.$data
     })
   }
-  // Spa Fallback
+
+  // SPA Fallback
   if (process.client && !$docus.settings) {
     await $docus.fetch()
   }
-  // Hot reload on development
+
+  // HotReload on development
   if (process.client && process.dev) {
     window.onNuxtReady(() => {
       window.$nuxt.$on('content:update', () => $docus.fetch())

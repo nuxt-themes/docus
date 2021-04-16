@@ -14,19 +14,19 @@
         </p>
 
         <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-8">
-          <DComponent :component="cta">
-            <DButtonLink class="mx-auto md:mx-0" size="large" :href="cta[1]">
+          <InjectComponent :component="cta">
+            <ButtonLink class="mx-auto md:mx-0" size="large" :href="cta[1]">
               {{ cta[0] }}
-            </DButtonLink>
-          </DComponent>
-          <DComponent v-if="secondary" :component="secondary">
+            </ButtonLink>
+          </InjectComponent>
+          <InjectComponent v-if="secondary" :component="secondary">
             <a
               :href="secondary[1]"
               class="py-px mt-px font-medium text-gray-800 border-b-2 border-transparent dark:text-gray-100 hover:border-gray-800 dark:hover:border-gray-100"
             >
               {{ secondary[0] }}
             </a>
-          </DComponent>
+          </InjectComponent>
         </div>
       </div>
       <div class="w-full m-auto lg:w-1/3 sm:w-580px">
@@ -39,7 +39,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     title: {
       type: String,
@@ -58,5 +60,5 @@ export default {
       default: () => ['Open on GitHub', 'https://github.com']
     }
   }
-}
+})
 </script>

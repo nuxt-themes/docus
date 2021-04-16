@@ -41,7 +41,7 @@ export default function htmlDirectives() {
         ...toData(node)
       }
     }
-    data.hName = `d-${hast.tagName}`
+    data.hName = hast.tagName
     data.hProperties = hast.properties
   }
 

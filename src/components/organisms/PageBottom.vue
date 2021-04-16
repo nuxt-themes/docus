@@ -19,33 +19,38 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
     }
   },
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    link() {
-      if (!this.settings.github) {
-        return
-      }
+  setup(props) {
+    const { $docus, $config } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    const link = computed(() => {
+      if (!settings.value.github) return
 
       return [
-        this.$docus.repoUrl,
+        $docus.repoUrl,
         'edit',
-        this.settings.github.branch,
-        this.settings.github.dir,
-        this.$config.contentDir,
-        `${this.page.path}${this.page.extension}`.replace(/^\//g, '')
+        settings.value.github.branch,
+        settings.value.github.dir,
+        $config.contentDir,
+        `${props.page.path}${props.page.extension}`.replace(/^\//g, '')
       ]
         .filter(Boolean)
         .join('/')
+    })
+
+    return {
+      link
     }
   }
-}
+})
 </script>

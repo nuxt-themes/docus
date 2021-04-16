@@ -1,4 +1,3 @@
-import { IncomingMessage, ServerResponse } from 'node:http'
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
 import { DocusRepositiryOptions } from '../types'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
@@ -86,14 +85,8 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
   return releases
 }
 
-export function handler(_req: IncomingMessage, res: ServerResponse) {
-  res.writeHead(200, { 'Content-Type': 'application/json' })
-  res.end(JSON.stringify(cachedReleases))
-}
-
 export default {
   get,
   fetch,
-  fetchGitHubReleases,
-  handler
+  fetchGitHubReleases
 }

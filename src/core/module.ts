@@ -5,6 +5,8 @@ import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
 import { useJSONParser, useMarkdownParser } from './parser'
 import { exists, r, readFile } from './util'
+import { useStorage } from './storage'
+import { $content } from '@nuxt/content'
 
 export default <Module>async function docusModule() {
   const { nuxt, requireModule, addPlugin } = this
@@ -50,7 +52,13 @@ export default <Module>async function docusModule() {
       return
     }
 
-    const locales = options.i18n?.locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+    // Locales or empty array
+    let locales = options.i18n?.locales || []
+    // If locales is function, resolve it
+    locales = typeof locales === 'function' ? locales() : locales
+    // Map locales or default to 'en'
+    locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+    // Get default locale or default to 'en'
     const defaultLocale = options.i18n?.defaultLocale || 'en'
 
     const regexp = new RegExp(`^/(${locales})`, 'gi')
@@ -76,8 +84,9 @@ export default <Module>async function docusModule() {
     filename: 'docus.js'
   })
 
+
   const markdownParser = useMarkdownParser()
-  callHook('docus:content:ready', docusSettings)
+  await callHook('docus:content:ready', docusSettings)
 
   await requireModule([
     '@nuxt/content',
@@ -92,4 +101,13 @@ export default <Module>async function docusModule() {
       }
     }
   ])
+  // Remove this as soon as implemention new storage
+  const storage = useStorage()
+  const keys = storage.getKeys()
+  keys.forEach(key => {
+    ($content as any).database.items.insert({
+      path: key,
+      ...storage.getItem(keys)
+    })
+  })
 }

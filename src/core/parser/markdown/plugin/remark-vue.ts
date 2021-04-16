@@ -1,3 +1,4 @@
+import { camelCase } from 'change-case'
 import hasha from 'hasha'
 import propsHandler from '../tag/props'
 
@@ -5,7 +6,7 @@ const handlers = [['props', propsHandler]]
 
 async function enrichTag(node, tag, handler, documentData) {
   if (node.type === 'html' || (node.children && node.children[0] && node.children[0].type === 'html')) {
-    const TAG_REGEX = new RegExp(`^\\s*<(d-${tag}|D${tag})\\s+`, 'i')
+    const TAG_REGEX = new RegExp(`^\\s*<(${tag}|${camelCase(tag)})\\s+`, 'i')
 
     if (node.type !== 'html' && node.children[0].value.match(TAG_REGEX)) {
       node.children[0] = await enrichTag(node.children[0], tag, handler, documentData)

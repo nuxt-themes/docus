@@ -19,12 +19,14 @@
               : 'text-gray-700 dark:text-gray-400'
           ]"
         >
-          <DComponent
+          <InjectComponent
             v-if="doc.icon"
             :component="doc.icon"
             class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem"
-            >{{ doc.icon }}</DComponent
           >
+            {{ doc.icon }}
+          </InjectComponent>
+
           <span>
             {{ doc.menuTitle || doc.title }}
           </span>
@@ -43,7 +45,9 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     category: {
       type: String,
@@ -54,38 +58,39 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      collapse: false
-    }
-  },
-  computed: {
-    isCategoryActive() {
-      return this.docs.some(document => this.$docus.isLinkActive(document.to))
-    }
-  },
-  methods: {
-    collapseCategory() {
-      if (this.isCategoryActive) {
-        return
-      }
-      this.collapse = !this.collapse
-    },
-    isDocumentNew(document) {
-      if (process.server) {
-        return
-      }
-      if (!document.version || document.version <= 0) {
+  setup(props) {
+    const { $docus } = useContext()
+
+    const collapse = ref(false)
+
+    const isCategoryActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
+
+    const collapseCategory = () => {
+      if (isCategoryActive.value) {
         return
       }
 
+      collapse.value = !collapse.value
+    }
+
+    const isDocumentNew = document => {
+      if (process.server) return
+
+      if (!document.version || document.version <= 0) return
+
       const version = localStorage.getItem(`document-${document.slug}-version`)
-      if (document.version > Number(version)) {
-        return true
-      }
+
+      if (document.version > Number(version)) return true
 
       return false
     }
+
+    return {
+      collapseCategory,
+      isCategoryActive,
+      collapse,
+      isDocumentNew
+    }
   }
-}
+})
 </script>

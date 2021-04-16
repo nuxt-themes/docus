@@ -4,7 +4,7 @@
       <NavigationButton v-if="aside" />
 
       <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
-        <DLogo :settings="settings" />
+        <Logo :settings="settings" />
       </div>
 
       <div class="hidden lg:flex lg:flex-1 items-center">
@@ -20,7 +20,7 @@
         />
 
         <div v-else class="flex lg:hidden">
-          <DColorSwitcher />
+          <ColorSwitcher />
         </div>
 
         <!-- Desktop: Right section -->
@@ -32,8 +32,8 @@
             exact-active-class="text-primary-500 dark:text-primary-400"
             >{{ lastRelease }}</NuxtLink
           >
-          <DLangSwitcher class="p-1.5" />
-          <DColorSwitcher class="p-1.5" />
+          <LangSwitcher class="p-1.5" />
+          <ColorSwitcher class="p-1.5" />
           <SocialIcons padding="p-1.5" />
         </div>
       </div>
@@ -42,20 +42,26 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     aside: {
       type: Boolean,
       default: false
     }
   },
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    lastRelease() {
-      return this.$docus.lastRelease
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    const lastRelease = computed(() => $docus.lastRelease)
+
+    return {
+      settings,
+      lastRelease
     }
   }
-}
+})
 </script>

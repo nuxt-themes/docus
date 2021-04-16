@@ -3,6 +3,7 @@ title: 'Create a Blog with Nuxt Content'
 description: 'The Content module is a git files based headless CMS that provides powerful features when it comes to write blogs, documentation sites or just adding content to any regular website. In this post we will go through most of the benefits of this module and discover how we can create a blog with it.'
 imgUrl: https://source.unsplash.com/user/agk42/1280x720
 date: 2020-07-02
+menu: false
 authors:
   - name: "Debbie O'Brien"
     avatarUrl: https://pbs.twimg.com/profile_images/1252900852156772352/JLIVJ-TC_400x400.jpg
@@ -38,7 +39,7 @@ The [content module](https://content.nuxtjs.org) is a git files based headless C
   - [Use HTML in your markdown files](#use-html-in-your-markdown-files)
   - [Adding a Vue component](#adding-a-vue-component)
   - [Adding an Author component with props](#adding-an-author-component-with-props)
-  - [Adding a code block to your post](#adding-a-d-code-block-to-your-post)
+  - [Adding a code block to your post](#adding-a-code-block-to-your-post)
   - [Creating a previous and next component](#creating-a-previous-and-next-component)
   - [Working with the API](#working-with-the-api)
   - [List all the blog posts](#list-all-the-blog-posts)
@@ -55,22 +56,22 @@ The [content module](https://content.nuxtjs.org) is a git files based headless C
 
 To get started with content module we will first need to install the module using npm or yarn.
 
-<d-code-group>
-  <d-code-block label="Yarn" active>
+<code-group>
+  <code-block label="Yarn" active>
 
 ```bash
 yarn add @nuxt/content
 ```
 
-</d-code-block>
-<d-code-block label="npm">
+</code-block>
+<code-block label="npm">
 
 ```bash
 npm install @nuxt/content
 ```
 
-  </d-code-block>
-</d-code-group>
+  </code-block>
+</code-group>
 
 Then we can add it to our modules property inside our nuxt.config file.
 
@@ -80,11 +81,11 @@ export default {
 }
 ```
 
-<d-alert>
+<alert>
 
 If you have created a new project with `create-nuxt-app` you can choose to add the content module and therefore it will be installed for you.
 
-</d-alert>
+</alert>
 
 ### Let's create our markdown page
 
@@ -94,11 +95,11 @@ The content module works by reading the files in our `content/` directory.
 mkdir content
 ```
 
-<d-alert>
+<alert>
 
 If you have created your project with `create-nuxt-app`, the `content/` directory will be already created.
 
-</d-alert>
+</alert>
 
 Let's create an `articles/` directory where we can add the articles for our blog.
 
@@ -120,11 +121,11 @@ We can now add a title and text for our blog post:
 Welcome to my first blog post using content module
 ```
 
-<d-alert>
+<alert>
 
 In markdown we create a `<h1>` title by using `#`. Make sure you leave a space between it and your blog title. For more info on writing in markdown see the [basic syntax guide](https://www.markdownguide.org/basic-syntax).
 
-</d-alert>
+</alert>
 
 ### Displaying your content
 
@@ -256,13 +257,13 @@ We now have a title, description, img and alt variable that we can access to by 
 </template>
 ```
 
-<d-alert>
+<alert>
 
 In order to render images included in the YAML of the article we either need to place them in the static folder or use the syntax: `` :src="require(`~/assets/images/${article.img}`)" ``.
 
 Images included in the article content should always be placed **in the static folder** as @nuxt/content is independent of Webpack. The static folder doesn't go through webpack whereas the assets folder does.
 
-</d-alert>
+</alert>
 
 ### Styling our markdown content
 
@@ -406,11 +407,11 @@ Then in our markdown these components will be available without having to import
 </info-box>
 ```
 
-<d-alert>
+<alert>
 
 The global components will be available throughout our whole application so be careful when adding components to this folder. This works different to adding components in the components folder which are only added if they are being used.
 
-</d-alert>
+</alert>
 
 ### Adding an Author component with props
 
@@ -447,11 +448,11 @@ Here we create a div the author image, a title of Author and a dynamic name and 
 </template>
 ```
 
-<d-alert>
+<alert>
 
 Styles have been removed from these examples, feel free to add the styles yourself or copy the styles from the [demo code](https://github.com/nuxt-academy/demo-blog-nuxt-content).
 
-</d-alert>
+</alert>
 
 Then in our script tag we can add our props of author which is an object and set required to true.
 
@@ -474,11 +475,11 @@ To use the component we will need to add it to our markdown and pass in our prop
 <author :author="author"></author>
 ```
 
-<d-alert>
+<alert>
 
 You cannot use self closing tags in markdown, for instance, `<author :author="author" />` won't work.
 
-</d-alert>
+</alert>
 
 Putting the component here means we will have to repeat it for every article. In this case it would be better to add it directly to the slug page. We will need to change the author prop to `article.author`.
 
@@ -647,27 +648,27 @@ We can now add our `<prev-next>` component to our slug page passing in the props
 </template>
 ```
 
-<d-alert type="info">
+<alert type="info">
 
 As we have set `components: true` in our nuxt.config file we do not need to import this component in order to be able to use it.
 
-</d-alert>
+</alert>
 
 ### Working with the API
 
 When querying data the Content module gives us access to the API so that we can query it directly to see what is being returned. We have access to the API in dev mode with the following url: [http://localhost:3000/\_content/](http://localhost:3000/_content/). In our example this will be empty as our articles are in a folder called articles therefore we need to use this url [http://localhost:3000/\_content/articles](http://localhost:3000/_content/articles) to see our list of articles.
 
-<d-alert type="info">
+<alert type="info">
 
 We can see individual articles by adding the name of the slug [http://localhost:3000/\_content/articles/my-first-blog-post](http://localhost:3000/_content/articles/my-first-blog-post)
 
-</d-alert>
+</alert>
 
-<d-alert type="info">
+<alert type="info">
 
 You can use a chrome extension such as [JSON Viewer Pro](https://chrome.google.com/webstore/detail/json-viewer-pro/eifflpmocdbdmepbjaopkkhbfmdgijcc) so you can better see your results.
 
-</d-alert>
+</alert>
 
 We can now query our results directly in the url and see our results as a JSON which we can then use to create our blog index page that will have a list of all the blog posts. We can see using our API what we have available to us and for the blog index page we only want to return the title, description, img, slug and author. Let's take a look at what that would be like.
 
@@ -683,11 +684,11 @@ We can now query our results directly in the url and see our results as a JSON w
 
 We can now create our blog index page to list out our blog posts. As we already have an index page created we just need to delete all the demo code inside this page.
 
-<d-alert type="info">
+<alert type="info">
 
 In the [demo code](https://github.com/nuxt-academy/demo-blog-nuxt-content) I used the main index page instead of creating an index file inside the blog folder because for this example I have no other pages but normally you might have a home page, contact page and then the blog page etc.
 
-</d-alert>
+</alert>
 
 Passing in `$content` and `params` to the context in our `asyncData` function we then use a const of articles to await our returned content by passing into `$content` the arguments of articles, as that is the folder where our articles are and our slug from params. We can then use `only()` to get our title, description, img, slug and author as we tested from our API this will give us exactly what we need. We can use `sortBy()` to sort by the createdAt date and then we chain our `fetch()` to the end and return our articles.
 
@@ -780,11 +781,11 @@ We then fetch all the details we want to show on this page. In the last example 
 </script>
 ```
 
-<d-alert type="info">
+<alert type="info">
 
 You can use an array and pass in more than just 'body' to the `without()` method:
 
-</d-alert>
+</alert>
 
 ```js
 without(['body', 'title'])
@@ -814,11 +815,11 @@ We can then use our data to print out a nice author page showing the author name
 </template>
 ```
 
-<d-alert type="info">
+<alert type="info">
 
 Please note all styles have been removed from this example. You can either style the page yourself or copy the styles from the [demo code](https://github.com/nuxt-academy/demo-blog-nuxt-content).
 
-</d-alert>
+</alert>
 
 To format our date we can add the method we created earlier:
 
@@ -909,11 +910,11 @@ We can now use our `<AppSearchInput>` component by adding it anywhere on our pag
 <AppSearchInput />
 ```
 
-<d-alert type="info">
+<alert type="info">
 
 See the [demo code](https://github.com/nuxt-academy/demo-blog-nuxt-content) for improved styling of this page as well as the header component that was added which includes the search component and is therefore displayed on the author and index page.
 
-</d-alert>
+</alert>
 
 ## Live editing our content
 

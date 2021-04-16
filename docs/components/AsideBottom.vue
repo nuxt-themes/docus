@@ -21,32 +21,34 @@
 </template>
 
 <script>
-export default {
-  data() {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
     return {
       resources: [
         {
           title: 'NuxtJS',
           url: 'https://nuxtjs.org',
-          icon: 'LogoNuxt'
+          icon: 'IconNuxt'
         },
         {
           title: 'Vue',
           url: 'https://vuejs.org',
-          icon: 'LogoVue'
+          icon: 'IconVue'
         },
         {
           title: 'Windi CSS',
           url: 'https://windicss.org',
-          icon: 'LogoWindi'
+          icon: 'IconWindi'
         },
         {
           title: 'Nuxt Content',
           url: 'https://content.nuxtjs.org',
-          icon: 'LogoNuxtContent'
+          icon: 'IconNuxtContent'
         }
       ]
     }
   }
-}
+})
 </script>

@@ -1,10 +1,5 @@
 <template>
-  <AppContainer>
-    <AppPage prose class="min-h-screen-sm">
-      <h1>{{ error.message }}</h1>
-      <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
-    </AppPage>
-  </AppContainer>
+  <component :is="template" :error="error" />
 </template>
 
 <script>
@@ -13,6 +8,11 @@ export default {
     error: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      template: 'Error',
     }
   },
   head() {

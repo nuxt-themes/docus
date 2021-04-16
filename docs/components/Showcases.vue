@@ -10,17 +10,19 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     showcases: {
       type: Array,
       default: () => []
     }
   }
-}
+})
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 img {
   @apply my-0 !important;
 }

@@ -11,10 +11,10 @@
           <div
             class="relative w-full px-6 py-8 bg-white rounded border border-gray-200 dark:border-gray-700 dark:bg-gray-900"
           >
-            <DComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">
+            <InjectComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">
               <img v-if="isImage(f.icon)" :src="f.icon" class="inline-block w-16 h-16 mb-3" />
               <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
-            </DComponent>
+            </InjectComponent>
             <h2 class="mb-2 text-xl">{{ f.title }}</h2>
             <p class="font-normal">{{ f.description }}</p>
           </div>
@@ -25,7 +25,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     title: {
       type: String,
@@ -47,10 +49,12 @@ export default {
       ]
     }
   },
-  methods: {
-    isImage(icon) {
-      return String(icon).includes('.')
+  setup() {
+    const isImage = icon => String(icon).includes('.')
+
+    return {
+      isImage
     }
   }
-}
+})
 </script>
