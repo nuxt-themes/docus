@@ -11,36 +11,31 @@ features:
   - icon: IconNuxt
     iconClass: 'text-hex-00DC82'
     title: Nuxt Architecture
-    description: >-
-      Get the Nuxt power by using all the features, Docus is one of the first Nuxt
-      theme.
+    description: Harness the full power of Nuxt and the Nuxt ecosystem.
   - icon: IconVue
     title: Vue Components
-    description: Use your components or Docus built-in right inside your content.
+    description: Use built-in components (or your own!) inside your content.
   - icon: IconMarkdown
     title: Write Markdown
-    description: Enjoy the power of Markdown to write your documentation.
+    description: Enjoy the ease and simplicity of Markdown as you write your documentation.
   - icon: IconWindi
     title: Windi CSS
-    description: >-
-      Windi CSS is built in for great developer experience and rapid customization of Docus.
+    description: Windi CSS is built in for great developer experience and rapid customization.
   - icon: IconSSG
     title: Static Generation
-    description: Generate your documentation as a static website and host it everywhere.
+    description: Generate your documentation as a static website and host it anywhere.
   - icon: IconLighthouse
     title: Lighthouse Optimised
-    description: Start with a blazing fast documentation with a perfect score on lighthouse.
+    description: Start with a blazing fast site with a perfect Lighthouse score.
   - icon: IconZap
     title: Smart Generation
-    description: >-
-      Docus knows if he can skip the Webpack build if you only changed Markdown
-      files.
+    description: Automatically skip a full build if you've only changed Markdown files.
   - icon: IconPuzzle
     title: Extensible
-    description: 'Customize the whole design, or add components using slots, make it your own.'
+    description: Customize the whole design, or add components using slots - you can make Docus your own.
   - icon: IconGitHub
     title: Open Source
-    description: Docus is released as MIT license and made with love by the NuxtLabs team.
+    description: Docus is released under the MIT license and made with love by the NuxtLabs team.
 ---
 
 <block-hero :title="title" :description="description" v-bind="hero"></block-hero>
