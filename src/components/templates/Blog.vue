@@ -10,7 +10,9 @@
           <div class="flex flex-col sm:flex-row mb-4 w-full">
             <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
               <div class="sm:flex-1">
-                <div class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2">
+                <div
+                  class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2"
+                >
                   {{ formatDateByLocale(post.date) }}
                 </div>
               </div>
@@ -76,7 +78,7 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -85,16 +87,20 @@ export default defineComponent({
       required: true
     }
   },
-  computed: {
-    posts () {
-      return this.page?.data?.posts || []
-    }
-  },
-  methods: {
-    formatDateByLocale(d) {
-      const currentLocale = this.$i18n.locale || 'en'
+  setup(props) {
+    const { $i18n } = useContext()
+
+    const posts = computed(() => props.page?.data?.posts || [])
+
+    const formatDateByLocale = d => {
+      const currentLocale = $i18n.locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(d).toLocaleDateString(currentLocale, options)
+    }
+
+    return {
+      posts,
+      formatDateByLocale
     }
   }
 })
