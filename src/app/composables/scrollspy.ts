@@ -37,7 +37,7 @@ export function useScrollspy() {
   onBeforeMount(() => (observer.value = new IntersectionObserver(observerCallback)))
 
   // Destroy it
-  onBeforeUnmount(observer.value.disconnect)
+  onBeforeUnmount(() => observer.value?.disconnect())
 
   return {
     visibleHeadings,
