@@ -5,8 +5,6 @@ import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
 import { useJSONParser, useMarkdownParser } from './parser'
 import { exists, r, readFile } from './util'
-import { useStorage } from './storage'
-import { $content } from '@nuxt/content'
 
 export default <Module>async function docusModule() {
   const { nuxt, requireModule, addPlugin } = this
@@ -84,9 +82,14 @@ export default <Module>async function docusModule() {
     filename: 'docus.js'
   })
 
+  const parserOptions = { markdown: {} }
+  await nuxt.callHook('docus:parserOptions', parserOptions)
 
-  const markdownParser = useMarkdownParser()
-  await callHook('docus:content:ready', docusSettings)
+  const markdownParser = useMarkdownParser(parserOptions.markdown)
+
+  hook('content:ready', $content => {
+    callHook('docus:content:ready', { $content, settings: docusSettings})
+  })
 
   await requireModule([
     '@nuxt/content',
@@ -101,13 +104,4 @@ export default <Module>async function docusModule() {
       }
     }
   ])
-  // Remove this as soon as implemention new storage
-  const storage = useStorage()
-  const keys = storage.getKeys()
-  keys.forEach(key => {
-    ($content as any).database.items.insert({
-      path: key,
-      ...storage.getItem(keys)
-    })
-  })
 }

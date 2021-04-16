@@ -1,7 +1,5 @@
 import { Module } from '@nuxt/types'
 import { logger } from '../core/util'
-import { useStorage } from '../core'
-import { DocusSettings } from '../types/core'
 import { get, fetch } from './github'
 
 export default <Module>function docusGithubModule() {
@@ -19,11 +17,10 @@ export default <Module>function docusGithubModule() {
     }
   })
 
-  hook('docus:content:ready', async (settings: DocusSettings) => {
+  hook('docus:content:ready', async ({ $content, settings }) => {
     try {
       const releases = await fetch(settings.github)
-      const storage = useStorage()
-      storage.setItem('/_docus/repo/github', {
+      $content.database.items.insert({
         path: '/_docus/repo/github',
         releases
       })

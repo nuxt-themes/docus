@@ -1,13 +1,17 @@
 import { resolve } from 'path'
+import { Module } from '@nuxt/types'
 import twitterRemarkPlugin from './lib'
 
 const r = (...args) => resolve(__dirname, ...args)
 
-export function docusTwitterModule() {
+export default <Module>function docusTwitterModule() {
   const { nuxt } = this
   const { hook } = nuxt
 
-  hook('content:options', options => {
+  hook('docus:parserOptions', options => {
+    if (!options.markdown.remarkPlugins) {
+      options.markdown.remarkPlugins = []
+    }
     options.markdown.remarkPlugins.push({
       instance: twitterRemarkPlugin,
       name: 'remark-docus-twitter',
@@ -23,5 +27,3 @@ export function docusTwitterModule() {
     })
   })
 }
-
-export default docusTwitterModule

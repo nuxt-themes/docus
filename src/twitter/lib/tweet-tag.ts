@@ -2,7 +2,8 @@ import { $fetch } from 'ohmyfetch/node'
 import parseHtml from './html-parser'
 
 const SYNDICATION_URL = 'https://syndication.twitter.com'
-export async function fetchTweetHtml(id) {
+
+export async function fetchTweetHtml(id: string) {
   try {
     const result = await $fetch(`${SYNDICATION_URL}/tweets.json?ids=${id}`)
     return result[id] || {}
@@ -33,7 +34,7 @@ function findNode(root, predicate) {
   return theNode
 }
 
-async function fetchTweetAst(id, layout = 'tweet') {
+async function fetchTweetAst(id: string, layout = 'tweet') {
   const html = await fetchTweetHtml(id)
   if (!html) {
     return {}
@@ -67,7 +68,7 @@ async function processTweetAst(ast, layout) {
   const avatar = get(findNode(theTweetHeader, matchScribe('element:avatar')), 'props.dataSrc-1x')
   const name = get(findNode(theTweetHeader, matchScribe('element:name')), 'props.title')
   const username = get(findNode(theTweetHeader, matchScribe('element:screen_name')), 'props.title').replace('@', '')
-  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', 0)
+  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', "0")
   const dateTime = get(findNode(theTweetInfo, matchScribe('element:full_timestamp')), 'props.dataDatetime', undefined)
   const createdAt = new Date(dateTime).getTime()
 
@@ -157,7 +158,7 @@ function mapAST(ast) {
 
 const tweetCache = {}
 
-module.exports = async node => {
+export default async node => {
   const match = node.value.match(/id=['"](\d*)['"]/)
   if (!match) {
     // eslint-disable-next-line no-console

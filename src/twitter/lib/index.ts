@@ -1,6 +1,6 @@
-const hasha = require('hasha')
-const tweetHandler = require('./tweet-tag')
-const { camelCase } = require('change-case')
+import hasha from 'hasha'
+import tweetHandler from './tweet-tag'
+import { camelCase } from 'change-case'
 
 const handlers = [['tweet', tweetHandler]]
 
@@ -27,7 +27,7 @@ async function enrichTag(node, tag, handler, documentData) {
   return node
 }
 
-module.exports = () => {
+export default () => {
   return async (tree, { data }) => {
     const modified = tree.children.map(async node => {
       return await handlers.reduce(async (node, [tag, handler]) => {
