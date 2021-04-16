@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, computed } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -38,10 +38,10 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $i18n } = useContext()
+    const { i18n } = useContext()
 
     const releases = computed(() => props.page?.data?.repository?.releases || [])
-
+    console.log(props.page?.data?.repository?.releases);
     const toc = computed(() =>
       releases.value.releases?.map(release => ({
         id: release.name,
@@ -53,10 +53,11 @@ export default defineComponent({
     const formatDate = release => {
       const date = new Date(release.date)
 
-      return date.toLocaleDateString($i18n.locale)
+      return date.toLocaleDateString(i18n.locale)
     }
 
     return {
+      releases,
       toc,
       formatDate
     }
