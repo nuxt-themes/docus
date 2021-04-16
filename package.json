@@ -35,7 +35,10 @@
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && echo 'TODO tests'",
-    "clean": "rm -rf node_modules dist .nuxt docs/.nuxt docs/dist docs/node_modules playground/.nuxt playground/dist playground/node_modules"
+    "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt",
+    "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules",
+    "clean:dist": "rm -rf dist docs/dist playground/dist",
+    "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",

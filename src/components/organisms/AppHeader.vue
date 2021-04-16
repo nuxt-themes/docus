@@ -42,20 +42,26 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     aside: {
       type: Boolean,
       default: false
     }
   },
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    lastRelease() {
-      return this.$docus.lastRelease
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings)
+
+    const lastRelease = computed(() => $docus.lastRelease)
+
+    return {
+      settings,
+      lastRelease
     }
   }
-}
+})
 </script>

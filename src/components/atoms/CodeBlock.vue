@@ -11,7 +11,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     /**
      * Label to display for the tab
@@ -35,7 +37,7 @@ export default {
       default: false
     }
   }
-}
+})
 </script>
 
 <style scoped>

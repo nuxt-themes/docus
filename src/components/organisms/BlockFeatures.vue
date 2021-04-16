@@ -25,7 +25,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     title: {
       type: String,
@@ -47,10 +49,12 @@ export default {
       ]
     }
   },
-  methods: {
-    isImage(icon) {
-      return String(icon).includes('.')
+  setup() {
+    const isImage = icon => String(icon).includes('.')
+
+    return {
+      isImage
     }
   }
-}
+})
 </script>

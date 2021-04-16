@@ -46,29 +46,34 @@
 </template>
 
 <script>
+import { defineComponent, reactive, computed, toRefs } from '@nuxtjs/composition-api'
 import { scrollToHeading } from '../utils'
 
-export default {
+export default defineComponent({
   props: {
     toc: {
       type: Array,
       default: () => []
     }
   },
-  data() {
-    return {
-      scrollToHeading,
+  setup(props) {
+    const state = reactive({
       activeLink: '',
       exactActiveLink: '',
       showMobileToc: false
-    }
-  },
-  computed: {
-    filteredToc() {
-      const toc = [...this.toc]
+    })
+
+    const filteredToc = computed(() => {
+      const toc = [...props.toc]
       toc.shift()
       return toc
+    })
+
+    return {
+      ...toRefs(state),
+      scrollToHeading,
+      filteredToc
     }
   }
-}
+})
 </script>

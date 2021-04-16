@@ -1,7 +1,8 @@
 <script>
 import Vue from 'vue'
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default {
+export default defineComponent({
   functional: true,
   props: {
     component: {
@@ -20,5 +21,5 @@ export default {
 
     return h(props.tag, data, slots().default)
   }
-}
+})
 </script>

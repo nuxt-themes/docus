@@ -1,5 +1,5 @@
 <template>
-  <DDropdown v-if="$i18n.locales.length > 1" class="inline-flex">
+  <Dropdown v-if="$i18n.locales.length > 1" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
         class="text-icon"
@@ -26,5 +26,5 @@
         >
       </li>
     </ul>
-  </DDropdown>
+  </Dropdown>
 </template>

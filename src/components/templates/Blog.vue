@@ -76,7 +76,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
@@ -95,5 +97,5 @@ export default {
       return new Date(d).toLocaleDateString(currentLocale, options)
     }
   }
-}
+})
 </script>

@@ -6,28 +6,36 @@
 </template>
 
 <script>
+import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
 import Clipboard from 'clipboard'
 
-export default {
-  data() {
-    return {
-      state: 'init'
-    }
-  },
-  mounted() {
-    const copyCode = new Clipboard(this.$refs.copy, {
-      target(trigger) {
-        return trigger.previousElementSibling
-      }
+export default defineComponent({
+  setup() {
+    const copy = ref()
+    const state = ref('init')
+
+    onMounted(() => {
+      const copyCode = new Clipboard(copy.value, {
+        target(trigger) {
+          return trigger.previousElementSibling
+        }
+      })
+
+      copyCode.on('success', event => {
+        event.clearSelection()
+
+        state.value = 'copied'
+
+        window.setTimeout(() => {
+          state.value = 'init'
+        }, 2000)
+      })
     })
 
-    copyCode.on('success', event => {
-      event.clearSelection()
-      this.state = 'copied'
-      window.setTimeout(() => {
-        this.state = 'init'
-      }, 2000)
-    })
+    return {
+      state,
+      copy
+    }
   }
-}
+})
 </script>

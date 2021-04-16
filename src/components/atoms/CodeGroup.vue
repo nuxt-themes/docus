@@ -20,7 +20,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   data() {
     return {
       activeTabIndex: 0,
@@ -99,7 +101,7 @@ export default {
       return components
     }
   }
-}
+})
 </script>
 
 <style scoped lang="postcss">

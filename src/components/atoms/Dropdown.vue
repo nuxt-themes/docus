@@ -28,19 +28,21 @@
 </template>
 
 <script>
-export default {
-  data() {
+import { defineComponent, ref } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  setup() {
+    const open = ref()
+
+    const toggle = (open.value = !open.value)
+
+    const close = (open.value = false)
+
     return {
-      open: false
-    }
-  },
-  methods: {
-    toggle() {
-      this.open = !this.open
-    },
-    close() {
-      this.open = false
+      open,
+      toggle,
+      close
     }
   }
-}
+})
 </script>

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="prop in props" :key="prop.name">
+        <tr v-for="prop in properties" :key="prop.name">
           <td>
             <code>{{ prop.name }}</code>
           </td>
@@ -37,7 +37,9 @@
 </template>
 
 <script>
-export default {
+import { computed, defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     of: {
       type: String,
@@ -79,38 +81,51 @@ export default {
       default: undefined
     }
   },
-  computed: {
-    component() {
-      return this.data
-    },
-    props() {
-      // hide ignored properties
-      return this.component.props.filter(prop => !prop.tags?.ignore)
-    },
-    showRequired() {
-      if (this.required !== undefined) {
-        return this.required
+  setup(props) {
+    const component = computed(() => props.data)
+
+    const properties = computed(() => component.value.props.filter(prop => !prop.tags?.ignore))
+
+    const showRequired = computed(() => {
+      if (props.required !== undefined) {
+        return props.required
       }
-      return this.props.find(prop => prop.required !== undefined)
-    },
-    showValues() {
-      if (this.values !== undefined) {
-        return this.values
+
+      return properties.value.find(prop => prop.required !== undefined)
+    })
+
+    const showValues = computed(() => {
+      if (props.values !== undefined) {
+        return props.values
       }
-      return this.props.find(prop => prop.values)
-    },
-    showDescription() {
-      if (this.description !== undefined) {
-        return this.description
+
+      return properties.value.find(prop => prop.values)
+    })
+
+    const showDescription = computed(() => {
+      if (props.description !== undefined) {
+        return props.description
       }
-      return this.props.find(prop => prop.description)
-    },
-    showDefault() {
-      if (this.defaultValue !== undefined) {
-        return this.defaultValue
+
+      return properties.value.find(prop => prop.description)
+    })
+
+    const showDefault = computed(() => {
+      if (props.defaultValue !== undefined) {
+        return props.defaultValue
       }
-      return this.props.find(prop => prop.defaultValue)
+
+      return properties.value.find(prop => prop.defaultValue)
+    })
+
+    return {
+      component,
+      properties,
+      showRequired,
+      showValues,
+      showDescription,
+      showDefault
     }
   }
-}
+})
 </script>

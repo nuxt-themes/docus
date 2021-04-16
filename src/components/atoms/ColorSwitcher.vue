@@ -15,7 +15,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     size: {
       type: String,
@@ -26,5 +28,5 @@ export default {
       default: 'p-0'
     }
   }
-}
+})
 </script>

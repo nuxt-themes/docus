@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { computed } from '@nuxtjs/composition-api'
 export default {
   props: {
     /**
@@ -27,6 +28,9 @@ export default {
       type: String,
       default: null
     },
+    /**
+     * Type of list
+     */
     type: {
       type: String,
       default: 'primary',
@@ -35,18 +39,21 @@ export default {
       }
     }
   },
-  computed: {
-    iconName() {
-      return (
-        this.icon ||
+  setup(props) {
+    const iconName = computed(
+      () =>
+        props.icon ||
         {
           primary: 'IconBadgeCheck',
           info: 'IconInformationCircle',
           success: 'IconCheckCircle',
           warning: 'IconExclamationCircle',
           danger: 'IconXCircle'
-        }[this.type]
-      )
+        }[props.type]
+    )
+
+    return {
+      iconName
     }
   }
 }
@@ -57,18 +64,22 @@ export default {
 .list-primary {
   @apply text-primary;
 }
+
 /* Info */
 .list-info {
   @apply text-blue-500 dark:text-blue-400;
 }
+
 /* Success */
 .list-success {
   @apply text-green-500 dark:text-green-400;
 }
+
 /* Warning */
 .list-warning {
   @apply text-yellow-500 dark:text-yellow-400;
 }
+
 /* Danger */
 .list-danger {
   @apply text-red-500 dark:text-red-400;
