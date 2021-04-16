@@ -30,25 +30,21 @@
 
 <script>
 export default {
-  layout({ $docus }) {
-    return $docus.settings.layout
-  },
-  async asyncData({ $docus }) {
-    const releases = await $docus.fetchReleases()
-
-    return { releases }
-  },
-  head() {
-    return {
-      title: 'Releases'
+  props: {
+    page: {
+      type: Object,
+      require: true
     }
   },
   computed: {
     settings() {
       return this.$docus.settings
     },
+    releases() {
+        return this.page?.data?.repository?.releases || []
+    },
     toc() {
-      return this.releases.map(release => ({
+      return this.releases?.map(release => ({
         id: release.name,
         depth: 2,
         text: release.name

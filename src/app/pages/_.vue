@@ -23,12 +23,13 @@ export default {
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }
-    page.template = $docus.getPageTemplate(page)
 
+    page.data = await $docus.fetchPageData(page)
+    page.template = $docus.getPageTemplate(page)
     // Preload the component on client-side navigation
     await Vue.component(page.template)()
 
-    return { page }
+    return { page };
   },
   data() {
     return {
