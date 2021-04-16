@@ -16,7 +16,7 @@
 
           <div class="flex sm:flex-row items-center">
             <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-600">
-              {{ formatDateByLocale(page.date) }}
+              {{ formatDateByLocale($i18n.locale, page.date) }}
             </div>
             <div class="text-sm text-gray-400 dark:text-gray-700">|</div>
             <div class="flex ml-4">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -54,8 +54,6 @@ export default defineComponent({
     }
   },
   setup() {
-    const { $i18n } = useContext()
-
     onMounted(() => {
       const headings = [
         ...document.querySelectorAll('.nuxt-content h2'),
@@ -77,8 +75,8 @@ export default defineComponent({
       })
     })
 
-    const formatDateByLocale = d => {
-      const currentLocale = $i18n.locale || 'en'
+    const formatDateByLocale = (locale, d) => {
+      const currentLocale = locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(d).toLocaleDateString(currentLocale, options)
     }
