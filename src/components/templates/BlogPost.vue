@@ -56,10 +56,6 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      const headings = [
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
-      ]
       if (window.location.hash) {
         const hash = window.location.hash.replace('#', '')
         // do not remove setTimeout (wrong scroll pos)
@@ -67,13 +63,20 @@ export default defineComponent({
           scrollToHeading(hash, '--blogpost-scroll-margin-block')
         }, 300)
       }
-      headings.forEach(heading => {
-        heading.addEventListener('click', e => {
-          e.preventDefault()
-          const hash = e.target.href.split('#').pop()
-          scrollToHeading(hash, '--blogpost-scroll-margin-block')
+
+      setTimeout(() => {
+        const headings = [
+          ...document.querySelectorAll('.nuxt-content h2'),
+          ...document.querySelectorAll('.nuxt-content h3')
+        ]
+        headings.forEach(heading => {
+          heading.addEventListener('click', e => {
+            e.preventDefault()
+            const hash = e.target.href.split('#').pop()
+            scrollToHeading(hash, '--blogpost-scroll-margin-block')
+          })
         })
-      })
+      }, 100)
     })
 
     const formatDateByLocale = (locale, d) => {
