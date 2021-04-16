@@ -24,24 +24,7 @@ export default {
       return error({ statusCode: 404, message: 'Page not found' })
     }
 
-    page.data = page.data || {}
-    if (page.fetch) {
-      await Object.entries(page.fetch).reduce(async (prev, [key, fetch]) => {
-        const data = await prev
-        const { query, deep, where, sortBy, only, without, limit } = fetch
-
-        const queryBuilder = $content(query, { deep })
-        if (where) queryBuilder.where(where)
-        if (sortBy) queryBuilder.sortBy(sortBy)
-        if (only) queryBuilder.only(only)
-        if (without) queryBuilder.without(without)
-        if (limit) queryBuilder.limit(limit)
-        
-        data[key] = await queryBuilder.fetch()
-        return data
-      }, Promise.resolve(page.data))
-    }
-
+    page.data = await $docus.fetchPageData(page)
     page.template = $docus.getPageTemplate(page)
     // Preload the component on client-side navigation
     await Vue.component(page.template)()
