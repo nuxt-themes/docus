@@ -16,7 +16,7 @@
 
           <div class="flex sm:flex-row items-center">
             <div class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-600">
-              {{ formatDateByLocale(page.date) }}
+              {{ formatDateByLocale($i18n.locale, page.date) }}
             </div>
             <div class="text-sm text-gray-400 dark:text-gray-700">|</div>
             <div class="flex ml-4">
@@ -44,19 +44,46 @@
 </template>
 
 <script>
-export default {
+import { defineComponent, onMounted } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
     }
   },
-  methods: {
-    formatDateByLocale(d) {
-      const currentLocale = this.$i18n.locale || 'en'
+  setup() {
+    onMounted(() => {
+      const headings = [
+        ...document.querySelectorAll('.nuxt-content h2'),
+        ...document.querySelectorAll('.nuxt-content h3')
+      ]
+      if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '')
+        // do not remove setTimeout (wrong scroll pos)
+        setTimeout(() => {
+          scrollToHeading(hash, '--blogpost-scroll-margin-block')
+        }, 300)
+      }
+      headings.forEach(heading => {
+        heading.addEventListener('click', e => {
+          e.preventDefault()
+          const hash = e.target.href.split('#').pop()
+          scrollToHeading(hash, '--blogpost-scroll-margin-block')
+        })
+      })
+    })
+
+    const formatDateByLocale = (locale, d) => {
+      const currentLocale = locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(d).toLocaleDateString(currentLocale, options)
     }
+
+    return {
+      formatDateByLocale
+    }
   }
-}
+})
 </script>

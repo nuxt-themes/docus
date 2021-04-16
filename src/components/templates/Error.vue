@@ -8,7 +8,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     error: {
       type: Object,
@@ -20,5 +22,5 @@ export default {
       title: this.error.message
     }
   }
-}
+})
 </script>

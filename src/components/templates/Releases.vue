@@ -28,34 +28,38 @@
 </template>
 
 <script>
-export default {
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   props: {
     page: {
       type: Object,
       require: true
     }
   },
-  computed: {
-    settings() {
-      return this.$docus.settings
-    },
-    releases() {
-        return this.page?.data?.repository?.releases || []
-    },
-    toc() {
-      return this.releases?.map(release => ({
+  setup(props) {
+    const { $i18n } = useContext()
+
+    const releases = computed(() => props.page?.data?.repository?.releases || [])
+
+    const toc = computed(() =>
+      releases.value.releases?.map(release => ({
         id: release.name,
         depth: 2,
         text: release.name
       }))
-    }
-  },
-  methods: {
-    formatDate(release) {
+    )
+
+    const formatDate = release => {
       const date = new Date(release.date)
 
-      return date.toLocaleDateString(this.$i18n.locale)
+      return date.toLocaleDateString($i18n.locale)
+    }
+
+    return {
+      toc,
+      formatDate
     }
   }
-}
+})
 </script>
