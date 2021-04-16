@@ -13,7 +13,7 @@
                 <div
                   class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2"
                 >
-                  {{ formatDateByLocale(post.date) }}
+                  {{ formatDateByLocale($i18n.locale, post.date) }}
                 </div>
               </div>
 
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -88,12 +88,10 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $i18n } = useContext()
-
     const posts = computed(() => props.page?.data?.posts || [])
 
-    const formatDateByLocale = d => {
-      const currentLocale = $i18n.locale || 'en'
+    const formatDateByLocale = (locale, d) => {
+      const currentLocale = locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(d).toLocaleDateString(currentLocale, options)
     }
