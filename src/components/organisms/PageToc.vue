@@ -25,7 +25,7 @@
       </h5>
 
       <ul class="font-medium">
-        <li v-for="link of mockedToc" :key="link.id" @click="showMobileToc = false">
+        <li v-for="link of toc" :key="link.id" @click="showMobileToc = false">
           <a
             :href="`#${link.id}`"
             class="block py-1 transition-colors duration-100 transform"
@@ -84,25 +84,8 @@ export default defineComponent({
   },
   setup(props) {
     const showMobileToc = ref(false)
-    const mockedToc = ref([])
     const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
 
-    // temporary mock structured toc
-    props.toc.forEach(item => {
-      if (item.depth === 2) {
-        mockedToc.value.push(item)
-      } else if (item.depth === 3) {
-        const parent = mockedToc.value[mockedToc.value.length - 1]
-        if (parent && parent.depth === 2) {
-          if (!parent.children) {
-            parent.children = []
-          }
-          parent.children.push(item)
-        } else {
-          mockedToc.value.push(item)
-        }
-      }
-    })
 
     onMounted(() =>
       updateHeadings([
@@ -119,7 +102,6 @@ export default defineComponent({
       visibleHeadings,
       activeHeadings,
       showMobileToc,
-      mockedToc,
       scrollToHeading,
       isActiveParent
     }
