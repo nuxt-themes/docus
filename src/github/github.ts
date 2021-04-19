@@ -1,5 +1,5 @@
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
-import { DocusRepositiryOptions } from '../types'
+import { DocusRepositoryOptions } from '../types'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
 import { useMarkdownParser } from '../core'
 
@@ -19,7 +19,7 @@ export function get(): GithubRelease[] {
   return cachedReleases
 }
 
-export async function fetch(settings: DocusRepositiryOptions) {
+export async function fetch(settings: DocusRepositoryOptions) {
   let releases: GithubRelease[] = []
 
   const parser = useMarkdownParser()

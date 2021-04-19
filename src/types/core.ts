@@ -41,7 +41,7 @@ export interface DocusDocument {
   updatedAt: Date
 }
 
-export interface DocusRepositiryOptions {
+export interface DocusRepositoryOptions {
   repo: string
   releases: boolean
   apiUrl: string
@@ -60,7 +60,7 @@ export interface DocusSettings {
     logo: boolean
     title: boolean
   }
-  github: DocusRepositiryOptions
+  github: DocusRepositoryOptions
   layout: string
   template: string
 }
