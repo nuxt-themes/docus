@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-for="(item, i) in listitems" :key="i" class="mt-3 flex">
+    <div v-for="(item, i) in listItems" :key="i" class="mt-3 flex">
       <span :class="`list-${type}`" class="mt-px mr-3 flex-shrink-0">
         <Component :is="iconName" class="h-6 w-6" />
       </span>
       <span>
-        <vnodes :vnodes="item"/>
+        <VNode :node="item"/>
       </span>
     </div>
   </div>
@@ -14,15 +14,9 @@
 <script>
 import { computed } from '@nuxtjs/composition-api'
 
-import { isTag } from '../utils'
+import { flatUnwrap } from '../utils'
 
 export default {
-  components: {
-    Vnodes: {
-      functional: true,
-      render: (h, ctx) => typeof ctx.props.vnodes === "string" ? [ctx.props.vnodes] : ctx.props.vnodes
-    }
-  },
   props: {
     /**
      * Array of string
@@ -68,15 +62,13 @@ export default {
     }
   },
   computed: {
-    listitems () {
+    listItems () {
       const defaultSlot = this.$slots.default || []
-      if (isTag(defaultSlot[0], 'ul')) {
-        return defaultSlot[0].children.filter(child => isTag(child, 'li')).map(child => child.children)
-      }
-      if (this.items.length) {
+      if (!defaultSlot) {
         return this.items
       }
-      return [defaultSlot[0]?.children]
+      return flatUnwrap(defaultSlot, ['p', 'ul', 'li'])
+      
     }
   }
 }

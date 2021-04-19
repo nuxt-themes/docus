@@ -1,16 +1,17 @@
 <template>
   <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
-    <slot />
+    <VNode :node="content" />
   </NuxtLink>
 
   <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
-    <slot />
+    <VNode :node="content" />
     <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
   </a>
 </template>
 
 <script>
 import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { flatUnwrap } from '../utils'
 
 export default defineComponent({
   props: {
@@ -29,6 +30,11 @@ export default defineComponent({
     bold: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    content () {
+      return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
     }
   },
   setup(props) {
