@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -38,26 +38,31 @@ export default defineComponent({
       require: true
     }
   },
-  setup(props) {
-    const { $i18n } = useContext()
+  setup() {
+    const { i18n, $content } = useContext()
+    const releases = ref()
+    const toc = ref()
 
-    const releases = computed(() => props.page?.data?.repository?.releases || [])
+    useFetch(async () => {
+      const document = await $content('/_docus/repo/github')
+        .fetch()
 
-    const toc = computed(() =>
-      releases.value.releases?.map(release => ({
+      releases.value = document.releases
+      toc.value = document.releases?.map(release => ({
         id: release.name,
         depth: 2,
         text: release.name
       }))
-    )
+    })
 
     const formatDate = release => {
       const date = new Date(release.date)
 
-      return date.toLocaleDateString($i18n.locale)
+      return date.toLocaleDateString(i18n.locale)
     }
 
     return {
+      releases,
       toc,
       formatDate
     }

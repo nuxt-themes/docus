@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -87,8 +87,18 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
-    const posts = computed(() => props.page?.data?.posts || [])
+  setup() {
+    const { $content } = useContext()
+    const posts = ref()
+
+    useFetch(async () => {
+      const documents = await $content('/blog', { deep: true })
+        .where({ slug: { $ne: '' } })
+        .sortBy('date', 'desc')
+        .fetch()
+
+      posts.value = documents
+    })
 
     const formatDateByLocale = (locale, d) => {
       const currentLocale = locale || 'en'

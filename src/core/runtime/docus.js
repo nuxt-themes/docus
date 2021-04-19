@@ -197,7 +197,7 @@ export async function createDocus({
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
-              template = link.template?.children || link.template
+              template = typeof link.template === "string" ? `${link.template}-post` : link.template?.nested
             }
             if (!link.children) {
               return
@@ -213,31 +213,6 @@ export async function createDocus({
           template = 'Page'
         }
         return template
-      },
-      async fetchPageData(page) {
-        const data = page.data || {}
-        if (page.fetch) {
-          try {
-            await Object.entries(page.fetch).reduce(async (prev, [key, fetch]) => {
-              const data = await prev
-              const { query, deep, where, sortBy, only, without, limit } = fetch
-      
-              // We sould have simple solution instead of multiple checks
-              const queryBuilder = $content(query, { deep })
-              if (where) queryBuilder.where(where)
-              if (sortBy) queryBuilder.sortBy(sortBy)
-              if (only) queryBuilder.only(only)
-              if (without) queryBuilder.without(without)
-              if (limit) queryBuilder.limit(limit)
-              
-              data[key] = await queryBuilder.fetch()
-              return data
-            }, Promise.resolve(data))
-          } catch (err) {
-            console.error(`Fetch error, can't fetch data of page "${page.tilte}"`);
-          }
-        }
-        return data
       },
       async fetchCategories() {
         // Avoid re-fetching in production
