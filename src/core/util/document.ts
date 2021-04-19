@@ -1,5 +1,5 @@
 import { withoutTrailingSlash } from 'ufo'
-import { DocusDocument, DocusMakrdownNode } from '../../types'
+import { DocusDocument, DocusMarkdownNode } from '../../types'
 
 export function generatePosition(path: string, document: DocusDocument): string {
   const position = path
@@ -69,7 +69,7 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
   return document
 }
 
-function getTextContent(node: DocusMakrdownNode): string {
+function getTextContent(node: DocusMarkdownNode): string {
   let text = node.value || ''
   if (node.children) {
     text = text + node.children.map(child => getTextContent(child)).join('')

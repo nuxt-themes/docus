@@ -1,15 +1,15 @@
-export interface DocusMakrdownNode {
+export interface DocusMarkdownNode {
   type: string
   tag?: string
   value?: string
-  children?: DocusMakrdownNode[]
+  children?: DocusMarkdownNode[]
 }
 
-export interface DocusMakrdownHtmlNode extends DocusMakrdownNode {
+export interface DocusMarkdownHtmlNode extends DocusMarkdownNode {
   type: 'html'
   value: string
 }
 
 export interface DocusRootNode {
-  children: DocusMakrdownNode[]
+  children: DocusMarkdownNode[]
 }

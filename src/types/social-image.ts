@@ -1,14 +1,14 @@
 import { BrowserLaunchArgumentOptions, ConnectOptions, LaunchOptions } from 'puppeteer-core'
 
-export interface ScreenshotCondidate {
+export interface ScreenshotCandidate {
   route: string
   title: string
   description: string
   imageName: string
 }
 
-export interface ScreenshotCondidates {
-  [key: string]: ScreenshotCondidate
+export interface ScreenshotCandidates {
+  [key: string]: ScreenshotCandidate
 }
 
 export interface SocialImageModuleOptions {

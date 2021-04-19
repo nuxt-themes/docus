@@ -1,6 +1,6 @@
 import { join } from 'path'
 import fs from 'fs'
-import { ScreenshotCondidate, ScreenshotCondidates, SocialImageModuleOptions } from '../types/social-image'
+import { ScreenshotCandidate, ScreenshotCandidates, SocialImageModuleOptions } from '../types/social-image'
 import { takeScreenshot, cleanup } from './chromium'
 
 interface InternalModuleOptions {
@@ -10,10 +10,10 @@ interface InternalModuleOptions {
 
 export function setupStaticGeneration(nuxt: any, options: SocialImageModuleOptions & InternalModuleOptions) {
   const { hook } = nuxt
-  const images: ScreenshotCondidates = {}
+  const images: ScreenshotCandidates = {}
 
   hook('vue-renderer:context', (ssrContext: any) => {
-    ssrContext.addSocialImage = (shot: ScreenshotCondidate) => {
+    ssrContext.addSocialImage = (shot: ScreenshotCandidate) => {
       images[shot.imageName] = shot
     }
   })
