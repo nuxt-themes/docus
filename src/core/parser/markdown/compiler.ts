@@ -1,11 +1,11 @@
 import { Node } from 'unist'
-import { DocusRootNode, DocusMakrdownNode } from 'src/types'
+import { DocusRootNode, DocusMarkdownNode } from 'src/types'
 
 /**
  * Parses nodes for JSON structure. Attempts to drop
  * unwanted properties.
  */
-function parseAsJSON(node: Node, parent: DocusMakrdownNode[]) {
+function parseAsJSON(node: Node, parent: DocusMarkdownNode[]) {
   /**
    * Element node creates an isolated children array to
    * allow nested elements
@@ -25,7 +25,7 @@ function parseAsJSON(node: Node, parent: DocusMakrdownNode[]) {
       }
     }
 
-    const filtered: DocusMakrdownNode = {
+    const filtered: DocusMarkdownNode = {
       type: 'element',
       tag: node.tagName as string,
       props: node.properties,

@@ -1,9 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { parse } from 'vue-docgen-api'
-import { DocusMakrdownNode } from 'src/types'
 import { r } from '../../../util'
-import hasha from 'hasha'
 import { setNodeData } from '../utils'
 
 const directories = [
