@@ -1,4 +1,4 @@
-export interface DocusMakrdownNode {
+export interface DocusMarkdownNode {
   type: string
   tag?: string
   value?: string
@@ -6,15 +6,15 @@ export interface DocusMakrdownNode {
     [key: string]: any
   }
   content?: any
-  children?: DocusMakrdownNode[]
+  children?: DocusMarkdownNode[]
 }
 
-export interface DocusMakrdownHtmlNode extends DocusMakrdownNode {
+export interface DocusMarkdownHtmlNode extends DocusMarkdownNode {
   type: 'html'
   value: string
 }
 
 export interface DocusRootNode {
   type: 'root'
-  children: DocusMakrdownNode[]
+  children: DocusMarkdownNode[]
 }
