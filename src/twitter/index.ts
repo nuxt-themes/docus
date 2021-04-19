@@ -1,7 +1,6 @@
 import { resolve } from 'path'
 import { Module } from '@nuxt/types'
-import twitterRemarkPlugin from './lib'
-import tweetDirective from './lib/tweet-tag'
+import tweetDirective from './lib/directive'
 
 const r = (...args) => resolve(__dirname, ...args)
 
