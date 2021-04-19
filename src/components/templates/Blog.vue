@@ -92,13 +92,14 @@ export default defineComponent({
     const posts = ref()
 
     useFetch(async () => {
-      const docuemnts = await $content('/blog', { deep: true })
-        .where({ slug: { $ne: "" }})
+      const documents = await $content('/blog', { deep: true })
+        .where({ slug: { $ne: '' } })
         .sortBy('date', 'desc')
         .fetch()
 
-      posts.value = docuemnts
+      posts.value = documents
     })
+
     const formatDateByLocale = (locale, d) => {
       const currentLocale = locale || 'en'
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
