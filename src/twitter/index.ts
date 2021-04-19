@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { Module } from '@nuxt/types'
 import twitterRemarkPlugin from './lib'
+import tweetDirective from './lib/tweet-tag'
 
 const r = (...args) => resolve(__dirname, ...args)
 
@@ -9,14 +10,10 @@ export default <Module>function docusTwitterModule() {
   const { hook } = nuxt
 
   hook('docus:parserOptions', options => {
-    if (!options.markdown.remarkPlugins) {
-      options.markdown.remarkPlugins = []
+    if (!options.markdown.directives) {
+      options.markdown.directives = {}
     }
-    options.markdown.remarkPlugins.push({
-      instance: twitterRemarkPlugin,
-      name: 'remark-docus-twitter',
-      options: undefined
-    })
+    options.markdown.directives.tweet = tweetDirective
   })
 
   hook('components:dirs', dirs => {

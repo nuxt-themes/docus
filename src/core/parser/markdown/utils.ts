@@ -1,3 +1,4 @@
+import hasha from 'hasha'
 import { tryRequire, logger } from '../../util'
 
 const { camelCase } = require('change-case')
@@ -53,4 +54,13 @@ export function flattenNode(node, maxDepth = 2, _depth = 0) {
     return [node]
   }
   return [node, ...node.children.reduce((acc, child) => acc.concat(flattenNode(child, maxDepth, _depth + 1)), [])]
+}
+
+export function setNodeData (node, name, value, pageData) {
+  if (!name.startsWith(':')) {
+    name = ':' + name
+  }
+  const dataKey = `docus_d_${hasha(JSON.stringify(value)).substr(0, 8)}`
+  pageData[dataKey] = value
+  node.data.hProperties[name] = dataKey
 }

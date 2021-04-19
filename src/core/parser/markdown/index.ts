@@ -5,14 +5,17 @@ import { r } from '../../util'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
+import propsDirective from './directive/props'
 
 const DEFAULTS = {
   toc: {
     depth: 2,
     searchDepth: 2
   },
+  directives: {
+    'props': propsDirective
+  },
   remarkPlugins: [
-    r('core/parser/markdown/plugin/remark-vue'),
     [
       r('core/parser/markdown/plugin/remark-prose'),
       {
@@ -78,8 +81,12 @@ async function parse(file, options) {
   }
 }
 
-export function useMarkdownParser(options = {}) {
+export function useMarkdownParser(options: any = {}) {
   options = defu(options, DEFAULTS)
+  options.remarkPlugins.unshift([
+    r('core/parser/markdown/plugin/directive'),
+    { directives: options.directives }
+  ])
   processOptions(options)
 
   return {

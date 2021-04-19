@@ -3,6 +3,8 @@ import fs from 'fs'
 import { parse } from 'vue-docgen-api'
 import { DocusMakrdownNode } from 'src/types'
 import { r } from '../../../util'
+import hasha from 'hasha'
+import { setNodeData } from '../utils'
 
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
@@ -30,24 +32,17 @@ function resolvePath(file: string) {
   return null
 }
 
-export default async function propsHandler(node: DocusMakrdownNode) {
-  const match = node.value.match(/of=['"]([^'"]*)['"]/)
-  if (!match) {
-    // eslint-disable-next-line no-console
-    console.error('Invalid component')
-    return {
-      node: { type: 'html', value: '<!-- Invalid component -->' }
-    }
-  }
-  const componentFile = resolvePath(match[1])
+
+export default async function propsHandler(node: any, pageData: any) {
+  const componentFile = resolvePath(node.attributes.of)
   if (!componentFile) {
     // eslint-disable-next-line no-console
-    console.error('Component not find. ' + match[1])
+    console.error('Component not find. ' + node.attributes.of)
     return {
       node: { type: 'html', value: '<!-- Invalid component -->' }
     }
   }
-  return {
-    data: await parse(componentFile)
-  }
+
+  const data = await parse(componentFile)
+  setNodeData(node, 'data', data, pageData)
 }

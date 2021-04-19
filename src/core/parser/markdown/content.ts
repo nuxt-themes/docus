@@ -3,7 +3,6 @@ import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 
 import { DocusRootNode } from 'src/types'
-import directive from './directive'
 import handlers from './handler'
 import compiler from './compiler'
 import { flattenNodeText } from './utils'
@@ -37,7 +36,6 @@ export async function generateBody(content, options): Promise<DocusRootNode> {
     let stream = unified().use(parse)
 
     stream = usePlugins(options.remarkPlugins, stream)
-    stream = stream.use(directive)
     stream = stream.use(remark2rehype, rehypeOptions)
     stream = usePlugins(options.rehypePlugins, stream)
 
