@@ -1,5 +1,5 @@
 <template>
-  <blockquote class="tweet" :calss="`tweet-${layout}`">
+  <blockquote class="tweet" :class="`tweet-${layout}`">
     <div class="flex mb-4 author">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
         <img
