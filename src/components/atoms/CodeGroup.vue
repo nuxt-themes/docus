@@ -21,6 +21,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { isTag } from '../utils'
 
 export default defineComponent({
   data() {
@@ -90,8 +91,7 @@ export default defineComponent({
         .filter(
           slot =>
             slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
-            slot.componentOptions?.tag === 'code-block' ||
-            slot.asyncMeta?.tag === 'code-block'
+            isTag(slot, 'code-block')
         )
         .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}

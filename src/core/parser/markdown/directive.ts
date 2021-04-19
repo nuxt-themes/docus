@@ -7,8 +7,6 @@ const toFrontMatter = (yamlString: string) => `---
 ${yamlString}
 ---`
 
-const dataComponents = ['list']
-
 export default function htmlDirectives() {
   const toMarkdownExtensions = this.data().toMarkdownExtensions
   const parser = useMarkdownParser()
@@ -37,12 +35,6 @@ export default function htmlDirectives() {
   function visitDirective(node) {
     const data = node.data || (node.data = {})
     const hast = h(node.name, node.attributes)
-    if (dataComponents.includes(node.name)) {
-      hast.properties = {
-        ...hast.properties,
-        ...toData(node)
-      }
-    }
     data.hName = hast.tagName
     data.hProperties = hast.properties
   }
