@@ -14,7 +14,7 @@
             <a :href="`#${release.name}`">
               {{ release.name }}
             </a>
-            <span class="text-base font-normal text-gray-500">{{ formatDate(release) }}</span>
+            <span class="text-base font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
           </h2>
 
           <NuxtContent :document="release.body" />
@@ -39,13 +39,12 @@ export default defineComponent({
     }
   },
   setup() {
-    const { i18n, $content } = useContext()
+    const { $content } = useContext()
     const releases = ref()
     const toc = ref()
 
     useFetch(async () => {
-      const document = await $content('/_docus/repo/github')
-        .fetch()
+      const document = await $content('/_docus/repo/github').fetch()
 
       releases.value = document.releases
       toc.value = document.releases?.map(release => ({
@@ -55,10 +54,12 @@ export default defineComponent({
       }))
     })
 
-    const formatDate = release => {
+    const formatDate = (locale, release) => {
+      const currentLocale = locale || 'en'
+
       const date = new Date(release.date)
 
-      return date.toLocaleDateString(i18n.locale)
+      return date.toLocaleDateString(currentLocale)
     }
 
     return {
