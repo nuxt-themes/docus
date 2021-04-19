@@ -14,7 +14,7 @@
             <a :href="`#${release.name}`">
               {{ release.name }}
             </a>
-            <span class="text-base font-normal text-gray-500">{{ formatDate(release) }}</span>
+            <span class="text-base font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
           </h2>
           <NuxtContent :document="release" />
         </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext, computed } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -37,23 +37,28 @@ export default defineComponent({
       require: true
     }
   },
-  setup(props) {
-    const { i18n } = useContext()
+  setup() {
+    const { $content } = useContext()
+    const releases = ref()
+    const toc = ref()
 
-    const releases = computed(() => props.page?.data?.repository?.releases || [])
-    console.log(props.page?.data?.repository?.releases);
-    const toc = computed(() =>
-      releases.value.releases?.map(release => ({
+    useFetch(async () => {
+      const document = await $content('/_docus/repo/github').fetch()
+
+      releases.value = document.releases
+      toc.value = document.releases?.map(release => ({
         id: release.name,
         depth: 2,
         text: release.name
       }))
-    )
+    })
 
-    const formatDate = release => {
+    const formatDate = (locale, release) => {
+      const currentLocale = locale || 'en'
+
       const date = new Date(release.date)
 
-      return date.toLocaleDateString(i18n.locale)
+      return date.toLocaleDateString(currentLocale)
     }
 
     return {

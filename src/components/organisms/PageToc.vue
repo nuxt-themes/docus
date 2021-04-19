@@ -67,7 +67,8 @@
 </template>
 
 <script>
-import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
+import { useScrollspy } from '../../app/composables'
 import { scrollToHeading } from '../utils'
 
 export default defineComponent({
@@ -82,64 +83,33 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const observer = ref()
-    const visibleHeadings = ref([])
-    const activeHeadings = ref([])
     const showMobileToc = ref(false)
     const mockedToc = ref([])
+    const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
 
-    onMounted(() => {
-      // temporary mock structured toc
-      props.toc.forEach(item => {
-        if (item.depth === 2) {
+    // temporary mock structured toc
+    props.toc.forEach(item => {
+      if (item.depth === 2) {
+        mockedToc.value.push(item)
+      } else if (item.depth === 3) {
+        const parent = mockedToc.value[mockedToc.value.length - 1]
+        if (parent && parent.depth === 2) {
+          if (!parent.children) {
+            parent.children = []
+          }
+          parent.children.push(item)
+        } else {
           mockedToc.value.push(item)
-        } else if (item.depth === 3) {
-          const parent = mockedToc.value[mockedToc.value.length - 1]
-          if (parent && parent.depth === 2) {
-            if (!parent.children) {
-              parent.children = []
-            }
-            parent.children.push(item)
-          } else {
-            mockedToc.value.push(item)
-          }
         }
-      })
-
-      const observerCallback = entries => {
-        entries.forEach(entry => {
-          const id = entry.target.id
-          if (entry.isIntersecting) {
-            visibleHeadings.value.push(id)
-          } else {
-            visibleHeadings.value = visibleHeadings.value.filter(t => t !== id)
-          }
-        })
       }
+    })
 
-      observer.value = new IntersectionObserver(observerCallback)
-
-      const headings = [
+    onMounted(() =>
+      updateHeadings([
         ...document.querySelectorAll('.nuxt-content h2'),
         ...document.querySelectorAll('.nuxt-content h3')
-      ]
-
-      headings.forEach(heading => {
-        observer.value.observe(heading)
-      })
-    })
-
-    watch(visibleHeadings, (val, oldVal) => {
-      if (val.length === 0) {
-        activeHeadings.value = oldVal
-      } else {
-        activeHeadings.value = val
-      }
-    })
-
-    onBeforeUnmount(() => {
-      observer.value.disconnect()
-    })
+      ])
+    )
 
     const isActiveParent = link => {
       return link.children && link.children.some(child => activeHeadings.value.includes(child.id))
