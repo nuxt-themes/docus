@@ -15,6 +15,10 @@ const DEFAULTS = {
   directives: {
     'props': propsDirective
   },
+  dataComponents: [
+    'block-hero',
+    'block-features'
+  ],
   remarkPlugins: [
     [
       r('core/parser/markdown/plugin/remark-prose'),
@@ -85,7 +89,7 @@ export function useMarkdownParser(options: any = {}) {
   options = defu(options, DEFAULTS)
   options.remarkPlugins.unshift([
     r('core/parser/markdown/plugin/directive'),
-    { directives: options.directives }
+    { directives: options.directives, dataComponents: options.dataComponents }
   ])
   processOptions(options)
 
