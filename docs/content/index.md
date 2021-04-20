@@ -11,7 +11,7 @@ title: title
 description: description
 cta:
   - Get started
-  - /get-started/installation]
+  - /get-started/installation
 secondary:
   - Open on GitHub
   - https://github.com/nuxtlabs/docus
