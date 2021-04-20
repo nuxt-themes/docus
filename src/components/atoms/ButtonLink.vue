@@ -1,19 +1,20 @@
 <template>
   <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
-    <VNode :node="content" />
+    <Markdown :node="content" />
   </NuxtLink>
 
   <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
-    <VNode :node="content" />
+    <Markdown :node="content" />
     <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
   </a>
 </template>
 
 <script>
 import { computed, defineComponent } from '@nuxtjs/composition-api'
-import { flatUnwrap } from '../utils'
+import { flatUnwrap, Markdown } from '~docus/utils'
 
 export default defineComponent({
+  components: { Markdown },
   props: {
     href: {
       type: String,

@@ -18,7 +18,7 @@
 import Vue from 'vue'
 import { defineComponent, ref, useContext, useFetch, onMounted } from '@nuxtjs/composition-api'
 import CopyButton from '../../components/atoms/CopyButton.vue'
-import { scrollToHeading } from '../../components/utils'
+import { scrollToHeading } from '~docus/utils'
 
 export default defineComponent({
   props: {

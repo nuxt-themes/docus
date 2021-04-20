@@ -21,7 +21,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
-import { isTag } from '../utils'
+import { isTag } from '~docus/utils'
 
 export default defineComponent({
   data() {

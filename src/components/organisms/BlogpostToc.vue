@@ -38,7 +38,7 @@
 <script>
 import { defineComponent, reactive, computed, toRefs, onMounted } from '@nuxtjs/composition-api'
 import { useScrollspy } from '../../app/composables'
-import { scrollToHeading } from '../utils'
+import { scrollToHeading } from '~docus/utils'
 
 export default defineComponent({
   props: {

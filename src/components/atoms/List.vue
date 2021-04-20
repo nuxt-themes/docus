@@ -5,7 +5,7 @@
         <Component :is="iconName" class="h-6 w-6" />
       </span>
       <span>
-        <VNode :node="item"/>
+        <Markdown :node="item"/>
       </span>
     </div>
   </div>
@@ -14,9 +14,10 @@
 <script>
 import { computed } from '@nuxtjs/composition-api'
 
-import { flatUnwrap } from '../utils'
+import { flatUnwrap, Markdown } from '~docus/utils'
 
 export default {
+  components: { Markdown },
   props: {
     /**
      * Array of string
