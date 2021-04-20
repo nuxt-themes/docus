@@ -4,9 +4,21 @@ template: landing
 title: Documentation Generator based on Nuxt and Windi.
 description: >-
   Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
-hero:
-  cta: [Get started, /get-started/installation]
-  secondary: [Open on GitHub, https://github.com/nuxtlabs/docus]
+---
+
+:::block-hero{yml}
+title: title
+description: description
+cta:
+  - Get started
+  - /get-started/installation]
+secondary:
+  - Open on GitHub
+  - https://github.com/nuxtlabs/docus
+:::
+
+:::block-features{yml}
+title: What's included?
 features:
   - icon: IconNuxt
     iconClass: 'text-hex-00DC82'
@@ -36,8 +48,4 @@ features:
   - icon: IconGitHub
     title: Open Source
     description: Docus is released under the MIT license and made with love by the NuxtLabs team.
----
-
-<block-hero :title="title" :description="description" v-bind="hero"></block-hero>
-
-<block-features title="What's included?" :features="features"></block-features>
+:::
