@@ -1,5 +1,5 @@
 <template>
-  <component :is="template" :error="error" />
+  <Component :is="template" :error="error" />
 </template>
 
 <script>
@@ -10,9 +10,9 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
-      template: 'Error',
+      template: 'Error'
     }
   },
   head() {

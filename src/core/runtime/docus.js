@@ -197,7 +197,7 @@ export async function createDocus({
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
-              template = typeof link.template === "string" ? `${link.template}-post` : link.template?.nested
+              template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
             }
             if (!link.children) {
               return

@@ -7,7 +7,7 @@ const fs = gracefulFs.promises
 const r = (...args: any[]) => resolve(__dirname, ...args)
 
 export default <Module>function docusAppModule() {
-  const { addLayout, nuxt } = this
+  const { nuxt } = this
   const { hook, options } = nuxt
 
   // Add layouts
