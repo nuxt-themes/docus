@@ -13,14 +13,7 @@ export default <Module>function docusThemeModule() {
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
 
     // include user content directory in scan process
-    windiOptions.scan.dirs.push(
-      r('components/'),
-      r('layouts/'),
-      r('pages/'),
-      r('plugins/'),
-      r('utils/'),
-      resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*')
-    )
+    windiOptions.scan.dirs.push(resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*'))
     windiOptions.scan.include = windiOptions.scan.include || []
     windiOptions.scan.include.push(__dirname)
 

@@ -1,8 +1,9 @@
 import { Module } from '@nuxt/types'
 
 export default <Module>function docusThemeModule() {
-  const { nuxt } = this
+  const { nuxt, requireModule } = this
   const { options } = nuxt
 
-  console.log(options)
+  if (options.theme && options.theme.path) requireModule(options.theme.path)
+  else requireModule('../components')
 }

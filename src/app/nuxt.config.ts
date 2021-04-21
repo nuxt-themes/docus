@@ -31,6 +31,7 @@ export default {
      */
     theme_color: '#06B6D4'
   },
+  theme: {},
 
   /**
    * Modules & plugins
