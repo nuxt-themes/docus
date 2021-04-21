@@ -27,7 +27,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const { $i18n, $docus, $content } = useContext()
     const prev = ref(null)
     const next = ref(null)
