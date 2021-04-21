@@ -35,7 +35,7 @@ export default defineComponent({
   props: {
     page: {
       type: Object,
-      require: true
+      required: true
     }
   },
   setup() {
