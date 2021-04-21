@@ -1,4 +1,3 @@
-import handlers from 'mdast-util-to-hast/lib/handlers'
 import all from 'mdast-util-to-hast/lib/all'
 import htmlTags from 'html-tags'
 import { paramCase } from 'change-case'
@@ -12,5 +11,5 @@ export default function paragraph(h, node) {
       return all(h, node)
     }
   }
-  return handlers.paragraph(h, node)
+  return h(node, 'ProseH', all(h, node))
 }
