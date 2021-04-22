@@ -7,11 +7,11 @@ import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 import filters from 'windicss/plugin/filters'
-import typography from 'windicss/plugin/typography'
+// import typography from 'windicss/plugin/typography'
 
 export default {
   darkMode: 'class',
-  plugins: [typography(), filters, aspectRatio],
+  plugins: [filters, aspectRatio],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -90,86 +90,86 @@ export default {
       typography: theme => ({
         DEFAULT: {
           css: {
-            letterSpacing: '-0.0125em',
-            maxWidth: 'none',
-            color: theme('colors.gray.700'),
-            '> :first-child': { marginTop: '-' },
-            '> :last-child': { marginBottom: '-' },
-            '&:first-child > :first-child': {
-              marginTop: '0'
-            },
-            '&:last-child > :last-child': {
-              marginBottom: '0'
-            },
-            'h1, h2': {
-              fontWeight: theme('fontWeight.bold')
-            },
-            'h1, h2, h3, h4': {
-              color: theme('colors.gray.900'),
-              letterSpacing: theme('letterSpacing.tight')
-            },
-            'h1, h2, h3': {
-              marginTop: '1.5em',
-              marginBottom: '0.5em'
-            },
-            h3: {
-              fontWeight: theme('fontWeight.semibold')
-            },
+            // letterSpacing: '-0.0125em',
+            // maxWidth: 'none',
+            // color: theme('colors.gray.700'),
+            // '> :first-child': { marginTop: '-' },
+            // '> :last-child': { marginBottom: '-' },
+            // '&:first-child > :first-child': {
+            //   marginTop: '0'
+            // },
+            // '&:last-child > :last-child': {
+            //   marginBottom: '0'
+            // },
+            // 'h1, h2': {
+            //   fontWeight: theme('fontWeight.bold')
+            // },
+            // 'h1, h2, h3, h4': {
+            //   color: theme('colors.gray.900'),
+            //   letterSpacing: theme('letterSpacing.tight')
+            // },
+            // 'h1, h2, h3': {
+            //   marginTop: '1.5em',
+            //   marginBottom: '0.5em'
+            // },
+            // h3: {
+            //   fontWeight: theme('fontWeight.semibold')
+            // },
             p: {
               marginTop: '0.5em',
               marginBottom: '0.5em'
             },
-            'h2 code': {
-              color: 'inherit',
-              fontWeight: 'inherit',
-              pointerEvents: 'none'
-            },
+            // 'h2 code': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit',
+            //   pointerEvents: 'none'
+            // },
             'h3 code': {
               color: 'inherit',
               fontWeight: 'inherit',
               pointerEvents: 'none'
             },
-            'h2 > a, h3 > a': {
-              color: 'inherit',
-              fontWeight: 'inherit',
-              position: 'relative',
-              code: {
-                border: '1px dashed transparent',
-                position: 'relative',
-                zIndex: '0'
-              },
-              '&:hover': {
-                borderBottomWidth: '0px',
-                paddingBottom: '0px',
-                code: {
-                  borderColor: theme('colors.gray.500')
-                }
-              },
-              '&:before': {
-                content: '""',
-                position: 'absolute',
-                top: '0px',
-                left: '0px',
-                width: '100%',
-                height: 'calc(100% + 4px)'
-              },
-              '&:hover:before': {
-                borderBottomWidth: '1px',
-                borderStyle: 'dashed',
-                borderBottomColor: theme('colors.gray.900')
-              },
-              'code:before': {
-                content: '""',
-                position: 'absolute',
-                top: '-4px',
-                left: '-4px',
-                zIndex: '-1',
-                width: 'calc(100% + 8px)',
-                height: 'calc(100% + 8px)',
-                backgroundColor: theme('colors.white'),
-                pointerEvents: 'none'
-              }
-            },
+            // 'h2 > a, h3 > a': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit',
+            //   position: 'relative',
+            //   code: {
+            //     border: '1px dashed transparent',
+            //     position: 'relative',
+            //     zIndex: '0'
+            //   },
+            //   '&:hover': {
+            //     borderBottomWidth: '0px',
+            //     paddingBottom: '0px',
+            //     code: {
+            //       borderColor: theme('colors.gray.500')
+            //     }
+            //   },
+            //   '&:before': {
+            //     content: '""',
+            //     position: 'absolute',
+            //     top: '0px',
+            //     left: '0px',
+            //     width: '100%',
+            //     height: 'calc(100% + 4px)'
+            //   },
+            //   '&:hover:before': {
+            //     borderBottomWidth: '1px',
+            //     borderStyle: 'dashed',
+            //     borderBottomColor: theme('colors.gray.900')
+            //   },
+            //   'code:before': {
+            //     content: '""',
+            //     position: 'absolute',
+            //     top: '-4px',
+            //     left: '-4px',
+            //     zIndex: '-1',
+            //     width: 'calc(100% + 8px)',
+            //     height: 'calc(100% + 8px)',
+            //     backgroundColor: theme('colors.white'),
+            //     pointerEvents: 'none'
+            //   }
+            // },
             'ol, ul': {
               marginLeft: '0px',
               marginRight: '0px',
@@ -293,53 +293,53 @@ export default {
             h1: {
               color: theme('colors.gray.100')
             },
-            h2: {
-              color: theme('colors.gray.100')
-            },
-            h3: {
-              color: theme('colors.gray.100')
-            },
+            // h2: {
+            //   color: theme('colors.gray.100')
+            // },
+            // h3: {
+            //   color: theme('colors.gray.100')
+            // },
             h4: {
               color: theme('colors.gray.100')
             },
-            'h2 code': {
-              color: 'inherit',
-              fontWeight: 'inherit'
-            },
-            'h3 code': {
-              color: 'inherit',
-              fontWeight: 'inherit'
-            },
-            'h2 > a': {
-              color: 'inherit',
-              fontWeight: 'inherit',
-              '&:hover': {
-                code: {
-                  borderColor: theme('colors.gray.500')
-                },
-                '&:before': {
-                  borderBottomColor: theme('colors.gray.100')
-                }
-              },
-              'code:before': {
-                backgroundColor: theme('colors.gray.900')
-              }
-            },
-            'h3 > a': {
-              color: 'inherit',
-              fontWeight: 'inherit',
-              '&:hover': {
-                code: {
-                  borderColor: theme('colors.gray.500')
-                },
-                '&:before': {
-                  borderBottomColor: theme('colors.gray.100')
-                }
-              },
-              'code:before': {
-                backgroundColor: theme('colors.gray.900')
-              }
-            },
+            // 'h2 code': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit'
+            // },
+            // 'h3 code': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit'
+            // },
+            // 'h2 > a': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit',
+            //   '&:hover': {
+            //     code: {
+            //       borderColor: theme('colors.gray.500')
+            //     },
+            //     '&:before': {
+            //       borderBottomColor: theme('colors.gray.100')
+            //     }
+            //   },
+            //   'code:before': {
+            //     backgroundColor: theme('colors.gray.900')
+            //   }
+            // },
+            // 'h3 > a': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit',
+            //   '&:hover': {
+            //     code: {
+            //       borderColor: theme('colors.gray.500')
+            //     },
+            //     '&:before': {
+            //       borderBottomColor: theme('colors.gray.100')
+            //     }
+            //   },
+            //   'code:before': {
+            //     backgroundColor: theme('colors.gray.900')
+            //   }
+            // },
             'figure figcaption': {
               color: theme('colors.gray.400')
             },

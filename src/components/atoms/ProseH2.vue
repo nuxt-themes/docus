@@ -1,16 +1,16 @@
 <template>
-  <h3><slot /></h3>
+  <h2><slot /></h2>
 </template>
 
 <style lang="postcss" scoped>
-h3 {
+h2 {
   color: theme('colors.gray.900');
   letter-spacing: theme('letterSpacing.tight');
-  font-size: 1.25em;
+  font-size: 1.5em;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   line-height: 1.3333333;
-  font-weight: theme('fontWeight.semibold');
+  font-weight: theme('fontWeight.bold');
 
   & a {
     color: inherit;
@@ -62,11 +62,11 @@ h3 {
   }
 }
 
-h3 + * {
+h2 + * {
   margin-top: 0;
 }
 
-.dark h3 {
+.dark h2 {
   color: theme('colors.gray.100');
   & code {
     color: inherit;
