@@ -45,7 +45,7 @@
 
 <script>
 import { defineComponent, onMounted } from '@nuxtjs/composition-api'
-import { scrollToHeading } from '../utils'
+import { scrollToHeading } from '../../utils'
 
 export default defineComponent({
   props: {
