@@ -1,31 +1,19 @@
 import { resolve } from 'path'
+import { nuxtConfig } from 'nuxt-extend'
 import defu from 'defu'
-import { Module } from '@nuxt/types'
-import { glob } from 'siroc'
+import type { NuxtConfig } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
+import { glob } from 'siroc'
 import defaultWindiConfig from './windi.config'
 import typographyWorkaround from './utils/workaround'
 
-const fs = gracefulFs.promises
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
-export default <Module>function docusDefaultThemeModule() {
-  const { nuxt, requireModule, addPlugin } = this
-  const { hook, options } = nuxt
+// WindiCSS setup
+function themeSetupModule() {
+  const { nuxt } = this
+  const { options, hook } = nuxt
 
-  // Override editor style on dev mode
-  if (options.dev) {
-    options.css.push(r('css/main.dev.css'))
-  }
-
-  options.css.push(r('css/main.css'), r('css/prism.css'))
-
-  // Disable color mode class suffix
-  options.colorMode = {
-    classSuffix: ''
-  }
-
-  // WindiCSS setup
   hook('windicss:options', (windiOptions: any) => {
     // Merge user & local Windi config
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
@@ -51,56 +39,11 @@ export default <Module>function docusDefaultThemeModule() {
     typographyWorkaround(windiOptions, nuxt)
   })
 
-  // Configure `components/` dir
   hook('components:dirs', async (dirs: any) => {
-    // Atoms
-    dirs.push({
-      path: r('./components/atoms'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('./components/atoms/icons'),
-      global: true,
-      level: 2
-    })
-
-    // Molecules
-    dirs.push({
-      path: r('./components/molecules'),
-      global: true,
-      level: 2
-    })
-
-    // Organisms
-    dirs.push({
-      path: r('./components/organisms'),
-      global: true,
-      level: 2
-    })
-    dirs.push({
-      path: r('./components/organisms/slots'),
-      global: true,
-      level: 3
-    })
-    if (options.dev) {
-      dirs.push({
-        path: r('./components/organisms/dev-slots'),
-        global: true,
-        level: 2
-      })
-    }
-
-    // Templates
-    dirs.push({
-      path: r('./components/templates'),
-      global: true,
-      level: 2
-    })
-
     // Get the user root `components` folder
+    // TODO: This should be done via nuxt-extend
     const componentsDirPath = resolve(nuxt.options.rootDir, 'components')
-    const componentsDirStat = await fs.stat(componentsDirPath).catch(() => null)
+    const componentsDirStat = await gracefulFs.promises.stat(componentsDirPath).catch(() => null)
 
     if (componentsDirStat && componentsDirStat.isDirectory()) {
       // Register the root `components` directory
@@ -119,23 +62,74 @@ export default <Module>function docusDefaultThemeModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
-
-  // Add layouts
-  hook('build:before', async () => {
-    // Add default error page if not defined
-    const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
-    const errorPageExists = await fs.stat(errorPagePath).catch(() => false)
-    if (!errorPageExists) {
-      options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
-    }
-  })
-
-  // Modules
-  requireModule('nuxt-windicss')
-  requireModule('@nuxtjs/color-mode')
-
-  // Plugins
-  addPlugin({
-    src: r('plugins/menu.ts')
-  })
 }
+
+const readyHook = ({ options }) => {
+  // Override editor style on dev mode
+  if (options.dev) {
+    options.css.push(r('css/main.dev.css'))
+  }
+
+  // Push local css files
+  options.css.push(r('css/main.css'))
+  options.css.push(r('css/prism.css'))
+
+  // Disable color mode class suffix
+  options.colorMode = {
+    classSuffix: ''
+  }
+}
+
+const beforeBuildHook = async ({ options }) => {
+  // Add default error page if not defined
+  const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')
+  const errorPageExists = await gracefulFs.promises.stat(errorPagePath).catch(() => false)
+  if (!errorPageExists) options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
+}
+
+const themeConfig: NuxtConfig = nuxtConfig({
+  name: 'defaultTheme',
+  rootDir: __dirname,
+  components: [
+    {
+      path: r('./components/atoms'),
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/atoms/icons'),
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/molecules'),
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/organisms'),
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/organisms/slots'),
+      global: true,
+      level: 3
+    },
+    {
+      path: r('./components/templates'),
+      global: true,
+      level: 3
+    }
+  ],
+  plugins: [r('plugins/menu.ts')],
+  modules: [themeSetupModule, 'nuxt-windicss', '@nuxtjs/color-mode'],
+  hooks: {
+    ready: readyHook,
+    build: {
+      before: beforeBuildHook
+    }
+  }
+})
+
+export default themeConfig
