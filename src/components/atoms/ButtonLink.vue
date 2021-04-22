@@ -34,7 +34,7 @@ export default defineComponent({
     }
   },
   computed: {
-    content () {
+    content() {
       return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
     }
   },

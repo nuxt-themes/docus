@@ -115,10 +115,10 @@ export default {
             // h3: {
             //   fontWeight: theme('fontWeight.semibold')
             // },
-            p: {
-              marginTop: '0.5em',
-              marginBottom: '0.5em'
-            },
+            // p: {
+            //   marginTop: '0.5em',
+            //   marginBottom: '0.5em'
+            // },
             // 'h2 code': {
             //   color: 'inherit',
             //   fontWeight: 'inherit',
