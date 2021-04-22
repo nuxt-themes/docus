@@ -11,5 +11,5 @@ export default function paragraph(h, node) {
       return all(h, node)
     }
   }
-  return h(node, 'prose-h', all(h, node))
+  return h(node, 'prose-p', all(h, node))
 }
