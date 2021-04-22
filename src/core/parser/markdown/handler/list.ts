@@ -3,7 +3,7 @@ import all from 'mdast-util-to-hast/lib/all'
 
 export default function list(h, node) {
   var props: any = {}
-  var name = `Prose${node.ordered ? 'Ol' : 'Ul'}`
+  var name = `prose-${node.ordered ? 'ol' : 'ul'}`
   var items
   var index = -1
   var length
