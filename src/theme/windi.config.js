@@ -280,9 +280,9 @@ export default {
             'ol > li::before': {
               color: theme('colors.gray.400')
             },
-            'ul > li::before': {
-              backgroundColor: theme('colors.gray.600')
-            },
+            // 'ul > li::before': {
+            //   backgroundColor: theme('colors.gray.600')
+            // },
             hr: {
               borderColor: theme('colors.gray.700')
             },
