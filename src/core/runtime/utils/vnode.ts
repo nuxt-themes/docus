@@ -1,3 +1,11 @@
+const TAGS_MAP = {
+  p: ['p', 'prose-paragaph'],
+  ul: ['ul', 'prose-ul'],
+  ol: ['ol', 'prose-ol'],
+}
+
+const getTags = _tags => _tags.flatMap(t => TAGS_MAP[t])
+
 // @vue/component
 export const Markdown = {
   functional: true,
@@ -9,11 +17,9 @@ export function isTag(vnode: any, tag: string): boolean {
 }
 
 export function unwrap(vnode: any, tags = ['p']) {
-  if (!vnode.children) {
-    return [vnode]
-  }
+  tags = getTags(tags)
   const needUnwrap = tags.some(tag => isTag(vnode, tag))
-  return needUnwrap ? vnode.children : [vnode]
+  return needUnwrap ? vnode.children || vnode?.componentOptions?.children || vnode?.asyncMeta?.children || [vnode] : [vnode]
 }
 
 export function flatUnwrap(vnodes: any[], tags = ['p']) {
