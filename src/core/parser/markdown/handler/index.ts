@@ -1,8 +1,8 @@
-import codeHandler from './code'
-import htmlHandler from './html'
-import paragraphHandler from './paragraph'
+import code from './code'
+import html from './html'
+import heading from './heading'
 import list from './list'
-import heading from './list'
+import paragraph from './paragraph'
 
 
 export default async function handlers(highlighter) {
@@ -12,9 +12,9 @@ export default async function handlers(highlighter) {
   }
 
   return {
-    code: codeHandler(highlighter),
-    paragraph: paragraphHandler,
-    html: htmlHandler,
+    code: code(highlighter),
+    paragraph: paragraph,
+    html: html,
     list,
     heading
   }
