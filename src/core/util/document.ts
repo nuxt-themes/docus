@@ -1,5 +1,6 @@
 import { withoutTrailingSlash } from 'ufo'
 import { DocusDocument, DocusMarkdownNode } from '../../types'
+import { expandTags } from '../runtime/utils'
 
 export function generatePosition(path: string, document: DocusDocument): string {
   const position = path
@@ -39,7 +40,7 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
     // top level `text` can be ignored
     .filter(node => node.type !== 'text')
 
-  if (first && first.tag === 'h1') {
+  if (first && expandTags(['h1']).includes(first.tag)) {
     if (!document.title) {
       document.title = getTextContent(first)
       Object.assign(first, {
@@ -48,7 +49,7 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
       })
     }
     // look for second element to find description
-    if (second && second.tag === 'blockquote') {
+    if (second && expandTags(['blockquote']).includes(second.tag)) {
       if (!document.description) {
         document.description = getTextContent(second)
         Object.assign(second, {
