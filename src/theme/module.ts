@@ -5,5 +5,5 @@ export default <Module>function docusThemeModule() {
   const { options } = nuxt
 
   if (options.theme && options.theme.path) requireModule(options.theme.path)
-  else requireModule('../components')
+  else requireModule('../defaultTheme')
 }

@@ -7,7 +7,7 @@
     ".": "./dist/index.js",
     "./dist/app/*": "./dist/app/*",
     "./dist/admin/*": "./dist/admin/*",
-    "./dist/components/*": "./dist/components/*",
+    "./dist/defaultTheme/*": "./dist/defaultTheme/*",
     "./dist/core/*": "./dist/core/*",
     "./dist/github/*": "./dist/github/*",
     "./dist/i18n/*": "./dist/i18n/*",

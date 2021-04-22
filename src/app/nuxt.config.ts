@@ -54,7 +54,6 @@ export default {
     r('../i18n'),
     r('../core')
   ],
-  plugins: [r('plugins/menu')],
 
   /**
    * Build configs
