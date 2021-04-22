@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { withDocus } from '../src'
 
 export default withDocus({
@@ -21,5 +22,8 @@ export default withDocus({
     chrome: {
       browserWSEndpoint: 'wss://chrome.browserless.io/'
     }
+  },
+  windicss: {
+    root: resolve(__dirname, '..')
   }
 })
