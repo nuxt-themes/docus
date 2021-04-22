@@ -60,6 +60,7 @@
     "lodash.groupby": "^4.6.0",
     "marked": "^2.0.3",
     "nuxt-edge": "^2.16.0-26969781.9212d34e",
+    "nuxt-extend": "^0.0.3",
     "nuxt-i18n": "^6.24.0",
     "nuxt-vite": "^0.0.36",
     "nuxt-windicss": "^0.5.4",
