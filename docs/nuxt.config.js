@@ -1,11 +1,17 @@
-import { resolve } from 'path'
 import { withDocus } from '../src'
 
 export default withDocus({
-  content: {
-    liveEdit: false
-  },
+  /**
+   * Has to specify rootDir as we use nuxt-extend
+   */
+  rootDir: __dirname,
+  /**
+   * Modules
+   */
   buildModules: ['vue-plausible'],
+  /**
+   * Modules config
+   */
   plausible: {
     // https://github.com/moritzsternemann/vue-plausible#configuration
     domain: 'docus.dev'
@@ -15,9 +21,5 @@ export default withDocus({
     chrome: {
       browserWSEndpoint: 'wss://chrome.browserless.io/'
     }
-  },
-  windicss: {
-    root: resolve(__dirname, '..'),
-    config: resolve(__dirname, 'windi.config.js')
   }
 })
