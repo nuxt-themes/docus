@@ -1,8 +1,12 @@
 import { resolve } from 'path'
+import { nuxtConfig } from 'nuxt-extend'
 
 const r = (path: any) => resolve(__dirname, path)
 
-export default {
+export default nuxtConfig({
+  name: 'docus',
+  rootDir: __dirname,
+  extends: r('../defaultTheme'),
   /**
    * Default app config
    */
@@ -44,7 +48,6 @@ export default {
     '@nuxtjs/pwa',
     // Local modules
     r('module'),
-    r('../theme'),
     r('../social-image'),
     r('../twitter'),
     r('../github')
@@ -89,4 +92,4 @@ export default {
     nprogress: r('mock/default'),
     jwt_decode: r('mock/default')
   }
-}
+})
