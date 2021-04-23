@@ -3,7 +3,7 @@ import { Node } from 'unist'
 import { H } from 'mdast-util-to-hast'
 import all from 'mdast-util-to-hast/lib/all'
 
-export default function listItem(h: H, node: Node, parent) {
+export default function listItem(h: H, node: Node, parent: Node) {
   let result = all(h, node)
   let head = result[0]
   let loose = parent ? listLoose(parent) : listItemLoose(node)

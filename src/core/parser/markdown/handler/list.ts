@@ -3,7 +3,7 @@ import { Node } from 'unist'
 import { H } from 'mdast-util-to-hast'
 import all from 'mdast-util-to-hast/lib/all'
 
-export default function list(h: H, node: Node): Node {
+export default function list(h: H, node: Node) {
   const props: any = {}
   const name = `prose-${node.ordered ? 'ol' : 'ul'}`
   let items
