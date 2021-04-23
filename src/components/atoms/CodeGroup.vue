@@ -91,12 +91,14 @@ export default defineComponent({
         .filter(
           slot =>
             slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
-            isTag(slot, 'code-block')
+            isTag(slot, 'code-block') ||
+            isTag(slot, 'prose-code')
         )
         .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+          const [firstChild] = slot.children || slot.componentOptions?.children || slot.asyncMeta?.children || []
           return {
-            label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
+            label: attrs.label || firstChild?.children[0].text || 'untitled',
             active: typeof attrs.active !== 'undefined'
           }
         })
