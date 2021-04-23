@@ -208,34 +208,34 @@ export default {
               color: 'inherit',
               fontWeight: 'inherit'
             },
-            code: {
-              fontWeight: '400',
-              padding: theme('padding.1'),
-              color: 'inherit',
-              backgroundColor: theme('colors.gray.100'),
-              borderRadius: theme('borderRadius.md')
-            },
-            'code::before': {
-              content: ''
-            },
-            'code::after': {
-              content: ''
-            },
-            pre: {
-              backgroundColor: false,
-              color: false,
-              borderRadius: theme('borderRadius.md'),
-              paddingTop: theme('padding.3'),
-              paddingRight: theme('padding.4'),
-              paddingBottom: theme('padding.3'),
-              paddingLeft: theme('padding.4'),
-              marginTop: '0px',
-              marginBottom: '0px'
-            },
-            'pre code': {
-              backgroundColor: 'transparent',
-              fontFamily: defaultTheme.fontFamily.mono.join()
-            },
+            // code: {
+            //   fontWeight: '400',
+            //   padding: theme('padding.1'),
+            //   color: 'inherit',
+            //   backgroundColor: theme('colors.gray.100'),
+            //   borderRadius: theme('borderRadius.md')
+            // },
+            // 'code::before': {
+            //   content: ''
+            // },
+            // 'code::after': {
+            //   content: ''
+            // },
+            // pre: {
+            //   backgroundColor: false,
+            //   color: false,
+            //   borderRadius: theme('borderRadius.md'),
+            //   paddingTop: theme('padding.3'),
+            //   paddingRight: theme('padding.4'),
+            //   paddingBottom: theme('padding.3'),
+            //   paddingLeft: theme('padding.4'),
+            //   marginTop: '0px',
+            //   marginBottom: '0px'
+            // },
+            // 'pre code': {
+            //   backgroundColor: 'transparent',
+            //   fontFamily: defaultTheme.fontFamily.mono.join()
+            // },
             table: {
               fontSize: theme('fontSize.sm')[0],
               lineHeight: theme('fontSize.sm')[1].lineHeight
@@ -343,22 +343,22 @@ export default {
             'figure figcaption': {
               color: theme('colors.gray.400')
             },
-            code: {
-              fontWeight: '400',
-              color: 'inherit',
-              backgroundColor: theme('colors.gray.800'),
-              borderRadius: theme('borderRadius.md')
-            },
-            'code::before': {
-              content: ''
-            },
-            'code::after': {
-              content: ''
-            },
-            'pre code': {
-              backgroundColor: 'transparent',
-              color: theme('colors.gray.100')
-            },
+            // code: {
+            //   fontWeight: '400',
+            //   color: 'inherit',
+            //   backgroundColor: theme('colors.gray.800'),
+            //   borderRadius: theme('borderRadius.md')
+            // },
+            // 'code::before': {
+            //   content: ''
+            // },
+            // 'code::after': {
+            //   content: ''
+            // },
+            // 'pre code': {
+            //   backgroundColor: 'transparent',
+            //   color: theme('colors.gray.100')
+            // },
             'a code': {
               color: 'inherit',
               fontWeight: theme('fontWeight.medium')

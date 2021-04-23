@@ -15,9 +15,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { defineComponent, ref, useContext, useFetch, onMounted } from '@nuxtjs/composition-api'
-import CopyButton from '../../components/atoms/CopyButton.vue'
 import { scrollToHeading } from '~docus/utils'
 
 export default defineComponent({
@@ -43,14 +41,6 @@ export default defineComponent({
       }
 
       setTimeout(() => {
-        const blocks = document.getElementsByClassName('nuxt-content-highlight')
-
-        for (const block of blocks) {
-          const Button = Vue.extend(CopyButton)
-          const component = new Button().$mount()
-          block.appendChild(component.$el)
-        }
-
         const headings = [
           ...document.querySelectorAll('.nuxt-content h2'),
           ...document.querySelectorAll('.nuxt-content h3')
