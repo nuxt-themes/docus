@@ -19,7 +19,7 @@ export default <Module>function docusThemeModule() {
       r('pages/'),
       r('plugins/'),
       r('utils/'),
-      resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*')
+      resolve(options.srcDir, options.dir.pages, '**/*')
     )
     windiOptions.scan.include = windiOptions.scan.include || []
     windiOptions.scan.include.push(__dirname)

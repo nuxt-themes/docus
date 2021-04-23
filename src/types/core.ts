@@ -72,3 +72,13 @@ export interface StringMap {
 export interface Colors {
   [key: string]: string | StringMap
 }
+
+//  Storage
+export interface DriverOptions {
+  mountPoint: string;
+  base: string;
+  defaults?: any
+}
+export interface StorageOptions {
+  drivers: DriverOptions[]
+}

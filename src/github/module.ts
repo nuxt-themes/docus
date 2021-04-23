@@ -11,17 +11,9 @@ export default <Module>function docusGithubModule() {
   options.privateRuntimeConfig = options.privateRuntimeConfig || {}
   options.privateRuntimeConfig.githubToken = process.env.GITHUB_TOKEN
 
-  // Inject `docus` into ssrContext (for releases)
-  // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
-  hook('vue-renderer:context', (ssrContext: any) => {
-    ssrContext.docus = {
-      releases: get()
-    }
-  })
-
   hook('docus:content:ready', async () => {
     try {
-      const storage = useStorage()
+      const { storage } = useStorage()
       const settings = await storage.getItem('data:settings.json') as DocusSettings
       
       const releases = await fetch(settings.github)

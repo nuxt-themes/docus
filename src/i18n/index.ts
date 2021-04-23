@@ -45,7 +45,7 @@ export default <Module>function docusI18n() {
   config.langDir = join(relative(options.srcDir, r('languages')), '/')
 
   if (!options.i18n?.locales?.length) {
-    const contentDir = resolve(options.srcDir, options?.dir?.pages || 'pages')
+    const contentDir = resolve(options.srcDir, options.dir.pages)
 
     const languageCodes = languages.map(({ code }) => code)
     const activeLanguages = fs.readdirSync(contentDir).filter(name => languageCodes.includes(name))

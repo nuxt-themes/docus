@@ -259,11 +259,8 @@ export async function createDocus({
       },
 
       async fetchReleases() {
-        if (process.server) {
-          return ssrContext.docus.releases
-        }
-        const repo = await this.data('github-releases')
-        return repo.releases
+        const { releases } = await this.data('github-releases')
+        return releases
       },
 
       async fetchLastRelease() {

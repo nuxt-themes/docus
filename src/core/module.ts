@@ -15,29 +15,7 @@ export default <Module>async function docusModule() {
 
   // Inject Docus theme as ~docus
   options.alias['~docus'] = r('core/runtime')
-
-  // Inject content dir in private runtime config
-  const contentDir = options?.dir?.pages || 'pages'
-  options.publicRuntimeConfig.contentDir = contentDir
-
-  hook('components:dirs', async (dirs: any) => {
-    dirs.push({
-      path: r('core/runtime/components'),
-      global: true,
-      level: 2
-    })
-  })
-  // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
-  hook('build:before', async () => {
-    // To support older version of Nuxt
-    const pagesDirPath = resolve(options.srcDir, options.dir.pages)
-    const pagesDirExists = await exists(pagesDirPath)
-    if (!pagesDirExists) {
-      options.build.createRoutes = () => []
-      options.watch.push(pagesDirPath)
-    }
-  })
-
+  
   addPlugin({
     src: r('core/runtime/plugin.js'),
     filename: 'docus.js'
@@ -80,30 +58,36 @@ export default <Module>async function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
 
-  const storage = useStorage()
-  const pagesDriver = docusDriver({
-    base: resolve(options.srcDir, contentDir),
-    prefix: 'pages'
-  }) as DocusDriver
-  const dataDriver = docusDriver({
-    base: resolve(options.srcDir, 'data'),
-    prefix: 'data',
-    defaults: {
-      'settings.json': useDefaults
-    }
-  }) as DocusDriver
-
-  try {
-  storage.mount('pages', pagesDriver)
-  storage.mount('data', dataDriver)
-  } catch(e) {}
-  hook('build:before', () => {
-    pagesDriver.init()
-    dataDriver.init()
+  const { storage, init } = useStorage({
+    drivers: [
+      {
+        base: resolve(options.srcDir, options.dir.pages),
+        mountPoint: 'pages'
+      },
+      {
+        base: resolve(options.srcDir, 'data'),
+        mountPoint: 'data',
+        defaults: {
+          'settings.json': useDefaults
+        }
+      }
+    ]
   })
+
+  hook('components:dirs', async (dirs: any) => {
+    dirs.push({
+      path: r('core/runtime/components'),
+      global: true,
+      level: 2
+    })
+  })
+  
+  hook('build:before', async () => {
+    init()
+  })
+
   hook('generate:before', async () => {
-    await pagesDriver.init()
-    await dataDriver.init()
+    await init()
   })
   
   // read docus settings
@@ -112,15 +96,12 @@ export default <Module>async function docusModule() {
   // default title and description for pages
   options.meta.name = docusSettings.title
   options.meta.description = docusSettings.description
-  // if (settings.colors && settings.colors.primary) {
-  //   options.meta.theme_color = settings.colors.primary
-  // }
-
 
   addServerMiddleware({
     path: '/_content',
     handler: createServerMiddleware(storage)
   })
+
   hook('vue-renderer:context', (ssrContext: any) => {
     const { query } = useDB()
     ssrContext.docus = ssrContext.docus || {}
@@ -128,5 +109,4 @@ export default <Module>async function docusModule() {
   })
   
   callHook('docus:content:ready')
-
 }

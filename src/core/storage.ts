@@ -4,6 +4,8 @@ import fsDriver from 'unstorage/drivers/fs'
 import { useParser } from './parser'
 import { useDB } from './database'
 import useHooks from './hooks'
+import { StorageOptions } from '../types'
+import { logger } from './util'
 
 export interface DocusDriver extends Driver {
   init(): Promise<void>;
@@ -23,7 +25,7 @@ export const docusDriver = defineDriver(options => {
       document = useDefaults(document)
     }
     // use prefix in document path
-    document.path = `/${options.prefix}` + document.path
+    document.path = `/${options.mountPoint}` + document.path
 
     await callHook('content:file:beforeInsert', document)
     
@@ -92,11 +94,26 @@ export const docusDriver = defineDriver(options => {
 })
 
 let _storage: Storage
-export function useStorage() {
+export function useStorage(options: StorageOptions = undefined) {
+  let drivers = []
   if (!_storage) {
-    _storage = createStorage({})
+    _storage = createStorage()
+
+    if (!options?.drivers) {
+      logger.warn("No driver specified for storage");
+    } else {
+      drivers = options.drivers.map(options => {
+        const driver = docusDriver(options) as DocusDriver
+        _storage.mount(options.mountPoint, driver)
+        return driver
+      })
+    }
   }
-  return _storage
+  return {
+    storage: _storage,
+    drivers,
+    init: async () => Promise.all(drivers.map(d => d.init()))
+  }
 }
 
 
