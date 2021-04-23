@@ -3,13 +3,14 @@ import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
+import { createQuery } from './QueryBuilder'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
+const join = (prefix, path) => `${prefix}${path.startsWith('/') || !path ? '' : '/'}${path}`
 
 export async function createDocus({
   app,
   ssrContext,
-  $content,
   $contentLocalePath,
   route,
   nuxtState = {},
@@ -22,7 +23,6 @@ export async function createDocus({
         return nuxtState.docus
       }
       const data = {
-        page: {},
         categories: {},
         lastRelease: null,
         settings: null,
@@ -49,12 +49,24 @@ export async function createDocus({
       }
     },
     methods: {
+      data (path) {
+        return createQuery(join('/data', path)).fetch()
+      },
+
+      search(path, options) {
+        if (typeof path !== 'string') {
+          options = path
+          path = ''
+        }
+        return createQuery(join('/pages', path), options)
+      },
+      page(path) {
+        return this.search(path).fetch()
+      },
       async fetchJSON(name, fields) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { path, extension, ...data } = await $content(name)
-          .only(fields)
-          .fetch()
-          .catch(() =>
+        const { path, extension, ...data } = await this.data(name)
+          .catch((e) =>
             // eslint-disable-next-line no-console
             console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
           )
@@ -99,8 +111,7 @@ export async function createDocus({
         if (process.dev) {
           fields.push('draft')
         }
-        const pages = await $content({ deep: true })
-          .where({ language: app.i18n.locale, draft, nav: { $ne: false } })
+        const pages = await this.search({ deep: true, language: app.i18n.locale, draft, nav: { $ne: false } })
           .only(fields)
           .sortBy('position', 'asc')
           .fetch()
@@ -193,6 +204,7 @@ export async function createDocus({
         if (!template) {
           // fetch from nav (root to link) and fallback to settings.template
           const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
+
           let links = this.currentNav.links || []
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
@@ -224,7 +236,7 @@ export async function createDocus({
         if (process.dev) {
           fields.push('draft')
         }
-        const docs = await $content({ deep: true })
+        const docs = await this.search({ deep: true })
           .where({ language: app.i18n.locale, draft, menu: { $ne: false } })
           .only(fields)
           .sortBy('position', 'asc')
@@ -240,7 +252,7 @@ export async function createDocus({
         if (process.server) {
           return ssrContext.docus.releases
         }
-        const repo = await $content('/_docus/repo/github').fetch()
+        const repo = await this.data('github-releases')
         return repo.releases
       },
 

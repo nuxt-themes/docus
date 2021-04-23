@@ -1,39 +1,31 @@
 import { resolve } from 'path'
 import { Module } from '@nuxt/types'
-import { DocusDocument } from '../types'
+import { DocusDocument, DocusSettings } from '../types'
 import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { useJSONParser, useMarkdownParser } from './parser'
-import { exists, r, readFile } from './util'
+import { exists, r } from './util'
+import { DocusDriver, docusDriver, useStorage } from './storage'
+import { createServerMiddleware } from './server'
+import useHooks from './hooks'
 
 export default <Module>async function docusModule() {
-  const { nuxt, requireModule, addPlugin } = this
+  const { nuxt, addServerMiddleware, addPlugin } = this
   const { options, hook, callHook } = nuxt
 
   // Inject Docus theme as ~docus
   options.alias['~docus'] = r('core/runtime')
 
   // Inject content dir in private runtime config
-  const contentDir = options?.content?.dir || 'content'
+  const contentDir = options?.dir?.pages || 'pages'
   options.publicRuntimeConfig.contentDir = contentDir
 
-  // read docus settings
-  let docusSettings
-  try {
-    const content = await readFile(resolve(options.srcDir, contentDir, 'settings.json'))
-    const userSettings = useJSONParser().parse(content)
-    docusSettings = useDefaults(userSettings)
-
-    // default title and description for pages
-    options.meta.name = docusSettings.title
-    options.meta.description = docusSettings.description
-    // if (settings.colors && settings.colors.primary) {
-    //   options.meta.theme_color = settings.colors.primary
-    // }
-  } catch (err) {
-    /* settings not found */
-  }
-
+  hook('components:dirs', async (dirs: any) => {
+    dirs.push({
+      path: r('core/runtime/components'),
+      global: true,
+      level: 2
+    })
+  })
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
   hook('build:before', async () => {
     // To support older version of Nuxt
@@ -44,8 +36,18 @@ export default <Module>async function docusModule() {
       options.watch.push(pagesDirPath)
     }
   })
+
+  addPlugin({
+    src: r('core/runtime/plugin.js'),
+    filename: 'docus.js'
+  })
+
+  const parserOptions = { markdown: {} }
+  await nuxt.callHook('docus:parserOptions', parserOptions)
+
+  const hooks = useHooks()
   // Configure content after each hook
-  hook('content:file:beforeInsert', (document: DocusDocument) => {
+  hooks.hook('content:file:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
       return
     }
@@ -77,31 +79,42 @@ export default <Module>async function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
 
-  addPlugin({
-    src: r('core/runtime/plugin.js'),
-    filename: 'docus.js'
-  })
-
-  const parserOptions = { markdown: {} }
-  await nuxt.callHook('docus:parserOptions', parserOptions)
-
-  const markdownParser = useMarkdownParser(parserOptions.markdown)
-
-  hook('content:ready', $content => {
-    callHook('docus:content:ready', { $content, settings: docusSettings})
-  })
-
-  await requireModule([
-    '@nuxt/content',
-    {
-      extendParser: {
-        '.md': (content: string) => markdownParser.parse(content)
-      },
-      markdown: {
-        prism: {
-          theme: ''
-        }
-      }
+  const storage = useStorage()
+  const pagesDriver = docusDriver({
+    base: resolve(options.srcDir, contentDir),
+    prefix: 'pages'
+  }) as DocusDriver
+  const dataDriver = docusDriver({
+    base: resolve(options.srcDir, 'data'),
+    prefix: 'data',
+    defaults: {
+      'settings.json': useDefaults
     }
-  ])
+  }) as DocusDriver
+  storage.mount('pages', pagesDriver)
+  storage.mount('data', dataDriver)
+
+  hook('build:before', () => {
+    pagesDriver.init()
+    dataDriver.init()
+  })
+  
+  // read docus settings
+  const docusSettings = await storage.getItem('data:settings.json') as Partial<DocusSettings>
+  
+  // default title and description for pages
+  options.meta.name = docusSettings.title
+  options.meta.description = docusSettings.description
+  // if (settings.colors && settings.colors.primary) {
+  //   options.meta.theme_color = settings.colors.primary
+  // }
+
+
+  addServerMiddleware({
+    path: '/_content',
+    handler: createServerMiddleware(storage)
+  })
+  
+  callHook('docus:content:ready')
+
 }

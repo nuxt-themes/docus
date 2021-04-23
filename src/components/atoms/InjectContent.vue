@@ -18,7 +18,7 @@ export default {
     page: {}
   }),
   async fetch() {
-    this.page = await this.$content(this.query).fetch()
+    this.page = await this.$docus.page(this.query)
   }
 }
 </script>

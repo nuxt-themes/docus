@@ -88,12 +88,11 @@ export default defineComponent({
     }
   },
   setup() {
-    const { $content } = useContext()
+    const { $docus } = useContext()
     const posts = ref()
 
     useFetch(async () => {
-      const documents = await $content('/blog', { deep: true })
-        .where({ slug: { $ne: '' } })
+      const documents = await $docus.search('/blog', { deep: true, slug: { $ne: '' } })
         .sortBy('date', 'desc')
         .fetch()
 
