@@ -69,7 +69,8 @@ export default defineComponent({
       const language = i18n.locale
       const draft = $docus.ui?.draft ? undefined : false
 
-      const [_prev, _next] = await $docus.search({ deep: true, language, draft, menu: { $ne: false } })
+      const [_prev, _next] = await $docus.search({ deep: true })
+        .where({ language, draft, menu: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
         .surround(props.page.slug, { before: 1, after: 1 })

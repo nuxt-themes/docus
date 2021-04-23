@@ -3,7 +3,7 @@ import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
-import { createQuery } from './QueryBuilder'
+import { QueryBuilder } from './QueryBuilder'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 const join = (prefix, path) => `${prefix}${path.startsWith('/') || !path ? '' : '/'}${path}`
@@ -16,6 +16,15 @@ export async function createDocus({
   nuxtState = {},
   beforeNuxtRender
 }) {
+
+  function createQuery(path, options) {
+    const url = typeof path === "string" ? `${path.startsWith('/') ? '' : '/'}${path}` : ''
+    if (process.client) {
+      return new QueryBuilder(`/_content${url}` , options)
+    }
+    return ssrContext.docus.createQuery(url , options)
+  }
+
   let $nuxt = null
   const $docus = new Vue({
     data() {
@@ -111,7 +120,8 @@ export async function createDocus({
         if (process.dev) {
           fields.push('draft')
         }
-        const pages = await this.search({ deep: true, language: app.i18n.locale, draft, nav: { $ne: false } })
+        const pages = await this.search({ deep: true })
+          .where({ language: app.i18n.locale, draft, nav: { $ne: false } })
           .only(fields)
           .sortBy('position', 'asc')
           .fetch()

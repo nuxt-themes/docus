@@ -92,7 +92,8 @@ export default defineComponent({
     const posts = ref()
 
     useFetch(async () => {
-      const documents = await $docus.search('/blog', { deep: true, slug: { $ne: '' } })
+      const documents = await $docus.search('/blog', { deep: true })
+        .where({ slug: { $ne: '' } })
         .sortBy('date', 'desc')
         .fetch()
 

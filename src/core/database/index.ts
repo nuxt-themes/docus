@@ -49,13 +49,13 @@ function find(url, params) {
               query = query.sortBy(key, value)
             } else {
               for (const [key, value] of Object.entries(sort)) {
-                query = query.sortBy(key, value)
+                query = query.sortBy(key, value as string)
               }
             }
           }
         } else {
           for (const [key, value] of Object.entries(params.sortBy)) {
-            query = query.sortBy(key, value)
+            query = query.sortBy(key, value as string)
           }
         }
       } else {

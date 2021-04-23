@@ -7,6 +7,7 @@ import { exists, r } from './util'
 import { DocusDriver, docusDriver, useStorage } from './storage'
 import { createServerMiddleware } from './server'
 import useHooks from './hooks'
+import { useDB } from './database'
 
 export default <Module>async function docusModule() {
   const { nuxt, addServerMiddleware, addPlugin } = this
@@ -91,12 +92,18 @@ export default <Module>async function docusModule() {
       'settings.json': useDefaults
     }
   }) as DocusDriver
+
+  try {
   storage.mount('pages', pagesDriver)
   storage.mount('data', dataDriver)
-
+  } catch(e) {}
   hook('build:before', () => {
     pagesDriver.init()
     dataDriver.init()
+  })
+  hook('generate:before', async () => {
+    await pagesDriver.init()
+    await dataDriver.init()
   })
   
   // read docus settings
@@ -113,6 +120,11 @@ export default <Module>async function docusModule() {
   addServerMiddleware({
     path: '/_content',
     handler: createServerMiddleware(storage)
+  })
+  hook('vue-renderer:context', (ssrContext: any) => {
+    const { query } = useDB()
+    ssrContext.docus = ssrContext.docus || {}
+    ssrContext.docus.createQuery = query
   })
   
   callHook('docus:content:ready')

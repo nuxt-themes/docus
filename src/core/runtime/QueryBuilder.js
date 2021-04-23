@@ -1,12 +1,10 @@
 import { $fetch } from 'ohmyfetch'
 
 export class QueryBuilder {
-  constructor (url, options = {}) {
+  constructor (url, { deep = false, text = false } = {}) {
     this.url = url
     this.params = {
-      deep: false,
-      text: false,
-      ...options
+      deep, text
     }
   }
   
@@ -105,9 +103,4 @@ export class QueryBuilder {
       headers: { 'Content-Type': 'application/json' }
     })
   }
-}
-
-export function createQuery(path, options) {
-    const url = typeof path === "string" ? `/_content${path.startsWith('/') ? '' : '/'}${path}` : '/_content'
-    return new QueryBuilder(url, options)
 }
