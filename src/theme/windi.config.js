@@ -170,32 +170,32 @@ export default {
             //     pointerEvents: 'none'
             //   }
             // },
-            'ol, ul': {
-              marginLeft: '0px',
-              marginRight: '0px',
-              padding: '0px'
-            },
-            'ul ul, ul ol, ol ul, ol ol': {
-              marginTop: '0.5em',
-              marginBottom: '0.5em'
-            },
-            li: {
-              marginTop: '0.25em',
-              marginBottom: '0.25em'
-            },
-            '> ul > li > *:last-child': {
-              marginBottom: '0.5em'
-            },
-            a: {
-              color: 'var(--primary-500)',
-              fontWeight: theme('fontWeight.medium'),
-              textDecoration: 'none',
-              '&:hover': {
-                borderBottomWidth: '1px',
-                borderBottomColor: 'var(--primary-500)',
-                paddingBottom: '1px'
-              }
-            },
+            // 'ol, ul': {
+            //   marginLeft: '0px',
+            //   marginRight: '0px',
+            //   padding: '0px'
+            // },
+            // 'ul ul, ul ol, ol ul, ol ol': {
+            //   marginTop: '0.5em',
+            //   marginBottom: '0.5em'
+            // },
+            // li: {
+            //   marginTop: '0.25em',
+            //   marginBottom: '0.25em'
+            // },
+            // '> ul > li > *:last-child': {
+            //   marginBottom: '0.5em'
+            // },
+            // a: {
+            //   color: 'var(--primary-500)',
+            //   fontWeight: theme('fontWeight.medium'),
+            //   textDecoration: 'none',
+            //   '&:hover': {
+            //     borderBottomWidth: '1px',
+            //     borderBottomColor: 'var(--primary-500)',
+            //     paddingBottom: '1px'
+            //   }
+            // },
             'a code': {
               color: 'inherit',
               fontWeight: theme('fontWeight.medium')
@@ -271,12 +271,12 @@ export default {
             strong: {
               color: theme('colors.gray.100')
             },
-            a: {
-              color: 'var(--primary-400)',
-              '&:hover': {
-                borderBottomColor: 'var(--primary-400)'
-              }
-            },
+            // a: {
+            //   color: 'var(--primary-400)',
+            //   '&:hover': {
+            //     borderBottomColor: 'var(--primary-400)'
+            //   }
+            // },
             'ol > li::before': {
               color: theme('colors.gray.400')
             },
