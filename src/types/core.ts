@@ -30,6 +30,8 @@ export interface DocusDocument {
   draft: boolean
 
   // generated
+  key: string
+  path: string
   slug: string
   to: string
   toc: false | Toc
@@ -77,7 +79,6 @@ export interface Colors {
 export interface DriverOptions {
   mountPoint: string
   base: string
-  defaults?: any
 }
 export interface StorageOptions {
   drivers: DriverOptions[]

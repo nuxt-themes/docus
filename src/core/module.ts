@@ -27,6 +27,9 @@ export default <Module>async function docusModule() {
   const hooks = useHooks()
   // Configure content after each hook
   hooks.hook('content:file:beforeInsert', (document: DocusDocument) => {
+    if (document.path === "/data/settings") {
+      Object.assign(document, useDefaults(document))
+    }
     if (document.extension !== '.md') {
       return
     }
@@ -66,10 +69,7 @@ export default <Module>async function docusModule() {
       },
       {
         base: resolve(options.srcDir, 'data'),
-        mountPoint: 'data',
-        defaults: {
-          'settings.json': useDefaults
-        }
+        mountPoint: 'data'
       }
     ]
   })

@@ -1,7 +1,7 @@
 import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
 
-import { StorageOptions } from '../types'
+import { DriverOptions, StorageOptions } from '../types'
 import { useParser } from './parser'
 import { useDB } from './database'
 import useHooks from './hooks'
@@ -11,7 +11,7 @@ export interface DocusDriver extends Driver {
   init(): Promise<void>
 }
 
-export const docusDriver = defineDriver(options => {
+export const docusDriver = defineDriver((options: DriverOptions) => {
   const { items } = useDB()
   const { callHook } = useHooks()
   const parser = useParser()
@@ -20,10 +20,6 @@ export const docusDriver = defineDriver(options => {
   const insert = async (key, content) => {
     let document = await parser.parse(key, content)
 
-    const useDefaults = options.defaults?.[key]
-    if (useDefaults) {
-      document = useDefaults(document)
-    }
     // use prefix in document path
     document.path = `/${options.mountPoint}` + document.path
 
