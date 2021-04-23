@@ -1,10 +1,10 @@
 import normalize from 'mdurl/encode'
+import { Node } from 'unist'
+import { H } from 'mdast-util-to-hast'
 import all from 'mdast-util-to-hast/lib/all'
 
-module.exports = link
-
-export default function link(h, node) {
-  const  props: any = {
+export default function link(h: H, node: Node): Node {
+  const props: any = {
     href: normalize(node.url)
   }
 

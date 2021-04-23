@@ -1,16 +1,17 @@
-
 import u from 'unist-builder'
+import { Node } from 'unist'
+import { H } from 'mdast-util-to-hast'
 import all from 'mdast-util-to-hast/lib/all'
 
-export default function listItem(h, node, parent) {
-  var result = all(h, node)
-  var head = result[0]
-  var loose = parent ? listLoose(parent) : listItemLoose(node)
-  var props: any = {}
-  var wrapped = []
-  var length
-  var index
-  var child
+export default function listItem(h: H, node: Node, parent) {
+  let result = all(h, node)
+  let head = result[0]
+  let loose = parent ? listLoose(parent) : listItemLoose(node)
+  let props: any = {}
+  let wrapped = []
+  let length
+  let index
+  let child
 
   if (typeof node.checked === 'boolean') {
     if (!head || head.tagName !== 'p') {
@@ -61,11 +62,11 @@ export default function listItem(h, node, parent) {
   return h(node, 'prose-li', props, wrapped)
 }
 
-function listLoose(node) {
-  var loose = node.spread
-  var children = node.children
-  var length = children.length
-  var index = -1
+function listLoose(node: Node) {
+  let loose = node.spread
+  const children = node.children as Node[]
+  const length = children.length
+  let index = -1
 
   while (!loose && ++index < length) {
     loose = listItemLoose(children[index])
@@ -74,10 +75,10 @@ function listLoose(node) {
   return loose
 }
 
-function listItemLoose(node) {
-  var spread = node.spread
-
+function listItemLoose(node: Node) {
+  const spread = node.spread
+  const children = (node.children || []) as Node[]
   return spread === undefined || spread === null
-    ? node.children.length > 1
+    ? children.length > 1
     : spread
 }
