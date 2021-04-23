@@ -75,8 +75,8 @@ export interface Colors {
 
 //  Storage
 export interface DriverOptions {
-  mountPoint: string;
-  base: string;
+  mountPoint: string
+  base: string
   defaults?: any
 }
 export interface StorageOptions {

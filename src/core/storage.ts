@@ -1,14 +1,14 @@
 import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
 
+import { StorageOptions } from '../types'
 import { useParser } from './parser'
 import { useDB } from './database'
 import useHooks from './hooks'
-import { StorageOptions } from '../types'
 import { logger } from './util'
 
 export interface DocusDriver extends Driver {
-  init(): Promise<void>;
+  init(): Promise<void>
 }
 
 export const docusDriver = defineDriver(options => {
@@ -19,7 +19,7 @@ export const docusDriver = defineDriver(options => {
 
   const insert = async (key, content) => {
     let document = await parser.parse(key, content)
-    
+
     const useDefaults = options.defaults?.[key]
     if (useDefaults) {
       document = useDefaults(document)
@@ -28,7 +28,7 @@ export const docusDriver = defineDriver(options => {
     document.path = `/${options.mountPoint}` + document.path
 
     await callHook('content:file:beforeInsert', document)
-    
+
     return items.insert({
       key,
       // TODO: Fetch file modified time
@@ -37,7 +37,7 @@ export const docusDriver = defineDriver(options => {
     })
   }
   return {
-    async init () {
+    async init() {
       const keys = await fs.getKeys()
       const tasks = keys.map(async key => {
         const content = await fs.getItem(key)
@@ -50,7 +50,7 @@ export const docusDriver = defineDriver(options => {
     },
     async getItem(key) {
       let item = await items.findOne({ key })
-      
+
       if (!item) {
         const content = await fs.getItem(key)
         item = await insert(key, content)
@@ -62,7 +62,7 @@ export const docusDriver = defineDriver(options => {
       if (await fs.hasItem(key)) {
         await fs.setItem(key, value)
       }
-      
+
       await insert(key, value)
     },
     async removeItem(key) {
@@ -84,7 +84,7 @@ export const docusDriver = defineDriver(options => {
         if (event === 'update') {
           await items.removeWhere(doc => doc.key === key)
           const content = await fs.getItem(key)
-          
+
           await insert(key, content)
         }
         callback(event, key)
@@ -100,7 +100,7 @@ export function useStorage(options: StorageOptions = undefined) {
     _storage = createStorage()
 
     if (!options?.drivers) {
-      logger.warn("No driver specified for storage");
+      logger.warn('No driver specified for storage')
     } else {
       drivers = options.drivers.map(options => {
         const driver = docusDriver(options) as DocusDriver
@@ -115,5 +115,3 @@ export function useStorage(options: StorageOptions = undefined) {
     init: async () => Promise.all(drivers.map(d => d.init()))
   }
 }
-
-

@@ -34,7 +34,7 @@ export default function htmlDirectives({ directives, dataComponents }) {
       if (key.startsWith(':')) {
         return [key, value]
       }
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         return [pageData[value] ? `:${key}` : key, value]
       }
       return [`:${key}`, JSON.stringify(value)]
@@ -43,34 +43,33 @@ export default function htmlDirectives({ directives, dataComponents }) {
   }
 
   return async (tree, { data: pageData }) => {
-    const jobs = [];
-    visit( tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor )
-  
+    const jobs = []
+    visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor)
+
     function visitor(node) {
       const directive = directives[node.name]
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== "undefined") {
-        hast.properties = bindData({
-          ...hast.properties,
-          ...toData(node)
-        }, pageData)
+      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
+        hast.properties = bindData(
+          {
+            ...hast.properties,
+            ...toData(node)
+          },
+          pageData
+        )
       }
 
       data.hName = hast.tagName
       data.hProperties = hast.properties
 
       if (directive) {
-        jobs.push(
-          directive(node, pageData)
-        )
+        jobs.push(directive(node, pageData))
       }
     }
-  
-    await Promise.all( jobs );
-    return tree;
+
+    await Promise.all(jobs)
+    return tree
   }
 }
-
-

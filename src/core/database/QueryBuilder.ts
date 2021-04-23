@@ -10,7 +10,17 @@ const omit = (obj, keys = []) => {
     .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {})
 }
 
-class QueryBuilder {
+export class QueryBuilder {
+  private query: any
+  private path: string
+  private init: any
+  private postprocess: Array<(data: any) => any>
+  private options: any
+  private onlyKeys: string[]
+  private withoutKeys: string[]
+  private sortKeys = []
+  private limitN: number
+  private skipN: number
   constructor({ query, path, init, text, postprocess = [] }, options) {
     this.query = query
     this.path = path
@@ -223,7 +233,7 @@ class QueryBuilder {
       if (this.options.watch) {
         this.onlyKeys.push('path', 'extension')
       }
-      
+
       // Map data and returns object picked by keys
       const fn = data => (Array.isArray(data) ? data.map(item => pick(item, this.onlyKeys)) : pick(data, this.onlyKeys))
       // Apply pick during postprocess
@@ -253,5 +263,3 @@ class QueryBuilder {
     return JSON.parse(JSON.stringify(data))
   }
 }
-
-module.exports = QueryBuilder

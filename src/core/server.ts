@@ -17,7 +17,7 @@ export const createServerMiddleware = storage => {
       const url = req.url!
       const body = await useBody(req)
       const result = await find(url, body || {})
-      
+
       return JSON.stringify(result)
     } else {
       return handle(req, res)

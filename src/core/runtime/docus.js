@@ -8,21 +8,13 @@ import { QueryBuilder } from './QueryBuilder'
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 const join = (prefix, path) => `${prefix}${path.startsWith('/') || !path ? '' : '/'}${path}`
 
-export async function createDocus({
-  app,
-  ssrContext,
-  $contentLocalePath,
-  route,
-  nuxtState = {},
-  beforeNuxtRender
-}) {
-
+export async function createDocus({ app, ssrContext, $contentLocalePath, route, nuxtState = {}, beforeNuxtRender }) {
   function createQuery(path, options) {
-    const url = typeof path === "string" ? `${path.startsWith('/') ? '' : '/'}${path}` : ''
+    const url = typeof path === 'string' ? `${path.startsWith('/') ? '' : '/'}${path}` : ''
     if (process.client) {
-      return new QueryBuilder(`/_content${url}` , options)
+      return new QueryBuilder(`/_content${url}`, options)
     }
-    return ssrContext.docus.createQuery(url , options)
+    return ssrContext.docus.createQuery(url, options)
   }
 
   let $nuxt = null
@@ -58,7 +50,7 @@ export async function createDocus({
       }
     },
     methods: {
-      data (path) {
+      data(path) {
         return createQuery(join('/data', path)).fetch()
       },
 
@@ -74,11 +66,10 @@ export async function createDocus({
       },
       async fetchJSON(name, fields) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { path, extension, ...data } = await this.data(name)
-          .catch((e) =>
-            // eslint-disable-next-line no-console
-            console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
-          )
+        const { path, extension, ...data } = await this.data(name).catch(e =>
+          // eslint-disable-next-line no-console
+          console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
+        )
         return data
       },
       async fetch() {
@@ -219,7 +210,7 @@ export async function createDocus({
           slugs.forEach(slug => {
             const link = findLinkBySlug(links, slug)
             if (link?.template) {
-              template = typeof link.template === "string" ? `${link.template}-post` : link.template?.nested
+              template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
             }
             if (!link.children) {
               return

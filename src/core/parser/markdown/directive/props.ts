@@ -30,7 +30,6 @@ function resolvePath(file: string) {
   return null
 }
 
-
 export default async function propsHandler(node: any, pageData: any) {
   const componentFile = resolvePath(node.attributes.of)
   if (!componentFile) {

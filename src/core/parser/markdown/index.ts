@@ -13,12 +13,9 @@ const DEFAULTS = {
     searchDepth: 2
   },
   directives: {
-    'props': propsDirective
+    props: propsDirective
   },
-  dataComponents: [
-    'block-hero',
-    'block-features'
-  ],
+  dataComponents: ['block-hero', 'block-features'],
   remarkPlugins: [
     [
       r('core/parser/markdown/plugin/remark-prose'),

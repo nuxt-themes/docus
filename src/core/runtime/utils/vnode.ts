@@ -1,7 +1,7 @@
 // @vue/component
 export const Markdown = {
   functional: true,
-  render: (h, ctx) => typeof ctx.props.node === "string" ? [ctx.props.node] : ctx.props.node
+  render: (h, ctx) => (typeof ctx.props.node === 'string' ? [ctx.props.node] : ctx.props.node)
 }
 
 export function isTag(vnode: any, tag: string): boolean {
@@ -17,10 +17,12 @@ export function unwrap(vnode: any, tags = ['p']) {
 }
 
 export function flatUnwrap(vnodes: any[], tags = ['p']) {
-  return vnodes
-    .flatMap(vnode => unwrap(vnode, tags))
-    // second step unwrap for inner tags like li
-    .flatMap(vnode => unwrap(vnode, tags))
-    // trim new lines
-    .filter(vnode => !vnode.text || !!vnode.text.trim())
+  return (
+    vnodes
+      .flatMap(vnode => unwrap(vnode, tags))
+      // second step unwrap for inner tags like li
+      .flatMap(vnode => unwrap(vnode, tags))
+      // trim new lines
+      .filter(vnode => !vnode.text || !!vnode.text.trim())
+  )
 }

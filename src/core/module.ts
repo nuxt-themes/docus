@@ -3,8 +3,8 @@ import { Module } from '@nuxt/types'
 import { DocusDocument, DocusSettings } from '../types'
 import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { exists, r } from './util'
-import { DocusDriver, docusDriver, useStorage } from './storage'
+import { r } from './util'
+import { useStorage } from './storage'
 import { createServerMiddleware } from './server'
 import useHooks from './hooks'
 import { useDB } from './database'
@@ -15,7 +15,7 @@ export default <Module>async function docusModule() {
 
   // Inject Docus theme as ~docus
   options.alias['~docus'] = r('core/runtime')
-  
+
   addPlugin({
     src: r('core/runtime/plugin.js'),
     filename: 'docus.js'
@@ -81,7 +81,7 @@ export default <Module>async function docusModule() {
       level: 2
     })
   })
-  
+
   hook('build:before', async () => {
     init()
   })
@@ -89,10 +89,10 @@ export default <Module>async function docusModule() {
   hook('generate:before', async () => {
     await init()
   })
-  
+
   // read docus settings
-  const docusSettings = await storage.getItem('data:settings.json') as Partial<DocusSettings>
-  
+  const docusSettings = (await storage.getItem('data:settings.json')) as Partial<DocusSettings>
+
   // default title and description for pages
   options.meta.name = docusSettings.title
   options.meta.description = docusSettings.description
@@ -107,6 +107,6 @@ export default <Module>async function docusModule() {
     ssrContext.docus = ssrContext.docus || {}
     ssrContext.docus.createQuery = query
   })
-  
+
   callHook('docus:content:ready')
 }
