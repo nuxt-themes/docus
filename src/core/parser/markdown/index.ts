@@ -20,12 +20,6 @@ const DEFAULTS = {
     'block-features'
   ],
   remarkPlugins: [
-    [
-      r('core/parser/markdown/plugin/remark-prose'),
-      {
-        proseClass: 'prose dark:prose-dark'
-      }
-    ],
     'remark-emoji',
     'remark-directive',
     'remark-squeeze-paragraphs',
