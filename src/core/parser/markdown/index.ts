@@ -13,13 +13,9 @@ const DEFAULTS = {
     searchDepth: 2
   },
   directives: {
-    'props': propsDirective
+    props: propsDirective
   },
-  dataComponents: [
-    'video-player',
-    'block-hero',
-    'block-features'
-  ],
+  dataComponents: ['video-player', 'block-hero', 'block-features'],
   remarkPlugins: [
     'remark-emoji',
     'remark-directive',
@@ -30,7 +26,7 @@ const DEFAULTS = {
     'remark-footnotes',
     'remark-gfm'
   ],
-  rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw'],
+  rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw']
 }
 
 function parseFrontMatter(file) {
