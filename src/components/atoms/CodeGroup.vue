@@ -112,28 +112,36 @@ export default defineComponent({
 button {
   outline: none;
 }
+
 .code-group {
-  & > .nuxt-content-highlight {
-    @apply mt-0;
-    &:not(.active) {
-      display: none;
-    }
-  }
-  .prose > .nuxt-content-highlight:not(.active) {
+  @apply my-4;
+
+  & .nuxt-content-highlight:not(.active) {
     display: none;
   }
+
+  & .code-block:not(.active) {
+    display: none;
+  }
+
+  >>> .nuxt-content-highlight {
+    @apply my-0;
+  }
 }
+
 .first-tab {
   & > .code-block:nth-child(2),
   & > .prose:nth-child(2) > .nuxt-content-highlight:nth-child(1) {
     display: block;
   }
 }
+
 .highlight-underline {
   bottom: -2px;
   height: 2px;
   transition: left 150ms, width 150ms;
 }
+
 .code-group ::v-deep {
   & pre[class*='language-'] {
     @apply rounded-t-none mt-0;
@@ -145,6 +153,7 @@ button {
     }
   }
 }
+
 .nuxt-content-highlight {
   margin: 0;
 }
