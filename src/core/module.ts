@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
-import { useDefaults } from './util/settings'
 import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
 
@@ -12,7 +11,7 @@ const r = (...args: string[]) => resolve(__dirname, ...args)
 export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule, addPlugin } = this
-  const { options, hook, callHook } = nuxt
+  const { options, hook } = nuxt
 
   // Inject Docus theme as ~docus
   options.alias['~docus'] = r('runtime')
@@ -20,26 +19,6 @@ export default <Module>async function docusModule() {
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
-
-  // read docus settings
-  const settingsPath = resolve(options.srcDir, contentDir, 'settings.json')
-  try {
-    const userSettings = require(settingsPath)
-    const settings = useDefaults(userSettings)
-
-    hook('content:ready', ($content: any) => {
-      callHook('docus:content:ready', { settings, $content })
-    })
-
-    // default title and description for pages
-    options.meta.name = settings.title
-    options.meta.description = settings.description
-    // if (settings.colors && settings.colors.primary) {
-    //   options.meta.theme_color = settings.colors.primary
-    // }
-  } catch (err) {
-    /* settings not found */
-  }
 
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
   hook('build:before', async () => {
