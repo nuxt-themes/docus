@@ -6,7 +6,6 @@ import list from './list'
 import listItem from './listItem'
 import table from './table'
 import paragraph from './paragraph'
-import hardBreak from './break'
 import image from './image'
 import blockquote from './blockquote'
 import strong from './strong'
@@ -19,7 +18,6 @@ export default async function handlers(highlighter) {
   }
 
   return {
-    break: hardBreak,
     code: code(highlighter),
     paragraph,
     html,
