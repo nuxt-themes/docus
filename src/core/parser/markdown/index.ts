@@ -16,6 +16,7 @@ const DEFAULTS = {
     'props': propsDirective
   },
   dataComponents: [
+    'video-player',
     'block-hero',
     'block-features'
   ],
