@@ -2,8 +2,8 @@
   <div class="grid lg:grid-cols-2 gap-4">
     <div v-for="(showcase, index) of showcases" :key="index" class="border dark:border-gray-800 rounded-md">
       <a :href="showcase" target="_blank" class="py-1 block">
-        <NuxtPicture loading="lazy" :src="`${showcase}/preview.png`" class="light-img rounded-md" width="1280" height="640" />
-        <NuxtPicture loading="lazy" :src="`${showcase}/preview-dark.png`" class="dark-img rounded-md" width="1280" height="640" />
+        <nuxt-picture loading="lazy" :src="`${showcase}/preview.png`" class="light-img rounded-md" width="1280" height="640" />
+        <nuxt-picture loading="lazy" :src="`${showcase}/preview-dark.png`" class="dark-img rounded-md" width="1280" height="640" />
       </a>
     </div>
   </div>
