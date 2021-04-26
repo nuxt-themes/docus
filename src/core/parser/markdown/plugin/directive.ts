@@ -27,22 +27,21 @@ export default function htmlDirectives({ directives, dataComponents }) {
     const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
 
     return Object.entries(data).reduce((acc, [key, value]) => {
-      acc[`:${key}`] = typeof value === "string" && pageData[value] ? value : JSON.stringify(value)
+      acc[`:${key}`] = typeof value === 'string' && pageData[value] ? value : JSON.stringify(value)
       return acc
     }, {})
   }
 
-
   return async (tree, { data: pageData }) => {
-    const jobs = [];
-    visit( tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor )
-  
+    const jobs = []
+    visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor)
+
     function visitor(node) {
       const directive = directives[node.name]
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== "undefined") {
+      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
         hast.properties = {
           ...hast.properties,
           ...toData(node, pageData)
@@ -53,15 +52,11 @@ export default function htmlDirectives({ directives, dataComponents }) {
       data.hProperties = hast.properties
 
       if (directive) {
-        jobs.push(
-          directive(node, pageData)
-        )
+        jobs.push(directive(node, pageData))
       }
     }
-  
-    await Promise.all( jobs );
-    return tree;
+
+    await Promise.all(jobs)
+    return tree
   }
 }
-
-

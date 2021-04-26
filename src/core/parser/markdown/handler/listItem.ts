@@ -4,12 +4,11 @@ import { H } from 'mdast-util-to-hast'
 import all from 'mdast-util-to-hast/lib/all'
 
 export default function listItem(h: H, node: Node, parent: Node) {
-  let result = all(h, node)
+  const result = all(h, node)
   let head = result[0]
-  let loose = parent ? listLoose(parent) : listItemLoose(node)
-  let props: any = {}
+  const loose = parent ? listLoose(parent) : listItemLoose(node)
+  const props: any = {}
   let wrapped = []
-  let length
   let index
   let child
 
@@ -36,7 +35,7 @@ export default function listItem(h: H, node: Node, parent: Node) {
     props.className = ['task-list-item']
   }
 
-  length = result.length
+  const length = result.length
   index = -1
 
   while (++index < length) {
@@ -78,7 +77,5 @@ function listLoose(node: Node) {
 function listItemLoose(node: Node) {
   const spread = node.spread
   const children = (node.children || []) as Node[]
-  return spread === undefined || spread === null
-    ? children.length > 1
-    : spread
+  return spread === undefined || spread === null ? children.length > 1 : spread
 }
