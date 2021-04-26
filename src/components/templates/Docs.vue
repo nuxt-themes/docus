@@ -43,8 +43,8 @@ export default defineComponent({
       // do not remove setTimeout (no headers)
       setTimeout(() => {
         const headings = [
-          ...document.querySelectorAll('.nuxt-content h2'),
-          ...document.querySelectorAll('.nuxt-content h3')
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {

@@ -19,7 +19,7 @@
       </div>
       <p v-if="page.description" class="mt-4 text-lg text-gray-600 dark:text-gray-300">{{ page.description }}</p>
     </section>
-    <NuxtContent :document="page" />
+    <NuxtContent :document="page" class="docus-content" />
     <PageBottom :page="page" />
   </div>
 </template>

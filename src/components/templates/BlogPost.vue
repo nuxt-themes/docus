@@ -37,7 +37,7 @@
 
         <BlogpostToc :toc="page.toc" class="mb-8" />
 
-        <NuxtContent :document="page" class="px-4" />
+        <NuxtContent :document="page" class="px-4 docus-content" />
       </div>
     </div>
   </AppContainer>
@@ -66,8 +66,8 @@ export default defineComponent({
 
       setTimeout(() => {
         const headings = [
-          ...document.querySelectorAll('.nuxt-content h2'),
-          ...document.querySelectorAll('.nuxt-content h3')
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {

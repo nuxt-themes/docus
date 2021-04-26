@@ -8,7 +8,7 @@
           <span class="flex-1">Releases</span>
         </h1>
       </div>
-      <div class="prose max-w-none dark:prose-dark nuxt-content">
+      <div class="prose max-w-none dark:prose-dark">
         <div v-for="release of releases" :key="release.name">
           <h2 :id="release.name" class="flex items-center justify-between">
             <a :href="`#${release.name}`">

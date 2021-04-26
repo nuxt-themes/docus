@@ -61,8 +61,8 @@ export default defineComponent({
 
     onMounted(() =>
       updateHeadings([
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
+        ...document.querySelectorAll('.docus-content h2'),
+        ...document.querySelectorAll('.docus-content h3')
       ])
     )
 

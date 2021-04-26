@@ -86,11 +86,10 @@ export default defineComponent({
     const showMobileToc = ref(false)
     const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
 
-
     onMounted(() =>
       updateHeadings([
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
+        ...document.querySelectorAll('.docus-content h2'),
+        ...document.querySelectorAll('.docus-content h3')
       ])
     )
 
