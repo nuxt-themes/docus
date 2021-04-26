@@ -35,7 +35,7 @@
           <img :src="page.imgUrl" alt="" class="object-cover" />
         </div>
 
-        <BlogpostToc :toc="page.toc" class="mb-8" />
+        <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
 
         <NuxtContent :document="page" class="px-4 docus-content" />
       </div>
