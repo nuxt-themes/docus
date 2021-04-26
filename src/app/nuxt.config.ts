@@ -36,6 +36,12 @@ export default nuxtConfig({
     theme_color: '#06B6D4'
   },
   theme: {},
+  /**
+   * Disable suffix from color-mode
+   */
+  colorMode: {
+    classSuffix: ''
+  },
 
   /**
    * Modules & plugins
@@ -56,8 +62,9 @@ export default nuxtConfig({
   modules: [
     // Local modules
     r('../i18n'),
-    r('../core')
+    r('../core/module')
   ],
+  plugins: [r('../core/plugin')],
 
   /**
    * Build configs
