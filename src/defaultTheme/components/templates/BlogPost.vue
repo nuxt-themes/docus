@@ -25,14 +25,14 @@
                 :key="index"
                 class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
               >
-                <img class="inline-block h-6 w-6 rounded-full" :src="author.avatarUrl" alt />
+                <nuxt-img class="inline-block h-6 w-6 rounded-full" :src="author.avatarUrl" alt />
               </span>
             </div>
           </div>
         </div>
 
         <div class="md:-mx-18 lg:-mx-24 aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
-          <img :src="page.imgUrl" alt="" class="object-cover" />
+          <nuxt-img :src="page.imgUrl" alt="" class="object-cover" />
         </div>
 
         <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />

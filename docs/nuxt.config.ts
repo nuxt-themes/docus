@@ -47,6 +47,8 @@ export default withDocus({
       'https://mdx.nuxtjs.org',
       'https://sanity.nuxtjs.org',
       'https://speedcurve.nuxtjs.org',
+      'https://pbs.twimg.com',
+      'https://source.unsplash.com',
       'https://user-images.githubusercontent.com'
     ]
   }
