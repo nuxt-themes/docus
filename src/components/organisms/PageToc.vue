@@ -88,6 +88,7 @@ export default defineComponent({
 
     onMounted(() =>
       updateHeadings([
+        ...document.querySelectorAll('.docus-content h1'),
         ...document.querySelectorAll('.docus-content h2'),
         ...document.querySelectorAll('.docus-content h3')
       ])

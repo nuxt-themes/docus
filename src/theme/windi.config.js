@@ -124,11 +124,11 @@ export default {
             //   fontWeight: 'inherit',
             //   pointerEvents: 'none'
             // },
-            'h3 code': {
-              color: 'inherit',
-              fontWeight: 'inherit',
-              pointerEvents: 'none'
-            },
+            // 'h3 code': {
+            //   color: 'inherit',
+            //   fontWeight: 'inherit',
+            //   pointerEvents: 'none'
+            // },
             // 'h2 > a, h3 > a': {
             //   color: 'inherit',
             //   fontWeight: 'inherit',
@@ -196,10 +196,10 @@ export default {
             //     paddingBottom: '1px'
             //   }
             // },
-            'a code': {
-              color: 'inherit',
-              fontWeight: theme('fontWeight.medium')
-            },
+            // 'a code': {
+            //   color: 'inherit',
+            //   fontWeight: theme('fontWeight.medium')
+            // },
             // strong: {
             //   color: theme('colors.gray.900'),
             //   fontWeight: theme('fontWeight.medium')
@@ -267,7 +267,7 @@ export default {
         },
         dark: {
           css: {
-            color: theme('colors.gray.50'),
+            // color: theme('colors.gray.50'),
             // strong: {
             //   color: theme('colors.gray.100')
             // },
@@ -277,9 +277,9 @@ export default {
             //     borderBottomColor: 'var(--primary-400)'
             //   }
             // },
-            'ol > li::before': {
-              color: theme('colors.gray.400')
-            },
+            // 'ol > li::before': {
+            //   color: theme('colors.gray.400')
+            // },
             // 'ul > li::before': {
             //   backgroundColor: theme('colors.gray.600')
             // },
@@ -290,18 +290,18 @@ export default {
             //   color: theme('colors.gray.400'),
             //   borderLeftColor: theme('colors.gray.700')
             // },
-            h1: {
-              color: theme('colors.gray.100')
-            },
+            // h1: {
+            //   color: theme('colors.gray.100')
+            // },
             // h2: {
             //   color: theme('colors.gray.100')
             // },
             // h3: {
             //   color: theme('colors.gray.100')
             // },
-            h4: {
-              color: theme('colors.gray.100')
-            },
+            // h4: {
+            //   color: theme('colors.gray.100')
+            // },
             // 'h2 code': {
             //   color: 'inherit',
             //   fontWeight: 'inherit'
@@ -359,10 +359,10 @@ export default {
             //   backgroundColor: 'transparent',
             //   color: theme('colors.gray.100')
             // },
-            'a code': {
-              color: 'inherit',
-              fontWeight: theme('fontWeight.medium')
-            },
+            // 'a code': {
+            //   color: 'inherit',
+            //   fontWeight: theme('fontWeight.medium')
+            // },
             thead: {
               color: theme('colors.gray.100'),
               borderBottomColor: theme('colors.gray.600')

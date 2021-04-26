@@ -43,6 +43,7 @@ export default defineComponent({
       // do not remove setTimeout (no headers)
       setTimeout(() => {
         const headings = [
+          ...document.querySelectorAll('.docus-content h1'),
           ...document.querySelectorAll('.docus-content h2'),
           ...document.querySelectorAll('.docus-content h3')
         ]
@@ -53,7 +54,7 @@ export default defineComponent({
             scrollToHeading(hash, '--docs-scroll-margin-block')
           })
         })
-      }, 300)
+      }, 500)
     })
 
     useFetch(async () => {
