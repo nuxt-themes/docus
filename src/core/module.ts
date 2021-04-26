@@ -6,15 +6,11 @@ import { contentConfig } from './util/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
 
 const fs = gracefulFs.promises
-const r = (...args: string[]) => resolve(__dirname, ...args)
 
 export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
-  const { nuxt, requireModule, addPlugin } = this
+  const { nuxt, requireModule } = this
   const { options, hook } = nuxt
-
-  // Inject Docus theme as ~docus
-  options.alias['~docus'] = r('runtime')
 
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
@@ -61,11 +57,6 @@ export default <Module>async function docusModule() {
     document.language = _language
     document.category = _category
     document.draft = document.draft || isDraft(slug)
-  })
-
-  addPlugin({
-    src: r('./runtime/plugin.js'),
-    filename: 'docus.js'
   })
 
   await requireModule(['@nuxt/content', contentConfig])
