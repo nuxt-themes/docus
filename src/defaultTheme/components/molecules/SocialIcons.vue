@@ -44,7 +44,7 @@ export default defineComponent({
   setup() {
     const { $docus } = useContext()
 
-    const settings = computed(() => $docus.settings)
+    const settings = computed(() => $docus.settings.value)
 
     return {
       settings

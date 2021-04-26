@@ -45,10 +45,10 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     categories() {
-      return this.$docus.categories[this.$i18n.locale]
+      return this.$docus.categories.value[this.$i18n.locale]
     },
     lastRelease() {
-      return this.$docus.lastRelease
+      return this.$docus.lastRelease.value
     }
   }
 })

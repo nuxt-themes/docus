@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <template v-if="settings.header.title && !settings.header.logo">
-      <span class="text-2xl font-bold text-gray-900 dark:text-gray-100 tracking-tighter">
+      <span class="text-2xl font-bold tracking-tighter text-gray-900 dark:text-gray-100">
         {{ settings.title }}
       </span>
     </template>
@@ -38,7 +38,7 @@ export default defineComponent({
   setup() {
     const { $docus } = useContext()
 
-    const settings = computed(() => $docus.settings)
+    const settings = computed(() => $docus.settings.value)
 
     const logo = computed(() => {
       if (!settings.value.logo) return

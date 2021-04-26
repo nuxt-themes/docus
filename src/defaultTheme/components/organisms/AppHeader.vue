@@ -7,7 +7,7 @@
         <Logo :settings="settings" />
       </div>
 
-      <div class="hidden lg:flex lg:flex-1 items-center">
+      <div class="items-center hidden lg:flex lg:flex-1">
         <HeaderNavigation />
       </div>
 
@@ -56,7 +56,7 @@ export default defineComponent({
 
     const settings = computed(() => $docus.settings)
 
-    const lastRelease = computed(() => $docus.lastRelease)
+    const lastRelease = computed(() => $docus.lastRelease.value)
 
     return {
       settings,
