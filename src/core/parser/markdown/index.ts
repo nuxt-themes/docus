@@ -24,18 +24,12 @@ const DEFAULTS = {
     'remark-directive',
     'remark-squeeze-paragraphs',
     'remark-slug',
-    'remark-autolink-headings',
+    ['remark-autolink-headings', { behavior: 'wrap' }],
     'remark-external-links',
     'remark-footnotes',
     'remark-gfm'
   ],
   rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw'],
-  prism: {
-    theme: ''
-  },
-  remarkAutolinkHeadings: {
-    behavior: 'wrap'
-  }
 }
 
 function parseFrontMatter(file) {
