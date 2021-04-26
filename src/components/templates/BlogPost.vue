@@ -64,6 +64,7 @@ export default defineComponent({
         }, 300)
       }
 
+      // do not remove setTimeout (headings missing)
       setTimeout(() => {
         const headings = [
           ...document.querySelectorAll('.docus-content h2'),
@@ -76,7 +77,7 @@ export default defineComponent({
             scrollToHeading(hash, '--blogpost-scroll-margin-block')
           })
         })
-      }, 100)
+      }, 300)
     })
 
     const formatDateByLocale = (locale, d) => {
