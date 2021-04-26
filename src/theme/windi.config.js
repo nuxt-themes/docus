@@ -236,27 +236,27 @@ export default {
             //   backgroundColor: 'transparent',
             //   fontFamily: defaultTheme.fontFamily.mono.join()
             // },
-            table: {
-              fontSize: theme('fontSize.sm')[0],
-              lineHeight: theme('fontSize.sm')[1].lineHeight
-            },
-            thead: {
-              color: theme('colors.gray.600'),
-              borderBottomColor: theme('colors.gray.200')
-            },
-            'thead th': {
-              paddingTop: '0px',
-              fontWeight: theme('fontWeight.semibold')
-            },
-            'tbody tr': {
-              borderBottomColor: theme('colors.gray.200')
-            },
-            'tbody tr:last-child': {
-              borderBottomWidth: '1px'
-            },
-            'tbody code': {
-              fontSize: theme('fontSize.xs')[0]
-            },
+            // table: {
+            //   fontSize: theme('fontSize.sm')[0],
+            //   lineHeight: theme('fontSize.sm')[1].lineHeight
+            // },
+            // thead: {
+            //   color: theme('colors.gray.600'),
+            //   borderBottomColor: theme('colors.gray.200')
+            // },
+            // 'thead th': {
+            //   paddingTop: '0px',
+            //   fontWeight: theme('fontWeight.semibold')
+            // },
+            // 'tbody tr': {
+            //   borderBottomColor: theme('colors.gray.200')
+            // },
+            // 'tbody tr:last-child': {
+            //   borderBottomWidth: '1px'
+            // },
+            // 'tbody code': {
+            //   fontSize: theme('fontSize.xs')[0]
+            // },
             // 'blockquote p:first-of-type::before': {
             //   content: ''
             // },
@@ -363,13 +363,13 @@ export default {
             //   color: 'inherit',
             //   fontWeight: theme('fontWeight.medium')
             // },
-            thead: {
-              color: theme('colors.gray.100'),
-              borderBottomColor: theme('colors.gray.600')
-            },
-            'tbody tr': {
-              borderBottomColor: theme('colors.gray.700')
-            }
+            // thead: {
+            //   color: theme('colors.gray.100'),
+            //   borderBottomColor: theme('colors.gray.600')
+            // },
+            // 'tbody tr': {
+            //   borderBottomColor: theme('colors.gray.700')
+            // }
           }
         }
       })

@@ -19,6 +19,10 @@ a code {
   font-weight: inherit;
 }
 
+tbody code {
+  font-size: 12px;
+}
+
 h1 a,
 h2 a,
 h3 a {
