@@ -40,6 +40,7 @@ export default defineComponent({
         }, 300)
       }
 
+      // do not remove setTimeout (no headers)
       setTimeout(() => {
         const headings = [
           ...document.querySelectorAll('.nuxt-content h2'),
@@ -52,7 +53,7 @@ export default defineComponent({
             scrollToHeading(hash, '--docs-scroll-margin-block')
           })
         })
-      }, 100)
+      }, 300)
     })
 
     useFetch(async () => {
