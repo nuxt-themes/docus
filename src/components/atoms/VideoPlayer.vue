@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="postcss">
+video {
+  @apply w-full py-4;
+}
+</style>

@@ -257,12 +257,12 @@ export default {
             'tbody code': {
               fontSize: theme('fontSize.xs')[0]
             },
-            'blockquote p:first-of-type::before': {
-              content: ''
-            },
-            'blockquote p:last-of-type::after': {
-              content: ''
-            }
+            // 'blockquote p:first-of-type::before': {
+            //   content: ''
+            // },
+            // 'blockquote p:last-of-type::after': {
+            //   content: ''
+            // }
           }
         },
         dark: {
@@ -286,10 +286,10 @@ export default {
             hr: {
               borderColor: theme('colors.gray.700')
             },
-            blockquote: {
-              color: theme('colors.gray.400'),
-              borderLeftColor: theme('colors.gray.700')
-            },
+            // blockquote: {
+            //   color: theme('colors.gray.400'),
+            //   borderLeftColor: theme('colors.gray.700')
+            // },
             h1: {
               color: theme('colors.gray.100')
             },
