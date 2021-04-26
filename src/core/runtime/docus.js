@@ -2,7 +2,7 @@ import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
-import { useCSSVariables, useDefaults, useDefaultsTheme } from '../util/settings'
+import { useCSSVariables, useDefaults, useDefaultsTheme } from '../../settings/settings'
 
 const findLinkBySlug = (links, slug) => links.find(link => link.slug === slug)
 
@@ -236,12 +236,17 @@ export async function createDocus({
         this.$set(this.categories, app.i18n.locale, groupBy(docs, 'category'))
       },
 
+      // eslint-disable-next-line require-await
       async fetchReleases() {
         if (process.server) {
           return ssrContext.docus.releases
         }
-        const repo = await $content('/_docus/repo/github').fetch()
-        return repo.releases
+
+        // TODO: Fix this
+        // const repo = await $content('/_docus/repo/github').fetch()
+        // return repo.releases
+
+        return []
       },
 
       async fetchLastRelease() {
@@ -264,6 +269,7 @@ export async function createDocus({
           }
           return
         }
+
         // Add head keys
         if (!Array.isArray(app.head.style)) {
           app.head.style = []

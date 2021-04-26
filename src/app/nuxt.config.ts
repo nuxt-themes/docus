@@ -48,9 +48,10 @@ export default nuxtConfig({
     '@nuxtjs/pwa',
     // Local modules
     r('module'),
+    r('../settings'),
     r('../social-image'),
-    r('../twitter'),
-    r('../github')
+    r('../twitter')
+    // r('../github')
   ],
   modules: [
     // Local modules
