@@ -10984,6 +10984,11 @@ scule@^0.1.1:
   resolved "https://registry.yarnpkg.com/scule/-/scule-0.1.1.tgz#6bf026f1815c646f061761f9bfd7a3e783f2d05c"
   integrity sha512-1j2RlmUNADEprCkzDaeo8w2tdum/mvQWAKdRaS2raud7IOnPaDbLSFKhcY5xXPbAFYWk4ZQ0BUnfmg0ZUcI+Pg==
 
+scule@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/scule/-/scule-0.2.0.tgz#785957412f2d38de49d574ba2ae49d71bcdfd6ee"
+  integrity sha512-rkL64/42rBu2WzWO4xRGbRPm/04R8qjkHpMcbj/r9C4ISLbMeZrwnbZ94+qfeGT0ZXDSPkqTlEMK/cg3NI83Sg==
+
 section-matter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
