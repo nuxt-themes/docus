@@ -5,7 +5,7 @@
         <Component :is="iconName" class="h-6 w-6" />
       </span>
       <span>
-        <Markdown :node="item"/>
+        <Markdown :node="item" />
       </span>
     </div>
   </div>
@@ -63,13 +63,12 @@ export default {
     }
   },
   computed: {
-    listItems () {
+    listItems() {
       const defaultSlot = this.$slots.default || []
       if (!defaultSlot) {
         return this.items
       }
       return flatUnwrap(defaultSlot, ['p', 'ul', 'li'])
-      
     }
   }
 }
