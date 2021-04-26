@@ -10,7 +10,7 @@ import hardBreak from './break'
 import image from './image'
 import blockquote from './blockquote'
 import strong from './strong'
-import codeInline from './codeInline'
+import inlineCode from './inlineCode'
 
 export default async function handlers(highlighter) {
   // create highlighter if its a factory funtions
@@ -31,6 +31,6 @@ export default async function handlers(highlighter) {
     image,
     blockquote,
     strong,
-    codeInline
+    inlineCode
   }
 }
