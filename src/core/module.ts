@@ -3,7 +3,7 @@ import { Module } from '@nuxt/types'
 import { DocusDocument, DocusSettings } from '../types'
 import { useDefaults } from './util/settings'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { r } from './util'
+import { logger, r } from './util'
 import { useStorage } from './storage'
 import { createServerMiddleware } from './server'
 import useHooks from './hooks'
@@ -18,15 +18,18 @@ export default <Module>async function docusModule() {
 
   addPlugin({
     src: r('core/runtime/plugin.js'),
-    filename: 'docus.js'
+    filename: 'docus.js',
+    options: {
+      apiBase: '_content',
+      watch: options.dev
+    }
   })
 
   const parserOptions = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
 
   const hooks = useHooks()
-  // Configure content after each hook
-  hooks.hook('content:file:beforeInsert', (document: DocusDocument) => {
+  hooks.hook('docus:storage:beforeInsert', (document: DocusDocument) => {
     if (document.path === "/data/settings") {
       Object.assign(document, useDefaults(document))
     }
@@ -97,10 +100,19 @@ export default <Module>async function docusModule() {
   options.meta.name = docusSettings.title
   options.meta.description = docusSettings.description
 
-  addServerMiddleware({
-    path: '/_content',
-    handler: createServerMiddleware(storage)
-  })
+  addServerMiddleware(
+    createServerMiddleware({ storage, base: '_content' })
+  )
+
+  if (options.dev) {
+    hook('listen', (server) => {
+      server.on('upgrade', (...args) => hooks.callHook('upgrade', ...args))
+    })
+
+    storage.watch((event, key) => {
+      logger.info(`${key} -- ${event}`)
+    })
+  }
 
   hook('vue-renderer:context', (ssrContext: any) => {
     const { query } = useDB()
@@ -108,5 +120,5 @@ export default <Module>async function docusModule() {
     ssrContext.docus.createQuery = query
   })
 
-  callHook('docus:content:ready')
+  callHook('docus:storage:ready')
 }

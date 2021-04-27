@@ -1,8 +1,10 @@
 import { $fetch } from 'ohmyfetch'
+
 interface SurroundOptions {
   before: boolean
   after: boolean
 }
+
 interface QueryBuilderParams {
   deep: boolean
   text: boolean

@@ -1,6 +1,7 @@
 import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
-
+import { promises as FS } from 'graceful-fs'
+import { join } from 'path'
 import { DriverOptions, StorageOptions } from '../types'
 import { useParser } from './parser'
 import { useDB } from './database'
@@ -12,32 +13,34 @@ export interface DocusDriver extends Driver {
 }
 
 export const docusDriver = defineDriver((options: DriverOptions) => {
-  const { items } = useDB()
-  const { callHook } = useHooks()
+  const { insert, items } = useDB()
   const parser = useParser()
   const fs = fsDriver(options)
 
-  const insert = async (key, content) => {
+  const parseAndIndex = async (key, content) => {
+    // unify key format
+    key = key.replace(/\//g, ':')
+
     let document = await parser.parse(key, content)
 
+    if (document.extension === ".md") {
+      const stats = await FS.stat(join(options.base, document.path + document.extension))
+      document.createdAt = stats.birthtime
+      document.updatedAt = stats.mtime
+    }
+    
+    document.key = key
     // use prefix in document path
     document.path = `/${options.mountPoint}` + document.path
-
-    await callHook('content:file:beforeInsert', document)
-
-    return items.insert({
-      key,
-      // TODO: Fetch file modified time
-      updatedAt: new Date(),
-      ...document
-    })
+    
+    return insert(document)
   }
   return {
     async init() {
       const keys = await fs.getKeys()
       const tasks = keys.map(async key => {
         const content = await fs.getItem(key)
-        await insert(key, content)
+        await parseAndIndex(key, content)
       })
       await Promise.all(tasks)
     },
@@ -49,17 +52,17 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 
       if (!item) {
         const content = await fs.getItem(key)
-        item = await insert(key, content)
+        item = await parseAndIndex(key, content)
       }
 
-      return typeof item === 'string' ? JSON.stringify(item) : item
+      return item
     },
     async setItem(key, value) {
       if (await fs.hasItem(key)) {
         await fs.setItem(key, value)
       }
 
-      await insert(key, value)
+      await parseAndIndex(key, value)
     },
     async removeItem(key) {
       await items.removeWhere(doc => doc.key === key)
@@ -75,13 +78,14 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
       return fs.dispose()
     },
     watch(callback) {
+      const { callHook } = useHooks()
       return fs.watch(async (event, key) => {
-        key = key.replace(/\//g, ':')
         if (event === 'update') {
-          await items.removeWhere(doc => doc.key === key)
           const content = await fs.getItem(key)
 
-          await insert(key, content)
+          await parseAndIndex(key, content)
+          
+          callHook('docus:storage:updated', { event, key })
         }
         callback(event, key)
       })

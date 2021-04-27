@@ -2,16 +2,13 @@ import { Module } from '@nuxt/types'
 import { DocusSettings } from 'src/types'
 import { logger } from '../core/util'
 import { useStorage } from '../core/storage'
-import { get, fetch } from './github'
+import { fetch } from './github'
 
 export default <Module>function docusGithubModule() {
   const { nuxt } = this
-  const { hook, options } = nuxt
+  const { hook } = nuxt
 
-  options.privateRuntimeConfig = options.privateRuntimeConfig || {}
-  options.privateRuntimeConfig.githubToken = process.env.GITHUB_TOKEN
-
-  hook('docus:content:ready', async () => {
+  hook('docus:storage:ready', async () => {
     try {
       const { storage } = useStorage()
       const settings = (await storage.getItem('data:settings.json')) as DocusSettings
