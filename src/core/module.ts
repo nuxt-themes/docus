@@ -2,8 +2,8 @@ import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
-import { contentConfig } from './util/configs'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
+import { contentConfig } from './utils/configs'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 
 const fs = gracefulFs.promises
 
