@@ -46,18 +46,6 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   credits: boolean
   logo: string
   url: string
-  header: {
-    logo: boolean
-    title: boolean
-  }
-  github: {
-    repo: string
-    releases: boolean
-    apiUrl: string
-    branch: string
-    url: string
-    dir: string
-  }
   layout: string
   template: string
   theme?: T
