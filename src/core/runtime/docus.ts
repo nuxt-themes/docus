@@ -5,7 +5,7 @@ import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
 import { computed, reactive, set, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from 'src/types'
-import { useCSSVariables, useDefaults, useDefaultsTheme } from '../../settings/settings'
+import { useCSSVariables } from '../../settings/settings'
 
 const findLinkBySlug = (links: any[], slug: string) => links.find(link => link.slug === slug)
 
@@ -21,15 +21,10 @@ type DocusState = {
   nav: any
 }
 
-export const createDocus = async ({
-  app,
-  ssrContext,
-  $content,
-  $contentLocalePath,
-  route,
-  nuxtState = {},
-  beforeNuxtRender
-}: PermissiveContext) => {
+export const createDocus = async (
+  { app, ssrContext, $content, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
+  settings: DocusSettings
+) => {
   // Local instance let
   let $nuxt
 
@@ -37,17 +32,16 @@ export const createDocus = async ({
    * State
    */
 
-  const state = reactive(
-    nuxtState.docus || {
-      page: {},
-      categories: {},
-      lastRelease: null,
-      settings: null,
-      theme: null,
-      ui: null,
-      nav: {}
-    }
-  ) as DocusState
+  const state = reactive({
+    page: {},
+    categories: {},
+    lastRelease: null,
+    settings: null,
+    theme: null,
+    github: {},
+    ui: null,
+    nav: {}
+  }) as DocusState
 
   // Map locales to nav
   app.i18n.locales.forEach((locale: any) => (state.nav[locale.code] = {}))
@@ -68,45 +62,18 @@ export const createDocus = async ({
    * Methods
    */
 
-  async function fetchJSON(name: string, fields: any[]) {
-    // @ts-expect-error
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { path, extension, ...data } = await $content(name)
-      .only(fields)
-      .fetch()
-      .catch(() =>
-        // eslint-disable-next-line no-console
-        console.warn(`Please add a \`${name}.json\` file inside the \`content/\` folder to customize this theme.`)
-      )
+  function fetchSettings() {
+    const { theme, ...userSettings } = settings
 
-    return data
-  }
-
-  async function fetchSettings() {
-    const settings = (await fetchJSON('settings', [
-      'title',
-      'url',
-      'logo',
-      'template',
-      'header',
-      'twitter',
-      'github',
-      'algolia',
-      'colors',
-      'credits'
-    ])) as Partial<DocusSettings>
-    state.settings = useDefaults(settings)
-
-    // Load theme settings
-    const theme = await fetchJSON('theme', ['colors'])
-    state.theme = useDefaultsTheme(theme)
+    state.settings = userSettings
+    state.theme = theme
 
     // Update injected styles on HMR
     if (process.dev && process.client && window.$nuxt) updateHead()
   }
 
   async function fetch() {
-    await fetchSettings()
+    fetchSettings()
 
     await Promise.all([fetchNavigation(), fetchCategories(), fetchLastRelease()])
   }
@@ -383,9 +350,7 @@ export const createDocus = async ({
   }
 
   // SPA Fallback
-  if (process.client && !state.settings) {
-    await fetch()
-  }
+  if (process.client && !state.settings) await fetch()
 
   updateHead()
 
@@ -397,7 +362,6 @@ export const createDocus = async ({
     styles,
     isLinkActive,
     getPageTemplate,
-    fetchJSON,
     fetchCategories,
     fetchLastRelease,
     fetchNavigation,
