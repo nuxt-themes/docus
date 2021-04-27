@@ -18,34 +18,43 @@ export default <Module>function settingsModule() {
   if (existsSync(settingsPath + '.ts')) settingsPath += '.ts'
 
   // Get theme settings path
+  if (!options.themeDir) {
+    // eslint-disable-next-line no-console
+    console.warn('`themeDir` is not specified in current theme, fallback to default theme')
+    options.themeDir = resolve(__dirname, '..', 'defaultTheme')
+  }
   let themeDefaultsPath = resolve(options.themeDir, 'settings')
   if (existsSync(themeDefaultsPath + '.js')) themeDefaultsPath += '.js'
   if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
 
-  let settings: DocusSettings
+  // Delete Node cache for settings files
+  clearModule(themeDefaultsPath)
+  clearModule(settingsPath)
+  // Get user settings
+  let userSettings
   try {
-    // Delete Node cache for settings files
-    clearModule(themeDefaultsPath)
-    clearModule(settingsPath)
-    // Get theme defaults and user settings
-    const _themeDefaults = require(themeDefaultsPath)
-    const _userSettings = require(settingsPath)
-
-    // Resolve data for both
-    const themeDefaults = _themeDefaults.default || _themeDefaults
-    const { theme: themeSettings, ...userSettings } = _userSettings.default || _userSettings
-
-    // Merge default settings and default theme settings
-    settings = defu(userSettings, docusDefaults)
-    settings.theme = defu(themeSettings, themeDefaults)
-
-    // Default title and description for pages
-    options.meta.name = settings.title
-    options.meta.description = settings.description
+    userSettings = require(settingsPath)
+    userSettings = userSettings?.default || userSettings
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('Could not fetch settings, please create a `docus.config.js|ts` at the root of your project.')
+    console.info('Using default Docus config, please create a `docus.config.js|ts` to overwrite it.')
   }
+  // Get theme defaults
+  let themeDefaults
+  try {
+    themeDefaults = require(themeDefaultsPath)
+    themeDefaults = themeDefaults?.default || themeDefaults
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn(`Could not fetch theme settings in ${themeDefaultsPath}`)
+  }
+  // Merge default settings and default theme settings
+  const settings = defu(userSettings, docusDefaults)
+  settings.theme = defu(userSettings?.theme, themeDefaults)
+
+  // Default title and description for pages
+  options.meta.name = settings.title
+  options.meta.description = settings.description
 
   hook('modules:done', async () => {
     // Call hooks of modules to extend Docus settings

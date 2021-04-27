@@ -12,16 +12,8 @@ export function withDocus(userConfig: NuxtConfig, theme = undefined): NuxtConfig
   // Resolve Nuxt config from _require
   const _nuxtConfig = (_config.default || _config) as NuxtConfig
 
-  if (theme) {
-    // Theme specified, try to extend from its index
-    _nuxtConfig.extends = theme
-  }
-
-  // Resolve theme path
-  if (!_nuxtConfig.extends) {
-    // No theme specified, load default one
-    _nuxtConfig.extends = resolve(__dirname, './defaultTheme')
-  }
+  // Theme specified, try to extend from its index
+  _nuxtConfig.extends = theme || resolve(__dirname, './defaultTheme')
 
   // Broadcast the currently used theme
   // eslint-disable-next-line no-console
