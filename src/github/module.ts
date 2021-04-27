@@ -1,13 +1,12 @@
 import { Module } from '@nuxt/types'
+import defu from 'defu'
 import { DocusSettings } from '../types/core'
 import { get, fetch } from './github'
+import githubDefaults from './settings'
 
 export default <Module>function docusGithubModule() {
   const { nuxt } = this
-  const { hook, options } = nuxt
-
-  options.privateRuntimeConfig = options.privateRuntimeConfig || {}
-  options.privateRuntimeConfig.githubToken = process.env.GITHUB_TOKEN
+  const { hook } = nuxt
 
   // Inject `docus` into ssrContext (for releases)
   // TODO: this could be removed when using $fetch with @nuxt/nitro to handle baseUrl with nuxt generate (using universal fetch)
@@ -25,4 +24,6 @@ export default <Module>function docusGithubModule() {
       })
     })
   })
+
+  this.docus.github = defu(this.docus.github, githubDefaults)
 }
