@@ -25,5 +25,7 @@ export default <Module>function docusGithubModule() {
     })
   })
 
-  this.docus.github = defu(this.docus.github, githubDefaults)
+  hook('docus:settings', (settings: DocusSettings) => {
+    settings.github = defu(settings.github, githubDefaults)
+  })
 }

@@ -1,11 +1,12 @@
 import { join, resolve } from 'path'
 import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
+import clearModule from 'clear-module'
 import { Module } from '@nuxt/types'
 import defu from 'defu'
 import { docusDefaults } from './defaults'
 
 export default <Module>function settingsModule() {
-  const { options, hook } = this.nuxt
+  const { options, hook, callHook } = this.nuxt
 
   // Get cache dir for Docus inside project rootDir
   const cacheDir = join(options.rootDir, 'node_modules/.cache/docus')
@@ -22,9 +23,8 @@ export default <Module>function settingsModule() {
 
   try {
     // Delete Node cache for settings files
-    // TODO: Remove this in favor of cleaner approach
-    delete require.cache[themeDefaultsPath]
-    delete require.cache[settingsPath]
+    clearModule(themeDefaultsPath)
+    clearModule(settingsPath)
     // Get theme defaults and user settings
     const _themeDefaults = require(themeDefaultsPath)
     const _userSettings = require(settingsPath)
@@ -41,10 +41,10 @@ export default <Module>function settingsModule() {
     options.meta.name = settings.title
     options.meta.description = settings.description
 
-    this.docus = settings
+    callHook('docus:settings', settings)
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('Could not get settings! You need to have a `docus.config.js|ts` at the root of your project.')
+    console.log('Could not fetch settings, please create a `docus.config.js|ts` at the root of your project.')
   }
 
   hook('modules:done', async container => {
