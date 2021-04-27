@@ -5,8 +5,8 @@
 <style lang="postcss" scoped>
 hr {
   border-top: 1px solid theme('colors.gray.100');
-  margin-top: theme('spacing.8');
-  margin-bottom: theme('spacing.8');
+  margin-top: theme('margin.8');
+  margin-bottom: theme('margin.8');
 }
 
 hr + * {

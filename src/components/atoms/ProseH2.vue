@@ -4,13 +4,14 @@
 
 <style lang="postcss" scoped>
 h2 {
+  /* TODO */
+  font-size: 1.5rem;
   /* scroll-margin-block: var(--docs-scroll-margin-block); */
   color: theme('colors.gray.900');
   letter-spacing: theme('letterSpacing.tight');
-  font-size: 1.5em;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
-  line-height: 1.3333333;
+  line-height: theme('lineHeight.snug');
   font-weight: theme('fontWeight.bold');
 }
 
