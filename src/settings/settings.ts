@@ -11,18 +11,13 @@ export const DEFAULT_THEME_SETTINGS = {
       class: '#9807af dark:#E879F9',
       builtin: '#9807af dark:#E879F9',
       function: '#9807af dark:#E879F9',
-
       keyword: '#096d7c dark:#22D3EE',
-
       string: '#679c0d dark:#BEF264',
       number: '#679c0d dark:#BEF264',
       selector: '#679c0d dark:#BEF264',
       boolean: '#679c0d dark:#BEF264',
-
       property: '#078ce5 dark:#E0F2FE',
-
       punctuation: '#078ce5 dark:#E0F2FE',
-
       comment: '#758575 dark:#a0ada0',
       literal: '#429988 dark:#2f8a89',
       variable: 'inherit',
@@ -66,12 +61,7 @@ export function useDefaults(settings: Partial<DocusSettings> = {}): DocusSetting
   if (typeof settings.github === 'string') {
     settings.github = defu(DEFAULT_SETTINGS.github, { repo: settings.github })
   }
-  if (settings.layout) {
-    // eslint-disable-next-line no-console
-    console.warn('`layout` has been renamed to `template` in settings.json')
-    settings.template = settings.layout
-    delete settings.layout
-  }
+
   return defu(settings as DocusSettings, DEFAULT_SETTINGS)
 }
 
@@ -93,17 +83,21 @@ export function useColors(colors: Colors, aliases: Alias = {}) {
 }
 
 export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
-  const { put, generate } = useCssVaribaleStore(['dark'])
+  const { put, generate } = useCssVariableStore(['dark'])
+
   const colorsList = useColors(colors, aliases)
   colorsList.forEach(([color, map]) => {
     Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value as string))
   })
+
   return generate()
 }
 
-function useCssVaribaleStore(scopes = ['dark']) {
+function useCssVariableStore(scopes = ['dark']) {
   scopes = ['default', ...scopes]
+
   const _store = scopes.reduce((obj, scope) => ({ [scope]: {}, ...obj }), {} as any)
+
   const getScope = (scope: string) => _store[scope] || null
 
   const putSingle = (key: string) => (value: string) => {
