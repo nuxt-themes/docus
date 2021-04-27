@@ -1,14 +1,14 @@
-const pick = (obj, keys = []) => {
-  return Object.keys(obj)
+const pick = keys => obj =>
+  Object.keys(obj)
     .filter(key => keys.includes(key))
     .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {})
-}
 
-const omit = (obj, keys = []) => {
-  return Object.keys(obj)
+const omit = keys => obj =>
+  Object.keys(obj)
     .filter(key => !keys.includes(key))
     .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {})
-}
+
+const apply = fn => data => (Array.isArray(data) ? data.map(item => fn(item)) : fn(data))
 
 export class QueryBuilder {
   private query: any
@@ -19,8 +19,7 @@ export class QueryBuilder {
   private onlyKeys: string[]
   private withoutKeys: string[]
   private sortKeys = []
-  private limitN: number
-  private skipN: number
+
   constructor({ query, path, init, text, postprocess = [] }, options) {
     this.query = query
     this.path = path
@@ -30,12 +29,10 @@ export class QueryBuilder {
     this.onlyKeys = null
     this.withoutKeys = null
     this.sortKeys = []
-    this.limitN = null
-    this.skipN = null
 
     if (!text) {
       // Remove text field from response
-      this.postprocess.unshift(data => data.map(item => omit(item, ['text'])))
+      this.postprocess.unshift(apply(omit(['text'])))
     }
   }
 
@@ -192,7 +189,7 @@ export class QueryBuilder {
       n = parseInt(n)
     }
 
-    this.limitN = n
+    this.query = this.query.limit(n)
     return this
   }
 
@@ -206,7 +203,7 @@ export class QueryBuilder {
       n = parseInt(n)
     }
 
-    this.skipN = n
+    this.query = this.query.offset(n)
     return this
   }
 
@@ -219,12 +216,7 @@ export class QueryBuilder {
     if (this.sortKeys && this.sortKeys.length) {
       this.query = this.query.compoundsort(this.sortKeys)
     }
-    if (this.skipN) {
-      this.query = this.query.offset(this.skipN)
-    }
-    if (this.limitN) {
-      this.query = this.query.limit(this.limitN)
-    }
+
     // Collect data without meta fields
     let data = this.query.data({ removeMeta: true })
     // Handle only keys
@@ -235,7 +227,8 @@ export class QueryBuilder {
       }
 
       // Map data and returns object picked by keys
-      const fn = data => (Array.isArray(data) ? data.map(item => pick(item, this.onlyKeys)) : pick(data, this.onlyKeys))
+      const fn = apply(pick(this.onlyKeys))
+
       // Apply pick during postprocess
       this.postprocess.unshift(fn)
     }
@@ -246,8 +239,8 @@ export class QueryBuilder {
         this.withoutKeys = this.withoutKeys.filter(key => !['path', 'extension'].includes(key))
       }
       // Map data and returns object picked by keys
-      const fn = data =>
-        Array.isArray(data) ? data.map(item => omit(item, this.withoutKeys)) : omit(data, this.withoutKeys)
+      const fn = apply(omit(this.withoutKeys))
+
       // Apply pick during postprocess
       this.postprocess.unshift(fn)
     }
