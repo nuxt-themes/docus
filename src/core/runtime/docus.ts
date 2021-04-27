@@ -38,7 +38,6 @@ export const createDocus = async (
     lastRelease: null,
     settings: null,
     theme: null,
-    github: {},
     ui: null,
     nav: {}
   }) as DocusState
@@ -344,9 +343,7 @@ export const createDocus = async (
   if (process.server) {
     await fetch()
 
-    beforeNuxtRender(({ nuxtState }) => {
-      nuxtState.docus = state
-    })
+    beforeNuxtRender(({ nuxtState }) => (nuxtState.docus = state))
   }
 
   // SPA Fallback
