@@ -1,4 +1,5 @@
 import { MetaInfo } from 'vue-meta'
+import { DefaultThemeSettings } from '../defaultTheme/index.d'
 import { DocusRootNode } from './markdown'
 
 export interface TocLink {
@@ -39,7 +40,7 @@ export interface DocusDocument {
   updatedAt: Date
 }
 
-export interface DocusSettings {
+export interface DocusSettings<T = DefaultThemeSettings> {
   title: string
   description: string
   credits: boolean
@@ -59,6 +60,7 @@ export interface DocusSettings {
   }
   layout: string
   template: string
+  theme?: T
 }
 
 export interface Colors {
