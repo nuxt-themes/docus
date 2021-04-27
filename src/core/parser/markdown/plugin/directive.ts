@@ -22,17 +22,27 @@ export default function htmlDirectives({ directives, dataComponents }) {
       .join('')
   }
 
-  function toData(node, pageData) {
+  function toData(node) {
     const markdown = toMarkdown(node)
       // fix issue with toMarkdown autolinker
       .replace(/<(https?:[^>]*)>/g, '$1')
 
     const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
 
-    return Object.entries(data).reduce((acc, [key, value]) => {
-      acc[`:${key}`] = typeof value === 'string' && pageData[value] ? value : JSON.stringify(value)
-      return acc
-    }, {})
+    return data
+  }
+
+  function bindData(data, pageData) {
+    const enteries = Object.entries(data).map(([key, value]) => {
+      if (key.startsWith(':')) {
+        return [key, value]
+      }
+      if (typeof value === "string") {
+        return [pageData[value] ? `:${key}` : key, value]
+      }
+      return [`:${key}`, JSON.stringify(value)]
+    })
+    return Object.fromEntries(enteries)
   }
 
   return async (tree, { data: pageData }) => {
@@ -44,11 +54,11 @@ export default function htmlDirectives({ directives, dataComponents }) {
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
-        hast.properties = {
+      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== "undefined") {
+        hast.properties = bindData({
           ...hast.properties,
-          ...toData(node, pageData)
-        }
+          ...toData(node)
+        }, pageData)
       }
 
       data.hName = hast.tagName

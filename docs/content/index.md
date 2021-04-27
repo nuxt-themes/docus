@@ -17,35 +17,40 @@ secondary:
   - https://github.com/nuxtlabs/docus
 :::
 
-:::block-features{yml}
-title: What's included?
-features:
-  - icon: IconNuxt
-    iconClass: 'text-hex-00DC82'
-    title: Nuxt Architecture
-    description: Harness the full power of Nuxt and the Nuxt ecosystem.
-  - icon: IconVue
-    title: Vue Components
-    description: Use built-in components (or your own!) inside your content.
-  - icon: IconMarkdown
-    title: Write Markdown
-    description: Enjoy the ease and simplicity of Markdown as you write your documentation.
-  - icon: IconWindi
-    title: Windi CSS
-    description: Windi CSS is built in for great developer experience and rapid customization.
-  - icon: IconSSG
-    title: Static Generation
-    description: Generate your documentation as a static website and host it anywhere.
-  - icon: IconLighthouse
-    title: Lighthouse Optimised
-    description: Start with a blazing fast site with a perfect Lighthouse score.
-  - icon: IconZap
-    title: Smart Generation
-    description: Automatically skip a full build if you've only changed Markdown files.
-  - icon: IconPuzzle
-    title: Extensible
-    description: Customize the whole design, or add components using slots - you can make Docus your own.
-  - icon: IconGitHub
-    title: Open Source
-    description: Docus is released under the MIT license and made with love by the NuxtLabs team.
-:::
+::::card-grid{title="What's included?"}
+  :::card{icon="IconNuxt" iconClass='text-hex-00DC82' title="Nuxt Architecture"}
+  Harness the full power of Nuxt and the Nuxt ecosystem.
+  :::
+
+  :::card{icon="IconVue" title="Vue Components"}
+  Use built-in components (or your own!) inside your content.
+  :::
+
+  :::card{icon="IconMarkdown" title="Write Markdown"}
+  Enjoy the ease and simplicity of Markdown as you write your documentation.
+  :::
+
+  :::card{icon="IconWindi" title="Windi CSS"}
+  Windi CSS is built in for great developer experience and rapid customization.
+  :::
+
+  :::card{icon="IconSSG" title="Static Generation"}
+  Generate your documentation as a static website and host it anywhere.
+  :::
+
+  :::card{icon="IconLighthouse" title="Lighthouse Optimised"}
+  Start with a blazing fast site with a perfect Lighthouse score.
+  :::
+
+  :::card{icon="IconZap" title="Smart Generation"}
+  Automatically skip a full build if you've only changed Markdown files.
+  :::
+
+  :::card{icon="IconPuzzle" title="Extensible"}
+  Customize the whole design, or add components using slots - you can make Docus your own.
+  :::
+
+  :::card{icon="IconGitHub" title="Open Source"}
+  Docus is released under the MIT license and made with love by the NuxtLabs team.
+  :::
+::::
