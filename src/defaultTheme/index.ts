@@ -8,6 +8,7 @@ const r = (...args: string[]) => resolve(__dirname, ...args)
 const themeConfig: NuxtConfig = nuxtConfig({
   name: 'defaultTheme',
   rootDir: __dirname,
+  themeDir: __dirname,
   components: [
     {
       path: r('./components/atoms'),
