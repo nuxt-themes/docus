@@ -55,8 +55,8 @@ export default nuxtConfig({
     r('module'),
     r('../settings'),
     r('../social-image'),
-    r('../twitter')
-    // r('../github')
+    r('../twitter'),
+    r('../github')
   ],
   modules: [
     // Local modules
