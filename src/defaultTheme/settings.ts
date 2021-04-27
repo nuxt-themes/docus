@@ -1,4 +1,8 @@
 const defaultThemeSettings = {
+  header: {
+    logo: false,
+    title: true
+  },
   colors: {
     primary: '#3073F1',
     code: {
