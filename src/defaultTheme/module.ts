@@ -41,19 +41,19 @@ export default <Module>function themeSetupModule() {
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
 
     // Include user directory in scan process
-    windiOptions.scan.dirs.push(resolve(`${options.srcDir}/components/**/*`))
-    windiOptions.scan.dirs.push(resolve(`${options.srcDir}/pages/**/*`))
-    windiOptions.scan.dirs.push(resolve(`${options.srcDir}/layouts/**/*`))
-    windiOptions.scan.dirs.push(resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*'))
+    windiOptions.scan.dirs.push(
+      resolve(`${options.srcDir}/components/**/*`),
+      resolve(`${options.srcDir}/pages/**/*`),
+      resolve(`${options.srcDir}/layouts/**/*`),
+      resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*')
+    )
 
-    // Include local directory in scan process
+    // Include local & npm depencies directories in scan process
     windiOptions.scan.include = windiOptions.scan.include || []
-    windiOptions.scan.include.push(__dirname)
-
-    // Include the NPM dependency
-    windiOptions.scanOptions.include.push(options.rootDir + '/node_modules/docus/dist')
-    windiOptions.scanOptions.include.push(
-      options.rootDir + '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'
+    windiOptions.scan.include.push(
+      __dirname,
+      resolve(`${options.rootDir}/node_modules/docus/dist'`),
+      resolve(`${options.rootDir}/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'`)
     )
 
     // Workaround for typography plugin not being a function supporting theme
