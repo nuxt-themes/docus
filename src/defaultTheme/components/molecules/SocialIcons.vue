@@ -14,7 +14,7 @@
     </a>
     <a
       v-if="settings.github.repo"
-      :href="$docus.repoUrl"
+      :href="$docus.repoUrl.value"
       target="_blank"
       rel="noopener noreferrer"
       title="GitHub"

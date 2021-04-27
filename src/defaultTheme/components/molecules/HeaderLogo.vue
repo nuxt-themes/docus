@@ -1,12 +1,12 @@
 <template>
   <div class="flex items-center">
-    <template v-if="settings.header.title && !settings.header.logo">
+    <template v-if="theme.header.title && !theme.header.logo">
       <span class="text-2xl font-bold tracking-tighter text-gray-900 dark:text-gray-100">
         {{ settings.title }}
       </span>
     </template>
 
-    <template v-if="settings.header.title && settings.header.logo">
+    <template v-if="theme.header.title && theme.header.logo">
       <div class="flex items-center">
         <span class="mr-4">
           <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
@@ -18,7 +18,7 @@
       </div>
     </template>
 
-    <template v-if="!settings.header.title && settings.header.logo">
+    <template v-if="!theme.header.title && theme.header.logo">
       <span>
         <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
         <img :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
@@ -39,6 +39,7 @@ export default defineComponent({
     const { $docus } = useContext()
 
     const settings = computed(() => $docus.settings.value)
+    const theme = computed(() => $docus.theme.value)
 
     const logo = computed(() => {
       if (!settings.value.logo) return
@@ -53,7 +54,8 @@ export default defineComponent({
 
     return {
       settings,
-      logo
+      logo,
+      theme
     }
   }
 })
