@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
@@ -11,6 +11,9 @@ export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, requireModule } = this
   const { options, hook } = nuxt
+
+  // Setup docus cache
+  options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
 
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
@@ -26,6 +29,7 @@ export default <Module>async function docusModule() {
       options.watch.push(pagesDirPath)
     }
   })
+
   // Configure content after each hook
   hook('content:file:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
