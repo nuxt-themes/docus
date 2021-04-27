@@ -49,6 +49,7 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   layout: string
   template: string
   theme?: T
+  [key: string]: any
 }
 
 export interface Colors {
