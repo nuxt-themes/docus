@@ -3,6 +3,7 @@ import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
 import clearModule from 'clear-module'
 import { Module } from '@nuxt/types'
 import defu from 'defu'
+import { DocusSettings } from 'src/types'
 import { docusDefaults } from './defaults'
 
 export default <Module>function settingsModule() {
@@ -21,6 +22,7 @@ export default <Module>function settingsModule() {
   if (existsSync(themeDefaultsPath + '.js')) themeDefaultsPath += '.js'
   if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
 
+  let settings: DocusSettings
   try {
     // Delete Node cache for settings files
     clearModule(themeDefaultsPath)
@@ -34,20 +36,21 @@ export default <Module>function settingsModule() {
     const { theme: themeSettings, ...userSettings } = _userSettings.default || _userSettings
 
     // Merge default settings and default theme settings
-    const settings = defu(userSettings, docusDefaults)
+    settings = defu(userSettings, docusDefaults)
     settings.theme = defu(themeSettings, themeDefaults)
 
     // Default title and description for pages
     options.meta.name = settings.title
     options.meta.description = settings.description
-
-    callHook('docus:settings', settings)
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log('Could not fetch settings, please create a `docus.config.js|ts` at the root of your project.')
   }
 
-  hook('modules:done', async container => {
+  hook('modules:done', async () => {
+    // Call hooks of modules to extend Docus settings
+    await callHook('docus:settings', settings)
+
     const jsonPath = join(cacheDir, 'docus-settings.json')
 
     // Replace the directory
@@ -55,7 +58,7 @@ export default <Module>function settingsModule() {
     await mkdirp(cacheDir)
 
     // Write settings
-    writeJSONSync(jsonPath, container.docus)
+    writeJSONSync(jsonPath, settings)
   })
 
   // Watch settings
