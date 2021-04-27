@@ -10,6 +10,7 @@ import image from './image'
 import blockquote from './blockquote'
 import strong from './strong'
 import inlineCode from './inlineCode'
+import thematicBreak from './thematicBreak'
 
 export default async function handlers(highlighter) {
   // create highlighter if its a factory funtions
@@ -29,6 +30,7 @@ export default async function handlers(highlighter) {
     image,
     blockquote,
     strong,
-    inlineCode
+    inlineCode,
+    thematicBreak
   }
 }
