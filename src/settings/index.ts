@@ -1,41 +1,59 @@
 import { join, resolve } from 'path'
-import { mkdirp, remove, existsSync, writeFileSync } from 'fs-extra'
+import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
 import { Module } from '@nuxt/types'
-import { useDefaults, useDefaultsTheme } from './settings'
+import defu from 'defu'
+import { docusDefaults } from './defaults'
 
 export default <Module>async function settingsModule() {
-  const { nuxt } = this
-  const { options } = nuxt
+  const { options, hook } = this.nuxt
 
+  // Get cache dir for Docus inside project rootDir
   const cacheDir = join(options.rootDir, 'node_modules/.cache/docus')
 
-  // Inject content dir in private runtime config
-  const contentDir = options?.content?.dir || 'content'
-
-  options.publicRuntimeConfig.contentDir = contentDir
-
-  // Read Docus settings
+  // Get Docus config path
   let settingsPath = resolve(options.srcDir, 'docus.config')
-
   if (existsSync(settingsPath + '.js')) settingsPath += '.js'
   if (existsSync(settingsPath + '.ts')) settingsPath += '.ts'
 
+  // Get theme settings path
+  let themeDefaultsPath = resolve(options.themeDir, 'settings')
+  if (existsSync(themeDefaultsPath + '.js')) themeDefaultsPath += '.js'
+  if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
+
   try {
-    const { theme, ...userSettings } = require(settingsPath)
-    const settings = useDefaults(userSettings)
-    settings.theme = useDefaultsTheme(theme)
+    // Get theme defaults and user settings
+    const _themeDefaults = await require(themeDefaultsPath)
+    const _userSettings = await require(settingsPath)
+
+    // Resolve data for both
+    const themeDefaults = _themeDefaults.default || _themeDefaults
+    const { theme: themeSettings, ...userSettings } = _userSettings.default || _userSettings
+
+    // Merge default settings and default theme settings
+    const settings = defu(userSettings, docusDefaults)
+    settings.theme = defu(themeSettings, themeDefaults)
 
     // Default title and description for pages
     options.meta.name = settings.title
     options.meta.description = settings.description
 
+    this.docus = settings
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log('Could not get settings! You need to have a `docus.config.js|ts` at the root of your project.')
+  }
+
+  hook('modules:done', async container => {
+    const jsonPath = join(cacheDir, 'docus-settings.json')
+
     // Replace the directory
     if (existsSync(cacheDir)) await remove(cacheDir)
     await mkdirp(cacheDir)
+
     // Write settings
-    writeFileSync(join(cacheDir, 'docus-settings.json'), JSON.stringify(settings))
-  } catch (err) {
-    console.log(err)
-    console.log('Settings not found!')
-  }
+    writeJSONSync(jsonPath, container.docus)
+  })
+
+  // Watch settings
+  options.watch.push(settingsPath)
 }
