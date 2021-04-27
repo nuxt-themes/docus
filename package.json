@@ -82,6 +82,7 @@
     "@nuxt/types": "^2.15.4",
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.0",
+    "@types/fs-extra": "^9.0.11",
     "@types/graceful-fs": "^4.1.5",
     "@types/node-fetch": "^2.5.10",
     "@types/pify": "^5.0.0",
