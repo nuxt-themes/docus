@@ -6,7 +6,6 @@ const r = (path: any) => resolve(__dirname, path)
 export default nuxtConfig({
   name: 'docus',
   rootDir: __dirname,
-  extends: r('../defaultTheme'),
   /**
    * Default app config
    */
