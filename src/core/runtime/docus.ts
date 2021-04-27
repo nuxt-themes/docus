@@ -4,8 +4,8 @@ import { pascalCase } from 'scule'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
 import { computed, reactive, set, toRefs } from '@nuxtjs/composition-api'
-import { DocusSettings } from 'src/types'
-import { useCSSVariables } from '../../settings/settings'
+import { DocusSettings } from '../../types'
+import { useCSSVariables } from '../utils/css'
 
 const findLinkBySlug = (links: any[], slug: string) => links.find(link => link.slug === slug)
 
