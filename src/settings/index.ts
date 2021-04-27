@@ -4,7 +4,7 @@ import { Module } from '@nuxt/types'
 import defu from 'defu'
 import { docusDefaults } from './defaults'
 
-export default <Module>async function settingsModule() {
+export default <Module>function settingsModule() {
   const { options, hook } = this.nuxt
 
   // Get cache dir for Docus inside project rootDir
@@ -21,9 +21,13 @@ export default <Module>async function settingsModule() {
   if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
 
   try {
+    // Delete Node cache for settings files
+    // TODO: Remove this in favor of cleaner approach
+    delete require.cache[themeDefaultsPath]
+    delete require.cache[settingsPath]
     // Get theme defaults and user settings
-    const _themeDefaults = await require(themeDefaultsPath)
-    const _userSettings = await require(settingsPath)
+    const _themeDefaults = require(themeDefaultsPath)
+    const _userSettings = require(settingsPath)
 
     // Resolve data for both
     const themeDefaults = _themeDefaults.default || _themeDefaults
