@@ -283,9 +283,9 @@ export default {
             // 'ul > li::before': {
             //   backgroundColor: theme('colors.gray.600')
             // },
-            hr: {
-              borderColor: theme('colors.gray.700')
-            },
+            // hr: {
+            //   borderColor: theme('colors.gray.700')
+            // },
             // blockquote: {
             //   color: theme('colors.gray.400'),
             //   borderLeftColor: theme('colors.gray.700')
