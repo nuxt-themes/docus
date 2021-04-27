@@ -1,5 +1,23 @@
 <template>
-  <img />
+  <img :src="src" :alt="alt" />
 </template>
 
-<style lang="postcss" scoped></style>
+<script>
+export default {
+  props: {
+    src: {
+      type: String
+    },
+    alt: {
+      type: String
+    }
+  }
+}
+</script>
+
+<style lang="postcss" scoped>
+img {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+</style>
