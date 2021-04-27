@@ -10,10 +10,5 @@ export default {
     branch: 'main',
     dir: 'docs',
     releases: true
-  },
-  _algolia: {
-    apiKey: 'd8bb34f345ca54362176cf78fcf4ed9d',
-    indexName: 'docus'
-  },
-  theme: {}
+  }
 }
