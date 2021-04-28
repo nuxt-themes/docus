@@ -53,8 +53,8 @@ export default nuxtConfig({
     '@nuxtjs/pwa',
     '@nuxt/image',
     // Local modules
+    r('./module'),
     r('../settings'),
-    r('../theme'),
     r('../social-image'),
     r('../twitter'),
     r('../github')
