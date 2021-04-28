@@ -77,8 +77,6 @@ async function processTweetAst(ast, layout, processQuote = true) {
   const dateTime = get(findNode(theTweetInfo, matchScribe('element:full_timestamp')), 'props.dataDatetime', undefined)
   const createdAt = new Date(dateTime).getTime()
 
-  // console.log(medias.flatMap(media => mapAST([media])));
-
   return {
     id,
     quotes,

@@ -22,8 +22,9 @@ type DocusState = {
 }
 
 export const createDocus = async (
-  { app, ssrContext, $content, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
-  settings: DocusSettings
+  { app, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
+  settings: DocusSettings,
+  createQuery: any
 ) => {
   // Local instance let
   let $nuxt
@@ -61,6 +62,22 @@ export const createDocus = async (
    * Methods
    */
 
+  function data(path: string) {
+    return createQuery(joinURL('/data', path), {}).fetch()
+  }
+
+  function search(path: string | any, options?) {
+    if (typeof path !== 'string') {
+      options = path
+      path = ''
+    }
+    return createQuery(joinURL('/pages', path), options)
+  }
+
+  function page(path: string) {
+    return this.search(path).fetch()
+  }
+
   function fetchSettings() {
     const { theme, ...userSettings } = settings
 
@@ -88,7 +105,7 @@ export const createDocus = async (
     if (process.dev) fields.push('draft')
 
     // Query pages
-    const pages = await $content({ deep: true })
+    const pages = await search({ deep: true })
       .where({ language: app.i18n.locale, draft, nav: { $ne: false } })
       .only(fields)
       .sortBy('position', 'asc')
@@ -232,7 +249,7 @@ export const createDocus = async (
     const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'icon']
     if (process.dev) fields.push('draft')
 
-    const docs = await $content({ deep: true })
+    const docs = await search({ deep: true })
       .where({ language: app.i18n.locale, draft, menu: { $ne: false } })
       .only(fields)
       .sortBy('position', 'asc')
@@ -245,15 +262,9 @@ export const createDocus = async (
     set(state.categories, app.i18n.locale, groupBy(docs, 'category'))
   }
 
-  // eslint-disable-next-line require-await
   async function fetchReleases() {
-    if (process.server) return (ssrContext as any).docus.releases
-
-    // TODO: Fix this
-    // const repo = await $content('/_docus/repo/github').fetch()
-    // return repo.releases
-
-    return []
+    const repo = await data('github-releases')
+    return repo.releases
   }
 
   async function fetchLastRelease() {
@@ -365,8 +376,9 @@ export const createDocus = async (
     fetchNavigation,
     fetchReleases,
     fetchSettings,
-    fetch
+    fetch,
+    search,
+    page,
+    data
   }
 }
-
-export default createDocus

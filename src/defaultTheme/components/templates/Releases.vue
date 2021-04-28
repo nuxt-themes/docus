@@ -38,12 +38,12 @@ export default defineComponent({
     }
   },
   setup() {
-    const { $content } = useContext()
+    const { $docus } = useContext()
     const releases = ref()
     const toc = ref()
 
     useFetch(async () => {
-      const document = await $content('/_docus/repo/github').fetch()
+      const document = await $docus.data('github-releases')
 
       releases.value = document.releases
       toc.value = document.releases?.map(release => ({

@@ -26,7 +26,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $docus, $content } = useContext()
+    const { $docus } = useContext()
     const prev = ref(null)
     const next = ref(null)
 
@@ -61,7 +61,8 @@ export default defineComponent({
       const language = ctx.$i18n.locale
       const draft = $docus.ui?.draft ? undefined : false
 
-      const [prevLink, nextLink] = await $content({ deep: true })
+      const [prevLink, nextLink] = await $docus
+        .search({ deep: true })
         .where({ language, draft, menu: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')

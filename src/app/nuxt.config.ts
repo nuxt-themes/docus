@@ -63,7 +63,6 @@ export default nuxtConfig({
     r('../i18n'),
     r('../core/module')
   ],
-  plugins: [r('../core/plugin')],
 
   /**
    * Build configs

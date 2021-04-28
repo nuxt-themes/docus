@@ -1,5 +1,5 @@
 import Prism from 'prismjs'
-import detab from 'detab'
+import { detab } from 'detab'
 import u from 'unist-builder'
 import escapeHtml from 'escape-html'
 import prismComponents from 'prismjs/components/index'

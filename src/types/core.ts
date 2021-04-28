@@ -31,6 +31,8 @@ export interface DocusDocument {
   draft: boolean
 
   // generated
+  key: string
+  path: string
   slug: string
   to: string
   toc: false | Toc
@@ -60,4 +62,28 @@ export interface Colors {
 
 export interface Alias {
   [key: string]: string
+}
+
+//  Storage
+export interface DriverOptions {
+  mountPoint: string
+  base: string
+}
+export interface StorageOptions {
+  drivers: DriverOptions[]
+}
+
+export interface MarkdownParserOptions {
+  toc: {
+    depth: number
+    searchDepth: number
+  }
+  directives: any
+  dataComponents: string[]
+  remarkPlugins: (string | [string, any])[]
+  rehypePlugins: (string | [string, any])[]
+}
+
+export interface ParserOptions {
+  markdown: Partial<MarkdownParserOptions>
 }
