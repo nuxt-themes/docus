@@ -1,13 +1,12 @@
 import path from 'path'
 import fs from 'fs'
 import { parse } from 'vue-docgen-api'
-import { r } from '../../../util'
 import { setNodeData } from '../utils'
 
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
   path.resolve('./components'), // components directory of project docs
-  r('components') // components directory of Docus
+  path.resolve(__dirname, '../../../../defaultTheme') // components directory of Docus
 ]
 
 function fileName(file) {
@@ -29,7 +28,6 @@ function resolvePath(file: string) {
   }
   return null
 }
-
 
 export default async function propsHandler(node: any, pageData: any) {
   const componentFile = resolvePath(node.attributes.of)

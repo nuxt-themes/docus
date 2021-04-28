@@ -1,5 +1,5 @@
 import { DocusRootNode, DocusMarkdownNode, Toc, TocLink } from 'src/types'
-import { logger } from '../../util'
+import { logger } from '../../utils'
 import { flattenNode, flattenNodeText } from './utils'
 
 const TOC_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6']

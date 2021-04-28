@@ -1,7 +1,7 @@
+import { resolve } from 'path'
 import defu from 'defu'
 import matter from 'gray-matter'
 import { Toc } from 'src/types'
-import { r } from '../../util'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
@@ -13,15 +13,12 @@ const DEFAULTS = {
     searchDepth: 2
   },
   directives: {
-    'props': propsDirective
+    props: propsDirective
   },
-  dataComponents: [
-    'block-hero',
-    'block-features'
-  ],
+  dataComponents: ['block-hero', 'block-features'],
   remarkPlugins: [
     [
-      r('core/parser/markdown/plugin/remark-prose'),
+      resolve(__dirname, './plugin/remark-prose'),
       {
         proseClass: 'prose dark:prose-dark'
       }
@@ -88,7 +85,7 @@ async function parse(file, options) {
 export function useMarkdownParser(options: any = {}) {
   options = defu(options, DEFAULTS)
   options.remarkPlugins.unshift([
-    r('core/parser/markdown/plugin/directive'),
+    resolve(__dirname, './plugin/directive'),
     { directives: options.directives, dataComponents: options.dataComponents }
   ])
   processOptions(options)

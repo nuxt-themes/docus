@@ -1,5 +1,5 @@
 import hasha from 'hasha'
-import { tryRequire, logger } from '../../util'
+import { tryRequire, logger } from '../../utils'
 
 const { camelCase } = require('change-case')
 
@@ -56,7 +56,7 @@ export function flattenNode(node, maxDepth = 2, _depth = 0) {
   return [node, ...node.children.reduce((acc, child) => acc.concat(flattenNode(child, maxDepth, _depth + 1)), [])]
 }
 
-export function setNodeData (node, name, value, pageData) {
+export function setNodeData(node, name, value, pageData) {
   if (!name.startsWith(':')) {
     name = ':' + name
   }
