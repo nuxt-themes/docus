@@ -75,6 +75,10 @@ export default <Module>async function docusModule() {
       {
         base: resolve(options.srcDir, options.dir.pages),
         mountPoint: 'pages'
+      },
+      {
+        base: resolve(options.srcDir, 'data'),
+        mountPoint: 'data'
       }
     ]
   })

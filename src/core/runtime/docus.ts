@@ -71,6 +71,11 @@ export const createDocus = async (
   }
 
   const join = (prefix, path) => `${prefix}${path.startsWith('/') || !path ? '' : '/'}${path}`
+
+  function data(path: string) {
+    return createQuery(join('/data', path), {}).fetch()
+  }
+
   function search(path: string | any, options?) {
     if (typeof path !== 'string') {
       options = path
@@ -271,11 +276,8 @@ export const createDocus = async (
   async function fetchReleases() {
     if (process.server) return (ssrContext as any).docus.releases
 
-    // TODO: Fix this
-    // const repo = await $content('/_docus/repo/github').fetch()
-    // return repo.releases
-
-    return []
+    const repo = await data('github-releases')
+    return repo.releases
   }
 
   async function fetchLastRelease() {
@@ -389,6 +391,7 @@ export const createDocus = async (
     fetchSettings,
     fetch,
     search,
-    page
+    page,
+    data
   }
 }

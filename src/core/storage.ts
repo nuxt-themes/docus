@@ -37,7 +37,11 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   }
   return {
     async init() {
-      const keys = (await fs.getKeys()) || []
+      // ensure directory exists
+      if (!fs.hasItem('')) {
+        return
+      }
+      const keys = await fs.getKeys()
       const tasks = keys.map(async key => {
         const content = await fs.getItem(key)
         await parseAndIndex(key, content)
