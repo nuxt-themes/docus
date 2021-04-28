@@ -319,12 +319,16 @@ Now let’s markup the `<article-card-block>` component which receives `article`
     tag="article"
   >
     <div class="image-wrapper">
-      <img
+      <nuxt-img
         v-if="article.cover_image"
         :src="article.cover_image"
         :alt="article.title"
       />
-      <img v-else :src="article.social_image" :alt="article.title" />
+      <nuxt-img
+        v-else
+        :src="article.social_image"
+        :alt="article.title"
+      />
     </div>
     <div class="content">
       <nuxt-link

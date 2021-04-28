@@ -249,7 +249,7 @@ We now have a title, description, img and alt variable that we can access to by 
   <article>
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
-    <img :src="article.img" :alt="article.alt" />
+    <nuxt-img :src="article.img" :alt="article.alt" />
     <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
 
     <nuxt-content :document="article" />
@@ -364,7 +364,7 @@ We can improve this further by using dynamic classes to style the heading classe
 Sometimes we might want to add HTML to our markdown files. Let's add a div with some classes so it has a background color of blue with white text, some padding and a margin bottom.
 
 ```html{}[content/articles/my-first-blog-post.md]
-<div class="bg-blue-500 text-white p-4 mb-4">
+<div class="p-4 mb-4 text-white bg-blue-500">
   This is HTML inside markdown that has a class of note
 </div>
 ```
@@ -391,7 +391,7 @@ We can then create our InfoBox component inside this folder.
 
 ```html{}[components/global/InfoBox.vue]
 <template>
-  <div class="bg-blue-500 text-white p-4 mb-4">
+  <div class="p-4 mb-4 text-white bg-blue-500">
     <p><slot name="info-box">default</slot></p>
   </div>
 </template>
@@ -438,7 +438,7 @@ Here we create a div the author image, a title of Author and a dynamic name and 
 ```html{}[components/global/Author.vue]
 <template>
   <div>
-    <img :src="author.image" />
+    <nuxt-img :src="author.image" />
     <div>
       <h4>Author</h4>
       <p>{{ author.name }}</p>
@@ -488,7 +488,7 @@ Putting the component here means we will have to repeat it for every article. In
   <article>
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
-    <img :src="article.img" :alt="article.alt" />
+    <nuxt-img :src="article.img" :alt="article.alt" />
     <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
 
     <nuxt-content :document="article" />
@@ -569,7 +569,7 @@ In this component we use a `v-if` inside our `NuxtLink` component to see if ther
     <NuxtLink
       v-if="prev"
       :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
-      class="text-primary font-bold hover:underline"
+      class="font-bold text-primary hover:underline"
     >
       {{ prev.title }}
     </NuxtLink>
@@ -636,7 +636,7 @@ We can now add our `<prev-next>` component to our slug page passing in the props
   <article>
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
-    <img :src="article.img" :alt="article.alt" />
+    <nuxt-img :src="article.img" :alt="article.alt" />
     <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
 
     <nuxt-content :document="article" />
@@ -718,7 +718,7 @@ Our articles are now available to us just like any data property so we can use i
     <ul>
       <li v-for="article of articles" :key="article.slug">
         <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
-          <img :src="article.img" />
+          <nuxt-img :src="article.img" />
           <div>
             <h2>{{ article.title }}</h2>
             <p>by {{ article.author.name }}</p>
@@ -802,7 +802,7 @@ We can then use our data to print out a nice author page showing the author name
     <ul>
       <li v-for="article in articles" :key="article.slug">
         <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
-          <img :src="article.img" :alt="article.alt" />
+          <nuxt-img :src="article.img" :alt="article.alt" />
           <div>
             <h2>{{ article.title }}</h2>
             <p>{{ article.description }}</p>
@@ -836,7 +836,7 @@ And of course we should link from our blog post to our new author page.
 
 ```html{}[components/Author.vue]
 <NuxtLink :to="`/blog/author/${author.name}`">
-  <img :src="author.img" />
+  <nuxt-img :src="author.img" />
   <div>
     <h4>Author</h4>
     <p>{{ author.name }}</p>
