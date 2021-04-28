@@ -4,7 +4,7 @@ import { getTagName } from './utils'
 
 export default function html(h, node) {
   const tagName = getTagName(node.value)
-  // transform to kebab-case (useful for PascalCase vue components)
+
   if (tagName) {
     node.value = node.value.replace(tagName, kebabCase(tagName))
   }

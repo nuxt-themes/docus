@@ -24,6 +24,9 @@ export default function htmlDirectives({ directives, dataComponents }) {
 
   function toData(node) {
     const markdown = toMarkdown(node)
+      // fix issue with toMarkdown autolinker
+      .replace(/<(https?:[^>]*)>/g, '$1')
+
     const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
 
     return data

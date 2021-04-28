@@ -56,12 +56,12 @@ const prismHighlighter = (rawCode, language, { lineHighlights, fileName }, { h, 
    */
   childs.push(h(node, 'pre', props, [h(node, 'code', [u('raw', code)])]))
 
-  return h(node.position, 'div', { className: ['nuxt-content-highlight'] }, childs)
+  return h(node.position, 'prose-code', {}, childs)
 }
 
 const toAst = (h, node) => highlighted => {
   if (typeof highlighted === 'string') {
-    return h(node, 'div', { className: ['nuxt-content-highlight'] }, [u('raw', highlighted)])
+    return h(node, 'prose-code', {}, [u('raw', highlighted)])
   }
   return highlighted
 }

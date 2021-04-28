@@ -1,4 +1,5 @@
 import { DocusRootNode, DocusMarkdownNode, Toc, TocLink } from 'src/types'
+import { expandTags } from '../../runtime/utils'
 import { logger } from '../../utils'
 import { flattenNode, flattenNodeText } from './utils'
 
@@ -43,7 +44,8 @@ function nestHeaders(headers: TocLink[]): TocLink[] {
 
 export function generateFlatToc(body: DocusRootNode, options: Toc): Toc {
   const { searchDepth, depth, title = '' } = options
-  const tags = getTocTags(depth)
+  const tags = expandTags(getTocTags(depth))
+
   const headers = flattenNode(body, searchDepth).filter(node => tags.includes(node.tag))
 
   const links: TocLink[] = headers.map(node => ({

@@ -1,8 +1,8 @@
 <template>
   <div class="p-4 mt-4 mb-4 rounded-md alert" :class="`alert-${type}`">
     <div class="flex items-start">
-      <div class="flex-grow overflow-auto alert-content">
-        <slot />
+      <div class="flex-grow alert-content">
+        <Markdown :node="$slots.default" unwrap="p" />
       </div>
     </div>
   </div>
@@ -10,8 +10,10 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { Markdown } from '~docus/utils'
 
 export default defineComponent({
+  components: { Markdown },
   props: {
     /**
      * @values info, success, warning, danger

@@ -38,7 +38,7 @@
 <script>
 import { defineComponent, reactive, computed, toRefs, onMounted } from '@nuxtjs/composition-api'
 import { useScrollspy } from '../../composables'
-import { scrollToHeading } from '../../utils'
+import { scrollToHeading } from '~docus/utils'
 
 export default defineComponent({
   props: {
@@ -61,8 +61,9 @@ export default defineComponent({
 
     onMounted(() =>
       updateHeadings([
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
+        ...document.querySelectorAll('.docus-content h1'),
+        ...document.querySelectorAll('.docus-content h2'),
+        ...document.querySelectorAll('.docus-content h3')
       ])
     )
 

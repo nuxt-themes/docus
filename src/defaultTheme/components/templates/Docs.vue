@@ -26,7 +26,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { i18n, $docus } = useContext()
+    const { $docus } = useContext()
     const prev = ref(null)
     const next = ref(null)
 
@@ -40,10 +40,12 @@ export default defineComponent({
         }, 300)
       }
 
+      // do not remove setTimeout (no headers)
       setTimeout(() => {
         const headings = [
-          ...document.querySelectorAll('.nuxt-content h2'),
-          ...document.querySelectorAll('.nuxt-content h3')
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {
@@ -52,23 +54,22 @@ export default defineComponent({
             scrollToHeading(hash, '--docs-scroll-margin-block')
           })
         })
-      }, 100)
+      }, 500)
     })
 
-    useFetch(async () => {
-      const language = i18n.locale
+    useFetch(async ctx => {
+      const language = ctx.$i18n.locale
       const draft = $docus.ui?.draft ? undefined : false
 
-      const [_prev, _next] = await $docus
-        .search({ deep: true })
+      const [prevLink, nextLink] = await $docus.search({ deep: true })
         .where({ language, draft, menu: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
         .surround(props.page.slug, { before: 1, after: 1 })
         .fetch()
 
-      prev.value = _prev
-      next.value = _next
+      prev.value = prevLink
+      next.value = nextLink
     })
 
     return {

@@ -52,7 +52,7 @@
                     childLink.id
                   )
                 }"
-                class="pl-3 block py-1 transition-colors duration-100 transform"
+                class="block py-1 pl-3 transition-colors duration-100 transform"
                 @click.prevent="scrollToHeading(childLink.id, '--docs-scroll-margin-block')"
               >
                 {{ childLink.text }}
@@ -69,7 +69,7 @@
 <script>
 import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
 import { useScrollspy } from '../../composables'
-import { scrollToHeading } from '../../utils'
+import { scrollToHeading } from '~docus/utils'
 
 export default defineComponent({
   props: {
@@ -88,8 +88,9 @@ export default defineComponent({
 
     onMounted(() =>
       updateHeadings([
-        ...document.querySelectorAll('.nuxt-content h2'),
-        ...document.querySelectorAll('.nuxt-content h3')
+        ...document.querySelectorAll('.docus-content h1'),
+        ...document.querySelectorAll('.docus-content h2'),
+        ...document.querySelectorAll('.docus-content h3')
       ])
     )
 

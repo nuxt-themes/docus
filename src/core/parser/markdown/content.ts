@@ -27,7 +27,7 @@ export function generateDescription(excerptContent) {
  */
 export async function generateBody(content, options): Promise<DocusRootNode> {
   const { highlighter, data } = options
-  const rehypeOptions = {
+  const rehypeOptions: any = {
     handlers: await handlers(highlighter),
     allowDangerousHtml: true
   }

@@ -15,30 +15,18 @@ const DEFAULTS = {
   directives: {
     props: propsDirective
   },
-  dataComponents: ['block-hero', 'block-features'],
+  dataComponents: ['video-player', 'block-hero', 'block-features'],
   remarkPlugins: [
-    [
-      resolve(__dirname, './plugin/remark-prose'),
-      {
-        proseClass: 'prose dark:prose-dark'
-      }
-    ],
     'remark-emoji',
     'remark-directive',
     'remark-squeeze-paragraphs',
     'remark-slug',
-    'remark-autolink-headings',
+    ['remark-autolink-headings', { behavior: 'wrap' }],
     'remark-external-links',
     'remark-footnotes',
     'remark-gfm'
   ],
-  rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw'],
-  prism: {
-    theme: ''
-  },
-  remarkAutolinkHeadings: {
-    behavior: 'wrap'
-  }
+  rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw']
 }
 
 function parseFrontMatter(file) {
