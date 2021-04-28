@@ -54,10 +54,10 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   [key: string]: any
 }
 
-export interface StringMap {
-  [key: string]: string
+export interface Colors {
+  [key: string]: string | Colors
 }
 
-export interface Colors {
-  [key: string]: string | StringMap
+export interface Alias {
+  [key: string]: string
 }
