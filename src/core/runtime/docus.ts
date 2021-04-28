@@ -271,10 +271,7 @@ export const createDocus = async (
     set(state.categories, app.i18n.locale, groupBy(docs, 'category'))
   }
 
-  // eslint-disable-next-line require-await
   async function fetchReleases() {
-    if (process.server) return (ssrContext as any).docus.releases
-
     const repo = await data('github-releases')
     return repo.releases
   }

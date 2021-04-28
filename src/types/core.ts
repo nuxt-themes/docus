@@ -56,12 +56,12 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   [key: string]: any
 }
 
-export interface StringMap {
-  [key: string]: string
+export interface Colors {
+  [key: string]: string | Colors
 }
 
-export interface Colors {
-  [key: string]: string | StringMap
+export interface Alias {
+  [key: string]: string
 }
 
 //  Storage
@@ -71,4 +71,19 @@ export interface DriverOptions {
 }
 export interface StorageOptions {
   drivers: DriverOptions[]
+}
+
+export interface MarkdownParserOptions {
+  toc: {
+    depth: number
+    searchDepth: number
+  }
+  directives: any
+  dataComponents: string[]
+  remarkPlugins: (string | [string, any])[]
+  rehypePlugins: (string | [string, any])[]
+}
+
+export interface ParserOptions {
+  markdown: Partial<MarkdownParserOptions>
 }

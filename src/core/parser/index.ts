@@ -1,4 +1,5 @@
 import { extname } from 'path'
+import { ParserOptions } from 'src/types'
 import { logger } from '../utils'
 import { useJSONParser } from './json'
 import { useMarkdownParser } from './markdown'
@@ -6,7 +7,7 @@ import { useMarkdownParser } from './markdown'
 export * from './json'
 export * from './markdown'
 
-export function useParser(options: any = {}) {
+export function useParser(options: Partial<ParserOptions> = {}) {
   const parsers = {
     '.md': useMarkdownParser(options.markdown),
     '.json': useJSONParser()

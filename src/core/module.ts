@@ -1,7 +1,7 @@
 import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
-import { DocusDocument } from '../types'
+import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import useHooks from './hooks'
 import { initStorage } from './storage'
@@ -32,7 +32,7 @@ export default <Module>async function docusModule() {
   options.publicRuntimeConfig.contentDir = contentDir
 
   // extend parser options
-  const parserOptions = { markdown: {} }
+  const parserOptions: Partial<ParserOptions> = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
 
   const coreHooks = useHooks()

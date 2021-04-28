@@ -1,13 +1,13 @@
 import { resolve } from 'path'
 import defu from 'defu'
 import matter from 'gray-matter'
-import { Toc } from 'src/types'
+import { MarkdownParserOptions, Toc } from 'src/types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
 import propsDirective from './directive/props'
 
-const DEFAULTS = {
+const DEFAULTS: MarkdownParserOptions = {
   toc: {
     depth: 2,
     searchDepth: 2
@@ -70,7 +70,7 @@ async function parse(file, options) {
   }
 }
 
-export function useMarkdownParser(options: any = {}) {
+export function useMarkdownParser(options: Partial<MarkdownParserOptions> = {}) {
   options = defu(options, DEFAULTS)
   options.remarkPlugins.unshift([
     resolve(__dirname, './plugin/directive'),
