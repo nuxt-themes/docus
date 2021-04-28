@@ -321,15 +321,16 @@ export const createDocus = async (
       $nuxt = nuxt
 
       // Workaround since in full static mode, asyncData is not called anymore
-      app.router.beforeEach(async (_: any, __: any, next: any) => {
+      app.router.beforeEach((_: any, __: any, next: any) => {
         const payload = nuxt._pagePayload || {}
 
         payload.data = payload.data || []
 
         if (payload.data[0]?.page?.template && typeof Vue.component(payload.data[0].page.template) === 'function') {
           // Preload the component on client-side navigation
-          await app.component(payload.data[0].page.template)()
+          Vue.component(payload.data[0].page.template)
         }
+
         next()
       })
     })
