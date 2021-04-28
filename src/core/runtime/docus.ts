@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
-import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
+import { joinURL, withTrailingSlash, withoutTrailingSlash, withLeadingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
 import { computed, reactive, set, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from '../../types'
@@ -24,7 +24,8 @@ type DocusState = {
 
 export const createDocus = async (
   { app, ssrContext, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
-  settings: DocusSettings
+  settings: DocusSettings,
+  apiBase: string
 ) => {
   // Local instance let
   let $nuxt
@@ -63,17 +64,15 @@ export const createDocus = async (
    */
 
   function createQuery(path: string, options) {
-    const url = typeof path === 'string' ? `${path.startsWith('/') ? '' : '/'}${path}` : ''
+    path = withLeadingSlash(path)
     if (process.client) {
-      return new QueryBuilder(`/_content${url}`, options)
+      return new QueryBuilder(joinURL('/', apiBase, path), options)
     }
-    return ssrContext.docus.createQuery(url, options)
+    return (ssrContext as any).docus.createQuery(path, options)
   }
 
-  const join = (prefix, path) => `${prefix}${path.startsWith('/') || !path ? '' : '/'}${path}`
-
   function data(path: string) {
-    return createQuery(join('/data', path), {}).fetch()
+    return createQuery(joinURL('/data', path), {}).fetch()
   }
 
   function search(path: string | any, options?) {
@@ -81,7 +80,7 @@ export const createDocus = async (
       options = path
       path = ''
     }
-    return createQuery(join('/pages', path), options)
+    return createQuery(joinURL('/pages', path), options)
   }
 
   function page(path: string) {

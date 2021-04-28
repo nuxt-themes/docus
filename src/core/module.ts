@@ -83,7 +83,7 @@ export default <Module>async function docusModule() {
     ]
   })
 
-  addServerMiddleware(createServerMiddleware({ storage, base: '_content' }))
+  addServerMiddleware(createServerMiddleware({ storage, base: pluginOptions.apiBase }))
 
   addPlugin({
     src: resolve(__dirname, 'plugin.js'),

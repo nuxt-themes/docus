@@ -61,7 +61,8 @@ export default defineComponent({
       const language = ctx.$i18n.locale
       const draft = $docus.ui?.draft ? undefined : false
 
-      const [prevLink, nextLink] = await $docus.search({ deep: true })
+      const [prevLink, nextLink] = await $docus
+        .search({ deep: true })
         .where({ language, draft, menu: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
