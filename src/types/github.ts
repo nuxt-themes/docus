@@ -10,4 +10,5 @@ export interface GithubReleaseOptions {
   apiUrl: string
   repo: string
   token: string
+  releases?: boolean
 }

@@ -1,7 +1,7 @@
+import { resolve } from 'path'
 import defu from 'defu'
 import matter from 'gray-matter'
 import { Toc } from 'src/types'
-import { r } from '../../util'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
@@ -73,7 +73,7 @@ async function parse(file, options) {
 export function useMarkdownParser(options: any = {}) {
   options = defu(options, DEFAULTS)
   options.remarkPlugins.unshift([
-    r('core/parser/markdown/plugin/directive'),
+    resolve(__dirname, './plugin/directive'),
     { directives: options.directives, dataComponents: options.dataComponents }
   ])
   processOptions(options)

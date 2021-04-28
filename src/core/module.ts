@@ -1,49 +1,37 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
+import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
-import { useDefaults } from './util/settings'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { useJSONParser, useMarkdownParser } from './parser'
-import { exists, r, readFile } from './util'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
+import { useMarkdownParser } from './parser'
+
+const fs = gracefulFs.promises
 
 export default <Module>async function docusModule() {
-  const { nuxt, requireModule, addPlugin } = this
-  const { options, hook, callHook } = nuxt
+  // wait for nuxt options to be normalized
+  const { nuxt, requireModule } = this
+  const { options, hook } = nuxt
 
-  // Inject Docus theme as ~docus
-  options.alias['~docus'] = r('core/runtime')
+  // Setup docus cache
+  options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
+
+  options.alias['~docus'] = join(__dirname, 'runtime')
 
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
   options.publicRuntimeConfig.contentDir = contentDir
 
-  // read docus settings
-  let docusSettings
-  try {
-    const content = await readFile(resolve(options.srcDir, contentDir, 'settings.json'))
-    const userSettings = useJSONParser().parse(content)
-    docusSettings = useDefaults(userSettings)
-
-    // default title and description for pages
-    options.meta.name = docusSettings.title
-    options.meta.description = docusSettings.description
-    // if (settings.colors && settings.colors.primary) {
-    //   options.meta.theme_color = settings.colors.primary
-    // }
-  } catch (err) {
-    /* settings not found */
-  }
-
   // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
   hook('build:before', async () => {
     // To support older version of Nuxt
     const pagesDirPath = resolve(options.srcDir, options.dir.pages)
-    const pagesDirExists = await exists(pagesDirPath)
+    const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
     if (!pagesDirExists) {
       options.build.createRoutes = () => []
       options.watch.push(pagesDirPath)
     }
   })
+
   // Configure content after each hook
   hook('content:file:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
@@ -77,19 +65,10 @@ export default <Module>async function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
 
-  addPlugin({
-    src: r('core/runtime/plugin.js'),
-    filename: 'docus.js'
-  })
-
   const parserOptions = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
 
   const markdownParser = useMarkdownParser(parserOptions.markdown)
-
-  hook('content:ready', $content => {
-    callHook('docus:content:ready', { $content, settings: docusSettings})
-  })
 
   await requireModule([
     '@nuxt/content',

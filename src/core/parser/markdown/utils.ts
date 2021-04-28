@@ -1,6 +1,6 @@
 import hasha from 'hasha'
 import { camelCase } from 'scule'
-import { tryRequire, logger } from '../../util'
+import { tryRequire, logger } from '../../utils'
 
 const processPlugins = (type, markdown) => {
   const plugins = []

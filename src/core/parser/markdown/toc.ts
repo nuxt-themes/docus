@@ -1,10 +1,10 @@
-import { DocusRootNode, DocusMarkdownNode, Toc, TocLink } from 'src/types'
 import { expandTags } from '../../runtime/utils'
-import { logger } from '../../util'
+import { DocusRootNode, DocusMarkdownNode, Toc, TocLink } from 'src/types'
+import { logger } from '../../utils'
 import { flattenNode, flattenNodeText } from './utils'
 
 const TOC_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6']
-const TOC_TAGS_DEPTH = { h2: 2, 'prose-h2': 2, h3: 3, 'prose-h3': 3, h4: 4, 'prose-h4': 4 }
+const TOC_TAGS_DEPTH = { h2: 2, h3: 3, h4: 4 }
 
 const getHeaderDepth = (node: DocusMarkdownNode): number => TOC_TAGS_DEPTH[node.tag]
 
@@ -46,7 +46,7 @@ export function generateFlatToc(body: DocusRootNode, options: Toc): Toc {
   const { searchDepth, depth, title = '' } = options
   const tags = expandTags(getTocTags(depth))
 
-  const headers = flattenNode(body, 1).filter(node => tags.includes(node.tag))
+  const headers = flattenNode(body, searchDepth).filter(node => tags.includes(node.tag))
 
   const links: TocLink[] = headers.map(node => ({
     id: node.props.id,
