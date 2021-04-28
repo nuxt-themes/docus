@@ -3,7 +3,6 @@ import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
 import clearModule from 'clear-module'
 import { Module } from '@nuxt/types'
 import defu from 'defu'
-import { DocusSettings } from 'src/types'
 import { docusDefaults } from './defaults'
 
 export default <Module>function settingsModule() {

@@ -15,6 +15,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+
 export default defineComponent({
   props: {
     title: {
@@ -32,6 +33,7 @@ export default defineComponent({
   },
   setup() {
     const isImage = icon => String(icon).includes('.')
+
     return {
       isImage
     }

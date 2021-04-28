@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="mb-6" :class="{ 'border-b border-gray-200 dark:border-gray-800 pb-6': page.description }">
+    <section class="mb-6" :class="{ 'border-b border-gray-100 dark:border-gray-800 pb-6': page.description }">
       <div class="flex items-center justify-between">
         <InjectComponent
           v-if="page.icon"
@@ -19,7 +19,7 @@
       </div>
       <p v-if="page.description" class="mt-4 text-lg text-gray-600 dark:text-gray-300">{{ page.description }}</p>
     </section>
-    <NuxtContent :document="page" />
+    <NuxtContent :document="page" class="docus-content" />
     <PageBottom :page="page" />
   </div>
 </template>

@@ -35,9 +35,9 @@
           <img :src="page.imgUrl" alt="" class="object-cover" />
         </div>
 
-        <BlogpostToc :toc="page.toc" class="mb-8" />
+        <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
 
-        <NuxtContent :document="page" class="px-4" />
+        <NuxtContent :document="page" class="px-4 docus-content" />
       </div>
     </div>
   </AppContainer>
@@ -64,10 +64,12 @@ export default defineComponent({
         }, 300)
       }
 
+      // do not remove setTimeout (headings missing)
       setTimeout(() => {
         const headings = [
-          ...document.querySelectorAll('.nuxt-content h2'),
-          ...document.querySelectorAll('.nuxt-content h3')
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {
@@ -76,7 +78,7 @@ export default defineComponent({
             scrollToHeading(hash, '--blogpost-scroll-margin-block')
           })
         })
-      }, 100)
+      }, 300)
     })
 
     const formatDateByLocale = (locale, d) => {

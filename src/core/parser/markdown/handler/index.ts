@@ -1,6 +1,16 @@
-import codeHandler from './code'
-import htmlHandler from './html'
-import paragraphHandler from './paragraph'
+import code from './code'
+import html from './html'
+import heading from './heading'
+import link from './link'
+import list from './list'
+import listItem from './listItem'
+import table from './table'
+import paragraph from './paragraph'
+import image from './image'
+import blockquote from './blockquote'
+import strong from './strong'
+import inlineCode from './inlineCode'
+import thematicBreak from './thematicBreak'
 
 export default async function handlers(highlighter) {
   // create highlighter if its a factory funtions
@@ -9,8 +19,18 @@ export default async function handlers(highlighter) {
   }
 
   return {
-    code: codeHandler(highlighter),
-    paragraph: paragraphHandler,
-    html: htmlHandler
+    code: code(highlighter),
+    paragraph,
+    html,
+    link,
+    list,
+    listItem,
+    heading,
+    table,
+    image,
+    blockquote,
+    strong,
+    inlineCode,
+    thematicBreak
   }
 }

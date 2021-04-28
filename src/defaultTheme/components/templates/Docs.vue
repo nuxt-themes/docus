@@ -15,9 +15,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { defineComponent, ref, useContext, useFetch, onMounted } from '@nuxtjs/composition-api'
-import CopyButton from '../atoms/CopyButton.vue'
 import { scrollToHeading } from '../../utils'
 
 export default defineComponent({
@@ -42,18 +40,12 @@ export default defineComponent({
         }, 300)
       }
 
+      // do not remove setTimeout (no headers)
       setTimeout(() => {
-        const blocks = document.getElementsByClassName('nuxt-content-highlight')
-
-        for (const block of blocks) {
-          const Button = Vue.extend(CopyButton)
-          const component = new Button().$mount()
-          block.appendChild(component.$el)
-        }
-
         const headings = [
-          ...document.querySelectorAll('.nuxt-content h2'),
-          ...document.querySelectorAll('.nuxt-content h3')
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {
@@ -62,7 +54,7 @@ export default defineComponent({
             scrollToHeading(hash, '--docs-scroll-margin-block')
           })
         })
-      }, 100)
+      }, 500)
     })
 
     useFetch(async ctx => {

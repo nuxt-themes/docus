@@ -1,7 +1,7 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
-      class="relative px-2 text-sm text-white bg-gray-100 border-b-2 border-gray-300 rounded-t-md h-12 dark:bg-gray-800 dark:border-gray-700"
+      class="relative px-2 text-sm text-white bg-gray-100 border-b-2 border-gray-200 rounded-t-md h-12 dark:bg-gray-800 dark:border-gray-700"
     >
       <button
         v-for="({ label }, i) in tabs"
@@ -43,7 +43,7 @@ export default defineComponent({
   watch: {
     activeTabIndex(newValue, oldValue) {
       const tabs = this.$el.querySelectorAll(
-        '.code-group > .code-block, .code-group > .prose .nuxt-content-highlight, .code-group > .nuxt-content-highlight'
+        '.code-group > .code-block, .code-group > .prose .docus-highlight, .code-group > .docus-highlight'
       )
       if (oldValue < tabs.length) {
         tabs[oldValue].classList.remove('active')
@@ -90,13 +90,15 @@ export default defineComponent({
         .flatMap(slot => (slot.data?.attrs?.class?.includes('prose') ? slot.children : slot))
         .filter(
           slot =>
-            slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
-            isTag(slot, 'code-block')
+            slot.data?.attrs?.class?.includes('docus-highligh') ||
+            isTag(slot, 'code-block') ||
+            isTag(slot, 'prose-code')
         )
         .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
+          const [firstChild] = slot.children || slot.componentOptions?.children || slot.asyncMeta?.children || []
           return {
-            label: attrs.label || slot.children[0]?.children[0].text || 'untitled',
+            label: attrs.label || firstChild?.children[0].text || 'untitled',
             active: typeof attrs.active !== 'undefined'
           }
         })
@@ -110,40 +112,49 @@ export default defineComponent({
 button {
   outline: none;
 }
+
 .code-group {
-  & > .nuxt-content-highlight {
-    @apply mt-0;
-    &:not(.active) {
-      display: none;
-    }
-  }
-  .prose > .nuxt-content-highlight:not(.active) {
+  @apply my-4;
+
+  & .docus-highlight:not(.active) {
     display: none;
   }
+
+  & .code-block:not(.active) {
+    display: none;
+  }
+
+  >>> .docus-highlight {
+    @apply my-0;
+  }
 }
+
 .first-tab {
   & > .code-block:nth-child(2),
-  & > .prose:nth-child(2) > .nuxt-content-highlight:nth-child(1) {
+  & > .docus-highlight:nth-child(2) {
     display: block;
   }
 }
+
 .highlight-underline {
   bottom: -2px;
   height: 2px;
   transition: left 150ms, width 150ms;
 }
+
 .code-group ::v-deep {
   & pre[class*='language-'] {
     @apply rounded-t-none mt-0;
   }
-  & > .prose > .nuxt-content-highlight .filename {
+  & > .prose > .docus-highlight .filename {
     display: none;
     & + pre[class*='language-'] {
       @apply pt-3;
     }
   }
 }
-.nuxt-content-highlight {
+
+.docus-highlight {
   margin: 0;
 }
 </style>
