@@ -85,7 +85,7 @@ export default {
       },
       inset: {
         18: '4.5rem'
-      },
+      }
     }
   },
   shortcuts: {

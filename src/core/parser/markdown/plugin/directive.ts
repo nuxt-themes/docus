@@ -37,7 +37,7 @@ export default function htmlDirectives({ directives, dataComponents }) {
       if (key.startsWith(':')) {
         return [key, value]
       }
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         return [pageData[value] ? `:${key}` : key, value]
       }
       return [`:${key}`, JSON.stringify(value)]
@@ -54,11 +54,14 @@ export default function htmlDirectives({ directives, dataComponents }) {
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== "undefined") {
-        hast.properties = bindData({
-          ...hast.properties,
-          ...toData(node)
-        }, pageData)
+      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
+        hast.properties = bindData(
+          {
+            ...hast.properties,
+            ...toData(node)
+          },
+          pageData
+        )
       }
 
       data.hName = hast.tagName

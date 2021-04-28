@@ -42,7 +42,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="postcss">
-h2, h3 {
+h2,
+h3 {
   @apply mb-2 text-xl;
 }
 p {

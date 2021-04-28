@@ -6,10 +6,12 @@
 export default {
   props: {
     src: {
-      type: String
+      type: String,
+      default: ''
     },
     alt: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 }

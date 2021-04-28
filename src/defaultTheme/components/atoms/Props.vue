@@ -1,37 +1,39 @@
 <template>
-  <prose-table v-if="component">
-    <prose-thead>
-      <prose-tr>
-        <prose-th>Prop</prose-th>
-        <prose-th>Type</prose-th>
-        <prose-th v-if="showRequired">Required</prose-th>
-        <prose-th v-if="showDefault">Default</prose-th>
-        <prose-th v-if="showValues">Values</prose-th>
-        <prose-th v-if="showDescription">Description</prose-th>
-      </prose-tr>
-    </prose-thead>
-    <prose-tbody>
-      <prose-tr v-for="prop in properties" :key="prop.name">
-        <prose-td>
-          <prose-code-inline>{{ prop.name }}</prose-code-inline>
-        </prose-td>
-        <prose-td>
-          <prose-code-inline>{{ prop.type && prop.type.name }}</prose-code-inline>
-        </prose-td>
-        <prose-td v-if="showRequired">{{ prop.required ? 'Yes' : 'No' }}</prose-td>
-        <prose-td v-if="showDefault">
-          <prose-code-inline v-if="prop.defaultValue">{{ prop.defaultValue && prop.defaultValue.value }}</prose-code-inline>
-        </prose-td>
-        <prose-td v-if="showValues">
-          <prose-code-inline v-if="prop.values">{{ prop.values && JSON.stringify(prop.values).replace(/,/g, ', ') }}</prose-code-inline>
+  <ProseTable v-if="component">
+    <ProseThead>
+      <ProseTr>
+        <ProseTh>Prop</ProseTh>
+        <ProseTh>Type</ProseTh>
+        <ProseTh v-if="showRequired">Required</ProseTh>
+        <ProseTh v-if="showDefault">Default</ProseTh>
+        <ProseTh v-if="showValues">Values</ProseTh>
+        <ProseTh v-if="showDescription">Description</ProseTh>
+      </ProseTr>
+    </ProseThead>
+    <ProseTbody>
+      <ProseTr v-for="prop in properties" :key="prop.name">
+        <ProseTd>
+          <ProseCodeInline>{{ prop.name }}</ProseCodeInline>
+        </ProseTd>
+        <ProseTd>
+          <ProseCodeInline>{{ prop.type && prop.type.name }}</ProseCodeInline>
+        </ProseTd>
+        <ProseTd v-if="showRequired">{{ prop.required ? 'Yes' : 'No' }}</ProseTd>
+        <ProseTd v-if="showDefault">
+          <ProseCodeInline v-if="prop.defaultValue">{{ prop.defaultValue && prop.defaultValue.value }}</ProseCodeInline>
+        </ProseTd>
+        <ProseTd v-if="showValues">
+          <ProseCodeInline v-if="prop.values">{{
+            prop.values && JSON.stringify(prop.values).replace(/,/g, ', ')
+          }}</ProseCodeInline>
           <span v-else>-</span>
-        </prose-td>
-        <prose-td v-if="showDescription">
+        </ProseTd>
+        <ProseTd v-if="showDescription">
           <div v-html="prop.description"></div>
-        </prose-td>
-      </prose-tr>
-    </prose-tbody>
-  </prose-table>
+        </ProseTd>
+      </ProseTr>
+    </ProseTbody>
+  </ProseTable>
 </template>
 
 <script>

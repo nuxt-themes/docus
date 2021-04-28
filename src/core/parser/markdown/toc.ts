@@ -1,5 +1,5 @@
-import { expandTags } from '../../runtime/utils'
 import { DocusRootNode, DocusMarkdownNode, Toc, TocLink } from 'src/types'
+import { expandTags } from '../../runtime/utils'
 import { logger } from '../../utils'
 import { flattenNode, flattenNodeText } from './utils'
 

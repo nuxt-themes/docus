@@ -33,11 +33,6 @@ export default defineComponent({
       default: false
     }
   },
-  computed: {
-    content() {
-      return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
-    }
-  },
   setup(props) {
     const isInternal = computed(() => props.href.startsWith('/') && props.href.startsWith('//') === false)
 
@@ -46,6 +41,11 @@ export default defineComponent({
     return {
       isInternal,
       linkAttrs
+    }
+  },
+  computed: {
+    content() {
+      return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
     }
   }
 })
