@@ -1,5 +1,5 @@
-const unified = require('unified')
-const parse = require('rehype-parse')
+import unified from 'unified'
+import parse from 'rehype-parse'
 
 function rehypeMinify() {
   function minifyAst(ast) {
@@ -24,7 +24,7 @@ function rehypeMinify() {
       return ast.value
     }
     if (ast.type === 'element') {
-      const node = { tag: ast.tagName }
+      const node: any = { tag: ast.tagName }
       const children = ast.children && ast.children.length ? minifyAst(ast.children) : []
 
       if (ast.properties && Object.keys(ast.properties).length) {
@@ -46,7 +46,7 @@ function rehypeMinify() {
 }
 
 let _processor
-module.exports = async function parseHtml(file) {
+export default async function parseHtml(file) {
   if (!_processor) {
     _processor = unified().use(parse).use(rehypeMinify).freeze()()
   }

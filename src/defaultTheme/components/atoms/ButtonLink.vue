@@ -1,18 +1,20 @@
 <template>
   <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
-    <slot />
+    <Markdown :node="content" />
   </NuxtLink>
 
   <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
-    <slot />
+    <Markdown :node="content" />
     <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
   </a>
 </template>
 
 <script>
 import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { flatUnwrap, Markdown } from '~docus/utils'
 
 export default defineComponent({
+  components: { Markdown },
   props: {
     href: {
       type: String,
@@ -31,6 +33,11 @@ export default defineComponent({
       default: false
     }
   },
+  computed: {
+    content () {
+      return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
+    }
+  },
   setup(props) {
     const isInternal = computed(() => props.href.startsWith('/') && props.href.startsWith('//') === false)
 
@@ -44,7 +51,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 a.button-link {
   @apply inline-flex items-center flex-none px-3 py-2 text-sm leading-4 text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600 rounded focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-primary-600 focus:outline-none;
   &.medium {

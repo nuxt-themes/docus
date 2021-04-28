@@ -12,6 +12,9 @@ const PROSE_ELEMENTS = [
 
 const isJsNode = (node, customProsElements = []) => {
   let match
+  if (node.type === 'containerDirective') {
+    return !PROSE_ELEMENTS.includes(node.name) && !customProsElements.includes(node.name)
+  }
   if (node.type === 'html') {
     match = node.value.match(TAG_REGEX)
   }
@@ -25,7 +28,7 @@ const isJsNode = (node, customProsElements = []) => {
   )
 }
 
-module.exports = ({ prosElements = [], proseClass = 'prose' }) => {
+export default ({ prosElements = [], proseClass = 'prose' }) => {
   return tree => {
     let insideProse = false
     tree.children = tree.children.flatMap((node, i) => {

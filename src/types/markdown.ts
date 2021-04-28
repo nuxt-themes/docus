@@ -2,6 +2,10 @@ export interface DocusMarkdownNode {
   type: string
   tag?: string
   value?: string
+  props?: {
+    [key: string]: any
+  }
+  content?: any
   children?: DocusMarkdownNode[]
 }
 
@@ -11,5 +15,6 @@ export interface DocusMarkdownHtmlNode extends DocusMarkdownNode {
 }
 
 export interface DocusRootNode {
+  type: 'root'
   children: DocusMarkdownNode[]
 }

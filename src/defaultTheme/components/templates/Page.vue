@@ -8,7 +8,7 @@
     <AppPage>
       <PageContent :page="page" />
       <template #toc>
-        <PageToc v-if="page.toc" :title="page.tocTitle" :toc="page.toc" />
+        <PageToc v-if="page.toc" :title="page.toc.title" :toc="page.toc.links" />
       </template>
     </AppPage>
   </AppContainer>

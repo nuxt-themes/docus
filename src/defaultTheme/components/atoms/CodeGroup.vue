@@ -21,6 +21,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { isTag } from '~docus/utils'
 
 export default defineComponent({
   data() {
@@ -41,7 +42,9 @@ export default defineComponent({
   },
   watch: {
     activeTabIndex(newValue, oldValue) {
-      const tabs = this.$el.querySelectorAll('.code-group > .code-block, .code-group > .prose .nuxt-content-highlight')
+      const tabs = this.$el.querySelectorAll(
+        '.code-group > .code-block, .code-group > .prose .nuxt-content-highlight, .code-group > .nuxt-content-highlight'
+      )
       if (oldValue < tabs.length) {
         tabs[oldValue].classList.remove('active')
       }
@@ -88,8 +91,7 @@ export default defineComponent({
         .filter(
           slot =>
             slot.data?.attrs?.class?.includes('nuxt-content-highligh') ||
-            slot.componentOptions?.tag === 'code-block' ||
-            slot.asyncMeta?.tag === 'code-block'
+            isTag(slot, 'code-block')
         )
         .map(slot => {
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
@@ -108,8 +110,16 @@ export default defineComponent({
 button {
   outline: none;
 }
-.prose > .nuxt-content-highlight:not(.active) {
-  display: none;
+.code-group {
+  & > .nuxt-content-highlight {
+    @apply mt-0;
+    &:not(.active) {
+      display: none;
+    }
+  }
+  .prose > .nuxt-content-highlight:not(.active) {
+    display: none;
+  }
 }
 .first-tab {
   & > .code-block:nth-child(2),

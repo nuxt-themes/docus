@@ -1,11 +1,12 @@
-const path = require('path')
-const fs = require('fs')
-const { parse } = require('vue-docgen-api')
+import path from 'path'
+import fs from 'fs'
+import { parse } from 'vue-docgen-api'
+import { setNodeData } from '../utils'
 
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
   path.resolve('./components'), // components directory of project docs
-  path.resolve(__dirname, '../../../defaultTheme') // components directory of Docus
+  path.resolve(__dirname, '../../../../defaultTheme') // components directory of Docus
 ]
 
 function fileName(file) {
@@ -15,7 +16,7 @@ function fileName(file) {
   return file
 }
 
-function resolvePath(file) {
+function resolvePath(file: string) {
   file = fileName(file)
   if (fs.existsSync(path.resolve(file))) {
     return path.resolve(file)
@@ -28,24 +29,16 @@ function resolvePath(file) {
   return null
 }
 
-module.exports = async function propsHandler(node) {
-  const match = node.value.match(/of=['"]([^'"]*)['"]/)
-  if (!match) {
-    // eslint-disable-next-line no-console
-    console.error('Invalid component')
-    return {
-      node: { type: 'html', value: '<!-- Invalid component -->' }
-    }
-  }
-  const componentFile = resolvePath(match[1])
+export default async function propsHandler(node: any, pageData: any) {
+  const componentFile = resolvePath(node.attributes.of)
   if (!componentFile) {
     // eslint-disable-next-line no-console
-    console.error('Component not find. ' + match[1])
+    console.error('Component not find. ' + node.attributes.of)
     return {
       node: { type: 'html', value: '<!-- Invalid component -->' }
     }
   }
-  return {
-    data: await parse(componentFile)
-  }
+
+  const data = await parse(componentFile)
+  setNodeData(node, 'data', data, pageData)
 }

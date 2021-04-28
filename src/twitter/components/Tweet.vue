@@ -1,5 +1,5 @@
 <template>
-  <blockquote class="tweet">
+  <blockquote class="tweet" :class="`tweet-${layout}`">
     <div class="flex mb-4 author">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
         <img
@@ -118,10 +118,13 @@ export default {
 </script>
 
 <style lang="postcss">
-.tweet {
-  @apply my-5 p-6 pb-3 border border-gray-300 rounded-md mx-auto;
+blockquote.tweet {
+  @apply my-5 p-6 pb-3 border border-gray-300 rounded-md mx-auto b-0 not-italic;
   @apply dark:border-gray-700;
   width: calc(min(100%, 550px)) !important;
+  & img {
+    @apply m-0;
+  }
 }
 .tweet .link {
   @apply block;

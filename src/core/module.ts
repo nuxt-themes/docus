@@ -2,8 +2,8 @@ import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
 import { DocusDocument } from '../types'
-import { contentConfig } from './utils/configs'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
+import { useMarkdownParser } from './parser'
 
 const fs = gracefulFs.promises
 
@@ -14,6 +14,8 @@ export default <Module>async function docusModule() {
 
   // Setup docus cache
   options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
+
+  options.alias['~docus'] = join(__dirname, 'runtime')
 
   // Inject content dir in private runtime config
   const contentDir = options?.content?.dir || 'content'
@@ -63,5 +65,22 @@ export default <Module>async function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
 
-  await requireModule(['@nuxt/content', contentConfig])
+  const parserOptions = { markdown: {} }
+  await nuxt.callHook('docus:parserOptions', parserOptions)
+
+  const markdownParser = useMarkdownParser(parserOptions.markdown)
+
+  await requireModule([
+    '@nuxt/content',
+    {
+      extendParser: {
+        '.md': (content: string) => markdownParser.parse(content)
+      },
+      markdown: {
+        prism: {
+          theme: ''
+        }
+      }
+    }
+  ])
 }

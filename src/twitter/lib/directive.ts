@@ -1,8 +1,11 @@
+import defu from 'defu'
 import { $fetch } from 'ohmyfetch/node'
+import { setNodeData } from '../../core/parser/markdown/utils'
 import parseHtml from './html-parser'
 
 const SYNDICATION_URL = 'https://syndication.twitter.com'
-export async function fetchTweetHtml(id) {
+
+export async function fetchTweetHtml(id: string) {
   try {
     const result = await $fetch(`${SYNDICATION_URL}/tweets.json?ids=${id}`)
     return result[id] || {}
@@ -33,16 +36,16 @@ function findNode(root, predicate) {
   return theNode
 }
 
-async function fetchTweetAst(id, layout = 'tweet') {
+async function fetchTweetAst(id: string, layout = 'tweet', processQuote = true) {
   const html = await fetchTweetHtml(id)
   if (!html) {
     return {}
   }
   const ast = await parseHtml(html)
-  return await processTweetAst(ast, layout)
+  return await processTweetAst(ast, layout, processQuote)
 }
 
-async function processTweetAst(ast, layout) {
+async function processTweetAst(ast, layout, processQuote = true) {
   const blockquote = findNode(ast, node => node.tag === 'blockquote')
   const root = findNode(blockquote, matchScribe('component:tweet'))
   const theTweetHeader = findNode(blockquote, matchClass('Tweet-header'))
@@ -54,38 +57,50 @@ async function processTweetAst(ast, layout) {
     .filter(card => card.nodes.find(node => matchClass('MediaCard')(node)))
     .map(node => findNode(node, matchClass('MediaCard-mediaAsset')))
 
-  const quoteTweets = theTweetCards
-    .filter(card => card.nodes.find(node => matchClass('QuoteTweet')(node)))
-    .map(node => findNode(node, matchClass('QuoteTweet-link')))
-    .map(node => node.props.dataTweetId)
-    .map(id => fetchTweetAst(id, 'quote'))
+  let quotes = [];
+  if (processQuote) {
+    const quoteTweets = theTweetCards
+      .filter(card => card.nodes.find(node => matchClass('QuoteTweet')(node)))
+      .map(node => findNode(node, matchClass('QuoteTweet-link')))
+      .map(node => node.props.dataTweetId)
+      .map(id => fetchTweetAst(id, 'quote', false))
 
-  const quotes = await Promise.all(quoteTweets)
+    quotes = await Promise.all(quoteTweets)
+  }
 
   // tweet data
   const id = blockquote.props.dataTweetId
   const avatar = get(findNode(theTweetHeader, matchScribe('element:avatar')), 'props.dataSrc-1x')
   const name = get(findNode(theTweetHeader, matchScribe('element:name')), 'props.title')
   const username = get(findNode(theTweetHeader, matchScribe('element:screen_name')), 'props.title').replace('@', '')
-  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', 0)
+  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', "0")
   const dateTime = get(findNode(theTweetInfo, matchScribe('element:full_timestamp')), 'props.dataDatetime', undefined)
   const createdAt = new Date(dateTime).getTime()
 
-  return [
-    {
-      type: 'html',
-      value: `<Tweet class="tweet tweet-${layout}" layout="${layout}" id="${id}" avatar="${avatar}" name="${name}" heart-count="${heartCount}" username="${username}" :created-at="${createdAt}">`
+  // console.log(medias.flatMap(media => mapAST([media])));
+  
+  return {
+    id,
+    quotes,
+    data: {
+      layout: layout,
+      id: id,
+      avatar: avatar,
+      name: name,
+      "heart-count": heartCount,
+      username:username,
+      ":created-at": createdAt
     },
-    {
-      type: 'html',
-      value: `<div class="content prose dark:prose-dark" dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">`
-    },
-    ...mapAST(theTweet.nodes),
-    ...medias.flatMap(media => mapAST([media])),
-    { type: 'html', value: '</div>' },
-    ...quotes.flatMap(node => node),
-    { type: 'html', value: '</Tweet>' }
-  ]
+    children: [
+      {
+        type: 'html',
+        value: `<div class="content prose dark:prose-dark" dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">`
+      },
+      ...mapAST(theTweet.nodes),
+      ...medias.flatMap(media => mapAST([media])),
+      { type: 'html', value: '</div>' },
+    ]
+  }
 }
 
 function mapAST(ast) {
@@ -127,9 +142,7 @@ function mapAST(ast) {
       const { props } = node
       return {
         type: 'html',
-        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${
-          props.alt
-        }" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
+        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
       }
     }
     if (node.tag === 'div') {
@@ -157,21 +170,32 @@ function mapAST(ast) {
 
 const tweetCache = {}
 
-module.exports = async node => {
-  const match = node.value.match(/id=['"](\d*)['"]/)
-  if (!match) {
-    // eslint-disable-next-line no-console
-    console.error('Invalid tweet id')
-    return { node: { type: 'html', value: '<!-- Invalid tweet id -->' } }
-  }
-  if (!tweetCache[match[1]]) {
+export default async (node, pageData) => {
+  const id = node.attributes.id
+  if (!tweetCache[id]) {
     try {
-      tweetCache[match[1]] = await fetchTweetAst(match[1])
+      tweetCache[id] = await fetchTweetAst(id)
     } catch (e) {
       // eslint-disable-next-line no-console
-      console.error(`Cannot fetch tweet ${match[1]}. ${e.message}`)
-      return { node: { type: 'html', value: `<!-- Cannot fetch tweet ${match[1]} -->` } }
+      console.error(`Cannot fetch tweet ${id}. ${e.message}`)
+      return { node: { type: 'html', value: `<!-- Cannot fetch tweet ${id} -->` } }
     }
   }
-  return { node: tweetCache[match[1]] }
+  const { quotes, data, children } = tweetCache[id]
+  if (quotes.length) {
+    children.push(...quotes.map(q => {
+      const qNode = defu(node, {})
+
+      qNode.children = q.children
+      Object.entries(q.data).forEach(([key, value]) => {
+        setNodeData (qNode, key, value, pageData)
+      }) 
+      return qNode
+    }))
+  }
+  
+  node.children = children
+  Object.entries(data).forEach(([key, value]) => {
+    setNodeData (node, key, value, pageData)
+  }) 
 }

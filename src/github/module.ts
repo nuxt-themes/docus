@@ -17,7 +17,7 @@ export default <Module>function docusGithubModule() {
   })
 
   hook('docus:content:ready', ({ $content, settings }: { $content: any; settings: DocusSettings }) => {
-    fetch({ $content, settings }).then(releases => {
+    fetch(settings.github).then(releases => {
       $content.database.items.insert({
         path: '/_docus/repo/github',
         releases

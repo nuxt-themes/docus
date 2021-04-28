@@ -84,14 +84,14 @@ export default defineComponent({
   setup(props) {
     const component = computed(() => props.data)
 
-    const properties = computed(() => component.value.props.filter(prop => !prop.tags?.ignore))
+    const properties = computed(() => component.value.props?.filter(prop => !prop.tags?.ignore))
 
     const showRequired = computed(() => {
       if (props.required !== undefined) {
         return props.required
       }
 
-      return properties.value.find(prop => prop.required !== undefined)
+      return properties.value?.find(prop => prop.required !== undefined)
     })
 
     const showValues = computed(() => {
@@ -99,7 +99,7 @@ export default defineComponent({
         return props.values
       }
 
-      return properties.value.find(prop => prop.values)
+      return properties.value?.find(prop => prop.values)
     })
 
     const showDescription = computed(() => {
@@ -107,7 +107,7 @@ export default defineComponent({
         return props.description
       }
 
-      return properties.value.find(prop => prop.description)
+      return properties.value?.find(prop => prop.description)
     })
 
     const showDefault = computed(() => {
@@ -115,7 +115,7 @@ export default defineComponent({
         return props.defaultValue
       }
 
-      return properties.value.find(prop => prop.defaultValue)
+      return properties.value?.find(prop => prop.defaultValue)
     })
 
     return {

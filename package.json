@@ -70,6 +70,8 @@
     "prism-theme-vars": "^0.2.2",
     "puppeteer-core": "^8.0.0",
     "rehype-parse": "^7.0.1",
+    "remark-directive": "^1.0.1",
+    "remark-emoji": "^2.2.0",
     "scule": "^0.1.1",
     "siroc": "^0.9.2",
     "theme-colors": "^0.0.5",

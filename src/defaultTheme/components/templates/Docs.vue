@@ -8,7 +8,7 @@
       <PagePrevNext :prev="prev" :next="next" />
 
       <template #toc>
-        <PageToc v-if="!page.hideToc" :title="page.tocTitle" :toc="page.toc" />
+        <PageToc v-if="!page.hideToc" :title="page.toc.title" :toc="page.toc.links" />
       </template>
     </AppPage>
   </AppContainer>
