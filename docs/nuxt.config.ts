@@ -50,6 +50,7 @@ export default withDocus({
       avatarSm: 24,
       avatarLg: 48,
       logo: 32,
+      migration: 536,
       blogImage: 864
     },
     domains: [
