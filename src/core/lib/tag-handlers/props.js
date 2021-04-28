@@ -5,7 +5,7 @@ const { parse } = require('vue-docgen-api')
 const directories = [
   path.resolve('./docs/components'), // components directory of project docs
   path.resolve('./components'), // components directory of project docs
-  path.resolve(__dirname, '../../../components') // components directory of Docus
+  path.resolve(__dirname, '../../../defaultTheme') // components directory of Docus
 ]
 
 function fileName(file) {

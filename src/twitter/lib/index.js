@@ -1,6 +1,6 @@
 const hasha = require('hasha')
-const tweetHandler = require('./tweet-tag')
 const { camelCase } = require('change-case')
+const tweetHandler = require('./tweet-tag')
 
 const handlers = [['tweet', tweetHandler]]
 

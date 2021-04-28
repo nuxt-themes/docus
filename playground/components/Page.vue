@@ -12,7 +12,7 @@
             <InjectComponent
               v-if="page.icon"
               :component="page.icon"
-              class="inline-flex mr-3 w-16 h-16 justify-center items-center"
+              class="inline-flex items-center justify-center w-16 h-16 mr-3"
             >
               <span class="text-3rem">{{ page.icon }}</span>
             </InjectComponent>
@@ -32,10 +32,10 @@
           <ul
             class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
           >
-            <li v-for="link of $docus.nav.en.links[2].children" :key="link.to" class="flex">
+            <li v-for="link of $docus.nav.value.en.links[2].children" :key="link.to" class="flex">
               <NuxtLink
                 :to="link.to"
-                class="relative w-full px-6 py-8 bg-gray-50 dark:bg-gray-800 rounded shadow dark:bg-gray-900 hover:shadow-lg"
+                class="relative w-full px-6 py-8 rounded shadow bg-gray-50 dark:bg-gray-800 dark:bg-gray-900 hover:shadow-lg"
               >
                 <InjectComponent
                   v-if="link.icon"

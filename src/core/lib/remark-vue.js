@@ -1,6 +1,6 @@
 const hasha = require('hasha')
-const propsHandler = require('./tag-handlers/props')
 const { camelCase } = require('change-case')
+const propsHandler = require('./tag-handlers/props')
 
 const handlers = [['props', propsHandler]]
 
