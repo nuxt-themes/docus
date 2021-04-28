@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="toc.length"
-    class="sticky top-header z-10 text-sm bg-white border-dashed border-b border-gray-100 dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 px-4"
+    class="sticky z-10 px-4 text-sm bg-white border-b border-gray-100 border-dashed top-header dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
   >
     <button
       class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none dark:text-gray-100"
@@ -14,7 +14,7 @@
       />
     </button>
 
-    <ul :class="[showMobileToc ? 'flex flex-col' : 'hidden']" class="overflow-x-hidden font-medium pb-4">
+    <ul :class="[showMobileToc ? 'flex flex-col' : 'hidden']" class="pb-4 overflow-x-hidden font-medium">
       <li v-for="link of filteredToc" :key="link.id" @click="showMobileToc = false">
         <a
           :href="`#${link.id}`"
@@ -38,7 +38,7 @@
 <script>
 import { defineComponent, reactive, computed, toRefs, onMounted } from '@nuxtjs/composition-api'
 import { useScrollspy } from '../../composables'
-import { scrollToHeading } from '~docus/utils'
+import { scrollToHeading } from '../../utils/dom'
 
 export default defineComponent({
   props: {

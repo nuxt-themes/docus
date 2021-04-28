@@ -2,10 +2,12 @@
   <blockquote class="tweet" :class="`tweet-${layout}`">
     <div class="flex mb-4 author">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
-        <img
+        <nuxt-img
           :src="avatar"
           :alt="name"
           class="rounded-full"
+          height="48"
+          width="48"
           :class="{ 'h-12 w-12': layout === 'tweet', 'w-6 h-6': layout === 'quote' }"
         />
       </a>

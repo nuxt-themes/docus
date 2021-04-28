@@ -134,15 +134,15 @@ function mapAST(ast) {
       if (matchClass('Emoji--forText')(node)) {
         return {
           type: 'html',
-          value: `<img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28" />`
+          value: `<nuxt-img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28" />`
         }
       }
       const { props } = node
       return {
         type: 'html',
-        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="" class="media-image" width="${
-          props.width || 500
-        }" height="${props.height || 280}" />`
+        value: `<nuxt-img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${
+          props.alt
+        }" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
       }
     }
     if (node.tag === 'div') {

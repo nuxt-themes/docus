@@ -6,7 +6,7 @@ import jiti from 'jiti'
 
 const _require = jiti(__filename)
 
-export function withDocus(theme: string | NuxtConfig, userConfig: NuxtConfig): NuxtConfig {
+export function withDocus(theme: string | NuxtConfig, userConfig?: NuxtConfig): NuxtConfig {
   if (typeof theme !== 'string') {
     userConfig = theme
     theme = resolve(__dirname, './defaultTheme')
