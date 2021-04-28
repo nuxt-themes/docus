@@ -28,7 +28,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $i18n, $docus, $content } = useContext()
+    const { $docus, $content } = useContext()
     const prev = ref(null)
     const next = ref(null)
 
@@ -65,19 +65,19 @@ export default defineComponent({
       }, 100)
     })
 
-    useFetch(async () => {
-      const language = $i18n.locale
+    useFetch(async ctx => {
+      const language = ctx.$i18n.locale
       const draft = $docus.ui?.draft ? undefined : false
 
-      const [prev, next] = await $content({ deep: true })
+      const [prevLink, nextLink] = await $content({ deep: true })
         .where({ language, draft, menu: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
         .surround(props.page.slug, { before: 1, after: 1 })
         .fetch()
 
-      prev.value = prev
-      next.value = next
+      prev.value = prevLink
+      next.value = nextLink
     })
 
     return {
