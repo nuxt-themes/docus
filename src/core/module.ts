@@ -1,6 +1,8 @@
 import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
+import hash from 'hasha'
+import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import useHooks from './hooks'
@@ -11,14 +13,28 @@ import { createServerMiddleware } from './server'
 
 const fs = gracefulFs.promises
 
+function isUrl(string) {
+  try {
+    // quick test if the string is an URL
+    // eslint-disable-next-line no-new
+    new URL(string)
+  } catch (_) {
+    return false
+  }
+  return true
+}
+
 export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
   const { nuxt, addServerMiddleware, addPlugin } = this
   const { options } = nuxt
+  const isSSG = options.dev === false && (options.target === 'static' || options._generate || options.mode === 'spa')
 
   const pluginOptions = {
-    apiBase: '_content',
-    watch: options.dev
+    apiBase: '_docus',
+    watch: options.dev,
+    isSSG,
+    dbPath: ''
   }
 
   // Setup docus cache
@@ -85,12 +101,6 @@ export default <Module>async function docusModule() {
 
   addServerMiddleware(createServerMiddleware({ storage, base: pluginOptions.apiBase }))
 
-  addPlugin({
-    src: resolve(__dirname, 'plugin.js'),
-    filename: 'docus.js',
-    options: pluginOptions
-  })
-
   if (options.dev) {
     nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))
 
@@ -113,6 +123,44 @@ export default <Module>async function docusModule() {
 
   nuxt.hook('generate:before', async () => {
     await lazyIndex()
+  })
+
+  if (isSSG) {
+    let publicPath = this.options.build.publicPath // can be an url
+    let routerBasePath = this.options.router.base
+
+    /* istanbul ignore if */
+    if (publicPath[publicPath.length - 1] !== '/') {
+      publicPath += '/'
+    }
+    if (routerBasePath[routerBasePath.length - 1] === '/') {
+      routerBasePath = routerBasePath.slice(0, -1)
+    }
+    pluginOptions.dbPath = isUrl(publicPath)
+      ? `${publicPath}${pluginOptions.apiBase}`
+      : `${routerBasePath}${publicPath}${pluginOptions.apiBase}`
+    nuxt.hook('generate:distRemoved', async () => {
+      const { items, db } = useDB()
+      // Create a hash to fetch the database
+      const dbHash = hash(JSON.stringify(items._data)).substr(0, 8)
+      if (this.options.publicRuntimeConfig) {
+        ;(this.options.publicRuntimeConfig as any).docusDbHash = dbHash
+      } else {
+        this.nuxt.hook('vue-renderer:ssr:context', renderContext => {
+          renderContext.nuxt.docusDbHash = dbHash
+        })
+      }
+
+      const dir = resolve(this.options.buildDir, 'dist', 'client', pluginOptions.apiBase)
+
+      await mkdirp(dir)
+      await fs.writeFile(join(dir, `db-${dbHash}.json`), db.serialize(), 'utf-8')
+    })
+  }
+  addPlugin({
+    src: resolve(__dirname, 'plugin.js'),
+    filename: 'docus.js',
+    options: pluginOptions
   })
 
   nuxt.hook('vue-renderer:context', (ssrContext: any) => {

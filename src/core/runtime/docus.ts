@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
-import { joinURL, withTrailingSlash, withoutTrailingSlash, withLeadingSlash } from 'ufo'
+import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
 import { computed, reactive, set, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from '../../types'
 import { useCSSVariables } from '../utils/css'
-import { QueryBuilder } from './QueryBuilder'
 
 const findLinkBySlug = (links: any[], slug: string) => links.find(link => link.slug === slug)
 
@@ -23,9 +22,9 @@ type DocusState = {
 }
 
 export const createDocus = async (
-  { app, ssrContext, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
+  { app, $contentLocalePath, route, beforeNuxtRender }: PermissiveContext,
   settings: DocusSettings,
-  apiBase: string
+  createQuery: any
 ) => {
   // Local instance let
   let $nuxt
@@ -62,14 +61,6 @@ export const createDocus = async (
   /**
    * Methods
    */
-
-  function createQuery(path: string, options) {
-    path = withLeadingSlash(path)
-    if (process.client) {
-      return new QueryBuilder(joinURL('/', apiBase, path), options)
-    }
-    return (ssrContext as any).docus.createQuery(path, options)
-  }
 
   function data(path: string) {
     return createQuery(joinURL('/data', path), {}).fetch()
