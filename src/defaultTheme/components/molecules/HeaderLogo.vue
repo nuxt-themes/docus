@@ -6,7 +6,7 @@
       </span>
     </template>
 
-    <template v-if="theme.header.title && theme.header.logo">
+    <template v-if="theme.header.title && theme.header.logo && logo">
       <div class="flex items-center">
         <span class="mr-4">
           <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
@@ -18,14 +18,14 @@
       </div>
     </template>
 
-    <template v-if="!theme.header.title && theme.header.logo">
+    <template v-if="logo && !theme.header.title && theme.header.logo">
       <span>
-        <img :src="logo.light" class="w-auto h-8 light-img" :alt="settings.title" />
-        <img :src="logo.dark" class="w-auto h-8 dark-img" :alt="settings.title" />
+        <img :src="logo.light" class="w-auto h-6 light-img" :alt="settings.title" />
+        <img :src="logo.dark" class="w-auto h-6 dark-img" :alt="settings.title" />
       </span>
     </template>
 
-    <span class="inline-flex items-center px-2 ml-2 text-xs font-semibold text-white rounded-full bg-primary-500">
+    <span class="inline-flex items-center px-2 ml-2 text-xs font-semibold text-white rounded-full bg-gray-500">
       beta
     </span>
   </div>
@@ -51,6 +51,7 @@ export default defineComponent({
         dark: settings.value.logo
       }
     })
+    console.log(logo)
 
     return {
       settings,

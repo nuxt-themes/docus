@@ -5,6 +5,16 @@ export default {
   twitter: 'nuxtlabs',
   template: 'docs',
   credits: true,
+  logo: {
+    light: '/logo-light.svg',
+    dark: '/logo-dark.svg'
+  },
+  theme: {
+    header: {
+      logo: true,
+      title: false
+    }
+  },
   github: {
     repo: 'nuxtlabs/docus',
     branch: 'main',
