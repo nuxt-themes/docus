@@ -36,12 +36,21 @@ export default defineSirocConfig({
       }
 
       await Promise.all(
-        jsFiles.map(async (file: string) => {
-          const contents = await fs.promises.readFile(file, 'utf-8')
-          // @ts-ignore
-          const { code } = minify(contents, options)
-          await fs.promises.writeFile(file, code || contents)
-        })
+        jsFiles
+          // Skip plugin template file
+          .filter((file: string) => !['./dist/core/plugin.js', './dist/social-image/runtime/plugin.js'].includes(file))
+          .map(async (file: string) => {
+            try {
+              const contents = await fs.promises.readFile(file, 'utf-8')
+
+              const { code } = await minify(contents, options)
+
+              await fs.promises.writeFile(file, code || contents)
+            } catch (e) {
+              console.log('Could not minify:')
+              console.log(file)
+            }
+          })
       )
     }
   }
