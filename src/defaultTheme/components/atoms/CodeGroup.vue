@@ -1,7 +1,7 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
     <div
-      class="relative px-2 text-sm text-white bg-gray-100 border-b-2 border-gray-300 rounded-t-md h-12 dark:bg-gray-800 dark:border-gray-700"
+      class="relative px-2 text-sm text-white bg-gray-100 border-b-2 border-gray-200 rounded-t-md h-12 dark:bg-gray-800 dark:border-gray-700"
     >
       <button
         v-for="({ label }, i) in tabs"

@@ -6,12 +6,14 @@
 
 <style lang="postcss" scoped>
 code {
+  /* TODO */
+  /* font-size: 0.875em; */
+  @apply text-sm;
   color: inherit;
   font-weight: 400;
-  font-size: 0.875em;
-  padding: 0.25rem;
+  padding: theme('padding.1') theme('padding.2');
   background-color: theme('colors.gray.100');
-  border-radius: 0.375rem;
+  border-radius: theme('borderRadius.md');
 }
 
 a code {
@@ -20,6 +22,7 @@ a code {
 }
 
 tbody code {
+  /* TODO */
   font-size: 12px;
 }
 
@@ -58,7 +61,6 @@ h3 a {
     font-weight: inherit;
     color: inherit;
     background-color: theme('colors.gray.800');
-    border-radius: 0.375rem;
   }
   h1 a,
   h2 a,
