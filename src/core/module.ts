@@ -1,38 +1,43 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
+import gracefulFs from 'graceful-fs'
 import { Module } from '@nuxt/types'
-import { DocusDocument, DocusSettings } from '../types'
-import { useDefaults } from './util/settings'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './util/document'
-import { logger, r } from './util'
-import { useStorage } from './storage'
-import { createServerMiddleware } from './server'
+import { DocusDocument } from '../types'
+import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import useHooks from './hooks'
+import { initStorage } from './storage'
 import { useDB } from './database'
+import { logger } from './utils'
+import { createServerMiddleware } from './server'
+
+const fs = gracefulFs.promises
 
 export default <Module>async function docusModule() {
+  // wait for nuxt options to be normalized
   const { nuxt, addServerMiddleware, addPlugin } = this
-  const { options, hook, callHook } = nuxt
+  const { options } = nuxt
+
+  const pluginOptions = {
+    apiBase: '_content',
+    watch: options.dev
+  }
+
+  // Setup docus cache
+  options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
 
   // Inject Docus theme as ~docus
-  options.alias['~docus'] = r('core/runtime')
+  options.alias['~docus'] = resolve(__dirname, 'runtime')
 
-  addPlugin({
-    src: r('core/runtime/plugin.js'),
-    filename: 'docus.js',
-    options: {
-      apiBase: '_content',
-      watch: options.dev
-    }
-  })
+  // Inject content dir in private runtime config
+  const contentDir = options.dir.pages || 'pages'
+  options.publicRuntimeConfig.contentDir = contentDir
 
+  // extend parser options
   const parserOptions = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
 
-  const hooks = useHooks()
-  hooks.hook('docus:storage:beforeInsert', (document: DocusDocument) => {
-    if (document.path === "/data/settings") {
-      Object.assign(document, useDefaults(document))
-    }
+  const coreHooks = useHooks()
+  // Configure content after each hook
+  coreHooks.hook('docus:storage:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
       return
     }
@@ -64,61 +69,63 @@ export default <Module>async function docusModule() {
     document.draft = document.draft || isDraft(slug)
   })
 
-  const { storage, init } = useStorage({
+  // Initiate storage
+  const { storage, lazyIndex } = initStorage({
     drivers: [
       {
         base: resolve(options.srcDir, options.dir.pages),
         mountPoint: 'pages'
-      },
-      {
-        base: resolve(options.srcDir, 'data'),
-        mountPoint: 'data'
       }
     ]
   })
 
-  hook('components:dirs', async (dirs: any) => {
+  addServerMiddleware(createServerMiddleware({ storage, base: '_content' }))
+
+  addPlugin({
+    src: resolve(__dirname, 'plugin.js'),
+    filename: 'docus.js',
+    options: pluginOptions
+  })
+
+  if (options.dev) {
+    nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))
+
+    storage.watch((event, key) => {
+      logger.info(`File ${event}: ${key}`)
+    })
+  }
+
+  nuxt.hook('components:dirs', (dirs: any) => {
     dirs.push({
-      path: r('core/runtime/components'),
+      path: resolve(__dirname, 'runtime/components'),
       global: true,
       level: 2
     })
   })
 
-  hook('build:before', async () => {
-    init()
+  nuxt.hook('build:before', () => {
+    lazyIndex()
   })
 
-  hook('generate:before', async () => {
-    await init()
+  nuxt.hook('generate:before', async () => {
+    await lazyIndex()
   })
 
-  // read docus settings
-  const docusSettings = (await storage.getItem('data:settings.json')) as Partial<DocusSettings>
-
-  // default title and description for pages
-  options.meta.name = docusSettings.title
-  options.meta.description = docusSettings.description
-
-  addServerMiddleware(
-    createServerMiddleware({ storage, base: '_content' })
-  )
-
-  if (options.dev) {
-    hook('listen', (server) => {
-      server.on('upgrade', (...args) => hooks.callHook('upgrade', ...args))
-    })
-
-    storage.watch((event, key) => {
-      logger.info(`${key} -- ${event}`)
-    })
-  }
-
-  hook('vue-renderer:context', (ssrContext: any) => {
+  nuxt.hook('vue-renderer:context', (ssrContext: any) => {
     const { query } = useDB()
     ssrContext.docus = ssrContext.docus || {}
     ssrContext.docus.createQuery = query
   })
 
-  callHook('docus:storage:ready')
+  // If pages/ does not exists, disable Nuxt pages parser (to avoid warning) and watch pages/ creation for full restart
+  nuxt.hook('build:before', async () => {
+    // To support older version of Nuxt
+    const pagesDirPath = resolve(options.srcDir, options.dir.pages)
+    const pagesDirExists = await fs.stat(pagesDirPath).catch(() => false)
+    if (!pagesDirExists) {
+      options.build.createRoutes = () => []
+      options.watch.push(pagesDirPath)
+    }
+  })
+  nuxt.callHook('docus:storage:ready')
 }

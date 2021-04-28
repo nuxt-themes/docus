@@ -1,12 +1,12 @@
+import { join } from 'path'
 import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
 import { promises as FS } from 'graceful-fs'
-import { join } from 'path'
 import { DriverOptions, StorageOptions } from '../types'
 import { useParser } from './parser'
 import { useDB } from './database'
 import useHooks from './hooks'
-import { logger } from './util'
+import { logger } from './utils'
 
 export interface DocusDriver extends Driver {
   init(): Promise<void>
@@ -21,23 +21,23 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     // unify key format
     key = key.replace(/\//g, ':')
 
-    let document = await parser.parse(key, content)
+    const document = await parser.parse(key, content)
 
-    if (document.extension === ".md") {
+    if (document.extension === '.md') {
       const stats = await FS.stat(join(options.base, document.path + document.extension))
       document.createdAt = stats.birthtime
       document.updatedAt = stats.mtime
     }
-    
+
     document.key = key
     // use prefix in document path
     document.path = `/${options.mountPoint}` + document.path
-    
+
     return insert(document)
   }
   return {
     async init() {
-      const keys = await fs.getKeys()
+      const keys = (await fs.getKeys()) || []
       const tasks = keys.map(async key => {
         const content = await fs.getItem(key)
         await parseAndIndex(key, content)
@@ -84,7 +84,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
           const content = await fs.getItem(key)
 
           await parseAndIndex(key, content)
-          
+
           callHook('docus:storage:updated', { event, key })
         }
         callback(event, key)
@@ -94,24 +94,31 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 })
 
 let _storage: Storage
-export function useStorage(options: StorageOptions = undefined) {
-  let drivers = []
-  if (!_storage) {
-    _storage = createStorage()
+let drivers: DocusDriver[]
+export function initStorage(options: StorageOptions) {
+  drivers = []
+  _storage = createStorage()
 
-    if (!options?.drivers) {
-      logger.warn('No driver specified for storage')
-    } else {
-      drivers = options.drivers.map(options => {
-        const driver = docusDriver(options) as DocusDriver
-        _storage.mount(options.mountPoint, driver)
-        return driver
-      })
-    }
+  if (!options?.drivers) {
+    logger.warn('No driver specified for storage')
+  } else {
+    drivers = options.drivers.map(options => {
+      const driver = docusDriver(options) as DocusDriver
+      _storage.mount(options.mountPoint, driver)
+      return driver
+    })
   }
+
   return {
     storage: _storage,
     drivers,
-    init: async () => Promise.all(drivers.map(d => d.init()))
+    lazyIndex: () => Promise.all(drivers.map(d => d.init()))
+  }
+}
+
+export function useStorage() {
+  return {
+    storage: _storage,
+    drivers
   }
 }

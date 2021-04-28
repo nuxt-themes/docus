@@ -17,9 +17,7 @@ export default {
     const language = app.i18n.locale
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
     const draft = $docus.ui?.draft ? undefined : false
-    const [page] = await $docus.search({ deep: true })
-      .where({ language, to, draft })
-      .fetch()
+    const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })
     }

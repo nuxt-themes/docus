@@ -8,6 +8,7 @@ const rxModel = /^v-model/
 const nativeInputs = ['select', 'textarea', 'input']
 
 function evalInContext(code, context) {
+  // eslint-disable-next-line no-new-func
   return new Function('with(this) { return (' + code + ') }').call(context)
 }
 
@@ -26,7 +27,10 @@ function propsToData(node, doc) {
           .replace(rxModel, '')
           .split('.')
           .filter(d => d)
-          .reduce((d, k) => ((d[k] = true), d), {})
+          .reduce((d, k) => {
+            d[k] = true
+            return d
+          }, {})
 
         // As of yet we don't resolve custom v-model field/event names from components
         const field = 'value'

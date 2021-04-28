@@ -1,8 +1,11 @@
 import { resolve } from 'path'
+import { nuxtConfig } from 'nuxt-extend'
 
 const r = (path: any) => resolve(__dirname, path)
 
-export default {
+export default nuxtConfig({
+  name: 'docus',
+  rootDir: __dirname,
   /**
    * Default app config
    */
@@ -31,6 +34,13 @@ export default {
      */
     theme_color: '#06B6D4'
   },
+  theme: {},
+  /**
+   * Disable suffix from color-mode
+   */
+  colorMode: {
+    classSuffix: ''
+  },
 
   /**
    * Modules & plugins
@@ -43,7 +53,7 @@ export default {
     '@nuxtjs/pwa',
     // Local modules
     r('module'),
-    r('../theme'),
+    r('../settings'),
     r('../social-image'),
     r('../twitter'),
     r('../github')
@@ -51,9 +61,8 @@ export default {
   modules: [
     // Local modules
     r('../i18n'),
-    r('../core')
+    r('../core/module')
   ],
-  plugins: [r('plugins/menu')],
 
   /**
    * Build configs
@@ -89,4 +98,4 @@ export default {
     nprogress: r('mock/default'),
     jwt_decode: r('mock/default')
   }
-}
+})

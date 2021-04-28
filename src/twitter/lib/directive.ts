@@ -57,7 +57,7 @@ async function processTweetAst(ast, layout, processQuote = true) {
     .filter(card => card.nodes.find(node => matchClass('MediaCard')(node)))
     .map(node => findNode(node, matchClass('MediaCard-mediaAsset')))
 
-  let quotes = [];
+  let quotes = []
   if (processQuote) {
     const quoteTweets = theTweetCards
       .filter(card => card.nodes.find(node => matchClass('QuoteTweet')(node)))
@@ -73,7 +73,7 @@ async function processTweetAst(ast, layout, processQuote = true) {
   const avatar = get(findNode(theTweetHeader, matchScribe('element:avatar')), 'props.dataSrc-1x')
   const name = get(findNode(theTweetHeader, matchScribe('element:name')), 'props.title')
   const username = get(findNode(theTweetHeader, matchScribe('element:screen_name')), 'props.title').replace('@', '')
-  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', "0")
+  const heartCount = get(findNode(theTweetInfo, matchScribe('element:heart_count')), 'nodes.0', '0')
   const dateTime = get(findNode(theTweetInfo, matchScribe('element:full_timestamp')), 'props.dataDatetime', undefined)
   const createdAt = new Date(dateTime).getTime()
 
@@ -81,13 +81,13 @@ async function processTweetAst(ast, layout, processQuote = true) {
     id,
     quotes,
     data: {
-      layout: layout,
-      id: id,
-      avatar: avatar,
-      name: name,
-      "heart-count": heartCount,
-      username:username,
-      ":created-at": createdAt
+      layout,
+      id,
+      avatar,
+      name,
+      'heart-count': heartCount,
+      username,
+      ':created-at': createdAt
     },
     children: [
       {
@@ -96,7 +96,7 @@ async function processTweetAst(ast, layout, processQuote = true) {
       },
       ...mapAST(theTweet.nodes),
       ...medias.flatMap(media => mapAST([media])),
-      { type: 'html', value: '</div>' },
+      { type: 'html', value: '</div>' }
     ]
   }
 }
@@ -140,7 +140,9 @@ function mapAST(ast) {
       const { props } = node
       return {
         type: 'html',
-        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
+        value: `<img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="" class="media-image" width="${
+          props.width || 500
+        }" height="${props.height || 280}" />`
       }
     }
     if (node.tag === 'div') {
@@ -181,19 +183,21 @@ export default async (node, pageData) => {
   }
   const { quotes, data, children } = tweetCache[id]
   if (quotes.length) {
-    children.push(...quotes.map(q => {
-      const qNode = defu(node, {})
+    children.push(
+      ...quotes.map(q => {
+        const qNode = defu(node, {})
 
-      qNode.children = q.children
-      Object.entries(q.data).forEach(([key, value]) => {
-        setNodeData (qNode, key, value, pageData)
-      }) 
-      return qNode
-    }))
+        qNode.children = q.children
+        Object.entries(q.data).forEach(([key, value]) => {
+          setNodeData(qNode, key, value, pageData)
+        })
+        return qNode
+      })
+    )
   }
-  
+
   node.children = children
   Object.entries(data).forEach(([key, value]) => {
-    setNodeData (node, key, value, pageData)
-  }) 
+    setNodeData(node, key, value, pageData)
+  })
 }

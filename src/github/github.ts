@@ -1,7 +1,6 @@
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
-import { DocusRepositoryOptions } from '../types'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
-import { useMarkdownParser } from '../core'
+import { useMarkdownParser } from '../core/parser'
 
 interface GithubRawRelease {
   draft: boolean
@@ -19,7 +18,7 @@ export function get(): GithubRelease[] {
   return cachedReleases
 }
 
-export async function fetch(settings: DocusRepositoryOptions) {
+export async function fetch(settings: GithubReleaseOptions) {
   let releases: GithubRelease[] = []
 
   const parser = useMarkdownParser()
