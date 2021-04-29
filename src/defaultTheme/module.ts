@@ -1,10 +1,9 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import { glob } from 'siroc'
 import defu from 'defu'
 import { Module } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import defaultWindiConfig from './windi.config'
-import typographyWorkaround from './utils/workaround'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
@@ -40,25 +39,19 @@ export default <Module>function themeSetupModule() {
     // Merge user & local Windi config
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
 
-    // Include user directory in scan process
-    windiOptions.scan.dirs.push(
-      resolve(`${options.srcDir}/components/**/*`),
-      resolve(`${options.srcDir}/pages/**/*`),
-      resolve(`${options.srcDir}/layouts/**/*`),
-      resolve(options.srcDir, options.publicRuntimeConfig.contentDir, '**/*')
-    )
-
     // Include local & npm depencies directories in scan process
-    windiOptions.scan.include = windiOptions.scan.include || []
-    windiOptions.scan.include.push(
+    windiOptions.scanOptions.dirs.push(
       __dirname,
-      resolve(`${options.rootDir}/node_modules/docus/dist'`),
-      resolve(`${options.rootDir}/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'`)
+      join(__dirname, '/node_modules/docus/dist'),
+      join(options.rootDir, '/node_modules/docus/dist'),
+      join(options.themeDir)
     )
 
-    // Workaround for typography plugin not being a function supporting theme
-    // TODO: Remove this once we remove the dependency on `prose`
-    typographyWorkaround(windiOptions, nuxt)
+    windiOptions.scanOptions.include.push(
+      join(__dirname, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
+      join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
+      join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
+    )
   })
 
   hook('components:dirs', async (dirs: any) => {
