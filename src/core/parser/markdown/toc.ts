@@ -4,7 +4,11 @@ import { logger } from '../../utils'
 import { flattenNode, flattenNodeText } from './utils'
 
 const TOC_TAGS = ['h2', 'h3', 'h4', 'h5', 'h6']
-const TOC_TAGS_DEPTH = { h2: 2, h3: 3, h4: 4 }
+
+const TOC_TAGS_DEPTH = expandTags(['h2', 'h3', 'h4']).reduce((tags, tag) => {
+  tags[tag] = Number(tag.charAt(tag.length - 1))
+  return tags
+}, {})
 
 const getHeaderDepth = (node: DocusMarkdownNode): number => TOC_TAGS_DEPTH[node.tag]
 
