@@ -1,1 +1,3 @@
-export const logger = require('consola').withScope('@docus')
+import consola from 'consola'
+
+export const logger = consola.withScope('@docus')

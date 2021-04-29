@@ -3,7 +3,10 @@ import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
 import clearModule from 'clear-module'
 import { Module } from '@nuxt/types'
 import defu from 'defu'
+import jiti from 'jiti'
 import { docusDefaults } from './defaults'
+
+const _require = jiti(__filename)
 
 export default <Module>function settingsModule() {
   const { options, hook, callHook } = this.nuxt
@@ -32,7 +35,7 @@ export default <Module>function settingsModule() {
   // Get user settings
   let userSettings
   try {
-    userSettings = require(settingsPath)
+    userSettings = _require(settingsPath)
     userSettings = userSettings?.default || userSettings
   } catch (err) {
     // eslint-disable-next-line no-console
@@ -41,7 +44,7 @@ export default <Module>function settingsModule() {
   // Get theme defaults
   let themeDefaults
   try {
-    themeDefaults = require(themeDefaultsPath)
+    themeDefaults = _require(themeDefaultsPath)
     themeDefaults = themeDefaults?.default || themeDefaults
   } catch (err) {
     // eslint-disable-next-line no-console
