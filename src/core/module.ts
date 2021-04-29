@@ -5,11 +5,11 @@ import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import useHooks from './hooks'
 import { initStorage } from './storage'
 import { useDB } from './database'
-import { logger } from './utils'
 import { createServerMiddleware } from './server'
+import { initParser } from './parser'
+import { useHooks, logger } from './'
 
 const fs = gracefulFs.promises
 
@@ -50,6 +50,7 @@ export default <Module>async function docusModule() {
   // extend parser options
   const parserOptions: Partial<ParserOptions> = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
+  initParser(parserOptions)
 
   const coreHooks = useHooks()
   // Configure content after each hook

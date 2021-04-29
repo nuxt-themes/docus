@@ -3,10 +3,8 @@ import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
 import { promises as FS } from 'graceful-fs'
 import { DriverOptions, StorageOptions } from '../types'
-import { useParser } from './parser'
 import { useDB } from './database'
-import useHooks from './hooks'
-import { logger } from './utils'
+import { useHooks, logger, useParser } from './'
 
 export interface DocusDriver extends Driver {
   init(): Promise<void>

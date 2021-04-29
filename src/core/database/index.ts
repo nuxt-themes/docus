@@ -1,5 +1,5 @@
 import Loki from '@lokidb/loki'
-import useHooks from '../hooks'
+import { useHooks } from '../'
 import { QueryBuilder } from '../runtime/QueryBuilder'
 
 let _db

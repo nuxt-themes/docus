@@ -7,11 +7,15 @@ import { useMarkdownParser } from './markdown'
 export * from './json'
 export * from './markdown'
 
-export function useParser(options: Partial<ParserOptions> = {}) {
-  const parsers = {
+let parsers
+export function initParser(options: Partial<ParserOptions> = {}) {
+  parsers = {
     '.md': useMarkdownParser(options.markdown),
     '.json': useJSONParser()
   }
+}
+
+export function useParser() {
   return {
     parse: async (file, content) => {
       const extension = extname(file)

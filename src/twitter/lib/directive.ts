@@ -92,7 +92,7 @@ async function processTweetAst(ast, layout, processQuote = true) {
     children: [
       {
         type: 'html',
-        value: `<div class="content prose dark:prose-dark" dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">`
+        value: `<div dir="${theTweet.props.dir}" lang="${theTweet.props.lang}">`
       },
       ...mapAST(theTweet.nodes),
       ...medias.flatMap(media => mapAST([media])),
@@ -134,15 +134,15 @@ function mapAST(ast) {
       if (matchClass('Emoji--forText')(node)) {
         return {
           type: 'html',
-          value: `<nuxt-img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28" />`
+          value: `<prose-img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="28" height="28"></prose-img>`
         }
       }
       const { props } = node
       return {
         type: 'html',
-        value: `<nuxt-img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${
+        value: `<prose-img src="${props.dataImage}.${props.dataImageFormat || 'jpg'}" alt="${
           props.alt
-        }" class="media-image" width="${props.width || 500}" height="${props.height || 280}" />`
+        }" class="media-image" width="${props.width || 500}" height="${props.height || 280}"></prose-img>`
       }
     }
     if (node.tag === 'div') {

@@ -1,7 +1,7 @@
 import Hookable from 'hookable'
 
 let _hookable: Hookable
-export default function useHooks() {
+export function useHooks() {
   if (!_hookable) {
     _hookable = new Hookable()
   }

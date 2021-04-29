@@ -2,7 +2,7 @@ import WS from 'ws'
 import { createApp, useBody } from 'h3'
 import { createStorageServer } from 'unstorage/server'
 import { useDB } from './database'
-import useHooks from './hooks'
+import { useHooks } from './'
 
 export const createServerMiddleware = ({ base, storage }) => {
   const unstorageHandle = createStorageServer(storage).handle
