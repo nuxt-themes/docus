@@ -1,8 +1,9 @@
 {
   "name": "docus",
-  "version": "0.3.0-beta.1",
+  "version": "0.3.0-beta.2",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
+  "type": "module",
   "exports": {
     ".": "./dist/index.js",
     "./dist/app/*": "./dist/app/*",
