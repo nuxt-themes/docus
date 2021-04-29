@@ -41,7 +41,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
       level: 3
     }
   ],
-  plugins: [r('./plugins/menu.ts')],
+  plugins: [r('./plugins/menu')],
   modules: [themeSetupModule, 'nuxt-windicss', '@nuxtjs/color-mode'],
   hooks: {
     ready: readyHook,
