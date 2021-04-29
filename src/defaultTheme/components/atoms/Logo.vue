@@ -18,17 +18,17 @@ export default defineComponent({
   },
   setup(props) {
     const logo = computed(() => {
-      if (!props.settings.logo) {
+      if (!props.settings.value.logo) {
         return
       }
 
-      if (typeof props.settings.logo === 'object') {
-        return props.settings.logo
+      if (typeof props.settings.value.logo === 'object') {
+        return props.settings.value.logo
       }
 
       return {
-        light: props.settings.logo,
-        dark: props.settings.logo
+        light: props.settings.value.logo,
+        dark: props.settings.value.logo
       }
     })
 
