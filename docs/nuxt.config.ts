@@ -72,7 +72,8 @@ export default withDocus({
       'speedcurve.nuxtjs.org',
       'pbs.twimg.com',
       'source.unsplash.com',
-      'user-images.githubusercontent.com'
+      'user-images.githubusercontent.com',
+      'abs.twimg.com'
     ]
   }
 })
