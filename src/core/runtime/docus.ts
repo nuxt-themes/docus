@@ -218,6 +218,7 @@ export const createDocus = async (
     const categories = state.nav[app.i18n.locale].links
       .filter(link => link.menu !== false)
       .reduce((acc, link) => {
+        link = { ...link }
         // clean up children from menu
         if (link.children) {
           link.children = link.children.filter(l => l.menu !== false)
