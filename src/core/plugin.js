@@ -1,4 +1,3 @@
-import Loki from '@lokidb/loki'
 import { joinURL, withLeadingSlash } from 'ufo'
 import settings from '~docus-cache/docus-settings.json'
 import { createDocus, <%= options.isSSG ? "QueryBuilder" : "RemoteQueryBuilder" %> } from '~docus'
@@ -6,6 +5,7 @@ import { createDocus, <%= options.isSSG ? "QueryBuilder" : "RemoteQueryBuilder" 
 
 
 /* <% if (options.isSSG) { %> */
+import Loki from '@lokidb/loki'
 let db, items
 function createQuery(path, { deep = false, text = false } = {}) {
   const query = {

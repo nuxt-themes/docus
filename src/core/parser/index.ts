@@ -26,6 +26,12 @@ export function useParser() {
       const parser = parsers[extension]
       if (!parser) {
         logger.error(`Parser not found for file ${file}`)
+        return {
+          path: paths.join('/'),
+          dir,
+          slug,
+          extension
+        }
       }
 
       const result = await parser.parse(content)
