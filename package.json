@@ -19,7 +19,7 @@
     "./dist/twitter/*": "./dist/twitter/*",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
@@ -69,7 +69,7 @@
     "marked": "^2.0.3",
     "mkdirp": "^1.0.4",
     "nuxt-edge": "^2.16.0-26994259.8e2cad5a",
-    "nuxt-extend": "^0.0.3",
+    "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.26.0",
     "nuxt-vite": "^0.0.37",
     "nuxt-windicss": "^0.5.4",

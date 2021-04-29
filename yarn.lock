@@ -6619,7 +6619,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hookable@^4.3.1, hookable@^4.4.1:
+hookable@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/hookable/-/hookable-4.4.1.tgz#3d7154ac7e1f6f147e50fef583832f2645b9f04f"
   integrity sha512-KWjZM8C7IVT2qne5HTXjM6R6VnRfjfRlf/oCnHd+yFxoHO1DzOl6B9LzV/VqGQK/IrFewq+EG+ePVrE9Tpc3fg==
@@ -7415,11 +7415,6 @@ jimp-compact@^0.16.1:
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/jimp-compact/-/jimp-compact-0.16.1.tgz#9582aea06548a2c1e04dd148d7c3ab92075aefa3"
   integrity sha512-dZ6Ra7u1G8c4Letq/B5EzAxj4tLFHL+cGtdpR+PVm4yzPDj+lCk+AbivWt1eOM+ikzkowtyV7qSqX6qr3t71Ww==
-
-jiti@^0.1.12:
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/jiti/-/jiti-0.1.20.tgz#5fc8d4793f0e04e552f35c4a058ea62023e1bd36"
-  integrity sha512-nlsuibooCG5yEjmGSVqxhjULy3rO1Gl0LDP+HpUMbzOSLcz5s1Gf5cPnjvHiei0JCG3SXX761HQArDzNIfdz4Q==
 
 jiti@^1.3.0, jiti@^1.6.4, jiti@^1.9.1:
   version "1.9.1"
@@ -8799,14 +8794,14 @@ nuxt-edge@^2.16.0-26994259.8e2cad5a:
     "@nuxt/vue-renderer-edge" "2.16.0-26994259.8e2cad5a"
     "@nuxt/webpack-edge" "2.16.0-26994259.8e2cad5a"
 
-nuxt-extend@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/nuxt-extend/-/nuxt-extend-0.0.3.tgz#8be50cca7fc95ad33d96d6bb464bab1da396fa52"
-  integrity sha512-cp9NIl9RrY17vieexyskFBX+hmOwolLanE99XG8h4FVTEMLamq975sknIOjxNP/0SMHV5KdAfEfd+Cs2+XoWtg==
+nuxt-extend@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nuxt-extend/-/nuxt-extend-0.1.0.tgz#1a8fcd35b6b3b92ed67dd157e914fb064c4a30ca"
+  integrity sha512-MD8IcrT7p3l434/Mbr2zIsagvOpcIWhv4B/4N3xhAyQcaZZEBW+14wTX9L+Mj0+1e5gfbhWSW8mi8cA/bZ6WhA==
   dependencies:
-    defu "^3.2.2"
-    hookable "^4.3.1"
-    jiti "^0.1.12"
+    defu "^4.0.1"
+    hookable "^4.4.1"
+    jiti "^1.9.1"
 
 nuxt-i18n@^6.26.0:
   version "6.26.0"
