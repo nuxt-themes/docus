@@ -24,10 +24,6 @@ export default async function ({ $docus, ssrContext }: any) {
     watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
     watch(
       () => $docus.ui.draft,
-      () => $docus.fetchCategories()
-    )
-    watch(
-      () => $docus.ui.draft,
       () => $docus.fetchNavigation()
     )
 
@@ -46,7 +42,6 @@ export default async function ({ $docus, ssrContext }: any) {
 
   // Re-fetch categories
   if (process.server) {
-    await $docus.fetchCategories()
     await $docus.fetchNavigation()
   }
 }

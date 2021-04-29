@@ -63,7 +63,6 @@
     "hasha": "^5.2.2",
     "hookable": "^4.4.1",
     "jiti": "^1.9.1",
-    "lodash.groupby": "^4.6.0",
     "marked": "^2.0.3",
     "mkdirp": "^1.0.4",
     "nuxt-edge": "^2.16.0-26994259.8e2cad5a",
