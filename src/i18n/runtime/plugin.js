@@ -2,7 +2,6 @@ export default function ({ app }, inject) {
   if (process.client) {
     app.i18n.onLanguageSwitched = () => {
       window.$nuxt.$docus.fetchNavigation()
-      window.$nuxt.$docus.fetchCategories()
     }
   }
 

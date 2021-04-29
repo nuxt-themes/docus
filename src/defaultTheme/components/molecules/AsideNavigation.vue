@@ -26,10 +26,10 @@
           <AsideTop />
           <ul>
             <AsideNavigationItem
-              v-for="(docs, category) in categories"
-              :key="category"
-              :category="category"
-              :docs="docs"
+              v-for="category in categories"
+              :key="category.menuTitle"
+              :category="category.menuTitle"
+              :docs="category.children"
             />
           </ul>
           <AsideBottom />

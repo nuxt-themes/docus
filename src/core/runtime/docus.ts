@@ -1,9 +1,8 @@
 import Vue from 'vue'
-import groupBy from 'lodash.groupby'
 import { pascalCase } from 'scule'
 import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
-import { computed, reactive, set, toRefs } from '@nuxtjs/composition-api'
+import { computed, reactive, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from '../../types'
 import { useCSSVariables } from '../utils/css'
 
@@ -91,7 +90,7 @@ export const createDocus = async (
   async function fetch() {
     fetchSettings()
 
-    await Promise.all([fetchNavigation(), fetchCategories(), fetchLastRelease()])
+    await Promise.all([fetchNavigation(), fetchLastRelease()])
   }
 
   async function fetchNavigation() {
@@ -101,7 +100,20 @@ export const createDocus = async (
 
     // Get fields
     const draft = state.ui?.draft ? undefined : false
-    const fields = ['title', 'dir', 'nav', 'category', 'slug', 'version', 'to', 'icon', 'description', 'template']
+    const fields = [
+      'title',
+      'menu',
+      'menuTitle',
+      'dir',
+      'nav',
+      'category',
+      'slug',
+      'version',
+      'to',
+      'icon',
+      'description',
+      'template'
+    ]
     if (process.dev) fields.push('draft')
 
     // Query pages
@@ -117,7 +129,10 @@ export const createDocus = async (
 
     const getPageLink = (page: any) => ({
       slug: page.slug,
-      to: withoutTrailingSlash(page.to),
+      to: withoutTrailingSlash(page.to || page.slug),
+      menu: page.menu,
+      menuTitle: page.menuTitle,
+      template: page.template,
       title: page.title,
       icon: page.icon,
       description: page.description,
@@ -181,14 +196,7 @@ export const createDocus = async (
       if (!page.slug) {
         if (page.dirs.length === 1) page.nav.slot = page.nav.slot || 'header'
 
-        Object.assign(link, {
-          to: withoutTrailingSlash(page.to),
-          title: page.title,
-          template: page.template,
-          icon: page.icon,
-          description: page.description,
-          ...page.nav
-        })
+        Object.assign(link, getPageLink(page))
       } else {
         // Push page
         currentLinks.push(getPageLink(page))
@@ -203,6 +211,34 @@ export const createDocus = async (
       depth,
       links
     }
+
+    // calculate categories based on nav
+    const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
+    const danglingLinks = []
+    const categories = state.nav[app.i18n.locale].links
+      .filter(link => link.menu !== false)
+      .reduce((acc, link) => {
+        link = { ...link }
+        // clean up children from menu
+        if (link.children) {
+          link.children = link.children.filter(l => l.menu !== false)
+        }
+        // ensure link has proper `menuTitle`
+        if (!link.menuTitle) {
+          link.menuTitle = link.title || slugToTitle(link.slug) || ''
+        }
+
+        if (link.children && link.children.length) {
+          acc.push(link)
+        } else if (link.to) {
+          danglingLinks.push(link)
+        }
+        return acc
+      }, [])
+
+    // push others links to end of list
+    if (danglingLinks.length) categories.push({ to: '', children: danglingLinks })
+    state.categories[app.i18n.locale] = categories
   }
 
   function getPageTemplate(page: any) {
@@ -238,28 +274,6 @@ export const createDocus = async (
     }
 
     return template
-  }
-
-  async function fetchCategories() {
-    // TODO: Maybe remove this
-    // Avoid re-fetching in production
-    if (process.dev === false && state.categories[app.i18n.locale]) return
-
-    const draft = state.ui?.draft ? undefined : false
-    const fields = ['title', 'menuTitle', 'category', 'slug', 'version', 'to', 'icon']
-    if (process.dev) fields.push('draft')
-
-    const docs = await search({ deep: true })
-      .where({ language: app.i18n.locale, draft, menu: { $ne: false } })
-      .only(fields)
-      .sortBy('position', 'asc')
-      .fetch()
-
-    if (state.settings.github.releases) {
-      docs.push({ slug: 'releases', title: 'Releases', category: 'Community', to: '/releases' })
-    }
-
-    set(state.categories, app.i18n.locale, groupBy(docs, 'category'))
   }
 
   async function fetchReleases() {
@@ -371,7 +385,6 @@ export const createDocus = async (
     styles,
     isLinkActive,
     getPageTemplate,
-    fetchCategories,
     fetchLastRelease,
     fetchNavigation,
     fetchReleases,

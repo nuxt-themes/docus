@@ -76,7 +76,7 @@ export default nuxtConfig({
   vite: {
     optimizeDeps: {
       exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations'],
-      include: ['defu', 'theme-colors', 'lodash.groupby']
+      include: ['defu', 'theme-colors']
     },
     vue: {}
   },
