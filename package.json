@@ -1,23 +1,26 @@
 {
   "name": "docus",
-  "version": "0.3.0-beta.5",
+  "version": "0.3.0-beta.12",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
-  "type": "module",
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
     "./dist/app/*": "./dist/app/*",
     "./dist/admin/*": "./dist/admin/*",
     "./dist/defaultTheme/*": "./dist/defaultTheme/*",
+    "./dist/settings/*": "./dist/settings/*",
     "./dist/core/*": "./dist/core/*",
     "./dist/github/*": "./dist/github/*",
     "./dist/i18n/*": "./dist/i18n/*",
     "./dist/social-image/*": "./dist/social-image/*",
     "./dist/twitter/*": "./dist/twitter/*",
-    "./dist/theme/*": "./dist/theme/*",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "tsconfig.json",
