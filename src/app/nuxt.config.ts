@@ -48,10 +48,10 @@ export default nuxtConfig({
   buildModules: [
     // Dependencies
     'nuxt-vite',
-    '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
     '@nuxtjs/pwa',
     '@nuxt/image',
+    '@nuxtjs/composition-api/module',
     // Local modules
     r('./module'),
     r('../settings'),
