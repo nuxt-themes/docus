@@ -27,7 +27,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "siroc build",
+    "build": "rm -rf dist && siroc build",
     "dev": "nuxt dev docs",
     "generate": "nuxt generate --force-build docs",
     "start": "nuxt start docs",
