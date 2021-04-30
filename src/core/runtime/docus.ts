@@ -4,7 +4,6 @@ import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { Context } from '@nuxt/types'
 import { computed, reactive, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from '../../types'
-import { useCSSVariables } from '../utils/css'
 
 const findLinkBySlug = (links: any[], slug: string) => links.find(link => link.slug === slug)
 
@@ -55,8 +54,6 @@ export const createDocus = async (
 
   const repoUrl = computed(() => joinURL(state.settings.github.url, state.settings.github.repo))
 
-  const styles = computed(() => useCSSVariables(state.theme.colors, { code: 'prism' }))
-
   /**
    * Methods
    */
@@ -82,9 +79,6 @@ export const createDocus = async (
 
     state.settings = userSettings
     state.theme = theme
-
-    // Update injected styles on HMR
-    if (process.dev && process.client && window.$nuxt) updateHead()
   }
 
   async function fetch() {
@@ -143,14 +137,10 @@ export const createDocus = async (
     pages.forEach((page: any) => {
       page.nav = page.nav || {}
 
-      if (typeof page.nav === 'string') {
-        page.nav = { slot: page.nav }
-      }
+      if (typeof page.nav === 'string') page.nav = { slot: page.nav }
 
       // TODO: Ignore files directly from @nuxt/content
-      if (page.slug.startsWith('_')) {
-        return
-      }
+      if (page.slug.startsWith('_')) return
 
       // To: '/docs/guide/hello.md' -> dirs: ['docs', 'guide']
       page.dirs = withoutTrailingSlash(page.to)
@@ -158,9 +148,7 @@ export const createDocus = async (
         .filter(_ => _)
 
       // Remove the file part (except if index.md)
-      if (page.slug !== '') {
-        page.dirs = page.dirs.slice(0, -1)
-      }
+      if (page.slug !== '') page.dirs = page.dirs.slice(0, -1)
 
       if (!page.dirs.length) {
         page.nav.slot = page.nav.slot || 'header'
@@ -241,7 +229,7 @@ export const createDocus = async (
         return acc
       }, [])
 
-    // push others links to end of list
+    // Push other links to end of list
     if (danglingLinks.length) categories.push({ to: '', children: danglingLinks })
     state.categories[app.i18n.locale] = categories
   }
@@ -282,8 +270,7 @@ export const createDocus = async (
   }
 
   async function fetchReleases() {
-    const repo = await data('github-releases')
-    return repo.releases
+    return (await data('github-releases')).releases
   }
 
   async function fetchLastRelease() {
@@ -294,49 +281,6 @@ export const createDocus = async (
     if (lastRelease) state.lastRelease = lastRelease.name
   }
 
-  function updateHead() {
-    const head = typeof app.head === 'function' ? app.head() : app.head
-
-    // Update when editing content/settings.json
-    if (process.dev && process.client && window.$nuxt) {
-      const style = head.style.find(s => s.hid === 'docus-theme')
-
-      if (style) {
-        style.cssText = styles.value
-        window.$nuxt.$meta().refresh()
-      }
-
-      return
-    }
-
-    // Add head keys
-    if (!Array.isArray(head.style)) {
-      head.style = []
-    }
-
-    if (!Array.isArray(head.meta)) {
-      head.meta = []
-    }
-
-    head.style.push({
-      hid: 'docus-theme',
-      cssText: styles.value,
-      type: 'text/css'
-    })
-
-    head.meta = head.meta.filter(s => s.hid !== 'apple-mobile-web-app-title')
-
-    head.meta.push({
-      hid: 'apple-mobile-web-app-title',
-      name: 'apple-mobile-web-app-title',
-      content: state.settings.title
-    })
-
-    head.meta = head.meta.filter(s => s.hid !== 'theme-color')
-
-    head.meta.push({ hid: 'theme-color', name: 'theme-color', content: state.theme.colors.primary })
-  }
-
   function isLinkActive(to: string) {
     const path = $nuxt?.$route.path || route.path
     return withTrailingSlash(path) === withTrailingSlash($contentLocalePath(to))
@@ -345,7 +289,6 @@ export const createDocus = async (
   /**
    * Hooks and injection
    */
-
   if (process.client) {
     window.onNuxtReady((nuxt: any) => {
       $nuxt = nuxt
@@ -367,10 +310,9 @@ export const createDocus = async (
   }
 
   // HotReload on development
-  if (process.client && process.dev) {
-    window.onNuxtReady(() => window.$nuxt.$on('content:update', fetch))
-  }
+  if (process.client && process.dev) window.onNuxtReady(() => window.$nuxt.$on('content:update', fetch))
 
+  // Fetch on server
   if (process.server) {
     await fetch()
 
@@ -380,14 +322,11 @@ export const createDocus = async (
   // SPA Fallback
   if (process.client && !state.settings) await fetch()
 
-  updateHead()
-
   return {
     ...toRefs(state),
     currentNav,
     previewUrl,
     repoUrl,
-    styles,
     isLinkActive,
     getPageTemplate,
     fetchLastRelease,
