@@ -9,12 +9,12 @@ export function generatePosition(path: string, document: DocusDocument): string 
     .map(part => {
       const match = part.match(/^(\d+)\./)
       if (match) {
-        return paddLeft(match[1], 4)
+        return padLeft(match[1], 4)
       }
-      return document.position ? paddLeft(document.position, 4) : '9999' // Parts without a position are going down to the bottom
+      return document.position ? padLeft(document.position, 4) : '9999' // Parts without a position are going down to the bottom
     })
     .join('')
-  return paddRight(position, 12)
+  return padRight(position, 12)
 }
 
 export function generateSlug(name: string): string {
@@ -23,6 +23,7 @@ export function generateSlug(name: string): string {
     .replace(/^index/, '')
     .replace(/\.draft/, '')
 }
+
 export function generateTo(path: string): string {
   return withoutTrailingSlash(path.split('/').map(generateSlug).join('/'))
 }
@@ -69,6 +70,8 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
   return document
 }
 
+// Locals
+
 function getTextContent(node: DocusMarkdownNode): string {
   let text = node.value || ''
   if (node.children) {
@@ -77,10 +80,10 @@ function getTextContent(node: DocusMarkdownNode): string {
   return text
 }
 
-function paddLeft(value: string, length: number): string {
+function padLeft(value: string, length: number): string {
   return ('0'.repeat(length) + value).substr(String(value).length)
 }
 
-function paddRight(value: string, length: number): string {
+function padRight(value: string, length: number): string {
   return (value + '0'.repeat(length)).substr(0, length)
 }

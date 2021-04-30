@@ -18,9 +18,10 @@ export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
   const { put, generate } = useCssVariableStore(['dark'])
 
   const colorsList = useColors(colors, aliases)
-  colorsList.forEach(([color, map]) => {
+
+  colorsList.forEach(([color, map]) =>
     Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value as string))
-  })
+  )
 
   return generate()
 }
