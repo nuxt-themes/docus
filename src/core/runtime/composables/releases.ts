@@ -15,6 +15,7 @@ export const useDocusReleases = ({ api, state }: DocusAddonContext) => {
 
   return {
     fetchReleases,
-    fetchLastRelease
+    fetchLastRelease,
+    init: fetchLastRelease
   }
 }
