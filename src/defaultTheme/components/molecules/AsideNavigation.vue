@@ -48,7 +48,7 @@ export default defineComponent({
       return this.$docus.categories.value[this.$i18n.locale]
     },
     lastRelease() {
-      return this.$docus.lastRelease.value
+      return this.$docus.lastRelease?.value
     }
   }
 })

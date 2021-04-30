@@ -56,7 +56,7 @@ export default defineComponent({
 
     const settings = computed(() => $docus.settings)
 
-    const lastRelease = computed(() => $docus.lastRelease.value)
+    const lastRelease = computed(() => $docus.lastRelease?.value)
 
     return {
       settings,
