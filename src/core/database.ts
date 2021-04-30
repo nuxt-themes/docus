@@ -1,6 +1,6 @@
 import Loki from '@lokidb/loki'
-import { useHooks } from '../'
-import { QueryBuilder } from '../runtime/QueryBuilder'
+import { QueryBuilder } from './runtime/QueryBuilder'
+import { useHooks } from '.'
 
 let _db
 let _items
@@ -26,6 +26,11 @@ export const useDB = () => {
       return _items.insert(document)
     }
   }
+}
+
+export function destroyDB() {
+  _db = null
+  _items = null
 }
 
 function createQuery(path: string, { deep = false, text = false } = {}) {

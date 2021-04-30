@@ -123,6 +123,12 @@ export function initStorage(options: StorageOptions) {
   }
 }
 
+export async function destroyStorage() {
+  await _storage.dispose()
+  _storage = null
+  drivers = null
+}
+
 export function useStorage() {
   return {
     storage: _storage,

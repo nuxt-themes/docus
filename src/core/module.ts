@@ -5,10 +5,11 @@ import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import { initStorage } from './storage'
-import { useDB } from './database'
+import { destroyStorage, initStorage } from './storage'
+import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
 import { initParser } from './parser'
+import { destroyHooks } from './hooks'
 import { useHooks, logger } from './'
 
 const fs = gracefulFs.promises
@@ -181,4 +182,10 @@ export default <Module>async function docusModule() {
     }
   })
   nuxt.callHook('docus:storage:ready')
+
+  nuxt.hook('close', () => {
+    destroyHooks()
+    destroyDB()
+    destroyStorage()
+  })
 }

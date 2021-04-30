@@ -7,3 +7,7 @@ export function useHooks() {
   }
   return _hookable
 }
+
+export function destroyHooks() {
+  _hookable = null
+}

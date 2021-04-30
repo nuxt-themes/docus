@@ -221,7 +221,12 @@ export const createDocus = async (
         link = { ...link }
         // clean up children from menu
         if (link.children) {
-          link.children = link.children.filter(l => l.menu !== false)
+          link.children = link.children
+            .filter(l => l.menu !== false)
+            // Flatten sub-categories
+            .flatMap(child => (child.to ? child : child.children))
+            .flatMap(child => (child.to ? child : child.children))
+            .filter(l => l.to)
         }
         // ensure link has proper `menuTitle`
         if (!link.menuTitle) {
@@ -255,7 +260,7 @@ export const createDocus = async (
         if (link?.template) {
           template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
         }
-        if (!link.children) {
+        if (!link?.children) {
           return
         }
         links = link.children
