@@ -171,12 +171,15 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
       slugs.forEach((slug: string) => {
         const link = api.findLinkBySlug(links, slug)
+
         if (link?.template) {
           template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
         }
+
         if (!link.children) {
           return
         }
+
         links = link.children
       })
 
