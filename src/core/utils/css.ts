@@ -1,12 +1,12 @@
 import { getColors } from 'theme-colors'
-import { Alias, Colors } from '../../types'
+import { Colors } from '../../types'
 
-export function useColors(colors: Colors, aliases: Alias = {}) {
+/**
+ * Parse color definition from Docus Config.
+ */
+export function useColors(colors: Colors) {
   try {
-    return Object.entries(colors).map(([key, color]) => [
-      aliases[key] || key,
-      typeof color === 'string' ? getColors(color) : color
-    ])
+    return Object.entries(colors).map(([key, color]) => [key, typeof color === 'string' ? getColors(color) : color])
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn('Could not parse custom colors:', e.message)
@@ -14,10 +14,13 @@ export function useColors(colors: Colors, aliases: Alias = {}) {
   }
 }
 
-export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
+/**
+ * Generate a css string from variables definition.
+ */
+export function useCSSVariables(colors: Colors) {
   const { put, generate } = useCssVariableStore(['dark'])
 
-  const colorsList = useColors(colors, aliases)
+  const colorsList = useColors(colors)
 
   colorsList.forEach(([color, map]) =>
     Object.entries(map).forEach(([variant, value]) => put(`${color}-${variant}`, value as string))
@@ -26,6 +29,9 @@ export function useCSSVariables(colors: Colors, aliases: Alias = {}) {
   return generate()
 }
 
+/**
+ * Create a css variable store.
+ */
 function useCssVariableStore(scopes = ['dark']) {
   scopes = ['default', ...scopes]
 
