@@ -1,6 +1,6 @@
 import Loki from '@lokidb/loki'
-import { QueryBuilder } from './runtime/QueryBuilder'
-import { useHooks } from '.'
+import { QueryBuilder } from './runtime/api/QueryBuilder'
+import { useHooks } from './hooks'
 
 let _db
 let _items
