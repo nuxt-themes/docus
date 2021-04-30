@@ -3,7 +3,7 @@
     <div class="flex flex-col lg:flex-row my-8 md:my-16">
       <div class="flex flex-col items-center pr-0 lg:items-start lg:pr-8 lg:w-2/3">
         <h2
-          class="mb-4 text-4xl font-semibold sm:leading-none tracking-tighter text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:mb-8"
+          class="mb-4 text-4xl font-serif font-semibold sm:leading-none tracking-tighter text-center text-gray-900 lg:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:mb-8"
         >
           {{ title }}
         </h2>
