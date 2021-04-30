@@ -60,10 +60,6 @@ export interface Colors {
   [key: string]: string | Colors
 }
 
-export interface Alias {
-  [key: string]: string
-}
-
 //  Storage
 export interface DriverOptions {
   mountPoint: string
