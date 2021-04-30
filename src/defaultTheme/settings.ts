@@ -5,7 +5,7 @@ const defaultThemeSettings = {
   },
   colors: {
     primary: '#3073F1',
-    code: {
+    prism: {
       foreground: 'inherit',
       background: '#fbfbfb dark:#1e1e1e',
       class: '#9807af dark:#E879F9',
