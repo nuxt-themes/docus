@@ -19,7 +19,7 @@ export default defineSirocConfig({
       // Wait for mkdist to transpile everything
       await new Promise(resolve => setTimeout(resolve, 2000))
 
-      const jsFiles = await glob('./dist/**/*.js')
+      const jsFiles = [...(await glob('./dist/**/*.js')), ...(await glob('./dist/**/*.mjs'))]
       const nameCache = {}
       const options: MinifyOptions = {
         nameCache,
