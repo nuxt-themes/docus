@@ -1,5 +1,5 @@
 <template>
-  <NuxtImg :src="src" :alt="alt" />
+  <NuxtImg :src="src" :alt="alt" :width="width" :height="height" />
 </template>
 
 <script>
@@ -12,6 +12,14 @@ export default {
     alt: {
       type: String,
       default: ''
+    },
+    width: {
+      type: [String, Number],
+      default: undefined
+    },
+    height: {
+      type: [String, Number],
+      default: undefined
     }
   }
 }
