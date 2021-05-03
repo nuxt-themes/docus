@@ -134,7 +134,7 @@ function mapAST(ast) {
       if (matchClass('Emoji--forText')(node)) {
         return {
           type: 'html',
-          value: `<prose-img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="24" height="24"></prose-img>`
+          value: `<prose-img src="${node.props.src}" alt="${node.props.alt}" class="emoji" width="72" height="72"></prose-img>`
         }
       }
       const { props } = node
