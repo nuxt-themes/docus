@@ -2,7 +2,7 @@
   <blockquote class="tweet" :class="`tweet-${layout}`">
     <div class="flex mb-4 author">
       <a :href="profileUrl" target="_blank" rel="noopener noreferrer nofollow">
-        <nuxt-img
+        <NuxtImg
           :src="avatar"
           :alt="name"
           class="rounded-full"
@@ -26,7 +26,7 @@
         </template>
       </div>
       <a v-if="layout === 'tweet'" :href="tweetUrl" target="_blank" rel="noopener noreferrer nofollow">
-        <IconTwitter title="View on Twitter" role="img" class="text-blue-500" />
+        <IconTwitter title="View on Twitter" role="img" class="text-blue-500 w-8 h-8" />
       </a>
     </div>
     <slot />
@@ -103,17 +103,12 @@ export default {
     }
   },
   methods: {
-    playVideo({ target }) {
-      const wrapper = target.parentNode.parentNode
-      const size = wrapper.getBoundingClientRect()
-      const iframe = document.createElement('iframe')
-      iframe.setAttribute('src', `https://twitter.com/i/videos/${this.id}?embed_source=facebook`)
-      iframe.setAttribute('width', size.width)
-      iframe.setAttribute('referrerpolicy', 'no-referrer')
-      iframe.setAttribute('allow', 'autoplay')
-      iframe.setAttribute('height', size.height)
-      wrapper.innerHTML = ''
-      wrapper.appendChild(iframe)
+    playVideo() {
+      const a = document.createElement('a')
+      a.href = this.tweetUrl
+      a.target = '_blank'
+      a.rel = 'noopener'
+      a.click()
     }
   }
 }
@@ -128,68 +123,69 @@ blockquote.tweet {
     @apply m-0;
   }
 }
-.tweet .link {
-  @apply block;
-}
-.tweet.tweet-quote {
-  @apply p-3;
-}
-.tweet .emoji {
-  @apply w-5 h-5 m-0 inline-block;
-}
-.tweet .content p > a {
-  @apply text-blue-600;
-}
-.tweet .media-image {
-  @apply m-0;
-}
-.tweet .NaturalImage {
-  @apply mt-2 flex flex-wrap rounded-md overflow-hidden relative;
-}
-.tweet .NaturalImage .media-image {
-  @apply w-full object-cover;
-}
+.tweet {
+  .link {
+    @apply block;
+  }
+  &.tweet-quote {
+    @apply p-3;
+  }
+  .emoji {
+    @apply w-5 h-5 m-0 inline-block;
+  }
+  .content p > a {
+    @apply text-blue-600;
+  }
+  .media-image {
+    @apply m-0;
+  }
+  .NaturalImage {
+    @apply mt-2 flex flex-wrap rounded-md overflow-hidden relative;
+    .media-image {
+      @apply w-full object-cover;
+    }
+  }
+  .ImageGrid--2 {
+    @apply mt-2 grid grid-cols-2 gap-1 rounded-md overflow-hidden;
+    .media-image {
+      height: 300px;
+      @apply object-cover;
+    }
+  }
 
-.tweet .ImageGrid--2 {
-  @apply mt-2 grid grid-cols-2 gap-1 rounded-md overflow-hidden;
-}
-.tweet .ImageGrid--2 .media-image {
-  height: 300px;
-  @apply object-cover;
-}
+  .ImageGrid--3 {
+    @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
+    .media-image {
+      height: 150px;
+      @apply object-cover;
+      &:nth-child(3n + 2) {
+        height: 100%;
+        @apply row-span-2;
+      }
+    }
+  }
 
-.tweet .ImageGrid--3 {
-  @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
-}
-.tweet .ImageGrid--3 .media-image {
-  height: 150px;
-  @apply object-cover;
-}
-.tweet .ImageGrid--3 .media-image:nth-child(3n + 2) {
-  height: 100%;
-  @apply row-span-2;
-}
+  .ImageGrid--4 {
+    @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
+    .media-image {
+      height: 150px;
+      @apply object-cover;
+    }
+  }
+  .PlayButton--centered {
+    @apply absolute top-0 right-0 left-0 bottom-0;
+  }
+  .Icon--playCircle {
+    width: 180px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @apply absolute cursor-pointer rounded-full bg-gray-600 text-white bg-opacity-80 p-4;
 
-.tweet .ImageGrid--4 {
-  @apply mt-2 grid grid-cols-2 gap-1 grid-rows-2 rounded-md overflow-hidden;
-}
-.tweet .ImageGrid--4 .media-image {
-  height: 150px;
-  @apply object-cover;
-}
-.tweet .PlayButton--centered {
-  @apply absolute top-0 right-0 left-0 bottom-0;
-}
-.tweet .Icon--playCircle {
-  width: 150px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  @apply absolute cursor-pointer rounded-full bg-gray-600 text-white bg-opacity-80 p-4;
-
-  &:after {
-    content: 'Load Video';
-    @apply flex items-center justify-center;
+    &:after {
+      content: 'Video on Twitter';
+      @apply flex items-center justify-center;
+    }
   }
 }
 </style>
