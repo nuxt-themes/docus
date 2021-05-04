@@ -1,7 +1,7 @@
 import { joinURL, withLeadingSlash } from 'ufo'
 import settings from '~docus-cache/docus-settings.json'
 import { createDocus, <%= options.isSSG ? "QueryBuilder" : "RemoteQueryBuilder" %> } from '~docus'
-/* <% if (options.watch) { %> */ import { useWebSocket } from '~docus/websocket' /* <% } %> */
+/* <% if (options.watch) { %> */ import { useWebSocket } from '~docus/api/websocket' /* <% } %> */
 
 
 /* <% if (options.isSSG) { %> */
@@ -33,9 +33,12 @@ export default async function (ctx, inject) {
     items = db.getCollection('items')
   }
   /* <% } %> */
-    
 
-  const $docus = await createDocus(ctx, settings, process.server ? ctx.ssrContext.docus.createQuery : createQuery)
+  const $docus = await createDocus(
+    ctx,
+    settings,
+    process.server ? ctx.ssrContext.docus.createQuery : createQuery
+  )
 
   inject('docus', $docus)
 
