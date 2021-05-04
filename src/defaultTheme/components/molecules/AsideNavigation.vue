@@ -25,12 +25,15 @@
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
           <AsideTop />
           <ul>
-            <AsideNavigationItem
-              v-for="category in categories"
-              :key="category.menuTitle"
-              :category="category.menuTitle"
-              :docs="category.children"
-            />
+            <template v-for="category in categories">
+              <AsideNavigationItem
+                v-if="category.nav.children !== false"
+                :key="category.meta.menuTitle"
+                :category="category.meta.menuTitle"
+                :docs="category.children"
+              />
+              <AsideNavigationItem v-else :key="category.meta.menuTitle" :docs="[category]" />
+            </template>
           </ul>
           <AsideBottom />
         </div>
@@ -45,7 +48,7 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     categories() {
-      return this.$docus.categories.value[this.$i18n.locale]
+      return this.$docus.currentNav.value
     },
     lastRelease() {
       return this.$docus.lastRelease.value

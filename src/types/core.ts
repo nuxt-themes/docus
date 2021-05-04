@@ -87,3 +87,24 @@ export interface MarkdownParserOptions {
 export interface ParserOptions {
   markdown: Partial<MarkdownParserOptions>
 }
+
+// Navigation
+export interface NavItem {
+  slug: string
+  to: string
+  // locale: string // ??
+  title: string
+  // ^ generated from slug, or using frontmatter "title"
+  locale: string
+  meta: {
+    menu: boolean
+    icon: string
+    description: string
+    menuTitle: string
+    template: string
+  }
+  nav: {
+    slot: string
+  }
+  children: NavItem[]
+}

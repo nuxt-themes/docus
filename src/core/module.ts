@@ -10,6 +10,7 @@ import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
 import { initParser } from './parser'
 import { destroyHooks } from './hooks'
+import { updateNavigation } from './utils/navigation'
 import { useHooks, logger } from './'
 
 const fs = gracefulFs.promises
@@ -107,6 +108,7 @@ export default <Module>async function docusModule() {
     nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))
 
     storage.watch((event, key) => {
+      updateNavigation()
       logger.info(`File ${event}: ${key}`)
     })
   }
@@ -120,11 +122,15 @@ export default <Module>async function docusModule() {
   })
 
   nuxt.hook('build:before', () => {
-    lazyIndex()
+    ;(async () => {
+      await lazyIndex()
+      await updateNavigation()
+    })()
   })
 
   nuxt.hook('generate:before', async () => {
     await lazyIndex()
+    await updateNavigation()
   })
 
   if (isSSG) {

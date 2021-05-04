@@ -6,7 +6,7 @@ import { computed, reactive, toRefs } from '@nuxtjs/composition-api'
 import { DocusSettings } from '../../types'
 import { useCSSVariables } from '../utils/css'
 
-const findLinkBySlug = (links: any[], slug: string) => links.find(link => link.slug === slug)
+const findLink = (links: any[], to: string) => links.find(link => link.to === to)
 
 type PermissiveContext = Context & { [key: string]: any }
 
@@ -17,7 +17,7 @@ type DocusState = {
   settings: any
   theme: any
   ui: any
-  nav: any
+  navigation: any
 }
 
 export const createDocus = async (
@@ -39,17 +39,23 @@ export const createDocus = async (
     settings: null,
     theme: null,
     ui: null,
-    nav: {}
+    // navigation states
+    navigation: {}
   }) as DocusState
 
   // Map locales to nav
-  app.i18n.locales.forEach((locale: any) => (state.nav[locale.code] = {}))
+  app.i18n.locales.forEach((locale: any) => (state.navigation[locale.code] = {}))
 
   /**
    * Computed references
    */
 
-  const currentNav = computed(() => state.nav[app.i18n.locale])
+  const currentNav = computed(() =>
+    fetchCurrentNavigation({
+      locale: app.i18n.locale,
+      from: route.path
+    })
+  )
 
   const previewUrl = computed(() => withoutTrailingSlash(state.settings.url) + '/preview.png')
 
@@ -93,157 +99,41 @@ export const createDocus = async (
     await Promise.all([fetchNavigation(), fetchLastRelease()])
   }
 
-  async function fetchNavigation() {
-    // TODO: Maybe remove this
-    // Avoid re-fetching in production
-    if (process.dev === false && state.nav[app.i18n.locale].links) return
+  function fetchCurrentNavigation({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
+    const nav = state.navigation[locale]
+    const paths = from.split('/')
+    from = paths.slice(0, paths.length - 1).join('/')
+    let links = nav.links
 
-    // Get fields
-    const draft = state.ui?.draft ? undefined : false
-    const fields = [
-      'title',
-      'menu',
-      'menuTitle',
-      'dir',
-      'nav',
-      'category',
-      'slug',
-      'version',
-      'to',
-      'icon',
-      'description',
-      'template'
-    ]
-    if (process.dev) fields.push('draft')
-
-    // Query pages
-    const pages = await search({ deep: true })
-      .where({ language: app.i18n.locale, draft, nav: { $ne: false } })
-      .only(fields)
-      .sortBy('position', 'asc')
-      .fetch()
-
-    let depth = 0
-
-    const links = []
-
-    const getPageLink = (page: any) => ({
-      slug: page.slug,
-      to: withoutTrailingSlash(page.to || page.slug),
-      menu: page.menu,
-      menuTitle: page.menuTitle,
-      template: page.template,
-      title: page.title,
-      icon: page.icon,
-      description: page.description,
-      ...page.nav
-    })
-
-    // Add each page to navigation
-    pages.forEach((page: any) => {
-      page.nav = page.nav || {}
-
-      if (typeof page.nav === 'string') {
-        page.nav = { slot: page.nav }
+    if (from) {
+      const link = nav.links.find(link => link.to === from)
+      if (link.nav.hideOthers) {
+        links = [link]
       }
-
-      // TODO: Ignore files directly from @nuxt/content
-      if (page.slug.startsWith('_')) {
-        return
-      }
-
-      // To: '/docs/guide/hello.md' -> dirs: ['docs', 'guide']
-      page.dirs = withoutTrailingSlash(page.to)
-        .split('/')
-        .filter(_ => _)
-
-      // Remove the file part (except if index.md)
-      if (page.slug !== '') {
-        page.dirs = page.dirs.slice(0, -1)
-      }
-
-      if (!page.dirs.length) {
-        page.nav.slot = page.nav.slot || 'header'
-        return links.push(getPageLink(page))
-      }
-
-      let currentLinks = links
-
-      let link = null
-
-      page.dirs.forEach((dir: string, index: number) => {
-        // If children has been disabled (nav.children = false)
-        if (!currentLinks) return
-        if (index > depth) depth = index
-
-        link = findLinkBySlug(currentLinks, dir)
-
-        if (link) {
-          currentLinks = link.children
-        } else {
-          link = {
-            slug: dir,
-            children: []
-          }
-          currentLinks.push(link)
-          currentLinks = currentLinks[currentLinks.length - 1].children
-        }
-      })
-
-      if (!currentLinks) return
-
-      // If index page, merge also with parent for metadata
-      if (!page.slug) {
-        if (page.dirs.length === 1) page.nav.slot = page.nav.slot || 'header'
-
-        Object.assign(link, getPageLink(page))
-      } else {
-        // Push page
-        currentLinks.push(getPageLink(page))
-      }
-    })
-
-    // Increment navDepth for files
-    depth++
-
-    // Assign to $docus
-    state.nav[app.i18n.locale] = {
-      depth,
-      links
     }
 
-    // calculate categories based on nav
-    const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
-    const danglingLinks = []
-    const categories = state.nav[app.i18n.locale].links
-      .filter(link => link.menu !== false)
-      .reduce((acc, link) => {
-        link = { ...link }
-        // clean up children from menu
-        if (link.children) {
-          link.children = link.children
-            .filter(l => l.menu !== false)
-            // Flatten sub-categories
-            .flatMap(child => (child.to ? child : child.children))
-            .flatMap(child => (child.to ? child : child.children))
-            .filter(l => l.to)
-        }
-        // ensure link has proper `menuTitle`
-        if (!link.menuTitle) {
-          link.menuTitle = link.title || slugToTitle(link.slug) || ''
-        }
+    const filters = [(link, _linkDepth) => link.meta.menu !== false]
+    if (depth) {
+      filters.push((_, linkDepth) => linkDepth <= depth)
+    }
 
-        if (link.children && link.children.length) {
-          acc.push(link)
-        } else if (link.to) {
-          danglingLinks.push(link)
+    function filterLinks(nodes, linkDepth) {
+      return nodes.filter(node => {
+        if (!filters.some(filter => filter(node, linkDepth))) {
+          return false
         }
-        return acc
-      }, [])
+        node.children = filterLinks(node.children, linkDepth + 1)
+        return node
+      })
+    }
+    return filterLinks(links, 1)
+  }
 
-    // push others links to end of list
-    if (danglingLinks.length) categories.push({ to: '', children: danglingLinks })
-    state.categories[app.i18n.locale] = categories
+  async function fetchNavigation() {
+    const { locale } = app.i18n
+    const { body } = await data('/docus/navigation/' + locale)
+
+    state.navigation[locale] = body
   }
 
   function getPageTemplate(page: any) {
@@ -253,12 +143,11 @@ export const createDocus = async (
       // Fetch from nav (root to link) and fallback to settings.template
       const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
 
-      let links = currentNav.value.links || []
-
-      slugs.forEach((slug: string) => {
-        const link = findLinkBySlug(links, slug)
+      let links = state.navigation.links || []
+      slugs.forEach((_: string, index: number) => {
+        const link = findLink(links, '/' + slugs.slice(0, index + 1))
         if (link?.template) {
-          template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
+          template = typeof link.meta.template === 'string' ? `${link.meta.template}-post` : link.meta.template?.nested
         }
         if (!link?.children) {
           return
