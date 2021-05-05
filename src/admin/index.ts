@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { execSync } from 'child_process'
 import chalk from 'chalk'
 import serveStatic from 'serve-static'
 import { NuxtOptionsServer } from '@nuxt/types/config/server'
@@ -16,6 +17,9 @@ export default <Module>function () {
     handler: api
   })
 
+  // Build the admin
+  execSync('npx vite --config src/admin/vite.config.ts build')
+
   this.addServerMiddleware({
     path: '/admin/',
     handler: serveStatic(join(__dirname, 'app/dist'))
@@ -25,7 +29,8 @@ export default <Module>function () {
     process.previewUrl = `http://${host}:${port}`
 
     nuxt.options.cli.badgeMessages.push(
-      chalk.bold('Docus Admin: ') + chalk.underline.yellow(`${process.previewUrl}/admin/`)
+      '',
+      chalk.bold('📝 Admin: ') + chalk.underline.yellow(`${process.previewUrl}/admin/`)
     )
   })
 }
