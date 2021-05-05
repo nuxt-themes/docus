@@ -27,14 +27,13 @@ function isUrl(string) {
 }
 
 export default <Module>async function docusModule() {
-  // wait for nuxt options to be normalized
+  // Wait for nuxt options to be normalized
   const { nuxt, addServerMiddleware, addPlugin, addModule } = this
   const { options } = nuxt
   const isSSG = options.dev === false && (options.target === 'static' || options._generate || options.mode === 'spa')
 
-  if (options.dev) {
-    addModule('@nuxthq/content-ui')
-  }
+  // Inject Docus Admin module in development
+  if (options.dev) addModule(resolve(__dirname, '../admin'))
 
   const pluginOptions = {
     apiBase: '_docus',
