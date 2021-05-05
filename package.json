@@ -68,11 +68,11 @@
     "jiti": "^1.9.1",
     "marked": "^2.0.3",
     "mkdirp": "^1.0.4",
-    "nuxt-edge": "^2.16.0-26994259.8e2cad5a",
+    "nuxt-edge": "^2.16.0-27002891.1676b861",
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.26.0",
     "nuxt-vite": "^0.0.37",
-    "nuxt-windicss": "^0.5.4",
+    "nuxt-windicss": "^0.7.1",
     "ohmyfetch": "^0.1.8",
     "plausible-tracker": "^0.3.1",
     "prism-theme-vars": "^0.2.2",
@@ -101,7 +101,9 @@
     "vue": "^2.6.12",
     "vue-demi": "^0.7.5",
     "vue-docgen-api": "^4.38.1",
-    "vue-plausible": "^1.1.4"
+    "vue-plausible": "^1.1.4",
+    "vue3": "npm:vue@next",
+    "vue3-router": "npm:vue-router@next"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.4",
@@ -111,14 +113,20 @@
     "@types/graceful-fs": "^4.1.5",
     "@types/node-fetch": "^2.5.10",
     "@types/pify": "^5.0.0",
+    "@vitejs/plugin-vue": "^1.2.2",
     "babel-eslint": "^10.1.0",
+    "cors": "^2.8.5",
+    "directory-tree": "^2.2.9",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "express": "^4.17.1",
+    "mande": "^1.0.0",
     "prettier": "^2.2.1",
-    "standard-version": "^9.2.0",
-    "terser": "^5.7.0"
+    "standard-version": "^9.3.0",
+    "terser": "^5.7.0",
+    "vue-prism-editor": "^2.0.0-alpha.2"
   },
   "peerDependencies": {
     "vuex": "^3.6.2"
