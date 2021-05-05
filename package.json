@@ -41,7 +41,8 @@
     "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt",
     "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules",
     "clean:dist": "rm -rf dist docs/dist playground/dist",
-    "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
+    "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
@@ -123,6 +124,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "express": "^4.17.1",
     "mande": "^1.0.0",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.2.1",
     "standard-version": "^9.3.0",
     "terser": "^5.7.0",
