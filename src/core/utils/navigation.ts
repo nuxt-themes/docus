@@ -36,8 +36,6 @@ const getPageLink = (page: any): NavItem => {
   }
 }
 
-const navigation = {}
-
 export async function updateNavigation(nuxt) {
   const defaultLocale = nuxt.options.i18n?.defaultLocale || 'en'
   const { query } = useDB()
@@ -63,11 +61,17 @@ export async function updateNavigation(nuxt) {
     return map
   }, {})
 
-  const tasks = Object.entries(languages).map(async ([language, pages]) => {
+  const navigationArray = Object.entries(languages).map(([language, pages]) => {
     const body = createNav(pages)
-    // add to cache
-    navigation[language] = body
 
+    return [language, body]
+  })
+
+  const navigation = Object.fromEntries(navigationArray)
+
+  await nuxt.callHook('docus:navigation', navigation)
+
+  const tasks = Object.entries(navigation).map(async ([language, body]) => {
     await storage.setItem(`data:docus:navigation:${language}.json`, {
       body
     })

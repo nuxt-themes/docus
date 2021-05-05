@@ -34,22 +34,21 @@ export interface NavItem {
   }
   navigation: false | NavItemNavigationConfig
   children: NavItem[]
-  meta: {
-    icon: string
-    description: string
-  }
+  meta: any
 }
 
 export type PermissiveContext = Context & { [key: string]: any }
+
+export type DocusNavigation = {
+  [language: string]: NavItem[]
+}
 
 export type DocusState = {
   // Core
   settings: any
   page: any
   categories: any
-  navigation: {
-    [key: string]: NavItem[]
-  }
+  navigation: DocusNavigation
   theme: any
   // Addons
   ui: any
