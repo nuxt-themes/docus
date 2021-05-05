@@ -1,6 +1,7 @@
 import { join, resolve } from 'path'
 import { mkdirp, remove, existsSync, writeJSONSync } from 'fs-extra'
 import clearModule from 'clear-module'
+import chalk from 'chalk'
 import { Module } from '@nuxt/types'
 import defu from 'defu'
 import jiti from 'jiti'
@@ -70,6 +71,11 @@ export default <Module>function settingsModule() {
 
     // Write settings
     writeJSONSync(jsonPath, settings)
+  })
+
+  // Inject theme name into Nuxt build badge
+  hook('listen', () => {
+    options.cli.badgeMessages.push('', chalk.bold('💄 Theme: ') + chalk.underline.yellow(options.themeName))
   })
 
   // Watch settings
