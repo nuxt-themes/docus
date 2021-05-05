@@ -47,8 +47,9 @@ export async function updateNavigation(nuxt) {
     // nav: { $ne: false }
   }
   if (nuxt.options.dev) {
-    where.draft = false
     fields.push('draft')
+  } else {
+    where.draft = false
   }
 
   // Query pages
