@@ -108,7 +108,7 @@ export default <Module>async function docusModule() {
     nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))
 
     storage.watch((event, key) => {
-      updateNavigation()
+      updateNavigation(nuxt)
       logger.info(`File ${event}: ${key}`)
     })
   }
@@ -124,13 +124,13 @@ export default <Module>async function docusModule() {
   nuxt.hook('build:before', () => {
     ;(async () => {
       await lazyIndex()
-      await updateNavigation()
+      await updateNavigation(nuxt)
     })()
   })
 
   nuxt.hook('generate:before', async () => {
     await lazyIndex()
-    await updateNavigation()
+    await updateNavigation(nuxt)
   })
 
   if (isSSG) {

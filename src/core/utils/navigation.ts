@@ -5,18 +5,14 @@ import { useStorage } from '../storage'
 import { NavItem } from '../../types/core'
 
 const findLink = (links: NavItem[], to: string) => links.find(link => link.to === to)
-// TODO
-const findFirstChildTo = page => withoutTrailingSlash(page.to || `/${page.slug}`)
 const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
 
 const getPageLink = (page: any): NavItem => {
-  const to = findFirstChildTo(page)
+  const to = withoutTrailingSlash(page.to || `/${page.slug}`)
   return {
     slug: page.slug,
     to,
-    // locale: string // ??
     title: page.title,
-    locale: page.language,
     meta: {
       menuTitle: page.menuTitle || page.title || slugToTitle(to.split('/').pop()) || '',
       template: page.template,
@@ -29,11 +25,13 @@ const getPageLink = (page: any): NavItem => {
   }
 }
 
-export async function updateNavigation({ draft = false, defaultLocale = 'en' } = {}) {
+const navigation = {}
+
+export async function updateNavigation(nuxt) {
+  const defaultLocale = nuxt.options.i18n?.defaultLocale || 'en'
   const { query } = useDB()
   const { storage } = useStorage()
   // Get fields
-  draft = draft ? undefined : false
   const fields = [
     'title',
     'menu',
@@ -49,14 +47,14 @@ export async function updateNavigation({ draft = false, defaultLocale = 'en' } =
     'description',
     'template'
   ]
-  if (process.dev) fields.push('draft')
+  const where: any = { nav: { $ne: false } }
+  if (nuxt.options.dev) {
+    where.draft = false
+    fields.push('draft')
+  }
 
   // Query pages
-  const pages = await query('/page', { deep: true })
-    .where({ draft, nav: { $ne: false } })
-    .only(fields)
-    .sortBy('position', 'asc')
-    .fetch()
+  const pages = await query('/page', { deep: true }).where(where).only(fields).sortBy('position', 'asc').fetch()
 
   const languages: { [key: string]: any[] } = pages.reduce((map, page) => {
     const language = page.language || defaultLocale
@@ -67,6 +65,9 @@ export async function updateNavigation({ draft = false, defaultLocale = 'en' } =
 
   const tasks = Object.entries(languages).map(async ([language, pages]) => {
     const body = createNav(pages)
+    // add to cache
+    navigation[language] = body
+
     await storage.setItem(`data:docus:navigation:${language}.json`, {
       body
     })
@@ -76,8 +77,6 @@ export async function updateNavigation({ draft = false, defaultLocale = 'en' } =
 }
 
 function createNav(pages: any[]) {
-  let depth = 0
-
   const links: NavItem[] = []
 
   // Add each page to navigation
@@ -107,7 +106,6 @@ function createNav(pages: any[]) {
     dirs.forEach((dir: string, index: number) => {
       // If children has been disabled (nav.children = false)
       if (!currentLinks) return
-      if (index > depth) depth = index
 
       let link: NavItem = findLink(currentLinks, '/' + dirs.slice(0, index + 1).join('/'))
 
@@ -134,12 +132,6 @@ function createNav(pages: any[]) {
     }
   })
 
-  // Increment navDepth for files
-  depth++
-
   // Assign to $docus
-  return {
-    depth,
-    links
-  }
+  return links
 }

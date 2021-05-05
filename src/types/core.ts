@@ -92,10 +92,7 @@ export interface ParserOptions {
 export interface NavItem {
   slug: string
   to: string
-  // locale: string // ??
   title: string
-  // ^ generated from slug, or using frontmatter "title"
-  locale: string
   meta: {
     menu: boolean
     icon: string

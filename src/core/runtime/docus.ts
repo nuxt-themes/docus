@@ -51,7 +51,7 @@ export const createDocus = async (
    */
 
   const currentNav = computed(() =>
-    fetchCurrentNavigation({
+    getNavigation({
       locale: app.i18n.locale,
       from: route.path
     })
@@ -99,14 +99,14 @@ export const createDocus = async (
     await Promise.all([fetchNavigation(), fetchLastRelease()])
   }
 
-  function fetchCurrentNavigation({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
+  function getNavigation({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
     const nav = state.navigation[locale]
     const paths = from.split('/')
     from = paths.slice(0, paths.length - 1).join('/')
-    let links = nav.links
+    let links = nav
 
     if (from) {
-      const link = nav.links.find(link => link.to === from)
+      const link = links.find(link => link.to === from)
       if (link.nav.hideOthers) {
         links = [link]
       }
