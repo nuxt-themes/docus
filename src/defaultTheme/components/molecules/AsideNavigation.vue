@@ -48,7 +48,6 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     links() {
-      console.log(this.$docus.currentNav.value);
       return this.$docus.currentNav.value
     },
     lastRelease() {

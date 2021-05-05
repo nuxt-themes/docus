@@ -22,9 +22,8 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
       const paths = from.split('/')
       from = paths.slice(0, paths.length - 1).join('/')
 
-      // todo
       // const link = items.find(link => link.to === from)
-      // if (link.navigation.hideOthers) {
+      // if (link.navigation.exclusive) {
       //   items = [link]
       // }
       items = items.map(_ => _)
