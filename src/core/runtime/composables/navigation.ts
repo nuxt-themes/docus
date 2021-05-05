@@ -14,13 +14,14 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     state.navigation[locale] = body
   }
 
-  function getNavigation({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
+  function get({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
     const nav = state.navigation[locale]
-    const paths = from.split('/')
-    from = paths.slice(0, paths.length - 1).join('/')
     let links = nav
 
     if (from) {
+      const paths = from.split('/')
+      from = paths.slice(0, paths.length - 1).join('/')
+
       const link = links.find(link => link.to === from)
       if (link.nav.hideOthers) {
         links = [link]
@@ -48,7 +49,7 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
   app.i18n.locales.forEach((locale: any) => (state.navigation[locale.code] = {}))
 
   const currentNav = computed(() =>
-    getNavigation({
+    get({
       locale: app.i18n.locale,
       from: route.path
     })
@@ -103,6 +104,7 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     fetchNavigation,
     currentNav,
     isLinkActive,
-    init: fetchNavigation
+    init: fetchNavigation,
+    get
   }
 }
