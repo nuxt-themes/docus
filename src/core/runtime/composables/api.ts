@@ -1,3 +1,4 @@
+import { NavItem } from 'src/types'
 import { joinURL } from 'ufo'
 
 export const useDocusApi = createQuery => {
@@ -18,14 +19,18 @@ export const useDocusApi = createQuery => {
     return this.search(path).fetch()
   }
 
-  function findLinkBySlug(links: any[], slug: string) {
-    return links.find(link => link.slug === slug)
+  function findLink(links: NavItem[], to: string) {
+    return links.find(link => link.to === to)
   }
+
+  // function findLinkBySlug(links: NavItem[], slug: string) {
+  //   return links.find(link => link.slug === slug)
+  // }
 
   return {
     data,
     search,
     page,
-    findLinkBySlug
+    findLink
   }
 }

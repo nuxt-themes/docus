@@ -17,6 +17,29 @@ export interface Toc {
   searchDepth: number
   links: TocLink[]
 }
+
+// Navigation
+export interface NavItemNavigationConfig {
+  title: string
+  nested: boolean
+  slot: string
+}
+export interface NavItem {
+  slug: string
+  to: string
+  title: string
+  template?: {
+    self: string
+    nested: string
+  }
+  navigation: false | NavItemNavigationConfig
+  children: NavItem[]
+  meta: {
+    icon: string
+    description: string
+  }
+}
+
 export type PermissiveContext = Context & { [key: string]: any }
 
 export type DocusState = {
@@ -24,7 +47,9 @@ export type DocusState = {
   settings: any
   page: any
   categories: any
-  navigation: any
+  navigation: {
+    [key: string]: NavItem[]
+  }
   theme: any
   // Addons
   ui: any
@@ -35,15 +60,22 @@ export interface DocusDocument {
   // font-matter
   title: string
   description: string
-  category: string
   badge: string
   version: number
-  menuTitle: string
-  menu: boolean
   fullscreen: boolean
   head: MetaInfo
   position: string
   draft: boolean
+
+  navigation: {
+    title: string
+    slot: string
+    nested: boolean
+  }
+  template: {
+    self: string
+    nested: string
+  }
 
   // generated
   key: string
@@ -106,22 +138,4 @@ export interface MarkdownParserOptions {
 
 export interface ParserOptions {
   markdown: Partial<MarkdownParserOptions>
-}
-
-// Navigation
-export interface NavItem {
-  slug: string
-  to: string
-  title: string
-  meta: {
-    menu: boolean
-    icon: string
-    description: string
-    menuTitle: string
-    template: string
-  }
-  nav: {
-    slot: string
-  }
-  children: NavItem[]
 }

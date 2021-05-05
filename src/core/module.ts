@@ -71,10 +71,9 @@ export default <Module>async function docusModule() {
     const defaultLocale = options.i18n?.defaultLocale || 'en'
 
     const regexp = new RegExp(`^/(${locales})`, 'gi')
-    const { dir, slug, category } = document
+    const { dir, slug } = document
     const _dir = dir.replace(regexp, '')
     const _language = dir.replace(_dir, '').replace(/\//, '') || defaultLocale
-    const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
@@ -84,7 +83,6 @@ export default <Module>async function docusModule() {
     document.position = position
     document.to = generateTo(_to)
     document.language = _language
-    document.category = _category
     document.draft = document.draft || isDraft(slug)
   })
 

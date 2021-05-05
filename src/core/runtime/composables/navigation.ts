@@ -1,4 +1,4 @@
-import { DocusAddonContext } from 'src/types'
+import { DocusAddonContext, DocusDocument, NavItem } from 'src/types'
 import { pascalCase } from 'scule'
 import { withTrailingSlash } from 'ufo'
 import { computed } from '@nuxtjs/composition-api'
@@ -16,37 +16,40 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
   function get({ depth, locale, from }: { depth?: number; locale?: string; from?: string }) {
     const nav = state.navigation[locale]
-    let links = nav
+    let items = nav
 
     if (from) {
       const paths = from.split('/')
       from = paths.slice(0, paths.length - 1).join('/')
 
-      const link = links.find(link => link.to === from)
-      if (link.nav.hideOthers) {
-        links = [link]
-      }
+      // todo
+      // const link = items.find(link => link.to === from)
+      // if (link.navigation.hideOthers) {
+      //   items = [link]
+      // }
+      items = items.map(_ => _)
     }
 
-    const filters = [(link, _linkDepth) => link.meta.menu !== false]
-    if (depth) {
-      filters.push((_, linkDepth) => linkDepth <= depth)
-    }
-
-    function filterLinks(nodes, linkDepth) {
+    function filterLinks(nodes: NavItem[], linkDepth) {
       return nodes.filter(node => {
-        if (!filters.some(filter => filter(node, linkDepth))) {
+        if (node.navigation === false) {
           return false
+        }
+        if (depth && linkDepth > depth) {
+          return false
+        }
+        if (node.navigation.nested === false) {
+          node.children = []
         }
         node.children = filterLinks(node.children, linkDepth + 1)
         return node
       })
     }
-    return filterLinks(links, 1)
+    return filterLinks(items, 1)
   }
 
   // Map locales to nav
-  app.i18n.locales.forEach((locale: any) => (state.navigation[locale.code] = {}))
+  app.i18n.locales.forEach((locale: any) => (state.navigation[locale.code] = []))
 
   const currentNav = computed(() =>
     get({
@@ -55,20 +58,22 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     })
   )
 
-  function getPageTemplate(page: any) {
-    let template = page.template?.self || page.template
+  function getPageTemplate(page: DocusDocument) {
+    let template = typeof page.template === 'string' ? page.template : page.template?.self
 
     if (!template) {
       // Fetch from nav (root to link) and fallback to settings.template
-      const slugs = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
+      const slugs: string[] = page.to.split('/').filter(Boolean).slice(0, -1) // no need to get latest slug since it is current page
 
-      let links = currentNav.value.links || []
+      let links = currentNav.value || []
 
-      slugs.forEach((slug: string) => {
-        const link = api.findLinkBySlug(links, slug)
+      slugs.forEach((_slug: string, index: number) => {
+        // generate full path of parent
+        const to = '/' + slugs.slice(0, index + 1).join('/')
+        const link = api.findLink(links, to)
 
         if (link?.template) {
-          template = typeof link.template === 'string' ? `${link.template}-post` : link.template?.nested
+          template = link.template.nested
         }
 
         if (!link?.children) {

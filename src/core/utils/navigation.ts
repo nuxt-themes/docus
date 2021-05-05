@@ -9,18 +9,29 @@ const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pa
 
 const getPageLink = (page: any): NavItem => {
   const to = withoutTrailingSlash(page.to || `/${page.slug}`)
+  let navigation = typeof page.navigation === 'string' ? { slot: page.navigation } : page.navigation
+  if (navigation !== false) {
+    navigation = {
+      title: page.title || slugToTitle(to.split('/').pop()) || '',
+      slot: '',
+      nested: true,
+      ...navigation
+    }
+  }
+
+  const template =
+    typeof page.template === 'string' ? { self: page.template, nested: `${page.template}-post` } : page.template
+
   return {
     slug: page.slug,
     to,
     title: page.title,
+    template,
     meta: {
-      menuTitle: page.menuTitle || page.title || slugToTitle(to.split('/').pop()) || '',
-      template: page.template,
-      menu: page.menu,
       icon: page.icon,
       description: page.description
     },
-    nav: (typeof page.nav === 'string' ? { slot: page.nav } : page.nav) || {},
+    navigation,
     children: []
   }
 }
@@ -32,22 +43,11 @@ export async function updateNavigation(nuxt) {
   const { query } = useDB()
   const { storage } = useStorage()
   // Get fields
-  const fields = [
-    'title',
-    'menu',
-    'language',
-    'menuTitle',
-    'dir',
-    'nav',
-    'category',
-    'slug',
-    'version',
-    'to',
-    'icon',
-    'description',
-    'template'
-  ]
-  const where: any = { nav: { $ne: false } }
+  const fields = ['title', 'language', 'dir', 'navigation', 'slug', 'version', 'to', 'icon', 'description', 'template']
+  const where: any = {
+    // Fetch all
+    // nav: { $ne: false }
+  }
   if (nuxt.options.dev) {
     where.draft = false
     fields.push('draft')
@@ -96,7 +96,9 @@ function createNav(pages: any[]) {
     }
 
     if (!dirs.length) {
-      $page.nav.slot = $page.nav.slot || 'header'
+      if ($page.navigation) {
+        $page.navigation.slot = $page.navigation.slot || 'header'
+      }
       return links.push($page)
     }
 
@@ -123,7 +125,9 @@ function createNav(pages: any[]) {
 
     // If index page, merge also with parent for metadata
     if (!$page.slug) {
-      if (dirs.length === 1) $page.nav.slot = $page.nav.slot || 'header'
+      if (dirs.length === 1 && $page.navigation) {
+        $page.navigation.slot = $page.navigation.slot || 'header'
+      }
 
       Object.assign(lastLink, $page)
     } else {

@@ -3,7 +3,6 @@ title: Creating a Nuxt Module
 description: Modules are functions that are called sequentially when booting Nuxt. The framework waits for each module to finish before continuing. In this way, modules can customize almost any aspect of your project. Let's create a module that uses ngrok to get a Public URL that you can share while working in Development.
 imgUrl: https://source.unsplash.com/user/jasebloor/1280x720
 date: 2020-11-27
-menu: false
 authors:
   - name: "Debbie O'Brien"
     avatarUrl: https://pbs.twimg.com/profile_images/1252900852156772352/JLIVJ-TC_400x400.jpg
