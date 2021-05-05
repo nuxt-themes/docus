@@ -1,3 +1,5 @@
+import { Context } from '@nuxt/types'
+import { useDocusApi } from 'src/core/runtime/composables/api'
 import { MetaInfo } from 'vue-meta'
 import { DefaultThemeSettings } from '../defaultTheme/index.d'
 import { DocusRootNode } from './markdown'
@@ -14,6 +16,19 @@ export interface Toc {
   depth: number
   searchDepth: number
   links: TocLink[]
+}
+export type PermissiveContext = Context & { [key: string]: any }
+
+export type DocusState = {
+  // Core
+  settings: any
+  page: any
+  categories: any
+  navigation: any
+  theme: any
+  // Addons
+  ui: any
+  lastRelease: any
 }
 
 export interface DocusDocument {
@@ -56,12 +71,17 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   [key: string]: any
 }
 
-export interface Colors {
-  [key: string]: string | Colors
+export interface DocusAddonContext<T = DefaultThemeSettings> {
+  context: PermissiveContext
+  state: DocusState
+  settings: DocusSettings<T>
+  createQuery: any
+  api: ReturnType<typeof useDocusApi>
+  $nuxt?: any
 }
 
-export interface Alias {
-  [key: string]: string
+export interface Colors {
+  [key: string]: string | Colors
 }
 
 //  Storage

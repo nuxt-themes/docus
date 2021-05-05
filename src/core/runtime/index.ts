@@ -1,4 +1,4 @@
 export * from './docus'
-export * from './RemoteQueryBuilder'
-export * from './QueryBuilder'
+export * from './api/RemoteQueryBuilder'
+export * from './api/QueryBuilder'
 export * from './utils'

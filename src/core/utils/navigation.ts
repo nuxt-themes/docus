@@ -132,6 +132,5 @@ function createNav(pages: any[]) {
     }
   })
 
-  // Assign to $docus
   return links
 }

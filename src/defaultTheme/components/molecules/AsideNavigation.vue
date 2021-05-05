@@ -27,7 +27,7 @@
           <ul>
             <template v-for="category in categories">
               <AsideNavigationItem
-                v-if="category.nav.children !== false"
+                v-if="category.nav.children !== false && category.children.length"
                 :key="category.meta.menuTitle"
                 :category="category.meta.menuTitle"
                 :docs="category.children"
@@ -51,7 +51,7 @@ export default defineComponent({
       return this.$docus.currentNav.value
     },
     lastRelease() {
-      return this.$docus.lastRelease.value
+      return this.$docus.lastRelease?.value
     }
   }
 })
