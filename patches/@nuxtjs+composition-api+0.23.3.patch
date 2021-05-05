@@ -1,0 +1,13 @@
+diff --git a/node_modules/@nuxtjs/composition-api/dist/module.js b/node_modules/@nuxtjs/composition-api/dist/module.js
+index 04623fd..ac86fc3 100644
+--- a/node_modules/@nuxtjs/composition-api/dist/module.js
++++ b/node_modules/@nuxtjs/composition-api/dist/module.js
+@@ -159,7 +159,7 @@ const compositionApiModule = function compositionApiModule2() {
+   if (!nuxtOptions.buildModules.includes("@nuxtjs/pwa") && !nuxtOptions.modules.includes("@nuxtjs/pwa")) {
+     nuxtOptions.plugins.push(addResolvedTemplate.call(this, "meta.js"));
+   } else if (nuxtOptions.dev) {
+-    console.warn("useMeta is not supported in onGlobalSetup as @nuxtjs/pwa detected.\nSee https://github.com/nuxt-community/composition-api/issues/307");
++    // console.warn("useMeta is not supported in onGlobalSetup as @nuxtjs/pwa detected.\nSee https://github.com/nuxt-community/composition-api/issues/307");
+   }
+ };
+ compositionApiModule.meta = {
