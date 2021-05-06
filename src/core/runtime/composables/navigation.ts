@@ -1,6 +1,6 @@
 import { pascalCase } from 'scule'
 import { withTrailingSlash } from 'ufo'
-import { ref } from '@nuxtjs/composition-api'
+import { ref, computed } from '@nuxtjs/composition-api'
 import Vue from 'vue'
 import { DocusAddonContext, DocusDocument, NavItem, NavItemNavigationConfig } from '../../../types'
 
@@ -10,12 +10,18 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
   const { locale } = app.i18n
   if (!state.navigation) state.navigation = {}
 
-  const currentNav = ref(
+  // compute `currentNav` on every route change
+  const path = ref(route.path)
+  const currentNav = computed(() =>
     get({
       locale: app.i18n.locale,
-      from: route.path
+      from: path.value
     })
   )
+  app.router.beforeEach((to: any, __: any, next: any) => {
+    path.value = to.path
+    next()
+  })
 
   const fetchNavigation = async () => {
     const { body } = await api.data('/docus/navigation/' + locale)
@@ -60,13 +66,6 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
   // Map locales to nav
   app.i18n.locales.forEach((locale: any) => (state.navigation[locale.code] = []))
-  app.router.beforeEach((to: any, __: any, next: any) => {
-    currentNav.value = get({
-      locale: app.i18n.locale,
-      from: to.path
-    })
-    next()
-  })
 
   function getPageTemplate(page: DocusDocument) {
     let template = typeof page.template === 'string' ? page.template : page.template?.self
