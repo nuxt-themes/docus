@@ -1,8 +1,8 @@
-import { DocusAddonContext } from 'src/types'
 import { pascalCase } from 'scule'
 import { withoutTrailingSlash, withTrailingSlash } from 'ufo'
 import { computed } from '@nuxtjs/composition-api'
 import Vue from 'vue'
+import { DocusAddonContext } from '../../../types'
 
 export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonContext) => {
   const app = context.app

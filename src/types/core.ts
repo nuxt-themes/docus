@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types'
-import { useDocusApi } from 'src/core/runtime/composables/api'
 import { MetaInfo } from 'vue-meta'
+import { useDocusApi } from '../core/runtime/composables/api'
 import { DefaultThemeSettings } from '../defaultTheme/index.d'
 import { DocusRootNode } from './markdown'
 

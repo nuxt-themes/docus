@@ -2,7 +2,7 @@ import unified from 'unified'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 
-import { DocusRootNode } from 'src/types'
+import { DocusRootNode } from '../../../types'
 import handlers from './handler'
 import compiler from './compiler'
 import { flattenNodeText } from './utils'

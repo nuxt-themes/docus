@@ -1,5 +1,5 @@
 import { extname } from 'path'
-import { ParserOptions } from 'src/types'
+import { ParserOptions } from '../../types'
 import { logger } from '../utils'
 import { useJSONParser } from './json'
 import { useMarkdownParser } from './markdown'
