@@ -1,4 +1,4 @@
-import { DocusAddonContext } from 'src/types'
+import { DocusAddonContext } from '../../../types'
 
 export const useDocusAddons = (context: DocusAddonContext, addons: any[]) => {
   /**

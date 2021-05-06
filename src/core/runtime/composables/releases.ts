@@ -1,4 +1,4 @@
-import { DocusAddonContext } from 'src/types'
+import { DocusAddonContext } from '../../../types'
 
 export const useDocusReleases = ({ api, state }: DocusAddonContext) => {
   async function fetchReleases() {

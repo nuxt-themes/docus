@@ -1,6 +1,6 @@
 import { computed } from '@nuxtjs/composition-api'
-import { DocusAddonContext } from 'src/types'
 import { joinURL, withoutTrailingSlash } from 'ufo'
+import { DocusAddonContext } from '../../../types'
 
 export const useDocusGithub = ({ state }: DocusAddonContext) => {
   const previewUrl = computed(() => withoutTrailingSlash(state.settings.url) + '/preview.png')
