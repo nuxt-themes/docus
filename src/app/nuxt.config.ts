@@ -91,12 +91,5 @@ export default nuxtConfig({
   generate: {
     fallback: '404.html',
     routes: ['/']
-  },
-  // Alias non-Vite compatible dependencies
-  alias: {
-    qrcode: r('mock/default'),
-    axios: r('mock/default'),
-    nprogress: r('mock/default'),
-    jwt_decode: r('mock/default')
   }
 })
