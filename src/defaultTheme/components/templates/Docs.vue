@@ -63,7 +63,7 @@ export default defineComponent({
 
       const [prevLink, nextLink] = await $docus
         .search({ deep: true })
-        .where({ language, draft, menu: { $ne: false } })
+        .where({ language, draft, navigation: { $ne: false } })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
         .surround(props.page.slug, { before: 1, after: 1 })

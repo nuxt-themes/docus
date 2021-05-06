@@ -10,6 +10,7 @@ import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
 import { initParser } from './parser'
 import { destroyHooks } from './hooks'
+import { updateNavigation } from './utils/navigation'
 import { useHooks, logger } from './'
 
 const fs = gracefulFs.promises
@@ -70,10 +71,9 @@ export default <Module>async function docusModule() {
     const defaultLocale = options.i18n?.defaultLocale || 'en'
 
     const regexp = new RegExp(`^/(${locales})`, 'gi')
-    const { dir, slug, category } = document
+    const { dir, slug } = document
     const _dir = dir.replace(regexp, '')
     const _language = dir.replace(_dir, '').replace(/\//, '') || defaultLocale
-    const _category = category && typeof category === 'string' ? category : ''
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
@@ -83,7 +83,6 @@ export default <Module>async function docusModule() {
     document.position = position
     document.to = generateTo(_to)
     document.language = _language
-    document.category = _category
     document.draft = document.draft || isDraft(slug)
   })
 
@@ -107,6 +106,7 @@ export default <Module>async function docusModule() {
     nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))
 
     storage.watch((event, key) => {
+      updateNavigation(nuxt)
       logger.info(`File ${event}: ${key}`)
     })
   }
@@ -120,11 +120,15 @@ export default <Module>async function docusModule() {
   })
 
   nuxt.hook('build:before', () => {
-    lazyIndex()
+    ;(async () => {
+      await lazyIndex()
+      await updateNavigation(nuxt)
+    })()
   })
 
   nuxt.hook('generate:before', async () => {
     await lazyIndex()
+    await updateNavigation(nuxt)
   })
 
   if (isSSG) {
