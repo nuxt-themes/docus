@@ -16,7 +16,7 @@ export default {
   async asyncData({ $docus, app, params, error }) {
     const language = app.i18n.locale
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
-    const draft = $docus.ui?.draft ? undefined : false
+    const draft = false
     const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
     if (!page) {
       return error({ statusCode: 404, message: 'Page not found' })

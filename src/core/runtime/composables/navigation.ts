@@ -1,4 +1,4 @@
-import { DocusAddonContext, DocusDocument, NavItem } from 'src/types'
+import { DocusAddonContext, DocusDocument, NavItem, NavItemNavigationConfig } from 'src/types'
 import { pascalCase } from 'scule'
 import { withTrailingSlash } from 'ufo'
 import { ref } from '@nuxtjs/composition-api'
@@ -30,16 +30,19 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
       const paths = from.split('/')
       from = paths.slice(0, paths.length - 1).join('/')
 
-      // const link = items.find(link => link.to === from)
-      // if (link.navigation.exclusive) {
-      //   items = [link]
-      // }
+      const link = items.find(link => link.to === from)
+      if (link && (link.navigation as NavItemNavigationConfig).exclusive) {
+        items = [link]
+      }
       items = items.map(_ => _)
     }
 
     function filterLinks(nodes: NavItem[], linkDepth) {
       return nodes.filter(node => {
         if (node.navigation === false) {
+          return false
+        }
+        if (node.draft === true) {
           return false
         }
         if (depth && linkDepth > depth) {

@@ -23,11 +23,13 @@ export interface NavItemNavigationConfig {
   title: string
   nested: boolean
   slot: string
+  exclusive: boolean
 }
 export interface NavItem {
   slug: string
   to: string
   title: string
+  draft?: boolean
   template?: {
     self: string
     nested: string

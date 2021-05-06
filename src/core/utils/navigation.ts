@@ -26,6 +26,7 @@ const getPageLink = (page: any): NavItem => {
     slug: page.slug,
     to,
     title: page.title,
+    draft: page.draft,
     template,
     meta: {
       icon: page.icon,
@@ -134,7 +135,7 @@ function createNav(pages: any[]) {
         $page.navigation.slot = $page.navigation.slot || 'header'
       }
 
-      Object.assign(lastLink, $page)
+      mergeLinks(lastLink, $page)
     } else {
       // Push page
       currentLinks.push($page)
@@ -142,4 +143,10 @@ function createNav(pages: any[]) {
   })
 
   return links
+}
+
+function mergeLinks(to: NavItem, from: NavItem) {
+  Object.assign(to, from, {
+    children: [...to.children, ...from.children]
+  })
 }
