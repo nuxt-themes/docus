@@ -40,7 +40,7 @@ export default async function ({ $docus, ssrContext }: any) {
     new Vue(instanceData).$mount(el)
   }
 
-  // Re-fetch categories
+  // Re-fetch navigation
   if (process.server) {
     await $docus.fetchNavigation()
   }

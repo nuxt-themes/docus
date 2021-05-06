@@ -49,7 +49,6 @@ export type DocusState = {
   // Core
   settings: any
   page: any
-  categories: any
   navigation: DocusNavigation
   theme: any
   // Addons

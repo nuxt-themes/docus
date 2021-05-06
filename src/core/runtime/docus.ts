@@ -18,7 +18,6 @@ export const createDocus = async (context: PermissiveContext, settings: DocusSet
   // State
   const state = reactive({
     page: {},
-    categories: {},
     settings: null,
     theme: null
   }) as DocusState
