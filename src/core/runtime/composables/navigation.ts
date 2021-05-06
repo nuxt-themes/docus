@@ -2,7 +2,7 @@ import { pascalCase } from 'scule'
 import { withTrailingSlash } from 'ufo'
 import { ref } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import { DocusAddonContext, DocusAddonContext, DocusDocument, NavItem, NavItemNavigationConfig } from '../../../types'
+import { DocusAddonContext, DocusDocument, NavItem, NavItemNavigationConfig } from '../../../types'
 
 export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonContext) => {
   const { app, route } = context
