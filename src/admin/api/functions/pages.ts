@@ -1,11 +1,13 @@
 import { promises as fs } from 'fs'
 import { join, extname } from 'path'
+import matter from 'gray-matter'
 import { createError, Middleware, useBody } from 'h3'
 import dirTree from 'directory-tree'
 import { normalizeFiles, r } from '../utils'
 
 interface Body {
   data: any
+  content: string
 }
 
 export default <Middleware>async function pagesHandler(req) {
@@ -20,12 +22,14 @@ export default <Middleware>async function pagesHandler(req) {
     // Read a single page
     try {
       const path = join(r('pages'), url)
-      const data = await fs.readFile(path, 'utf-8')
+      const file = await fs.readFile(path, 'utf-8')
+      const { content, data } = matter(file)
 
       return {
         path: path.replace(r('pages'), ''),
         extension: extname(path),
-        data
+        data,
+        content
       }
     } catch (err) {
       return createError({
@@ -37,12 +41,12 @@ export default <Middleware>async function pagesHandler(req) {
 
   // Update changes
   if (req.method === 'PUT') {
-    const body = await useBody<Body>(req)
+    const { data, content } = await useBody<Body>(req)
 
-    if (!body.data) {
+    if (!data || !content) {
       return createError({
         statusCode: 400,
-        statusMessage: 'data key missing'
+        statusMessage: 'data and content keys are required'
       })
     }
 
@@ -51,7 +55,10 @@ export default <Middleware>async function pagesHandler(req) {
     try {
       // @ts-ignore
       await fs.stat(path, 'utf-8')
-      await fs.writeFile(path, body.data)
+
+      const file = matter.stringify(content, data)
+
+      await fs.writeFile(path, file)
 
       return { ok: true }
     } catch (err) {
