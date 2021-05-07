@@ -106,7 +106,6 @@
     "vue-demi": "^0.7.5",
     "vue-docgen-api": "^4.38.1",
     "vue-plausible": "^1.1.4",
-    "vue-prism-editor": "^2.0.0-alpha.2",
     "vue3": "npm:vue@next",
     "vue3-router": "npm:vue-router@next"
   },
