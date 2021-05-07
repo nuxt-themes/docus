@@ -26,7 +26,7 @@ export default defineComponent({
   setup() {
     const api = useApi()
 
-    const previewUrl = ref('http://localhost:3000')
+    const previewUrl = ref('http://localhost:4000')
 
     onBeforeMount(async () => {
       const { url } = (await api.get('/preview')) as any
