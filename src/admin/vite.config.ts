@@ -11,7 +11,7 @@ export default defineConfig({
   root,
   base: '/admin/',
   server: {
-    port: 3001
+    port: 4001
   },
   plugins: [
     vue(),
