@@ -5,7 +5,7 @@
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <div class="flex-1 border-r">
-    <Editor v-if="currentFile" v-model="currentFile.data" :file="currentFile" />
+    <Editor v-if="currentFile" :file="currentFile" />
 
     <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file to edit.</p>
   </div>
@@ -30,13 +30,9 @@ export default defineComponent({
       currentFile: null
     })
 
-    async function openFile(file) {
-      state.currentFile = await api.get(`/pages${file.path}`)
-    }
+    const openFile = async file => (state.currentFile = await api.get(`/pages${file.path}`))
 
-    onMounted(async () => {
-      state.files = await api.get('/pages')
-    })
+    onMounted(async () => (state.files = await api.get('/pages')))
 
     return {
       ...toRefs(state),
