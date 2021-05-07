@@ -11,7 +11,7 @@
         @click="open(file)"
       >
         <FilesTreeIcon :file="file" />
-        <span>{{ file.name }}</span>
+        <span>{{ filename(file.name) }}</span>
       </div>
       <FilesTree
         v-if="isDir(file) && file.isOpen"
@@ -48,19 +48,15 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    function isDir(file) {
-      return file.type === 'directory'
-    }
+    const isDir = file => file.type === 'directory'
 
-    function isCurrent(file) {
-      return props.currentFile && file.path === props.currentFile.path
-    }
+    const isCurrent = file => props.currentFile && file.path === props.currentFile.path
 
-    function hasOneDir(files) {
-      return files.find(file => isDir(file))
-    }
+    const hasOneDir = files => files.find(file => helpers.isDir(file))
 
-    function open(file) {
+    const filename = name => name.replace(/^\d+\./, '')
+
+    const open = file => {
       if (isDir(file)) {
         file.isOpen = !file.isOpen
         return
@@ -69,9 +65,18 @@ export default defineComponent({
       emit('open', file)
     }
 
-    provide('tree-helpers', { isDir, isCurrent, isImage, hasOneDir, open })
+    const helpers = {
+      isDir,
+      isCurrent,
+      hasOneDir,
+      filename,
+      open,
+      isImage
+    }
 
-    return { isImage, isDir, hasOneDir, isCurrent, open }
+    provide('tree-helpers', helpers)
+
+    return helpers
   }
 })
 </script>
