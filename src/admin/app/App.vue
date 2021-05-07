@@ -13,30 +13,32 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, provide, ref, onBeforeMount } from 'vue3'
 import AppHeader from './components/AppHeader.vue'
+import { useApi } from './plugins/api'
 
-export default {
+export default defineComponent({
   components: {
     AppHeader
   },
 
-  provide() {
+  setup() {
+    const api = useApi()
+
+    const previewUrl = ref('http://localhost:3000')
+
+    onBeforeMount(async () => {
+      const { url } = (await api.get('/preview')) as any
+
+      previewUrl.value = url
+    })
+
+    provide('previewUrl', previewUrl)
+
     return {
-      previewUrl: this.previewUrl
+      previewUrl
     }
-  },
-
-  data() {
-    return {
-      previewUrl: 'http://localhost:3000'
-    }
-  },
-
-  async beforeMount() {
-    const { url } = await this.$api.get('/preview')
-
-    this.previewUrl = url
   }
-}
+})
 </script>
