@@ -37,19 +37,24 @@ export default {
     FilesTree,
     Editor
   },
+
   inject: ['previewUrl'],
+
   setup() {
     return { isImage }
   },
+
   data() {
     return {
       files: [],
       currentFile: null
     }
   },
+
   async mounted() {
     this.files = await this.$api.get('/static')
   },
+
   methods: {
     async openFile(file) {
       if (this.isImage(file)) {
