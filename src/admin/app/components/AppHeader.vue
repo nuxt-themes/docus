@@ -6,7 +6,15 @@
   </header>
 </template>
 
-<script setup>
+<script lang="ts">
+import { defineComponent } from 'vue3'
 import AppHeaderLogo from './AppHeaderLogo.vue'
 import AppHeaderNav from './AppHeaderNav.vue'
+
+export default defineComponent({
+  components: {
+    AppHeaderLogo,
+    AppHeaderNav
+  }
+})
 </script>
