@@ -32,7 +32,7 @@
           </span>
 
           <ClientOnly>
-            <span v-if="doc.meta.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
+            <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
             <span
               v-else-if="isDocumentNew(doc)"
               class="w-2 h-2 ml-2 rounded-full opacity-75 animate-pulse bg-primary-500"
