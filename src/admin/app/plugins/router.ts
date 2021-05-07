@@ -4,22 +4,19 @@ import { createRouter, createWebHistory } from 'vue3-router'
 import Index from '../pages/index.vue'
 import Pages from '../pages/static.vue'
 
-// Routes definition
-const routes = [
-  {
-    path: '',
-    name: 'index',
-    component: Index
-  },
-  {
-    path: '/pages',
-    name: 'pages',
-    component: Pages
-  }
-]
-
 // Router plugin
 export const router = createRouter({
   history: createWebHistory('/admin/'),
-  routes
+  routes: [
+    {
+      path: '',
+      name: 'index',
+      component: Index as any
+    },
+    {
+      path: '/pages',
+      name: 'pages',
+      component: Pages as any
+    }
+  ]
 })
