@@ -1,15 +1,19 @@
 import { createApp } from 'vue3'
-import { createRouter, createWebHistory } from 'vue3-router'
-import routes from './pages/_routes'
-
 import App from './App.vue'
+
+// Styles
 import 'virtual:windi.css'
 import './index.css'
-import apiPlugin from './plugins/api'
 
-const router = createRouter({
-  history: createWebHistory('/admin/'),
-  routes
-})
+// Plugins
+import { router as routerPlugin } from './plugins/router'
+import { plugin as apiPlugin } from './plugins/api'
 
-createApp(App).use(router).use(apiPlugin).mount('#app')
+// Create app
+const app = createApp(App)
+
+app.use(routerPlugin)
+
+app.use(apiPlugin)
+
+app.mount('#app')
