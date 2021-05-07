@@ -68,6 +68,7 @@ export default <Middleware>async function pagesHandler(req) {
       })
     }
   }
+
   return createError({
     statusCode: 400,
     statusMessage: 'Bad Request'
