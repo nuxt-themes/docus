@@ -75,10 +75,9 @@ export default nuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations'],
-      include: ['defu', 'theme-colors']
-    },
-    vue: {}
+      exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations', 'lokidb'],
+      include: ['defu', 'theme-colors', 'cookie', 'js-cookie', 'property-information', 'clipboard']
+    }
   },
   build: {
     transpile: ['docus']
