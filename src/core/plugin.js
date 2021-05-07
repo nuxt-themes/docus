@@ -18,7 +18,7 @@ function createQuery(path, { deep = false, text = false } = {}) {
 /* <% } else { %> */
 function createQuery(path, options) {
   path = withLeadingSlash(path)
-  return new RemoteQueryBuilder(joinURL('/', '<%= options.apiBase %>', path), options)
+  return new RemoteQueryBuilder(joinURL('/', '<%= options.apiBase %>', 'search', path), options)
 }
 /* <% } %> */
 
@@ -37,12 +37,13 @@ export default async function (ctx, inject) {
   const $docus = await createDocus(
     ctx,
     settings,
-    process.server ? ctx.ssrContext.docus.createQuery : createQuery
+    // Note: Nitro does not suport ssrContext data injection
+    process.server && ctx.ssrContext.docus?.createQuery ? ctx.ssrContext.docus.createQuery : createQuery
   )
 
   inject('docus', $docus)
 
   /* <% if (options.watch) { %> */
-  useWebSocket({ base: '<%= options.apiBase %>' }).connect()
+  if (process.client) useWebSocket({ base: '<%= options.apiBase %>' }).connect()
   /* <% } %> */
 }

@@ -7,7 +7,7 @@ import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
 import { destroyStorage, initStorage } from './storage'
 import { destroyDB, useDB } from './database'
-import { createServerMiddleware } from './server'
+import { useServer } from './server'
 import { initParser } from './parser'
 import { destroyHooks } from './hooks'
 import { updateNavigation } from './utils/navigation'
@@ -28,7 +28,7 @@ function isUrl(string) {
 
 export default <Module>async function docusModule() {
   // wait for nuxt options to be normalized
-  const { nuxt, addServerMiddleware, addPlugin } = this
+  const { nuxt, addPlugin } = this
   const { options } = nuxt
   const isSSG = options.dev === false && (options.target === 'static' || options._generate || options.mode === 'spa')
 
@@ -100,7 +100,7 @@ export default <Module>async function docusModule() {
     ]
   })
 
-  addServerMiddleware(createServerMiddleware({ storage, base: pluginOptions.apiBase }))
+  useServer(nuxt)
 
   if (options.dev) {
     nuxt.hook('listen', server => server.on('upgrade', (...args) => coreHooks.callHook('upgrade', ...args)))

@@ -1,5 +1,5 @@
-import { NavItem } from 'src/types'
 import { joinURL } from 'ufo'
+import { NavItem } from '../../../types/core'
 
 export const useDocusApi = createQuery => {
   function data(path: string) {
@@ -22,10 +22,6 @@ export const useDocusApi = createQuery => {
   function findLink(links: NavItem[], to: string) {
     return links.find(link => link.to === to)
   }
-
-  // function findLinkBySlug(links: NavItem[], slug: string) {
-  //   return links.find(link => link.slug === slug)
-  // }
 
   return {
     data,
