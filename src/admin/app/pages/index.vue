@@ -4,7 +4,7 @@
   </aside>
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <div class="flex-1 overflow-y-scroll border-r">
+  <div class="flex-1 border-r">
     <Editor v-if="currentFile" v-model="currentFile.data" :file="currentFile" />
 
     <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file to edit.</p>
@@ -12,27 +12,36 @@
 </template>
 
 <script>
+import { reactive, defineComponent, onMounted, toRefs } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
+import { useApi } from '../plugins/api'
 
-export default {
+export default defineComponent({
   components: {
     FilesTree,
     Editor
   },
-  data() {
-    return {
+  setup() {
+    const api = useApi()
+
+    const state = reactive({
       files: [],
       currentFile: null
+    })
+
+    async function openFile(file) {
+      state.currentFile = await api.get(`/pages${file.path}`)
     }
-  },
-  async mounted() {
-    this.files = await this.$api.get('/pages')
-  },
-  methods: {
-    async openFile(file) {
-      this.currentFile = await this.$api.get(`/pages${file.path}`)
+
+    onMounted(async () => {
+      state.files = await api.get('/pages')
+    })
+
+    return {
+      ...toRefs(state),
+      openFile
     }
   }
-}
+})
 </script>
