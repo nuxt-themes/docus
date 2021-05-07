@@ -1,7 +1,7 @@
 import { mande } from 'mande'
 import { Plugin } from 'vue3'
 
-const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/admin/api' : '/admin/api'
+const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/admin/api' : '/admin/api'
 
 const apiInstance = mande(apiUrl)
 
