@@ -31,6 +31,7 @@
   "scripts": {
     "build": "rm -rf dist && siroc build",
     "dev": "nuxt dev docs",
+    "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
     "start": "nuxt start docs",
     "play": "nuxt playground",
