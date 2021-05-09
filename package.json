@@ -30,7 +30,8 @@
   ],
   "scripts": {
     "build": "rm -rf dist && siroc build",
-    "dev": "nuxt dev docs",
+    "dev": "concurrently -n \"DOCS,ADMIN\"  -c \"red,blue\" \"npm:dev:docs\" \"npm:dev:admin\"",
+    "dev:docs": "nuxt dev docs",
     "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
     "start": "nuxt start docs",
@@ -121,6 +122,7 @@
     "@types/node-fetch": "^2.5.10",
     "@types/pify": "^5.0.0",
     "babel-eslint": "^10.1.0",
+    "concurrently": "^6.1.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
@@ -129,7 +131,8 @@
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.2.1",
     "standard-version": "^9.3.0",
-    "terser": "^5.7.0"
+    "terser": "^5.7.0",
+    "wait-on": "^5.3.0"
   },
   "peerDependencies": {
     "vuex": "^3.6.2"
