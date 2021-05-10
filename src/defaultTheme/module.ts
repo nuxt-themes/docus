@@ -1,4 +1,5 @@
 import { resolve, join } from 'path'
+import { Config as WindiConfig } from 'windicss/types/interfaces'
 import { glob } from 'siroc'
 import defu from 'defu'
 import { Module } from '@nuxt/types'
@@ -32,10 +33,11 @@ export const beforeBuildHook = async ({ options }) => {
 
 // WindiCSS setup
 export default <Module>function themeSetupModule() {
-  const { nuxt } = this
+  const { nuxt, $docus } = this
   const { options, hook } = nuxt
+  const { settings } = $docus
 
-  hook('windicss:options', (windiOptions: any) => {
+  hook('windicss:options', (windiOptions: WindiConfig) => {
     // Merge user & local Windi config
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
 
