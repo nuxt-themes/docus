@@ -29,8 +29,10 @@ const getPageLink = (page: any): NavItem => {
     title: page.title,
     draft: page.draft,
     template,
-    icon: page.icon,
-    description: page.description,
+    meta: {
+      icon: page.icon,
+      description: page.description
+    },
     navigation,
     children: []
   }

@@ -29,8 +29,6 @@ export interface NavItem {
   slug: string
   to: string
   title: string
-  icon?: string
-  description: string
   draft?: boolean
   template?: {
     self: string
@@ -38,6 +36,10 @@ export interface NavItem {
   }
   navigation: false | NavItemNavigationConfig
   children: NavItem[]
+  meta: {
+    icon?: string
+    description?: string
+  }
 }
 
 export type PermissiveContext = Context & { [key: string]: any }
