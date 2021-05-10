@@ -8,7 +8,8 @@ const findLink = (links: NavItem[], to: string) => links.find(link => link.to ==
 const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
 
 const getPageLink = (page: any): NavItem => {
-  const to = withoutTrailingSlash(page.to || `/${page.slug}`)
+  const slug = (page.slug || page.to).split('/').pop()
+  const to = withoutTrailingSlash(page.to || `/${slug}`)
   let navigation = typeof page.navigation === 'string' ? { slot: page.navigation } : page.navigation
   if (navigation !== false) {
     navigation = {
@@ -23,7 +24,7 @@ const getPageLink = (page: any): NavItem => {
     typeof page.template === 'string' ? { self: page.template, nested: `${page.template}-post` } : page.template
 
   return {
-    slug: page.slug,
+    slug,
     to,
     title: page.title,
     draft: page.draft,
@@ -130,7 +131,7 @@ function createNav(pages: any[]) {
     if (!currentLinks) return
 
     // If index page, merge also with parent for metadata
-    if (!$page.slug) {
+    if (!_page.slug) {
       if (dirs.length === 1 && $page.navigation) {
         $page.navigation.slot = $page.navigation.slot || 'header'
       }

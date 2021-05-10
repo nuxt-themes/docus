@@ -36,7 +36,10 @@ export interface NavItem {
   }
   navigation: false | NavItemNavigationConfig
   children: NavItem[]
-  meta: any
+  meta: {
+    icon?: string
+    description?: string
+  }
 }
 
 export type PermissiveContext = Context & { [key: string]: any }
