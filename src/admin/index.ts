@@ -9,7 +9,7 @@ import api from './api'
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
 export default <Module>function () {
-  const { nuxt, addServerMiddleware, addPlugin } = this
+  const { nuxt, addServerMiddleware, options } = this
 
   process.options = nuxt.options
   process.previewUrl = 'http://localhost:4000'
@@ -50,7 +50,7 @@ export default <Module>function () {
     this.requireModule('@nuxtjs/proxy')
   } */
 
-  this.options.plugins.push(r('runtime/plugin.ts'))
+  if (options.dev) this.options.plugins.push(r('runtime/plugin.ts'))
 
   nuxt.hook('listen', (_: any, { host, port }: NuxtOptionsServer) => {
     process.previewUrl = `http://${host}:${port}`
