@@ -48,12 +48,11 @@ export type DocusNavigation = {
 export type DocusState = {
   // Core
   settings: any
-  page: any
   navigation: DocusNavigation
   theme: any
   // Addons
-  ui: any
-  lastRelease: any
+  ui?: any
+  lastRelease?: any
 }
 
 export interface DocusDocument {
