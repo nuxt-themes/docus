@@ -10,7 +10,10 @@ import { docusDefaults } from './defaults'
 const _require = jiti(__filename)
 
 export default <Module>function settingsModule() {
-  const { options, hook, callHook } = this.nuxt
+  const { options, hook } = this.nuxt
+
+  // Initialize server-side $docus
+  if (!this.$docus) this.$docus = {}
 
   // Get cache dir for Docus inside project rootDir
   const cacheDir = join(options.rootDir, 'node_modules/.cache/docus')
@@ -55,14 +58,14 @@ export default <Module>function settingsModule() {
   const settings = defu(userSettings, docusDefaults)
   settings.theme = defu(userSettings?.theme, themeDefaults)
 
+  // Inject settings into $docus for other modules
+  this.$docus.settings = settings
+
   // Default title and description for pages
   options.meta.name = settings.title
   options.meta.description = settings.description
 
   hook('modules:done', async () => {
-    // Call hooks of modules to extend Docus settings
-    await callHook('docus:settings', settings)
-
     const jsonPath = join(cacheDir, 'docus-settings.json')
 
     // Replace the directory
@@ -70,7 +73,7 @@ export default <Module>function settingsModule() {
     await mkdirp(cacheDir)
 
     // Write settings
-    writeJSONSync(jsonPath, settings)
+    writeJSONSync(jsonPath, this.$docus.settings)
   })
 
   // Inject theme name into Nuxt build badge
