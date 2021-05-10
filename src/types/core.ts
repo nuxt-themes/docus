@@ -1,4 +1,5 @@
 import { Context } from '@nuxt/types'
+import { Ref } from '@nuxtjs/composition-api'
 import { MetaInfo } from 'vue-meta'
 import { useDocusApi } from '../core/runtime/composables/api'
 import { DefaultThemeSettings } from '../defaultTheme/index.d'
@@ -106,6 +107,7 @@ export interface DocusSettings<T = DefaultThemeSettings> {
 }
 
 export interface DocusAddonContext<T = DefaultThemeSettings> {
+  ssrContext: Context['ssrContext']
   context: PermissiveContext
   state: DocusState
   settings: DocusSettings<T>
@@ -113,6 +115,12 @@ export interface DocusAddonContext<T = DefaultThemeSettings> {
   api: ReturnType<typeof useDocusApi>
   $nuxt?: any
 }
+export type DocusRuntimeInstance<T = DefaultThemeSettings> = {
+  settings: Ref<Omit<DocusSettings, 'theme'>>
+  navigation: Ref<DocusNavigation>
+  theme: Ref<T>
+  [key: string]: any
+} & ReturnType<typeof useDocusApi>
 
 export interface Colors {
   [key: string]: string | Colors

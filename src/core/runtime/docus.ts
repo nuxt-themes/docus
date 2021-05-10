@@ -1,6 +1,5 @@
-import { reactive, Ref, toRefs } from '@nuxtjs/composition-api'
-import type { DefaultThemeSettings } from '../../defaultTheme'
-import { DocusSettings, PermissiveContext, DocusState, DocusAddonContext, DocusNavigation } from '../../types'
+import { reactive, toRefs } from '@nuxtjs/composition-api'
+import { DocusSettings, PermissiveContext, DocusState, DocusAddonContext, DocusRuntimeInstance } from '../../types'
 import { useDocusApi } from './composables/api'
 import { useDocusNavigation } from './composables/navigation'
 import { clientAsyncData, docusInit } from './composables/helpers'
@@ -8,13 +7,6 @@ import { useDocusGithub } from './composables/github'
 import { useDocusReleases } from './composables/releases'
 import { useDocusStyle } from './composables/style'
 import { useDocusAddons } from './composables/addons'
-
-export type DocusRuntimeInstance<T = DefaultThemeSettings> = {
-  settings: Ref<Omit<DocusSettings, 'theme'>>
-  navigation: Ref<DocusNavigation>
-  theme: Ref<T>
-  [key: string]: any
-} & ReturnType<typeof useDocusApi>
 
 let docusInstance: DocusRuntimeInstance
 
@@ -28,6 +20,8 @@ export const createDocus = async (
 ): Promise<DocusRuntimeInstance<typeof settings['theme']>> => {
   // Nuxt instance proxy
   let $nuxt: any
+
+  const { ssrContext } = context
 
   // State
   const state = reactive({
@@ -45,6 +39,7 @@ export const createDocus = async (
 
   // Create Docus Addons context
   const docusAddonContext: DocusAddonContext = {
+    ssrContext,
     $nuxt,
     context,
     state,
