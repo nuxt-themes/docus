@@ -76,3 +76,9 @@ export const createDocus = async (
 
   return docusInstance
 }
+
+export const useDocus = () => {
+  if (!docusInstance) throw new Error('Docus not yet initialized! useDocus has to be used in a living Vue instance.')
+
+  return docusInstance
+}
