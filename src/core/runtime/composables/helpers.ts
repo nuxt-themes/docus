@@ -1,10 +1,7 @@
-import { DocusAddonContext } from 'src/types'
 import Vue from 'vue'
+import { DocusAddonContext } from '../../../types'
 
 export const docusInit = async ({ context, state }: DocusAddonContext, fetch: any) => {
-  // HotReload on development
-  if (process.client && process.dev) window.onNuxtReady(() => window.$nuxt.$on('content:update', fetch))
-
   // Fetch on server
   if (process.server) {
     await fetch()

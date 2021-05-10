@@ -22,8 +22,6 @@ export default <Module>function docusAppModule() {
 
   // Inject Admin UI
   if (options.dev) {
-    options.plugins.push(r('../admin/index'))
-
     // Disable SSR in dev
     options.ssr = false
     options.build.ssr = false

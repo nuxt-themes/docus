@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { Module } from '@nuxt/types'
-import { ParserOptions } from 'src/types'
+import { ParserOptions } from '../types'
 import tweetDirective from './lib/directive'
 
 const r = (...args) => resolve(__dirname, ...args)

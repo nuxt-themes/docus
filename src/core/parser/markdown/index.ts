@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import defu from 'defu'
 import matter from 'gray-matter'
-import { MarkdownParserOptions, Toc } from 'src/types'
+import { MarkdownParserOptions, Toc } from '../../../types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'

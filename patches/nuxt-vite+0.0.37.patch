@@ -1,0 +1,13 @@
+diff --git a/node_modules/nuxt-vite/dist/nuxt-vite.js b/node_modules/nuxt-vite/dist/nuxt-vite.js
+index 4572340..bbcd6dc 100644
+--- a/node_modules/nuxt-vite/dist/nuxt-vite.js
++++ b/node_modules/nuxt-vite/dist/nuxt-vite.js
+@@ -18,7 +18,7 @@ function nuxtVite() {
+     return;
+   }
+   nuxt.options.cli.badgeMessages.push(`\u26A1  Vite Mode Enabled (v${version})`);
+-  console.log("\u{1F9EA}  Vite mode is experimental and many nuxt modules are still incompatible\n", "   If found a bug, please report via https://github.com/nuxt/vite/issues with a minimal reproduction");
++  // console.log("\u{1F9EA}  Vite mode is experimental and many nuxt modules are still incompatible\n", "   If found a bug, please report via https://github.com/nuxt/vite/issues with a minimal reproduction");
+   nuxt.options.build.loadingScreen = false;
+   nuxt.options.build.indicator = false;
+   nuxt.options._modules = nuxt.options._modules.filter((m) => !(Array.isArray(m) && m[0] === "@nuxt/loading-screen"));

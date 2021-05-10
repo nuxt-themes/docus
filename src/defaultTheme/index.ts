@@ -6,8 +6,8 @@ import themeSetupModule, { readyHook, beforeBuildHook } from './module'
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
 const themeConfig: NuxtConfig = nuxtConfig({
-  name: 'defaultTheme',
   rootDir: __dirname,
+  themeName: 'defaultTheme',
   themeDir: __dirname,
   components: [
     {

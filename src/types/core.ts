@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types'
-import { useDocusApi } from 'src/core/runtime/composables/api'
 import { MetaInfo } from 'vue-meta'
+import { useDocusApi } from '../core/runtime/composables/api'
 import { DefaultThemeSettings } from '../defaultTheme/index.d'
 import { DocusRootNode } from './markdown'
 
@@ -17,14 +17,39 @@ export interface Toc {
   searchDepth: number
   links: TocLink[]
 }
+
+// Navigation
+export interface NavItemNavigationConfig {
+  title: string
+  nested: boolean
+  slot: string
+  exclusive: boolean
+}
+export interface NavItem {
+  slug: string
+  to: string
+  title: string
+  draft?: boolean
+  template?: {
+    self: string
+    nested: string
+  }
+  navigation: false | NavItemNavigationConfig
+  children: NavItem[]
+  meta: any
+}
+
 export type PermissiveContext = Context & { [key: string]: any }
+
+export type DocusNavigation = {
+  [language: string]: NavItem[]
+}
 
 export type DocusState = {
   // Core
   settings: any
   page: any
-  categories: any
-  navigation: any
+  navigation: DocusNavigation
   theme: any
   // Addons
   ui: any
@@ -35,15 +60,22 @@ export interface DocusDocument {
   // font-matter
   title: string
   description: string
-  category: string
   badge: string
   version: number
-  menuTitle: string
-  menu: boolean
   fullscreen: boolean
   head: MetaInfo
   position: string
   draft: boolean
+
+  navigation: {
+    title: string
+    slot: string
+    nested: boolean
+  }
+  template: {
+    self: string
+    nested: string
+  }
 
   // generated
   key: string

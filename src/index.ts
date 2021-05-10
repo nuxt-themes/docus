@@ -5,7 +5,6 @@ import defu from 'defu'
 import jiti from 'jiti'
 
 const _require = jiti(__filename)
-
 export function withDocus(theme: string | NuxtConfig, userConfig?: NuxtConfig): NuxtConfig {
   if (typeof theme !== 'string') {
     userConfig = theme
@@ -26,12 +25,6 @@ export function withDocus(theme: string | NuxtConfig, userConfig?: NuxtConfig): 
 
   // Theme specified, try to extend from its index
   _nuxtConfig.extends = theme
-
-  // Broadcast the currently used theme
-  // eslint-disable-next-line no-console
-  console.log('💄 Using Docus theme:')
-  // eslint-disable-next-line no-console
-  console.log(`💄 ${_nuxtConfig.extends}`)
 
   return nuxtConfig(defu.arrayFn(userConfig, _nuxtConfig))
 }

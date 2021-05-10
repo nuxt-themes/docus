@@ -1,14 +1,14 @@
 <template>
-  <li :class="{ active: isCategoryActive }">
+  <li :class="{ active: isActive }">
     <h5
-      v-if="category"
+      v-if="title"
       class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
-      :class="[isCategoryActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
-      @click="collapseCategory"
+      :class="[isActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
+      @click="collapse"
     >
-      {{ category }}
+      {{ title }}
     </h5>
-    <ul v-if="!collapse || isCategoryActive" class="mb-2">
+    <ul v-if="!isCollapse || isActive" class="mb-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
@@ -28,11 +28,11 @@
           </InjectComponent>
 
           <span>
-            {{ doc.menuTitle || doc.title }}
+            {{ doc.navigation.title }}
           </span>
 
           <ClientOnly>
-            <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
+            <span v-if="doc.meta.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
             <span
               v-else-if="isDocumentNew(doc)"
               class="w-2 h-2 ml-2 rounded-full opacity-75 animate-pulse bg-primary-500"
@@ -49,7 +49,7 @@ import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-
 
 export default defineComponent({
   props: {
-    category: {
+    title: {
       type: String,
       default: ''
     },
@@ -61,16 +61,16 @@ export default defineComponent({
   setup(props) {
     const { $docus } = useContext()
 
-    const collapse = ref(false)
+    const isCollapse = ref(false)
 
-    const isCategoryActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
+    const isActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
 
-    const collapseCategory = () => {
-      if (isCategoryActive.value) {
+    const collapse = () => {
+      if (isActive.value) {
         return
       }
 
-      collapse.value = !collapse.value
+      isCollapse.value = !isCollapse.value
     }
 
     const isDocumentNew = document => {
@@ -86,9 +86,9 @@ export default defineComponent({
     }
 
     return {
-      collapseCategory,
-      isCategoryActive,
       collapse,
+      isActive,
+      isCollapse,
       isDocumentNew
     }
   }

@@ -75,10 +75,9 @@ export default nuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations'],
-      include: ['defu', 'theme-colors']
-    },
-    vue: {}
+      exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations', 'lokidb'],
+      include: ['defu', 'theme-colors', 'cookie', 'js-cookie', 'property-information', 'clipboard']
+    }
   },
   build: {
     transpile: ['docus']
@@ -91,12 +90,5 @@ export default nuxtConfig({
   generate: {
     fallback: '404.html',
     routes: ['/']
-  },
-  // Alias non-Vite compatible dependencies
-  alias: {
-    qrcode: r('mock/default'),
-    axios: r('mock/default'),
-    nprogress: r('mock/default'),
-    jwt_decode: r('mock/default')
   }
 })

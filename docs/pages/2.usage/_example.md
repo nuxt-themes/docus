@@ -1,5 +1,5 @@
 ---
-menu: false
+navigation: false
 ---
 
 ```js
