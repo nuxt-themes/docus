@@ -54,6 +54,11 @@ export default <Module>function themeSetupModule() {
       join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
       join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
     )
+
+    windiOptions.config.shortcuts = {
+      ...(windiOptions.shortcuts || {}),
+      ...(settings?.theme?.shortcuts || {})
+    }
   })
 
   hook('components:dirs', async (dirs: any) => {
