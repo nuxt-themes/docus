@@ -50,6 +50,9 @@
     "cli": "yarn workspace docus-cli docus",
     "postinstall": "patch-package"
   },
+  "resolutions": {
+    "esbuild": "0.10.2"
+  },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
