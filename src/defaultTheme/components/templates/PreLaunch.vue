@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <div>pre-launch</div>
+  <AppContainer fluid :footer="false">
     <NuxtContent :document="page" />
-  </div>
+  </AppContainer>
 </template>
 
 <script>
