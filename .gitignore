@@ -5,6 +5,9 @@ jspm_packages
 package-lock.json
 # */**/yarn.lock
 
+# Service Workers
+sw.js
+
 # Env
 .env
 
