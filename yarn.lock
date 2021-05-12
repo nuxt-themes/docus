@@ -9133,10 +9133,10 @@ nuxt-i18n@^6.27.0:
     ufo "^0.7.2"
     vue-i18n "^8.24.4"
 
-nuxt-vite@0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/nuxt-vite/-/nuxt-vite-0.0.39.tgz#0a71473c758d9530533315c34dd4ea44bb6d6a33"
-  integrity sha512-pMFvItwLpQK3QDb4hjiSqL9g2pCa9qAEiKukljUDE/3BCu9SS3Y0HO3SUFETMy6WBQvyEhHJWftawWfzW5Lnow==
+nuxt-vite@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nuxt-vite/-/nuxt-vite-0.1.0.tgz#6c9bd69ee2bd8ade22665676ed4b9d3141dbf89c"
+  integrity sha512-FTg0iEeTykF+PkOmA+pzS9KUbqfxQQxH2aw3zwiFjSxzwVwURB0ygIz7O6waE/4CyCrjhGc33X4qAKOjCodh8g==
   dependencies:
     "@nuxt/http" "^0.6.4"
     chokidar "^3.5.1"

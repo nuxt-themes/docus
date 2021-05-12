@@ -5,10 +5,8 @@ const r = (...args: any[]) => resolve(__dirname, ...args)
 
 export default <Module>function docusAppModule() {
   const { nuxt } = this
-  const { hook, options } = nuxt
-
   // Extend `/` route
-  hook('build:extendRoutes', (routes: any[]) => {
+  nuxt.hook('build:extendRoutes', (routes: any[]) => {
     const hasRoute = (name: string) => routes.some(route => route.name === name)
 
     if (!hasRoute('all')) {
@@ -19,12 +17,4 @@ export default <Module>function docusAppModule() {
       })
     }
   })
-
-  // Inject Admin UI
-  if (options.dev) {
-    // Disable SSR in dev
-    options.ssr = false
-    options.build.ssr = false
-    options.render.ssr = false
-  }
 }
