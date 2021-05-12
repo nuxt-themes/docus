@@ -24,7 +24,13 @@
                   :key="index"
                   class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
                 >
-                  <nuxt-img class="inline-block h-6 w-6 rounded-full" height="24" width="24" :src="author.avatarUrl" alt />
+                  <NuxtImg
+                    class="inline-block h-6 w-6 rounded-full"
+                    height="24"
+                    width="24"
+                    :src="author.avatarUrl"
+                    alt
+                  />
                 </span>
               </div>
             </div>
@@ -34,7 +40,7 @@
               :to="$contentLocalePath(post.to)"
             >
               <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800">
-                <nuxt-img :src="post.imgUrl" width="864" height="378" alt="" />
+                <NuxtImg :src="post.imgUrl" width="864" height="378" alt="" />
               </div>
             </NuxtLink>
           </div>
@@ -50,7 +56,13 @@
                   :key="index"
                   class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-600"
                 >
-                  <nuxt-img class="inline-block h-6 w-6 rounded-full" height="24" width="24" :src="author.avatarUrl" alt />
+                  <NuxtImg
+                    class="inline-block h-6 w-6 rounded-full"
+                    height="24"
+                    width="24"
+                    :src="author.avatarUrl"
+                    alt
+                  />
                 </span>
               </div>
             </div>

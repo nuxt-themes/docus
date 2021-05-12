@@ -1,6 +1,8 @@
 <template>
-  <textarea v-model="frontmatter" class="h-24 w-full" />
-  <ContentEditor v-model:body="content" class="w-full h-full overflow-scroll" />
+  <div class="flex flex-col h-full">
+    <textarea v-model="frontmatter" class="h-24 w-full" />
+    <ContentEditor v-model:body="content" class="w-full flex-1 overflow-scroll" />
+  </div>
 </template>
 
 <script lang="ts">

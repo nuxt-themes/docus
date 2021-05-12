@@ -46,7 +46,9 @@ export default <Middleware>async function pagesHandler(req) {
 
   // Update changes
   if (req.method === 'PUT') {
-    let { data, content } = await useBody<Body>(req)
+    const body = await useBody<Body>(req)
+    const { data } = body
+    let { content } = body
     if (typeof content !== 'string') {
       content = await parser.stringify('.md', content)
     }

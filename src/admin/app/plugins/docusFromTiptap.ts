@@ -1,17 +1,10 @@
 import { kebabCase } from 'scule'
 
-const mark = type => (node, { attrs } = {}) => ({
+const mark = type => (node, { attrs = {} } = {}) => ({
   type: 'element',
   tag: type,
-  props: attrs || {},
+  props: attrs,
   children: [node]
-})
-
-const parentWithTag = tag => node => ({
-  type: 'element',
-  tag,
-  props: {},
-  children: visit(node.content || [])
 })
 
 const marks = {
