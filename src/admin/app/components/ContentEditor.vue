@@ -3,13 +3,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { defaultExtensions } from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
-import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
+import CodeBlock from '@tiptap/extension-code-block'
 import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
 import { docusFromTiptap } from '../plugins/docusFromTiptap'
-import { Element } from '../plugins/Element'
+import Element from '../plugins/Element'
 
 export default defineComponent({
   components: {
@@ -28,7 +29,23 @@ export default defineComponent({
 
     onMounted(() => {
       editor.value = new Editor({
-        extensions: [...defaultExtensions(), Link, Element],
+        extensions: [
+          ...defaultExtensions(),
+          Link,
+          Element,
+          CodeBlock.extend({
+            addAttributes() {
+              return {
+                language: {
+                  rendered: false
+                },
+                title: {
+                  rendered: false
+                }
+              }
+            }
+          })
+        ],
         content: tiptapFromDocus(props.body)
       })
       editor.value.on('update', () => {
@@ -42,10 +59,6 @@ export default defineComponent({
       () => {
         // HTML
         const isSame = props.body === value.value
-
-        // JSON
-        // const isSame = this.editor.getJSON().toString() === value.toString()
-
         if (isSame) {
           return
         }

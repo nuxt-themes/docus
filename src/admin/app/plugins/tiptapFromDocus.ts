@@ -12,6 +12,36 @@ const heading = level => node => ({
 
 const parentWithType = type => node => ({ type, content: visit(node.children || []) })
 
+function textContent(node) {
+  if (node.type === 'text') {
+    return node.value
+  }
+  return node.children.map(textContent).join('')
+}
+
+function proseCode(node) {
+  const pre = node.children.find(n => n.tag === 'pre')
+  const span = node.children.find(n => n.tag === 'span')
+
+  const className = pre.props?.className || []
+  const languageClass = className.find(cls => cls.startsWith('language-')) || ''
+
+  const language = languageClass.split('-').pop()
+  return {
+    type: 'codeBlock',
+    attrs: {
+      language,
+      title: span ? textContent(span) : ''
+    },
+    content: [
+      {
+        type: 'text',
+        text: textContent(pre)
+      }
+    ]
+  }
+}
+
 const handlers = {
   root: parentWithType('doc'),
   'prose-h1': heading(1),
@@ -27,6 +57,7 @@ const handlers = {
   'prose-li': parentWithType('listItem'),
   'prose-a': markNode('link'),
   'prose-code-inline': markNode('code'),
+  'prose-code': proseCode,
   'prose-strong': markNode('bold'),
   'prose-blockquote': parentWithType('blockquote'),
   em: markNode('italic'),
@@ -42,7 +73,10 @@ function visit(node) {
   if (handlers[type]) {
     node = handlers[type](node)
   } else {
-    node.attrs = node.props
+    node.attrs = {
+      ...node.props,
+      _tag: node.tag
+    }
     node.content = visit(node.children || [])
   }
   return node

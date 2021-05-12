@@ -50,6 +50,12 @@ const handlers = {
     children: node.content ? node.content.map(node => visit(node)) : [],
     props: {}
   }),
+  codeBlock: node => ({
+    type: 'code',
+    tag: 'code',
+    children: node.content ? node.content.map(node => visit(node)) : [],
+    props: node.attrs
+  }),
   blockquote: node => ({
     type: 'element',
     tag: 'prose-blockquote',
@@ -109,7 +115,11 @@ function visit(node) {
   if (handlers[node.type]) {
     node = handlers[node.type](node)
   } else {
-    console.log(node)
+    node.children = visit(node.content || [])
+    node.props = node.attrs || {}
+    node.tag = node.attrs._tag
+    delete node.content
+    delete node.attrs
   }
   return node
 }

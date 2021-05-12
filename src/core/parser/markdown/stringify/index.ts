@@ -7,6 +7,8 @@ import listItem from './handle/list-item'
 import list from './handle/list'
 import link from './handle/link'
 import root from './handle/root'
+import element from './handle/element'
+import code from './handle/code'
 
 export function toMarkdown(tree, options = {}) {
   const settings = options || {}
@@ -19,7 +21,6 @@ export function toMarkdown(tree, options = {}) {
     options: {} as any,
     handle: undefined as any
   }
-  let result
 
   configure(context, {
     unsafe: defaultUnsafe,
@@ -29,7 +30,9 @@ export function toMarkdown(tree, options = {}) {
       listItem,
       list,
       link,
-      root
+      root,
+      element,
+      code
     }
   })
   configure(context, settings)
@@ -44,7 +47,7 @@ export function toMarkdown(tree, options = {}) {
     handlers: context.handlers
   })
 
-  result = context.handle(tree, null, context)
+  const result = context.handle(tree, null, context)
 
   // if (result && result.charCodeAt(result.length - 1) !== 10 && result.charCodeAt(result.length - 1) !== 13) {
   //   result += '\n'

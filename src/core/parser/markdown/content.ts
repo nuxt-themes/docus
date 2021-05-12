@@ -65,6 +65,13 @@ export function generateMarkdown(content, options): Promise<string> {
       .filter(n => n.type !== 'text' || n.value !== '\n')
   }
 
+  function textContent(node) {
+    if (node.type === 'text') {
+      return node.value
+    }
+    return node.children.map(textContent).join('')
+  }
+
   return new Promise((resolve, reject) => {
     unified()
       .use(function parser() {
@@ -89,6 +96,11 @@ export function generateMarkdown(content, options): Promise<string> {
             if (tree.tag === 'prose-code-inline') {
               tree.value = tree.children[0].value
               tree.type = 'inlineCode'
+            }
+            if (tree.tag === 'code') {
+              tree.type = 'code'
+              tree.lang = tree.language
+              tree.value = textContent(tree)
             }
             if (tree.tag === 'prose-blockquote') {
               tree.children = unwrapChildren(tree, ['prose-paragraph'])
@@ -124,13 +136,7 @@ export function generateMarkdown(content, options): Promise<string> {
           }
         },
         {
-          bullet: '-',
-          handlers: {
-            element: function f(a) {
-              console.log(a);
-              return JSON.stringify(a)
-            }
-          }
+          bullet: '-'
         }
       )
       .process(
