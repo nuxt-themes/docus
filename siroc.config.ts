@@ -47,7 +47,10 @@ export default defineSirocConfig({
 
               await fs.promises.writeFile(file, code || contents)
             } catch (e) {
+              // eslint-disable-next-line no-console
               console.log('Could not minify:')
+
+              // eslint-disable-next-line no-console
               console.log(file)
             }
           })
