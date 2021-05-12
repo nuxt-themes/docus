@@ -50,7 +50,6 @@
     "@docsearch/js": "^1.0.0-alpha.28",
     "@lokidb/loki": "^2.1.0",
     "@nuxt/image": "^0.4.8",
-    "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/color-mode": "^2.0.5",
     "@nuxtjs/composition-api": "0.23.3",
     "@nuxtjs/proxy": "^2.1.0",
@@ -129,7 +128,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.0",
     "standard-version": "^9.3.0",
-    "terser": "^5.7.0"
+    "terser": "^5.7.0",
+    "@nuxt/typescript-build": "^2.1.0"
   },
   "peerDependencies": {
     "vuex": "^3.6.2"

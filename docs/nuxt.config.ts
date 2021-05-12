@@ -9,7 +9,7 @@ export default withDocus({
   /**
    * Modules
    */
-  buildModules: ['vue-plausible'],
+  buildModules: ['vue-plausible', '@nuxt/typescript-build'],
   /**
    * Modules config
    */
