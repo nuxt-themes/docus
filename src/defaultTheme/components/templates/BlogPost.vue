@@ -4,7 +4,21 @@
       <div class="max-w-2xl mx-auto py-24 relative">
         <NuxtLink
           :to="$contentLocalePath('/blog')"
-          class="absolute top-0 left-0 px-4 mt-12 leading-none text-gray-400 dark:text-gray-600 hover:text-gray-500 hover:dark:text-gray-400 font-medium transition-color duration-100"
+          class="
+            absolute
+            top-0
+            left-0
+            px-4
+            mt-12
+            leading-none
+            text-gray-400
+            dark:text-gray-600
+            hover:text-gray-500
+            hover:dark:text-gray-400
+            font-medium
+            transition-color
+            duration-100
+          "
         >
           <span class="">← Back</span>
         </NuxtLink>

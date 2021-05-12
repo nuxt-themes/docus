@@ -9,7 +9,7 @@ export default withDocus({
   /**
    * Modules
    */
-  buildModules: ['vue-plausible'],
+  buildModules: ['vue-plausible', '@nuxt/typescript-build'],
   /**
    * Modules config
    */
@@ -40,6 +40,7 @@ export default withDocus({
           const dest = resolve(__dirname, '../.vercel_build_output')
           await copy(src, dest)
         } catch {
+          // eslint-disable-next-line no-console
           console.log('Issue copying `.vercel_build_output` to project root.')
         }
       }

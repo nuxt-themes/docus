@@ -5,7 +5,16 @@
         {{ title }}
       </h2>
       <div
-        class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
+        class="
+          grid
+          gap-4
+          font-semibold
+          text-left text-gray-900
+          dark:text-gray-100
+          sm:grid-cols-2
+          xl:grid-cols-3
+          2xl:gap-8
+        "
       >
         <slot />
       </div>

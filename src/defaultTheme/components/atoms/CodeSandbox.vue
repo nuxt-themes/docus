@@ -1,7 +1,20 @@
 <template>
   <div
     ref="box"
-    class="flex items-center justify-center w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl text-center text-white bg-black rounded-md codesandbox"
+    class="
+      flex
+      items-center
+      justify-center
+      w-full
+      min-h-[500px]
+      mx-auto
+      mb-6
+      overflow-hidden
+      text-3xl text-center text-white
+      bg-black
+      rounded-md
+      codesandbox
+    "
     style="background-color: rgb(21, 21, 21)"
   >
     <iframe

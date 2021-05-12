@@ -48,7 +48,6 @@ export default nuxtConfig({
   buildModules: [
     // Dependencies
     'nuxt-vite',
-    '@nuxt/typescript-build',
     '@nuxtjs/pwa',
     '@nuxt/image',
     '@nuxtjs/composition-api/module',
@@ -69,23 +68,33 @@ export default nuxtConfig({
    * Build configs
    */
   target: 'static',
-  ssr: true,
   server: {
     port: process.env.PORT || 4000
   },
   vite: {
+    experimentWarning: false,
     optimizeDeps: {
       exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations', 'lokidb'],
-      include: ['defu', 'theme-colors', 'cookie', 'js-cookie', 'property-information', 'clipboard']
+      include: [
+        'defu',
+        'theme-colors',
+        'cookie',
+        'js-cookie',
+        'property-information',
+        'clipboard',
+        'qrcode',
+        'axios',
+        'nprogress'
+      ]
     }
   },
   build: {
     transpile: ['docus']
   },
-  typeCheck: {
-    eslint: {
-      files: './**/*.{ts,js,vue}'
-    }
+  typescript: {
+    // TODO: Re-enable typeCheck
+    // Waiting for better support from nuxt-vite / nuxt 3
+    typeCheck: false
   },
   generate: {
     fallback: '404.html',

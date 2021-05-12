@@ -12,14 +12,36 @@
       <a
         href="https://nuxtjs.org"
         target="_blank"
-        class="text-sm flex items-center font-medium p-1 text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-hex-00DC82"
+        class="
+          text-sm
+          flex
+          items-center
+          font-medium
+          p-1
+          text-gray-500
+          transition-colors
+          duration-200
+          dark:text-gray-500
+          hover:text-hex-00DC82
+        "
       >
         <IconNuxt class="w-5 h-5" />
       </a>
       <a
         href="https://vuetelescope.com"
         target="_blank"
-        class="text-sm flex items-center font-medium p-1 text-gray-500 transition-colors duration-200 dark:text-gray-500 hover:text-hex-0BDCA0"
+        class="
+          text-sm
+          flex
+          items-center
+          font-medium
+          p-1
+          text-gray-500
+          transition-colors
+          duration-200
+          dark:text-gray-500
+          hover:text-hex-0BDCA0
+        "
       >
         <IconVueTelescope class="w-5 h-5" />
       </a>

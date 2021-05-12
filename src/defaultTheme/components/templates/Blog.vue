@@ -47,7 +47,18 @@
 
           <div class="flex flex-col sm:flex-row w-full">
             <div
-              class="hidden sm:flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0"
+              class="
+                hidden
+                sm:flex sm:flex-col
+                items-center
+                sm:items-end
+                justify-between
+                sm:w-1/3
+                px-4
+                sm:pr-4
+                mb-4
+                sm:mb-0
+              "
             >
               <!-- only show sticky author on desktop layout -->
               <div class="sticky top-header flex items-center py-2 -my-1.5">

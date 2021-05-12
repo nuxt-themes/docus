@@ -1,13 +1,15 @@
 import { execSync } from 'child_process'
-import { join } from 'upath'
+import { join, resolve } from 'upath'
 import chalk from 'chalk'
 import { NuxtOptionsServer } from '@nuxt/types/config/server'
 import serveStatic from 'serve-static'
 import { Module } from '@nuxt/types'
 import api from './api'
 
+const r = (...args: string[]) => resolve(__dirname, ...args)
+
 export default <Module>function () {
-  const { nuxt, addServerMiddleware } = this
+  const { nuxt, addServerMiddleware, options } = this
 
   process.options = nuxt.options
   process.previewUrl = 'http://localhost:4000'
@@ -47,6 +49,8 @@ export default <Module>function () {
 
     this.requireModule('@nuxtjs/proxy')
   } */
+
+  if (options.dev) this.options.plugins.push(r('runtime/plugin.ts'))
 
   nuxt.hook('listen', (_: any, { host, port }: NuxtOptionsServer) => {
     process.previewUrl = `http://${host}:${port}`

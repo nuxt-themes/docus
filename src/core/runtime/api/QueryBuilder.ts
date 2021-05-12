@@ -8,7 +8,7 @@ const omit = keys => obj =>
     .filter(key => !keys.includes(key))
     .reduce((newObj, key) => Object.assign(newObj, { [key]: obj[key] }), {})
 
-const apply = fn => data => (Array.isArray(data) ? data.map(item => fn(item)) : fn(data))
+const apply = fn => data => Array.isArray(data) ? data.map(item => fn(item)) : fn(data)
 
 export class QueryBuilder {
   private query: any
