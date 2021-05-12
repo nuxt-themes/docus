@@ -77,10 +77,12 @@
     "nuxt-edge": "^2.16.0-27012971.cd1fc627",
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.0",
-    "nuxt-vite": "0.0.39",
+    "nuxt-vite": "0.1.0",
     "nuxt-windicss": "^0.7.2",
     "ohmyfetch": "^0.1.8",
+    "patch-package": "^6.4.7",
     "plausible-tracker": "^0.3.1",
+    "postinstall-postinstall": "^2.1.0",
     "prism-theme-vars": "^0.2.2",
     "prismjs": "^1.23.0",
     "puppeteer-core": "^8.0.0",
@@ -110,9 +112,7 @@
     "vue-docgen-api": "^4.38.2",
     "vue-plausible": "^1.1.4",
     "vue3": "npm:vue@next",
-    "vue3-router": "npm:vue-router@next",
-    "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0"
+    "vue3-router": "npm:vue-router@next"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.5",

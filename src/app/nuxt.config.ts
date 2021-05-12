@@ -69,11 +69,11 @@ export default nuxtConfig({
    * Build configs
    */
   target: 'static',
-  ssr: true,
   server: {
     port: process.env.PORT || 4000
   },
   vite: {
+    experimentWarning: false,
     optimizeDeps: {
       exclude: ['ohmyfetch', 'vue-demi', 'scule', '@vueuse/integrations', 'lokidb'],
       include: [
