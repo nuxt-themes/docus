@@ -7,7 +7,21 @@
       :class="{ 'bg-gray-200 text-gray-900': isCurrent(file) }"
     >
       <div
-        class="group flex cursor-pointer items-center px-1 py-1 text-sm leading-5 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50"
+        class="
+          group
+          flex
+          cursor-pointer
+          items-center
+          px-1
+          py-1
+          text-sm
+          leading-5
+          hover:text-gray-900
+          hover:bg-gray-50
+          focus:outline-none
+          focus:text-gray-900
+          focus:bg-gray-50
+        "
         @click="open(file)"
       >
         <FilesTreeIcon :file="file" />

@@ -19,7 +19,22 @@
             <h1 class="flex-1 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{{ page.title }}</h1>
             <span
               v-if="page.draft"
-              class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400"
+              class="
+                inline-block
+                px-3
+                py-1
+                mr-2
+                text-base
+                font-medium
+                leading-5
+                tracking-tight
+                text-yellow-500
+                bg-yellow-100
+                rounded-full
+                items-flex
+                dark:bg-yellow-800
+                dark:text-yellow-400
+              "
               >Draft</span
             >
             <DBadge v-if="page.badge" class="font-medium">{{ page.badge }}</DBadge>
@@ -30,12 +45,31 @@
         <!-- PageSummary -->
         <section class="pb-10">
           <ul
-            class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
+            class="
+              grid
+              gap-4
+              font-semibold
+              text-left text-gray-900
+              dark:text-gray-100
+              sm:grid-cols-2
+              xl:grid-cols-3
+              2xl:gap-8
+            "
           >
             <li v-for="link of $docus.nav.value.en.links[2].children" :key="link.to" class="flex">
               <NuxtLink
                 :to="link.to"
-                class="relative w-full px-6 py-8 rounded shadow bg-gray-50 dark:bg-gray-800 dark:bg-gray-900 hover:shadow-lg"
+                class="
+                  relative
+                  w-full
+                  px-6
+                  py-8
+                  rounded
+                  shadow
+                  bg-gray-50
+                  dark:bg-gray-800 dark:bg-gray-900
+                  hover:shadow-lg
+                "
               >
                 <InjectComponent
                   v-if="link.icon"

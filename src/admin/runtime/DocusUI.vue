@@ -12,7 +12,19 @@
       <li class="flex items-center pb-1 font-medium">
         <button
           type="button"
-          class="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 rounded-full cursor-pointer group focus:outline-none"
+          class="
+            relative
+            inline-flex
+            items-center
+            justify-center
+            flex-shrink-0
+            w-10
+            h-5
+            rounded-full
+            cursor-pointer
+            group
+            focus:outline-none
+          "
           aria-pressed="false"
           @click="$docus.ui.draft = !$docus.ui.draft"
         >
@@ -26,7 +38,22 @@
           <span
             aria-hidden="true"
             :class="drafts ? 'translate-x-5' : 'translate-x-0'"
-            class="absolute left-0 inline-block w-5 h-5 transition-transform duration-200 ease-in-out transform bg-white border border-gray-200 rounded-full shadow pointer-events-none"
+            class="
+              absolute
+              left-0
+              inline-block
+              w-5
+              h-5
+              transition-transform
+              duration-200
+              ease-in-out
+              transform
+              bg-white
+              border border-gray-200
+              rounded-full
+              shadow
+              pointer-events-none
+            "
           ></span>
         </button>
 
@@ -36,7 +63,19 @@
       <li class="flex items-center font-medium">
         <button
           type="button"
-          class="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 rounded-full cursor-pointer group focus:outline-none"
+          class="
+            relative
+            inline-flex
+            items-center
+            justify-center
+            flex-shrink-0
+            w-10
+            h-5
+            rounded-full
+            cursor-pointer
+            group
+            focus:outline-none
+          "
           aria-pressed="false"
           @click="$docus.ui.slots = !$docus.ui.slots"
         >
@@ -50,7 +89,22 @@
           <span
             aria-hidden="true"
             :class="slots ? 'translate-x-5' : 'translate-x-0'"
-            class="absolute left-0 inline-block w-5 h-5 transition-transform duration-200 ease-in-out transform bg-white border border-gray-200 rounded-full shadow pointer-events-none"
+            class="
+              absolute
+              left-0
+              inline-block
+              w-5
+              h-5
+              transition-transform
+              duration-200
+              ease-in-out
+              transform
+              bg-white
+              border border-gray-200
+              rounded-full
+              shadow
+              pointer-events-none
+            "
           ></span>
         </button>
 

@@ -5,7 +5,20 @@
       <Transition name="fade">
         <div
           v-if="$menu.visible.value"
-          class="fixed top-0 left-0 z-0 w-full h-full bg-gray-400 pointer-events-auto blur-8 dark:bg-gray-900 dark:bg-opacity-80 bg-opacity-80 lg:hidden"
+          class="
+            fixed
+            top-0
+            left-0
+            z-0
+            w-full
+            h-full
+            bg-gray-400
+            pointer-events-auto
+            blur-8
+            dark:bg-gray-900 dark:bg-opacity-80
+            bg-opacity-80
+            lg:hidden
+          "
           @click.stop="$menu.toggle"
         />
       </Transition>

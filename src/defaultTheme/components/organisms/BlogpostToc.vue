@@ -1,10 +1,34 @@
 <template>
   <div
     v-if="toc.length"
-    class="sticky z-10 px-4 text-sm bg-white border-b border-gray-100 border-dashed top-header dark:border-gray-800 blur-header bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
+    class="
+      sticky
+      z-10
+      px-4
+      text-sm
+      bg-white
+      border-b border-gray-100 border-dashed
+      top-header
+      dark:border-gray-800
+      blur-header
+      bg-opacity-80
+      dark:bg-gray-900 dark:bg-opacity-80
+    "
   >
     <button
-      class="relative z-10 flex items-center w-full py-3 text-sm font-semibold text-gray-900 focus:outline-none dark:text-gray-100"
+      class="
+        relative
+        z-10
+        flex
+        items-center
+        w-full
+        py-3
+        text-sm
+        font-semibold
+        text-gray-900
+        focus:outline-none
+        dark:text-gray-100
+      "
       @click="showMobileToc = !showMobileToc"
     >
       <span class="mr-2">{{ title || $t('toc.title') }}</span>
@@ -20,12 +44,10 @@
           :href="`#${link.id}`"
           class="block py-1 transition-colors duration-100 transform scrollactive-item"
           :class="{
-            'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400': activeHeadings.includes(
-              link.id
-            ),
-            'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400': !activeHeadings.includes(
-              link.id
-            )
+            'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
+              activeHeadings.includes(link.id),
+            'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
+              !activeHeadings.includes(link.id)
           }"
           @click.prevent="scrollToHeading(link.id, '--blogpost-scroll-margin-block')"
           >{{ link.text }}</a

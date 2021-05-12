@@ -5,14 +5,39 @@
         {{ title }}
       </h2>
       <ul
-        class="grid gap-4 font-semibold text-left text-gray-900 dark:text-gray-100 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-8"
+        class="
+          grid
+          gap-4
+          font-semibold
+          text-left text-gray-900
+          dark:text-gray-100
+          sm:grid-cols-2
+          xl:grid-cols-3
+          2xl:gap-8
+        "
       >
         <li v-for="(f, index) of features" :key="index" class="flex">
           <div
-            class="relative w-full px-6 py-8 bg-white rounded border border-gray-200 dark:border-gray-700 dark:bg-gray-900"
+            class="
+              relative
+              w-full
+              px-6
+              py-8
+              bg-white
+              rounded
+              border border-gray-200
+              dark:border-gray-700
+              dark:bg-gray-900
+            "
           >
             <InjectComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">
-              <nuxt-img v-if="isImage(f.icon)" :src="f.icon" width="64" height="64" class="inline-block w-16 h-16 mb-3" />
+              <NuxtImg
+                v-if="isImage(f.icon)"
+                :src="f.icon"
+                width="64"
+                height="64"
+                class="inline-block w-16 h-16 mb-3"
+              />
               <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ f.icon }}</span>
             </InjectComponent>
             <h2 class="mb-2 text-xl">{{ f.title }}</h2>

@@ -12,7 +12,22 @@
         <h1 class="flex-1 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{{ page.title }}</h1>
         <span
           v-if="page.draft"
-          class="inline-block px-3 py-1 mr-2 text-base font-medium leading-5 tracking-tight text-yellow-500 bg-yellow-100 rounded-full items-flex dark:bg-yellow-800 dark:text-yellow-400"
+          class="
+            inline-block
+            px-3
+            py-1
+            mr-2
+            text-base
+            font-medium
+            leading-5
+            tracking-tight
+            text-yellow-500
+            bg-yellow-100
+            rounded-full
+            items-flex
+            dark:bg-yellow-800
+            dark:text-yellow-400
+          "
           >Draft</span
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>

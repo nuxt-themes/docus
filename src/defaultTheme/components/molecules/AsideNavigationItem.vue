@@ -12,7 +12,19 @@
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between pl-3 py-1 transition duration-200 border-l border-gray-100 dark:border-gray-800 hover:text-primary"
+          class="
+            relative
+            inline-flex
+            items-center
+            justify-between
+            pl-3
+            py-1
+            transition
+            duration-200
+            border-l border-gray-100
+            dark:border-gray-800
+            hover:text-primary
+          "
           :class="[
             $docus.isLinkActive(doc.to)
               ? 'text-primary dark:text-primary-400 hover:text-primary border-primary-500 dark:border-primary-500'
