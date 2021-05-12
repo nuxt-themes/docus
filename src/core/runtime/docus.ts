@@ -1,5 +1,5 @@
 import { reactive, toRefs } from '@nuxtjs/composition-api'
-import { DocusSettings, PermissiveContext, DocusState, DocusAddonContext } from '../../types'
+import { DocusSettings, PermissiveContext, DocusState, DocusAddonContext, DocusRuntimeInstance } from '../../types'
 import { useDocusApi } from './composables/api'
 import { useDocusNavigation } from './composables/navigation'
 import { clientAsyncData, docusInit } from './composables/helpers'
@@ -8,16 +8,23 @@ import { useDocusReleases } from './composables/releases'
 import { useDocusStyle } from './composables/style'
 import { useDocusAddons } from './composables/addons'
 
+let docusInstance: DocusRuntimeInstance
+
 /**
  * Create the $docus runtime injection instance.
  */
-export const createDocus = async (context: PermissiveContext, settings: DocusSettings, createQuery: any) => {
+export const createDocus = async (
+  context: PermissiveContext,
+  settings: DocusSettings,
+  createQuery: any
+): Promise<DocusRuntimeInstance<typeof settings['theme']>> => {
   // Nuxt instance proxy
   let $nuxt: any
 
+  const { ssrContext } = context
+
   // State
   const state = reactive({
-    page: {},
     settings: null,
     theme: null
   }) as DocusState
@@ -32,6 +39,7 @@ export const createDocus = async (context: PermissiveContext, settings: DocusSet
 
   // Create Docus Addons context
   const docusAddonContext: DocusAddonContext = {
+    ssrContext,
     $nuxt,
     context,
     state,
@@ -55,9 +63,17 @@ export const createDocus = async (context: PermissiveContext, settings: DocusSet
   // Workaround for async data
   clientAsyncData(context.app, $nuxt)
 
-  return {
+  docusInstance = {
     ...toRefs(state),
     ...api,
     ...addonsContext
   }
+
+  return docusInstance
+}
+
+export const useDocus = () => {
+  if (!docusInstance) throw new Error('Docus not yet initialized! useDocus has to be used in a living Vue instance.')
+
+  return docusInstance
 }

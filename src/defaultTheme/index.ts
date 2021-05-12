@@ -52,3 +52,5 @@ const themeConfig: NuxtConfig = nuxtConfig({
 })
 
 export default themeConfig
+
+export * from './index.d'

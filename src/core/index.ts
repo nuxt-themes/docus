@@ -1,5 +1,5 @@
 export { useStorage } from './storage'
 export { useParser } from './parser'
 export { useHooks } from './hooks'
-
+export { useDocus } from './runtime'
 export { logger } from './utils'

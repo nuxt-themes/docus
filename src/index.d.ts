@@ -1,4 +1,5 @@
 import { NuxtConfig } from '@nuxt/types'
+import { DocusRuntimeInstance } from './types'
 
 export * from './types'
 
@@ -10,6 +11,12 @@ export declare const withDocus: (_config: NuxtConfig) => NuxtConfig
 
 declare module '@nuxt/types' {
   interface Context {
-    docus: any
+    $docus: DocusRuntimeInstance
+  }
+}
+
+declare module '@nuxt/types/app' {
+  interface Context {
+    $docus: DocusRuntimeInstance
   }
 }
