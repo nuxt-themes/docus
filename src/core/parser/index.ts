@@ -17,6 +17,14 @@ export function initParser(options: Partial<ParserOptions> = {}) {
 
 export function useParser() {
   return {
+    stringify: (extension: string, content: any) => {
+      const parser = parsers[extension]
+      if (!parser) {
+        logger.error(`Parser not found for ${extension}`)
+        return ''
+      }
+      return parser.stringify(content)
+    },
     parse: async (file, content) => {
       const extension = extname(file)
       const path = '/' + file.replace(new RegExp(`${extension}$`), '')

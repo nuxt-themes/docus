@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { createError, Middleware, useBody } from 'h3'
 import dirTree from 'directory-tree'
 import { normalizeFiles, r } from '../utils'
+import { useParser } from '../../../core'
 
 interface Body {
   data: any
@@ -12,6 +13,7 @@ interface Body {
 
 export default <Middleware>async function pagesHandler(req) {
   const url = req.url
+  const parser = useParser()
 
   if (req.method === 'GET') {
     // List all pages
@@ -25,13 +27,16 @@ export default <Middleware>async function pagesHandler(req) {
       const file = await fs.readFile(path, 'utf-8')
       const { content, data } = matter(file)
 
+      const parsed = await parser.parse(path, content)
       return {
+        ...parsed,
         path: path.replace(r('pages'), ''),
         extension: extname(path),
         data,
         content
       }
     } catch (err) {
+      console.error(err)
       return createError({
         statusCode: 404,
         statusMessage: 'File not found'
@@ -41,7 +46,10 @@ export default <Middleware>async function pagesHandler(req) {
 
   // Update changes
   if (req.method === 'PUT') {
-    const { data, content } = await useBody<Body>(req)
+    let { data, content } = await useBody<Body>(req)
+    if (typeof content !== 'string') {
+      content = await parser.stringify('.md', content)
+    }
 
     if (!data || !content) {
       return createError({
