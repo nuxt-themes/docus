@@ -91,10 +91,10 @@ export default nuxtConfig({
   build: {
     transpile: ['docus']
   },
-  typeCheck: {
-    eslint: {
-      files: './**/*.{ts,js,vue}'
-    }
+  typescript: {
+    // TODO: Re-enable typeCheck
+    // Waiting for better support from nuxt-vite / nuxt 3
+    typeCheck: false
   },
   generate: {
     fallback: '404.html',
