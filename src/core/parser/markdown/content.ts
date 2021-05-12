@@ -93,13 +93,30 @@ export function generateMarkdown(content, options): Promise<string> {
             if (tree.tag === 'prose-strong') {
               tree.type = 'strong'
             }
+            if (tree.tag === 'prose-table') {
+              tree.type = 'proseTable'
+            }
+            if (tree.tag === 'prose-thead') {
+              tree.type = 'proseThead'
+            }
+            if (tree.tag === 'prose-th') {
+              tree.type = 'proseTh'
+            }
+            if (tree.tag === 'prose-tbody') {
+              tree.type = 'proseTbody'
+            }
+            if (tree.tag === 'prose-tr') {
+              tree.type = 'proseTr'
+            }
+            if (tree.tag === 'prose-td') {
+              tree.type = 'proseTd'
+            }
             if (tree.tag === 'prose-code-inline') {
               tree.value = tree.children[0].value
               tree.type = 'inlineCode'
             }
             if (tree.tag === 'code') {
               tree.type = 'code'
-              tree.lang = tree.language
               tree.value = textContent(tree)
             }
             if (tree.tag === 'prose-blockquote') {

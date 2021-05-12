@@ -7,6 +7,10 @@ import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import { defaultExtensions } from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
+import Table from '@tiptap/extension-table'
+import TableRow from '@tiptap/extension-table-row'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
 import CodeBlock from '@tiptap/extension-code-block'
 import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
 import { docusFromTiptap } from '../plugins/docusFromTiptap'
@@ -33,6 +37,10 @@ export default defineComponent({
           ...defaultExtensions(),
           Link,
           Element,
+          Table,
+          TableRow,
+          TableCell,
+          TableHeader,
           CodeBlock.extend({
             addAttributes() {
               return {

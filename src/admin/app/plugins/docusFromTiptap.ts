@@ -13,17 +13,18 @@ const marks = {
   link: mark('link'),
   code: mark('prose-code-inline')
 }
+const parentWithTag = tag => node => ({
+  type: 'element',
+  tag,
+  props: node.attrs || {},
+  children: node.content ? node.content.map(visit) : []
+})
+
 const handlers = {
   doc: node => ({
     type: 'root',
-    children: node.content ? node.content.map(node => visit(node)) : [],
+    children: node.content ? node.content.map(visit) : [],
     props: {}
-  }),
-  horizontalRule: () => ({
-    type: 'element',
-    tag: 'prose-hr',
-    props: {},
-    children: []
   }),
   text: node => {
     let _node = {
@@ -37,42 +38,17 @@ const handlers = {
     }
     return _node
   },
-  paragraph: node => ({
-    type: 'element',
-    tag: 'prose-paragraph',
-    children: node.content ? node.content.map(node => visit(node)) : [],
-    props: {}
-  }),
-  codeBlock: node => ({
-    type: 'code',
-    tag: 'code',
-    children: node.content ? node.content.map(node => visit(node)) : [],
-    props: node.attrs
-  }),
-  blockquote: node => ({
-    type: 'element',
-    tag: 'prose-blockquote',
-    props: {},
-    children: node.content.map(visit)
-  }),
-  orderedList: node => ({
-    type: 'element',
-    tag: 'prose-ol',
-    props: {},
-    children: node.content.map(visit)
-  }),
-  bulletList: node => ({
-    type: 'element',
-    tag: 'prose-ul',
-    props: {},
-    children: node.content.map(visit)
-  }),
-  listItem: node => ({
-    type: 'element',
-    tag: 'prose-li',
-    props: {},
-    children: node.content.map(visit)
-  }),
+  table: parentWithTag('prose-table'),
+  tableRow: parentWithTag('prose-tr'),
+  tableCell: parentWithTag('prose-td'),
+  tableHeader: parentWithTag('prose-th'),
+  horizontalRule: parentWithTag('prose-hr'),
+  paragraph: parentWithTag('prose-paragraph'),
+  codeBlock: parentWithTag('code'),
+  blockquote: parentWithTag('prose-blockquote'),
+  orderedList: parentWithTag('prose-ol'),
+  bulletList: parentWithTag('prose-ul'),
+  listItem: parentWithTag('prose-li'),
   heading: node => {
     node.content = node.content || []
     const id = kebabCase(node.content.map(n => n.text))

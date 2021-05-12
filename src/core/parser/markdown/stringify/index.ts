@@ -9,6 +9,12 @@ import link from './handle/link'
 import root from './handle/root'
 import element from './handle/element'
 import code from './handle/code'
+import proseTable from './handle/prose-table'
+import proseTr from './handle/prose-tr'
+import proseTh from './handle/prose-th'
+import proseTd from './handle/prose-td'
+import proseThead from './handle/prose-thead'
+import proseTbody from './handle/prose-tbody'
 
 export function toMarkdown(tree, options = {}) {
   const settings = options || {}
@@ -32,6 +38,12 @@ export function toMarkdown(tree, options = {}) {
       link,
       root,
       element,
+      proseTable,
+      proseTr,
+      proseTd,
+      proseTh,
+      proseTbody,
+      proseThead,
       code
     }
   })
