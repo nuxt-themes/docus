@@ -29,6 +29,9 @@ module.exports = {
     'vue/html-closing-bracket-newline': [0],
     'vue/html-indent': [0],
     // Prettier rules
+    'max-len': [0, 120],
+    code: [0, 120],
+    'print-width': [0, 120],
     'no-console': [1],
     'space-before-function-paren': [0],
     'arrow-parens': [0],
