@@ -1,5 +1,5 @@
-import { NavItem } from 'src/types'
 import { joinURL } from 'ufo'
+import { NavItem } from '../../../types'
 
 export const useDocusApi = createQuery => {
   function data(path: string) {
