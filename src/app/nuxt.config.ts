@@ -48,7 +48,6 @@ export default nuxtConfig({
   buildModules: [
     // Dependencies
     'nuxt-vite',
-    '@nuxt/typescript-build',
     '@nuxtjs/pwa',
     '@nuxt/image',
     '@nuxtjs/composition-api/module',
