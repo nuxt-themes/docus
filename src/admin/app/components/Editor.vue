@@ -1,16 +1,20 @@
 <template>
   <textarea v-model="frontmatter" class="h-24 w-full" />
-  <textarea v-model="content" class="w-full h-full" />
+  <ContentEditor v-model:body="content" class="w-full h-full overflow-scroll" />
 </template>
 
 <script lang="ts">
 import { GrayMatterFile } from 'gray-matter'
 import { defineComponent, computed, ref, watch, PropType } from 'vue3'
 import { useApi } from '../plugins/api'
+import ContentEditor from './ContentEditor.vue'
 
-type PermissiveGrayMatterFile = GrayMatterFile<any> & { file: any; path: any }
+type PermissiveGrayMatterFile = GrayMatterFile<any> & { file: any; path: any; body: any }
 
 export default defineComponent({
+  components: {
+    ContentEditor
+  },
   props: {
     file: {
       type: Object as PropType<PermissiveGrayMatterFile>,
@@ -25,14 +29,13 @@ export default defineComponent({
       () => props.file,
       newVal => {
         data.value = newVal.data
-        content.value = newVal.content
+        content.value = newVal.body
       }
     )
 
     // Local data
     const data = ref(props.file.data)
-    const content = ref(props.file.content)
-
+    const content = ref(props.file.body)
     // Stringified reference for frontmatter text-area
     const frontmatter = computed({
       get() {
