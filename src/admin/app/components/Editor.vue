@@ -1,7 +1,20 @@
 <template>
   <div class="flex flex-col h-full">
-    <textarea v-model="frontmatter" class="h-24 w-full" />
-    <ContentEditor v-model:body="content" class="w-full flex-1 overflow-scroll" />
+    <div class="p-2">
+      <button
+        class="relative flex-none px-4 py-1 text-sm font-medium leading-5 border rounded-md"
+        @click="toggleEditor"
+      >
+        Toggle Editor
+      </button>
+    </div>
+    <div class="flex flex-col h-full flex-1">
+      <textarea v-if="rawEditor" v-model="raw" class="w-full h-full flex-1 p-2"></textarea>
+      <template v-else>
+        <textarea v-model="frontmatter" class="h-24 w-full" />
+        <ContentEditor v-model:body="content" class="w-full flex-1 overflow-scroll" />
+      </template>
+    </div>
   </div>
 </template>
 
@@ -9,9 +22,11 @@
 import { GrayMatterFile } from 'gray-matter'
 import { defineComponent, computed, ref, watch, PropType } from 'vue3'
 import { useApi } from '../plugins/api'
+import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
+import { toMarkdown } from '../utils/stringify'
 import ContentEditor from './ContentEditor.vue'
 
-type PermissiveGrayMatterFile = GrayMatterFile<any> & { file: any; path: any; body: any }
+type PermissiveGrayMatterFile = GrayMatterFile<any> & { file: any; path: any; body: any; raw: string }
 
 export default defineComponent({
   components: {
@@ -26,18 +41,34 @@ export default defineComponent({
   setup(props) {
     const api = useApi()
 
+    // Local data
+    const data = ref(props.file.data)
+    const content = ref(tiptapFromDocus(props.file.body))
+    const raw = ref(props.file.raw)
+    const rawEditor = ref(false)
+
     // Sync local data when file changes
     watch(
       () => props.file,
       newVal => {
         data.value = newVal.data
-        content.value = newVal.body
+        content.value = tiptapFromDocus(newVal.body)
+        raw.value = newVal.raw
       }
     )
+    watch(
+      () => content,
+      newVal => {
+        raw.value = toMarkdown(newVal)
+      }
+    )
+    const toggleEditor = () => {
+      rawEditor.value = !rawEditor.value
+      if (rawEditor) {
+        // TODO: evaluate json data
+      }
+    }
 
-    // Local data
-    const data = ref(props.file.data)
-    const content = ref(props.file.body)
     // Stringified reference for frontmatter text-area
     const frontmatter = computed({
       get() {
@@ -57,13 +88,17 @@ export default defineComponent({
     watch([data, content], () => {
       api.put(`/pages${props.file.path}`, {
         data: data.value,
-        content: content.value
+        content: raw.value
       })
     })
 
     return {
+      rawEditor,
       frontmatter,
-      content
+      content,
+      raw,
+      // events
+      toggleEditor
     }
   }
 })

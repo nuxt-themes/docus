@@ -33,6 +33,7 @@ export default <Middleware>async function pagesHandler(req) {
         path: path.replace(r('pages'), ''),
         extension: extname(path),
         data,
+        raw: file,
         content
       }
     } catch (err) {

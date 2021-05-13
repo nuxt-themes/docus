@@ -13,9 +13,7 @@ import TableRow from '@tiptap/extension-table-row'
 import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import CodeBlock from '@tiptap/extension-code-block'
-import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
 import Element from '../plugins/Element'
-import { toMarkdown } from '../utils/stringify'
 
 export default defineComponent({
   components: {
@@ -73,10 +71,12 @@ export default defineComponent({
             }
           })
         ],
-        content: tiptapFromDocus(props.body)
+        content: props.body
       })
+      value.value = editor.value.getJSON()
+
       editor.value.on('update', () => {
-        value.value = toMarkdown(editor.value.getJSON())
+        value.value = editor.value.getJSON()
         emit('update:body', value.value)
       })
     })
@@ -90,7 +90,7 @@ export default defineComponent({
           return
         }
 
-        editor.value.commands.setContent(tiptapFromDocus(props.body), false)
+        editor.value.commands.setContent(props.body, false)
       }
     )
     onBeforeUnmount(() => {
@@ -104,10 +104,14 @@ export default defineComponent({
 })
 </script>
 <style lang="postcss">
+.raw-editor {
+  @apply w-full h-full text-sm font-mono bg-gray-100 p-4;
+}
 .content-editor {
   .ProseMirror {
     white-space: initial;
     word-wrap: initial;
+    padding: theme('padding.4');
   }
   ul {
     margin-left: 0px;
@@ -186,7 +190,12 @@ export default defineComponent({
   .dark ol li::before {
     color: theme('colors.gray.400');
   }
-
+  /* paragraph */
+  p {
+    @apply leading-relaxed;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
   /* H1 */
   h1 {
     /* TODO */
@@ -202,6 +211,162 @@ export default defineComponent({
 
   h1 + * {
     margin-top: 0;
+  }
+  /* table */
+  table {
+    /* TODO */
+    font-size: 0.875rem;
+    @apply leading-5;
+    width: 100%;
+    table-layout: auto;
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  /* inline code */
+  code {
+    /* TODO */
+    /* font-size: 0.875em; */
+    @apply text-sm;
+    color: inherit;
+    font-weight: 400;
+    padding: theme('padding.1') theme('padding.2');
+    background-color: theme('colors.gray.100');
+    border-radius: theme('borderRadius.md');
+  }
+
+  a code {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  tbody code {
+    /* TODO */
+    font-size: 12px;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a {
+    &:hover {
+      & code {
+        border-color: theme('colors.gray.500');
+      }
+    }
+    code {
+      font-size: inherit;
+      color: inherit;
+      font-weight: inherit;
+      pointer-events: none;
+      border: 1px dashed transparent;
+      position: relative;
+      z-index: 0;
+    }
+    & code:before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      z-index: -1;
+      width: calc(100% + 8px);
+      height: calc(100% + 8px);
+      background-color: theme('colors.white');
+      pointer-events: none;
+    }
+  }
+
+  .dark {
+    code {
+      font-weight: inherit;
+      color: inherit;
+      background-color: theme('colors.gray.800');
+    }
+    h1 a,
+    h2 a,
+    h3 a {
+      &:hover {
+        code {
+          border-color: theme('colors.gray.500');
+        }
+      }
+      code:before {
+        background-color: theme('colors.gray.900');
+      }
+    }
+  }
+  /* code block */
+  pre {
+    /* line-height: 1.7142857; */
+    background: theme('colors.gray.200');
+    border-radius: theme('borderRadius.md');
+    padding: theme('padding.4');
+    margin-top: 0px;
+    margin-bottom: 0px;
+    overflow-x: auto;
+  }
+  code {
+    /* TODO */
+    /* font-size: 0.875em; */
+    @apply text-xs leading-relaxed;
+    font-weight: 400;
+    color: inherit;
+    background-color: theme('colors.gray.100');
+    border-radius: theme('borderRadius.md');
+  }
+
+  pre code {
+    background-color: transparent;
+    font-family: theme('fontFamily.mono');
+    padding: 0;
+  }
+
+  .dark {
+    code {
+      background-color: theme('colors.gray.800');
+      border-radius: theme('borderRadius.md');
+    }
+    pre code {
+      background-color: transparent;
+      color: theme('colors.gray.100');
+    }
+  }
+
+  .code-group .docus-highlight {
+    & > .filename {
+      @apply rounded-tr-none;
+    }
+  }
+
+  .docus-highlight {
+    @apply relative my-4;
+
+    /* Style filename span added by @nuxt/content */
+    & > .filename {
+      @apply absolute top-0 right-0 z-0 py-1.5 px-2 bg-gray-200 dark:bg-gray-700 rounded-tr-md rounded-bl font-mono font-semibold text-xs leading-none tracking-tight text-gray-600 dark:text-gray-200;
+    }
+
+    /* Style copy button added in `pages/_.vue` */
+    & > .copy {
+      @apply outline-none absolute right-0 bottom-0 px-3 py-1.5 text-gray-700 bg-gray-200 text-xs leading-none rounded-tl rounded-br-md font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
+
+      &:hover {
+        @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
+      }
+
+      &:focus {
+        @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
+      }
+
+      &.copied {
+        @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
+      }
+    }
+
+    &:hover {
+      & > .copy {
+        @apply block;
+      }
+    }
   }
 }
 </style>
