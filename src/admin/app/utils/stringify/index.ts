@@ -1,23 +1,32 @@
 import zwitch from 'zwitch'
 import configure from 'mdast-util-to-markdown/lib/configure'
-import defaultHandlers from 'mdast-util-to-markdown/lib/handle'
 import defaultJoin from 'mdast-util-to-markdown/lib/join'
 import defaultUnsafe from 'mdast-util-to-markdown/lib/unsafe'
 import listItem from './handle/list-item'
+import doc from './handle/doc'
+import text from './handle/text'
+import bold from './handle/bold'
+import blockquote from './handle/blockquote'
+import paragraph from './handle/paragraph'
 import list from './handle/list'
 import link from './handle/link'
 import root from './handle/root'
 import element from './handle/element'
 import code from './handle/code'
-import proseTable from './handle/prose-table'
-import proseTr from './handle/prose-tr'
-import proseTh from './handle/prose-th'
-import proseTd from './handle/prose-td'
-import proseThead from './handle/prose-thead'
-import proseTbody from './handle/prose-tbody'
+import table from './handle/table'
+import tableRow from './handle/table-row'
+import tableHeader from './handle/table-header'
+import tableCell from './handle/table-cell'
+import tableHead from './handle/table-head'
+import tableBody from './handle/table-body'
+import heading from './handle/heading'
+import inlineCode from './handle/inlineCode'
 
 export function toMarkdown(tree, options = {}) {
-  const settings = options || {}
+  const settings = {
+    bullet: '-',
+    ...options
+  }
   const context = {
     enter,
     stack: [],
@@ -32,19 +41,25 @@ export function toMarkdown(tree, options = {}) {
     unsafe: defaultUnsafe,
     join: defaultJoin,
     handlers: {
-      ...defaultHandlers,
+      doc,
+      text,
+      bold,
+      blockquote,
+      paragraph,
+      heading,
+      bulletList: list,
+      codeBlock: code,
+      code: inlineCode,
       listItem,
-      list,
       link,
       root,
       element,
-      proseTable,
-      proseTr,
-      proseTd,
-      proseTh,
-      proseTbody,
-      proseThead,
-      code
+      table,
+      tableRow,
+      tableCell,
+      tableHeader,
+      tableBody,
+      tableHead
     }
   })
   configure(context, settings)
@@ -60,10 +75,6 @@ export function toMarkdown(tree, options = {}) {
   })
 
   const result = context.handle(tree, null, context)
-
-  // if (result && result.charCodeAt(result.length - 1) !== 10 && result.charCodeAt(result.length - 1) !== 13) {
-  //   result += '\n'
-  // }
 
   return result
 

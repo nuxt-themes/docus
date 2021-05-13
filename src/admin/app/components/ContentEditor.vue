@@ -5,6 +5,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
 import { Editor, EditorContent } from '@tiptap/vue-3'
+import { mergeAttributes, Node } from '@tiptap/core'
 import { defaultExtensions } from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Table from '@tiptap/extension-table'
@@ -13,8 +14,8 @@ import TableCell from '@tiptap/extension-table-cell'
 import TableHeader from '@tiptap/extension-table-header'
 import CodeBlock from '@tiptap/extension-code-block'
 import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
-import { docusFromTiptap } from '../plugins/docusFromTiptap'
 import Element from '../plugins/Element'
+import { toMarkdown } from '../utils/stringify'
 
 export default defineComponent({
   components: {
@@ -37,10 +38,28 @@ export default defineComponent({
           ...defaultExtensions(),
           Link,
           Element,
-          Table,
+          Table.extend({
+            renderHTML({ HTMLAttributes }) {
+              return ['table', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
+            }
+          }),
           TableRow,
           TableCell,
           TableHeader,
+          Node.create({
+            name: 'tableHead',
+            content: 'tableRow+',
+            group: 'block',
+            parseHTML: () => [{ tag: 'thead' }],
+            renderHTML: ({ HTMLAttributes }) => ['thead', HTMLAttributes, 0]
+          }),
+          Node.create({
+            name: 'tableBody',
+            content: 'tableRow+',
+            group: 'block',
+            parseHTML: () => [{ tag: 'tbody' }],
+            renderHTML: ({ HTMLAttributes }) => ['tbody', HTMLAttributes, 0]
+          }),
           CodeBlock.extend({
             addAttributes() {
               return {
@@ -57,7 +76,7 @@ export default defineComponent({
         content: tiptapFromDocus(props.body)
       })
       editor.value.on('update', () => {
-        value.value = docusFromTiptap(editor.value.getJSON())
+        value.value = toMarkdown(editor.value.getJSON())
         emit('update:body', value.value)
       })
     })

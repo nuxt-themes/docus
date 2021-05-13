@@ -1,7 +1,7 @@
 import checkQuote from 'mdast-util-to-markdown/lib/util/check-quote'
 import formatLinkAsAutolink from 'mdast-util-to-markdown/lib/util/format-link-as-autolink'
-import phrasing from 'mdast-util-to-markdown/lib/util/container-phrasing'
 import safe from 'mdast-util-to-markdown/lib/util/safe'
+import phrasing from '../util/container-phrasing'
 
 export default function link(node, _, context) {
   const quote = checkQuote(context)
@@ -21,6 +21,9 @@ export default function link(node, _, context) {
   //     context.stack = stack
   //     return value
   //   }
+  const props = node.attrs || node.props || {}
+  const url = props.href || node.url || ''
+  const title = props.title || node.title || ''
 
   const exit = context.enter('link')
   subexit = context.enter('label')
@@ -29,26 +32,26 @@ export default function link(node, _, context) {
 
   if (
     // If there’s no url but there is a title…
-    (!node.url && node.title) ||
+    (!url && title) ||
     // Or if there’s markdown whitespace or an eol, enclose.
-    /[ \t\r\n]/.test(node.url)
+    /[ \t\r\n]/.test(url)
   ) {
     subexit = context.enter('destinationLiteral')
-    value += '<' + safe(context, node.url, { before: '<', after: '>' }) + '>'
+    value += '<' + safe(context, url, { before: '<', after: '>' }) + '>'
   } else {
     // No whitespace, raw is prettier.
     subexit = context.enter('destinationRaw')
-    value += safe(context, node.url, {
+    value += safe(context, url, {
       before: '(',
-      after: node.title ? ' ' : ')'
+      after: title ? ' ' : ')'
     })
   }
 
   subexit()
 
-  if (node.title) {
+  if (title) {
     subexit = context.enter('title' + suffix)
-    value += ' ' + quote + safe(context, node.title, { before: quote, after: quote }) + quote
+    value += ' ' + quote + safe(context, title, { before: quote, after: quote }) + quote
     subexit()
   }
 

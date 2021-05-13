@@ -47,11 +47,7 @@ export default <Middleware>async function pagesHandler(req) {
   // Update changes
   if (req.method === 'PUT') {
     const body = await useBody<Body>(req)
-    const { data } = body
-    let { content } = body
-    if (typeof content !== 'string') {
-      content = await parser.stringify('.md', content)
-    }
+    const { data, content } = body
 
     if (!data || !content) {
       return createError({

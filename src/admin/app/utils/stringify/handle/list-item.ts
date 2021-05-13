@@ -2,7 +2,7 @@ import repeat from 'repeat-string'
 import checkBullet from 'mdast-util-to-markdown/lib/util/check-bullet'
 import checkListItemIndent from 'mdast-util-to-markdown/lib/util/check-list-item-indent'
 import indentLines from 'mdast-util-to-markdown/lib/util/indent-lines'
-import flow from '../util/container-flow'
+import flow from '../util/flat-container-flow'
 
 export default function listItem(node, parent, context) {
   let bullet = checkBullet(context)
@@ -23,7 +23,7 @@ export default function listItem(node, parent, context) {
   }
 
   const exit = context.enter('listItem')
-  const value = indentLines(flow(node, context), map)
+  const value = indentLines(flow(node, context, '\n'), map)
   exit()
 
   return value

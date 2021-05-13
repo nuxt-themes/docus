@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import { MarkdownParserOptions, Toc } from '../../../types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
-import { generateMarkdown, generateBody, generateDescription } from './content'
+import { generateBody, generateDescription } from './content'
 import propsDirective from './directive/props'
 
 const DEFAULTS: MarkdownParserOptions = {
@@ -80,9 +80,6 @@ export function useMarkdownParser(options: Partial<MarkdownParserOptions> = {}) 
 
   return {
     parseFrontMatter: (content: string) => parseFrontMatter(content),
-    parse: (content: string) => parse(content, options),
-    stringify: async (content: any) => {
-      return await generateMarkdown(content, {})
-    }
+    parse: (content: string) => parse(content, options)
   }
 }

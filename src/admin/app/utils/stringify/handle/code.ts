@@ -7,8 +7,10 @@ import safe from 'mdast-util-to-markdown/lib/util/safe'
 
 export default function code(node, _, context) {
   const marker = checkFence(context)
-  const raw = node.value || ''
+  const raw = node.value || (node.content && node.content[0] && node.content[0].text) || ''
+
   const suffix = marker === '`' ? 'GraveAccent' : 'Tilde'
+  const props = node.attrs || node.props || {}
   let value
   let sequence
   let exit
@@ -22,9 +24,9 @@ export default function code(node, _, context) {
     exit = context.enter('codeFenced')
     value = sequence
 
-    if (node.props.language) {
+    if (props.language) {
       subexit = context.enter('codeFencedLang' + suffix)
-      value += safe(context, node.props.language, {
+      value += safe(context, props.language, {
         before: '`',
         after: ' ',
         encode: ['`']
@@ -32,9 +34,9 @@ export default function code(node, _, context) {
       subexit()
     }
 
-    if (node.props.title) {
+    if (props.title) {
       subexit = context.enter('codeFencedTitle' + suffix)
-      value += ' [' + safe(context, node.props.title, {}) + ']'
+      value += ' [' + safe(context, props.title, {}) + ']'
       subexit()
     }
 

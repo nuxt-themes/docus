@@ -30,7 +30,7 @@ function proseCode(node) {
   return {
     type: 'codeBlock',
     attrs: {
-      language,
+      language: language === 'text' ? '' : language,
       title: span ? textContent(span) : ''
     },
     content: [
@@ -56,6 +56,8 @@ const handlers = {
   'prose-ol': parentWithType('orderedList'),
   'prose-table': parentWithType('table'),
   'prose-tr': parentWithType('tableRow'),
+  'prose-thead': parentWithType('tableHead'),
+  'prose-tbody': parentWithType('tableBody'),
   'prose-td': parentWithType('tableCell'),
   'prose-th': parentWithType('tableHeader'),
   'prose-li': parentWithType('listItem'),

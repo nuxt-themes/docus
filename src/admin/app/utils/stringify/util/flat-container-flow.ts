@@ -1,5 +1,5 @@
 export default function flow(parent, context, separator = '\n') {
-  const children = parent.children || []
+  const children = parent.children || parent.content || []
   const results = []
   let index = -1
   let child

@@ -1,4 +1,4 @@
-import flow from '../util/container-flow'
+import flow from '../util/flat-container-flow'
 
 export default function list(node, _, context) {
   const exit = context.enter('list')
