@@ -1,8 +1,8 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import Test from '../components/Element.vue'
+import ElementView from './components/Element.vue'
 
-export const Element = Node.create({
+export default Node.create({
   name: 'element',
 
   group: 'block',
@@ -12,13 +12,7 @@ export const Element = Node.create({
       _tag: {
         rendered: false
       },
-      blank: {
-        rendered: false
-      },
-      size: {
-        rendered: false
-      },
-      href: {
+      props: {
         rendered: false
       }
     }
@@ -26,18 +20,16 @@ export const Element = Node.create({
   parseHTML() {
     return [
       {
-        tag: 'div[data-type="element"]'
+        tag: `div[data-type="${this.name}"]`
       }
     ]
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'element' })]
+    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': this.name })]
   },
 
   addNodeView() {
-    return VueNodeViewRenderer(Test)
+    return VueNodeViewRenderer(ElementView)
   }
 })
-
-export default Element

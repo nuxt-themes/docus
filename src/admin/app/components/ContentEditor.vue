@@ -3,17 +3,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
-import { Editor, EditorContent } from '@tiptap/vue-3'
-import { mergeAttributes, Node } from '@tiptap/core'
+import { defineComponent, ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue3'
+import { Editor, EditorContent, VueNodeViewRenderer } from '@tiptap/vue-3'
 import { defaultExtensions } from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
-import Table from '@tiptap/extension-table'
-import TableRow from '@tiptap/extension-table-row'
-import TableCell from '@tiptap/extension-table-cell'
-import TableHeader from '@tiptap/extension-table-header'
 import CodeBlock from '@tiptap/extension-code-block'
-import Element from '../plugins/Element'
+import table from '../plugins/tiptap/table'
+import element from '../plugins/tiptap/element'
 
 export default defineComponent({
   components: {
@@ -34,30 +30,9 @@ export default defineComponent({
       editor.value = new Editor({
         extensions: [
           ...defaultExtensions(),
+          ...table,
+          ...element,
           Link,
-          Element,
-          Table.extend({
-            renderHTML({ HTMLAttributes }) {
-              return ['table', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
-            }
-          }),
-          TableRow,
-          TableCell,
-          TableHeader,
-          Node.create({
-            name: 'tableHead',
-            content: 'tableRow+',
-            group: 'block',
-            parseHTML: () => [{ tag: 'thead' }],
-            renderHTML: ({ HTMLAttributes }) => ['thead', HTMLAttributes, 0]
-          }),
-          Node.create({
-            name: 'tableBody',
-            content: 'tableRow+',
-            group: 'block',
-            parseHTML: () => [{ tag: 'tbody' }],
-            renderHTML: ({ HTMLAttributes }) => ['tbody', HTMLAttributes, 0]
-          }),
           CodeBlock.extend({
             addAttributes() {
               return {

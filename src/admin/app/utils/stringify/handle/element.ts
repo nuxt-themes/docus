@@ -2,14 +2,19 @@ import repeat from 'repeat-string'
 import indentLines from 'mdast-util-to-markdown/lib/util/indent-lines'
 import flow from '../util/container-flow'
 
-export default function element(node, parent, context) {
+export const createElement = tag => (node, parent, context) => {
   const props = node.attrs || node.props || {}
-  const tagName = props._tag || ''
 
-  // remove tag props
-  delete props._tag
+  props._tag = tag
 
-  const exit = context.enter('element')
+  return element(node, parent, context)
+}
+
+export default function element(node, parent, context) {
+  const props = node.attrs?.props || node.attrs || {}
+  const tagName = node.attrs?._tag || ''
+
+  const exit = context.enter(tagName)
 
   const attrs = Object.keys(props)
     .sort()

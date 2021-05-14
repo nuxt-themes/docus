@@ -1,7 +1,7 @@
 import repeat from 'repeat-string'
 
 export default function flow(parent, context, separator = '\n') {
-  const children = parent.children || parent.content || []
+  const children = parent.content || parent.children || []
   const results = []
   let index = -1
   let child

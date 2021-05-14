@@ -10,7 +10,11 @@ const heading = level => node => ({
   content: visit(node.children[0].tag === 'prose-a' ? node.children[0].children : node.children)
 })
 
-const parentWithType = type => node => ({ type, content: visit(node.children || []) })
+const parentWithType = type => node => ({
+  type,
+  content: visit(node.children || []),
+  attrs: node.props || {}
+})
 
 function textContent(node) {
   if (node.type === 'text') {
@@ -81,6 +85,7 @@ function visit(node) {
   } else {
     node.attrs = {
       ...node.props,
+      props: node.props,
       _tag: node.tag
     }
     node.content = visit(node.children || [])

@@ -1,16 +1,19 @@
 <template>
   <NodeViewWrapper class="element">
-    <NodeViewContent as="div" />
-    Custom Block
+    <span>{{ name }}</span>
+    <Component :is="name" v-bind="attrs" />
   </NodeViewWrapper>
 </template>
 
 <script lang="ts">
 import { NodeViewWrapper, NodeViewContent } from '@tiptap/vue-3'
 import { defineComponent } from 'vue3'
+import { pascalCase } from 'scule'
+import VideoPlayer from './VideoPlayer.vue'
+import ButtonLink from './ButtonLink.vue'
 
 export default defineComponent({
-  components: { NodeViewWrapper, NodeViewContent },
+  components: { NodeViewWrapper, NodeViewContent, VideoPlayer, ButtonLink },
   props: {
     node: {
       type: Object,
@@ -19,7 +22,8 @@ export default defineComponent({
   },
   setup(props) {
     return {
-      ...props.node.attrs
+      name: pascalCase(props.node.attrs._tag),
+      attrs: props.node.attrs.props
     }
   }
 })

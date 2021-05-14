@@ -22,7 +22,7 @@
 import { GrayMatterFile } from 'gray-matter'
 import { defineComponent, computed, ref, watch, PropType } from 'vue3'
 import { useApi } from '../plugins/api'
-import { tiptapFromDocus } from '../plugins/tiptapFromDocus'
+import { tiptapFromDocus } from '../plugins/tiptap/docus-convertor'
 import { toMarkdown } from '../utils/stringify'
 import ContentEditor from './ContentEditor.vue'
 
