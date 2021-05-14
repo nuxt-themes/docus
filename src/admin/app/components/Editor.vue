@@ -57,7 +57,7 @@ export default defineComponent({
       }
     )
     watch(
-      () => content,
+      () => content.value,
       newVal => {
         raw.value = toMarkdown(newVal)
       }
@@ -85,9 +85,9 @@ export default defineComponent({
     })
 
     // API update on change on data or content
-    watch([data, content], () => {
+    watch([data, raw], () => {
       api.put(`/pages${props.file.path}`, {
-        data: data.value,
+        data: rawEditor ? false : data.value,
         content: raw.value
       })
     })

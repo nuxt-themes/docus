@@ -50,10 +50,10 @@ export default <Middleware>async function pagesHandler(req) {
     const body = await useBody<Body>(req)
     const { data, content } = body
 
-    if (!data || !content) {
+    if (!content) {
       return createError({
         statusCode: 400,
-        statusMessage: 'data and content keys are required'
+        statusMessage: 'content key is required'
       })
     }
 
@@ -63,7 +63,7 @@ export default <Middleware>async function pagesHandler(req) {
       // @ts-ignore
       await fs.stat(path, 'utf-8')
 
-      const file = matter.stringify(content, data)
+      const file = data ? matter.stringify(content, data) : content
 
       await fs.writeFile(path, file)
 
