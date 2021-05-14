@@ -90,6 +90,9 @@ function visit(node) {
     }
     node.content = visit(node.children || [])
   }
+  if (node.content) {
+    node.content = node.content.filter(node => !(node.type === 'text' && node.text === '\n'))
+  }
   return node
 }
 
