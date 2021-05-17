@@ -6,8 +6,6 @@ import serveStatic from 'serve-static'
 import { Module } from '@nuxt/types'
 import api from './api'
 
-const r = (...args: string[]) => resolve(__dirname, ...args)
-
 export default <Module>function () {
   const { nuxt, addServerMiddleware, options } = this
 
@@ -19,8 +17,9 @@ export default <Module>function () {
     handler: api
   })
 
+  // TODO: Implement Vite as server middleware/proxy, so we can remove this
   // Build the admin
-  execSync('npx vite --config src/admin/vite.config.ts build')
+  if (process.env.BUILD_ADMIN) execSync('npx vite --config src/admin/vite.config.ts build')
 
   this.addServerMiddleware({
     path: '/admin/',
@@ -50,7 +49,8 @@ export default <Module>function () {
     this.requireModule('@nuxtjs/proxy')
   } */
 
-  if (options.dev) this.options.plugins.push(r('runtime/plugin.ts'))
+  // Add runtime plugin
+  if (options.dev) this.options.plugins.push(require.resolve(join(__dirname, '/runtime/plugin')))
 
   nuxt.hook('listen', (_: any, { host, port }: NuxtOptionsServer) => {
     process.previewUrl = `http://${host}:${port}`
