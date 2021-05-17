@@ -35,10 +35,21 @@ export default defineSirocConfig({
         messageSent = true
       }
 
+      const skipMinify = ['./dist/core/plugin', './dist/social-image/runtime/plugin', './dist/i18n/runtime/plugin']
+
       await Promise.all(
         jsFiles
           // Skip plugin template file
-          .filter((file: string) => !['./dist/core/plugin.js', './dist/social-image/runtime/plugin.js'].includes(file))
+          .filter(
+            (file: string) =>
+              !skipMinify.reduce<boolean>((prev, val) => {
+                if (prev === true) return prev
+
+                if (file.includes(val)) prev = true
+
+                return prev
+              }, false)
+          )
           .map(async (file: string) => {
             try {
               const contents = await fs.promises.readFile(file, 'utf-8')
