@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { execSync } from 'child_process'
 import { glob as _glob } from 'glob'
 import pify from 'pify'
 import { defineSirocConfig } from 'siroc'
@@ -14,6 +15,11 @@ export default defineSirocConfig({
     externals: ['./src/app/nuxt.config.js']
   },
   hooks: {
+    'build:extend'() {
+      // eslint-disable-next-line no-console
+      console.log('📝 Building the admin app')
+      execSync('npx vite --config src/admin/vite.config.ts build')
+    },
     // Minify build
     async 'build:done'() {
       // Wait for mkdist to transpile everything
@@ -35,7 +41,12 @@ export default defineSirocConfig({
         messageSent = true
       }
 
-      const skipMinify = ['./dist/core/plugin', './dist/social-image/runtime/plugin', './dist/i18n/runtime/plugin']
+      const skipMinify = [
+        './dist/core/plugin',
+        './dist/social-image/runtime/plugin',
+        './dist/i18n/runtime/plugin',
+        './dist/core/runtime/composables'
+      ]
 
       await Promise.all(
         jsFiles
