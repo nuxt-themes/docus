@@ -9,6 +9,10 @@ const themeConfig: NuxtConfig = nuxtConfig({
   rootDir: __dirname,
   themeName: 'defaultTheme',
   themeDir: __dirname,
+  colorMode: {
+    classSuffix: ''
+  },
+  css: [r('./css/main.css'), r('./css/prism.css')],
   components: [
     {
       path: r('./components/atoms'),
@@ -42,7 +46,13 @@ const themeConfig: NuxtConfig = nuxtConfig({
     }
   ],
   plugins: [r('./plugins/menu')],
-  modules: [themeSetupModule, 'nuxt-windicss', '@nuxtjs/color-mode']
+  modules: [themeSetupModule, 'nuxt-windicss', '@nuxtjs/color-mode'],
+  hooks: {
+    ready: readyHook,
+    build: {
+      before: beforeBuildHook
+    }
+  }
 })
 
 export default themeConfig

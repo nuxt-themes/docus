@@ -10,18 +10,7 @@ const r = (...args: string[]) => resolve(__dirname, ...args)
 
 export const readyHook = ({ options }) => {
   // Override editor style on dev mode
-  if (options.dev) {
-    options.css.push(r('css/main.dev.css'))
-  }
-
-  // Push local css files
-  options.css.push(r('css/main.css'))
-  options.css.push(r('css/prism.css'))
-
-  // Disable color mode class suffix
-  options.colorMode = {
-    classSuffix: ''
-  }
+  if (options.dev) options.css.push(r('css/main.dev.css'))
 }
 
 export const beforeBuildHook = async ({ options }) => {
@@ -42,7 +31,18 @@ export default <Module>function themeSetupModule() {
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
 
     // Include local & npm depencies directories in scan process
-    windiOptions.scanOptions.dirs.push(__dirname, join(options.rootDir, '/node_modules/docus/dist'), options.themeDir)
+    windiOptions.scanOptions.dirs.push(
+      __dirname,
+      join(__dirname, '/node_modules/docus/dist'),
+      join(options.rootDir, '/node_modules/docus/dist'),
+      join(options.themeDir)
+    )
+
+    windiOptions.scanOptions.include.push(
+      join(__dirname, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
+      join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
+      join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
+    )
 
     windiOptions.config.shortcuts = {
       ...(windiOptions.shortcuts || {}),
@@ -73,8 +73,4 @@ export default <Module>function themeSetupModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
-
-  hook('ready', readyHook)
-
-  hook('build:before', beforeBuildHook)
 }
