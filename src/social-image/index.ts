@@ -55,7 +55,7 @@ export default <Module<SocialImageModuleOptions & InternalModuleOptions>>functio
   setupStaticGeneration(nuxt, options)
 
   addPlugin({
-    src: r('runtime/plugin.mjs'),
+    src: r('runtime/plugin.js'),
     fileName: join('social-image.js'),
     options
   })

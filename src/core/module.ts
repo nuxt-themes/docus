@@ -167,7 +167,7 @@ export default <Module>async function docusModule() {
     })
   }
   addPlugin({
-    src: resolve(__dirname, 'plugin.mjs'),
+    src: resolve(__dirname, 'plugin.js'),
     filename: 'docus.js',
     options: pluginOptions
   })
