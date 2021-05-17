@@ -1,19 +1,31 @@
 <template>
-  <EditorContent class="content-editor" :editor="editor" />
+  <div class="content-editor">
+    <FloatingMenu v-if="editor" :editor="editor">
+      <button
+        class="floating-button"
+        :class="{ 'is-active': editor.isActive('bold') }"
+        @click="editor.chain().focus().toggleBold().run()"
+      >
+        Bold
+      </button>
+    </FloatingMenu>
+    <EditorContent :editor="editor" />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue3'
-import { Editor, EditorContent, VueNodeViewRenderer } from '@tiptap/vue-3'
+import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from 'vue3'
+import { Editor, EditorContent, FloatingMenu } from '@tiptap/vue-3'
 import { defaultExtensions } from '@tiptap/starter-kit'
-import Link from '@tiptap/extension-link'
 import CodeBlock from '@tiptap/extension-code-block'
+import { Link } from '../plugins/tiptap/link'
 import table from '../plugins/tiptap/table'
 import element from '../plugins/tiptap/element'
 
 export default defineComponent({
   components: {
-    EditorContent
+    EditorContent,
+    FloatingMenu
   },
   props: {
     body: {
@@ -81,6 +93,9 @@ export default defineComponent({
 <style lang="postcss">
 .raw-editor {
   @apply w-full h-full text-sm font-mono bg-gray-100 p-4;
+}
+.floating-button {
+  @apply bg-gray-200 px-2 text-xs rounded-md;
 }
 .content-editor {
   .ProseMirror {
@@ -341,6 +356,73 @@ export default defineComponent({
       & > .copy {
         @apply block;
       }
+    }
+  }
+  /* a */
+  :not(h1, h2, h3) > a {
+    color: var(--primary-500);
+    font-weight: theme('fontWeight.medium');
+    text-decoration: none;
+    &:hover {
+      border-bottom-width: 1px;
+      border-bottom-color: var(--primary-500);
+      padding-bottom: 1px;
+    }
+  }
+
+  .dark :not(h1, h2, h3) > a {
+    color: var(--primary-400);
+    &:hover {
+      border-bottom-color: var(--primary-400);
+    }
+  }
+
+  h1 a,
+  h2 a,
+  h3 a {
+    position: relative;
+    /* &:hover {
+    border-bottom-width: 0px;
+    padding-bottom: 0px;
+  } */
+    &::after {
+      content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23111827"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
+      position: absolute;
+      padding-left: theme('padding.2');
+      width: theme('spacing.5');
+      height: theme('spacing.5');
+      opacity: 0;
+    }
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: calc(100% + 4px);
+    }
+    &:hover:before {
+      border-bottom-width: 1px;
+      border-style: dashed;
+      border-bottom-color: theme('colors.gray.900');
+    }
+  }
+
+  .dark h1 a,
+  .dark h2 a,
+  .dark h3 a {
+    &:hover {
+      &:before {
+        border-bottom-color: theme('colors.gray.100');
+      }
+    }
+    &::after {
+      content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
     }
   }
 }

@@ -10,10 +10,10 @@
     </div>
     <div class="flex flex-col h-full flex-1">
       <textarea v-if="rawEditor" v-model="raw" class="w-full h-full flex-1 p-2"></textarea>
-      <template v-else>
+      <div class="flex flex-col w-full h-full flex-1" v-else>
         <textarea v-model="frontmatter" class="h-24 w-full" />
-        <ContentEditor v-model:body="content" class="w-full flex-1 overflow-scroll" />
-      </template>
+        <ContentEditor v-model:body="content" class="w-full flex-1 overflow-scroll pb-32" />
+      </div>
     </div>
   </div>
 </template>

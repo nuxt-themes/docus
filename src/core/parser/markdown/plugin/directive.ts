@@ -1,4 +1,3 @@
-import hastToMarkdown from 'mdast-util-to-markdown'
 import visit from 'unist-util-visit'
 import h from 'hastscript'
 import { useMarkdownParser } from '../'
@@ -8,24 +7,11 @@ ${yamlString}
 ---`
 
 export default function htmlDirectives({ directives, dataComponents }) {
-  const toMarkdownExtensions = this.data().toMarkdownExtensions
   const parser = useMarkdownParser()
 
-  function toMarkdown(node) {
-    return node.children
-      .map(child =>
-        hastToMarkdown(child, {
-          bullet: '-',
-          extensions: toMarkdownExtensions
-        })
-      )
-      .join('')
-  }
-
-  function toData(node) {
-    const markdown = toMarkdown(node)
-      // fix issue with toMarkdown autolinker
-      .replace(/<(https?:[^>]*)>/g, '$1')
+  function toData(raw) {
+    const lines = raw.split('\n')
+    const markdown = lines.slice(1, lines.length - 2).join('\n')
 
     const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
 
@@ -45,7 +31,7 @@ export default function htmlDirectives({ directives, dataComponents }) {
     return Object.fromEntries(enteries)
   }
 
-  return async (tree, { data: pageData }) => {
+  return async (tree, { data: pageData, contents }) => {
     const jobs = []
     visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor)
 
@@ -55,10 +41,11 @@ export default function htmlDirectives({ directives, dataComponents }) {
       const hast = h(node.name, node.attributes)
 
       if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
+        const { start, end } = node.position
         hast.properties = bindData(
           {
             ...hast.properties,
-            ...toData(node)
+            ...toData(contents.substr(start.offset, end.offset - start.offset))
           },
           pageData
         )

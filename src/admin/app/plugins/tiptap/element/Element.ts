@@ -6,7 +6,7 @@ export default Node.create({
   name: 'element',
 
   group: 'block',
-
+  content: 'block*',
   addAttributes() {
     return {
       _tag: {

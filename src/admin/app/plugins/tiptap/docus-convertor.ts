@@ -1,3 +1,15 @@
+const processBindedProps = obj =>
+  Object.keys(obj).reduce((acc, key) => {
+    let _key = key
+    let value = obj[_key]
+    if (key.startsWith(':')) {
+      _key = _key.replace(/^:/, '')
+      value = JSON.parse(value)
+    }
+    acc[_key] = value
+    return acc
+  }, {})
+
 const markNode = type => node => {
   const _node = visit(node.children[0])
   _node.marks = _node.marks || []
@@ -85,7 +97,7 @@ function visit(node) {
   } else {
     node.attrs = {
       ...node.props,
-      props: node.props,
+      props: processBindedProps(node.props),
       _tag: node.tag
     }
     node.content = visit(node.children || [])
