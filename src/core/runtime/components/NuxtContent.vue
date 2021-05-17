@@ -1,3 +1,4 @@
+<script>
 import info from 'property-information'
 
 const rootKeys = ['class-name', 'class', 'style']
@@ -144,6 +145,7 @@ export default {
   functional: true,
   props: {
     document: {
+      type: Object,
       required: true
     }
   },
@@ -171,3 +173,4 @@ export default {
     )
   }
 }
+</script>
