@@ -22,20 +22,20 @@
       <div class="w-full">
         <div class="flex flex-col max-w-md mx-auto md:mx-0">
           <p class="text-sm mb-2 font-medium text-center md:text-left text-gray-600 dark:text-gray-500">
-            {{ ctaDescription }}
+            {{ cta.description }}
           </p>
           <div
             class="flex flex-col md:flex-row border border-gray-300 placeholder-gray-900 dark:border-gray-700 rounded-md p-1 w-full mb-2"
           >
             <input
               type="text"
-              :placeholder="ctaPlaceholder"
+              :placeholder="cta.placeholder"
               class="flex-1 py-3 px-3 focus:outline-none bg-transparent dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
             />
             <button
               class="inline-block font-semibold text-center items-center flex-none px-6 py-3 text-lg leading-6 rounded-md text-white transition-colors duration-200 border border-transparent border-l-0 bg-primary-500 hover:bg-primary-600 focus:outline-none"
             >
-              {{ ctaLabel }}
+              {{ cta.label }}
             </button>
           </div>
           <SocialIcons padding="p-1.5" />
@@ -67,17 +67,13 @@ export default defineComponent({
       type: String,
       default: 'I am the Hero description, with some text useful to go with the title.'
     },
-    ctaDescription: {
-      type: String,
-      default: 'CTA description'
-    },
-    ctaPlaceholder: {
-      type: String,
-      default: 'CTA placeholder'
-    },
-    ctaLabel: {
-      type: String,
-      default: 'CTA label'
+    cta: {
+      type: Object,
+      default: () => ({
+        label: 'CTA label',
+        description: 'CTA description',
+        placeholder: 'CTA placeholder'
+      })
     },
     imageUrl: {
       type: String,
