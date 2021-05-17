@@ -11,7 +11,7 @@ export default function htmlDirectives({ directives, dataComponents }) {
 
   function toData(raw) {
     const lines = raw.split('\n')
-    const markdown = lines.slice(1, lines.length - 2).join('\n')
+    const markdown = lines.slice(1, lines.length - 1).join('\n')
 
     const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
 
