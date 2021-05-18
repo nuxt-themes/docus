@@ -1,5 +1,8 @@
 <template>
-  <div class="fixed z-50 overflow-hidden rounded-md shadow group bg-gray-50 dark:bg-gray-800 bottom-6 left-6 w-36">
+  <div
+    v-if="open"
+    class="fixed z-50 overflow-hidden rounded-md shadow group bg-gray-50 dark:bg-gray-800 bottom-6 left-6 w-36"
+  >
     <h1 class="flex items-center p-2 font-bold bg-gray-100 dark:bg-gray-700">
       <span class="flex-1">Docus UI</span>
       <IconX
