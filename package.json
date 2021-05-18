@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.4.14",
+  "version": "0.4.24",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -73,11 +73,11 @@
     "mande": "^1.0.0",
     "marked": "^2.0.3",
     "mkdirp": "^1.0.4",
-    "nuxt-edge": "^2.16.0-27020175.00aeff62",
+    "nuxt-edge": "2.16.0-26994259.8e2cad5a",
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.0",
     "nuxt-vite": "0.1.0",
-    "nuxt-windicss": "0.7.4",
+    "nuxt-windicss": "^0.8.0-2",
     "ohmyfetch": "^0.1.8",
     "patch-package": "^6.4.7",
     "plausible-tracker": "^0.3.1",
