@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(item, i) in listItems" :key="i" class="mt-3 flex">
+    <div v-for="(item, i) in listItems" :key="i" class="mt-3 flex items-center">
       <span :class="`list-${type}`" class="mt-px mr-3 flex-shrink-0">
         <Component :is="iconName" class="h-6 w-6" />
       </span>
