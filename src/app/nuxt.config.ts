@@ -6,6 +6,7 @@ const r = (path: any) => resolve(__dirname, path)
 export default nuxtConfig({
   name: 'docus',
   rootDir: __dirname,
+
   /**
    * Default app config
    */
@@ -51,6 +52,7 @@ export default nuxtConfig({
     '@nuxtjs/pwa',
     '@nuxt/image',
     '@nuxtjs/composition-api/module',
+    '@nuxt/postcss8',
     // Local modules
     r('./module'),
     r('../settings'),
