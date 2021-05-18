@@ -59,9 +59,9 @@
           </InjectComponent>
         </div>
       </div>
-      <div class="w-full m-auto lg:w-1/3 sm:w-580px">
+      <div v-if="snippet" class="w-full m-auto lg:w-1/3 sm:w-580px">
         <div class="md:pl-2">
-          <Terminal snippet="npx degit nuxtlabs/docus-starter#main docs" />
+          <Terminal :snippet="snippet" />
         </div>
       </div>
     </div>
@@ -88,6 +88,10 @@ export default defineComponent({
     secondary: {
       type: Array,
       default: () => ['Open on GitHub', 'https://github.com']
+    },
+    snippet: {
+      type: [String, Boolean],
+      default: () => false
     }
   }
 })
