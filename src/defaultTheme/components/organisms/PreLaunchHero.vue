@@ -3,17 +3,53 @@
     <div class="w-full md:w-1/2 flex flex-col justify-center mb-8 md:mb-0">
       <div class="flex flex-col items-center md:items-start mb-2">
         <span
-          class="mx-2 text-xs mb-4 text-primary-500 px-2.5 py-1.5 leading-none rounded font-semibold uppercase tracking-wide bg-primary-100 dark:bg-primary-900 dark:text-primary-400"
+          class="
+            mx-2
+            text-xs
+            mb-4
+            text-primary-500
+            px-2.5
+            py-1.5
+            leading-none
+            rounded
+            font-semibold
+            uppercase
+            tracking-wide
+            bg-primary-100
+            dark:bg-primary-900
+            dark:text-primary-400
+          "
         >
           🚀 Coming Soon
         </span>
         <h2
-          class="mb-2 text-5xl font-semibold sm:leading-none tracking-tighter text-center text-gray-900 md:text-left dark:text-gray-100 sm:text-6xl lg:text-7xl sm:mb-4"
+          class="
+            mb-2
+            text-5xl
+            font-semibold
+            sm:leading-none
+            tracking-tighter
+            text-center text-gray-900
+            md:text-left
+            dark:text-gray-100
+            sm:text-6xl
+            lg:text-7xl
+            sm:mb-4
+          "
         >
           {{ title }}
         </h2>
         <p
-          class="mb-2 text-base text-center text-gray-700 md:text-left sm:text-xl xl:text-2xl leading-base sm:mb-4 dark:text-gray-300"
+          class="
+            mb-2
+            text-base text-center text-gray-700
+            md:text-left
+            sm:text-xl
+            xl:text-2xl
+            leading-base
+            sm:mb-4
+            dark:text-gray-300
+          "
         >
           {{ description }}
         </p>
@@ -25,15 +61,52 @@
             {{ cta.description }}
           </p>
           <div
-            class="flex flex-col md:flex-row border border-gray-300 placeholder-gray-900 dark:border-gray-700 rounded-md p-1 w-full mb-2"
+            class="
+              flex flex-col
+              md:flex-row
+              border border-gray-300
+              placeholder-gray-900
+              dark:border-gray-700
+              rounded-md
+              p-1
+              w-full
+              mb-2
+            "
           >
             <input
               type="text"
-              :placeholder="cta.placeholder"
-              class="flex-1 py-3 px-3 focus:outline-none bg-transparent dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
+              :placeholder="ctaPlaceholder"
+              class="
+                flex-1
+                py-3
+                px-3
+                focus:outline-none
+                bg-transparent
+                dark:text-gray-100
+                placeholder-gray-400
+                dark:placeholder-gray-600
+              "
             />
             <button
-              class="inline-block font-semibold text-center items-center flex-none px-6 py-3 text-lg leading-6 rounded-md text-white transition-colors duration-200 border border-transparent border-l-0 bg-primary-500 hover:bg-primary-600 focus:outline-none"
+              class="
+                inline-block
+                font-semibold
+                text-center
+                items-center
+                flex-none
+                px-6
+                py-3
+                text-lg
+                leading-6
+                rounded-md
+                text-white
+                transition-colors
+                duration-200
+                border border-transparent border-l-0
+                bg-primary-500
+                hover:bg-primary-600
+                focus:outline-none
+              "
             >
               {{ cta.label }}
             </button>
