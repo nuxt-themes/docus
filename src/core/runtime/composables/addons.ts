@@ -1,6 +1,10 @@
 import { DocusAddonContext } from '../../../types'
 
-export const useDocusAddons = (context: DocusAddonContext, addons: any[]) => {
+type DocusAddons = {
+  [key: string]: any
+}
+
+export const useDocusAddons = (context: DocusAddonContext, addons: DocusAddons) => {
   /**
    * Addons context to be spread into Docus injection
    */
@@ -11,7 +15,7 @@ export const useDocusAddons = (context: DocusAddonContext, addons: any[]) => {
    */
   const setupAddons = async () =>
     await Promise.all(
-      addons.map(async addon => {
+      Object.entries(addons).map(async ([key, addon]) => {
         const addonKeys = addon(context)
 
         Object.entries(addonKeys).forEach(([key, value]) => {
@@ -26,7 +30,11 @@ export const useDocusAddons = (context: DocusAddonContext, addons: any[]) => {
         })
 
         if ((addonKeys as any)?.init) {
-          return await (addonKeys as any)?.init?.()
+          try {
+            await addonKeys?.init?.()
+          } catch (e) {
+            console.log(`Could not init ${key} addon!`)
+          }
         }
       })
     )

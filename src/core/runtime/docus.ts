@@ -49,7 +49,12 @@ export const createDocus = async (
   }
 
   // Docus default addons
-  const docusAddons = [useDocusStyle, useDocusNavigation, useDocusReleases, useDocusGithub]
+  const docusAddons = {
+    useDocusStyle,
+    useDocusNavigation,
+    useDocusReleases,
+    useDocusGithub
+  }
 
   // Addons manager
   const { setupAddons, addonsContext } = useDocusAddons(docusAddonContext, docusAddons)
