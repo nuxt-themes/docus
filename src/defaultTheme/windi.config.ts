@@ -7,8 +7,9 @@ import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 import filters from 'windicss/plugin/filters'
+import { defineConfig } from 'windicss/helpers'
 
-export default {
+export default defineConfig({
   darkMode: 'class',
   plugins: [filters, aspectRatio],
   theme: {
@@ -88,4 +89,4 @@ export default {
       }
     }
   }
-}
+})
