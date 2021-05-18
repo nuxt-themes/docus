@@ -42,6 +42,15 @@ export default nuxtConfig({
   colorMode: {
     classSuffix: ''
   },
+  /**
+   * Social image local generation by default
+   */
+  socialImage: {
+    baseUrl: 'DOMIN',
+    chrome: {
+      browserWSEndpoint: 'wss://chrome.browserless.io/'
+    }
+  },
 
   /**
    * Modules & plugins
