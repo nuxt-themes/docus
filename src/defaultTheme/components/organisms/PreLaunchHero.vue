@@ -106,6 +106,7 @@
                 bg-primary-500
                 hover:bg-primary-600
                 focus:outline-none
+                select-none
               "
             >
               {{ cta.label }}
