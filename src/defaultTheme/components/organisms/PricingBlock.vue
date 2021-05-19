@@ -76,17 +76,17 @@
           </div>
 
           <div class="flex justify-center mb-8">
-            <div class="font-medium" :class="[selectedTier === tierName ? 'text-primary-300' : 'text-gray-400']">
+            <div class="font-medium mr-1" :class="[selectedTier === tierName ? 'text-primary-300' : 'text-gray-400']">
               {{ meta.currency }}
             </div>
-            <div class="font-bold text-5xl leading-none tracking-tighter">
+            <div class="font-bold text-5xl leading-none tracking-tighter mr-1">
               {{ plans[selectedPlan] && plans[selectedPlan].divider ? getBasePricing(tier) : tier.price[selectedPlan] }}
             </div>
             <div
               class="self-end lowercase font-medium"
               :class="[selectedTier === tierName ? 'text-primary-300' : 'text-gray-400']"
             >
-              /{{ plans[basePlan].title }}
+              / {{ plans[basePlan].title }}
             </div>
           </div>
 
@@ -138,9 +138,13 @@
 
     <div class="flex flex-col items-center">
       <div class="flex flex-col items-center mb-4">
-        <div class="text-gray-500">{{ meta.checkoutText }}</div>
-        <div class="font-bold text-4xl tracking-tighter">
-          {{ tiers[selectedTier].price[selectedPlan] }}{{ meta.currency }}
+        <div class="text-gray-500 mb-1">{{ meta.checkoutText }}</div>
+        <div class="flex items-baseline">
+          <div class="flex font-bold text-4xl tracking-tighter mr-1">
+            <span class="">{{ meta.currency }}</span>
+            <span class="">{{ tiers[selectedTier].price[selectedPlan] }}</span>
+          </div>
+          <div class="text-gray-600 dark:text-gray-500">/ {{ plans[selectedPlan].title }}</div>
         </div>
       </div>
       <button
