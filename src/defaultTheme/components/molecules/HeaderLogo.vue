@@ -38,13 +38,13 @@ export default defineComponent({
     const theme = computed(() => $docus.theme.value)
 
     const logo = computed(() => {
-      if (!settings.value.logo) return
+      if (!theme.value.logo) return
 
-      if (typeof settings.value.logo === 'object') return settings.value.logo
+      if (typeof theme.value.logo === 'object') return theme.value.logo
 
       return {
-        light: settings.value.logo,
-        dark: settings.value.logo
+        light: theme.value.logo,
+        dark: theme.value.logo
       }
     })
 
