@@ -7,7 +7,6 @@ navigation: false
 ---
 
 :::block-hero
-title: title
 description: description
 cta:
   - Get started
@@ -16,7 +15,12 @@ secondary:
   - Open on GitHub
   - https://github.com/nuxtlabs/docus
 snippet: npx degit nuxtlabs/docus-starter#main docs
----
+
+---title
+Documentation Generator based on Nuxt and Windi.
+
+---description
+Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
 :::
 
 ::::card-grid{title="What's included?"}

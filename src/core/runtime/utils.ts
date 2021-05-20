@@ -18,10 +18,13 @@ export const Markdown = {
   functional: true,
   render: (_h, ctx) => {
     let node = ctx.props.node
+    if (typeof node === 'function') {
+      node = node()
+    }
     if (typeof node === 'string') {
       return [node]
     }
-    if (ctx.props.unwrap) {
+    if (node && ctx.props.unwrap) {
       const tags = ctx.props.unwrap.split(/[,\s]/)
       node = flatUnwrap(node, tags)
     }

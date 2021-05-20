@@ -30,10 +30,21 @@ exports.exit = {
       const dataSection = container.children.shift()
       container.rawData = dataSection.raw
     }
-    if (container.children.length === 1) {
-      container.children = container.children[0].children
-    }
-    // TODO: handle multiple slots
+
+    container.children = container.children.flatMap(child => {
+      if (child.name === 'default' || !child.name) {
+        return child.children
+      }
+      child.data = {
+        hName: 'directive-slot',
+        hProperties: {
+          ...child.attributes,
+          [`v-slot:${child.name}`]: ''
+        }
+      }
+      return child
+    })
+
     this.exit(token)
   },
   directiveContainerAttributeClassValue: exitAttributeClassValue,

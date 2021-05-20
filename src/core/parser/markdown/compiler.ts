@@ -14,6 +14,14 @@ function parseAsJSON(node: Node, parent: DocusMarkdownNode[]) {
     const childs = []
 
     /**
+     * rename directive slots tags name
+     */
+    if (node.tagName === 'directive-slot') {
+      node.tagName = 'template'
+      node.content = { ...node }
+    }
+
+    /**
      * Replace a tag with nuxt-link if relative
      */
     if (node.tagName === 'a') {
