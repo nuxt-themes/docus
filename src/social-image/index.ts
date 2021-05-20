@@ -21,7 +21,7 @@ export default <Module<SocialImageModuleOptions & InternalModuleOptions>>functio
   if (process.platform === 'win32') executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 
   const defaults: SocialImageModuleOptions & InternalModuleOptions = {
-    baseUrl: this?.$docus?.url || undefined,
+    baseUrl: this?.$docus?.settings?.url || undefined,
     outDir: '_preview',
     _outDir: '',
     internalUrl: '',
