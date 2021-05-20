@@ -9150,7 +9150,7 @@ nuxt-i18n@^6.27.0:
     ufo "^0.7.2"
     vue-i18n "^8.24.4"
 
-nuxt-vite@0.1.0:
+nuxt-vite@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/nuxt-vite/-/nuxt-vite-0.1.0.tgz#6c9bd69ee2bd8ade22665676ed4b9d3141dbf89c"
   integrity sha512-FTg0iEeTykF+PkOmA+pzS9KUbqfxQQxH2aw3zwiFjSxzwVwURB0ygIz7O6waE/4CyCrjhGc33X4qAKOjCodh8g==
