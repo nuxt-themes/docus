@@ -141,7 +141,6 @@ export interface MarkdownParserOptions {
     searchDepth: number
   }
   directives: any
-  dataComponents: string[]
   remarkPlugins: (string | [string, any])[]
   rehypePlugins: (string | [string, any])[]
 }

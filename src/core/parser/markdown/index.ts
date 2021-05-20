@@ -15,10 +15,9 @@ const DEFAULTS: MarkdownParserOptions = {
   directives: {
     props: propsDirective
   },
-  dataComponents: ['video-player', 'block-hero', 'block-features'],
   remarkPlugins: [
+    resolve(__dirname, './directive'),
     'remark-emoji',
-    'remark-directive',
     'remark-squeeze-paragraphs',
     'remark-slug',
     ['remark-autolink-headings', { behavior: 'wrap' }],
@@ -72,10 +71,7 @@ async function parse(file, options) {
 
 export function useMarkdownParser(options: Partial<MarkdownParserOptions> = {}) {
   options = defu(options, DEFAULTS)
-  options.remarkPlugins.unshift([
-    resolve(__dirname, './plugin/directive'),
-    { directives: options.directives, dataComponents: options.dataComponents }
-  ])
+  options.remarkPlugins.unshift([resolve(__dirname, './directive/remark-plugin'), { directives: options.directives }])
   processOptions(options)
 
   return {

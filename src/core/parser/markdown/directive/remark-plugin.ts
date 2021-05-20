@@ -1,21 +1,23 @@
 import visit from 'unist-util-visit'
 import h from 'hastscript'
-import { useMarkdownParser } from '../'
+import { useMarkdownParser } from '..'
 
 const toFrontMatter = (yamlString: string) => `---
 ${yamlString}
 ---`
 
-export default function htmlDirectives({ directives, dataComponents }) {
+export default function htmlDirectives({ directives }) {
   const parser = useMarkdownParser()
 
-  function toData(raw) {
-    const lines = raw.split('\n')
-    const markdown = lines.slice(1, lines.length - 1).join('\n')
+  function processNode(node) {
+    if (!node.rawData) {
+      return { data: {} }
+    }
 
-    const { data } = parser.parseFrontMatter(toFrontMatter(markdown))
+    const yaml = node.rawData
+    const { data } = parser.parseFrontMatter(toFrontMatter(yaml))
 
-    return data
+    return { data }
   }
 
   function bindData(data, pageData) {
@@ -31,7 +33,7 @@ export default function htmlDirectives({ directives, dataComponents }) {
     return Object.fromEntries(enteries)
   }
 
-  return async (tree, { data: pageData, contents }) => {
+  return async (tree, { data: pageData }) => {
     const jobs = []
     visit(tree, ['textDirective', 'leafDirective', 'containerDirective'], visitor)
 
@@ -40,20 +42,16 @@ export default function htmlDirectives({ directives, dataComponents }) {
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      if (dataComponents.includes(node.name) || typeof node.attributes.yml !== 'undefined') {
-        const { start, end } = node.position
-        hast.properties = bindData(
-          {
-            ...hast.properties,
-            ...toData(contents.substr(start.offset, end.offset - start.offset))
-          },
-          pageData
-        )
-      }
+      const { data: nodeData } = processNode(node)
 
       data.hName = hast.tagName
-      data.hProperties = hast.properties
-
+      data.hProperties = bindData(
+        {
+          ...hast.properties,
+          ...nodeData
+        },
+        pageData
+      )
       if (directive) {
         jobs.push(directive(node, pageData))
       }
