@@ -6,7 +6,7 @@ description: >-
 navigation: false
 ---
 
-:::block-hero{yml}
+:::block-hero
 title: title
 description: description
 cta:
@@ -16,6 +16,7 @@ secondary:
   - Open on GitHub
   - https://github.com/nuxtlabs/docus
 snippet: npx degit nuxtlabs/docus-starter#main docs
+---
 :::
 
 ::::card-grid{title="What's included?"}

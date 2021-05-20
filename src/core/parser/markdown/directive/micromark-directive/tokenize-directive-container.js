@@ -18,6 +18,7 @@ function tokenizeDirectiveContainer(effects, ok, nok) {
   const initialPrefix = prefixSize(this.events, 'linePrefix')
   let sizeOpen = 0
   let previous
+  const containerSequenceSize = []
 
   return start
 
@@ -135,20 +136,22 @@ function tokenizeDirectiveContainer(effects, ok, nok) {
     if (code === null) {
       return after(code)
     }
+    const chunkStartFn = initialPrefix ? createSpace(effects, chunkStart, 'linePrefix', initialPrefix + 1) : chunkStart
 
-    if (code === 45 /* `-` */) {
-      return effects.attempt(
-        { tokenize: tokenizeClosingSection, partial: true },
-        sectionOpen,
-        initialPrefix ? createSpace(effects, chunkStart, 'linePrefix', initialPrefix + 1) : chunkStart
-      )(code)
+    if (!containerSequenceSize.length && code === 45 /* `-` */) {
+      return effects.attempt({ tokenize: tokenizeClosingSection, partial: true }, sectionOpen, chunkStartFn)(code)
     }
 
-    return effects.attempt(
-      { tokenize: tokenizeClosingFence, partial: true },
-      after,
-      initialPrefix ? createSpace(effects, chunkStart, 'linePrefix', initialPrefix + 1) : chunkStart
-    )(code)
+    const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true }, after, chunkStartFn)
+
+    /**
+     * disbale spliting inner sections
+     */
+    if (code === 58 /* `:` */) {
+      return effects.check({ tokenize: detectContainer, partial: true }, chunkStartFn, attempt)(code)
+    }
+
+    return attempt
   }
 
   function chunkStart(code) {
@@ -206,6 +209,9 @@ function tokenizeDirectiveContainer(effects, ok, nok) {
         return closingSequence
       }
 
+      if (containerSequenceSize.length && size === containerSequenceSize[containerSequenceSize.length - 1]) {
+        containerSequenceSize.pop()
+      }
       // it is important to match sequence
       if (size !== sizeOpen) return nok(code)
       effects.exit('directiveContainerSequence')
@@ -219,6 +225,39 @@ function tokenizeDirectiveContainer(effects, ok, nok) {
       }
 
       return nok(code)
+    }
+  }
+  function detectContainer(effects, ok, nok) {
+    let size = 0
+
+    return openingPrefixAfter
+
+    function openingPrefixAfter(code) {
+      return openingSequence(code)
+    }
+
+    function openingSequence(code) {
+      if (code === 58 /* `:` */) {
+        effects.consume(code)
+        size++
+        return openingSequence
+      }
+
+      // it is important to match sequence
+      if (size < 3) return nok(code)
+
+      return openingSequenceEnd
+    }
+
+    function openingSequenceEnd(code) {
+      if (code === null || markdownLineEnding(code)) {
+        return nok(code)
+      }
+
+      // memorize cotainer sequence
+      containerSequenceSize.push(size)
+
+      return ok(code)
     }
   }
 }
