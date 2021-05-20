@@ -117,11 +117,13 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     return withTrailingSlash(path) === withTrailingSlash(context.$contentLocalePath(to))
   }
 
-  window.onNuxtReady($nuxt => {
-    $nuxt.$on('content:update', () => {
-      fetchNavigation()
+  if (process.client) {
+    window.onNuxtReady($nuxt => {
+      $nuxt.$on('content:update', () => {
+        fetchNavigation()
+      })
     })
-  })
+  }
 
   return {
     getPageTemplate,

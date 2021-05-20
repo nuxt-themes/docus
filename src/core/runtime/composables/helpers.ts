@@ -1,16 +1,10 @@
 import Vue from 'vue'
 import { DocusAddonContext } from '../../../types'
 
-export const docusInit = async ({ context, state }: DocusAddonContext, fetch: any) => {
-  // Fetch on server
+export const docusInit = ({ context, state }: DocusAddonContext) => {
   if (process.server) {
-    await fetch()
-
     context.beforeNuxtRender(({ nuxtState }) => (nuxtState.docus = state))
   }
-
-  // SPA Fallback
-  if (process.client && !state.settings) await fetch()
 }
 
 export const clientAsyncData = (app, $nuxt: any) => {
