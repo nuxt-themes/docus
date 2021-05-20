@@ -1,5 +1,5 @@
 <template>
-  <AppContainer fluid :footer="false">
+  <AppContainer fluid :footer="page.footer">
     <NuxtContent :document="page" />
   </AppContainer>
 </template>

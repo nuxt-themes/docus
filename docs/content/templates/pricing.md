@@ -1,5 +1,6 @@
 ---
-template: pricing
+template: marketing
+footer: false
 ---
 
 :::pricing-block{yml}
