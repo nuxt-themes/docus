@@ -17,15 +17,6 @@ export default withDocus({
     // https://github.com/moritzsternemann/vue-plausible#configuration
     domain: 'docus.dev'
   },
-  socialImage: {
-    baseUrl: 'https://docus.dev',
-    chrome: {
-      browserWSEndpoint: 'wss://chrome.browserless.io/'
-    }
-  },
-  windicss: {
-    root: resolve(__dirname, '..')
-  },
   /**
    * Add image domains for nuxt-image
    */
