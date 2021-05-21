@@ -19,10 +19,12 @@
     </template>
 
     <template v-if="!theme.header.title && theme.header.logo">
-      <span>
-        <img v-if="$colorMode.value === 'light'" :src="logo.light" class="w-auto h-8" :alt="settings.title" />
-        <img v-if="$colorMode.value === 'dark'" :src="logo.dark" class="w-auto h-8" :alt="settings.title" />
-      </span>
+      <ClientOnly>
+        <span>
+          <img v-if="$colorMode.value === 'light'" :src="logo.light" class="w-auto h-8" :alt="settings.title" />
+          <img v-if="$colorMode.value === 'dark'" :src="logo.dark" class="w-auto h-8" :alt="settings.title" />
+        </span>
+      </ClientOnly>
     </template>
   </div>
 </template>
