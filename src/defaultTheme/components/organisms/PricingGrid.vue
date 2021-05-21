@@ -9,29 +9,11 @@
             : 'border-gray-200 dark:border-gray-700'
         ]"
       >
-        <span
+        <InfoLabel
           v-if="tier.preSelected"
-          class="
-            absolute
-            top-0
-            left-1/2
-            transform
-            -translate-x-1/2 -translate-y-1/2
-            text-xs text-primary-500
-            px-2.5
-            py-1.5
-            leading-none
-            rounded
-            font-semibold
-            uppercase
-            tracking-wide
-            bg-primary-100
-            dark:bg-primary-900
-            dark:text-primary-400
-          "
-        >
-          {{ meta.preSelectedBadge }}
-        </span>
+          :label="meta.preSelectedBadge"
+          class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        />
 
         <div class="flex justify-center text-2xl font-semibold my-2 text-center">
           {{ tier.title }}

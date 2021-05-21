@@ -2,26 +2,7 @@
   <section class="flex flex-col md:flex-row d-container-content py-12 md:py-24">
     <div class="w-full md:w-1/2 flex flex-col justify-center mb-8 md:mb-0">
       <div class="flex flex-col items-center md:items-start mb-2">
-        <span
-          class="
-            mx-2
-            text-xs
-            mb-4
-            text-primary-500
-            px-2.5
-            py-1.5
-            leading-none
-            rounded
-            font-semibold
-            uppercase
-            tracking-wide
-            bg-primary-100
-            dark:bg-primary-900
-            dark:text-primary-400
-          "
-        >
-          🚀 Coming Soon
-        </span>
+        <InfoLabel label="🚀 Coming Soon" class="mx-2 mb-4" />
         <h2
           class="
             mb-2
