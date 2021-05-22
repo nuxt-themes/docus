@@ -8,6 +8,7 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
   const { app, route } = context
 
   const { locale } = app.i18n
+
   if (!state.navigation) state.navigation = {}
 
   // compute `currentNav` on every route change
@@ -28,7 +29,9 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
   const fetchNavigation = async () => {
     const { body } = await api.data('/docus/navigation/' + locale)
+
     state.navigation[locale] = body
+
     fetchCounter.value += 1
   }
 
@@ -37,13 +40,18 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     let items = nav
 
     if (from) {
+      console.log('from:', from)
+
       const paths = from.split('/')
+
       from = paths.slice(0, paths.length - 1).join('/')
 
+      console.log('from, then:', from)
+
       const link = items.find(link => link.to === from)
-      if (link && (link.navigation as NavItemNavigationConfig).exclusive) {
-        items = [link]
-      }
+
+      if (link && (link.navigation as NavItemNavigationConfig).exclusive) items = [link]
+
       items = items.map(_ => _)
     }
 
@@ -65,6 +73,7 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
         return node
       })
     }
+
     return filterLinks(items, 1)
   }
 
