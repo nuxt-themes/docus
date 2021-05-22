@@ -67,7 +67,11 @@ export default <Module>function themeSetupModule() {
       join(options.themeDir)
     )
 
+    // Resolve admin runtime path
+    const adminPath = join(__dirname, '../admin')
+
     windiOptions.scanOptions.include.push(
+      join(adminPath, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
       join(__dirname, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
       join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
       join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
