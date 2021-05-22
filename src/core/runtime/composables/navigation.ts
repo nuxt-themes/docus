@@ -40,13 +40,9 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     let items = nav
 
     if (from) {
-      console.log('from:', from)
-
       const paths = from.split('/')
 
       from = paths.slice(0, paths.length - 1).join('/')
-
-      console.log('from, then:', from)
 
       const link = items.find(link => link.to === from)
 
