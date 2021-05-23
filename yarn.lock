@@ -9114,7 +9114,7 @@ nuxt-vite@^0.1.0:
     vite "~2.2.1"
     vite-plugin-vue2 "^1.5.1"
 
-nuxt-windicss@0.8.0-3:
+nuxt-windicss@^0.8.0-3:
   version "0.8.0-3"
   resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-0.8.0-3.tgz#ca8f131ace31ede3d84b61a9a918e038a4bb4307"
   integrity sha512-NtEOozdoYFpf7+QrZ0cyy943Lckz96rO1RW/0U4JbiE1hlc4BJV6QZsDqeQzTuUclrCqKFh2wKAb9/Tx1lF0vA==
