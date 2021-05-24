@@ -86,7 +86,7 @@ export default defineComponent({
 
   >>> {
     a {
-      @apply no-underline border-none font-semibold;
+      @apply no-underline border-none font-semibold text-current;
       code {
         @apply border border-transparent border-dashed;
       }
@@ -96,5 +96,13 @@ export default defineComponent({
 
 .alert >>> p {
   @apply m-0 !important;
+}
+
+.dark .alert {
+  >>> {
+    a {
+      @apply text-current;
+    }
+  }
 }
 </style>

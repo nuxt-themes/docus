@@ -1,5 +1,5 @@
 <template>
-  <section class="py-12 lg:py-24 bg-gray-50 dark:bg-gray-800">
+  <section class="py-12 lg:py-24 bg-gray-100 dark:bg-gray-800">
     <div class="d-container-content">
       <h2 class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
         {{ title }}
@@ -12,7 +12,7 @@
           text-left text-gray-900
           dark:text-gray-100
           sm:grid-cols-2
-          xl:grid-cols-3
+          lg:grid-cols-3
           2xl:gap-8
         "
       >

@@ -6,6 +6,7 @@
           class="
             mb-4
             text-4xl
+            xs:text-5xl
             font-semibold
             sm:leading-none
             tracking-tighter
@@ -22,10 +23,12 @@
         <p
           class="
             mb-8
-            text-base text-center text-gray-700
+            text-lg text-center text-gray-700
+            font-medium
+            tracking-tight
             lg:text-left
             sm:text-xl
-            xl:text-2xl
+            xl:text-xl
             leading-base
             sm:mb-12
             dark:text-gray-300
@@ -47,11 +50,11 @@
                 py-px
                 mt-px
                 font-medium
-                text-gray-800
-                border-b-2 border-transparent
-                dark:text-gray-100
-                hover:border-gray-800
-                dark:hover:border-gray-100
+                text-primary-500
+                border-b-1 border-transparent
+                dark:text-primary-400
+                hover:border-primary-500
+                dark:hover:border-primary-400
               "
             >
               {{ secondary[0] }}
@@ -59,7 +62,7 @@
           </InjectComponent>
         </div>
       </div>
-      <div v-if="snippet" class="w-full m-auto lg:w-1/3 sm:w-580px">
+      <div v-if="snippet" class="w-full mx-auto lg:w-1/3 sm:w-580px">
         <div class="md:pl-2">
           <Terminal :snippet="snippet" />
         </div>

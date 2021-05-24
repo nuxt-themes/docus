@@ -1,14 +1,18 @@
 <template>
   <div class="flex">
-    <div
-      class="relative w-full px-6 py-8 bg-white border border-gray-200 rounded dark:border-gray-700 dark:bg-gray-900"
-    >
+    <div class="relative w-full p-6 bg-white rounded-lg dark:bg-gray-900">
       <InjectComponent :component="icon" class="w-16 h-16 mb-3" :class="iconClass || ''">
         <NuxtImg v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
         <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ icon }}</span>
       </InjectComponent>
-      <h3 class="mb-2 text-xl">{{ title }}</h3>
-      <slot />
+      <div class="text-lg xl:text-xl">
+        <h3 class="mb-2 font-semibold inline mr-1">{{ title }}</h3>
+        <div class="inline font-semibold text-gray-400">
+          <slot name="description">
+            <p v-if="description" class="inline font-semibold">{{ description }}</p>
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +25,10 @@ export default defineComponent({
     title: {
       type: String,
       required: true
+    },
+    description: {
+      type: String,
+      default: ''
     },
     icon: {
       type: String,
@@ -40,13 +48,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped lang="postcss">
-h2,
-h3 {
-  @apply mb-2 text-xl;
-}
-p {
-  @apply font-normal;
-}
-</style>

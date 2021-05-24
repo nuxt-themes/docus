@@ -53,28 +53,5 @@ pre code {
   & > .filename {
     @apply absolute top-0 right-0 z-0 py-1.5 px-2 bg-gray-200 dark:bg-gray-700 rounded-tr-md rounded-bl font-mono font-semibold text-xs leading-none tracking-tight text-gray-600 dark:text-gray-200;
   }
-
-  /* Style copy button added in `pages/_.vue` */
-  & > .copy {
-    @apply outline-none absolute right-0 bottom-0 px-3 py-1.5 text-gray-700 bg-gray-200 text-xs leading-none rounded-tl rounded-br-md font-mono dark:text-white dark:bg-gray-700 dark:border-gray-600;
-
-    &:hover {
-      @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
-    }
-
-    &:focus {
-      @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
-    }
-
-    &.copied {
-      @apply bg-gray-300 border-gray-300 dark:bg-gray-600 dark:border-gray-500;
-    }
-  }
-
-  &:hover {
-    & > .copy {
-      @apply block;
-    }
-  }
 }
 </style>
