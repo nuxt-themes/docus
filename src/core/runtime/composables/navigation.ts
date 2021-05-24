@@ -17,10 +17,17 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
   const currentNav = computed(() => {
     // eslint-disable-next-line no-unused-expressions
     fetchCounter.value
-    return get({
+    const links = get({
       locale: app.i18n.locale,
       from: path.value
     })
+    // return filtered item for exclusive page
+    if (links.length === 1 && (links[0].navigation as NavItemNavigationConfig).exclusive) {
+      return links
+    }
+
+    // return whole navigation
+    return state.navigation[app.i18n.locale] || []
   })
   app.router.beforeEach((to: any, __: any, next: any) => {
     path.value = to.path
@@ -41,14 +48,15 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
     if (from) {
       const paths = from.split('/')
+      items = paths.reduce((links, path, index) => {
+        if (!path) return links
+        if (links.length === 1) {
+          links = links[0].children
+        }
 
-      from = paths.slice(0, paths.length - 1).join('/')
-
-      const link = items.find(link => link.to === from)
-
-      if (link && (link.navigation as NavItemNavigationConfig).exclusive) items = [link]
-
-      items = items.map(_ => _)
+        const to = paths.slice(0, index + 1).join('/')
+        return links.filter(link => link.to === to)
+      }, items)
     }
 
     function filterLinks(nodes: NavItem[], linkDepth) {

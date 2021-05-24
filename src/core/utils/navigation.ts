@@ -113,14 +113,16 @@ function createNav(pages: any[]) {
     let lastLink: NavItem
 
     dirs.forEach((dir: string, index: number) => {
+      const to = '/' + dirs.slice(0, index + 1).join('/')
       // If children has been disabled (nav.children = false)
       if (!currentLinks) return
 
-      let link: NavItem = findLink(currentLinks, '/' + dirs.slice(0, index + 1).join('/'))
+      let link: NavItem = findLink(currentLinks, to)
 
       if (!link) {
         link = getPageLink({
-          slug: dir
+          slug: dir,
+          to
         })
         currentLinks.push(link)
       }
