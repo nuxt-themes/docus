@@ -27,7 +27,7 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
     }
 
     // return whole navigation
-    return state.navigation[locale] || []
+    return state.navigation[app.i18n.locale] || []
   })
   app.router.beforeEach((to: any, __: any, next: any) => {
     path.value = to.path
