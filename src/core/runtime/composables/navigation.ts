@@ -48,8 +48,8 @@ export const useDocusNavigation = ({ $nuxt, context, state, api }: DocusAddonCon
 
     if (from) {
       const paths = from.split('/')
-      items = paths.reduce((links, _, index) => {
-        if (index === 0) return links
+      items = paths.reduce((links, path, index) => {
+        if (!path) return links
         if (links.length === 1) {
           links = links[0].children
         }
