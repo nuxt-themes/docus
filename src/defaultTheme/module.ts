@@ -7,8 +7,8 @@ import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import clearModule from 'clear-module'
 import jiti from 'jiti'
-import defaultWindiConfig from './windi.config'
 import fg from 'fast-glob'
+import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
@@ -60,24 +60,26 @@ export default <Module>function themeSetupModule() {
     // Merge user and theme Windi configs
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, localWindiConfig || {}, defaultWindiConfig)
 
-    const transformFiles = await fg(
-      '**/*.{vue,css}',
-      {
-        cwd: join(options.rootDir, '/node_modules/docus/dist'),
-        onlyFiles: true,
-        absolute: true,
-      },
-    )
-    // make sure file @apply's get transformed
+    // Glob grabbing all Docus files
+    const transformFiles = await fg('**/*.{vue,css}', {
+      cwd: join(options.rootDir, '/node_modules/docus/dist'),
+      onlyFiles: true,
+      absolute: true
+    })
+
+    // Make sure file @apply's get transformed
     windiOptions.scanOptions.extraTransformTargets = {
-      css: transformFiles.filter((f : string) => f.endsWith('.css')),
-      detect: transformFiles.filter((f : string) => f.endsWith('.vue'))
+      css: transformFiles.filter((f: string) => f.endsWith('.css')),
+      detect: transformFiles.filter((f: string) => f.endsWith('.vue'))
     }
 
+    // Trailing glob used for includes
     const glob = '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css}'
+
     // Resolve admin runtime path
     const adminPath = join(__dirname, '../admin')
 
+    // Push every included path into scan options
     windiOptions.scanOptions.include.push(
       join(adminPath, glob),
       join(__dirname, glob),
