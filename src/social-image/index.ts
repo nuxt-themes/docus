@@ -21,12 +21,12 @@ export default <Module<SocialImageModuleOptions & InternalModuleOptions>>functio
   if (process.platform === 'win32') executablePath = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 
   const defaults: SocialImageModuleOptions & InternalModuleOptions = {
-    baseUrl: undefined,
+    baseUrl: this?.$docus?.settings?.url || undefined,
     outDir: '_preview',
     _outDir: '',
     internalUrl: '',
     chrome: {
-      browserWSEndpoint: undefined,
+      browserWSEndpoint: 'wss://chrome.browserless.io',
       defaultViewport: { width: 1280, height: 640 },
       args: [],
       headless: true,

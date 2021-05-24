@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -34,7 +34,7 @@
     "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
     "start": "nuxt start docs",
-    "play": "nuxt playground",
+    "play": "BUILD_ADMIN=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
     "prepare": "yarn link ; yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
@@ -42,8 +42,7 @@
     "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt",
     "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules",
     "clean:dist": "rm -rf dist docs/dist playground/dist",
-    "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist",
-    "postinstall": "patch-package"
+    "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
@@ -52,7 +51,7 @@
     "@nuxt/image": "0.4.10",
     "@nuxt/postcss8": "^1.1.3",
     "@nuxtjs/color-mode": "^2.0.5",
-    "@nuxtjs/composition-api": "0.23.3",
+    "@nuxtjs/composition-api": "0.24.0",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@types/graceful-fs": "^4.1.5",
@@ -78,9 +77,8 @@
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.0",
     "nuxt-vite": "^0.1.0",
-    "nuxt-windicss": "^0.5.4",
+    "nuxt-windicss": "^0.8.0",
     "ohmyfetch": "^0.1.8",
-    "patch-package": "^6.4.7",
     "plausible-tracker": "^0.3.1",
     "postinstall-postinstall": "^2.1.0",
     "prism-theme-vars": "^0.2.2",

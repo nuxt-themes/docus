@@ -1,12 +1,18 @@
 import { resolve, join } from 'path'
 import { Config as WindiConfig } from 'windicss/types/interfaces'
+import { existsSync } from 'fs-extra'
 import { glob } from 'siroc'
 import defu from 'defu'
-import { Module } from '@nuxt/types'
+import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
+import clearModule from 'clear-module'
+import jiti from 'jiti'
 import defaultWindiConfig from './windi.config'
+import fg from 'fast-glob'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
+
+const _require = jiti(__filename)
 
 export const readyHook = ({ options }) => {
   // Override editor style on dev mode
@@ -20,34 +26,72 @@ export const beforeBuildHook = async ({ options }) => {
   if (!errorPageExists) options.ErrorPage = options.ErrorPage || r('layouts/error.vue')
 }
 
+const loadWindiConfig = (options: NuxtOptions): WindiConfig | undefined => {
+  // Get Windi config path
+  let windiPath = resolve(options.srcDir)
+  if (existsSync(windiPath + '/windi.config.js')) windiPath += '/windi.config.js'
+  else if (existsSync(windiPath + '/windi.config.ts')) windiPath += '/windi.config.ts'
+  else if (existsSync(windiPath + '/tailwind.config.js')) windiPath += '/tailwind.config.js'
+  else if (existsSync(windiPath + '/tailwind.config.ts')) windiPath += '/tailwind.config.ts'
+
+  // Delete Node cache for Windi config
+  clearModule(windiPath)
+
+  // Get Windi config
+  let localWindiConfig
+  try {
+    localWindiConfig = _require(windiPath)
+    localWindiConfig = localWindiConfig?.default || localWindiConfig
+  } catch (_) {}
+
+  return localWindiConfig
+}
+
 // WindiCSS setup
 export default <Module>function themeSetupModule() {
   const { nuxt, $docus } = this
   const { options, hook } = nuxt
   const { settings } = $docus
 
-  hook('windicss:options', (windiOptions: WindiConfig) => {
-    // Merge user & local Windi config
-    windiOptions.config = defu.arrayFn(windiOptions.config || {}, defaultWindiConfig)
+  // Get Windi config at user project level
+  const localWindiConfig = loadWindiConfig(options)
 
-    // Include local & npm depencies directories in scan process
-    windiOptions.scanOptions.dirs.push(
-      __dirname,
-      join(__dirname, '/node_modules/docus/dist'),
-      join(options.rootDir, '/node_modules/docus/dist'),
-      join(options.themeDir)
+  hook('windicss:options', async (windiOptions: WindiConfig) => {
+    // Merge user and theme Windi configs
+    windiOptions.config = defu.arrayFn(windiOptions.config || {}, localWindiConfig || {}, defaultWindiConfig)
+
+    const transformFiles = await fg(
+      '**/*.{vue,css}',
+      {
+        cwd: join(options.rootDir, '/node_modules/docus/dist'),
+        onlyFiles: true,
+        absolute: true,
+      },
     )
+    // make sure file @apply's get transformed
+    windiOptions.scanOptions.extraTransformTargets = {
+      css: transformFiles.filter((f : string) => f.endsWith('.css')),
+      detect: transformFiles.filter((f : string) => f.endsWith('.vue'))
+    }
+
+    const glob = '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css}'
+    // Resolve admin runtime path
+    const adminPath = join(__dirname, '../admin')
 
     windiOptions.scanOptions.include.push(
-      join(__dirname, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
-      join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
-      join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
+      join(adminPath, glob),
+      join(__dirname, glob),
+      join(options.rootDir, '/node_modules/docus/dist/' + glob),
+      join(options.themeDir, glob)
     )
 
+    // Merge shortcuts
     windiOptions.config.shortcuts = {
       ...(windiOptions.shortcuts || {}),
       ...(settings?.theme?.shortcuts || {})
     }
+
+    return windiOptions
   })
 
   hook('components:dirs', async (dirs: any) => {

@@ -21,7 +21,7 @@ export default <Module>function settingsModule() {
   // Get Docus config path
   let settingsPath = resolve(options.srcDir, 'docus.config')
   if (existsSync(settingsPath + '.js')) settingsPath += '.js'
-  if (existsSync(settingsPath + '.ts')) settingsPath += '.ts'
+  else if (existsSync(settingsPath + '.ts')) settingsPath += '.ts'
 
   // Get theme settings path
   if (!options.themeDir) {
@@ -31,7 +31,7 @@ export default <Module>function settingsModule() {
   }
   let themeDefaultsPath = resolve(options.themeDir, 'settings')
   if (existsSync(themeDefaultsPath + '.js')) themeDefaultsPath += '.js'
-  if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
+  else if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'
 
   // Delete Node cache for settings files
   clearModule(themeDefaultsPath)

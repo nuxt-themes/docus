@@ -63,7 +63,7 @@ export const createDocus = async (
   await setupAddons()
 
   // Init Docus for every context
-  await docusInit(docusAddonContext, fetch)
+  await docusInit(docusAddonContext)
 
   // Workaround for async data
   clientAsyncData(context.app, $nuxt)
