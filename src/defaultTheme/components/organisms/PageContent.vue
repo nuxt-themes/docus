@@ -1,6 +1,9 @@
 <template>
   <div>
-    <section class="mb-6" :class="{ 'border-b border-gray-100 dark:border-gray-800 pb-6': page.description }">
+    <section
+      class="mb-6"
+      :class="{ 'border-b border-gray-100 dark:border-gray-800 dark:border-opacity-50 pb-6': page.description }"
+    >
       <div class="flex items-center justify-between">
         <InjectComponent
           v-if="page.icon"

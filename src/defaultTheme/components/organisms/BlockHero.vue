@@ -63,7 +63,7 @@
         </div>
       </div>
       <div v-if="snippet" class="w-full mx-auto lg:w-1/3 sm:w-580px">
-        <div class="md:pl-2">
+        <div class="md:pl-2 -mx-4 md:mx">
           <Terminal :snippet="snippet" />
         </div>
       </div>

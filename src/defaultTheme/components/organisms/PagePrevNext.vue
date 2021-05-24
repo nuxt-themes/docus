@@ -17,7 +17,7 @@
           group
           xs:w-auto
           dark:text-gray-400
-          dark:border-gray-800
+          dark:border-gray-800 dark:border-opacity-50
           dark:hover:text-primary-400
           hover:text-primary
           hover:border-primary-400
@@ -59,6 +59,7 @@
           hover:text-primary
           hover:border-primary
           dark:hover:border-gray-700
+          dark:border-opacity-50
         "
       >
         <span class="relative flex flex-col items-start truncate">

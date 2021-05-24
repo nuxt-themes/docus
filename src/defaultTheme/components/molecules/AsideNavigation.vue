@@ -54,7 +54,7 @@
           h-(full-header)
         "
       >
-        <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
+        <div class="py-4 pl-6 pr-24 sm:pl-8 lg:pr-0 lg:pt-10">
           <AsideTop />
           <ul>
             <template v-for="link in links">
