@@ -7,7 +7,6 @@ navigation: false
 ---
 
 :::block-hero
-description: description
 cta:
   - Get started
   - /get-started/installation
