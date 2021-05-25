@@ -7,9 +7,9 @@
       </InjectComponent>
       <div class="text-lg xl:text-xl">
         <h3 class="mb-2 font-semibold inline mr-1">{{ title }}</h3>
-        <div class="inline font-semibold text-gray-400 dark:text-gray-500">
+        <div class="inline font-medium text-gray-400 dark:text-gray-500">
           <slot name="description">
-            <p v-if="description" class="inline font-semibold">{{ description }}</p>
+            <p v-if="description" class="inline font-medium">{{ description }}</p>
           </slot>
         </div>
       </div>
