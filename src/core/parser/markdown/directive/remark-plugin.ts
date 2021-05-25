@@ -9,15 +9,15 @@ ${yamlString}
 export default function htmlDirectives({ directives }) {
   const parser = useMarkdownParser()
 
-  function processNode(node) {
+  function getNodeData(node) {
     if (!node.rawData) {
-      return { data: {} }
+      return {}
     }
 
     const yaml = node.rawData
     const { data } = parser.parseFrontMatter(toFrontMatter(yaml))
 
-    return { data }
+    return data
   }
 
   function bindData(data, pageData) {
@@ -42,7 +42,7 @@ export default function htmlDirectives({ directives }) {
       const data = node.data || (node.data = {})
       const hast = h(node.name, node.attributes)
 
-      const { data: nodeData } = processNode(node)
+      const nodeData = getNodeData(node)
 
       data.hName = hast.tagName
       data.hProperties = bindData(

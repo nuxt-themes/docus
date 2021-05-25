@@ -25,6 +25,12 @@ exports.exit = {
       this.exit(token)
     }
   },
+  listOrdered(token) {
+    const section = this.stack[this.stack.length - 1]
+    if (section.type === 'list') {
+      this.exit(token)
+    }
+  },
   listItem(token) {
     const section = this.stack[this.stack.length - 1]
     if (section.type === 'listItem') {
