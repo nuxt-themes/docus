@@ -20,8 +20,8 @@
       xl:bg-transparent
       lg:left-60
       xl:left-0
-      pl-6
-      sm:pl-8
+      pl-4
+      sm:pl-6
       xl:w-64
       top-header
       xl:block

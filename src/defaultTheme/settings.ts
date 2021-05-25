@@ -46,7 +46,7 @@ const defaultThemeSettings = {
     'dark-img': 'light:hidden',
     // Container
     'max-w-container': 'max-w-8xl',
-    'px-container': 'px-6 sm:px-8',
+    'px-container': 'px-4 sm:px-6',
     'd-container': 'max-w-container mx-auto',
     'd-container-content': 'd-container px-container',
     // Header
