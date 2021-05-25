@@ -17,7 +17,8 @@ export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
 export const Markdown = {
   functional: true,
   render: (_h, ctx) => {
-    let node = ctx.props.node
+    const slot = ctx.props.slot || 'default'
+    let node = ctx.props.node || ctx.parent.$scopedSlots[slot] || ctx.parent.$slots[slot]
     if (typeof node === 'function') {
       node = node()
     }

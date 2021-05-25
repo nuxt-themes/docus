@@ -17,7 +17,7 @@
             sm:mb-8
           "
         >
-          <Markdown :node="$scopedSlots.title || title" unwrap="p" />
+          <Markdown slot="title" unwrap="p" />
         </h2>
         <p
           class="
@@ -31,7 +31,7 @@
             dark:text-gray-300
           "
         >
-          <Markdown :node="$scopedSlots.description || description" unwrap="p" />
+          <Markdown slot="description" unwrap="p" />
         </p>
 
         <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-8">
