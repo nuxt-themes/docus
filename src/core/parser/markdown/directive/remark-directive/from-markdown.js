@@ -19,10 +19,33 @@ exports.exit = {
   directiveContainerSectionTitle(token) {
     this.stack[this.stack.length - 1].name = this.sliceSerialize(token)
   },
-  directiveContainerSection(token) {
+  listUnordered(token) {
     const section = this.stack[this.stack.length - 1]
-    section.raw = this.sliceSerialize(token)
-    this.exit(token)
+    if (section.type === 'list') {
+      this.exit(token)
+    }
+  },
+  listItem(token) {
+    const section = this.stack[this.stack.length - 1]
+    if (section.type === 'listItem') {
+      this.exit(token)
+    }
+  },
+  directiveContainerSection(token) {
+    let section = this.stack[this.stack.length - 1]
+    /**
+     * Ensure lists and list-items are closed before closing section
+     * This issue occurs because `---` separtors ar conflict with markdown lists
+     */
+    while (section.type === 'listItem' || section.type === 'list') {
+      this.exit(this.tokenStack[this.tokenStack.length - 1])
+      section = this.stack[this.stack.length - 1]
+    }
+
+    if (section.type === 'directiveContainerSection') {
+      section.raw = this.sliceSerialize(token)
+      this.exit(token)
+    }
   },
   directiveContainer(token) {
     const container = this.stack[this.stack.length - 1]
