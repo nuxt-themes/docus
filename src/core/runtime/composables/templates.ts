@@ -1,6 +1,6 @@
 import { pascalCase } from 'scule'
 import Vue from 'vue'
-import { ComputedRef } from 'vue-demi'
+import { ComputedRef } from '@nuxtjs/composition-api'
 import { DocusAddonContext, DocusDocument, NavItem } from '../../../types'
 
 export const useDocusTemplates = ({ api, state }: Partial<DocusAddonContext>, currentNav: ComputedRef<NavItem[]>) => {
