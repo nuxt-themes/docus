@@ -7,13 +7,13 @@ navigation: false
 ---
 
 :::block-hero
+snippet: npx degit nuxtlabs/docus-starter#main docs
 cta:
   - Get started
   - /get-started/installation
 secondary:
   - Open on GitHub
   - https://github.com/nuxtlabs/docus
-snippet: npx degit nuxtlabs/docus-starter#main docs
 
 ---title
 Documentation Generator based on Nuxt and Windi.
