@@ -1,39 +1,35 @@
-'use strict'
+import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import asciiAlpha from 'micromark/dist/character/ascii-alpha'
+import asciiAlphanumeric from 'micromark/dist/character/ascii-alphanumeric'
+import markdownLineEnding from 'micromark/dist/character/markdown-line-ending'
+import markdownLineEndingOrSpace from 'micromark/dist/character/markdown-line-ending-or-space'
+import markdownSpace from 'micromark/dist/character/markdown-space'
+import createWhitespace from 'micromark/dist/tokenize/factory-whitespace'
+import createSpace from 'micromark/dist/tokenize/factory-space'
 
-module.exports = createAttributes
-
-var asciiAlpha = require('micromark/dist/character/ascii-alpha')
-var asciiAlphanumeric = require('micromark/dist/character/ascii-alphanumeric')
-var markdownLineEnding = require('micromark/dist/character/markdown-line-ending')
-var markdownLineEndingOrSpace = require('micromark/dist/character/markdown-line-ending-or-space')
-var markdownSpace = require('micromark/dist/character/markdown-space')
-var createWhitespace = require('micromark/dist/tokenize/factory-whitespace')
-var createSpace = require('micromark/dist/tokenize/factory-space')
-
-/* eslint-disable-next-line max-params */
-function createAttributes(
-  effects,
-  ok,
-  nok,
-  attributesType,
-  attributesMarkerType,
-  attributeType,
-  attributeIdType,
-  attributeClassType,
-  attributeNameType,
-  attributeInitializerType,
-  attributeValueLiteralType,
-  attributeValueType,
-  attributeValueMarker,
-  attributeValueData,
-  disallowEol
+export default function createAttributes(
+  effects: Effects,
+  ok: Okay,
+  nok: NotOkay,
+  attributesType: string,
+  attributesMarkerType: string,
+  attributeType: string,
+  attributeIdType: string,
+  attributeClassType: string,
+  attributeNameType: string,
+  attributeInitializerType: string,
+  attributeValueLiteralType: string,
+  attributeValueType: string,
+  attributeValueMarker: string,
+  attributeValueData: string,
+  disallowEol?: boolean
 ) {
-  var type
-  var marker
+  let type
+  let marker
 
   return start
 
-  function start(code) {
+  function start(code: number) {
     // Always a `{`
     effects.enter(attributesType)
     effects.enter(attributesMarkerType)
@@ -42,7 +38,7 @@ function createAttributes(
     return between
   }
 
-  function between(code) {
+  function between(code: number) {
     if (code === 35 /* `#` */) {
       type = attributeIdType
       return shortcutStart(code)
@@ -71,7 +67,7 @@ function createAttributes(
     return end(code)
   }
 
-  function shortcutStart(code) {
+  function shortcutStart(code: number) {
     effects.enter(attributeType)
     effects.enter(type)
     effects.enter(type + 'Marker')
@@ -80,7 +76,7 @@ function createAttributes(
     return shortcutStartAfter
   }
 
-  function shortcutStartAfter(code) {
+  function shortcutStartAfter(code: number) {
     if (
       code === null /* EOF */ ||
       code === 34 /* `"` */ ||
@@ -102,7 +98,7 @@ function createAttributes(
     return shortcut
   }
 
-  function shortcut(code) {
+  function shortcut(code: number) {
     if (
       code === null /* EOF */ ||
       code === 34 /* `"` */ ||
@@ -115,12 +111,7 @@ function createAttributes(
       return nok(code)
     }
 
-    if (
-      code === 35 /* `#` */ ||
-      code === 46 /* `.` */ ||
-      code === 125 /* `}` */ ||
-      markdownLineEndingOrSpace(code)
-    ) {
+    if (code === 35 /* `#` */ || code === 46 /* `.` */ || code === 125 /* `}` */ || markdownLineEndingOrSpace(code)) {
       effects.exit(type + 'Value')
       effects.exit(type)
       effects.exit(attributeType)
@@ -131,7 +122,7 @@ function createAttributes(
     return shortcut
   }
 
-  function name(code) {
+  function name(code: number) {
     if (
       code === 45 /* `-` */ ||
       code === 46 /* `.` */ ||
@@ -156,7 +147,7 @@ function createAttributes(
     return nameAfter(code)
   }
 
-  function nameAfter(code) {
+  function nameAfter(code: number) {
     if (code === 61 /* `=` */) {
       effects.enter(attributeInitializerType)
       effects.consume(code)
@@ -169,7 +160,7 @@ function createAttributes(
     return between(code)
   }
 
-  function valueBefore(code) {
+  function valueBefore(code: number) {
     if (
       code === null /* EOF */ ||
       code === 60 /* `<` */ ||
@@ -206,7 +197,7 @@ function createAttributes(
     return valueUnquoted
   }
 
-  function valueUnquoted(code) {
+  function valueUnquoted(code: number) {
     if (
       code === null /* EOF */ ||
       code === 34 /* `"` */ ||
@@ -230,7 +221,7 @@ function createAttributes(
     return valueUnquoted
   }
 
-  function valueQuotedStart(code) {
+  function valueQuotedStart(code: number) {
     if (code === marker) {
       effects.enter(attributeValueMarker)
       effects.consume(code)
@@ -244,7 +235,7 @@ function createAttributes(
     return valueQuotedBetween(code)
   }
 
-  function valueQuotedBetween(code) {
+  function valueQuotedBetween(code: number) {
     if (code === marker) {
       effects.exit(attributeValueType)
       return valueQuotedStart(code)
@@ -256,9 +247,7 @@ function createAttributes(
 
     // Note: blank lines can’t exist in content.
     if (markdownLineEnding(code)) {
-      return disallowEol
-        ? nok(code)
-        : createWhitespace(effects, valueQuotedBetween)(code)
+      return disallowEol ? nok(code) : createWhitespace(effects, valueQuotedBetween)(code)
     }
 
     effects.enter(attributeValueData)
@@ -266,12 +255,8 @@ function createAttributes(
     return valueQuoted
   }
 
-  function valueQuoted(code) {
-    if (
-      code === marker ||
-      code === null /* EOF */ ||
-      markdownLineEnding(code)
-    ) {
+  function valueQuoted(code: number) {
+    if (code === marker || code === null /* EOF */ || markdownLineEnding(code)) {
       effects.exit(attributeValueData)
       return valueQuotedBetween(code)
     }
@@ -280,13 +265,11 @@ function createAttributes(
     return valueQuoted
   }
 
-  function valueQuotedAfter(code) {
-    return code === 125 /* `}` */ || markdownLineEndingOrSpace(code)
-      ? between(code)
-      : end(code)
+  function valueQuotedAfter(code: number) {
+    return code === 125 /* `}` */ || markdownLineEndingOrSpace(code) ? between(code) : end(code)
   }
 
-  function end(code) {
+  function end(code: number) {
     if (code === 125 /* `}` */) {
       effects.enter(attributesMarkerType)
       effects.consume(code)

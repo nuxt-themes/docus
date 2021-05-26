@@ -1,29 +1,22 @@
-'use strict'
+import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import createAttributes from './factory-attributes'
+import createLabel from './factory-label'
+import createName from './factory-name'
 
-exports.tokenize = tokenizeDirectiveText
-exports.previous = previous
+const label: any = { tokenize: tokenizeLabel, partial: true }
+const attributes: any = { tokenize: tokenizeAttributes, partial: true }
 
-var createAttributes = require('./factory-attributes')
-var createLabel = require('./factory-label')
-var createName = require('./factory-name')
-
-var label = {tokenize: tokenizeLabel, partial: true}
-var attributes = {tokenize: tokenizeAttributes, partial: true}
-
-function previous(code) {
+function previous(code: number) {
   // If there is a previous code, there will always be a tail.
-  return (
-    code !== 58 /* `:` */ ||
-    this.events[this.events.length - 1][1].type === 'characterEscape'
-  )
+  return code !== 58 /* `:` */ || this.events[this.events.length - 1][1].type === 'characterEscape'
 }
 
-function tokenizeDirectiveText(effects, ok, nok) {
-  var self = this
+function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
+  const self = this
 
   return start
 
-  function start(code) {
+  function start(code: number) {
     /* istanbul ignore if - handled by mm */
     if (code !== 58 /* `:` */) throw new Error('expected `:`')
 
@@ -39,39 +32,31 @@ function tokenizeDirectiveText(effects, ok, nok) {
     return createName.call(self, effects, afterName, nok, 'directiveTextName')
   }
 
-  function afterName(code) {
-    return code === 58 /* `:` */
-      ? nok(code)
-      : code === 91 /* `[` */
-      ? effects.attempt(label, afterLabel, afterLabel)(code)
-      : afterLabel(code)
+  function afterName(code: number) {
+    if (code === 58 /* `:` */) {
+      return nok(code)
+    }
+    return code === 91 /* `[` */ ? effects.attempt(label, afterLabel, afterLabel)(code) : afterLabel(code)
   }
 
-  function afterLabel(code) {
+  function afterLabel(code: number) {
     return code === 123 /* `{` */
       ? effects.attempt(attributes, afterAttributes, afterAttributes)(code)
       : afterAttributes(code)
   }
 
-  function afterAttributes(code) {
+  function afterAttributes(code: number) {
     effects.exit('directiveText')
     return ok(code)
   }
 }
 
-function tokenizeLabel(effects, ok, nok) {
+function tokenizeLabel(effects: Effects, ok: Okay, nok: NotOkay) {
   // Always a `[`
-  return createLabel(
-    effects,
-    ok,
-    nok,
-    'directiveTextLabel',
-    'directiveTextLabelMarker',
-    'directiveTextLabelString'
-  )
+  return createLabel(effects, ok, nok, 'directiveTextLabel', 'directiveTextLabelMarker', 'directiveTextLabelString')
 }
 
-function tokenizeAttributes(effects, ok, nok) {
+function tokenizeAttributes(effects: Effects, ok: Okay, nok: NotOkay) {
   // Always a `{`
   return createAttributes(
     effects,
@@ -89,4 +74,9 @@ function tokenizeAttributes(effects, ok, nok) {
     'directiveTextAttributeValueMarker',
     'directiveTextAttributeValueData'
   )
+}
+
+export default {
+  tokenize,
+  previous
 }

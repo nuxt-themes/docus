@@ -1,12 +1,9 @@
-'use strict'
+import decode from 'parse-entities/decode-entity'
 
-module.exports = createDirectiveHtmlExtension
+const own = {}.hasOwnProperty
 
-var decode = require('parse-entities/decode-entity')
-var own = {}.hasOwnProperty
-
-function createDirectiveHtmlExtension(options) {
-  var extensions = options || {}
+export default function createDirectiveHtmlExtension(options) {
+  const extensions = options || {}
 
   return {
     enter: {
@@ -68,13 +65,13 @@ function createDirectiveHtmlExtension(options) {
   }
 
   function enter(type) {
-    var stack = this.getData('directiveStack')
+    let stack = this.getData('directiveStack')
     if (!stack) this.setData('directiveStack', (stack = []))
-    stack.push({type: type})
+    stack.push({ type })
   }
 
   function exitName(token) {
-    var stack = this.getData('directiveStack')
+    const stack = this.getData('directiveStack')
     stack[stack.length - 1].name = this.sliceSerialize(token)
   }
 
@@ -83,8 +80,8 @@ function createDirectiveHtmlExtension(options) {
   }
 
   function exitLabel() {
-    var data = this.resume()
-    var stack = this.getData('directiveStack')
+    const data = this.resume()
+    const stack = this.getData('directiveStack')
     stack[stack.length - 1].label = data
   }
 
@@ -94,17 +91,11 @@ function createDirectiveHtmlExtension(options) {
   }
 
   function exitAttributeIdValue(token) {
-    this.getData('directiveAttributes').push([
-      'id',
-      decodeLight(this.sliceSerialize(token))
-    ])
+    this.getData('directiveAttributes').push(['id', decodeLight(this.sliceSerialize(token))])
   }
 
   function exitAttributeClassValue(token) {
-    this.getData('directiveAttributes').push([
-      'class',
-      decodeLight(this.sliceSerialize(token))
-    ])
+    this.getData('directiveAttributes').push(['class', decodeLight(this.sliceSerialize(token))])
   }
 
   function exitAttributeName(token) {
@@ -114,18 +105,16 @@ function createDirectiveHtmlExtension(options) {
   }
 
   function exitAttributeValue(token) {
-    var attributes = this.getData('directiveAttributes')
-    attributes[attributes.length - 1][1] = decodeLight(
-      this.sliceSerialize(token)
-    )
+    const attributes = this.getData('directiveAttributes')
+    attributes[attributes.length - 1][1] = decodeLight(this.sliceSerialize(token))
   }
 
   function exitAttributes() {
-    var stack = this.getData('directiveStack')
-    var attributes = this.getData('directiveAttributes')
-    var cleaned = {}
-    var index = -1
-    var attribute
+    const stack = this.getData('directiveStack')
+    const attributes = this.getData('directiveAttributes')
+    const cleaned: any = {}
+    let index = -1
+    let attribute
 
     while (++index < attributes.length) {
       attribute = attributes[index]
@@ -147,23 +136,23 @@ function createDirectiveHtmlExtension(options) {
   }
 
   function exitContainerContent() {
-    var data = this.resume()
-    var stack = this.getData('directiveStack')
+    const data = this.resume()
+    const stack = this.getData('directiveStack')
     stack[stack.length - 1].content = data
   }
 
   function exitContainerFence() {
-    var stack = this.getData('directiveStack')
-    var directive = stack[stack.length - 1]
+    const stack = this.getData('directiveStack')
+    const directive = stack[stack.length - 1]
     if (!directive.fenceCount) directive.fenceCount = 0
     directive.fenceCount++
     if (directive.fenceCount === 1) this.setData('slurpOneLineEnding', true)
   }
 
   function exit() {
-    var directive = this.getData('directiveStack').pop()
-    var found
-    var result
+    const directive = this.getData('directiveStack').pop()
+    let found
+    let result
 
     if (own.call(extensions, directive.name)) {
       result = extensions[directive.name].call(this, directive)
@@ -182,10 +171,7 @@ function createDirectiveHtmlExtension(options) {
 }
 
 function decodeLight(value) {
-  return value.replace(
-    /&(#(\d{1,7}|x[\da-f]{1,6})|[\da-z]{1,31});/gi,
-    decodeIfPossible
-  )
+  return value.replace(/&(#(\d{1,7}|x[\da-f]{1,6})|[\da-z]{1,31});/gi, decodeIfPossible)
 }
 
 function decodeIfPossible($0, $1) {

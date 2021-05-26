@@ -1,5 +1,16 @@
+import repeatString from 'repeat-string'
+import encode from 'stringify-entities/light'
+import visit from 'unist-util-visit-parents'
+import flow from 'mdast-util-to-markdown/lib/util/container-flow'
+import phrasing from 'mdast-util-to-markdown/lib/util/container-phrasing'
+import checkQuote from 'mdast-util-to-markdown/lib/util/check-quote'
+
+const own = {}.hasOwnProperty
+
+const shortcut = /^[^\t\n\r "#'.<=>`}]+$/
+
 // TODO: convert container sections to markdown
-exports.unsafe = [
+const unsafe = [
   {
     character: '\r',
     inConstruct: ['leafDirectiveLabel', 'containerDirectiveLabel']
@@ -17,24 +28,13 @@ exports.unsafe = [
   { atBreak: true, character: ':', after: ':' }
 ]
 
-exports.handlers = {
+const handlers = {
   containerDirective: handleDirective,
   leafDirective: handleDirective,
   textDirective: handleDirective
 }
 
 handleDirective.peek = peekDirective
-
-const repeatString = require('repeat-string')
-const encode = require('stringify-entities/light')
-const visit = require('unist-util-visit-parents')
-const flow = require('mdast-util-to-markdown/lib/util/container-flow')
-const phrasing = require('mdast-util-to-markdown/lib/util/container-phrasing')
-const checkQuote = require('mdast-util-to-markdown/lib/util/check-quote')
-
-const own = {}.hasOwnProperty
-
-const shortcut = /^[^\t\n\r "#'.<=>`}]+$/
 
 function handleDirective(node, _, context) {
   const prefix = fence(node)
@@ -58,18 +58,15 @@ function peekDirective() {
 
 function label(node, context) {
   let label = node
-  let exit
-  let subexit
-  let value
 
   if (node.type === 'containerDirective') {
     if (!inlineDirectiveLabel(node)) return ''
     label = node.children[0]
   }
 
-  exit = context.enter('label')
-  subexit = context.enter(node.type + 'Label')
-  value = phrasing(label, context, { before: '[', after: ']' })
+  const exit = context.enter('label')
+  const subexit = context.enter(node.type + 'Label')
+  const value = phrasing(label, context, { before: '[', after: ']' })
   subexit()
   exit()
   return value ? '[' + value + ']' : ''
@@ -154,7 +151,7 @@ function fence(node) {
 
   return repeatString(':', size)
 
-  function onvisit(node, parents) {
+  function onvisit(_node, parents) {
     let index = parents.length
     let nesting = 0
 
@@ -166,4 +163,9 @@ function fence(node) {
 
     if (nesting > size) size = nesting
   }
+}
+
+export default {
+  handlers,
+  unsafe
 }

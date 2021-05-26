@@ -1,6 +1,5 @@
-module.exports = createLabel
-
-var markdownLineEnding = require('micromark/dist/character/markdown-line-ending')
+import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import markdownLineEnding from 'micromark/dist/character/markdown-line-ending'
 
 // This is a fork of:
 // <https://github.com/micromark/micromark/blob/bf53bf9/lib/tokenize/factory-label.js>
@@ -8,21 +7,21 @@ var markdownLineEnding = require('micromark/dist/character/markdown-line-ending'
 // text instead of strings, and optionally disallows EOLs.
 
 // eslint-disable-next-line max-params
-function createLabel(
-  effects,
-  ok,
-  nok,
-  type,
-  markerType,
-  stringType,
-  disallowEol
+export default function createLabel(
+  effects: Effects,
+  ok: Okay,
+  nok: NotOkay,
+  type: string,
+  markerType: string,
+  stringType: string,
+  disallowEol?: boolean
 ) {
-  var size = 0
-  var balance = 0
+  let size = 0
+  let balance = 0
 
   return start
 
-  function start(code) {
+  function start(code: number) {
     /* istanbul ignore if - always `[` */
     if (code !== 91 /* `[` */) throw new Error('expected `[`')
     effects.enter(type)
@@ -32,7 +31,7 @@ function createLabel(
     return afterStart
   }
 
-  function afterStart(code) {
+  function afterStart(code: number) {
     if (code === 93 /* `]` */) {
       effects.enter(markerType)
       effects.consume(code)
@@ -45,7 +44,7 @@ function createLabel(
     return atBreak(code)
   }
 
-  function atBreak(code) {
+  function atBreak(code: number) {
     if (
       code === null /* EOF */ ||
       /* <https://github.com/micromark/micromark/blob/bf53bf9/lib/constant/constants.js#L34> */
@@ -69,11 +68,12 @@ function createLabel(
       return atBreak
     }
 
-    effects.enter('chunkText', {contentType: 'text'})
+    // @ts-ignore
+    effects.enter('chunkText', { contentType: 'text' })
     return label(code)
   }
 
-  function label(code) {
+  function label(code: number) {
     if (
       code === null /* EOF */ ||
       markdownLineEnding(code) ||
@@ -97,7 +97,7 @@ function createLabel(
     return code === 92 /* `\` */ ? labelEscape : label
   }
 
-  function atClosingBrace(code) {
+  function atClosingBrace(code: number) {
     effects.exit(stringType)
     effects.enter(markerType)
     effects.consume(code)
@@ -106,12 +106,8 @@ function createLabel(
     return ok
   }
 
-  function labelEscape(code) {
-    if (
-      code === 91 /* `[` */ ||
-      code === 92 /* `\` */ ||
-      code === 93 /* `]` */
-    ) {
+  function labelEscape(code: number) {
+    if (code === 91 /* `[` */ || code === 92 /* `\` */ || code === 93 /* `]` */) {
       effects.consume(code)
       size++
       return label
