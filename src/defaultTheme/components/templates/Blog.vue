@@ -1,5 +1,5 @@
 <template>
-  <AppContainer fluid>
+  <div class="max-w-2xl mx-auto py-24 relative">
     <div>
       <div class="max-w-2xl mx-auto py-16 sm:py-24 sm:px-4">
         <div>
@@ -48,13 +48,15 @@
                 </a>
               </div>
             </div>
+          </div>
 
             <NuxtLink class="w-full hover:opacity-75 transition-opacity duration-100" :to="$contentLocalePath(post.to)">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800">
                 <NuxtImg :src="post.imgUrl" width="864" height="378" alt="" />
               </div>
             </NuxtLink>
-          </div>
+          </article>
+        </div>
 
           <div class="flex flex-col w-full">
             <div class="px-4 sm:px-0">
@@ -65,20 +67,52 @@
                 <h1 class="text-2xl font-semibold mb-2">{{ post.title }}</h1>
               </NuxtLink>
 
-              <p class="text-gray-600 dark:text-gray-400 mb-4">{{ post.description }}</p>
-              <NuxtLink
-                class="font-medium hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100"
-                :to="$contentLocalePath(post.to)"
-              >
-                <span>Read More →</span>
-              </NuxtLink>
-            </div>
+      <div class="flex flex-col sm:flex-row w-full">
+        <div
+          class="
+            hidden
+            sm:flex sm:flex-col
+            items-center
+            sm:items-end
+            justify-between
+            sm:w-1/3
+            px-4
+            sm:pr-4
+            mb-4
+            sm:mb-0
+          "
+        >
+          <!-- only show sticky author on desktop layout -->
+          <div class="sticky top-header flex items-center py-2 -my-1.5">
+            <span
+              v-for="(author, index) in post.authors"
+              :key="index"
+              class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-600"
+            >
+              <NuxtImg class="inline-block h-6 w-6 rounded-full" height="24" width="24" :src="author.avatarUrl" alt />
+            </span>
           </div>
-        </article>
+        </div>
+        <div class="sm:w-2/3 px-4 sm:px-0">
+          <NuxtLink
+            class="hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100"
+            :to="$contentLocalePath(post.to)"
+          >
+            <h1 class="text-2xl font-semibold mb-2">{{ post.title }}</h1>
+          </NuxtLink>
+
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{{ post.description }}</p>
+          <NuxtLink
+            class="font-medium hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100"
+            :to="$contentLocalePath(post.to)"
+          >
+            <span>Read More →</span>
+          </NuxtLink>
+        </div>
       </div>
-    </div>
-  </AppContainer>
-</template>
+    </article>
+  </div>
+</div></div></div></template>
 
 <script>
 import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'

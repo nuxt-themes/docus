@@ -1,17 +1,15 @@
 <template>
-  <AppContainer aside>
-    <AppPage>
-      <PageContent :page="page" />
+  <AppPage>
+    <PageContent :page="page" />
 
-      <hr class="mt-10 mb-8 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
+    <hr class="mt-10 mb-8 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
 
-      <PagePrevNext :prev="prev" :next="next" />
+    <PagePrevNext :prev="prev" :next="next" />
 
-      <template #toc>
-        <PageToc v-if="!page.hideToc" :title="page.toc.title" :toc="page.toc.links" />
-      </template>
-    </AppPage>
-  </AppContainer>
+    <template #toc>
+      <PageToc v-if="!page.hideToc" :title="page.toc.title" :toc="page.toc.links" />
+    </template>
+  </AppPage>
 </template>
 
 <script>

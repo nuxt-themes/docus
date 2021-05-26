@@ -1,5 +1,5 @@
 <template>
-  <AppContainer aside>
+  <AppTemplate aside>
     <AppPage>
       <div class="">
         <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
@@ -24,7 +24,7 @@
         <PageToc :toc="toc" title="Versions" />
       </template>
     </AppPage>
-  </AppContainer>
+  </AppTemplate>
 </template>
 
 <script>

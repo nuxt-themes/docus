@@ -1,10 +1,8 @@
 <template>
-  <AppContainer>
-    <AppPage prose class="min-h-screen-sm">
-      <h1>{{ error.message }}</h1>
-      <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
-    </AppPage>
-  </AppContainer>
+  <AppPage prose class="min-h-screen-sm">
+    <h1>{{ error.message }}</h1>
+    <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
+  </AppPage>
 </template>
 
 <script>

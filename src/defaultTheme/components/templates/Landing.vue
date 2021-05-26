@@ -1,11 +1,11 @@
 <template>
-  <AppContainer fluid aside>
+  <AppTemplate>
     <template #aside>
       <AppAside class="block lg:hidden" />
     </template>
 
     <NuxtContent :document="page" />
-  </AppContainer>
+  </AppTemplate>
 </template>
 
 <script>

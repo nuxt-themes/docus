@@ -1,5 +1,5 @@
 <template>
-  <AppContainer aside>
+  <AppTemplate aside>
     <template #aside>
       <!-- TODO: navigation instead -->
       <AppAside class="block lg:hidden" />
@@ -7,11 +7,12 @@
 
     <AppPage>
       <PageContent :page="page" />
+
       <template #toc>
         <PageToc v-if="page.toc" :title="page.toc.title" :toc="page.toc.links" />
       </template>
     </AppPage>
-  </AppContainer>
+  </AppTemplate>
 </template>
 
 <script>
