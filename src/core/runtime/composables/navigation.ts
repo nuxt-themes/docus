@@ -67,7 +67,11 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
         }
 
         // Otherwise, find matching path and get its childrens
-        links = links.find(item => item.to.includes(path)).children
+        links = links.find(item => {
+          const itemPaths = item.to.split('/')
+
+          return itemPaths[index] === path
+        }).children
 
         return links
       }, items)
