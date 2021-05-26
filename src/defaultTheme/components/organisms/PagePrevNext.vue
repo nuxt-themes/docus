@@ -13,7 +13,7 @@
           py-2
           truncate
           border border-gray-100
-          rounded
+          rounded-xl
           group
           xs:w-auto
           dark:text-gray-400
@@ -50,7 +50,7 @@
           mb-2
           truncate
           border border-gray-100
-          rounded
+          rounded-xl
           group
           xs:mb-0
           xs:w-auto
