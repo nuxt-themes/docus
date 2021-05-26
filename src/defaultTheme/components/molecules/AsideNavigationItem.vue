@@ -2,7 +2,7 @@
   <li :class="{ active: isActive }">
     <h5
       v-if="title"
-      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
+      class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100"
       :class="[isActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
       @click="collapse"
     >
@@ -12,7 +12,7 @@
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between pl-3 py-1 transition duration-200 hover:text-primary"
+          class="relative inline-flex items-center justify-between pl-3 py-1 hover:text-primary"
           :class="[
             $docus.isLinkActive(doc.to)
               ? 'text-primary dark:text-primary-400 hover:text-primary '

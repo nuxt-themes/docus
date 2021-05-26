@@ -107,4 +107,6 @@ export default <Module>function themeSetupModule() {
       nuxt.options.watch.push(componentsDirPath)
     }
   })
+
+  options.watch.push(r('./settings.ts'))
 }

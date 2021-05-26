@@ -20,7 +20,7 @@
           dark:border-gray-800 dark:border-opacity-50
           dark:hover:text-primary-400
           hover:text-primary
-          hover:border-primary-400
+          hover:border-primary-200
           dark:hover:border-gray-700
         "
       >
@@ -57,7 +57,7 @@
           dark:text-gray-400
           dark:border-gray-800
           hover:text-primary
-          hover:border-primary
+          hover:border-primary-200
           dark:hover:border-gray-700
           dark:border-opacity-50
         "

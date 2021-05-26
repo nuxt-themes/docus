@@ -1,7 +1,7 @@
 <template>
   <div>
     <section
-      class="mb-6"
+      class="mb-6 mt-4 xl:mt-0"
       :class="{ 'border-b border-gray-100 dark:border-gray-800 dark:border-opacity-50 pb-6': page.description }"
     >
       <div class="flex items-center justify-between">
@@ -12,7 +12,9 @@
         >
           <span class="text-3rem">{{ page.icon }}</span>
         </InjectComponent>
-        <h1 class="flex-1 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100">{{ page.title }}</h1>
+        <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+          {{ page.title }}
+        </h1>
         <span
           v-if="page.draft"
           class="

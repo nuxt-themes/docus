@@ -85,8 +85,11 @@ export default defineComponent({
   }
 
   >>> {
+    strong {
+      @apply font-semibold text-current;
+    }
     a {
-      @apply no-underline border-none font-semibold text-current;
+      @apply underline border-none font-semibold text-current;
       code {
         @apply border border-transparent border-dashed;
       }

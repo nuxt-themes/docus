@@ -9,7 +9,7 @@ h3 {
   /* scroll-margin-block: var(--docs-scroll-margin-block); */
   color: theme('colors.gray.900');
   letter-spacing: theme('letterSpacing.tight');
-  margin-top: 1.5em;
+  margin-top: 1.25em;
   margin-bottom: 0.5em;
   line-height: theme('lineHeight.snug');
   font-weight: theme('fontWeight.semibold');

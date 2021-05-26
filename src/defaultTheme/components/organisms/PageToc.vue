@@ -10,7 +10,7 @@
       mr-8
       text-sm
       bg-white
-      border-b border-gray-100
+      border-b border-gray-200 border-opacity-50
       xl:relative
       xl:border-0
       dark:border-gray-800
@@ -26,7 +26,6 @@
       top-header
       xl:block
       xl:top-0
-      dark:border-opacity-50
     "
   >
     <button

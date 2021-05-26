@@ -6,10 +6,10 @@
         <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ icon }}</span>
       </InjectComponent>
       <div class="text-lg xl:text-xl">
-        <h3 class="mb-2 font-semibold inline mr-1">{{ title }}</h3>
+        <h3 class="mb-2 font-semibold tracking-tight inline mr-1">{{ title }}</h3>
         <div class="inline font-medium text-gray-400 dark:text-gray-500">
           <slot name="description">
-            <p v-if="description" class="inline font-medium">{{ description }}</p>
+            <p v-if="description" class="inline font-medium tracking-tight">{{ description }}</p>
           </slot>
         </div>
       </div>
