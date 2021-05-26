@@ -14,7 +14,5 @@ table {
   width: 100%;
   table-layout: auto;
   text-align: left;
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 </style>

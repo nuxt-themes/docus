@@ -1,8 +1,8 @@
 <template>
   <div>
     <section
-      class="mb-6 mt-4 xl:mt-0"
-      :class="{ 'border-b border-gray-100 dark:border-gray-800 dark:border-opacity-50 pb-6': page.description }"
+      class="mb-4 mt-4 xl:mt-0"
+      :class="{ 'border-b border-gray-100 dark:border-gray-800 dark:border-opacity-50 pb-4': page.description }"
     >
       <div class="flex items-center justify-between">
         <InjectComponent
@@ -37,7 +37,7 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-600 dark:text-gray-300">
+      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-500">
         {{ page.description }}
       </p>
     </section>

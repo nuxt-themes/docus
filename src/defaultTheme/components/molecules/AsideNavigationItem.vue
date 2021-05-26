@@ -12,11 +12,11 @@
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between pl-3 py-1 hover:text-primary"
+          class="relative inline-flex items-center justify-between px-3 py-0.5 my-0.5 rounded-lg"
           :class="[
             $docus.isLinkActive(doc.to)
-              ? 'text-primary dark:text-primary-400 hover:text-primary '
-              : 'text-gray-700 dark:text-gray-400'
+              ? 'text-gray-900 dark:text-gray-200 bg-gray-100 dark:bg-gray-800'
+              : 'text-gray-500 dark:text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800'
           ]"
         >
           <InjectComponent

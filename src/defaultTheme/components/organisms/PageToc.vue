@@ -28,6 +28,7 @@
       xl:top-0
     "
   >
+    <!-- mobile ToC title + button -->
     <button
       class="
         relative
@@ -47,7 +48,7 @@
     >
       <span class="mr-2">{{ title || $t('toc.title') }}</span>
       <IconChevronRight
-        class="w-4 h-4 text-gray-400 transition-transform duration-100 transform"
+        class="w-4 h-4 text-gray-500 transition-transform duration-100 transform"
         :class="[showMobileToc ? 'rotate-90' : 'rotate-0']"
       />
     </button>
@@ -59,7 +60,7 @@
       <PageTocTop />
 
       <h5 class="items-center hidden mb-2 xl:flex">
-        <span class="text-sm font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
+        <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
       </h5>
 
       <ul class="font-medium">
@@ -68,9 +69,9 @@
             :href="`#${link.id}`"
             class="block py-1 transition-colors duration-100 transform"
             :class="{
-              'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
+              'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
                 activeHeadings.includes(link.id) || isActiveParent(link),
-              'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
+              'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
                 !activeHeadings.includes(link.id) && !isActiveParent(link)
             }"
             @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
@@ -83,9 +84,9 @@
               <a
                 :href="`#${childLink.id}`"
                 :class="{
-                  'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
+                  'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
                     activeHeadings.includes(childLink.id),
-                  'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
+                  'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
                     !activeHeadings.includes(childLink.id)
                 }"
                 class="block py-1 pl-3 transition-colors duration-100 transform"
