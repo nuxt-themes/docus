@@ -5,52 +5,65 @@
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default {
+export default defineComponent({
   name: 'PageSlug',
-  middleware({ app, params, redirect }) {
-    if (params.pathMatch === 'index') {
-      redirect(app.localePath('/'))
-    }
-  },
-  async asyncData({ $docus, app, params, error }) {
-    const language = app.i18n.locale
-    const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
-    const draft = false
-    const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
-    if (!page) {
-      return error({ statusCode: 404, message: 'Page not found' })
-    }
 
+  middleware({ app, params, redirect }) {
+    if (params.pathMatch === 'index') redirect(app.localePath('/'))
+  },
+
+  async asyncData({ $docus, app: { i18n }, params, error }) {
+    const language = i18n.locale
+
+    // Get the proper current path
+    const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
+
+    // TODO: Fix the draft system
+    const draft = false
+
+    // Page query
+    const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
+
+    // Break on missing page query
+    if (!page) return error({ statusCode: 404, message: 'Page not found' })
+
+    // Get page template
     page.template = $docus.getPageTemplate(page)
+
+    // Set Docus runtime current page
+    $docus.currentPage.value = page
+
     // Preload the component on client-side navigation
     await Vue.component(page.template)()
 
     return { page }
   },
-  data() {
-    return {
-      page: {}
-    }
-  },
+
   head() {
     const head = {
       title: this.page.title,
       meta: [],
       ...(this.page.head || {})
     }
+
     this.mergeMeta(head.meta, this.pageMeta)
+
     return head
   },
+
   computed: {
     pageMeta() {
       return [
-        // Open Graph
+        // OpenGraph
         { hid: 'og:title', property: 'og:title', content: this.page.title },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: this.page.title },
+        /// Page description
         ...(this.page.description
           ? [
+              // Meta description
               {
                 hid: 'description',
                 name: 'description',
@@ -71,16 +84,13 @@ export default {
             ]
           : [])
       ]
-    },
-    settings() {
-      return this.$docus.settings
     }
   },
+
   mounted() {
-    if (this.page.version) {
-      localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
-    }
+    if (this.page.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
   },
+
   methods: {
     mergeMeta(to, from) {
       from.forEach(newMeta => {
@@ -92,5 +102,5 @@ export default {
       })
     }
   }
-}
+})
 </script>
