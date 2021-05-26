@@ -1,6 +1,6 @@
 <template>
   <div v-if="prev || next" class="flex mb-4 flex-col justify-between font-medium leading-7 xs:space-x-2 xs:flex-row">
-    <div class="flex justify-start w-full xs:w-1/2">
+    <div class="flex justify-start items-center w-full xs:w-1/2">
       <NuxtLink
         v-if="prev"
         :to="$contentLocalePath(prev.to)"
@@ -10,7 +10,7 @@
           justify-start
           w-full
           px-4
-          py-4
+          py-2
           truncate
           border border-gray-100
           rounded
@@ -46,7 +46,7 @@
           justify-end
           w-full
           px-4
-          py-4
+          py-2
           mb-2
           truncate
           border border-gray-100
