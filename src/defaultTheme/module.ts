@@ -83,7 +83,7 @@ export default <Module>function themeSetupModule() {
     windiOptions.scanOptions.include.push(
       join(adminPath, glob),
       join(__dirname, glob),
-      join(options.rootDir, '/node_modules/docus/dist/' + glob),
+      join(options.rootDir, '/node_modules/docus/dist' + glob),
       join(options.themeDir, glob)
     )
 
