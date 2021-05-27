@@ -13,18 +13,6 @@ function parseAsJSON(node: Node, parent: DocusMarkdownNode[]) {
   if (node.type === 'element') {
     const childs = []
 
-    /**
-     * Replace a tag with nuxt-link if relative
-     */
-    if (node.tagName === 'a') {
-      const properties = node.properties as any
-      if ((properties.href || '').startsWith('/')) {
-        node.tagName = 'nuxt-link'
-        properties.to = properties.href
-        delete properties.href
-      }
-    }
-
     const filtered: DocusMarkdownNode = {
       type: 'element',
       tag: node.tagName as string,
