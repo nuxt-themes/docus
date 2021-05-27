@@ -8,14 +8,14 @@
     >
       {{ title }}
     </h5>
-    <ul v-if="!isCollapse || isActive" class="mb-2">
+    <ul v-if="!isCollapse || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="relative inline-flex items-center justify-between px-3 py-1 rounded-lg"
+          class="relative inline-flex items-center justify-between px-2 py-1 rounded-lg"
           :class="[
             $docus.isLinkActive(doc.to)
-              ? 'text-primary-500 dark:text-primary-400 bg-primary-100 dark:bg-primary-900'
+              ? 'text-primary-500 dark:text-primary-400 bg-primary-50 dark:bg-primary-900'
               : 'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400'
           ]"
         >

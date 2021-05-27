@@ -3,7 +3,7 @@
     class="code-block"
     :class="{
       active: active,
-      'p-4 border-2 border-t-0 border-gray-200 dark:border-gray-700 rounded-b-md': preview
+      'p-4 border-2 border-t-0 border-gray-100 dark:border-gray-800 rounded-b-md': preview
     }"
   >
     <slot />
