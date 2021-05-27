@@ -1,8 +1,39 @@
 <template>
-  <a>
+  <NuxtLink v-if="isInternal" :to="href">
+    <slot />
+  </NuxtLink>
+
+  <a v-else :href="href" v-bind="linkAttrs">
     <slot />
   </a>
 </template>
+
+<script>
+import { computed, defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  props: {
+    href: {
+      type: String,
+      default: ''
+    },
+    blank: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    const isInternal = computed(() => props.href.startsWith('/') && props.href.startsWith('//') === false)
+
+    const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
+
+    return {
+      isInternal,
+      linkAttrs
+    }
+  }
+})
+</script>
 
 <style lang="postcss" scoped>
 :not(h1, h2, h3) > a {

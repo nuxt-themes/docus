@@ -4,13 +4,32 @@ import { useDB } from '../database'
 import { useStorage } from '../storage'
 import { NavItem } from '../../types/core'
 
+/**
+ * Find a link from a vue-router to path
+ */
 const findLink = (links: NavItem[], to: string) => links.find(link => link.to === to)
+
+/**
+ * Transform a page slug into natural language title
+ */
 const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
 
+/**
+ * Get a page directory index.md page if exists
+ */
+const getPageIndex = (pages, page): NavItem | undefined =>
+  pages.find(_page => _page.dir === page.dir && _page.slug === '')
+
+/**
+ * Get navigation link for a page
+ */
 const getPageLink = (page: any): NavItem => {
   const slug = (page.slug || page.to).split('/').pop()
+
   const to = withoutTrailingSlash(page.to || `/${slug}`)
+
   let navigation = typeof page.navigation === 'string' ? { slot: page.navigation } : page.navigation
+
   if (navigation !== false) {
     navigation = {
       title: page.title || slugToTitle(to.split('/').pop()) || '',
@@ -38,6 +57,9 @@ const getPageLink = (page: any): NavItem => {
   }
 }
 
+/**
+ * Fetch and update navigation with latest changes
+ */
 export async function updateNavigation(nuxt) {
   const defaultLocale = nuxt.options.i18n?.defaultLocale || 'en'
   const { query } = useDB()
@@ -83,29 +105,38 @@ export async function updateNavigation(nuxt) {
   await Promise.all(tasks)
 }
 
+/**
+ * Create NavItem array to be consumed from runtime plugin.
+ */
 function createNav(pages: any[]) {
   const links: NavItem[] = []
 
   // Add each page to navigation
   pages.forEach((_page: any) => {
-    // TODO: Ignore files directly from core
     if (_page.slug.startsWith('_')) {
       return
     }
+
+    const $index = getPageIndex(pages, _page)
+
     const $page = getPageLink(_page)
 
     // To: '/docs/guide/hello.md' -> dirs: ['docs', 'guide']
     let dirs = $page.to.split('/').filter(_ => _)
 
     // Remove the file part (except if index.md)
-    if (_page.slug !== '') {
-      dirs = dirs.slice(0, -1)
+    if (_page.slug !== '') dirs = dirs.slice(0, -1)
+
+    // Merge index exclusive parameter
+    if ($index && $index.navigation && $index.navigation.exclusive && $page.navigation) {
+      $page.navigation.exclusive = $index.navigation.exclusive
     }
 
     if (!dirs.length) {
       if ($page.navigation) {
         $page.navigation.slot = $page.navigation.slot || 'header'
       }
+
       return links.push($page)
     }
 
@@ -113,15 +144,19 @@ function createNav(pages: any[]) {
     let lastLink: NavItem
 
     dirs.forEach((dir: string, index: number) => {
+      const to = '/' + dirs.slice(0, index + 1).join('/')
+
       // If children has been disabled (nav.children = false)
       if (!currentLinks) return
 
-      let link: NavItem = findLink(currentLinks, '/' + dirs.slice(0, index + 1).join('/'))
+      let link: NavItem = findLink(currentLinks, to)
 
       if (!link) {
         link = getPageLink({
-          slug: dir
+          slug: dir,
+          to
         })
+
         currentLinks.push(link)
       }
       currentLinks = link.children
@@ -134,6 +169,7 @@ function createNav(pages: any[]) {
     if (!_page.slug) {
       if (dirs.length === 1 && $page.navigation) {
         $page.navigation.slot = $page.navigation.slot || 'header'
+        $page.navigation.exclusive = $page.navigation.exclusive || false
       }
 
       mergeLinks(lastLink, $page)

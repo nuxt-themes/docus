@@ -77,7 +77,7 @@
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.0",
     "nuxt-vite": "^0.1.0",
-    "nuxt-windicss": "^0.5.4",
+    "nuxt-windicss": "^0.8.0",
     "ohmyfetch": "^0.1.8",
     "plausible-tracker": "^0.3.1",
     "postinstall-postinstall": "^2.1.0",

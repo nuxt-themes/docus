@@ -7,6 +7,7 @@ import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import clearModule from 'clear-module'
 import jiti from 'jiti'
+import fg from 'fast-glob'
 import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
@@ -55,26 +56,35 @@ export default <Module>function themeSetupModule() {
   // Get Windi config at user project level
   const localWindiConfig = loadWindiConfig(options)
 
-  hook('windicss:options', (windiOptions: WindiConfig) => {
+  hook('windicss:options', async (windiOptions: WindiConfig) => {
     // Merge user and theme Windi configs
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, localWindiConfig || {}, defaultWindiConfig)
 
-    // Include local & npm depencies directories in scan process
-    windiOptions.scanOptions.dirs.push(
-      __dirname,
-      join(__dirname, '/node_modules/docus/dist'),
-      join(options.rootDir, '/node_modules/docus/dist'),
-      join(options.themeDir)
-    )
+    // Glob grabbing all Docus files
+    const transformFiles = await fg('**/*.{vue,css}', {
+      cwd: join(options.rootDir, '/node_modules/docus/dist'),
+      onlyFiles: true,
+      absolute: true
+    })
+
+    // Make sure file @apply's get transformed
+    windiOptions.scanOptions.extraTransformTargets = {
+      css: transformFiles.filter((f: string) => f.endsWith('.css')),
+      detect: transformFiles.filter((f: string) => f.endsWith('.vue'))
+    }
+
+    // Trailing glob used for includes
+    const glob = '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css}'
 
     // Resolve admin runtime path
     const adminPath = join(__dirname, '../admin')
 
+    // Push every included path into scan options
     windiOptions.scanOptions.include.push(
-      join(adminPath, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
-      join(__dirname, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
-      join(options.rootDir, '/node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}'),
-      join(options.themeDir, '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte}')
+      join(adminPath, glob),
+      join(__dirname, glob),
+      join(options.rootDir, '/node_modules/docus/dist/' + glob),
+      join(options.themeDir, glob)
     )
 
     // Merge shortcuts
@@ -82,6 +92,8 @@ export default <Module>function themeSetupModule() {
       ...(windiOptions.shortcuts || {}),
       ...(settings?.theme?.shortcuts || {})
     }
+
+    return windiOptions
   })
 
   hook('components:dirs', async (dirs: any) => {

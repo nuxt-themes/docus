@@ -20,8 +20,8 @@
 
     <template v-if="!theme.header.title && theme.header.logo">
       <span>
-        <img v-if="$colorMode.value === 'light'" :src="logo.light" class="w-auto h-8" :alt="settings.title" />
-        <img v-if="$colorMode.value === 'dark'" :src="logo.dark" class="w-auto h-8" :alt="settings.title" />
+        <img :src="logo.light" class="w-auto h-8 dark:hidden" :alt="settings.title" />
+        <img :src="logo.dark" class="w-auto h-8 light:hidden" :alt="settings.title" />
       </span>
     </template>
   </div>
