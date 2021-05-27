@@ -1,7 +1,7 @@
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
 import markdownLineEnding from 'micromark/dist/character/markdown-line-ending'
 import createSpace from 'micromark/dist/tokenize/factory-space'
-import prefixSize from 'micromark/dist/util/prefix-size'
+import sizeChunks from 'micromark/dist/util/size-chunks'
 import createAttributes from './factory-attributes'
 import createLabel from './factory-label'
 import createName from './factory-name'
@@ -9,9 +9,27 @@ import createName from './factory-name'
 const label: any = { tokenize: tokenizeLabel, partial: true }
 const attributes: any = { tokenize: tokenizeAttributes, partial: true }
 
+/**
+ * Calculate line indention size, line indention could be consists of multiple `linePrefix` events
+ * @param events parser tokens
+ * @returns line indention size
+ */
+function linePrefixSize(events) {
+  let size = 0
+  let index = events.length - 1
+  let tail = events[index]
+  while (index >= 0 && tail && tail[1].type === 'linePrefix') {
+    size += sizeChunks(tail[2].sliceStream(tail[1]))
+    index -= 1
+    tail = events[index]
+  }
+
+  return size
+}
+
 function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   const self = this
-  const initialPrefix = prefixSize(this.events, 'linePrefix')
+  const initialPrefix = linePrefixSize(this.events)
   let sizeOpen = 0
   let previous
   const containerSequenceSize = []
@@ -29,10 +47,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
   function tokenizeClosingSection(effects: Effects, ok: Okay, nok: NotOkay) {
     let size = 0
+    let sectionIndentSize = 0
 
-    return createSpace(effects, closingPrefixAfter, 'linePrefix', 4)
+    return closingPrefixAfter
 
     function closingPrefixAfter(code: number) {
+      sectionIndentSize = linePrefixSize(self.events)
+      effects.exit('directiveContainerSection')
       effects.enter('directiveContainerSectionSequence')
       return closingSequence(code)
     }
@@ -45,12 +66,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       }
 
       if (size < 3) return nok(code)
+      if (sectionIndentSize !== initialPrefix) return nok(code)
+
       effects.exit('directiveContainerSectionSequence')
       return createSpace(effects, ok, 'whitespace')(code)
     }
   }
   function sectionOpen(code: number) {
-    effects.exit('directiveContainerSection')
     effects.enter('directiveContainerSection')
 
     if (markdownLineEnding(code)) {
@@ -128,30 +150,35 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     return lineStart(code)
   }
 
-  function lineStart(code: number) {
+  function lineStartAfterPrefix(code: number) {
     if (code === null) {
       return after(code)
     }
-    const chunkStartFn = initialPrefix ? createSpace(effects, chunkStart, 'linePrefix', initialPrefix + 1) : chunkStart
 
     if (!containerSequenceSize.length && code === 45 /* `-` */) {
-      return effects.attempt(
-        { tokenize: tokenizeClosingSection, partial: true } as any,
-        sectionOpen,
-        chunkStartFn
-      )(code)
+      return effects.attempt({ tokenize: tokenizeClosingSection, partial: true } as any, sectionOpen, chunkStart)
     }
 
-    const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true } as any, after, chunkStartFn)
+    const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true } as any, after, chunkStart)
 
     /**
      * disbale spliting inner sections
      */
     if (code === 58 /* `:` */) {
-      return effects.check({ tokenize: detectContainer, partial: true } as any, chunkStartFn, attempt)(code)
+      return effects.check({ tokenize: detectContainer, partial: true } as any, chunkStart, attempt)(code)
     }
 
     return attempt
+  }
+
+  function lineStart(code: number) {
+    if (code === null) {
+      return after(code)
+    }
+
+    return initialPrefix
+      ? createSpace(effects, lineStartAfterPrefix, 'linePrefix', initialPrefix + 1)
+      : lineStartAfterPrefix
   }
 
   function chunkStart(code: number) {
@@ -231,11 +258,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   function detectContainer(effects: Effects, ok: Okay, nok: NotOkay) {
     let size = 0
 
-    return openingPrefixAfter
-
-    function openingPrefixAfter(code: number) {
-      return openingSequence(code)
-    }
+    return openingSequence
 
     function openingSequence(code: number) {
       if (code === 58 /* `:` */) {
