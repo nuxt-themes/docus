@@ -15,16 +15,20 @@ function parseAsJSON(node: Node, parent: DocusMarkdownNode[]) {
 
     if (node.tagName === 'prose-li') {
       // unwrap unwanted paragraphs around `<li>` children
+      let hasPreviousParagraph = false
       node.children = (node.children as Node[]).flatMap(child => {
         if (child.tagName === 'prose-paragraph') {
-          return [
-            ...(child.children as Node[]),
-            {
+          if (hasPreviousParagraph) {
+            // Insert line break before new paragraph
+            ;(child.children as Node[]).unshift({
               type: 'element',
               tagName: 'br',
               properties: {}
-            }
-          ]
+            })
+          }
+
+          hasPreviousParagraph = true
+          return child.children
         }
         return child
       })
