@@ -5,7 +5,6 @@ import all from 'mdast-util-to-hast/lib/all'
 
 export default function listItem(h: H, node: Node, parent: Node) {
   const result = all(h, node)
-  let head = result[0]
   const loose = parent ? listLoose(parent) : listItemLoose(node)
   const props: any = {}
   let wrapped = []
@@ -13,16 +12,7 @@ export default function listItem(h: H, node: Node, parent: Node) {
   let child
 
   if (typeof node.checked === 'boolean') {
-    if (!head || head.tagName !== 'p') {
-      head = h(null, 'p', [])
-      result.unshift(head)
-    }
-
-    if (head.children.length > 0) {
-      head.children.unshift(u('text', ' '))
-    }
-
-    head.children.unshift(
+    result.unshift(
       h(null, 'input', {
         type: 'checkbox',
         checked: node.checked,
