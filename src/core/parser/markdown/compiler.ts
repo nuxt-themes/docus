@@ -13,6 +13,23 @@ function parseAsJSON(node: Node, parent: DocusMarkdownNode[]) {
   if (node.type === 'element') {
     const childs = []
 
+    if (node.tagName === 'prose-li') {
+      // unwrap unwanted paragraphs around `<li>` children
+      node.children = (node.children as Node[]).flatMap(child => {
+        if (child.tagName === 'prose-paragraph') {
+          return [
+            ...(child.children as Node[]),
+            {
+              type: 'element',
+              tagName: 'br',
+              properties: {}
+            }
+          ]
+        }
+        return child
+      })
+    }
+
     /**
      * Replace a tag with nuxt-link if relative
      */
