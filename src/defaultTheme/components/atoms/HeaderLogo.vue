@@ -9,8 +9,8 @@
     <template v-if="theme.header.title && theme.header.logo">
       <div class="flex items-center">
         <span class="mr-4">
-          <img v-if="$colorMode.value === 'light'" :src="logo.light" class="w-auto h-8" :alt="settings.title" />
-          <img v-if="$colorMode.value === 'dark'" :src="logo.dark" class="w-auto h-8" :alt="settings.title" />
+          <img :src="logo.light" class="w-auto h-8 dark:hidden" :alt="settings.title" />
+          <img :src="logo.dark" class="w-auto h-8 light:hidden" :alt="settings.title" />
         </span>
         <span class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
           {{ settings.title }}

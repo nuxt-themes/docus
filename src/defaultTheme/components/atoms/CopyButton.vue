@@ -14,29 +14,27 @@
       bg-gray-100
       text-xs
       leading-none
-      rounded-md
+      rounded-lg
       font-mono font-semibold
       dark:text-gray-400
       dark:bg-gray-800
       hover:bg-gray-200
       hover:dark:bg-gray-700
     "
-    :class="state"
+    :class="{
+      'bg-gray-200 dark:bg-gray-700 opacity-100': state === 'copied'
+    }"
   >
     <IconCheck v-if="state === 'copied'" class="w-4 h-4" />
     <IconCopy v-else class="w-4 h-4" />
-    <!-- <span v-if="state === 'copied'">Copied</span>
-    <span v-else>Copy</span> -->
   </button>
 </template>
 
 <script>
 import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
 import Clipboard from 'clipboard'
-import IconClipboardCopy from './icons/IconClipboardCopy.vue'
 
 export default defineComponent({
-  components: { IconClipboardCopy },
   setup() {
     const copy = ref()
     const state = ref('init')

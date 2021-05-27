@@ -45,7 +45,7 @@ const defaultThemeSettings = {
     'light-img': 'dark:hidden',
     'dark-img': 'light:hidden',
     // Container
-    'max-w-container': 'max-w-8xl',
+    'max-w-container': 'max-w-7xl',
     'px-container': 'px-4 sm:px-6',
     'd-container': 'max-w-container mx-auto',
     'd-container-content': 'd-container px-container',

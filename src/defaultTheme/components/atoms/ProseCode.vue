@@ -1,7 +1,7 @@
 <template>
   <div class="docus-highlight group">
     <slot />
-    <CopyButton class="copy-button opacity-0 transition-opacity duration-300" />
+    <CopyButton class="copy-button opacity-0 transition-all duration-300" />
   </div>
 </template>
 
@@ -45,7 +45,7 @@ pre code {
 
   /* Style filename span added by @nuxt/content */
   & > .filename {
-    @apply group-hover:opacity-0 transition-opacity duration-300 absolute top-0 right-0 z-0 m-1 py-1.5 px-2 bg-gray-100 dark:bg-gray-800 rounded-md font-mono font-semibold text-xs leading-none tracking-tight text-gray-600 dark:text-gray-400;
+    @apply group-hover:opacity-0 transition-opacity duration-300 absolute top-0 right-0 z-0 m-1 py-1.5 px-2 bg-gray-100 dark:bg-gray-800 rounded-md font-mono font-medium text-xs leading-none tracking-tight text-gray-600 dark:text-gray-400;
   }
 }
 
