@@ -3,6 +3,7 @@
     v-if="toc.length"
     class="
       sticky
+      z-10
       left-0
       flex-none
       w-full
@@ -63,7 +64,7 @@
         <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
       </h5>
 
-      <ul class="font-medium">
+      <ul class="font-medium ml-4">
         <li v-for="link of toc" :key="link.id" @click="showMobileToc = false">
           <a
             :href="`#${link.id}`"

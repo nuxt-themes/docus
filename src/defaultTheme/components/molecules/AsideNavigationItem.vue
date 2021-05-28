@@ -16,7 +16,7 @@
           :class="[
             $docus.isLinkActive(doc.to)
               ? 'text-primary-500 dark:text-primary-400 bg-primary-50 dark:bg-primary-900'
-              : 'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400'
+              : 'text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400'
           ]"
         >
           <InjectComponent

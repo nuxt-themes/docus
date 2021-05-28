@@ -37,7 +37,7 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-500">
+      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-400">
         {{ page.description }}
       </p>
     </section>
