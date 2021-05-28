@@ -20,7 +20,7 @@ code {
   @apply text-xs leading-relaxed;
   font-weight: 400;
   color: inherit;
-  background-color: theme('colors.gray.100');
+  background-color: transparent !important;
   border-radius: theme('borderRadius.md');
 }
 
@@ -30,10 +30,6 @@ pre code {
 }
 
 .dark {
-  code {
-    background-color: theme('colors.gray.800');
-    border-radius: theme('borderRadius.md');
-  }
   pre code {
     background-color: transparent;
     color: theme('colors.gray.100');
