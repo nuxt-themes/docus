@@ -5,6 +5,7 @@ import sizeChunks from 'micromark/dist/util/size-chunks'
 import createAttributes from './factory-attributes'
 import createLabel from './factory-label'
 import createName from './factory-name'
+import { Codes, ContainerSequenceSize, SectionSequenceSize } from './constants'
 
 const label: any = { tokenize: tokenizeLabel, partial: true }
 const attributes: any = { tokenize: tokenizeAttributes, partial: true }
@@ -18,7 +19,7 @@ function linePrefixSize(events) {
   let size = 0
   let index = events.length - 1
   let tail = events[index]
-  while (index >= 0 && tail && tail[1].type === 'linePrefix') {
+  while (index >= 0 && tail && tail[1].type === 'linePrefix' && tail[0] === 'exit') {
     size += sizeChunks(tail[2].sliceStream(tail[1]))
     index -= 1
     tail = events[index]
@@ -38,14 +39,14 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
   function start(code: number) {
     /* istanbul ignore if - handled by mm */
-    if (code !== 58 /* `:` */) throw new Error('expected `:`')
+    if (code !== Codes.colon) throw new Error('expected `:`')
     effects.enter('directiveContainer')
     effects.enter('directiveContainerFence')
     effects.enter('directiveContainerSequence')
     return sequenceOpen(code)
   }
 
-  function tokenizeClosingSection(effects: Effects, ok: Okay, nok: NotOkay) {
+  function tokenizeSectionClosing(effects: Effects, ok: Okay, nok: NotOkay) {
     let size = 0
     let sectionIndentSize = 0
 
@@ -55,17 +56,17 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       sectionIndentSize = linePrefixSize(self.events)
       effects.exit('directiveContainerSection')
       effects.enter('directiveContainerSectionSequence')
-      return closingSequence(code)
+      return closingSectionSequence(code)
     }
 
-    function closingSequence(code: number) {
-      if (code === 45 /* `-` */) {
+    function closingSectionSequence(code: number) {
+      if (code === Codes.dash) {
         effects.consume(code)
         size++
-        return closingSequence
+        return closingSectionSequence
       }
 
-      if (size < 3) return nok(code)
+      if (size < SectionSequenceSize) return nok(code)
       if (sectionIndentSize !== initialPrefix) return nok(code)
 
       effects.exit('directiveContainerSectionSequence')
@@ -93,13 +94,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function sequenceOpen(code: number) {
-    if (code === 58 /* `:` */) {
+    if (code === Codes.colon) {
       effects.consume(code)
       sizeOpen++
       return sequenceOpen
     }
 
-    if (sizeOpen < 3) {
+    if (sizeOpen < ContainerSequenceSize) {
       return nok(code)
     }
 
@@ -108,11 +109,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function afterName(code: number) {
-    return code === 91 /* `[` */ ? effects.attempt(label, afterLabel, afterLabel)(code) : afterLabel(code)
+    return code === Codes.openningSquareBracket
+      ? effects.attempt(label, afterLabel, afterLabel)(code)
+      : afterLabel(code)
   }
 
   function afterLabel(code: number) {
-    return code === 123 /* `{` */
+    return code === Codes.openningCurlyBracket
       ? effects.attempt(attributes, afterAttributes, afterAttributes)(code)
       : afterAttributes(code)
   }
@@ -155,8 +158,8 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return after(code)
     }
 
-    if (!containerSequenceSize.length && code === 45 /* `-` */) {
-      return effects.attempt({ tokenize: tokenizeClosingSection, partial: true } as any, sectionOpen, chunkStart)
+    if (!containerSequenceSize.length && (code === Codes.dash || code === Codes.space)) {
+      return effects.attempt({ tokenize: tokenizeSectionClosing, partial: true } as any, sectionOpen, chunkStart)
     }
 
     const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true } as any, after, chunkStart)
@@ -164,7 +167,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     /**
      * disbale spliting inner sections
      */
-    if (code === 58 /* `:` */) {
+    if (code === Codes.colon) {
       return effects.check({ tokenize: detectContainer, partial: true } as any, chunkStart, attempt)(code)
     }
 
@@ -231,15 +234,19 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     function closingSequence(code: number) {
-      if (code === 58 /* `:` */) {
+      if (code === Codes.colon) {
         effects.consume(code)
         size++
         return closingSequence
       }
 
-      if (containerSequenceSize.length && size === containerSequenceSize[containerSequenceSize.length - 1]) {
-        containerSequenceSize.pop()
+      if (containerSequenceSize.length) {
+        if (size === containerSequenceSize[containerSequenceSize.length - 1]) {
+          containerSequenceSize.pop()
+        }
+        return nok(code)
       }
+
       // it is important to match sequence
       if (size !== sizeOpen) return nok(code)
       effects.exit('directiveContainerSequence')
@@ -261,14 +268,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     return openingSequence
 
     function openingSequence(code: number) {
-      if (code === 58 /* `:` */) {
+      if (code === Codes.colon) {
         effects.consume(code)
         size++
         return openingSequence
       }
 
-      // it is important to match sequence
-      if (size < 3) return nok(code)
+      if (size < ContainerSequenceSize) return nok(code)
 
       return openingSequenceEnd
     }
