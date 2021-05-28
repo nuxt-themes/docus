@@ -1,58 +1,58 @@
-:::code-group
+::code-group
 
-    ::::code-block{preview label="Preview"}
-        :::::alert
+    ::code-block{preview label="Preview"}
+        ::alert
         type: info
         ---
         ### Features
         - Yaml data
         - Markdown support
-        :::::
-    ::::
+        ::
+    ::
 
     ```md [Code]
-    :::::alert
+    ::alert
     type: info
     ---
     ### Features
     - Yaml data
     - Markdown support
-    :::::
+    ::
     ```
 
-:::
+::
 
 ---
 
-:::code-group
+::code-group
 
-    ::::code-block{preview label="Preview"}
-        ::::::alert
+    ::code-block{preview label="Preview"}
+        ::alert
         type: info
         ---
         Nested Blocks with data
 
-            :::::::alert
+            ::alert
             type: success
             ---
             Yaay
-            :::::::
+            ::
 
-        ::::::
-    ::::
+        ::
+    ::
 
     ```md [Code]
-    ::::::alert
+    ::alert
     type: info
     ---
     Nested Blocks with data
 
-        :::::::alert
+        ::alert
         type: success
         ---
         Yaay
-        :::::::
-    ::::::
+        ::
+    ::
     ```
 
-:::
+::

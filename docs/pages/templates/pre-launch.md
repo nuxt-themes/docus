@@ -4,7 +4,7 @@ title: Pre-launch template
 ---
 
 
-:::pre-launch-hero
+::pre-launch-hero
 title: Awesome startup
 description: Pretty long awesome startup description
 cta:
@@ -12,4 +12,4 @@ cta:
     placeholder: Your email
     label: Get Invite
 ---
-:::
+::
