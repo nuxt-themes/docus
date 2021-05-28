@@ -20,7 +20,7 @@ code {
   @apply text-xs leading-relaxed;
   font-weight: 400;
   color: inherit;
-  background-color: theme('colors.gray.100');
+  background-color: transparent !important;
   border-radius: theme('borderRadius.md');
 }
 

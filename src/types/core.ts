@@ -35,7 +35,7 @@ export interface NavItem {
     self: string
     nested: string
   }
-  navigation: false | NavItemNavigationConfig
+  navigation: NavItemNavigationConfig | false
   children: NavItem[]
   meta: {
     icon?: string
@@ -115,12 +115,20 @@ export interface DocusAddonContext<T = DefaultThemeSettings> {
   api: ReturnType<typeof useDocusApi>
   $nuxt?: any
 }
+
 export type DocusRuntimeInstance<T = DefaultThemeSettings> = {
   settings: Ref<Omit<DocusSettings, 'theme'>>
   navigation: Ref<DocusNavigation>
   theme: Ref<T>
   [key: string]: any
 } & ReturnType<typeof useDocusApi>
+
+export interface DocusNavigationGetParameters {
+  depth?: number
+  locale?: string
+  from?: string
+  all?: boolean
+}
 
 export interface Colors {
   [key: string]: string | Colors

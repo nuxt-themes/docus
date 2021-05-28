@@ -4,7 +4,13 @@ import { nuxtConfig } from 'nuxt-extend'
 const r = (path: any) => resolve(__dirname, path)
 
 export default nuxtConfig({
+  /**
+   * Name for nuxt-extend
+   */
   name: 'docus',
+  /**
+   * RootDir
+   */
   rootDir: __dirname,
 
   /**
@@ -41,15 +47,6 @@ export default nuxtConfig({
    */
   colorMode: {
     classSuffix: ''
-  },
-  /**
-   * Social image local generation by default
-   */
-  socialImage: {
-    baseUrl: 'DOMIN',
-    chrome: {
-      browserWSEndpoint: 'wss://chrome.browserless.io/'
-    }
   },
 
   /**

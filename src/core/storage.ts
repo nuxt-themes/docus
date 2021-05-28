@@ -91,9 +91,11 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
           const content = await fs.getItem(key)
 
           await parseAndIndex(key, content)
-
-          callHook('docus:storage:updated', { event, key })
         }
+        if (event === 'remove') {
+          await items.removeWhere(doc => doc.key === key)
+        }
+        callHook('docus:storage:updated', { event, key })
         callback(event, key)
       })
     }

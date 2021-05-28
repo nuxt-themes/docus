@@ -20,8 +20,8 @@
 
     <template v-if="!theme.header.title && theme.header.logo">
       <span>
-        <img v-if="$colorMode.value === 'light'" :src="logo.light" class="w-auto h-8" :alt="settings.title" />
-        <img v-if="$colorMode.value === 'dark'" :src="logo.dark" class="w-auto h-8" :alt="settings.title" />
+        <img :src="logo.light" class="w-auto h-8 dark:hidden" :alt="settings.title" />
+        <img :src="logo.dark" class="w-auto h-8 light:hidden" :alt="settings.title" />
       </span>
     </template>
   </div>
@@ -38,13 +38,13 @@ export default defineComponent({
     const theme = computed(() => $docus.theme.value)
 
     const logo = computed(() => {
-      if (!theme.value.logo) return
+      if (!theme.value.header.logo) return
 
-      if (typeof theme.value.logo === 'object') return theme.value.logo
+      if (typeof theme.value.header.logo === 'object') return theme.value.header.logo
 
       return {
-        light: theme.value.logo,
-        dark: theme.value.logo
+        light: theme.value.header.logo,
+        dark: theme.value.header.logo
       }
     })
 
