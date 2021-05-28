@@ -1,17 +1,17 @@
 <template>
   <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
-    <Markdown :node="content" />
+    <Markdown unwrap="p ul li" />
   </NuxtLink>
 
   <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
-    <Markdown :node="content" />
+    <Markdown unwrap="p ul li" />
     <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
   </a>
 </template>
 
 <script>
 import { computed, defineComponent } from '@nuxtjs/composition-api'
-import { flatUnwrap, Markdown } from '~docus/utils'
+import { Markdown } from '~docus/utils'
 
 export default defineComponent({
   components: { Markdown },
@@ -41,11 +41,6 @@ export default defineComponent({
     return {
       isInternal,
       linkAttrs
-    }
-  },
-  computed: {
-    content() {
-      return flatUnwrap(this.$slots.default, ['p', 'ul', 'li'])
     }
   }
 })
