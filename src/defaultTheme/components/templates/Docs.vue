@@ -3,7 +3,7 @@
     <AppPage>
       <PageContent :page="page" />
 
-      <hr class="mt-10 mb-4 border-gray-100 dark:border-gray-800" />
+      <hr class="mt-10 mb-8 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
 
       <PagePrevNext :prev="prev" :next="next" />
 

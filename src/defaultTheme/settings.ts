@@ -45,14 +45,14 @@ const defaultThemeSettings = {
     'light-img': 'dark:hidden',
     'dark-img': 'light:hidden',
     // Container
-    'max-w-container': 'max-w-8xl',
+    'max-w-container': 'max-w-7xl',
     'px-container': 'px-4 sm:px-6',
     'd-container': 'max-w-container mx-auto',
     'd-container-content': 'd-container px-container',
     // Header
     'blur-header': 'blur-12',
     'bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
-    'border-header': 'border-b border-gray-100 dark:border-gray-800',
+    'border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
     'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header h-header'
   }
 }

@@ -2,54 +2,47 @@
   <li :class="{ active: isActive }">
     <h5
       v-if="title"
-      class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100"
+      class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100"
       :class="[isActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
       @click="collapse"
     >
       {{ title }}
     </h5>
-    <ul v-if="!isCollapse || isActive" class="mb-2">
+    <ul v-if="!isCollapse || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.to)"
-          class="
-            relative
-            inline-flex
-            items-center
-            justify-between
-            pl-3
-            py-1
-            transition
-            duration-200
-            border-l border-gray-100
-            dark:border-gray-800
-            hover:text-primary
-          "
+          class="block w-full"
           :class="[
             $docus.isLinkActive(doc.to)
-              ? 'text-primary dark:text-primary-400 hover:text-primary border-primary-500 dark:border-primary-500'
-              : 'text-gray-700 dark:text-gray-400'
+              ? 'text-primary-500 dark:text-primary-400'
+              : 'text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400'
           ]"
         >
-          <InjectComponent
-            v-if="doc.icon"
-            :component="doc.icon"
-            class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem"
+          <span
+            class="relative inline-flex items-center justify-between px-2 py-1 rounded-md"
+            :class="[$docus.isLinkActive(doc.to) ? 'bg-primary-50 dark:bg-primary-900' : '']"
           >
-            {{ doc.icon }}
-          </InjectComponent>
+            <InjectComponent
+              v-if="doc.icon"
+              :component="doc.icon"
+              class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem"
+            >
+              {{ doc.icon }}
+            </InjectComponent>
 
-          <span>
-            {{ doc.navigation.title }}
+            <span>
+              {{ doc.navigation.title }}
+            </span>
+
+            <ClientOnly>
+              <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
+              <span
+                v-else-if="isDocumentNew(doc)"
+                class="w-2 h-2 ml-2 rounded-full opacity-75 animate-pulse bg-primary-500"
+              />
+            </ClientOnly>
           </span>
-
-          <ClientOnly>
-            <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
-            <span
-              v-else-if="isDocumentNew(doc)"
-              class="w-2 h-2 ml-2 rounded-full opacity-75 animate-pulse bg-primary-500"
-            />
-          </ClientOnly>
         </NuxtLink>
       </li>
     </ul>

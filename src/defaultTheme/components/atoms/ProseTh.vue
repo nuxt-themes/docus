@@ -5,6 +5,7 @@
 </template>
 
 <style lang="postcss" scoped>
+/* TODO */
 thead th {
   font-weight: theme('fontWeight.semibold');
   vertical-align: bottom;

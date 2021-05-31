@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h5 class="py-2 text-base font-semibold text-gray-900 transition duration-200 cursor-pointer dark:text-gray-100">
-      Resources
-    </h5>
+    <h5 class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100">Resources</h5>
     <ul>
       <li v-for="resource of resources" :key="resource.title">
         <a
