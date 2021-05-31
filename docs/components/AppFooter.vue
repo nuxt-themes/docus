@@ -9,8 +9,8 @@
           class="
             flex
             items-end
-            text-gray-900
-            dark:text-gray-300
+            text-gray-700
+            dark:text-gray-400
             dark:hover:text-gray-100
             hover:text-gray-600
             mb-3

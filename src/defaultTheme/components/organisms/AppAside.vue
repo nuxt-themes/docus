@@ -28,7 +28,7 @@
 
       <!-- mobile aside -->
       <Transition name="slide-from-left-to-left">
-        <AsideNavigation v-if="$menu.visible.value" />
+        <AsideNavigation v-show="$menu.visible.value" />
       </Transition>
     </div>
   </aside>
@@ -46,11 +46,11 @@
 
 .slide-from-left-to-left-enter-active,
 .slide-from-left-to-left-leave-active {
-  transition: transform 200ms, opacity 200ms linear;
+  transition: transform 200ms ease-out, opacity 200ms linear;
 }
 .slide-from-left-to-left-enter,
 .slide-from-left-to-left-leave-to {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translate3d(-50px, 0, 0);
 }
 </style>
