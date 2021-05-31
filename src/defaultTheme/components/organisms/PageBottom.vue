@@ -42,8 +42,6 @@ export default defineComponent({
         .join('/')
     })
 
-    console.log(link)
-
     return {
       link
     }
