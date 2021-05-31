@@ -24,7 +24,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $docus, $config } = useContext()
+    const { $docus } = useContext()
 
     const { value: settings } = computed(() => $docus.settings)
 
@@ -35,7 +35,7 @@ export default defineComponent({
         $docus.repoUrl.value,
         'edit',
         settings.value.github.branch,
-        settings.value.github.dir || $config.contentDir,
+        settings.value.github.dir || '',
         `${props.page.path}${props.page.extension}`.replace(/^\//g, '')
       ]
         .filter(Boolean)
