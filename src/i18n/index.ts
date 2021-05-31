@@ -38,15 +38,14 @@ const config = {
 }
 
 export default <Module>function docusI18n() {
-  const { requireModule, addPlugin, nuxt } = this
+  const { requireModule, addPlugin, nuxt, $docus } = this
   const { options } = nuxt
 
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   config.langDir = join(relative(options.srcDir, r('languages')), '/')
 
   if (!options.i18n?.locales?.length) {
-    const contentDir = resolve(options.srcDir, options.dir.pages)
-
+    const contentDir = resolve(options.srcDir, $docus.settings.contentDir)
     const languageCodes = languages.map(({ code }) => code)
     const activeLanguages = fs.readdirSync(contentDir).filter(name => languageCodes.includes(name))
     activeLanguages.unshift(config.defaultLocale)

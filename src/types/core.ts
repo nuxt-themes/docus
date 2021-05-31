@@ -96,11 +96,10 @@ export interface DocusDocument {
 
 export interface DocusSettings<T = DefaultThemeSettings> {
   title: string
+  contentDir: string
   description: string
   credits: boolean
-  logo: string
   url: string
-  layout: string
   template: string
   theme?: T
   [key: string]: any

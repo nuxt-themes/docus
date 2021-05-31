@@ -48,10 +48,6 @@ export default <Module>async function docusModule() {
   // Inject Docus theme as ~docus
   options.alias['~docus'] = resolve(__dirname, 'runtime')
 
-  // Inject content dir in private runtime config
-  const contentDir = options.dir.pages || 'pages'
-  options.publicRuntimeConfig.contentDir = contentDir
-
   // extend parser options
   const parserOptions: Partial<ParserOptions> = { markdown: {} }
   await nuxt.callHook('docus:parserOptions', parserOptions)
@@ -188,7 +184,11 @@ export default <Module>async function docusModule() {
       options.watch.push(pagesDirPath)
     }
   })
+
   nuxt.callHook('docus:storage:ready')
+
+  // Watch Docus while DOCUS_DEV is set
+  if (process.env.DOCUS_DEV) options.watch.push(resolve(__dirname, '../'))
 
   nuxt.hook('close', () => {
     destroyHooks()
