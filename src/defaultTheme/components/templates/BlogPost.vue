@@ -36,22 +36,26 @@
                 in the page front-matter`
               </div>
               <div v-if="page.authors && page.authors.length" class="text-sm text-gray-400 dark:text-gray-700">|</div>
-              <div class="flex ml-4">
+              <div class="flex ml-4 sm:ml-2">
                 <a
                   v-for="(author, index) in page.authors"
                   :key="index"
                   :href="author.link"
                   target="_blank"
                   rel="noopener noindex nofollow"
-                  class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
+                  class="flex items-center justify-end -ml-2 sm:ml-0 sm:mr-2"
                 >
                   <NuxtImg
-                    class="inline-block h-6 w-6 rounded-full"
+                    class="rounded-full border border-gray-300 dark:border-gray-500 inline-block h-6 w-6 sm:mr-1"
                     height="24"
                     width="24"
                     :src="author.avatarUrl"
-                    alt
+                    :alt="author.name"
+                    :title="author.name"
                   />
+                  <span class="hidden sm:inline-block font-medium text-sm text-gray-800 dark:text-gray-300">
+                    {{ author.name }}
+                  </span>
                 </a>
               </div>
             </div>

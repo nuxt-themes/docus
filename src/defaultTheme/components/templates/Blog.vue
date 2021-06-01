@@ -3,7 +3,6 @@
     <div>
       <div class="max-w-2xl mx-auto py-16 sm:py-24">
         <div>
-          <!-- <h1 class="px-4 sm:px-0 font-bold text-4xl sm:w-2/3 ml-auto mb-12">Blog</h1> -->
           <h1
             class="
               px-4
