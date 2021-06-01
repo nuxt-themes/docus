@@ -46,13 +46,10 @@ export default defineComponent({
     // Set layout from page
     if (page.layout) templateOptions = { ...templateOptions, ...page.layout }
 
-    // Set layout
-    $docus.layout.value = templateOptions
-
     // Set Docus runtime current page
     $docus.currentPage.value = page
 
-    return { page }
+    return { page, templateOptions }
   },
 
   head() {
@@ -99,6 +96,10 @@ export default defineComponent({
           : [])
       ]
     }
+  },
+
+  beforeMount() {
+    this.$docus.layout.value = this.templateOptions
   },
 
   mounted() {
