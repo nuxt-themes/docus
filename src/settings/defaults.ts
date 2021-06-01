@@ -2,7 +2,7 @@ import { DocusSettings } from '../types'
 
 export const docusDefaults: DocusSettings = {
   title: 'Docus',
-  contentDir: 'pages',
+  contentDir: 'content',
   url: '',
   description: '',
   template: 'docs',
