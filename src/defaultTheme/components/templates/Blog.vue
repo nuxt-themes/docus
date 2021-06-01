@@ -1,9 +1,26 @@
 <template>
   <AppContainer fluid>
     <div>
-      <div class="max-w-2xl mx-auto py-24">
+      <div class="max-w-2xl mx-auto py-16 sm:py-24">
         <div>
-          <h1 class="px-4 sm:px-0 font-bold text-4xl sm:w-2/3 ml-auto mb-12">Blog</h1>
+          <!-- <h1 class="px-4 sm:px-0 font-bold text-4xl sm:w-2/3 ml-auto mb-12">Blog</h1> -->
+          <h1
+            class="
+              px-4
+              sm:px-0
+              sm:w-2/3
+              ml-auto
+              mb-12
+              text-4xl
+              sm:text-6xl
+              font-semibold
+              tracking-tight
+              text-gray-900
+              dark:text-gray-100
+            "
+          >
+            Blog
+          </h1>
         </div>
 
         <article v-for="post in posts" :key="post.slug" class="mb-16 flex flex-col items-end">
