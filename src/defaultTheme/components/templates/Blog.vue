@@ -1,13 +1,12 @@
 <template>
   <AppContainer fluid>
     <div>
-      <div class="max-w-2xl mx-auto py-16 sm:py-24">
+      <div class="max-w-2xl mx-auto py-16 sm:py-24 sm:px-4">
         <div>
           <h1
             class="
               px-4
               sm:px-0
-              sm:w-2/3
               ml-auto
               mb-12
               text-4xl
@@ -23,18 +22,14 @@
         </div>
 
         <article v-for="post in posts" :key="post.slug" class="mb-16 flex flex-col items-end">
-          <div class="flex flex-col sm:flex-row mb-4 w-full">
-            <div class="flex sm:flex-col items-center sm:items-end justify-between sm:w-1/3 px-4 sm:pr-4 mb-4 sm:mb-0">
-              <div class="sm:flex-1">
-                <div
-                  class="sticky top-header text-right text-sm text-gray-400 dark:text-gray-500 font-medium py-2 -my-2"
-                >
-                  {{ formatDateByLocale($i18n.locale, post.date) }}
-                </div>
-              </div>
+          <div class="flex flex-col mb-4 w-full">
+            <!-- date & author -->
+            <div class="px-4 sm:px-0 flex items-center sm:items-end justify-between mb-4">
+              <time :datetime="post.date" class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500">
+                {{ formatDateByLocale($i18n.locale, post.date) }}
+              </time>
 
-              <!-- only show author on mobile layout -->
-              <div class="flex sm:hidden">
+              <div class="flex">
                 <a
                   v-for="(author, index) in post.authors"
                   :key="index"
@@ -54,52 +49,15 @@
               </div>
             </div>
 
-            <NuxtLink
-              class="sm:w-2/3 hover:opacity-75 transition-opacity duration-100"
-              :to="$contentLocalePath(post.to)"
-            >
+            <NuxtLink class="w-full hover:opacity-75 transition-opacity duration-100" :to="$contentLocalePath(post.to)">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800">
                 <NuxtImg :src="post.imgUrl" width="864" height="378" alt="" />
               </div>
             </NuxtLink>
           </div>
 
-          <div class="flex flex-col sm:flex-row w-full">
-            <div
-              class="
-                hidden
-                sm:flex sm:flex-col
-                items-center
-                sm:items-end
-                justify-between
-                sm:w-1/3
-                px-4
-                sm:pr-4
-                mb-4
-                sm:mb-0
-              "
-            >
-              <!-- only show sticky author on desktop layout -->
-              <div class="sticky top-header flex items-center py-2 -my-1.5">
-                <a
-                  v-for="(author, index) in post.authors"
-                  :key="index"
-                  :href="author.link"
-                  target="_blank"
-                  rel="noopener noindex nofollow"
-                  class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-600"
-                >
-                  <NuxtImg
-                    class="inline-block h-6 w-6 rounded-full"
-                    height="24"
-                    width="24"
-                    :src="author.avatarUrl"
-                    alt
-                  />
-                </a>
-              </div>
-            </div>
-            <div class="sm:w-2/3 px-4 sm:px-0">
+          <div class="flex flex-col w-full">
+            <div class="px-4 sm:px-0">
               <NuxtLink
                 class="hover:text-gray-500 hover:dark:text-gray-400 transition-color duration-100"
                 :to="$contentLocalePath(post.to)"

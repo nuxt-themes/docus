@@ -27,9 +27,14 @@
             </p>
 
             <div class="flex sm:flex-row items-center">
-              <div v-if="page.date" class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500">
+              <time
+                v-if="page.date"
+                :datetime="page.date"
+                class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500"
+              >
                 {{ formatDateByLocale($i18n.locale, page.date) }}
-              </div>
+              </time>
+
               <div v-else class="font-medium mr-2 text-sm text-yellow-600 dark:text-yellow-500">
                 ⚠️ Please add
                 <ProseCodeInline>date: {{ today }}</ProseCodeInline>
