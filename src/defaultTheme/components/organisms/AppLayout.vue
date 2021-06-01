@@ -21,26 +21,13 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext, watch } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
     const { $docus } = useContext()
 
-    const layout = ref({
-      ...$docus.layout.value
-    })
-
-    watch(
-      $docus.layout,
-      newVal => {
-        layout.value = newVal
-      },
-      {
-        immediate: true,
-        deep: true
-      }
-    )
+    const layout = computed(() => $docus.layout.value)
 
     return {
       layout
