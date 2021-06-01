@@ -1,5 +1,5 @@
 <template>
-  <aside :class="['fixed z-50 lg:z-0 lg:static', $docus.layout.asideClass]">
+  <aside class="fixed z-50 lg:z-0 lg:static">
     <div class="h-full overflow-auto pointer-events-none lg:overflow-visible">
       <!-- scrim -->
       <Transition name="fade">
