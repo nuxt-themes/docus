@@ -37,9 +37,12 @@
               </div>
               <div v-if="page.authors && page.authors.length" class="text-sm text-gray-400 dark:text-gray-700">|</div>
               <div class="flex ml-4">
-                <span
+                <a
                   v-for="(author, index) in page.authors"
                   :key="index"
+                  :href="author.link"
+                  target="_blank"
+                  rel="noopener noindex nofollow"
                   class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
                 >
                   <NuxtImg
@@ -49,7 +52,7 @@
                     :src="author.avatarUrl"
                     alt
                   />
-                </span>
+                </a>
               </div>
             </div>
           </div>

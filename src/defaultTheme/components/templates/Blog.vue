@@ -36,9 +36,12 @@
 
               <!-- only show author on mobile layout -->
               <div class="flex sm:hidden">
-                <span
+                <a
                   v-for="(author, index) in post.authors"
                   :key="index"
+                  :href="author.link"
+                  target="_blank"
+                  rel="noopener noindex nofollow"
                   class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
                 >
                   <NuxtImg
@@ -48,7 +51,7 @@
                     :src="author.avatarUrl"
                     alt
                   />
-                </span>
+                </a>
               </div>
             </div>
 
@@ -79,9 +82,12 @@
             >
               <!-- only show sticky author on desktop layout -->
               <div class="sticky top-header flex items-center py-2 -my-1.5">
-                <span
+                <a
                   v-for="(author, index) in post.authors"
                   :key="index"
+                  :href="author.link"
+                  target="_blank"
+                  rel="noopener noindex nofollow"
                   class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-600"
                 >
                   <NuxtImg
@@ -91,7 +97,7 @@
                     :src="author.avatarUrl"
                     alt
                   />
-                </span>
+                </a>
               </div>
             </div>
             <div class="sm:w-2/3 px-4 sm:px-0">
