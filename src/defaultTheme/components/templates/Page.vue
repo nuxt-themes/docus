@@ -1,18 +1,5 @@
 <template>
-  <AppTemplate aside>
-    <template #aside>
-      <!-- TODO: navigation instead -->
-      <AppAside class="block lg:hidden" />
-    </template>
-
-    <AppPage>
-      <PageContent :page="page" />
-
-      <template #toc>
-        <PageToc v-if="page.toc" :title="page.toc.title" :toc="page.toc.links" />
-      </template>
-    </AppPage>
-  </AppTemplate>
+  <NuxtContent :document="page" />
 </template>
 
 <script>
@@ -24,6 +11,11 @@ export default defineComponent({
       type: Object,
       required: true
     }
+  },
+  templateOptions: {
+    aside: false,
+    asideClass: '',
+    fluid: false
   }
 })
 </script>

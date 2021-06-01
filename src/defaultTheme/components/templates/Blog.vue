@@ -148,6 +148,10 @@ export default defineComponent({
       posts,
       formatDateByLocale
     }
+  },
+  templateOptions: {
+    aside: false,
+    fluid: true
   }
 })
 </script>

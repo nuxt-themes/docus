@@ -141,6 +141,10 @@ export default defineComponent({
     imgUrl() {
       return this.page.imgUrl || 'https://source.unsplash.com/random'
     }
+  },
+  templateOptions: {
+    aside: false,
+    fluid: true
   }
 })
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <AppPage prose class="min-h-screen-sm">
+  <AppPage class="min-h-screen-sm">
     <h1>{{ error.message }}</h1>
     <p v-if="error.statusCode === 404">Go back <NuxtLink to="/">home</NuxtLink>.</p>
   </AppPage>
@@ -19,6 +19,10 @@ export default defineComponent({
     return {
       title: this.error.message
     }
+  },
+  templateOptions: {
+    aside: false,
+    fluid: false
   }
 })
 </script>

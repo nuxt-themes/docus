@@ -75,6 +75,10 @@ export default defineComponent({
       prev,
       next
     }
+  },
+  templateOptions: {
+    aside: true,
+    fluid: false
   }
 })
 </script>
