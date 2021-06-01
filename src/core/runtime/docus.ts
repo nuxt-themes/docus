@@ -27,7 +27,10 @@ export const createDocus = async (
   const state = reactive({
     currentPage: null,
     settings: null,
-    theme: null
+    theme: null,
+    layout: {
+      ...settings.layout
+    }
   }) as DocusState
 
   // Split theme & user settings
