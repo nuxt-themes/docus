@@ -17,6 +17,11 @@ export default defineComponent({
   async asyncData({ $docus, app: { i18n }, params, error }) {
     const language = i18n.locale
 
+    // Init template options from Docus settings
+    let templateOptions = {
+      ...$docus.settings.value.layout
+    }
+
     // Get the proper current path
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
 
@@ -32,11 +37,20 @@ export default defineComponent({
     // Get page template
     page.template = $docus.getPageTemplate(page)
 
+    // Preload the component on client-side navigation
+    const component = await Vue.component(page.template)()
+
+    // Set layout defaults for this template
+    if (component.templateOptions) templateOptions = { ...templateOptions, ...component.templateOptions }
+
+    // Set layout from page
+    if (page.layout) templateOptions = { ...templateOptions, ...page.layout }
+
+    // Set layout
+    $docus.layout.value = templateOptions
+
     // Set Docus runtime current page
     $docus.currentPage.value = page
-
-    // Preload the component on client-side navigation
-    await Vue.component(page.template)()
 
     return { page }
   },
@@ -88,7 +102,7 @@ export default defineComponent({
   },
 
   mounted() {
-    if (this.page.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
+    if (this.page?.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
   },
 
   methods: {
