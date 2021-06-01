@@ -125,11 +125,13 @@ export default defineComponent({
     const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
 
     onMounted(() =>
-      updateHeadings([
-        ...document.querySelectorAll('.docus-content h1'),
-        ...document.querySelectorAll('.docus-content h2'),
-        ...document.querySelectorAll('.docus-content h3')
-      ])
+      setTimeout(() => {
+        updateHeadings([
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
+        ])
+      }, 200)
     )
 
     const isActiveParent = link => {
