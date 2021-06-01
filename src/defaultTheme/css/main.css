@@ -20,3 +20,22 @@
 body {
   @apply antialiased tracking-semitight text-gray-900 bg-white dark:text-gray-50 dark:bg-gray-900;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-from-left-to-left-enter-active,
+.slide-from-left-to-left-leave-active {
+  transition: transform 200ms ease-out, opacity 200ms linear;
+}
+.slide-from-left-to-left-enter,
+.slide-from-left-to-left-leave-to {
+  opacity: 0;
+  transform: translate3d(-50px, 0, 0);
+}
