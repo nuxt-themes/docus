@@ -6,5 +6,12 @@ export const docusDefaults: DocusSettings = {
   url: '',
   description: '',
   template: 'docs',
-  credits: true
+  credits: true,
+  layout: {
+    header: true,
+    footer: true,
+    aside: false,
+    asideClass: '',
+    fluid: false
+  }
 }

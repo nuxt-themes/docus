@@ -64,11 +64,22 @@ export interface DocusDocument {
     title: string
     slot: string
     nested: boolean
+    [key: string]: any
   }
   // Template
   template: {
     self: string
     nested: string
+    [key: string]: any
+  }
+  // Layout
+  layout: {
+    header: boolean
+    footer: boolean
+    aside: boolean
+    asideClass: string
+    fluid: boolean
+    [key: string]: any
   }
   // Generated
   key: string
@@ -101,6 +112,7 @@ export type DocusState<T = DefaultThemeSettings> = {
   settings: DocusSettings<T> | null
   navigation: DocusNavigation
   theme: any
+  layout: any
   // Addons
   ui?: any
   lastRelease?: any
