@@ -1,6 +1,7 @@
 import { $fetch, FetchOptions } from 'ohmyfetch/node'
 import { GithubRelease, GithubReleaseOptions } from '../types/github'
 import { useMarkdownParser } from '../core/parser'
+import { normalizeReleaseName } from './utils'
 
 interface GithubRawRelease {
   draft: boolean
@@ -75,7 +76,7 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
     .filter((r: any) => !r.draft)
     .map(release => {
       return {
-        name: (release.name || release.tag_name).replace('Release ', ''),
+        name: normalizeReleaseName(release.name || release.tag_name),
         date: release.published_at,
         body: release.body
       }
