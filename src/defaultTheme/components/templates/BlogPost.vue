@@ -51,9 +51,9 @@
                   class="flex items-center justify-end -ml-2 sm:ml-0 sm:mr-2"
                 >
                   <NuxtImg
-                    class="rounded-full border border-gray-300 dark:border-gray-500 inline-block h-6 w-6 sm:mr-1"
-                    height="24"
-                    width="24"
+                    class="rounded-full border border-gray-300 dark:border-gray-700 inline-block h-8 w-8 sm:mr-1"
+                    height="32"
+                    width="32"
                     :src="author.avatarUrl"
                     :alt="author.name"
                     :title="author.name"
