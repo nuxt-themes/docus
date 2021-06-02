@@ -20,7 +20,8 @@ export const useDB = () => {
       const existed = _items.findOne({ key: document.key })
 
       if (existed) {
-        return _items.update({ $loki: existed.$loki, meta: existed.meta, ...document })
+        _items.update({ $loki: existed.$loki, meta: existed.meta, ...document })
+        return document
       }
 
       return _items.insert(document)
