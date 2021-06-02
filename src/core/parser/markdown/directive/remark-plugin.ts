@@ -40,14 +40,14 @@ export default function htmlDirectives({ directives }) {
     function visitor(node) {
       const directive = directives[node.name]
       const data = node.data || (node.data = {})
-      const hast = h(node.name, node.attributes)
 
+      // parse data slots and retrive data
       const nodeData = getNodeData(node)
 
-      data.hName = hast.tagName
+      data.hName = node.name
       data.hProperties = bindData(
         {
-          ...hast.properties,
+          ...node.attributes,
           ...nodeData
         },
         pageData

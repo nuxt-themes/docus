@@ -55,6 +55,6 @@ meta:
   preSelectedBadge: Popular
   checkoutText: 'Total:'
   checkoutButtonText: Checkout
-
+---
 ::
  
