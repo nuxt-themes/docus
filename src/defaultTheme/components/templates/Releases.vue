@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <AppPage>
     <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
       <span class="flex-1">Releases</span>
     </h1>
@@ -23,7 +23,7 @@
         <PageToc :toc="toc" title="Versions" />
       </template>
     </AppPage>
-  </div>
+  </AppPage>
 </template>
 
 <script>
