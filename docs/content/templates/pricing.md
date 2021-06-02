@@ -3,7 +3,7 @@ template: marketing
 footer: false
 ---
 
-:::pricing-block{yml}
+::pricing-block
 
 plans:
   monthly:
@@ -55,6 +55,6 @@ meta:
   preSelectedBadge: Popular
   checkoutText: 'Total:'
   checkoutButtonText: Checkout
-
-:::
+---
+::
  

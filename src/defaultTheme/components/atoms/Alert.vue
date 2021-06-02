@@ -2,7 +2,7 @@
   <div class="p-4 mt-4 mb-4 rounded-lg alert text-sm leading-relaxed" :class="[type]">
     <div class="flex items-start">
       <div class="flex-grow alert-content">
-        <Markdown :node="$slots.default" unwrap="p" />
+        <Markdown unwrap="p" />
       </div>
     </div>
   </div>
