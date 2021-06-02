@@ -36,7 +36,8 @@ export default defineComponent({
         'edit',
         settings.value.github.branch,
         settings.value.github.dir || '',
-        `${props.page.path}${props.page.extension}`.replace(/^\//g, '')
+        settings.value.contentDir,
+        `${props.page.source}`.replace(/^\//g, '')
       ]
         .filter(Boolean)
         .join('/')

@@ -16,9 +16,6 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   const fs = fsDriver(options)
 
   const parseAndIndex = async (key, content) => {
-    // unify key format
-    key = key.replace(/\//g, ':')
-
     const document = await parser.parse(key, content)
 
     if (document.extension === '.md') {
@@ -27,7 +24,12 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
       document.updatedAt = stats.mtime
     }
 
-    document.key = key
+    // Keep track of original path of the source file in file system
+    document.source = key
+
+    // Unify key format
+    document.key = key.replace(/\//g, ':')
+
     // use prefix in document path
     document.path = `/${options.mountPoint}` + document.path
 
