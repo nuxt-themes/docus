@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl mx-auto py-24 relative">
+  <div>
     <div class="py-16 sm:py-24 relative">
       <div class="relative max-w-2xl mx-auto">
         <NuxtLink :to="$contentLocalePath('/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
@@ -77,14 +77,6 @@
         <NuxtContent :document="page" class="px-4 docus-content" />
       </div>
     </div>
-
-    <div class="md:-mx-18 lg:-mx-24 aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
-      <NuxtImg :src="imgUrl" width="864" height="378" alt="" class="object-cover" />
-    </div>
-
-    <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
-
-    <NuxtContent :document="page" class="px-4 docus-content" />
   </div>
 </template>
 
