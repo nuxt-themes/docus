@@ -1,30 +1,29 @@
 <template>
-  <AppContainer aside>
+  <AppPage>
+    <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+      <span class="flex-1">Releases</span>
+    </h1>
+
     <AppPage>
-      <div class="">
-        <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-          <span class="flex-1">Releases</span>
-        </h1>
-      </div>
-      <div class="prose max-w-none dark:prose-dark">
-        <div v-for="release of releases" :key="release.name">
-          <div class="flex items-baseline justify-between">
-            <ProseH2 :id="release.name">
-              <a :href="`#${release.name}`">
-                {{ release.name }}
-              </a>
-            </ProseH2>
-            <span class="text-sm font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
-          </div>
-          <NuxtContent :document="release" class="docus-content" />
+      <div v-for="release of releases" :key="release.name">
+        <div class="flex items-baseline justify-between">
+          <ProseH2 :id="release.name">
+            <a :href="`#${release.name}`">
+              {{ release.name }}
+            </a>
+          </ProseH2>
+          <span class="text-sm font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
         </div>
+        <NuxtContent :document="release" class="docus-content" />
       </div>
+
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800" />
+
       <template #toc>
         <PageToc :toc="toc" title="Versions" />
       </template>
     </AppPage>
-  </AppContainer>
+  </AppPage>
 </template>
 
 <script>
@@ -47,6 +46,7 @@ export default defineComponent({
       const document = await $docus.data('github-releases')
 
       releases.value = document.releases
+
       toc.value = document.releases?.map(release => ({
         id: release.name,
         depth: 2,
@@ -94,6 +94,9 @@ export default defineComponent({
       toc,
       formatDate
     }
+  },
+  templateOptions: {
+    aside: true
   }
 })
 </script>

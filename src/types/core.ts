@@ -49,18 +49,8 @@ export type DocusNavigation = {
   [language: string]: NavItem[]
 }
 
-export type DocusState = {
-  // Core
-  settings: any
-  navigation: DocusNavigation
-  theme: any
-  // Addons
-  ui?: any
-  lastRelease?: any
-}
-
 export interface DocusDocument {
-  // font-matter
+  // FrontMatter
   title: string
   description: string
   badge: string
@@ -69,18 +59,29 @@ export interface DocusDocument {
   head: MetaInfo
   position: string
   draft: boolean
-
+  // Navigation
   navigation: {
     title: string
     slot: string
     nested: boolean
+    [key: string]: any
   }
+  // Template
   template: {
     self: string
     nested: string
+    [key: string]: any
   }
-
-  // generated
+  // Layout
+  layout: {
+    header: boolean
+    footer: boolean
+    aside: boolean
+    asideClass: string
+    fluid: boolean
+    [key: string]: any
+  }
+  // Generated
   key: string
   path: string
   slug: string
@@ -103,6 +104,18 @@ export interface DocusSettings<T = DefaultThemeSettings> {
   template: string
   theme?: T
   [key: string]: any
+}
+
+export type DocusState<T = DefaultThemeSettings> = {
+  // Core
+  currentPage: DocusDocument | null
+  settings: DocusSettings<T> | null
+  navigation: DocusNavigation
+  theme: any
+  layout: any
+  // Addons
+  ui?: any
+  lastRelease?: any
 }
 
 export interface DocusAddonContext<T = DefaultThemeSettings> {

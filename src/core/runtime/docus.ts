@@ -25,8 +25,12 @@ export const createDocus = async (
 
   // State
   const state = reactive({
+    currentPage: null,
     settings: null,
-    theme: null
+    theme: null,
+    layout: {
+      ...settings.layout
+    }
   }) as DocusState
 
   // Split theme & user settings
@@ -63,7 +67,7 @@ export const createDocus = async (
   await setupAddons()
 
   // Init Docus for every context
-  await docusInit(docusAddonContext)
+  docusInit(docusAddonContext)
 
   // Workaround for async data
   clientAsyncData(context.app, $nuxt)

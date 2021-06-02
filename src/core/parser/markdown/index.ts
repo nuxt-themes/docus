@@ -64,7 +64,7 @@ async function parse(file, options) {
     ...data,
     toc,
     body,
-    text: content,
+    text: file,
     excerpt
   }
 }

@@ -1,6 +1,11 @@
 ---
-template: pre-launch
+template: page
 title: Pre-launch template
+layout:
+   footer: false
+   aside: true
+   asideClass: 'bloc lg:hidden'
+   fluid: true
 ---
 
 

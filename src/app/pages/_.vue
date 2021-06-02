@@ -5,52 +5,76 @@
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default {
+export default defineComponent({
   name: 'PageSlug',
+
   middleware({ app, params, redirect }) {
-    if (params.pathMatch === 'index') {
-      redirect(app.localePath('/'))
-    }
+    if (params.pathMatch === 'index') redirect(app.localePath('/'))
   },
-  async asyncData({ $docus, app, params, error }) {
-    const language = app.i18n.locale
+
+  async asyncData({ $docus, app: { i18n }, params, error }) {
+    const language = i18n.locale
+
+    // Init template options from Docus settings
+    let templateOptions = {
+      ...$docus.settings.value.layout
+    }
+
+    // Get the proper current path
     const to = withoutTrailingSlash(`/${params.pathMatch || ''}`) || '/'
+
+    // TODO: Fix the draft system
     const draft = false
+
+    // Page query
     const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
-    if (!page) {
-      return error({ statusCode: 404, message: 'Page not found' })
-    }
 
+    // Break on missing page query
+    if (!page) return error({ statusCode: 404, message: 'Page not found' })
+
+    // Get page template
     page.template = $docus.getPageTemplate(page)
-    // Preload the component on client-side navigation
-    await Vue.component(page.template)()
 
-    return { page }
+    // Preload the component on client-side navigation
+    const component = await Vue.component(page.template)()
+
+    // Set layout defaults for this template
+    if (component.templateOptions) templateOptions = { ...templateOptions, ...component.templateOptions }
+
+    // Set layout from page
+    if (page.layout) templateOptions = { ...templateOptions, ...page.layout }
+
+    // Set Docus runtime current page
+    $docus.currentPage.value = page
+
+    return { page, templateOptions }
   },
-  data() {
-    return {
-      page: {}
-    }
-  },
+
   head() {
     const head = {
       title: this.page.title,
       meta: [],
       ...(this.page.head || {})
     }
+
     this.mergeMeta(head.meta, this.pageMeta)
+
     return head
   },
+
   computed: {
     pageMeta() {
       return [
-        // Open Graph
+        // OpenGraph
         { hid: 'og:title', property: 'og:title', content: this.page.title },
         // Twitter Card
         { hid: 'twitter:title', name: 'twitter:title', content: this.page.title },
+        /// Page description
         ...(this.page.description
           ? [
+              // Meta description
               {
                 hid: 'description',
                 name: 'description',
@@ -71,16 +95,17 @@ export default {
             ]
           : [])
       ]
-    },
-    settings() {
-      return this.$docus.settings
     }
   },
+
+  beforeMount() {
+    this.$docus.layout.value = this.templateOptions
+  },
+
   mounted() {
-    if (this.page.version) {
-      localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
-    }
+    if (this.page?.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
   },
+
   methods: {
     mergeMeta(to, from) {
       from.forEach(newMeta => {
@@ -92,5 +117,5 @@ export default {
       })
     }
   }
-}
+})
 </script>

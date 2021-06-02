@@ -23,10 +23,6 @@ export const useDocusApi = createQuery => {
     return links.find(link => link.to === to)
   }
 
-  // function findLinkBySlug(links: NavItem[], slug: string) {
-  //   return links.find(link => link.slug === slug)
-  // }
-
   return {
     data,
     search,
