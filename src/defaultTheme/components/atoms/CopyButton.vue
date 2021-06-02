@@ -1,7 +1,32 @@
 <template>
-  <button ref="copy" class="copy" :class="state">
-    <span v-if="state === 'copied'">Copied</span>
-    <span v-else>Copy</span>
+  <button
+    ref="copy"
+    class="
+      copy
+      focus:outline-none
+      absolute
+      right-0
+      bottom-0
+      px-2
+      py-2
+      m-1
+      text-gray-600
+      bg-gray-100
+      text-xs
+      leading-none
+      rounded-lg
+      font-mono font-semibold
+      dark:text-gray-400
+      dark:bg-gray-800
+      hover:bg-gray-200
+      hover:dark:bg-gray-700
+    "
+    :class="{
+      'bg-gray-200 dark:bg-gray-700 opacity-100': state === 'copied'
+    }"
+  >
+    <IconCheck v-if="state === 'copied'" class="w-4 h-4" />
+    <IconCopy v-else class="w-4 h-4" />
   </button>
 </template>
 

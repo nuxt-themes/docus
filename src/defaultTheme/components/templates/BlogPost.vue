@@ -1,62 +1,82 @@
 <template>
   <AppContainer fluid>
     <div>
-      <div class="max-w-2xl mx-auto py-24 relative">
-        <NuxtLink
-          :to="$contentLocalePath('/blog')"
-          class="
-            absolute
-            top-0
-            left-0
-            px-4
-            mt-12
-            leading-none
-            text-gray-400
-            dark:text-gray-600
-            hover:text-gray-500
-            hover:dark:text-gray-400
-            font-medium
-            transition-color
-            duration-100
-          "
-        >
-          <span class="">← Back</span>
-        </NuxtLink>
-        <div class="mb-6 px-4">
-          <h1 class="text-4xl font-bold mb-6">{{ page.title }}</h1>
-          <p class="mb-4 text-gray-500 dark:text-gray-400 font-medium">
-            {{ page.description }}
-          </p>
+      <div class="py-16 sm:py-24 relative">
+        <div class="relative max-w-2xl mx-auto">
+          <NuxtLink :to="$contentLocalePath('/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
+            <span
+              class="
+                text-sm
+                sm:text-base
+                leading-none
+                text-gray-900
+                dark:text-gray-100
+                hover:text-gray-500
+                hover:dark:text-gray-400
+                font-medium
+              "
+              >← Back</span
+            >
+          </NuxtLink>
+          <div class="mb-6 px-4">
+            <h1 class="flex-1 text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+              {{ page.title }}
+            </h1>
+            <p class="my-4 text-base font-medium text-gray-500 dark:text-gray-400">
+              {{ page.description }}
+            </p>
 
-          <div class="flex sm:flex-row items-center">
-            <div v-if="page.date" class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500">
-              {{ formatDateByLocale($i18n.locale, page.date) }}
-            </div>
-            <div v-else class="font-medium mr-2 text-sm text-yellow-600 dark:text-yellow-500">
-              ⚠️ Please add
-              <ProseCodeInline>date: {{ today }}</ProseCodeInline>
-              in the page front-matter`
-            </div>
-            <div v-if="page.authors && page.authors.length" class="text-sm text-gray-400 dark:text-gray-700">|</div>
-            <div class="flex ml-4">
-              <span
-                v-for="(author, index) in page.authors"
-                :key="index"
-                class="flex items-center justify-end -ml-2 rounded-full border border-gray-300 dark:border-gray-500"
+            <div class="flex sm:flex-row items-center">
+              <time
+                v-if="page.date"
+                :datetime="page.date"
+                class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500"
               >
-                <NuxtImg class="inline-block h-6 w-6 rounded-full" height="24" width="24" :src="author.avatarUrl" alt />
-              </span>
+                {{ formatDateByLocale($i18n.locale, page.date) }}
+              </time>
+
+              <div v-else class="font-medium mr-2 text-sm text-yellow-600 dark:text-yellow-500">
+                ⚠️ Please add
+                <ProseCodeInline>date: {{ today }}</ProseCodeInline>
+                in the page front-matter`
+              </div>
+              <div v-if="page.authors && page.authors.length" class="text-sm text-gray-400 dark:text-gray-700">|</div>
+              <div class="flex ml-4 sm:ml-2">
+                <a
+                  v-for="(author, index) in page.authors"
+                  :key="index"
+                  :href="author.link"
+                  target="_blank"
+                  rel="noopener noindex nofollow"
+                  class="flex items-center justify-end -ml-2 sm:ml-0 sm:mr-2"
+                >
+                  <NuxtImg
+                    class="rounded-full border border-gray-300 dark:border-gray-700 inline-block h-8 w-8 sm:mr-1"
+                    height="32"
+                    width="32"
+                    :src="author.avatarUrl"
+                    :alt="author.name"
+                    :title="author.name"
+                  />
+                  <span class="hidden sm:inline-block font-medium text-sm text-gray-800 dark:text-gray-300">
+                    {{ author.name }}
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="md:-mx-18 lg:-mx-24 aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
-          <NuxtImg :src="imgUrl" width="864" height="378" alt="" class="object-cover" />
+        <div class="max-w-4xl mx-auto">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
+            <NuxtImg :src="imgUrl" width="864" height="378" alt="" class="object-cover" />
+          </div>
         </div>
 
-        <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
-
-        <NuxtContent :document="page" class="px-4 docus-content" />
+        <div class="max-w-2xl mx-auto">
+          <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
+          <NuxtContent :document="page" class="px-4 docus-content" />
+        </div>
       </div>
     </div>
   </AppContainer>

@@ -15,7 +15,8 @@ export function scrollToHeading(id: string, scrollMarginCssVar: string) {
 
   // do not remove setTimeout (does not work in Safari)
   setTimeout(() => {
-    const offset = (document.querySelector(`#${id}`) as any).offsetTop - convertPropToPixels(scrollMarginCssVar)
+    const escapedId = id.replace(/\./g, '\\.')
+    const offset = (document.querySelector(`#${escapedId}`) as any).offsetTop - convertPropToPixels(scrollMarginCssVar)
     window.scrollTo(0, offset)
   })
 }

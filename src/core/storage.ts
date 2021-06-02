@@ -19,11 +19,6 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     // unify key format
     key = key.replace(/\//g, ':')
 
-    // ignore vue files
-    if (key.endsWith('.vue')) {
-      return null
-    }
-
     const document = await parser.parse(key, content)
 
     if (document.extension === '.md') {

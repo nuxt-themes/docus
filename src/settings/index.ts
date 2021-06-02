@@ -29,6 +29,7 @@ export default <Module>function settingsModule() {
     console.warn('`themeDir` is not specified in current theme, fallback to default theme')
     options.themeDir = resolve(__dirname, '..', 'defaultTheme')
   }
+
   let themeDefaultsPath = resolve(options.themeDir, 'settings')
   if (existsSync(themeDefaultsPath + '.js')) themeDefaultsPath += '.js'
   else if (existsSync(themeDefaultsPath + '.ts')) themeDefaultsPath += '.ts'

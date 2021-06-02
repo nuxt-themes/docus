@@ -28,7 +28,7 @@ function isUrl(string) {
 
 export default <Module>async function docusModule() {
   // Wait for nuxt options to be normalized
-  const { nuxt, addServerMiddleware, addPlugin, addModule } = this
+  const { nuxt, addServerMiddleware, addPlugin, addModule, $docus } = this
   const { options } = nuxt
   const isSSG = options.dev === false && (options.target === 'static' || options._generate || options.mode === 'spa')
 
@@ -47,10 +47,6 @@ export default <Module>async function docusModule() {
 
   // Inject Docus theme as ~docus
   options.alias['~docus'] = resolve(__dirname, 'runtime')
-
-  // Inject content dir in private runtime config
-  const contentDir = options.dir.pages || 'pages'
-  options.publicRuntimeConfig.contentDir = contentDir
 
   // extend parser options
   const parserOptions: Partial<ParserOptions> = { markdown: {} }
@@ -93,7 +89,7 @@ export default <Module>async function docusModule() {
   const { storage, lazyIndex } = initStorage({
     drivers: [
       {
-        base: resolve(options.srcDir, options.dir.pages),
+        base: resolve(options.srcDir, $docus.settings.contentDir),
         mountPoint: 'pages'
       },
       {
@@ -188,7 +184,11 @@ export default <Module>async function docusModule() {
       options.watch.push(pagesDirPath)
     }
   })
+
   nuxt.callHook('docus:storage:ready')
+
+  // Watch Docus while DOCUS_DEV is set
+  if (process.env.DOCUS_DEV) options.watch.push(resolve(__dirname, '../'))
 
   nuxt.hook('close', () => {
     destroyHooks()

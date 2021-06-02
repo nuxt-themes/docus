@@ -1,22 +1,22 @@
 <template>
   <AppContainer aside>
     <AppPage>
-      <div class="mb-10">
-        <h1
-          class="flex items-center justify-between text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
-        >
+      <div class="">
+        <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
           <span class="flex-1">Releases</span>
         </h1>
       </div>
       <div class="prose max-w-none dark:prose-dark">
         <div v-for="release of releases" :key="release.name">
-          <h2 :id="release.name" class="flex items-center justify-between">
-            <a :href="`#${release.name}`">
-              {{ release.name }}
-            </a>
-            <span class="text-base font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
-          </h2>
-          <NuxtContent :document="release" />
+          <div class="flex items-baseline justify-between">
+            <ProseH2 :id="release.name">
+              <a :href="`#${release.name}`">
+                {{ release.name }}
+              </a>
+            </ProseH2>
+            <span class="text-sm font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
+          </div>
+          <NuxtContent :document="release" class="docus-content" />
         </div>
       </div>
       <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800" />
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch, onMounted } from '@nuxtjs/composition-api'
+import { scrollToHeading } from '../../utils'
 
 export default defineComponent({
   props: {
@@ -51,6 +52,33 @@ export default defineComponent({
         depth: 2,
         text: release.name
       }))
+    })
+
+    onMounted(() => {
+      if (window.location.hash) {
+        const hash = window.location.hash.replace('#', '')
+
+        // do not remove setTimeout (wrong scroll pos)
+        setTimeout(() => {
+          scrollToHeading(hash, '--docs-scroll-margin-block')
+        }, 300)
+      }
+
+      // do not remove setTimeout (no headers)
+      setTimeout(() => {
+        const headings = [
+          ...document.querySelectorAll('.prose h1'),
+          ...document.querySelectorAll('.prose h2'),
+          ...document.querySelectorAll('.prose h3')
+        ]
+        headings.forEach(heading => {
+          heading.addEventListener('click', e => {
+            e.preventDefault()
+            const hash = e.target.href.split('#').pop()
+            scrollToHeading(hash, '--docs-scroll-margin-block')
+          })
+        })
+      }, 500)
     })
 
     const formatDate = (locale, release) => {

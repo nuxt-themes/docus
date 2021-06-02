@@ -5,6 +5,7 @@
 </template>
 
 <style lang="postcss" scoped>
+/* TODO */
 thead {
   font-weight: 600;
   border-bottom-width: 1px;
@@ -14,6 +15,6 @@ thead {
 
 .dark thead {
   color: theme('colors.gray.100');
-  border-bottom-color: theme('colors.gray.600');
+  border-bottom-color: theme('colors.gray.700');
 }
 </style>

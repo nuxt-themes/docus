@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full my-4 overflow-x-auto">
+  <div class="max-w-full my-6 overflow-x-auto">
     <table>
       <slot />
     </table>
@@ -14,7 +14,5 @@ table {
   width: 100%;
   table-layout: auto;
   text-align: left;
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 </style>

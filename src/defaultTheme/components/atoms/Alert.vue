@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 mt-4 mb-4 rounded-md alert" :class="[type]">
+  <div class="p-4 mt-4 mb-4 rounded-lg alert text-sm leading-relaxed" :class="[type]">
     <div class="flex items-start">
       <div class="flex-grow alert-content">
         <Markdown unwrap="p" />
@@ -85,8 +85,11 @@ export default defineComponent({
   }
 
   >>> {
+    strong {
+      @apply font-semibold text-current;
+    }
     a {
-      @apply no-underline border-none font-semibold;
+      @apply underline border-none font-semibold text-current;
       code {
         @apply border border-transparent border-dashed;
       }
@@ -96,5 +99,13 @@ export default defineComponent({
 
 .alert >>> p {
   @apply m-0 !important;
+}
+
+.dark .alert {
+  >>> {
+    a {
+      @apply text-current;
+    }
+  }
 }
 </style>

@@ -116,7 +116,9 @@ export default <Module>function themeSetupModule() {
       subDirs.forEach((path: string) => dirs.push({ path, global: true }))
     } else {
       // Watch existence of root `components` directory
-      nuxt.options.watch.push(componentsDirPath)
+      options.watch.push(componentsDirPath)
     }
   })
+
+  options.watch.push(r('./settings.ts'))
 }

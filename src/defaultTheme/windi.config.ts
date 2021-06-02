@@ -32,6 +32,9 @@ export default defineConfig({
       }
     },
     extend: {
+      fontSize: {
+        lg: ['1.125rem', '1.5rem'] // NOT WORKING
+      },
       fontFamily: {
         sans: 'Inter, ' + defaultTheme.fontFamily.sans
       },

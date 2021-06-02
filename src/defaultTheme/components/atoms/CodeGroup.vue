@@ -1,29 +1,19 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
-    <div
-      class="
-        relative
-        px-2
-        text-sm text-white
-        bg-gray-100
-        border-b-2 border-gray-200
-        rounded-t-md
-        h-12
-        dark:bg-gray-800
-        dark:border-gray-700
-      "
-    >
+    <div class="relative px-2 text-white bg-gray-100 rounded-t-lg dark:bg-gray-800">
       <button
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="`${counter}${label}`"
-        class="px-4 py-3 font-mono font-bold h-12"
+        class="relative z-10 px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-semibold tracking-tight"
         :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
         @click="updateTabs(i)"
       >
         {{ label }}
       </button>
-      <span ref="highlight-underline" class="absolute highlight-underline bg-primary-500 dark:bg-primary-400" />
+      <span ref="highlight-underline" class="absolute z-0 highlight-underline h-full xs:py-1.5">
+        <span class="flex w-full h-full bg-gray-200 dark:bg-gray-700 rounded-md"></span>
+      </span>
     </div>
     <slot />
   </div>
@@ -93,7 +83,9 @@ export default defineComponent({
       }
       const highlightUnderline = this.$refs['highlight-underline']
       highlightUnderline.style.left = `${activeTab.offsetLeft}px`
+      highlightUnderline.style.top = `${activeTab.offsetTop}px`
       highlightUnderline.style.width = `${activeTab.clientWidth}px`
+      highlightUnderline.style.height = `${activeTab.clientHeight}px`
     },
     calculateTabs() {
       const components = this.$slots.default
@@ -147,9 +139,9 @@ button {
 }
 
 .highlight-underline {
-  bottom: -2px;
-  height: 2px;
-  transition: left 150ms, width 150ms;
+  /* bottom: -2px; */
+  /* height: 2px; */
+  transition: left 150ms, top 150ms, width 150ms, height 150ms;
 }
 
 .code-group ::v-deep {

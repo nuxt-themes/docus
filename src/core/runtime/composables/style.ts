@@ -42,7 +42,7 @@ function useCssVariableStore(scopes = ['dark']) {
 
   const generateScope = (scope: string) => {
     const vars = Object.entries(getScope(scope)).map(generateVar).join(';')
-    return scope === 'default' ? `:root {${vars}}` : `html.${scope} {${vars}}`
+    return scope === 'default' ? `html:root {${vars}}` : `html.${scope} {${vars}}`
   }
 
   const generate = () => scopes.map(generateScope).join(' ')
