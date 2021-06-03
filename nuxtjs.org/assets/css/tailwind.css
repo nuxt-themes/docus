@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap');
+
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+/* purgecss end ignore */
+
+@import 'tailwindcss/components';
+
+/* purgecss start ignore */
+@import '@snackbar/core/dist/snackbar.css';
+/* purgecss end ignore */
+
+@import 'tailwindcss/utilities';
+
+/* purgecss start ignore */
+@supports (position: sticky) {
+  @media (min-width: 1024px) {
+    .sticky\?lg\:max-h-\(screen-24\) {
+      max-height: calc(100vh - 6rem);
+    }
+  }
+}
+/* purgecss end ignore */
+
+.empty-after:after {
+  content: '';
+}
+
+.container-fluid {
+  max-width: theme('screens.xl');
+  margin: auto;
+}
+
+body {
+  min-width: 320px;
+}
+
+a.nuxt-link-exact-active,
+a.nuxt-link-active {
+  @apply text-nuxt-lightgreen;
+}
+
+.opacity-transition {
+  transition: opacity 0.5s ease-out;
+}
+
+.truncate-multiline-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

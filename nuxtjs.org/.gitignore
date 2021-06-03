@@ -1,0 +1,32 @@
+# dependencies
+node_modules
+package-lock.json
+
+# logs
+npm-debug.log
+yarn-error.log
+
+# other
+.nuxt
+dist
+.vscode
+.idea
+newrelic_agent.log
+.DS_STORE
+.eslintrc
+
+# docs
+/docs
+
+# @nuxtjs/pwa
+sw.*
+
+.env
+
+# Optional eslint cache
+.eslintcache
+
+
+cypress/integration/examples
+cypress/videos
+cypress/screenshots

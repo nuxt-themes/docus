@@ -1,0 +1,6 @@
+{
+    "ignoredFiles": [
+        "static/guides/*",
+        "static/docs/2.x/*"
+    ],
+}

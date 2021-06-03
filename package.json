@@ -31,6 +31,7 @@
   "scripts": {
     "build": "rm -rf dist && siroc build",
     "dev": "BUILD_ADMIN=true nuxt dev docs",
+    "dev:nuxtjs": "nuxt dev nuxtjs.org",
     "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
     "start": "nuxt start docs",

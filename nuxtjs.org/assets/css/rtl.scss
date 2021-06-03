@@ -1,0 +1,25 @@
+// Algolia search
+html[dir='rtl'] {
+  .algolia-wrapper {
+    svg:first-child {
+      margin-right: 0.75rem !important;
+      margin-left: 0 !important;
+    }
+
+    input#algolia-main {
+      padding-right: 2.5em !important;
+      padding-left: 0 !important;
+      direction: rtl;
+    }
+
+    button[aria-label='Clear input'] {
+      right: unset !important;
+      left: 0 !important;
+    }
+  }
+
+  // Code block switched to ltr
+  .nuxt-content pre {
+    direction: ltr !important;
+  }
+}
