@@ -2,7 +2,8 @@
   <div
     v-if="toc.length"
     class="
-      sticky
+      hidden
+      xl:sticky
       z-10
       left-0
       flex-none
@@ -29,34 +30,20 @@
       xl:top-0
     "
   >
-    <!-- mobile ToC title + button -->
-    <button
-      class="
-        relative
-        z-10
-        flex
-        items-center
-        w-full
-        py-3
-        text-sm
-        font-semibold
-        text-gray-900
-        focus:outline-none
-        xl:hidden
-        dark:text-gray-100
-      "
-      @click="showMobileToc = !showMobileToc"
-    >
-      <span class="mr-2">{{ title || $t('toc.title') }}</span>
-      <IconChevronRight
-        class="w-4 h-4 text-gray-500 transition-transform duration-100 transform"
-        :class="[showMobileToc ? 'rotate-90' : 'rotate-0']"
-      />
-    </button>
-
     <div
-      :class="[showMobileToc ? 'flex' : 'hidden xl:flex']"
-      class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-header) -mt-10 pt-10 pb-4 top-header"
+      class="
+        hidden
+        xl:flex
+        flex-col
+        justify-between
+        overflow-y-auto
+        sticky
+        max-h-(screen-header)
+        -mt-10
+        pt-10
+        pb-4
+        top-header
+      "
     >
       <PageTocTop />
 
@@ -64,50 +51,15 @@
         <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
       </h5>
 
-      <ul class="font-medium ml-4">
-        <li v-for="link of toc" :key="link.id" @click="showMobileToc = false">
-          <a
-            :href="`#${link.id}`"
-            class="block py-1 transition-colors duration-100 transform"
-            :class="{
-              'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
-                activeHeadings.includes(link.id) || isActiveParent(link),
-              'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
-                !activeHeadings.includes(link.id) && !isActiveParent(link)
-            }"
-            @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
-          >
-            {{ link.text }}
-          </a>
+      <PageTocList :toc="toc" />
 
-          <ul v-if="link.children" class="overflow-x-hidden font-medium">
-            <li v-for="childLink in link.children" :key="childLink.id">
-              <a
-                :href="`#${childLink.id}`"
-                :class="{
-                  'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
-                    activeHeadings.includes(childLink.id),
-                  'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
-                    !activeHeadings.includes(childLink.id)
-                }"
-                class="block py-1 pl-3 transition-colors duration-100 transform"
-                @click.prevent="scrollToHeading(childLink.id, '--docs-scroll-margin-block')"
-              >
-                {{ childLink.text }}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
       <PageTocBottom />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api'
-import { useScrollspy } from '../../composables'
-import { scrollToHeading } from '../../utils'
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -118,32 +70,6 @@ export default defineComponent({
     title: {
       type: String,
       default: null
-    }
-  },
-  setup() {
-    const showMobileToc = ref(false)
-    const { activeHeadings, visibleHeadings, updateHeadings } = useScrollspy()
-
-    onMounted(() =>
-      setTimeout(() => {
-        updateHeadings([
-          ...document.querySelectorAll('.docus-content h1'),
-          ...document.querySelectorAll('.docus-content h2'),
-          ...document.querySelectorAll('.docus-content h3')
-        ])
-      }, 200)
-    )
-
-    const isActiveParent = link => {
-      return link.children && link.children.some(child => activeHeadings.value.includes(child.id))
-    }
-
-    return {
-      visibleHeadings,
-      activeHeadings,
-      showMobileToc,
-      scrollToHeading,
-      isActiveParent
     }
   }
 })

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="link" class="flex flex-col justify-between text-gray-500 dark:text-gray-500 mt-8 mb-4 sm:flex-row">
+  <div
+    v-if="link"
+    class="flex flex-col justify-between text-gray-500 dark:text-gray-500 mt-8 mb-4 px-4 sm:px-6 sm:flex-row"
+  >
     <a :href="link" target="_blank" rel="noopener" class="flex items-center mb-2 text-sm sm:mb-0 hover:underline">
       <IconEdit class="w-3 h-3 mr-1" />
       <span>

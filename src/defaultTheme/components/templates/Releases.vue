@@ -1,10 +1,18 @@
 <template>
   <AppPage>
-    <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-      <span class="flex-1">Releases</span>
-    </h1>
+    <section class="mt-4 xl:mt-0 px-4 sm:px-6">
+      <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+        {{ page.title }}
+      </h1>
+      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-400">
+        {{ page.description }}
+      </p>
+      <hr class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
+    </section>
 
-    <AppPage>
+    <PageMobileToc title="Versions" :toc="toc" />
+
+    <div class="px-4 sm:px-6">
       <div v-for="release of releases" :key="release.name">
         <div class="flex items-baseline justify-between">
           <ProseH2 :id="release.name">
@@ -16,13 +24,11 @@
         </div>
         <NuxtContent :document="release" class="docus-content" />
       </div>
+    </div>
 
-      <hr class="mt-10 mb-4 border-gray-200 dark:border-gray-800" />
-
-      <template #toc>
-        <PageToc :toc="toc" title="Versions" />
-      </template>
-    </AppPage>
+    <template #toc>
+      <PageToc :toc="toc" title="Versions" />
+    </template>
   </AppPage>
 </template>
 
