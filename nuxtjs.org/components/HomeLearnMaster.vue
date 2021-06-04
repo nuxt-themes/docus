@@ -1,0 +1,37 @@
+<template>
+  <HomeSection class="py-20 light:bg-gray-50 dark:bg-secondary-darkest">
+    <template #section-content>
+      <SectionContent class="col-span-12 items-center">
+        <template #category>
+          <ALabel tag="span" class="text-primary-green font-bold text-lg">Learn</ALabel>
+        </template>
+        <template #title>
+          <SectionTitle class="text-center" size="sm"
+            ><span class="font-serif text-terciary italic">Easy </span>to learn,
+            <span class="font-serif text-terciary italic">easy</span> to master</SectionTitle
+          >
+        </template>
+        <template #paragraph>
+          <SectionDescription class="pb-16 text-center" size="md"
+            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
+          >
+        </template>
+        <template #content>
+          <OCodeBlockAnimation class="w-full text-gray-50 pb-4" />
+        </template>
+        <template #button>
+          <div class="w-full self-start">
+            <SectionButton
+              to="#"
+              aria-label="Learn everything"
+              size="sm"
+              class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+            >
+              Learn everything
+            </SectionButton>
+          </div>
+        </template>
+      </SectionContent>
+    </template>
+  </HomeSection>
+</template>
