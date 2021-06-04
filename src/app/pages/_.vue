@@ -101,7 +101,7 @@ export default defineComponent({
     }
   },
 
-  beforeMount() {
+  created() {
     this.$docus.layout.value = this.templateOptions
   },
 
