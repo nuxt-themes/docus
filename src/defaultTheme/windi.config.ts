@@ -12,6 +12,10 @@ import { defineConfig } from 'windicss/helpers'
 export default defineConfig({
   darkMode: 'class',
   plugins: [filters, aspectRatio],
+  // Include Docus node_module when used this way
+  extract: {
+    include: ['node_modules/docus/dist/**/*.{vue,html,js,mjs,ts,jsx,tsx}']
+  },
   theme: {
     colors: {
       transparent: 'transparent',
