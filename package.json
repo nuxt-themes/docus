@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.5.14",
+  "version": "0.6.0",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -43,6 +43,10 @@
     "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules",
     "clean:dist": "rm -rf dist docs/dist playground/dist",
     "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
+  },
+  "resolutions": {
+    "vue-server-renderer": "2.6.13",
+    "vue-template-compiler": "2.6.13"
   },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
@@ -111,10 +115,6 @@
     "vue-plausible": "^1.1.4",
     "vue3": "npm:vue@next",
     "vue3-router": "npm:vue-router@next"
-  },
-  "resolutions": {
-    "vue-server-renderer": "2.6.13",
-    "vue-template-compiler": "2.6.13"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.6",
