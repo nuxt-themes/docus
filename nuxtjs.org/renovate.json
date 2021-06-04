@@ -1,8 +1,0 @@
-{
-  "extends": ["@nuxtjs"],
-  "baseBranches": ["main"],
-  "ignoreDeps": ["sass-loader"],
-  "lockFileMaintenance": {
-    "enabled": true
-  }
-}

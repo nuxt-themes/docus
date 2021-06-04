@@ -1,4 +1,0 @@
-[build]
-  command = "npm run generate"
-  publish = "dist"
-  functions = "lambda"
