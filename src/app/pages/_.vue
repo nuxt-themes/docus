@@ -46,6 +46,9 @@ export default defineComponent({
     // Set layout from page
     if (page.layout) templateOptions = { ...templateOptions, ...page.layout }
 
+    // Set template options
+    $docus.layout.value = templateOptions
+
     // Set Docus runtime current page
     $docus.currentPage.value = page
 
