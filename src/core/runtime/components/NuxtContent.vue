@@ -1,4 +1,6 @@
 <script>
+import { pascalCase } from 'scule'
+import Vue from 'vue'
 import info from 'property-information'
 
 const rootKeys = ['class-name', 'class', 'style']
@@ -7,6 +9,8 @@ const rxOn = /^@|^v-on:/
 const rxBind = /^:|^v-bind:/
 const rxModel = /^v-model/
 const nativeInputs = ['select', 'textarea', 'input']
+
+const lazyComponents = new Set()
 
 function evalInContext(code, context) {
   // eslint-disable-next-line no-new-func
@@ -115,6 +119,9 @@ function processNode(node, h, doc) {
     children.push(...processQueue.map(node => processNode(node, h, doc)))
   }
 
+  if (process.server && typeof Vue.component(pascalCase(node.tag)) === 'function') {
+    lazyComponents.add(pascalCase(node.tag))
+  }
   return h(node.tag, data, children)
 }
 
@@ -149,7 +156,7 @@ export default {
       required: true
     }
   },
-  render(h, { data, props }) {
+  render(h, { data, props, parent }) {
     const { document } = props
     const { body } = document || {}
     if (!body || !body.children || !Array.isArray(body.children)) {
@@ -166,11 +173,18 @@ export default {
     }
     data.class = classes.concat('nuxt-content')
     data.props = Object.assign({ ...body.props }, data.props)
-    return h(
-      'div',
-      data,
-      body.children.map(child => processNode(child, h, document))
-    )
+    const children = body.children.map(child => processNode(child, h, document))
+
+    if (process.server) {
+      parent.$root.context.beforeSerialize(nuxtState => {
+        if (nuxtState.fetch._lazyComponents) {
+          lazyComponents.forEach(name => nuxtState.fetch._lazyComponents.add(name))
+        } else {
+          nuxtState.fetch._lazyComponents = lazyComponents
+        }
+      })
+    }
+    return h('div', data, children)
   }
 }
 </script>
