@@ -148,6 +148,7 @@ export interface Colors {
 
 //  Storage
 export interface DriverOptions {
+  ignore?: string[]
   mountPoint: string
   base: string
 }
