@@ -1,20 +1,39 @@
 import { join } from 'path'
+import { promises as fsPromises } from 'fs'
 import defu from 'defu'
-import { createStorage, defineDriver, Driver, Storage } from 'unstorage'
+import { defineDriver, Driver } from 'unstorage'
 import fsDriver from 'unstorage/drivers/fs'
-import { promises as FS } from 'graceful-fs'
-import { DocusDocument, DriverOptions, StorageOptions } from '../types'
-import { useDB } from './database'
-import { useHooks, logger, useParser } from './'
+import { DocusDocument, DriverOptions } from '../../types'
+import { useDB } from '../database'
+import { useHooks } from '../hooks'
+import { useParser } from '../parser'
 
 export interface DocusDriver extends Driver {
   init(): Promise<void>
 }
 
+/**
+ * Determine whether it is the index file or not
+ *
+ * @param path relative to full path of the file
+ * @returns
+ */
 const isIndex = path => path.endsWith('index.md')
+
+/**
+ * Removes the index file name and returns directory path
+ *
+ * @param path relative to full path of the file
+ * @returns
+ */
 const removeIndex = path => path.replace(/\/index.md$/, '')
 
-// sort keys and put index files at first
+/**
+ * Sort keys and put index files at first
+ *
+ * @param keys array of files
+ * @returns
+ */
 function sortItemKeys(keys: string[]) {
   return [...keys].sort((a, b) => {
     const isA = isIndex(a)
@@ -27,6 +46,11 @@ function sortItemKeys(keys: string[]) {
 }
 
 export const docusDriver = defineDriver((options: DriverOptions) => {
+  // force ignore node_modules and .git and files with `_` prefix
+  if (options.ignore) {
+    options.ignore.push('**/node_modules/**', '**/.git/**', '**/_**/**')
+  }
+
   const { insert, items } = useDB()
   const parser = useParser()
   const fs = fsDriver(options)
@@ -35,7 +59,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     const document = await parser.parse(key, content)
 
     if (document.extension === '.md') {
-      const stats = await FS.stat(join(options.base, document.path + document.extension))
+      const stats = await fsPromises.stat(join(options.base, document.path + document.extension))
       document.createdAt = stats.birthtime
       document.updatedAt = stats.mtime
     }
@@ -44,7 +68,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     document.source = key
 
     // Unify key format
-    document.key = key.replace(/\//g, ':')
+    document.key = key
 
     // use prefix in document path
     document.path = `/${options.mountPoint}` + document.path
@@ -64,10 +88,9 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   function getItemParents(key: string): Promise<DocusDocument[]> {
     const parts = removeIndex(key).split('/')
     const tasks = parts.reduce((parents, _part, index) => {
-      const path = parts.slice(0, parts.length - 1 - index)
-      if (!path.join('/')) return parents
-      const parentKey = path.join('/') + '/index.md'
-      if (hasItem(parentKey)) {
+      const path = parts.slice(0, parts.length - 1 - index).join('/')
+      const parentKey = path + '/index.md'
+      if (path && hasItem(parentKey)) {
         parents.unshift(getItem(parentKey))
       }
       return parents
@@ -87,7 +110,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   }
 
   // retrive contents list
-  const getKeys = () => fs.getKeys().map(key => key.replace(/:/g, '/'))
+  const getKeys = () => fs.getKeys()
 
   const hasItem = key => fs.hasItem(key)
 
@@ -130,15 +153,13 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     }
 
     // fetch content keys
-    let keys = await fs.getKeys()
+    let keys = await getKeys()
 
     // sort keys to parse index files before others
     keys = sortItemKeys(keys)
 
-    const tasks = keys.map(async key => {
-      const content = await fs.getItem(key)
-      await parseAndInsert(key, content)
-    })
+    const tasks = keys.map(key => fs.getItem(key).then(content => parseAndInsert(key, content)))
+
     await Promise.all(tasks)
   }
 
@@ -154,7 +175,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 
       // remove item from database
       if (event === 'remove') {
-        await items.removeWhere(doc => doc.source === key)
+        await removeItem(key)
       }
 
       // Revalidate childrent of content because parent has changed
@@ -179,39 +200,3 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     watch
   }
 })
-
-let _storage: Storage
-let drivers: DocusDriver[]
-export function initStorage(options: StorageOptions) {
-  drivers = []
-  _storage = createStorage()
-
-  if (!options?.drivers) {
-    logger.warn('No driver specified for storage')
-  } else {
-    drivers = options.drivers.map(options => {
-      const driver = docusDriver(options) as DocusDriver
-      _storage.mount(options.mountPoint, driver)
-      return driver
-    })
-  }
-
-  return {
-    storage: _storage,
-    drivers,
-    lazyIndex: () => Promise.all(drivers.map(d => d.init()))
-  }
-}
-
-export async function destroyStorage() {
-  await _storage.dispose()
-  _storage = null
-  drivers = null
-}
-
-export function useStorage() {
-  return {
-    storage: _storage,
-    drivers
-  }
-}
