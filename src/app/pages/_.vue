@@ -1,5 +1,5 @@
 <template>
-  <Component :is="page.template" :page="page" />
+  <Component :is="page.template" :key="page.template" :page="page" />
 </template>
 
 <script>
