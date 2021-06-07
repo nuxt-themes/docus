@@ -36,7 +36,7 @@
     "start": "nuxt start docs",
     "play": "BUILD_ADMIN=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "prepare": "yarn link ; yarn link docus",
+    "prepare": "yarn link && yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && echo 'TODO tests'",
     "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt",
