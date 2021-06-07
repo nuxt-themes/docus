@@ -44,10 +44,6 @@
     "clean:dist": "rm -rf dist docs/dist playground/dist",
     "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
   },
-  "resolutions": {
-    "vue-server-renderer": "2.6.13",
-    "vue-template-compiler": "2.6.13"
-  },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
@@ -60,7 +56,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@types/graceful-fs": "^4.1.5",
     "@vitejs/plugin-vue": "^1.2.3",
-    "@vue/composition-api": "^1.0.0-rc.10",
+    "@vue/composition-api": "^1.0.0-rc.11",
     "@vueuse/integrations": "^4.11.2",
     "clear-module": "^4.1.1",
     "clipboard": "^2.0.8",
@@ -77,11 +73,11 @@
     "mande": "^1.0.0",
     "marked": "^2.0.7",
     "mkdirp": "^1.0.4",
-    "nuxt-edge": "2.16.0-27046954.cc3f43e1",
+    "nuxt-edge": "2.16.0-27050421.cc3f43e1",
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.0",
     "nuxt-vite": "^0.1.1",
-    "nuxt-windicss": "^0.8.3",
+    "nuxt-windicss": "^1.0.0",
     "ohmyfetch": "^0.1.8",
     "plausible-tracker": "^0.3.1",
     "prism-theme-vars": "^0.2.2",
@@ -124,11 +120,11 @@
     "@types/node-fetch": "^2.5.10",
     "@types/pify": "^5.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "standard-version": "^9.3.0",
     "terser": "^5.7.0",
     "siroc": "^0.9.3"
