@@ -16,11 +16,8 @@
           rounded-xl
           group
           xs:w-auto
-          dark:text-gray-400
-          dark:border-gray-800 dark:border-opacity-50
-          dark:hover:text-primary-400
-          hover:text-primary
-          hover:border-primary-200
+          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:text-primary-400
+          hover:text-primary hover:border-primary-200
           dark:hover:border-gray-700
         "
       >
@@ -52,14 +49,10 @@
           border border-gray-100
           rounded-xl
           group
-          xs:mb-0
-          xs:w-auto
-          dark:text-gray-400
-          dark:border-gray-800
-          hover:text-primary
-          hover:border-primary-200
-          dark:hover:border-gray-700
-          dark:border-opacity-50
+          xs:mb-0 xs:w-auto
+          dark:text-gray-400 dark:border-gray-800
+          hover:text-primary hover:border-primary-200
+          dark:hover:border-gray-700 dark:border-opacity-50
         "
       >
         <span class="relative flex flex-col items-start truncate">

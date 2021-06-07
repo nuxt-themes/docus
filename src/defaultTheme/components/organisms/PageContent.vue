@@ -30,8 +30,7 @@
             bg-yellow-100
             rounded-full
             items-flex
-            dark:bg-yellow-800
-            dark:text-yellow-400
+            dark:bg-yellow-800 dark:text-yellow-400
           "
           >Draft</span
         >

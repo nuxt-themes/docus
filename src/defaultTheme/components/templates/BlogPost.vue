@@ -10,8 +10,7 @@
               leading-none
               text-gray-900
               dark:text-gray-100
-              hover:text-gray-500
-              hover:dark:text-gray-400
+              hover:text-gray-500 hover:dark:text-gray-400
               font-medium
             "
             >← Back</span

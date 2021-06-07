@@ -12,8 +12,7 @@
       text-sm
       bg-white
       border-b border-gray-200 border-opacity-50
-      xl:relative
-      xl:border-0
+      xl:relative xl:border-0
       dark:border-gray-800
       blur-header
       bg-opacity-80
@@ -25,8 +24,7 @@
       sm:pl-6
       xl:w-64
       top-header
-      xl:block
-      xl:top-0
+      xl:block xl:top-0
     "
   >
     <!-- mobile ToC title + button -->

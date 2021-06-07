@@ -16,11 +16,8 @@
           py-1
           text-sm
           leading-5
-          hover:text-gray-900
-          hover:bg-gray-50
-          focus:outline-none
-          focus:text-gray-900
-          focus:bg-gray-50
+          hover:text-gray-900 hover:bg-gray-50
+          focus:outline-none focus:text-gray-900 focus:bg-gray-50
         "
         @click="open(file)"
       >
