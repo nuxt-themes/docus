@@ -1,5 +1,4 @@
 import visit from 'unist-util-visit'
-import h from 'hastscript'
 import { useMarkdownParser } from '..'
 
 const toFrontMatter = (yamlString: string) => `---

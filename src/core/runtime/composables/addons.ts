@@ -33,6 +33,7 @@ export const useDocusAddons = (context: DocusAddonContext, addons: DocusAddons) 
           try {
             await addonKeys?.init?.()
           } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(`Could not init ${key} addon!`)
           }
         }
