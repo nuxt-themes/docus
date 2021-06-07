@@ -5,7 +5,7 @@ import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
 import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import { destroyStorage, initStorage } from './storage'
+import { destroyStorage, initStorage, useNuxtIgnoreList } from './storage'
 import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
 import { initParser } from './parser'
@@ -90,7 +90,8 @@ export default <Module>async function docusModule() {
     drivers: [
       {
         base: resolve(options.srcDir, $docus.settings.contentDir),
-        mountPoint: 'pages'
+        mountPoint: 'pages',
+        ignore: await useNuxtIgnoreList(nuxt)
       },
       {
         base: resolve(options.srcDir, 'data'),

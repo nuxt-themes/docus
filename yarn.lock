@@ -9393,15 +9393,6 @@ ohmyfetch@^0.1.8:
   dependencies:
     node-fetch "^2.6.1"
 
-ohmyfetch@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ohmyfetch/-/ohmyfetch-0.2.0.tgz#09c03a6c107ddfe6a75c83f0a9cdaa59fb31e54b"
-  integrity sha512-tbrMD8LauY8xivHmDJItpfth/caVDHmDljeZE+4DzA2sbSp72Vzb//NJD1LtAm3pEnK5hY48i4V/zcraeiS3FQ==
-  dependencies:
-    destr "^1.1.0"
-    node-fetch "^2.6.1"
-    ufo "^0.6.10"
-
 on-finished@^2.3.0, on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -12912,12 +12903,7 @@ ufo@^0.6.10, ufo@^0.6.6:
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.6.11.tgz#69311ed4abc8ab671c83754b79ce0d396fea1075"
   integrity sha512-Yu7TJThwlr23peOkX/+hm6LfkyBs+eDWV880468PTrjKBKjjsNWFFwIuOqDfmXngRo9TZ4+twFYueRH0OLl0Gw==
 
-ufo@^0.7.2:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.7.4.tgz#06e971738bea098b95056755ba006a6b73a63f97"
-  integrity sha512-qFCjO4/IAaejZ6QKVBdM7FZkjhd8zQmBmE6i2bcSwBRrctPVtKXFojJa2flaqNUd7YWQoCFwd44MpOt1g94ekQ==
-
-ufo@^0.7.5:
+ufo@^0.7.2, ufo@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.7.5.tgz#5d5b2174747c0072edd30501994c8ac4ad2e77ea"
   integrity sha512-FGG+EgguC1oz5dTE1JptPWCyj6Z9mYpwvZY8PTu9Vh/Aoy+Mj9cpeQ3gg4kyEMDbMrH+lTYiw7bomG58B8X7Kg==
