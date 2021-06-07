@@ -154,7 +154,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 
       // remove item from database
       if (event === 'remove') {
-        await items.removeWhere(doc => doc.key === key)
+        await items.removeWhere(doc => doc.source === key)
       }
 
       // Revalidate childrent of content because parent has changed
