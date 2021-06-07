@@ -25,7 +25,7 @@
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span v-if="prev.category" class="mb-1 text-xs leading-tight text-gray-400 group-hover:text-primary-400">
+          <span v-if="prev.category" class="mb-1 text-xs leading-tight text-gray-400">
             {{ prev.category }}
           </span>
           <span class="flex items-center w-full leading-tight">
@@ -63,7 +63,7 @@
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span v-if="next.category" class="mb-1 text-xs leading-tight text-gray-400 group-hover:text-primary-400">
+          <span v-if="next.category" class="mb-1 text-xs leading-tight text-gray-400">
             {{ next.category }}
           </span>
           <span class="flex items-center w-full leading-tight">

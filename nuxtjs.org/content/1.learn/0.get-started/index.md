@@ -3,7 +3,7 @@ title: Introduction
 description: Guides give you time to reach the peak of Nuxt. From Get Started to mastering the API References, guides will bring you to the top.
 ---
 
-<alert type="next">
+<alert type="info">
 
 Already know Nuxt 2 and just want to learn about what's new in Nuxt 3 ? Check out the [migration guide](/docs/2.x/internals-glossary/context#redirect)
 
