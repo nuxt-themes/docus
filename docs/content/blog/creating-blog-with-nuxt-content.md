@@ -172,7 +172,7 @@ To display our content we are using the `<nuxt-content />` component by passing 
 
 We can now run our dev server and go to the route [http://localhost:3000/blog/my-first-blog-post](http://localhost:3000/blog/my-first-blog-post) and we should see our content from our markdown file.
 
-<nuxt-img alt="content from markdown" src="/blog/creating-blog-with-nuxt-content/get-started-with-nuxt-content.png">
+<nuxt-img alt="content from markdown" src="/blog/creating-blog-with-nuxt-content/get-started-with-nuxt-content.png"></nuxt-img>
 
 ### Default Injected variables
 
