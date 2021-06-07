@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import { join, resolve } from 'upath'
+import { join } from 'upath'
 import chalk from 'chalk'
 import { NuxtOptionsServer } from '@nuxt/types/config/server'
 import serveStatic from 'serve-static'
