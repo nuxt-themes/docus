@@ -14,6 +14,7 @@ export default withDocus({
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
   },
+  buildModules: ['@nuxt/typescript-build'],
   vite: {
     optimizeDeps: {
       include: ['cookie', 'js-cookie', 'property-information', 'clipboard'],
