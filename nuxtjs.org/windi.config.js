@@ -23,7 +23,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: 'DM Serif Display'
+        sans: 'DM Sans',
+        serif: 'DM Serif Display',
+        mono: 'DM Mono'
       }
     }
   },
