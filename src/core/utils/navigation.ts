@@ -77,7 +77,7 @@ export async function updateNavigation(nuxt) {
   }
 
   // Query pages
-  const pages = await query('/page', { deep: true }).where(where).only(fields).sortBy('position', 'asc').fetch()
+  const pages = await query('/pages', { deep: true }).where(where).only(fields).sortBy('position', 'asc').fetch()
 
   const languages: { [key: string]: any[] } = pages.reduce((map, page) => {
     const language = page.language || defaultLocale

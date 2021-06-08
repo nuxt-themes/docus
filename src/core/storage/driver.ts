@@ -7,6 +7,7 @@ import { DocusDocument, DriverOptions } from '../../types'
 import { useDB } from '../database'
 import { useHooks } from '../hooks'
 import { useParser } from '../parser'
+import { logger } from '../utils'
 
 export interface DocusDriver extends Driver {
   init(): Promise<void>
@@ -52,6 +53,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   }
 
   const { insert, items } = useDB()
+  const { callHook } = useHooks()
   const parser = useParser()
   const fs = fsDriver(options)
 
@@ -70,12 +72,15 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     // Unify key format
     document.key = key
 
-    // use prefix in document path
-    document.path = `/${options.mountPoint}` + document.path
-
     // Enrich document layout based on parents data
     const parents = await getItemParents(key)
     document.layout = defu(document.layout, ...parents.map(p => p.layout))
+
+    // call beforeInsert Hook
+    await callHook('docus:storage:beforeInsert', document)
+
+    // use prefix in document path
+    document.path = `/${options.mountPoint}` + document.path
 
     return insert(document)
   }
@@ -147,6 +152,8 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 
   // Read contents and initialize database
   const init = async () => {
+    const start = Date.now()
+    const end = () => Date.now() - start
     // ensure directory exists
     if (!fs.hasItem('')) {
       return
@@ -157,15 +164,16 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
 
     // sort keys to parse index files before others
     keys = sortItemKeys(keys)
+    const total = keys.length
 
-    const tasks = keys.map(key => fs.getItem(key).then(content => parseAndInsert(key, content)))
-
-    await Promise.all(tasks)
+    while (keys.length) {
+      await Promise.all(keys.splice(0, 8).map(key => fs.getItem(key).then(content => parseAndInsert(key, content))))
+    }
+    logger.info(`${total} files processed in ${end()}ms`)
   }
 
   // Watch files and revalidate data
   const watch = callback => {
-    const { callHook } = useHooks()
     return fs.watch(async (event, key) => {
       if (event === 'update') {
         const content = await fs.getItem(key)
