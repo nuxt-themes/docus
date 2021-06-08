@@ -54,7 +54,7 @@ export default <Module>function themeSetupModule() {
   const { settings } = $docus
 
   // Windi glob used for includes
-  const windiGlob = '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css}'
+  const windiGlob = '/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css,ts,js}'
   // Get Windi config at user project level
   const localWindiConfig = loadWindiConfig(options)
 
