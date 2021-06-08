@@ -9,10 +9,10 @@
       </template>
 
       <template #description>
-        <SectionDescription class="mb-8 px-8 sm:px-0" size="md">
+        <HeroDescription class="mb-8 px-8 sm:px-0">
           Build your next Vue.js application with confidence using NuxtJS.<br class="hidden sm:block" />An open source
           framework making web development simple and powerful.
-        </SectionDescription>
+        </HeroDescription>
       </template>
       <template #buttons>
         <SectionButton
