@@ -1,9 +1,6 @@
 <template>
   <div>
-    <section
-      class="mb-4 mt-4 xl:mt-0"
-      :class="{ 'border-b border-gray-100 dark:border-gray-800 dark:border-opacity-50 pb-4': page.description }"
-    >
+    <section class="xl:mb-4 mt-4 xl:mt-0 px-4 sm:px-6">
       <div class="flex items-center justify-between">
         <InjectComponent
           v-if="page.icon"
@@ -39,9 +36,17 @@
       <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-400">
         {{ page.description }}
       </p>
+      <hr
+        v-if="$scopedSlots['mobile-toc'] || page.description"
+        class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
+      />
     </section>
-    <NuxtContent :document="page" class="docus-content" />
-    <PageBottom :page="page" />
+
+    <slot name="mobile-toc" />
+
+    <div class="px-4 sm:px-6 mt-4">
+      <NuxtContent :document="page" class="docus-content" />
+    </div>
   </div>
 </template>
 
