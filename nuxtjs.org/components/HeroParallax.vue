@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerImg" class="absolute top-0 left-0 w-full h-full" @mousemove="parallax">
+  <div ref="containerImg" class="absolute top-0 left-0 w-full h-full select-none" @mousemove="parallax">
     <img
       ref="gem1"
       data-speed="2"
