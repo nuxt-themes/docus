@@ -54,7 +54,9 @@
         </div>
       </template>
       <template #title>
-        <SectionTitle class="mb-4 font-serif" size="md">The Intuitive Vue <br />Framework</SectionTitle>
+        <h1 class="text-md lg:text-lg 2xl:text-lg">suka</h1>
+
+        <!-- <SectionTitle class="mb-4" size="md">The Intuitive Vue <br />Framework</SectionTitle> -->
       </template>
 
       <template #description>
