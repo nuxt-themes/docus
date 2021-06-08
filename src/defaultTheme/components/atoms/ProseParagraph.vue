@@ -4,8 +4,10 @@
 
 <style lang="postcss" scoped>
 p {
-  @apply leading-relaxed;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  @apply leading-relaxed my-4;
+  >>> br {
+    @apply block mt-4
+    content: '';
+  }
 }
 </style>

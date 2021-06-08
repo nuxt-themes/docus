@@ -1,0 +1,12 @@
+<template>
+  <svg fill="none" viewBox="0 0 24 24">
+    <title>Check</title>
+    <path
+      d="M20 6L9 18l-5-5.454"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</template>

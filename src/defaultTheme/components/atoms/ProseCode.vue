@@ -17,7 +17,7 @@ pre {
 code {
   /* TODO */
   /* font-size: 0.875em; */
-  @apply text-xs leading-relaxed;
+  @apply text-sm leading-relaxed;
   font-weight: 400;
   color: inherit;
   background-color: transparent !important;
