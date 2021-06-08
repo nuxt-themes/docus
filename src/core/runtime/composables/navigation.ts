@@ -60,18 +60,11 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
         if (index + 1 === paths.length) return links
 
         // If this path links are only 1 long, set the current path children as root
-        if (links.length === 1) {
-          links = links[0].children
-
-          return links
-        }
+        if (links.length === 1) return links[0].children
 
         // Otherwise, find matching path and get its childrens
-        links = links.find(item => {
-          const itemPaths = item.to.split('/')
-
-          return itemPaths[index] === path
-        }).children
+        const match = links.find(item => item.to.split('/')[index] === path)
+        if (match) return match.children
 
         return links
       }, items)
