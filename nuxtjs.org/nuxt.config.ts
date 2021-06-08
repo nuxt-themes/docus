@@ -8,15 +8,10 @@ export default withDocus({
     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap' },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
   ],
+  buildModules: ['@nuxt/typescript-build'],
   windicss: {
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
-  },
-  socialImage: {
-    baseUrl: 'DOMIN',
-    chrome: {
-      browserWSEndpoint: 'wss://chrome.browserless.io/'
-    }
   },
   vite: {
     optimizeDeps: {
