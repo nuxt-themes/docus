@@ -1,7 +1,7 @@
 <template>
-  <Label
+  <ALabel
     :tag="tag"
-    class="font-bold"
+    class="font-normal"
     :class="{
       'sm:text-display-5 text-display-6 2xl:text-display-4': size === 'sm',
       'text-display-5 sm:text-display-4 md:text-display-3 2xl:text-display-2': size === 'md',
@@ -9,7 +9,7 @@
     }"
   >
     <slot />
-  </Label>
+  </ALabel>
 </template>
 
 <script>

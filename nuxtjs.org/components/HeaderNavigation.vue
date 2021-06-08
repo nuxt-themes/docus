@@ -10,7 +10,6 @@
       >
         <NuxtLink
           :to="`/${link.slug}/${link.children[0].slug || ''}`"
-          class="pb-2"
           :class="{
             'text-primary-green': currentSlug === link.slug,
             'mt-4': $route.path !== '/'
@@ -22,26 +21,27 @@
           <div class="dropdown flex items-center justify-center w-52 -mt-2">
             <img src="~/static/img/header/polygon.svg" class="w-5 h-5" />
           </div>
-          <ul
-            class="light:bg-white dark:bg-secondary light:border rounded-md border-gray-100 py-2 dropdown"
-          >
+          <ul class="light:bg-white dark:bg-secondary light:border rounded-md border-gray-100 py-2 dropdown">
             <!-- TODO: Remove the filter -->
-            <li
-              v-for="(nav, i) in link.children.filter(
-                (item) => item.slug && item.slug !== ``
-              )"
-              :key="nav.slug"
-            >
+            <li v-for="(nav, i) in link.children.filter(item => item.slug && item.slug !== ``)" :key="nav.slug">
               <NuxtLink
                 :to="`/${link.slug}/${nav.slug}`"
-                class="mx-2 rounded-md capitalize p-2 flex justify-start items-center h-full w-52 space-x-4 light:hover:bg-gray-100 dark:hover:bg-secondary-light"
+                class="
+                  mx-2
+                  rounded-md
+                  capitalize
+                  p-2
+                  flex
+                  justify-start
+                  items-center
+                  h-full
+                  w-52
+                  space-x-4
+                  light:hover:bg-gray-100
+                  dark:hover:bg-secondary-light
+                "
               >
-                <img
-                  :src="`/img/header/dropdown-gem-${
-                    i + 1 > 4 ? '4' : i + 1
-                  }.svg`"
-                  class="w-1/5"
-                />
+                <img :src="`/img/header/dropdown-gem-${i + 1 > 4 ? '4' : i + 1}.svg`" class="w-1/5" />
                 <span> {{ nav.slug }} </span>
               </NuxtLink>
             </li>
@@ -53,13 +53,7 @@
 </template>
 
 <script>
-import {
-  computed,
-  defineComponent,
-  useRoute,
-  ref,
-  useContext
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, useRoute, ref, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
@@ -72,9 +66,7 @@ export default defineComponent({
     const currentNav = computed(() => $docus.currentNav.value)
 
     // computed
-    const headerLinks = computed(() =>
-      currentNav.value.filter((link) => link.slug !== '')
-    )
+    const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== ''))
 
     const currentSlug = computed(() => {
       return route.value.path !== '/' && route?.value?.params?.pathMatch
