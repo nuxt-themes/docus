@@ -11,11 +11,11 @@ export default withDocus({
     },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
   ],
+  buildModules: ['@nuxt/typescript-build'],
   windicss: {
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
   },
-  buildModules: ['@nuxt/typescript-build'],
   vite: {
     optimizeDeps: {
       include: ['cookie', 'js-cookie', 'property-information', 'clipboard'],
