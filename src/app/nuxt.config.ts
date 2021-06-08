@@ -24,7 +24,10 @@ export default nuxtConfig({
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
       },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
-    ]
+    ],
+    bodyAttrs: {
+      class: ['antialiased tracking-semitight text-gray-900 bg-red-500 dark:text-gray-50 dark:bg-gray-900']
+    }
   },
 
   /**

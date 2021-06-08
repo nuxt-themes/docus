@@ -1,11 +1,6 @@
 <template>
-  <div class="dark:bg-secondary-dark" @mousemove="parallax">
-    <HeroMain
-      content-center
-      height="60vh"
-      min-height="560px"
-      class="mx-auto max-w-8xl"
-    >
+  <div class="dark:bg-secondary-dark overflow-hidden" @mousemove="parallax">
+    <HeroMain content-center height="60vh" min-height="560px" class="mx-auto max-w-8xl">
       <template #illustration>
         <div ref="containerImg">
           <img
@@ -59,19 +54,13 @@
         </div>
       </template>
       <template #title>
-        <SectionTitle class="mb-4 text-cloud-surface font-serif" size="md"
-          >The Intuitive Vue <br />Framework</SectionTitle
-        >
+        <SectionTitle class="mb-4 font-serif" size="md">The Intuitive Vue <br />Framework</SectionTitle>
       </template>
 
       <template #description>
-        <SectionDescription
-          class="mb-8 text-cloud-surface px-8 sm:px-0"
-          size="md"
-        >
-          Build your next Vue.js application with confidence using NuxtJS.<br
-            class="hidden sm:block"
-          />An open source framework making web development simple and powerful.
+        <SectionDescription class="mb-8 px-8 sm:px-0" size="md">
+          Build your next Vue.js application with confidence using NuxtJS.<br class="hidden sm:block" />An open source
+          framework making web development simple and powerful.
         </SectionDescription>
       </template>
       <template #buttons>
