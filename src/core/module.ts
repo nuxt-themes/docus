@@ -54,22 +54,23 @@ export default <Module>async function docusModule() {
   initParser(parserOptions)
 
   const coreHooks = useHooks()
+
   // Configure content after each hook
+  // Locales or empty array
+  let locales = options.i18n?.locales || []
+  // If locales is function, resolve it
+  locales = typeof locales === 'function' ? locales() : locales
+  // Map locales or default to 'en'
+  locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+  // Get default locale or default to 'en'
+  const defaultLocale = options.i18n?.defaultLocale || 'en'
+  const regexp = new RegExp(`^/(${locales})`, 'gi')
+
   coreHooks.hook('docus:storage:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
       return
     }
 
-    // Locales or empty array
-    let locales = options.i18n?.locales || []
-    // If locales is function, resolve it
-    locales = typeof locales === 'function' ? locales() : locales
-    // Map locales or default to 'en'
-    locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
-    // Get default locale or default to 'en'
-    const defaultLocale = options.i18n?.defaultLocale || 'en'
-
-    const regexp = new RegExp(`^/(${locales})`, 'gi')
     const { dir, slug } = document
     const _dir = dir.replace(regexp, '')
     const _language = dir.replace(_dir, '').replace(/\//, '') || defaultLocale
@@ -81,6 +82,7 @@ export default <Module>async function docusModule() {
     document.slug = generateSlug(slug)
     document.position = position
     document.to = generateTo(_to)
+    document.path = document.to
     document.language = _language
     document.draft = document.draft || isDraft(slug)
   })
