@@ -15,55 +15,46 @@
         alt="A landscape image"
       />
     </template>
+
     <template #section-content>
       <SectionContent class="col-span-12 items-center pt-20 pb-60">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg"
-            >Community</ALabel
-          >
+          <span class="text-terciary font-bold text-lg">Community</span>
         </template>
+
         <template #title>
-          <SectionTitle class="text-center font-serif" size="sm"
-            >Developer love it</SectionTitle
+          <SectionTitle class="text-center font-serif"
+            >Developers <span class="text-primary italic">love it</span></SectionTitle
           >
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >Be part of the Nuxt.js community and help us Nuxtify the
-            world.</SectionDescription
+          <SectionDescription class="pb-16 text-center"
+            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
+
         <template #content>
-          <ul
-            class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20 pb-8 sm:mx-20 md:mx-0"
-          >
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20 pb-8 sm:mx-20 md:mx-0">
             <li
               v-for="testimonial in testimonials"
               :key="testimonial.author"
               class="relative flex flex-col items-center space-y-3 border-3 border-gray-200 rounded-lg px-4 pb-6"
             >
-              <img
-                :src="`/img/home/community/${testimonial.icon_author}.png`"
-                class="absolute h-12 bottom-0 -mb-9"
-              />
+              <img :src="`/img/home/community/${testimonial.icon_author}.png`" class="absolute h-12 bottom-0 -mb-9" />
               <img
                 :src="`/img/home/community/${testimonial.icon_job}.svg`"
                 class="md:hidden lg:block absolute h-7 bottom-5 right-0 mr-4 mb-4"
               />
-              <ALabel tag="p" class="text-center px-4 xl:px-16 2xl:px-12">{{
-                testimonial.testimonial
-              }}</ALabel>
-              <ALabel tag="span" class="font-bold text-center text-base">{{
-                testimonial.author
-              }}</ALabel>
-              <ALabel tag="span" class="text-center text-sm">{{
-                testimonial.job
-              }}</ALabel>
+              <p class="text-center px-4 xl:px-16 2xl:px-12">{{ testimonial.testimonial }}</p>
+              <span class="font-bold text-center text-base">{{ testimonial.author }}</span>
+              <span class="text-center text-sm">{{ testimonial.job }}</span>
             </li>
           </ul>
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"

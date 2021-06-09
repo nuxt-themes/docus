@@ -3,26 +3,25 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <ALabel tag="span" class="text-terciary font-bold text-lg"
-            >Discover</ALabel
-          >
+          <span class="text-terciary font-bold text-lg">Discover</span>
         </template>
+
         <template #title>
-          <SectionTitle class="font-serif text-center" size="sm"
-            >Art in the making</SectionTitle
-          >
+          <SectionTitle class="text-center">Art in the making</SectionTitle>
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >Be part of the Nuxt.js community and help us Nuxtify the
-            world.</SectionDescription
+          <SectionDescription class="pb-16 text-center"
+            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
+
         <template #banner>
           <MPartnersBanner class="pb-0" :partners-logo="partners" />
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"
