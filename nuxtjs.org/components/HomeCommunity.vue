@@ -24,18 +24,18 @@
 
         <template #title>
           <SectionTitle class="text-center font-serif"
-            >Developers <span class="text-primary italic">love it</span></SectionTitle
+            >Developers <span class="text-primary italic">Love </span>it</SectionTitle
           >
         </template>
 
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center"
+          <SectionDescription class="text-center"
             >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20 pb-8 sm:mx-20 md:mx-0">
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8 lg:gap-16">
             <li
               v-for="testimonial in testimonials"
               :key="testimonial.author"
@@ -43,21 +43,20 @@
                 relative
                 flex flex-col
                 items-center
-                justify-between
-                space-y-4
-                border-3 border-gray-200
+                border-2 border-gray-200
+                dark:border-secondary-light
                 rounded-lg
-                p-4
+                p-6
               "
             >
               <img :src="`/img/home/community/${testimonial.icon_author}.png`" class="absolute h-12 bottom-0 -mb-9" />
               <img
                 :src="`/img/home/community/${testimonial.icon_job}.svg`"
-                class="md:hidden lg:block absolute h-7 bottom-5 right-0 mr-4 mb-4"
+                class="md:hidden lg:block absolute h-7 bottom-0 right-0 mr-4 mb-4"
               />
-              <p class="text-center px-4 xl:px-16 2xl:px-12">{{ testimonial.testimonial }}</p>
+              <p class="text-center mb-4">{{ testimonial.testimonial }}</p>
               <span class="font-bold text-center text-base">{{ testimonial.author }}</span>
-              <span class="text-center text-sm">{{ testimonial.job }}</span>
+              <span class="text-center text-sm dark:text-secondary-lightest">{{ testimonial.job }}</span>
             </li>
           </ul>
         </template>

@@ -13,7 +13,7 @@ export default withDocus({
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ],
     bodyAttrs: {
-      class: ['text-secondary dark:text-white bg-white']
+      class: ['text-secondary dark:text-white']
     }
   },
   buildModules: ['@nuxt/typescript-build'],

@@ -13,7 +13,6 @@
             pb-52
             md:pt-44
             lg:pb-56 lg:pt-52
-            xl:pb-60 xl:pt-28
             text-center
             sm:px-0 sm:w-4/5
             md:w-2/3

@@ -1,8 +1,5 @@
 <template>
-  <footer
-    class="light:bg-gray-50 dark:bg-secondary-darker"
-    aria-labelledby="footerHeading"
-  >
+  <footer class="light:bg-gray-50 dark:bg-secondary-darker" aria-labelledby="footerHeading">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
         <div class="grid grid-cols-2 gap-8 xl:col-span-4">
@@ -16,10 +13,24 @@
         <MFooterLanguage class="mt-12 xl:mt-0" />
       </div>
       <MFooterNewsLetter
-        class="border-t light:border-gray-200 dark:border-gray-600 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0"
+        class="
+          border-t
+          light:border-gray-200
+          dark:border-secondary-light
+          pt-8
+          lg:flex lg:items-center lg:justify-between
+          xl:mt-0
+        "
       />
       <MFooterFoot
-        class="mt-8 border-t border-gray-200 dark:border-gray-600 pt-8 md:flex md:items-center md:justify-between flex-row-reverse"
+        class="
+          mt-8
+          border-t border-gray-200
+          dark:border-secondary-light
+          pt-8
+          md:flex md:items-center md:justify-between
+          flex-row-reverse
+        "
       />
     </div>
   </footer>

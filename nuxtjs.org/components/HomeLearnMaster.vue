@@ -8,7 +8,7 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            ><span class="text-terciary italic">Easy </span>to learn, <span class="text-terciary italic">easy</span> to
+            ><span class="text-terciary italic">Easy </span>to learn. <span class="text-terciary italic">Easy</span> to
             master</SectionTitle
           >
         </template>
