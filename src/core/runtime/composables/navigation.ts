@@ -47,38 +47,64 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
     const nav = state.navigation[locale || currentLocale] || []
 
     let items = nav
+    let match
+
+    // The deepest exclusive navigation that can be found based on `from`
+    let exclusiveLinks = []
+
+    // Link to Docus home
+    let parent
 
     // `from` parameter handling
     if (from) {
+      let lastMatch
+
+      // Default value will be used if there no parent for an exclusive content
+      parent = {
+        title: state.settings.title,
+        to: '/'
+      }
       const paths = from.split('/')
 
       items = paths.reduce((links: NavItem[], path: string, index: number) => {
         // Empty path, skip iteration
         if (!path) return links
 
-        // If we iterated on the latest path, return links
-        if (index + 1 === paths.length) return links
-
-        // If this path links are only 1 long, set the current path children as root
-        if (links.length === 1) {
-          links = links[0].children
-
-          return links
+        // Remember last matched content
+        // This content will use as navigation parent if it has an exclusive decendant
+        if (match && !match.shadow) {
+          lastMatch = match
         }
 
-        // Otherwise, find matching path and get its childrens
-        links = links.find(item => {
-          const itemPaths = item.to.split('/')
+        // Find matched content
+        match = links.find(item => item.to.split('/')[index] === path)
+        if (match) {
+          // Update parent and exclusiveLinks if the matched content marked as exclisuve navigation
+          if (match && match.navigation && match.navigation.exclusive) {
+            parent = lastMatch || parent
+            exclusiveLinks = match.children
+          }
 
-          return itemPaths[index] === path
-        }).children
+          return match.children
+        }
 
         return links
       }, items)
+
+      // Use exclusive links
+      items = exclusiveLinks.length ? exclusiveLinks : nav
     }
 
-    // Start filtering loop
-    return all ? items : filterLinks(items, depth, 1)
+    return {
+      // matched page info
+      title: match && match.title,
+      to: match && match.to,
+      navigation: match && match.navigation,
+      // matched parent
+      parent,
+      // filter children
+      links: all ? items : filterLinks(items, depth, 1)
+    }
   }
 
   /**
@@ -120,20 +146,11 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
     // eslint-disable-next-line no-unused-expressions
     fetchCounter.value
 
-    // Get links from path
-    const links = get({
+    // Calcualte navigatin based on current path
+    return get({
       from: path.value,
       all: true
     })
-
-    // Get current link
-    const currentLink = links.find(link => link.to === path.value)
-
-    // Return filtered items for exclusive page
-    if (currentLink && currentLink.navigation && currentLink.navigation.exclusive) return links
-
-    // Return whole navigation
-    return get()
   })
 
   // Update content on update.

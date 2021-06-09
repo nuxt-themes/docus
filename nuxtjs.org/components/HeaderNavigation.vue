@@ -69,7 +69,7 @@ export default defineComponent({
     const route = useRoute()
     const hover = ref(false)
     const itemIndex = ref(null)
-    const currentNav = computed(() => $docus.currentNav.value)
+    const currentNav = computed(() => $docus.get({ depth: 1 }).links)
 
     // computed
     const headerLinks = computed(() =>

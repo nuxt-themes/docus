@@ -15,12 +15,6 @@ const findLink = (links: NavItem[], to: string) => links.find(link => link.to ==
 const slugToTitle = title => title && title.replace(/-/g, ' ').split(' ').map(pascalCase).join(' ')
 
 /**
- * Get a page directory index.md page if exists
- */
-const getPageIndex = (pages, page): NavItem | undefined =>
-  pages.find(_page => _page.dir === page.dir && _page.slug === '')
-
-/**
  * Get navigation link for a page
  */
 const getPageLink = (page: any): NavItem => {
@@ -45,6 +39,7 @@ const getPageLink = (page: any): NavItem => {
   return {
     slug,
     to,
+    shadow: !!page.shadow,
     title: page.title,
     draft: page.draft,
     template,
@@ -117,8 +112,6 @@ function createNav(pages: any[]) {
       return
     }
 
-    const $index = getPageIndex(pages, _page)
-
     const $page = getPageLink(_page)
 
     // To: '/docs/guide/hello.md' -> dirs: ['docs', 'guide']
@@ -126,11 +119,6 @@ function createNav(pages: any[]) {
 
     // Remove the file part (except if index.md)
     if (_page.slug !== '') dirs = dirs.slice(0, -1)
-
-    // Merge index exclusive parameter
-    if ($index && $index.navigation && $index.navigation.exclusive && $page.navigation) {
-      $page.navigation.exclusive = $index.navigation.exclusive
-    }
 
     if (!dirs.length) {
       if ($page.navigation) {
@@ -154,7 +142,8 @@ function createNav(pages: any[]) {
       if (!link) {
         link = getPageLink({
           slug: dir,
-          to
+          to,
+          shadow: true
         })
 
         currentLinks.push(link)

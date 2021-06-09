@@ -1,4 +1,5 @@
 ---
 title: Features
-slug: features
+navigation:
+    exclusive: true
 ---
