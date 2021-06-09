@@ -64,14 +64,18 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
   const rawReleases: GithubRawRelease[] = await $fetch(url, options).catch(err => {
     // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response.status}]`)
+
     // eslint-disable-next-line no-console
     console.info('Make sure to provide GITHUB_TOKEN environment in `.env`')
+
     if (err.response.status !== 403) {
       // eslint-disable-next-line no-console
-      console.info('To disable fetching releases, set `github.releases` to `false` in `content/settings.json`')
+      console.info('To disable fetching releases, set `github.releases` to `false` in `docus.config.js|ts`')
     }
+
     return []
   })
+
   const releases = rawReleases
     .filter((r: any) => !r.draft)
     .map(release => {
