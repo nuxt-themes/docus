@@ -4,6 +4,7 @@
       <template #illustration>
         <HeroParallax />
       </template>
+
       <template #title>
         <HeroTitle class="mb-4">The Intuitive Vue <br />Framework</HeroTitle>
       </template>
