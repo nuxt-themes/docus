@@ -82,15 +82,7 @@ export default defineComponent({
   computed: {
     links() {
       const nav = this.$docus.currentNav.value
-      if (nav.parent) {
-        return [
-          {
-            ...nav,
-            children: nav.links
-          }
-        ]
-      }
-      return this.$docus.currentNav.value.links
+      return nav.links
     },
     parent() {
       return this.$docus.currentNav.value.parent

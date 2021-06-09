@@ -86,13 +86,6 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
       }, items)
 
       if (exclusiveContent) {
-        // Used Docus home pages if there no parent for an exclusive content
-        if (!parent) {
-          parent = {
-            title: state.settings.title,
-            to: '/'
-          }
-        }
         // Use exclusive links
         items = exclusiveContent.children
       } else {
