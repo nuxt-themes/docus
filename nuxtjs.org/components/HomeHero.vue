@@ -20,7 +20,7 @@
         <SectionButton
           to="#"
           aria-label="Get started"
-          size="sm"
+          size="md"
           class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
           icon-left="IconPlay"
         >
@@ -29,7 +29,7 @@
         <SectionButton
           to="#"
           aria-label="GitHub Stars"
-          size="sm"
+          size="md"
           class="bg-white border rounded-md shadow-sm border-gray-700 text-gray-800 focus:bg-gray-200 hover:bg-gray-200"
           icon-left="IconGitHub"
         >
