@@ -3,44 +3,29 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg"
-            >Learn</ALabel
-          >
+          <span class="text-terciary font-bold text-lg">Learn</span>
         </template>
+
         <template #title>
-          <SectionTitle class="text-center" size="sm"
-            >Follow our
-            <span class="font-serif text-terciary italic"
-              >Guides</span
-            ></SectionTitle
-          >
+          <SectionTitle class="text-center">Follow our <span class="text-terciary italic">Guides</span></SectionTitle>
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >From an Idea to a Masterpiece, guides show the path to follow to
-            become a Nuxter.</SectionDescription
+          <SectionDescription class="pb-16 text-center"
+            >From an Idea to a Masterpiece, guides show the path to follow to become a Nuxter.</SectionDescription
           >
         </template>
+
         <template #content>
           <ul class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
-            <li
-              v-for="guide in guides"
-              :key="guide.title"
-              class="flex flex-col items-center space-y-4"
-            >
-              <img
-                :src="`/img/home/learn/guides/${guide.icon}.svg`"
-                class="h-32"
-              />
-              <ALabel tag="h5" size="md" class="font-bold text-center">{{
-                guide.title
-              }}</ALabel>
-              <ALabel tag="p" size="sm" class="text-center">{{
-                guide.description
-              }}</ALabel>
+            <li v-for="guide in guides" :key="guide.title" class="flex flex-col items-center space-y-4">
+              <img :src="`/img/home/learn/guides/${guide.icon}.svg`" class="h-32" />
+              <h5 class="font-bold text-center">{{ guide.title }}</h5>
+              <p class="text-center">{{ guide.description }}</p>
             </li>
           </ul>
         </template>
+
         <template #button>
           <SectionButton
             to="#"
