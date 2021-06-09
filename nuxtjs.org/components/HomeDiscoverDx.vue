@@ -17,12 +17,12 @@
           </template>
 
           <template #content>
-            <ul class="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+            <ul class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-12">
               <li v-for="exp in experiences" :key="exp.title">
-                <div class="flex flex-col items-center space-y-4">
-                  <img :src="`/img/home/discover/dx/${exp.icon}.svg`" :alt="`A ${exp.title} image`" />
-                  <h5 class="text-center font-bold">{{ exp.title }}</h5>
-                  <p class="text-center text-sm">{{ exp.description }}</p>
+                <div class="flex flex-col items-center">
+                  <img class="mb-4" :src="`/img/home/discover/dx/${exp.icon}.svg`" :alt="`A ${exp.title} image`" />
+                  <h5 class="mb-1 text-center text-body-lg lg:text-body-xl font-bold">{{ exp.title }}</h5>
+                  <p class="text-center text-sm lg:text-base">{{ exp.description }}</p>
                 </div>
               </li>
             </ul>
