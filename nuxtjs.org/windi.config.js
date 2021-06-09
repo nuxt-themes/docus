@@ -1,4 +1,3 @@
-import defaultTheme from 'windicss/defaultTheme'
 import colors from 'windicss/colors'
 
 export default {
