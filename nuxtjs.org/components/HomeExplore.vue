@@ -29,20 +29,25 @@
 
         <template #content>
           <ul class="grid grid-cols-2 md:grid-cols-4 gap-12 py-8">
-            <li v-for="(explore, index) in explores" :key="explore.title" class="flex flex-col items-center space-y-4">
-              <div class="relative group transition-opacity duration-500 relative">
-                <img
-                  :src="`/img/home/explore/gem-${index + 1}-hover.svg`"
-                  class="absolute bottom-0 opacity-0 hover:opacity-100 z-20 transition-opacity duration-500 h-32"
-                />
-                <img
-                  :src="`/img/home/explore/gem-${index + 1}.svg`"
-                  class="hover:opacity-0 z-10 transition-opacity duration-500 h-32"
-                />
-              </div>
-              <h5 class="font-bold text-center">{{ explore.title }}</h5>
-              <p class="text-center">{{ explore.description }}</p>
-            </li>
+            <SectionContentItem
+              v-for="(explore, index) in explores"
+              :key="explore.title"
+              :title="explore.title"
+              :description="explore.description"
+            >
+              <template #image>
+                <div class="relative group transition-opacity duration-500 relative mb-4">
+                  <img
+                    :src="`/img/home/explore/gem-${index + 1}-hover.svg`"
+                    class="absolute bottom-0 opacity-0 hover:opacity-100 z-20 transition-opacity duration-500 h-32"
+                  />
+                  <img
+                    :src="`/img/home/explore/gem-${index + 1}.svg`"
+                    class="hover:opacity-0 z-10 transition-opacity duration-500 h-32"
+                  />
+                </div>
+              </template>
+            </SectionContentItem>
           </ul>
         </template>
 

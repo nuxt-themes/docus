@@ -18,11 +18,13 @@
 
         <template #content>
           <ul class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
-            <li v-for="guide in guides" :key="guide.title" class="flex flex-col items-center space-y-4">
-              <img :src="`/img/home/learn/guides/${guide.icon}.svg`" class="h-32" />
-              <h5 class="font-bold text-center">{{ guide.title }}</h5>
-              <p class="text-center">{{ guide.description }}</p>
-            </li>
+            <SectionContentItem
+              v-for="guide in guides"
+              :key="guide.title"
+              :image="`/img/home/learn/guides/${guide.icon}.svg`"
+              :title="guide.title"
+              :description="guide.description"
+            />
           </ul>
         </template>
 

@@ -20,7 +20,7 @@
         </template>
 
         <template #content>
-          <OCodeBlockAnimation class="w-full text-gray-50 pb-4" />
+          <OCodeBlockAnimation class="w-full text-gray-50" />
         </template>
 
         <template #button>

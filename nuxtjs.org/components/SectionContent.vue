@@ -14,10 +14,12 @@
     <div v-if="$scopedSlots.title" class="mb-1">
       <slot name="title" />
     </div>
-    <div v-if="$scopedSlots.paragraph" class="mb-16">
+    <div v-if="$scopedSlots.paragraph" class="mb-8">
       <slot name="paragraph" />
     </div>
-    <slot name="content" />
+    <div v-if="$scopedSlots.content" class="w-full pb-10">
+      <slot name="content" />
+    </div>
     <slot name="link" />
     <slot name="banner" />
     <slot name="button" />
