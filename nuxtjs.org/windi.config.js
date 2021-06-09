@@ -8,6 +8,7 @@ export default {
       current: 'currentColor',
       'primary-green': '#00DC82',
       secondary: '#002E3B',
+      'secondary-lightest': '#95CDDE', // where the heck is lightest? colors are complete mess
       'secondary-light': '#064A5B',
       'secondary-dark': '#01232D',
       'secondary-darker': '#001D25',

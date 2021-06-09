@@ -34,6 +34,7 @@ const defaultThemeSettings = {
     }
   },
   shortcuts: {
+    'body-bg': 'bg-white dark:bg-gray-900',
     // Primary
     'text-primary': 'text-primary-500 dark:text-primary-400',
     'border-primary': 'border-primary-500 dark:border-primary-400',

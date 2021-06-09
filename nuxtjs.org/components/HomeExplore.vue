@@ -23,12 +23,13 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            >Need to go forward ? So much to <span class="text-terciary italic">explore</span>.</SectionTitle
+            >Need to go <span class="text-terciary italic">Forward</span>? So much to
+            <span class="text-terciary italic">Explore</span>.</SectionTitle
           >
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-2 md:grid-cols-4 gap-12 py-8">
+          <ul class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-6 py-8">
             <SectionContentItem
               v-for="(explore, index) in explores"
               :key="explore.title"
@@ -88,7 +89,7 @@ export default defineComponent({
   setup() {
     const explores = [
       {
-        title: 'Exemples',
+        title: 'Examples',
         description: 'NuxtJS has been a discovery for our development teams.'
       },
       {

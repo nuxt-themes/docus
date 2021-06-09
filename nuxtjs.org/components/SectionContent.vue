@@ -11,13 +11,13 @@
     <div v-if="$scopedSlots.category" class="mb-2">
       <slot name="category" />
     </div>
-    <div v-if="$scopedSlots.title" class="mb-1">
+    <div v-if="$scopedSlots.title" class="mb-2">
       <slot name="title" />
     </div>
     <div v-if="$scopedSlots.paragraph" class="mb-8">
       <slot name="paragraph" />
     </div>
-    <div v-if="$scopedSlots.content" class="w-full pb-10">
+    <div v-if="$scopedSlots.content" class="w-full my-8">
       <slot name="content" />
     </div>
     <slot name="link" />
