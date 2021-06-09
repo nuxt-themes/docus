@@ -54,6 +54,9 @@
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
           <AsideTop />
+          <NuxtLink v-if="parent" class="mb-3 block" :to="$contentLocalePath(parent.to)">
+            <IconArrowLeft width="16" height="16" class="inline-block mr-2" /> {{ parent.title }}
+          </NuxtLink>
           <ul>
             <template v-for="link in links">
               <AsideNavigationItem
@@ -78,7 +81,11 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     links() {
-      return this.$docus.currentNav.value
+      const nav = this.$docus.currentNav.value
+      return nav.links
+    },
+    parent() {
+      return this.$docus.currentNav.value.parent
     },
     lastRelease() {
       return this.$docus.lastRelease?.value
