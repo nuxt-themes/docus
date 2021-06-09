@@ -19,7 +19,7 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center pt-20 pb-60">
         <template #category>
-          <span class="text-terciary font-bold text-lg">Community</span>
+          <CategoryLabel label="Community" />
         </template>
 
         <template #title>

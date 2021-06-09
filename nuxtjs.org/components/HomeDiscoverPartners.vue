@@ -3,7 +3,7 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <span class="text-terciary font-bold text-lg">Discover</span>
+          <CategoryLabel label="Discover" />
         </template>
 
         <template #title>
@@ -11,7 +11,7 @@
         </template>
 
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center"
+          <SectionDescription class="text-center"
             >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
