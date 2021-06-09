@@ -1,5 +1,5 @@
 <template>
-  <svg height="2500" viewBox="0 0 512 548.20728733" width="2500" xmlns="http://www.w3.org/2000/svg">
+  <svg height="64" viewBox="0 0 512 548.20728733" width="64" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fill-rule="evenodd">
       <circle cx="256" cy="256" fill="#0535c1" fill-rule="nonzero" r="256" />
       <path d="m311.273 116.364h151.272v151.272h-151.272z" />
