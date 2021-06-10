@@ -29,6 +29,12 @@ const exit = {
   directiveContainerLabel: exitContainerLabel,
   directiveContainerName: exitName,
 
+  directiveContainerAttributeInitializerMarker() {
+    // If an attribute name follows by `=` it should be treat as string
+    const attributes = this.getData('directiveAttributes')
+    attributes[attributes.length - 1][1] = ''
+  },
+
   directiveLeaf: exitToken,
   directiveLeafAttributeClassValue: exitAttributeClassValue,
   directiveLeafAttributeIdValue: exitAttributeIdValue,
@@ -144,7 +150,9 @@ function exitAttributeValue(token: Token) {
 function exitAttributeName(token: Token) {
   // Attribute names in CommonMark are significantly limited, so character
   // references can’t exist.
-  this.getData('directiveAttributes').push([this.sliceSerialize(token), ''])
+
+  // Use `true` as attrubute default value to solve issue of attributes without value (example `:block{attr1 attr2}`)
+  this.getData('directiveAttributes').push([this.sliceSerialize(token), true])
 }
 
 function exitAttributes() {
