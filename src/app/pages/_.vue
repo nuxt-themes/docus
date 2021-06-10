@@ -14,7 +14,7 @@ export default defineComponent({
     if (params.pathMatch === 'index') redirect(app.localePath('/'))
   },
 
-  async asyncData({ $docus, app: { i18n }, params, error }) {
+  async asyncData({ $docus, app: { i18n, localePath }, params, error, redirect }) {
     const language = i18n.locale
 
     // Init template options from Docus settings
@@ -33,6 +33,9 @@ export default defineComponent({
 
     // Break on missing page query
     if (!page) return error({ statusCode: 404, message: 'Page not found' })
+
+    // Redirect to another page if `navigation.redirect` is declared
+    if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
 
     // Get page template
     page.template = $docus.getPageTemplate(page)
