@@ -41,9 +41,9 @@ export default defineComponent({
           icon: 'IconWindi'
         },
         {
-          title: 'Nuxt Content',
-          url: 'https://content.nuxtjs.org',
-          icon: 'IconNuxtContent'
+          title: 'CodeSandbox',
+          url: 'https://codesandbox.io/embed/docus-starter-1xsm7?hidenavigation=1&theme=dark',
+          icon: 'IconCodeSandbox'
         }
       ]
     }

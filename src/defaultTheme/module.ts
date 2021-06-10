@@ -65,6 +65,9 @@ export default <Module>function themeSetupModule() {
     // Resolve admin runtime path
     const adminPath = join(__dirname, '../admin')
 
+    // Resolve content dir path
+    const contentDir = resolve(options.srcDir, settings.contentDir)
+
     // Glob grabbing all Docus files
     const transformFiles = await fg('**/*.{vue,css}', {
       cwd: join(options.rootDir, '/node_modules/docus/dist'),
@@ -80,6 +83,7 @@ export default <Module>function themeSetupModule() {
 
     // Push every included path into scan options
     windiOptions.scanOptions.include.push(
+      join(contentDir, windiGlob),
       join(adminPath, windiGlob),
       join(__dirname, windiGlob),
       join(options.rootDir, '/node_modules/docus/dist' + windiGlob),
