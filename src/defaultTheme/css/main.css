@@ -18,7 +18,7 @@
 }
 
 body {
-  @apply antialiased tracking-semitight text-gray-900 bg-white dark:text-gray-50 dark:bg-gray-900;
+  @apply antialiased text-root tracking-semitight text-gray-900 bg-white dark:text-gray-50 dark:bg-gray-900;
 }
 
 .fade-enter-active,

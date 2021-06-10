@@ -12,9 +12,8 @@
 </template>
 
 <script>
-import { computed } from '@nuxtjs/composition-api'
-
-import { flatUnwrap, Markdown } from '~docus/utils'
+import { computed, ref } from '@nuxtjs/composition-api'
+import { flatUnwrap, Markdown, nodeTextContent } from '~docus/utils'
 
 export default {
   components: { Markdown },
@@ -46,6 +45,7 @@ export default {
     }
   },
   setup(props) {
+    const textContent = ref('')
     const iconName = computed(
       () =>
         props.icon ||
@@ -59,17 +59,25 @@ export default {
     )
 
     return {
+      textContent,
       iconName
     }
   },
   computed: {
     listItems() {
+      // A simple variable to fix HMR reload
+      // eslint-disable-next-line no-unused-expressions
+      this.textContent
+
       const defaultSlot = this.$slots.default || []
       if (!defaultSlot) {
         return this.items
       }
       return flatUnwrap(defaultSlot, ['p', 'ul', 'li'])
     }
+  },
+  updated() {
+    this.textContent = nodeTextContent(this.$slots.default)
   }
 }
 </script>

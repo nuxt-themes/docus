@@ -25,6 +25,10 @@ export interface NavItemNavigationConfig {
   nested: boolean
   slot: string
   exclusive: boolean
+  // Collapsed aside navigation by default
+  collapse: boolean
+  // Useful for directories `index.md` which are empty pages, to get redirect to another page
+  redirect: string
 }
 export interface NavItem {
   slug: string
