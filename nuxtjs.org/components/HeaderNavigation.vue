@@ -16,50 +16,15 @@
             'mt-4': $route.path !== '/'
           }"
         >
-          {{ link.slug }}
+          {{ link.title }}
         </NuxtLink>
-        <div v-show="hover && itemIndex === index">
-          <div class="dropdown flex items-center justify-center w-52 -mt-2">
-            <img src="~/static/img/header/polygon.svg" class="w-5 h-5" />
-          </div>
-          <ul
-            class="light:bg-white dark:bg-secondary light:border rounded-md border-gray-100 py-2 dropdown"
-          >
-            <!-- TODO: Remove the filter -->
-            <li
-              v-for="(nav, i) in link.children.filter(
-                (item) => item.slug && item.slug !== ``
-              )"
-              :key="nav.slug"
-            >
-              <NuxtLink
-                :to="$contentLocalePath(nav.navigation.redirect || nav.to)"
-                class="mx-2 rounded-md capitalize p-2 flex justify-start items-center h-full w-52 space-x-4 light:hover:bg-gray-100 dark:hover:bg-secondary-light"
-              >
-                <img
-                  :src="`/img/header/dropdown-gem-${
-                    i + 1 > 4 ? '4' : i + 1
-                  }.svg`"
-                  class="w-1/5"
-                />
-                <span> {{ nav.slug }} </span>
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import {
-  computed,
-  defineComponent,
-  useRoute,
-  ref,
-  useContext
-} from '@nuxtjs/composition-api'
+import { computed, defineComponent, useRoute, ref, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
@@ -72,9 +37,7 @@ export default defineComponent({
     const currentNav = computed(() => $docus.get({ depth: 1 }).links)
 
     // computed
-    const headerLinks = computed(() =>
-      currentNav.value.filter((link) => link.slug !== '')
-    )
+    const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== '' && link.children.length))
 
     const currentSlug = computed(() => {
       return route.value.path !== '/' && route?.value?.params?.pathMatch
@@ -102,29 +65,9 @@ export default defineComponent({
 .nuxt-link-active {
   color: rgba(52, 211, 153);
 }
-.dropdown {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
 
 .menu li {
   display: block;
   position: relative;
-}
-
-.menu li ul {
-  position: absolute;
-  left: 0;
-  margin: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
 }
 </style>
