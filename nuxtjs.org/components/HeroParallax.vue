@@ -1,5 +1,5 @@
 <template>
-  <div ref="containerImg" class="absolute top-0 left-0 w-full h-full select-none" @mousemove="parallax">
+  <div ref="containerImg" class="absolute top-0 left-0 -z-0 w-full h-full select-none pointer-events-none">
     <img
       ref="gem1"
       data-speed="2"
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from '@vue/composition-api'
+import { defineComponent, ref, onBeforeUnmount } from '@vue/composition-api'
 
 export default defineComponent({
   setup() {
@@ -69,6 +69,10 @@ export default defineComponent({
         image.style.transform = `translateX(${x}px) translateY(${y}px)`
       }
     }
+
+    window.addEventListener('mousemove', parallax)
+
+    onBeforeUnmount(() => window.removeEventListener('mousemove', parallax))
 
     return {
       containerImg,

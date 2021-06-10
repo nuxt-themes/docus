@@ -1,6 +1,6 @@
 <template>
   <div class="dark:bg-secondary-dark overflow-hidden">
-    <HeroMain content-center height="60vh" min-height="560px" class="mx-auto max-w-8xl">
+    <HeroTemplate content-center class="mx-auto max-w-8xl">
       <template #illustration>
         <HeroParallax />
       </template>
@@ -36,6 +36,6 @@
           GitHub Stars
         </SectionButton>
       </template>
-    </HeroMain>
+    </HeroTemplate>
   </div>
 </template>
