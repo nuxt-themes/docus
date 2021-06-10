@@ -33,7 +33,7 @@
               :key="nav.slug"
             >
               <NuxtLink
-                :to="`/${link.slug}/${nav.slug}`"
+                :to="$contentLocalePath(nav.navigation.redirect || nav.to)"
                 class="mx-2 rounded-md capitalize p-2 flex justify-start items-center h-full w-52 space-x-4 light:hover:bg-gray-100 dark:hover:bg-secondary-light"
               >
                 <img
