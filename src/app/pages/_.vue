@@ -14,7 +14,7 @@ export default defineComponent({
     if (params.pathMatch === 'index') redirect(app.localePath('/'))
   },
 
-  async asyncData({ $docus, app: { i18n }, params, error }) {
+  async asyncData({ $docus, app: { i18n, localePath }, params, error, redirect }) {
     const language = i18n.locale
 
     // Init template options from Docus settings
@@ -51,6 +51,9 @@ export default defineComponent({
 
     // Set Docus runtime current page
     $docus.currentPage.value = page
+
+    // Redirect to another page if `navigation.redirect` is declared
+    if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
 
     return { page, templateOptions }
   },
