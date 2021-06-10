@@ -60,15 +60,11 @@
           </p>
           <p class="flex">
             <span class="fromcli__seconddollar">$&nbsp;</span
-            ><span class="fromcli__yarn__cd"
-              >cd <span class="text-primary-green">My Project</span></span
-            >
+            ><span class="fromcli__yarn__cd">cd <span class="text-primary-green">My Project</span></span>
           </p>
           <p class="flex">
             <span class="fromcli__thirddollar">$&nbsp;</span
-            ><span class="fromcli__yarn__run"
-              >yarn run <span class="text-primary-green">dev</span></span
-            >
+            ><span class="fromcli__yarn__run">yarn run <span class="text-primary-green">dev</span></span>
           </p>
         </div>
         <div class="fromcli__code__ide">
@@ -94,28 +90,22 @@
             </p>
             <p>
               <!-- Logo component -->
-              <span>&lt;</span><span class="text-red-400">Logo</span
-              ><span>/&gt;</span>
+              <span>&lt;</span><span class="text-red-400">Logo</span><span>/&gt;</span>
             </p>
             <p>
               <!-- Nuxt Card component -->
-              <span>&lt;</span><span class="text-red-400">NuxtCard</span
-              ><span>&#47;&gt;</span>
+              <span>&lt;</span><span class="text-red-400">NuxtCard</span><span>&#47;&gt;</span>
             </p>
             <p>
               <!-- Nuxt Card component -->
-              <span>&lt;</span><span class="text-red-400">NuxtCard</span
-              ><span>&#47;&gt;</span>
+              <span>&lt;</span><span class="text-red-400">NuxtCard</span><span>&#47;&gt;</span>
             </p>
             <p>
               <!-- AlertBanner component -->
-              <span>&lt;</span><span class="text-red-400">AlertBanner</span
-              ><span>&#47;&gt;</span>
+              <span>&lt;</span><span class="text-red-400">AlertBanner</span><span>&#47;&gt;</span>
             </p>
             <p>
-              <span>&lt;</span>&#47;<span class="text-red-400">{{
-                'template'
-              }}</span
+              <span>&lt;</span>&#47;<span class="text-red-400">{{ 'template' }}</span
               ><span>&gt;</span>
             </p>
           </div>
@@ -124,22 +114,14 @@
     </div>
     <div class="fromcli__display">
       <div class="fromcli__display_loading">
-        <img
-          loading="lazy"
-          class="fromcli__display__logo"
-          src="~/static/img/home/learn/master/logo.svg"
-        />
+        <img loading="lazy" class="fromcli__display__logo" src="~/static/img/home/learn/master/logo.svg" />
         <div class="fromcli__display__progressbar">
           <div class="fromcli__display__progressbar__background"></div>
           <div class="fromcli__display__progressbar__progress"></div>
         </div>
       </div>
       <div class="fromcli__display__content">
-        <img
-          loading="lazy"
-          class="fromcli__display__content__logo"
-          src="~/static/img/home/learn/master/logo.svg"
-        />
+        <img loading="lazy" class="fromcli__display__content__logo" src="~/static/img/home/learn/master/logo.svg" />
         <img
           loading="lazy"
           class="fromcli__display__content__content1"
@@ -179,8 +161,7 @@
 
 .fromcli__display_loading {
   @apply overflow-hidden opacity-0;
-  animation: appear 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards 3.5s,
-    disappear 200ms forwards 10.4s;
+  animation: appear 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards 3.5s, disappear 200ms forwards 10.4s;
 }
 
 .fromcli__display__content {
@@ -192,20 +173,17 @@
   & img:first-child {
     @apply self-start mb-4;
     height: 36px;
-    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards
-        10.9s,
+    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards 10.9s,
       appear 150ms cubic-bezier(0.83, 0, 0.17, 1) forwards 10.9s;
   }
   & img:nth-child(2) {
     @apply mb-4 w-full;
-    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards
-        11.1s,
+    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards 11.1s,
       appear 150ms cubic-bezier(0.83, 0, 0.17, 1) forwards 11.1s;
   }
   & img:last-child {
     @apply w-full;
-    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards
-        11.3s,
+    animation: slideUpContent 300ms cubic-bezier(0.83, 0, 0.17, 1) forwards 11.3s,
       appear 150ms cubic-bezier(0.83, 0, 0.17, 1) forwards 11.3s;
   }
 }
@@ -240,16 +218,13 @@ span[class*='fromcli__yarn'] {
   border-right: 0.15em solid transparent;
   letter-spacing: 0.75px;
   &.fromcli__yarn__createnuxtapp {
-    animation: typingVeryLong 1.5s steps(12, end) forwards,
-      blink-caret 0.75s step-end 4 backwards;
+    animation: typingVeryLong 1.5s steps(12, end) forwards, blink-caret 0.75s step-end 4 backwards;
   }
   &.fromcli__yarn__cd {
-    animation: typingSmall 1s steps(12, end) forwards 7.6s,
-      blink-caret 0.75s step-end 2 backwards 7.6s;
+    animation: typingSmall 1s steps(12, end) forwards 7.6s, blink-caret 0.75s step-end 2 backwards 7.6s;
   }
   &.fromcli__yarn__run {
-    animation: typingRunDev 1s steps(12, end) forwards 8.6s,
-      blink-caret 0.75s step-end 3 backwards 8.6s;
+    animation: typingRunDev 1s steps(12, end) forwards 8.6s, blink-caret 0.75s step-end 3 backwards 8.6s;
   }
 }
 
@@ -280,14 +255,12 @@ span[class*='fromcli__yarn'] {
 
 .fromcli__question2__answer1 {
   @apply opacity-0 overflow-hidden;
-  animation: appear 150ms ease forwards 3.5s,
-    heightDisappear 150ms ease forwards 4.2s;
+  animation: appear 150ms ease forwards 3.5s, heightDisappear 150ms ease forwards 4.2s;
 }
 
 .fromcli__question2__answer2 {
   @apply opacity-0 overflow-hidden;
-  animation: appear 150ms ease forwards 3.65s,
-    heightDisappear 150ms ease forwards 4.2s;
+  animation: appear 150ms ease forwards 3.65s, heightDisappear 150ms ease forwards 4.2s;
 }
 
 .fromcli__question3,

@@ -23,8 +23,8 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            >Need to go <span class="text-terciary italic">Forward</span>? So much to
-            <span class="text-terciary italic">Explore</span>.</SectionTitle
+            >Need to go <span class="text-primary-green italic">Forward</span>? So much to
+            <span class="text-primary-green italic">Explore</span>.</SectionTitle
           >
         </template>
 

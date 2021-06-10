@@ -13,7 +13,8 @@ export default {
       title: false
     },
     colors: {
-      primary: '#00DC82'
+      primary: '#00DC82',
+      test: 'red'
     },
     shortcuts: {
       'body-bg': 'bg-white dark:bg-secondary-dark',
