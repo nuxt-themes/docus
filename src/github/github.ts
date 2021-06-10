@@ -70,7 +70,7 @@ export async function fetchGitHubReleases({ apiUrl, repo, token }: GithubRelease
 
     if (err.response.status !== 403) {
       // eslint-disable-next-line no-console
-      console.info('To disable fetching releases, set `github.releases` to `false` in `docus.config.js|ts`')
+      console.info('To disable fetching releases, set `github.releases` to `false` in `docus.config.js`')
     }
 
     return []
