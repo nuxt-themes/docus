@@ -3,7 +3,6 @@ title: transition
 description: Set the default properties of the page and layout transitions.
 menu: transition
 category: configuration-glossary
-position: 31
 ---
 
 ## The pageTransition Property

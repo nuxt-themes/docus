@@ -3,7 +3,6 @@ title: loading indicator
 description: Show fancy loading indicator while page is loading!
 menu: loadingIndicator
 category: configuration-glossary
-position: 16
 ---
 
 > Show fancy loading indicator while page is loading!

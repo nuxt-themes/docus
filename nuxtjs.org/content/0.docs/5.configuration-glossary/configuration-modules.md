@@ -3,7 +3,6 @@ title: modules
 description: Modules are Nuxt.js extensions which can extend its core functionality and add endless integrations.
 menu: modules
 category: configuration-glossary
-position: 19
 ---
 
 - Type: `Array`

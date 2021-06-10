@@ -3,7 +3,6 @@ title: buildDir
 description: Define the dist directory for your Nuxt.js application
 menu: buildDir
 category: configuration-glossary
-position: 2
 ---
 
 - Type: `String`

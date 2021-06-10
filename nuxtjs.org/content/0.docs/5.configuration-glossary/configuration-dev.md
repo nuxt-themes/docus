@@ -3,7 +3,6 @@ title: dev
 description: Define the development or production mode.
 menu: dev
 category: configuration-glossary
-position: 6
 ---
 
 - Type: `Boolean`

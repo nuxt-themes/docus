@@ -3,7 +3,6 @@ title: mode
 description: Change default nuxt mode
 menu: mode
 category: configuration-glossary
-position: 17
 ---
 
 - Type: `string`

@@ -3,7 +3,6 @@ title: ignore
 description: Define the ignore files for your Nuxt.js application
 menu: ignore
 category: configuration-glossary
-position: 14
 ---
 
 ## .nuxtignore

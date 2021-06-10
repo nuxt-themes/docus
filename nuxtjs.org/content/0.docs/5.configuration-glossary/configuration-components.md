@@ -3,7 +3,6 @@ title: cli
 description: 'Nuxt.js 2.13+ can scan and auto import your components using @nuxt/components module'
 menu: components
 category: configuration-glossary
-position: 5
 ---
 
 > Nuxt.js 2.13+ can scan and auto import your components.

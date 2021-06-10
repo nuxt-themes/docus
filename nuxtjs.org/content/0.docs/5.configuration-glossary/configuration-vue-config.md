@@ -3,7 +3,6 @@ title: vue.config
 description: A config object for Vue.config
 menu: vue.config
 category: configuration-glossary
-position: 32
 ---
 
 - Type: `Object`

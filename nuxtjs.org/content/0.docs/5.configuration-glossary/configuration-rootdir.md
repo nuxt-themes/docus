@@ -3,7 +3,6 @@ title: rootDir
 description: Define the workspace of Nuxt.js application
 menu: rootDir
 category: configuration-glossary
-position: 23
 ---
 
 - Type: `String`

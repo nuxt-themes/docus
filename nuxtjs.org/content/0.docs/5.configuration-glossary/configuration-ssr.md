@@ -3,7 +3,6 @@ title: ssr
 description: Change default nuxt ssr value
 menu: ssr
 category: configuration-glossary
-position: 28.1
 ---
 
 - Type: `boolean`

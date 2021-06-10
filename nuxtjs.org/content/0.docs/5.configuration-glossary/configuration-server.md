@@ -3,7 +3,6 @@ title: server
 description: Nuxt.js let you define the server connection variables for your application inside `nuxt.config.js`.
 menu: server
 category: configuration-glossary
-position: 26
 ---
 
 - Type: `Object`

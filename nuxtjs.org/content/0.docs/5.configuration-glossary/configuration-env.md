@@ -3,7 +3,6 @@ title: env
 description: Share environment variables between client and server.
 menu: env
 category: configuration-glossary
-position: 8
 ---
 
 - Type: `Object`
