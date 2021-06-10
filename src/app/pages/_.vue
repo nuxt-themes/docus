@@ -34,9 +34,6 @@ export default defineComponent({
     // Break on missing page query
     if (!page) return error({ statusCode: 404, message: 'Page not found' })
 
-    // Redirect to another page if `navigation.redirect` is declared
-    if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
-
     // Get page template
     page.template = $docus.getPageTemplate(page)
 
@@ -54,6 +51,9 @@ export default defineComponent({
 
     // Set Docus runtime current page
     $docus.currentPage.value = page
+
+    // Redirect to another page if `navigation.redirect` is declared
+    if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
 
     return { page, templateOptions }
   },
