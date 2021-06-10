@@ -91,15 +91,16 @@ export default defineComponent({
   setup() {
     const testimonials = [
       {
-        testimonial: 'Not bad :)',
+        testimonial:
+          'Nuxt offers a compelling solution and a great ecosystem to help you ship fullstack Vue apps that are performant and SEO friendly. The flexibility to choose between SSR and SSG is icing on the cake.',
         author: 'Evan You',
         icon_author: 'evan',
-        job: 'Creator of VueJS',
+        job: 'Creator of Vue.js',
         icon_job: 'vue'
       },
       {
         testimonial:
-          'NuxtJS has outstanding developer productivity, experience, and performance right out of the gate!<br/>There’s so much attention to detail, ensuring teams have everything at their fingertips to productively build all manners of applications.',
+          'Nuxt has outstanding developer productivity, experience, and performance right out of the gate!<br/>There’s so much attention to detail, ensuring teams have everything at their fingertips to productively build all manners of applications.',
         author: 'Sarah Drasner',
         job: 'Core Team of Vue.js',
         icon_author: 'sarah',
@@ -107,7 +108,7 @@ export default defineComponent({
       },
       {
         testimonial:
-          'NuxtJS is a fantastic choice for teams building a production-grade product on the web. It aims to bake in performance best-practices while maintaining excellent Vue.js DX.',
+          'Nuxt is a fantastic choice for teams building a production-grade product on the web. It aims to bake in performance best-practices while maintaining excellent Vue.js DX.',
         author: 'Addy Osmani',
         job: 'Chief Engineer of Chrome',
         icon_author: 'addy',
