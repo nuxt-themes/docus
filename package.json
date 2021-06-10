@@ -34,6 +34,7 @@
     "dev:nuxtjs": "nuxt dev nuxtjs.org",
     "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
+    "generate:nuxtjs": "nuxt generate --force-build nuxtjs.org",
     "start": "nuxt start docs",
     "play": "BUILD_ADMIN=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
