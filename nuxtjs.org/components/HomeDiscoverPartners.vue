@@ -7,7 +7,9 @@
         </template>
 
         <template #title>
-          <SectionTitle class="text-center">Art in the <span class="text-terciary italic">Making</span></SectionTitle>
+          <SectionTitle class="text-center"
+            >Art in the <span class="text-primary-green italic">Making</span></SectionTitle
+          >
         </template>
 
         <template #paragraph>

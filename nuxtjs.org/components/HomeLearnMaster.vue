@@ -8,13 +8,13 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            ><span class="text-terciary italic">Easy </span>to learn. <span class="text-terciary italic">Easy</span> to
-            master</SectionTitle
+            ><span class="text-primary-green italic">Easy </span>to learn.
+            <span class="text-primary-green italic">Easy</span> to master</SectionTitle
           >
         </template>
 
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center"
+          <SectionDescription class="text-center"
             >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>

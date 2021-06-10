@@ -7,7 +7,9 @@
         </template>
 
         <template #title>
-          <SectionTitle class="text-center">Sharing is <span class="text-terciary italic">Caring</span></SectionTitle>
+          <SectionTitle class="text-center"
+            >Sharing is <span class="text-primary-green italic">Caring</span></SectionTitle
+          >
         </template>
 
         <template #content>

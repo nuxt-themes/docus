@@ -7,11 +7,13 @@
         </template>
 
         <template #title>
-          <SectionTitle class="text-center">Follow our <span class="text-terciary italic">Guides</span></SectionTitle>
+          <SectionTitle class="text-center"
+            >Follow our <span class="text-primary-green italic">Guides</span></SectionTitle
+          >
         </template>
 
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center"
+          <SectionDescription class="text-center"
             >From an Idea to a Masterpiece, guides show the path to follow to become a Nuxter.</SectionDescription
           >
         </template>

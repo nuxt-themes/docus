@@ -69,7 +69,7 @@ export default {
     },
     'text-body-lg': {
       fontSize: '1.125rem',
-      lineHeight: '1.5rem' // 1.75rem is too big
+      lineHeight: '1.75rem'
     },
     'text-body-xl': {
       fontSize: '1.25rem',
