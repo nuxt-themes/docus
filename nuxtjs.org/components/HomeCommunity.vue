@@ -21,11 +21,11 @@
           <ALabel tag="span" class="text-primary-green font-bold text-lg">Community</ALabel>
         </template>
         <template #title>
-          <SectionTitle class="text-center font-serif" size="sm">Developer love it</SectionTitle>
+          <SectionTitle class="text-center font-serif" size="sm">Testimonials</SectionTitle>
         </template>
         <template #paragraph>
           <SectionDescription class="pb-16 text-center" size="md"
-            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
+            >Learn from experts about what they think of Nuxt.</SectionDescription
           >
         </template>
         <template #content>
@@ -45,23 +45,27 @@
               "
             >
               <ALabel tag="p" class="text-left" v-html="testimonial.testimonial"></ALabel>
-              <div class="flex w-full justify-between align-middle">
-                <img
-                  :src="`/img/home/community/${testimonial.icon_author}.png`"
-                  width="48"
-                  height="48"
-                  class="h-12 w-12"
-                />
-                <div class="flex flex-1 pl-4 text-left flex-col">
+              <div class="flex w-full justify-between items-center">
+                <a :href="testimonial.authorUrl" target="_blank" rel="noopener">
+                  <img
+                    :src="`/img/home/community/${testimonial.authorIcon}.png`"
+                    width="48"
+                    height="48"
+                    class="h-12 w-12"
+                  />
+                </a>
+                <a
+                  :href="testimonial.authorUrl"
+                  target="_blank"
+                  rel="noopener"
+                  class="flex flex-1 pl-4 text-left flex-col"
+                >
                   <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
                   <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
-                </div>
-                <img
-                  :src="`/img/home/community/${testimonial.icon_job}.svg`"
-                  width="28"
-                  height="28"
-                  class="hidden xl:block"
-                />
+                </a>
+                <a :href="testimonial.jobUrl" target="_blank" rel="noopener" class="hidden xl:block">
+                  <img :src="`/img/home/community/${testimonial.jobIcon}.svg`" width="28" height="28" />
+                </a>
               </div>
             </li>
           </ul>
@@ -94,25 +98,31 @@ export default defineComponent({
         testimonial:
           'Nuxt offers a compelling solution and a great ecosystem to help you ship fullstack Vue apps that are performant and SEO friendly. The flexibility to choose between SSR and SSG is icing on the cake.',
         author: 'Evan You',
-        icon_author: 'evan',
+        authorIcon: 'evan',
+        authorUrl: 'https://twitter.com/youyuxi',
         job: 'Creator of Vue.js',
-        icon_job: 'vue'
+        jobIcon: 'vue',
+        jobUrl: 'https://vuejs.org'
       },
       {
         testimonial:
           'Nuxt has outstanding developer productivity, experience, and performance right out of the gate!<br/>There’s so much attention to detail, ensuring teams have everything at their fingertips to productively build all manners of applications.',
         author: 'Sarah Drasner',
+        authorIcon: 'sarah',
+        authorUrl: 'https://twitter.com/sarah_edo',
         job: 'Core Team of Vue.js',
-        icon_author: 'sarah',
-        icon_job: 'vue'
+        jobIcon: 'vue',
+        jobUrl: 'https://vuejs.org'
       },
       {
         testimonial:
           'Nuxt is a fantastic choice for teams building a production-grade product on the web. It aims to bake in performance best-practices while maintaining excellent Vue.js DX.',
         author: 'Addy Osmani',
+        authorIcon: 'addy',
+        authorUrl: 'https://twitter.com/addyosmani',
         job: 'Chief Engineer of Chrome',
-        icon_author: 'addy',
-        icon_job: 'google'
+        jobIcon: 'chrome',
+        jobUrl: 'https://www.google.com/chrome/'
       }
     ]
 
