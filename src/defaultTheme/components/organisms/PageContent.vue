@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="xl:mb-4 mt-4 xl:mt-0 px-4 sm:px-6">
+    <!-- <section class="xl:mb-4 mt-4 xl:mt-0 px-4 sm:px-6">
       <div class="flex items-center justify-between">
         <InjectComponent
           v-if="page.icon"
@@ -40,7 +40,7 @@
         v-if="$scopedSlots['mobile-toc'] || page.description"
         class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
       />
-    </section>
+    </section> -->
 
     <slot name="mobile-toc" />
 
@@ -62,3 +62,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped lang="postcss">
+.docus-content {
+  ::v-deep {
+    & > h1:first-child {
+      margin-top: 0;
+    }
+  }
+}
+</style>

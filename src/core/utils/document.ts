@@ -43,22 +43,14 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
   if (first && expandTags(['h1']).includes(first.tag)) {
     if (!document.title) {
       document.title = getTextContent(first)
-      Object.assign(first, {
-        type: 'text',
-        value: ''
-      })
     }
     // look for second element to find description
-    if (second && expandTags(['blockquote']).includes(second.tag)) {
+    if (second && expandTags(['p']).includes(second.tag)) {
       if (!document.description) {
         document.description = getTextContent(second)
-        Object.assign(second, {
-          type: 'text',
-          value: ''
-        })
       }
     }
-  } else if (first && first.type === 'blockquote') {
+  } else if (first && first.type === 'p') {
     if (!document.description) {
       document.description = getTextContent(first)
       Object.assign(first, {
