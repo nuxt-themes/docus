@@ -19,12 +19,9 @@ export function useNewsletter() {
     pending.value = true
 
     try {
-      await $http.$post(
-        `${process.env.NUXT_API || 'https://api.nuxtjs.com'}/newsletter`,
-        {
-          email: email.value
-        }
-      )
+      await $http.$post(`${process.env.NUXT_API || 'https://api.nuxtjs.com'}/newsletter`, {
+        email: email.value
+      })
 
       subscribed.value = email.value
       pending.value = false
