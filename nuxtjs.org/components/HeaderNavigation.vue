@@ -11,18 +11,17 @@
         <NuxtLink
           :to="`/${link.slug}/${link.children[0].slug || ''}`"
           :class="{
-            'text-primary-green': currentSlug === link.slug,
-            'mt-4': $route.path !== '/'
+            'text-primary-green': currentSlug === link.slug
           }"
         >
           {{ link.slug }}
         </NuxtLink>
-        <div v-show="hover && itemIndex === index">
+
+        <!-- <div v-show="hover && itemIndex === index">
           <div class="dropdown flex items-center justify-center w-52 -mt-2">
             <img src="~/static/img/header/polygon.svg" class="w-5 h-5" />
           </div>
           <ul class="light:bg-white dark:bg-secondary light:border rounded-md border-gray-100 py-2 dropdown">
-            <!-- TODO: Remove the filter -->
             <li v-for="(nav, i) in link.children.filter(item => item.slug && item.slug !== ``)" :key="nav.slug">
               <NuxtLink
                 :to="`/${link.slug}/${nav.slug}`"
@@ -46,7 +45,7 @@
               </NuxtLink>
             </li>
           </ul>
-        </div>
+        </div> -->
       </li>
     </ul>
   </div>

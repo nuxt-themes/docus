@@ -5,7 +5,7 @@
       :placeholder="placeholder"
       class="
         white:placeholder-gray-400
-        dark:placeholder-gray-300
+        dark:placeholder-secondary
         appearance-none
         min-w-0
         sm:max-w-xs
@@ -16,7 +16,7 @@
         light:bg-white
         border
         light:border-gray-200
-        dark:border-secondary-light
+        dark:border-secondary-dark
         rounded-md
         py-2
         pl-3
@@ -28,7 +28,7 @@
         light:focus:ring-black
         dark:focus:ring-white
         light:focus:border-white
-        dark:focus:border-white
+        dark:focus:border-secondary-light
         sm:text-sm
       "
       @input="$emit('input', $event)"
