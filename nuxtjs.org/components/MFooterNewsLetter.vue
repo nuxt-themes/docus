@@ -1,18 +1,12 @@
 <template>
   <div>
     <div>
-      <ALabel
-        tag="h3"
-        class="font-semibold light:text-gray-400 dark:text-gray-100 text-lg"
-        >Subscribe to our newsletter</ALabel
-      >
-      <ALabel tag="p" class="mt-2 text-base text-gray-500 dark:text-white">
+      <h3 class="font-semibold light:text-gray-400 dark:text-secondary-light text-lg">Subscribe to our newsletter</h3>
+      <p class="mt-2 text-base text-gray-500 dark:text-secondary-surface">
         The latest news, articles, and resources, sent to your inbox weekly.
-      </ALabel>
+      </p>
     </div>
-    <MInputGroupButton v-model="email" placeholder="Enter your email"
-      >Subscribe</MInputGroupButton
-    >
+    <MInputGroupButton v-model="email" placeholder="Enter your email">Subscribe</MInputGroupButton>
   </div>
 </template>
 

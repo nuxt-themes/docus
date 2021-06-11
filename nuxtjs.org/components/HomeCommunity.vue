@@ -1,35 +1,41 @@
 <template>
-  <HomeSection class="dark:bg-secondary-dark">
+  <HomeSection class="">
     <template #header-illustration>
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-t.svg`"
-        class="w-full h-20 object-fill light:hidden"
+        class="w-full h-20 object-fill light:hidden pointer-events-none"
         alt="A landscape image"
       />
 
       <img
         loading="lazy"
         :src="`/img/home/community/light/landscape-community-t.svg`"
-        class="w-full h-20 object-fill dark:hidden"
+        class="w-full h-20 object-fill dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>
+
     <template #section-content>
       <SectionContent class="col-span-12 items-center pt-20 pb-60">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg">Community</ALabel>
+          <CategoryLabel label="Community" />
         </template>
+
         <template #title>
-          <SectionTitle class="text-center font-serif" size="sm">Testimonials</SectionTitle>
-        </template>
-        <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >Learn from experts about what they think of Nuxt.</SectionDescription
+          <SectionTitle class="text-center font-serif"
+            >Developers <span class="text-primary-green italic">Love </span>it</SectionTitle
           >
         </template>
+
+        <template #paragraph>
+          <SectionDescription class="text-center"
+            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
+          >
+        </template>
+
         <template #content>
-          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4 lg:gap-8 pb-8 sm:mx-20 md:mx-0">
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-18 md:gap-8 lg:gap-12">
             <li
               v-for="testimonial in testimonials"
               :key="testimonial.author"
@@ -37,64 +43,37 @@
                 relative
                 flex flex-col
                 items-center
-                justify-between
-                space-y-4
-                border-3 border-gray-200
+                border-2 border-gray-200
+                dark:border-secondary-light
                 rounded-lg
-                p-4
+                p-6
               "
             >
-              <ALabel tag="p" class="text-left" v-html="testimonial.testimonial"></ALabel>
-              <div class="flex w-full justify-between items-center">
-                <a :href="testimonial.authorUrl" target="_blank" rel="noopener">
-                  <img
-                    :src="`/img/home/community/${testimonial.authorIcon}.png`"
-                    width="48"
-                    height="48"
-                    class="h-12 w-12"
-                  />
-                </a>
-                <a
-                  :href="testimonial.authorUrl"
-                  target="_blank"
-                  rel="noopener"
-                  class="flex flex-1 pl-4 text-left flex-col"
-                >
-                  <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
-                  <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
-                </a>
-                <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
-                  <img
-                    :src="`/img/home/community/${testimonial.jobIcon}.svg`"
-                    width="28"
-                    height="28"
-                    :class="{ 'light-img': testimonial.jobIconDark }"
-                  />
-                  <img
-                    v-if="testimonial.jobIconDark"
-                    :src="`/img/home/community/${testimonial.jobIconDark}.svg`"
-                    width="28"
-                    height="28"
-                    class="dark-img"
-                  />
-                </a>
-              </div>
+              <img :src="`/img/home/community/${testimonial.icon_author}.png`" class="absolute h-12 bottom-0 -mb-9" />
+              <img
+                :src="`/img/home/community/${testimonial.icon_job}.svg`"
+                class="md:hidden lg:block absolute h-7 bottom-0 right-0 mr-4 mb-4"
+              />
+              <p class="text-center mb-4">{{ testimonial.testimonial }}</p>
+              <span class="font-bold text-center text-base">{{ testimonial.author }}</span>
+              <span class="text-center text-sm dark:text-secondary-lightest">{{ testimonial.job }}</span>
             </li>
           </ul>
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
         alt="A landscape image"
       />
       <img
         loading="lazy"
         :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>

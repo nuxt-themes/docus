@@ -1,16 +1,15 @@
 <template>
-  <Component :is="tag">
-    <slot />
-  </Component>
+  <span class="text-terciary font-bold text-lg">{{ label }}</span>
 </template>
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+
 export default defineComponent({
   props: {
-    tag: {
+    label: {
       type: String,
-      default: 'div'
+      default: ''
     }
   }
 })

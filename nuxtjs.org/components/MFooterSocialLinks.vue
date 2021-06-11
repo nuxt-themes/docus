@@ -4,7 +4,7 @@
       <ALink :href="social.href">
         <Component
           :is="social.icon"
-          class="h-6 w-6 text-gray-400 dark:text-gray-100 hover:text-primary-green"
+          class="h-6 w-6 text-gray-400 dark:text-secondary-surface hover:text-primary-green"
         />
       </ALink>
     </li>
