@@ -1,16 +1,24 @@
 import { resolve, join } from 'path'
+import _glob from 'glob'
+import type { IOptions as GlobOptions } from 'glob'
 import { Config as WindiConfig } from 'windicss/types/interfaces'
 import { existsSync } from 'fs-extra'
-import { glob } from 'siroc'
 import defu from 'defu'
 import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import clearModule from 'clear-module'
 import jiti from 'jiti'
-import fg from 'fast-glob'
 import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
+
+const glob = (pattern: string, options: GlobOptions = {}) =>
+  new Promise<string[]>((resolve, reject) =>
+    _glob(pattern, options, (err, matches) => {
+      if (err) return reject(err)
+      resolve(matches)
+    })
+  )
 
 const _require = jiti(__filename)
 
@@ -69,9 +77,9 @@ export default <Module>function themeSetupModule() {
     const contentDir = resolve(options.srcDir, settings.contentDir)
 
     // Glob grabbing all Docus files
-    const transformFiles = await fg('**/*.{vue,css}', {
+    const transformFiles = await glob('**/*.{vue,css}', {
       cwd: join(options.rootDir, '/node_modules/docus/dist'),
-      onlyFiles: true,
+      nodir: true,
       absolute: true
     })
 
@@ -113,7 +121,7 @@ export default <Module>function themeSetupModule() {
       })
 
       // Check for sub directories
-      const subDirs = await glob(componentsDirPath + '/*/')
+      const subDirs = await glob(componentsDirPath + '/**/')
 
       // Register each subdirectories
       subDirs.forEach((path: string) => dirs.push({ path, global: true }))
