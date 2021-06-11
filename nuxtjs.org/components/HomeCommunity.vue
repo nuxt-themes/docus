@@ -87,27 +87,54 @@ export default defineComponent({
     const testimonials = [
       {
         testimonial:
-          'Just migrated a few SPAs to @NuxtJS. Literally impossible to make the process any easier. Super impressive.',
+          'Nuxt offers a compelling solution and a great ecosystem to help you ship fullstack Vue apps that are performant and SEO friendly. The flexibility to choose between SSR and SSG is icing on the cake.',
         author: 'Evan You',
-        icon_author: 'evan',
-        job: 'Creator of VueJS',
-        icon_job: 'vue'
+        authorIcon: 'evan',
+        authorUrl: 'https://twitter.com/youyuxi',
+        job: 'Creator of Vue.js',
+        jobIcon: 'vue',
+        jobUrl: 'https://vuejs.org'
       },
       {
         testimonial:
-          'Just migrated a few SPAs to @NuxtJS. Literally impossible to make the process any easier. Super impressive.',
+          'Nuxt has outstanding developer productivity, experience, and performance right out of the gate!<br/>There’s so much attention to detail, ensuring teams have everything at their fingertips to productively build all manners of applications.',
         author: 'Sarah Drasner',
-        job: 'Core Team of VueJS',
-        icon_author: 'sarah',
-        icon_job: 'vue'
+        authorIcon: 'sarah',
+        authorUrl: 'https://twitter.com/sarah_edo',
+        job: 'Core Team of Vue.js',
+        jobIcon: 'vue',
+        jobUrl: 'https://vuejs.org'
       },
       {
         testimonial:
-          'Just migrated a few SPAs to @NuxtJS. Literally impossible to make the process any easier. Super impressive.',
+          'Nuxt is a fantastic choice for teams building a production-grade product on the web. It aims to bake in performance best-practices while maintaining excellent Vue.js DX.',
         author: 'Addy Osmani',
+        authorIcon: 'addy',
+        authorUrl: 'https://twitter.com/addyosmani',
         job: 'Chief Engineer of Chrome',
-        icon_author: 'osman',
-        icon_job: 'google'
+        jobIcon: 'chrome',
+        jobUrl: 'https://www.google.com/chrome/'
+      },
+      {
+        testimonial:
+          'Nuxt has been an incredible source of innovation and inspiration for developers and framework authors alike. It’s been amazing to see its growth in web projects of all sizes on the web.',
+        author: 'Guillermo Rauch',
+        authorIcon: 'guillermo',
+        authorUrl: 'https://twitter.com/rauchg',
+        job: 'CEO of Vercel',
+        jobIcon: 'vercel-light',
+        jobIconDark: 'vercel-dark',
+        jobUrl: 'https://vercel.com'
+      },
+      {
+        testimonial:
+          'Nuxt has a unique approach of combining a great developer experience with reusable, fully integrated features that speed up the development and performance of your next website or application.',
+        author: 'Dominik Angerer',
+        authorIcon: 'dominik',
+        authorUrl: 'https://twitter.com/domangerer',
+        job: 'CEO of Storyblok',
+        jobIcon: 'storyblok',
+        jobUrl: 'https://www.storyblok.com'
       }
     ]
 

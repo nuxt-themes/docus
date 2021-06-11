@@ -34,6 +34,7 @@
     "dev:nuxtjs": "nuxt dev nuxtjs.org",
     "dev:admin": "vite --config src/admin/vite.config.ts",
     "generate": "nuxt generate --force-build docs",
+    "generate:nuxtjs": "nuxt generate --force-build nuxtjs.org",
     "start": "nuxt start docs",
     "play": "BUILD_ADMIN=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
@@ -65,6 +66,7 @@
     "defu": "^5.0.0",
     "detab": "^3.0.0",
     "directory-tree": "^2.2.9",
+    "flat": "^5.0.2",
     "graceful-fs": "^4.2.6",
     "gray-matter": "^4.0.3",
     "h3": "^0.2.10",
@@ -125,7 +127,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.1",
-    "siroc": "^0.11.0",
+    "siroc": "^0.9.3",
     "standard-version": "^9.3.0"
   },
   "peerDependencies": {

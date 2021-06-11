@@ -111,30 +111,39 @@ export default defineComponent({
 </script>
 
 <style scoped lang="postcss">
+.code-group {
+  @apply my-4;
+
+  ::v-deep {
+    .docus-highlight:not(.active) {
+      display: none;
+    }
+
+    .code-block:not(.active) {
+      display: none;
+    }
+
+    .docus-highlight {
+      @apply mt-0;
+    }
+
+    // hide filename
+    pre[class*='language-'] {
+      @apply rounded-t-none mt-0;
+    }
+  }
+}
+
 button {
   outline: none;
 }
 
-.code-group {
-  @apply my-4;
-
-  & .docus-highlight:not(.active) {
-    display: none;
-  }
-
-  & .code-block:not(.active) {
-    display: none;
-  }
-
-  >>> .docus-highlight {
-    @apply my-0;
-  }
-}
-
 .first-tab {
-  & > .code-block:nth-child(2),
-  & > .docus-highlight:nth-child(2) {
-    display: block;
+  ::v-deep {
+    .code-block:nth-child(2),
+    .docus-highlight:nth-child(2) {
+      display: block;
+    }
   }
 }
 
@@ -142,21 +151,5 @@ button {
   /* bottom: -2px; */
   /* height: 2px; */
   transition: left 150ms, top 150ms, width 150ms, height 150ms;
-}
-
-.code-group ::v-deep {
-  & pre[class*='language-'] {
-    @apply rounded-t-none mt-0;
-  }
-  & > .prose > .docus-highlight .filename {
-    display: none;
-    & + pre[class*='language-'] {
-      @apply pt-3;
-    }
-  }
-}
-
-.docus-highlight {
-  margin: 0;
 }
 </style>

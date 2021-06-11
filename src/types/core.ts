@@ -25,11 +25,16 @@ export interface NavItemNavigationConfig {
   nested: boolean
   slot: string
   exclusive: boolean
+  // Collapsed aside navigation by default
+  collapse: boolean
+  // Useful for directories `index.md` which are empty pages, to get redirect to another page
+  redirect: string
 }
 export interface NavItem {
   slug: string
   to: string
   title: string
+  shadow: boolean
   draft?: boolean
   template?: {
     self: string
@@ -47,6 +52,14 @@ export type PermissiveContext = Context & { [key: string]: any }
 
 export type DocusNavigation = {
   [language: string]: NavItem[]
+}
+
+export type DocusCurrentNav = {
+  title?: string
+  to?: string
+  navigation?: NavItemNavigationConfig | false
+  parent?: NavItem
+  links: NavItem[]
 }
 
 export interface DocusDocument {

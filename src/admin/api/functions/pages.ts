@@ -16,17 +16,17 @@ export default <Middleware>async function pagesHandler(req) {
   if (req.method === 'GET') {
     // List all pages
     if (url === '/') {
-      const tree = dirTree(r('pages'))
-      return normalizeFiles(tree.children, r('pages'))
+      const tree = dirTree(r('content'))
+      return normalizeFiles(tree.children, r('content'))
     }
     // Read a single page
     try {
-      const path = join(r('pages'), url)
+      const path = join(r('content'), url)
       const file = await fs.readFile(path, 'utf-8')
       const { content, data } = matter(file)
 
       return {
-        path: path.replace(r('pages'), ''),
+        path: path.replace(r('content'), ''),
         extension: extname(path),
         data,
         content
@@ -50,7 +50,7 @@ export default <Middleware>async function pagesHandler(req) {
       })
     }
 
-    const path = join(r('pages'), url)
+    const path = join(r('content'), url)
 
     try {
       // @ts-ignore

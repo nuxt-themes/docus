@@ -16,6 +16,7 @@ export default withDocus({
       class: ['min-w-xs']
     }
   },
+  buildModules: ['@nuxt/typescript-build'],
   windicss: {
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')

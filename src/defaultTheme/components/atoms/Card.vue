@@ -5,6 +5,9 @@
         <NuxtImg v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
         <span v-else class="inline-block w-16 h-16 mb-3 text-6xl">{{ icon }}</span>
       </InjectComponent>
+
+      <slot />
+
       <div class="text-lg">
         <h3 class="mb-2 font-semibold tracking-tight inline mr-1">{{ title }}</h3>
         <div class="inline font-medium text-gray-400 dark:text-gray-500">
