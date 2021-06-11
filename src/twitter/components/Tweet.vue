@@ -114,21 +114,21 @@ export default {
 }
 </script>
 
-<style lang="postcss">
-blockquote.tweet {
+<style lang="postcss" scoped>
+.tweet {
   @apply my-5 p-6 pb-3 border border-gray-300 rounded-md mx-auto b-0 not-italic;
   @apply dark:border-gray-700;
   width: calc(min(100%, 550px)) !important;
-  & img {
+  & {
+    .tweet-quote {
+      @apply p-3;
+    }
+  }
+  img {
     @apply m-0;
   }
-}
-.tweet {
   .link {
     @apply block;
-  }
-  &.tweet-quote {
-    @apply p-3;
   }
   .emoji {
     @apply w-5 h-5 m-0 inline-block;

@@ -10,8 +10,7 @@
       uppercase
       tracking-wide
       bg-primary-100
-      dark:bg-primary-900
-      dark:text-primary-400
+      dark:bg-primary-900 dark:text-primary-400
     "
   >
     {{ label }}

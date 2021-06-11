@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import { Config as WindiConfig } from 'windicss/types/interfaces'
 import { Module } from '@nuxt/types'
 import { ParserOptions } from '../types'
 import tweetDirective from './lib/directive'
@@ -22,5 +23,9 @@ export default <Module>function docusTwitterModule() {
       global: true,
       level: 2
     })
+  })
+
+  hook('windicss:options', (windiOptions: WindiConfig) => {
+    windiOptions.scanOptions.include.push(r('components') + '/*.vue')
   })
 }

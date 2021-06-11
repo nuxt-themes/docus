@@ -43,6 +43,8 @@ export default async function (ctx, inject) {
   inject('docus', $docus)
 
   /* <% if (options.watch) { %> */
-  useWebSocket({ base: '<%= options.apiBase %>' }).connect()
+  if (process.client) {
+    useWebSocket({ base: '<%= options.apiBase %>' }).connect()
+  }
   /* <% } %> */
 }

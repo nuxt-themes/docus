@@ -2,6 +2,7 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 26 26"
+    height="64"
     fill="currentColor"
     class="text-gray-900 dark:text-gray-100"
   >

@@ -1,11 +1,9 @@
 import Loki from '@lokidb/loki'
 import { QueryBuilder } from './runtime/api/QueryBuilder'
-import { useHooks } from './hooks'
 
 let _db
 let _items
 export const useDB = () => {
-  const { callHook } = useHooks()
   if (!_db) {
     _db = new Loki('docus.db')
     _items = _db.addCollection('items', {})
@@ -15,8 +13,7 @@ export const useDB = () => {
     items: _items,
     query: createQuery,
     find,
-    async insert(document) {
-      await callHook('docus:storage:beforeInsert', document)
+    insert(document) {
       const existed = _items.findOne({ key: document.key })
 
       if (existed) {

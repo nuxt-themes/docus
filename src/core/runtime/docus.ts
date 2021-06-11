@@ -21,7 +21,10 @@ export const createDocus = async (
   // Nuxt instance proxy
   let $nuxt: any
 
-  const { ssrContext } = context
+  const { ssrContext, nuxtState = {} } = context
+
+  // Prevent hydration mismatch: inject templateOptions from ssr payload before page load
+  const templateOptions = nuxtState.data?.[0].templateOptions || {}
 
   // State
   const state = reactive({
@@ -29,7 +32,8 @@ export const createDocus = async (
     settings: null,
     theme: null,
     layout: {
-      ...settings.layout
+      ...settings.layout,
+      ...templateOptions
     }
   }) as DocusState
 

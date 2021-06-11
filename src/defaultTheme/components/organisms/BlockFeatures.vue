@@ -26,8 +26,7 @@
               bg-white
               rounded
               border border-gray-200
-              dark:border-gray-700
-              dark:bg-gray-900
+              dark:border-gray-700 dark:bg-gray-900
             "
           >
             <InjectComponent :component="f.icon" class="w-16 h-16 mb-3" :class="f.iconClass || ''">

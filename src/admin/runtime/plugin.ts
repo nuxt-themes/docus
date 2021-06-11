@@ -23,7 +23,9 @@ export default <Plugin>async function ({ ssrContext, $docus }: Context & { $docu
 
   if (process.client) {
     // Watch drafts, refresh data once updated
-    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
+    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui), {
+      deep: true
+    })
 
     // Watch draft and fetch nav
     watch(

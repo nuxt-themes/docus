@@ -8,14 +8,11 @@
       h-full
       overflow-auto
       pointer-events-auto
-      lg:h-screen
       min-h-fill-available
-      lg:sticky
-      lg:top-header
-      lg:w-60
+      lg:sticky lg:top-header lg:w-60 lg:max-h-[400vh]
     "
   >
-    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent">
+    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 dark:lg:bg-transparent lg:bg-transparent">
       <!-- Aside Header -->
       <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800">
         <button
@@ -51,11 +48,15 @@
           overflow-y-auto
           text-sm
           font-medium
+          lg:h-[reset]
           h-(full-header)
         "
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
           <AsideTop />
+          <NuxtLink v-if="parent" class="mb-3 block" :to="$contentLocalePath(parent.to)">
+            <IconArrowLeft width="16" height="16" class="inline-block mr-2" /> {{ parent.title }}
+          </NuxtLink>
           <ul>
             <template v-for="link in links">
               <AsideNavigationItem
@@ -63,6 +64,7 @@
                 :key="link.navigation.title"
                 :title="link.navigation.title"
                 :docs="link.children"
+                :collapsed="link.navigation.collapsed"
               />
               <AsideNavigationItem v-else :key="link.navigation.title" :docs="[link]" />
             </template>
@@ -80,7 +82,11 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     links() {
-      return this.$docus.currentNav.value
+      const nav = this.$docus.currentNav.value
+      return nav.links
+    },
+    parent() {
+      return this.$docus.currentNav.value.parent
     },
     lastRelease() {
       return this.$docus.lastRelease?.value

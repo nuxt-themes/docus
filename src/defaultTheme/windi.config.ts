@@ -37,6 +37,7 @@ export default defineConfig({
     },
     extend: {
       fontSize: {
+        root: '16px',
         lg: ['1.125rem', '1.5rem'] // NOT WORKING
       },
       fontFamily: {

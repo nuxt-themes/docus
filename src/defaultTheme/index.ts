@@ -9,40 +9,100 @@ const themeConfig: NuxtConfig = nuxtConfig({
   rootDir: __dirname,
   themeName: 'defaultTheme',
   themeDir: __dirname,
+  head: {
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+      },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
+    ],
+    bodyAttrs: {
+      class: ['body-bg docus-body-text-color antialiased tracking-semitight']
+    }
+  },
   colorMode: {
     classSuffix: ''
   },
   css: [r('./css/main.css'), r('./css/prism.css')],
   components: [
+    /**
+     * Atoms
+     */
     {
       path: r('./components/atoms'),
+      prefix: '',
       global: true,
       level: 2
     },
     {
       path: r('./components/atoms/icons'),
+      prefix: '',
       global: true,
       level: 2
     },
+    {
+      path: r('./components/atoms/prose'),
+      prefix: '',
+      global: true,
+      level: 2
+    },
+    /**
+     * Molecules
+     */
     {
       path: r('./components/molecules'),
+      prefix: '',
+      global: true,
+      level: 2
+    },
+    /**
+     * Organisms
+     */
+    {
+      path: r('./components/organisms'),
+      prefix: '',
       global: true,
       level: 2
     },
     {
-      path: r('./components/organisms'),
+      path: r('./components/organisms/app'),
+      prefix: '',
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/organisms/blog'),
+      prefix: '',
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/organisms/dev-slots'),
+      prefix: '',
+      global: true,
+      level: 2
+    },
+    {
+      path: r('./components/organisms/page'),
+      prefix: '',
       global: true,
       level: 2
     },
     {
       path: r('./components/organisms/slots'),
+      prefix: '',
       global: true,
-      level: 3
+      level: 2
     },
+    /**
+     * Templates
+     */
     {
       path: r('./components/templates'),
+      prefix: '',
       global: true,
-      level: 3
+      level: 2
     }
   ],
   plugins: [r('./plugins/menu')],

@@ -52,6 +52,16 @@ export default {
     primaryLightColor() {
       return Color(this.primaryColor).lighten(0.1).hex()
     }
+  },
+  mounted() {
+    // Disable header & footer for this page
+    this.$docus.layout.value = {
+      ...this.$docus.layout.value,
+      aside: false,
+      header: false,
+      footer: false,
+      fluid: true
+    }
   }
 }
 </script>

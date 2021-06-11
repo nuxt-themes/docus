@@ -11,7 +11,7 @@
     <ul v-if="!isCollapse || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
-          :to="$contentLocalePath(doc.to)"
+          :to="$contentLocalePath(doc.navigation.redirect || doc.to)"
           class="block w-full"
           :class="[
             $docus.isLinkActive(doc.to)
@@ -61,12 +61,16 @@ export default defineComponent({
     docs: {
       type: Array,
       required: true
+    },
+    collapsed: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
     const { $docus } = useContext()
 
-    const isCollapse = ref(false)
+    const isCollapse = ref(props.collapsed)
 
     const isActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
 
