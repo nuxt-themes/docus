@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomeSection class="pt-40 pb-20 dark:bg-secondary-dark">
+    <HomeSection class="pt-40 pb-20">
       <template #section-content>
         <SectionContent class="col-span-12 items-center">
           <template #category>

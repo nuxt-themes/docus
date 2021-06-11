@@ -1,5 +1,5 @@
 <template>
-  <div class="dark:bg-secondary-dark overflow-hidden">
+  <div class="overflow-hidden">
     <HeroTemplate content-center class="mx-auto max-w-8xl">
       <template #illustration>
         <HeroParallax />

@@ -17,8 +17,8 @@ export default {
       test: 'red'
     },
     shortcuts: {
-      'body-bg': 'bg-white dark:bg-secondary-dark',
-      'bg-header': 'bg-white bg-opacity-80 dark:bg-secondary-dark dark:bg-opacity-80',
+      'body-bg': 'bg-white dark:bg-secondary-black',
+      'bg-header': 'bg-white bg-opacity-80 dark:bg-secondary-black dark:bg-opacity-80',
       'border-header': 'border-none'
     }
   }

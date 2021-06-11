@@ -1,5 +1,5 @@
 <template>
-  <HomeSection class="pt-20 dark:bg-secondary-dark">
+  <HomeSection class="pt-20">
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>

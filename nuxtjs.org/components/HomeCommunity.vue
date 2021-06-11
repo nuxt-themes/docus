@@ -1,17 +1,17 @@
 <template>
-  <HomeSection class="dark:bg-secondary-dark">
+  <HomeSection class="">
     <template #header-illustration>
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-t.svg`"
-        class="w-full h-20 object-fill light:hidden"
+        class="w-full h-20 object-fill light:hidden pointer-events-none"
         alt="A landscape image"
       />
 
       <img
         loading="lazy"
         :src="`/img/home/community/light/landscape-community-t.svg`"
-        class="w-full h-20 object-fill dark:hidden"
+        class="w-full h-20 object-fill dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>
@@ -67,13 +67,13 @@
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
         alt="A landscape image"
       />
       <img
         loading="lazy"
         :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>

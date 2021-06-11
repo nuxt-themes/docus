@@ -3,13 +3,13 @@
     <img
       loading="lazy"
       :src="`/img/home/discover/modules/dark/landscape-discover-modules-t.svg`"
-      class="absolute w-full h-40 object-fill left-0 -mt-20 light:hidden"
+      class="absolute w-full h-40 object-fill left-0 -mt-24 light:hidden"
       alt="A landscape image"
     />
     <img
       loading="lazy"
       :src="`/img/home/discover/modules/light/landscape-discover-modules-t.svg`"
-      class="absolute w-full h-40 object-fill left-0 -mt-20 dark:hidden"
+      class="absolute w-full h-40 object-fill left-0 -mt-24 dark:hidden"
       alt="A landscape image"
     />
 
