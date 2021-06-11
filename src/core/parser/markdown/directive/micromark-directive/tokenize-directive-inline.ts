@@ -48,7 +48,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return effects.attempt(attributes, afterAttributes, afterAttributes)(code)
     }
 
-    return afterLabel(code)
+    return exit(code)
   }
 
   function afterAttributes(code: number) {
