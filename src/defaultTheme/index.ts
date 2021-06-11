@@ -18,7 +18,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ],
     bodyAttrs: {
-      class: ['body-bg antialiased tracking-semitight text-gray-900 dark:text-gray-50']
+      class: ['body-bg docus-body-text-color antialiased tracking-semitight']
     }
   },
   colorMode: {
