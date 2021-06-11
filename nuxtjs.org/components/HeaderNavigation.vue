@@ -35,11 +35,7 @@ export default defineComponent({
     const currentNav = computed(() => $docus.get({ depth: 1 }).links)
 
     // computed
-<<<<<<< HEAD
-    const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== ''))
-=======
     const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== '' && link.children.length))
->>>>>>> 5e75222df60553f5c3c74acd8a4f3a2d2e65e816
 
     const currentSlug = computed(() => {
       return route.value.path !== '/' && route?.value?.params?.pathMatch
