@@ -16,7 +16,7 @@
         class="
           border-t
           light:border-gray-200
-          dark:border-secondary-light
+          dark:border-secondary-darker
           pt-8
           lg:flex lg:items-center lg:justify-between
           xl:mt-0
@@ -26,7 +26,7 @@
         class="
           mt-8
           border-t border-gray-200
-          dark:border-secondary-light
+          dark:border-secondary-darker
           pt-8
           md:flex md:items-center md:justify-between
           flex-row-reverse
