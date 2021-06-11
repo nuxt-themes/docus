@@ -35,7 +35,7 @@
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8 lg:gap-16">
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-18 md:gap-8 lg:gap-12">
             <li
               v-for="testimonial in testimonials"
               :key="testimonial.author"
