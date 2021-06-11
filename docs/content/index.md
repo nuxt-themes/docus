@@ -4,9 +4,9 @@ description: >-
   Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
 template: page
 navigation: false
-layout:
-  asideClass: 'block lg:hidden'
-  aside: true
+# layout
+layout.asideClass: 'block lg:hidden'
+layout.aside: true
 ---
 
 ::block-hero
