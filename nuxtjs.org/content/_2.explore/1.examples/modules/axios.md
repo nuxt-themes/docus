@@ -21,7 +21,7 @@ Learn more about the [axios module](https://axios.nuxtjs.org/).
 
 <alert type="next">
 
-Learn more in the Directory Structure book in the [nuxt-config](/docs/2.x/directory-structure/nuxt-config) chapter.
+Learn more in the Directory Structure book in the [nuxt-config](/docs/directory-structure/nuxt-config) chapter.
 
 </alert>
 

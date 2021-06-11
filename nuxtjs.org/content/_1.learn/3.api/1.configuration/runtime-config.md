@@ -4,7 +4,7 @@ description: RuntimeConfig allows passing dynamic config and environment variabl
 category: api-configuration
 ---
 
-Runtime config allows passing dynamic config and environment variables to the nuxt context. For more information of usage, please see [runtime config guide](/docs/2.x/directory-structure/nuxt-config#runtimeconfig)
+Runtime config allows passing dynamic config and environment variables to the nuxt context. For more information of usage, please see [runtime config guide](/docs/directory-structure/nuxt-config#runtimeconfig)
 
 ## `publicRuntimeConfig`
 

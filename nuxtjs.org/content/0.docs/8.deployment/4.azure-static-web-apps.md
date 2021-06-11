@@ -97,7 +97,7 @@ Now all you have to do is modify your code and push your changes. Pushing your c
 
 If you are working with dynamic pages such as \_id.vue then you you will need to add these routes to the generate property in your nuxt config.
 
-[See the documentation on how to handle dynamic routes.](/docs/2.x/configuration-glossary/configuration-generate#routes)
+[See the documentation on how to handle dynamic routes.](/docs/configuration-glossary/configuration-generate#routes)
 
 <div class="Alert">
 If you are using Nuxt 2.13+ then you won't have to worry about this as there is a built in crawler which will crawl all dynamics by crawling the links in your site.
@@ -111,4 +111,4 @@ In order to not have the default 404 page you can create an `error.vue` file in 
 
 If you would like some pages to not be generated but act as a single page application you can do so using the generate.excludes property in your nuxt.config file.
 
-[See the documentation on spa fallback](/docs/2.x/configuration-glossary/configuration-generate#exclude)
+[See the documentation on spa fallback](/docs/configuration-glossary/configuration-generate#exclude)

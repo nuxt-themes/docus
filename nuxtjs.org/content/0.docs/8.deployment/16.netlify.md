@@ -43,7 +43,7 @@ Make sure you have `target: 'static'` and `ssr: false`in your `nuxt.config`.
 
 For client side rendering there is a problem with refresh as by default on Netlify the site redirects to _"404 not found"_. For any pages that are not generated they will fallback to SPA mode and then if you refresh or share that link you will get Netlify's 404 page. This is because the pages that are not generated don't actually exist as they are actually a single page application so if you refresh this page you will get a 404 because the url for that page doesn't actually exist. By redirecting to the 404.html Nuxt will reload your page correctly in SPA fallback.
 
-The easiest way to fix this is by adding a [generate property](/docs/2.x/configuration-glossary/configuration-generate#fallback) in your `nuxt.config` and setting `fallback: true`. Then it will fallback to the generated 404.html when in SPA mode instead of Netlify's 404 page.
+The easiest way to fix this is by adding a [generate property](/docs/configuration-glossary/configuration-generate#fallback) in your `nuxt.config` and setting `fallback: true`. Then it will fallback to the generated 404.html when in SPA mode instead of Netlify's 404 page.
 
 ```js
 export default {

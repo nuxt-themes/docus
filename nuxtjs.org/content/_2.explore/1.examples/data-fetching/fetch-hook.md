@@ -20,7 +20,7 @@ Learn more about the [http module](https://http.nuxtjs.org/).
 
 <alert type="next">
 
-Learn more about the fetch hook in the Features book in the [Data Fetching](/docs/2.x/features/data-fetching) chapter.
+Learn more about the fetch hook in the Features book in the [Data Fetching](/docs/features/data-fetching) chapter.
 
 </alert>
 

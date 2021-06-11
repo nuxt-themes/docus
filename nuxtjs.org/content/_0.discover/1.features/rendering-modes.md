@@ -9,7 +9,7 @@ description: Rendering
 
 **Static sites** are very similar to server-side rendered applications with the main difference being that static sites are rendered at build time, therefore no server is needed. Navigating from one page to another is then on the client-side.
 
-See [deployment targets](/docs/2.x/features/deployment-targets) for more info on static and server hosting.
+See [deployment targets](/docs/features/deployment-targets) for more info on static and server hosting.
 
 ```js{}[nuxt.config.js]
 export default {
@@ -35,6 +35,6 @@ export default {
 
 <alert type="next">
 
-[The ssr property](/docs/2.x/configuration-glossary/configuration-ssr)
+[The ssr property](/docs/configuration-glossary/configuration-ssr)
 
 </alert>
