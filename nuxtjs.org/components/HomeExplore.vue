@@ -1,22 +1,22 @@
 <template>
-  <HomeSection class="dark:bg-secondary-dark">
+  <HomeSection class="">
     <template #header-illustration>
       <img
         loading="lazy"
         :src="`/img/home/explore/dark/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 pb-32 light:hidden"
+        class="w-full h-40 object-fill left-0 light:hidden"
         alt="A landscape image"
       />
       <img
         loading="lazy"
         :src="`/img/home/explore/light/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 pb-32 dark:hidden"
+        class="w-full h-40 object-fill left-0 dark:hidden"
         alt="A landscape image"
       />
     </template>
 
     <template #section-content>
-      <SectionContent class="col-span-12 items-center">
+      <SectionContent class="col-span-12 items-center mt-12">
         <template #category>
           <CategoryLabel label="Explore" />
         </template>
