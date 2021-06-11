@@ -29,7 +29,7 @@
           >
         </template>
         <template #content>
-          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20 pb-8 sm:mx-20 md:mx-0">
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4 lg:gap-8 pb-8 sm:mx-20 md:mx-0">
             <li
               v-for="testimonial in testimonials"
               :key="testimonial.author"
@@ -63,7 +63,7 @@
                   <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
                   <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
                 </a>
-                <a :href="testimonial.jobUrl" target="_blank" rel="noopener" class="hidden xl:block">
+                <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
                   <img :src="`/img/home/community/${testimonial.jobIcon}.svg`" width="28" height="28" />
                 </a>
               </div>
@@ -123,6 +123,16 @@ export default defineComponent({
         job: 'Chief Engineer of Chrome',
         jobIcon: 'chrome',
         jobUrl: 'https://www.google.com/chrome/'
+      },
+      {
+        testimonial:
+          'Nuxt has a unique approach of combining a great developer experience with reusable, fully integrated features that speed up the development and performance of your next website or application.',
+        author: 'Dominik Angerer',
+        authorIcon: 'dominik',
+        authorUrl: 'https://twitter.com/domangerer',
+        job: 'CEO of Storyblok',
+        jobIcon: 'storyblok',
+        jobUrl: 'https://www.storyblok.com'
       }
     ]
 
