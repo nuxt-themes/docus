@@ -64,7 +64,19 @@
                   <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
-                  <img :src="`/img/home/community/${testimonial.jobIcon}.svg`" width="28" height="28" />
+                  <img
+                    :src="`/img/home/community/${testimonial.jobIcon}.svg`"
+                    width="28"
+                    height="28"
+                    :class="{ 'light-img': testimonial.jobIconDark }"
+                  />
+                  <img
+                    v-if="testimonial.jobIconDark"
+                    :src="`/img/home/community/${testimonial.jobIconDark}.svg`"
+                    width="28"
+                    height="28"
+                    class="dark-img"
+                  />
                 </a>
               </div>
             </li>
@@ -123,6 +135,17 @@ export default defineComponent({
         job: 'Chief Engineer of Chrome',
         jobIcon: 'chrome',
         jobUrl: 'https://www.google.com/chrome/'
+      },
+      {
+        testimonial:
+          'Nuxt has been an incredible source of innovation and inspiration for developers and framework authors alike. It’s been amazing to see its growth in web projects of all sizes on the web.',
+        author: 'Guillermo Rauch',
+        authorIcon: 'guillermo',
+        authorUrl: 'https://twitter.com/rauchg',
+        job: 'CEO of Vercel',
+        jobIcon: 'vercel-light',
+        jobIconDark: 'vercel-dark',
+        jobUrl: 'https://vercel.com'
       },
       {
         testimonial:
