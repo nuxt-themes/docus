@@ -1,4 +1,5 @@
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import { Codes } from './constants'
 import createAttributes from './factory-attributes'
 import createLabel from './factory-label'
 import createName from './factory-name'
@@ -36,16 +37,38 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     if (code === 58 /* `:` */) {
       return nok(code)
     }
-    return code === 91 /* `[` */ ? effects.attempt(label, afterLabel, afterLabel)(code) : afterLabel(code)
-  }
 
-  function afterLabel(code: number) {
-    return code === 123 /* `{` */
-      ? effects.attempt(attributes, afterAttributes, afterAttributes)(code)
-      : afterAttributes(code)
+    // Check for label
+    if (code === Codes.openningSquareBracket) {
+      return effects.attempt(label, afterLabel, afterLabel)(code)
+    }
+
+    // Check for attributes
+    if (code === Codes.openningCurlyBracket) {
+      return effects.attempt(attributes, afterAttributes, afterAttributes)(code)
+    }
+
+    return afterLabel(code)
   }
 
   function afterAttributes(code: number) {
+    // Check for label after attributes
+    if (code === Codes.openningSquareBracket) {
+      return effects.attempt(label, afterLabel, afterLabel)(code)
+    }
+
+    return exit(code)
+  }
+
+  function afterLabel(code: number) {
+    // Check for attributes after label
+    if (code === Codes.openningCurlyBracket) {
+      return effects.attempt(attributes, exit, exit)(code)
+    }
+    return exit(code)
+  }
+
+  function exit(code: number) {
     effects.exit('directiveText')
     return ok(code)
   }
