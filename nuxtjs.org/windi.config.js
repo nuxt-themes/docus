@@ -19,7 +19,8 @@ export default {
       red: colors.red,
       rose: colors.rose,
       yellow: colors.amber,
-      gray: colors.gray
+      gray: colors.gray,
+      purple: colors.purple
     },
     extend: {
       fontFamily: {
