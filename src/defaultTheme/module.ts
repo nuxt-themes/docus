@@ -75,10 +75,19 @@ export default <Module>function themeSetupModule() {
       absolute: true
     })
 
+    const cssFiles = transformFiles.filter((f: string) => f.endsWith('.css'))
+    const vueFiles = transformFiles.filter((f: string) => f.endsWith('.vue'))
+
     // Make sure file @apply's get transformed
     windiOptions.scanOptions.extraTransformTargets = {
-      css: transformFiles.filter((f: string) => f.endsWith('.css')),
-      detect: transformFiles.filter((f: string) => f.endsWith('.vue'))
+      css: [
+        ...cssFiles,
+        ...vueFiles.flatMap(i => [
+          `${i}?vue&type=style&index=0&scoped=true&lang.postcss`,
+          `${i}?vue&type=style&index=0&lang.postcss`
+        ])
+      ],
+      detect: vueFiles
     }
 
     // Push every included path into scan options
