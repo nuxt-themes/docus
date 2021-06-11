@@ -18,7 +18,7 @@ export default defineComponent({
   components: { Markdown },
   props: {
     /**
-     * @values info, success, warning, danger, next
+     * @values info, success, warning, danger, next, star
      */
     type: {
       type: String,
