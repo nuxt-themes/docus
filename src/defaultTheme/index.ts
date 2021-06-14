@@ -9,6 +9,18 @@ const themeConfig: NuxtConfig = nuxtConfig({
   rootDir: __dirname,
   themeName: 'defaultTheme',
   themeDir: __dirname,
+  head: {
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'
+      },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
+    ],
+    bodyAttrs: {
+      class: ['body-bg docus-body-text-color antialiased tracking-semitight']
+    }
+  },
   colorMode: {
     classSuffix: ''
   },

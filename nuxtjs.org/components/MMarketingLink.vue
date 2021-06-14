@@ -1,14 +1,14 @@
 <template>
   <NuxtLink
     :key="name"
-    class="relative inline-flex items-center text-lg font-bold group flex-nowrap max-w-max"
+    class="relative inline-flex items-center text-body-base lg:text-base-xl font-bold group flex-nowrap max-w-max"
     :class="'text-' + color"
     :to="`${to}`"
   >
     {{ name }}
     <Component :is="icon" class="ml-2 h-5 w-5" />
 
-    <span class="absolute -bottom-1 h-0.5 w-8 group-hover:w-full transition-all" :class="'bg-' + color" />
+    <span class="absolute -bottom-2 h-0.5 w-8 group-hover:w-full transition-all" :class="'bg-' + color" />
   </NuxtLink>
 </template>
 

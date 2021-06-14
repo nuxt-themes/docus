@@ -100,7 +100,7 @@ export default defineComponent({
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
           const [firstChild] = slot.children || slot.componentOptions?.children || slot.asyncMeta?.children || []
           return {
-            label: attrs.label || firstChild?.children[0].text || 'untitled',
+            label: attrs.label || firstChild?.children?.[0]?.text || 'untitled',
             active: typeof attrs.active !== 'undefined'
           }
         })
@@ -115,11 +115,11 @@ export default defineComponent({
   @apply my-4;
 
   ::v-deep {
-    .docus-highlight:not(.active) {
+    > .docus-highlight:not(.active) {
       display: none;
     }
 
-    .code-block:not(.active) {
+    > .code-block:not(.active) {
       display: none;
     }
 
