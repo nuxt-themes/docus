@@ -70,7 +70,7 @@ export default defineComponent({
 .dark .partners__slider::before,
 .dark .partners__slider::after {
   @apply absolute h-24 w-48 z-10;
-  background: linear-gradient(to right, #01232d 0%, rgba(255, 255, 255, 0) 20%);
+  background: linear-gradient(to right, #001e26 0%, rgba(255, 255, 255, 0) 20%);
   content: '';
 }
 
@@ -84,7 +84,7 @@ export default defineComponent({
 @screen sm {
   .dark .partners__slider::before,
   .dark .partners__slider::after {
-    background: linear-gradient(to right, #01232d 0%, rgba(255, 255, 255, 0) 50%);
+    background: linear-gradient(to right, #001e26 0%, rgba(255, 255, 255, 0) 50%);
   }
 }
 
@@ -98,7 +98,7 @@ export default defineComponent({
 @screen md {
   .dark .partners__slider::before,
   .dark .partners__slider::after {
-    background: linear-gradient(to right, #01232d 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, #001e26 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
 
