@@ -5,6 +5,7 @@ import { withDocus } from '../src'
 export default withDocus({
   rootDir: __dirname,
   head: {
+    title: 'NuxtJS',
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
