@@ -78,14 +78,6 @@ import { Markdown } from '~docus/utils'
 export default defineComponent({
   components: { Markdown },
   props: {
-    title: {
-      type: String,
-      default: 'Hero title'
-    },
-    description: {
-      type: String,
-      default: 'I am the Hero description, with some text useful to go with the title.'
-    },
     cta: {
       type: Array,
       default: () => ['Get started', '/get-started']

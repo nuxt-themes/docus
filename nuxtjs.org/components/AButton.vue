@@ -24,7 +24,7 @@
   </Component>
 </template>
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
 
 export default defineComponent({
   props: {
@@ -58,27 +58,27 @@ export default defineComponent({
     }
   },
   setup() {
-    let focusedByMouse = false
-    let focus = false
-    let focusVisible = false
+    const focusedByMouse = ref(false)
+    const focus = ref(false)
+    const focusVisible = ref(false)
 
     function mousedownHandler() {
-      focusedByMouse = true
+      focusedByMouse.value = true
     }
 
     function handleFocus(state) {
       if (state) {
         if (focusedByMouse) {
-          focus = true
-          focusVisible = false
+          focus.value = true
+          focusVisible.value = false
         } else {
-          focus = true
-          focusVisible = true
+          focus.value = true
+          focusVisible.value = true
         }
       } else {
-        focus = false
-        focusVisible = false
-        focusedByMouse = false
+        focus.value = false
+        focusVisible.value = false
+        focusedByMouse.value = false
       }
     }
 

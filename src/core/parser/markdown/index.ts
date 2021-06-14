@@ -1,11 +1,11 @@
 import { resolve } from 'path'
 import defu from 'defu'
-import matter from 'gray-matter'
 import { MarkdownParserOptions, Toc } from '../../../types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
 import { generateBody, generateDescription } from './content'
 import propsDirective from './directive/props'
+import { parse as parseFrontMatter } from './fontmatter'
 
 const DEFAULTS: MarkdownParserOptions = {
   toc: {
@@ -26,16 +26,6 @@ const DEFAULTS: MarkdownParserOptions = {
     'remark-gfm'
   ],
   rehypePlugins: ['rehype-sort-attribute-values', 'rehype-sort-attributes', 'rehype-raw']
-}
-
-function parseFrontMatter(file) {
-  const { data, content, ...rest } = matter(file, { excerpt: true, excerpt_separator: '<!--more-->' })
-
-  return {
-    content,
-    data: data || {},
-    ...rest
-  }
 }
 
 async function parse(file, options) {

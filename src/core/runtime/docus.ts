@@ -23,7 +23,7 @@ export const createDocus = async (
 
   const { ssrContext, nuxtState = {} } = context
 
-  // Prevent hydration mismatch: inject templateOptions from ssr payload before page load 
+  // Prevent hydration mismatch: inject templateOptions from ssr payload before page load
   const templateOptions = nuxtState.data?.[0].templateOptions || {}
 
   // State

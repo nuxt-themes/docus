@@ -12,7 +12,7 @@
       lg:sticky lg:top-header lg:w-60 lg:max-h-[400vh]
     "
   >
-    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent">
+    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 dark:lg:bg-transparent lg:bg-transparent">
       <!-- Aside Header -->
       <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800">
         <button

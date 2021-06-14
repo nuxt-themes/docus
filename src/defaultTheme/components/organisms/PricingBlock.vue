@@ -84,15 +84,15 @@ export default defineComponent({
   props: {
     plans: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
     tiers: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     },
     meta: {
       type: Object,
-      default: () => {}
+      default: () => ({})
     }
   },
   setup(props) {
