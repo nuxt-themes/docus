@@ -49,7 +49,7 @@ function sortItemKeys(keys: string[]) {
 export const docusDriver = defineDriver((options: DriverOptions) => {
   // force ignore node_modules and .git and files with `_` prefix
   if (options.ignore) {
-    options.ignore.push('**/node_modules/**', '**/.git/**', '**/_**/**')
+    options.ignore.push('**/node_modules/**', '**/.git/**', join(options.base, '**/_**/**'))
   }
 
   const { insert, items } = useDB()
