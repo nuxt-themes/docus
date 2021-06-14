@@ -49,14 +49,25 @@ function sortItemKeys(keys: string[]) {
 export const docusDriver = defineDriver((options: DriverOptions) => {
   // force ignore node_modules and .git and files with `_` prefix
   if (options.ignore) {
-    options.ignore.push('**/node_modules/**', '**/.git/**', '**/_**/**')
+    options.ignore.push('**/node_modules/**', '**/.git/**', join(options.base, '**/_**/**'))
   }
 
   const { insert, items } = useDB()
   const { callHook } = useHooks()
-  const parser = useParser()
   const fs = fsDriver(options)
 
+  const parser = useParser()
+
+  // validate key based on its extension
+  const isValidKey = (key: string) => parser.extensions().some(ext => key.endsWith(ext))
+
+  /**
+   * parse specific document and insert parsed data into database
+   *
+   * @param key document file key
+   * @param content documnet conent
+   * @returns parsed object
+   */
   const parseAndInsert = async (key, content) => {
     const document = await parser.parse(key, content)
 
@@ -115,7 +126,14 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   }
 
   // retrive contents list
-  const getKeys = () => fs.getKeys()
+  const getKeys = async () => {
+    let keys = await fs.getKeys()
+
+    // filter valid keys
+    keys = keys.filter(isValidKey)
+
+    return keys
+  }
 
   const hasItem = key => fs.hasItem(key)
 
@@ -175,6 +193,9 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
   // Watch files and revalidate data
   const watch = callback => {
     return fs.watch(async (event, key) => {
+      // ignore invalid extensions
+      if (!isValidKey(key)) return
+
       if (event === 'update') {
         const content = await fs.getItem(key)
 

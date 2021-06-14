@@ -5,10 +5,8 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-
       'primary-green': '#00DC82',
-
-      'secondary-surface': '#E5F9FF', // secondary is sky
+      'secondary-surface': '#E5F9FF',
       'secondary-lightest': '#B7E1ED',
       'secondary-lighter': '#95CDDE',
       'secondary-light': '#71A2B0',
@@ -17,7 +15,6 @@ export default {
       'secondary-darker': '#003543',
       'secondary-darkest': '#012A35',
       'secondary-black': '#001E26',
-
       terciary: '#B2CCCC', // cloud
       'cloud-surface': '#E6F0F0',
       'cloud-lightest': '#D1E2E2',
@@ -28,7 +25,6 @@ export default {
       'cloud-darker': '#334040',
       'cloud-darkest': '#273131',
       'cloud-black': '#1A2121',
-
       black: '#000',
       white: '#fff',
       blue: colors.lightBlue,
@@ -37,7 +33,6 @@ export default {
       rose: colors.rose,
       yellow: colors.amber,
       gray: colors.gray
-
       // $colorNeutralWhite: #FFFFFF;
       // $colorNeutralBlack: #000000;
       // $colorGreenLighter: #80EEC0;
