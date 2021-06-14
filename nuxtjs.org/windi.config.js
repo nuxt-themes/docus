@@ -7,7 +7,8 @@ export default {
       current: 'currentColor',
 
       'primary-green': '#00DC82',
-      'secondary-surface': '#E5F9FF',
+
+      'secondary-surface': '#E5F9FF', // secondary is sky
       'secondary-lightest': '#B7E1ED',
       'secondary-lighter': '#95CDDE',
       'secondary-light': '#71A2B0',
@@ -16,12 +17,6 @@ export default {
       'secondary-darker': '#003543',
       'secondary-darkest': '#012A35',
       'secondary-black': '#001E26',
-      // secondary: '#002E3B',
-      // 'secondary-lightest': '#95CDDE', // where the heck is lightest? colors are complete mess
-      // 'secondary-light': '#064A5B',
-      // 'secondary-dark': '#01232D',
-      // 'secondary-darker': '#001D25',
-      // 'secondary-darkest': '#00181F',
 
       terciary: '#B2CCCC', // cloud
       'cloud-surface': '#E6F0F0',

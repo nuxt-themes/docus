@@ -2,6 +2,7 @@
   <div class="relative">
     <select
       v-bind="props"
+      class="select-none"
       :class="[{ 'pointer-events-none opacity-50': disabled }, selectClass]"
       @input="$emit('input', $event.target.value)"
       @focus="handleFocus(true)"
