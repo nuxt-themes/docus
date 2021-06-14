@@ -17,6 +17,14 @@ export function initParser(options: Partial<ParserOptions> = {}) {
 
 export function useParser() {
   return {
+    /**
+     * The list of all extensions that have specific parser in Docus
+     * @returns list of valid extensions
+     */
+    extensions() {
+      return Object.keys(parsers)
+    },
+
     parse: async (file, content) => {
       const extension = extname(file)
       const path = '/' + file.replace(new RegExp(`${extension}$`), '')
