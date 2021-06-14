@@ -14,6 +14,7 @@ export default withDocus({
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
   },
+  plugins: ['~/plugins/adblock.client'],
   buildModules: ['@nuxt/typescript-build'],
   vite: {
     optimizeDeps: {
