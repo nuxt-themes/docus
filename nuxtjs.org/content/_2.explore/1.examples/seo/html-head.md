@@ -20,7 +20,7 @@ Learn more about the options available for `head`, in the [vue-meta documentat
 
 <alert type="next">
 
-Learn more about meta tags in the Features book in the [Meta Tags and SEO](/docs/2.x/features/meta-tags-seo) chapter.
+Learn more about meta tags in the Features book in the [Meta Tags and SEO](/docs/features/meta-tags-seo) chapter.
 
 </alert>
 

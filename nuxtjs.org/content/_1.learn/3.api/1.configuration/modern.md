@@ -41,6 +41,6 @@ The two versions of bundles are:
 | false |   client    |
 
 - Modern mode for `nuxt generate` can only be `client`
-- Use [`render.crossorigin`](/docs/2.x/configuration-glossary/configuration-render#crossorigin) to set `crossorigin` attribute in `<link>` and `<script>`
+- Use [`render.crossorigin`](/docs/configuration-glossary/configuration-render#crossorigin) to set `crossorigin` attribute in `<link>` and `<script>`
 
 > Please refer [Phillip Walton's excellent post](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) for more knowledge regarding modern builds.

@@ -1,5 +1,5 @@
 ---
 title: Docs
-navigation: 
+navigation:
   exclusive: true
 ---

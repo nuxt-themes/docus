@@ -7,7 +7,7 @@ category: api-configuration
 - Type: `Array`
 - Default: `['node_modules']`
 
-> Used to set the modules directories for path resolving, for example: Webpack's `resolveLoading`, `nodeExternals` and `postcss`. Configuration path is relative to [options.rootDir](/docs/2.x/configuration-glossary/configuration-rootdir) (default: `process.cwd()`).
+> Used to set the modules directories for path resolving, for example: Webpack's `resolveLoading`, `nodeExternals` and `postcss`. Configuration path is relative to [options.rootDir](/docs/configuration-glossary/configuration-rootdir) (default: `process.cwd()`).
 
 ```js{}[nuxt.config.js]
 export default {

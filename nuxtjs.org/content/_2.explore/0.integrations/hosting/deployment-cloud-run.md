@@ -65,7 +65,7 @@ export default {
 }
 ```
 
-More information [here](/docs/2.x/configuration-glossary/configuration-server).
+More information [here](/docs/configuration-glossary/configuration-server).
 
 Or, add this to your package.json file:
 

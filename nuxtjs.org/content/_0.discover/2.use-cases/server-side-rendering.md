@@ -95,6 +95,6 @@ The browser receives the rendered page from the server with the generated HTML. 
 
 ### Step 3: Browser to Browser
 
-Navigating between pages with [`<NuxtLink>`](/docs/2.x/features/nuxt-components#the-nuxtlink-component) is done on the client side so you don't hit the server again unless you hard refresh the browser.
+Navigating between pages with [`<NuxtLink>`](/docs/features/nuxt-components#the-nuxtlink-component) is done on the client side so you don't hit the server again unless you hard refresh the browser.
 
 <quiz :questions="questions"></quiz>

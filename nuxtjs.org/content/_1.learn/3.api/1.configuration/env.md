@@ -25,7 +25,7 @@ This lets you create a `baseUrl` property that will be equal to the `BASE_URL` s
 Then, I can access my `baseUrl` variable in 2 ways:
 
 1. Via `process.env.baseUrl`.
-2. Via `context.env.baseUrl`, see [context API](/docs/2.x/internals-glossary/context).
+2. Via `context.env.baseUrl`, see [context API](/docs/internals-glossary/context).
 
 You can use the `env` property for giving a public token for example.
 
@@ -65,4 +65,4 @@ if ('testing123' == 'testing123')
 
 ## serverMiddleware
 
-As [serverMiddleware](/docs/2.x/configuration-glossary/configuration-servermiddleware) is decoupled from the main Nuxt build, `env` variables defined in `nuxt.config.js` are not available there.
+As [serverMiddleware](/docs/configuration-glossary/configuration-servermiddleware) is decoupled from the main Nuxt build, `env` variables defined in `nuxt.config.js` are not available there.

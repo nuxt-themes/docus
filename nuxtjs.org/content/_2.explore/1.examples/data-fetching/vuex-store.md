@@ -12,7 +12,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-academy/guides-examples/tree/
 
 <alert type="next">
 
-Learn more in the Directory Structure book in the [store](/docs/2.x/directory-structure/store) chapter.
+Learn more in the Directory Structure book in the [store](/docs/directory-structure/store) chapter.
 
 </alert>
 

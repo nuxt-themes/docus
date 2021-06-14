@@ -16,7 +16,7 @@ Learn more about [vue routers](https://router.vuejs.org/api/#exact-active-class)
 
 <alert type="next">
 
-Learn more about active classes in the Features book in the [Nuxt Components](/docs/2.x/features/nuxt-components#link-classes) chapter.
+Learn more about active classes in the Features book in the [Nuxt Components](/docs/features/nuxt-components#link-classes) chapter.
 
 </alert>
 

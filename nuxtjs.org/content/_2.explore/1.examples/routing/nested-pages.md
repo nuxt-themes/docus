@@ -14,7 +14,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-academy/examples/tree/master/
 
 <alert type="next">
 
-Learn more in the Features book in the [Nuxt Components](/docs/2.x/features/nuxt-components#the-nuxtchild-component) chapter.
+Learn more in the Features book in the [Nuxt Components](/docs/features/nuxt-components#the-nuxtchild-component) chapter.
 
 </alert>
 
