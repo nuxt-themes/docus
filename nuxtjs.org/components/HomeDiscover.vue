@@ -17,32 +17,26 @@
       <template #section-content>
         <SectionContent class="col-span-6 justify-center">
           <template #category>
-            <CategoryLabel label="Discover" />
+            <CategoryLabel :label="category" />
           </template>
 
           <template #title>
-            <SectionTitle>
-              Easier
-              <span class="text-primary-green italic">Life</span>, from<span class="text-primary-green italic">
-                Code</span
-              >
-              to<span class="text-primary-green italic"> Cloud</span>
-            </SectionTitle>
+            <h2 class="font-normal font-serif text-display-6 md:text-display-5 2xl:text-display-4">
+              <Markdown slot="title" unwrap="p" />
+            </h2>
           </template>
 
           <template #paragraph>
-            <SectionDescription class="pt-2 pb-8" size="md">
-              Nuxt is an open source web framework based on official Vue.js libraries, Node.js and using powerful tools
-              such as Webpack, Babel and PostCSS. Nuxt makes web development intuitive and performant with a great
-              developer experience in mind. Deploy with one command your application to many platforms, from Node.js
-              hosting to static websites.
-            </SectionDescription>
+            <p class="pt-2 pb-8 font-normal text-body-base md:text-body-lg 2xl:text-body-xl">
+              <Markdown slot="description" unwrap="p" />
+            </p>
             <SectionButton
-              to="/docs/get-started/installation"
+              :to="primary.url"
+              :aria-label="primary.text"
               size="md"
-              icon-left="IconPlay"
               class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
-              >Get started</SectionButton
+              :icon-left="primary.icon"
+              >{{ primary.text }}</SectionButton
             >
           </template>
         </SectionContent>
@@ -74,3 +68,25 @@
     />
   </div>
 </template>
+
+<script>
+import { Markdown } from '~docus/utils'
+
+export default {
+  components: { Markdown },
+  props: {
+    category: {
+      type: String,
+      default: 'Category'
+    },
+    primary: {
+      type: Object,
+      default: () => ({
+        text: 'Get started',
+        url: '/get-started',
+        icon: 'IconPlay'
+      })
+    }
+  }
+}
+</script>
