@@ -62,21 +62,6 @@
         </template>
       </SectionContent>
     </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
-        alt="A landscape image"
-      />
-    </template>
   </HomeSection>
 </template>
 <script>

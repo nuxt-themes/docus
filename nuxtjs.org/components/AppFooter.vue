@@ -1,37 +1,51 @@
 <template>
-  <footer class="light:bg-gray-50 dark:bg-secondary-black" aria-labelledby="footerHeading">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
-        <div class="grid grid-cols-2 gap-8 xl:col-span-4">
-          <div v-for="i in 2" :key="i">
-            <MFooterLink
-              :links="i === 1 ? links.slice(0, 2) : links.slice(2, 4)"
-              class="md:grid md:grid-cols-2 md:gap-8"
-            />
+  <footer class="" aria-labelledby="footerHeading">
+    <img
+      loading="lazy"
+      :src="`/img/footer/dark/landscape.svg`"
+      class="w-full h-40 object-fill light:hidden pointer-events-none"
+      alt="A landscape image"
+    />
+    <img
+      loading="lazy"
+      :src="`/img/footer/${$colorMode.value}/landscape.svg`"
+      class="w-full h-40 object-fill dark:hidden pointer-events-none"
+      alt="A landscape image"
+    />
+    <div class="bg-gray-50 dark:bg-secondary-black">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
+          <div class="grid grid-cols-2 gap-8 xl:col-span-4">
+            <div v-for="i in 2" :key="i">
+              <MFooterLink
+                :links="i === 1 ? links.slice(0, 2) : links.slice(2, 4)"
+                class="md:grid md:grid-cols-2 md:gap-8"
+              />
+            </div>
           </div>
+          <MFooterLanguage class="mt-12 xl:mt-0" />
         </div>
-        <MFooterLanguage class="mt-12 xl:mt-0" />
+        <MFooterNewsLetter
+          class="
+            border-t
+            light:border-gray-200
+            dark:border-secondary-darker
+            pt-8
+            lg:flex lg:items-center lg:justify-between
+            xl:mt-0
+          "
+        />
+        <MFooterFoot
+          class="
+            mt-8
+            border-t border-gray-200
+            dark:border-secondary-darker
+            pt-8
+            md:flex md:items-center md:justify-between
+            flex-row-reverse
+          "
+        />
       </div>
-      <MFooterNewsLetter
-        class="
-          border-t
-          light:border-gray-200
-          dark:border-secondary-darker
-          pt-8
-          lg:flex lg:items-center lg:justify-between
-          xl:mt-0
-        "
-      />
-      <MFooterFoot
-        class="
-          mt-8
-          border-t border-gray-200
-          dark:border-secondary-darker
-          pt-8
-          md:flex md:items-center md:justify-between
-          flex-row-reverse
-        "
-      />
     </div>
   </footer>
 </template>
