@@ -10,7 +10,7 @@ primary:
   url: /docs/get-started/installation
   icon: IconPlay
 secondary:
-  text: 34K+ GitHub stars
+  text: 36K+ GitHub stars
   url: https://github.com/nuxt/nuxt.js
   icon: IconGitHub
 ---title
