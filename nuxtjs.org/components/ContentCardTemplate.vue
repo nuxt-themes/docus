@@ -4,7 +4,7 @@
     :to="slug"
     class="flex flex-col cursor-pointer shadow rounded-lg overflow-hidden dark:bg-secondary-darkest"
   >
-    <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-4">
+    <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-secondary-darker mb-4">
       <NuxtImg :src="image" width="864" height="378" :alt="title" />
     </div>
     <div v-if="tags.length" class="px-4 mb-1">
@@ -13,7 +13,9 @@
         <span v-if="(i === 0 && tags.length > 1) || i !== tags.length - 1"> – </span>
       </span>
     </div>
-    <h1 class="font-bold text-body-xl mb-2 px-4">{{ title }}</h1>
+    <h1 class="font-bold text-body-xl mb-2 px-4">
+      <NuxtLink :to="slug">{{ title }}</NuxtLink>
+    </h1>
     <p class="pb-8 px-4 text-gray-500 dark:text-cloud-lighter">{{ description }}</p>
     <slot name="footer" />
   </NuxtLink>
