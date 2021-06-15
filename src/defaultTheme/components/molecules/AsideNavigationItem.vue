@@ -16,7 +16,7 @@
           :class="[
             $docus.isLinkActive(doc.to)
               ? 'text-primary-500 dark:text-primary-400'
-              : 'text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400'
+              : 'docus-muted-text docus-muted-text-hover'
           ]"
         >
           <span
@@ -31,9 +31,7 @@
               {{ doc.icon }}
             </InjectComponent>
 
-            <span>
-              {{ doc.navigation.title }}
-            </span>
+            <span> {{ doc.navigation.title }} </span>
 
             <ClientOnly>
               <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />

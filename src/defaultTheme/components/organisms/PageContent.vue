@@ -9,7 +9,7 @@
         >
           <span class="text-3rem">{{ page.icon }}</span>
         </InjectComponent>
-        <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+        <h1 class="flex-1 text-4xl font-semibold tracking-tight">
           {{ page.title }}
         </h1>
         <span
@@ -33,7 +33,7 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-400">
+      <p v-if="page.description" class="mt-4 text-lg font-medium docus-muted-text">
         {{ page.description }}
       </p>
       <hr

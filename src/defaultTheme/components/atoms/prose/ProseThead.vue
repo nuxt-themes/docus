@@ -9,7 +9,7 @@
 thead {
   font-weight: 600;
   border-bottom-width: 1px;
-  color: theme('colors.gray.600');
+  color: theme('colors.gray.600'); // TODO: shouldn't rely on gray palette, tokenise
   border-bottom-color: theme('colors.gray.200');
 }
 

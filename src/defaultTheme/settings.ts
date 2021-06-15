@@ -36,6 +36,8 @@ const defaultThemeSettings = {
   shortcuts: {
     'body-bg': 'bg-white dark:bg-gray-900',
     'docus-body-text-color': 'text-gray-900 dark:text-gray-50',
+    'docus-muted-text': 'text-gray-500 dark:text-gray-400',
+    'docus-muted-text-hover': 'hover:text-primary-500 dark:hover:text-primary-400',
     // Primary
     'text-primary': 'text-primary-500 dark:text-primary-400',
     'border-primary': 'border-primary-500 dark:border-primary-400',
