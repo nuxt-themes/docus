@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <section class="xl:mb-4 mt-4 xl:mt-0 px-4 sm:px-6">
+    <section v-if="showHeading" class="xl:mb-4 mt-4 xl:mt-0 px-4 sm:px-6">
       <div class="flex items-center justify-between">
         <InjectComponent
           v-if="page.icon"
@@ -9,9 +9,12 @@
         >
           <span class="text-3rem">{{ page.icon }}</span>
         </InjectComponent>
-        <h1 class="flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-          {{ page.title }}
-        </h1>
+
+        <DocusContent
+          :document="page.titleNode || page.title"
+          class="mb-0 flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
+        />
+
         <span
           v-if="page.draft"
           class="
@@ -27,37 +30,47 @@
             bg-yellow-100
             rounded-full
             items-flex
-            dark:bg-yellow-800 dark:text-yellow-400
+            dark:bg-yellow-800
+            dark:text-yellow-400
           "
           >Draft</span
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <p v-if="page.description" class="mt-4 text-lg font-medium text-gray-500 dark:text-gray-400">
-        {{ page.description }}
-      </p>
+      <DocusContent
+        v-if="page.description"
+        :document="page.descriptionNode || page.description"
+        class="mt-4 mb-0 text-lg font-medium text-gray-500 dark:text-gray-400"
+      />
       <hr
         v-if="$scopedSlots['mobile-toc'] || page.description"
         class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
       />
-    </section> -->
+    </section>
 
     <slot name="mobile-toc" />
 
     <div class="px-4 sm:px-6 mt-4">
-      <NuxtContent :document="page" class="docus-content" />
+      <DocusContent :document="page" class="docus-content" />
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
     page: {
       type: Object,
       required: true
+    }
+  },
+  setup(props) {
+    const showHeading = computed(() => !props.page.extract || props.page.extract.heading !== false)
+
+    return {
+      showHeading
     }
   }
 })

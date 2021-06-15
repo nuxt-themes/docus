@@ -33,9 +33,9 @@ export function isDraft(path: string): boolean {
 }
 
 export function processDocumentInfo(document: DocusDocument): DocusDocument {
-  if (document.title && document.description) {
-    return document
-  }
+  // There is no need to extract if both title and descriptio is provided by user
+  if (document.title && document.description) return document
+
   const [first, second] = document.body.children
     // top level `text` can be ignored
     .filter(node => node.type !== 'text')
@@ -43,20 +43,43 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
   if (first && expandTags(['h1']).includes(first.tag)) {
     if (!document.title) {
       document.title = getTextContent(first)
+      document.titleNode = { body: first }
+
+      // Remove node if heading extract is enables
+      if (document.extract?.heading !== false) {
+        Object.assign(first, {
+          type: 'text',
+          value: ''
+        })
+      }
     }
     // look for second element to find description
     if (second && expandTags(['p']).includes(second.tag)) {
       if (!document.description) {
         document.description = getTextContent(second)
+        document.descriptionNode = { body: second }
+
+        // Remove node if heading extract is enables
+        if (document.extract?.heading !== false) {
+          Object.assign(second, {
+            type: 'text',
+            value: ''
+          })
+        }
       }
     }
-  } else if (first && first.type === 'p') {
+  } else if (first && expandTags(['p']).includes(first.tag)) {
     if (!document.description) {
       document.description = getTextContent(first)
-      Object.assign(first, {
-        type: 'text',
-        value: ''
-      })
+      document.descriptionNode = { body: first }
+
+      // Remove node if heading extract is enables
+      if (document.extract?.heading !== false) {
+        Object.assign(first, {
+          type: 'text',
+          value: ''
+        })
+      }
     }
   }
   return document
