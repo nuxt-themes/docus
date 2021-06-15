@@ -11,7 +11,7 @@
       rounded-full
       bg-primary-100
       dark:bg-primary-800
-      text-primary
+      d-text-primary
     "
   >
     <slot />

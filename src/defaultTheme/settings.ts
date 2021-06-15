@@ -37,9 +37,9 @@ const defaultThemeSettings = {
     'body-bg': 'bg-white dark:bg-gray-900',
     'docus-body-text-color': 'text-gray-900 dark:text-gray-50',
     // Primary
-    'text-primary': 'text-primary-500 dark:text-primary-400',
+    'd-text-primary': 'text-primary-500 dark:text-primary-400',
     'border-primary': 'border-primary-500 dark:border-primary-400',
-    'bg-primary': 'bg-primary-500 dark:bg-primary-400',
+    'd-bg-primary': 'bg-primary-500 dark:bg-primary-400',
     // Icons
     'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
     'd-icon': 'text-icon focus:outline-none',

@@ -5,7 +5,13 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      'primary-green': '#00DC82',
+      // $colorGreenLighter: #80EEC0;
+      // $colorGreenLight: #40E5A1;
+      // $colorGreenDefault: #00DC82;
+      // $colorGreenDark: #00BB6F;
+      // $color-greenDarker: #009A5B;
+
+      primary: '#00DC82',
       'secondary-surface': '#E5F9FF',
       'secondary-lightest': '#B7E1ED',
       'secondary-lighter': '#95CDDE',

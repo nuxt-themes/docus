@@ -21,7 +21,7 @@
           to="#"
           aria-label="Get started"
           size="md"
-          class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
+          class="bg-primary text-gray-800 hover:bg-green-300 focus:bg-green-300"
           icon-left="IconPlay"
         >
           Get started

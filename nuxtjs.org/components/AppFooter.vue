@@ -1,17 +1,19 @@
 <template>
   <footer class="" aria-labelledby="footerHeading">
-    <img
-      loading="lazy"
-      :src="`/img/footer/dark/landscape.svg`"
-      class="w-full h-40 object-fill light:hidden pointer-events-none"
-      alt="A landscape image"
-    />
-    <img
-      loading="lazy"
-      :src="`/img/footer/${$colorMode.value}/landscape.svg`"
-      class="w-full h-40 object-fill dark:hidden pointer-events-none"
-      alt="A landscape image"
-    />
+    <div class="select-none">
+      <img
+        loading="lazy"
+        :src="`/img/footer/dark/landscape.svg`"
+        class="w-full h-40 object-fill light:hidden pointer-events-none"
+        alt="A landscape image"
+      />
+      <img
+        loading="lazy"
+        :src="`/img/footer/${$colorMode.value}/landscape.svg`"
+        class="w-full h-40 object-fill dark:hidden pointer-events-none"
+        alt="A landscape image"
+      />
+    </div>
     <div class="bg-gray-50 dark:bg-secondary-black">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">

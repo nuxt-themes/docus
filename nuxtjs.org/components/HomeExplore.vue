@@ -23,8 +23,8 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            >Need to go <span class="text-primary-green italic">Forward</span>? So much to
-            <span class="text-primary-green italic">Explore</span>.</SectionTitle
+            >Need to go <span class="text-primary italic">Forward</span>? So much to
+            <span class="text-primary italic">Explore</span>.</SectionTitle
           >
         </template>
 
@@ -57,7 +57,7 @@
             to="#"
             aria-label="Explore more"
             size="sm"
-            class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
           >
             Explore more
           </SectionButton>

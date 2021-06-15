@@ -24,7 +24,7 @@
 
         <template #title>
           <SectionTitle class="text-center font-serif"
-            >Developers <span class="text-primary-green italic">Love </span>it</SectionTitle
+            >Developers <span class="text-primary italic">Love </span>it</SectionTitle
           >
         </template>
 

@@ -141,7 +141,7 @@
 }
 
 .fromscratch__display__progressbar__progress {
-  @apply absolute left-0 top-0 w-0 bg-primary-green rounded-full opacity-0;
+  @apply absolute left-0 top-0 w-0 bg-primary rounded-full opacity-0;
   height: 10px;
   animation: progress cubic-bezier(0.83, 0, 0.17, 1) 1.5s forwards 3.8s;
 }
@@ -185,7 +185,7 @@ span[class*='fromscratch__yarn'] {
       animation-delay: 2.4s;
     }
     &:nth-child(2) {
-      @apply bg-primary-green;
+      @apply bg-primary;
       animation-delay: 2.6s;
     }
     &:nth-child(3) {
@@ -203,7 +203,7 @@ span[class*='fromscratch__yarn'] {
       animation-delay: 4.8s;
     }
     &:nth-child(2) {
-      @apply bg-primary-green;
+      @apply bg-primary;
       animation-delay: 5s;
     }
     &:nth-child(3) {
@@ -239,7 +239,7 @@ span[class*='fromscratch__yarn'] {
 }
 
 .fromscratch__code__ide__head__circles__circle {
-  @apply rounded-full mr-2 bg-primary-green;
+  @apply rounded-full mr-2 bg-primary;
   height: 12px;
   width: 12px;
 }

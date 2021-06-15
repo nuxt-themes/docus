@@ -7,7 +7,7 @@
             <span>$&nbsp;</span
             ><span class="fromcli__yarn__createnuxtapp"
               >npx
-              <span class="text-primary-green">create-nuxt-app</span>
+              <span class="text-primary">create-nuxt-app</span>
               project-name</span
             >
           </p>
@@ -17,54 +17,54 @@
             <div class="fromcli__progressbar"></div>
           </div>
           <p class="fromcli__question1">
-            <span class="text-primary-green">? </span> Project name :
-            <span class="text-primary-green">My project</span>
+            <span class="text-primary">? </span> Project name :
+            <span class="text-primary">My project</span>
           </p>
           <p class="fromcli__question2">
-            <span class="text-primary-green">? </span> Programming language :
+            <span class="text-primary">? </span> Programming language :
             <span class="fromcli__question2__answer">Javascript</span>
           </p>
           <p class="fromcli__question2__answer1">> Javascript</p>
           <p class="fromcli__question2__answer2">&nbsp;&nbsp;Typescript</p>
           <p class="fromcli__question3">
-            <span class="text-primary-green">? </span> Package manager :
-            <span class="text-primary-green">Yarn</span>
+            <span class="text-primary">? </span> Package manager :
+            <span class="text-primary">Yarn</span>
           </p>
           <p class="fromcli__question4">
-            <span class="text-primary-green">? </span> UI Framework :
-            <span class="text-primary-green">Tailwind CSS</span>
+            <span class="text-primary">? </span> UI Framework :
+            <span class="text-primary">Tailwind CSS</span>
           </p>
           <p class="fromcli__question5">
-            <span class="text-primary-green">? </span> Nuxt.js modules :
-            <span class="text-primary-green">Axios</span>
+            <span class="text-primary">? </span> Nuxt.js modules :
+            <span class="text-primary">Axios</span>
           </p>
           <p class="fromcli__question6">
-            <span class="text-primary-green">? </span> Testing Framework :
-            <span class="text-primary-green">Jest</span>
+            <span class="text-primary">? </span> Testing Framework :
+            <span class="text-primary">Jest</span>
           </p>
           <p class="fromcli__question7">
-            <span class="text-primary-green">? </span> Rendering mode :
-            <span class="text-primary-green">Universal (SSR / SSG)</span>
+            <span class="text-primary">? </span> Rendering mode :
+            <span class="text-primary">Universal (SSR / SSG)</span>
           </p>
           <p class="fromcli__question8">
-            <span class="text-primary-green">? </span> Deployment target :
-            <span class="text-primary-green">Server</span>
+            <span class="text-primary">? </span> Deployment target :
+            <span class="text-primary">Server</span>
           </p>
           <div class="fromcli__progressbars__compilation">
             <div class="fromcli__progressbar"></div>
             <div class="fromcli__progressbar"></div>
           </div>
           <p class="flex items-center fromcli__installed">
-            <IconCheck class="mr-2 nui-icon-md text-primary-green w-4 h-4" />
+            <IconCheck class="mr-2 nui-icon-md text-primary w-4 h-4" />
             installed
           </p>
           <p class="flex">
             <span class="fromcli__seconddollar">$&nbsp;</span
-            ><span class="fromcli__yarn__cd">cd <span class="text-primary-green">My Project</span></span>
+            ><span class="fromcli__yarn__cd">cd <span class="text-primary">My Project</span></span>
           </p>
           <p class="flex">
             <span class="fromcli__thirddollar">$&nbsp;</span
-            ><span class="fromcli__yarn__run">yarn run <span class="text-primary-green">dev</span></span>
+            ><span class="fromcli__yarn__run">yarn run <span class="text-primary">dev</span></span>
           </p>
         </div>
         <div class="fromcli__code__ide">
@@ -199,7 +199,7 @@
 }
 
 .fromcli__display__progressbar__progress {
-  @apply absolute left-0 top-0 w-0 bg-primary-green rounded-full opacity-0;
+  @apply absolute left-0 top-0 w-0 bg-primary rounded-full opacity-0;
   height: 10px;
   animation: progress cubic-bezier(0.83, 0, 0.17, 1) 1.5s forwards 3.8s;
 }
@@ -249,7 +249,7 @@ span[class*='fromcli__yarn'] {
 }
 
 .fromcli__question2__answer {
-  @apply opacity-0 text-primary-green;
+  @apply opacity-0 text-primary;
   animation: appear 150ms ease forwards 4.2s;
 }
 
@@ -309,7 +309,7 @@ span[class*='fromcli__yarn'] {
       animation-delay: 5.8s;
     }
     &:nth-child(2) {
-      @apply bg-primary-green;
+      @apply bg-primary;
       animation-delay: 6.2s;
     }
   }
@@ -323,7 +323,7 @@ span[class*='fromcli__yarn'] {
       animation-delay: 2.4s;
     }
     &:nth-child(2) {
-      @apply bg-primary-green;
+      @apply bg-primary;
       animation-delay: 2.6s;
     }
   }
@@ -337,7 +337,7 @@ span[class*='fromcli__yarn'] {
       animation-delay: 4.8s;
     }
     &:nth-child(2) {
-      @apply bg-primary-green;
+      @apply bg-primary;
       animation-delay: 5s;
     }
     &:nth-child(3) {
@@ -373,7 +373,7 @@ span[class*='fromcli__yarn'] {
 }
 
 .fromcli__code__ide__head__circles__circle {
-  @apply h-3 w-3 rounded-full mr-2 bg-primary-green;
+  @apply h-3 w-3 rounded-full mr-2 bg-primary;
 }
 
 .fromcli__code__ide__head__file {

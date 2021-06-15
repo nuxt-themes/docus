@@ -38,7 +38,7 @@
         type="submit"
         aria-label="Submit"
         class="
-          bg-primary-green
+          bg-primary
           w-full
           rounded-md
           text-sm

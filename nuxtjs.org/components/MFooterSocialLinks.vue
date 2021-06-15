@@ -2,10 +2,7 @@
   <ul class="flex items-center space-x-4 xl:space-x-5">
     <li v-for="(social, key) in socials" :key="key">
       <ALink :href="social.href">
-        <Component
-          :is="social.icon"
-          class="h-6 w-6 text-gray-400 dark:text-secondary-surface hover:text-primary-green"
-        />
+        <Component :is="social.icon" class="h-6 w-6 text-gray-400 dark:text-secondary-surface hover:text-primary" />
       </ALink>
     </li>
   </ul>

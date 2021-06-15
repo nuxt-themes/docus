@@ -7,9 +7,7 @@
         </template>
 
         <template #title>
-          <SectionTitle class="text-center"
-            >Sharing is <span class="text-primary-green italic">Caring</span></SectionTitle
-          >
+          <SectionTitle class="text-center">Sharing is <span class="text-primary italic">Caring</span></SectionTitle>
         </template>
 
         <template #content>
@@ -19,7 +17,7 @@
               <span class="text-cloud-light text-body-base lg:text-body-lg font-bold mb-2">{{ article.category }}</span>
               <h3 class="text-body-xl lg:text-body-2xl font-bold mb-2">{{ article.title }}</h3>
               <p class="mb-4 text-body-base lg:text-body-lg">{{ article.description }}</p>
-              <MMarketingLink color="primary-green" name="Read article" icon="IconChevronRight" :to="'#'" />
+              <MMarketingLink color="primary" name="Read article" icon="IconChevronRight" :to="'#'" />
             </li>
           </ul>
         </template>

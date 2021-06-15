@@ -9,9 +9,7 @@
 
           <template #title>
             <SectionTitle class="pb-16 text-center">
-              Intuitive <span class="text-primary-green italic">D</span>eveloper E<span
-                class="text-primary-green italic"
-                >x</span
+              Intuitive <span class="text-primary italic">D</span>eveloper E<span class="text-primary italic">x</span
               >perience
             </SectionTitle>
           </template>

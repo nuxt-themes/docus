@@ -20,7 +20,7 @@
           :class="[
             $i18n.locale === locale.code
               ? 'font-semibold cursor-default text-gray-800 dark:text-gray-200'
-              : 'hover:text-primary'
+              : 'hover:d-text-primary'
           ]"
           >{{ locale.name }}</NuxtLink
         >

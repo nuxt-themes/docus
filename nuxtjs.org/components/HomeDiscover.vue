@@ -23,10 +23,11 @@
           <template #title>
             <SectionTitle>
               Easier
-              <span class="text-primary-green italic">Life</span>, from<span class="text-primary-green italic">
-                Code</span
+              <span class="text-primary italic">Life</span>, from<span class="text-primary italic"> Code</span> to<span
+                class="text-primary italic"
               >
-              to<span class="text-primary-green italic"> Cloud</span>
+                Cloud</span
+              >
             </SectionTitle>
           </template>
 
