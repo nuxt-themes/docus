@@ -36,7 +36,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-:not(h1, h2, h3) > a {
+:not(h1, h2, h3, h4) > a {
   color: var(--primary-500);
   font-weight: theme('fontWeight.medium');
   text-decoration: none;
@@ -56,7 +56,8 @@ export default defineComponent({
 
 h1 a,
 h2 a,
-h3 a {
+h3 a,
+h4 a {
   position: relative;
   /* &:hover {
     border-bottom-width: 0px;
@@ -92,7 +93,8 @@ h3 a {
 
 .dark h1 a,
 .dark h2 a,
-.dark h3 a {
+.dark h3 a,
+.dark h4 a {
   &:hover {
     &:before {
       border-bottom-color: theme('colors.gray.100');
