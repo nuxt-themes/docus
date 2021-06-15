@@ -31,11 +31,19 @@
           </template>
 
           <template #paragraph>
-            <SectionDescription class="pb-8" size="md">
-              Nuxt is an Open Source web framework based on official Vue.js libraries, Node.js and using powerful
-              development tools such as Vite, Webpack, Babel and PostCSS. Nuxt's purpose is to make web application
-              development intuitive and performant with a great developer experience in mind.
+            <SectionDescription class="pt-2 pb-8" size="md">
+              Nuxt is an open source web framework based on official Vue.js libraries, Node.js and using powerful tools
+              such as Webpack, Babel and PostCSS. Nuxt makes web development intuitive and performant with a great
+              developer experience in mind. Deploy with one command your application to many platforms, from Node.js
+              hosting to static websites.
             </SectionDescription>
+            <SectionButton
+              to="/docs/get-started/installation"
+              size="md"
+              icon-left="IconPlay"
+              class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
+              >Get started</SectionButton
+            >
           </template>
         </SectionContent>
       </template>

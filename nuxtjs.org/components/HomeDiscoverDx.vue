@@ -41,43 +41,45 @@ export default defineComponent({
     const experiences = [
       {
         title: 'Zero Configuration',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
+        description: 'Start coding your app right away, Nuxt takes care of the rest.',
         icon: 'zero-config'
       },
       {
         title: 'File-system Routing',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
+        description: 'Automatic routing and code-splitting every pages.',
         icon: 'file-system-routing'
       },
+
       {
-        title: 'Components Auto-import',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
-        icon: 'auto-import'
-      },
-      {
-        title: 'Plugins Auto-injection',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
-        icon: 'auto-inject'
-      },
-      {
-        title: 'Hybrid: SSG or SSR',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
+        title: 'Rendering Modes',
+        description: 'Switch between static-site generation or on-demand server rendering.',
         icon: 'hybrid'
       },
+
       {
-        title: 'Modular Architecture',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
-        icon: 'modular'
-      },
-      {
-        title: 'TypeScript Support',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
+        title: 'Data Fetching',
+        description: 'Fetch your content from any source in your Vue components, SSR ready.',
         icon: 'typescript'
       },
       {
+        title: 'Strong Conventions',
+        description: 'Efficient teamwork with a strong directry structure and conventions.',
+        icon: 'auto-inject'
+      },
+      {
         title: 'SEO Friendly',
-        description: 'Automatic compilation and bundling. Optimised for production from the start.',
+        description: 'Meta Tags management and faster time-to-content for a great indexing.',
         icon: 'seo'
+      },
+      {
+        title: 'Components Auto-import',
+        description: 'Use your components, Nuxt will import them with smart code-splitting.',
+        icon: 'auto-inject'
+      },
+      {
+        title: 'Modules Ecosystem',
+        description: 'Extend your app with 160+ Nuxt modules and create your own.',
+        icon: 'modular'
       }
     ]
 
