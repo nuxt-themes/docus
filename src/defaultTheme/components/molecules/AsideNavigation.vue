@@ -9,7 +9,7 @@
       overflow-auto
       pointer-events-auto
       min-h-fill-available
-      lg:sticky lg:top-header lg:w-60 lg:max-h-[400vh]
+      lg:h-screen lg:sticky lg:top-header lg:w-60
     "
   >
     <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 dark:lg:bg-transparent lg:bg-transparent">
