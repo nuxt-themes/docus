@@ -28,7 +28,8 @@ tbody code {
 
 h1 a,
 h2 a,
-h3 a {
+h3 a,
+h4 a {
   &:hover {
     & code {
       border-color: theme('colors.gray.500');
@@ -64,7 +65,8 @@ h3 a {
   }
   h1 a,
   h2 a,
-  h3 a {
+  h3 a,
+  h4 a {
     &:hover {
       code {
         border-color: theme('colors.gray.500');

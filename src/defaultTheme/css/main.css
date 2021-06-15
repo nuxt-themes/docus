@@ -1,18 +1,12 @@
-/*
-  TODO: Fix that header-height variable using theme().
-        theme() does not get replaced upon generation.
-        We need to fix that.
-*/
-
 :root {
-  --header-height: 3.5rem; /* theme('spacing.14'); */
+  --header-height: theme('spacing.14');
   --docs-scroll-margin-block: calc(var(--header-height) + 4rem);
   --blogpost-scroll-margin-block: calc(var(--header-height));
 }
 
 @screen md {
   :root {
-    --header-height: 4.5rem; /* theme('spacing.18'); */
+    --header-height: theme('spacing.18');
     --blogpost-scroll-margin-block: calc(var(--header-height) - 0.5rem);
   }
 }
