@@ -3,7 +3,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   name: 'AdsCarbon',
   mounted() {
     if (this.$refs.carbonads) {
@@ -14,7 +16,7 @@ export default {
       this.$refs.carbonads.appendChild(script)
     }
   }
-}
+})
 </script>
 
 <style lang="postcss">
