@@ -24,17 +24,20 @@
             :class="[$docus.isLinkActive(doc.to) ? 'bg-primary-50 dark:bg-primary-900' : '']"
           >
             <InjectComponent
-              v-if="doc.icon"
-              :component="doc.icon"
+              v-if="doc.meta.icon"
+              :component="doc.meta.icon"
               class="inline-flex mr-2 w-5 h-5 justify-center items-center text-1.2rem"
             >
-              {{ doc.icon }}
+              {{ doc.meta.icon }}
             </InjectComponent>
 
             <span>
               {{ doc.navigation.title }}
             </span>
 
+            <span v-if="doc.navigation.badge" class="ml-2 rounded-full text-xs text-primary-500">
+              {{ doc.navigation.badge }}
+            </span>
             <ClientOnly>
               <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />
               <span
