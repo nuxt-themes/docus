@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink tag="article" :to="slug" class="cursor-pointer shadow rounded-lg overflow-hidden">
+  <NuxtLink tag="article" :to="slug" class="flex flex-col cursor-pointer shadow rounded-lg overflow-hidden">
     <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-4">
       <NuxtImg :src="image" width="864" height="378" :alt="title" />
     </div>
