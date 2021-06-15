@@ -45,17 +45,27 @@
 </template>
 
 <script>
-import sponsors from '~/content/_sponsors'
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
-export default {
-  computed: {
-    partners() {
-      const partners = [sponsors['mvp-Partners'], sponsors.partners].flat()
+export default defineComponent({
+  setup() {
+    const { $docus } = useContext()
+    const partners = ref()
+
+    useFetch(async () => {
+      const documents = await $docus
+        .search('/sponsors', { deep: true })
+        .where({ tier: { $in: ['MVP Partners', 'Partners'] } })
+        .fetch()
+
       /* Double partners array for correct animation */
-      return partners.concat(partners)
+      partners.value = documents.concat(documents)
+    })
+    return {
+      partners
     }
   }
-}
+})
 </script>
 
 <style lang="postcss" scoped>
