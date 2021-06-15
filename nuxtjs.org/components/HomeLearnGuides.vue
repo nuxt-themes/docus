@@ -19,7 +19,7 @@
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
             <SectionContentItem
               v-for="guide in guides"
               :key="guide.title"
@@ -27,7 +27,7 @@
               :title="guide.title"
               :description="guide.description"
             />
-          </ul>
+          </div>
         </template>
 
         <template #button>

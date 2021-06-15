@@ -29,7 +29,7 @@
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
+          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
             <SectionContentItem
               v-for="(explore, index) in explores"
               :key="explore.title"
@@ -49,7 +49,7 @@
                 </div>
               </template>
             </SectionContentItem>
-          </ul>
+          </div>
         </template>
 
         <template #button>
