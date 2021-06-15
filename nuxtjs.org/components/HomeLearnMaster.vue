@@ -3,22 +3,26 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg">Learn</ALabel>
+          <CategoryLabel label="Learn" />
         </template>
+
         <template #title>
-          <SectionTitle class="text-center" size="sm"
-            ><span class="font-serif text-terciary italic">Easy </span>to learn,
-            <span class="font-serif text-terciary italic">easy</span> to master</SectionTitle
+          <SectionTitle class="text-center"
+            ><span class="text-primary-green italic">Easy </span>to learn.
+            <span class="text-primary-green italic">Easy</span> to master</SectionTitle
           >
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
+          <SectionDescription class="text-center"
             >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
+
         <template #content>
-          <OCodeBlockAnimation class="w-full text-gray-50 pb-4" />
+          <OCodeBlockAnimation class="w-full text-gray-50" />
         </template>
+
         <template #button>
           <div class="w-full self-start">
             <SectionButton

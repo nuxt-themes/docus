@@ -1,6 +1,6 @@
 {
   "name": "docus",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "repository": "nuxtlabs/docus",
   "license": "GPL-3.0",
   "exports": {
@@ -66,6 +66,7 @@
     "defu": "^5.0.0",
     "detab": "^3.0.0",
     "directory-tree": "^2.2.9",
+    "flat": "^5.0.2",
     "graceful-fs": "^4.2.6",
     "gray-matter": "^4.0.3",
     "h3": "^0.2.10",

@@ -1,20 +1,17 @@
 <template>
   <div>
     <div v-for="(link, index) in links" :key="link.title">
-      <ALabel
-        tag="h3"
-        class="font-semibold light:text-gray-400 dark:text-gray-100 text-lg"
+      <h3
+        class="font-semibold light:text-gray-400 dark:text-secondary-light text-lg"
         :class="{ 'mt-16 md:mt-0': index !== 0 }"
-        >{{ link.title }}</ALabel
       >
+        {{ link.title }}
+      </h3>
       <ul class="mt-4 space-y-4">
         <li v-for="subLink in link.subLinks" :key="subLink.title">
-          <ALink
-            :href="subLink.href"
-            :aria-label="subLink.title"
-            class="light:text-gray-500 dark:text-white"
-            >{{ subLink.title }}</ALink
-          >
+          <ALink :href="subLink.href" :aria-label="subLink.title" class="light:text-gray-500 dark:text-white">{{
+            subLink.title
+          }}</ALink>
         </li>
       </ul>
     </div>

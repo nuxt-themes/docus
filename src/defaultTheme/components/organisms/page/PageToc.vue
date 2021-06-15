@@ -19,6 +19,7 @@
       bg-opacity-80
       dark:bg-gray-900 dark:bg-opacity-80
       xl:bg-transparent
+      dark:xl:bg-transparent
       lg:left-60
       xl:left-0
       pl-4

@@ -1,61 +1,57 @@
 <template>
-  <HomeSection class="dark:bg-secondary-dark">
+  <HomeSection class="">
     <template #header-illustration>
       <img
         loading="lazy"
         :src="`/img/home/explore/dark/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 pb-32 light:hidden"
+        class="w-full h-40 object-fill left-0 light:hidden"
         alt="A landscape image"
       />
       <img
         loading="lazy"
         :src="`/img/home/explore/light/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 pb-32 dark:hidden"
+        class="w-full h-40 object-fill left-0 dark:hidden"
         alt="A landscape image"
       />
     </template>
+
     <template #section-content>
-      <SectionContent class="col-span-12 items-center">
+      <SectionContent class="col-span-12 items-center mt-12">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg"
-            >Explore</ALabel
-          >
+          <CategoryLabel label="Explore" />
         </template>
+
         <template #title>
-          <SectionTitle class="text-center" size="sm"
-            >Need to go forward ? So much to
-            <span class="font-serif text-terciary italic">explore</span
-            >.</SectionTitle
+          <SectionTitle class="text-center"
+            >Need to go <span class="text-primary-green italic">Forward</span>? So much to
+            <span class="text-primary-green italic">Explore</span>.</SectionTitle
           >
         </template>
+
         <template #content>
-          <ul class="grid grid-cols-2 md:grid-cols-4 gap-12 py-8">
-            <li
+          <ul class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
+            <SectionContentItem
               v-for="(explore, index) in explores"
               :key="explore.title"
-              class="flex flex-col items-center space-y-4"
+              :title="explore.title"
+              :description="explore.description"
             >
-              <div
-                class="relative group transition-opacity duration-500 relative"
-              >
-                <img
-                  :src="`/img/home/explore/gem-${index + 1}-hover.svg`"
-                  class="absolute bottom-0 opacity-0 hover:opacity-100 z-20 transition-opacity duration-500 h-32"
-                />
-                <img
-                  :src="`/img/home/explore/gem-${index + 1}.svg`"
-                  class="hover:opacity-0 z-10 transition-opacity duration-500 h-32"
-                />
-              </div>
-              <ALabel tag="h5" size="md" class="font-bold text-center">{{
-                explore.title
-              }}</ALabel>
-              <ALabel tag="p" size="sm" class="text-center">{{
-                explore.description
-              }}</ALabel>
-            </li>
+              <template #image>
+                <div class="relative group transition-opacity duration-500 relative mb-4">
+                  <img
+                    :src="`/img/home/explore/gem-${index + 1}-hover.svg`"
+                    class="absolute bottom-0 opacity-0 hover:opacity-100 z-20 transition-opacity duration-500 h-32"
+                  />
+                  <img
+                    :src="`/img/home/explore/gem-${index + 1}.svg`"
+                    class="hover:opacity-0 z-10 transition-opacity duration-500 h-32"
+                  />
+                </div>
+              </template>
+            </SectionContentItem>
           </ul>
         </template>
+
         <template #button>
           <SectionButton
             to="#"
@@ -68,6 +64,7 @@
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"
@@ -92,7 +89,7 @@ export default defineComponent({
   setup() {
     const explores = [
       {
-        title: 'Exemples',
+        title: 'Examples',
         description: 'NuxtJS has been a discovery for our development teams.'
       },
       {
