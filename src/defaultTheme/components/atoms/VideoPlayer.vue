@@ -1,6 +1,6 @@
 <template>
   <div class="video-player relative my-4">
-    <NuxtImg
+    <img
       class="video absolute top-0 left-0 w-full h-full object-cover"
       :src="provider ? provider.poster : poster"
       :width="670"
