@@ -42,7 +42,7 @@
                 justify-between
                 space-y-4
                 border-2 border-gray-200
-                dark:border-secondary-light
+                dark:border-secondary-dark
                 rounded-lg
                 p-4
               "
@@ -64,7 +64,7 @@
                   class="flex flex-1 pl-4 text-left flex-col"
                 >
                   <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
-                  <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
+                  <ALabel tag="span" class="text-sm dark:text-cloud-lighter">{{ testimonial.job }}</ALabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
                   <img

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h3 class="font-semibold light:text-gray-400 dark:text-secondary-light text-lg">Subscribe to our newsletter</h3>
+      <h3 class="font-semibold light:text-gray-400 dark:text-cloud-light text-lg">Subscribe to our newsletter</h3>
       <p class="mt-2 text-base text-gray-500 dark:text-secondary-surface">
         The latest news, articles, and resources, sent to your inbox weekly.
       </p>
