@@ -5,6 +5,10 @@ export default {
   template: 'docs',
   credits: true,
   socialImage: false,
+  algolia: {
+    apiKey: 'd8bb34f345ca54362176cf78fcf4ed9d',
+    indexName: 'docus'
+  },
   theme: {
     header: {
       logo: {
