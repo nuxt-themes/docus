@@ -47,5 +47,8 @@ export default withDocus({
       include: ['cookie', 'js-cookie', 'property-information', 'clipboard'],
       exclude: ['lokidb']
     }
+  },
+  image: {
+    domains: ['https://res.cloudinary.com/nuxt/']
   }
 })
