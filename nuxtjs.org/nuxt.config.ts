@@ -22,6 +22,26 @@ export default withDocus({
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
   },
+  /**
+   * Add image domains for nuxt-image on Vercel
+   */
+  hooks: {
+    generate: {
+      async done() {
+        try {
+          if (!process.env.VERCEL) return
+
+          const { copy } = await import('fs-extra').then(r => r.default || r)
+          const src = resolve(__dirname, '.vercel_build_output')
+          const dest = resolve(__dirname, '../.vercel_build_output')
+          await copy(src, dest)
+        } catch {
+          // eslint-disable-next-line no-console
+          console.log('Issue copying `.vercel_build_output` to project root.')
+        }
+      }
+    }
+  },
   vite: {
     optimizeDeps: {
       include: ['cookie', 'js-cookie', 'property-information', 'clipboard'],
