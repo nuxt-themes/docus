@@ -51,6 +51,8 @@ const defaultThemeSettings = {
     'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
     'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
     'd-code-group-header-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-code-group-tab': 'bg-gray-200 dark:bg-gray-700',
+    'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
     // Icons
     'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',

@@ -34,7 +34,10 @@ export default {
       'd-page-mobile-toc-bg': 'd-body-bg bg-opacity-80 dark:bg-opacity-80',
       'd-aside-header-bg': 'bg-gray-50 dark:bg-secondary-darkest',
       'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-secondary-darkest',
-      'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 '
+      'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
+      'd-code-group-header-bg': 'bg-gray-100 dark:bg-secondary-darker',
+      'd-code-group-tab': 'bg-gray-200 dark:bg-secondary-dark',
+      'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker'
     }
   }
 }

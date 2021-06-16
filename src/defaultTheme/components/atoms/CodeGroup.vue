@@ -12,7 +12,7 @@
         {{ label }}
       </button>
       <span ref="highlight-underline" class="absolute -z-1 highlight-underline h-full xs:py-1.5">
-        <span class="flex w-full h-full bg-gray-200 dark:bg-gray-700 rounded-md"></span>
+        <span class="flex w-full h-full d-code-group-tab rounded-md"></span>
       </span>
     </div>
     <slot />

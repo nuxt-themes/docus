@@ -6,9 +6,15 @@
 </template>
 
 <style lang="postcss" scoped>
+.code-group {
+  pre {
+    @apply rounded-tl-none rounded-tr-none !important;
+  }
+}
 pre {
+  @apply dark:bg-secondary-darkest rounded-lg !important;
   /* line-height: 1.7142857; */
-  border-radius: theme('borderRadius.lg');
+  /* border-radius: 0 theme('borderRadius.lg'); */
   padding: theme('padding.4');
   margin-top: 0px;
   margin-bottom: 0px;
@@ -41,7 +47,7 @@ pre code {
 
   /* Style filename span added by @nuxt/content */
   & > .filename {
-    @apply group-hover:opacity-0 transition-opacity duration-300 absolute top-0 right-0 z-0 m-1 py-1.5 px-2 bg-gray-100 dark:bg-gray-800 rounded-md font-mono font-medium text-xs leading-none tracking-tight text-gray-600 dark:text-gray-400;
+    @apply group-hover:opacity-0 transition-opacity duration-300 absolute top-0 right-0 z-0 m-1 py-1.5 px-2 d-prose-code-filename-bg rounded-md font-mono font-medium text-xs leading-none tracking-tight text-gray-600 dark:text-gray-400;
   }
 }
 
