@@ -160,6 +160,16 @@ export default defineComponent({
         job: 'CEO of Storyblok',
         jobIcon: 'storyblok',
         jobUrl: 'https://www.storyblok.com'
+      },
+      {
+        testimonial:
+          'Nuxt is our primary choice for offering a seamless website development experience to our users. Its simplicity and progressive learning curve makes it our ideal choice for SliceMachine.',
+        author: 'Sadek Drobi',
+        authorIcon: 'sadek',
+        authorUrl: 'https://twitter.com/Sadache',
+        job: 'CEO of Prismic',
+        jobIcon: 'prismic',
+        jobUrl: 'https://prismic.io'
       }
     ]
 
