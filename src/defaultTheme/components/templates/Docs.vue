@@ -70,6 +70,7 @@ export default defineComponent({
         .where({
           language,
           draft,
+          parent: props.page.parent,
           navigation: {
             $and: [
               // Ignore contents that has disabled navigations
@@ -81,7 +82,7 @@ export default defineComponent({
         })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
-        .surround(props.page.slug, { before: 1, after: 1 })
+        .surround(props.page.path, { before: 1, after: 1 })
         .fetch()
 
       prev.value = prevLink
