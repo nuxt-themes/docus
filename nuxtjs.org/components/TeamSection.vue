@@ -1,7 +1,7 @@
 <template>
   <div class="py-16 d-container-content">
     <div v-for="team in teams" :key="team.slug">
-      <TeamTitle :slug="team.slug" :title="team.title" class="text-center pb-16" />
+      <TeamTitle :slug="team.slug" :name="team.name" class="text-center pb-16" />
       <div class="flex justify-center">
         <div class="flex flex-wrap justify-center pb-16">
           <div v-for="member in team.members" :key="member.name">
