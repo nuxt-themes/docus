@@ -13,6 +13,9 @@ interface InternalModuleOptions {
 export default <Module<SocialImageModuleOptions & InternalModuleOptions>>function socialImageModule(moduleOptions) {
   const { nuxt, addPlugin } = this
   const { options: nuxtOptions, hook } = nuxt
+  const settings = this.$docus.settings
+
+  if (settings.socialImage === false) return
 
   // Executable path defaults to MacOS
   // Supports Linux & Win32 too
