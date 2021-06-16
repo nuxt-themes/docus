@@ -1,6 +1,6 @@
 <template>
   <h2 class="text-display-4 font-serif">
-    <span class="italic capitalize text-primary-green">{{ slug }}</span> {{ name }}
+    <span class="italic capitalize text-primary-green">{{ names[0] }}</span> {{ names[1] }}
   </h2>
 </template>
 
@@ -16,6 +16,11 @@ export default defineComponent({
     name: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    names() {
+      return (this.name || '').split(' ')
     }
   }
 })
