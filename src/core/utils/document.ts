@@ -1,6 +1,6 @@
 import { withoutTrailingSlash } from 'ufo'
 import { DocusDocument, DocusMarkdownNode } from '../../types'
-import { expandTags } from '../runtime/utils'
+import { expandTags, flatUnwrap } from '../runtime/utils'
 
 export function generatePosition(path: string, document: DocusDocument): string {
   const position = path
@@ -43,6 +43,9 @@ export function processDocumentInfo(document: DocusDocument): DocusDocument {
   if (first && expandTags(['h1']).includes(first.tag)) {
     if (!document.title) {
       document.title = getTextContent(first)
+      // Remove anchor link
+      first.children = flatUnwrap(first.children, ['a'])
+
       document.titleNode = { body: first }
 
       // Remove node if heading extract is enables

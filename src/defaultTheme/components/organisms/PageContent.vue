@@ -10,10 +10,7 @@
           <span class="text-3rem">{{ page.icon }}</span>
         </InjectComponent>
 
-        <DocusContent
-          :document="page.titleNode || page.title"
-          class="mb-0 flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100"
-        />
+        <DocusContent id="headline" :document="page.titleNode || page.title" />
 
         <span
           v-if="page.draft"
@@ -37,11 +34,7 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <DocusContent
-        v-if="page.description"
-        :document="page.descriptionNode || page.description"
-        class="mt-4 mb-0 text-lg font-medium text-gray-500 dark:text-gray-400"
-      />
+      <DocusContent v-if="page.description" id="lead" :document="page.descriptionNode || page.description" />
       <hr
         v-if="$scopedSlots['mobile-toc'] || page.description"
         class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
@@ -83,5 +76,11 @@ export default defineComponent({
       margin-top: 0;
     }
   }
+}
+#headline {
+  @apply m-0 flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100;
+}
+#lead {
+  @apply mt-4 mb-0 text-lg font-medium text-gray-500 dark:text-gray-400;
 }
 </style>
