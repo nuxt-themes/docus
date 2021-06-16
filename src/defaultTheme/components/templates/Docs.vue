@@ -71,6 +71,9 @@ export default defineComponent({
           language,
           draft,
           parent: props.page.parent,
+          // Ignore pages without any title
+          // Most of `index` pages are use for parenting configuration and they don't need to be listed here
+          title: { $not: { $type: 'undefined' } },
           navigation: {
             $and: [
               // Ignore contents that has disabled navigations
