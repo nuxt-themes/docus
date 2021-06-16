@@ -37,7 +37,7 @@
       </div>
       <template v-if="page.description">
         <DocusContent v-if="page.descriptionNode" id="lead" :document="page.descriptionNode" />
-        <ProseParagraph id="lead">{{ page.description }}</ProseParagraph>
+        <ProseParagraph v-else id="lead">{{ page.description }}</ProseParagraph>
       </template>
       <hr
         v-if="$scopedSlots['mobile-toc'] || page.description"
