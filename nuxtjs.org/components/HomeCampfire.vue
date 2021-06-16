@@ -36,7 +36,6 @@ export default defineComponent({
     useFetch(async () => {
       posts.value = await $docus.search('/blog', { deep: true }).limit(2).fetch()
     })
-    console.log(posts)
     return {
       posts
     }
