@@ -64,7 +64,7 @@
                 :key="link.navigation.title"
                 :title="link.navigation.title"
                 :docs="link.children"
-                :collapsed="link.navigation.collapsed"
+                :collapse="link.navigation.collapse"
               />
               <AsideNavigationItem v-else :key="link.navigation.title" :docs="[link]" />
             </template>

@@ -1,5 +1,5 @@
 ---
 navigation:
-  collapsed: false
+  collapse: false
   redirect: /examples/routing/hello-world
 ---
