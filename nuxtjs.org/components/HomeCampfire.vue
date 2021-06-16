@@ -34,7 +34,9 @@ export default defineComponent({
     const { $docus } = useContext()
     const posts = ref()
     useFetch(async () => {
-      posts.value = await $docus.search('/blog', { deep: true }).limit(2).fetch()
+      const documents = await $docus.search('/blog/', { deep: true }).sortBy('position', 'desc').limit(2).fetch()
+
+      posts.value = documents.reverse()
     })
     return {
       posts
