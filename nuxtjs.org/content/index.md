@@ -59,13 +59,13 @@ Nuxt is shipped with plenty of features to boost developer productivity and the 
   ::section-content-item
   title: Data Fetching
   description: 'Fetch your content from any source in your Vue components, SSR ready.'
-  image: /img/home/discover/dx/typescript.svg
+  image: /img/home/discover/dx/fetch.svg
   ---
   ::
   ::section-content-item
   title: Strong Conventions
   description: 'Efficient teamwork with a strong directory structure and conventions.'
-  image: /img/home/discover/dx/typescript.svg
+  image: /img/home/discover/dx/conventions.svg
   ---
   ::
   ::section-content-item
