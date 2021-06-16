@@ -42,12 +42,14 @@
 
       <template #right-illustration>
         <div class="col-span-6 w-full flex justify-center items-center md:justify-end">
-          <img
+          <button @click="play()">click</button>
+          <div ref="lottieAnim" class="sm:w-3/5 md:w-3/4 lg:w-4/6 xl:w-3/5 h-72" />
+          <!-- img
             class="sm:w-3/5 md:w-3/4 lg:w-4/6 xl:w-3/5"
             loading="lazy"
             src="~/static/img/home/discover/modules/discover-modules.svg"
             alt="Image of a simplified diagram of how Nuxt works"
-          />
+          / -->
         </div>
       </template>
     </HomeSection>
@@ -66,3 +68,34 @@
     />
   </div>
 </template>
+<script lang="ts">
+import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api'
+import lottie from 'lottie-web'
+
+export default defineComponent({
+  setup() {
+    const lottieAnim = ref(null)
+    let animation = null
+
+    function play() {
+      animation.play()
+    }
+
+    onMounted(() => {
+      animation = lottie.loadAnimation({
+        container: lottieAnim.value,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets3.lottiefiles.com/private_files/lf30_bxmm0fcm.json'
+      })
+    })
+
+    return {
+      lottieAnim,
+      animation,
+      play
+    }
+  }
+})
+</script>
