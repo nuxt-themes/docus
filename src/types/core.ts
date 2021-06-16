@@ -97,6 +97,14 @@ export interface DocusDocument {
     fluid: boolean
     [key: string]: any
   }
+  extract: {
+    heading: boolean
+  }
+  // AST node of markdown title that extracts from content
+  titleNode?: any
+  // AST node of markdown lead pragraph that extracts from content
+  descriptionNode?: any
+
   // Generated
   key: string
   path: string
