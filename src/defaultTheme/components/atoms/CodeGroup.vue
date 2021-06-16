@@ -1,6 +1,6 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
-    <div class="relative z-0 px-2 text-white bg-gray-100 rounded-t-lg dark:bg-gray-800">
+    <div class="relative z-0 px-2 text-white rounded-t-lg d-code-group-header-bg">
       <button
         v-for="({ label }, i) in tabs"
         ref="tabs"
