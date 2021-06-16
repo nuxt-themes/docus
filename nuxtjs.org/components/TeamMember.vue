@@ -5,9 +5,9 @@
     <span class="text-primary-green font-semibold">{{ member.role }}</span>
     <span class="text-gray-400">{{ member.location }}</span>
     <ul class="flex space-x-2">
-      <li v-for="social in member.socials" :key="social" class="text-gray-300 hover:text-sky-darker">
-        <div v-for="(href, value) in social" :key="value">
-          <ALink :href="href">
+      <li v-for="(social, index) in member.socials" :key="index" class="text-gray-300 hover:text-sky-darker">
+        <div v-for="(href, value, i) in social" :key="i">
+          <ALink :href="href" :aria-label="value">
             <Component :is="getSocialIcon(value)" class="h-5 w-5" />
           </ALink>
         </div>
