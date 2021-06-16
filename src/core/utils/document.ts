@@ -95,7 +95,7 @@ function getTextContent(node: DocusMarkdownNode): string {
   if (node.children) {
     text = text + node.children.map(child => getTextContent(child)).join('')
   }
-  return text
+  return text.trim()
 }
 
 function padLeft(value: string, length: number): string {
