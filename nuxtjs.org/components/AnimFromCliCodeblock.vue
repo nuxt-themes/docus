@@ -143,7 +143,7 @@
 }
 
 .fromcli__code {
-  @apply relative -top-40 lg:top-0 bg-gray-600 rounded-md col-span-full lg:col-span-7 p-5 overflow-hidden;
+  @apply relative -top-40 lg:top-0 dark:bg-secondary-black bg-secondary-darkest rounded-md col-span-full lg:col-span-7 p-5 overflow-hidden;
   height: 280px;
 }
 

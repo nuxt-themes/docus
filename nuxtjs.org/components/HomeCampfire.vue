@@ -3,7 +3,7 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <CategoryLabel label="Campfire" />
+          <CategoryLabel label="Community" />
         </template>
 
         <template #title>

@@ -1,6 +1,6 @@
 <template>
-  <HomeSection class="pt-20">
-    <template #section-content>
+  <section class="relative pt-20">
+    <AContainer class="flex flex-col items-center">
       <SectionContent class="col-span-12 items-center">
         <template #category>
           <CategoryLabel label="Discover" />
@@ -22,23 +22,20 @@
           <MPartnersBanner class="pb-0" :partners-logo="partners" />
         </template>
       </SectionContent>
-    </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/discover/partners/dark/landscape-discover-partners.svg`"
-        class="w-full h-40 object-fill left-0 mt-10 -mb-2 light:hidden"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/discover/partners/light/landscape-discover-partners.svg`"
-        class="w-full h-40 object-fill left-0 mt-10 -mb-2 dark:hidden"
-        alt="A landscape image"
-      />
-    </template>
-  </HomeSection>
+    </AContainer>
+    <img
+      loading="lazy"
+      :src="`/img/home/discover/partners/dark/landscape-discover-partners.svg`"
+      class="w-full h-40 object-fill left-0 mt-10 -mb-2 light:hidden"
+      alt="A landscape image"
+    />
+    <img
+      loading="lazy"
+      :src="`/img/home/discover/partners/light/landscape-discover-partners.svg`"
+      class="w-full h-40 object-fill left-0 mt-10 -mb-2 dark:hidden"
+      alt="A landscape image"
+    />
+  </section>
 </template>
 
 <script>
