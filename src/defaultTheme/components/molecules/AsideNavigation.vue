@@ -12,20 +12,18 @@
       lg:sticky lg:top-header lg:w-60 lg:max-h-[400vh]
     "
   >
-    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 dark:lg:bg-transparent lg:bg-transparent">
+    <div class="w-auto h-full overflow-auto d-bg-header dark:lg:bg-transparent lg:bg-transparent">
       <!-- Aside Header -->
-      <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800">
+      <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header d-aside-header-bg">
         <button
           class="
             flex-1
-            text-gray-500
             transition-colors
             duration-200
             focus:outline-none
             lg:hidden
-            dark:text-gray-500
-            hover:text-gray-700
-            dark:hover:text-gray-400
+            d-secondary-text
+            hover:d-secondary-text-hover
           "
           @click.stop="$menu.toggle"
         >

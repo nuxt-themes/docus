@@ -3,7 +3,7 @@
     <h5
       v-if="title"
       class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100"
-      :class="[isActive ? '' : 'hover:text-gray-600 dark:hover:text-gray-400']"
+      :class="[isActive ? '' : 'hover:d-primary-text-hover']"
       @click="collapse"
     >
       {{ title }}
@@ -15,13 +15,13 @@
           class="block w-full"
           :class="[
             $docus.isLinkActive(doc.to)
-              ? 'text-primary-500 dark:text-primary-400'
+              ? 'd-active-aside-navigation-item-text'
               : 'd-secondary-text hover:d-secondary-text-hover'
           ]"
         >
           <span
             class="relative inline-flex items-center justify-between px-2 py-1 rounded-md"
-            :class="[$docus.isLinkActive(doc.to) ? 'bg-primary-50 dark:bg-primary-900' : '']"
+            :class="[$docus.isLinkActive(doc.to) ? 'd-active-aside-navigation-item-bg' : '']"
           >
             <InjectComponent
               v-if="doc.icon"

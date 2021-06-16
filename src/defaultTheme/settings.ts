@@ -36,16 +36,22 @@ const defaultThemeSettings = {
   shortcuts: {
     'd-body-bg': 'bg-white dark:bg-gray-900',
     'd-body-text-color': 'text-gray-900 dark:text-gray-50',
+    'd-secondary-bg': 'bg-gray-500 dark:bg-gray-400',
     'd-secondary-text': 'text-gray-500 dark:text-gray-400',
     'd-secondary-text-hover': 'text-primary-500 dark:text-primary-400',
+    'd-primary-text-hover': 'text-gray-600 dark:text-gray-400',
     'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
     'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-gray-800',
     // Primary
     'd-text-primary': 'text-primary-500 dark:text-primary-400',
     'd-border-primary': 'border-primary-500 dark:border-primary-400',
     'd-bg-primary': 'bg-primary-500 dark:bg-primary-400',
+    'd-page-mobile-toc-bg': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
+    'd-aside-header-bg': 'bg-gray-50 dark:bg-gray-800',
+    'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
+    'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
     // Icons
-    'd-text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
+    'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',
     // Images utils
     'light-img': 'dark:hidden',
@@ -58,6 +64,8 @@ const defaultThemeSettings = {
     // Header
     'd-blur-header': 'blur-12',
     'd-bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
+    'd-border': ' light:border-gray-200 light:border-opacity-50 dark:border-secondary-darker',
+    'd-border-hover': 'border-primary-200 dark:border-secondary-dark',
     'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
     'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header'
   }

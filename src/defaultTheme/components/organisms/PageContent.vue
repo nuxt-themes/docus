@@ -36,10 +36,7 @@
       <p v-if="page.description" class="mt-4 text-lg font-medium d-secondary-text">
         {{ page.description }}
       </p>
-      <hr
-        v-if="$scopedSlots['mobile-toc'] || page.description"
-        class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
-      />
+      <hr v-if="$scopedSlots['mobile-toc'] || page.description" class="mt-4 d-border" />
     </section>
 
     <slot name="mobile-toc" />

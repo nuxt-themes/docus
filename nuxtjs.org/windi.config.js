@@ -5,6 +5,13 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+
+      // 'green-lighter': '#80EEC0',
+      // 'green-light': '#40E5A1',
+      // green: '#00DC82',
+      // 'green-dark': '#00BB6F',
+      // 'green-darker': '#009A5B',
+
       'primary-green': '#00DC82',
       'secondary-surface': '#E5F9FF',
       'secondary-lightest': '#B7E1ED',
@@ -25,6 +32,7 @@ export default {
       'cloud-darker': '#334040',
       'cloud-darkest': '#273131',
       'cloud-black': '#1A2121',
+
       black: '#000',
       white: '#fff',
       blue: colors.lightBlue,
@@ -34,6 +42,7 @@ export default {
       yellow: colors.amber,
       gray: colors.gray,
       purple: colors.purple
+
       // $colorNeutralWhite: #FFFFFF;
       // $colorNeutralBlack: #000000;
       // $colorGreenLighter: #80EEC0;

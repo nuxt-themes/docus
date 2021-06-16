@@ -12,17 +12,17 @@
           px-4
           py-3
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:w-auto
-          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:text-primary-400
-          hover:d-text-primary hover:border-primary-200
-          dark:hover:border-gray-700
+          hover:d-text-primary
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span v-if="prev.category" class="mb-1 text-xs leading-tight text-gray-400">
+          <span v-if="prev.category" class="mb-1 text-xs leading-tight d-secondary-text">
             {{ prev.category }}
           </span>
           <span class="flex items-center w-full leading-tight">
@@ -46,22 +46,22 @@
           py-3
           mb-2
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:mb-0 xs:w-auto
-          dark:text-gray-400 dark:border-gray-800
-          hover hover:border-primary-200
-          dark:hover:border-gray-700 dark:border-opacity-50
+          hover:d-text-primary
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span v-if="next.category" class="mb-1 text-xs leading-tight text-gray-400">
+          <span v-if="next.category" class="mb-1 text-xs leading-tight d-secondary-text">
             {{ next.category }}
           </span>
           <span class="flex items-center w-full leading-tight">
-            <span class="truncate d-text-primary">{{ next.title }}</span>
-            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 d-text-primary" />
+            <span class="truncate">{{ next.title }}</span>
+            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2" />
           </span>
         </span>
       </NuxtLink>
