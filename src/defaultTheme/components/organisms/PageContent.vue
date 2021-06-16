@@ -10,7 +10,8 @@
           <span class="text-3rem">{{ page.icon }}</span>
         </InjectComponent>
 
-        <DocusContent id="headline" :document="page.titleNode || page.title" />
+        <DocusContent v-if="page.titleNode" id="headline" :document="page.titleNode" />
+        <ProseH1 v-else id="headline">{{ page.title }}</ProseH1>
 
         <span
           v-if="page.draft"
@@ -34,7 +35,10 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <DocusContent v-if="page.description" id="lead" :document="page.descriptionNode || page.description" />
+      <template v-if="page.description">
+        <DocusContent v-if="page.descriptionNode" id="lead" :document="page.descriptionNode" />
+        <ProseParagraph id="lead">{{ page.description }}</ProseParagraph>
+      </template>
       <hr
         v-if="$scopedSlots['mobile-toc'] || page.description"
         class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
