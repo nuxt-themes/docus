@@ -73,15 +73,10 @@ export interface DocusDocument {
   position: string
   draft: boolean
   // Navigation
-  navigation: {
-    title: string
-    slot: string
-    nested: boolean
-    // url of nearest exclusive parent
-    // parent uses to filter pages to find currect previous and next page
-    parent: string
-    [key: string]: any
-  }
+  navigation: NavItemNavigationConfig | false
+  // url of nearest exclusive parent
+  // parent uses to filter pages to find currect previous and next page
+  parent: string
   // Template
   template: {
     self: string

@@ -4,7 +4,7 @@ import { Module } from '@nuxt/types'
 import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, isHidden, processDocumentInfo } from './utils/document'
 import { destroyStorage, initStorage, useNuxtIgnoreList } from './storage'
 import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
@@ -78,6 +78,10 @@ export default <Module>async function docusModule() {
     const position = generatePosition(_to, document)
 
     processDocumentInfo(document)
+
+    if (isHidden(_to)) {
+      document.navigation = false
+    }
 
     document.slug = generateSlug(slug)
     document.position = position

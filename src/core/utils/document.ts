@@ -17,11 +17,29 @@ export function generatePosition(path: string, document: DocusDocument): string 
   return padRight(position, 12)
 }
 
+/**
+ * Clean up special keywords from path part
+ */
 export function generateSlug(name: string): string {
-  return name
-    .replace(/(\d+\.)?(.*)/, '$2')
-    .replace(/^index/, '')
-    .replace(/\.draft/, '')
+  return (
+    name
+      /**
+       * Remove numbering
+       */
+      .replace(/(\d+\.)?(.*)/, '$2')
+      /**
+       * remove index keyword
+       */
+      .replace(/^index/, '')
+      /**
+       * remove draft keyword
+       */
+      .replace(/\.draft/, '')
+      /**
+       * Remove hidden keyword
+       */
+      .replace(/^_/, '')
+  )
 }
 
 export function generateTo(path: string): string {
@@ -30,6 +48,15 @@ export function generateTo(path: string): string {
 
 export function isDraft(path: string): boolean {
   return !!path.match(/(\.draft)$/)
+}
+
+/**
+ * Files or directories that starts with underscore `_` will mark as hidden
+ * @param path content path
+ * @returns true if the is part in the path that starts with `_`
+ */
+export function isHidden(path: string): boolean {
+  return path.split('/').some(part => part.match(/^_.*/))
 }
 
 export function processDocumentInfo(document: DocusDocument): DocusDocument {
