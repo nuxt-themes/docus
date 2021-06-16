@@ -39,7 +39,7 @@ npm i -g @xdn/cli
 
 ## Configure your project
 
-3. Make sure [server side rendering is enabled](/docs/2.x/configuration-glossary/configuration-ssr) and in your `nuxt.config.js` add the `@xdn/nuxt` module:
+3. Make sure [server side rendering is enabled](/docs/configuration-glossary/configuration-ssr) and in your `nuxt.config.js` add the `@xdn/nuxt` module:
 
 ```js
 // nuxt.config.js

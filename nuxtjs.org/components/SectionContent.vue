@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col w-full space-y-4"
+    class="flex flex-col w-full"
     :class="{
       'items-start': position === 'left',
       'items-center text-center': position === 'center',
@@ -8,10 +8,18 @@
     }"
   >
     <slot name="icon" />
-    <slot name="category" />
-    <slot name="title" />
-    <slot name="paragraph" />
-    <slot name="content" />
+    <div v-if="$scopedSlots.category" class="mb-2">
+      <slot name="category" />
+    </div>
+    <div v-if="$scopedSlots.title" class="mb-2">
+      <slot name="title" />
+    </div>
+    <div v-if="$scopedSlots.paragraph" class="mb-8">
+      <slot name="paragraph" />
+    </div>
+    <div v-if="$scopedSlots.content" class="w-full my-8">
+      <slot name="content" />
+    </div>
     <slot name="link" />
     <slot name="banner" />
     <slot name="button" />

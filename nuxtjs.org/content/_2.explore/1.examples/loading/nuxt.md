@@ -12,7 +12,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-academy/examples/tree/master/
 
 <alert type="next">
 
-Learn more in the Features book in the [Loading](/docs/2.x/features/loading) chapter.
+Learn more in the Features book in the [Loading](/docs/features/loading) chapter.
 
 </alert>
 

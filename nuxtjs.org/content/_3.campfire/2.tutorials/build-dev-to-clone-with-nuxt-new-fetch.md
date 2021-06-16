@@ -23,7 +23,7 @@ _Let’s build a blazing fast articles and tutorials app using Nuxt, Dev.to API,
   <a href="https://github.com/bdrtsky/nuxt-dev-to-clone" target="_blank" rel="noopener nofollow">Source</a>
 </p>
 
-This article is intended to demonstrate use cases and awesomeness of new NuxtJS `fetch` functionality [introduced in release v2.12](/docs/2.x/components-glossary/pages-fetch#nuxt-gt-2-12), and show you how to apply its power in your own projects. For in-depth technical analysis and details of the new `fetch` you can check [Krutie Patel’s article](/blog/understanding-how-fetch-works-in-nuxt-2-12).
+This article is intended to demonstrate use cases and awesomeness of new NuxtJS `fetch` functionality [introduced in release v2.12](/docs/components-glossary/pages-fetch#nuxt-gt-2-12), and show you how to apply its power in your own projects. For in-depth technical analysis and details of the new `fetch` you can check [Krutie Patel’s article](/blog/understanding-how-fetch-works-in-nuxt-2-12).
 
 Here’s the high-level outline of how we will build our dev.to clone using `fetch` hook. We will:
 
@@ -69,7 +69,7 @@ To keep it simple, for communication with DEV.TO API we will use native Javascri
 
 If you are an experienced developer you can skip this part and [get straight to the point](#developing-the-application).
 
-Make sure you have Node and npm installed. We will use `create-nuxt-app` to [initialize](/docs/2.x/get-started/installation#using-code-create-nuxt-app-code-) the project, so just type the following command in terminal:
+Make sure you have Node and npm installed. We will use `create-nuxt-app` to [initialize](/docs/get-started/installation#using-code-create-nuxt-app-code-) the project, so just type the following command in terminal:
 
 ```
 npx create-nuxt-app nuxt-dev-to-clone
@@ -126,7 +126,7 @@ Now tell Nuxt to use it by adding this code to `nuxt.config.js`
 buildModules: ['@nuxtjs/style-resources']
 ```
 
-Read more about this module [here](https://github.com/nuxt-community/style-resources-module#scss-example), regarding `buildModules`, you can learn more on it in the [modules vs buildModules](/docs/2.x/configuration-glossary/configuration-modules#-code-buildmodules-code-) section of the documentation.
+Read more about this module [here](https://github.com/nuxt-community/style-resources-module#scss-example), regarding `buildModules`, you can learn more on it in the [modules vs buildModules](/docs/configuration-glossary/configuration-modules#-code-buildmodules-code-) section of the documentation.
 
 Let’s define our design tokens as SCSS variables, put them in `~/assets/styles/tokens.scss` and tell `@nuxtjs/style-resources` to load them by adding to `nuxt.config.js`
 
@@ -178,7 +178,7 @@ To keep front-end app fast and simple we will use only two dependencies, both fr
 - [vue-observe-visibility](https://github.com/Akryum/vue-observe-visibility) by [Guillaume Chau](https://twitter.com/Akryum), for effective detecting elements in viewport with IntersectionObserver and trigger lazy loading. Only 1.6kB gzipped
 - [vue-content-placeholders](https://github.com/michalsnik/vue-content-placeholders) by [Michał Sajnóg](https://twitter.com/michalsnik), for showing nicely animated placeholders for UI elements while content is fetching. Only 650B gzipped.
 
-Let’s add them as Nuxt [plugins](/docs/2.x/configuration-glossary/configuration-plugins), by creating two files.
+Let’s add them as Nuxt [plugins](/docs/configuration-glossary/configuration-plugins), by creating two files.
 
 ```js{}[vue-observe-visibility.client.js]
 import Vue from 'vue'
@@ -205,11 +205,11 @@ plugins: [
 
 ## Developing the Application
 
-Now we finally can start developing our DEV.TO clone powered by Nuxt and [new fetch](/docs/2.x/components-glossary/pages-fetch).
+Now we finally can start developing our DEV.TO clone powered by Nuxt and [new fetch](/docs/components-glossary/pages-fetch).
 
 ### URL structure
 
-Let’s imitate DEV.TO URL structure for our simple app. Our [pages](/docs/2.x/concepts/views#pages) folder should look like this:
+Let’s imitate DEV.TO URL structure for our simple app. Our [pages](/docs/concepts/views#pages) folder should look like this:
 
 ```
 ├── index.vue
@@ -221,12 +221,12 @@ Let’s imitate DEV.TO URL structure for our simple app. Our [pages](/docs/2.x/c
     └── index.vue
 ```
 
-We will have 2 [static pages](/docs/2.x/get-started/routing#automatic-routes):
+We will have 2 [static pages](/docs/get-started/routing#automatic-routes):
 
 - `index.vue`: latest articles about Nuxt.js will be listed
 - `top.vue`: most popular articles for last year period.
 
-For the rest of the app URL’s we will use convenient Nuxt file based [dynamic routes](/docs/2.x/directory-structure/pages#dynamic-pages) feature to scaffold necessary pages by creating such file structure:
+For the rest of the app URL’s we will use convenient Nuxt file based [dynamic routes](/docs/directory-structure/pages#dynamic-pages) feature to scaffold necessary pages by creating such file structure:
 
 - `_username/index.vue` - user profile page with list of his published articles
 - `_username/_article.vue` - this is where article, author profile and comments will be rendered

@@ -92,7 +92,9 @@ export default <Module>async function docusModule() {
     drivers: [
       {
         base: resolve(options.srcDir, $docus.settings.contentDir),
+        // mount point of driver
         mountPoint: 'pages',
+        // List of Nuxt ignore rules
         ignore: await useNuxtIgnoreList(nuxt)
       },
       {

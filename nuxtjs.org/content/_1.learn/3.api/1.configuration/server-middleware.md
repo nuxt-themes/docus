@@ -9,7 +9,7 @@ category: api-configuration
 
 Nuxt internally creates a [connect](https://github.com/senchalabs/connect) instance that you can add your own custom middleware to. This allows us to register additional routes (typically `/api` routes) **without need for an external server**.
 
-Because connect itself is a middleware, registered middleware will work with both `nuxt start` and also when used as a middleware with programmatic usages like [express-template](https://github.com/nuxt-community/express-template). Nuxt [Modules](/guide/modules) can also provide `serverMiddleware` using [this.addServerMiddleware()](/docs/2.x/internals-glossary/internals-module-container#addservermiddleware-middleware)
+Because connect itself is a middleware, registered middleware will work with both `nuxt start` and also when used as a middleware with programmatic usages like [express-template](https://github.com/nuxt-community/express-template). Nuxt [Modules](/guide/modules) can also provide `serverMiddleware` using [this.addServerMiddleware()](/docs/internals-glossary/internals-module-container#addservermiddleware-middleware)
 
 Additional to them, we introduced a `prefix` option which defaults to `true`. It will add the router base to your server middlewares.
 

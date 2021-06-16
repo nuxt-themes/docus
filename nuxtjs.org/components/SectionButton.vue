@@ -2,7 +2,6 @@
   <AButton
     type="button"
     :aria-label="ariaLabel"
-    :href="href"
     :to="to"
     class="font-medium rounded-md"
     :class="[
@@ -30,13 +29,9 @@ export default defineComponent({
       type: String,
       required: true
     },
-    href: {
-      type: String,
-      default: null
-    },
     to: {
       type: [String, Object],
-      default: null
+      required: true
     },
     size: {
       type: String,

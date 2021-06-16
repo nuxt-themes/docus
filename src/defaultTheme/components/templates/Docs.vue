@@ -67,7 +67,18 @@ export default defineComponent({
 
       const [prevLink, nextLink] = await $docus
         .search({ deep: true })
-        .where({ language, draft, navigation: { $ne: false } })
+        .where({
+          language,
+          draft,
+          navigation: {
+            $and: [
+              // Ignore contents that has disabled navigations
+              { $ne: false },
+              // Ignore contents with navigation redirect
+              { $containsNone: ['redirect'] }
+            ]
+          }
+        })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
         .surround(props.page.slug, { before: 1, after: 1 })

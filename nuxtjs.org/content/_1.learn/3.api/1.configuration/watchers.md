@@ -36,6 +36,6 @@ To learn more about webpack watchoptions, see the [webpack documentation](https:
 
 <alert type="next">
 
-Check out the [Internals Glossary book](/docs/2.x/internals-glossary/$nuxt)
+Check out the [Internals Glossary book](/docs/internals-glossary/$nuxt)
 
 </alert>

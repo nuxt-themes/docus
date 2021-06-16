@@ -19,13 +19,13 @@ It will create a `dist` folder with everything inside ready to be deployed on Gi
 
 <div class="Alert Alert--nuxt-green">
 
-<b>Info:</b> If you use a custom domain for your GitHub Pages and put `CNAME` file, it is recommended that CNAME file is put in the `static` directory. [More documentation](/docs/2.x/directory-structure/static) about it.
+<b>Info:</b> If you use a custom domain for your GitHub Pages and put `CNAME` file, it is recommended that CNAME file is put in the `static` directory. [More documentation](/docs/directory-structure/static) about it.
 
 </div>
 
 ## Deploying to GitHub Pages for repository
 
-First of all, you want to make sure to use [static target](/docs/2.x/features/deployment-targets) since we are hosting on GitHub pages:
+First of all, you want to make sure to use [static target](/docs/features/deployment-targets) since we are hosting on GitHub pages:
 
 ```js[nuxt.config.js]
 export default {
@@ -35,9 +35,9 @@ export default {
 
 If you are creating GitHub Pages for one specific repository, and you don't have any custom domain, the URL of the page will be in this format: `http://<username>.github.io/<repository-name>`.
 
-If you deployed `dist` folder without adding [router base](/docs/2.x/configuration-glossary/configuration-router), when you visit the deployed site you will find that the site is not working due to missing assets. This is because we assume that the website root will be `/`, but in this case it is `/<repository-name>`.
+If you deployed `dist` folder without adding [router base](/docs/configuration-glossary/configuration-router), when you visit the deployed site you will find that the site is not working due to missing assets. This is because we assume that the website root will be `/`, but in this case it is `/<repository-name>`.
 
-To fix the issue we need to add [router base](/docs/2.x/configuration-glossary/configuration-router#base) configuration in `nuxt.config.js`:
+To fix the issue we need to add [router base](/docs/configuration-glossary/configuration-router#base) configuration in `nuxt.config.js`:
 
 ```js[nuxt.config.js]
 export default {

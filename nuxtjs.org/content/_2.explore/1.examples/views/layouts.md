@@ -12,7 +12,7 @@ csb_link: https://codesandbox.io/embed/github/nuxt-academy/examples/tree/master/
 
 <alert type="next">
 
-Learn more in the Concepts book in the [Views](/docs/2.x/concepts/views) chapter or in the Directory Structure book in the [Layouts](/docs/2.x/directory-structure/layouts) chapter.
+Learn more in the Concepts book in the [Views](/docs/concepts/views) chapter or in the Directory Structure book in the [Layouts](/docs/directory-structure/layouts) chapter.
 
 </alert>
 

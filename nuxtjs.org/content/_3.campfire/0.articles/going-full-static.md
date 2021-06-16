@@ -60,8 +60,8 @@ Also, the developer experience is not optimal:
 
 - You have access to `req` or `res` on SSR but not when running `nuxt generate`
 - `process.static` is `true` only when running `nuxt generate`, making it slow to develop Nuxt modules or plugins for static generation
-- You have to specify all your [dynamic routes](/docs/2.x/features/file-system-routing#dynamic-routes) in `generate.routes`, making it harder since you don't have access to nuxt modules there.
-- You cannot test the [SPA fallback](/docs/2.x/concepts/static-site-generation#spa-fallback) in development, the fallback is a client-only version of your Nuxt application that loads when hitting a 404 page
+- You have to specify all your [dynamic routes](/docs/features/file-system-routing#dynamic-routes) in `generate.routes`, making it harder since you don't have access to nuxt modules there.
+- You cannot test the [SPA fallback](/docs/concepts/static-site-generation#spa-fallback) in development, the fallback is a client-only version of your Nuxt application that loads when hitting a 404 page
 - `nuxt generate` runs `nuxt build` by default, making it slower to generate your website if only your content changed
 
 Note that it was possible to have full static support with [nuxt-payload-extractor](https://github.com/DreaMinder/nuxt-payload-extractor) module but it was more verbose to use and had limitations.
@@ -85,7 +85,7 @@ Full static doesn't work with `ssr: 'false'` (which is the same as the deprecate
 Running `nuxt dev` with the static target will improve the developer experience:
 
 - Remove `req` & `res` from context
-- Fallback to client-side rendering on 404, errors and redirects (see [SPA fallback](/docs/2.x/concepts/static-site-generation#spa-fallback))
+- Fallback to client-side rendering on 404, errors and redirects (see [SPA fallback](/docs/concepts/static-site-generation#spa-fallback))
 - `$route.query` will always be equal to `{}` on server-side rendering
 - `process.static` is `true`
 
@@ -105,7 +105,7 @@ We also improved the [smart prefetching](/blog/introducing-smart-prefetching) wh
 
 On top of that, it also has a crawler inside, detecting every relative link and generating it:
 
-If you want to exclude a bunch of routes, use the [generate.exclude](/docs/2.x/configuration-glossary/configuration-generate#exclude). You can keep using [generate.routes](/docs/2.x/configuration-glossary/configuration-generate#routes) to add extra routes that the crawler could not detect.
+If you want to exclude a bunch of routes, use the [generate.exclude](/docs/configuration-glossary/configuration-generate#exclude). You can keep using [generate.routes](/docs/configuration-glossary/configuration-generate#routes) to add extra routes that the crawler could not detect.
 
 To disable the crawler, set `generate.crawler: false` in your `nuxt.config.js`
 
@@ -115,7 +115,7 @@ By separating `nuxt build` and `nuxt export`, we are opening a new range of impr
 
 ## Smarter `nuxt start`
 
-Once you statically generated your Nuxt app into `dist/`, use `nuxt start` to start a production HTTP server and serve your static app, supporting [SPA Fallback](/docs/2.x/concepts/static-site-generation#spa-fallback).
+Once you statically generated your Nuxt app into `dist/`, use `nuxt start` to start a production HTTP server and serve your static app, supporting [SPA Fallback](/docs/concepts/static-site-generation#spa-fallback).
 
 This command is perfect to locally test your static application before pushing to your favorite static hosting provider.
 

@@ -4,6 +4,7 @@ export default {
   url: 'https://nuxtjs.org',
   template: 'docs',
   credits: true,
+  socialImage: false,
   theme: {
     header: {
       logo: {
@@ -14,6 +15,12 @@ export default {
     },
     colors: {
       primary: '#00DC82'
+    },
+    shortcuts: {
+      'body-bg': 'bg-white dark:bg-secondary-black',
+      'docus-body-text-color': 'text-secondary-darker dark:text-white', // text-secondary dark:text-white
+      'bg-header': 'bg-white bg-opacity-80 dark:bg-secondary-black dark:bg-opacity-80',
+      'border-header': 'border-none'
     }
   }
 }

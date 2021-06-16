@@ -92,7 +92,7 @@ The `<Nuxt>` component is the component you use to display your page components.
 
 <alert>
 
-The `<Nuxt>` component can only be used inside [layouts](/docs/2.x/concepts/views#layouts).
+The `<Nuxt>` component can only be used inside [layouts](/docs/concepts/views#layouts).
 
 </alert>
 
@@ -253,7 +253,7 @@ If you want to know more about `<RouterLink>`, feel free to read the [Vue Route
 
 <alert type="info">
 
-`<NuxtLink>` also comes with [smart prefetching](/docs/2.x/features/nuxt-components#the-nuxtlink-component) out of the box.
+`<NuxtLink>` also comes with [smart prefetching](/docs/features/nuxt-components#the-nuxtlink-component) out of the box.
 
 </alert>
 

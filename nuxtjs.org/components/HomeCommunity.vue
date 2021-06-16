@@ -1,33 +1,35 @@
 <template>
-  <HomeSection class="dark:bg-secondary-dark">
+  <HomeSection class="">
     <template #header-illustration>
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-t.svg`"
-        class="w-full h-20 object-fill light:hidden"
+        class="w-full h-20 object-fill light:hidden pointer-events-none"
         alt="A landscape image"
       />
 
       <img
         loading="lazy"
         :src="`/img/home/community/light/landscape-community-t.svg`"
-        class="w-full h-20 object-fill dark:hidden"
+        class="w-full h-20 object-fill dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>
+
     <template #section-content>
       <SectionContent class="col-span-12 items-center pt-20 pb-60">
         <template #category>
-          <ALabel tag="span" class="text-primary-green font-bold text-lg">Community</ALabel>
+          <CategoryLabel label="Community" />
         </template>
+
         <template #title>
-          <SectionTitle class="text-center font-serif" size="sm">Testimonials</SectionTitle>
+          <SectionTitle class="text-center font-serif">Testimonials</SectionTitle>
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >Learn from experts about what they think of Nuxt.</SectionDescription
-          >
+          <SectionDescription class="text-center">Learn from experts about what they think of Nuxt.</SectionDescription>
         </template>
+
         <template #content>
           <ul class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4 lg:gap-8 pb-8 sm:mx-20 md:mx-0">
             <li
@@ -39,7 +41,8 @@
                 items-center
                 justify-between
                 space-y-4
-                border-3 border-gray-200
+                border-2 border-gray-200
+                dark:border-secondary-light
                 rounded-lg
                 p-4
               "
@@ -64,7 +67,19 @@
                   <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
-                  <img :src="`/img/home/community/${testimonial.jobIcon}.svg`" width="28" height="28" />
+                  <img
+                    :src="`/img/home/community/${testimonial.jobIcon}.svg`"
+                    width="28"
+                    height="28"
+                    :class="{ 'light-img': testimonial.jobIconDark }"
+                  />
+                  <img
+                    v-if="testimonial.jobIconDark"
+                    :src="`/img/home/community/${testimonial.jobIconDark}.svg`"
+                    width="28"
+                    height="28"
+                    class="dark-img"
+                  />
                 </a>
               </div>
             </li>
@@ -72,17 +87,18 @@
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"
         :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
         alt="A landscape image"
       />
       <img
         loading="lazy"
         :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden"
+        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
         alt="A landscape image"
       />
     </template>
@@ -126,6 +142,17 @@ export default defineComponent({
       },
       {
         testimonial:
+          'Nuxt has been an incredible source of innovation and inspiration for developers and framework authors alike. It’s been amazing to see its growth in web projects of all sizes on the web.',
+        author: 'Guillermo Rauch',
+        authorIcon: 'guillermo',
+        authorUrl: 'https://twitter.com/rauchg',
+        job: 'CEO of Vercel',
+        jobIcon: 'vercel-light',
+        jobIconDark: 'vercel-dark',
+        jobUrl: 'https://vercel.com'
+      },
+      {
+        testimonial:
           'Nuxt has a unique approach of combining a great developer experience with reusable, fully integrated features that speed up the development and performance of your next website or application.',
         author: 'Dominik Angerer',
         authorIcon: 'dominik',
@@ -133,6 +160,16 @@ export default defineComponent({
         job: 'CEO of Storyblok',
         jobIcon: 'storyblok',
         jobUrl: 'https://www.storyblok.com'
+      },
+      {
+        testimonial:
+          'Nuxt is our primary choice for offering a seamless website development experience to our users. Its simplicity and progressive learning curve makes it our ideal choice for SliceMachine.',
+        author: 'Sadek Drobi',
+        authorIcon: 'sadek',
+        authorUrl: 'https://twitter.com/Sadache',
+        job: 'CEO of Prismic',
+        jobIcon: 'prismic',
+        jobUrl: 'https://prismic.io'
       }
     ]
 

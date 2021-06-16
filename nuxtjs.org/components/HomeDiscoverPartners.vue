@@ -1,28 +1,29 @@
 <template>
-  <HomeSection class="pt-20 dark:bg-secondary-dark">
+  <HomeSection class="pt-20">
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <ALabel tag="span" class="text-terciary font-bold text-lg"
-            >Discover</ALabel
-          >
+          <CategoryLabel label="Discover" />
         </template>
+
         <template #title>
-          <SectionTitle class="font-serif text-center" size="sm"
-            >Art in the making</SectionTitle
+          <SectionTitle class="text-center"
+            >Art in the <span class="text-primary-green italic">Making</span></SectionTitle
           >
         </template>
+
         <template #paragraph>
-          <SectionDescription class="pb-16 text-center" size="md"
-            >Be part of the Nuxt.js community and help us Nuxtify the
-            world.</SectionDescription
+          <SectionDescription class="text-center"
+            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
           >
         </template>
+
         <template #banner>
           <MPartnersBanner class="pb-0" :partners-logo="partners" />
         </template>
       </SectionContent>
     </template>
+
     <template #footer-illustration>
       <img
         loading="lazy"
