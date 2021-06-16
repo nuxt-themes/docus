@@ -158,7 +158,7 @@ export default {
 }
 
 .DocSearch-Modal {
-  @apply h-auto rounded-xl overflow-hidden !important;
+  @apply rounded-xl overflow-hidden h-auto !important;
   .DocSearch-SearchBar {
     @apply bg-gray-50 dark:bg-secondary-darkest p-2;
   }
@@ -169,7 +169,7 @@ export default {
 }
 
 .DocSearch-Button {
-  @apply w-full h-12 relative ml-0 rounded-lg flex items-center justify-center bg-transparent border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 transition-colors ring-0 px-3 !important;
+  @apply h-12 ml-auto relative rounded-lg flex items-center justify-center bg-transparent border-0 text-gray-500 dark:text-gray-600 hover:text-gray-600 transition-colors ring-0 px-3 !important;
 }
 
 .DocSearch-Button-Placeholder {
