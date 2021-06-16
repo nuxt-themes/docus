@@ -1,6 +1,6 @@
 <template>
-  <h2>
-    <span class="italic capitalize text-primary-green text-display-4">{{ slug }}</span> {{ title }}
+  <h2 class="text-display-4 font-serif">
+    <span class="italic capitalize text-primary-green">{{ slug }}</span> {{ title }}
   </h2>
 </template>
 
