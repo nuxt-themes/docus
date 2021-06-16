@@ -33,7 +33,7 @@
         >
         <Badge v-if="page.badge" class="font-medium">{{ page.badge }}</Badge>
       </div>
-      <p v-if="page.description" class="mt-4 text-lg font-medium docus-muted-text">
+      <p v-if="page.description" class="mt-4 text-lg font-medium d-secondary-text">
         {{ page.description }}
       </p>
       <hr

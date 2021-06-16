@@ -5,7 +5,7 @@
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="`${counter}${label}`"
-        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-semibold tracking-tight"
+        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-medium tracking-tight"
         :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
         @click="updateTabs(i)"
       >

@@ -34,30 +34,32 @@ const defaultThemeSettings = {
     }
   },
   shortcuts: {
-    'body-bg': 'bg-white dark:bg-gray-900',
-    'docus-body-text-color': 'text-gray-900 dark:text-gray-50',
-    'docus-muted-text': 'text-gray-500 dark:text-gray-400',
-    'docus-muted-text-hover': 'hover:text-primary-500 dark:hover:text-primary-400',
+    'd-body-bg': 'bg-white dark:bg-gray-900',
+    'd-body-text-color': 'text-gray-900 dark:text-gray-50',
+    'd-secondary-text': 'text-gray-500 dark:text-gray-400',
+    'd-secondary-text-hover': 'text-primary-500 dark:text-primary-400',
+    'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
+    'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-gray-800',
     // Primary
-    'text-primary': 'text-primary-500 dark:text-primary-400',
-    'border-primary': 'border-primary-500 dark:border-primary-400',
-    'bg-primary': 'bg-primary-500 dark:bg-primary-400',
+    'd-text-primary': 'text-primary-500 dark:text-primary-400',
+    'd-border-primary': 'border-primary-500 dark:border-primary-400',
+    'd-bg-primary': 'bg-primary-500 dark:bg-primary-400',
     // Icons
-    'text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
-    'd-icon': 'text-icon focus:outline-none',
+    'd-text-icon': 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-400',
+    'd-icon': 'd-text-icon focus:outline-none',
     // Images utils
     'light-img': 'dark:hidden',
     'dark-img': 'light:hidden',
     // Container
-    'max-w-container': 'max-w-7xl',
-    'px-container': 'px-4 sm:px-6',
-    'd-container': 'max-w-container mx-auto',
-    'd-container-content': 'd-container px-container',
+    'd-max-w-container': 'max-w-7xl',
+    'd-px-container': 'px-4 sm:px-6',
+    'd-container': 'd-max-w-container mx-auto',
+    'd-container-content': 'd-container d-px-container',
     // Header
-    'blur-header': 'blur-12',
-    'bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
-    'border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
-    'd-header': 'sticky w-full top-0 z-50 bg-header border-header blur-header h-header'
+    'd-blur-header': 'blur-12',
+    'd-bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
+    'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
+    'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header'
   }
 }
 

@@ -15,7 +15,7 @@
       border-b border-gray-200 border-opacity-50
       xl:relative xl:border-0
       dark:border-gray-800
-      blur-header
+      d-blur-header
       bg-opacity-80
       dark:bg-gray-900 dark:bg-opacity-80
       xl:bg-transparent

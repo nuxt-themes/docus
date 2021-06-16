@@ -16,7 +16,7 @@
           :class="[
             $docus.isLinkActive(doc.to)
               ? 'text-primary-500 dark:text-primary-400'
-              : 'docus-muted-text docus-muted-text-hover'
+              : 'd-secondary-text hover:d-secondary-text-hover'
           ]"
         >
           <span
