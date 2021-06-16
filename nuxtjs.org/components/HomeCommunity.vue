@@ -27,7 +27,7 @@
         </template>
 
         <template #paragraph>
-          <SectionDescription class="text-center">Learn from experts about what they think of Nuxt.</SectionDescription>
+          <SectionDescription class="text-center">Learn from experts what they love about Nuxt.</SectionDescription>
         </template>
 
         <template #content>

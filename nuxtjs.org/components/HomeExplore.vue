@@ -23,8 +23,7 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            >Need to go <span class="text-primary-green italic">Forward</span>? So much to
-            <span class="text-primary-green italic">Explore</span>.</SectionTitle
+            >Need to go Forward? So much to <span class="text-primary-green italic">Explore</span>.</SectionTitle
           >
         </template>
 
@@ -90,19 +89,19 @@ export default defineComponent({
     const explores = [
       {
         title: 'Examples',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Get inspired by use-cases, from common tasks to advanced examples.'
       },
       {
         title: 'Integrations',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Qucikly integrate your current stack with Nuxt.'
       },
       {
         title: 'Modules',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Take advantage of our module ecosystem to stop reinventing the wheel.'
       },
       {
         title: 'Starters',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Start coding in minutes with the stack you choose.'
       }
     ]
 
