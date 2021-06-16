@@ -22,8 +22,8 @@
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span v-if="prev.category" class="mb-1 text-xs leading-tight text-gray-400">
-            {{ prev.category }}
+          <span class="mb-1 text-xs leading-tight text-gray-400">
+            {{ directory(prev.to) }}
           </span>
           <span class="flex items-center w-full leading-tight">
             <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2 text-primary" />
@@ -56,8 +56,8 @@
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span v-if="next.category" class="mb-1 text-xs leading-tight text-gray-400">
-            {{ next.category }}
+          <span class="mb-1 text-xs leading-tight text-gray-400">
+            {{ directory(next.to) }}
           </span>
           <span class="flex items-center w-full leading-tight">
             <span class="truncate text-primary">{{ next.title }}</span>
@@ -71,6 +71,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { upperFirst } from 'scule'
 
 export default defineComponent({
   props: {
@@ -81,6 +82,13 @@ export default defineComponent({
     next: {
       type: Object,
       default: null
+    }
+  },
+  methods: {
+    directory(link) {
+      const dirs = link.split('/')
+      const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
+      return directory.split('-').map(upperFirst).join(' ')
     }
   }
 })

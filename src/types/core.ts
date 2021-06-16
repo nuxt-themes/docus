@@ -77,6 +77,9 @@ export interface DocusDocument {
     title: string
     slot: string
     nested: boolean
+    // url of nearest exclusive parent
+    // parent uses to filter pages to find currect previous and next page
+    parent: string
     [key: string]: any
   }
   // Template

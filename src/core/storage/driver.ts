@@ -87,6 +87,20 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     const parents = await getItemParents(key)
     document.layout = defu(document.layout, ...parents.map(p => p.layout))
 
+    /**
+     * Find nearest exclusive parent
+     * This document will inherit features from his parents
+     * Also parent will be used to group up children in bottom navigation (prev/next page)
+     */
+    if (document.navigation !== false) {
+      const exclusiveParent = parents.find(p => p.navigation?.exclusive)
+      if (exclusiveParent) {
+        document.navigation = document.navigation || {}
+        // Store nearest parent path
+        document.navigation.parent = exclusiveParent.path
+      }
+    }
+
     // call beforeInsert Hook
     await callHook('docus:storage:beforeInsert', document)
 
