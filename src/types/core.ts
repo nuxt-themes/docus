@@ -73,15 +73,10 @@ export interface DocusDocument {
   position: string
   draft: boolean
   // Navigation
-  navigation: {
-    title: string
-    slot: string
-    nested: boolean
-    // url of nearest exclusive parent
-    // parent uses to filter pages to find currect previous and next page
-    parent: string
-    [key: string]: any
-  }
+  navigation: NavItemNavigationConfig | false
+  // url of nearest exclusive parent
+  // parent uses to filter pages to find currect previous and next page
+  parent: string
   // Template
   template: {
     self: string
@@ -106,14 +101,30 @@ export interface DocusDocument {
   descriptionNode?: any
 
   // Generated
+  /**
+   * If set to `false` the document will not render as a standalone page an can only accessible with `InjectContent` of `$docus` search API
+   */
+  page: boolean
+  /**
+   * The unique key of document (file path)
+   */
   key: string
+  /**
+   * Path of document in the storage.
+   */
   path: string
-  slug: string
+  /**
+   * Generated url of document. This url will be used to create anchor links of document.
+   */
   to: string
+  /**
+   * File extension
+   */
+  extension: string
+  slug: string
   toc: false | Toc
   language: string
   body: DocusRootNode
-  extension: string
   dir: string
   createdAt: Date
   updatedAt: Date

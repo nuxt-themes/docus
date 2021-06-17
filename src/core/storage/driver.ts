@@ -47,9 +47,9 @@ function sortItemKeys(keys: string[]) {
 }
 
 export const docusDriver = defineDriver((options: DriverOptions) => {
-  // force ignore node_modules and .git and files with `_` prefix
+  // force ignore node_modules and .git and files with `.` prefix
   if (options.ignore) {
-    options.ignore.push('**/node_modules/**', '**/.git/**', join(options.base, '**/_**/**'))
+    options.ignore.push('**/node_modules/**', '**/.git/**', join(options.base, '**/.**/**'))
   }
 
   const { insert, items } = useDB()
@@ -93,7 +93,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
      * Also parent will be used to group up children in bottom navigation (prev/next page)
      */
     if (document.navigation !== false) {
-      const exclusiveParent = parents.find(p => p.navigation?.exclusive)
+      const exclusiveParent = parents.find(p => p.navigation && p.navigation.exclusive)
       if (exclusiveParent) {
         document.navigation = document.navigation || {}
         // Store nearest parent path
