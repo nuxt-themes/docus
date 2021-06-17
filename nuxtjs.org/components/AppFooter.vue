@@ -100,11 +100,11 @@ export default defineComponent({
         title: 'Support',
         subLinks: [
           {
-            title: 'Sponsoring and donations',
+            title: 'Sustainability',
             to: '/sponsoring'
           },
           {
-            title: 'Training and consultancy',
+            title: 'Training',
             to: '/support'
           }
         ]
