@@ -63,5 +63,16 @@ export default <Module>function docusI18n() {
     })
 
     requireModule('nuxt-i18n')
+
+    /**
+     * Temporary fix
+     * This should be done by nuxt-i18n
+     */
+    this.extendRoutes(routes => {
+      // move start route to the end
+      const index = routes.findIndex(route => route.path === '/*')
+      const [all] = routes.splice(index, 1)
+      routes.push(all)
+    })
   })
 }
