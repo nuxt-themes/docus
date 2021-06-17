@@ -6,7 +6,7 @@
         :key="`${partner.alt}-${index}`"
         class="flex items-center p-8 mx-12 partners__slide md:p-4"
       >
-        <Component :is="partner.component" />
+        <Component :is="partner.component" class="flex w-full" />
       </li>
     </ul>
   </div>
