@@ -25,7 +25,11 @@
               />
             </div>
           </div>
-          <MFooterLanguage class="mt-12 xl:mt-0" />
+          <div class="mt-12 xl:mt-0">
+            <h3 class="text-lg font-semibold light:text-gray-400 dark:text-cloud-light">Settings</h3>
+            <MFooterLocaleSelector class="mt-4 sm:max-w-xs" />
+            <MFooterColorModeSelector class="mt-4 sm:max-w-xs" />
+          </div>
         </div>
         <MFooterNewsLetter
           class="
