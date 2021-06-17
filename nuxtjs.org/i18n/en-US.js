@@ -3,8 +3,7 @@ export default {
     an_error_occurred: 'An error occurred',
     page_not_found: 'Page not found',
     please_define_title: 'Please define a title in the front matter',
-    please_define_description:
-      'Please define a description in the front matter',
+    please_define_description: 'Please define a description in the front matter',
     search: 'Search ("/" to focus)',
     version: 'Version'
   },
@@ -106,8 +105,7 @@ export default {
     },
     newsletter: {
       title: '{nuxt} Newsletter',
-      description:
-        'Get the latest Nuxt news to your inbox, curated by the NuxtJS team.',
+      description: 'Get the latest Nuxt news to your inbox, curated by the NuxtJS team.',
       form: {
         email: 'Email',
         subscribing: 'Subscribing...',
@@ -122,14 +120,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Design',
-      description:
-        'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
+      description: 'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
     },
     title: '{nuxt} Design',
     description:
       'NuxtJS is an MIT licensed open source project and completely free to use. {break} You can freely use our logos as long as you mention NuxtJS and link to nuxtjs.org.',
-    other_download_message:
-      'You can also download our {favicon} or our {sketch} file.'
+    other_download_message: 'You can also download our {favicon} or our {sketch} file.'
   },
   resources: {
     meta: {
@@ -170,8 +166,7 @@ export default {
   team: {
     meta: {
       title: 'NuxtJS Team',
-      description:
-        'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
+      description: 'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
     },
     title: '{nuxt} Team',
     description:
@@ -195,8 +190,7 @@ export default {
         'With the video courses below created by our partner VueSchool you can discover and learn more about the Nuxt.js Framework.'
     },
     title: '{nuxt} Video Courses',
-    description:
-      'With the video courses below you can discover and learn more about the Nuxt Framework.',
+    description: 'With the video courses below you can discover and learn more about the Nuxt Framework.',
     cta: {
       discover: 'Discover Mastering Nuxt',
       start: 'START COURSE'
@@ -225,8 +219,7 @@ export default {
   support: {
     meta: {
       title: 'The NuxtJS Support',
-      description:
-        'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
+      description: 'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
     },
     title: 'Consulting {nuxt} Support',
     description:
@@ -256,12 +249,10 @@ export default {
   blog: {
     meta: {
       title: 'NuxtJS Blog',
-      description:
-        'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
+      description: 'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
     },
     title: '{nuxt} Blog',
-    description:
-      'Discover articles from the {nuxtTeam} and {nuxtCommunity} about NuxtJS, tips and tricks included!',
+    description: 'Discover articles from the {nuxtTeam} and {nuxtCommunity} about NuxtJS, tips and tricks included!',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Nuxt.js Community',
     contribute: 'Caught a mistake or want to contribute to this blog post?'

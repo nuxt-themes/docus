@@ -3,8 +3,7 @@ export default {
     an_error_occurred: 'Bir hata oluştu',
     page_not_found: 'sayfası bulunamadı',
     please_define_title: 'Please define a title in the front matter',
-    please_define_description:
-      'Please define a description in the front matter',
+    please_define_description: 'Please define a description in the front matter',
     search: 'Ara (tıkla ya da "/")',
     version: 'Sürüm'
   },
@@ -59,8 +58,7 @@ export default {
       openSource: 'açık kaynak',
       get_started: 'başlarken',
       get_updates: 'Her ay gelen kutunuza NuxtJS güncellemelerini alın',
-      video:
-        "Video {company} tarafından hazırlanmıştır, ücretsiz {cheatSheet}'nu indirin.",
+      video: "Video {company} tarafından hazırlanmıştır, ücretsiz {cheatSheet}'nu indirin.",
       cheatSheet: 'Nuxt Kullanım Kılavuzu'
     },
     why: {
@@ -123,14 +121,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Tasarım',
-      description:
-        'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
+      description: 'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
     },
     title: '{nuxt} Tasarım',
     description:
       "NuxtJS, MIT lisansı açık kaynak bir projedir ve kullanması tamamen ücretsizdir. Burada gördüğünüz logolarımızı NuxtJS'yi ve nuxtjs.org'u belirttiğiniz takdirde istediğiniz gibi kullanabilirsiniz.",
-    other_download_message:
-      "Aynı zamanda isterseniz {favicon}'umuzu veya {sketch} dosyamızı indirebilirsiniz."
+    other_download_message: "Aynı zamanda isterseniz {favicon}'umuzu veya {sketch} dosyamızı indirebilirsiniz."
   },
   resources: {
     meta: {
@@ -162,8 +158,7 @@ export default {
   team: {
     meta: {
       title: 'NuxtJS Ekip',
-      description:
-        'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
+      description: 'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
     },
     title: '{nuxt} Ekip',
     description:
@@ -217,16 +212,14 @@ export default {
   support: {
     meta: {
       title: 'NuxtJS Destek',
-      description:
-        'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
+      description: 'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
     },
     title: 'Danışmanlık {nuxt} Destek',
     description:
       '{team}, NuxtJS uygulamalarınız için resmi bir danışmanlık desteği sunuyor. İhtiyacınıza göre teknik destekten, özel geliştirme aşamalarına kadar farklı servisler sağlıyoruz. Bir iş günü içerisinde cevap veriyor ve bu servisi beğenmemeniz durumunda bir NDA imzalayabilir ve paranızın tamamını size geri iletebiliriz.',
     technical: {
       title: 'Teknik destek',
-      description:
-        'NuxtJS ekibinden proje denetimleri, özel geliştirme işlemleri ve teknik destek alın.',
+      description: 'NuxtJS ekibinden proje denetimleri, özel geliştirme işlemleri ve teknik destek alın.',
       start: 'Konuşmayı başlat',
       partner: {
         pre: 'Sizlere daha hızlı hizmet verebilmek için',
@@ -248,16 +241,13 @@ export default {
   blog: {
     meta: {
       title: 'NuxtJS Blog',
-      description:
-        'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
+      description: 'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
     },
     title: '{nuxt} Blog',
-    description:
-      '{nuxtTeam} ve {nuxtCommunity} tarafından hazırlanan NuxtJS gönderilerini ve ipuçlarını keşfedin!',
+    description: '{nuxtTeam} ve {nuxtCommunity} tarafından hazırlanan NuxtJS gönderilerini ve ipuçlarını keşfedin!',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Nuxt.js Community',
-    contribute:
-      'Hata yakaladınız veya bu gönderiye katkıda bulunmak mı istiyorsunuz?'
+    contribute: 'Hata yakaladınız veya bu gönderiye katkıda bulunmak mı istiyorsunuz?'
   },
   guide: {
     release_notes: 'Sürüm Notları',
@@ -342,8 +332,7 @@ export default {
     }
   },
   cookies: {
-    consent:
-      'Kullanıcı analizleri ve sayfa içerisi geliştirmeler yapmak için çerezleri kullanıyoruz.',
+    consent: 'Kullanıcı analizleri ve sayfa içerisi geliştirmeler yapmak için çerezleri kullanıyoruz.',
     linkLabel: 'Çerezler hakkında bilgi',
     button: 'Tamam'
   }

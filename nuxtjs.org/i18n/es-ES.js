@@ -57,8 +57,7 @@ export default {
         'Construye tu siguiente aplicación de Vue.js con confianza usando NuxtJS. Un framework de {openSource} que trabaja para conseguir que el desarrollo web sea simple y poderoso.',
       openSource: 'código abierto',
       get_started: 'comenzar',
-      get_updates:
-        'Obtenga actualizaciones de NuxtJS cada mes en su bandeja de entrada',
+      get_updates: 'Obtenga actualizaciones de NuxtJS cada mes en su bandeja de entrada',
       video: 'Video produced by {company}, download their free {cheatSheet}.',
       cheatSheet: 'Nuxt Cheat Sheet.'
     },
@@ -122,14 +121,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Design',
-      description:
-        'Descargue los recursos de diseño de NuxtJS (SVG, iconos, emoji y favicon)'
+      description: 'Descargue los recursos de diseño de NuxtJS (SVG, iconos, emoji y favicon)'
     },
     title: '{nuxt} Design',
     description:
       'Nuxt JS es un proyecto de código abierto con licencia del MIT y de uso completamente gratuito. {break} Puede usar libremente nuestros logotipos siempre que mencione Nuxt JS y enlace a nuxtjs.org.',
-    other_download_message:
-      'También puede descargar nuestro {favicon} o nuestro archivo {sketch}.'
+    other_download_message: 'También puede descargar nuestro {favicon} o nuestro archivo {sketch}.'
   },
   resources: {
     meta: {
@@ -255,8 +252,7 @@ export default {
       'Descubra artículos de {nuxtTeam} y {nuxtCommunity} sobre NuxtJS, ¡con sugerencias y trucos incluidos!',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Comunidad Nuxt.js',
-    contribute:
-      '¿Te has equivocado o quieres contribuir a esta publicación de blog?'
+    contribute: '¿Te has equivocado o quieres contribuir a esta publicación de blog?'
   },
   guide: {
     release_notes: 'Notas de publicación (en)',

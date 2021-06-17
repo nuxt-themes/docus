@@ -125,18 +125,15 @@ export default {
     title: '{nuxt} 设计',
     description:
       'NuxtJS 是 MIT 许可的开源项目，完全免费使用。 {break}只要提及 NuxtJS 并链接到 nuxtjs.org，您就可以自由使用我们的徽标。',
-    other_download_message:
-      '您也可以下载我们的 {favicon} 或我们的 {sketch} 文件。'
+    other_download_message: '您也可以下载我们的 {favicon} 或我们的 {sketch} 文件。'
   },
   resources: {
     meta: {
       title: 'NuxtJS 资源',
-      description:
-        '发现我们合作伙伴提供的资源面板。通过使用那些会员资源链接，您正在帮助我们维护和开发开放源代码框架。'
+      description: '发现我们合作伙伴提供的资源面板。通过使用那些会员资源链接，您正在帮助我们维护和开发开放源代码框架。'
     },
     title: '{nuxt} 资源',
-    description:
-      '发现我们合作伙伴提供的资源面板。通过使用那些会员资源链接，您正在帮助我们维护和开发开放源代码框架。',
+    description: '发现我们合作伙伴提供的资源面板。通过使用那些会员资源链接，您正在帮助我们维护和开发开放源代码框架。',
     themes: {
       title: '主题'
     },
@@ -147,19 +144,16 @@ export default {
   shop: {
     meta: {
       title: 'NuxtJS 商店 ',
-      description:
-        '您想支持 NuxtJS 项目，并向社区的其他成员表达您的爱吗？在这里，我们的产品有史以来最好的质量！'
+      description: '您想支持 NuxtJS 项目，并向社区的其他成员表达您的爱吗？在这里，我们的产品有史以来最好的质量！'
     },
     title: '{nuxt} 商店',
-    description:
-      '您想支持 NuxtJS 项目并将您的爱表达给社区的其他人吗？{break}这里是我们有史以来最优质的产品！',
+    description: '您想支持 NuxtJS 项目并将您的爱表达给社区的其他人吗？{break}这里是我们有史以来最优质的产品！',
     button: '马上到来'
   },
   team: {
     meta: {
       title: 'NuxtJS 团队',
-      description:
-        'NuxtJS 拥有一支非常活跃和敬业的团队，并不断努力推动 Nuxt 前进。'
+      description: 'NuxtJS 拥有一支非常活跃和敬业的团队，并不断努力推动 Nuxt 前进。'
     },
     title: '{nuxt} 团队',
     description:
@@ -179,12 +173,10 @@ export default {
   'video-courses': {
     meta: {
       title: 'NuxtJS 视频课程',
-      description:
-        '通过我们的合作伙伴 Vue School 创建的以下视频课程，您可以发现并了解有关 Nuxt.js 框架的更多信息。'
+      description: '通过我们的合作伙伴 Vue School 创建的以下视频课程，您可以发现并了解有关 Nuxt.js 框架的更多信息。'
     },
     title: '{nuxt} 视频课程',
-    description:
-      '通过我们的合作伙伴 VueSchool 创建的以下视频课程，您可以发现并了解有关 Nuxt.js 框架的更多信息。',
+    description: '通过我们的合作伙伴 VueSchool 创建的以下视频课程，您可以发现并了解有关 Nuxt.js 框架的更多信息。',
     cta: {
       discover: '探索 vueschool',
       start: '开始课程'
@@ -193,8 +185,7 @@ export default {
   sponsor: {
     meta: {
       title: '赞助 NuxtJS 开发',
-      description:
-        '您可以通过不同的方法支持 NuxtJS 开发，并确保对框架进行定期更新。'
+      description: '您可以通过不同的方法支持 NuxtJS 开发，并确保对框架进行定期更新。'
     },
     title: '赞助 {nuxt} 开发',
     description:
@@ -213,16 +204,14 @@ export default {
   support: {
     meta: {
       title: 'NuxtJS 支持',
-      description:
-        '我们的 NuxtJS 团队现在为您的 NuxtJS 应用程序提供官方咨询服务。'
+      description: '我们的 NuxtJS 团队现在为您的 NuxtJS 应用程序提供官方咨询服务。'
     },
     title: '咨询 {nuxt} 支持',
     description:
       '我们的 {team} 现在为您的NuxtJS应用程序提供官方咨询服务。{break}我们根据您的需求提供不同的服务，从技术支持到定制开发。希望在一个工作日内得到答复，我们可以签署自定义NDA，如果您对我们的服务不满意，则可以全额退款。',
     technical: {
       title: '技术支持',
-      description:
-        '从 NuxtJS 团队获得项目审核，应用程序部署，自定义开发和技术支持。',
+      description: '从 NuxtJS 团队获得项目审核，应用程序部署，自定义开发和技术支持。',
       start: '开始聊天',
       partner: {
         pre: '我们与',
@@ -244,12 +233,10 @@ export default {
   blog: {
     meta: {
       title: 'NuxtJS 博客',
-      description:
-        '发现来自 NuxtJS 团队和 NuxtJS 社区的有关 NuxtJS 的文章，包括技巧和窍门！'
+      description: '发现来自 NuxtJS 团队和 NuxtJS 社区的有关 NuxtJS 的文章，包括技巧和窍门！'
     },
     title: '{nuxt} 博客',
-    description:
-      '从 {nuxtTeam} 和 {nuxtCommunity} 中找到有关 NuxtJS 的文章，包括技巧和窍门！',
+    description: '从 {nuxtTeam} 和 {nuxtCommunity} 中找到有关 NuxtJS 的文章，包括技巧和窍门！',
     nuxt_team: 'NuxtJS 团队',
     nuxt_community: 'Nuxt.js 社区',
     contribute: '遇到错误或想要为该博客文章做出贡献？'

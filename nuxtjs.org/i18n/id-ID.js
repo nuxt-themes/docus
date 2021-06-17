@@ -57,10 +57,8 @@ export default {
         'Bangun aplikasi Vue.js Anda berikutnya dengan percaya diri menggunakan NuxtJS. Kerangka kerja {openSource} yang membuat pengembangan web menjadi sederhana dan efektif.',
       openSource: 'sumber terbuka',
       get_started: 'memulai',
-      get_updates:
-        'Dapatkan pembaruan NuxtJS ke kotak masuk surel Anda setiap bulannya',
-      video:
-        'Video diproduksi oleh {company}, unduh {cheatSheet} gratis dari mereka.',
+      get_updates: 'Dapatkan pembaruan NuxtJS ke kotak masuk surel Anda setiap bulannya',
+      video: 'Video diproduksi oleh {company}, unduh {cheatSheet} gratis dari mereka.',
       cheatSheet: 'cheatsheet Nuxt'
     },
     why: {
@@ -107,8 +105,7 @@ export default {
     },
     newsletter: {
       title: 'Buletin {nuxt}',
-      description:
-        'Dapatkan berita Nuxt terbaru ke kotak masuk surel Anda, dikurasi oleh tim NuxtJS.',
+      description: 'Dapatkan berita Nuxt terbaru ke kotak masuk surel Anda, dikurasi oleh tim NuxtJS.',
       form: {
         email: 'Alamat Surel',
         subscribing: 'Berlangganan...',
@@ -123,14 +120,12 @@ export default {
   design: {
     meta: {
       title: 'Desain NuxtJS',
-      description:
-        'Unduh sumber daya desain NuxtJS (SVG, ikon, emoji, dan favicon).'
+      description: 'Unduh sumber daya desain NuxtJS (SVG, ikon, emoji, dan favicon).'
     },
     title: 'Desain {nuxt}',
     description:
       'NuxtJS adalah proyek open source berlisensi MIT dan sepenuhnya gratis untuk digunakan. {break} Anda dapat dengan bebas menggunakan logo kami selama Anda menyebutkan NuxtJS dan mencantumkan tautan ke nuxtjs.org.',
-    other_download_message:
-      'Anda juga dapat mengunduh berkas {favicon} atau {sketch} kami.'
+    other_download_message: 'Anda juga dapat mengunduh berkas {favicon} atau {sketch} kami.'
   },
   resources: {
     meta: {
@@ -216,8 +211,7 @@ export default {
   support: {
     meta: {
       title: 'Dukungan NuxtJS',
-      description:
-        'Tim NuxtJS kami sekarang menawarkan layanan konsultasi resmi untuk aplikasi NuxtJS Anda.'
+      description: 'Tim NuxtJS kami sekarang menawarkan layanan konsultasi resmi untuk aplikasi NuxtJS Anda.'
     },
     title: 'Konsultasi {nuxt} Dukungan',
     description:
@@ -247,16 +241,13 @@ export default {
   blog: {
     meta: {
       title: 'Blog NuxtJS',
-      description:
-        'Temukan artikel dari tim inti NuxtJS dan kontributor NuxtJS tentang NuxtJS, termasuk tips dan trik!'
+      description: 'Temukan artikel dari tim inti NuxtJS dan kontributor NuxtJS tentang NuxtJS, termasuk tips dan trik!'
     },
     title: 'Blog {nuxt}',
-    description:
-      'Temukan artikel tentang NuxtJS dari {nuxtTeam} dan {nuxtCommunity} NuxtJS, termasuk tips dan trik!',
+    description: 'Temukan artikel tentang NuxtJS dari {nuxtTeam} dan {nuxtCommunity} NuxtJS, termasuk tips dan trik!',
     nuxt_team: 'Tim NuxtJS',
     nuxt_community: 'Komunitas Nuxt.js',
-    contribute:
-      'Menemukan kesalahan atau ingin berkontribusi pada pengeposan blog ini?'
+    contribute: 'Menemukan kesalahan atau ingin berkontribusi pada pengeposan blog ini?'
   },
   guide: {
     release_notes: 'Catatan Rilis',
@@ -341,8 +332,7 @@ export default {
     }
   },
   cookies: {
-    consent:
-      'Kami menggunakan Cookie untuk menganalisis pengguna dan melakukan peningkatan pada halaman!',
+    consent: 'Kami menggunakan Cookie untuk menganalisis pengguna dan melakukan peningkatan pada halaman!',
     linkLabel: 'Pelajari tentang cookie',
     button: 'Mengerti'
   }

@@ -57,10 +57,8 @@ export default {
         'Construisez votre prochaine application Vue.js en toute confiance avec NuxtJS. Un framework {openSource} rendant le développement web simple et puissant.',
       openSource: 'open source',
       get_started: 'Commencer',
-      get_updates:
-        'Recevez chaque mois les mises à jour de Nuxt dans votre boîte de réception',
-      video:
-        'Vidéo produite par {company}, téléchargez gratuitement {cheatSheet}.',
+      get_updates: 'Recevez chaque mois les mises à jour de Nuxt dans votre boîte de réception',
+      video: 'Vidéo produite par {company}, téléchargez gratuitement {cheatSheet}.',
       cheatSheet: 'Nuxt Cheat Sheet'
     },
     why: {
@@ -123,14 +121,12 @@ export default {
   design: {
     meta: {
       title: 'Conception NuxtJS',
-      description:
-        'Télécharger les ressources de conception NuxtJS (SVG, icônes, emoji et favicon).'
+      description: 'Télécharger les ressources de conception NuxtJS (SVG, icônes, emoji et favicon).'
     },
     title: '{nuxt} Conception',
     description:
       "NuxtJS est un projet open source sous licence MIT et totalement gratuit d'utilisation. {break} Vous pouvez utiliser librement nos logos tant que vous mentionnez NuxtJS ainsi qu'un lien vers nuxtjs.org.",
-    other_download_message:
-      'Vous pouvez également télécharger notre {favicon} ou notre fichier {sketch}.'
+    other_download_message: 'Vous pouvez également télécharger notre {favicon} ou notre fichier {sketch}.'
   },
   resources: {
     meta: {
@@ -168,8 +164,7 @@ export default {
   team: {
     meta: {
       title: "L'équipe NuxtJS",
-      description:
-        "NuxtJS a une équipe très active et engagée qui s'efforce constamment de faire avancer Nuxt."
+      description: "NuxtJS a une équipe très active et engagée qui s'efforce constamment de faire avancer Nuxt."
     },
     title: "L'équipe {nuxt}",
     description:
@@ -254,16 +249,13 @@ export default {
   blog: {
     meta: {
       title: 'Blog NuxtJS',
-      description:
-        "Découvrez les articles de l'équipe et de la communauté NuxtJS, conseils et astuces inclus!"
+      description: "Découvrez les articles de l'équipe et de la communauté NuxtJS, conseils et astuces inclus!"
     },
     title: 'Blog {nuxt}',
-    description:
-      'Découvrez les articles de {nuxtTeam} et {nuxtCommunity} à propos de NuxtJS ainsi que des astuces !',
+    description: 'Découvrez les articles de {nuxtTeam} et {nuxtCommunity} à propos de NuxtJS ainsi que des astuces !',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Nuxt.js Community',
-    contribute:
-      'Vous avez commis une erreur ou souhaitez contribuer à cet article de blog ?'
+    contribute: 'Vous avez commis une erreur ou souhaitez contribuer à cet article de blog ?'
   },
   guide: {
     release_notes: 'Notes de versions (en)',
@@ -360,8 +352,7 @@ export default {
     }
   },
   cookies: {
-    consent:
-      "Nous utilisons des cookies pour l'analyse des utilisateurs et les améliorations sur la page !",
+    consent: "Nous utilisons des cookies pour l'analyse des utilisateurs et les améliorations sur la page !",
     linkLabel: 'En savoir plus sur les cookies',
     button: 'Accepter'
   }

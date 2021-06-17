@@ -3,8 +3,7 @@ export default {
     an_error_occurred: 'エラーが発生しました',
     page_not_found: 'ページが見つかりません',
     please_define_title: 'Frontmatter 内の title を定義してください',
-    please_define_description:
-      'Frontmatter 内の description を定義してください',
+    please_define_description: 'Frontmatter 内の description を定義してください',
     search: '検索 ("/" でフォーカス)',
     version: 'バージョン'
   },
@@ -58,8 +57,7 @@ export default {
       openSource: 'オープンソース',
       get_started: 'はじめる',
       get_updates: '毎月 NuxtJS の更新を受信します',
-      video:
-        '動画は {company} による提供で、彼らの {cheatSheet} は無料でダウンロードできます。',
+      video: '動画は {company} による提供で、彼らの {cheatSheet} は無料でダウンロードできます。',
       cheatSheet: 'Nuxt チートシート.'
     },
     why: {
@@ -106,8 +104,7 @@ export default {
     },
     newsletter: {
       title: '{nuxt} ニュースレター',
-      description:
-        'コアチームとコントリビューターがキュレーションした最新の Nuxt のニュースをメールで受信できます。',
+      description: 'コアチームとコントリビューターがキュレーションした最新の Nuxt のニュースをメールで受信できます。',
       form: {
         email: 'メールアドレス',
         subscribing: '送信中...',
@@ -122,14 +119,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS のデザイン',
-      description:
-        'NuxtJS のデザインリソース（SVG、icons、emoji や favicon）をダウンロードする'
+      description: 'NuxtJS のデザインリソース（SVG、icons、emoji や favicon）をダウンロードする'
     },
     title: '{nuxt} のデザイン',
     description:
       'NuxtJS は MIT ライセンスのオープンソースプロジェクトであり、完全に無料で使えます。{break} NuxtJS に言及し、nuxtjs.org にリンクしている限り、ロゴを自由に使えます。',
-    other_download_message:
-      'また、{favicon} や {sketch} ファイルもダウンロードできます。'
+    other_download_message: 'また、{favicon} や {sketch} ファイルもダウンロードできます。'
   },
   resources: {
     meta: {
@@ -161,8 +156,7 @@ export default {
   team: {
     meta: {
       title: 'NuxtJS チーム',
-      description:
-        'NuxtJS には非常に活発で熱心なチームがあり、Nuxt を前進させるために絶えず努力しています。'
+      description: 'NuxtJS には非常に活発で熱心なチームがあり、Nuxt を前進させるために絶えず努力しています。'
     },
     title: '{nuxt} チーム',
     description:
@@ -196,8 +190,7 @@ export default {
   sponsor: {
     meta: {
       title: 'NuxtJS の開発スポンサー',
-      description:
-        'さまざまな方法で NuxtJS の開発をサポートし、フレームワークを定期的に更新することができます。'
+      description: 'さまざまな方法で NuxtJS の開発をサポートし、フレームワークを定期的に更新することができます。'
     },
     title: '{nuxt} 開発スポンサー',
     description:
@@ -216,8 +209,7 @@ export default {
   support: {
     meta: {
       title: 'NuxtJS サポート',
-      description:
-        'NuxtJS チームは、NuxtJS アプリケーションの公式コンサルティングサービスを提供しています。'
+      description: 'NuxtJS チームは、NuxtJS アプリケーションの公式コンサルティングサービスを提供しています。'
     },
     title: '{nuxt} サポートのコンサルティング',
     description:
@@ -247,12 +239,10 @@ export default {
   blog: {
     meta: {
       title: 'NuxtJS ブログ',
-      description:
-        'NuxtJS チームと NuxtJS コミュニティの NuxtJS に関する記事、ヒントとコツが含まれています！'
+      description: 'NuxtJS チームと NuxtJS コミュニティの NuxtJS に関する記事、ヒントとコツが含まれています！'
     },
     title: '{nuxt} ブログ',
-    description:
-      'NuxtJS について {nuxtTeam} と {nuxtCommunity} のヒントとコツが含まれています！',
+    description: 'NuxtJS について {nuxtTeam} と {nuxtCommunity} のヒントとコツが含まれています！',
     nuxt_team: 'NuxtJS チーム',
     nuxt_community: 'Nuxt.js コミュニティ',
     contribute: '間違いを見つけた、またはこのブログ投稿に貢献したいですか？'

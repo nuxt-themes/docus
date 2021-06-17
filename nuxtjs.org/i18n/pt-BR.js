@@ -3,8 +3,7 @@ export default {
     an_error_occurred: 'Ocorreu um erro',
     page_not_found: 'Página não encontrada',
     please_define_title: 'Defina um título no front matter, por favor',
-    please_define_description:
-      'Defina uma descrição no front matter, por favor',
+    please_define_description: 'Defina uma descrição no front matter, por favor',
     search: 'Buscar ("/" para focar)',
     version: 'Versão'
   },
@@ -122,14 +121,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Design',
-      description:
-        'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
+      description: 'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
     },
     title: '{nuxt} Design',
     description:
       'NuxtJS é um projeto de código aberto de licença MIT e de uso totalmente gratuito. {break} Você pode utilizar nossos logotipos livremente, desde que mencione NuxtJS e faça um link para nuxtjs.org.',
-    other_download_message:
-      'Você também baixar nosso {favicon} ou nosso arquivo {sketch}.'
+    other_download_message: 'Você também baixar nosso {favicon} ou nosso arquivo {sketch}.'
   },
   resources: {
     meta: {
@@ -161,8 +158,7 @@ export default {
   team: {
     meta: {
       title: 'NuxtJS Time',
-      description:
-        'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
+      description: 'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
     },
     title: '{nuxt} Time',
     description:
@@ -216,8 +212,7 @@ export default {
   support: {
     meta: {
       title: 'NuxtJS Suporte',
-      description:
-        'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
+      description: 'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
     },
     title: 'Assessoria {nuxt} Suporte',
     description:
@@ -247,12 +242,10 @@ export default {
   blog: {
     meta: {
       title: 'Blog do NuxtJS',
-      description:
-        'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
+      description: 'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
     },
     title: 'Blog do {nuxt}',
-    description:
-      'Descubra artigos da {nuxtTeam} e {nuxtCommunity} sobre NuxtJS, incluindo dicas e truques!',
+    description: 'Descubra artigos da {nuxtTeam} e {nuxtCommunity} sobre NuxtJS, incluindo dicas e truques!',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Nuxt.js Community',
     contribute: 'Encontrou um erro ou deseja contribuir para esta postagem?'

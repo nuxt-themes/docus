@@ -58,8 +58,7 @@ export default {
       openSource: 'متن‌باز',
       get_started: 'شروع کنید',
       get_updates: 'اخبار NuxtJS را هر ماه در ایمیل خود دریافت کنید',
-      video:
-        'ویدیو ساخته شده توسط {company}، {cheatSheet} را به صورت رایگان دریافت کنید',
+      video: 'ویدیو ساخته شده توسط {company}، {cheatSheet} را به صورت رایگان دریافت کنید',
       cheatSheet: 'کتابچه NuxtJS'
     },
     why: {
@@ -105,8 +104,7 @@ export default {
     },
     newsletter: {
       title: 'خبرنامه {nuxt}',
-      description:
-        'آخرین اخبار NuxtJS را که توسط تیم NuxtJS تهیه می‌شوند را در ایمیل خود دریافت کنید.',
+      description: 'آخرین اخبار NuxtJS را که توسط تیم NuxtJS تهیه می‌شوند را در ایمیل خود دریافت کنید.',
       form: {
         email: 'ایمیل',
         subscribing: 'در حال ثبت...',
@@ -121,14 +119,12 @@ export default {
   design: {
     meta: {
       title: 'طراحی NuxtJS',
-      description:
-        'محتوای طراحی NuxtJS (SVG, icons, emoji و favicon) را دریافت کنید.'
+      description: 'محتوای طراحی NuxtJS (SVG, icons, emoji و favicon) را دریافت کنید.'
     },
     title: 'طراحی {nuxt}',
     description:
       'NuxtJS یک پروژه متن‌باز بر اساس لایسنس MIT و کاملا رایگان است. {break} شما می‌توانید از لوگو های ما در صورتی که به NuxtJS و آدرس nuxtjs.org اشاره کنید استفاده کنید.',
-    other_download_message:
-      'شما می‌توانید فایل {favicon} و {sketch} ما را نیر دریافت کنید.'
+    other_download_message: 'شما می‌توانید فایل {favicon} و {sketch} ما را نیر دریافت کنید.'
   },
   resources: {
     meta: {
@@ -160,8 +156,7 @@ export default {
   team: {
     meta: {
       title: 'تیم NuxtJS',
-      description:
-        'NuxtJS تیمی بسیار فعال و کوشا دارد که همیشه سعی در پیشبرد این پروژه دارند.'
+      description: 'NuxtJS تیمی بسیار فعال و کوشا دارد که همیشه سعی در پیشبرد این پروژه دارند.'
     },
     title: 'تیم {nuxt}',
     description:
@@ -215,16 +210,14 @@ export default {
   support: {
     meta: {
       title: 'پشتیبانی NuxtJS',
-      description:
-        'تیم ما اکنون به صورت رسمی خدمات مشاوره برای پروژه NuxtJS بعدی شما ارائه می‌دهد.'
+      description: 'تیم ما اکنون به صورت رسمی خدمات مشاوره برای پروژه NuxtJS بعدی شما ارائه می‌دهد.'
     },
     title: 'تیم مشاوره {nuxt}',
     description:
       '{team} اکنون به صورت رسمی خدمات مشاوره برای پروژه NuxtJS بعدی شما ارائه می‌دهد.{break}ما خدمات متنوعی مانند پشتیبانی فنی یا طراحی سفارشی ارائه می‌دهیم. معمولا در یک روز کاری پاسخ می‌دهیم. میتوانیم قرارداد حفاظت اطلاعات (NDA) را امضا کنیم و در صورتی که راضی نبودید می‌‌توانید تمام پول خود را پس بگیرید.',
     technical: {
       title: 'پشتیبانی فنی',
-      description:
-        'از تیم ما خدمات بررسی پروژه، پیاده‌سازی پروژه، طراحی سفارشی و پشتیبانی فنی دریافت کنید.',
+      description: 'از تیم ما خدمات بررسی پروژه، پیاده‌سازی پروژه، طراحی سفارشی و پشتیبانی فنی دریافت کنید.',
       start: 'شروع چت',
       partner: {
         pre: 'ما با همکاری',
@@ -246,12 +239,10 @@ export default {
   blog: {
     meta: {
       title: 'وبلاگ NuxtJS',
-      description:
-        'مقالاتی از {nuxtTeam} و {nuxtCommunity} در مورد NuxtJS بیابید! به همراه نکات جالب!'
+      description: 'مقالاتی از {nuxtTeam} و {nuxtCommunity} در مورد NuxtJS بیابید! به همراه نکات جالب!'
     },
     title: 'وبلاگ {nuxt}',
-    description:
-      'مقالاتی از {nuxtTeam} و {nuxtCommunity} در مورد NuxtJS بیابید! به همراه نکات جالب!',
+    description: 'مقالاتی از {nuxtTeam} و {nuxtCommunity} در مورد NuxtJS بیابید! به همراه نکات جالب!',
     nuxt_team: 'تیم NuxtJS',
     nuxt_community: 'مجمع NuxtJS',
     contribute: 'مشکلی میبینید یا میخواهید در این پست مشارکت کنید؟'
@@ -339,8 +330,7 @@ export default {
     }
   },
   cookies: {
-    consent:
-      'ما از کوکی‌ها برای آمارگیری و ایجاد تجربه‌کاربری بهتر استفاده می کنیم.',
+    consent: 'ما از کوکی‌ها برای آمارگیری و ایجاد تجربه‌کاربری بهتر استفاده می کنیم.',
     linkLabel: 'بیشتر بدانید',
     button: 'حله'
   }

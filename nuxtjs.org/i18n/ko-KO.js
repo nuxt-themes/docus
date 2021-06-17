@@ -58,8 +58,7 @@ export default {
       openSource: 'open source',
       get_started: '시작하기',
       get_updates: '매달 NuxtJS 업데이트 사항을 메일에서 확인하세요',
-      video:
-        '해당 비디오는 {company}가 제작하였고, {cheatSheet}에서 무료로 받으실 수 있습니다.',
+      video: '해당 비디오는 {company}가 제작하였고, {cheatSheet}에서 무료로 받으실 수 있습니다.',
       cheatSheet: 'Nuxt Cheat Sheet.'
     },
     why: {
@@ -106,8 +105,7 @@ export default {
     },
     newsletter: {
       title: '{nuxt} Newsletter',
-      description:
-        '저희 코어 팀과 컨트리뷰터들이 작성한 Nuxt의 최신 뉴스를 받아보세요.',
+      description: '저희 코어 팀과 컨트리뷰터들이 작성한 Nuxt의 최신 뉴스를 받아보세요.',
       form: {
         email: 'Email',
         subscribing: '구독중...',
@@ -122,14 +120,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Design',
-      description:
-        'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
+      description: 'Download NuxtJS design resources (SVG, icons, emoji and favicon).'
     },
     title: '{nuxt} Design',
     description:
       'NuxtJS is an MIT licensed open source project and completely free to use. {break} You can freely use our logos as long as you mention NuxtJS and link to nuxtjs.org.',
-    other_download_message:
-      'You can also download our {favicon} or our {sketch} file.'
+    other_download_message: 'You can also download our {favicon} or our {sketch} file.'
   },
   resources: {
     meta: {
@@ -161,8 +157,7 @@ export default {
   team: {
     meta: {
       title: 'NuxtJS Team',
-      description:
-        'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
+      description: 'NuxtJS has a very active and engaged team that is constantly striving to push Nuxt forward.'
     },
     title: '{nuxt} Team',
     description:
@@ -216,8 +211,7 @@ export default {
   support: {
     meta: {
       title: 'The NuxtJS Support',
-      description:
-        'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
+      description: 'Our NuxtJS team now offers official consulting services for your NuxtJS applications.'
     },
     title: 'Consulting {nuxt} Support',
     description:
@@ -247,12 +241,10 @@ export default {
   blog: {
     meta: {
       title: 'NuxtJS Blog',
-      description:
-        'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
+      description: 'Discover articles from the NuxtJS team and NuxtJS Community about NuxtJS, tips and tricks included!'
     },
     title: '{nuxt} Blog',
-    description:
-      'Discover articles from the {nuxtTeam} and {nuxtCommunity} about NuxtJS, tips and tricks included!',
+    description: 'Discover articles from the {nuxtTeam} and {nuxtCommunity} about NuxtJS, tips and tricks included!',
     nuxt_team: 'NuxtJS Team',
     nuxt_community: 'Nuxt.js Community',
     contribute: 'Caught a mistake or want to contribute to this blog post?'

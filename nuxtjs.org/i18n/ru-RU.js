@@ -3,8 +3,7 @@ export default {
     an_error_occurred: 'Произошла ошибка',
     page_not_found: 'Страница не найдена',
     please_define_title: 'Please define a title in the front matter',
-    please_define_description:
-      'Please define a description in the front matter',
+    please_define_description: 'Please define a description in the front matter',
     search: 'Поиск ("/" - фокус)',
     version: 'Версия'
   },
@@ -59,8 +58,7 @@ export default {
       openSource: 'Open source',
       get_started: 'начало работы',
       get_updates: 'Получайте новости о NuxtJS на почту каждый месяц.',
-      video:
-        'Видео создано команией {company}, скачайте их шпаргалку {cheatSheet}',
+      video: 'Видео создано команией {company}, скачайте их шпаргалку {cheatSheet}',
       cheatSheet: 'Шпаргалка Nuxt.'
     },
     why: {
@@ -107,8 +105,7 @@ export default {
     },
     newsletter: {
       title: '{nuxt} Рассылка',
-      description:
-        'Получай на почту последние новости, отобранные командой NuxtJS.',
+      description: 'Получай на почту последние новости, отобранные командой NuxtJS.',
       form: {
         email: 'Email',
         subscribing: 'Подписываем...',
@@ -123,14 +120,12 @@ export default {
   design: {
     meta: {
       title: 'NuxtJS Дизайн',
-      description:
-        'Скачайте дизайнерские файлы NuxtJS (SVG, иконки, emoji и favicon).'
+      description: 'Скачайте дизайнерские файлы NuxtJS (SVG, иконки, emoji и favicon).'
     },
     title: '{nuxt} Дизайн',
     description:
       'NuxtJS - это проект с открытым исходным кодом, лицензированный MIT и полностью бесплатен для использования. {break} Вы можете свободно использовать наши логотипы пока они ссылаются на nuxtjs.org.',
-    other_download_message:
-      'Вы также можете скачать {favicon} или {sketch} файл.'
+    other_download_message: 'Вы также можете скачать {favicon} или {sketch} файл.'
   },
   resources: {
     meta: {
@@ -217,16 +212,14 @@ export default {
   support: {
     meta: {
       title: 'Поддержка NuxtJS',
-      description:
-        'Наша команда NuxtJS предлагает официальный консалтинг для ваших NuxtJS проектов.'
+      description: 'Наша команда NuxtJS предлагает официальный консалтинг для ваших NuxtJS проектов.'
     },
     title: 'Консалтинг поддержка {nuxt}',
     description:
       'Наша {team} предлагает официальный консалтинг для ваших NuxtJS проектов.{break} Мы предлагаем разные услуги в зависимости от ваших потребностей: от техподдержки до разработки новых решений. Ожидайте ответа в течении одного рабочего дня. Мы можем подписать NDA и вы получите полный возврат среств если наши услуги будут неудовлетворительными.',
     technical: {
       title: 'Техподдержка',
-      description:
-        'Получите аудиты, развертывание, разработку и поддержку вашего проекта от команды NuxtJS.',
+      description: 'Получите аудиты, развертывание, разработку и поддержку вашего проекта от команды NuxtJS.',
       start: 'Начать чат (англ.)',
       partner: {
         pre: 'Мы договорились с',
@@ -248,12 +241,10 @@ export default {
   blog: {
     meta: {
       title: 'Блог NuxtJS',
-      description:
-        'Изучите статьи от команды и сообщества NuxtJS, включая подсказки и хитрости!'
+      description: 'Изучите статьи от команды и сообщества NuxtJS, включая подсказки и хитрости!'
     },
     title: 'Блог {nuxt}',
-    description:
-      'Изучите статьи от {nuxtTeam} и {nuxtCommunity} NuxtJS, включая подсказки и хитрости!',
+    description: 'Изучите статьи от {nuxtTeam} и {nuxtCommunity} NuxtJS, включая подсказки и хитрости!',
     nuxt_team: 'команды',
     nuxt_community: 'сообщества',
     contribute: 'Нашли ошибку или хотите дополнить этот пост?'
