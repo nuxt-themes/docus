@@ -55,34 +55,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<script>
-import { defineComponent } from '@vue/composition-api'
-
-export default defineComponent({
-  setup() {
-    const explores = [
-      {
-        title: 'Examples',
-        description: 'Get inspired by use-cases, from common tasks to advanced examples.'
-      },
-      {
-        title: 'Integrations',
-        description: 'Qucikly integrate your current stack with Nuxt.'
-      },
-      {
-        title: 'Modules',
-        description: 'Take advantage of our module ecosystem to stop reinventing the wheel.'
-      },
-      {
-        title: 'Starters',
-        description: 'Start coding in minutes with the stack you choose.'
-      }
-    ]
-
-    return {
-      explores
-    }
-  }
-})
-</script>
