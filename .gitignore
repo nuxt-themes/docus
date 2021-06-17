@@ -10,3 +10,6 @@ dist
 sw.*
 .env
 dist
+
+# TODO: Remove that
+!1.logos.md
