@@ -189,7 +189,11 @@ export class QueryBuilder {
       n = parseInt(n)
     }
 
-    this.query = this.query.limit(n)
+    /**
+     * Use post processes instead of `query.limit`
+     * `query.limit` does not respect items sorted order if there is not filtering codition
+     */
+    this.postprocess.push(docs => docs.slice(0, n))
     return this
   }
 
