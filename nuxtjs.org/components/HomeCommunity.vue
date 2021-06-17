@@ -159,10 +159,10 @@ export default defineComponent({
       {
         testimonial:
           "Every serious full stack development team needs to stop take a look at Nuxt. Vue's developer productivity combined with Nuxt's server side rendering, is the foundation for instant loading web sites that delight users and improve team velocity.",
-        author: 'Ishan Anand',
-        authorIcon: 'ishan',
-        authorUrl: 'https://twitter.com/ianand',
-        job: 'CTO of Layer0',
+        author: 'Ajay Kapur',
+        authorIcon: 'ajay',
+        authorUrl: 'https://www.linkedin.com/in/ajaykapur/',
+        job: 'CEO of Layer0',
         jobIcon: 'layer0-light',
         jobIconDark: 'layer0-dark',
         jobUrl: 'https://www.layer0.co/'
