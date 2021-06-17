@@ -24,6 +24,10 @@ export function generateSlug(name: string): string {
   return (
     name
       /**
+       * Remove hidden keyword
+       */
+      .replace(/^_/, '')
+      /**
        * Remove numbering
        */
       .replace(/(\d+\.)?(.*)/, '$2')
@@ -35,10 +39,6 @@ export function generateSlug(name: string): string {
        * remove draft keyword
        */
       .replace(/\.draft/, '')
-      /**
-       * Remove hidden keyword
-       */
-      .replace(/^_/, '')
   )
 }
 
