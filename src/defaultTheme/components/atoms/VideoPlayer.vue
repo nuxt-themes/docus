@@ -1,6 +1,7 @@
 <template>
-  <div class="video-player relative my-4">
-    <img
+  <div class="video-player relative my-4 bg-black bg-opacity-25 rounded-sm overflow-hidden" :class="{ loaded }">
+    <NuxtImg
+      v-if="provider ? provider.poster : poster"
       class="video absolute top-0 left-0 w-full h-full object-cover"
       :src="provider ? provider.poster : poster"
       :width="670"
@@ -61,7 +62,7 @@ export default defineComponent({
       provider.value = {
         name: 'youtube',
         src: `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1`,
-        poster: props.poster || `https://i.ytimg.com/vi/${match[1]}/hqdefault.jpg`
+        poster: props.poster || `https://i3.ytimg.com/vi/${match[1]}/hqdefault.jpg`
       }
     }
 
@@ -75,7 +76,7 @@ export default defineComponent({
 
 <style scoped lang="postcss">
 .video-player {
-  &:before {
+  &:not(.loaded):before {
     content: ' ';
     display: block;
     position: absolute;
@@ -115,6 +116,6 @@ export default defineComponent({
   }
 }
 video {
-  @apply w-full py-4;
+  @apply w-full;
 }
 </style>

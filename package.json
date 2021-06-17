@@ -36,14 +36,15 @@
     "generate": "nuxt generate --force-build docs",
     "generate:nuxtjs": "nuxt generate --force-build nuxtjs.org",
     "start": "nuxt start docs",
+    "start:nuxtjs": "nuxt start nuxtjs.org",
     "play": "BUILD_ADMIN=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
     "prepare": "yarn link && yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && echo 'TODO tests'",
-    "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt",
-    "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules",
-    "clean:dist": "rm -rf dist docs/dist playground/dist",
+    "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt nuxtjs.org/.nuxt",
+    "clean:node_modules": "rm -rf node_modules docs/node_modules playground/node_modules nuxtjs.org/node_modules",
+    "clean:dist": "rm -rf dist docs/dist playground/dist nuxtjs.org/dist",
     "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
   },
   "dependencies": {

@@ -148,20 +148,27 @@ function getSlotName(node) {
 }
 
 export default {
-  name: 'NuxtContent',
+  name: 'DocusContent',
   functional: true,
   props: {
     document: {
-      type: Object,
+      type: [Object, String],
       required: true
     }
   },
-  render(h, { data, props, parent }) {
+  render(h, { data, props, parent, _v }) {
     const { document } = props
+
+    // Render simple string
+    if (typeof document === 'string') {
+      return _v(document)
+    }
+
     const { body } = document || {}
     if (!body || !body.children || !Array.isArray(body.children)) {
       return
     }
+
     let classes = []
     if (Array.isArray(data.class)) {
       classes = data.class
@@ -171,7 +178,7 @@ export default {
     } else {
       classes = [data.class]
     }
-    data.class = classes.concat('nuxt-content')
+    data.class = classes
     data.props = Object.assign({ ...body.props }, data.props)
     const children = body.children.map(child => processNode(child, h, document))
 
@@ -184,7 +191,11 @@ export default {
         }
       })
     }
-    return h('div', data, children)
+
+    // detect root tag
+    const tag = body.tag || 'div'
+
+    return h(tag, data, children)
   }
 }
 </script>

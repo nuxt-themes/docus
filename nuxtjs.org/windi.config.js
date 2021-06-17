@@ -39,7 +39,7 @@ export default {
       rose: colors.rose,
       yellow: colors.amber,
       gray: colors.gray,
-      purple: colors.purple
+      purple: colors.purple,
       // $colorNeutralWhite: #FFFFFF;
       // $colorNeutralBlack: #000000;
       // $colorGreenLighter: #80EEC0;
@@ -110,15 +110,17 @@ export default {
       // $colorSandDarker: #3B3B00;
       // $colorSandDarkest: #2D2E01;
       // $colorSandBlack: #1F2100;
-      // $colorSkySurface: #E5F9FF;
-      // $colorSkyLightest: #B7E1ED;
-      // $colorSkyLighter: #95CDDE;
-      // $colorSkyLight: #71A2B0;
-      // $colorSkyDefault: #497A87;
-      // $colorSkyDark: #255461;
-      // $colorSkyDarker: #003543;
-      // $colorSkyDarkest: #012A35;
-      // $colorSkyBlack: #001E26;
+      sky: {
+        surface: '#E5F9FF',
+        lightest: '#B7E1ED',
+        lighter: '#95CDDE',
+        light: '#71A2B0',
+        DEFAULT: '#497A87',
+        dark: '#255461',
+        darker: '#003543',
+        darkest: '#012A35',
+        black: '#001E26'
+      }
       // $colorCloudSurface: #E6F0F0;
       // $colorCloudLightest: #D1E2E2;
       // $colorCloudLighter: #B2CCCC;

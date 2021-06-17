@@ -73,7 +73,7 @@
 
       <div class="max-w-2xl mx-auto">
         <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
-        <NuxtContent :document="page" class="px-4 docus-content" />
+        <DocusContent :document="page" class="px-4 docus-content" />
       </div>
     </div>
   </div>

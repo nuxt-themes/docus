@@ -27,7 +27,7 @@
         </template>
 
         <template #paragraph>
-          <SectionDescription class="text-center">Learn from experts about what they think of Nuxt.</SectionDescription>
+          <SectionDescription class="text-center">Learn from experts what they love about Nuxt.</SectionDescription>
         </template>
 
         <template #content>
@@ -145,6 +145,37 @@ export default defineComponent({
         job: 'CEO of Storyblok',
         jobIcon: 'storyblok',
         jobUrl: 'https://www.storyblok.com'
+      },
+      {
+        testimonial:
+          'Nuxt is our primary choice for offering a seamless website development experience to our users. Its simplicity and progressive learning curve makes it our ideal choice for SliceMachine.',
+        author: 'Sadek Drobi',
+        authorIcon: 'sadek',
+        authorUrl: 'https://twitter.com/Sadache',
+        job: 'CEO of Prismic',
+        jobIcon: 'prismic',
+        jobUrl: 'https://prismic.io'
+      },
+      {
+        testimonial:
+          "Every serious full stack development team needs to stop take a look at Nuxt. Vue's developer productivity combined with Nuxt's server side rendering, is the foundation for instant loading web sites that delight users and improve team velocity.",
+        author: 'Ishan Anand',
+        authorIcon: 'ishan',
+        authorUrl: 'https://twitter.com/ianand',
+        job: 'CTO of Layer0',
+        jobIcon: 'layer0-light',
+        jobIconDark: 'layer0-dark',
+        jobUrl: 'https://www.layer0.co/'
+      },
+      {
+        testimonial:
+          'Nuxt has an ideal balance of approachability for developers new to JAMstack, and power for experienced teams working on complex applications. The modules and first-class integration with the rest of the Vue ecosystem makes for a superb DX.',
+        author: 'Dave Loneragan',
+        authorIcon: 'dave',
+        authorUrl: 'https://twitter.com/paper_tokyo',
+        job: 'Co-founder of Swell',
+        jobIcon: 'swell',
+        jobUrl: 'https://swell.is'
       }
     ]
 
