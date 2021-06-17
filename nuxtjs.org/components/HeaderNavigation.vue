@@ -18,6 +18,20 @@
           {{ link.title }}
         </NuxtLink>
       </li>
+      <li
+        class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
+        @mouseover="hoverLinks(index)"
+        @mouseleave="hover = false"
+      >
+        <a
+          href="https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link"
+          class="hover:d-primary-text-hover"
+          target="_blank"
+          rel="noopener"
+        >
+          Video Courses
+        </a>
+      </li>
     </ul>
   </div>
 </template>
