@@ -1,5 +1,6 @@
 ---
 template: page
+title: Resources
 ---
 
 ::simple-page-hero
