@@ -93,7 +93,9 @@ category: Partners
 ---title
 Sustainable :highlight[_Development_]
 ---description
-Nuxt development is made from passionate developers, however, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. We are thanksful to our sponsors and partners to make it possible.
+Nuxt development is made from passionate developers, however, the amount of effort needed to maintain and develop new features is not sustainable without proper financial backing. We are thanksful to our sponsors and partners to make it possible.<br>
+---bottom
+:button-link[Sponsor NuxtJS]{href="/sponsoring"}
 ::
 
 ::home-learn-master
@@ -160,7 +162,12 @@ Nuxt has plently of areas to explore, learn with examples, integrate with your f
 ::
 
 ::home-campfire
+category: Community
+---title
+Sharing is :highlight[_Caring_]
+---description
+Discover articles from the NuxtJS Team and Nuxt.js Community about NuxtJS, tips and tricks included!
 ::
 
-::home-community
+::home-testimonials
 ::

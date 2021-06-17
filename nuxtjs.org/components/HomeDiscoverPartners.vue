@@ -12,6 +12,7 @@
           <Markdown slot="description" unwrap="p" />
         </p>
         <MPartnersBanner class="pb-0" :partners-logo="partners" />
+        <p><Markdown slot="bottom" unwrap="p" /></p>
       </div>
     </AContainer>
     <img
