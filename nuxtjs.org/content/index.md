@@ -26,7 +26,7 @@ primary:
   url: /docs/get-started/installation
   icon: IconPlay
 ---title
-Easier <span class="text-primary-green italic">Life</span>, from<span class="text-primary-green italic"> Code</span> to<span class="text-primary-green italic"> Cloud</span>
+Easier :highlight[_Life_], from :highlight[_Code_] to :highlight[_Cloud_]
 ---description
 Nuxt is an open source web framework based on official Vue.js libraries, Node.js and using powerful tools such as Webpack, Babel and PostCSS. Nuxt makes web development intuitive and performant with a great developer experience in mind. Deploy with one command your application to many platforms, from Node.js hosting to static websites.
 ::
@@ -34,7 +34,7 @@ Nuxt is an open source web framework based on official Vue.js libraries, Node.js
 ::home-features
 category: Features
 ---title
-Intuitive <span class="text-primary-green">D</span>eveloper E<span class="text-primary-green">x</span>perience
+Intuitive :highlight[D]eveloper E:highlight[x]perience
 ---description
 Nuxt is shipped with plenty of features to boost developer productivity and the end user experience.
 ---

@@ -70,10 +70,7 @@
 </template>
 
 <script>
-import { Markdown } from '~docus/utils'
-
 export default {
-  components: { Markdown },
   props: {
     category: {
       type: String,

@@ -1,4 +1,3 @@
-<script>
 import { pascalCase } from 'scule'
 import Vue from 'vue'
 import info from 'property-information'
@@ -198,4 +197,3 @@ export default {
     return h(tag, data, children)
   }
 }
-</script>
