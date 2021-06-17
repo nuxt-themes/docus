@@ -39,10 +39,7 @@
         <ProseParagraph v-else id="lead">{{ page.description }}</ProseParagraph>
       </template>
 
-      <hr
-        v-if="$scopedSlots['mobile-toc'] || page.description"
-        class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"
-      />
+      <hr v-if="$scopedSlots['mobile-toc'] || page.description" class="mt-4 d-border" />
     </section>
 
     <slot name="mobile-toc" />
@@ -85,6 +82,6 @@ export default defineComponent({
   @apply m-0 flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100;
 }
 #lead {
-  @apply mt-4 mb-0 text-lg font-medium text-gray-500 dark:text-gray-400;
+  @apply mt-4 mb-0 text-lg font-medium d-secondary-text;
 }
 </style>

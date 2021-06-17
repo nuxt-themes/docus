@@ -53,6 +53,7 @@ const defaultThemeSettings = {
     'd-code-group-header-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-code-group-tab': 'bg-gray-200 dark:bg-gray-700',
     'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     // Icons
     'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',
