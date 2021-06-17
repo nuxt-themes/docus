@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup(props) {
     const iconComponent = computed(() => {
-      return `iconAlert${props.type.charAt(0).toUpperCase() + props.type.slice(1)}`
+      return `IconAlert${props.type.charAt(0).toUpperCase() + props.type.slice(1)}`
     })
 
     return {
