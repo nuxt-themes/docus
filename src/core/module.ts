@@ -130,14 +130,6 @@ export default <Module>async function docusModule() {
     })
   }
 
-  nuxt.hook('components:dirs', (dirs: any) => {
-    dirs.push({
-      path: resolve(__dirname, 'runtime/components'),
-      global: true,
-      level: 2
-    })
-  })
-
   nuxt.hook('build:before', () => {
     ;(async () => {
       await lazyIndex()
@@ -182,6 +174,10 @@ export default <Module>async function docusModule() {
       await fs.writeFile(join(dir, `db-${dbHash}.json`), db.serialize(), 'utf-8')
     })
   }
+  addPlugin({
+    src: resolve(__dirname, 'runtime', 'components', 'index.ts'),
+    filename: 'docus_components.js'
+  })
   addPlugin({
     src: resolve(__dirname, 'plugin.js'),
     filename: 'docus.js',

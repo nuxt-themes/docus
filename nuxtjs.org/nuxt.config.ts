@@ -48,6 +48,7 @@ export default withDocus({
     }
   },
   buildModules: ['@nuxt/typescript-build'],
+  plugins: ['~/plugins/adblock.client'],
   windicss: {
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')
@@ -79,7 +80,38 @@ export default withDocus({
     }
   },
   image: {
-    domains: ['https://res.cloudinary.com/nuxt/']
+    screens: {
+      avatarSm: 24,
+      avatarLg: 48,
+      logo: 32,
+      migration: 536,
+      blogImage: 864
+    },
+    domains: [
+      'strapi.nuxtjs.org',
+      'tailwindcss.nuxtjs.org',
+      'storybook.nuxtjs.org',
+      'firebase.nuxtjs.org',
+      'pwa.nuxtjs.org',
+      'image.nuxtjs.org',
+      'http.nuxtjs.org',
+      'cloudinary.nuxtjs.org',
+      'i18n.nuxtjs.org',
+      'snipcart.nuxtjs.org',
+      'prismic.nuxtjs.org',
+      'google-analytics.nuxtjs.org',
+      'color-mode.nuxtjs.org',
+      'mdx.nuxtjs.org',
+      'sanity.nuxtjs.org',
+      'speedcurve.nuxtjs.org',
+      'pbs.twimg.com',
+      'source.unsplash.com',
+      'images.unsplash.com',
+      'unsplash.com',
+      'user-images.githubusercontent.com',
+      'abs.twimg.com',
+      'https://res.cloudinary.com/nuxt/'
+    ]
   },
   i18n: {
     langDir: 'i18n/'

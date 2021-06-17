@@ -24,19 +24,9 @@
               :image="`/img/home/learn/guides/${guide.icon}.svg`"
               :title="guide.title"
               :description="guide.description"
+              :to="guide.to"
             />
           </div>
-        </template>
-
-        <template #button>
-          <SectionButton
-            to="#"
-            aria-label="Learn more"
-            size="sm"
-            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
-          >
-            Learn more
-          </SectionButton>
         </template>
       </SectionContent>
     </template>
@@ -52,17 +42,20 @@ export default defineComponent({
       {
         title: 'Usage',
         description: 'Learn Nuxt concepts and features from beginning to mastery.',
-        icon: 'gem-usage'
+        icon: 'gem-usage',
+        to: '/docs/get-started/installation'
       },
       {
         title: 'Internals',
         description: "Dive deep into Nuxt internals to extend your application's behavior.",
-        icon: 'gem-internals'
+        icon: 'gem-internals',
+        to: '/docs/internals-glossary/context'
       },
       {
         title: 'API References',
         description: 'Discover all properties and their options when you need a complete overview.',
-        icon: 'gem-api'
+        icon: 'gem-api',
+        to: '/docs/configuration-glossary/configuration-alias'
       }
     ]
 

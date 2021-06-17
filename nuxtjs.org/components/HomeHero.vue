@@ -56,10 +56,8 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
-import { Markdown } from '~docus/utils'
 
 export default defineComponent({
-  components: { Markdown },
   props: {
     primary: {
       type: Object,

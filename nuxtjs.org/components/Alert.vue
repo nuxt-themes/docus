@@ -13,9 +13,8 @@
 
 <script>
 import { defineComponent, computed } from '@nuxtjs/composition-api'
-import { Markdown } from '~docus/utils'
+
 export default defineComponent({
-  components: { Markdown },
   props: {
     /**
      * @values info, success, warning, danger, next, star
