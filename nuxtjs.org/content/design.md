@@ -32,10 +32,3 @@ sectionComponent: DesignTypography
 ---title
 Typography
 ::
-
-::design-section
----title
-How to write & pronounce
----description
-Just a few words about how to write and pronounce NuxtJS properly.Queso smelly cheese smelly cheese. St. agur blue cheese cut the cheese melted cheese cow ricotta emmental who moved my cheese queso. Taleggio say cheese airedale halloumi taleggio cheese triangles fondue cauliflower cheese.
-::
