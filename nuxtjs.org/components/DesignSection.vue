@@ -1,11 +1,11 @@
 <template>
   <div class="py-4 d-container-content">
-    <div class="flex flex-col text-secondary-dark py-8">
+    <div class="flex flex-col light:text-secondary-dark dark:text-white py-8">
       <h2 class="font-semibold text-xl">
         <Markdown slot="title" unwrap="p" />
       </h2>
       <hr class="mt-2 mb-4" />
-      <Markdown slot="description" unwrap="p" class="text-lg" />
+      <Markdown slot="description" class="text-lg" />
       <Component :is="sectionComponent" />
     </div>
   </div>
@@ -20,20 +20,8 @@ export default defineComponent({
   props: {
     sectionComponent: {
       type: String,
-      required: true
+      default: null
     }
   }
-  /* setup() {
-    const { $docus } = useContext()
-    const designKit = ref()
-
-    useFetch(async () => {
-      designKit.value = await $docus.search('/design-kit', { deep: true }).fetch()
-    })
-    console.log('sections', designKit)
-    return {
-      designKit
-    }
-  } */
 })
 </script>

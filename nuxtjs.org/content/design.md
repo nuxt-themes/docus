@@ -11,7 +11,7 @@ button: Download Design Kit
 ---
 ::
 
-::design-kit-section
+::design-section
 sectionComponent: DesignLogos
 ---title
 Logos
@@ -19,7 +19,7 @@ Logos
 Our logo is made from two elements: the triangular mountains and the wordmark. In most cases, they should appear together as the opposite master lockup shows. The triangular mountains can be used on their own as an icon, profile picture or badge, but the wordmark should never be used without this symbol on the side.
 ::
 
-::design-kit-section
+::design-section
 sectionComponent: DesignColors
 ---title
 Primary colors
@@ -27,13 +27,13 @@ Primary colors
 Our colours have been carefully considered to work in harmony and consistency across various media. When creating NuxtJS communications, use the colour values shown on the following pages to make sure your designs stay on-brand. This nature-inspired primary colour palette should be used in all of our formal company related communications..
 ::
 
-::design-kit-section
+::design-section
 sectionComponent: DesignTypography
 ---title
 Typography
 ::
 
-::design-kit-section
+::design-section
 ---title
 How to write & pronounce
 ---description
