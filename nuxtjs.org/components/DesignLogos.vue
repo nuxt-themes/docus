@@ -12,14 +12,14 @@
           <div class="font-semibold">{{ logo.type }}</div>
           <div class="flex space-x-2">
             <ALink
-              class="hover:text-primary-green text-gray-400 hover:underline"
+              class="hover:text-primary-green light:text-gray-500 dark:white hover:underline"
               :href="`${logo.logoImg}.svg`"
               aria-label="Download svg"
               download
               >SVG</ALink
             >
             <ALink
-              class="hover:text-primary-green text-gray-400 hover:underline"
+              class="hover:text-primary-green light:text-gray-500 dark:white hover:underline"
               :href="`${logo.logoImg}.png`"
               aria-label="Download png"
               download
