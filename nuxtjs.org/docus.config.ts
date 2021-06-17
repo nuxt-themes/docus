@@ -37,7 +37,8 @@ export default {
       'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
       'd-code-group-header-bg': 'bg-gray-100 dark:bg-secondary-darker',
       'd-code-group-tab': 'bg-gray-200 dark:bg-secondary-dark',
-      'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker'
+      'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker',
+      'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-surface'
     }
   }
 }

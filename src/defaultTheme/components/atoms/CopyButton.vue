@@ -10,18 +10,12 @@
       px-2
       py-2
       m-1
-      text-gray-600
-      d-prose-code-filename-bg
+      d-prose-code-filename-text d-prose-code-filename-bg
       text-xs
       leading-none
       rounded-lg
       font-mono font-semibold
-      dark:text-gray-400
-      hover:bg-gray-200 hover:dark:bg-gray-700
     "
-    :class="{
-      'bg-gray-200 dark:bg-gray-700 opacity-100': state === 'copied'
-    }"
   >
     <IconCheck v-if="state === 'copied'" class="w-4 h-4" />
     <IconCopy v-else class="w-4 h-4" />

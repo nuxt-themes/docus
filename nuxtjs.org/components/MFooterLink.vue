@@ -13,7 +13,7 @@
             :href="subLink.href"
             :to="subLink.to"
             :aria-label="subLink.title"
-            class="light:text-gray-500 dark:text-white"
+            class="light:text-gray-500 dark:text-white hover:d-primary-text-hover"
             >{{ subLink.title }}</ALink
           >
         </li>
