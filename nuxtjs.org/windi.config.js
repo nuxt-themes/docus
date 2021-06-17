@@ -1,6 +1,7 @@
 import colors from 'windicss/colors'
 
 export default {
+  safelist: 'bg-secondary-darker',
   theme: {
     colors: {
       transparent: 'transparent',
