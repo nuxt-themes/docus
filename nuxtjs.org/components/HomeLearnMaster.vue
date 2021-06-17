@@ -26,7 +26,7 @@
         <template #button>
           <div class="w-full self-start">
             <SectionButton
-              to="#"
+              to="/docs/get-started/installation"
               aria-label="Learn everything"
               size="sm"
               class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
