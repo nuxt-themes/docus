@@ -42,8 +42,8 @@
 
       <template #right-illustration>
         <div class="col-span-6 w-full flex justify-center items-center md:justify-end">
-          <button @click="play()">click</button>
-          <div ref="lottieAnim" class="sm:w-3/5 md:w-3/4 lg:w-4/6 xl:w-3/5 h-72" />
+          <!-- <button @click="play()">click</button> -->
+          <div id="lottieAnim" ref="lottieAnim" class="sm:w-3/5 md:w-3/4 lg:w-4/6 xl:w-3/5 h-72" />
           <!-- img
             class="sm:w-3/5 md:w-3/4 lg:w-4/6 xl:w-3/5"
             loading="lazy"
@@ -73,7 +73,7 @@ import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api'
 import lottie from 'lottie-web'
 
 export default defineComponent({
-  setup() {
+  setup(_props, context) {
     const lottieAnim = ref(null)
     let animation = null
 
@@ -82,13 +82,21 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      animation = lottie.loadAnimation({
-        container: lottieAnim.value,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_bxmm0fcm.json'
-      })
+      /**
+       * Use `setTimeout` to ensure slot is mounted and ready to use
+       */
+      setTimeout(() => {
+        animation = lottie.loadAnimation({
+          /**
+           * Temporary use `context.ref` this should replace by Vue3 ref
+           */
+          container: context.refs.lottieAnim as Element,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'https://assets3.lottiefiles.com/private_files/lf30_bxmm0fcm.json'
+        })
+      }, 250)
     })
 
     return {
