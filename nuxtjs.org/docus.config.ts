@@ -9,6 +9,11 @@ export default {
     apiKey: 'd8bb34f345ca54362176cf78fcf4ed9d',
     indexName: 'docus'
   },
+  github: {
+    repo: 'nuxt/nuxt.js',
+    branch: 'dev',
+    releases: true
+  },
   theme: {
     header: {
       logo: {

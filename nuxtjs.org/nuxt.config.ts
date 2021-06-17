@@ -48,6 +48,7 @@ export default withDocus({
     }
   },
   buildModules: ['@nuxt/typescript-build'],
+  plugins: ['~/plugins/adblock.client'],
   windicss: {
     root: resolve(__dirname),
     config: resolve(__dirname, 'windi.config.js')

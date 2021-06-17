@@ -9,7 +9,7 @@
         @mouseleave="hover = false"
       >
         <NuxtLink
-          :to="`/${link.slug}/${link.children[0].slug || ''}`"
+          :to="`/${link.slug}/${link.slug.includes('blog') ? '' : link.children[0].slug || ''}`"
           :class="{
             'text-primary': currentSlug === link.slug,
             'hover:d-primary-text-hover': currentSlug !== link.slug
