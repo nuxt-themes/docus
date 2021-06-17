@@ -2,11 +2,9 @@
   <div class="relative w-full h-full flex items-center justify-center">
     <ul class="flex space-x-12 h-full">
       <li
-        v-for="(link, index) in headerLinks"
+        v-for="link in headerLinks"
         :key="link.slug"
         class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
-        @mouseover="hoverLinks(index)"
-        @mouseleave="hover = false"
       >
         <NuxtLink
           :to="`/${link.slug}/${link.slug.includes('blog') ? '' : link.children[0].slug || ''}`"
@@ -18,11 +16,7 @@
           {{ link.title }}
         </NuxtLink>
       </li>
-      <li
-        class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
-        @mouseover="hoverLinks(index)"
-        @mouseleave="hover = false"
-      >
+      <li class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center">
         <a
           href="https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link"
           class="hover:d-primary-text-hover"
@@ -37,7 +31,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, useRoute, ref, useContext } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useRoute, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
@@ -45,8 +39,6 @@ export default defineComponent({
     const { $docus } = useContext()
 
     const route = useRoute()
-    const hover = ref(false)
-    const itemIndex = ref(null)
     const currentNav = computed(() => $docus.get({ depth: 1 }).links)
 
     // computed
@@ -57,23 +49,14 @@ export default defineComponent({
         ? route.value.params.pathMatch.split('/')[0]
         : null
     })
-
-    // methods
-    function hoverLinks(index) {
-      itemIndex.value = index
-      hover.value = true
-    }
-
     return {
       headerLinks,
-      currentSlug,
-      hoverLinks,
-      hover,
-      itemIndex
+      currentSlug
     }
   }
 })
 </script>
+
 <style scoped lang="postcss">
 .nuxt-link-active {
   color: rgba(52, 211, 153);
