@@ -42,7 +42,7 @@
                 justify-between
                 space-y-4
                 border-2 border-gray-200
-                dark:border-secondary-light
+                dark:border-secondary-dark
                 rounded-lg
                 p-4
               "
@@ -64,7 +64,7 @@
                   class="flex flex-1 pl-4 text-left flex-col"
                 >
                   <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
-                  <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
+                  <ALabel tag="span" class="text-sm dark:text-cloud-lighter">{{ testimonial.job }}</ALabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
                   <img
@@ -86,21 +86,6 @@
           </ul>
         </template>
       </SectionContent>
-    </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
-        alt="A landscape image"
-      />
     </template>
   </HomeSection>
 </template>

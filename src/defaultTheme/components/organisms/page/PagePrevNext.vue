@@ -16,8 +16,8 @@
           rounded-xl
           group
           xs:w-auto
-          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:text-primary-400
-          hover:text-primary hover:border-primary-200
+          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:d-text-primary-400
+          hover:d-text-primary hover:border-primary-200
           dark:hover:border-gray-700
         "
       >
@@ -26,8 +26,8 @@
             {{ directory(prev.to) }}
           </span>
           <span class="flex items-center w-full leading-tight">
-            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2 text-primary" />
-            <span class="truncate text-primary">{{ prev.title }}</span>
+            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2 d-text-primary" />
+            <span class="truncate d-text-primary">{{ prev.title }}</span>
           </span>
         </span>
       </NuxtLink>
@@ -51,7 +51,7 @@
           group
           xs:mb-0 xs:w-auto
           dark:text-gray-400 dark:border-gray-800
-          hover:text-primary hover:border-primary-200
+          hover:d-text-primary hover:border-primary-200
           dark:hover:border-gray-700 dark:border-opacity-50
         "
       >
@@ -60,8 +60,8 @@
             {{ directory(next.to) }}
           </span>
           <span class="flex items-center w-full leading-tight">
-            <span class="truncate text-primary">{{ next.title }}</span>
-            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 text-primary" />
+            <span class="truncate d-text-primary">{{ next.title }}</span>
+            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 d-text-primary" />
           </span>
         </span>
       </NuxtLink>

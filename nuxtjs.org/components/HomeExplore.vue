@@ -56,7 +56,7 @@
             to="#"
             aria-label="Explore more"
             size="sm"
-            class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
           >
             Explore more
           </SectionButton>

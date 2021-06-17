@@ -2,7 +2,7 @@
   <div>
     <div v-for="(link, index) in links" :key="link.title">
       <h3
-        class="font-semibold light:text-gray-400 dark:text-secondary-light text-lg"
+        class="font-semibold light:text-gray-400 dark:text-cloud-light text-lg"
         :class="{ 'mt-16 md:mt-0': index !== 0 }"
       >
         {{ link.title }}

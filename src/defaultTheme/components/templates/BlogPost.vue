@@ -2,7 +2,7 @@
   <div>
     <div class="py-16 sm:py-24 relative">
       <div class="relative max-w-2xl mx-auto">
-        <NuxtLink :to="$contentLocalePath('/templates/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
+        <NuxtLink :to="$contentLocalePath('/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
           <span
             class="
               text-sm
