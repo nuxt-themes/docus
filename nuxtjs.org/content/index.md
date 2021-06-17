@@ -89,6 +89,11 @@ Nuxt is shipped with plenty of features to boost developer productivity and the 
 ::
 
 ::home-discover-partners
+category: Discover
+---title
+Art in the <span class="text-primary-green italic">Making</span>
+---description
+Be part of the Nuxt.js community and help us Nuxtify the world.
 ::
 
 ::home-learn-master
