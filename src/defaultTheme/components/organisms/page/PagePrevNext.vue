@@ -28,7 +28,7 @@
 
           <span class="flex items-center w-full leading-tight">
             <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2" />
-            <span class="truncate">{{ prev.title }}</span>
+            <span class="truncate d-text-primary">{{ prev.title }}</span>
           </span>
         </span>
       </NuxtLink>
@@ -53,33 +53,22 @@
           rounded-xl
           group
           xs:mb-0 xs:w-auto
-          <<<<<<<
-          HEAD
-          hover:d-text-primary
+          dark:text-gray-400 dark:border-gray-800
+          hover:d-text-primary hover:border-primary-200
+          dark:hover:border-gray-700 dark:border-opacity-50
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span v-if="next.category" class="mb-1 text-xs leading-tight d-secondary-text">
-            {{ next.category }}
+          <span class="mb-1 text-xs leading-tight d-secondary-text">
+            {{ directory(next.to) }}
           </span>
+
           <span class="flex items-center w-full leading-tight">
-            <span class="truncate">{{ next.title }}</span>
-            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2" />
-            ======= dark:text-gray-400 dark:border-gray-800 hover:d-text-primary hover:border-primary-200
-            dark:hover:border-gray-700 dark:border-opacity-50 " >
-            <span class="relative flex flex-col items-start truncate">
-              <span class="mb-1 text-xs leading-tight text-gray-400">
-                {{ directory(next.to) }}
-              </span>
-              <span class="flex items-center w-full leading-tight">
-                <span class="truncate d-text-primary">{{ next.title }}</span>
-                <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 d-text-primary" />
-                >>>>>>> dev
-              </span>
-            </span>
-          </span></span
-        ></NuxtLink
-      >
+            <span class="truncate d-text-primary">{{ next.title }}</span>
+            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 d-text-primary" />
+          </span>
+        </span>
+      </NuxtLink>
     </div>
   </div>
 </template>
