@@ -89,11 +89,11 @@ Nuxt is shipped with plenty of features to boost developer productivity and the 
 ::
 
 ::home-discover-partners
-category: Discover
+category: Partners
 ---title
-Art in the :highlight[_Making_]
+Sustainable :highlight[_Development_]
 ---description
-Be part of the Nuxt.js community and help us Nuxtify the world.
+Nuxt development is made from passionate developers, however, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. We are thanksful to our sponsors and partners to make it possible.
 ::
 
 ::home-learn-master
