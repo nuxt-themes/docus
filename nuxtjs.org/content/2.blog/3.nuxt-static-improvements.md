@@ -109,7 +109,7 @@ By default, nuxt ignores these directories so if any change happens inside them,
 - `README.md`
 - Hidden dotfiles (like `.npmrc`)
 
-You can add more patterns using [generate.cache.ignore](/docs/2.x/configuration-glossary/configuration-generate#cache) option in `nuxt.config`:
+You can add more patterns using [generate.cache.ignore](/docs/configuration-glossary/configuration-generate#cache) option in `nuxt.config`:
 
 ```js{}[nuxt.config.js]
 export default {
