@@ -8,7 +8,7 @@
     >
       {{ title }}
     </h5>
-    <ul v-if="!isCollapse || isActive" class="mb-2 ml-2">
+    <ul v-if="!isCollapsed || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.navigation.redirect || doc.to)"
@@ -60,7 +60,7 @@ export default defineComponent({
       type: Array,
       required: true
     },
-    collapsed: {
+    collapse: {
       type: Boolean,
       default: false
     }
@@ -68,16 +68,16 @@ export default defineComponent({
   setup(props) {
     const { $docus } = useContext()
 
-    const isCollapse = ref(props.collapsed)
+    const isCollapsed = ref(props.collapse)
 
     const isActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
 
-    const collapse = () => {
+    const toggle = () => {
       if (isActive.value) {
         return
       }
 
-      isCollapse.value = !isCollapse.value
+      isCollapsed.value = !isCollapsed.value
     }
 
     const isDocumentNew = document => {
@@ -93,9 +93,9 @@ export default defineComponent({
     }
 
     return {
-      collapse,
+      toggle,
       isActive,
-      isCollapse,
+      isCollapsed,
       isDocumentNew
     }
   }

@@ -23,13 +23,12 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            >Need to go <span class="text-primary-green italic">Forward</span>? So much to
-            <span class="text-primary-green italic">Explore</span>.</SectionTitle
+            >Need to go Forward? So much to <span class="text-primary-green italic">Explore</span>.</SectionTitle
           >
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
+          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
             <SectionContentItem
               v-for="(explore, index) in explores"
               :key="explore.title"
@@ -49,7 +48,7 @@
                 </div>
               </template>
             </SectionContentItem>
-          </ul>
+          </div>
         </template>
 
         <template #button>
@@ -57,7 +56,7 @@
             to="#"
             aria-label="Explore more"
             size="sm"
-            class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
           >
             Explore more
           </SectionButton>
@@ -90,19 +89,19 @@ export default defineComponent({
     const explores = [
       {
         title: 'Examples',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Get inspired by use-cases, from common tasks to advanced examples.'
       },
       {
         title: 'Integrations',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Qucikly integrate your current stack with Nuxt.'
       },
       {
         title: 'Modules',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Take advantage of our module ecosystem to stop reinventing the wheel.'
       },
       {
         title: 'Starters',
-        description: 'NuxtJS has been a discovery for our development teams.'
+        description: 'Start coding in minutes with the stack you choose.'
       }
     ]
 

@@ -100,5 +100,8 @@ export default nuxtConfig({
   generate: {
     fallback: '404.html',
     routes: ['/']
+  },
+  image: {
+    domains: ['https://i3.ytimg.com']
   }
 })

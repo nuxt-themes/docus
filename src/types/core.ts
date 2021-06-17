@@ -25,7 +25,7 @@ export interface NavItemNavigationConfig {
   nested: boolean
   slot: string
   exclusive: boolean
-  // Collapsed aside navigation by default
+  // Collapse aside navigation by default
   collapse: boolean
   // Useful for directories `index.md` which are empty pages, to get redirect to another page
   redirect: string
@@ -77,6 +77,9 @@ export interface DocusDocument {
     title: string
     slot: string
     nested: boolean
+    // url of nearest exclusive parent
+    // parent uses to filter pages to find currect previous and next page
+    parent: string
     [key: string]: any
   }
   // Template
@@ -94,6 +97,14 @@ export interface DocusDocument {
     fluid: boolean
     [key: string]: any
   }
+  extract: {
+    heading: boolean
+  }
+  // AST node of markdown title that extracts from content
+  titleNode?: any
+  // AST node of markdown lead pragraph that extracts from content
+  descriptionNode?: any
+
   // Generated
   key: string
   path: string

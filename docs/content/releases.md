@@ -1,4 +1,5 @@
 ---
+navigation: false
 template: releases
 ---
 

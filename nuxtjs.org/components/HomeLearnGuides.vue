@@ -7,19 +7,17 @@
         </template>
 
         <template #title>
-          <SectionTitle class="text-center"
-            >Follow our <span class="text-primary-green italic">Guides</span></SectionTitle
-          >
+          <SectionTitle class="text-center">Follow our <span class="text-primary italic">Guides</span></SectionTitle>
         </template>
 
         <template #paragraph>
           <SectionDescription class="text-center"
-            >From an Idea to a Masterpiece, guides show the path to follow to become a Nuxter.</SectionDescription
+            >From an Idea to a Masterpiece, guides show the path to become a Nuxter.</SectionDescription
           >
         </template>
 
         <template #content>
-          <ul class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
             <SectionContentItem
               v-for="guide in guides"
               :key="guide.title"
@@ -27,7 +25,7 @@
               :title="guide.title"
               :description="guide.description"
             />
-          </ul>
+          </div>
         </template>
 
         <template #button>
@@ -35,7 +33,7 @@
             to="#"
             aria-label="Learn more"
             size="sm"
-            class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
           >
             Learn more
           </SectionButton>
@@ -53,17 +51,17 @@ export default defineComponent({
     const guides = [
       {
         title: 'Usage',
-        description: 'NuxtJS has been a discovery for our development teams.',
+        description: 'Learn Nuxt concepts and features from beginning to mastery.',
         icon: 'gem-usage'
       },
       {
         title: 'Internals',
-        description: 'NuxtJS has been a discovery for our development teams.',
+        description: "Dive deep into Nuxt internals to extend your application's behavior.",
         icon: 'gem-internals'
       },
       {
         title: 'API References',
-        description: 'NuxtJS has been a discovery for our development teams.',
+        description: 'Discover all properties and their options when you need a complete overview.',
         icon: 'gem-api'
       }
     ]

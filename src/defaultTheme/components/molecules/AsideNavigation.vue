@@ -9,7 +9,7 @@
       overflow-auto
       pointer-events-auto
       min-h-fill-available
-      lg:sticky lg:top-header lg:w-60 lg:max-h-[400vh]
+      lg:h-screen lg:sticky lg:top-header lg:w-60
     "
   >
     <div class="w-auto h-full overflow-auto d-bg-header dark:lg:bg-transparent lg:bg-transparent">
@@ -62,7 +62,7 @@
                 :key="link.navigation.title"
                 :title="link.navigation.title"
                 :docs="link.children"
-                :collapsed="link.navigation.collapsed"
+                :collapse="link.navigation.collapse"
               />
               <AsideNavigationItem v-else :key="link.navigation.title" :docs="[link]" />
             </template>

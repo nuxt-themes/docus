@@ -27,7 +27,7 @@
         </template>
 
         <template #paragraph>
-          <SectionDescription class="text-center">Learn from experts about what they think of Nuxt.</SectionDescription>
+          <SectionDescription class="text-center">Learn from experts what they love about Nuxt.</SectionDescription>
         </template>
 
         <template #content>
@@ -42,7 +42,7 @@
                 justify-between
                 space-y-4
                 border-2 border-gray-200
-                dark:border-secondary-light
+                dark:border-secondary-dark
                 rounded-lg
                 p-4
               "
@@ -64,7 +64,7 @@
                   class="flex flex-1 pl-4 text-left flex-col"
                 >
                   <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
-                  <ALabel tag="span" class="text-sm">{{ testimonial.job }}</ALabel>
+                  <ALabel tag="span" class="text-sm dark:text-cloud-lighter">{{ testimonial.job }}</ALabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
                   <img
@@ -86,21 +86,6 @@
           </ul>
         </template>
       </SectionContent>
-    </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/community/dark/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 light:hidden pointer-events-none"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/community/${$colorMode.value}/landscape-community-b.svg`"
-        class="absolute w-full h-40 object-fill -mt-32 dark:hidden pointer-events-none"
-        alt="A landscape image"
-      />
     </template>
   </HomeSection>
 </template>
@@ -170,6 +155,27 @@ export default defineComponent({
         job: 'CEO of Prismic',
         jobIcon: 'prismic',
         jobUrl: 'https://prismic.io'
+      },
+      {
+        testimonial:
+          "Every serious full stack development team needs to stop take a look at Nuxt. Vue's developer productivity combined with Nuxt's server side rendering, is the foundation for instant loading web sites that delight users and improve team velocity.",
+        author: 'Ishan Anand',
+        authorIcon: 'ishan',
+        authorUrl: 'https://twitter.com/ianand',
+        job: 'CTO of Layer0',
+        jobIcon: 'layer0-light',
+        jobIconDark: 'layer0-dark',
+        jobUrl: 'https://www.layer0.co/'
+      },
+      {
+        testimonial:
+          'Nuxt has an ideal balance of approachability for developers new to JAMstack, and power for experienced teams working on complex applications. The modules and first-class integration with the rest of the Vue ecosystem makes for a superb DX.',
+        author: 'Dave Loneragan',
+        authorIcon: 'dave',
+        authorUrl: 'https://twitter.com/paper_tokyo',
+        job: 'Co-founder of Swell',
+        jobIcon: 'swell',
+        jobUrl: 'https://swell.is'
       }
     ]
 

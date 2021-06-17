@@ -11,7 +11,7 @@
         <NuxtLink
           :to="`/${link.slug}/${link.children[0].slug || ''}`"
           :class="{
-            'text-primary-green': currentSlug === link.slug
+            'text-primary': currentSlug === link.slug
           }"
         >
           {{ link.title }}

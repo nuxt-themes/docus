@@ -1,5 +1,5 @@
 ---
 navigation:
-  collapsed: true
+  collapse: true
   redirect: /examples/modules/local
 ---
