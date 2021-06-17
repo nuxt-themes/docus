@@ -11,9 +11,6 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
   // Nuxt context
   const { app, route } = context
 
-  // Current locale
-  const { locale: currentLocale } = app.i18n
-
   // Reactive router path
   const { path } = useReactivePath(app, route)
 
@@ -30,9 +27,9 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
    * Get navigation from Docus data
    */
   async function fetchNavigation() {
-    const { body } = await api.data('/docus/navigation/' + currentLocale)
+    const { body } = await api.data('/docus/navigation/' + app.i18n.locale)
 
-    state.navigation[currentLocale] = body
+    state.navigation[app.i18n.locale] = body
 
     fetchCounter.value += 1
   }
@@ -44,7 +41,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
    * @param from A vue-router "to" valid path to start with: "/directory" will make my query start at from this directory.
    */
   function get({ depth, locale, from, all }: DocusNavigationGetParameters = {}) {
-    const nav = state.navigation[locale || currentLocale] || []
+    const nav = state.navigation[locale || app.i18n.locale] || []
 
     let items = nav
     let match
