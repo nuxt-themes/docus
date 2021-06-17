@@ -28,8 +28,7 @@
             bg-yellow-100
             rounded-full
             items-flex
-            dark:bg-yellow-800
-            dark:text-yellow-400
+            dark:bg-yellow-800 dark:text-yellow-400
           "
           >Draft</span
         >
@@ -39,6 +38,7 @@
         <DocusContent v-if="page.descriptionNode" id="lead" :document="page.descriptionNode" />
         <ProseParagraph v-else id="lead">{{ page.description }}</ProseParagraph>
       </template>
+
       <hr
         v-if="$scopedSlots['mobile-toc'] || page.description"
         class="mt-4 border-gray-100 dark:border-gray-800 dark:border-opacity-50"

@@ -12,21 +12,22 @@
           px-4
           py-3
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:w-auto
-          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:d-text-primary-400
-          hover:d-text-primary hover:border-primary-200
-          dark:hover:border-gray-700
+          hover:d-text-primary
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span class="mb-1 text-xs leading-tight text-gray-400">
+          <span v-if="prev.category" class="mb-1 text-xs leading-tight d-secondary-text">
             {{ directory(prev.to) }}
           </span>
+
           <span class="flex items-center w-full leading-tight">
-            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2 d-text-primary" />
+            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2" />
             <span class="truncate d-text-primary">{{ prev.title }}</span>
           </span>
         </span>
@@ -46,7 +47,9 @@
           py-3
           mb-2
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:mb-0 xs:w-auto
@@ -56,9 +59,10 @@
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span class="mb-1 text-xs leading-tight text-gray-400">
+          <span class="mb-1 text-xs leading-tight d-secondary-text">
             {{ directory(next.to) }}
           </span>
+
           <span class="flex items-center w-full leading-tight">
             <span class="truncate d-text-primary">{{ next.title }}</span>
             <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 d-text-primary" />

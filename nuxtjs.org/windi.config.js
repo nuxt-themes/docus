@@ -5,13 +5,8 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      // $colorGreenLighter: #80EEC0;
-      // $colorGreenLight: #40E5A1;
-      // $colorGreenDefault: #00DC82;
-      // $colorGreenDark: #00BB6F;
-      // $color-greenDarker: #009A5B;
-
       primary: '#00DC82',
+      'primary-green': '#00DC82',
       'secondary-surface': '#E5F9FF',
       'secondary-lightest': '#B7E1ED',
       'secondary-lighter': '#95CDDE',
@@ -40,6 +35,27 @@ export default {
       yellow: colors.amber,
       gray: colors.gray,
       purple: colors.purple,
+      sky: {
+        surface: '#E5F9FF',
+        lightest: '#B7E1ED',
+        lighter: '#95CDDE',
+        light: '#71A2B0',
+        DEFAULT: '#497A87',
+        dark: '#255461',
+        darker: '#003543',
+        darkest: '#012A35',
+        black: '#001E26'
+      }
+      // 'green-lighter': '#80EEC0',
+      // 'green-light': '#40E5A1',
+      // green: '#00DC82',
+      // 'green-dark': '#00BB6F',
+      // 'green-darker': '#009A5B',
+      // $colorGreenLighter: #80EEC0;
+      // $colorGreenLight: #40E5A1;
+      // $colorGreenDefault: #00DC82;
+      // $colorGreenDark: #00BB6F;
+      // $color-greenDarker: #009A5B;
       // $colorNeutralWhite: #FFFFFF;
       // $colorNeutralBlack: #000000;
       // $colorGreenLighter: #80EEC0;
@@ -110,17 +126,6 @@ export default {
       // $colorSandDarker: #3B3B00;
       // $colorSandDarkest: #2D2E01;
       // $colorSandBlack: #1F2100;
-      sky: {
-        surface: '#E5F9FF',
-        lightest: '#B7E1ED',
-        lighter: '#95CDDE',
-        light: '#71A2B0',
-        DEFAULT: '#497A87',
-        dark: '#255461',
-        darker: '#003543',
-        darkest: '#012A35',
-        black: '#001E26'
-      }
       // $colorCloudSurface: #E6F0F0;
       // $colorCloudLightest: #D1E2E2;
       // $colorCloudLighter: #B2CCCC;

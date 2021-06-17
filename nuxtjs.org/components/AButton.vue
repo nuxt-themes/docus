@@ -125,3 +125,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+/* global reset, since Tailwind/Windi has "-webkit-appearance: button" which leads to default look in Safari */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: none;
+}
+</style>

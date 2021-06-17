@@ -5,10 +5,9 @@
         :href="`#${link.id}`"
         class="block py-1 transition-colors duration-100 transform"
         :class="{
-          'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
+          'd-secondary-text-active hover:d-secondary-text-hover':
             activeHeadings.includes(link.id) || isActiveParent(link),
-          'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
-            !activeHeadings.includes(link.id) && !isActiveParent(link)
+          'd-secondary-text hover:d-secondary-text-hover': !activeHeadings.includes(link.id) && !isActiveParent(link)
         }"
         @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
       >
@@ -20,10 +19,8 @@
           <a
             :href="`#${childLink.id}`"
             :class="{
-              'text-gray-900 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
-                activeHeadings.includes(childLink.id),
-              'text-gray-500 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
-                !activeHeadings.includes(childLink.id)
+              'd-secondary-text-active hover:d-secondary-text-hover': activeHeadings.includes(childLink.id),
+              'd-secondary-text hover:d-secondary-text-hover': !activeHeadings.includes(childLink.id)
             }"
             class="block py-1 pl-3 transition-colors duration-100 transform"
             @click.prevent="scrollToHeading(childLink.id, '--docs-scroll-margin-block')"

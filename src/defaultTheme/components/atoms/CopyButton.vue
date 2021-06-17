@@ -11,12 +11,12 @@
       py-2
       m-1
       text-gray-600
-      bg-gray-100
+      d-prose-code-filename-bg
       text-xs
       leading-none
       rounded-lg
       font-mono font-semibold
-      dark:text-gray-400 dark:bg-gray-800
+      dark:text-gray-400
       hover:bg-gray-200 hover:dark:bg-gray-700
     "
     :class="{

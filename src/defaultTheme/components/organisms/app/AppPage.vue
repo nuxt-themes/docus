@@ -3,7 +3,7 @@
     <article class="flex-auto order-last min-w-0 mt-4 xl:order-first xl:mt-0">
       <slot />
       <div v-if="$scopedSlots['prev-next']" class="px-4 sm:px-6">
-        <hr class="mt-10 mb-8 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
+        <hr class="mt-10 mb-8 border-t d-border" />
         <slot name="prev-next" />
       </div>
     </article>

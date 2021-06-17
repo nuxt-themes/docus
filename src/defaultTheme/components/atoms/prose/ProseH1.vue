@@ -7,7 +7,7 @@ h1 {
   /* TODO */
   font-size: 2rem;
   /* scroll-margin-block: var(--docs-scroll-margin-block); */
-  color: theme('colors.gray.900');
+  /* color: theme('colors.gray.900'); */
   letter-spacing: theme('letterSpacing.tight');
   margin-top: 1em;
   margin-bottom: 0.5em;

@@ -2,7 +2,7 @@
   <Dropdown v-if="$i18n.locales.length > 1" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
-        class="text-icon"
+        class="d-text-icon"
         :class="{
           'text-gray-700 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-400': open
         }"
