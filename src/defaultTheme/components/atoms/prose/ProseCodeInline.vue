@@ -8,11 +8,10 @@
 code {
   /* TODO */
   /* font-size: 0.875em; */
-  @apply text-sm;
+  @apply text-sm whitespace-nowrap d-prose-code-inline-bg;
   color: inherit;
   font-weight: 400;
-  padding: theme('padding.1') theme('padding.2');
-  background-color: theme('colors.gray.100');
+  padding: 0.2rem theme('padding.2');
   border-radius: theme('borderRadius.md');
 }
 
@@ -28,7 +27,8 @@ tbody code {
 
 h1 a,
 h2 a,
-h3 a {
+h3 a,
+h4 a {
   &:hover {
     & code {
       border-color: theme('colors.gray.500');
@@ -60,11 +60,11 @@ h3 a {
   code {
     font-weight: inherit;
     color: inherit;
-    background-color: theme('colors.gray.800');
   }
   h1 a,
   h2 a,
-  h3 a {
+  h3 a,
+  h4 a {
     &:hover {
       code {
         border-color: theme('colors.gray.500');

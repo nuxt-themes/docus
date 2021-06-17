@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-full flex items-center justify-center mr-20">
+  <div class="relative w-full h-full flex items-center justify-center">
     <ul class="flex space-x-12 h-full">
       <li
         v-for="(link, index) in headerLinks"
@@ -11,7 +11,8 @@
         <NuxtLink
           :to="`/${link.slug}/${link.children[0].slug || ''}`"
           :class="{
-            'text-primary-green': currentSlug === link.slug
+            'text-primary': currentSlug === link.slug,
+            'hover:d-primary-text-hover': currentSlug !== link.slug
           }"
         >
           {{ link.title }}

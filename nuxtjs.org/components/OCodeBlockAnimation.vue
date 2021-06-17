@@ -4,16 +4,13 @@
       <li>
         <button class="relative mr-8 text-lg font-bold light:text-gray-800" @click="activeCodeBlock = 'fromCLI'">
           From CLI
-          <span v-if="activeCodeBlock === 'fromCLI'" class="absolute -bottom-1.5 left-0 h-0.5 bg-primary-green w-1/3" />
+          <span v-if="activeCodeBlock === 'fromCLI'" class="absolute -bottom-1.5 left-0 h-0.5 bg-primary w-1/3" />
         </button>
       </li>
       <li>
         <button class="relative mr-8 text-lg font-bold light:text-gray-800" @click="activeCodeBlock = 'fromScratch'">
           From Scratch
-          <span
-            v-if="activeCodeBlock === 'fromScratch'"
-            class="absolute -bottom-1.5 left-0 h-0.5 bg-primary-green w-1/3"
-          />
+          <span v-if="activeCodeBlock === 'fromScratch'" class="absolute -bottom-1.5 left-0 h-0.5 bg-primary w-1/3" />
         </button>
       </li>
     </ul>

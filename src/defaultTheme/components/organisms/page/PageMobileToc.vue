@@ -8,16 +8,11 @@
       flex-none
       w-full
       text-sm
-      bg-white
-      border-b border-gray-200 border-opacity-50 border-dashed
       xl:hidden
-      dark:border-gray-800
-      blur-header
-      bg-opacity-80
-      dark:bg-gray-900 dark:bg-opacity-80
+      d-blur-header d-page-mobile-toc-bg
       lg:left-60
-      pl-4
-      sm:pl-6
+      px-4
+      sm:px-6
       top-header
     "
   >
@@ -41,7 +36,7 @@
     >
       <span class="mr-2">{{ title || $t('toc.title') }}</span>
       <IconChevronRight
-        class="w-4 h-4 text-gray-500 transition-transform duration-100 transform"
+        class="w-4 h-4 d-secondary-text transition-transform duration-100 transform"
         :class="[showMobileToc ? 'rotate-90' : 'rotate-0']"
       />
     </button>
@@ -60,6 +55,7 @@
 
       <PageTocBottom />
     </div>
+    <hr class="border-dashed d-border" />
   </div>
 </template>
 

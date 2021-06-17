@@ -85,7 +85,7 @@ export default {
 <style lang="postcss">
 /* Primary */
 .list-primary {
-  @apply text-primary;
+  @apply d-text-primary;
 }
 
 /* Info */

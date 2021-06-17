@@ -2,7 +2,7 @@
   <div class="p-4 mt-4 mb-4 rounded-lg alert text-sm leading-relaxed" :class="[type]">
     <div class="flex items-center space-x-4">
       <div>
-        <Component :is="`IconAlert${type}`" class="w-5 h-5" />
+        <Component :is="iconComponent" class="w-5 h-5" />
       </div>
       <div class="flex-grow alert-content">
         <Markdown unwrap="p" />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, computed } from '@nuxtjs/composition-api'
 import { Markdown } from '~docus/utils'
 export default defineComponent({
   components: { Markdown },
@@ -26,6 +26,15 @@ export default defineComponent({
       validator(value) {
         return ['info', 'success', 'warning', 'danger', 'next', 'star'].includes(value)
       }
+    }
+  },
+  setup(props) {
+    const iconComponent = computed(() => {
+      return `IconAlert${props.type.charAt(0).toUpperCase() + props.type.slice(1)}`
+    })
+
+    return {
+      iconComponent
     }
   }
 })
