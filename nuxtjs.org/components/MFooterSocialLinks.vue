@@ -15,7 +15,7 @@ export default defineComponent({
   setup() {
     const socials = [
       {
-        href: '#',
+        href: 'https://www.youtube.com/channel/UCJ9jj5YMzo-HsyM6WG9Q_Lg',
         icon: 'IconYoutube'
       },
       {

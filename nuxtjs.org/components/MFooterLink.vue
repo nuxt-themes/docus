@@ -9,9 +9,13 @@
       </h3>
       <ul class="mt-4 space-y-4">
         <li v-for="subLink in link.subLinks" :key="subLink.title">
-          <ALink :href="subLink.href" :aria-label="subLink.title" class="light:text-gray-500 dark:text-white">{{
-            subLink.title
-          }}</ALink>
+          <ALink
+            :href="subLink.href"
+            :to="subLink.to"
+            :aria-label="subLink.title"
+            class="light:text-gray-500 dark:text-white"
+            >{{ subLink.title }}</ALink
+          >
         </li>
       </ul>
     </div>
