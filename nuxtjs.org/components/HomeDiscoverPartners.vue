@@ -31,10 +31,8 @@
 
 <script>
 import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
-import { Markdown } from '~docus/utils'
 
 export default defineComponent({
-  components: { Markdown },
   props: {
     category: {
       type: String,
