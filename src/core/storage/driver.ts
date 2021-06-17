@@ -93,7 +93,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
      * Also parent will be used to group up children in bottom navigation (prev/next page)
      */
     if (document.navigation !== false) {
-      const exclusiveParent = parents.find(p => p.navigation?.exclusive)
+      const exclusiveParent = parents.find(p => p.navigation && p.navigation.exclusive)
       if (exclusiveParent) {
         document.navigation = document.navigation || {}
         // Store nearest parent path

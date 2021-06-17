@@ -79,8 +79,19 @@ export default <Module>async function docusModule() {
 
     processDocumentInfo(document)
 
-    if (isHidden(_to)) {
+    /**
+     * Disable document navigation if it is marked as `page = false`
+     * This will prevent showing non-pages in navigation menus
+     */
+    if (document.page === false) {
       document.navigation = false
+    }
+
+    if (isHidden(_to)) {
+      // Do not show document on navigation menus
+      document.navigation = false
+      // Do not render document as standalone page
+      document.page = false
     }
 
     document.slug = generateSlug(slug)
