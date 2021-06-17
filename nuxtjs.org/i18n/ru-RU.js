@@ -1,4 +1,7 @@
+import ru from '~docus-i18n/ru-RU'
+
 export default {
+  ...ru,
   common: {
     an_error_occurred: 'Произошла ошибка',
     page_not_found: 'Страница не найдена',

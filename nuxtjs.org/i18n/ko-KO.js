@@ -1,4 +1,7 @@
+import ko from '~docus-i18n/ko-KO'
+
 export default {
+  ...ko,
   common: {
     an_error_occurred: '에러가 발생했습니다.',
     page_not_found: '페이지를 찾을 수 없습니다.',

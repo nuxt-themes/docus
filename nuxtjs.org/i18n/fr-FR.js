@@ -1,4 +1,7 @@
+import fr from '~docus-i18n/fa-FR'
+
 export default {
+  ...fr,
   common: {
     an_error_occurred: "Une erreur s'est produite",
     page_not_found: 'La page est introuvable',

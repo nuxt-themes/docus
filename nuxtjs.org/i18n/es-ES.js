@@ -1,4 +1,7 @@
+import es from '~docus-i18n/es-ES'
+
 export default {
+  ...es,
   common: {
     an_error_occurred: 'Ha ocurrido un error',
     page_not_found: 'Página no encontrada',

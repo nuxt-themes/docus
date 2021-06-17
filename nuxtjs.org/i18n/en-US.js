@@ -1,4 +1,7 @@
+import en from '~docus-i18n/en-US'
+
 export default {
+  ...en,
   common: {
     an_error_occurred: 'An error occurred',
     page_not_found: 'Page not found',
