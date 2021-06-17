@@ -1,0 +1,406 @@
+---
+title: 'Deploy Nuxt on Amazon Web Services'
+description: Static Hosting on AWS with S3 Amplify and CloudFront
+menu: Amazon Web Services
+target: Static
+category: deployment
+position: 101
+---
+
+AWS stands for Amazon Web Services.  
+S3 is their static storage which can be configured for Static Site Hosting. CloudFront is their CDN (content delivery network)
+
+## AWS w/ the Amplify Console
+
+Hosting a **static generated** Nuxt app on AWS w/ the Amplify Console is powerful and cheap.
+
+First, push your Nuxt app to the Git provider of your choice. Then, visit the [Amplify Console](https://console.aws.amazon.com/amplify/home). Click the **GET STARTED** button under the **Deploy** header if you haven't used Amplify Hosting before, otherwise click the **Connect App** button.
+
+### From your existing code
+
+On the "From your existing code" page, select your Git provider and click **Continue**.
+
+### Add repository branch
+
+On the "Add repository branch" page, select your repository and the branch you want to deploy. Then, click **Next**.
+
+### Configure build settings
+
+On the "Configure build settings" page, click the `Edit` button under the "Build and test settings". Change the following:
+
+1. Set the **build** commands to `npm run generate`.
+2. Set the `baseDirectory` location to be `dist`.
+
+The settings should look like this once you are done editing them:
+
+```yml
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+    build:
+      commands:
+        - npm run generate
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+```
+
+Then, click **Save** and **Next**.
+
+### Review
+
+On the review page, click **Save and deploy**.
+
+Then, your application will deploy. This may take a few minutes.
+
+Once `Provision`, `Build`, `Deploy`, and `Verify` are green, click on the URL that the Amplify Console provides to view your site.
+
+## AWS w/ S3 + CloudFront
+
+Hosting a **static generated** Nuxt app on AWS w/ S3 + CloudFront is powerful and cheap.
+
+> AWS is a death by 1000 paper cuts. If we missed a step, please submit a PR to update this document.
+
+### Overview
+
+We'll host super cheap with some AWS services. Briefly:
+
+- S3
+  - cloud data "bucket" for our website files
+  - can be configured to host static websites
+- CloudFront
+  - a CDN (content delivery network)
+  - offers free HTTPS certs
+  - Makes your site load faster
+
+We'll push the site like this:
+
+```
+Nuxt Generate -> Local folder -> AWS S3 Bucket -> AWS CloudFront CDN -> Browser
+  [      nuxt generate       ]    [         gulp deploy          ]
+  [                         deploy.sh                            ]
+```
+
+First, we'll generate the site with `nuxt generate`(<= v2.12). Then, we'll use [Gulp](https://gulpjs.com/) to publish the files to a S3 bucket and invalidate a CloudFront CDN.
+
+- [gulp](https://www.npmjs.com/package/gulp)
+- [gulp-awspublish](https://www.npmjs.com/package/gulp-awspublish)
+- [gulp-cloudfront-invalidate-aws-publish](https://www.npmjs.com/package/gulp-cloudfront-invalidate-aws-publish)
+- [concurrent-transform](https://www.npmjs.com/package/concurrent-transform) (for parallel uploads)
+
+Our deploy script needs these environment variables set:
+
+- AWS_BUCKET_NAME="example.com"
+- AWS_CLOUDFRONT="UPPERCASE"
+- AWS_ACCESS_KEY_ID="key"
+- AWS_SECRET_ACCESS_KEY="secret"
+
+We'll have these files:
+
+```
+deploy.sh       -  run `nuxt generate` and `gulp deploy`
+gulpfile.js     -  `gulp deploy` code to push files to S3 and invalidate CloudFront
+```
+
+### Setting it up
+
+1. Make a S3 bucket and configure it for static site hosting
+2. Create a CloudFront distribution
+3. Configure security access
+4. Setup build script in your project
+
+### AWS: Setup your S3 bucket and CloudFront Distribution
+
+Please follow this [tutorial to setup your S3 and CloudFront](https://reidweb.com/2017/02/06/cloudfront-cdn-tutorial/) for step one and two.
+
+You should now have this data:
+
+- AWS_BUCKET_NAME="example.com"
+- AWS_CLOUDFRONT="UPPERCASE"
+
+### AWS: Configure security access
+
+For step 3, we need to create a user that can:
+
+- Update the bucket contents
+- Invalidate the CloudFront distribution (propagates changes to users faster)
+
+[Create a programmatic user with this policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html):
+
+> NOTE: replace 2x `example.com` with your S3 bucket name below. This policy allows pushing to the specified bucket, and invalidating any CloudFront distribution.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::example.com"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:DeleteObject",
+        "s3:ListMultipartUploadParts",
+        "s3:AbortMultipartUpload"
+      ],
+      "Resource": ["arn:aws:s3:::example.com/*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudfront:CreateInvalidation",
+        "cloudfront:GetInvalidation",
+        "cloudfront:ListInvalidations",
+        "cloudfront:UnknownOperation"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+Then [get an access key and secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+
+You should now have this data:
+
+- AWS_ACCESS_KEY_ID="key"
+- AWS_SECRET_ACCESS_KEY="secret"
+
+### Laptop: Setup your project's build script
+
+4.1) Create a `deploy.sh` script. See optional [nvm (node version manager)](https://github.com/creationix/nvm).
+
+```bash
+#!/bin/bash
+
+export AWS_ACCESS_KEY_ID="key"
+export AWS_SECRET_ACCESS_KEY="secret"
+export AWS_BUCKET_NAME="example.com"
+export AWS_CLOUDFRONT="UPPERCASE"
+
+# Load nvm (node version manager), install node (version in .nvmrc), and npm install packages
+[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh" && nvm use
+# Npm install if not already.
+[ ! -d "node_modules" ] && npm install
+
+npm run generate
+gulp deploy
+```
+
+4.2) Make `deploy.sh` runnable and DON'T CHECK INTO GIT (deploy.sh has secrets in it)
+
+```bash
+chmod +x deploy.sh
+echo "
+# Don't commit build files
+node_modules
+dist
+.nuxt
+.awspublish
+deploy.sh
+" >> .gitignore
+```
+
+4.3) Add Gulp to your project and to your command line
+
+```bash
+npm install --save-dev gulp gulp-awspublish gulp-cloudfront-invalidate-aws-publish concurrent-transform
+npm install -g gulp
+```
+
+4.4) Create a `gulpfile.js` with the build script
+
+```javascript
+const gulp = require('gulp')
+const awspublish = require('gulp-awspublish')
+const cloudfront = require('gulp-cloudfront-invalidate-aws-publish')
+const parallelize = require('concurrent-transform')
+
+// https://docs.aws.amazon.com/cli/latest/userguide/cli-environment.html
+
+const config = {
+  // Required
+  params: {
+    Bucket: process.env.AWS_BUCKET_NAME
+  },
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    signatureVersion: 'v3'
+  },
+
+  // Optional
+  deleteOldVersions: false, // NOT FOR PRODUCTION
+  distribution: process.env.AWS_CLOUDFRONT, // CloudFront distribution ID
+  region: process.env.AWS_DEFAULT_REGION,
+  headers: {
+    /* 'Cache-Control': 'max-age=315360000, no-transform, public', */
+  },
+
+  // Sensible Defaults - gitignore these Files and Dirs
+  distDir: 'dist',
+  indexRootPath: true,
+  cacheFileName: '.awspublish',
+  concurrentUploads: 10,
+  wait: true // wait for CloudFront invalidation to complete (about 30-60 seconds)
+}
+
+gulp.task('deploy', function () {
+  // create a new publisher using S3 options
+  // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
+  const publisher = awspublish.create(config)
+
+  let g = gulp.src('./' + config.distDir + '/**')
+  // publisher will add Content-Length, Content-Type and headers specified above
+  // If not specified it will set x-amz-acl to public-read by default
+  g = g.pipe(
+    parallelize(publisher.publish(config.headers), config.concurrentUploads)
+  )
+
+  // Invalidate CDN
+  if (config.distribution) {
+    console.log('Configured with CloudFront distribution')
+    g = g.pipe(cloudfront(config))
+  } else {
+    console.log(
+      'No CloudFront distribution configured - skipping CDN invalidation'
+    )
+  }
+
+  // Delete removed files
+  if (config.deleteOldVersions) {
+    g = g.pipe(publisher.sync())
+  }
+  // create a cache file to speed up consecutive uploads
+  g = g.pipe(publisher.cache())
+  // print upload updates to console
+  g = g.pipe(awspublish.reporter())
+  return g
+})
+```
+
+4.5) Deploy and debug
+
+Run it:
+
+```bash
+./deploy.sh
+```
+
+You should get an output similar to this:
+
+```bash
+$ ./deploy.sh
+
+Found '/home/michael/scm/example.com/www/.nvmrc' with version <8>
+Now using node v8.11.2 (npm v5.6.0)
+
+> example.com@1.0.0 generate /home/michael/scm/example.com/www
+> nuxt generate
+
+  nuxt:generate Generating... +0ms
+  nuxt:build App root: /home/michael/scm/example.com/www +0ms
+  nuxt:build Generating /home/michael/scm/example.com/www/.nuxt files... +0ms
+  nuxt:build Generating files... +36ms
+  nuxt:build Generating routes... +10ms
+  nuxt:build Building files... +24ms
+  ████████████████████ 100%
+
+Build completed in 7.009s
+
+
+
+ DONE  Compiled successfully in 7013ms                                                                                                                                     21:25:22
+
+Hash: 421d017116d2d95dd1e3
+Version: webpack 3.12.0
+Time: 7013ms
+                                   Asset     Size  Chunks             Chunk Names
+     pages/index.ef923f795c1cecc9a444.js  10.6 kB       0  [emitted]  pages/index
+ layouts/default.87a49937c330bdd31953.js  2.69 kB       1  [emitted]  layouts/default
+pages/our-values.f60c731d5c3081769fd9.js  3.03 kB       2  [emitted]  pages/our-values
+   pages/join-us.835077c4e6b55ed1bba4.js   1.3 kB       3  [emitted]  pages/join-us
+       pages/how.75f8cb5bc24e38bca3b3.js  2.59 kB       4  [emitted]  pages/how
+             app.6dbffe6ac4383bd30a92.js   202 kB       5  [emitted]  app
+          vendor.134043c361c9ad199c6d.js  6.31 kB       6  [emitted]  vendor
+        manifest.421d017116d2d95dd1e3.js  1.59 kB       7  [emitted]  manifest
+ + 3 hidden assets
+Hash: 9fd206f4b4e571e9571f
+Version: webpack 3.12.0
+Time: 2239ms
+             Asset    Size  Chunks             Chunk Names
+server-bundle.json  306 kB          [emitted]
+  nuxt: Call generate:distRemoved hooks (1) +0ms
+  nuxt:generate Destination folder cleaned +10s
+  nuxt: Call generate:distCopied hooks (1) +8ms
+  nuxt:generate Static & build files copied +7ms
+  nuxt:render Rendering url /our-values +0ms
+  nuxt:render Rendering url /how +67ms
+  nuxt:render Rendering url /join-us +1ms
+  nuxt:render Rendering url / +0ms
+  nuxt: Call generate:page hooks (1) +913ms
+  nuxt: Call generate:page hooks (1) +205ms
+  nuxt: Call generate:page hooks (1) +329ms
+  nuxt: Call generate:page hooks (1) +361ms
+  nuxt:generate Generate file: /our-values/index.html +2s
+  nuxt:generate Generate file: /how/index.html +0ms
+  nuxt:generate Generate file: /join-us/index.html +0ms
+  nuxt:generate Generate file: /index.html +0ms
+  nuxt:render Rendering url / +2s
+  nuxt: Call generate:done hooks (1) +4ms
+  nuxt:generate HTML Files generated in 11.8s +5ms
+  nuxt:generate Generate done +0ms
+[21:25:27] Using gulpfile ~/scm/example.com/www/gulpfile.js
+[21:25:27] Starting 'deploy'...
+Configured with CloudFront distribution
+[21:25:27] [cache]  README.md
+[21:25:27] [cache]  android-chrome-192x192.png
+[21:25:27] [cache]  android-chrome-512x512.png
+[21:25:27] [cache]  apple-touch-icon.png
+[21:25:27] [cache]  browserconfig.xml
+[21:25:27] [cache]  favicon-16x16.png
+[21:25:27] [cache]  favicon-32x32.png
+[21:25:27] [cache]  favicon.ico
+[21:25:27] [cache]  favicon.svg
+[21:25:27] [cache]  logo-branches.svg
+[21:25:27] [cache]  logo-small.svg
+[21:25:27] [cache]  logo.svg
+[21:25:27] [cache]  mstile-150x150.png
+[21:25:27] [cache]  og-image.jpg
+[21:25:27] [cache]  safari-pinned-tab.svg
+[21:25:27] [cache]  site.webmanifest
+[21:25:28] [create] _nuxt/manifest.421d017116d2d95dd1e3.js
+[21:25:29] [update] 200.html
+[21:25:30] [create] videos/flag.jpg
+[21:25:30] [create] _nuxt/vendor.134043c361c9ad199c6d.js
+[21:25:34] [create] videos/flag.mp4
+[21:25:34] [cache]  _nuxt/pages/how.75f8cb5bc24e38bca3b3.js
+[21:25:34] [cache]  _nuxt/pages/join-us.835077c4e6b55ed1bba4.js
+[21:25:34] [cache]  _nuxt/pages/our-values.f60c731d5c3081769fd9.js
+[21:25:36] [update] our-values/index.html
+[21:25:36] [create] _nuxt/layouts/default.87a49937c330bdd31953.js
+[21:25:36] [create] _nuxt/app.6dbffe6ac4383bd30a92.js
+[21:25:37] [create] _nuxt/pages/index.ef923f795c1cecc9a444.js
+[21:25:38] [update] join-us/index.html
+[21:25:38] [update] how/index.html
+[21:25:43] [create] videos/flag.webm
+[21:25:43] [update] index.html
+[21:25:43] CloudFront invalidation created: I16NXXXXX4JDOA
+[21:26:09] Finished 'deploy' after 42 s
+```
+
+Note that the `CloudFront invalidation created: XXXX` is the only output from the CloudFront invalidation npm package. If you don't see that, it's not working.

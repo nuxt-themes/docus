@@ -80,5 +80,8 @@ export default withDocus({
   },
   image: {
     domains: ['https://res.cloudinary.com/nuxt/']
+  },
+  i18n: {
+    langDir: 'i18n/'
   }
 })
