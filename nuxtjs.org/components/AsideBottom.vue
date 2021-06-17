@@ -2,7 +2,7 @@
   <div>
     <NuxtLink
       v-if="$route.path.startsWith('/docs')"
-      to="/docs/release-notes"
+      to="/releases"
       class="
         flex
         items-center
