@@ -18,26 +18,6 @@ export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
  */
 export const TEXT_TAGS = expandTags(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li'])
 
-// @vue/component
-export const Markdown = {
-  functional: true,
-  render: (_h, ctx) => {
-    const slot = ctx.props.slot || 'default'
-    let node = ctx.props.node || ctx.parent.$scopedSlots[slot] || ctx.parent.$slots[slot]
-    if (typeof node === 'function') {
-      node = node()
-    }
-    if (typeof node === 'string') {
-      return [node]
-    }
-    if (node && ctx.props.unwrap) {
-      const tags = ctx.props.unwrap.split(/[,\s]/)
-      node = flatUnwrap(node, tags)
-    }
-    return node
-  }
-}
-
 /**
  * Check virtual node's tag
  * @param vnode Virtuel node from Vue virtual DOM
