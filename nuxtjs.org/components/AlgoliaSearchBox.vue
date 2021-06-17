@@ -200,14 +200,14 @@ export default {
     --docsearch-modal-background: #003543; // secondary-darker
     --docsearch-modal-shadow: inset 1px 1px 0 0 #052f14, 0 3px 8px 0 #0b160d;
     /* --docsearch-searchbox-background: var(--color-gray-800); */
-    /* --docsearch-searchbox-focus-background: var(--color-gray-800); */
+    --docsearch-searchbox-focus-background: rgba(1, 42, 53, 1);
     --docsearch-hit-color: var(--color-gray-300);
     --docsearch-highlight-color: var(--docsearch-primary-color);
     --docsearch-hit-shadow: none;
     --docsearch-hit-background: var(--color-gray-800);
     --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
     --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, 0.3);
-    --docsearch-footer-background: var(--color-gray-800);
+    --docsearch-footer-background: rgba(1, 42, 53, 1);
     --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5), 0 -4px 8px 0 rgba(0, 0, 0, 0.2);
     --docsearch-logo-color: #fff;
     --docsearch-muted-color: var(--color-gray-500);

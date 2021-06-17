@@ -3,7 +3,6 @@
     v-if="toc.length"
     class="
       hidden
-      xl:sticky
       z-10
       left-0
       flex-none

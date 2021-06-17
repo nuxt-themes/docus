@@ -1,19 +1,20 @@
 <template>
   <div class="flex flex-col">
     <p class="pt-8 text-base font-semibold text-gray-900 dark:text-gray-100">Partners</p>
-    <ul class="py-2 flex flex-col space-y-2 ml-4">
+    <ul class="py-2 flex flex-col space-y-2 ml-4 mb-2">
       <li v-for="partner in partners" :key="partner.title" class="">
         <a
           :href="partner.url"
-          class="group flex items-center opacity-75 hover:opacity-100"
+          class="group flex font-medium items-center hover:opacity-100 d-secondary-text hover:d-secondary-text-hover"
           rel="noopener sponsored"
           target="_blank"
         >
           {{ partner.title }}
-          <IconExternalLink class="w-4 h-4 ml-1.5 text-gray-400 opacity-0 group-hover:opacity-100" />
+          <IconExternalLink class="w-4 h-4 ml-1.5 opacity-0 group-hover:opacity-100" />
         </a>
       </li>
     </ul>
+
     <div class="pt-2">
       <AButton
         type="button"

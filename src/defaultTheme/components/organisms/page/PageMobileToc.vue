@@ -52,8 +52,6 @@
       </h5>
 
       <PageTocList :toc="toc" @click.native="showMobileToc = false" />
-
-      <PageTocBottom />
     </div>
     <hr class="border-dashed d-border" />
   </div>

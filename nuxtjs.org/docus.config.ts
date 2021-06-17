@@ -43,7 +43,7 @@ export default {
       'd-code-group-header-bg': 'bg-gray-100 dark:bg-secondary-darker',
       'd-code-group-tab': 'bg-gray-200 dark:bg-secondary-dark',
       'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker',
-      'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-surface'
+      'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-light'
     }
   }
 }
