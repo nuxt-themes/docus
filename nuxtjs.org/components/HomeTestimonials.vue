@@ -17,7 +17,7 @@
     </template>
 
     <template #section-content>
-      <SectionContent class="col-span-12 items-center pt-20 pb-60">
+      <SectionContent class="col-span-12 items-center py-20">
         <template #category>
           <CategoryLabel label="Community" />
         </template>

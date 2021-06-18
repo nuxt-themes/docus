@@ -13,7 +13,7 @@
       alt="A landscape image"
     />
 
-    <HomeSection class="py-40 light:bg-gray-50 dark:bg-secondary-darkest">
+    <HomeSection class="py-20 light:bg-gray-50 dark:bg-secondary-darkest">
       <template #section-content>
         <SectionContent class="col-span-6 justify-center">
           <template #category>
