@@ -86,6 +86,7 @@ export default defineConfig({
         'fill-available': '-webkit-fill-available'
       }),
       maxWidth: {
+        base: '320px',
         '8xl': '90rem',
         '1/2': '50%'
       },

@@ -22,7 +22,18 @@
         >
           <Markdown slot="description" unwrap="p" />
         </h2>
-        <div class="flex flex-wrap justify-center space-x-3 xl:space-x-4">
+        <div
+          class="
+            flex flex-col
+            xs:flex-row
+            flex-wrap
+            items-center
+            justify-center
+            space-y-3
+            xs:space-y-0 xs:space-x-3
+            xl:space-x-4
+          "
+        >
           <SectionButton
             :to="primary.url"
             :aria-label="primary.text"

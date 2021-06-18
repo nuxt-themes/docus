@@ -15,29 +15,42 @@
 
     <HomeSection class="py-40 light:bg-gray-50 dark:bg-secondary-darkest">
       <template #section-content>
-        <SectionContent class="col-span-6 justify-center">
+        <SectionContent class="col-span-6 items-center md:items-start justify-center">
           <template #category>
             <CategoryLabel :label="category" />
           </template>
 
           <template #title>
-            <h2 class="font-normal font-serif text-display-6 md:text-display-5 2xl:text-display-4">
+            <h2
+              class="
+                font-normal
+                text-center
+                md:text-left
+                font-serif
+                text-display-6
+                md:text-display-5
+                2xl:text-display-4
+              "
+            >
               <Markdown slot="title" unwrap="p" />
             </h2>
           </template>
 
           <template #paragraph>
-            <p class="pt-2 pb-8 font-normal text-body-base md:text-body-lg 2xl:text-body-xl">
+            <p class="pt-2 pb-8 text-center md:text-left font-normal text-body-base md:text-body-lg 2xl:text-body-xl">
               <Markdown slot="description" unwrap="p" />
             </p>
-            <SectionButton
-              :to="primary.url"
-              :aria-label="primary.text"
-              size="md"
-              class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
-              :icon-left="primary.icon"
-              >{{ primary.text }}</SectionButton
-            >
+            <div class="flex justify-center md:justify-start">
+              <SectionButton
+                :to="primary.url"
+                :aria-label="primary.text"
+                size="md"
+                class="bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300"
+                :icon-left="primary.icon"
+              >
+                {{ primary.text }}
+              </SectionButton>
+            </div>
           </template>
         </SectionContent>
       </template>
