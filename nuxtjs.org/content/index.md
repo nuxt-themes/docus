@@ -113,6 +113,7 @@ From an Idea to a Masterpiece, guides show the path to become a Nuxter.
   to: '/docs/get-started/installation'
   ---
   ::
+  
   ::section-content-item
   title: Internals
   description: "Dive deep into Nuxt internals to extend your application's behavior."
@@ -120,6 +121,7 @@ From an Idea to a Masterpiece, guides show the path to become a Nuxter.
   to: '/docs/internals-glossary/context'
   ---
   ::
+  
   ::section-content-item
   title: API References
   description: 'Discover all properties and their options when you need a complete overview.'
