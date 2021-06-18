@@ -1,4 +1,4 @@
-import fr from '~docus-i18n/fa-FR'
+import fr from '~docus-i18n/fr-FR'
 
 export default {
   ...fr,
