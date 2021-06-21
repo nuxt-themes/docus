@@ -39,12 +39,12 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     // Check for label
-    if (code === Codes.openningSquareBracket) {
+    if (code === Codes.openingSquareBracket) {
       return effects.attempt(label, afterLabel, afterLabel)(code)
     }
 
     // Check for attributes
-    if (code === Codes.openningCurlyBracket) {
+    if (code === Codes.openingCurlyBracket) {
       return effects.attempt(attributes, afterAttributes, afterAttributes)(code)
     }
 
@@ -53,7 +53,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
   function afterAttributes(code: number) {
     // Check for label after attributes
-    if (code === Codes.openningSquareBracket) {
+    if (code === Codes.openingSquareBracket) {
       return effects.attempt(label, afterLabel, afterLabel)(code)
     }
 
@@ -62,7 +62,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
   function afterLabel(code: number) {
     // Check for attributes after label
-    if (code === Codes.openningCurlyBracket) {
+    if (code === Codes.openingCurlyBracket) {
       return effects.attempt(attributes, exit, exit)(code)
     }
     return exit(code)

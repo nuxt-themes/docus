@@ -10,7 +10,7 @@ export default function directive() {
   return {
     text: {
       [Codes.colon]: directiveInline,
-      [Codes.openningSquareBracket]: [directiveSpan]
+      [Codes.openingSquareBracket]: [directiveSpan]
     },
     flow: {
       [Codes.colon]: [directiveContainer, directiveInline]

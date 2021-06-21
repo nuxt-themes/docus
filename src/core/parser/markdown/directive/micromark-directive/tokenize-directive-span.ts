@@ -10,7 +10,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   return start
 
   function start(code: number) {
-    if (code !== Codes.openningSquareBracket) {
+    if (code !== Codes.openingSquareBracket) {
       throw new Error('expected `[`')
     }
 
@@ -19,13 +19,8 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function afterLabel(code: number) {
-    if (code === Codes.closingParentheses) {
-      effects.consume(code)
-      return afterLabel
-    }
-
     // Check for attributes after label
-    if (code === Codes.openningCurlyBracket) {
+    if (code === Codes.openingCurlyBracket) {
       return effects.attempt(attributes, exit, nok)(code)
     }
     return nok(code)
