@@ -79,7 +79,7 @@ export default defineComponent({
   }
 }
 #headline {
-  @apply m-0 flex-1 text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100;
+  @apply m-0 flex-1 text-4xl font-semibold tracking-tight;
 }
 #lead {
   @apply mt-4 mb-0 text-lg font-medium d-secondary-text;
