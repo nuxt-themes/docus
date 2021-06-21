@@ -35,7 +35,9 @@
             class="mt-4 flex items-center justify-center text-5xl font-extrabold text-secondary-darker dark:text-white"
           >
             <Markdown slot="price" unwrap="span" />
-            <span class="ml-3 text-xl font-medium text-gray-500 dark:text-gray-200"> USD </span>
+            <span class="ml-3 text-xl font-medium text-gray-500 dark:text-gray-200">
+              <Markdown slot="currency" unwrap="span" />
+            </span>
           </div>
 
           <div class="mt-6">
@@ -45,7 +47,7 @@
               class="bg-primary text-gray-800 hover:bg-green-300 focus:bg-green-300"
               aria-label="test"
             >
-              <Markdown slot="cta" unwrap="span" />
+              <Markdown :node="$scopedSlots.cta" unwrap="span" />
             </SectionButton>
           </div>
         </div>

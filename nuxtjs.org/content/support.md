@@ -23,11 +23,26 @@ We partnered with :img{class="inline-block px-1 -mt-1 dark:hidden" src="/img/sup
 ---price
 250$
 
+---currency
+USD
+
 ---cta
 Start chat
-
 ::
 
 ::support-entreprise
+---title
+NuxtJS for entreprise
 
+---description
+Available as part of the Tidelift subscription
+
+---subdescription
+NuxtJS and the maintainers of thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use. If you want the flexibility of open source and the confidence of commercial-grade software, this is for you.
+
+---cta
+Learn more
+
+---secondaryCta
+Request a demo
 ::
