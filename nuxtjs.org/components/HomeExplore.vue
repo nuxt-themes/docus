@@ -12,7 +12,7 @@
       class="left-0 object-fill w-full h-40 light-img"
       alt="A landscape image"
     />
-    <AContainer class="flex flex-col items-center py-20 pt-40">
+    <AContainer class="flex flex-col items-center py-20">
       <div class="flex flex-col items-center w-full col-span-12">
         <div class="mb-2">
           <CategoryLabel :label="category" />
@@ -31,13 +31,13 @@
     <img
       loading="lazy"
       :src="`/img/home/campfire/dark/landscape-campfire.svg`"
-      class="left-0 object-fill w-full h-40 mt-32 light:hidden"
+      class="left-0 object-fill w-full h-40 light:hidden"
       alt="A landscape image"
     />
     <img
       loading="lazy"
       :src="`/img/home/campfire/light/landscape-campfire.svg`"
-      class="left-0 object-fill w-full h-40 mt-32 dark:hidden"
+      class="left-0 object-fill w-full h-40 dark:hidden"
       alt="A landscape image"
     />
   </section>
@@ -51,37 +51,6 @@ export default defineComponent({
     category: {
       type: String,
       default: 'Category'
-    }
-  }
-})
-</script>
-
-<script>
-import { defineComponent } from '@vue/composition-api'
-
-export default defineComponent({
-  setup() {
-    const explores = [
-      {
-        title: 'Examples',
-        description: 'Get inspired by use-cases, from common tasks to advanced examples.'
-      },
-      {
-        title: 'Integrations',
-        description: 'Qucikly integrate your current stack with Nuxt.'
-      },
-      {
-        title: 'Modules',
-        description: 'Take advantage of our module ecosystem to stop reinventing the wheel.'
-      },
-      {
-        title: 'Starters',
-        description: 'Start coding in minutes with the stack you choose.'
-      }
-    ]
-
-    return {
-      explores
     }
   }
 })

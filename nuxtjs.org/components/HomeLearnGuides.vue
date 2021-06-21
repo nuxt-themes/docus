@@ -1,5 +1,5 @@
 <template>
-  <section class="relative py-20 light:bg-gray-50 dark:bg-secondary-darkest">
+  <section class="relative pt-20 light:bg-gray-50 dark:bg-secondary-darkest">
     <AContainer class="flex flex-col items-center">
       <div class="flex flex-col w-full items-center col-span-12">
         <div class="mb-2">
