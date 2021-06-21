@@ -1,9 +1,9 @@
 <template>
   <section class="relative pb-20 light:bg-gray-50 dark:bg-secondary-darkest">
-    <AContainer class="flex flex-col items-center">
+    <NuxtContainer class="flex flex-col items-center">
       <div class="flex flex-col items-center w-full col-span-12">
         <div class="mb-2">
-          <CategoryLabel :label="category" />
+          <span class="text-tertiary font-bold text-lg">{{"category" /> </span>
         </div>
         <h2 class="mb-2 font-serif font-normal text-display-6 md:text-display-5 2xl:text-display-4">
           <Markdown slot="title" unwrap="p" />
@@ -21,11 +21,11 @@
             <span class="text-cloud-light text-body-base lg:text-body-lg font-bold mb-2">{{ post.category }}</span>
             <h3 class="text-body-xl lg:text-body-2xl font-bold mb-2">{{ post.title }}</h3>
             <p class="mb-4 text-body-base lg:text-body-lg">{{ post.description }}</p>
-            <MMarketingLink color="primary-green" name="Read article" icon="IconChevronRight" :to="post.to" />
+            <MarketingLink color="primary-green" name="Read article" icon="IconChevronRight" :to="post.to" />
           </li>
         </ul>
       </div>
-    </AContainer>
+    </NuxtContainer>
   </section>
 </template>
 

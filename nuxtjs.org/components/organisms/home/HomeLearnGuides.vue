@@ -1,9 +1,9 @@
 <template>
   <section class="relative pt-20 light:bg-gray-50 dark:bg-secondary-darkest">
-    <AContainer class="flex flex-col items-center">
+    <NuxtContainer class="flex flex-col items-center">
       <div class="flex flex-col w-full items-center col-span-12">
         <div class="mb-2">
-          <CategoryLabel :label="category" />
+          <span class="text-tertiary font-bold text-lg">{{"category" /> </span>
         </div>
         <h2 class="font-normal font-serif text-display-6 md:text-display-5 2xl:text-display-4 mb-2">
           <Markdown slot="title" unwrap="p" />
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-    </AContainer>
+    </NuxtContainer>
   </section>
 </template>
 

@@ -19,7 +19,7 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center py-20">
         <template #category>
-          <CategoryLabel label="Community" />
+          <span class="text-tertiary font-bold text-lg">Community</span>
         </template>
 
         <template #title>
@@ -47,7 +47,7 @@
                 p-4
               "
             >
-              <ALabel tag="p" class="text-left" v-html="testimonial.testimonial"></ALabel>
+              <NuxtLabel tag="p" class="text-left" v-html="testimonial.testimonial"></NuxtLabel>
               <div class="flex w-full justify-between items-center">
                 <a :href="testimonial.authorUrl" target="_blank" rel="noopener">
                   <img
@@ -63,8 +63,8 @@
                   rel="noopener"
                   class="flex flex-1 pl-4 text-left flex-col"
                 >
-                  <ALabel tag="span" class="font-bold text-base">{{ testimonial.author }}</ALabel>
-                  <ALabel tag="span" class="text-sm dark:text-cloud-lighter">{{ testimonial.job }}</ALabel>
+                  <NuxtLabel tag="span" class="font-bold text-base">{{ testimonial.author }}</NuxtLabel>
+                  <NuxtLabel tag="span" class="text-sm dark:text-cloud-lighter">{{ testimonial.job }}</NuxtLabel>
                 </a>
                 <a :href="testimonial.jobUrl" target="_blank" rel="noopener sponsored" class="hidden xl:block">
                   <img

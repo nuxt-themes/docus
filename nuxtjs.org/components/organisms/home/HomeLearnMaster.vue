@@ -3,7 +3,7 @@
     <template #section-content>
       <SectionContent class="col-span-12 items-center">
         <template #category>
-          <CategoryLabel label="Learn" />
+          <span class="text-tertiary font-bold text-lg">Learn</span>
         </template>
 
         <template #title>
@@ -20,7 +20,7 @@
         </template>
 
         <template #content>
-          <OCodeBlockAnimation class="w-full text-gray-50" />
+          <CodeBlockAnimation class="w-full text-gray-50" />
         </template>
 
         <template #button>

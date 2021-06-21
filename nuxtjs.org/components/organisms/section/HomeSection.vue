@@ -6,7 +6,7 @@
     <!-- Header illustration -->
     <slot name="header-illustration" />
 
-    <AContainer class="flex flex-col items-center">
+    <NuxtContainer class="flex flex-col items-center">
       <!-- Title -->
       <slot name="main-title" />
 
@@ -22,7 +22,7 @@
 
       <!-- Call to action -->
       <slot name="link" />
-    </AContainer>
+    </NuxtContainer>
 
     <!-- Footer background -->
     <slot name="footer-illustration" />

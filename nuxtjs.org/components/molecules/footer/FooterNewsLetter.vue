@@ -6,13 +6,13 @@
         The latest news, articles, and resources, sent to your inbox weekly.
       </p>
     </div>
-    <MInputGroupButton v-model="email" placeholder="Enter your email">Subscribe</MInputGroupButton>
+    <InputGroupButton v-model="email" placeholder="Enter your email">Subscribe</InputGroupButton>
   </div>
 </template>
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import { useNewsletter } from '../../plugins/composables'
+import { useNewsletter } from '../../../plugins/composables'
 
 export default defineComponent({
   setup() {

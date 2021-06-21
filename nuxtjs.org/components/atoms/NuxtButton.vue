@@ -23,6 +23,7 @@
     <slot />
   </Component>
 </template>
+
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
 

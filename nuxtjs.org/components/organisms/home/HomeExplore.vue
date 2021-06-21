@@ -12,10 +12,10 @@
       class="left-0 object-fill w-full h-40 light-img"
       alt="A landscape image"
     />
-    <AContainer class="flex flex-col items-center py-20">
+    <NuxtContainer class="flex flex-col items-center py-20">
       <div class="flex flex-col items-center w-full col-span-12">
         <div class="mb-2">
-          <CategoryLabel :label="category" />
+          <span class="text-tertiary font-bold text-lg">{{"category" /> </span>
         </div>
         <h2 class="mb-2 font-serif font-normal text-display-6 md:text-display-5 2xl:text-display-4">
           <Markdown slot="title" unwrap="p" />
@@ -27,7 +27,7 @@
           <slot />
         </div>
       </div>
-    </AContainer>
+    </NuxtContainer>
     <img
       loading="lazy"
       :src="`/img/home/campfire/dark/landscape-campfire.svg`"

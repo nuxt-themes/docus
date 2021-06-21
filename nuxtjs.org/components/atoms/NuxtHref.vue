@@ -27,7 +27,6 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  name: 'ALink',
   props: {
     to: {
       type: [String, Object],

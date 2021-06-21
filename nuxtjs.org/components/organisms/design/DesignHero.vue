@@ -5,12 +5,12 @@
         <h1 class="text-display-3 font-serif mb-4">{{ title }}</h1>
         <p class="text-body-xl max-w-3xl">{{ description }}</p>
         <div class="mt-8">
-          <ALink
+          <NuxtHref
             :href="downloadLink.url"
             :aria-label="downloadLink.text"
             class="rounded bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300 py-3 px-4"
             download
-            ><span class="font-medium">{{ downloadLink.text }}</span></ALink
+            ><span class="font-medium">{{ downloadLink.text }}</span></NuxtHref
           >
         </div>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <form class="mt-4 sm:flex lg:mt-0" @submit.prevent="submit">
-    <ATextInput
+    <NuxtTextInput
       :value="value"
       :placeholder="placeholder"
       class="

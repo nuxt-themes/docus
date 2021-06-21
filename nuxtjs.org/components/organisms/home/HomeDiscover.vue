@@ -16,9 +16,7 @@
     <HomeSection class="py-20 light:bg-gray-50 dark:bg-secondary-darkest">
       <template #section-content>
         <SectionContent class="col-span-6 items-center md:items-start justify-center">
-          <template #category>
-            <CategoryLabel :label="category" />
-          </template>
+          <template #category> <span class="text-tertiary font-bold text-lg">{{"category" /> </span></template>
 
           <template #title>
             <h2

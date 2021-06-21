@@ -4,7 +4,7 @@
       <template #section-content>
         <SectionContent class="col-span-12 items-center">
           <template #category>
-            <CategoryLabel label="Discover" />
+            <span class="text-tertiary font-bold text-lg">Discover</span>
           </template>
 
           <template #title>

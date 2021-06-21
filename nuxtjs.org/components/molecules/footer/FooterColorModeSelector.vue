@@ -1,5 +1,5 @@
 <template>
-  <ASelectNative
+  <NuxtSelectNative
     v-model="$colorMode.preference"
     :options="[
       { value: 'system', text: 'System' },

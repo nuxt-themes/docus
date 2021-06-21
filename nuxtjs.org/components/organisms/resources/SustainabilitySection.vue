@@ -15,7 +15,7 @@
     <div v-for="(sponsors, index) in sustainability" :key="index" class="flex flex-col items-center">
       <h2 class="text-display-6 font-semibold">{{ sponsors.tier }}</h2>
       <div class="flex flex-wrap justify-center -mx-8 pt-8 pb-24">
-        <ALink
+        <NuxtHref
           v-for="logo in sponsors.logos"
           :key="logo.title"
           :href="logo.url"
@@ -23,7 +23,7 @@
           class="mx-8 my-4"
         >
           <img :src="`/img/sponsors/${$colorMode.value}/${logo.img}.png`" :alt="logo.title" :class="logo.size" />
-        </ALink>
+        </NuxtHref>
       </div>
     </div>
   </div>

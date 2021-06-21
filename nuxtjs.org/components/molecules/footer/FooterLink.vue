@@ -9,12 +9,12 @@
       </h3>
       <ul class="mt-4 space-y-4">
         <li v-for="subLink in link.subLinks" :key="subLink.title">
-          <ALink
+          <NuxtHref
             :href="subLink.href"
             :to="subLink.to"
             :aria-label="subLink.title"
             class="light:text-gray-500 dark:text-white hover:d-primary-text-hover"
-            >{{ subLink.title }}</ALink
+            >{{ subLink.title }}</NuxtHref
           >
         </li>
       </ul>

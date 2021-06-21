@@ -19,7 +19,7 @@
         <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
           <div class="grid grid-cols-2 gap-8 xl:col-span-4">
             <div v-for="i in 2" :key="i">
-              <MFooterLink
+              <FooterLink
                 :links="i === 1 ? links.slice(0, 2) : links.slice(2, 4)"
                 class="md:grid md:grid-cols-2 md:gap-8"
               />
@@ -27,11 +27,11 @@
           </div>
           <div class="mt-12 xl:mt-0">
             <h3 class="text-lg font-semibold light:text-gray-400 dark:text-cloud-light">Settings</h3>
-            <MFooterLocaleSelector class="mt-4 sm:max-w-xs" />
-            <MFooterColorModeSelector class="mt-4 sm:max-w-xs" />
+            <FooterLocaleSelector class="mt-4 sm:max-w-xs" />
+            <FooterColorModeSelector class="mt-4 sm:max-w-xs" />
           </div>
         </div>
-        <MFooterNewsLetter
+        <FooterNewsLetter
           class="
             border-t
             light:border-gray-200
@@ -41,7 +41,7 @@
             xl:mt-0
           "
         />
-        <MFooterFoot
+        <FooterFoot
           class="
             mt-8
             border-t border-gray-200

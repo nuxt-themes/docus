@@ -9,12 +9,12 @@
       </div>
     </div>
     <div class="mt-4">
-      <ALink
+      <NuxtHref
         href="/design-kit/DesignKitColors.fig"
         aria-label="Dowload Color System"
         class="font-medium rounded bg-primary-green text-gray-800 hover:bg-green-300 focus:bg-green-300 py-3 px-4"
         download
-        ><span class="font-medium">Download Color System</span></ALink
+        ><span class="font-medium">Download Color System</span></NuxtHref
       >
     </div>
   </div>
