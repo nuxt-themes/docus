@@ -1,16 +1,15 @@
 <template>
-  <NuxtLink v-if="isInternal" :to="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']">
+  <Link class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href">
     <Markdown unwrap="p ul li" />
-  </NuxtLink>
 
-  <a v-else :href="href" class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" v-bind="linkAttrs">
-    <Markdown unwrap="p ul li" />
-    <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
-  </a>
+    <template #href>
+      <IconExternalLink v-if="blank" class="w-4 h-4 ml-2" />
+    </template>
+  </Link>
 </template>
 
 <script>
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -29,16 +28,6 @@ export default defineComponent({
     bold: {
       type: Boolean,
       default: false
-    }
-  },
-  setup(props) {
-    const isInternal = computed(() => props.href.startsWith('/') && props.href.startsWith('//') === false)
-
-    const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
-
-    return {
-      isInternal,
-      linkAttrs
     }
   }
 })

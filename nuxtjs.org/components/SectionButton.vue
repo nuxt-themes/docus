@@ -25,10 +25,6 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   props: {
-    ariaLabel: {
-      type: String,
-      required: true
-    },
     to: {
       type: [String, Object],
       required: true
@@ -45,6 +41,10 @@ export default defineComponent({
       default: null
     },
     iconRight: {
+      type: String,
+      default: null
+    },
+    ariaLabel: {
       type: String,
       default: null
     }
