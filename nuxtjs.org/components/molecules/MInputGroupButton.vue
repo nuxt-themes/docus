@@ -34,7 +34,7 @@
       @input="$emit('input', $event)"
     />
     <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-      <AButton
+      <NuxtButton
         type="submit"
         aria-label="Submit"
         class="
@@ -52,7 +52,7 @@
         @click="submit"
       >
         <slot />
-      </AButton>
+      </NuxtButton>
     </div>
   </form>
 </template>

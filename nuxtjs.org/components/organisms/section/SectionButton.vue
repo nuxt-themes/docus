@@ -1,5 +1,5 @@
 <template>
-  <AButton
+  <NuxtButton
     type="button"
     :aria-label="ariaLabel"
     :to="to"
@@ -18,7 +18,7 @@
     <div v-if="iconRight" class="h-full flex items-center justify-center">
       <Component :is="iconRight" class="ml-2" />
     </div>
-  </AButton>
+  </NuxtButton>
 </template>
 
 <script>

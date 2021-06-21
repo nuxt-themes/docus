@@ -12,7 +12,7 @@
 
 <script>
 import { defineComponent } from '@vue/composition-api'
-import { useNewsletter } from '../plugins/composables'
+import { useNewsletter } from '../../plugins/composables'
 
 export default defineComponent({
   setup() {

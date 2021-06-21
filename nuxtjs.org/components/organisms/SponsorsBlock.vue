@@ -16,7 +16,7 @@
     </ul>
 
     <div class="pt-2">
-      <AButton
+      <NuxtButton
         type="button"
         :to="localePath('/sponsor-nuxtjs')"
         class="
@@ -35,7 +35,7 @@
         "
       >
         Support Us
-      </AButton>
+      </NuxtButton>
     </div>
   </div>
 </template>
