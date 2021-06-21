@@ -6,6 +6,7 @@
     :to="`${to}`"
   >
     {{ name }}
+
     <Component :is="icon" class="ml-2 h-5 w-5" />
 
     <span class="absolute -bottom-2 h-0.5 w-8 group-hover:w-full transition-all" :class="'bg-' + color" />

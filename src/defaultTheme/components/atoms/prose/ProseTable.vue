@@ -9,8 +9,8 @@
 <style lang="postcss" scoped>
 table {
   /* TODO */
-  font-size: 0.875rem;
   @apply leading-5;
+  font-size: 0.875rem;
   width: 100%;
   table-layout: auto;
   text-align: left;

@@ -1,6 +1,6 @@
 <template>
   <div class="px-6 my-8">
-    <div class="flex flex-wrap grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="flex flex-wrap grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <ContentCardTemplate
         v-for="post in posts"
         :key="post.id"
@@ -8,7 +8,7 @@
         :title="post.title"
         :description="post.description"
         :image="post.imgUrl"
-        :slug="post.slug"
+        :href="post.to"
         :category="post.category"
       >
         <div slot="footer" class="px-4 mb-4 mt-auto">

@@ -30,7 +30,7 @@ export const Codes = {
   /**
    * '['
    */
-  openningSquareBracket: 91,
+  openingSquareBracket: 91,
   /**
    * ']'
    */
@@ -38,7 +38,15 @@ export const Codes = {
   /**
    * '{'
    */
-  openningCurlyBracket: 123,
+  openingCurlyBracket: 123,
+  /**
+   * '('
+   */
+  openingParentheses: 40,
+  /**
+   * ')'
+   */
+  closingParentheses: 41,
   /**
    * '_'
    */

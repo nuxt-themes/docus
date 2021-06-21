@@ -1,7 +1,9 @@
 <template>
   <div>
-    <PageHero title="NuxtJS Blog" />
-    <BlogpostList />
+    <PageHero :title="page.title" />
+    <div class="d-container">
+      <BlogpostList />
+    </div>
   </div>
 </template>
 

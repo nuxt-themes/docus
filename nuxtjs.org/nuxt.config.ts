@@ -112,5 +112,8 @@ export default withDocus({
       'abs.twimg.com',
       'https://res.cloudinary.com/nuxt/'
     ]
+  },
+  i18n: {
+    langDir: 'i18n/'
   }
 })
