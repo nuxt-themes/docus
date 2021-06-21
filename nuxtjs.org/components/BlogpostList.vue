@@ -8,7 +8,7 @@
         :title="post.title"
         :description="post.description"
         :image="post.imgUrl"
-        :href="`/blog/${post.slug}`"
+        :href="post.to"
         :category="post.category"
       >
         <div slot="footer" class="px-4 mb-4 mt-auto">
