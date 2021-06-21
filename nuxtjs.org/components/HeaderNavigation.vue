@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full h-full flex items-center justify-center space-x-12">
+  <nav class="relative w-full h-full flex items-center justify-center space-x-12">
     <Link
       v-for="{ title, href, slug } in links"
       :key="slug"
@@ -12,7 +12,7 @@
     >
       {{ title }}
     </Link>
-  </div>
+  </nav>
 </template>
 
 <script>
