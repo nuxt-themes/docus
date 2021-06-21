@@ -1,12 +1,13 @@
 <template>
   <div class="relative w-full h-full flex items-center justify-center">
-    <ul class="flex space-x-12 h-full">
+    <ul class="flex h-full truncate">
       <li
         v-for="link in headerLinks"
         :key="link.slug"
-        class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
+        class="relative capitalize font-medium flex flex-col items-center justify-center text-center"
       >
         <NuxtLink
+          class="px-4 h-full flex items-center"
           :to="`/${link.slug}/${link.slug.includes('blog') ? '' : link.children[0].slug || ''}`"
           :class="{
             'text-primary': currentSlug === link.slug,
@@ -16,13 +17,15 @@
           {{ link.title }}
         </NuxtLink>
       </li>
-      <li class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center">
-        <NuxtLink to="/resources" class="hover:d-primary-text-hover"> Resources </NuxtLink>
+      <li class="relative capitalize font-medium flex flex-col items-center justify-center text-center">
+        <NuxtLink to="/resources" class="hover:d-primary-text-hover px-4 h-full flex items-center">
+          Resources
+        </NuxtLink>
       </li>
-      <li class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center">
+      <li class="relative capitalize font-medium flex flex-col items-center justify-center text-center">
         <a
           href="https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link"
-          class="hover:d-primary-text-hover"
+          class="hover:d-primary-text-hover px-4 h-full flex items-center"
           target="_blank"
           rel="noopener"
         >
