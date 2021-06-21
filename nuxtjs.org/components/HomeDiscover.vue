@@ -96,13 +96,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api'
+import { defineComponent, ref, onMounted, watch, useContext, computed } from '@nuxtjs/composition-api'
 import lottie, { AnimationItem, AnimationSegment } from 'lottie-web'
-
-const lottieAnimPath = 'https://assets3.lottiefiles.com/private_files/lf30_oycna92s.json'
-
 export default defineComponent({
   setup(_props, context) {
+    const { $colorMode } = useContext()
+    const lottieAnimPathLight = 'https://assets10.lottiefiles.com/private_files/lf30_8cv6lgcx.json'
+    const lottieAnimPathDark = 'https://assets10.lottiefiles.com/private_files/lf30_obsnpogu.json'
     const animations = ref([
       {
         name: 'Pages',
@@ -130,6 +130,12 @@ export default defineComponent({
     const animFrames = ref([0, 238, 448, 688, 928])
     let anim: AnimationItem
 
+    /* computed */
+    const colorMode = computed(() => {
+      return $colorMode.value
+    })
+
+    /* function */
     // if user clicks on section, stop loop and play specified segment
     function changeAnimation(index: number) {
       currentIndex.value = index
@@ -139,7 +145,6 @@ export default defineComponent({
 
     function loadAnimation() {
       anim?.destroy()
-
       /**
        * Temporary use `context.ref` this should replace by Vue3 ref
        */
@@ -150,7 +155,7 @@ export default defineComponent({
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        path: lottieAnimPath
+        path: colorMode.value === 'dark' ? lottieAnimPathDark : lottieAnimPathLight
       })
 
       anim.addEventListener('DOMLoaded', function () {
@@ -189,6 +194,12 @@ export default defineComponent({
 
       observer.observe(lottieAnim.value)
     }
+
+    /* watcher */
+    // reload anim with new path according color mode
+    watch(colorMode, (_, __) => {
+      loadAnimation()
+    })
 
     onMounted(() => setTimeout(loadAnimation, 250))
 
