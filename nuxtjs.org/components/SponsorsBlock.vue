@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <p class="pt-8 text-base font-semibold text-gray-900 dark:text-gray-100">Partners</p>
+    <p class="text-base font-semibold text-gray-900 dark:text-gray-100">Partners</p>
     <ul class="py-2 flex flex-col space-y-2 ml-4 mb-2">
       <li v-for="partner in partners" :key="partner.title" class="">
         <a
