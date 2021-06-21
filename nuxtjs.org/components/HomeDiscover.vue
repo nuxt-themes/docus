@@ -189,7 +189,7 @@ export default defineComponent({
 
       const observer = new IntersectionObserver(callback, {
         root: document.querySelector('anim'),
-        threshold: 1.0
+        threshold: 0.8 // isIntersecting when 80% of container is visible
       })
 
       observer.observe(lottieAnim.value)
