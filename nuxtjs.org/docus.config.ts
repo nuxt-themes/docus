@@ -46,7 +46,8 @@ export default {
       'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-light',
       'd-prose-thead-border': 'border-b border-gray-200 dark:border-secondary-dark',
       'd-prose-tr-border': 'border-b border-gray-100 dark:border-secondary-darker',
-      'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-secondary-darker'
+      'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-secondary-darker',
+      'd-tertiary-text': 'text-gray-400 dark:text-cloud-dark'
     }
   }
 }
