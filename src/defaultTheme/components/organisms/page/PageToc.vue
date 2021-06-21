@@ -1,9 +1,7 @@
 <template>
   <div
-    v-if="toc.length"
     class="
       hidden
-      xl:sticky
       z-10
       left-0
       flex-none
@@ -46,11 +44,13 @@
     >
       <PageTocTop />
 
-      <h5 class="items-center hidden mb-2 xl:flex">
-        <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
-      </h5>
+      <div v-if="toc.length" class="mb-8">
+        <h5 class="items-center hidden mb-2 xl:flex">
+          <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
+        </h5>
 
-      <PageTocList :toc="toc" />
+        <PageTocList :toc="toc" />
+      </div>
 
       <PageTocBottom />
     </div>

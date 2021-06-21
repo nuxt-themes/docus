@@ -3,11 +3,8 @@
     <slot name="image">
       <img class="mb-4" :src="image" :alt="`A ${title} image`" />
     </slot>
-
     <h3 class="mb-1 text-center text-body-lg lg:text-body-xl font-bold">{{ title }}</h3>
-
-    <p class="text-center text-sm lg:text-base dark:text-secondary-lightest mb-4">{{ description }}</p>
-
+    <p class="text-center text-sm lg:text-base d-secondary-text mb-4">{{ description }}</p>
     <MMarketingLink v-if="to" color="primary-green" name="Learn more" icon="IconChevronRight" :to="to" />
   </div>
 </template>

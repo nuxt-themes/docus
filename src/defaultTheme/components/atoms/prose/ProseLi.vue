@@ -64,7 +64,8 @@ ol li {
   margin: 0;
 }
 
-.dark ol li::before {
-  color: theme('colors.gray.400');
+ol li::before {
+  @apply d-secondary-text;
+  /* color: theme('colors.red.400'); */
 }
 </style>

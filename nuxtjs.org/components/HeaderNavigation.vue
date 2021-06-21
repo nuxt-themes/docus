@@ -1,9 +1,21 @@
 <template>
-  <nav class="relative w-full h-full flex items-center justify-center space-x-12">
+  <nav class="relative w-full h-full flex items-center justify-center">
     <Link
       v-for="{ title, href, slug } in links"
       :key="slug"
-      class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
+      class="
+        relative
+        capitalize
+        font-medium
+        flex flex-col
+        items-center
+        justify-center
+        text-center
+        px-4
+        h-full
+        flex
+        items-center
+      "
       :to="href"
       :class="{
         'text-primary': currentSlug === slug,

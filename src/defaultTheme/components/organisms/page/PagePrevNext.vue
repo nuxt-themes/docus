@@ -10,7 +10,7 @@
           justify-start
           w-full
           px-4
-          py-3
+          py-2.5
           truncate
           border
           d-border
@@ -44,7 +44,7 @@
           justify-end
           w-full
           px-4
-          py-3
+          py-2.5
           mb-2
           truncate
           border
