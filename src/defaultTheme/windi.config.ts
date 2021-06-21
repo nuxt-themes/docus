@@ -37,7 +37,7 @@ export default defineConfig({
     },
     extend: {
       fontSize: {
-        root: '16px',
+        root: '16px', // Safari fix to disable font size scaling
         lg: ['1.125rem', '1.5rem'] // NOT WORKING
       },
       fontFamily: {
