@@ -1,9 +1,13 @@
 import visit from 'unist-util-visit'
+import { TAGS_MAP } from '../../../runtime'
 import { useMarkdownParser } from '..'
 
-const toFrontMatter = (yamlString: string) => `---
-${yamlString}
----`
+const toFrontMatter = (yamlString: string) => `---\n${yamlString}\n---`
+
+/**
+ * Convert a HTML tag to its equivalent prose component
+ */
+const tagName = (name: string) => (TAGS_MAP[name] ? TAGS_MAP[name][1 /* prose tag */] : name)
 
 export default function htmlDirectives({ directives }) {
   const parser = useMarkdownParser()
@@ -43,7 +47,7 @@ export default function htmlDirectives({ directives }) {
       // parse data slots and retrive data
       const nodeData = getNodeData(node)
 
-      data.hName = node.name
+      data.hName = tagName(node.name)
       data.hProperties = bindData(
         {
           ...node.attributes,

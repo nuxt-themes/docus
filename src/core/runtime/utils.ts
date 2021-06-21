@@ -1,3 +1,8 @@
+/**
+ * The map between html tags and equivalent tags in Docus
+ *
+ * !important: The second item in the tags list should be the prose component
+ */
 export const TAGS_MAP = {
   h1: ['h1', 'prose-h1'],
   h2: ['h2', 'prose-h2'],
@@ -8,7 +13,10 @@ export const TAGS_MAP = {
   p: ['p', 'prose-paragraph'],
   ul: ['ul', 'prose-ul'],
   ol: ['ol', 'prose-ol'],
-  blockquote: ['blockquote', 'prose-blockquote']
+  blockquote: ['blockquote', 'prose-blockquote'],
+  img: ['img', 'prose-img'],
+  a: ['a', 'prose-a'],
+  code: ['code', 'prose-code-inlinr']
 }
 
 export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
