@@ -10,10 +10,10 @@
         :href="href"
       >
         <div slot="footer" class="px-4 mb-4">
-          <UniversalLink class="text-primary font-medium flex items-center" :to="href">
+          <Link class="text-primary font-medium flex items-center" :to="href">
             <span class="mr-2">Go to {{ title }}</span>
             <IconChevronRight class="w-4 h-4" />
-          </UniversalLink>
+          </Link>
         </div>
       </ContentCardTemplate>
     </div>

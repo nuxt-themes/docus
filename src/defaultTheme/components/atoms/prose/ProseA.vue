@@ -1,7 +1,7 @@
 <template>
-  <UniversalLink :to="href" :blank="blank">
+  <Link :to="href" :blank="blank">
     <slot />
-  </UniversalLink>
+  </Link>
 </template>
 
 <script>

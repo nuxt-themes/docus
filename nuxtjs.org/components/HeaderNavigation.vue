@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full h-full flex items-center justify-center space-x-12">
-    <UniversalLink
+    <Link
       v-for="{ title, href, slug } in links"
       :key="slug"
       class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center"
@@ -11,7 +11,7 @@
       }"
     >
       {{ title }}
-    </UniversalLink>
+    </Link>
   </div>
 </template>
 
