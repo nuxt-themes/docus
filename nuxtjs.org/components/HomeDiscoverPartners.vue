@@ -50,6 +50,7 @@ export default defineComponent({
         .where({ tier: { $in: ['MVP Partners', 'Partners'] } })
         .fetch()
     })
+
     return {
       partners
     }

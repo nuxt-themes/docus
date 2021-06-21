@@ -1,61 +1,79 @@
 <template>
-  <div class="relative w-full h-full flex items-center justify-center">
-    <ul class="flex h-full truncate">
-      <li
-        v-for="link in headerLinks"
-        :key="link.slug"
-        class="relative capitalize font-medium flex flex-col items-center justify-center text-center"
-      >
-        <NuxtLink
-          class="px-4 h-full flex items-center"
-          :to="`/${link.slug}/${link.slug.includes('blog') ? '' : link.children[0].slug || ''}`"
-          :class="{
-            'text-primary': currentSlug === link.slug,
-            'hover:d-primary-text-hover': currentSlug !== link.slug
-          }"
-        >
-          {{ link.title }}
-        </NuxtLink>
-      </li>
-      <li class="relative capitalize font-medium flex flex-col items-center justify-center text-center">
-        <NuxtLink to="/resources" class="hover:d-primary-text-hover px-4 h-full flex items-center">
-          Resources
-        </NuxtLink>
-      </li>
-      <li class="relative capitalize font-medium flex flex-col items-center justify-center text-center">
-        <a
-          href="https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link"
-          class="hover:d-primary-text-hover px-4 h-full flex items-center"
-          target="_blank"
-          rel="noopener"
-        >
-          Video Courses
-        </a>
-      </li>
-    </ul>
-  </div>
+  <nav class="relative w-full h-full flex items-center justify-center">
+    <Link
+      v-for="{ title, href, slug } in links"
+      :key="slug"
+      class="
+        relative
+        capitalize
+        font-medium
+        flex flex-col
+        items-center
+        justify-center
+        text-center
+        px-4
+        h-full
+        flex
+        items-center
+      "
+      :to="href"
+      :class="{
+        'text-primary': currentSlug === slug,
+        'hover:d-primary-text-hover': currentSlug !== slug
+      }"
+    >
+      {{ title }}
+    </Link>
+  </nav>
 </template>
 
 <script>
-import { computed, defineComponent, useRoute, useContext } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useRoute } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  props: {
+    links: {
+      type: Array,
+      required: false,
+      default: () => [
+        {
+          title: 'Docs',
+          slug: 'docs',
+          href: '/docs'
+        },
+        {
+          title: 'Examples',
+          slug: 'examples',
+          href: '/examples'
+        },
+        {
+          title: 'Resources',
+          slug: 'resources',
+          href: '/resources'
+        },
+        {
+          title: 'Blog',
+          slug: 'blog',
+          href: '/blog'
+        },
+        {
+          title: 'Video Courses',
+          slug: 'video-courses',
+          href: 'https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link'
+        }
+      ]
+    }
+  },
   setup() {
-    // @ts-ignore
-    const { $docus } = useContext()
-
     const route = useRoute()
-    const currentNav = computed(() => $docus.get({ depth: 1 }).links)
-    // computed
-    const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== '' && link.children.length))
 
     const currentSlug = computed(() => {
       return route.value.path !== '/' && route?.value?.params?.pathMatch
         ? route.value.params.pathMatch.split('/')[0]
         : null
     })
+
     return {
-      headerLinks,
       currentSlug
     }
   }
