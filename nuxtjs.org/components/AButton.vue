@@ -109,6 +109,7 @@ export default defineComponent({
     },
     isExternal() {
       if (!this.to) return false
+
       const isInternal = typeof this.to !== 'string' || (this.to.startsWith('/') && this.to.startsWith('//') === false)
 
       return !isInternal
