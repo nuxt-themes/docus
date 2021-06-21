@@ -16,6 +16,13 @@ export default defineComponent({
     blank: {
       type: Boolean,
       default: false
+    },
+    /**
+     * `true` if `href` points to a static file
+     */
+    static: {
+      type: Boolean,
+      default: false
     }
   }
 })

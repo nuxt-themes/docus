@@ -45,6 +45,12 @@ export default <Module>async function docusModule() {
   // Setup docus cache
   options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
 
+  /**
+   * Inject static dir into process that will be used by `link` handler
+   *  to detect static files
+   */
+  process.env.NUXT_STATIC_DIR = join(options.rootDir, options.dir.static)
+
   // Inject Docus theme as ~docus
   options.alias['~docus'] = resolve(__dirname, 'runtime')
 
