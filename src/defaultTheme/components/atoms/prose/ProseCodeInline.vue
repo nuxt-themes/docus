@@ -17,8 +17,6 @@ code {
 
 a code {
   @apply border border-dashed border-transparent;
-  /* color: inherit; */
-  /* border: 1px dashed transparent; */
   &:hover {
     @apply border-primary;
   }
@@ -50,11 +48,11 @@ h4 a {
     @apply d-prose-code-inline-bg rounded-md;
     content: '';
     position: absolute;
-    top: -3px;
-    left: -3px;
+    top: -2px;
+    left: -2px;
     z-index: -1;
-    width: calc(100% + 6px);
-    height: calc(100% + 6px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
     /* background-color: theme('colors.white'); */
     pointer-events: none;
   }

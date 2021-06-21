@@ -5,16 +5,7 @@
 </template>
 
 <style lang="postcss" scoped>
-/* TODO */
 thead th {
-  font-weight: theme('fontWeight.semibold');
-  vertical-align: bottom;
-  padding: 0 theme('padding.2') theme('padding.2');
-  &:first-child {
-    padding-left: 0;
-  }
-  &:last-child {
-    padding-right: 0;
-  }
+  @apply font-semibold d-secondary-text p-2 pt-0 align-bottom first:pl-0 last:pr-0;
 }
 </style>

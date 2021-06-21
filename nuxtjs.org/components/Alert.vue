@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 mt-4 mb-4 rounded-lg alert text-sm leading-relaxed" :class="[type]">
+  <div class="p-4 mt-4 mb-4 rounded-lg alert text-sm leading-loose" :class="[type]">
     <div class="flex items-center space-x-4">
       <div>
         <Component :is="iconComponent" class="w-5 h-5" />
@@ -68,14 +68,14 @@ export default defineComponent({
     }
   }
   &.next {
-    @apply bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 text-gray-600 dark:text-gray-200;
+    @apply bg-gray-50 dark:bg-secondary-darkest text-gray-600 dark:text-secondary-lightest;
     >>> {
       code {
-        @apply bg-gray-100 dark:bg-gray-900 dark:bg-opacity-50 shadow-none text-current;
+        @apply bg-gray-100 dark:bg-secondary-dark dark:bg-opacity-50 shadow-none text-current;
       }
       a:hover {
         code {
-          @apply border-gray-400 dark:border-gray-700;
+          @apply border-gray-400 dark:border-secondary-light;
         }
       }
     }
@@ -124,7 +124,10 @@ export default defineComponent({
       @apply font-semibold text-current;
     }
     a {
-      @apply underline border-none font-semibold text-current;
+      @apply border-none font-semibold text-current;
+      &:hover {
+        @apply opacity-50;
+      }
       code {
         @apply border border-transparent border-dashed;
       }

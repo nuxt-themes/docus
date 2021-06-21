@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-img {
+>>> img {
   margin-top: 1em;
   margin-bottom: 1em;
 }

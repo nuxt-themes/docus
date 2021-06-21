@@ -43,7 +43,10 @@ export default {
       'd-code-group-header-bg': 'bg-gray-100 dark:bg-secondary-darker',
       'd-code-group-tab': 'bg-gray-200 dark:bg-secondary-dark',
       'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker',
-      'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-light'
+      'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-light',
+      'd-prose-thead-border': 'border-b border-gray-200 dark:border-secondary-dark',
+      'd-prose-tr-border': 'border-b border-gray-100 dark:border-secondary-darker',
+      'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-secondary-darker'
     }
   }
 }

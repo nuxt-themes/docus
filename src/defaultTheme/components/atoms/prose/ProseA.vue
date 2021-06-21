@@ -48,7 +48,7 @@ export default defineComponent({
   }
 }
 
-.dark :not(h1, h2, h3) > a {
+.dark :not(h1, h2, h3, h4) > a {
   color: var(--primary-400);
   &:hover {
     border-bottom-color: var(--primary-400);
