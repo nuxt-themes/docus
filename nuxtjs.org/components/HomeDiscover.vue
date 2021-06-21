@@ -73,8 +73,8 @@
                 </div>
               </div>
             </div>
-            <div class="w-full flex justify-center items-center md:justify-end md:w-2/3">
-              <div id="lottieAnim" ref="lottieAnim" class="h-96" />
+            <div class="anim">
+              <div ref="lottieAnim" class="h-96" />
             </div>
           </div>
         </div>
@@ -125,7 +125,6 @@ export default defineComponent({
         segment: [928, 1167] as AnimationSegment
       }
     ])
-
     const lottieAnim = ref(null)
     const currentIndex = ref(0)
     const animFrames = ref([0, 238, 448, 688, 928])
@@ -141,11 +140,13 @@ export default defineComponent({
     function loadAnimation() {
       anim?.destroy()
 
+      /**
+       * Temporary use `context.ref` this should replace by Vue3 ref
+       */
+      lottieAnim.value = context.refs.lottieAnim as Element
+
       anim = lottie.loadAnimation({
-        /**
-         * Temporary use `context.ref` this should replace by Vue3 ref
-         */
-        container: context.refs.lottieAnim as Element,
+        container: lottieAnim.value,
         renderer: 'svg',
         loop: true,
         autoplay: false,
@@ -153,7 +154,8 @@ export default defineComponent({
       })
 
       anim.addEventListener('DOMLoaded', function () {
-        anim.play()
+        // play animation when lottie container is visible otherwise pause it
+        animationObserver()
       })
 
       anim.addEventListener('enterFrame', function () {
@@ -169,6 +171,25 @@ export default defineComponent({
       })
     }
 
+    function animationObserver() {
+      const callback = entries => {
+        entries.forEach(({ _, isIntersecting }) => {
+          if (!isIntersecting) {
+            anim.pause()
+          } else {
+            anim.play()
+          }
+        })
+      }
+
+      const observer = new IntersectionObserver(callback, {
+        root: document.querySelector('anim'),
+        threshold: 1.0
+      })
+
+      observer.observe(lottieAnim.value)
+    }
+
     onMounted(() => setTimeout(loadAnimation, 250))
 
     return {
@@ -177,8 +198,14 @@ export default defineComponent({
       loadAnimation,
       changeAnimation,
       animations,
-      currentIndex
+      currentIndex,
+      animationObserver
     }
   }
 })
 </script>
+<style lang="postcss" scoped>
+.anim {
+  @apply w-full flex justify-center items-center md:justify-end md:w-2/3;
+}
+</style>
