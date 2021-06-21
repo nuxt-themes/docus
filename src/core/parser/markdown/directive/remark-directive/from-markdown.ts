@@ -12,6 +12,7 @@ const enter = {
   directiveLeafAttributes: enterAttributes,
 
   directiveText: enterText,
+  directiveTextSpan: enterTextSpan,
   directiveTextAttributes: enterAttributes
 }
 const exit = {
@@ -44,6 +45,7 @@ const exit = {
   directiveLeafName: exitName,
 
   directiveText: exitToken,
+  directiveTextSpan: exitToken,
   directiveTextAttributeClassValue: exitAttributeClassValue,
   directiveTextAttributeIdValue: exitAttributeIdValue,
   directiveTextAttributeName: exitAttributeName,
@@ -107,6 +109,10 @@ function exitContainerSectionTitle(token: Token) {
 
 function enterLeaf(token: Token) {
   enterToken.call(this, 'leafDirective', token)
+}
+
+function enterTextSpan(token: Token) {
+  this.enter({ type: 'textDirective', name: 'span', attributes: {}, children: [] }, token)
 }
 
 function enterText(token: Token) {

@@ -40,6 +40,14 @@ export const Codes = {
    */
   openningCurlyBracket: 123,
   /**
+   * '('
+   */
+  openningParentheses: 40,
+  /**
+   * ')'
+   */
+  closingParentheses: 41,
+  /**
    * '_'
    */
   underscore: 95
