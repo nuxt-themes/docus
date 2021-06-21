@@ -150,7 +150,7 @@ export default {
   --docsearch-hit-color: var(--color-gray-700);
   --docsearch-muted-color: var(--color-gray-500);
   /* bg-gray-400 with 0.8 opacity */
-  --docsearch-container-background: rgb(244 244 245 / 55%); // gray-100
+  --docsearch-container-background: rgb(244 244 245 / 55%);
 }
 
 .DocSearch-Container {
@@ -197,7 +197,7 @@ export default {
   & .DocSearch {
     --docsearch-text-color: var(--color-gray-300);
     --docsearch-container-background: rgb(0 30 38 / 64%);
-    --docsearch-modal-background: #003543; // secondary-darker
+    --docsearch-modal-background: #003543;
     --docsearch-modal-shadow: inset 1px 1px 0 0 #052f14, 0 3px 8px 0 #0b160d;
     /* --docsearch-searchbox-background: var(--color-gray-800); */
     --docsearch-searchbox-focus-background: rgba(1, 42, 53, 1);

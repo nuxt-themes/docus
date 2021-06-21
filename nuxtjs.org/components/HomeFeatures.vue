@@ -14,13 +14,6 @@
 
         <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-12">
           <slot />
-          <!-- <SectionContentItem
-            v-for="exp in experiences"
-            :key="exp.title"
-            :image="`/img/home/discover/dx/${exp.icon}.svg`"
-            :title="exp.title"
-            :description="exp.description"
-          /> -->
         </div>
       </div>
     </AContainer>

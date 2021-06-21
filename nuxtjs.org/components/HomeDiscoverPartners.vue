@@ -8,10 +8,11 @@
         <h2 class="font-normal font-serif text-display-6 md:text-display-5 2xl:text-display-4 mb-2">
           <Markdown slot="title" unwrap="p" />
         </h2>
-        <p class="font-normal text-body-base md:text-body-lg 2xl:text-body-xl mb-8">
+        <p class="font-normal text-center text-body-base md:text-body-lg 2xl:text-body-xl mb-8">
           <Markdown slot="description" unwrap="p" />
         </p>
         <MPartnersBanner class="pb-0" :partners-logo="partners" />
+        <p><Markdown slot="bottom" unwrap="p" /></p>
       </div>
     </AContainer>
     <img
@@ -31,10 +32,8 @@
 
 <script>
 import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
-import { Markdown } from '~docus/utils'
 
 export default defineComponent({
-  components: { Markdown },
   props: {
     category: {
       type: String,

@@ -1,112 +1,56 @@
 <template>
-  <HomeSection class="">
-    <template #header-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/explore/dark/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 light:hidden"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/explore/light/landscape-explore.svg`"
-        class="w-full h-40 object-fill left-0 dark:hidden"
-        alt="A landscape image"
-      />
-    </template>
-
-    <template #section-content>
-      <SectionContent class="col-span-12 items-center mt-12">
-        <template #category>
-          <CategoryLabel label="Explore" />
-        </template>
-
-        <template #title>
-          <SectionTitle class="text-center"
-            >Need to go Forward? So much to <span class="text-primary-green italic">Explore</span>.</SectionTitle
-          >
-        </template>
-
-        <template #content>
-          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-16 xs:gap-8 md:gap-6 py-8">
-            <SectionContentItem
-              v-for="(explore, index) in explores"
-              :key="explore.title"
-              :title="explore.title"
-              :description="explore.description"
-            >
-              <template #image>
-                <div class="relative group transition-opacity duration-500 relative mb-4">
-                  <img
-                    :src="`/img/home/explore/gem-${index + 1}-hover.svg`"
-                    class="absolute bottom-0 opacity-0 hover:opacity-100 z-20 transition-opacity duration-500 h-32"
-                  />
-                  <img
-                    :src="`/img/home/explore/gem-${index + 1}.svg`"
-                    class="hover:opacity-0 z-10 transition-opacity duration-500 h-32"
-                  />
-                </div>
-              </template>
-            </SectionContentItem>
-          </div>
-        </template>
-
-        <template #button>
-          <SectionButton
-            to="#"
-            aria-label="Explore more"
-            size="sm"
-            class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
-          >
-            Explore more
-          </SectionButton>
-        </template>
-      </SectionContent>
-    </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/campfire/dark/landscape-campfire.svg`"
-        class="w-full h-40 object-fill left-0 mt-32 light:hidden"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/campfire/light/landscape-campfire.svg`"
-        class="w-full h-40 object-fill left-0 mt-32 dark:hidden"
-        alt="A landscape image"
-      />
-    </template>
-  </HomeSection>
+  <section class="relative">
+    <img
+      loading="lazy"
+      :src="`/img/home/explore/dark/landscape-explore.svg`"
+      class="left-0 object-fill w-full h-40 dark-img"
+      alt="A landscape image"
+    />
+    <img
+      loading="lazy"
+      :src="`/img/home/explore/light/landscape-explore.svg`"
+      class="left-0 object-fill w-full h-40 light-img"
+      alt="A landscape image"
+    />
+    <AContainer class="flex flex-col items-center py-20">
+      <div class="flex flex-col items-center w-full col-span-12">
+        <div class="mb-2">
+          <CategoryLabel :label="category" />
+        </div>
+        <h2 class="mb-2 font-serif font-normal text-display-6 md:text-display-5 2xl:text-display-4">
+          <Markdown slot="title" unwrap="p" />
+        </h2>
+        <p class="mb-12 font-normal text-center text-body-base md:text-body-lg 2xl:text-body-xl">
+          <Markdown slot="description" unwrap="p" />
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-20 pb-8">
+          <slot />
+        </div>
+      </div>
+    </AContainer>
+    <img
+      loading="lazy"
+      :src="`/img/home/campfire/dark/landscape-campfire.svg`"
+      class="left-0 object-fill w-full h-40 light:hidden"
+      alt="A landscape image"
+    />
+    <img
+      loading="lazy"
+      :src="`/img/home/campfire/light/landscape-campfire.svg`"
+      class="left-0 object-fill w-full h-40 dark:hidden"
+      alt="A landscape image"
+    />
+  </section>
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  setup() {
-    const explores = [
-      {
-        title: 'Examples',
-        description: 'Get inspired by use-cases, from common tasks to advanced examples.'
-      },
-      {
-        title: 'Integrations',
-        description: 'Qucikly integrate your current stack with Nuxt.'
-      },
-      {
-        title: 'Modules',
-        description: 'Take advantage of our module ecosystem to stop reinventing the wheel.'
-      },
-      {
-        title: 'Starters',
-        description: 'Start coding in minutes with the stack you choose.'
-      }
-    ]
-
-    return {
-      explores
+  props: {
+    category: {
+      type: String,
+      default: 'Category'
     }
   }
 })

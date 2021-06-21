@@ -17,6 +17,9 @@
         </NuxtLink>
       </li>
       <li class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center">
+        <NuxtLink to="/resources" class="hover:d-primary-text-hover"> Resources </NuxtLink>
+      </li>
+      <li class="relative capitalize font-medium flex flex-col items-center justify-center space-y-1 text-center">
         <a
           href="https://masteringnuxt.com/?utm_source=nuxt&utm_medium=link&utm_campaign=navbar_link"
           class="hover:d-primary-text-hover"
@@ -40,7 +43,6 @@ export default defineComponent({
 
     const route = useRoute()
     const currentNav = computed(() => $docus.get({ depth: 1 }).links)
-
     // computed
     const headerLinks = computed(() => currentNav.value.filter(link => link.slug !== '' && link.children.length))
 
