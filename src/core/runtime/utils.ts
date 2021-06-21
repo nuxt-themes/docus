@@ -16,7 +16,7 @@ export const TAGS_MAP = {
   blockquote: ['blockquote', 'prose-blockquote'],
   img: ['img', 'prose-img'],
   a: ['a', 'prose-a'],
-  code: ['code', 'prose-code-inlinr']
+  code: ['code', 'prose-code-inline']
 }
 
 export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
