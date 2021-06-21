@@ -100,7 +100,7 @@ import { defineComponent, ref, onMounted, watch, useContext, computed } from '@n
 import lottie, { AnimationItem, AnimationSegment } from 'lottie-web'
 export default defineComponent({
   setup(_props, context) {
-    const { $colorMode } = useContext()
+    const { $colorMode } = useContext() as any
     const lottieAnimPathLight = 'https://assets10.lottiefiles.com/private_files/lf30_8cv6lgcx.json'
     const lottieAnimPathDark = 'https://assets10.lottiefiles.com/private_files/lf30_obsnpogu.json'
     const animations = ref([
