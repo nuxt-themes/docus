@@ -99,7 +99,7 @@
 import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api'
 import lottie, { AnimationItem, AnimationSegment } from 'lottie-web'
 
-const lottieAnimPath = 'https://assets6.lottiefiles.com/private_files/lf30_rhtd2oql.json'
+const lottieAnimPath = 'https://assets3.lottiefiles.com/private_files/lf30_oycna92s.json'
 
 export default defineComponent({
   setup(_props, context) {
