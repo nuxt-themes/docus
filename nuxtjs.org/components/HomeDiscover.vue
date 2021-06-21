@@ -96,46 +96,46 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted, watch } from '@nuxtjs/composition-api'
-import lottie, { AnimationItem } from 'lottie-web'
+import { defineComponent, ref, onMounted } from '@nuxtjs/composition-api'
+import lottie, { AnimationItem, AnimationSegment } from 'lottie-web'
+
+const lottieAnimPath = 'https://assets6.lottiefiles.com/private_files/lf30_rhtd2oql.json'
 
 export default defineComponent({
   setup(_props, context) {
     const animations = ref([
       {
         name: 'Pages',
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_bxmm0fcm.json'
+        segment: [1, 238] as AnimationSegment
       },
       {
         name: 'UI',
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_rixgn205.json'
+        segment: [238, 448] as AnimationSegment
       },
       {
         name: 'Data',
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_wtexmd4t.json'
+        segment: [447, 688] as AnimationSegment
       },
       {
         name: 'Modules',
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_lga5cqha.json'
+        segment: [688, 928] as AnimationSegment
       },
       {
         name: 'Deployment',
-        path: 'https://assets3.lottiefiles.com/private_files/lf30_farao0hg.json'
+        segment: [928, 1167] as AnimationSegment
       }
     ])
 
     const lottieAnim = ref(null)
-    let anim: AnimationItem
     const currentIndex = ref(0)
-    const breakLoop = ref(false)
+    const animFrames = ref([0, 238, 448, 688, 928])
+    let anim: AnimationItem
 
-    watch(currentIndex, (newVal, oldVal) => {
-      if (newVal !== oldVal) loadAnimation()
-    })
-
+    // if user clicks on section, stop loop and play specified segment
     function changeAnimation(index: number) {
-      breakLoop.value = true
       currentIndex.value = index
+      anim.loop = false
+      anim.playSegments(animations.value[index].segment, true)
     }
 
     function loadAnimation() {
@@ -147,22 +147,25 @@ export default defineComponent({
          */
         container: context.refs.lottieAnim as Element,
         renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        path: animations.value[currentIndex.value].path
+        loop: true,
+        autoplay: false,
+        path: lottieAnimPath
       })
 
-      anim.addEventListener('complete', () => {
-        if (!breakLoop.value) {
-          // Set next animation
-          if (currentIndex.value < animations.value.length - 1) {
-            currentIndex.value = currentIndex.value + 1
-          } else {
-            currentIndex.value = 0
-          }
+      anim.addEventListener('DOMLoaded', function () {
+        anim.play()
+      })
 
-          loadAnimation()
+      anim.addEventListener('enterFrame', function () {
+        const currentIndexFrame = animFrames.value.indexOf(Math.round(anim.currentFrame))
+
+        if (currentIndexFrame !== -1 && anim.loop === true) {
+          currentIndex.value = currentIndexFrame
         }
+      })
+
+      anim.addEventListener('loopComplete', function () {
+        currentIndex.value = 0
       })
     }
 
