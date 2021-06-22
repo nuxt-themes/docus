@@ -43,6 +43,7 @@ const defaultThemeSettings = {
     'd-primary-text-hover': 'text-gray-600 dark:text-gray-400',
     'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
     'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-prose-code-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-thead-border': 'border-b border-gray-200 dark:border-gray-700',
     'd-prose-tr-border': 'border-b border-gray-100 dark:border-gray-800',
     'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-gray-700',
@@ -59,8 +60,8 @@ const defaultThemeSettings = {
     'd-aside-header-bg': 'bg-gray-50 dark:bg-gray-800',
     'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
     'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
-    'd-code-group-header-bg': 'bg-gray-100 dark:bg-gray-800',
-    'd-code-group-tab': 'bg-gray-200 dark:bg-gray-700',
+    'd-code-group-header-bg': 'bg-gray-200 dark:bg-gray-800',
+    'd-code-group-tab': 'bg-gray-300 dark:bg-gray-700',
     'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     // Icons
