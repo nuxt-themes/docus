@@ -1,9 +1,13 @@
 <template>
-  <textarea v-model="frontmatter" class="h-24 w-full" />
-  <textarea v-model="content" class="w-full h-full" />
+  <textarea
+    v-model="frontmatter"
+    class="h-24 w-full font-mono px-4 py-2 d-border-primary border-b outline-none text-sm"
+  />
+  <textarea v-model="content" class="w-full h-full font-mono px-4 py-2 outline-none text-sm" />
 </template>
 
 <script lang="ts">
+import YAML from 'js-yaml'
 import { GrayMatterFile } from 'gray-matter'
 import { defineComponent, computed, ref, watch, PropType } from 'vue3'
 import { useApi } from '../plugins/api'
@@ -36,14 +40,14 @@ export default defineComponent({
     // Stringified reference for frontmatter text-area
     const frontmatter = computed({
       get() {
-        return JSON.stringify(data.value, null, 2)
+        return YAML.dump(data.value, null, 2)
       },
       set(value: string) {
         try {
-          data.value = JSON.parse(value)
+          data.value = YAML.parse(value)
         } catch (e) {
-          // New value is not a valid JSON string.
-          // Do nothing and wait for the next valid JSON input.
+          // New value is not a valid YAML string.
+          // Do nothing and wait for the next valid YAML input.
         }
       }
     })
