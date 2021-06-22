@@ -50,11 +50,12 @@
                 items-center
                 md:items-start
                 space-x-4
-                md:space-x-0 md:space-y-2 md:w-1/3
+                md:space-x-0 md:space-y-2 md:w-2/5
+                xl:w-1/5
               "
             >
               <div v-for="(animation, index) in animations" :key="animation.name">
-                <div class="flex flex-col-reverse md:flex-row md:flex-row justify-center items-center">
+                <div class="flex flex-col-reverse md:flex-row md:flex-row justify-center items-center space-x-2">
                   <img
                     :src="`/img/home/discover/diamond.svg`"
                     alt="diamond"
@@ -217,6 +218,6 @@ export default defineComponent({
 </script>
 <style lang="postcss" scoped>
 .anim {
-  @apply w-full flex justify-center items-center md:justify-end md:w-2/3;
+  @apply w-full flex justify-center items-center md:justify-end w-full;
 }
 </style>
