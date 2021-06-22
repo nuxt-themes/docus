@@ -15,7 +15,7 @@
     <NuxtContainer class="flex flex-col items-center py-20">
       <div class="flex flex-col items-center w-full col-span-12">
         <div class="mb-2">
-          <span class="text-tertiary font-bold text-lg">{{"category" /> </span>
+          <span class="text-tertiary font-bold text-lg">{{ category }} </span>
         </div>
         <h2 class="mb-2 font-serif font-normal text-display-6 md:text-display-5 2xl:text-display-4">
           <Markdown use="title" unwrap="p" />

@@ -11,7 +11,7 @@
         <p class="font-normal text-center text-body-base md:text-body-lg 2xl:text-body-xl mb-8">
           <Markdown use="description" unwrap="p" />
         </p>
-        <MPartnersBanner class="pb-0" :partners-logo="partners" />
+        <PartnersBanner class="pb-0" :partners-logo="partners" />
         <p><Markdown use="bottom" unwrap="p" /></p>
       </div>
     </NuxtContainer>

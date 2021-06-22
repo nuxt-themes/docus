@@ -32,9 +32,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const isInternal = computed(
-      () => !props.static && props.href.startsWith('/') && props.href.startsWith('//') === false
-    )
+    const isInternal = computed(() => !props.static && props.to.startsWith('/') && props.to.startsWith('//') === false)
 
     const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
 
