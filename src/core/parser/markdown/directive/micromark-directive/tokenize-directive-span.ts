@@ -17,6 +17,10 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function exit(code: number) {
+    // prevent conflict with link syntax
+    if (code === Codes.openingParentheses) {
+      return nok(code)
+    }
     effects.exit('directiveTextSpan')
     return ok(code)
   }
