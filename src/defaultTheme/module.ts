@@ -77,7 +77,7 @@ export default <Module>function themeSetupModule() {
     const contentDir = resolve(options.srcDir, settings.contentDir)
 
     // Glob grabbing all Docus files
-    const transformFiles = await glob('**/*.{vue,css}', {
+    const transformFiles = await glob('**/*.{vue,css,md}', {
       cwd: join(options.rootDir, '/node_modules/docus/dist'),
       nodir: true,
       absolute: true
@@ -85,6 +85,7 @@ export default <Module>function themeSetupModule() {
 
     const cssFiles = transformFiles.filter((f: string) => f.endsWith('.css'))
     const vueFiles = transformFiles.filter((f: string) => f.endsWith('.vue'))
+    const mdFiles = transformFiles.filter((f: string) => f.endsWith('.md'))
 
     // Make sure file @apply's get transformed
     windiOptions.scanOptions.extraTransformTargets = {
@@ -95,7 +96,7 @@ export default <Module>function themeSetupModule() {
           `${i}?vue&type=style&index=0&lang.postcss`
         ])
       ],
-      detect: vueFiles
+      detect: [...vueFiles, ...mdFiles]
     }
 
     // Push every included path into scan options
