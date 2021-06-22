@@ -21,12 +21,18 @@ export default defineComponent({
     },
     blank: {
       type: Boolean,
-      required: false,
-      default: true
+      default: false
+    },
+    /**
+     * `true` if `href` points to a static file
+     */
+    static: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
-    const isInternal = computed(() => props.to.startsWith('/') && props.to.startsWith('//') === false)
+    const isInternal = computed(() => !props.static && props.to.startsWith('/') && props.to.startsWith('//') === false)
 
     const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
 

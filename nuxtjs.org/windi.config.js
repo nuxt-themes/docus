@@ -17,7 +17,7 @@ export default {
       'secondary-darker': '#003543',
       'secondary-darkest': '#012A35',
       'secondary-black': '#001E26',
-      terciary: '#B2CCCC', // cloud
+      tertiary: '#B2CCCC', // cloud
       'cloud-surface': '#E6F0F0',
       'cloud-lightest': '#D1E2E2',
       'cloud-lighter': '#B2CCCC',
