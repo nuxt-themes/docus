@@ -1,3 +1,0 @@
----
-navigation.exclusive: true
----
