@@ -53,5 +53,14 @@ module.exports = {
     // To your `settings.json`, from VSCode.
     //
     'vue/no-multiple-template-root': 0
-  }
+  },
+  // controlled by Volar
+  overrides: [
+    {
+      files: ['*.vue'],
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off'
+      }
+    }
+  ]
 }
