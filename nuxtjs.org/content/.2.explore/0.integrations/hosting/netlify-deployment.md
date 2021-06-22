@@ -53,7 +53,7 @@ export default {
 }
 ```
 
-If however you want to automatically apply headers and redirects of the application then there is a module for that, this is especially useful for when you have custom headers/redirects (in a \_headers or \_redirects file):
+If however you want to automatically apply headers and redirects of the application then there is a module for that, this is especially useful for when you have custom headers/redirects (in a `_headers` or `_redirect` file):
 
 [netlify-files-module](https://github.com/nuxt-community/netlify-files-module)
 
