@@ -1,10 +1,8 @@
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
 import { Codes } from './constants'
-import createAttributes from './factory-attributes'
 import createLabel from './factory-label'
 
 const label: any = { tokenize: tokenizeLabel, partial: true }
-const attributes: any = { tokenize: tokenizeAttributes, partial: true }
 
 function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   return start
@@ -15,18 +13,14 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     effects.enter('directiveTextSpan')
-    return effects.attempt(label, afterLabel, nok)(code)
-  }
-
-  function afterLabel(code: number) {
-    // Check for attributes after label
-    if (code === Codes.openingCurlyBracket) {
-      return effects.attempt(attributes, exit, nok)(code)
-    }
-    return nok(code)
+    return effects.attempt(label, exit, nok)(code)
   }
 
   function exit(code: number) {
+    // prevent conflict with link syntax
+    if (code === Codes.openingParentheses) {
+      return nok(code)
+    }
     effects.exit('directiveTextSpan')
     return ok(code)
   }
@@ -37,28 +31,6 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
  */
 function tokenizeLabel(effects: Effects, ok: Okay, nok: NotOkay) {
   return createLabel(effects, ok, nok, 'directiveTextLabel', 'directiveTextLabelMarker', 'directiveTextLabelString')
-}
-
-/**
- * Attributes starts with `{` and ends with `}`
- */
-function tokenizeAttributes(effects: Effects, ok: Okay, nok: NotOkay) {
-  return createAttributes(
-    effects,
-    ok,
-    nok,
-    'directiveTextAttributes',
-    'directiveTextAttributesMarker',
-    'directiveTextAttribute',
-    'directiveTextAttributeId',
-    'directiveTextAttributeClass',
-    'directiveTextAttributeName',
-    'directiveTextAttributeInitializerMarker',
-    'directiveTextAttributeValueLiteral',
-    'directiveTextAttributeValue',
-    'directiveTextAttributeValueMarker',
-    'directiveTextAttributeValueData'
-  )
 }
 
 export default {

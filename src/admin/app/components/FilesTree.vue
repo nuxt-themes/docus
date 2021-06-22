@@ -7,6 +7,7 @@
       :class="{ 'bg-gray-200 text-gray-900': isCurrent(file) }"
     >
       <div
+        v-if="!isHidden(file)"
         class="
           group
           flex
@@ -60,6 +61,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const isDir = file => file.type === 'directory'
+    const isHidden = file => file.path.startsWith('/_') || file.path.startsWith('/.') || file.path.endsWith('.js')
 
     const isCurrent = file => props.currentFile && file.path === props.currentFile.path
 
@@ -78,6 +80,7 @@ export default defineComponent({
 
     const helpers = {
       isDir,
+      isHidden,
       isCurrent,
       hasOneDir,
       filename,

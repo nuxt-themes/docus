@@ -10,9 +10,9 @@ export default {
     indexName: 'docus'
   },
   github: {
-    repo: 'nuxt/nuxt.js',
+    repo: 'nuxt/nuxtjs.org',
     branch: 'dev',
-    releases: true
+    releases: 'nuxt/nuxt.js'
   },
   theme: {
     header: {

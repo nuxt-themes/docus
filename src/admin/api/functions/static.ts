@@ -2,23 +2,23 @@ import { join, extname } from 'path'
 import { promises as fs } from 'fs'
 import directoryTree from 'directory-tree'
 import { createError, Middleware } from 'h3'
-import { normalizeFiles } from '../utils'
+import { normalizeFiles, r } from '../utils'
 
 export default <Middleware>async function staticHandler(req) {
   const url = req.url
 
   if (url === '/') {
-    const tree = directoryTree(process.options.dir.static)
+    const tree = directoryTree(r('static'))
 
-    return normalizeFiles(tree.children, process.options.dir.static)
+    return normalizeFiles(tree.children, r('static'))
   }
 
   try {
-    const path = join(process.options.dir.static, url)
+    const path = join(r('static'), url)
     const data = await fs.readFile(path, 'utf-8')
 
     return {
-      path: path.replace(process.options.dir.static, ''),
+      path: path.replace(r('static'), ''),
       extension: extname(path),
       data
     }

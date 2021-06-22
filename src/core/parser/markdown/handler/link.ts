@@ -7,6 +7,7 @@ import all from 'mdast-util-to-hast/lib/all'
 
 export default function link(h: H, node: Node) {
   const props: any = {
+    ...((node.attributes || {}) as object),
     href: normalize(node.url)
   }
 

@@ -6,6 +6,7 @@ import normalize from 'mdurl/encode.js'
  */
 export default function image(h, node) {
   const props: any = {
+    ...node.attributes,
     src: normalize(node.url),
     alt: node.alt
   }

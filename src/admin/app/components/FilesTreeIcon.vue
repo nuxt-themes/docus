@@ -21,7 +21,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
   </svg>
 
-  <span v-else-if="!isRoot || hasOneDir(files)" class="mr-1 inline-block h-4 w-4" />
+  <span v-else class="mr-1 inline-block h-4 w-4" />
 
   <svg
     v-if="isDir(file)"

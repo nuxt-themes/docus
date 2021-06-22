@@ -10,16 +10,16 @@ interface Body {
   content: string
 }
 
-export default <Middleware>async function pagesHandler(req) {
+export default <Middleware>async function contentHandler(req) {
   const url = req.url
 
   if (req.method === 'GET') {
-    // List all pages
+    // List all files in content/
     if (url === '/') {
       const tree = dirTree(r('content'))
       return normalizeFiles(tree.children, r('content'))
     }
-    // Read a single page
+    // Read a single content file
     try {
       const path = join(r('content'), url)
       const file = await fs.readFile(path, 'utf-8')
