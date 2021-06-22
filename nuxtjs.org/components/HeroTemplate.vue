@@ -7,8 +7,8 @@
           class="flex flex-col justify-start w-full px-4 pt-36 pb-52 md:pt-44 lg:pb-56 lg:pt-52 text-center"
           :class="{ 'lg:text-left xl:w-1/2': !contentCenter }"
         >
-          <Markdown slot="title" unwrap="p" />
-          <Markdown slot="description" />
+          <Markdown use="title" unwrap="p" />
+          <Markdown use="description" />
           <div
             v-if="$slots.buttons"
             class="flex flex-wrap justify-center space-x-3 xl:space-x-4"

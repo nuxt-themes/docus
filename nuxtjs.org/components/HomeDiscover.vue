@@ -32,7 +32,7 @@
                 2xl:text-display-4
               "
             >
-              <Markdown slot="title" unwrap="p" />
+              <Markdown use="title" unwrap="p" />
             </h2>
           </template>
 
