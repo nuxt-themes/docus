@@ -26,10 +26,10 @@ export async function fetch(settings: GithubReleaseOptions) {
   const getMajorVersion = (r: GithubRelease): number => (r.name ? Number(r.name.substring(1, 2)) : 0)
 
   if (settings.releases && settings.repo) {
-    const { apiUrl, repo } = settings
+    const { apiUrl, repo, releases: releasesRepo } = settings
     const girhubReleases = await fetchGitHubReleases({
       apiUrl,
-      repo,
+      repo: typeof releasesRepo === 'string' ? releasesRepo : repo,
       token: process.env.GITHUB_TOKEN || ''
     })
     releases = await Promise.all(
