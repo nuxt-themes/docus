@@ -18,7 +18,7 @@ Technical support
 Get project audits, app deployments, custom development and technical support from the NuxtJS team.
 
 ---subdescription
-We partnered with :img{class="inline-block px-1 -mt-1 dark:hidden" src="/img/support/light/otechie.svg"} :img{class="inline-block px-1 -mt-1 light:hidden" src="/img/support/dark/otechie.svg"} to offer these services so we can focus on helping you as fast as possible.
+We partnered with ![](/img/support/light/otechie.svg){.inline-block.px-1.-mt-1.dark:hidden} ![](/img/support/dark/otechie.svg){.inline-block.px-1.-mt-1.light:hidden} to offer these services so we can focus on helping you as fast as possible.
 
 ---price
 250$
