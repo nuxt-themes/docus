@@ -1,5 +1,5 @@
 <template>
-  <Link :to="href" :blank="blank">
+  <Link :to="href" :blank="blank" :static="static">
     <slot />
   </Link>
 </template>
