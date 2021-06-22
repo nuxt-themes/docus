@@ -9,9 +9,10 @@ ul li {
   position: relative;
   padding-left: 1.75em;
   &::before {
+    @apply d-secondary-bg;
     content: '';
     position: absolute;
-    background-color: theme('colors.gray.300');
+    /* background-color: theme('colors.gray.300'); */
     border-radius: 50%;
     width: 0.375em;
     height: 0.375em;
@@ -30,9 +31,9 @@ ul li {
   }
 }
 
-.dark ul li::before {
+/* .dark ul li::before {
   background-color: theme('colors.gray.600');
-}
+} */
 
 ol li {
   margin-top: 0.25em;
@@ -63,7 +64,8 @@ ol li {
   margin: 0;
 }
 
-.dark ol li::before {
-  color: theme('colors.gray.400');
+ol li::before {
+  @apply d-secondary-text;
+  /* color: theme('colors.red.400'); */
 }
 </style>

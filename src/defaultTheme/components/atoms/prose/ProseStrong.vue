@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 strong {
-  color: theme('colors.gray.900');
+  /* color: theme('colors.gray.900'); */
   font-weight: theme('fontWeight.semibold');
 }
 a strong {
@@ -14,9 +14,9 @@ a strong {
 }
 
 .dark {
-  strong {
+  /* strong {
     color: theme('colors.gray.100');
-  }
+  } */
   a strong {
     color: inherit;
   }

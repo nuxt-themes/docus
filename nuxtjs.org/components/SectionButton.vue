@@ -2,7 +2,6 @@
   <AButton
     type="button"
     :aria-label="ariaLabel"
-    :href="href"
     :to="to"
     class="font-medium rounded-md"
     :class="[
@@ -26,17 +25,9 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   props: {
-    ariaLabel: {
-      type: String,
-      required: true
-    },
-    href: {
-      type: String,
-      default: null
-    },
     to: {
       type: [String, Object],
-      default: null
+      required: true
     },
     size: {
       type: String,
@@ -50,6 +41,10 @@ export default defineComponent({
       default: null
     },
     iconRight: {
+      type: String,
+      default: null
+    },
+    ariaLabel: {
       type: String,
       default: null
     }

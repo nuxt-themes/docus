@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center flex-none lg:w-60 xl:w-72">
+  <div class="flex items-center flex-none lg:w-60">
     <NuxtLink :to="localePath('/')" class="w-auto" :aria-label="settings.title">
       <HeaderLogo />
     </NuxtLink>

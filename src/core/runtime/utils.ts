@@ -1,3 +1,8 @@
+/**
+ * The map between html tags and equivalent tags in Docus
+ *
+ * !important: The second item in the tags list should be the prose component
+ */
 export const TAGS_MAP = {
   h1: ['h1', 'prose-h1'],
   h2: ['h2', 'prose-h2'],
@@ -8,7 +13,10 @@ export const TAGS_MAP = {
   p: ['p', 'prose-paragraph'],
   ul: ['ul', 'prose-ul'],
   ol: ['ol', 'prose-ol'],
-  blockquote: ['blockquote', 'prose-blockquote']
+  blockquote: ['blockquote', 'prose-blockquote'],
+  img: ['img', 'prose-img'],
+  a: ['a', 'prose-a'],
+  code: ['code', 'prose-code-inline']
 }
 
 export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
@@ -17,26 +25,6 @@ export const expandTags = (_tags: string[]) => _tags.flatMap(t => TAGS_MAP[t])
  * List of text nodes
  */
 export const TEXT_TAGS = expandTags(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li'])
-
-// @vue/component
-export const Markdown = {
-  functional: true,
-  render: (_h, ctx) => {
-    const slot = ctx.props.slot || 'default'
-    let node = ctx.props.node || ctx.parent.$scopedSlots[slot] || ctx.parent.$slots[slot]
-    if (typeof node === 'function') {
-      node = node()
-    }
-    if (typeof node === 'string') {
-      return [node]
-    }
-    if (node && ctx.props.unwrap) {
-      const tags = ctx.props.unwrap.split(/[,\s]/)
-      node = flatUnwrap(node, tags)
-    }
-    return node
-  }
-}
 
 /**
  * Check virtual node's tag

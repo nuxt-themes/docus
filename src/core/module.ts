@@ -4,7 +4,7 @@ import { Module } from '@nuxt/types'
 import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, isHidden, processDocumentInfo } from './utils/document'
 import { destroyStorage, initStorage, useNuxtIgnoreList } from './storage'
 import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
@@ -45,6 +45,12 @@ export default <Module>async function docusModule() {
   // Setup docus cache
   options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
 
+  /**
+   * Inject static dir into process that will be used by `link` handler
+   *  to detect static files
+   */
+  process.env.NUXT_STATIC_DIR = join(options.rootDir, options.dir.static)
+
   // Inject Docus theme as ~docus
   options.alias['~docus'] = resolve(__dirname, 'runtime')
 
@@ -78,6 +84,21 @@ export default <Module>async function docusModule() {
     const position = generatePosition(_to, document)
 
     processDocumentInfo(document)
+
+    /**
+     * Disable document navigation if it is marked as `page = false`
+     * This will prevent showing non-pages in navigation menus
+     */
+    if (document.page === false) {
+      document.navigation = false
+    }
+
+    if (isHidden(_to)) {
+      // Do not show document on navigation menus
+      document.navigation = false
+      // Do not render document as standalone page
+      document.page = false
+    }
 
     document.slug = generateSlug(slug)
     document.position = position
@@ -114,14 +135,6 @@ export default <Module>async function docusModule() {
       logger.info(`File ${event}: ${key}`)
     })
   }
-
-  nuxt.hook('components:dirs', (dirs: any) => {
-    dirs.push({
-      path: resolve(__dirname, 'runtime/components'),
-      global: true,
-      level: 2
-    })
-  })
 
   nuxt.hook('build:before', () => {
     ;(async () => {
@@ -167,6 +180,10 @@ export default <Module>async function docusModule() {
       await fs.writeFile(join(dir, `db-${dbHash}.json`), db.serialize(), 'utf-8')
     })
   }
+  addPlugin({
+    src: resolve(__dirname, 'runtime', 'components', 'index.ts'),
+    filename: 'docus_components.js'
+  })
   addPlugin({
     src: resolve(__dirname, 'plugin.js'),
     filename: 'docus.js',

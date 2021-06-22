@@ -28,10 +28,6 @@ import { defineComponent, ref } from '@vue/composition-api'
 
 export default defineComponent({
   props: {
-    href: {
-      type: String,
-      default: null
-    },
     to: {
       type: [String, Object],
       default: null
@@ -94,7 +90,7 @@ export default defineComponent({
     props() {
       return {
         a: {
-          href: this.href,
+          href: this.to,
           target: this.target,
           rel: this.rel,
           ariaLabel: this.ariaLabel
@@ -111,8 +107,15 @@ export default defineComponent({
         }
       }[this.is]
     },
+    isExternal() {
+      if (!this.to) return false
+
+      const isInternal = typeof this.to !== 'string' || (this.to.startsWith('/') && this.to.startsWith('//') === false)
+
+      return !isInternal
+    },
     is() {
-      if (this.href) {
+      if (this.isExternal) {
         return 'a'
       } else if (this.to) {
         return 'NuxtLink'
@@ -123,3 +126,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+/* global reset, since Tailwind/Windi has "-webkit-appearance: button" which leads to default look in Safari */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: none;
+}
+</style>

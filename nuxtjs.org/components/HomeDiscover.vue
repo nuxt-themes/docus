@@ -17,17 +17,23 @@
       <template #section-content>
         <SectionContent class="col-span-12 justify-center">
           <template #category>
-            <CategoryLabel label="Discover" />
+            <CategoryLabel :label="category" />
           </template>
 
           <template #title>
-            <SectionTitle>
-              Easier
-              <span class="text-primary-green italic">Life</span>, from<span class="text-primary-green italic">
-                Code</span
-              >
-              to<span class="text-primary-green italic"> Cloud</span>
-            </SectionTitle>
+            <h2
+              class="
+                font-normal
+                text-center
+                md:text-left
+                font-serif
+                text-display-6
+                md:text-display-5
+                2xl:text-display-4
+              "
+            >
+              <Markdown slot="title" unwrap="p" />
+            </h2>
           </template>
 
           <template #paragraph>

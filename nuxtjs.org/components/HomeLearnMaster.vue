@@ -8,8 +8,8 @@
 
         <template #title>
           <SectionTitle class="text-center"
-            ><span class="text-primary-green italic">Easy </span>to learn.
-            <span class="text-primary-green italic">Easy</span> to master</SectionTitle
+            ><span class="text-primary italic">Easy </span>to learn. <span class="text-primary italic">Easy</span> to
+            master</SectionTitle
           >
         </template>
 
@@ -26,10 +26,10 @@
         <template #button>
           <div class="w-full self-start">
             <SectionButton
-              to="#"
+              to="/docs/get-started/installation"
               aria-label="Learn everything"
               size="sm"
-              class="bg-primary-green text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
+              class="bg-primary text-gray-800 font-semibold hover:bg-green-300 focus:bg-green-300"
             >
               Learn everything
             </SectionButton>

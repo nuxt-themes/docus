@@ -6,7 +6,24 @@
         :key="`${partner.alt}-${index}`"
         class="flex items-center p-8 mx-12 partners__slide md:p-4"
       >
-        <Component :is="partner.component" />
+        <a :href="partner.url" class="opacity-75 hover:opacity-100" rel="noopener sponsored" target="_blank">
+          <img
+            loading="lazy"
+            :src="`/img/sponsors/light/${partner.img}`"
+            :alt="partner.title"
+            :title="partner.title"
+            class="h-12 light-img"
+            :class="partner.imgClass"
+          />
+          <img
+            loading="lazy"
+            :src="`/img/sponsors/dark/${partner.img}`"
+            :alt="partner.title"
+            :title="partner.title"
+            class="h-12 dark-img"
+            :class="partner.imgClass"
+          />
+        </a>
       </li>
     </ul>
   </div>
@@ -14,11 +31,13 @@
 
 <script>
 import { defineComponent, computed } from '@nuxtjs/composition-api'
+
 export default defineComponent({
   props: {
     partnersLogo: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   setup(props) {
@@ -64,6 +83,7 @@ export default defineComponent({
   @apply absolute h-24 w-48 z-10;
   background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 20%);
   content: '';
+  pointer-events: none;
 }
 
 //TODO: put real color when there will be available via docus
@@ -72,6 +92,7 @@ export default defineComponent({
   @apply absolute h-24 w-48 z-10;
   background: linear-gradient(to right, #001e26 0%, rgba(255, 255, 255, 0) 20%);
   content: '';
+  pointer-events: none;
 }
 
 @screen sm {
@@ -119,5 +140,8 @@ export default defineComponent({
 
 .partners__slider .partners__slide {
   @apply h-24 w-64;
+}
+.partners__slide-track:hover {
+  animation-play-state: paused;
 }
 </style>

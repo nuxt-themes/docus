@@ -10,24 +10,25 @@
           justify-start
           w-full
           px-4
-          py-3
+          py-2.5
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:w-auto
-          dark:text-gray-400 dark:border-gray-800 dark:border-opacity-50 dark:hover:text-primary-400
-          hover:text-primary hover:border-primary-200
-          dark:hover:border-gray-700
+          hover:d-text-primary
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span v-if="prev.category" class="mb-1 text-xs leading-tight text-gray-400">
-            {{ prev.category }}
+          <span v-if="prev.category" class="mb-1 text-xs leading-tight d-secondary-text">
+            {{ directory(prev.to) }}
           </span>
+
           <span class="flex items-center w-full leading-tight">
-            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2 text-primary" />
-            <span class="truncate text-primary">{{ prev.title }}</span>
+            <IconArrowLeft class="flex-shrink-0 w-4 h-4 mr-2" />
+            <span class="truncate">{{ prev.title }}</span>
           </span>
         </span>
       </NuxtLink>
@@ -43,25 +44,24 @@
           justify-end
           w-full
           px-4
-          py-3
+          py-2.5
           mb-2
           truncate
-          border border-gray-100
+          border
+          d-border
+          hover:d-border-hover
           rounded-xl
           group
           xs:mb-0 xs:w-auto
-          dark:text-gray-400 dark:border-gray-800
-          hover:text-primary hover:border-primary-200
-          dark:hover:border-gray-700 dark:border-opacity-50
+          hover:d-text-primary hover:border-primary-200
         "
       >
         <span class="relative flex flex-col items-start truncate">
-          <span v-if="next.category" class="mb-1 text-xs leading-tight text-gray-400">
-            {{ next.category }}
-          </span>
+          <span class="mb-1 text-xs leading-tight d-secondary-text"> {{ directory(next.to) }} </span>
+
           <span class="flex items-center w-full leading-tight">
-            <span class="truncate text-primary">{{ next.title }}</span>
-            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2 text-primary" />
+            <span class="truncate">{{ next.title }}</span>
+            <IconArrowRight class="flex-shrink-0 w-4 h-4 ml-2" />
           </span>
         </span>
       </NuxtLink>
@@ -71,6 +71,7 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { upperFirst } from 'scule'
 
 export default defineComponent({
   props: {
@@ -81,6 +82,13 @@ export default defineComponent({
     next: {
       type: Object,
       default: null
+    }
+  },
+  methods: {
+    directory(link) {
+      const dirs = link.split('/')
+      const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
+      return directory.split('-').map(upperFirst).join(' ')
     }
   }
 })

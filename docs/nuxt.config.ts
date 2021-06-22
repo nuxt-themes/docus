@@ -64,6 +64,8 @@ export default withDocus({
       'speedcurve.nuxtjs.org',
       'pbs.twimg.com',
       'source.unsplash.com',
+      'images.unsplash.com',
+      'unsplash.com',
       'user-images.githubusercontent.com',
       'abs.twimg.com'
     ]

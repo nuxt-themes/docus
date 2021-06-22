@@ -29,10 +29,13 @@ export default defineComponent({
     const draft = false
 
     // Page query
-    const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
+    const [page] = await $docus
+      .search({ deep: true })
+      .where({ language, to, draft, page: { $ne: false } })
+      .fetch()
 
     // Break on missing page query
-    if (!page) return error({ statusCode: 404, message: 'Page not found' })
+    if (!page) return error({ statusCode: 404, message: '404 - Page not found' })
 
     // Get page template
     page.template = $docus.getPageTemplate(page)

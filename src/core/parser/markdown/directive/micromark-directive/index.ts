@@ -1,17 +1,24 @@
 // https://github.com/micromark/micromark-extension-directive/blob/main/lib/syntax.js
 
+import directiveSpan from './tokenize-directive-span'
 import directiveInline from './tokenize-directive-inline'
 import directiveContainer from './tokenize-directive-container'
 import directiveContainerIndented from './tokenize-directive-container-indented'
+import { Codes } from './constants'
 
 export default function directive() {
   return {
-    text: { 58: directiveInline },
-    flow: { 58: [directiveContainer, directiveInline] },
+    text: {
+      [Codes.colon]: directiveInline,
+      [Codes.openingSquareBracket]: [directiveSpan]
+    },
+    flow: {
+      [Codes.colon]: [directiveContainer, directiveInline]
+    },
     flowInitial: {
       '-2': directiveContainerIndented,
       '-1': directiveContainerIndented,
-      32: directiveContainerIndented
+      [Codes.space]: directiveContainerIndented
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="py-16 sm:py-24 relative">
       <div class="relative max-w-2xl mx-auto">
-        <NuxtLink :to="$contentLocalePath('/templates/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
+        <NuxtLink :to="$contentLocalePath('/blog')" class="absolute top-0 left-0 px-4 -mt-12 sm:-mt-16">
           <span
             class="
               text-sm
@@ -20,16 +20,12 @@
           <h1 class="flex-1 text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
             {{ page.title }}
           </h1>
-          <p class="my-4 text-base font-medium text-gray-500 dark:text-gray-400">
+          <p class="my-4 text-base font-medium d-secondary-text">
             {{ page.description }}
           </p>
 
           <div class="flex sm:flex-row items-center">
-            <time
-              v-if="page.date"
-              :datetime="page.date"
-              class="font-medium mr-2 text-sm text-gray-400 dark:text-gray-500"
-            >
+            <time v-if="page.date" :datetime="page.date" class="font-medium mr-2 text-sm d-tertiary-text">
               {{ formatDateByLocale($i18n.locale, page.date) }}
             </time>
 
@@ -67,13 +63,13 @@
 
       <div class="max-w-4xl mx-auto">
         <div class="aspect-w-16 aspect-h-9 bg-gray-100 dark:bg-gray-800 mb-8">
-          <NuxtImg :src="imgUrl" width="864" height="378" alt="" class="object-cover" />
+          <NuxtImg :src="imgUrl" :alt="page.title" />
         </div>
       </div>
 
       <div class="max-w-2xl mx-auto">
         <BlogpostToc :toc="page.toc.links" :title="page.toc.title" class="mb-8" />
-        <NuxtContent :document="page" class="px-4 docus-content" />
+        <DocusContent :document="page" class="px-4 docus-content" />
       </div>
     </div>
   </div>

@@ -1,58 +1,55 @@
 <template>
-  <HomeSection class="pt-20">
-    <template #section-content>
-      <SectionContent class="col-span-12 items-center">
-        <template #category>
-          <CategoryLabel label="Discover" />
-        </template>
-
-        <template #title>
-          <SectionTitle class="text-center"
-            >Art in the <span class="text-primary-green italic">Making</span></SectionTitle
-          >
-        </template>
-
-        <template #paragraph>
-          <SectionDescription class="text-center"
-            >Be part of the Nuxt.js community and help us Nuxtify the world.</SectionDescription
-          >
-        </template>
-
-        <template #banner>
-          <MPartnersBanner class="pb-0" :partners-logo="partners" />
-        </template>
-      </SectionContent>
-    </template>
-
-    <template #footer-illustration>
-      <img
-        loading="lazy"
-        :src="`/img/home/discover/partners/dark/landscape-discover-partners.svg`"
-        class="w-full h-40 object-fill left-0 mt-10 -mb-2 light:hidden"
-        alt="A landscape image"
-      />
-      <img
-        loading="lazy"
-        :src="`/img/home/discover/partners/light/landscape-discover-partners.svg`"
-        class="w-full h-40 object-fill left-0 mt-10 -mb-2 dark:hidden"
-        alt="A landscape image"
-      />
-    </template>
-  </HomeSection>
+  <section class="relative pt-20">
+    <AContainer class="flex flex-col items-center">
+      <div class="flex flex-col w-full items-center col-span-12">
+        <div class="mb-2">
+          <CategoryLabel :label="category" />
+        </div>
+        <h2 class="font-normal font-serif text-display-6 md:text-display-5 2xl:text-display-4 mb-2">
+          <Markdown slot="title" unwrap="p" />
+        </h2>
+        <p class="font-normal text-center text-body-base md:text-body-lg 2xl:text-body-xl mb-8">
+          <Markdown slot="description" unwrap="p" />
+        </p>
+        <MPartnersBanner class="pb-0" :partners-logo="partners" />
+        <p><Markdown slot="bottom" unwrap="p" /></p>
+      </div>
+    </AContainer>
+    <img
+      loading="lazy"
+      :src="`/img/home/discover/partners/dark/landscape-discover-partners.svg`"
+      class="w-full h-40 object-fill left-0 mt-10 -mb-2 light:hidden"
+      alt="A landscape image"
+    />
+    <img
+      loading="lazy"
+      :src="`/img/home/discover/partners/light/landscape-discover-partners.svg`"
+      class="w-full h-40 object-fill left-0 mt-10 -mb-2 dark:hidden"
+      alt="A landscape image"
+    />
+  </section>
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  props: {
+    category: {
+      type: String,
+      default: 'Category'
+    }
+  },
   setup() {
-    const partners = [
-      { component: 'IconMasteringNuxt', alt: 'Mastering Nuxt logo' },
-      { component: 'IconNetlify', alt: 'Netlify logo' },
-      { component: 'IconVercel', alt: 'Vercel logo' },
-      { component: 'IconVueMastery', alt: 'Vue Mastery logo' },
-      { component: 'IconVueSchool', alt: 'Vue School logo' }
-    ]
+    const { $docus } = useContext()
+    const partners = ref()
+
+    useFetch(async () => {
+      partners.value = await $docus
+        .search('/sponsors', { deep: true })
+        .where({ tier: { $in: ['MVP Partners', 'Partners'] } })
+        .fetch()
+    })
 
     return {
       partners

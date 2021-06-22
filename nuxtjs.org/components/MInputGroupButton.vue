@@ -27,7 +27,7 @@
         focus:outline-none
         light:focus:ring-black
         dark:focus:ring-white
-        light:focus:border-white
+        light:focus:border-gray-400
         dark:focus:border-secondary-light
         sm:text-sm
       "
@@ -38,7 +38,7 @@
         type="submit"
         aria-label="Submit"
         class="
-          bg-primary-green
+          bg-primary
           w-full
           rounded-md
           text-sm

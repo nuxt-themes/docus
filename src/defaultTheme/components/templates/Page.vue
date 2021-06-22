@@ -1,5 +1,5 @@
 <template>
-  <NuxtContent :document="page" />
+  <DocusContent :document="page" />
 </template>
 
 <script>

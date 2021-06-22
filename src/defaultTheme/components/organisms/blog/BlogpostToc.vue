@@ -6,13 +6,10 @@
       z-10
       px-4
       text-sm
-      bg-white
       border-b border-gray-100 border-dashed
       top-header
       dark:border-gray-800
-      blur-header
-      bg-opacity-80
-      dark:bg-gray-900 dark:bg-opacity-80
+      d-blur-header d-page-mobile-toc-bg
     "
   >
     <button

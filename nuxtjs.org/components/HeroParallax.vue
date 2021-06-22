@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onBeforeUnmount } from '@vue/composition-api'
+import { defineComponent, ref, onMounted, onBeforeUnmount } from '@vue/composition-api'
 
 export default defineComponent({
   setup() {
@@ -70,7 +70,7 @@ export default defineComponent({
       }
     }
 
-    window.addEventListener('mousemove', parallax)
+    onMounted(() => window.addEventListener('mousemove', parallax))
 
     onBeforeUnmount(() => window.removeEventListener('mousemove', parallax))
 

@@ -67,10 +67,25 @@ export default defineComponent({
 
       const [prevLink, nextLink] = await $docus
         .search({ deep: true })
-        .where({ language, draft, navigation: { $ne: false } })
+        .where({
+          language,
+          draft,
+          parent: props.page.parent,
+          // Ignore pages without any title
+          // Most of `index` pages are use for parenting configuration and they don't need to be listed here
+          title: { $not: { $type: 'undefined' } },
+          navigation: {
+            $and: [
+              // Ignore contents that has disabled navigations
+              { $ne: false },
+              // Ignore contents with navigation redirect
+              { $containsNone: ['redirect'] }
+            ]
+          }
+        })
         .only(['title', 'slug', 'to', 'category'])
         .sortBy('position', 'asc')
-        .surround(props.page.slug, { before: 1, after: 1 })
+        .surround(props.page.path, { before: 1, after: 1 })
         .fetch()
 
       prev.value = prevLink
