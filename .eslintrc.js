@@ -18,7 +18,7 @@ module.exports = {
       'error',
       'PascalCase',
       {
-        registeredComponentsOnly: false
+        registeredComponentsOnly: true
       }
     ],
     'vue/singleline-html-element-content-newline': [0],
