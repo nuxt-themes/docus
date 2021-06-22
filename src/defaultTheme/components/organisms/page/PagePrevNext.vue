@@ -22,7 +22,7 @@
         "
       >
         <span class="relative flex flex-col items-end truncate">
-          <span v-if="prev.category" class="mb-1 text-xs leading-tight d-secondary-text">
+          <span class="mb-1 text-xs leading-tight d-secondary-text">
             {{ directory(prev.to) }}
           </span>
 
