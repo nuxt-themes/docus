@@ -13,20 +13,20 @@ description: "Discover a panel of resources made by our partners. By using those
 resources:
   modules:
     title: Modules
-    description: Discover a panel of resources made by our partners. By using thoses affiliate resources links, you are helping us to maintain and develop the Open Source Framework.
-    image: https://source.unsplash.com/user/jasebloor/1280x720
+    description: Browse our modules to extend NuxtJS core features and integrate third-parties.
+    image: /img/resources/modules.png
     slug: modules
     href: https://modules.nuxtjs.org
   themes:
     title: Themes
-    description: Discover a panel of resources made by our partners. By using thoses affiliate resources links, you are helping us to maintain and develop the Open Source Framework.
-    image: https://source.unsplash.com/user/remithorel/1280x720
+    description: Get inspired and use real world applications built with Nuxt.
+    image: /img/resources/themes.png
     slug: themes
     href: /themes
   video-courses:
     title: Video Courses
-    description: Discover a panel of resources made by our partners. By using thoses affiliate resources links, you are helping us to maintain and develop the Open Source Framework.
-    image: https://source.unsplash.com/user/agk42/1280x720
+    description: Learn more about Nuxt with a selection of video courses, for beginners and advanced users.
+    image: /img/resources/courses.png
     slug: video-courses
     href: /video-courses
 ---
