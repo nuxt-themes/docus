@@ -180,10 +180,14 @@ export default <Module>async function docusModule() {
       await fs.writeFile(join(dir, `db-${dbHash}.json`), db.serialize(), 'utf-8')
     })
   }
+
+  // Add global components plugin
   addPlugin({
-    src: resolve(__dirname, 'runtime', 'components', 'index.ts'),
+    src: resolve(__dirname, 'runtime', 'components', 'plugin.js'),
     filename: 'docus_components.js'
   })
+
+  // Add Docus runtime plugin
   addPlugin({
     src: resolve(__dirname, 'plugin.js'),
     filename: 'docus.js',
