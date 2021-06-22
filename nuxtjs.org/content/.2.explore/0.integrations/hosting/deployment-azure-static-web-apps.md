@@ -95,7 +95,7 @@ Now all you have to do is modify your code and push your changes. Pushing your c
 
 ### **How to handle dynamic routes**
 
-If you are working with dynamic pages such as \_id.vue then you you will need to add these routes to the generate property in your nuxt config.
+If you are working with dynamic pages such as `_id.vue` then you you will need to add these routes to the generate property in your nuxt config.
 
 [See the documentation on how to handle dynamic routes.](/docs/configuration-glossary/configuration-generate#routes)
 
