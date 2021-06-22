@@ -27,42 +27,27 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
+import { useApi } from '../plugins/api'
 import { isImage } from '../utils'
+import { previewUrl } from '../composables/preview'
 
-export default {
-  components: {
-    FilesTree,
-    Editor
-  },
+const api = useApi()
+const files = ref([])
+const currentFile = ref(null)
 
-  inject: ['previewUrl'],
+onMounted(async () => {
+  files.value = await api.get('/static')
+})
 
-  setup() {
-    return { isImage }
-  },
-
-  data() {
-    return {
-      files: [],
-      currentFile: null
-    }
-  },
-
-  async mounted() {
-    this.files = await this.$api.get('/static')
-  },
-
-  methods: {
-    async openFile(file) {
-      if (this.isImage(file)) {
-        this.currentFile = file
-      } else {
-        this.currentFile = await this.$api.get(`/static${file.path}`)
-      }
-    }
+async function openFile(file) {
+  if (isImage(file)) {
+    currentFile.value = file
+  } else {
+    currentFile.value = await api.get(`/static${file.path}`)
   }
 }
 </script>
