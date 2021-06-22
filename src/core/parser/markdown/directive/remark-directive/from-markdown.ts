@@ -179,7 +179,14 @@ function exitAttributes() {
 
   this.setData('directiveAttributes')
   this.resume() // Drop EOLs
-  this.stack[this.stack.length - 1].attributes = cleaned
+
+  let stackTop = this.stack[this.stack.length - 1]
+  if (stackTop.type === 'paragraph') {
+    // select last inline component
+    stackTop = stackTop.children[stackTop.children.length - 1]
+  }
+
+  stackTop.attributes = cleaned
 }
 
 function exitToken(token: Token) {
