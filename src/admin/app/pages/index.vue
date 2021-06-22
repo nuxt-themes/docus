@@ -33,10 +33,19 @@ export default defineComponent({
 
     const openFile = async file => {
       navigateToFile(file.path)
-      state.currentFile = await api.get(`/pages${file.path}`)
+      state.currentFile = await api.get(`/content${file.path}`)
     }
 
-    onMounted(async () => (state.files = await api.get('/pages')))
+    onMounted(async () => {
+      state.files = await api.get('/content')
+
+      if (!state.currentFile) {
+        const indexFile = state.files.find(file => file.path === '/index.md')
+        if (indexFile) {
+          openFile(indexFile)
+        }
+      }
+    })
 
     return {
       ...toRefs(state),
