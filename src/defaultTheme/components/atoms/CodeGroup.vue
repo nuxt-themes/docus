@@ -112,6 +112,12 @@ export default defineComponent({
 
 <style scoped lang="postcss">
 .code-group {
+  >>> pre {
+    @apply rounded-tl-none rounded-tr-none !important;
+  }
+}
+
+.code-group {
   @apply my-4;
 
   ::v-deep {

@@ -1,3 +1,4 @@
+import emphasis from './emphasis'
 import code from './code'
 import html from './html'
 import heading from './heading'
@@ -19,6 +20,7 @@ export default async function handlers(highlighter) {
   }
 
   return {
+    emphasis,
     code: code(highlighter),
     paragraph,
     html,

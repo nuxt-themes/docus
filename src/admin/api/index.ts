@@ -1,11 +1,11 @@
 import { createApp } from 'h3'
-import pagesHandler from './functions/pages'
+import contentHandler from './functions/content'
 import previewHandler from './functions/preview'
 import staticHandler from './functions/static'
 
 const app = createApp()
 
-app.useAsync('/pages', pagesHandler)
+app.useAsync('/content', contentHandler)
 app.useAsync('/preview', previewHandler)
 app.useAsync('/static', staticHandler)
 

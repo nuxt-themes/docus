@@ -10,9 +10,9 @@ export default {
     indexName: 'docus'
   },
   github: {
-    repo: 'nuxt/nuxt.js',
+    repo: 'nuxt/nuxtjs.org',
     branch: 'dev',
-    releases: true
+    releases: 'nuxt/nuxt.js'
   },
   theme: {
     header: {
@@ -34,14 +34,16 @@ export default {
       'd-secondary-text-active': 'text-gray-900 dark:text-cloud-surface',
       'd-primary-text-hover': 'text-gray-600 dark:text-cloud-lighter',
       'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-secondary-darkest',
+      'd-prose-code-bg': 'bg-gray-100 dark:bg-secondary-darkest',
       'd-bg-header': 'bg-white bg-opacity-80 dark:bg-secondary-black dark:bg-opacity-80',
+      'd-border': 'light:border-gray-200 light:border-opacity-50 dark:border-secondary-darker',
       'd-border-header': 'border-none',
       'd-page-mobile-toc-bg': 'd-body-bg bg-opacity-80 dark:bg-opacity-80',
       'd-aside-header-bg': 'bg-gray-50 dark:bg-secondary-darkest',
       'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-secondary-darkest',
       'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
-      'd-code-group-header-bg': 'bg-gray-100 dark:bg-secondary-darker',
-      'd-code-group-tab': 'bg-gray-200 dark:bg-secondary-dark',
+      'd-code-group-header-bg': 'bg-gray-200 dark:bg-secondary-darker',
+      'd-code-group-tab': 'bg-gray-300 dark:bg-secondary-dark',
       'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-secondary-darker',
       'd-prose-code-filename-text': 'text-gray-600 dark:text-secondary-light',
       'd-prose-thead-border': 'border-b border-gray-200 dark:border-secondary-dark',

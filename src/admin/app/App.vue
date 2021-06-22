@@ -9,36 +9,19 @@
       </KeepAlive>
     </RouterView>
 
-    <iframe ref="iframe" :src="previewUrl" class="h-full flex-1" />
+    <Preview />
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, ref, onBeforeMount } from 'vue3'
+import { defineComponent } from 'vue3'
 import AppHeader from './components/AppHeader.vue'
-import { useApi } from './plugins/api'
+import Preview from './components/Preview.vue'
 
 export default defineComponent({
   components: {
-    AppHeader
-  },
-
-  setup() {
-    const api = useApi()
-
-    const previewUrl = ref('http://localhost:4000')
-
-    onBeforeMount(async () => {
-      const { url } = (await api.get('/preview')) as any
-
-      previewUrl.value = url
-    })
-
-    provide('previewUrl', previewUrl)
-
-    return {
-      previewUrl
-    }
+    AppHeader,
+    Preview
   }
 })
 </script>

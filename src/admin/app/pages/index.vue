@@ -16,6 +16,7 @@ import { reactive, defineComponent, onMounted, toRefs } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
 import { useApi } from '../plugins/api'
+import { navigateToFile } from '../composables/preview'
 
 export default defineComponent({
   components: {
@@ -30,9 +31,21 @@ export default defineComponent({
       currentFile: null
     })
 
-    const openFile = async file => (state.currentFile = await api.get(`/pages${file.path}`))
+    const openFile = async file => {
+      navigateToFile(file.path)
+      state.currentFile = await api.get(`/content${file.path}`)
+    }
 
-    onMounted(async () => (state.files = await api.get('/pages')))
+    onMounted(async () => {
+      state.files = await api.get('/content')
+
+      if (!state.currentFile) {
+        const indexFile = state.files.find(file => file.path === '/index.md')
+        if (indexFile) {
+          openFile(indexFile)
+        }
+      }
+    })
 
     return {
       ...toRefs(state),

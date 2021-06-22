@@ -2,12 +2,12 @@
   <div class="py-4 d-container-content">
     <div class="flex flex-col light:text-secondary-dark dark:text-white pt-8 pb-24 space-y-4">
       <h2 class="font-semibold text-display-6 text-center">
-        <Markdown slot="titleSection" unwrap="p" />
+        <Markdown use="titleSection" unwrap="p" />
       </h2>
 
       <div class="text-lg w-full flex justify-center">
         <p class="text-center md:w-2/3">
-          <Markdown slot="descriptionSection" unwrap="p" />
+          <Markdown use="descriptionSection" unwrap="p" />
         </p>
       </div>
     </div>

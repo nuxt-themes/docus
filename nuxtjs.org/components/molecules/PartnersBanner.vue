@@ -12,7 +12,7 @@
             :src="`/img/sponsors/light/${partner.img}`"
             :alt="partner.title"
             :title="partner.title"
-            class="h-12 light-img"
+            class="light-img"
             :class="partner.imgClass"
           />
           <img
@@ -20,7 +20,7 @@
             :src="`/img/sponsors/dark/${partner.img}`"
             :alt="partner.title"
             :title="partner.title"
-            class="h-12 dark-img"
+            class="dark-img"
             :class="partner.imgClass"
           />
         </a>

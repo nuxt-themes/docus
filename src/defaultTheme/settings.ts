@@ -43,9 +43,15 @@ const defaultThemeSettings = {
     'd-primary-text-hover': 'text-gray-600 dark:text-gray-400',
     'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
     'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-prose-code-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-thead-border': 'border-b border-gray-200 dark:border-gray-700',
     'd-prose-tr-border': 'border-b border-gray-100 dark:border-gray-800',
     'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-gray-700',
+    'd-prose-blockquote-text': 'd-secondary-text',
+    'd-prose-a-text': 'text-primary-500',
+    'd-prose-a-border': 'border-b border-transparent',
+    'd-prose-a-border-hover': 'border-b border-primary-500',
+    'd-prose-a-headline-border': 'border-b border-dashed border-gray-900 dark:border-gray-100',
     // Primary
     'd-text-primary': 'text-primary-500 dark:text-primary-400',
     'd-border-primary': 'border-primary-500 dark:border-primary-400',
@@ -54,10 +60,11 @@ const defaultThemeSettings = {
     'd-aside-header-bg': 'bg-gray-50 dark:bg-gray-800',
     'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
     'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
-    'd-code-group-header-bg': 'bg-gray-100 dark:bg-gray-800',
-    'd-code-group-tab': 'bg-gray-200 dark:bg-gray-700',
+    'd-code-group-header-bg': 'bg-gray-200 dark:bg-gray-800',
+    'd-code-group-tab': 'bg-gray-300 dark:bg-gray-700',
     'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
+    'd-prose-code-inline-in-heading-border-hover': 'border-gray-500 dark:border-gray-200',
     // Icons
     'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',
@@ -72,7 +79,7 @@ const defaultThemeSettings = {
     // Header
     'd-blur-header': 'blur-12',
     'd-bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
-    'd-border': ' light:border-gray-200 light:border-opacity-50 dark:border-secondary-darker',
+    'd-border': 'light:border-gray-200 light:border-opacity-50 dark:border-gray-800',
     'd-border-hover': 'border-primary-200 dark:border-secondary-dark',
     'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
     'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header'

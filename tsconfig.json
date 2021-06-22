@@ -11,6 +11,7 @@
     "moduleResolution": "Node",
     "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
+    "noUnusedLocals": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "types": ["@types/node", "@nuxt/types", "nuxt-i18n", "nuxt-windicss"],
