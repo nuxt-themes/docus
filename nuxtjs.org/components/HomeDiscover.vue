@@ -32,13 +32,13 @@
                 2xl:text-display-4
               "
             >
-              <Markdown slot="title" unwrap="p" />
+              <Markdown use="title" unwrap="p" />
             </h2>
           </template>
 
           <template #paragraph>
             <p class="pt-2 pb-8 text-center md:text-left font-normal text-body-base md:text-body-lg 2xl:text-body-xl">
-              <Markdown slot="description" unwrap="p" />
+              <Markdown use="description" unwrap="p" />
             </p>
             <div class="flex justify-center md:justify-start">
               <SectionButton

@@ -5,7 +5,7 @@
         <Component :is="iconName" class="h-6 w-6" />
       </span>
       <span>
-        <Markdown :node="item" />
+        <Markdown :use="item" />
       </span>
     </div>
   </div>
