@@ -46,6 +46,7 @@ const defaultThemeSettings = {
     'd-prose-thead-border': 'border-b border-gray-200 dark:border-gray-700',
     'd-prose-tr-border': 'border-b border-gray-100 dark:border-gray-800',
     'd-prose-blockquote-border': 'border-l-2 border-gray-200 dark:border-gray-700',
+    'd-prose-blockquote-text': 'd-secondary-text',
     'd-prose-a-text': 'text-primary-500',
     'd-prose-a-border': 'border-b border-transparent',
     'd-prose-a-border-hover': 'border-b border-primary-500',
