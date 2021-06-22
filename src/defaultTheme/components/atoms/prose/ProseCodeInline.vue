@@ -26,7 +26,7 @@ h3 a,
 h4 a {
   &:hover {
     & code {
-      @apply d-prose-code-inline-in-heading-border-hover; // 🥲
+      @apply d-prose-code-inline-in-heading-border-hover;
     }
   }
   code {

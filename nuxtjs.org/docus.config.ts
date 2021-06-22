@@ -36,6 +36,7 @@ export default {
       'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-secondary-darkest',
       'd-prose-code-bg': 'bg-gray-100 dark:bg-secondary-darkest',
       'd-bg-header': 'bg-white bg-opacity-80 dark:bg-secondary-black dark:bg-opacity-80',
+      'd-border': 'light:border-gray-200 light:border-opacity-50 dark:border-secondary-darker',
       'd-border-header': 'border-none',
       'd-page-mobile-toc-bg': 'd-body-bg bg-opacity-80 dark:bg-opacity-80',
       'd-aside-header-bg': 'bg-gray-50 dark:bg-secondary-darkest',
