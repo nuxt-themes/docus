@@ -6,13 +6,7 @@
 
 <style lang="postcss" scoped>
 code {
-  /* TODO */
-  /* font-size: 0.875em; */
-  @apply text-sm whitespace-nowrap d-prose-code-inline-bg;
-  color: inherit;
-  font-weight: 400;
-  padding: 0.2rem theme('padding.2');
-  border-radius: theme('borderRadius.md');
+  @apply font-normal text-sm py-3px px-6px whitespace-nowrap rounded-md d-prose-code-inline-bg;
 }
 
 a code {
@@ -23,8 +17,7 @@ a code {
 }
 
 tbody code {
-  /* TODO */
-  font-size: 12px;
+  @apply text-[12px];
 }
 
 h1 a,
@@ -33,48 +26,17 @@ h3 a,
 h4 a {
   &:hover {
     & code {
-      border-color: theme('colors.gray.500');
+      @apply d-prose-code-inline-in-heading-border-hover; // 🥲
     }
   }
   code {
-    font-size: inherit;
-    color: inherit;
-    pointer-events: none;
-    border: 1px dashed transparent;
-    position: relative;
-    z-index: 0;
+    @apply relative text-inherit;
   }
   & code:before {
-    @apply d-prose-code-inline-bg rounded-md;
+    @apply absolute top-[-2px] left-[-2px] -z-1 d-prose-code-inline-bg rounded-md pointer-events-none;
     content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    z-index: -1;
     width: calc(100% + 4px);
     height: calc(100% + 4px);
-    /* background-color: theme('colors.white'); */
-    pointer-events: none;
-  }
-}
-
-.dark {
-  code {
-    color: inherit;
-  }
-  h1 a,
-  h2 a,
-  h3 a,
-  h4 a {
-    &:hover {
-      code {
-        border-color: theme('colors.gray.200');
-      }
-    }
-    code:before {
-      /* @apply bg-transparent; */
-      /* background-color: theme('colors.gray.900'); */
-    }
   }
 }
 </style>
