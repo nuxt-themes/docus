@@ -22,11 +22,6 @@ const glob = (pattern: string, options: GlobOptions = {}) =>
 
 const _require = jiti(__filename)
 
-export const readyHook = ({ options }) => {
-  // Override editor style on dev mode
-  if (options.dev) options.css.push(r('css/main.dev.css'))
-}
-
 export const beforeBuildHook = async ({ options }) => {
   // Add default error page if not defined
   const errorPagePath = resolve(options.srcDir, options.dir.layouts, 'error.vue')

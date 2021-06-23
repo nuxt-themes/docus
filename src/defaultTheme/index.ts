@@ -24,7 +24,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  css: [r('./css/main.css'), r('./css/prism.css')],
+  css: [r('./css/prism.css')],
   components: [
     /**
      * Atoms
