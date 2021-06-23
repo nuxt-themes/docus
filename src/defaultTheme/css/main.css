@@ -1,0 +1,37 @@
+:root {
+  --header-height: theme('spacing.14');
+  --docs-scroll-margin-block: calc(var(--header-height) + 4rem);
+  --blogpost-scroll-margin-block: calc(var(--header-height));
+}
+
+@screen md {
+  :root {
+    --header-height: theme('spacing.18');
+    --blogpost-scroll-margin-block: calc(var(--header-height) - 0.5rem);
+  }
+}
+
+@screen xl {
+  :root {
+    --docs-scroll-margin-block: calc(var(--header-height) + 1rem);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 200ms linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-from-left-to-left-enter-active,
+.slide-from-left-to-left-leave-active {
+  transition: transform 200ms ease-out, opacity 200ms linear;
+}
+.slide-from-left-to-left-enter,
+.slide-from-left-to-left-leave-to {
+  opacity: 0;
+  transform: translate3d(-50px, 0, 0);
+}
