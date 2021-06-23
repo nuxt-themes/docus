@@ -1,10 +1,10 @@
 ---
-title: Documentation Generator based on Nuxt and Windi.
+title: The Jamstack Website Generator.
 description: >-
-  Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
+  Write pages in markdown, use Vue components, add style with Windi CSS and
+  enjoy the power of Nuxt with a blazing fast developer experience.
 template: page
 navigation: false
-# layout
 layout.asideClass: 'block lg:hidden'
 layout.aside: true
 ---
@@ -16,13 +16,13 @@ cta:
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx degit nuxtlabs/docus-starter#main docs
+snippet: npx docus-init my-website
 
 ---title
-Documentation Generator based on Nuxt and Windi.
+The Jamstack Website Generator.
 
 ---description
-Write pages in markdown, use Vue components, add style with Windi CSS and enjoy the power of Nuxt with a blazing fast developer experience.
+Write pages in markdown, use [Vue](https://vuejs.org) components, add style with [Windi CSS](https://windicss.org/) and enjoy the power of [Nuxt](https://nuxtjs.org) with a blazing fast developer experience.
 ::
 
 ::card-grid{title="What's included?"}

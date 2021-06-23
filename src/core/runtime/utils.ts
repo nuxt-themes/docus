@@ -10,6 +10,7 @@ export const TAGS_MAP = {
   h4: ['h4', 'prose-h4'],
   h5: ['h5', 'prose-h5'],
   h6: ['h6', 'prose-h6'],
+  hr: ['hr', 'prose-hr'],
   p: ['p', 'prose-paragraph'],
   ul: ['ul', 'prose-ul'],
   ol: ['ol', 'prose-ol'],

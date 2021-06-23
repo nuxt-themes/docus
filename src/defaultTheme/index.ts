@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { nuxtConfig } from 'nuxt-extend'
 import type { NuxtConfig } from '@nuxt/types'
-import themeSetupModule, { readyHook, beforeBuildHook } from './module'
+import themeSetupModule, { beforeBuildHook } from './module'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
 
@@ -108,7 +108,6 @@ const themeConfig: NuxtConfig = nuxtConfig({
   plugins: [r('./plugins/menu')],
   modules: [themeSetupModule, 'nuxt-windicss', '@nuxtjs/color-mode'],
   hooks: {
-    ready: readyHook,
     build: {
       before: beforeBuildHook
     }

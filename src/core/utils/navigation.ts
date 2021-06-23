@@ -22,34 +22,36 @@ const getPageLink = (page: any): NavItem => {
 
   const to = withoutTrailingSlash(page.to || `/${slug}`)
 
-  let navigation = typeof page.navigation === 'string' ? { slot: page.navigation } : page.navigation
-
-  if (navigation !== false) {
-    navigation = {
-      title: page.title || slugToTitle(to.split('/').pop()) || '',
-      slot: '',
-      nested: true,
-      ...navigation
-    }
-  }
-
   const template =
     typeof page.template === 'string' ? { self: page.template, nested: `${page.template}-post` } : page.template
 
-  return {
+  const item: NavItem = {
     slug,
     to,
-    shadow: !!page.shadow,
-    title: page.title,
-    draft: page.draft,
-    template,
-    meta: {
-      icon: page.icon,
-      description: page.description
-    },
-    navigation,
-    children: []
+    page: !!page.dir,
+    children: [],
+    title: page.title || slugToTitle(to.split('/').pop()) || '',
+    ...page.navigation
   }
+
+  if (page.draft) {
+    item.draft = true
+  }
+
+  if (page.icon) {
+    item.icon = page.icon
+  }
+
+  if (template) {
+    item.template = template.nested
+  }
+
+  // set `hidden = true` if navigation is disabled for the page
+  if (page.navigation === false) {
+    item.hidden = true
+  }
+
+  return item
 }
 
 /**
@@ -121,10 +123,6 @@ function createNav(pages: any[]) {
     if (_page.slug !== '') dirs = dirs.slice(0, -1)
 
     if (!dirs.length) {
-      if ($page.navigation) {
-        $page.navigation.slot = $page.navigation.slot || 'header'
-      }
-
       return links.push($page)
     }
 
@@ -156,9 +154,8 @@ function createNav(pages: any[]) {
 
     // If index page, merge also with parent for metadata
     if (!_page.slug) {
-      if (dirs.length === 1 && $page.navigation) {
-        $page.navigation.slot = $page.navigation.slot || 'header'
-        $page.navigation.exclusive = $page.navigation.exclusive || false
+      if (dirs.length === 1) {
+        $page.exclusive = $page.exclusive || false
       }
 
       mergeLinks(lastLink, $page)

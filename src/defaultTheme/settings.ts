@@ -65,6 +65,8 @@ const defaultThemeSettings = {
     'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     'd-prose-code-inline-in-heading-border-hover': 'border-gray-500 dark:border-gray-200',
+    'd-prose-hr-border': 'border-t border-gray-100 dark:border-gray-800',
+    'd-prose-ul-li-bullet': 'd-secondary-bg',
     // Icons
     'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',
@@ -82,7 +84,11 @@ const defaultThemeSettings = {
     'd-border': 'light:border-gray-200 light:border-opacity-50 dark:border-gray-800',
     'd-border-hover': 'border-primary-200 dark:border-secondary-dark',
     'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
-    'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header'
+    'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header',
+    // Heading
+    'd-heading-title': '!mb-0 !mt-0 flex-1 !text-4xl font-semibold tracking-tight',
+    'd-heading-description': '!mt-2 !mb-0 text-lg font-medium d-secondary-text',
+    'd-heading-hr': '!mt-4 !mb-0 d-border'
   }
 }
 

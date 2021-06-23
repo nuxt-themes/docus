@@ -10,5 +10,14 @@ export default {
     branch: 'main',
     dir: 'docs',
     releases: true
+  },
+  theme: {
+    header: {
+      title: false,
+      logo: {
+        light: '/logo-light.svg',
+        dark: '/logo-dark.svg'
+      }
+    }
   }
 }

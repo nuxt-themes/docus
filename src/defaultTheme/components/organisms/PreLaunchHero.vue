@@ -56,7 +56,7 @@
           >
             <input
               type="text"
-              :placeholder="ctaPlaceholder"
+              :placeholder="cta.placeholder"
               class="
                 flex-1
                 py-3

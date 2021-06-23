@@ -11,7 +11,7 @@
     <ul v-if="!isCollapsed || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
-          :to="$contentLocalePath(doc.navigation.redirect || doc.to)"
+          :to="$contentLocalePath(doc.redirect || doc.to)"
           class="block w-full"
           :class="[
             $docus.isLinkActive(doc.to)
@@ -31,7 +31,9 @@
               {{ doc.icon }}
             </InjectComponent>
 
-            <span> {{ doc.navigation.title }} </span>
+            <span>
+              {{ doc.title }}
+            </span>
 
             <ClientOnly>
               <span v-if="doc.draft" class="w-2 h-2 ml-2 bg-yellow-500 rounded-full opacity-75" />

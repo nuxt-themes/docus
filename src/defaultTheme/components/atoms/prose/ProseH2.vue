@@ -5,21 +5,12 @@
 <style lang="postcss" scoped>
 h2 {
   /* TODO */
+  /* extend.fontSize do not work in Windi */
   font-size: 1.5rem;
-  /* scroll-margin-block: var(--docs-scroll-margin-block); */
-  /* color: theme('colors.gray.900'); */
-  letter-spacing: theme('letterSpacing.tight');
-  margin-top: 1.25em;
-  margin-bottom: 0.5em;
-  line-height: theme('lineHeight.snug');
-  font-weight: theme('fontWeight.semibold');
+  @apply tracking-tight leading-snug font-semibold mt-[1.25em] mb-[0.5em];
 }
 
 h2 + * {
-  margin-top: 0;
-}
-
-.dark h2 {
-  color: theme('colors.gray.100');
+  @apply mt-0;
 }
 </style>

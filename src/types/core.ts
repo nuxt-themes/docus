@@ -21,31 +21,61 @@ export interface Toc {
 
 // Navigation
 export interface NavItemNavigationConfig {
+  /**
+   * Navigation title
+   */
   title: string
+  /**
+   * If set to `false`, the nested pages will not display in Docus navigation menus
+   */
   nested: boolean
-  slot: string
+  /**
+   * If set to `true`, other pages will not show in the left menu when user visiting the page or its nested pages.
+   */
   exclusive: boolean
-  // Collapse aside navigation by default
+  /**
+   * If set to `true` in an `index.md`, the category will be collapsed by default in aside navigation.
+   */
   collapse: boolean
-  // Useful for directories `index.md` which are empty pages, to get redirect to another page
+  /**
+   * If set in an `index.md`, the page will redirect to the specified path when loaded, can be useful for empty categories pages.
+   */
   redirect: string
 }
-export interface NavItem {
+
+export interface NavItem extends NavItemNavigationConfig {
+  /**
+   * Page slug
+   */
   slug: string
+  /**
+   * full path of page
+   */
   to: string
-  title: string
-  shadow: boolean
+  /**
+   * Shows if the page is draft or not
+   */
   draft?: boolean
-  template?: {
-    self: string
-    nested: string
-  }
-  navigation: NavItemNavigationConfig | false
+  /**
+   * Provide template name that should use to render the page
+   */
+  template?: string
+  /**
+   * Shows if this nav belogs to a real page or not
+   */
+  page: boolean
+  /**
+   * Small Icon that shows before page title
+   */
+  icon?: string
+  /**
+   * If set to `false`, the page will not show in navigation menus
+   */
+  hidden: boolean
+  /**
+   * Child pages
+   */
   children: NavItem[]
-  meta: {
-    icon?: string
-    description?: string
-  }
 }
 
 export type PermissiveContext = Context & { [key: string]: any }
@@ -92,13 +122,6 @@ export interface DocusDocument {
     fluid: boolean
     [key: string]: any
   }
-  extract: {
-    heading: boolean
-  }
-  // AST node of markdown title that extracts from content
-  titleNode?: any
-  // AST node of markdown lead pragraph that extracts from content
-  descriptionNode?: any
 
   // Generated
   /**

@@ -8,6 +8,7 @@ import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import clearModule from 'clear-module'
 import jiti from 'jiti'
+import { DefaultExtractor } from '@windicss/plugin-utils'
 import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
@@ -21,11 +22,6 @@ const glob = (pattern: string, options: GlobOptions = {}) =>
   )
 
 const _require = jiti(__filename)
-
-export const readyHook = ({ options }) => {
-  // Override editor style on dev mode
-  if (options.dev) options.css.push(r('css/main.dev.css'))
-}
 
 export const beforeBuildHook = async ({ options }) => {
   // Add default error page if not defined
@@ -99,6 +95,24 @@ export default <Module>function themeSetupModule() {
       ],
       detect: [...vueFiles, ...mdFiles]
     }
+
+    // extract custom markdown syntax, #503
+    windiOptions.scanOptions.extractors.push({
+      extensions: ['md'],
+      extractor(code, id) {
+        const data = DefaultExtractor(code, id)
+
+        const classes = new Set(data.classes)
+        classes.forEach(i => {
+          if (i.startsWith('.')) classes.add(i.slice(1))
+        })
+
+        return {
+          ...data,
+          classes: Array.from(classes)
+        }
+      }
+    })
 
     // Push every included path into scan options
     windiOptions.scanOptions.include.push(
