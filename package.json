@@ -116,6 +116,7 @@
     "vue3-router": "npm:vue-router@next"
   },
   "devDependencies": {
+    "@iconify/json": "^1.1.359",
     "@nuxt/types": "^2.15.7",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config": "^6.0.1",
@@ -132,7 +133,9 @@
     "prettier": "^2.3.1",
     "siroc": "^0.9.3",
     "standard-version": "^9.3.0",
-    "vite": "^2.3.8"
+    "vite": "^2.3.8",
+    "vite-plugin-components": "^0.11.2",
+    "vite-plugin-icons": "^0.6.3"
   },
   "peerDependencies": {
     "vuex": "^3.6.2"

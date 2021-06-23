@@ -1,4 +1,0 @@
----
-navigation:
-    exclusive: true
----
