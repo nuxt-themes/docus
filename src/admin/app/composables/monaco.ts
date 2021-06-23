@@ -1,4 +1,4 @@
-import { watch, Ref, unref, ref, onMounted } from 'vue3'
+import { watch, Ref, unref, ref } from 'vue3'
 import type { editor as Editor } from 'monaco-editor'
 import * as monaco from 'monaco-editor'
 import { createSingletonPromise } from '@antfu/utils'
@@ -51,13 +51,15 @@ const setupMonaco = createSingletonPromise(async () => {
   return { monaco }
 })
 
-export function useMonaco(target: Ref, options: { code: string, language: string, onChanged? :( content: string)=>void }) {
+export function useMonaco(
+  target: Ref,
+  options: { code: string; language: string; onChanged?: (content: string) => void }
+) {
   const isSetup = ref(false)
   let editor: Editor.IStandaloneCodeEditor
 
   const setContent = (content: string) => {
-    if (!isSetup.value)
-    return
+    if (!isSetup.value) return
     if (editor) editor.setValue(content)
   }
 

@@ -29,7 +29,7 @@ watch(
   }
 )
 
-function update(content){
+function update(content) {
   api.put(`/content${props.file.path}`, {
     raw: content
   })
