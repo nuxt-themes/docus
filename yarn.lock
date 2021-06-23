@@ -12319,6 +12319,11 @@ split@^1.0.0:
   dependencies:
     through "2"
 
+splitpanes@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/splitpanes/-/splitpanes-3.0.4.tgz#586dce41609da45d257d925e324a926f05aa77c8"
+  integrity sha512-KRaPtMDpu++OfvAzNQYE5U7WT5NoMA6l9B0buC4PhYoDILVLY8zN7Sp9cHXAgLhH59jI3lKzVoNqyf4OGRv7QQ==
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"

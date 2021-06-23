@@ -37,9 +37,10 @@ export default defineConfig({
     alias: {
       vue: 'vue3'
     },
-    dedupe: ['vue-demi']
+    dedupe: ['vue-demi', 'vue']
   },
   optimizeDeps: {
+    include: ['splitpanes', 'vue3', 'vue'],
     exclude: Object.keys({ ...dependencies, ...devDependencies }).concat(['fs', 'path', 'vue-demi'])
   },
   build: {

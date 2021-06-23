@@ -97,6 +97,9 @@ export function useMonaco(
           autoClosingQuotes: 'always',
           detectIndentation: false,
           folding: false,
+          glyphMargin: false,
+          lineNumbersMinChars: 3,
+          overviewRulerLanes: 0,
           automaticLayout: true,
           theme: isDark.value ? 'vs-dark' : 'vs',
           minimap: {
