@@ -29,7 +29,7 @@
         :files="file.children"
         :current-file="currentFile"
         :is-root="false"
-        class="pl-2"
+        class="pl-3"
         @open="open"
       />
     </li>
