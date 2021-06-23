@@ -4,5 +4,8 @@ export interface FileData {
 
 export interface File extends FileData {
   path: string
+  name: string
   extension: string
+  children?: File[]
+  isOpen?: boolean
 }
