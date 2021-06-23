@@ -1,20 +1,11 @@
 <template>
-  <header class="relative z-10 flex items-center border-b">
+  <header class="relative z-10 flex items-center d-border border-b">
     <AppHeaderLogo />
-
     <AppHeaderNav />
   </header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue3'
+<script setup lang="ts">
 import AppHeaderLogo from './AppHeaderLogo.vue'
 import AppHeaderNav from './AppHeaderNav.vue'
-
-export default defineComponent({
-  components: {
-    AppHeaderLogo,
-    AppHeaderNav
-  }
-})
 </script>

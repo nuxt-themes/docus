@@ -1,7 +1,13 @@
 <template>
-  <div class="flex items-center h-12 px-4 border-r">
+  <div class="flex items-center h-12 px-4 d-border border-r">
     <h1>
-      <svg class="h-8 -mb-2" viewBox="0 0 445 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        :class="isDark ? 'filter invert' : ''"
+        class="h-8 -mb-2"
+        viewBox="0 0 445 190"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <circle r="35.3495" transform="matrix(-1 0 0 1 140.947 47.3495)" stroke="black" stroke-width="24" />
         <circle
           r="36.5909"
@@ -30,3 +36,7 @@
     </h1>
   </div>
 </template>
+
+<script setup lang="ts">
+import { isDark } from '../composables/dark'
+</script>

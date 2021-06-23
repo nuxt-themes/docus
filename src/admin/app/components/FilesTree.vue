@@ -3,8 +3,8 @@
     <li
       v-for="file of files"
       :key="file.path"
-      class="rounded text-gray-600"
-      :class="{ 'bg-gray-200 text-gray-900': isCurrent(file) }"
+      class="rounded"
+      :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
     >
       <div
         v-if="!isHidden(file)"
@@ -17,8 +17,8 @@
           py-1
           text-sm
           leading-5
-          hover:text-gray-900 hover:bg-gray-50
-          focus:outline-none focus:text-gray-900 focus:bg-gray-50
+          rounded
+          hover:bg-gray-400 hover:bg-opacity-15
         "
         @click="open(file)"
       >

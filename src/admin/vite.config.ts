@@ -36,9 +36,10 @@ export default defineConfig({
   resolve: {
     alias: {
       vue: 'vue3'
-    }
+    },
+    dedupe: ['vue-demi']
   },
   optimizeDeps: {
-    exclude: Object.keys({ ...dependencies, ...devDependencies }).concat(['fs', 'path'])
+    exclude: Object.keys({ ...dependencies, ...devDependencies }).concat(['fs', 'path', 'vue-demi'])
   }
 })
