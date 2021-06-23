@@ -1,11 +1,6 @@
 <template>
   <ul>
-    <li
-      v-for="file of files"
-      :key="file.path"
-      class="rounded"
-      :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
-    >
+    <li v-for="file of files" :key="file.path">
       <div
         v-if="!isHidden(file)"
         class="
@@ -22,6 +17,7 @@
           select-none
           hover:bg-gray-400 hover:bg-opacity-15
         "
+        :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
         @click="open(file)"
       >
         <TreeToggler :file="file" />

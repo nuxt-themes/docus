@@ -14,8 +14,8 @@ const isDir = computed(() => props.file.type === 'directory')
 <template>
   <heroicons-outline:chevron-right
     v-if="isDir"
-    class="transform transition opacity-50 w-4 min-w-4"
+    class="transform transition opacity-50 w-4 min-w-4 ml-1 -mr-1"
     :class="file.isOpen ? 'rotate-90' : 'rotate-0'"
   />
-  <span v-else class="w-4 min-w-4" />
+  <span v-else class="w-4 min-w-4 ml-1 -mr-1" />
 </template>

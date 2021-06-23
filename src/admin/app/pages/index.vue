@@ -1,7 +1,9 @@
 <template>
   <Splitpanes class="h-full default-theme" :push-other-panes="false">
     <Pane size="15" max-size="30">
-      <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
+      <div class="h-full overflow-y-scroll">
+        <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
+      </div>
     </Pane>
     <Pane>
       <Editor v-if="currentFile" :file="currentFile" />
