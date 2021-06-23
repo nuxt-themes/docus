@@ -44,16 +44,16 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
     const nav = state.navigation[locale || app.i18n.locale] || []
 
     let items = nav
-    let match
+    let match: NavItem
 
     // The deepest exclusive navigation that can be found based on `from`
-    let exclusiveContent
+    let exclusiveContent: NavItem
     // Parent of exclusive Content
-    let parent
+    let parent: NavItem
 
     // `from` parameter handling
     if (from) {
-      let lastMatch
+      let lastMatch: NavItem
 
       const paths = from.split('/')
 
@@ -63,7 +63,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
 
         // Remember last matched content
         // This content will use as navigation parent if it has an exclusive decendant
-        if (match && !match.shadow) {
+        if (match && match.page) {
           lastMatch = match
         }
 
@@ -71,7 +71,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
         match = links.find(item => item.to.split('/')[index] === path)
         if (match) {
           // Update parent and exclusiveContent if the matched content marked as exclusive navigation
-          if (match && match.navigation && match.navigation.exclusive) {
+          if (match && match.exclusive) {
             parent = lastMatch || parent
             exclusiveContent = match
           }
@@ -94,7 +94,6 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
       // matched page info
       title: exclusiveContent && exclusiveContent.title,
       to: exclusiveContent && exclusiveContent.to,
-      navigation: exclusiveContent ? exclusiveContent.navigation : {},
       // matched parent
       parent,
       // filter children
@@ -108,7 +107,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
   function filterLinks(nodes: NavItem[], maxDepth: number, currentDepth: number) {
     return nodes.filter(node => {
       // Navigation as false means that we want that link to be hidden from navigation.
-      if (node.navigation === false) return false
+      if (node.hidden) return false
 
       // We don't want to show drafts.
       if (node.draft === true) return false
@@ -117,7 +116,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
       if (currentDepth && maxDepth > currentDepth) return false
 
       // Check if marked as nested, if so children will be empty
-      if (node.navigation.nested === false) node.children = []
+      if (node.nested === false) node.children = []
 
       // Loop on current node children if exists
       node.children =
