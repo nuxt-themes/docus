@@ -93,6 +93,7 @@ export function useMonaco(
         editor = monaco.editor.create(el, {
           model,
           tabSize: 2,
+          wordWrap: 'on',
           insertSpaces: true,
           autoClosingQuotes: 'always',
           detectIndentation: false,
