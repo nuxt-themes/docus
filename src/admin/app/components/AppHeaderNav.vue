@@ -16,7 +16,7 @@
 
     <div class="flex-auto"></div>
 
-    <button @click="toggleDark" class="p-1 opacity-50 hover:opacity-100 !outline-none">
+    <button class="p-1 opacity-50 hover:opacity-100 !outline-none" @click="toggleDark">
       <heroicons-outline-moon v-if="isDark" />
       <heroicons-outline-sun v-else />
     </button>
