@@ -27,7 +27,6 @@ export default {
 
 <style lang="postcss" scoped>
 >>> img {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  @apply my-[1em];
 }
 </style>

@@ -65,6 +65,8 @@ const defaultThemeSettings = {
     'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     'd-prose-code-inline-in-heading-border-hover': 'border-gray-500 dark:border-gray-200',
+    'd-prose-hr-border': 'border-t border-gray-100 dark:border-gray-800',
+    'd-prose-ul-li-bullet': 'd-secondary-bg',
     // Icons
     'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
     'd-icon': 'd-text-icon focus:outline-none',
