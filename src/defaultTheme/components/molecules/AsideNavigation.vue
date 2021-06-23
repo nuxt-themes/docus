@@ -58,13 +58,13 @@
           <ul>
             <template v-for="link in links">
               <AsideNavigationItem
-                v-if="link.navigation.children !== false && link.children.length"
-                :key="link.navigation.title"
-                :title="link.navigation.title"
+                v-if="link.nested !== false && link.children.length"
+                :key="link.to"
+                :title="link.title"
                 :docs="link.children"
-                :collapse="link.navigation.collapse"
+                :collapsed="link.collapse === true"
               />
-              <AsideNavigationItem v-else :key="link.navigation.title" :docs="[link]" />
+              <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
             </template>
           </ul>
           <AsideBottom />
