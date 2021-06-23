@@ -10,7 +10,7 @@ export default defineSirocConfig({
     'build:extend'() {
       // eslint-disable-next-line no-console
       console.log('📝 Building the admin app')
-      execSync('npx vite --config src/admin/vite.config.ts build')
+      execSync('npx vite --config src/admin/app/vite.config.ts build', { stdio: 'inherit' })
     }
   }
 })

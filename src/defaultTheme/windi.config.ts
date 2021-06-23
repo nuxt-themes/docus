@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [filters, aspectRatio],
   // Include Docus node_module when used this way
   extract: {
-    include: ['node_modules/docus/dist/**/*.{vue,html,js,mjs,ts,jsx,tsx}']
+    include: ['node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css,ts,js}']
   },
   theme: {
     colors: {

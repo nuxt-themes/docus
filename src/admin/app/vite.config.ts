@@ -1,13 +1,13 @@
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import ViteComponents from 'vite-plugin-components'
-import { dependencies, devDependencies } from '../../package.json'
+import { dependencies, devDependencies } from '../../../package.json'
 
 const r = path => resolve(__dirname, path)
-const root = join(__dirname, 'app')
+const root = __dirname
 
 export default defineConfig({
   root,
@@ -20,7 +20,7 @@ export default defineConfig({
     WindiCSS({
       root,
       scan: {
-        include: [r('app/**/*')]
+        include: [r('**/*')]
       }
     }),
     ViteComponents({
