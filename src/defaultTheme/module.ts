@@ -8,6 +8,7 @@ import { Module, NuxtOptions } from '@nuxt/types'
 import gracefulFs from 'graceful-fs'
 import clearModule from 'clear-module'
 import jiti from 'jiti'
+import { DefaultExtractor } from '@windicss/plugin-utils'
 import defaultWindiConfig from './windi.config'
 
 const r = (...args: string[]) => resolve(__dirname, ...args)
@@ -98,6 +99,24 @@ export default <Module>function themeSetupModule() {
       ],
       detect: [...vueFiles, ...mdFiles]
     }
+
+    // extract custom markdown syntax, #503
+    windiOptions.scanOptions.extractors.push({
+      extensions: ['md'],
+      extractor(code, id) {
+        const data = DefaultExtractor(code, id)
+
+        const classes = new Set(data.classes)
+        classes.forEach(i => {
+          if (i.startsWith('.')) classes.add(i.slice(1))
+        })
+
+        return {
+          ...data,
+          classes: Array.from(classes)
+        }
+      }
+    })
 
     // Push every included path into scan options
     windiOptions.scanOptions.include.push(
