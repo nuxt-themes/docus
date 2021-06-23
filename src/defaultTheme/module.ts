@@ -1,4 +1,4 @@
-import { resolve, join } from 'path'
+import { resolve, join, dirname } from 'path'
 import _glob from 'glob'
 import type { IOptions as GlobOptions } from 'glob'
 import { Config as WindiConfig } from 'windicss/types/interfaces'
@@ -69,6 +69,7 @@ export default <Module>function themeSetupModule() {
   hook('windicss:options', async (windiOptions: WindiConfig) => {
     // Merge user and theme Windi configs
     windiOptions.config = defu.arrayFn(windiOptions.config || {}, localWindiConfig || {}, defaultWindiConfig)
+    const docusDist = join(dirname(require.resolve('docus/package.json')), 'dist')
 
     // Resolve admin runtime path
     const adminPath = join(__dirname, '../admin')
@@ -78,7 +79,7 @@ export default <Module>function themeSetupModule() {
 
     // Glob grabbing all Docus files
     const transformFiles = await glob('**/*.{vue,css,md}', {
-      cwd: join(options.rootDir, '/node_modules/docus/dist'),
+      cwd: docusDist,
       nodir: true,
       absolute: true
     })
@@ -104,7 +105,7 @@ export default <Module>function themeSetupModule() {
       join(contentDir, windiGlob),
       join(adminPath, windiGlob),
       join(__dirname, windiGlob),
-      join(options.rootDir, '/node_modules/docus/dist' + windiGlob),
+      join(docusDist, windiGlob),
       join(options.themeDir, windiGlob)
     )
 
