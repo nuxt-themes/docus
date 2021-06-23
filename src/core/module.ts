@@ -1,10 +1,11 @@
 import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
+import { pascalCase } from 'scule'
 import { Module } from '@nuxt/types'
 import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
-import { generatePosition, generateSlug, generateTo, isDraft, isHidden, processDocumentInfo } from './utils/document'
+import { generatePosition, generateSlug, generateTo, isDraft, isHidden } from './utils/document'
 import { destroyStorage, initStorage, useNuxtIgnoreList } from './storage'
 import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
@@ -83,8 +84,6 @@ export default <Module>async function docusModule() {
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
-    processDocumentInfo(document)
-
     /**
      * Disable document navigation if it is marked as `page = false`
      * This will prevent showing non-pages in navigation menus
@@ -106,6 +105,13 @@ export default <Module>async function docusModule() {
     document.path = document.to
     document.language = _language
     document.draft = document.draft || isDraft(slug)
+
+    /**
+     * Generate title from page slug
+     */
+    if (!document.title) {
+      document.title = document.to.split('/').pop().split(/[\s-]/g).map(pascalCase).join(' ')
+    }
   })
 
   // Initiate storage

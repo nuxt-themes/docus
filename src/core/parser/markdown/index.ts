@@ -3,9 +3,10 @@ import defu from 'defu'
 import { MarkdownParserOptions, Toc } from '../../../types'
 import { processOptions } from './utils'
 import { generateToc } from './toc'
-import { generateBody, generateDescription } from './content'
+import { generateBody } from './content'
 import propsDirective from './directive/props'
 import { parse as parseFrontMatter } from './fontmatter'
+import { processHeading } from './meta'
 
 const DEFAULTS: MarkdownParserOptions = {
   toc: {
@@ -44,14 +45,19 @@ async function parse(file, options) {
   }
 
   let excerpt
-  let description
   if (rest.excerpt) {
     excerpt = await generateBody(rest.excerpt, { ...options, data })
-    description = generateDescription(excerpt)
   }
+
+  /**
+   * Process content headeings
+   */
+  const heading = processHeading(body)
+
   return {
-    description,
     ...data,
+    title: data.title || heading.title,
+    description: data.description || heading.description,
     toc,
     body,
     text: file,
