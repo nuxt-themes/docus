@@ -13,10 +13,9 @@
 
 <script>
 import { computed, ref } from '@nuxtjs/composition-api'
-import { flatUnwrap, Markdown, nodeTextContent } from '~docus/utils'
+import { flatUnwrap, nodeTextContent } from '~docus/utils'
 
 export default {
-  components: { Markdown },
   props: {
     /**
      * Array of string
