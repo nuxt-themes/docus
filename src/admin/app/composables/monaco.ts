@@ -1,7 +1,8 @@
-import { watch, Ref, unref, ref } from 'vue3'
+import { watch, Ref, unref, ref, watchEffect } from 'vue3'
 import type { editor as Editor } from 'monaco-editor'
 import * as monaco from 'monaco-editor'
 import { createSingletonPromise } from '@antfu/utils'
+import { isDark } from '../composables/dark'
 
 const setupMonaco = createSingletonPromise(async () => {
   monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -45,6 +46,10 @@ const setupMonaco = createSingletonPromise(async () => {
           return new EditorWorker()
         }
       }
+
+      watchEffect(() => {
+        monaco.editor.setTheme(isDark.value ? 'vs-dark' : 'vs')
+      })
     })()
   ])
 
@@ -93,7 +98,7 @@ export function useMonaco(
           detectIndentation: false,
           folding: false,
           automaticLayout: true,
-          theme: 'vitesse-dark',
+          theme: isDark.value ? 'vs-dark' : 'vs',
           minimap: {
             enabled: false
           }
