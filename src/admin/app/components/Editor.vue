@@ -51,7 +51,7 @@ export default defineComponent({
 
     // API update on change on data or content
     watch([data, content], () => {
-      api.put(`/pages${props.file.path}`, {
+      api.put(`/content${props.file.path}`, {
         data: data.value,
         content: content.value
       })
