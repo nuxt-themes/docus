@@ -3,9 +3,9 @@
   <div class="flex flex-shrink-0">
     <div class="flex flex-col w-64">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow border-r border-gray-r-200 bg-white overflow-y-auto">
+      <div class="flex flex-col flex-grow d-border border-r border-gray-r-200 overflow-y-auto">
         <div class="mt-2 flex-grow flex flex-col">
-          <nav class="flex-1 px-2 bg-white space-y-1">
+          <nav class="flex-1 px-2 space-y-1">
             <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
           </nav>
         </div>

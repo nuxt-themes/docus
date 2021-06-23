@@ -1,8 +1,5 @@
 <template>
-  <textarea
-    v-model="frontmatter"
-    class="h-24 w-full font-mono px-4 py-2 d-border-primary border-b outline-none text-sm"
-  />
+  <textarea v-model="frontmatter" class="h-24 w-full font-mono px-4 py-2 d-border border-b outline-none text-sm" />
   <textarea v-model="content" class="w-full h-full font-mono px-4 py-2 outline-none text-sm" />
 </template>
 
@@ -70,6 +67,6 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 textarea {
-  @apply whitespace-nowrap overflow-scroll;
+  @apply whitespace-nowrap overflow-scroll bg-transparent;
 }
 </style>
