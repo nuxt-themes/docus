@@ -18,9 +18,6 @@ export default {
         light: '/logo-light.svg',
         dark: '/logo-dark.svg'
       }
-    },
-    colors: {
-      primary: '#3073F1'
     }
   }
 }
