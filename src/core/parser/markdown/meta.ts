@@ -1,5 +1,5 @@
 import defu from 'defu'
-import { expandTags, nodeTextContent } from '../../runtime/utils'
+import { expandTags, flatUnwrap, nodeTextContent } from '../../runtime/utils'
 import { DocusRootNode } from '../../../types'
 
 export function processHeading(body: DocusRootNode) {
@@ -14,6 +14,11 @@ export function processHeading(body: DocusRootNode) {
      * Remove node
      */
     const node = children.shift()
+
+    /**
+     * Remove anchor link from H1 tag
+     */
+    node.children = flatUnwrap(node.children, ['a'])
 
     /**
      * Generate title
