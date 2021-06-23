@@ -24,7 +24,7 @@ export function processHeading(body: DocusRootNode) {
      * Inject class
      */
     node.props = defu(node.props, {
-      class: 'd-page-title'
+      class: 'd-heading-title'
     })
   }
 
@@ -43,7 +43,7 @@ export function processHeading(body: DocusRootNode) {
      * Inject class
      */
     node.props = defu(node.props, {
-      class: 'd-page-description'
+      class: 'd-heading-description'
     })
   }
 
@@ -57,7 +57,7 @@ export function processHeading(body: DocusRootNode) {
      * Inject class
      */
     node.props = defu(node.props, {
-      class: 'd-page-hr'
+      class: 'd-heading-hr'
     })
   }
 

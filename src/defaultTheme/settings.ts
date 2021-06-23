@@ -83,10 +83,10 @@ const defaultThemeSettings = {
     'd-border-hover': 'border-primary-200 dark:border-secondary-dark',
     'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
     'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header',
-    // Page
-    'd-page-title': '!m-0 flex-1 text-4xl font-semibold tracking-tight',
-    'd-page-description': '!mt-4 !mb-0 text-lg font-medium d-secondary-text',
-    'd-page-hr': '!mt-4 !mb-0 d-border'
+    // Heading
+    'd-heading-title': '!m-0 flex-1 text-4xl font-semibold tracking-tight',
+    'd-heading-description': '!mt-4 !mb-0 text-lg font-medium d-secondary-text',
+    'd-heading-hr': '!mt-4 !mb-0 d-border'
   }
 }
 
