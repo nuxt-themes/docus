@@ -45,7 +45,7 @@ function onUrlInput() {
 
 <template>
   <div class="h-full flex-1 grid grid-rows-[min-content,1fr]">
-    <div class="p-2 flex d-border-primary border-b gap-2">
+    <div class="p-2 flex d-border border-b gap-2">
       <button class="px-1 opacity-50 hover:opacity-100" @click="refresh">
         <heroicons-outline:refresh />
       </button>

@@ -1,13 +1,13 @@
 <template>
-  <aside class="w-64 p-2 relative border-r">
+  <aside class="w-64 p-2 relative d-border border-r">
     <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
   </aside>
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <div class="flex-1 border-r">
+  <div class="flex-1 d-border border-r">
     <Editor v-if="currentFile" :file="currentFile" />
 
-    <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file to edit.</p>
+    <p v-else class="p-4 opacity-75">👈 &nbsp;Select a file to edit.</p>
   </div>
 </template>
 

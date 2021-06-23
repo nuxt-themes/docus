@@ -9,6 +9,14 @@ body {
   width: 100vw;
 }
 
+html {
+  @apply text-gray-900;
+}
+
+html.dark {
+  @apply text-gray-100 bg-gray-900;
+}
+
 * {
   box-sizing: border-box;
 }
