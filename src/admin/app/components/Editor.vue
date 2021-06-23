@@ -1,5 +1,5 @@
 <template>
-  <textarea v-model="raw" class="w-full h-full font-mono px-4 py-2 outline-none text-sm" />
+  <Monaco :value="raw" language="markdown" @change="update" />
 </template>
 
 <script setup lang="ts">
@@ -7,6 +7,7 @@ import type { PropType } from 'vue3'
 import { ref, watch, defineProps } from 'vue3'
 import type { File } from '../../type'
 import { useApi } from '../plugins/api'
+import Monaco from './Monaco.vue'
 
 const props = defineProps({
   file: {
@@ -28,16 +29,9 @@ watch(
   }
 )
 
-// API update on change on data or content
-watch([raw], () => {
+function update(content){
   api.put(`/content${props.file.path}`, {
-    raw: raw.value
+    raw: content
   })
-})
-</script>
-
-<style lang="postcss" scoped>
-textarea {
-  @apply whitespace-nowrap overflow-scroll;
 }
-</style>
+</script>
