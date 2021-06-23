@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, watch } from 'vue3'
-import { fetchPreviewOrigin, previewUrl, previewPath, previewOrigin } from '../composables/preview'
+import { fetchPreviewOrigin, previewOrigin, previewUrl, previewPath } from '../composables/preview'
 
 const iframe = ref<HTMLIFrameElement>()
 const url = ref(previewUrl.value)

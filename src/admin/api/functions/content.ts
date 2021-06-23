@@ -1,14 +1,9 @@
 import { promises as fs } from 'fs'
 import { join, extname } from 'path'
-import matter from 'gray-matter'
 import { createError, Middleware, useBody } from 'h3'
 import dirTree from 'directory-tree'
+import { FileData, File } from '../../type'
 import { normalizeFiles, r } from '../utils'
-
-interface Body {
-  data: any
-  content: string
-}
 
 export default <Middleware>async function contentHandler(req) {
   const url = req.url
@@ -23,13 +18,11 @@ export default <Middleware>async function contentHandler(req) {
     try {
       const path = join(r('content'), url)
       const file = await fs.readFile(path, 'utf-8')
-      const { content, data } = matter(file)
 
-      return {
+      return <File>{
         path: path.replace(r('content'), ''),
         extension: extname(path),
-        data,
-        content
+        raw: file
       }
     } catch (err) {
       return createError({
@@ -41,12 +34,11 @@ export default <Middleware>async function contentHandler(req) {
 
   // Update changes
   if (req.method === 'PUT') {
-    const { data, content } = await useBody<Body>(req)
-
-    if (!data || !content) {
+    const { raw } = await useBody<FileData>(req)
+    if (raw == null) {
       return createError({
         statusCode: 400,
-        statusMessage: 'data and content keys are required'
+        statusMessage: '"raw" key is required'
       })
     }
 
@@ -54,11 +46,8 @@ export default <Middleware>async function contentHandler(req) {
 
     try {
       // @ts-ignore
-      await fs.stat(path, 'utf-8')
-
-      const file = matter.stringify(content, data)
-
-      await fs.writeFile(path, file)
+      // await fs.stat(path, 'utf-8')
+      await fs.writeFile(path, raw)
 
       return { ok: true }
     } catch (err) {
