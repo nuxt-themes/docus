@@ -3,69 +3,29 @@
 </template>
 
 <style lang="postcss" scoped>
-ul li {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  position: relative;
-  padding-left: 1.75em;
-  &::before {
-    @apply d-secondary-bg;
-    content: '';
-    position: absolute;
-    /* background-color: theme('colors.gray.300'); */
-    border-radius: 50%;
-    width: 0.375em;
-    height: 0.375em;
-    top: calc(0.875em - 0.1875em);
-    left: 0.25em;
-  }
-  /* *:first-child {
-      margin-top: 1.25em;
-    } */
-  /* *:last-child {
-      margin-bottom: 0.5em;
-    } */
+li {
+  @apply relative my-[0.25em] pl-4;
   p {
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
+    @apply my-[0.75em];
   }
 }
 
-/* .dark ul li::before {
-  background-color: theme('colors.gray.600');
-} */
+ul li {
+  &::before {
+    @apply absolute left-0 top-[0.5em] d-prose-ul-li-bullet rounded-full w-1.5 h-1.5;
+    content: '';
+  }
+}
 
 ol li {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  position: relative;
-  padding-left: 1.75em;
   &::before {
+    @apply absolute left-0 top-0 d-secondary-text;
     content: counter(list-item, decimal) '.';
     content: counter(list-item, var(--list-counter-style, decimal)) '.';
-    position: absolute;
-    font-weight: 500;
-    color: theme('colors.gray.600');
-    left: 0;
-  }
-  /* *:first-child {
-      margin-top: 1.25em;
-    } */
-  /* *:last-child {
-      margin-bottom: 0.5em;
-    } */
-  p {
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
   }
 }
 
 >>> .nuxt-content-highlight {
-  margin: 0;
-}
-
-ol li::before {
-  @apply d-secondary-text;
-  /* color: theme('colors.red.400'); */
+  @apply m-0;
 }
 </style>
