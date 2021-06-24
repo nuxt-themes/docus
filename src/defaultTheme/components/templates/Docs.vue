@@ -70,10 +70,11 @@ export default defineComponent({
         .where({
           language,
           draft,
+          // Pages should share same parent
           parent: props.page.parent,
-          // Ignore pages without any title
-          // Most of `index` pages are use for parenting configuration and they don't need to be listed here
-          title: { $not: { $type: 'undefined' } },
+          // Ignore empty index files
+          // Index files that hold no markdown content will not show in bottom navigation
+          $or: [{ slug: { $ne: '' } }, { empty: { $ne: true } }],
           navigation: {
             $and: [
               // Ignore contents that has disabled navigations
@@ -83,7 +84,7 @@ export default defineComponent({
             ]
           }
         })
-        .only(['title', 'slug', 'to', 'category'])
+        .only(['title', 'slug', 'to'])
         .sortBy('position', 'asc')
         .surround(props.page.path, { before: 1, after: 1 })
         .fetch()
