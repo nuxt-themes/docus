@@ -1,11 +1,6 @@
 <template>
   <ul>
-    <li
-      v-for="file of files"
-      :key="file.path"
-      class="rounded"
-      :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
-    >
+    <li v-for="file of files" :key="file.path">
       <div
         v-if="!isHidden(file)"
         class="
@@ -18,40 +13,50 @@
           text-sm
           leading-5
           rounded
+          overflow-hidden
+          select-none
           hover:bg-gray-400 hover:bg-opacity-15
         "
+        :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
         @click="open(file)"
       >
-        <FilesTreeIcon :file="file" />
-        <span>{{ filename(file.name) }}</span>
+        <TreeToggler :file="file" />
+        <FilesTreeIcon class="w-8 min-w-8" :file="file" />
+        <div class="whitespace-nowrap overflow-ellipsis">{{ filename(file.name) }}</div>
       </div>
       <FilesTree
         v-if="isDir(file) && file.isOpen"
         :files="file.children"
         :current-file="currentFile"
         :is-root="false"
-        class="pl-2"
+        class="pl-3"
         @open="open"
       />
     </li>
   </ul>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, provide } from 'vue3'
+import type { PropType } from 'vue3'
+import type { File } from '../../type'
 import { isImage } from '../utils'
 import FilesTreeIcon from './FilesTreeIcon.vue'
+import TreeToggler from './TreeToggler.vue'
 
 export default defineComponent({
   name: 'FilesTree',
-  components: { FilesTreeIcon },
+  components: {
+    FilesTreeIcon,
+    TreeToggler
+  },
   props: {
     isRoot: {
       type: Boolean,
       default: true
     },
     files: {
-      type: Array,
+      type: Array as PropType<File[]>,
       default: () => []
     },
     currentFile: {

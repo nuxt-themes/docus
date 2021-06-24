@@ -2,8 +2,11 @@ import { createApp } from 'vue3'
 import App from './App.vue'
 
 // Styles
-import 'virtual:windi.css'
+import 'virtual:windi-base.css'
+import 'virtual:windi-components.css'
+import 'splitpanes/dist/splitpanes.css'
 import './index.css'
+import 'virtual:windi-utilities.css'
 
 // Plugins
 import { router as routerPlugin } from './plugins/router'

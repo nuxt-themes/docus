@@ -3,6 +3,9 @@ import colors from 'windicss/colors'
 import settings from '../../defaultTheme/settings'
 
 export default defineConfig({
+  extract: {
+    exclude: ['node_modules/**/*', '../../../node_modules/**/*']
+  },
   theme: {
     extend: {
       colors: {

@@ -8,20 +8,9 @@
         <Component :is="Component" />
       </KeepAlive>
     </RouterView>
-
-    <Preview />
   </main>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue3'
+<script setup lang="ts">
 import AppHeader from './components/AppHeader.vue'
-import Preview from './components/Preview.vue'
-
-export default defineComponent({
-  components: {
-    AppHeader,
-    Preview
-  }
-})
 </script>
