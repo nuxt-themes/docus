@@ -61,7 +61,8 @@ async function parse(file, options) {
     toc,
     body,
     text: file,
-    excerpt
+    excerpt,
+    empty: content.trim().length === 0
   }
 }
 

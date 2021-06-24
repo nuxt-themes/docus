@@ -129,6 +129,10 @@ export interface DocusDocument {
    */
   page: boolean
   /**
+   * It will set to `false` if the file does not containts any markdown content
+   */
+  empty: boolean
+  /**
    * The unique key of document (file path)
    */
   key: string
