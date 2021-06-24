@@ -1,10 +1,16 @@
 <template>
   <AppPage>
-    <PageContent :page="page" />
+    <PageContent :page="page">
+      <template #mobile-toc>
+        <PageMobileToc :title="page.toc.title" :toc="page.toc.links" />
+      </template>
+    </PageContent>
 
-    <hr class="mt-10 mb-8 border-gray-100 dark:border-gray-800 dark:border-opacity-50" />
+    <EditOnGithub :page="page" />
 
-    <PagePrevNext :prev="prev" :next="next" />
+    <template #prev-next>
+      <PagePrevNext :prev="prev" :next="next" />
+    </template>
 
     <template #toc>
       <PageToc v-if="!page.hideToc" :title="page.toc.title" :toc="page.toc.links" />
@@ -61,10 +67,26 @@ export default defineComponent({
 
       const [prevLink, nextLink] = await $docus
         .search({ deep: true })
-        .where({ language, draft, navigation: { $ne: false } })
-        .only(['title', 'slug', 'to', 'category'])
+        .where({
+          language,
+          draft,
+          // Pages should share same parent
+          parent: props.page.parent,
+          // Ignore empty index files
+          // Index files that hold no markdown content will not show in bottom navigation
+          $or: [{ slug: { $ne: '' } }, { empty: { $ne: true } }],
+          navigation: {
+            $and: [
+              // Ignore contents that has disabled navigations
+              { $ne: false },
+              // Ignore contents with navigation redirect
+              { $containsNone: ['redirect'] }
+            ]
+          }
+        })
+        .only(['title', 'slug', 'to'])
         .sortBy('position', 'asc')
-        .surround(props.page.slug, { before: 1, after: 1 })
+        .surround(props.page.path, { before: 1, after: 1 })
         .fetch()
 
       prev.value = prevLink

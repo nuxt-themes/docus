@@ -1,42 +1,48 @@
 <template>
-  <aside class="w-64 p-2 relative border-r">
-    <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
-  </aside>
-
-  <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <div class="flex-1 border-r">
-    <Editor v-if="currentFile" :file="currentFile" />
-
-    <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file to edit.</p>
-  </div>
+  <Splitpanes class="h-full default-theme" :push-other-panes="false">
+    <Pane size="15" max-size="30">
+      <div class="h-full overflow-y-scroll">
+        <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
+      </div>
+    </Pane>
+    <Pane>
+      <Editor v-if="currentFile" :file="currentFile" />
+      <p v-else class="p-4 opacity-75">👈 &nbsp;Select a file to edit.</p>
+    </Pane>
+    <Pane>
+      <KeepAlive>
+        <Preview />
+      </KeepAlive>
+    </Pane>
+  </Splitpanes>
 </template>
 
-<script>
-import { reactive, defineComponent, onMounted, toRefs } from 'vue3'
+<script setup lang="ts">
+import { Splitpanes, Pane } from 'splitpanes'
+import { ref, onMounted } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
+import Preview from '../components/Preview.vue'
 import { useApi } from '../plugins/api'
+import { navigateToFile } from '../composables/preview'
 
-export default defineComponent({
-  components: {
-    FilesTree,
-    Editor
-  },
-  setup() {
-    const api = useApi()
+const api = useApi()
 
-    const state = reactive({
-      files: [],
-      currentFile: null
-    })
+const files = ref([])
+const currentFile = ref(null)
 
-    const openFile = async file => (state.currentFile = await api.get(`/pages${file.path}`))
+const openFile = async file => {
+  navigateToFile(file.path)
+  currentFile.value = await api.get(`/content${file.path}`)
+}
 
-    onMounted(async () => (state.files = await api.get('/pages')))
+onMounted(async () => {
+  files.value = await api.get('/content')
 
-    return {
-      ...toRefs(state),
-      openFile
+  if (!currentFile.value) {
+    const indexFile = files.value.find(file => file.path === '/index.md')
+    if (indexFile) {
+      openFile(indexFile)
     }
   }
 })

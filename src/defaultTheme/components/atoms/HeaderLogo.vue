@@ -9,8 +9,8 @@
     <template v-if="theme.header.title && theme.header.logo">
       <div class="flex items-center">
         <span class="mr-4">
-          <img :src="logo.light" class="w-auto h-8 dark:hidden" :alt="settings.title" />
-          <img :src="logo.dark" class="w-auto h-8 light:hidden" :alt="settings.title" />
+          <img :src="logo.light" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
+          <img :src="logo.dark" class="w-auto h-6 md:h-8 light:hidden" :alt="settings.title" />
         </span>
         <span class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
           {{ settings.title }}
@@ -20,8 +20,8 @@
 
     <template v-if="!theme.header.title && theme.header.logo">
       <span>
-        <img :src="logo.light" class="w-auto h-8 dark:hidden" :alt="settings.title" />
-        <img :src="logo.dark" class="w-auto h-8 light:hidden" :alt="settings.title" />
+        <img :src="logo.light" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
+        <img :src="logo.dark" class="w-auto h-6 md:h-8 light:hidden" :alt="settings.title" />
       </span>
     </template>
   </div>

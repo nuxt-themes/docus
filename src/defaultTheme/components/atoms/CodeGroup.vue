@@ -1,18 +1,18 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
-    <div class="relative px-2 text-white bg-gray-100 rounded-t-lg dark:bg-gray-800">
+    <div class="relative z-0 px-2 text-white rounded-t-lg d-code-group-header-bg">
       <button
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="`${counter}${label}`"
-        class="relative z-10 px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-semibold tracking-tight"
-        :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-300']"
+        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-medium tracking-tight"
+        :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'd-prose-code-filename-text']"
         @click="updateTabs(i)"
       >
         {{ label }}
       </button>
-      <span ref="highlight-underline" class="absolute z-0 highlight-underline h-full xs:py-1.5">
-        <span class="flex w-full h-full bg-gray-200 dark:bg-gray-700 rounded-md"></span>
+      <span ref="highlight-underline" class="absolute -z-1 highlight-underline h-full xs:py-1.5">
+        <span class="flex w-full h-full d-code-group-tab rounded-md"></span>
       </span>
     </div>
     <slot />
@@ -100,7 +100,7 @@ export default defineComponent({
           const attrs = slot.asyncMeta?.data?.attrs || slot.componentOptions?.propsData || {}
           const [firstChild] = slot.children || slot.componentOptions?.children || slot.asyncMeta?.children || []
           return {
-            label: attrs.label || firstChild?.children[0].text || 'untitled',
+            label: attrs.label || firstChild?.children?.[0]?.text || 'untitled',
             active: typeof attrs.active !== 'undefined'
           }
         })
@@ -111,30 +111,45 @@ export default defineComponent({
 </script>
 
 <style scoped lang="postcss">
-button {
-  outline: none;
+.code-group {
+  >>> pre {
+    @apply rounded-tl-none rounded-tr-none !important;
+  }
 }
 
 .code-group {
   @apply my-4;
 
-  & .docus-highlight:not(.active) {
-    display: none;
-  }
+  ::v-deep {
+    > .docus-highlight:not(.active) {
+      display: none;
+    }
 
-  & .code-block:not(.active) {
-    display: none;
-  }
+    > .code-block:not(.active) {
+      display: none;
+    }
 
-  >>> .docus-highlight {
-    @apply my-0;
+    .docus-highlight {
+      @apply mt-0;
+    }
+
+    // hide filename
+    pre[class*='language-'] {
+      @apply rounded-t-none mt-0;
+    }
   }
 }
 
+button {
+  outline: none;
+}
+
 .first-tab {
-  & > .code-block:nth-child(2),
-  & > .docus-highlight:nth-child(2) {
-    display: block;
+  ::v-deep {
+    .code-block:nth-child(2),
+    .docus-highlight:nth-child(2) {
+      display: block;
+    }
   }
 }
 
@@ -142,21 +157,5 @@ button {
   /* bottom: -2px; */
   /* height: 2px; */
   transition: left 150ms, top 150ms, width 150ms, height 150ms;
-}
-
-.code-group ::v-deep {
-  & pre[class*='language-'] {
-    @apply rounded-t-none mt-0;
-  }
-  & > .prose > .docus-highlight .filename {
-    display: none;
-    & + pre[class*='language-'] {
-      @apply pt-3;
-    }
-  }
-}
-
-.docus-highlight {
-  margin: 0;
 }
 </style>

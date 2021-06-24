@@ -11,9 +11,6 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
   // Nuxt context
   const { app, route } = context
 
-  // Current locale
-  const { locale: currentLocale } = app.i18n
-
   // Reactive router path
   const { path } = useReactivePath(app, route)
 
@@ -30,9 +27,9 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
    * Get navigation from Docus data
    */
   async function fetchNavigation() {
-    const { body } = await api.data('/docus/navigation/' + currentLocale)
+    const { body } = await api.data('/docus/navigation/' + app.i18n.locale)
 
-    state.navigation[currentLocale] = body
+    state.navigation[app.i18n.locale] = body
 
     fetchCounter.value += 1
   }
@@ -44,41 +41,64 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
    * @param from A vue-router "to" valid path to start with: "/directory" will make my query start at from this directory.
    */
   function get({ depth, locale, from, all }: DocusNavigationGetParameters = {}) {
-    const nav = state.navigation[locale || currentLocale] || []
+    const nav = state.navigation[locale || app.i18n.locale] || []
 
     let items = nav
+    let match: NavItem
+
+    // The deepest exclusive navigation that can be found based on `from`
+    let exclusiveContent: NavItem
+    // Parent of exclusive Content
+    let parent: NavItem
 
     // `from` parameter handling
     if (from) {
+      let lastMatch: NavItem
+
       const paths = from.split('/')
 
       items = paths.reduce((links: NavItem[], path: string, index: number) => {
         // Empty path, skip iteration
         if (!path) return links
 
-        // If we iterated on the latest path, return links
-        if (index + 1 === paths.length) return links
-
-        // If this path links are only 1 long, set the current path children as root
-        if (links.length === 1) {
-          links = links[0].children
-
-          return links
+        // Remember last matched content
+        // This content will use as navigation parent if it has an exclusive decendant
+        if (match && match.page) {
+          lastMatch = match
         }
 
-        // Otherwise, find matching path and get its childrens
-        links = links.find(item => {
-          const itemPaths = item.to.split('/')
+        // Find matched content
+        match = links.find(item => item.to.split('/')[index] === path)
+        if (match) {
+          // Update parent and exclusiveContent if the matched content marked as exclusive navigation
+          if (match && match.exclusive) {
+            parent = lastMatch || parent
+            exclusiveContent = match
+          }
 
-          return itemPaths[index] === path
-        }).children
+          return match.children
+        }
 
         return links
       }, items)
+
+      if (exclusiveContent) {
+        // Use exclusive links
+        items = exclusiveContent.children
+      } else {
+        items = nav
+      }
     }
 
-    // Start filtering loop
-    return all ? items : filterLinks(items, depth, 1)
+    return {
+      // matched page info
+      title: exclusiveContent && exclusiveContent.title,
+      to: exclusiveContent && exclusiveContent.to,
+      // matched parent
+      parent,
+      // filter children
+      links: all ? items : filterLinks(items, depth, 1)
+    }
   }
 
   /**
@@ -87,7 +107,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
   function filterLinks(nodes: NavItem[], maxDepth: number, currentDepth: number) {
     return nodes.filter(node => {
       // Navigation as false means that we want that link to be hidden from navigation.
-      if (node.navigation === false) return false
+      if (node.hidden) return false
 
       // We don't want to show drafts.
       if (node.draft === true) return false
@@ -96,7 +116,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
       if (currentDepth && maxDepth > currentDepth) return false
 
       // Check if marked as nested, if so children will be empty
-      if (node.navigation.nested === false) node.children = []
+      if (node.nested === false) node.children = []
 
       // Loop on current node children if exists
       node.children =
@@ -120,20 +140,10 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
     // eslint-disable-next-line no-unused-expressions
     fetchCounter.value
 
-    // Get links from path
-    const links = get({
-      from: path.value,
-      all: true
+    // Calcualte navigatin based on current path
+    return get({
+      from: path.value
     })
-
-    // Get current link
-    const currentLink = links.find(link => link.to === path.value)
-
-    // Return filtered items for exclusive page
-    if (currentLink && currentLink.navigation && currentLink.navigation.exclusive) return links
-
-    // Return whole navigation
-    return get()
   })
 
   // Update content on update.

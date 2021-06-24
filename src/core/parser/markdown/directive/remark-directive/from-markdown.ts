@@ -12,6 +12,7 @@ const enter = {
   directiveLeafAttributes: enterAttributes,
 
   directiveText: enterText,
+  directiveTextSpan: enterTextSpan,
   directiveTextAttributes: enterAttributes
 }
 const exit = {
@@ -29,6 +30,12 @@ const exit = {
   directiveContainerLabel: exitContainerLabel,
   directiveContainerName: exitName,
 
+  directiveContainerAttributeInitializerMarker() {
+    // If an attribute name follows by `=` it should be treat as string
+    const attributes = this.getData('directiveAttributes')
+    attributes[attributes.length - 1][1] = ''
+  },
+
   directiveLeaf: exitToken,
   directiveLeafAttributeClassValue: exitAttributeClassValue,
   directiveLeafAttributeIdValue: exitAttributeIdValue,
@@ -38,6 +45,7 @@ const exit = {
   directiveLeafName: exitName,
 
   directiveText: exitToken,
+  directiveTextSpan: exitToken,
   directiveTextAttributeClassValue: exitAttributeClassValue,
   directiveTextAttributeIdValue: exitAttributeIdValue,
   directiveTextAttributeName: exitAttributeName,
@@ -103,6 +111,10 @@ function enterLeaf(token: Token) {
   enterToken.call(this, 'leafDirective', token)
 }
 
+function enterTextSpan(token: Token) {
+  this.enter({ type: 'textDirective', name: 'span', attributes: {}, children: [] }, token)
+}
+
 function enterText(token: Token) {
   enterToken.call(this, 'textDirective', token)
 }
@@ -144,7 +156,9 @@ function exitAttributeValue(token: Token) {
 function exitAttributeName(token: Token) {
   // Attribute names in CommonMark are significantly limited, so character
   // references can’t exist.
-  this.getData('directiveAttributes').push([this.sliceSerialize(token), ''])
+
+  // Use `true` as attrubute default value to solve issue of attributes without value (example `:block{attr1 attr2}`)
+  this.getData('directiveAttributes').push([this.sliceSerialize(token), true])
 }
 
 function exitAttributes() {
@@ -165,7 +179,14 @@ function exitAttributes() {
 
   this.setData('directiveAttributes')
   this.resume() // Drop EOLs
-  this.stack[this.stack.length - 1].attributes = cleaned
+
+  let stackTop = this.stack[this.stack.length - 1]
+  if (stackTop.type === 'paragraph') {
+    // select last inline component
+    stackTop = stackTop.children[stackTop.children.length - 1]
+  }
+
+  stackTop.attributes = cleaned
 }
 
 function exitToken(token: Token) {

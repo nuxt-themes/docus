@@ -9,6 +9,14 @@ body {
   width: 100vw;
 }
 
+html {
+  @apply text-gray-900;
+}
+
+html.dark {
+  @apply text-gray-100 bg-gray-900;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,4 +27,35 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+}
+
+.splitpanes.default-theme .splitpanes__pane {
+  @apply bg-transparent;
+}
+.splitpanes.default-theme .splitpanes__splitter {
+  @apply bg-transparent min-w-4 min-h-4;
+}
+
+.splitpanes--vertical.default-theme > .splitpanes__splitter {
+  @apply d-border border-l border-r;
+}
+
+.splitpanes.default-theme .splitpanes__splitter::before,
+.splitpanes.default-theme .splitpanes__splitter::after {
+  @apply bg-dark-100 bg-opacity-50;
+}
+
+.splitpanes.default-theme .splitpanes__splitter:hover::before,
+.splitpanes.default-theme .splitpanes__splitter:hover::after {
+  @apply bg-light-100 bg-opacity-50;
+}
+
+.dark .splitpanes.default-theme .splitpanes__splitter::before,
+.dark .splitpanes.default-theme .splitpanes__splitter::after {
+  @apply bg-dark-100;
+}
+
+.dark .splitpanes .splitpanes__splitter:hover::before,
+.dark .splitpanes .splitpanes__splitter:hover::after {
+  @apply bg-dark-100;
 }

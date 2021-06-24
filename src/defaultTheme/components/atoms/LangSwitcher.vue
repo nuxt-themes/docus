@@ -2,7 +2,7 @@
   <Dropdown v-if="$i18n.locales.length > 1" class="inline-flex">
     <template #trigger="{ open, toggle }">
       <button
-        class="text-icon"
+        class="d-text-icon"
         :class="{
           'text-gray-700 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-400': open
         }"
@@ -20,7 +20,7 @@
           :class="[
             $i18n.locale === locale.code
               ? 'font-semibold cursor-default text-gray-800 dark:text-gray-200'
-              : 'hover:text-primary'
+              : 'hover:d-text-primary'
           ]"
           >{{ locale.name }}</NuxtLink
         >

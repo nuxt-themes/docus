@@ -1,6 +1,5 @@
 import { withoutTrailingSlash } from 'ufo'
-import { DocusDocument, DocusMarkdownNode } from '../../types'
-import { expandTags } from '../runtime/utils'
+import { DocusDocument } from '../../types'
 
 export function generatePosition(path: string, document: DocusDocument): string {
   const position = path
@@ -17,11 +16,29 @@ export function generatePosition(path: string, document: DocusDocument): string 
   return padRight(position, 12)
 }
 
+/**
+ * Clean up special keywords from path part
+ */
 export function generateSlug(name: string): string {
-  return name
-    .replace(/(\d+\.)?(.*)/, '$2')
-    .replace(/^index/, '')
-    .replace(/\.draft/, '')
+  return (
+    name
+      /**
+       * Remove hidden keyword
+       */
+      .replace(/^_/, '')
+      /**
+       * Remove numbering
+       */
+      .replace(/(\d+\.)?(.*)/, '$2')
+      /**
+       * remove index keyword
+       */
+      .replace(/^index/, '')
+      /**
+       * remove draft keyword
+       */
+      .replace(/\.draft/, '')
+  )
 }
 
 export function generateTo(path: string): string {
@@ -32,52 +49,13 @@ export function isDraft(path: string): boolean {
   return !!path.match(/(\.draft)$/)
 }
 
-export function processDocumentInfo(document: DocusDocument): DocusDocument {
-  if (document.title && document.description) {
-    return document
-  }
-  const [first, second] = document.body.children
-    // top level `text` can be ignored
-    .filter(node => node.type !== 'text')
-
-  if (first && expandTags(['h1']).includes(first.tag)) {
-    if (!document.title) {
-      document.title = getTextContent(first)
-      Object.assign(first, {
-        type: 'text',
-        value: ''
-      })
-    }
-    // look for second element to find description
-    if (second && expandTags(['blockquote']).includes(second.tag)) {
-      if (!document.description) {
-        document.description = getTextContent(second)
-        Object.assign(second, {
-          type: 'text',
-          value: ''
-        })
-      }
-    }
-  } else if (first && first.type === 'blockquote') {
-    if (!document.description) {
-      document.description = getTextContent(first)
-      Object.assign(first, {
-        type: 'text',
-        value: ''
-      })
-    }
-  }
-  return document
-}
-
-// Locals
-
-function getTextContent(node: DocusMarkdownNode): string {
-  let text = node.value || ''
-  if (node.children) {
-    text = text + node.children.map(child => getTextContent(child)).join('')
-  }
-  return text
+/**
+ * Files or directories that starts with underscore `_` will mark as hidden
+ * @param path content path
+ * @returns true if the is part in the path that starts with `_`
+ */
+export function isHidden(path: string): boolean {
+  return path.split('/').some(part => part.match(/^_.*/))
 }
 
 function padLeft(value: string, length: number): string {

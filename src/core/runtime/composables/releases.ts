@@ -2,7 +2,7 @@ import { DocusAddonContext } from '../../../types'
 
 export const useDocusReleases = ({ api, state }: DocusAddonContext) => {
   async function fetchReleases() {
-    return (await api.data('github-releases')).releases
+    return (await api.data('github-releases'))?.releases || []
   }
 
   async function fetchLastRelease() {

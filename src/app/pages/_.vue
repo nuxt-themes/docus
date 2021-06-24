@@ -1,5 +1,5 @@
 <template>
-  <Component :is="page.template" :page="page" />
+  <Component :is="page.template" :key="page.template" :page="page" />
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default defineComponent({
     if (params.pathMatch === 'index') redirect(app.localePath('/'))
   },
 
-  async asyncData({ $docus, app: { i18n }, params, error }) {
+  async asyncData({ $docus, app: { i18n, localePath }, params, error, redirect }) {
     const language = i18n.locale
 
     // Init template options from Docus settings
@@ -29,10 +29,13 @@ export default defineComponent({
     const draft = false
 
     // Page query
-    const [page] = await $docus.search({ deep: true }).where({ language, to, draft }).fetch()
+    const [page] = await $docus
+      .search({ deep: true })
+      .where({ language, to, draft, page: { $ne: false } })
+      .fetch()
 
     // Break on missing page query
-    if (!page) return error({ statusCode: 404, message: 'Page not found' })
+    if (!page) return error({ statusCode: 404, message: '404 - Page not found' })
 
     // Get page template
     page.template = $docus.getPageTemplate(page)
@@ -51,6 +54,9 @@ export default defineComponent({
 
     // Set Docus runtime current page
     $docus.currentPage.value = page
+
+    // Redirect to another page if `navigation.redirect` is declared
+    if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
 
     return { page, templateOptions }
   },

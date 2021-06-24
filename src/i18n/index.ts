@@ -44,6 +44,9 @@ export default <Module>function docusI18n() {
   // Update i18n langDir to relative from `~` (https://github.com/nuxt-community/i18n-module/blob/4bfa890ff15b43bc8c2d06ef9225451da711dde6/src/templates/utils.js#L31)
   config.langDir = join(relative(options.srcDir, r('languages')), '/')
 
+  // Inject Docus theme as ~docus
+  options.alias['~docus-i18n'] = r('languages')
+
   if (!options.i18n?.locales?.length) {
     const contentDir = resolve(options.srcDir, $docus.settings.contentDir)
     const languageCodes = languages.map(({ code }) => code)
@@ -63,5 +66,16 @@ export default <Module>function docusI18n() {
     })
 
     requireModule('nuxt-i18n')
+
+    /**
+     * Temporary fix
+     * This should be done by nuxt-i18n
+     */
+    this.extendRoutes(routes => {
+      // move start route to the end
+      const index = routes.findIndex(route => route.path === '/*')
+      const [all] = routes.splice(index, 1)
+      routes.push(all)
+    })
   })
 }

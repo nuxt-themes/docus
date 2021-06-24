@@ -2,7 +2,7 @@ import { Context, Plugin } from '@nuxt/types'
 import { createCookies } from '@vueuse/integrations'
 import defu from 'defu'
 import Vue from 'vue'
-import { reactive, watch } from 'vue-demi'
+import { reactive, watch } from '@nuxtjs/composition-api'
 import { DocusRuntimeInstance } from '../../index.d'
 import DocusUI from './DocusUI.vue'
 
@@ -23,7 +23,9 @@ export default <Plugin>async function ({ ssrContext, $docus }: Context & { $docu
 
   if (process.client) {
     // Watch drafts, refresh data once updated
-    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui))
+    watch($docus.ui, () => cookies.set(COOKIE_NAME, $docus.ui), {
+      deep: true
+    })
 
     // Watch draft and fetch nav
     watch(

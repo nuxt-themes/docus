@@ -1,12 +1,8 @@
 <template>
   <ul>
-    <li
-      v-for="file of files"
-      :key="file.path"
-      class="rounded text-gray-600"
-      :class="{ 'bg-gray-200 text-gray-900': isCurrent(file) }"
-    >
+    <li v-for="file of files" :key="file.path">
       <div
+        v-if="!isHidden(file)"
         class="
           group
           flex
@@ -16,44 +12,51 @@
           py-1
           text-sm
           leading-5
-          hover:text-gray-900
-          hover:bg-gray-50
-          focus:outline-none
-          focus:text-gray-900
-          focus:bg-gray-50
+          rounded
+          overflow-hidden
+          select-none
+          hover:bg-gray-400 hover:bg-opacity-15
         "
+        :class="isCurrent(file) ? 'bg-gray-400 bg-opacity-20' : 'opacity-75'"
         @click="open(file)"
       >
-        <FilesTreeIcon :file="file" />
-        <span>{{ filename(file.name) }}</span>
+        <TreeToggler :file="file" />
+        <FilesTreeIcon class="w-8 min-w-8" :file="file" />
+        <div class="whitespace-nowrap overflow-ellipsis">{{ filename(file.name) }}</div>
       </div>
       <FilesTree
         v-if="isDir(file) && file.isOpen"
         :files="file.children"
         :current-file="currentFile"
         :is-root="false"
-        class="pl-2"
+        class="pl-3"
         @open="open"
       />
     </li>
   </ul>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, provide } from 'vue3'
+import type { PropType } from 'vue3'
+import type { File } from '../../type'
 import { isImage } from '../utils'
 import FilesTreeIcon from './FilesTreeIcon.vue'
+import TreeToggler from './TreeToggler.vue'
 
 export default defineComponent({
   name: 'FilesTree',
-  components: { FilesTreeIcon },
+  components: {
+    FilesTreeIcon,
+    TreeToggler
+  },
   props: {
     isRoot: {
       type: Boolean,
       default: true
     },
     files: {
-      type: Array,
+      type: Array as PropType<File[]>,
       default: () => []
     },
     currentFile: {
@@ -63,6 +66,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const isDir = file => file.type === 'directory'
+    const isHidden = file => file.path.startsWith('/_') || file.path.startsWith('/.') || file.path.endsWith('.js')
 
     const isCurrent = file => props.currentFile && file.path === props.currentFile.path
 
@@ -81,6 +85,7 @@ export default defineComponent({
 
     const helpers = {
       isDir,
+      isHidden,
       isCurrent,
       hasOneDir,
       filename,

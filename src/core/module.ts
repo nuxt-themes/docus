@@ -1,11 +1,12 @@
 import { resolve, join } from 'path'
 import gracefulFs from 'graceful-fs'
+import { pascalCase } from 'scule'
 import { Module } from '@nuxt/types'
 import hash from 'hasha'
 import mkdirp from 'mkdirp'
 import { DocusDocument, ParserOptions } from '../types'
-import { generatePosition, generateSlug, generateTo, isDraft, processDocumentInfo } from './utils/document'
-import { destroyStorage, initStorage } from './storage'
+import { generatePosition, generateSlug, generateTo, isDraft, isHidden } from './utils/document'
+import { destroyStorage, initStorage, useNuxtIgnoreList } from './storage'
 import { destroyDB, useDB } from './database'
 import { createServerMiddleware } from './server'
 import { initParser } from './parser'
@@ -45,6 +46,12 @@ export default <Module>async function docusModule() {
   // Setup docus cache
   options.alias['~docus-cache'] = join(options.srcDir, 'node_modules/.cache/docus')
 
+  /**
+   * Inject static dir into process that will be used by `link` handler
+   *  to detect static files
+   */
+  process.env.NUXT_STATIC_DIR = join(options.rootDir, options.dir.static)
+
   // Inject Docus theme as ~docus
   options.alias['~docus'] = resolve(__dirname, 'runtime')
 
@@ -54,35 +61,57 @@ export default <Module>async function docusModule() {
   initParser(parserOptions)
 
   const coreHooks = useHooks()
+
   // Configure content after each hook
+  // Locales or empty array
+  let locales = options.i18n?.locales || []
+  // If locales is function, resolve it
+  locales = typeof locales === 'function' ? locales() : locales
+  // Map locales or default to 'en'
+  locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
+  // Get default locale or default to 'en'
+  const defaultLocale = options.i18n?.defaultLocale || 'en'
+  const regexp = new RegExp(`^/(${locales})`, 'gi')
+
   coreHooks.hook('docus:storage:beforeInsert', (document: DocusDocument) => {
     if (document.extension !== '.md') {
       return
     }
 
-    // Locales or empty array
-    let locales = options.i18n?.locales || []
-    // If locales is function, resolve it
-    locales = typeof locales === 'function' ? locales() : locales
-    // Map locales or default to 'en'
-    locales = locales.map(({ code }: { code: string }) => code).join('|') || 'en'
-    // Get default locale or default to 'en'
-    const defaultLocale = options.i18n?.defaultLocale || 'en'
-
-    const regexp = new RegExp(`^/(${locales})`, 'gi')
     const { dir, slug } = document
     const _dir = dir.replace(regexp, '')
     const _language = dir.replace(_dir, '').replace(/\//, '') || defaultLocale
     const _to = `${_dir}/${slug}`.replace(/\/+/, '/')
     const position = generatePosition(_to, document)
 
-    processDocumentInfo(document)
+    /**
+     * Disable document navigation if it is marked as `page = false`
+     * This will prevent showing non-pages in navigation menus
+     */
+    if (document.page === false) {
+      document.navigation = false
+    }
+
+    if (isHidden(_to)) {
+      // Do not show document on navigation menus
+      document.navigation = false
+      // Do not render document as standalone page
+      document.page = false
+    }
 
     document.slug = generateSlug(slug)
     document.position = position
     document.to = generateTo(_to)
+    document.path = document.to
     document.language = _language
     document.draft = document.draft || isDraft(slug)
+
+    /**
+     * Generate title from page slug
+     */
+    if (!document.title) {
+      document.title = document.to.split('/').pop().split(/[\s-]/g).map(pascalCase).join(' ')
+    }
   })
 
   // Initiate storage
@@ -90,7 +119,10 @@ export default <Module>async function docusModule() {
     drivers: [
       {
         base: resolve(options.srcDir, $docus.settings.contentDir),
-        mountPoint: 'pages'
+        // mount point of driver
+        mountPoint: 'pages',
+        // List of Nuxt ignore rules
+        ignore: await useNuxtIgnoreList(nuxt)
       },
       {
         base: resolve(options.srcDir, 'data'),
@@ -109,14 +141,6 @@ export default <Module>async function docusModule() {
       logger.info(`File ${event}: ${key}`)
     })
   }
-
-  nuxt.hook('components:dirs', (dirs: any) => {
-    dirs.push({
-      path: resolve(__dirname, 'runtime/components'),
-      global: true,
-      level: 2
-    })
-  })
 
   nuxt.hook('build:before', () => {
     ;(async () => {
@@ -162,6 +186,14 @@ export default <Module>async function docusModule() {
       await fs.writeFile(join(dir, `db-${dbHash}.json`), db.serialize(), 'utf-8')
     })
   }
+
+  // Add global components plugin
+  addPlugin({
+    src: resolve(__dirname, 'runtime', 'components', 'plugin.js'),
+    filename: 'docus_components.js'
+  })
+
+  // Add Docus runtime plugin
   addPlugin({
     src: resolve(__dirname, 'plugin.js'),
     filename: 'docus.js',

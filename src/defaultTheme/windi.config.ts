@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [filters, aspectRatio],
   // Include Docus node_module when used this way
   extract: {
-    include: ['node_modules/docus/dist/**/*.{vue,html,js,mjs,ts,jsx,tsx}']
+    include: ['node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css,ts,js}']
   },
   theme: {
     colors: {
@@ -37,6 +37,8 @@ export default defineConfig({
     },
     extend: {
       fontSize: {
+        inherit: 'inherit',
+        root: '16px', // Safari fix to disable font size scaling
         lg: ['1.125rem', '1.5rem'] // NOT WORKING
       },
       fontFamily: {
@@ -85,6 +87,7 @@ export default defineConfig({
         'fill-available': '-webkit-fill-available'
       }),
       maxWidth: {
+        base: '320px',
         '8xl': '90rem',
         '1/2': '50%'
       },

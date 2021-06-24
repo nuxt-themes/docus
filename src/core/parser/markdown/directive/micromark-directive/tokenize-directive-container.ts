@@ -109,13 +109,11 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function afterName(code: number) {
-    return code === Codes.openningSquareBracket
-      ? effects.attempt(label, afterLabel, afterLabel)(code)
-      : afterLabel(code)
+    return code === Codes.openingSquareBracket ? effects.attempt(label, afterLabel, afterLabel)(code) : afterLabel(code)
   }
 
   function afterLabel(code: number) {
-    return code === Codes.openningCurlyBracket
+    return code === Codes.openingCurlyBracket
       ? effects.attempt(attributes, afterAttributes, afterAttributes)(code)
       : afterAttributes(code)
   }

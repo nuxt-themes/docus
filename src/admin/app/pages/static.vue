@@ -1,68 +1,44 @@
 <template>
-  <!-- eslint-ignore-file -->
-  <div class="flex flex-shrink-0">
-    <div class="flex flex-col w-64">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex flex-col flex-grow border-r border-gray-r-200 bg-white overflow-y-auto">
-        <div class="mt-2 flex-grow flex flex-col">
-          <nav class="flex-1 px-2 bg-white space-y-1">
-            <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
-          </nav>
-        </div>
+  <Splitpanes class="h-full default-theme" :push-other-panes="false">
+    <Pane size="15" max-size="30">
+      <FilesTree :files="files" :current-file="currentFile" @open="openFile" />
+    </Pane>
+    <Pane>
+      <div
+        v-if="isImage(currentFile)"
+        class="flex-1 items-start justify-start h-full flex"
+        style="background: url('/admin/transparent.png') repeat"
+      >
+        <img :src="previewUrl + currentFile.path" class="m-auto" />
       </div>
-    </div>
-  </div>
-
-  <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <div class="flex flex-col flex-1 overflow-hidden border-r">
-    <div
-      v-if="isImage(currentFile)"
-      class="flex-1 items-start justify-start"
-      style="background: url('/transparent.png') repeat"
-    >
-      <img :src="previewUrl + currentFile.path" />
-    </div>
-    <Editor v-else-if="currentFile" v-model="currentFile.data" :file="currentFile" />
-    <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file.</p>
-  </div>
+      <Editor v-else-if="currentFile" v-model="currentFile.data" :file="currentFile" />
+      <p v-else class="p-4 text-gray-700">👈 &nbsp;Select a file.</p>
+    </Pane>
+  </Splitpanes>
 </template>
 
-<script>
+<script setup lang="ts">
+import { Splitpanes, Pane } from 'splitpanes'
+import { onMounted, ref } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
+import { useApi } from '../plugins/api'
 import { isImage } from '../utils'
+import { previewUrl } from '../composables/preview'
 
-export default {
-  components: {
-    FilesTree,
-    Editor
-  },
+const api = useApi()
+const files = ref([])
+const currentFile = ref(null)
 
-  inject: ['previewUrl'],
+onMounted(async () => {
+  files.value = await api.get('/static')
+})
 
-  setup() {
-    return { isImage }
-  },
-
-  data() {
-    return {
-      files: [],
-      currentFile: null
-    }
-  },
-
-  async mounted() {
-    this.files = await this.$api.get('/static')
-  },
-
-  methods: {
-    async openFile(file) {
-      if (this.isImage(file)) {
-        this.currentFile = file
-      } else {
-        this.currentFile = await this.$api.get(`/static${file.path}`)
-      }
-    }
+async function openFile(file) {
+  if (isImage(file)) {
+    currentFile.value = file
+  } else {
+    currentFile.value = await api.get(`/static${file.path}`)
   }
 }
 </script>

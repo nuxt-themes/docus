@@ -44,7 +44,7 @@ export default <Module>function settingsModule() {
     userSettings = userSettings?.default || userSettings
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.info('Using default Docus config, please create a `docus.config.js|ts` to overwrite it.')
+    console.info('Using default Docus config, please create a `docus.config.js` to overwrite it.')
   }
   // Get theme defaults
   let themeDefaults

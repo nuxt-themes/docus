@@ -5,19 +5,17 @@
         <Component :is="iconName" class="h-6 w-6" />
       </span>
       <span>
-        <Markdown :node="item" />
+        <Markdown :use="item" />
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import { computed } from '@nuxtjs/composition-api'
-
-import { flatUnwrap, Markdown } from '~docus/utils'
+import { computed, ref } from '@nuxtjs/composition-api'
+import { flatUnwrap, nodeTextContent } from '~docus/utils'
 
 export default {
-  components: { Markdown },
   props: {
     /**
      * Array of string
@@ -46,6 +44,7 @@ export default {
     }
   },
   setup(props) {
+    const textContent = ref('')
     const iconName = computed(
       () =>
         props.icon ||
@@ -59,17 +58,25 @@ export default {
     )
 
     return {
+      textContent,
       iconName
     }
   },
   computed: {
     listItems() {
+      // A simple variable to fix HMR reload
+      // eslint-disable-next-line no-unused-expressions
+      this.textContent
+
       const defaultSlot = this.$slots.default || []
       if (!defaultSlot) {
         return this.items
       }
       return flatUnwrap(defaultSlot, ['p', 'ul', 'li'])
     }
+  },
+  updated() {
+    this.textContent = nodeTextContent(this.$slots.default)
   }
 }
 </script>
@@ -77,7 +84,7 @@ export default {
 <style lang="postcss">
 /* Primary */
 .list-primary {
-  @apply text-primary;
+  @apply d-text-primary;
 }
 
 /* Info */

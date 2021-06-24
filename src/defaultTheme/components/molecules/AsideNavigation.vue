@@ -8,27 +8,22 @@
       h-full
       overflow-auto
       pointer-events-auto
-      lg:h-screen
       min-h-fill-available
-      lg:sticky
-      lg:top-header
-      lg:w-60
+      lg:h-screen lg:sticky lg:top-header lg:w-60
     "
   >
-    <div class="w-auto h-full overflow-auto bg-white dark:bg-gray-900 lg:bg-transparent">
+    <div class="w-auto h-full overflow-auto d-bg-header dark:lg:bg-transparent lg:bg-transparent">
       <!-- Aside Header -->
-      <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header bg-gray-50 dark:bg-gray-800">
+      <div class="flex items-center w-full px-4 sm:px-6 lg:hidden h-header d-aside-header-bg">
         <button
           class="
             flex-1
-            text-gray-500
             transition-colors
             duration-200
             focus:outline-none
             lg:hidden
-            dark:text-gray-500
-            hover:text-gray-700
-            dark:hover:text-gray-400
+            d-secondary-text
+            hover:d-secondary-text-hover
           "
           @click.stop="$menu.toggle"
         >
@@ -51,20 +46,25 @@
           overflow-y-auto
           text-sm
           font-medium
+          lg:h-[reset]
           h-(full-header)
         "
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
           <AsideTop />
+          <NuxtLink v-if="parent" class="mb-3 block" :to="$contentLocalePath(parent.to)">
+            <IconArrowLeft width="16" height="16" class="inline-block mr-2" /> {{ parent.title }}
+          </NuxtLink>
           <ul>
             <template v-for="link in links">
               <AsideNavigationItem
-                v-if="link.navigation.children !== false && link.children.length"
-                :key="link.navigation.title"
-                :title="link.navigation.title"
+                v-if="link.nested !== false && link.children.length"
+                :key="link.to"
+                :title="link.title"
                 :docs="link.children"
+                :collapse="link.collapse === true"
               />
-              <AsideNavigationItem v-else :key="link.navigation.title" :docs="[link]" />
+              <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
             </template>
           </ul>
           <AsideBottom />
@@ -80,7 +80,11 @@ import { defineComponent } from '@nuxtjs/composition-api'
 export default defineComponent({
   computed: {
     links() {
-      return this.$docus.currentNav.value
+      const nav = this.$docus.currentNav.value
+      return nav.links
+    },
+    parent() {
+      return this.$docus.currentNav.value.parent
     },
     lastRelease() {
       return this.$docus.lastRelease?.value

@@ -18,7 +18,7 @@
             sm:mb-8
           "
         >
-          <Markdown slot="title" unwrap="p" />
+          <Markdown use="title" unwrap="p" />
         </h2>
         <p
           class="
@@ -34,7 +34,7 @@
             dark:text-gray-300
           "
         >
-          <Markdown slot="description" unwrap="p" />
+          <Markdown use="description" unwrap="p" />
         </p>
 
         <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-8">
@@ -73,19 +73,9 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
-import { Markdown } from '~docus/utils'
 
 export default defineComponent({
-  components: { Markdown },
   props: {
-    title: {
-      type: String,
-      default: 'Hero title'
-    },
-    description: {
-      type: String,
-      default: 'I am the Hero description, with some text useful to go with the title.'
-    },
     cta: {
       type: Array,
       default: () => ['Get started', '/get-started']

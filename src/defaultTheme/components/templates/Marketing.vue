@@ -1,6 +1,6 @@
 <template>
   <AppContainer fluid :footer="page.footer">
-    <NuxtContent :document="page" />
+    <DocusContent :document="page" />
   </AppContainer>
 </template>
 
