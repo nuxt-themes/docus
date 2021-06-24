@@ -35,17 +35,10 @@ ol[type='1'] {
 }
 
 ol {
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px;
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
-  list-style-type: none;
-
+  @apply mx-0 p-0 my-[1.25em] list-none;
   ul,
   ol {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    @apply my-[0.5em];
   }
 }
 </style>
