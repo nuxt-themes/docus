@@ -62,7 +62,7 @@
                 :key="link.to"
                 :title="link.title"
                 :docs="link.children"
-                :collapsed="link.collapse === true"
+                :collapse="link.collapse === true"
               />
               <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
             </template>
