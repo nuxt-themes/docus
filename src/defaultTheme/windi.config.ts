@@ -65,6 +65,7 @@ export default defineConfig({
         }
       },
       spacing: {
+        base: '320px',
         header: 'var(--header-height)',
         18: '4.5rem',
         46: '11.5rem',
