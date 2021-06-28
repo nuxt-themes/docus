@@ -26,19 +26,7 @@
             aria-label="NuxtJS"
             href="https://nuxtjs.org"
             target="_blank"
-            class="
-              text-sm
-              flex
-              items-center
-              font-medium
-              p-1
-              text-gray-500
-              transition-colors
-              duration-200
-              dark:text-gray-500
-              hover:text-gray-700
-              dark:hover:text-gray-400
-            "
+            class="text-sm flex items-center font-medium p-1 d-icon"
           >
             <IconNuxt class="w-5 h-5" />
           </a>
@@ -47,19 +35,7 @@
             aria-label="Vue Telescope"
             href="https://vuetelescope.com"
             target="_blank"
-            class="
-              text-sm
-              flex
-              items-center
-              font-medium
-              p-1
-              text-gray-500
-              transition-colors
-              duration-200
-              dark:text-gray-500
-              hover:text-gray-700
-              dark:hover:text-gray-400
-            "
+            class="text-sm flex items-center font-medium p-1 d-icon"
           >
             <IconVueTelescope class="w-5 h-5" />
           </a>
