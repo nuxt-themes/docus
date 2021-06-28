@@ -36,7 +36,7 @@ export default defineComponent({
 
     const linkAttrs = computed(() => ({
       rel: isInternal.value ? undefined : 'noopener nofollow noreferrer',
-      target: blank ? '_blank' : undefined
+      target: props.blank ? '_blank' : undefined
     }))
 
     return {
