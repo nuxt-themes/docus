@@ -70,13 +70,13 @@
       </Link>
     </div>
     <iframe
-      v-if="isIntersecting && src"
+      v-if="isIntersecting && url"
       :src="url"
       title="Sandbox editor"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       class="w-full h-full min-h-[500px] overflow-hidden"
     />
-    <span v-else class="text-white">Loading Sandbox...</span>
+    <span v-else class="text-white flex-1">Loading Sandbox...</span>
   </div>
 </template>
 
@@ -112,13 +112,13 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { $docus } = useContext()
+    const { $docus, $colorMode } = useContext()
     const repository = props.repo || $docus.settings.github?.repo
     const providers = {
       CodeSandBox: () =>
-        `https://codesandbox.io/s/github/${repository}/tree/${props.branch}/${props.dir}?hidenavigation=1&theme=dark`,
+        `https://codesandbox.io/embed/github/${repository}/tree/${props.branch}/${props.dir}?hidenavigation=1&theme=${$colorMode.value}`,
       StackBlitz: () =>
-        `https://stackblitz.com/github/${repository}/tree/${props.branch}/${props.dir}?hidenavigation=1&theme=dark`
+        `https://stackblitz.com/github/${repository}/tree/${props.branch}/${props.dir}?embed=1&hideExplorer=1&hideNavigation=1&theme=${$colorMode.value}`
     }
     const box = ref()
     const url = ref('')
@@ -127,7 +127,7 @@ export default defineComponent({
     const isIntersecting = ref(false)
 
     onMounted(() => {
-      provider.value = window.localStorage.getItem('docus_snadbox') || 'CodeSandBox'
+      provider.value = window.localStorage.getItem('docus_sandbox') || 'CodeSandBox'
 
       url.value = props.src || providers[provider.value]()
 
@@ -155,6 +155,7 @@ export default defineComponent({
 
     const changeProvider = value => {
       provider.value = value
+      url.value = props.src || providers[provider.value]()
       localStorage.setItem('docus_sandbox', value)
     }
 
