@@ -32,7 +32,7 @@ const files = ref([])
 const currentFile = ref(null)
 
 const openFile = async file => {
-  navigateToFile(`/admin/__components${file.path}`)
+  navigateToFile(`/__components${file.path}`)
   currentFile.value = await api.get(`/components${file.path}`)
 }
 

@@ -5,7 +5,6 @@ import serveStatic from 'serve-static'
 import { Module } from '@nuxt/types'
 import { createServer as createViteServer } from 'vite'
 import api from './api'
-import VitePluginVuePreview from './app/plugins/components'
 
 export default <Module>function () {
   const { nuxt, addServerMiddleware, options } = this
@@ -38,8 +37,7 @@ export default <Module>function () {
           configureServer(server) {
             server.middlewares.use('/api', api)
           }
-        },
-        VitePluginVuePreview(nuxt.options.rootDir)
+        }
       ]
     })
 
