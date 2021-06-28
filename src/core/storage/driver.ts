@@ -84,7 +84,7 @@ export const docusDriver = defineDriver((options: DriverOptions) => {
     document.key = key
 
     // Enrich document layout based on parents data
-    const parents = await getItemParents(key)
+    const parents = (await getItemParents(key)).reverse()
     document.layout = defu(document.layout, ...parents.map(p => p.layout))
 
     /**
