@@ -41,7 +41,8 @@ const setupMonaco = createSingletonPromise(async () => {
         getWorker(_: any, label: string) {
           if (label === 'json') return new JsonWorker()
           if (label === 'css' || label === 'scss' || label === 'less') return new CssWorker()
-          if (label === 'html' || label === 'handlebars' || label === 'razor') return new HtmlWorker()
+          if (label === 'html' || label === 'handlebars' || label === 'razor' || label === 'vue')
+            return new HtmlWorker()
           if (label === 'typescript' || label === 'javascript') return new TsWorker()
           return new EditorWorker()
         }
@@ -110,10 +111,8 @@ export function useMonaco(
 
         isSetup.value = true
 
-        // const plugins = editorPlugins.filter(({ language }) => language === options.language)
         editor.getModel()?.onDidChangeContent(() => {
           options.onChanged?.(editor.getValue())
-          // plugins.forEach(({ onContentChanged }) => onContentChanged(editor))
         })
       },
       {

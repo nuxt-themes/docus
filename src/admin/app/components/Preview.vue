@@ -18,9 +18,10 @@ watch(
 
 function updateIframe(url: string) {
   if (!iframe.value) return
-  if (!url.startsWith(previewOrigin.value)) return updateIframeHard(url)
+  if (!url.startsWith(previewOrigin.value) || previewPath.value.startsWith('/admin')) return updateIframeHard(url)
 
   try {
+    // use nuxt router
     iframe.value.contentWindow.$nuxt.$router.push(previewPath.value)
   } catch (e) {
     // fallback to hard refresh when working with cross-origin

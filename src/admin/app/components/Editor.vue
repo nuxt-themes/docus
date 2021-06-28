@@ -1,10 +1,10 @@
 <template>
-  <Monaco :value="raw" language="markdown" @change="update" />
+  <Monaco :value="raw" :language="language" @change="update" />
 </template>
 
 <script setup lang="ts">
 import type { PropType } from 'vue3'
-import { ref, watch, defineProps } from 'vue3'
+import { ref, watch, defineProps, computed } from 'vue3'
 import type { File } from '../../type'
 import { useApi } from '../plugins/api'
 import Monaco from './Monaco.vue'
@@ -13,11 +13,20 @@ const props = defineProps({
   file: {
     type: Object as PropType<File>,
     required: true
+  },
+  apiEntry: {
+    type: String,
+    default: '/content'
   }
 })
 
 const api = useApi()
 const raw = ref(props.file.raw)
+
+const language = computed(() => {
+  if (props.file.extension === '.vue') return 'html'
+  return 'markdown'
+})
 
 // Sync local data when file changes
 watch(
@@ -28,7 +37,7 @@ watch(
 )
 
 function update(content) {
-  api.put(`/content${props.file.path}`, {
+  api.put(props.apiEntry + props.file.path, {
     raw: content
   })
 }

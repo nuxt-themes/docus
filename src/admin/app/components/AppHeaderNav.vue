@@ -9,9 +9,18 @@
     <RouterLink
       to="/static"
       class="relative flex-none px-4 py-1 text-sm font-medium leading-5 d-border border rounded-md"
-      :class="[$route.path.includes('static') ? 'router-link-active' : '']"
+      :class="[$route.path.startsWith('/static') ? 'router-link-active' : '']"
     >
       Static
+    </RouterLink>
+
+    <!-- :class used as this route is undefined in the router -->
+    <RouterLink
+      to="/components"
+      class="relative flex-none px-4 py-1 text-sm font-medium leading-5 d-border border rounded-md"
+      :class="[$route.path.startsWith('/components') ? 'router-link-active' : '']"
+    >
+      Components
     </RouterLink>
 
     <div class="flex-auto"></div>
