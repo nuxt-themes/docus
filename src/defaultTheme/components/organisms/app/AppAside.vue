@@ -15,7 +15,7 @@
 
       <!-- Mobile aside -->
       <Transition name="slide-from-left-to-left">
-        <AsideNavigation v-show="$menu.visible.value" class="d-border border-r" />
+        <AsideNavigation v-show="$menu.visible.value" class="d-border border-r !w-base" />
       </Transition>
     </div>
   </aside>
