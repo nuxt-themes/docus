@@ -67,7 +67,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { $docus } = useContext()
 
     const isCollapsed = ref(props.collapse)
@@ -79,7 +79,9 @@ export default defineComponent({
         return
       }
 
-      isCollapsed.value = !isCollapsed.value
+      emit('toggle', true)
+
+      // isCollapsed.value = !isCollapsed.value
     }
 
     const isDocumentNew = document => {
