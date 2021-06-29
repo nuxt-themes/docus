@@ -1,4 +1,4 @@
-import { flatUnwrap } from '~docus/utils'
+import { flatUnwrap, unwrap } from '~docus/utils'
 
 export default {
   name: 'Markdown',
@@ -29,7 +29,11 @@ export default {
     // unwrap tags
     if (node && ctx.props.unwrap) {
       const tags = ctx.props.unwrap.split(/[,\s]/)
-      node = flatUnwrap(node, tags)
+      if (Array.isArray(node) && ctx.scopedSlots.between) {
+        node = node.flatMap((n, i) => (i === 0 ? unwrap(n, tags) : [ctx.scopedSlots.between(), unwrap(n, tags)]))
+      } else {
+        node = flatUnwrap(node, tags)
+      }
     }
 
     return node
