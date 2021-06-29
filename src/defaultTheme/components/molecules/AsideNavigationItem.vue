@@ -8,7 +8,7 @@
     >
       {{ title }}
     </h5>
-    <ul v-if="!isCollapsed || isActive" class="mb-2 ml-2">
+    <ul v-if="!collapse || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.redirect || doc.to)"
@@ -70,18 +70,12 @@ export default defineComponent({
   setup(props, { emit }) {
     const { $docus } = useContext()
 
-    const isCollapsed = ref(props.collapse)
-
     const isActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
 
     const toggle = () => {
-      if (isActive.value) {
-        return
-      }
+      if (isActive.value) return
 
       emit('toggle', true)
-
-      // isCollapsed.value = !isCollapsed.value
     }
 
     const isDocumentNew = document => {
@@ -99,7 +93,6 @@ export default defineComponent({
     return {
       toggle,
       isActive,
-      isCollapsed,
       isDocumentNew
     }
   }
