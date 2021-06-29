@@ -63,6 +63,7 @@
                 :title="link.title"
                 :docs="link.children"
                 :collapse="link.collapse === true"
+                @toggle="toggleLinks(link)"
               />
               <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
             </template>
@@ -75,20 +76,41 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  computed: {
-    links() {
-      const nav = this.$docus.currentNav.value
-      return nav.links
-    },
-    parent() {
-      return this.$docus.currentNav.value.parent
-    },
-    lastRelease() {
-      return this.$docus.lastRelease?.value
+  setup() {
+    const { $docus } = useContext()
+
+    const links = ref($docus.currentNav.value.links)
+
+    watch(
+      $docus.currentNav,
+      newVal => {
+        links.value = newVal.links
+      },
+      { deep: true }
+    )
+
+    function toggleLinks(link) {
+      const newLinks = $docus.currentNav.value.links.map(l => {
+        l = { ...l }
+
+        if (link.slug === l.slug) {
+          l.collapse = !l.collapse
+        }
+
+        return l
+      })
+
+      links.value = newLinks
     }
+
+    const parent = computed(() => $docus.currentNav.value.parent)
+
+    const lastRelease = computed(() => $docus.lastRelease?.value)
+
+    return { toggleLinks, links, parent, lastRelease }
   }
 })
 </script>
