@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply font-normal text-sm py-3px px-6px whitespace-nowrap rounded-md d-prose-code-inline-bg;
+  @apply font-normal text-sm py-3px px-6px rounded-md d-prose-code-inline-bg;
 }
 
 a code {
