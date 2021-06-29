@@ -9,12 +9,12 @@ export default <Module>async function () {
   const dir = resolve(nuxt.options.srcDir, 'components')
   const components = await fg('**/*.vue', { cwd: dir })
 
-  nuxt.options.layouts.none = resolve(__dirname, 'runtime/noneLayout.vue')
+  nuxt.options.layouts.none = resolve(__dirname, '../runtime/layouts/none.vue')
   nuxt.hook('build:extendRoutes', (routes: any[]) => {
     routes.unshift({
       name: 'components-preview',
       path: '/__components',
-      component: resolve(__dirname, 'runtime/preview.vue'),
+      component: resolve(__dirname, '../runtime/preview.vue'),
       children: components.map(i => ({
         path: i,
         component: resolve(dir, i)
