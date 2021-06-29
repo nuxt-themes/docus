@@ -22,7 +22,11 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     /* istanbul ignore if - handled by mm */
     if (code !== 58 /* `:` */) throw new Error('expected `:`')
 
-    if (self.previous !== null && !markdownLineEndingOrSpace(self.previous)) {
+    if (
+      self.previous !== null &&
+      !markdownLineEndingOrSpace(self.previous) &&
+      ![Codes.openingSquareBracket].includes(self.previous)
+    ) {
       return nok
     }
 
@@ -74,7 +78,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function exit(code: number) {
-    if (!markdownLineEndingOrSpace(code) && code !== null) {
+    if (!markdownLineEndingOrSpace(code) && code !== null && ![Codes.closingSquareBracket].includes(code)) {
       return nok
     }
     effects.exit('directiveText')
