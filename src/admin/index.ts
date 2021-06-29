@@ -1,4 +1,4 @@
-import { join } from 'upath'
+import { join, resolve } from 'path'
 import chalk from 'chalk'
 import { NuxtOptionsServer } from '@nuxt/types/config/server'
 import serveStatic from 'serve-static'
@@ -7,6 +7,8 @@ import { createServer as createViteServer } from 'vite'
 import api from './api'
 
 export default <Module>function () {
+  this.addModule(resolve(__dirname, 'preview.ts'))
+
   const { nuxt, addServerMiddleware, options } = this
 
   process.options = nuxt.options
