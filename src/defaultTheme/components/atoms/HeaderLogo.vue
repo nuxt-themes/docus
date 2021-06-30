@@ -1,62 +1,39 @@
 <template>
-  <div class="flex items-center">
-    <template v-if="theme.header.title && !theme.header.logo">
-      <span class="text-2xl font-bold tracking-tighter text-gray-900 dark:text-gray-100">
+  <div class="flex items-center flex-none lg:w-60">
+    <NuxtLink :to="localePath('/')" class="w-auto" :aria-label="settings.title">
+      <!-- Only title -->
+      <span v-if="!hasLogo && hasTitle" class="d-header-title">
         {{ settings.title }}
       </span>
-    </template>
-
-    <template v-if="theme.header.title && theme.header.logo">
-      <div class="flex items-center">
-        <span class="mr-4">
-          <Component :is="logo.inline" v-if="logo.inline" class="w-auto h-6 md:h-8" />
-          <img v-else :src="logo.src" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
-        </span>
-        <span class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+      <!-- Title and Logo -->
+      <template v-else-if="hasLogo && hasTitle">
+        <Logo class="d-logo" />
+        <span class="d-header-title-logo">
           {{ settings.title }}
         </span>
-      </div>
-    </template>
-
-    <template v-if="!theme.header.title && theme.header.logo">
-      <span>
-        <Component :is="logo.inline" v-if="logo.inline" class="w-auto h-6 md:h-8" />
-        <img v-else :src="logo.src" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
-      </span>
-    </template>
+      </template>
+      <!-- Only Logo -->
+      <Logo v-else-if="hasLogo" class="d-logo" />
+      <!-- placeholder -->
+      <ProseCodeInline v-else>No header.logo</ProseCodeInline>
+    </NuxtLink>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
-    const { $docus, $colorMode, $img } = useContext()
-    const settings = computed(() => $docus.settings.value)
-    const theme = computed(() => $docus.theme.value)
-
-    const logo = computed(() => {
-      if (!theme.value.header.logo) return
-      const color = $colorMode.value === 'dark' ? 'dark' : 'light'
-
-      const logo = theme.value.header.logo[color] || theme.value.header.logo
-      const isInline = !process.dev && logo.endsWith('.svg')
-
-      if (!isInline) {
-        return {
-          src: $img(logo)
-        }
-      }
-      return {
-        inline: () => import(`~/static${logo}?inline` /* @vite-ignore */).then(res => res.default || res)
-      }
-    })
+    const { $docus } = useContext()
+    const hasLogo = computed(() => $docus.theme.value.header.logo)
+    const hasTitle = computed(() => $docus.theme.value.header.title)
 
     return {
-      settings,
-      logo,
-      theme
+      hasLogo,
+      hasTitle,
+      settings: $docus.settings
     }
   }
 })

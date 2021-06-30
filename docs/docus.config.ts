@@ -14,10 +14,7 @@ export default {
   theme: {
     header: {
       title: false,
-      logo: {
-        light: '/logo-light.svg',
-        dark: '/logo-dark.svg'
-      }
+      logo: true
     }
   }
 }
