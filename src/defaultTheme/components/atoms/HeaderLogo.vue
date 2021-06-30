@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, useAsync, useContext, ref, watch } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
