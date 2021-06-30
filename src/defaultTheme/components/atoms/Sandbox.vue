@@ -1,89 +1,13 @@
 <template>
-  <div
-    ref="box"
-    class="
-      flex flex-col
-      items-center
-      justify-center
-      w-full
-      min-h-[500px]
-      mx-auto
-      mb-6
-      overflow-hidden
-      text-3xl text-center
-      bg-black
-      rounded-md
-      sandbox
-    "
-    style="background-color: rgb(21, 21, 21)"
-  >
-    <div
-      class="
-        flex flex-col
-        items-center
-        justify-between
-        w-full
-        text-left
-        relative
-        z-0
-        p-2
-        text-base
-        d-code-group-header-bg
-      "
-    >
-      <div v-if="repo" class="mr-2">
-        <span class="text-gray-700 dark:text-gray-400 text-sm">Preview on </span>
-        <Dropdown class="inline-flex">
-          <template #trigger="{ toggle }">
-            <button @touchstart.stop.prevent="toggle">
-              {{ provider }}
-            </button>
-          </template>
-
-          <ul class="py-1">
-            <li>
-              <button
-                class="px-4 py-1 w-full flex items-center whitespace-no-wrap hover:bg-gray-900 hover:bg-opacity-25"
-                @click="changeProvider('CodeSandBox')"
-              >
-                CodeSandBox
-              </button>
-            </li>
-            <li>
-              <button
-                class="px-4 py-1 w-full flex items-center whitespace-no-wrap hover:bg-gray-900 hover:bg-opacity-25"
-                @click="changeProvider('StackBlitz')"
-              >
-                StackBlitz
-              </button>
-            </li>
-          </ul>
-        </Dropdown>
+  <div ref="box" class="w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl rounded-md sandbox">
+    <TabsHeader ref="tabs-header" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update="updateTab">
+      <div slot="footer" class="absolute top-1/2 transform -translate-y-1/2 right-0 px-2">
+        <Link class="flex items-center text-gray-500 dark:text-gray-400" :to="url" blank>
+          <IconExternalLink class="h-5 w-5" />
+        </Link>
       </div>
+    </TabsHeader>
 
-      <div
-        class="
-          bg-gray-900
-          flex
-          items-center
-          bg-opacity-25
-          py-1
-          px-2
-          mr-2
-          text-sm
-          rounded-md
-          overflow-x-auto
-          w-full
-          flex-1
-          whitespace-pre
-        "
-      >
-        {{ url }}
-      </div>
-      <Link class="" :to="url" blank>
-        <IconExternalLink class="h-5 w-5" />
-      </Link>
-    </div>
     <iframe
       v-if="isIntersecting && url"
       :src="url"
@@ -135,11 +59,18 @@ export default defineComponent({
       StackBlitz: () =>
         `https://stackblitz.com/github/${repository}/tree/${props.branch}/${props.dir}?embed=1&hideExplorer=1&hideNavigation=1&theme=${$colorMode.value}`
     }
+    const providersTabs = Object.keys(providers).map(p => ({ label: p }))
     const box = ref()
+    const activeTabIndex = ref(0)
     const url = ref('')
     const provider = ref('')
     const observer = ref(null)
     const isIntersecting = ref(false)
+
+    function updateTab(i) {
+      activeTabIndex.value = i
+      changeProvider(providersTabs[i].label)
+    }
 
     onMounted(() => {
       provider.value = window.localStorage.getItem('docus_sandbox') || 'CodeSandBox'
@@ -179,7 +110,10 @@ export default defineComponent({
       box,
       provider,
       url,
-      changeProvider
+      changeProvider,
+      updateTab,
+      activeTabIndex,
+      providersTabs
     }
   }
 })
@@ -188,7 +122,7 @@ export default defineComponent({
 <style lang="postcss" scoped>
 .sandbox,
 .sandbox iframe {
-  @apply w-full rounded-md overflow-hidden h-64;
+  @apply w-full rounded-md rounded-tl-none rounded-tr-none overflow-hidden h-64;
   height: 650px;
 }
 </style>
