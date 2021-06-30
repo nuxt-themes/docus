@@ -62,7 +62,7 @@ const defaultThemeSettings = {
     'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
     'd-code-group-header-bg': 'bg-gray-200 dark:bg-gray-700',
     'd-code-group-tab': 'bg-gray-300 dark:bg-gray-600',
-    'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-prose-code-filename-bg': 'bg-gray-200 dark:bg-gray-700',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     'd-prose-code-inline-in-heading-border-hover': 'border-gray-500 dark:border-gray-200',
     'd-prose-hr-border': 'border-t border-gray-100 dark:border-gray-800',
