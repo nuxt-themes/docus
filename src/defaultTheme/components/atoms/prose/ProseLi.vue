@@ -10,14 +10,14 @@ li {
   }
 }
 
-ul li {
+ul > li {
   &::before {
     @apply absolute left-0 top-[0.5em] d-prose-ul-li-bullet rounded-full w-1.5 h-1.5;
     content: '';
   }
 }
 
-ol li {
+ol > li {
   &::before {
     @apply absolute left-0 top-0 d-secondary-text;
     content: counter(list-item, decimal) '.';
