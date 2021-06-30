@@ -1,23 +1,21 @@
 <template>
-  <div class="flex items-center flex-none lg:w-60">
-    <NuxtLink :to="localePath('/')" class="w-auto" :aria-label="settings.title">
-      <!-- Only title -->
-      <span v-if="!hasLogo && hasTitle" class="d-header-title">
+  <NuxtLink :to="localePath('/')" class="d-header-logo" :aria-label="settings.title">
+    <!-- Only title -->
+    <span v-if="!hasLogo && hasTitle" class="d-header-title">
+      {{ settings.title }}
+    </span>
+    <!-- Title and Logo -->
+    <template v-else-if="hasLogo && hasTitle">
+      <Logo class="d-logo" />
+      <span class="d-header-title-logo">
         {{ settings.title }}
       </span>
-      <!-- Title and Logo -->
-      <template v-else-if="hasLogo && hasTitle">
-        <Logo class="d-logo" />
-        <span class="d-header-title-logo">
-          {{ settings.title }}
-        </span>
-      </template>
-      <!-- Only Logo -->
-      <Logo v-else-if="hasLogo" class="d-logo" />
-      <!-- placeholder -->
-      <ProseCodeInline v-else>No header.logo</ProseCodeInline>
-    </NuxtLink>
-  </div>
+    </template>
+    <!-- Only Logo -->
+    <Logo v-else-if="hasLogo" class="d-logo" />
+    <!-- placeholder -->
+    <ProseCodeInline v-else>No header.logo</ProseCodeInline>
+  </NuxtLink>
 </template>
 
 <script>

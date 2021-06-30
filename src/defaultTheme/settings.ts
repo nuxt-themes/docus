@@ -87,6 +87,7 @@ const defaultThemeSettings = {
     'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header',
     'd-header-title': 'text-2xl font-bold tracking-tighter text-gray-900 dark:text-gray-100',
     'd-header-title-logo': 'd-header-title ml-4',
+    'd-header-logo': 'flex items-center flex-none lg:w-60',
     'd-logo-color': 'text-black dark:text-white',
     'd-logo': 'w-auto h-6 md:h-8 d-logo-color',
     // Heading
