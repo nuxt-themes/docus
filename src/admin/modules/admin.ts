@@ -5,6 +5,7 @@ import serveStatic from 'serve-static'
 import { Module } from '@nuxt/types'
 import { createServer as createViteServer } from 'vite'
 import api from '../api'
+import windicss from './windicss'
 
 export default <Module>function () {
   const { nuxt, addServerMiddleware, options } = this
@@ -36,6 +37,7 @@ export default <Module>function () {
           name: 'docus:admin-api',
           configureServer(server) {
             server.middlewares.use('/api', api)
+            server.middlewares.use('/windicss', windicss(nuxt.options.srcRoot))
           }
         }
       ]
@@ -62,6 +64,10 @@ export default <Module>function () {
     addServerMiddleware({
       path: '/admin/api',
       handler: api
+    })
+    addServerMiddleware({
+      path: '/admin/windicss',
+      handler: windicss(nuxt.options.srcDir)
     })
   }
 }

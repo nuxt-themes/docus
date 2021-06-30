@@ -116,7 +116,8 @@
     "vue-docgen-api": "^4.40.0",
     "vue-plausible": "^1.1.4",
     "vue3": "npm:vue@next",
-    "vue3-router": "npm:vue-router@next"
+    "vue3-router": "npm:vue-router@next",
+    "windicss-analysis": "^0.3.4"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.360",
