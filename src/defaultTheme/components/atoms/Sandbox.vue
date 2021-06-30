@@ -17,7 +17,20 @@
     "
     style="background-color: rgb(21, 21, 21)"
   >
-    <div class="flex items-center justify-between w-full text-left relative z-0 p-2 text-base d-code-group-header-bg">
+    <div
+      class="
+        flex flex-col
+        items-center
+        justify-between
+        w-full
+        text-left
+        relative
+        z-0
+        p-2
+        text-base
+        d-code-group-header-bg
+      "
+    >
       <div v-if="repo" class="mr-2">
         <span class="text-gray-700 dark:text-gray-400 text-sm">Preview on </span>
         <Dropdown class="inline-flex">
@@ -47,6 +60,7 @@
           </ul>
         </Dropdown>
       </div>
+
       <div
         class="
           bg-gray-900
@@ -58,7 +72,8 @@
           mr-2
           text-sm
           rounded-md
-          overflow-x-scroll
+          overflow-x-auto
+          w-full
           flex-1
           whitespace-pre
         "
