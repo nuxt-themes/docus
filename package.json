@@ -58,7 +58,6 @@
     "@nuxtjs/composition-api": "0.24.3",
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/svg": "^0.1.12",
     "@types/graceful-fs": "^4.1.5",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/composition-api": "^1.0.0-rc.12",
