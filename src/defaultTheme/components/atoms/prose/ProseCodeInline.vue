@@ -10,7 +10,7 @@ code {
 }
 
 a code {
-  @apply border border-dashed border-transparent;
+  @apply pointer-events-none border border-dashed border-transparent;
   &:hover {
     @apply border-primary;
   }
