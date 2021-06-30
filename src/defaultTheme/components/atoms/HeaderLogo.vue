@@ -9,8 +9,8 @@
     <template v-if="theme.header.title && theme.header.logo">
       <div class="flex items-center">
         <span class="mr-4">
-          <img :src="logo.light" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
-          <img :src="logo.dark" class="w-auto h-6 md:h-8 light:hidden" :alt="settings.title" />
+          <Component :is="logo.inline" v-if="logo.inline" class="w-auto h-6 md:h-8" />
+          <img v-else :src="logo.src" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
         </span>
         <span class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
           {{ settings.title }}
@@ -20,31 +20,37 @@
 
     <template v-if="!theme.header.title && theme.header.logo">
       <span>
-        <img :src="logo.light" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
-        <img :src="logo.dark" class="w-auto h-6 md:h-8 light:hidden" :alt="settings.title" />
+        <Component :is="logo.inline" v-if="logo.inline" class="w-auto h-6 md:h-8" />
+        <img v-else :src="logo.src" class="w-auto h-6 md:h-8 dark:hidden" :alt="settings.title" />
       </span>
     </template>
   </div>
 </template>
 
 <script>
-import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useAsync, useContext, ref, watch } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup() {
-    const { $docus } = useContext()
-
+    const { $docus, $colorMode, $img } = useContext()
     const settings = computed(() => $docus.settings.value)
     const theme = computed(() => $docus.theme.value)
 
     const logo = computed(() => {
       if (!theme.value.header.logo) return
+      const color = $colorMode.value === 'dark' ? 'dark' : 'light'
 
-      if (typeof theme.value.header.logo === 'object') return theme.value.header.logo
+      const logo = theme.value.header.logo[color] || theme.value.header.logo
+      const isInline = !process.dev && logo.endsWith('.svg')
 
+      if (!isInline) {
+        return {
+          src: $img(logo)
+        }
+      }
       return {
-        light: theme.value.header.logo,
-        dark: theme.value.header.logo
+        inline: () =>
+          import(logo.startsWith('/') ? `~/static${logo}` : logo /* @vite-ignore */).then(res => res.default || res)
       }
     })
 
