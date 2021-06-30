@@ -49,8 +49,7 @@ export default defineComponent({
         }
       }
       return {
-        inline: () =>
-          import(logo.startsWith('/') ? `~/static${logo}` : logo /* @vite-ignore */).then(res => res.default || res)
+        inline: () => import(`~/static${logo}?inline` /* @vite-ignore */).then(res => res.default || res)
       }
     })
 
