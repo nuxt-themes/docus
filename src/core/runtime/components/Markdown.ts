@@ -1,11 +1,11 @@
-import { flatUnwrap } from '~docus/utils'
+import { flatUnwrap, unwrap, isTag } from '~docus/utils'
 
 export default {
   name: 'Markdown',
   functional: true,
   props: {
     use: {
-      type: [String, Object, Function],
+      type: [String, Object, Function, Array],
       default: 'default'
     },
     unwrap: {
@@ -29,7 +29,19 @@ export default {
     // unwrap tags
     if (node && ctx.props.unwrap) {
       const tags = ctx.props.unwrap.split(/[,\s]/)
-      node = flatUnwrap(node, tags)
+
+      const first = Array.isArray(node) && node[0]
+      const requireSplitor =
+        ctx.scopedSlots.between &&
+        first &&
+        !first.text &&
+        !['span', 'strong', 'em', 'a', 'code'].some(tag => isTag(first, tag))
+
+      if (requireSplitor) {
+        node = node.flatMap((n, i) => (i === 0 ? unwrap(n, tags) : [ctx.scopedSlots.between(), unwrap(n, tags)]))
+      } else {
+        node = flatUnwrap(node, tags)
+      }
     }
 
     return node
