@@ -29,7 +29,7 @@
         >
           <IconArrowLeft class="w-5 h-5" />
         </button>
-        <div class="flex items-center justify-end w-full h-header lg:hidden">
+        <div class="flex items-center justify-end w-full h-header lg:hidden space-x-3">
           <LangSwitcher />
           <ColorSwitcher size="w-5 h-5" padding="p-1" />
           <SocialIcons size="w-5 h-5" padding="p-1" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex space-x-3">
     <a
       v-if="settings.twitter"
       :href="`https://twitter.com/${settings.twitter}`"
