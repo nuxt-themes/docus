@@ -97,7 +97,7 @@ export default defineComponent({
         l = { ...l }
 
         if (link.slug === l.slug) {
-          l.collapse = !l.collapse
+          l.collapse = !link.collapse
         }
 
         return l
