@@ -27,12 +27,12 @@
           "
           @click.stop="$menu.toggle"
         >
-          <IconArrowLeft class="w-5 h-5" />
+          <IconArrowLeft class="w-6 h-6" />
         </button>
         <div class="flex items-center justify-end w-full h-header lg:hidden space-x-3">
           <LangSwitcher />
-          <ColorSwitcher size="w-5 h-5" padding="p-1" />
-          <SocialIcons size="w-5 h-5" padding="p-1" />
+          <ColorSwitcher size="w-6 h-6" padding="p-1" />
+          <SocialIcons size="w-6 h-6" padding="p-1" class="space-x-3" />
         </div>
       </div>
 
