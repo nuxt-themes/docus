@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onBeforeMount, ref, watch } from 'vue3'
+import { onPreviewNavigated } from '../composables/content'
 import { fetchPreviewOrigin, previewOrigin, previewUrl, previewPath } from '../composables/preview'
 
 const iframe = ref<HTMLIFrameElement>()
@@ -42,6 +43,17 @@ function onUrlInput() {
 
   updateIframe(url.value)
 }
+
+function onIframeLoad() {
+  try {
+    iframe.value.contentWindow.$nuxt.$router.afterEach(to => {
+      previewPath.value = to.path
+      onPreviewNavigated(to.path)
+    })
+  } catch (e) {
+    console.warn(e)
+  }
+}
 </script>
 
 <template>
@@ -59,6 +71,6 @@ function onUrlInput() {
         <heroicons-outline:external-link class="m-auto" />
       </a>
     </div>
-    <iframe ref="iframe" :src="previewOrigin" class="w-full h-full" />
+    <iframe ref="iframe" :src="previewOrigin" class="w-full h-full" @load="onIframeLoad" />
   </div>
 </template>
