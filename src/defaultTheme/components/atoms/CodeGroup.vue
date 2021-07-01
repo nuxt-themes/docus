@@ -1,20 +1,6 @@
 <template>
   <div class="code-group" :class="[activeTabIndex == 0 && 'first-tab']">
-    <div class="relative z-0 px-2 text-white rounded-t-lg d-code-group-header-bg">
-      <button
-        v-for="({ label }, i) in tabs"
-        ref="tabs"
-        :key="`${counter}${label}`"
-        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-medium tracking-tight"
-        :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'd-prose-code-filename-text']"
-        @click="updateTabs(i)"
-      >
-        {{ label }}
-      </button>
-      <span ref="highlight-underline" class="absolute -z-1 highlight-underline h-full xs:py-1.5">
-        <span class="flex w-full h-full d-code-group-tab rounded-md"></span>
-      </span>
-    </div>
+    <TabsHeader ref="tabs-header" :active-tab-index="activeTabIndex" :tabs="tabs" @update="activeTabIndex = $event" />
     <slot />
   </div>
 </template>
@@ -36,7 +22,7 @@ export default defineComponent({
   computed: {
     tabs() {
       // eslint-disable-next-line no-unused-expressions
-      this.counter
+      // this.counter
       return this.calculateTabs()
     }
   },
@@ -54,38 +40,21 @@ export default defineComponent({
   updated() {
     const newTabs = this.calculateTabs()
     if (JSON.stringify(newTabs) !== JSON.stringify(this.tabs)) {
-      this.counter += 1
+      // this.counter += 1
       this.$nextTick(() => {
         this.updateActiveTab()
-        this.updateHighlighteUnderlinePosition()
+        // TODO: refactor tabs completely
+        this.$refs['tabs-header'].updateHighlightUnderlinePosition()
       })
     }
   },
   created() {
     this.updateActiveTab()
   },
-  mounted() {
-    this.updateHighlighteUnderlinePosition()
-  },
   methods: {
     updateActiveTab() {
       const index = this.tabs.findIndex(tab => tab.active)
       this.activeTabIndex = index < 0 ? 0 : index
-    },
-    updateTabs(i) {
-      this.activeTabIndex = i
-      this.updateHighlighteUnderlinePosition()
-    },
-    updateHighlighteUnderlinePosition() {
-      const activeTab = this.$refs.tabs[this.activeTabIndex]
-      if (!activeTab) {
-        return
-      }
-      const highlightUnderline = this.$refs['highlight-underline']
-      highlightUnderline.style.left = `${activeTab.offsetLeft}px`
-      highlightUnderline.style.top = `${activeTab.offsetTop}px`
-      highlightUnderline.style.width = `${activeTab.clientWidth}px`
-      highlightUnderline.style.height = `${activeTab.clientHeight}px`
     },
     calculateTabs() {
       const components = this.$slots.default
@@ -140,10 +109,6 @@ export default defineComponent({
   }
 }
 
-button {
-  outline: none;
-}
-
 .first-tab {
   ::v-deep {
     .code-block:nth-child(2),
@@ -151,11 +116,5 @@ button {
       display: block;
     }
   }
-}
-
-.highlight-underline {
-  /* bottom: -2px; */
-  /* height: 2px; */
-  transition: left 150ms, top 150ms, width 150ms, height 150ms;
 }
 </style>
