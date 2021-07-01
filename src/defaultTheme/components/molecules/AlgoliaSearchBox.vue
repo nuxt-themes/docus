@@ -17,20 +17,25 @@
 </template>
 
 <script>
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+
 function isSpecialClick(event) {
   return event.button === 1 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey
 }
 
-export default {
+export default defineComponent({
   props: {
     options: {
       type: Object,
       required: true
-    },
-    settings: {
-      type: Object,
-      required: true
     }
+  },
+  setup() {
+    const { $docus } = useContext()
+
+    const settings = computed(() => $docus.settings.value)
+
+    return { settings }
   },
   watch: {
     '$i18n.locale'(newValue) {
@@ -135,7 +140,7 @@ export default {
       this.initialize(options, lang)
     }
   }
-}
+})
 </script>
 
 <style lang="postcss">
