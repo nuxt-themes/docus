@@ -4,14 +4,26 @@ import { ApiMiddleware } from 'windicss-analysis'
 import sirv from 'sirv'
 import Connect from 'connect'
 
-export default function (srcDir: string): Connect.NextHandleFunction {
+export default function (nuxt: any): Connect.NextHandleFunction {
   const analysisRoot = dirname(resolve(require.resolve('windicss-analysis/package.json')))
+
+  let utils: any
+  nuxt.hook('windicss:utils', _utils => {
+    utils = _utils
+  })
 
   // TODO: resue the utils instance from `nuxt-windicss`, awaiting for:
   // https://github.com/windicss/nuxt-windicss-module/pull/106
-  const api = ApiMiddleware({
-    root: srcDir
-  })
+  const api = ApiMiddleware(
+    {
+      root: nuxt.options.srcDir
+    },
+    {
+      get utils() {
+        return utils
+      }
+    }
+  )
   const serve = sirv(join(analysisRoot, 'dist/app'), {
     dev: true,
     single: true

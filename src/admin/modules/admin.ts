@@ -25,6 +25,8 @@ export default <Module>function () {
     )
   })
 
+  const windiMiddleware = windicss(nuxt)
+
   if (process.env.ADMIN_DEV) {
     // use Vite as middleware
     const server = createViteServer({
@@ -37,7 +39,7 @@ export default <Module>function () {
           name: 'docus:admin-api',
           configureServer(server) {
             server.middlewares.use('/api', api)
-            server.middlewares.use('/windicss', windicss(nuxt.options.srcRoot))
+            server.middlewares.use('/windicss', windiMiddleware)
           }
         }
       ]
@@ -68,7 +70,7 @@ export default <Module>function () {
     })
     addServerMiddleware({
       path: '/admin/windicss',
-      handler: windicss(nuxt.options.srcDir)
+      handler: windiMiddleware
     })
   }
 }

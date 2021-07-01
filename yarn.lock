@@ -9549,18 +9549,19 @@ nuxt-vite@^0.1.1:
     vite "^2.3.4"
     vite-plugin-vue2 "^1.5.1"
 
-nuxt-windicss@1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-1.0.8.tgz#48eb19be8584584d2835e290c875ed35d8b2ef65"
-  integrity sha512-kUq989Pui5yXtXZ5PN3Dlp+c/U1pnaBG+Yej0Fatc98cxAR5rqci6v4giSC5A8la7OPcuwrmn1TlUpUuH/djJw==
+nuxt-windicss@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/nuxt-windicss/-/nuxt-windicss-1.1.2.tgz#04c522aa733befd6fb3772ca0e0e37e503338f9e"
+  integrity sha512-kdx6Rsstil1AsEgXMvIPBOggxQajUJkhIVD41R6xJ+yrd5XW4J5cTZntYypn3gALj33CZGhmAlIhXLYP3vIKfg==
   dependencies:
     clear-module "^4.1.1"
     defu "^4.0.1"
+    read-cache "^1.0.0"
     rimraf "^3.0.2"
     semver "^7.3.5"
     upath "^2.0.1"
     vite-plugin-windicss "1.1.1"
-    windicss-webpack-plugin "1.1.2"
+    windicss-webpack-plugin "1.2.1"
 
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -13970,10 +13971,10 @@ windicss-analysis@^0.3.4:
     fs-extra "^10.0.0"
     sirv "^1.0.12"
 
-windicss-webpack-plugin@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-1.1.2.tgz#c1b451dbef88df1863638a9a8b3f788800de889a"
-  integrity sha512-OSsetjS4iOWfwF95CDqyUHCiP/U3cmBQuqs67IKAxOaUrnzpeHlDK+6wXrkkbV3kDa/ApxoQXND/7Ww+rXXN8A==
+windicss-webpack-plugin@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/windicss-webpack-plugin/-/windicss-webpack-plugin-1.2.1.tgz#bae5a0112c5e548299cd2201bdee204f3c218b08"
+  integrity sha512-wvMjr7cD9adVdttizDGndTon6Jpm8efn0CWLagd6L2E1cQZ36jM7f5QbvsUh+N1mR/7aDfQqg55ndxc45L1+hA==
   dependencies:
     "@windicss/plugin-utils" "1.1.0"
     debug "^4.3.1"

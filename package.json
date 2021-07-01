@@ -85,7 +85,7 @@
     "nuxt-extend": "^0.1.0",
     "nuxt-i18n": "^6.27.2",
     "nuxt-vite": "^0.1.1",
-    "nuxt-windicss": "1.0.8",
+    "nuxt-windicss": "1.1.2",
     "ohmyfetch": "^0.1.8",
     "plausible-tracker": "^0.3.1",
     "prism-theme-vars": "^0.2.2",
