@@ -1,6 +1,6 @@
 <template>
   <div ref="box" class="w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl rounded-md sandbox">
-    <TabsHeader ref="tabs-header" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update="updateTab">
+    <TabsHeader v-if="!src" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update="updateTab">
       <div slot="footer" class="absolute top-1/2 transform -translate-y-1/2 right-0 px-2">
         <Link class="flex items-center text-gray-500 dark:text-gray-400" :to="url" blank>
           <IconExternalLink class="h-5 w-5" />
@@ -45,6 +45,9 @@ export default defineComponent({
       type: String,
       default: undefined
     },
+    /**
+     * Target directory inside that repository
+     */
     dir: {
       type: String,
       default: undefined
@@ -52,13 +55,14 @@ export default defineComponent({
   },
   setup(props) {
     const { $docus, $colorMode } = useContext()
-    const repository = props.repo || $docus.settings.github?.repo
+
     const providers = {
       CodeSandBox: () =>
-        `https://codesandbox.io/embed/github/${repository}/tree/${props.branch}/${props.dir}?hidenavigation=1&theme=${$colorMode.value}`,
+        `https://codesandbox.io/embed/github/${props.repository}/tree/${props.branch}/${props.dir}?hidenavigation=1&theme=${$colorMode.value}`,
       StackBlitz: () =>
-        `https://stackblitz.com/github/${repository}/tree/${props.branch}/${props.dir}?embed=1&hideExplorer=1&hideNavigation=1&theme=${$colorMode.value}`
+        `https://stackblitz.com/github/${props.repository}/tree/${props.branch}/${props.dir}?embed=1&hideExplorer=1&hideNavigation=1&theme=${$colorMode.value}`
     }
+
     const providersTabs = Object.keys(providers).map(p => ({ label: p }))
     const box = ref()
     const activeTabIndex = ref(0)
