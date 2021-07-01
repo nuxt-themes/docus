@@ -3,5 +3,5 @@ import { Module } from '@nuxt/types'
 
 export default <Module>function () {
   this.addModule(resolve(__dirname, 'modules/admin.ts'))
-  this.addModule(resolve(__dirname, 'modules/preview.ts'))
+  this.addModule(resolve(__dirname, 'modules/components.ts'))
 }

@@ -14,13 +14,20 @@
       Static
     </RouterLink>
 
-    <!-- :class used as this route is undefined in the router -->
     <RouterLink
       to="/components"
       class="relative flex-none px-4 py-1 text-sm font-medium leading-5 d-border border rounded-md"
       :class="[$route.path.startsWith('/components') ? 'router-link-active' : '']"
     >
       Components
+    </RouterLink>
+
+    <RouterLink
+      to="/config"
+      class="relative flex-none px-4 py-1 text-sm font-medium leading-5 d-border border rounded-md"
+      :class="[$route.path.startsWith('/config') ? 'router-link-active' : '']"
+    >
+      Config
     </RouterLink>
 
     <div class="flex-auto"></div>

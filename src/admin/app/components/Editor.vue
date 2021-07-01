@@ -25,6 +25,8 @@ const raw = ref(props.file.raw)
 
 const language = computed(() => {
   if (props.file.extension === '.vue') return 'html'
+  if (props.file.extension === '.ts') return 'javascript'
+  if (props.file.extension === '.js') return 'javascript'
   return 'markdown'
 })
 
