@@ -92,12 +92,14 @@ export default defineComponent({
       { deep: true }
     )
 
-    function toggleLinks(link) {
+    function toggleLinks(clickedLink) {
       const newLinks = $docus.currentNav.value.links.map(l => {
         l = { ...l }
 
-        if (link.slug === l.slug) {
-          l.collapse = !link.collapse
+        if (clickedLink.slug === l.slug) {
+          l.collapse = false
+        } else {
+          l.collapse = true
         }
 
         return l
