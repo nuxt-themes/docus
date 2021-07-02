@@ -51,7 +51,7 @@
         <span class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ title || $t('toc.title') }}</span>
       </h5>
 
-      <div class="overflow-y-scroll overflow-hidden max-h-[50vh]">
+      <div class="overflow-y-auto overflow-hidden max-h-[50vh]">
         <PageTocList :toc="toc" @click.native="showMobileToc = false" />
       </div>
     </div>
