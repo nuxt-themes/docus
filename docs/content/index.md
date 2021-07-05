@@ -13,7 +13,7 @@ layout.aside: true
 ::block-hero
 ---
 cta:
-  - Get startedddd
+  - Get started
   - /get-started/installation
 secondary:
   - Open on GitHub →
