@@ -5,6 +5,7 @@ const canContainEols = ['textDirective']
 const enter = {
   directiveContainer: enterContainer,
   directiveContainerSection: enterContainerSection,
+  directiveContainerDataSection: enterContainerDataSection,
   directiveContainerAttributes: enterAttributes,
   directiveContainerLabel: enterContainerLabel,
 
@@ -21,6 +22,7 @@ const exit = {
   listOrdered: conditionalExit,
   listItem: conditionalExit,
   directiveContainerSection: exitContainerSection,
+  directiveContainerDataSection: exitContainerDataSection,
   directiveContainer: exitContainer,
   directiveContainerAttributeClassValue: exitAttributeClassValue,
   directiveContainerAttributeIdValue: exitAttributeIdValue,
@@ -61,11 +63,14 @@ function enterContainer(token: Token) {
 function exitContainer(token: Token) {
   const container = this.stack[this.stack.length - 1]
   if (container.children.length > 1) {
-    const dataSection = container.children.shift()
-    container.rawData = dataSection.raw
+    const dataSection = container.children.find(child => child.rawData)
+    container.rawData = dataSection?.rawData
   }
 
   container.children = container.children.flatMap(child => {
+    if (child.rawData) {
+      return []
+    }
     if (child.name === 'default' || !child.name) {
       return child.children
     }
@@ -86,7 +91,15 @@ function enterContainerSection(token: Token) {
   enterToken.call(this, 'directiveContainerSection', token)
 }
 
+function enterContainerDataSection(token: Token) {
+  enterToken.call(this, 'directiveContainerDataSection', token)
+}
+
 function exitContainerSection(token: Token) {
+  this.exit(token)
+}
+
+function exitContainerDataSection(token: Token) {
   let section = this.stack[this.stack.length - 1]
   /**
    * Ensure lists and list-items are closed before closing section
@@ -97,8 +110,8 @@ function exitContainerSection(token: Token) {
     section = this.stack[this.stack.length - 1]
   }
 
-  if (section.type === 'directiveContainerSection') {
-    section.raw = this.sliceSerialize(token)
+  if (section.type === 'directiveContainerDataSection') {
+    section.rawData = this.sliceSerialize(token)
     this.exit(token)
   }
 }
