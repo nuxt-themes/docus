@@ -1,14 +1,18 @@
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import asciiAlpha from 'micromark/dist/character/ascii-alpha'
 import markdownLineEnding from 'micromark/dist/character/markdown-line-ending'
 import createSpace from 'micromark/dist/tokenize/factory-space'
 import sizeChunks from 'micromark/dist/util/size-chunks'
 import createAttributes from './factory-attributes'
 import createLabel from './factory-label'
 import createName from './factory-name'
-import { Codes, ContainerSequenceSize, SectionSequenceSize } from './constants'
+import { Codes, ContainerSequenceSize } from './constants'
 
 const label: any = { tokenize: tokenizeLabel, partial: true }
 const attributes: any = { tokenize: tokenizeAttributes, partial: true }
+// section sparator
+const sectionSeparatorCode = Codes.hash
+const sectionSeparatorLength = 1
 
 /**
  * Calculate line indention size, line indention could be consists of multiple `linePrefix` events
@@ -60,14 +64,17 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     function closingSectionSequence(code: number) {
-      if (code === Codes.dash) {
+      if (code === sectionSeparatorCode) {
         effects.consume(code)
         size++
         return closingSectionSequence
       }
 
-      if (size < SectionSequenceSize) return nok(code)
+      if (size !== sectionSeparatorLength) return nok(code)
       if (sectionIndentSize !== initialPrefix) return nok(code)
+
+      // non ascii chars are invalid
+      if (!asciiAlpha(code)) return nok(code)
 
       effects.exit('directiveContainerSectionSequence')
       return createSpace(effects, ok, 'whitespace')(code)
@@ -156,7 +163,8 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return after(code)
     }
 
-    if (!containerSequenceSize.length && (code === Codes.dash || code === Codes.space)) {
+    // detect slots
+    if (!containerSequenceSize.length && (code === sectionSeparatorCode || code === Codes.space)) {
       return effects.attempt({ tokenize: tokenizeSectionClosing, partial: true } as any, sectionOpen, chunkStart)
     }
 
