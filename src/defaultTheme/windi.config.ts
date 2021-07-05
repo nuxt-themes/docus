@@ -7,11 +7,12 @@ import colors from 'windicss/colors'
 import defaultTheme from 'windicss/defaultTheme'
 import aspectRatio from 'windicss/plugin/aspect-ratio'
 import filters from 'windicss/plugin/filters'
+import scrollbar from '@windicss/plugin-scrollbar'
 import { defineConfig } from 'windicss/helpers'
 
 export default defineConfig({
   darkMode: 'class',
-  plugins: [filters, aspectRatio],
+  plugins: [filters, aspectRatio, scrollbar],
   // Include Docus node_module when used this way
   extract: {
     include: ['node_modules/docus/dist/**/*.{html,vue,md,mdx,pug,jsx,tsx,svelte,css,ts,js}']
@@ -99,5 +100,8 @@ export default defineConfig({
         18: '4.5rem'
       }
     }
+  },
+  variants: {
+    scrollbar: ['dark', 'rounded']
   }
 })
