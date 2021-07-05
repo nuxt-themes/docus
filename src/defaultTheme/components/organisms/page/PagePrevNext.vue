@@ -53,7 +53,7 @@
           rounded-xl
           group
           xs:mb-0 xs:w-auto
-          hover:d-text-primary hover:border-primary-200
+          hover:d-text-primary
         "
       >
         <span class="relative flex flex-col items-start truncate">

@@ -34,6 +34,7 @@
         flex-col
         justify-between
         overflow-y-auto
+        d-scrollbar
         sticky
         max-h-(screen-header)
         -mt-10

@@ -93,7 +93,8 @@ const defaultThemeSettings = {
     // Heading
     'd-heading-title': '!mb-0 !mt-0 flex-1 !text-4xl font-semibold tracking-tight',
     'd-heading-description': '!mt-2 !mb-0 text-lg font-medium d-secondary-text',
-    'd-heading-hr': '!mt-4 !mb-0 d-border'
+    'd-heading-hr': '!mt-4 !mb-0 d-border',
+    'd-scrollbar': 'scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800 scrollbar-thumb-rounded'
   }
 }
 
