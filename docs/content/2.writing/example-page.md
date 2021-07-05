@@ -7,6 +7,7 @@ layout:
 ---
 
 ::block-hero
+---
 cta:
   - Get started
   - /get-started/installation
@@ -16,10 +17,10 @@ secondary:
 snippet: npx degit nuxtlabs/docus-starter#main docs
 ---
 
----title
+#title
 The next big thing
 
----description
+#description
 The favorite package of your favorite package.
 ::
 
