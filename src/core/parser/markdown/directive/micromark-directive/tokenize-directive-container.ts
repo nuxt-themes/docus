@@ -195,7 +195,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return effects.attempt({ tokenize: tokenizeSectionClosing, partial: true } as any, sectionOpen, chunkStart)
     }
     // detect slots
-    if (!containerSequenceSize.length && !data.isCloed() && (code === Codes.dash || code === Codes.space)) {
+    if (!containerSequenceSize.length && !data.isClosed() && (code === Codes.dash || code === Codes.space)) {
       return effects.attempt(data.tokenize, data.sectionOpen, chunkStart)
     }
 
