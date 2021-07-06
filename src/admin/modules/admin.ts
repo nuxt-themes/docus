@@ -39,7 +39,7 @@ export default <Module>function () {
           name: 'docus:admin-api',
           configureServer(server) {
             server.middlewares.use('/api', api)
-            server.middlewares.use('/windicss', windiMiddleware)
+            server.middlewares.use('/__windicss', windiMiddleware)
           }
         }
       ]
@@ -69,7 +69,7 @@ export default <Module>function () {
       handler: api
     })
     addServerMiddleware({
-      path: '/admin/windicss',
+      path: '/admin/__windicss',
       handler: windiMiddleware
     })
   }

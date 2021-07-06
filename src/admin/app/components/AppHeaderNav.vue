@@ -30,6 +30,14 @@
       Config
     </RouterLink>
 
+    <RouterLink
+      to="/windicss"
+      class="relative flex-none px-4 py-1 text-sm font-medium leading-5 d-border border rounded-md"
+      :class="[$route.path.startsWith('/windicss') ? 'router-link-active' : '']"
+    >
+      Windi Analyzer
+    </RouterLink>
+
     <div class="flex-auto"></div>
 
     <button class="p-1 opacity-50 hover:opacity-100 !outline-none" @click="toggleDark">

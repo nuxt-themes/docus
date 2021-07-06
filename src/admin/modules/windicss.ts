@@ -12,13 +12,12 @@ export default function (nuxt: any): Connect.NextHandleFunction {
     utils = _utils
   })
 
-  // TODO: resue the utils instance from `nuxt-windicss`, awaiting for:
-  // https://github.com/windicss/nuxt-windicss-module/pull/106
   const api = ApiMiddleware(
     {
       root: nuxt.options.srcDir
     },
     {
+      // reuse the utils instance from `nuxt-windicss`
       get utils() {
         return utils
       }
@@ -32,7 +31,7 @@ export default function (nuxt: any): Connect.NextHandleFunction {
   return (req, res, next) => {
     if (req.url === '/') {
       const index = fs.readFileSync(join(analysisRoot, 'dist/app/index.html'), 'utf-8')
-      res.end(index.replace(/="\//g, '="/admin/windicss/'))
+      res.end(index.replace(/="\//g, '="/admin/__windicss/'))
     } else if (req.url.startsWith('/api/')) {
       req.url = req.url.slice(4)
       console.log(req.url)
