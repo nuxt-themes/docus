@@ -24,7 +24,6 @@ const currentFile = ref(null)
 
 const openFile = async () => {
   currentFile.value = await api.get('/config')
-  console.log(currentFile.value)
 }
 
 onMounted(() => {

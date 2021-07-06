@@ -34,7 +34,6 @@ export default function (nuxt: any): Connect.NextHandleFunction {
       res.end(index.replace(/="\//g, '="/admin/__windicss/'))
     } else if (req.url.startsWith('/api/')) {
       req.url = req.url.slice(4)
-      console.log(req.url)
       api(req, res, next)
     } else {
       serve(req, res, next)
