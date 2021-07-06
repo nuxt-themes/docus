@@ -11,7 +11,7 @@ export default <Middleware>async function configHandler(req) {
   path = path || r('nuxt.config.ts')
 
   if (req.method === 'GET') {
-    // List all files in content/
+    // Get config file
     return {
       path: path.replace(root, ''),
       exist,
@@ -20,7 +20,7 @@ export default <Middleware>async function configHandler(req) {
     }
   }
 
-  // Update changes
+  // Update config
   if (req.method === 'PUT') {
     const { raw } = await useBody<FileData>(req)
     if (raw == null) {
