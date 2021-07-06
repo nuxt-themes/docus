@@ -47,7 +47,10 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   let previous
   const containerSequenceSize = []
 
-  let dataSectionState: MarkDownDataSectionState = MarkDownDataSectionState.NotSeen
+  /**
+   * data tokenizer
+   */
+  const data = tokenizeData.call(this, effects, lineStart)
 
   return start
 
@@ -90,64 +93,6 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return createSpace(effects, ok, 'whitespace')(code)
     }
   }
-
-  /**
-   * >>> -------- data section
-   */
-  function tokenizeDataSectionClosing(effects: Effects, ok: Okay, nok: NotOkay) {
-    let size = 0
-    let sectionIndentSize = 0
-
-    return closingPrefixAfter
-
-    function closingPrefixAfter(code: number) {
-      if (markdownSpace(code)) {
-        effects.consume(code)
-        sectionIndentSize += 1
-        return closingPrefixAfter
-      }
-      if (sectionIndentSize === 0) {
-        sectionIndentSize = linePrefixSize(self.events)
-      }
-      if (dataSectionState === MarkDownDataSectionState.Open) {
-        effects.exit('directiveContainerDataSection')
-      }
-
-      effects.enter('directiveContainerSectionSequence')
-      return closingSectionSequence(code)
-    }
-
-    function closingSectionSequence(code: number) {
-      if (code === Codes.dash || markdownSpace(code)) {
-        effects.consume(code)
-        size++
-        return closingSectionSequence
-      }
-
-      if (size < SectionSequenceSize) return nok(code)
-
-      if (sectionIndentSize !== initialPrefix) return nok(code)
-      if (!markdownLineEnding(code)) return nok(code)
-
-      effects.exit('directiveContainerSectionSequence')
-      return createSpace(effects, ok, 'whitespace')(code)
-    }
-  }
-
-  function dataSectionOpen(code: number) {
-    if (dataSectionState === MarkDownDataSectionState.NotSeen) {
-      effects.enter('directiveContainerDataSection')
-      dataSectionState = MarkDownDataSectionState.Open
-    } else {
-      dataSectionState = MarkDownDataSectionState.Closed
-      effects.enter('directiveContainerSection')
-    }
-
-    return createSpace(effects, lineStart, 'whitespace')(code)
-  }
-  /**
-   * <<< -------- end data section
-   */
 
   function sectionOpen(code: number) {
     effects.enter('directiveContainerSection')
@@ -224,24 +169,16 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
     effects.enter('directiveContainerContent')
 
-    if (
-      !containerSequenceSize.length &&
-      dataSectionState !== MarkDownDataSectionState.Closed &&
-      (code === Codes.dash || markdownSpace(code))
-    ) {
+    if (!containerSequenceSize.length && !data.isClosed() && (code === Codes.dash || markdownSpace(code))) {
       function _chunkStart(code) {
-        dataSectionState = MarkDownDataSectionState.Closed
+        data.close()
         effects.enter('directiveContainerSection')
 
         return chunkStart(code)
       }
-      return effects.attempt(
-        { tokenize: tokenizeDataSectionClosing, partial: true } as any,
-        dataSectionOpen,
-        _chunkStart
-      )
+      return effects.attempt(data.tokenize, data.sectionOpen, _chunkStart)
     } else {
-      dataSectionState = MarkDownDataSectionState.Closed
+      data.close()
     }
 
     effects.enter('directiveContainerSection')
@@ -258,16 +195,8 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return effects.attempt({ tokenize: tokenizeSectionClosing, partial: true } as any, sectionOpen, chunkStart)
     }
     // detect slots
-    if (
-      !containerSequenceSize.length &&
-      dataSectionState !== MarkDownDataSectionState.Closed &&
-      (code === Codes.dash || code === Codes.space)
-    ) {
-      return effects.attempt(
-        { tokenize: tokenizeDataSectionClosing, partial: true } as any,
-        dataSectionOpen,
-        chunkStart
-      )
+    if (!containerSequenceSize.length && !data.isCloed() && (code === Codes.dash || code === Codes.space)) {
+      return effects.attempt(data.tokenize, data.sectionOpen, chunkStart)
     }
 
     const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true } as any, after, chunkStart)
@@ -397,6 +326,76 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
       return ok(code)
     }
+  }
+}
+
+function tokenizeData(effects, ok) {
+  const initialPrefix = linePrefixSize(this.events)
+  let sectionState: MarkDownDataSectionState = MarkDownDataSectionState.NotSeen
+  const data = {
+    state: () => sectionState,
+    close: () => {
+      sectionState = MarkDownDataSectionState.Closed
+    },
+    isClosed: () => sectionState === MarkDownDataSectionState.Closed,
+    tokenize: { tokenize: tokenizeDataSection, partial: true } as any,
+    sectionOpen
+  }
+  return data
+  function tokenizeDataSection(effects: Effects, ok: Okay, nok: NotOkay) {
+    const self = this
+    let size = 0
+    let sectionIndentSize = 0
+
+    return closingPrefixAfter
+
+    function closingPrefixAfter(code: number) {
+      if (data.isClosed()) {
+        return nok(code)
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code)
+        sectionIndentSize += 1
+        return closingPrefixAfter
+      }
+      if (sectionIndentSize === 0) {
+        sectionIndentSize = linePrefixSize(self.events)
+      }
+      if (sectionState === MarkDownDataSectionState.Open) {
+        effects.exit('directiveContainerDataSection')
+      }
+
+      effects.enter('directiveContainerSectionSequence')
+      return closingSectionSequence(code)
+    }
+
+    function closingSectionSequence(code: number) {
+      if (code === Codes.dash || markdownSpace(code)) {
+        effects.consume(code)
+        size++
+        return closingSectionSequence
+      }
+
+      if (size < SectionSequenceSize) return nok(code)
+
+      if (sectionIndentSize !== initialPrefix) return nok(code)
+      if (!markdownLineEnding(code)) return nok(code)
+
+      effects.exit('directiveContainerSectionSequence')
+      return createSpace(effects, ok, 'whitespace')(code)
+    }
+  }
+
+  function sectionOpen(code: number) {
+    if (sectionState === MarkDownDataSectionState.NotSeen) {
+      effects.enter('directiveContainerDataSection')
+      sectionState = MarkDownDataSectionState.Open
+    } else {
+      sectionState = MarkDownDataSectionState.Closed
+      effects.enter('directiveContainerSection')
+    }
+
+    return createSpace(effects, ok, 'whitespace')(code)
   }
 }
 
