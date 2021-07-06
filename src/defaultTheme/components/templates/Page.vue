@@ -15,8 +15,7 @@ export default defineComponent({
   templateOptions: {
     aside: false,
     asideClass: '',
-    fluid: false,
-    banner: true
+    fluid: false
   }
 })
 </script>
