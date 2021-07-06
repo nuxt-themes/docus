@@ -60,9 +60,9 @@ const defaultThemeSettings = {
     'd-aside-header-bg': 'bg-gray-50 dark:bg-gray-800',
     'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
     'd-active-aside-navigation-item-text': 'text-primary-500 dark:text-primary-400 ',
-    'd-code-group-header-bg': 'bg-gray-200 dark:bg-gray-800',
-    'd-code-group-tab': 'bg-gray-300 dark:bg-gray-700',
-    'd-prose-code-filename-bg': 'bg-gray-100 dark:bg-gray-800',
+    'd-code-group-header-bg': 'bg-gray-200 dark:bg-gray-700',
+    'd-code-group-tab': 'bg-gray-300 dark:bg-gray-600',
+    'd-prose-code-filename-bg': 'bg-gray-200 dark:bg-gray-700',
     'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
     'd-prose-code-inline-in-heading-border-hover': 'border-gray-500 dark:border-gray-200',
     'd-prose-hr-border': 'border-t border-gray-100 dark:border-gray-800',
@@ -82,13 +82,19 @@ const defaultThemeSettings = {
     'd-blur-header': 'blur-12',
     'd-bg-header': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
     'd-border': 'light:border-gray-200 light:border-opacity-50 dark:border-gray-800',
-    'd-border-hover': 'border-primary-200 dark:border-secondary-dark',
+    'd-border-hover': 'border-primary-200 dark:border-gray-700',
     'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
     'd-header': 'sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header',
+    'd-header-title': 'text-2xl font-bold tracking-tighter text-gray-900 dark:text-gray-100',
+    'd-header-title-logo': 'd-header-title ml-4',
+    'd-header-logo': 'flex items-center flex-none lg:w-60',
+    'd-logo-color': 'text-black dark:text-white',
+    'd-logo': 'w-auto h-6 md:h-8 d-logo-color',
     // Heading
     'd-heading-title': '!mb-0 !mt-0 flex-1 !text-4xl font-semibold tracking-tight',
     'd-heading-description': '!mt-2 !mb-0 text-lg font-medium d-secondary-text',
-    'd-heading-hr': '!mt-4 !mb-0 d-border'
+    'd-heading-hr': '!mt-4 !mb-0 d-border',
+    'd-scrollbar': 'scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800 scrollbar-thumb-rounded'
   }
 }
 

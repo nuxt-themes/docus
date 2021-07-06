@@ -27,12 +27,12 @@
           "
           @click.stop="$menu.toggle"
         >
-          <IconArrowLeft class="w-5 h-5" />
+          <IconArrowLeft class="w-6 h-6" />
         </button>
-        <div class="flex items-center justify-end w-full h-header lg:hidden">
+        <div class="flex items-center justify-end w-full h-header lg:hidden space-x-3">
           <LangSwitcher />
-          <ColorSwitcher size="w-5 h-5" padding="p-1" />
-          <SocialIcons size="w-5 h-5" padding="p-1" />
+          <ColorSwitcher size="w-6 h-6" padding="p-1" />
+          <SocialIcons size="w-6 h-6" padding="p-1" class="space-x-3" />
         </div>
       </div>
 
@@ -48,6 +48,7 @@
           font-medium
           lg:h-[reset]
           h-(full-header)
+          d-scrollbar
         "
       >
         <div class="py-4 pl-4 pr-24 sm:pl-6 lg:pr-0 lg:pt-10">
@@ -63,6 +64,7 @@
                 :title="link.title"
                 :docs="link.children"
                 :collapse="link.collapse === true"
+                @toggle="toggleLinks(link)"
               />
               <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
             </template>
@@ -75,20 +77,41 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, watch, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  computed: {
-    links() {
-      const nav = this.$docus.currentNav.value
-      return nav.links
-    },
-    parent() {
-      return this.$docus.currentNav.value.parent
-    },
-    lastRelease() {
-      return this.$docus.lastRelease?.value
+  setup() {
+    const { $docus } = useContext()
+
+    const links = ref($docus.currentNav.value.links)
+
+    watch(
+      $docus.currentNav,
+      newVal => {
+        links.value = newVal.links
+      },
+      { deep: true }
+    )
+
+    function toggleLinks(link) {
+      const newLinks = $docus.currentNav.value.links.map(l => {
+        l = { ...l }
+
+        if (link.slug === l.slug) {
+          l.collapse = !link.collapse
+        }
+
+        return l
+      })
+
+      links.value = newLinks
     }
+
+    const parent = computed(() => $docus.currentNav.value.parent)
+
+    const lastRelease = computed(() => $docus.lastRelease?.value)
+
+    return { toggleLinks, links, parent, lastRelease }
   }
 })
 </script>

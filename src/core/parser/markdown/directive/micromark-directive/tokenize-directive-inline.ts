@@ -1,3 +1,4 @@
+import markdownLineEndingOrSpace from 'micromark/dist/character/markdown-line-ending-or-space'
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
 import { Codes } from './constants'
 import createAttributes from './factory-attributes'
@@ -20,6 +21,14 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   function start(code: number) {
     /* istanbul ignore if - handled by mm */
     if (code !== 58 /* `:` */) throw new Error('expected `:`')
+
+    if (
+      self.previous !== null &&
+      !markdownLineEndingOrSpace(self.previous) &&
+      ![Codes.openingSquareBracket].includes(self.previous)
+    ) {
+      return nok
+    }
 
     /* istanbul ignore if - handled by mm */
     if (!previous.call(self, self.previous)) {
@@ -69,6 +78,9 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   }
 
   function exit(code: number) {
+    if (!markdownLineEndingOrSpace(code) && code !== null && ![Codes.closingSquareBracket].includes(code)) {
+      return nok
+    }
     effects.exit('directiveText')
     return ok(code)
   }

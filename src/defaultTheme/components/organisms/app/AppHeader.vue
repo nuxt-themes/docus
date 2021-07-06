@@ -4,7 +4,7 @@
       <NavigationButton v-if="aside" />
 
       <div :class="[aside ? 'justify-center' : 'justify-start']" class="flex items-center flex-1 lg:flex-none">
-        <Logo :settings="settings" />
+        <HeaderLogo />
       </div>
 
       <div class="items-center hidden lg:flex lg:flex-1">
@@ -12,12 +12,7 @@
       </div>
 
       <div class="flex items-center justify-end lg:flex-none">
-        <AlgoliaSearchBox
-          v-if="settings.algolia"
-          :options="settings.algolia"
-          :settings="settings"
-          class="w-14 lg:flex-1 lg:px-2"
-        />
+        <AlgoliaSearchBox v-if="settings.algolia" :options="settings.algolia" class="w-14 lg:flex-1 lg:px-2" />
 
         <div v-else class="flex lg:hidden">
           <ColorSwitcher />

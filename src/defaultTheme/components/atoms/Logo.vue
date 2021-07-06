@@ -1,39 +1,35 @@
 <template>
-  <div class="flex items-center flex-none lg:w-60">
-    <NuxtLink :to="localePath('/')" class="w-auto" :aria-label="settings.title">
-      <HeaderLogo />
-    </NuxtLink>
-  </div>
+  <img v-if="singleLogo" :src="logo" :alt="settings.title" />
+  <span v-else>
+    <img :src="logo.light" class="d-logo light-img" :alt="settings.title" />
+    <img :src="logo.dark" class="d-logo dark-img" :alt="settings.title" />
+  </span>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from '@nuxtjs/composition-api'
+<script>
+import Vue from 'vue'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  props: {
-    settings: {
-      type: Object as any,
-      required: true
-    }
-  },
-  setup(props) {
-    const logo = computed(() => {
-      if (!props.settings.value.logo) {
-        return
-      }
+  setup() {
+    const { $docus, $img } = useContext()
+    const _logo = $docus.theme.value.header.logo
+    const singleLogo = typeof _logo === 'string'
+    const isSVG = value => value.endsWith('.svg')
 
-      if (typeof props.settings.value.logo === 'object') {
-        return props.settings.value.logo
-      }
+    const logo = computed(() => {
+      if (singleLogo) return isSVG(_logo) ? _logo : $img(_logo)
 
       return {
-        light: props.settings.value.logo,
-        dark: props.settings.value.logo
+        light: isSVG(_logo.light) ? _logo.light : $img(_logo.light),
+        dark: isSVG(_logo.dark) ? _logo.dark : $img(_logo.dark)
       }
     })
 
     return {
-      logo
+      singleLogo,
+      logo,
+      settings: $docus.settings
     }
   }
 })

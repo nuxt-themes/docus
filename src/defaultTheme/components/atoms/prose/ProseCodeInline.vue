@@ -6,11 +6,11 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply font-normal text-sm py-3px px-6px whitespace-nowrap rounded-md d-prose-code-inline-bg;
+  @apply font-normal text-sm py-3px px-6px rounded-md d-prose-code-inline-bg;
 }
 
 a code {
-  @apply border border-dashed border-transparent;
+  @apply pointer-events-none border border-dashed border-transparent;
   &:hover {
     @apply border-primary;
   }

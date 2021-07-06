@@ -1,7 +1,7 @@
 <template>
   <div>
     <slot name="mobile-toc" />
-    <div class="px-4 sm:px-6 mt-4">
+    <div class="px-4 sm:px-6 mt-4 xl:mt-0">
       <DocusContent :document="page" class="docus-content" />
     </div>
   </div>
