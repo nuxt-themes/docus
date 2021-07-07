@@ -22,7 +22,7 @@
           </ProseH2>
           <span class="text-sm font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
         </div>
-        <DocusContent :document="release" class="docus-content" />
+        <DocusContent :document="release" class="docus-content overflow-hidden" />
       </div>
     </div>
 
