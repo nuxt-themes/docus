@@ -66,10 +66,14 @@ async function parse(file, options) {
   }
 }
 
-export function useMarkdownParser(options: Partial<MarkdownParserOptions> = {}) {
-  options = defu(options, DEFAULTS)
-  options.remarkPlugins.unshift([resolve(__dirname, './directive/remark-plugin'), { directives: options.directives }])
-  processOptions(options)
+let options: MarkdownParserOptions = DEFAULTS
+export function useMarkdownParser(parserOptions?: Partial<MarkdownParserOptions>) {
+  if (parserOptions) {
+    options = defu(parserOptions, DEFAULTS)
+
+    options.remarkPlugins.unshift([resolve(__dirname, './directive/remark-plugin'), { directives: options.directives }])
+    processOptions(options)
+  }
 
   return {
     parseFrontMatter: (content: string) => parseFrontMatter(content),
