@@ -25,7 +25,7 @@ Let's create a module that uses [ngrok](https://www.npmjs.com/package/ngrok) so 
   <source src="https://res.cloudinary.com/nuxt/video/upload/v1588091670/ngrok-blog_jqc1di.ogv" type="video/ogg">
 </video>
 
-This module has already been created and deployed and you can use it without creating it yourself by installing the [@nuxtjs/ngrok module](https://ngrok.nuxtjs.org). You can also jump straight into the code by checking out our [CodeSandbox Demo](/examples/modules-internal). However if you are interested in seeing how it was created or want to create your own module then continue reading.
+This module has already been created and deployed and you can use it without creating it yourself by installing the [@nuxtjs/ngrok module](https://ngrok.nuxtjs.org). You can also jump straight into the code by checking out our [CodeSandbox Demo](https://nuxtjs.org/examples/modules-internal). However if you are interested in seeing how it was created or want to create your own module then continue reading.
 
 - [How does it work?](#how-does-it-work)
 - [Let's get started](#lets-get-started)
@@ -44,7 +44,7 @@ This module has already been created and deployed and you can use it without cre
 
 ngrok will create a http-https-tcp tunnel. Check out the [ngrok npm package](https://www.npmjs.com/package/ngrok) for more details. We need to be able to connect to an ngrok port when the Nuxt server is listening. Once we get a public URL we want to print it to the Nuxt CLI so we can easily click it to open and share it.
 
-![nuxt cli](/blog/creating-nuxt-module/nuxt-cli.png)
+![nuxt cli](https://nuxtjs.org/blog/creating-nuxt-module/nuxt-cli.png)
 
 ## Let's get started
 
@@ -351,7 +351,7 @@ import chalk from 'chalk'
 
 You will now see when running the dev command that we have our Public URL with the link underlined and in a yellow color. This can then be clicked and opened and of course shared with anyone, anywhere in the world so they can watch your changes in dev mode live.
 
-![nuxt cli](/blog/creating-nuxt-module/nuxt-cli.png)
+![nuxt cli](https://nuxtjs.org/blog/creating-nuxt-module/nuxt-cli.png)
 
 ## Closing our ngrok
 
@@ -420,7 +420,7 @@ As of today we are working on improving this template to make it more user frien
 
 ## Further exploration
 
-Check our our [CodeSandbox example](/examples/modules-internal) for this module.
+Check our our [CodeSandbox example](https://nuxtjs.org/examples/modules-internal) for this module.
 
 Check out our published [ngrok module](https://ngrok.nuxtjs.org/).
 

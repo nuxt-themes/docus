@@ -26,7 +26,7 @@ _Let’s build a blazing fast articles and tutorials app using Nuxt and the DEV 
   <a href="https://github.com/bdrtsky/nuxt-dev-to-clone" target="_blank" rel="noopener nofollow">Source</a>
 </p>
 
-This article is intended to demonstrate use cases and awesomeness of new Nuxt `fetch` functionality [introduced in release v2.12](https://nuxtjs.org/docs/2.x/components-glossary/pages-fetch#nuxt-gt-2-12), and show you how to apply its power in your own projects. For in-depth technical analysis and details of the new `fetch` you can check [Krutie Patel’s article](/blog/understanding-how-fetch-works-in-nuxt-2-12).
+This article is intended to demonstrate use cases and awesomeness of new Nuxt `fetch` functionality [introduced in release v2.12](https://nuxtjs.org/docs/2.x/components-glossary/pages-fetch#nuxt-gt-2-12), and show you how to apply its power in your own projects. For in-depth technical analysis and details of the new `fetch` you can check [Krutie Patel’s article](https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12).
 
 Here’s the high-level outline of how we will build our dev.to clone using `fetch` hook. We will:
 
@@ -307,7 +307,7 @@ async fetch() {
 
 Here we are making a request to the DEV `/articles` endpoint, with query parameters that API understands. Don’t confuse the `fetch` hook with the JavaScript [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) interface which simply helps us to send a request to the DEV API, and then parse the response with `res.json()`.
 
-Also notice that the new `fetch` hook doesn’t serve just to dispatch Vuex store action or committing mutation to set state, now it has access to `this` context, and is able to mutate component’s data directly. This is a very important new feature, and you can [read more](/blog/understanding-how-fetch-works-in-nuxt-2-12) about it in the previous article about `fetch`.
+Also notice that the new `fetch` hook doesn’t serve just to dispatch Vuex store action or committing mutation to set state, now it has access to `this` context, and is able to mutate component’s data directly. This is a very important new feature, and you can [read more](https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12) about it in the previous article about `fetch`.
 
 Now let’s markup the `<article-card-block>` component which receives `article` prop and renders its data nicely.
 
@@ -591,6 +591,6 @@ In this article we explored Nuxt.js new `fetch` and built an app with the basic 
 
 **What to do next:**
 
-- Read [Krutie Patel article](/blog/understanding-how-fetch-works-in-nuxt-2-12) with in-depth analysis of how new `fetch` hook works
+- Read [Krutie Patel article](https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12) with in-depth analysis of how new `fetch` hook works
 - Check [nuxt-hackernews](https://github.com/nuxt/hackernews) for similar usage of [Hacker News API](https://github.com/HackerNews/API)
 - [Subscribe](#subscribe-to-newsletter) to the newsletter to not miss the upcoming articles and resources, I plan to write an article about how to create your personal blog using Nuxt, with DEV as the CMS.
