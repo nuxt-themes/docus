@@ -51,6 +51,7 @@ function onIframeLoad() {
       onPreviewNavigated(to.path)
     })
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.warn(e)
   }
 }
