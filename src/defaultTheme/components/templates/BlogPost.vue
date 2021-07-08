@@ -10,7 +10,7 @@
               leading-none
               text-gray-900
               dark:text-gray-100
-              hover:text-gray-500 hover:dark:text-gray-400
+              hover:d-secondary-text
               font-medium
             "
             >← Back</span
@@ -34,7 +34,7 @@
               <ProseCodeInline>date: {{ today }}</ProseCodeInline>
               in the page front-matter`
             </div>
-            <div v-if="page.authors && page.authors.length" class="text-sm text-gray-400 dark:text-gray-700">|</div>
+            <div v-if="page.authors && page.authors.length" class="text-sm d-tertiary-text">|</div>
             <div class="flex ml-4 sm:ml-2">
               <a
                 v-for="(author, index) in page.authors"
@@ -42,17 +42,17 @@
                 :href="author.link"
                 target="_blank"
                 rel="noopener noindex nofollow"
-                class="flex items-center justify-end -ml-2 sm:ml-0 sm:mr-2"
+                class="flex items-center justify-end -ml-2 sm:ml-0 sm:mr-2 hover:d-secondary-text"
               >
                 <NuxtImg
-                  class="rounded-full border border-gray-300 dark:border-gray-700 inline-block h-8 w-8 sm:mr-1"
+                  class="rounded-full border d-border-tertiary inline-block h-8 w-8 sm:mr-1"
                   height="32"
                   width="32"
                   :src="author.avatarUrl"
                   :alt="author.name"
                   :title="author.name"
                 />
-                <span class="hidden sm:inline-block font-medium text-sm text-gray-800 dark:text-gray-300">
+                <span class="hidden sm:inline-block font-medium text-sm">
                   {{ author.name }}
                 </span>
               </a>

@@ -40,6 +40,7 @@ const defaultThemeSettings = {
     'd-secondary-text': 'text-gray-500 dark:text-gray-400',
     'd-secondary-text-hover': 'text-primary-500 dark:text-primary-400',
     'd-tertiary-text': 'text-gray-400 dark:text-gray-500',
+    'd-border-tertiary': 'border-gray-400 dark:border-gray-500',
     'd-primary-text-hover': 'text-gray-600 dark:text-gray-400',
     'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
     'd-prose-code-inline-bg': 'bg-gray-100 dark:bg-gray-800',
