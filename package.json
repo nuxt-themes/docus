@@ -144,5 +144,8 @@
   },
   "peerDependencies": {
     "vuex": "^3.6.2"
+  },
+  "resolutions": {
+    "@nuxt/components": "npm:@pi0/components"
   }
 }

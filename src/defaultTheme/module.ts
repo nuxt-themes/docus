@@ -142,7 +142,7 @@ export default <Module>function themeSetupModule() {
       // Register the root `components` directory
       dirs.push({
         path: componentsDirPath,
-        global: true
+        isAsync: false
       })
 
       // Check for sub directories
