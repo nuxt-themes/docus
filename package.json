@@ -48,6 +48,9 @@
     "clean:dist": "rm -rf dist docs/dist playground/dist nuxtjs.org/dist",
     "clean": "yarn clean:nuxt & yarn clean:node_modules & yarn clean:dist"
   },
+  "resolutions": {
+    "@nuxt/components": "npm:@pi0/components"
+  },
   "dependencies": {
     "@docsearch/css": "^1.0.0-alpha.28",
     "@docsearch/js": "^1.0.0-alpha.28",
@@ -144,8 +147,5 @@
   },
   "peerDependencies": {
     "vuex": "^3.6.2"
-  },
-  "resolutions": {
-    "@nuxt/components": "npm:@pi0/components"
   }
 }

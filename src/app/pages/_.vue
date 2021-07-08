@@ -116,6 +116,8 @@ export default defineComponent({
 
     // Set Docus runtime current page
     this.$docus.currentPage.value = this.page
+    // Update navigation path to update currentNav
+    this.$docus.currentPath.value = `/${this.$route.params.pathMatch}`
   },
   mounted() {
     if (this.page?.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
