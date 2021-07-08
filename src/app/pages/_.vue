@@ -59,6 +59,16 @@ export default defineComponent({
       templateOptions = { ...templateOptions, ...page.layout }
     }
 
+    if (process.server) {
+      // Set template options
+      $docus.layout.value = templateOptions
+
+      // Set Docus runtime current page
+      $docus.currentPage.value = page
+      // Update navigation path to update currentNav
+      $docus.currentPath.value = `/${params.pathMatch}`
+    }
+
     // Redirect to another page if `navigation.redirect` is declared
     if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
 
@@ -111,13 +121,15 @@ export default defineComponent({
     }
   },
   created() {
-    // Set template options
-    this.$docus.layout.value = this.templateOptions
+    if (process.client) {
+      // Set template options
+      this.$docus.layout.value = this.templateOptions
 
-    // Set Docus runtime current page
-    this.$docus.currentPage.value = this.page
-    // Update navigation path to update currentNav
-    this.$docus.currentPath.value = `/${this.$route.params.pathMatch}`
+      // Set Docus runtime current page
+      this.$docus.currentPage.value = this.page
+      // Update navigation path to update currentNav
+      this.$docus.currentPath.value = `/${this.$route.params.pathMatch}`
+    }
   },
   mounted() {
     if (this.page?.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
