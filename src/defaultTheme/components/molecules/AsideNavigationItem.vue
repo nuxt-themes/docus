@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { computed, watch, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {

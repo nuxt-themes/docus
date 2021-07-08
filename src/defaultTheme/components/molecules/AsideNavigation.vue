@@ -63,7 +63,7 @@
                 :key="link.to"
                 :title="link.title"
                 :docs="link.children"
-                :collapse="link.collapse === true"
+                :collapse="link.collapse"
                 @toggle="toggleLinks(link)"
               />
               <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
@@ -93,19 +93,7 @@ export default defineComponent({
       { deep: true }
     )
 
-    function toggleLinks(link) {
-      const newLinks = $docus.currentNav.value.links.map(l => {
-        l = { ...l }
-
-        if (link.slug === l.slug) {
-          l.collapse = !link.collapse
-        }
-
-        return l
-      })
-
-      links.value = newLinks
-    }
+    const toggleLinks = link => (link.collapse = !link.collapse)
 
     const parent = computed(() => $docus.currentNav.value.parent)
 
