@@ -1,7 +1,3 @@
-<template>
-  <Component :is="page.template" :key="page.template" :page="page" />
-</template>
-
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
@@ -144,6 +140,14 @@ export default defineComponent({
         }
       })
     }
+  },
+
+  render(h) {
+    return h(this.page.template, {
+      props: {
+        page: this.page
+      }
+    })
   }
 })
 </script>
