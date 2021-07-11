@@ -1,16 +1,7 @@
 <template>
   <div
     v-if="toc.length"
-    class="
-      sticky
-      z-10
-      px-4
-      text-sm
-      border-b border-gray-100 border-dashed
-      top-header
-      dark:border-gray-800
-      d-blur-header d-page-mobile-toc-bg
-    "
+    class="sticky z-10 px-4 text-sm border-dashed top-header d-border-header d-blur-header d-page-mobile-toc-bg"
   >
     <button
       class="
@@ -30,7 +21,7 @@
     >
       <span class="mr-2">{{ title || $t('toc.title') }}</span>
       <IconChevronRight
-        class="w-4 h-4 text-gray-400 transition-transform duration-100 transform"
+        class="w-4 h-4 d-tertiary-text transition-transform duration-100 transform"
         :class="[showMobileToc ? 'rotate-90' : 'rotate-0']"
       />
     </button>
@@ -39,12 +30,10 @@
       <li v-for="link of filteredToc" :key="link.id" @click="showMobileToc = false">
         <a
           :href="`#${link.id}`"
-          class="block py-1 transition-colors duration-100 transform scrollactive-item"
+          class="block py-1 transition-colors duration-100 transform"
           :class="{
-            'text-gray-600 dark:text-gray-300 hover:text-primary-400 dark:hover:text-primary-400':
-              activeHeadings.includes(link.id),
-            'text-gray-400 dark:text-gray-500 hover:text-primary-500 dark:hover:text-primary-400':
-              !activeHeadings.includes(link.id)
+            'd-secondary-text-active hover:d-secondary-text-hover': activeHeadings.includes(link.id),
+            'd-secondary-text hover:d-secondary-text-hover': !activeHeadings.includes(link.id)
           }"
           @click.prevent="scrollToHeading(link.id, '--blogpost-scroll-margin-block')"
           >{{ link.text }}</a
