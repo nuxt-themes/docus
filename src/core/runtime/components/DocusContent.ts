@@ -1,5 +1,3 @@
-import { pascalCase } from 'scule'
-import Vue from 'vue'
 import info from 'property-information'
 
 const rootKeys = ['class-name', 'class', 'className', 'style']
