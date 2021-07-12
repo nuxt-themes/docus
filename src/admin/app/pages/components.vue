@@ -6,7 +6,7 @@
       </div>
     </Pane>
     <Pane>
-      <Editor v-if="currentFile" :file="currentFile" />
+      <Editor v-if="currentFile" :file="currentFile" api-entry="/components" />
       <p v-else class="p-4 opacity-75">👈 &nbsp;Select a file to edit.</p>
     </Pane>
     <Pane>
@@ -19,20 +19,24 @@
 
 <script setup lang="ts">
 import { Splitpanes, Pane } from 'splitpanes'
-import { onMounted } from 'vue3'
+import { ref, onMounted } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
 import Preview from '../components/Preview.vue'
-import { files, fetchFiles, currentFile, openFile } from '../composables/content'
+import { useApi } from '../plugins/api'
+import { navigateToFile } from '../composables/preview'
+
+const api = useApi()
+
+const files = ref([])
+const currentFile = ref(null)
+
+const openFile = async file => {
+  navigateToFile(`/__components${file.path}`)
+  currentFile.value = await api.get(`/components${file.path}`)
+}
 
 onMounted(async () => {
-  await fetchFiles()
-
-  if (!currentFile.value) {
-    const indexFile = files.value.find(file => file.path === '/index.md')
-    if (indexFile) {
-      openFile(indexFile)
-    }
-  }
+  files.value = await api.get('/components')
 })
 </script>
