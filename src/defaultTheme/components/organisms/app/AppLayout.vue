@@ -1,5 +1,9 @@
 <template>
   <div class="w-full">
+    <slot v-if="layout.banner" name="banner">
+      <AppBanner />
+    </slot>
+
     <slot v-if="layout.header" name="header">
       <AppHeader :aside="layout.aside" />
     </slot>

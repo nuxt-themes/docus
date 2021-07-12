@@ -20,7 +20,7 @@ export default <Module>function docusTwitterModule() {
   hook('components:dirs', dirs => {
     dirs.push({
       path: r('components'),
-      global: true,
+      isAsync: false,
       level: 2
     })
   })

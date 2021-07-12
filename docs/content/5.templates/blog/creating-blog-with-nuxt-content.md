@@ -128,13 +128,13 @@ In markdown we create a `<h1>` title by using `#`. Make sure you leave a space b
 
 ### Displaying your content
 
-To display our content in our page, we can use a [dynamic page](/docs/2.x/directory-structure/pages#dynamic-pages) by prefixing the page with an underscore(`_`). By creating a page component named `_slug.vue` inside our blog folder, we are able to use the `params.slug` variable provided by vue router to get the name of each article.
+To display our content in our page, we can use a [dynamic page](https://nuxtjs.org/docs/2.x/directory-structure/pages#dynamic-pages) by prefixing the page with an underscore(`_`). By creating a page component named `_slug.vue` inside our blog folder, we are able to use the `params.slug` variable provided by vue router to get the name of each article.
 
 ```bash
 touch pages/blog/_slug.vue
 ```
 
-Then we can use `asyncData` in our page component to fetch our article content before the page has been rendered. We can have access to our content through the context by using the variable `$content`. As we want to fetch a dynamic page we also need to know which article to fetch with `params.slug` which is available to us through [the context](/docs/2.x/internals-glossary/context).
+Then we can use `asyncData` in our page component to fetch our article content before the page has been rendered. We can have access to our content through the context by using the variable `$content`. As we want to fetch a dynamic page we also need to know which article to fetch with `params.slug` which is available to us through [the context](https://nuxtjs.org/docs/2.x/internals-glossary/context).
 
 ```html{}[pages/blog/_slug.vue]
 <script>
@@ -172,7 +172,7 @@ To display our content we are using the `<nuxt-content />` component by passing 
 
 We can now run our dev server and go to the route [http://localhost:3000/blog/my-first-blog-post](http://localhost:3000/blog/my-first-blog-post) and we should see our content from our markdown file.
 
-![content from markdown](/blog/creating-blog-with-nuxt-content/get-started-with-nuxt-content.png)
+![content from markdown](https://nuxtjs.org/blog/creating-blog-with-nuxt-content/get-started-with-nuxt-content.png)
 
 ### Default Injected variables
 

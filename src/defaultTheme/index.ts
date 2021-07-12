@@ -18,7 +18,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' }
     ],
     bodyAttrs: {
-      class: ['d-body-bg d-body-text-color text-root min-w-base antialiased tracking-semitight']
+      class: ['d-body-bg d-body-text-color text-root min-w-base antialiased tracking-semitight d-scrollbar']
     }
   },
   colorMode: {
@@ -32,19 +32,19 @@ const themeConfig: NuxtConfig = nuxtConfig({
     {
       path: r('./components/atoms'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/atoms/icons'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/atoms/prose'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     /**
@@ -53,7 +53,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
     {
       path: r('./components/molecules'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     /**
@@ -62,37 +62,37 @@ const themeConfig: NuxtConfig = nuxtConfig({
     {
       path: r('./components/organisms'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/organisms/app'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/organisms/blog'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/organisms/dev-slots'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/organisms/page'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     {
       path: r('./components/organisms/slots'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     },
     /**
@@ -101,7 +101,7 @@ const themeConfig: NuxtConfig = nuxtConfig({
     {
       path: r('./components/templates'),
       prefix: '',
-      global: true,
+      isAsync: false,
       level: 2
     }
   ],

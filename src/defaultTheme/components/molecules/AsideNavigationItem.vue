@@ -3,12 +3,12 @@
     <h5
       v-if="title"
       class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100"
-      :class="[isActive ? '' : 'hover:d-primary-text-hover']"
+      :class="[isActive ? '' : 'lg:hover:d-primary-text-hover']"
       @click="toggle"
     >
       {{ title }}
     </h5>
-    <ul v-if="!isCollapsed || isActive" class="mb-2 ml-2">
+    <ul v-if="!collapse || isActive" class="mb-2 ml-2">
       <li v-for="doc of docs" :key="doc.to">
         <NuxtLink
           :to="$contentLocalePath(doc.redirect || doc.to)"
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { computed, watch, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
@@ -67,19 +67,15 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { $docus } = useContext()
-
-    const isCollapsed = ref(props.collapse)
 
     const isActive = computed(() => props.docs.some(document => $docus.isLinkActive(document.to)))
 
     const toggle = () => {
-      if (isActive.value) {
-        return
-      }
+      if (isActive.value) return
 
-      isCollapsed.value = !isCollapsed.value
+      emit('toggle', true)
     }
 
     const isDocumentNew = document => {
@@ -97,7 +93,6 @@ export default defineComponent({
     return {
       toggle,
       isActive,
-      isCollapsed,
       isDocumentNew
     }
   }

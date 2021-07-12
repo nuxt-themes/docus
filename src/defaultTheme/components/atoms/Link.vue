@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink v-if="isInternal" :to="to">
+  <NuxtLink v-if="isInternal" :to="$contentLocalePath(to)">
     <slot />
     <slot name="nuxt-link" />
   </NuxtLink>
@@ -34,7 +34,10 @@ export default defineComponent({
   setup(props) {
     const isInternal = computed(() => !props.static && props.to.startsWith('/') && props.to.startsWith('//') === false)
 
-    const linkAttrs = computed(() => (props.blank ? { rel: 'noopener nofollow', target: '_blank' } : {}))
+    const linkAttrs = computed(() => ({
+      rel: isInternal.value ? undefined : 'noopener nofollow noreferrer',
+      target: props.blank ? '_blank' : undefined
+    }))
 
     return {
       isInternal,

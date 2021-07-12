@@ -52,6 +52,9 @@ export function nodeChildren(vnode) {
  * @returns text content of given node
  */
 export function nodeTextContent(vnode: any) {
+  // Return empty string is vnode is falsy
+  if (!vnode) return ''
+
   if (Array.isArray(vnode)) {
     return vnode.map(nodeTextContent).join('')
   }
@@ -95,9 +98,9 @@ export function unwrap(vnode: any, tags = ['p']) {
   return result
 }
 
-export function flatUnwrap(vnodes: any[], tags = ['p']) {
+export function flatUnwrap(vnodes: any[] | any, tags = ['p']) {
   return (
-    vnodes
+    (Array.isArray(vnodes) ? vnodes : [vnodes])
       .flatMap(vnode => unwrap(vnode, tags))
       // second step unwrap for inner tags like li
       .flatMap(vnode => unwrap(vnode, tags))

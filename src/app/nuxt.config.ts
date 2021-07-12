@@ -65,6 +65,9 @@ export default nuxtConfig({
     r('../core/module')
   ],
 
+  // Loading indicator
+  loadingIndicator: r('./loading.html'),
+
   /**
    * Build configs
    */

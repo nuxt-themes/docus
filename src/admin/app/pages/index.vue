@@ -19,25 +19,14 @@
 
 <script setup lang="ts">
 import { Splitpanes, Pane } from 'splitpanes'
-import { ref, onMounted } from 'vue3'
+import { onMounted } from 'vue3'
 import FilesTree from '../components/FilesTree.vue'
 import Editor from '../components/Editor.vue'
 import Preview from '../components/Preview.vue'
-import { useApi } from '../plugins/api'
-import { navigateToFile } from '../composables/preview'
-
-const api = useApi()
-
-const files = ref([])
-const currentFile = ref(null)
-
-const openFile = async file => {
-  navigateToFile(file.path)
-  currentFile.value = await api.get(`/content${file.path}`)
-}
+import { files, fetchFiles, currentFile, openFile } from '../composables/content'
 
 onMounted(async () => {
-  files.value = await api.get('/content')
+  await fetchFiles()
 
   if (!currentFile.value) {
     const indexFile = files.value.find(file => file.path === '/index.md')

@@ -13,9 +13,13 @@ export async function fetchPreviewOrigin() {
   previewOrigin.value = url
 }
 
-export function navigateToFile(filepath: string) {
-  previewPath.value = filepath
-    .replace(/\/\d+\./g, '/')
+export function getRoutePath(filepath: string) {
+  return filepath
+    .replace(/\/\d+\./g, '/') // remove digit index
     .replace(/\.md$/, '')
     .replace(/\/index$/, '/')
+}
+
+export function navigateToFile(filepath: string) {
+  previewPath.value = getRoutePath(filepath)
 }

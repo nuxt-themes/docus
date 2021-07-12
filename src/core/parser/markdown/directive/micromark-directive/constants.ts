@@ -4,6 +4,10 @@ export const SectionSequenceSize = 3
 
 export const Codes = {
   /**
+   * '#'
+   */
+  hash: 35,
+  /**
    * '`'
    */
   backTick: 96,

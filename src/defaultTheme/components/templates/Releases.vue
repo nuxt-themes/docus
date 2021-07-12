@@ -12,7 +12,7 @@
 
     <PageMobileToc title="Versions" :toc="toc" />
 
-    <div class="px-4 sm:px-6">
+    <div class="px-4 sm:px-6 docus-content">
       <div v-for="release of releases" :key="release.name">
         <div class="flex items-baseline justify-between">
           <ProseH2 :id="release.name">
@@ -22,7 +22,7 @@
           </ProseH2>
           <span class="text-sm font-normal text-gray-500">{{ formatDate($i18n.local, release) }}</span>
         </div>
-        <DocusContent :document="release" class="docus-content" />
+        <DocusContent :document="release" class="docus-content overflow-x-hidden" />
       </div>
     </div>
 
@@ -73,9 +73,9 @@ export default defineComponent({
       // do not remove setTimeout (no headers)
       setTimeout(() => {
         const headings = [
-          ...document.querySelectorAll('.prose h1'),
-          ...document.querySelectorAll('.prose h2'),
-          ...document.querySelectorAll('.prose h3')
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3')
         ]
         headings.forEach(heading => {
           heading.addEventListener('click', e => {

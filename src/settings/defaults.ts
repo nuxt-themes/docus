@@ -12,6 +12,7 @@ export const docusDefaults: DocusSettings = {
     footer: true,
     aside: false,
     asideClass: '',
-    fluid: false
+    fluid: false,
+    banner: false
   }
 }

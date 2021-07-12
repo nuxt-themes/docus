@@ -25,7 +25,7 @@ Let's create a module that uses [ngrok](https://www.npmjs.com/package/ngrok) so 
   <source src="https://res.cloudinary.com/nuxt/video/upload/v1588091670/ngrok-blog_jqc1di.ogv" type="video/ogg">
 </video>
 
-This module has already been created and deployed and you can use it without creating it yourself by installing the [@nuxtjs/ngrok module](https://ngrok.nuxtjs.org). You can also jump straight into the code by checking out our [CodeSandbox Demo](/examples/modules-internal). However if you are interested in seeing how it was created or want to create your own module then continue reading.
+This module has already been created and deployed and you can use it without creating it yourself by installing the [@nuxtjs/ngrok module](https://ngrok.nuxtjs.org). You can also jump straight into the code by checking out our [CodeSandbox Demo](https://nuxtjs.org/examples/modules-internal). However if you are interested in seeing how it was created or want to create your own module then continue reading.
 
 - [How does it work?](#how-does-it-work)
 - [Let's get started](#lets-get-started)
@@ -44,7 +44,7 @@ This module has already been created and deployed and you can use it without cre
 
 ngrok will create a http-https-tcp tunnel. Check out the [ngrok npm package](https://www.npmjs.com/package/ngrok) for more details. We need to be able to connect to an ngrok port when the Nuxt server is listening. Once we get a public URL we want to print it to the Nuxt CLI so we can easily click it to open and share it.
 
-![nuxt cli](/blog/creating-nuxt-module/nuxt-cli.png)
+![nuxt cli](https://nuxtjs.org/blog/creating-nuxt-module/nuxt-cli.png)
 
 ## Let's get started
 
@@ -55,7 +55,7 @@ mkdir modules modules/ngrok
 touch modules/ngrok/index.js
 ```
 
-In order to use our module we will need to register it by adding it in the [buildModules](/docs/2.x/directory-structure/modules/#buildmodules) section of our `nuxt.config.js` file. BuildModules are only imported during development and build time which is perfect for our module as we only need it to work in dev mode.
+In order to use our module we will need to register it by adding it in the [buildModules](https://nuxtjs.org/docs/2.x/directory-structure/modules/#buildmodules) section of our `nuxt.config.js` file. BuildModules are only imported during development and build time which is perfect for our module as we only need it to work in dev mode.
 
 ```js{}[nuxt.config.js]
 export default {
@@ -147,7 +147,7 @@ export default function () {
 
 ## Start the ngrok tunnel when the Nuxt server is listening
 
-We want to start the ngrok tunnel when the nuxt sever is listening. To do that we need a way to hook into Nuxt and listen for a port so we can connect. That's where Nuxt hooks come in. [Nuxt hooks](/docs/2.x/internals-glossary/internals-nuxt) are listeners to Nuxt events. We will use the `nuxt.hook()` passing in the value of `listen` followed by an async function. In this function we need to pass in the server, followed by the port.
+We want to start the ngrok tunnel when the nuxt sever is listening. To do that we need a way to hook into Nuxt and listen for a port so we can connect. That's where Nuxt hooks come in. [Nuxt hooks](https://nuxtjs.org/docs/2.x/internals-glossary/internals-nuxt) are listeners to Nuxt events. We will use the `nuxt.hook()` passing in the value of `listen` followed by an async function. In this function we need to pass in the server, followed by the port.
 
 ```js{}[modules/ngrok/index.js]
 import ngrok from 'ngrok'
@@ -292,7 +292,7 @@ Let's run the dev server and now you should see your URL from ngrok printed out 
 
 In general we probably won't want to print the URL onto the page. It would be much better if we could add it to the Nuxt CLI so we can see it every time we run the dev command and be able to click and open it from there. We can then share that link with whoever we want without having to expose it in our .vue file or in our console.
 
-We can access the CLI through the `nuxt.options`. You can see this by logging the `nuxt.options`to the console and searching for cli. If you do you will see that we have a [`badgeMessages`](/docs/2.x/configuration-glossary/configuration-cli#badgemessages) property. This is the green box that shows us the messages of Environment, Rendering and Target as well as what port the app is listening on.
+We can access the CLI through the `nuxt.options`. You can see this by logging the `nuxt.options`to the console and searching for cli. If you do you will see that we have a [`badgeMessages`](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-cli#badgemessages) property. This is the green box that shows us the messages of Environment, Rendering and Target as well as what port the app is listening on.
 
 We can use the `push()` method to push our URL to the Nuxt CLI.
 
@@ -351,7 +351,7 @@ import chalk from 'chalk'
 
 You will now see when running the dev command that we have our Public URL with the link underlined and in a yellow color. This can then be clicked and opened and of course shared with anyone, anywhere in the world so they can watch your changes in dev mode live.
 
-![nuxt cli](/blog/creating-nuxt-module/nuxt-cli.png)
+![nuxt cli](https://nuxtjs.org/blog/creating-nuxt-module/nuxt-cli.png)
 
 ## Closing our ngrok
 
@@ -420,7 +420,7 @@ As of today we are working on improving this template to make it more user frien
 
 ## Further exploration
 
-Check our our [CodeSandbox example](/examples/modules-internal) for this module.
+Check our our [CodeSandbox example](https://nuxtjs.org/examples/modules-internal) for this module.
 
 Check out our published [ngrok module](https://ngrok.nuxtjs.org/).
 

@@ -13,7 +13,8 @@ export const clientAsyncData = (_app, $nuxt: any) => {
     const loadComponents = function (components?: Set<string>) {
       if (!components) return
       return Array.from(components).map(async function (name) {
-        if (!loadedComponents.has(name) && typeof Vue.component(name) === 'function') {
+        const component: any = Vue.component(name)
+        if (!loadedComponents.has(name) && typeof component === 'function' && !component.options) {
           loadedComponents.add(name)
           try {
             // @ts-ignore
@@ -32,7 +33,7 @@ export const clientAsyncData = (_app, $nuxt: any) => {
         $nuxt.fetchPayload = async function (...args) {
           const payload = await originalFetchPayload(...args)
 
-          await loadComponents(payload.fetch?._lazyComponents)
+          // await loadComponents(payload.fetch?._lazyComponents)
           await loadComponents(new Set(payload.data[0]?.page?.template))
 
           return payload
