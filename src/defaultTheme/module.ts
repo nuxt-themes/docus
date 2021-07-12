@@ -142,14 +142,14 @@ export default <Module>function themeSetupModule() {
       // Register the root `components` directory
       dirs.push({
         path: componentsDirPath,
-        global: true
+        isAsync: false
       })
 
       // Check for sub directories
       const subDirs = await glob(componentsDirPath + '/**/')
 
       // Register each subdirectories
-      subDirs.forEach((path: string) => dirs.push({ path, global: true }))
+      subDirs.forEach((path: string) => dirs.push({ path, isAsync: false }))
     } else {
       // Watch existence of root `components` directory
       options.watch.push(componentsDirPath)

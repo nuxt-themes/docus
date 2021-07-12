@@ -1,7 +1,6 @@
 import { withTrailingSlash } from 'ufo'
 import { ref, computed } from '@nuxtjs/composition-api'
 import { DocusAddonContext, DocusNavigationGetParameters, NavItem } from '../../../types'
-import { useReactivePath } from './reactivePath'
 import { useDocusTemplates } from './templates'
 
 /**
@@ -9,10 +8,7 @@ import { useDocusTemplates } from './templates'
  */
 export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) => {
   // Nuxt context
-  const { app, route } = context
-
-  // Reactive router path
-  const { path } = useReactivePath(app, route)
+  const { app } = context
 
   // Init navigation object if not preset
   if (!state.navigation) state.navigation = {}
@@ -130,7 +126,7 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
    * Check if a "to" path is the currently active path.
    */
   function isLinkActive(to: string) {
-    return withTrailingSlash(path.value) === withTrailingSlash(context.$contentLocalePath(to))
+    return withTrailingSlash(state.currentPath) === withTrailingSlash(context.$contentLocalePath(to))
   }
 
   /**
@@ -140,9 +136,9 @@ export const useDocusNavigation = ({ context, state, api }: DocusAddonContext) =
     // eslint-disable-next-line no-unused-expressions
     fetchCounter.value
 
-    // Calcualte navigatin based on current path
+    // Calculate the navigation based on current path
     return get({
-      from: path.value
+      from: state.currentPath
     })
   })
 

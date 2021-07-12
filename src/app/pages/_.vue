@@ -1,7 +1,3 @@
-<template>
-  <Component :is="page.template" :key="page.template" :page="page" />
-</template>
-
 <script>
 import Vue from 'vue'
 import { withoutTrailingSlash } from 'ufo'
@@ -41,19 +37,33 @@ export default defineComponent({
     page.template = $docus.getPageTemplate(page)
 
     // Preload the component on client-side navigation
-    const component = await Vue.component(page.template)()
+    let component = Vue.component(page.template)
+    if (typeof component === 'function' && !component.options) {
+      component = await component()
+      if (!component.options) {
+        component = Vue.extend(component)
+      }
+    }
 
     // Set layout defaults for this template
-    if (component.templateOptions) templateOptions = { ...templateOptions, ...component.templateOptions }
+    if (component.options.templateOptions) {
+      templateOptions = { ...templateOptions, ...component.options.templateOptions }
+    }
 
     // Set layout from page
-    if (page.layout) templateOptions = { ...templateOptions, ...page.layout }
+    if (page.layout) {
+      templateOptions = { ...templateOptions, ...page.layout }
+    }
 
-    // Set template options
-    $docus.layout.value = templateOptions
+    if (process.server) {
+      // Set template options
+      $docus.layout.value = templateOptions
 
-    // Set Docus runtime current page
-    $docus.currentPage.value = page
+      // Set Docus runtime current page
+      $docus.currentPage.value = page
+      // Update navigation path to update currentNav
+      $docus.currentPath.value = `/${params.pathMatch}`
+    }
 
     // Redirect to another page if `navigation.redirect` is declared
     if (page.navigation && page.navigation.redirect) redirect(localePath(page.navigation.redirect))
@@ -106,15 +116,20 @@ export default defineComponent({
       ]
     }
   },
-
   created() {
-    this.$docus.layout.value = this.templateOptions
-  },
+    if (process.client) {
+      // Set template options
+      this.$docus.layout.value = this.templateOptions
 
+      // Set Docus runtime current page
+      this.$docus.currentPage.value = this.page
+      // Update navigation path to update currentNav
+      this.$docus.currentPath.value = `/${this.$route.params.pathMatch}`
+    }
+  },
   mounted() {
     if (this.page?.version) localStorage.setItem(`page-${this.page.slug}-version`, this.page.version)
   },
-
   methods: {
     mergeMeta(to, from) {
       from.forEach(newMeta => {
@@ -125,6 +140,14 @@ export default defineComponent({
         }
       })
     }
+  },
+
+  render(h) {
+    return h(this.page.template, {
+      props: {
+        page: this.page
+      }
+    })
   }
 })
 </script>

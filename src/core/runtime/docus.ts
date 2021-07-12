@@ -21,13 +21,14 @@ export const createDocus = async (
   // Nuxt instance proxy
   let $nuxt: any
 
-  const { ssrContext, nuxtState = {} } = context
+  const { ssrContext, nuxtState = {}, route } = context
 
   // Prevent hydration mismatch: inject templateOptions from ssr payload before page load
   const templateOptions = nuxtState.data?.[0].templateOptions || {}
 
   // State
   const state = reactive({
+    currentPath: `/${route.params.pathMatch}`,
     currentPage: null,
     settings: null,
     theme: null,

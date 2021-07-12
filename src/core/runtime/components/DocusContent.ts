@@ -118,9 +118,10 @@ function processNode(node, h, doc) {
     children.push(...processQueue.map(node => processNode(node, h, doc)))
   }
 
-  if (process.server && typeof Vue.component(pascalCase(node.tag)) === 'function') {
-    lazyComponents.add(pascalCase(node.tag))
-  }
+  // Disable in the meantime
+  // if (process.server && typeof Vue.component(pascalCase(node.tag)) === 'function') {
+  //   lazyComponents.add(pascalCase(node.tag))
+  // }
   return h(node.tag, data, children)
 }
 

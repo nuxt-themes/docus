@@ -170,6 +170,7 @@ export interface DocusSettings<T = DefaultThemeSettings> {
 
 export type DocusState<T = DefaultThemeSettings> = {
   // Core
+  currentPath: string
   currentPage: DocusDocument | null
   settings: DocusSettings<T> | null
   navigation: DocusNavigation

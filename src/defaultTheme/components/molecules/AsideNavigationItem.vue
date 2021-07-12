@@ -3,7 +3,7 @@
     <h5
       v-if="title"
       class="py-2 text-base font-semibold text-gray-900 cursor-pointer dark:text-gray-100"
-      :class="[isActive ? '' : 'hover:d-primary-text-hover']"
+      :class="[isActive ? '' : 'lg:hover:d-primary-text-hover']"
       @click="toggle"
     >
       {{ title }}
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { computed, watch, defineComponent, ref, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {

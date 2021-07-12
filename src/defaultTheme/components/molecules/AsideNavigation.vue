@@ -63,7 +63,7 @@
                 :key="link.to"
                 :title="link.title"
                 :docs="link.children"
-                :collapse="link.collapse === true"
+                :collapse="link.collapse"
                 @toggle="toggleLinks(link)"
               />
               <AsideNavigationItem v-else :key="link.to" :docs="[link]" />
@@ -83,8 +83,10 @@ export default defineComponent({
   setup() {
     const { $docus } = useContext()
 
+    // Replicate currentNav locally
     const links = ref($docus.currentNav.value.links)
 
+    // Watch updates on currentNav
     watch(
       $docus.currentNav,
       newVal => {
@@ -93,22 +95,38 @@ export default defineComponent({
       { deep: true }
     )
 
-    function toggleLinks(link) {
-      const newLinks = $docus.currentNav.value.links.map(l => {
-        l = { ...l }
+    // Uncollapse current category on first navigation
+    watch(
+      links,
+      newVal => {
+        newVal.forEach(link => {
+          if (link.children && link.children.length > 0) {
+            const isCategoryActive = link.children.some(document => $docus.isLinkActive(document.to))
 
-        if (link.slug === l.slug) {
-          l.collapse = !link.collapse
+            if (isCategoryActive) {
+              link.collapse = false
+            }
+          }
+        })
+      },
+      { immediate: true }
+    )
+
+    // Toggle a link
+    const toggleLinks = link => {
+      links.value = links.value.map(l => {
+        if (l.slug === link.slug) {
+          l.collapse = !l.collapse
         }
 
         return l
       })
-
-      links.value = newLinks
     }
 
+    // Get parent
     const parent = computed(() => $docus.currentNav.value.parent)
 
+    // Get last release value
     const lastRelease = computed(() => $docus.lastRelease?.value)
 
     return { toggleLinks, links, parent, lastRelease }
