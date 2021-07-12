@@ -46,17 +46,7 @@ export default <Module>function () {
     })
 
     nuxt.hook('render:setupMiddleware', async () => {
-      const middleware = (await server).middlewares
-
-      // remove Vite's base middleware since it's already handled by connect route
-      // it's right before '/__open-in-editor' middleware
-      // await for https://github.com/vitejs/vite/pull/4057
-      const viteBaseMiddlewareIndex = middleware.stack.findIndex(i => i.route === '/__open-in-editor') - 1
-      if (viteBaseMiddlewareIndex >= 0) {
-        middleware.stack.splice(viteBaseMiddlewareIndex, 1)
-      }
-
-      nuxt.server.app.use('/admin/', middleware)
+      nuxt.server.app.use('/admin/', (await server).middlewares)
     })
   } else {
     // use built dist
