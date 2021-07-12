@@ -174,7 +174,7 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
         data.close()
         effects.enter('directiveContainerSection')
 
-        return chunkStart(code)
+        return lineStart(code)
       }
       return effects.attempt(data.tokenize, data.sectionOpen, _chunkStart)
     } else {
