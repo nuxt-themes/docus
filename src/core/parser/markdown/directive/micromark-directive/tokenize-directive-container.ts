@@ -1,4 +1,6 @@
 import { Effects, Okay, NotOkay } from 'micromark/dist/shared-types'
+import markdownSpace from 'micromark/dist/character/markdown-space'
+import asciiAlpha from 'micromark/dist/character/ascii-alpha'
 import markdownLineEnding from 'micromark/dist/character/markdown-line-ending'
 import createSpace from 'micromark/dist/tokenize/factory-space'
 import sizeChunks from 'micromark/dist/util/size-chunks'
@@ -9,6 +11,10 @@ import { Codes, ContainerSequenceSize, SectionSequenceSize } from './constants'
 
 const label: any = { tokenize: tokenizeLabel, partial: true }
 const attributes: any = { tokenize: tokenizeAttributes, partial: true }
+
+// section sparator
+const sectionSeparatorCode = Codes.hash
+const sectionSeparatorLength = 1
 
 /**
  * Calculate line indention size, line indention could be consists of multiple `linePrefix` events
@@ -28,12 +34,23 @@ function linePrefixSize(events) {
   return size
 }
 
+enum MarkDownDataSectionState {
+  NotSeen = 0,
+  Open = 1,
+  Closed = 2
+}
+
 function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
   const self = this
   const initialPrefix = linePrefixSize(this.events)
   let sizeOpen = 0
   let previous
   const containerSequenceSize = []
+
+  /**
+   * data tokenizer
+   */
+  const data = tokenizeData.call(this, effects, lineStart)
 
   return start
 
@@ -60,19 +77,23 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     function closingSectionSequence(code: number) {
-      if (code === Codes.dash) {
+      if (code === sectionSeparatorCode) {
         effects.consume(code)
         size++
         return closingSectionSequence
       }
 
-      if (size < SectionSequenceSize) return nok(code)
+      if (size !== sectionSeparatorLength) return nok(code)
       if (sectionIndentSize !== initialPrefix) return nok(code)
+
+      // non ascii chars are invalid
+      if (!asciiAlpha(code)) return nok(code)
 
       effects.exit('directiveContainerSectionSequence')
       return createSpace(effects, ok, 'whitespace')(code)
     }
   }
+
   function sectionOpen(code: number) {
     effects.enter('directiveContainerSection')
 
@@ -147,6 +168,19 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
     }
 
     effects.enter('directiveContainerContent')
+
+    if (!containerSequenceSize.length && !data.isClosed() && (code === Codes.dash || markdownSpace(code))) {
+      function _chunkStart(code) {
+        data.close()
+        effects.enter('directiveContainerSection')
+
+        return lineStart(code)
+      }
+      return effects.attempt(data.tokenize, data.sectionOpen, _chunkStart)
+    } else {
+      data.close()
+    }
+
     effects.enter('directiveContainerSection')
     return lineStart(code)
   }
@@ -156,8 +190,13 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
       return after(code)
     }
 
-    if (!containerSequenceSize.length && (code === Codes.dash || code === Codes.space)) {
+    // detect slots
+    if (!containerSequenceSize.length && (code === sectionSeparatorCode || code === Codes.space)) {
       return effects.attempt({ tokenize: tokenizeSectionClosing, partial: true } as any, sectionOpen, chunkStart)
+    }
+    // detect slots
+    if (!containerSequenceSize.length && !data.isClosed() && (code === Codes.dash || code === Codes.space)) {
+      return effects.attempt(data.tokenize, data.sectionOpen, chunkStart)
     }
 
     const attempt = effects.attempt({ tokenize: tokenizeClosingFence, partial: true } as any, after, chunkStart)
@@ -287,6 +326,76 @@ function tokenize(effects: Effects, ok: Okay, nok: NotOkay) {
 
       return ok(code)
     }
+  }
+}
+
+function tokenizeData(effects, ok) {
+  const initialPrefix = linePrefixSize(this.events)
+  let sectionState: MarkDownDataSectionState = MarkDownDataSectionState.NotSeen
+  const data = {
+    state: () => sectionState,
+    close: () => {
+      sectionState = MarkDownDataSectionState.Closed
+    },
+    isClosed: () => sectionState === MarkDownDataSectionState.Closed,
+    tokenize: { tokenize: tokenizeDataSection, partial: true } as any,
+    sectionOpen
+  }
+  return data
+  function tokenizeDataSection(effects: Effects, ok: Okay, nok: NotOkay) {
+    const self = this
+    let size = 0
+    let sectionIndentSize = 0
+
+    return closingPrefixAfter
+
+    function closingPrefixAfter(code: number) {
+      if (data.isClosed()) {
+        return nok(code)
+      }
+      if (markdownSpace(code)) {
+        effects.consume(code)
+        sectionIndentSize += 1
+        return closingPrefixAfter
+      }
+      if (sectionIndentSize === 0) {
+        sectionIndentSize = linePrefixSize(self.events)
+      }
+      if (sectionState === MarkDownDataSectionState.Open) {
+        effects.exit('directiveContainerDataSection')
+      }
+
+      effects.enter('directiveContainerSectionSequence')
+      return closingSectionSequence(code)
+    }
+
+    function closingSectionSequence(code: number) {
+      if (code === Codes.dash || markdownSpace(code)) {
+        effects.consume(code)
+        size++
+        return closingSectionSequence
+      }
+
+      if (size < SectionSequenceSize) return nok(code)
+
+      if (sectionIndentSize !== initialPrefix) return nok(code)
+      if (!markdownLineEnding(code)) return nok(code)
+
+      effects.exit('directiveContainerSectionSequence')
+      return createSpace(effects, ok, 'whitespace')(code)
+    }
+  }
+
+  function sectionOpen(code: number) {
+    if (sectionState === MarkDownDataSectionState.NotSeen) {
+      effects.enter('directiveContainerDataSection')
+      sectionState = MarkDownDataSectionState.Open
+    } else {
+      sectionState = MarkDownDataSectionState.Closed
+      effects.enter('directiveContainerSection')
+    }
+
+    return createSpace(effects, ok, 'whitespace')(code)
   }
 }
 

@@ -52,6 +52,9 @@ export function nodeChildren(vnode) {
  * @returns text content of given node
  */
 export function nodeTextContent(vnode: any) {
+  // Return empty string is vnode is falsy
+  if (!vnode) return ''
+
   if (Array.isArray(vnode)) {
     return vnode.map(nodeTextContent).join('')
   }
