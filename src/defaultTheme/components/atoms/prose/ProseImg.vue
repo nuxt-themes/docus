@@ -24,9 +24,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss" scoped>
->>> img {
-  @apply my-[1em];
-}
-</style>
