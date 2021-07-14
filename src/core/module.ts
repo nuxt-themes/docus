@@ -34,7 +34,7 @@ export default <Module>async function docusModule() {
   const isSSG = options.dev === false && (options.target === 'static' || options._generate || options.mode === 'spa')
 
   // Inject Docus Admin module in development
-  if (!isSSG) addModule(resolve(__dirname, '../admin'))
+  if (!isSSG) addModule(require.resolve('@docus/admin/src/index.ts'))
 
   const pluginOptions = {
     apiBase: '_docus',
