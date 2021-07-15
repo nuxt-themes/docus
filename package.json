@@ -40,7 +40,7 @@
     "start:nuxtjs": "nuxt start nuxtjs.org",
     "play": "ADMIN_DEV=true nuxt dev playground",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "prepare": "yarn link && yarn link docus && vue-demi-switch 3 vue3",
+    "prepare": "yarn link && yarn link docus",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish",
     "test": "yarn lint && echo 'TODO tests'",
     "clean:nuxt": "rm -rf .nuxt docs/.nuxt playground/.nuxt nuxtjs.org/.nuxt",
@@ -117,7 +117,6 @@
     "unstorage": "^0.1.6",
     "upath": "^2.0.1",
     "vue": "^2.6.14",
-    "vue-demi": "^0.10.0",
     "vue-docgen-api": "^4.40.0",
     "vue-plausible": "^1.1.4"
   },
