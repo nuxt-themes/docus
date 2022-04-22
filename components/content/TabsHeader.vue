@@ -28,7 +28,7 @@ defineEmits(['update:activeTabIndex'])
       >
         {{ label }}
       </button>
-      <span ref="highlight-underline" class="absolute -z-1 highlight-underline h-full xs:py-1.5">
+      <span ref="highlight-underline" class="absolute -z-[1] highlight-underline h-full xs:py-1.5">
         <span class="flex w-full h-full bg-gray-300 dark:bg-gray-600 rounded-md" />
       </span>
     </div>

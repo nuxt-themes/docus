@@ -96,9 +96,11 @@ export default defineNuxtConfig({
   css: [
     resolveThemeDir('assets/css/main.css'),
     resolveThemeDir('assets/css/fonts.css'),
+    resolveThemeDir('assets/css/tailwind.css'),
   ],
   tailwindcss: {
     viewer: false,
+
     config: {
       darkMode: 'class',
       theme: {
@@ -124,12 +126,13 @@ export default defineNuxtConfig({
         resolveThemeDir('pages/**/*.{mjs,vue,js,ts}'),
       ],
       safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map(number => `pl-[${number}px]`),
+      cssPath: resolveThemeDir('assets/css/tailwind.css'),
     },
   },
   content: {
     highlight: {
       theme: 'one-dark-pro',
-      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml'],
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash'],
     },
   },
   colorMode: {

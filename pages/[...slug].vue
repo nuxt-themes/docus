@@ -12,5 +12,13 @@ else
 </script>
 
 <template>
-  <Content v-if="page" :document="page" />
+  <Content v-if="page" class="content" :document="page" />
 </template>
+
+<style scoped>
+.content {
+  & > :first-child {
+    margin-top: 0 !important;
+  }
+}
+</style>

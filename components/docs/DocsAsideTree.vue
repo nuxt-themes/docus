@@ -30,6 +30,7 @@ function onClick(link) {
   if (link.children?.length) {
     // Open dir when element is collapsible
     openDir(link.slug)
+
     // Select element for mobile nav
     if (props.max !== null && props.level + 1 === props.max)
       emit('select', link)
@@ -44,13 +45,17 @@ function openDir(slug, force?) {
   isChildOpen[slug] = force ? true : !isChildOpen[slug]
 }
 
-watch(() => route.path, () => {
-  const paths = route.path.split('/')
-  for (let i = paths.length - 1; i > 1; i--) {
-    paths.pop()
-    openDir(paths.join('/'), true)
-  }
-}, { immediate: true })
+watch(
+  () => route.path,
+  () => {
+    const paths = route.path.split('/')
+    for (let i = paths.length - 1; i > 1; i--) {
+      paths.pop()
+      openDir(paths.join('/'), true)
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -60,24 +65,25 @@ watch(() => route.path, () => {
       :key="link.slug"
       :class="{
         'border-l-2': level > 0,
-        'u-border-gray-900': isActive(link),
-        'u-border-gray-300 hover:u-border-gray-900': !isActive(link)
+        'border-primary-600': isActive(link),
+        'border-primary-300 hover:border-primary-300': !isActive(link)
       }"
     >
       <NuxtLink
-        class="block py-1.5 flex items-center justify-between focus:outline-none cursor-pointer"
+        class="block py-1.5 flex items-center justify-between focus:outline-none cursor-pointer font-semibold"
         :exact="link.exact"
         :class="{
-          'pl-4 lg:text-sm': level > 0,
+          'pl-4': level > 0,
+          'text-xl !text-primary': level === 0,
           '!pt-0': level === 0 && index === 0,
-          'font-semibold u-text-gray-900': isActive(link),
-          'font-medium u-text-gray-500 hover:u-text-gray-900 focus:u-text-gray-700': !isActive(link)
+          'text-secondary-active': isActive(link),
+          'text-secondary text-secondary-hover': !isActive(link)
         }"
         @click.stop.prevent="onClick(link)"
       >
         <span>{{ link.title }}</span>
 
-        <!-- <UIcon v-if="link.icon" :name="link.icon" class="w-5 h-5 u-text-gray-500" /> -->
+        <Icon v-if="link.icon" :name="link.icon" class="w-5 h-5 u-text-gray-500" />
       </NuxtLink>
 
       <DocsAsideTree

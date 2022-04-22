@@ -5,7 +5,7 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "preview": "nuxi preview",
-    "lint": "eslint --ext .ts,.js,.vue ."
+    "lint": "eslint --ext .ts,.js,.vue,.css ."
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.20.6",

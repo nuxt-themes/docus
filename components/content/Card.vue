@@ -33,7 +33,7 @@ const isImage = (icon: string) => String(icon).includes('.')
         <h3 class="mb-2 font-semibold tracking-tight inline mr-1">
           {{ title }}
         </h3>
-        <div class="inline font-medium text-gray-400 dark:text-gray-500">
+        <div class="inline font-medium text-primary">
           <slot name="description">
             <p v-if="description" class="inline font-medium tracking-tight">
               {{ description }}

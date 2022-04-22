@@ -24,29 +24,24 @@ defineProps({
 
 <template>
   <div class="prose-code w-full group">
+    <span v-if="filename" class="filename transition-base top-1 right-1 opacity-100 absolute right-0 z-0 m-1 py-1.5 px-2 text-gray-400 bg-gray-900 rounded-md font-mono text-xs leading-none tracking-tight">
+      {{ filename }}
+    </span>
+
     <slot />
 
-    <CopyButton class="copy-button opacity-100 transition-all duration-300" />
+    <CopyButton class="copy-button opacity-0 transition-base" />
   </div>
 </template>
 
-<style>
-.prose {
-  li {
-    .prose-code {
-      @apply my-4;
-    }
-  }
-}
-</style>
-
 <style lang="postcss" scoped>
 div {
-  @apply flex text-gray-600 dark:text-gray-100 bg-gray-50 dark:bg-gray-900;
+  @apply relative rounded-lg overflow-hidden my-4;
 }
 
 :deep(pre) {
-  @apply py-4 flex flex-1;
+  @apply flex flex-1 p-4 my-0 overflow-x-auto leading-normal;
+  background-color: #282c34;
 }
 
 :deep(code) {
@@ -59,5 +54,15 @@ div {
 
 :deep(.line.highlight) {
   background-color: #3f3f46;
+}
+
+.group:hover {
+  .filename {
+    @apply opacity-0;
+  }
+
+  .copy-button {
+    @apply opacity-100;
+  }
 }
 </style>
