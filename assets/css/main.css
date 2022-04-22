@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply text-gray-900 dark:text-gray-50 bg-white;
+
+  &.dark {
+    @apply bg-gray-900;
+  }
+}
+
+body {
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200;
+}
+
+@layer components {
+  .text-secondary {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  .text-secondary-hover {
+    @apply hover:text-primary-500 hover:dark:text-primary-400;
+  }
+
+  .text-secondary-group-hover {
+    @apply group-hover:dark:text-primary-400 group-hover:text-primary-500;
+  }
+
+  .transition-base {
+    @apply transition-colors duration-100 ease-in-out;
+  }
+}
+
+.icon-base {
+  @apply transition-base text-secondary text-secondary-hover;
+}
