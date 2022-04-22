@@ -1,0 +1,3 @@
+<template>
+  <IconNuxt />
+</template>

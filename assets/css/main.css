@@ -1,0 +1,11 @@
+html {
+  @apply text-primary bg-white overflow-y-scroll;
+
+  &.dark {
+    @apply bg-gray-900;
+  }
+}
+
+body {
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200;
+}

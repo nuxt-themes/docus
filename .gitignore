@@ -1,15 +1,9 @@
 node_modules
-*.iml
-.idea
-*.log*
-.nuxt*
-.vscode
-.DS_Store
-coverage
-dist
-sw.*
+*.log
+.nuxt
+nuxt.d.ts
+.output
 .env
-dist
-
-# TODO: Remove that
-!1.logos.md
+package-lock.json
+framework
+.yarn/cache
