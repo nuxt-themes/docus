@@ -100,7 +100,7 @@ export default defineNuxtConfig({
   ],
   tailwindcss: {
     viewer: false,
-
+    cssPath: resolveThemeDir('assets/css/tailwind.css'),
     config: {
       darkMode: 'class',
       theme: {
@@ -121,12 +121,12 @@ export default defineNuxtConfig({
         require('@tailwindcss/aspect-ratio'),
       ],
       content: [
+        resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'),
         resolveThemeDir('components/**/*.{mjs,vue,js,ts}'),
         resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'),
         resolveThemeDir('pages/**/*.{mjs,vue,js,ts}'),
       ],
       safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map(number => `pl-[${number}px]`),
-      cssPath: resolveThemeDir('assets/css/tailwind.css'),
     },
   },
   content: {
