@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { useContent, useRouter } from '#imports'
+const { page } = useDocus()
 
-const router = useRouter()
-
-const { page, fetchPage } = useContent()
-
-await fetchPage()
-
-if (page.value && page.value.layout)
-  router.currentRoute.value.meta.layout = page.value.layout
-else
-  router.currentRoute.value.meta.layout = 'default'
+definePageMeta({
+  middleware: ['page'],
+})
 </script>
 
 <template>
