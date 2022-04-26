@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, onMounted, ref, useColorMode } from '#imports'
+
 const props = defineProps({
   src: {
     type: String,

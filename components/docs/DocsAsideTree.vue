@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
+import { reactive, useRoute, useRouter, watch } from '#imports'
 
 const props = defineProps({
   tree: {

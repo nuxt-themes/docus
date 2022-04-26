@@ -1,5 +1,5 @@
 <template>
-  <hr />
+  <hr>
 </template>
 
 <style lang="postcss" scoped>

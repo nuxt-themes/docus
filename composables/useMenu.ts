@@ -1,3 +1,5 @@
+import { useState } from '#imports'
+
 export const useMenu = () => {
   // Menu visible reference
   const visible = useState('menu-visible', () => false)

@@ -1,40 +1,34 @@
-<script>
+<script setup lang="ts">
 import Clipboard from 'clipboard'
+import { nextTick, onMounted, ref } from '#imports'
 
-export default defineComponent({
-  props: {
-    snippet: {
-      type: String,
-      required: true,
-    },
-  },
-  setup() {
-    const copyInstall = ref()
-    const copied = ref(false)
-
-    const setupCopyInstall = () => {
-      if (!copyInstall.value)
-        return nextTick(setupCopyInstall)
-
-      const instance = new Clipboard(copyInstall.value)
-
-      instance.on('success', () => {
-        copied.value = true
-
-        setTimeout(() => {
-          copied.value = false
-        }, 1000)
-      })
-    }
-
-    onMounted(() => setupCopyInstall())
-
-    return {
-      copyInstall,
-      copied,
-    }
+const props = defineProps({
+  snippet: {
+    type: String,
+    required: true,
   },
 })
+
+const copyInstall = ref()
+const copied = ref(false)
+
+const setupCopyInstall = () => {
+  if (!copyInstall.value)
+    return nextTick(setupCopyInstall)
+
+  const instance = new Clipboard(copyInstall.value)
+
+  instance.on('success', () => {
+    copied.value = true
+
+    setTimeout(() => {
+      copied.value = false
+    }, 1000)
+  })
+}
+
+onMounted(() => setupCopyInstall())
+
 </script>
 
 <template>

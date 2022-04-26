@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useTheme } from '#imports'
+
 const { footer } = useTheme()
 
 const icons = computed(() => footer?.icons || [])

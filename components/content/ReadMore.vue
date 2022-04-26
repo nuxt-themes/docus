@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { splitByCase, upperFirst } from 'scule'
+import { computed } from '#imports'
 
 const props = defineProps({
   link: {

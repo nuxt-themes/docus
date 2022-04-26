@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { ref } from '#imports'
+
 const props = defineProps({
   poster: {
     type: String,

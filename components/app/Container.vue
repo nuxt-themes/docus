@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { classNames, computed } from '#imports'
+
 const props = defineProps({
   padded: {
     type: Boolean,

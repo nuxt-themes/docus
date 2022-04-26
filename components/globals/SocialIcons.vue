@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useTheme } from '#imports'
+
 defineProps({
   size: {
     type: String,

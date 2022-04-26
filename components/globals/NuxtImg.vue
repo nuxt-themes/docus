@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
+import { computed, useColorMode } from '#imports'
+
 export interface NuxtImg {
   light: string
   dark: string

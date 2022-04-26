@@ -1,5 +1,6 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
+import { computed, fetchContentNavigation, onBeforeUnmount, onMounted, queryContent, useNuxtApp, useRoute, useState } from '#imports'
 
 let closeHook
 

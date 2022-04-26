@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, useContent } from '#imports'
+
 const { page } = useContent()
 
 const isOpen = ref(false)

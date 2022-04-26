@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useContent, useRouter } from '#imports'
+
 const router = useRouter()
 
 const { page, fetchPage } = useContent()

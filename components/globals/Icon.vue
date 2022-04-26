@@ -1,7 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue'
 import { Icon } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
+import { ref, watch } from '#imports'
 
 const props = defineProps({
   name: {

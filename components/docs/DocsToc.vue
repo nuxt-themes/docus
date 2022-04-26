@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useContent, useRoute, useScrollToHeading, useScrollspy, watch } from '#imports'
+
 const route = useRoute()
 
 const { activeHeadings, updateHeadings } = useScrollspy()

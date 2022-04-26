@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useContent } from '#imports'
+
 const { navigation } = useContent()
 
 const tree = computed(() => {

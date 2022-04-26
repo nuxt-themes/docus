@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useTheme } from '#imports'
+
 const theme = useTheme()
 const hasLogo = computed(() => theme.header.logo)
 const hasTitle = computed(() => theme.header.title)

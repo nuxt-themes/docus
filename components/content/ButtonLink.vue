@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { hasProtocol } from 'ufo'
+import { computed } from '#imports'
 
 const props = defineProps({
   href: {

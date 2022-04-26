@@ -1,3 +1,5 @@
+import { useRuntimeConfig } from '#imports'
+
 export const useTheme = () => {
   const { theme } = useRuntimeConfig()
 

@@ -1,4 +1,6 @@
 <script setup>
+import { useContent } from '#imports'
+
 const { page, fetchNavigation } = useContent()
 
 await fetchNavigation()

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useColorMode } from '#imports'
+
 const colorMode = useColorMode()
 
 type ColorMode = 'light' | 'dark'
@@ -12,9 +14,7 @@ const mode = computed<ColorMode>({
   },
 })
 
-const onClick = () => {
-  mode.value === 'light' ? (mode.value = 'dark') : (mode.value = 'light')
-}
+const onClick = () => (mode.value === 'light' ? (mode.value = 'dark') : (mode.value = 'light'))
 </script>
 
 <template>

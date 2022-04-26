@@ -1,4 +1,5 @@
 import type { Ref } from 'vue'
+import { onBeforeMount, onBeforeUnmount, ref, watch } from '#imports'
 
 /**
  * Scrollspy allows you to watch visible headings in a specific page.

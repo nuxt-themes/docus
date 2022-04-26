@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Clipboard from 'clipboard'
+import { onMounted, ref } from '#imports'
 
 const copy = ref()
 const state = ref('init')
