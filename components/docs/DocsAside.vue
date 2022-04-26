@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, useContent } from '#imports'
+import { computed, useDocus } from '#imports'
 
-const { navigation } = useContent()
+const { navigation } = useDocus()
 
 const tree = computed(() => {
   return navigation.value.filter(

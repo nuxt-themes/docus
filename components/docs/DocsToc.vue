@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useContent, useRoute, useScrollToHeading, useScrollspy, watch } from '#imports'
+import { useDocus, useRoute, useScrollToHeading, useScrollspy, watch } from '#imports'
 
 const route = useRoute()
 
 const { activeHeadings, updateHeadings } = useScrollspy()
 
-const { toc, prev, next } = useContent()
+const { toc, prev, next } = useDocus()
 
 watch(
   () => route.path,
@@ -13,11 +13,11 @@ watch(
     if (process.client) {
       setTimeout(() => {
         updateHeadings([
-          ...document.querySelectorAll('.prose h1'),
-          ...document.querySelectorAll('.prose h2'),
-          ...document.querySelectorAll('.prose h3'),
+          ...document.querySelectorAll('.content h1'),
+          ...document.querySelectorAll('.content h2'),
+          ...document.querySelectorAll('.content h3'),
         ])
-      }, 1000)
+      }, 100)
     }
   }, {
     immediate: true,
@@ -38,7 +38,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       <span>Previous page</span>
     </NuxtLink>
 
-    <template v-if="toc.length">
+    <template v-if="toc?.links?.length">
       <div class="flex lg:flex-row-reverse items-center font-semibold gap-x-3">
         <div class="flex-shrink-0 p-1 rounded-md">
           <Icon name="heroicons-outline:view-grid" class="w-6 h-6" />
@@ -48,7 +48,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       </div>
 
       <ul class="pl-3 lg:pr-3 mr-1">
-        <li v-for="link in toc" :key="link.text" class="group border-l-2 lg:border-r-2 lg:border-l-0 min-w-0 lg:text-right" :class="activeHeadings.includes(link.id) ? 'u-border-gray-900' : 'u-border-gray-300'">
+        <li v-for="link in toc.links" :key="link.text" class="group border-l-2 lg:border-r-2 lg:border-l-0 min-w-0 lg:text-right" :class="activeHeadings.includes(link.id) ? 'u-border-gray-900' : 'u-border-gray-300'">
           <a
             :href="`#${link.id}`"
             class="text-secondary text-secondary-group-hover py-1 pl-3 lg:pr-3 block truncate"
