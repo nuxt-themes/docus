@@ -92,13 +92,11 @@ export default defineNuxtConfig({
     },
   ],
   css: [
-    resolveThemeDir('assets/css/main.css'),
     resolveThemeDir('assets/css/fonts.css'),
-    resolveThemeDir('assets/css/tailwind.css'),
   ],
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('assets/css/tailwind.css'),
+    cssPath: resolveThemeDir('assets/css/main.css'),
     config: {
       darkMode: 'class',
       theme: {
