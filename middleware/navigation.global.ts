@@ -1,5 +1,5 @@
 import { useDocusState } from '../utils/state'
-import { navigationQuery } from '../utils/queries'
+import { queryNavigation } from '../utils/queries'
 import { defineNuxtRouteMiddleware } from '#imports'
 
 export default defineNuxtRouteMiddleware(
@@ -7,6 +7,6 @@ export default defineNuxtRouteMiddleware(
     const { navigation } = useDocusState()
 
     if (!navigation.value)
-      await navigationQuery()
+      await queryNavigation()
   },
 )

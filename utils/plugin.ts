@@ -1,4 +1,4 @@
-import { navigationQuery, pageQuery, themeQuery } from './queries'
+import { queryNavigation, queryPage, queryTheme } from './queries'
 import { useRoute } from '#imports'
 
 /**
@@ -12,9 +12,9 @@ export default defineNuxtPlugin(
       async() => {
         const route = useRoute()
 
-        await navigationQuery()
-        await themeQuery()
-        await pageQuery(route)
+        await queryNavigation()
+        await queryTheme()
+        await queryPage(route)
       },
     )
   },

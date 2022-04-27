@@ -6,7 +6,7 @@ import { fileFromPath, findBottomLink } from './navigation'
 import { useDocusState } from './state'
 import { fetchContentNavigation, queryContent } from '#imports'
 
-export const pageQuery = async(route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
+export const queryPage = async(route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
   const path = withoutTrailingSlash(route.path)
   const splitted = path.split('/')
   const directory = splitted.slice(0, splitted.length - 1).join('/')
@@ -36,17 +36,17 @@ export const pageQuery = async(route: RouteLocationNormalized | RouteLocationNor
   }
   // Handle redirection in case the current path is not a page
   else if (file) {
-    return navigateTo(findBottomLink(file))
+    await navigateTo(findBottomLink(file))
   }
 }
 
-export const navigationQuery = async() => {
+export const queryNavigation = async() => {
   const { navigation } = useDocusState()
 
   navigation.value = await fetchContentNavigation()
 }
 
-export const themeQuery = async() => {
+export const queryTheme = async() => {
   const { theme } = useDocusState()
 
   // Fetch _theme.yml at `content/` root.

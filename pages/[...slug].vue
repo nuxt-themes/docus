@@ -1,13 +1,16 @@
 <script setup lang="ts">
-const { page } = useDocus()
-
 definePageMeta({
-  middleware: ['page'],
+  middleware: 'page',
 })
+
+const { page } = useDocus()
 </script>
 
 <template>
   <Content v-if="page" class="content" :document="page" />
+  <p v-else>
+    Page not found
+  </p>
 </template>
 
 <style scoped>

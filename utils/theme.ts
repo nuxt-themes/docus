@@ -32,7 +32,7 @@ export const defaultThemeConfig: ThemeConfig = {
   footer: {
     credits: {
       icon: 'IconNuxtLabs',
-      text: 'Made by Nuxt Labs',
+      text: 'Made by NuxtLabs',
     },
     icons: [
       {
