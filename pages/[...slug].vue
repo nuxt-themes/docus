@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: 'page',
+  middleware: ['page', 'components'],
 })
 
 const { page } = useDocus()
