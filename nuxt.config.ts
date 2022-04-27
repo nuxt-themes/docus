@@ -44,45 +44,53 @@ export default defineNuxtConfig({
   /**
    * Components
    */
+  // To enable for `components` middleware
+  //
+  // components: [
+  //   './components/app',
+  //   './components/docs',
+  //   './components/prose',
+  //   './components/globals',
+  //   './components/content',
+  //   {
+  //     prefix: '',
+  //     path: './components/icons',
+  //     global: true,
+  //   },
+  // ],
+  // To enable for working build
   components: [
-    './components/app',
-    './components/docs',
-    './components/prose',
-    './components/globals',
-    './components/content',
+    {
+      prefix: '',
+      path: './components/app',
+      global: true,
+    },
+    {
+      prefix: '',
+      path: './components/docs',
+      global: true,
+    },
+    {
+      prefix: '',
+      path: './components/prose',
+      global: true,
+    },
+    {
+      prefix: '',
+      path: './components/globals',
+      global: true,
+    },
+    {
+      prefix: '',
+      path: './components/content',
+      global: true,
+    },
     {
       prefix: '',
       path: './components/icons',
       global: true,
     },
   ],
-  // components: [
-  //   {
-  //     prefix: '',
-  //     path: './components/app',
-  //     global: true,
-  //   },
-  //   {
-  //     prefix: '',
-  //     path: './components/docs',
-  //     global: true,
-  //   },
-  //   {
-  //     prefix: '',
-  //     path: './components/prose',
-  //     global: true,
-  //   },
-  //   {
-  //     prefix: '',
-  //     path: './components/globals',
-  //     global: true,
-  //   },
-  //   {
-  //     prefix: '',
-  //     path: './components/content',
-  //     global: true,
-  //   },
-  // ],
   css: [
     resolveThemeDir('assets/css/main.css'),
     resolveThemeDir('assets/css/fonts.css'),
