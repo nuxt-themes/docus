@@ -6,41 +6,24 @@ import { resolve } from 'pathe'
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
 const resolveThemeDir = (path: string) => resolve(themeDir, path)
 
+const plugins = []
+
+// Only register the plugin in development as it's not needed in production
+if (process.env.NODE_ENV === 'development') {
+  plugins.push({
+    src: resolveThemeDir('utils/plugin.ts'),
+  })
+}
+
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       plausible: {
         domain: process.env.PLAUSIBLE_DOMAIN,
       },
-      theme: {
-        title: 'Docus',
-        twitter: '@docus_',
-        github: 'nuxtlabs/docus',
-        header: {
-          title: false,
-          logo: true,
-        },
-        footer: {
-          credits: {
-            icon: 'IconNuxtLabs',
-            text: 'Made by Nuxt Labs',
-          },
-          icons: [
-            {
-              label: 'NuxtJS',
-              href: 'https://nuxtjs.org',
-              component: 'IconNuxt',
-            },
-            {
-              label: 'Vue Telescope',
-              href: 'https://vuetelescope.com',
-              component: 'IconVueTelescope',
-            },
-          ],
-        },
-      },
     },
   },
+  plugins,
   head: {
     title: 'Docus',
     link: [
@@ -61,6 +44,21 @@ export default defineNuxtConfig({
   /**
    * Components
    */
+  // To enable for `components` middleware
+  //
+  // components: [
+  //   './components/app',
+  //   './components/docs',
+  //   './components/prose',
+  //   './components/globals',
+  //   './components/content',
+  //   {
+  //     prefix: '',
+  //     path: './components/icons',
+  //     global: true,
+  //   },
+  // ],
+  // To enable for working build
   components: [
     {
       prefix: '',
@@ -94,13 +92,11 @@ export default defineNuxtConfig({
     },
   ],
   css: [
-    resolveThemeDir('assets/css/main.css'),
     resolveThemeDir('assets/css/fonts.css'),
-    resolveThemeDir('assets/css/tailwind.css'),
   ],
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('assets/css/tailwind.css'),
+    cssPath: resolveThemeDir('assets/css/main.css'),
     config: {
       darkMode: 'class',
       theme: {

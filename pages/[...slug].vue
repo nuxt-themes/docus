@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { useContent, useRouter } from '#imports'
+definePageMeta({
+  middleware: [
+    'page',
+    /* 'components' */
+  ],
+})
 
-const router = useRouter()
-
-const { page, fetchPage } = useContent()
-
-await fetchPage()
-
-if (page.value && page.value.layout)
-  router.currentRoute.value.meta.layout = page.value.layout
-else
-  router.currentRoute.value.meta.layout = 'default'
+const { page } = useDocus()
 </script>
 
 <template>
   <Content v-if="page" class="content" :document="page" />
+  <p v-else>
+    Page not found
+  </p>
 </template>
 
 <style scoped>

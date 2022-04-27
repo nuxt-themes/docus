@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, useTheme } from '#imports'
+import { computed, useDocus } from '#imports'
 
-const { footer } = useTheme()
+const { theme } = useDocus()
 
-const icons = computed(() => footer?.icons || [])
+const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
   <footer class="py-6 sm:py-0 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 h-[8rem] sm:h-[4rem]">
     <Container class="flex h-full flex-col gap-y-4 sm:flex-row justify-between items-center">
       <a
-        v-if="footer.credits"
+        v-if="theme.footer.credits"
         href="https://nuxtlabs.com"
         rel="noopener"
         target="_blank"

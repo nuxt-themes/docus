@@ -11,7 +11,7 @@
     "@antfu/eslint-config": "^0.20.6",
     "@nuxtjs/eslint-config-typescript": "^9.0.0",
     "eslint": "^8.13.0",
-    "nuxt": "^3.0.0-rc.1",
+    "nuxt": "npm:nuxt3@latest",
     "parse-entities": "^4.0.0",
     "typescript": "^4.6.3"
   },

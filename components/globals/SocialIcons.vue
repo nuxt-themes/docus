@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTheme } from '#imports'
+import { useDocus } from '#imports'
 
 defineProps({
   size: {
@@ -12,7 +12,7 @@ defineProps({
   },
 })
 
-const theme = useTheme()
+const theme = useDocus()
 </script>
 
 <template>
