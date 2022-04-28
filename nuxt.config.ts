@@ -121,6 +121,7 @@ export default defineNuxtConfig({
         require('@tailwindcss/aspect-ratio'),
       ],
       content: [
+        '~/content/**/*.{md,yml,json,json5,csv}',
         resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'),
         resolveThemeDir('components/**/*.{mjs,vue,js,ts}'),
         resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'),

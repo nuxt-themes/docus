@@ -209,7 +209,7 @@
   }
 
   .dark-img {
-    @apply light:hidden;
+    @apply hidden;
   }
 
   .d-max-w-container {

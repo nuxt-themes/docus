@@ -6,8 +6,11 @@ interface Icon {
 
 export interface ThemeConfig {
   title: string
+  description: string
   twitter: string
   github: string
+  cover: string
+  coverAlt: string
   header: {
     title: false | string
     logo: boolean | string
@@ -25,10 +28,13 @@ export const defaultThemeConfig: ThemeConfig = {
   title: 'Docus',
   twitter: '@docus_',
   github: 'nuxtlabs/docus',
+  description: 'Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.',
   header: {
     title: false,
     logo: true,
   },
+  cover: 'https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png',
+  coverAlt: 'A screenshot of a website built with Docus with the Docus logo on top of it.',
   footer: {
     credits: {
       icon: 'IconNuxtLabs',

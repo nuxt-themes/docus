@@ -1,9 +1,6 @@
 ---
 title: Home
 navigation: false
-description: >-
-  Write pages in markdown, use Vue components, add style with Windi CSS and
-  enjoy the power of Nuxt with a blazing fast developer experience.
 layout: page
 ---
 

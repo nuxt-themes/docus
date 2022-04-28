@@ -1,17 +1,21 @@
 title: Docus
+description: Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.
 twitter: "@docus_"
 github: nuxtlabs/docus
+cover: https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png
+coverAlt: A screenshot of a website built with Docus with the Docus logo on top of it.
+url: "https://docus.dev"
 header:
   title: false
   logo: true
 footer:
   credits:
     icon: IconNuxtLabs
-    text: Made by Nuxt Labs
+    text: Made by NuxtLabs
   icons:
   - label: NuxtJS
     href: https://nuxtjs.org
-    component: IconNuxtLabs
+    component: IconNuxt
   - label: Vue Telescope
     href: https://vuetelescope.com
     component: IconVueTelescope
