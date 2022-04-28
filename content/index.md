@@ -15,7 +15,7 @@ cta:
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx docus-init my-website
+snippet: npx nuxi init --template=docus
 ---
 #title
 The Jamstack Website Generator.

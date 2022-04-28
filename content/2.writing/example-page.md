@@ -7,11 +7,11 @@ layout: page
 ---
 cta:
   - Get started
-  - /get-started/installation
+  - /writing/my-first-page
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx degit nuxtlabs/docus-starter#main docs
+snippet: npx nuxi init --template=docus
 ---
 
 #title
