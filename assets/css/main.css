@@ -28,6 +28,18 @@
     @apply transition-colors transition-opacity duration-100 ease-in-out;
   }
 
+  .surface {
+    @apply dark:bg-gray-900 bg-white;
+  }
+
+  .blurry-surface {
+    @apply backdrop-blur bg-white/95 dark:bg-gray-900/95;
+  }
+
+  .border-color {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
   /* Icons */
   .icon-base {
     @apply transition-base text-secondary text-secondary-hover;
@@ -216,13 +228,6 @@
     @apply d-container d-px-container;
   }
 
-  .d-blur-header {
-    @apply blur-12;
-  }
-
-  .d-bg-header {
-    @apply bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80;
-  }
 
   .d-border {
     @apply light:border-gray-200 light:border-opacity-50 dark:border-gray-800;
@@ -237,7 +242,7 @@
   }
 
   .d-header {
-    @apply sticky w-full top-0 z-50 d-bg-header d-border-header d-blur-header h-header;
+    @apply sticky w-full top-0 surface blurry-surface d-border-header h-header;
   }
 
   .d-header-title {
@@ -279,6 +284,10 @@
   .d-badge {
     @apply text-gray-600 dark:text-gray-400 bg-gray-900;
   }
+}
+
+:root {
+  --header-height: 4rem;
 }
 
 html {
