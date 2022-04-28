@@ -8,8 +8,6 @@ import { fetchContentNavigation, queryContent } from '#imports'
 
 export const queryPage = async(route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
   const path = withoutTrailingSlash(route.path)
-  const splitted = path.split('/')
-  const directory = splitted.slice(0, splitted.length - 1).join('/')
 
   const { page, surround, navigation } = useDocusState()
 
@@ -20,7 +18,7 @@ export const queryPage = async(route: RouteLocationNormalized | RouteLocationNor
   if (file && !file.children) {
     await Promise.all([
       queryContent().where({ id: file.id }).findOne() as Promise<ParsedContent>,
-      queryContent(directory).findSurround(path) as Promise<ParsedContent[]>,
+      queryContent().findSurround(path) as Promise<ParsedContent[]>,
     ]).then(
       ([_page, _surround]) => {
         page.value = _page
