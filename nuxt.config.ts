@@ -108,6 +108,10 @@ export default defineNuxtConfig({
           fontFamily: {
             sans: 'Inter, sans-serif',
           },
+          spacing: {
+            base: '320px',
+            header: 'var(--header-height)',
+          },
         },
       },
       plugins: [
@@ -143,5 +147,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxthq/admin',
     'vue-plausible',
+    '@vueuse/nuxt',
   ],
 })
