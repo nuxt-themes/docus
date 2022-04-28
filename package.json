@@ -27,6 +27,7 @@
     "@tailwindcss/typography": "^0.5.2",
     "@vueuse/core": "^8.3.0",
     "@vueuse/motion": "2.0.0-beta.12",
+    "@vueuse/nuxt": "^8.3.1",
     "clipboard": "^2.0.10",
     "defu": "^6.0.0",
     "lodash-es": "^4.17.21",
