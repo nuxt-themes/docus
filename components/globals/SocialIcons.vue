@@ -12,7 +12,7 @@ defineProps({
   },
 })
 
-const theme = useDocus()
+const { theme } = useDocus()
 </script>
 
 <template>

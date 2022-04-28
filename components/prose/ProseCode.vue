@@ -23,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="prose-code w-full group">
+  <div class="prose-code text-gray-50 w-full group">
     <span v-if="filename" class="filename transition-base top-1 right-1 opacity-100 absolute right-0 z-0 m-1 py-1.5 px-2 text-gray-400 bg-gray-900 rounded-md font-mono text-xs leading-none tracking-tight">
       {{ filename }}
     </span>

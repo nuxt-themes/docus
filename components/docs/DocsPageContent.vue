@@ -13,7 +13,7 @@ const isOpen = ref(false)
     </div>
 
     <div
-      class="lg:col-span-2 lg:self-start overflow-x-hidden sticky top-16 -mx-4 sm:-mx-6 px-4 sm:px-6 lg:mx-0 lg:px-0 lg:pt-8 lg:-mt-8 backdrop-blur-md lg:max-h-[calc(100vh-64px)]"
+      class="lg:col-span-2 lg:self-start overflow-x-hidden surface blurry-surface sticky top-16 -mx-4 sm:-mx-6 px-4 sm:px-6 lg:mx-0 lg:px-0 lg:pt-8 lg:-mt-8 lg:max-h-[calc(100vh-64px)]"
     >
       <div class="py-4 lg:py-0">
         <button class="flex lg:hidden items-center gap-3" @click="isOpen = !isOpen">

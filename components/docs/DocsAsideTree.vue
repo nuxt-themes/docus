@@ -30,7 +30,7 @@ function isActive(link) {
 function onClick(link) {
   if (link.children?.length) {
     // Open dir when element is collapsible
-    openDir(link.slug)
+    toggleDir(link.slug)
 
     // Select element for mobile nav
     if (props.max !== null && props.level + 1 === props.max)
@@ -42,7 +42,7 @@ function onClick(link) {
   }
 }
 
-function openDir(slug, force?) {
+function toggleDir(slug, force?) {
   isChildOpen[slug] = force ? true : !isChildOpen[slug]
 }
 
@@ -50,10 +50,12 @@ watch(
   () => route.path,
   () => {
     const paths = route.path.split('/')
-    for (let i = paths.length - 1; i > 1; i--) {
+    for (let i = paths.length; i > 1; i--) {
       paths.pop()
-      openDir(paths.join('/'), true)
+      toggleDir(paths.join('/'), true)
     }
+
+    toggleDir(route.path, true)
   },
   { immediate: true },
 )
@@ -71,11 +73,11 @@ watch(
       }"
     >
       <NuxtLink
-        class="block py-1.5 flex items-center justify-between focus:outline-none cursor-pointer font-semibold"
+        class="block py-1.5 flex items-center justify-between focus:outline-none cursor-pointer"
         :exact="link.exact"
         :class="{
           'pl-4': level > 0,
-          'text-xl !text-primary': level === 0,
+          'text-xl !text-primary font-bold': level === 0,
           '!pt-0': level === 0 && index === 0,
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link)
