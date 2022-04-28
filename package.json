@@ -36,20 +36,11 @@
   },
   "main": "./nuxt.config.ts",
   "exports": {
-    ".": {
-      "require": "./nuxt.config.ts",
-      "import": "./nuxt.config.ts"
-    }
+    "./theme": "./theme/nuxt.config.ts",
+    "./theme/*": "./theme/*/*.*"
   },
   "files": [
     "README.md",
-    "app",
-    "assets",
-    "components",
-    "composables",
-    "layouts",
-    "pages",
-    "public",
-    "nuxt.config.ts"
+    "theme"
   ]
 }
