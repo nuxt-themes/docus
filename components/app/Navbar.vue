@@ -1,25 +1,34 @@
-<template>
-  <header class="sticky w-full h-[4rem] top-0 z-50 bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 border-b border-gray-200 dark:border-gray-800 border-opacity-50 sticky w-full top-0 z-50 backdrop-blur supports-backdrop-blur:bg-white/95">
-    <Container class="flex flex-none h-full">
-      <!-- <NavigationButton v-if="aside" /> -->
+<script setup lang="ts">
+const onTop = ref(true)
 
-      <div class="justify-center flex items-center flex-1 lg:flex-none">
+function setOnTop(): void {
+  if (window.pageYOffset <= 0)
+    onTop.value = true
+  else onTop.value = false
+}
+
+onMounted(() => {
+  setOnTop()
+  document.addEventListener('scroll', setOnTop)
+})
+
+onUnmounted(() => document.removeEventListener('scroll', setOnTop))
+</script>
+
+<template>
+  <header class="d-header surface blurry-surface z-10">
+    <Container class="grid grid-cols-12 items-center h-full">
+      <div class="col-span-6 lg:col-span-3">
         <NavbarLogo />
       </div>
 
-      <div class="items-center hidden lg:flex lg:flex-1">
+      <div class="hidden lg:block lg:col-span-6">
         <!-- <HeaderNavigation /> -->
       </div>
 
-      <!-- Desktop: Right section -->
-      <div class="flex items-center justify-end lg:flex-none">
-        <!-- <ColorSwitcher /> -->
-
-        <div class="items-center justify-end hidden lg:flex">
-          <!-- <LangSwitcher /> -->
-          <ThemeSelect />
-          <!-- <SocialIcons /> -->
-        </div>
+      <div class="col-span-6 lg:col-span-3 flex justify-end">
+        <MobileNav class="flex lg:hidden" />
+        <ThemeSelect class="hidden lg:block" />
       </div>
     </Container>
   </header>
