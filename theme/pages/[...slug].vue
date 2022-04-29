@@ -9,12 +9,12 @@ definePageMeta({
 const { page, theme } = useDocus()
 
 useHead({
-  title: `${theme.value.title} | ${page.value.title}`,
-  description: page.value.description || theme.value.description || '',
+  title: `${theme.value?.title} | ${page.value?.title}`,
+  description: page.value?.description || theme.value?.description || '',
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
-    { hid: 'twitter:site', name: 'twitter:site', content: theme.value.url || theme.value.twitter || '' },
+    { hid: 'twitter:site', name: 'twitter:site', content: theme.value?.url || theme.value?.twitter || '' },
     {
       hid: 'twitter:card',
       name: 'twitter:card',
@@ -23,22 +23,22 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: theme.value.cover || '',
+      content: theme.value?.cover || '',
     },
     {
       hid: 'og:image:secure_url',
       property: 'og:image:secure_url',
-      content: theme.value.cover || '',
+      content: theme.value?.cover || '',
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: theme.value.coverAlt || '',
+      content: theme.value?.coverAlt || '',
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: theme.value.cover || '',
+      content: theme.value?.cover || '',
     },
   ],
 })

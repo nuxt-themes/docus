@@ -2,27 +2,27 @@ import { withoutTrailingSlash } from 'ufo'
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
 import { defaultThemeConfig } from './theme'
-import { fileFromPath, findBottomLink } from './navigation'
 import { useDocusState } from './state'
 import { fetchContentNavigation, queryContent } from '#imports'
 
 export const queryPage = async(route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
   const path = withoutTrailingSlash(route.path)
 
-  const { page, surround, navigation } = useDocusState()
+  const { page, surround } = useDocusState()
 
-  // Get navigation node from current path
-  const file = fileFromPath(path, navigation.value)
-
-  // Path queried has a page (and is not a directory)
-  if (file && !file.children) {
+  try {
     await Promise.all([
-      queryContent().where({ id: file.id }).findOne() as Promise<ParsedContent>,
-      queryContent().findSurround(path) as Promise<ParsedContent[]>,
+      queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
+      queryContent().where({ partial: { $not: true }, navigation: { $not: false } }).findSurround(path) as Promise<ParsedContent[]>,
     ]).then(
       ([_page, _surround]) => {
-        page.value = _page
-        surround.value = _surround
+        if (_page)
+          page.value = _page
+        else page.value = undefined
+
+        if (_surround && _surround.length)
+          surround.value = _surround
+        else surround.value = undefined
 
         // Handle layout update from page
         if (_page?.layout)
@@ -32,16 +32,21 @@ export const queryPage = async(route: RouteLocationNormalized | RouteLocationNor
       },
     )
   }
-  // Handle redirection in case the current path is not a page
-  else if (file) {
-    await navigateTo(findBottomLink(file))
+  catch (e) {
+    console.warn(`Could not find page for path ${path}!`)
+    page.value = undefined
+    surround.value = undefined
   }
 }
 
 export const queryNavigation = async() => {
   const { navigation } = useDocusState()
 
-  navigation.value = await fetchContentNavigation()
+  navigation.value = await fetchContentNavigation(queryContent().where({
+    navigation: {
+      $not: false,
+    },
+  }))
 }
 
 export const queryTheme = async() => {

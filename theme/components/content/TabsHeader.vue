@@ -16,7 +16,7 @@ defineEmits(['update:activeTabIndex'])
 </script>
 
 <template>
-  <div class="relative text-white rounded-t-lg bg-gray-200 dark:bg-gray-700">
+  <div class="relative text-white bg-gray-200 dark:bg-gray-700">
     <div v-if="tabs" class="relative z-0 px-2">
       <button
         v-for="({ label }, i) in tabs"
@@ -29,7 +29,7 @@ defineEmits(['update:activeTabIndex'])
         {{ label }}
       </button>
       <span ref="highlight-underline" class="absolute -z-[1] highlight-underline h-full xs:py-1.5">
-        <span class="flex w-full h-full bg-gray-300 dark:bg-gray-600 rounded-md" />
+        <span class="flex w-full h-full bg-gray-300 dark:bg-gray-600 rounded-lg" />
       </span>
     </div>
   </div>

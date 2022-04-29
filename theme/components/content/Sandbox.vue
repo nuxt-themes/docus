@@ -64,7 +64,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl rounded-md sandbox mt-4">
+  <div class="w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl rounded-lg sandbox mt-4">
     <TabsHeader
       v-if="!src"
       ref="tabs"
@@ -96,7 +96,7 @@ onMounted(() => {
 <style lang="postcss" scoped>
 .sandbox,
 .sandbox iframe {
-  @apply w-full rounded-md rounded-tl-none rounded-tr-none overflow-hidden h-64;
+  @apply w-full rounded-lg rounded-tl-none rounded-tr-none overflow-hidden h-64;
   height: 700px;
 }
 </style>

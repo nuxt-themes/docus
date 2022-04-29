@@ -12,14 +12,14 @@ li {
 
 ul > li {
   &::before {
-    @apply absolute left-0 top-[0.5em] d-prose-ul-li-bullet rounded-full w-1.5 h-1.5;
+    @apply absolute left-0 top-[0.5em] surface-secondary rounded-full w-1.5 h-1.5;
     content: '';
   }
 }
 
 ol > li {
   &::before {
-    @apply absolute left-0 top-0 d-secondary-text;
+    @apply absolute left-0 top-0 text-secondary;
     content: counter(list-item, decimal) '.';
     content: counter(list-item, var(--list-counter-style, decimal)) '.';
   }

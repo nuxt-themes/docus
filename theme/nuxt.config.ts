@@ -8,14 +8,61 @@ const resolveThemeDir = (path: string) => resolve(themeDir, path)
 
 const plugins = []
 
+const components = [
+  {
+    prefix: '',
+    path: './components/app',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/docs',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/prose',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/globals',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/content',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/icons',
+    global: true,
+  },
+  {
+    prefix: '',
+    path: './components/icons',
+    global: true,
+  },
+]
+
 // Only register the plugin in development as it's not needed in production
 if (process.env.NODE_ENV === 'development') {
+  // Dev plugin
   plugins.push({
     src: resolveThemeDir('utils/plugin.ts'),
+  })
+
+  // Dev components
+  components.push({
+    prefix: '',
+    path: './components/dev',
+    global: true,
   })
 }
 
 export default defineNuxtConfig({
+  /*
   runtimeConfig: {
     public: {
       plausible: {
@@ -23,6 +70,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  */
   plugins,
   head: {
     title: 'Docus',
@@ -52,6 +100,7 @@ export default defineNuxtConfig({
   //   './components/prose',
   //   './components/globals',
   //   './components/content',
+  //   './components/dev',
   //   {
   //     prefix: '',
   //     path: './components/icons',
@@ -59,38 +108,7 @@ export default defineNuxtConfig({
   //   },
   // ],
   // To enable for working build
-  components: [
-    {
-      prefix: '',
-      path: './components/app',
-      global: true,
-    },
-    {
-      prefix: '',
-      path: './components/docs',
-      global: true,
-    },
-    {
-      prefix: '',
-      path: './components/prose',
-      global: true,
-    },
-    {
-      prefix: '',
-      path: './components/globals',
-      global: true,
-    },
-    {
-      prefix: '',
-      path: './components/content',
-      global: true,
-    },
-    {
-      prefix: '',
-      path: './components/icons',
-      global: true,
-    },
-  ],
+  components,
   css: [
     resolveThemeDir('assets/css/fonts.css'),
   ],
@@ -147,7 +165,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxthq/admin',
-    'vue-plausible',
+    // 'vue-plausible',
     '@vueuse/nuxt',
   ],
 })

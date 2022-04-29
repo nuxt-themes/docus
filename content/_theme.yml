@@ -1,4 +1,8 @@
 title: Docus
+debug:
+  page: true
+  navigation: false
+  theme: false
 description: Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.
 twitter: "@docus_"
 github: nuxtlabs/docus

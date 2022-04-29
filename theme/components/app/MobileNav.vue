@@ -21,12 +21,11 @@ watch(visible, v => (v ? open() : close()))
 
 // Necessary because of body lock layout shift
 const buttonBodyLockHack = computed(
-  () =>
-    `top: 1rem; right: calc(1.5rem + ${isDesktopSafari.value || isDesktopFirefox.value ? scrollBarGap.value : 0}px);`,
+  () => `top: 1rem; right: calc(1.5rem + ${isDesktopSafari.value || isDesktopFirefox.value ? scrollBarGap.value : 0}px);`,
 )
 
 const surfaceBodyLockHack = computed(
-  () => `top: 1rem; right: calc(1rem + ${isDesktopSafari.value || isDesktopFirefox.value ? scrollBarGap.value : 0}px);`,
+  () => `top: 0.5rem; right: calc(1rem + ${isDesktopSafari.value || isDesktopFirefox.value ? scrollBarGap.value : 0}px); bottom: 0.5rem; max-height: calc(100vh- 2rem); min-width: calc(320px - 2rem);`,
 )
 </script>
 
@@ -66,13 +65,16 @@ const surfaceBodyLockHack = computed(
         <div
           :style="surfaceBodyLockHack"
           :class="[visible ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none']"
-          class="xl:hidden fixed z-20 min-w-[calc(320px-2rem)] d-body-bg pb-6 pt-12 rounded-2xl shadow-xl border border-color transform origin-top-right transition-transform ease-out"
+          class="fixed z-20 w-[calc(100%-3rem)] md:w-auto min-w-full md:min-w-[calc(320px-2rem)] transform origin-top-right transition-transform ease-out"
         >
-          <div class="pl-8 pr-0 overflow-auto h-full mb-2">
+          <div
+            class="lg:hidden pl-8 pr-0 overflow-y-auto mb-2 surface pb-6 pt-12 rounded-2xl shadow-xl border-2 surface-border max-h-full"
+          >
             <DocsAsideTree :tree="tree" />
-          </div>
-          <div class="px-6">
-            <ThemeSelect class="ml-auto block" />
+
+            <div class="flex items-center justify-end px-6">
+              <ThemeSelect class="block" />
+            </div>
           </div>
         </div>
       </teleport>

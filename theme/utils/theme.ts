@@ -1,7 +1,13 @@
-interface Icon {
+export interface ThemeIcon {
   label: string
   href: string
   component: string
+}
+
+export interface ThemeDebugConfig {
+  page: boolean
+  navigation: boolean
+  theme: boolean
 }
 
 export interface ThemeConfig {
@@ -20,8 +26,9 @@ export interface ThemeConfig {
       icon: string
       text: string
     }
-    icons: Icon[]
+    icons: ThemeIcon[]
   }
+  debug: boolean | ThemeDebugConfig
 }
 
 export const defaultThemeConfig: ThemeConfig = {
@@ -53,4 +60,5 @@ export const defaultThemeConfig: ThemeConfig = {
       },
     ],
   },
+  debug: true,
 }

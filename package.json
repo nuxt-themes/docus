@@ -8,12 +8,12 @@
     "lint": "eslint --ext .ts,.js,.vue,.css ."
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.20.6",
+    "@antfu/eslint-config": "^0.21.1",
     "@nuxtjs/eslint-config-typescript": "^9.0.0",
-    "eslint": "^8.13.0",
+    "eslint": "^8.14.0",
     "nuxt": "npm:nuxt3@latest",
     "parse-entities": "^4.0.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.4"
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
@@ -23,9 +23,9 @@
     "@nuxtjs/tailwindcss": "^5.0.3",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "@vueuse/core": "^8.3.0",
+    "@vueuse/core": "^8.3.1",
     "@vueuse/motion": "2.0.0-beta.12",
     "@vueuse/nuxt": "^8.3.1",
     "clipboard": "^2.0.10",

@@ -10,3 +10,5 @@ framework
 # Yarn
 .yarn/cache
 .yarn/*state*
+
+.history

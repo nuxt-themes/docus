@@ -6,6 +6,6 @@
 
 <style lang="postcss" scoped>
 tbody tr {
-  @apply d-prose-tr-border;
+  @apply border-b border-gray-100 dark:border-gray-800;
 }
 </style>

@@ -12,13 +12,13 @@ cta:
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx nuxi init --template=docus
+snippet: npx degit nuxtlabs/docus-starter
 ---
 #title
-The Jamstack Website Generator.
+The best place to start your documentation.
 
 #description
-Write pages in markdown, use [Vue](https://vuejs.org) components, add style with [Windi CSS](https://windicss.org/) and enjoy the power of [Nuxt](https://nuxtjs.org) with a blazing fast developer experience.
+Write pages in markdown, use [Vue](https://vuejs.org) components and enjoy the power of [Nuxt](https://nuxtjs.org) with a blazing fast developer experience.
 ::
 
 ::card-grid
@@ -47,13 +47,13 @@ What's included
   ---
   icon: IconMarkdown
   title: Write Markdown.
-  description: Enjoy the ease and simplicity of Markdown as you write your documentation.
+  description: Enjoy the ease and simplicity of Markdown and discover MDC syntax.
   ---
   ::
 
   ::card
   ---
-  icon: IconWindi
+  icon: IconTailwind
   title: TailwindCSS.
   description: Tailwind is built in for great developer experience and rapid customization.
   ---
@@ -61,25 +61,9 @@ What's included
 
   ::card
   ---
-  icon: IconSSG
-  title: Static Generation.
-  description: Generate your documentation as a static website and host it anywhere.
-  ---
-  ::
-
-  ::card
-  ---
-  icon: IconLighthouse
-  title: Lighthouse Optimised.
-  description: Start with a blazing fast site with a perfect Lighthouse score.
-  ---
-  ::
-
-  ::card
-  ---
   icon: IconZap
-  title: Smart Generation.
-  description: Automatically skip a full build if you've only changed Markdown files.
+  title: Edge Rendering.
+  description: Your content and its server can be deployed in any node environment.
   ---
   ::
 
@@ -88,14 +72,6 @@ What's included
   icon: IconPuzzle
   title: Extensible.
   description: Customize the whole design, or add components using slots - you can make Docus your own.
-  ---
-  ::
-
-  ::card
-  ---
-  icon: IconGitHub
-  title: Open Source.
-  description: Docus is released under the MIT license and made with love by the NuxtLabs team.
   ---
   ::
 ::

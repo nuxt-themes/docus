@@ -4,7 +4,7 @@
 
 <style lang="postcss" scoped>
 hr {
-  @apply d-prose-hr-border my-8;
+  @apply border-t border-gray-100 dark:border-gray-800 my-8;
 }
 
 hr + * {

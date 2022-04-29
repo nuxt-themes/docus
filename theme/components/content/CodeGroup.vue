@@ -91,18 +91,16 @@ export default defineComponent({
 </script>
 
 <style lang="postcss">
-.prose {
-  li {
-    .code-group {
+li {
+  .code-group {
       @apply my-4;
-    }
   }
 }
 
 html.dark {
   .code-group-content {
     .preview-canvas {
-      @apply p-4 my-0 overflow-x-auto leading-normal bg-gray-900 rounded-lg rounded-tl-none rounded-tr-none z-0;
+      @apply p-4 my-0 overflow-x-auto leading-normal bg-gray-900 rounded-bl-lg rounded-br-lg rounded-tl-none rounded-tr-none z-0;
     }
   }
 }
@@ -110,8 +108,10 @@ html.dark {
 
 <style scoped lang="postcss">
 .code-group {
+  @apply rounded-lg overflow-hidden border-2 surface-border;
+
   :deep(.prose-code) {
-    @apply mt-0 rounded-tl-none rounded-tr-none !important;
+    @apply mt-0 mb-0 rounded-none !important;
   }
 
   :deep(pre) {

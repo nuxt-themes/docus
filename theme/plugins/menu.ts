@@ -29,15 +29,17 @@ export default defineNuxtPlugin((ctx: any) => {
     watch(
       visible,
       (isVisible) => {
+        const html = document.querySelector('html')
+
         if (isVisible) {
           scrollBarGap.value = window.innerWidth - document.documentElement.clientWidth
-          // document.body.style.overflow = 'hidden'
-          // document.body.style.paddingRight = `${scrollBarGap.value}px`
+          html.style.overflow = 'hidden'
+          html.style.paddingRight = `${scrollBarGap.value}px`
         }
         else {
           setTimeout(() => {
-            // document.body.style.overflow = ''
-            // document.body.style.paddingRight = ''
+            html.style.overflow = ''
+            html.style.paddingRight = ''
           }, 100) /* had to put it, because of layout shift on leave transition */
         }
       },

@@ -13,16 +13,19 @@ const isOpen = ref(false)
     </div>
 
     <div
-      class="lg:col-span-2 lg:self-start overflow-x-hidden surface blurry-surface sticky top-16 -mx-4 sm:-mx-6 px-4 sm:px-6 lg:mx-0 lg:px-0 lg:pt-8 lg:-mt-8 lg:max-h-[calc(100vh-64px)]"
+      :class="{
+        'flex items-center lg:block': !isOpen
+      }"
+      class="lg:col-span-2 top-16 flex items-center lg:self-start overflow-x-hidden surface surface-blurry sticky -mx-4 sm:-mx-6 px-4 sm:px-6 lg:mx-0 lg:px-0 lg:pt-8 lg:-mt-8 lg:max-h-[calc(100vh-var(--header-height))] border-b lg:border-none border-gray-200 dark:border-gray-800"
     >
       <div class="py-4 lg:py-0">
         <button class="flex lg:hidden items-center gap-3" @click="isOpen = !isOpen">
-          <span class="u-text-gray-900 font-semibold text-sm">Table of Contents</span>
+          <span class="font-semibold">Table of Contents</span>
 
-          <Icon name="heroicons-outline:chevron-right" class="w-4 h-4 u-text-gray-400 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
+          <Icon name="heroicons-outline:chevron-right" class="w-6 h-6 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
         </button>
 
-        <DocsToc class="mt-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" />
+        <DocsToc class="mt-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
       </div>
     </div>
   </div>
