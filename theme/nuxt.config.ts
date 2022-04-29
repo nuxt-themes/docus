@@ -52,14 +52,14 @@ if (process.env.NODE_ENV === 'development') {
   plugins.push({
     src: resolveThemeDir('utils/plugin.ts'),
   })
-
-  // Dev components
-  components.push({
-    prefix: '',
-    path: './components/dev',
-    global: true,
-  })
 }
+
+// Dev components
+components.push({
+  prefix: '',
+  path: './components/dev',
+  global: true,
+})
 
 export default defineNuxtConfig({
   /*
