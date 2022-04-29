@@ -1,4 +1,4 @@
-import { defineNuxtPlugin } from '#imports'
+import { defineNuxtPlugin, ref } from '#imports'
 
 export default defineNuxtPlugin(() => {
   const isDesktopSafari = ref(false)

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { ThemeDebugConfig } from '../../utils/theme'
-import { useDocus } from '#imports'
+import { computed, useDocus, watchDebounced } from '#imports'
 
 const { page, navigation, theme } = useDocus()
 
-const defaultConfig = {
+const defaultConfig: ThemeDebugConfig = {
   page: true,
   navigation: true,
   theme: true,
