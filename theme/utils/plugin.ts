@@ -9,7 +9,7 @@ export default defineNuxtPlugin(
   (nuxt) => {
     nuxt.hook(
       'app:data:refresh',
-      async() => {
+      async () => {
         const route = useRoute()
 
         await queryNavigation()

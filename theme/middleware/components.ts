@@ -1,9 +1,10 @@
 import { flattenComponents } from '../utils/components'
 import { useDocusState } from '../utils/state'
 import * as Components from '#components'
+import { useNuxtApp } from '#imports'
 
 export default defineNuxtRouteMiddleware(
-  async() => {
+  async () => {
     const { page } = useDocusState()
     const nuxtApp = useNuxtApp()
 

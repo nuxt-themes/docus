@@ -5,7 +5,7 @@ import { defaultThemeConfig } from './theme'
 import { useDocusState } from './state'
 import { fetchContentNavigation, queryContent } from '#imports'
 
-export const queryPage = async(route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
+export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
   const path = withoutTrailingSlash(route.path)
 
   const { page, surround } = useDocusState()
@@ -39,7 +39,7 @@ export const queryPage = async(route: RouteLocationNormalized | RouteLocationNor
   }
 }
 
-export const queryNavigation = async() => {
+export const queryNavigation = async () => {
   const { navigation } = useDocusState()
 
   navigation.value = await fetchContentNavigation(queryContent().where({
@@ -49,7 +49,7 @@ export const queryNavigation = async() => {
   }))
 }
 
-export const queryTheme = async() => {
+export const queryTheme = async () => {
   const { theme } = useDocusState()
 
   // Fetch _theme.yml at `content/` root.

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDocus } from '#imports'
+
 const { theme } = useDocus()
 </script>
 

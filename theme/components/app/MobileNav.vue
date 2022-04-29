@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
+
 const { navigation } = useDocus()
 
 const tree = computed(() => {

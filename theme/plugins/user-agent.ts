@@ -1,3 +1,5 @@
+import { defineNuxtPlugin } from '#imports'
+
 export default defineNuxtPlugin(() => {
   const isDesktopSafari = ref(false)
   const isDesktopFirefox = ref(false)

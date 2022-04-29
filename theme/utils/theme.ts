@@ -12,6 +12,7 @@ export interface ThemeDebugConfig {
 
 export interface ThemeConfig {
   title: string
+  url: string
   description: string
   twitter: string
   github: string
@@ -33,6 +34,7 @@ export interface ThemeConfig {
 
 export const defaultThemeConfig: ThemeConfig = {
   title: 'Docus',
+  url: 'https://docus.dev',
   twitter: '@docus_',
   github: 'nuxtlabs/docus',
   description: 'Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.',

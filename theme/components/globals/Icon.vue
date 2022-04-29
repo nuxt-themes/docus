@@ -14,7 +14,7 @@ const icon = ref(null)
 
 icon.value = await loadIcon(props.name)
 
-watch(() => props.name, async() => {
+watch(() => props.name, async () => {
   icon.value = await loadIcon(props.name)
 })
 </script>

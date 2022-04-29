@@ -1,3 +1,5 @@
+import { defineNuxtPlugin, ref } from '#imports'
+
 export default defineNuxtPlugin((ctx: any) => {
   // Menu visible reference
   const visible = ref(false)

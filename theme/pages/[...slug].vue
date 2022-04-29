@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDocus, useHead } from '#imports'
+
 definePageMeta({
   middleware: [
     'page',
@@ -14,7 +16,7 @@ useHead({
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
-    { hid: 'twitter:site', name: 'twitter:site', content: theme.value?.url || theme.value?.twitter || '' },
+    { hid: 'twitter:site', name: 'twitter:site', content: theme.value?.url || theme.value?.twitter || '' },
     {
       hid: 'twitter:card',
       name: 'twitter:card',

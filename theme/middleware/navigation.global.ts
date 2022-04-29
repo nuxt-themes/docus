@@ -3,7 +3,7 @@ import { queryNavigation } from '../utils/queries'
 import { defineNuxtRouteMiddleware } from '#imports'
 
 export default defineNuxtRouteMiddleware(
-  async() => {
+  async () => {
     const { navigation } = useDocusState()
 
     if (!navigation.value)

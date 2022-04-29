@@ -1,4 +1,5 @@
 import { useDocusState } from '../utils/state'
+import { computed } from '#imports'
 
 export const useDocus = () => {
   const { theme, navigation, page, surround } = useDocusState()
