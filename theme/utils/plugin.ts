@@ -1,5 +1,5 @@
 import { queryNavigation, queryPage, queryTheme } from './queries'
-import { useRoute } from '#imports'
+import { defineNuxtPlugin, useRoute } from '#imports'
 
 /**
  * Plugin enabled only in development
