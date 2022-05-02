@@ -1,45 +1,43 @@
 <script setup lang="ts">
-import Clipboard from 'clipboard'
-import { nextTick, onMounted, ref } from '#imports'
+import { ref } from '#imports'
 
 const props = defineProps({
-  snippet: {
+  content: {
     type: String,
     required: true,
   },
 })
 
-const copyInstall = ref()
-const copied = ref(false)
+const { copy: copyToClipboard } = useClipboard()
 
-const setupCopyInstall = () => {
-  if (!copyInstall.value)
-    return nextTick(setupCopyInstall)
+const state = ref('init')
 
-  const instance = new Clipboard(copyInstall.value)
+const copy = (e: MouseEvent) => {
+  copyToClipboard(props.content)
+    .then(
+      () => {
+        state.value = 'copied'
 
-  instance.on('success', () => {
-    copied.value = true
-
-    setTimeout(() => {
-      copied.value = false
-    }, 1000)
-  })
+        setTimeout(() => {
+          state.value = 'init'
+        }, 1000)
+      },
+    ).catch(
+      () => {
+        console.warn('Couldn\'t copy to clipboard!')
+      },
+    )
 }
-
-onMounted(() => setupCopyInstall())
-
 </script>
 
 <template>
   <div
-    ref="copyInstall"
-    :data-clipboard-text="snippet"
     class="relative flex flex-col w-full h-64 overflow-hidden text-gray-600 bg-gray-800 rounded-lg cursor-pointer group"
+    @click="copy"
   >
-    <div v-if="copied" class="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full">
+    <div v-if="state === 'copied'" class="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full">
       <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-75" />
-      <div class="z-10 text-lg font-medium text-gray-100">
+      <div class="z-10 text-lg text-gray-100 font-semibold">
         Copied!
       </div>
     </div>
@@ -49,15 +47,15 @@ onMounted(() => setupCopyInstall())
         <div class="w-3 h-3 ml-2 bg-yellow-400 rounded-full" />
         <div class="w-3 h-3 ml-2 bg-green-400 rounded-full" />
       </div>
-      <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+      <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full font-semibold">
         Bash
       </div>
     </div>
     <div class="flex flex-1 p-4 font-mono">
       <span class="inline-block mr-2 font-bold select-none">$</span>
-      <span class="inline-block text-gray-200">{{ snippet }}</span>
+      <span class="inline-block text-gray-200">{{ content }}</span>
     </div>
-    <div class="py-2 text-center transition-opacity opacity-0 group-hover:opacity-100">
+    <div v-if="state !== 'copied'" class="py-2 text-center transition-opacity opacity-0 group-hover:opacity-100 font-semibold">
       Click to copy
     </div>
   </div>

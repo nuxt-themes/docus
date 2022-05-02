@@ -1,30 +1,37 @@
 <script setup lang="ts">
-import Clipboard from 'clipboard'
-import { onMounted, ref } from '#imports'
+import { ref, useClipboard } from '#imports'
 
-const copy = ref()
+const { copy: copyToClipboard } = useClipboard()
+
 const state = ref('init')
 
-onMounted(() => {
-  const copyCode = new Clipboard(copy.value, {
-    target(trigger) {
-      return trigger.previousElementSibling
-    },
-  })
-
-  copyCode.on('success', (event) => {
-    event.clearSelection()
-    state.value = 'copied'
-    window.setTimeout(() => {
-      state.value = 'init'
-    }, 1000)
-  })
+const props = defineProps({
+  content: {
+    type: String,
+    default: '',
+  },
 })
+
+const copy = (e: MouseEvent) => {
+  copyToClipboard(props.content)
+    .then(
+      () => {
+        state.value = 'copied'
+
+        setTimeout(() => {
+          state.value = 'init'
+        }, 1000)
+      },
+    ).catch(
+      () => {
+        console.warn('Couldn\'t copy to clipboard!')
+      },
+    )
+}
 </script>
 
 <template>
   <button
-    ref="copy"
     class="
       copy
       focus:outline-none
@@ -42,6 +49,7 @@ onMounted(() => {
       font-mono
       font-semibold
     "
+    @click="copy"
   >
     <Icon v-if="state === 'copied'" name="fa-check" class="w-4 h-4" />
     <Icon v-else name="fa-copy" class="w-4 h-4" />

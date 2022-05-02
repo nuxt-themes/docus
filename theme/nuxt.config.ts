@@ -153,9 +153,6 @@ export default defineNuxtConfig({
       safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map(number => `pl-[${number}px]`),
     },
   },
-  build: {
-    transpile: ['clipboard'],
-  },
   content: {
     highlight: {
       theme: 'one-dark-pro',

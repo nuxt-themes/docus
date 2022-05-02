@@ -9,8 +9,8 @@ defineProps({
     default: () => ['Open on GitHub', 'https://github.com'],
   },
   snippet: {
-    type: [String, Boolean],
-    default: () => false,
+    type: [String],
+    default: () => '',
   },
 })
 </script>
@@ -31,13 +31,13 @@ defineProps({
         </p>
 
         <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 mb-8">
-          <ButtonLink v-if="cta" class="mx-auto md:mx-0" bold size="large" :href="cta[1]">
+          <ButtonLink v-if="cta" class="mx-auto md:mx-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>
 
           <a
             v-if="secondary"
-            :href="secondary[1]"
+            :href="(secondary[1] as any)"
             class="py-px mt-px font-medium text-primary-500 border-b-1 border-transparent dark:text-primary-400 hover:border-primary-500 dark:hover:border-primary-400"
           >
             {{ secondary[0] }}
@@ -46,7 +46,7 @@ defineProps({
       </div>
       <div v-if="snippet" class="w-full mx-auto lg:w-1/3 sm:w-580px">
         <div class="md:pl-2 md:mx">
-          <Terminal :snippet="snippet" />
+          <Terminal :content="snippet" />
         </div>
       </div>
     </Container>

@@ -30,7 +30,7 @@ defineProps({
 
     <slot />
 
-    <CopyButton class="copy-button opacity-0 transition-base" />
+    <CopyButton :content="code" class="copy-button opacity-0 transition-base" />
   </div>
 </template>
 
