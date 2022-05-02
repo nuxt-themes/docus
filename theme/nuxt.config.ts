@@ -166,10 +166,14 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
+  github: {
+    repo: 'nuxt/framework',
+  },
   /**
    * Modules
    */
   modules: [
+    '@docus/github',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',

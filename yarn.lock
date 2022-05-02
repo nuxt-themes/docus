@@ -341,6 +341,14 @@
   dependencies:
     mime "^3.0.0"
 
+"@docus/github@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@docus/github/-/github-1.2.2.tgz#2b219dd747f8b442a6fca64c31cbf3921d162812"
+  integrity sha512-YognYmKVNL1jvPwOtP+jOCN03ExR93apXtmH6uC7REbXu6GoPDrcQJWtu50DHSxBZ5hy8LgxEW9zq7J7c0Uy4Q==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.1"
+    remark-github "^11.2.2"
+
 "@eslint/eslintrc@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.2.2.tgz#4989b9e8c0216747ee7cca314ae73791bb281aae"
@@ -6551,6 +6559,17 @@ remark-gfm@^3.0.1:
     mdast-util-gfm "^2.0.0"
     micromark-extension-gfm "^2.0.0"
     unified "^10.0.0"
+
+remark-github@^11.2.2:
+  version "11.2.2"
+  resolved "https://registry.yarnpkg.com/remark-github/-/remark-github-11.2.2.tgz#7db8623febd412b3b7ef304ac64318c7aa7be29d"
+  integrity sha512-uO6q6NOszPFC/dMS6R0ExuMCk8XNuTptgw+eBfjsQiseyiDnUtUKBajN2fHtRo4wDtcjX2UTmZimmKGiYzZq+w==
+  dependencies:
+    "@types/mdast" "^3.0.0"
+    mdast-util-find-and-replace "^2.0.0"
+    mdast-util-to-string "^3.0.0"
+    unified "^10.0.0"
+    unist-util-visit "^4.0.0"
 
 remark-parse@^10.0.1:
   version "10.0.1"
