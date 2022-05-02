@@ -2,6 +2,8 @@
 import { useDocus, useHead } from '#imports'
 
 definePageMeta({
+  /* Layout transitions creates layout shifts with defaults */
+  layoutTransition: false,
   middleware: [
     'page',
     /* 'components' */
@@ -47,7 +49,7 @@ useHead({
 </script>
 
 <template>
-  <Content v-if="page" class="content" :document="page" />
+  <Content v-if="page" :key="(page as string)" class="content" :document="page" />
   <p v-else>
     <Alert type="warning">
       Page not found!

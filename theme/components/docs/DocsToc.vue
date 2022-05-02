@@ -33,21 +33,21 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 
 <template>
   <div class="space-y-2">
-    <NuxtLink v-if="prev" :to="prev.slug" class="flex lg:flex-row-reverse items-center text-primary font-semibold group gap-x-3">
+    <NuxtLink v-if="prev" :to="prev.slug" class="flex lg:flex-row-reverse items-center text-primary font-semibold group gap-x-3 overflow-hidden">
       <div class="flex-shrink-0 p-1 rounded-lg text-secondary-group-hover transition-base">
         <Icon name="heroicons-solid:chevron-double-left" class="w-6 h-6" />
       </div>
 
-      <span>Previous page</span>
+      <span class="truncate">Previous page</span>
     </NuxtLink>
 
     <template v-if="toc?.links?.length">
-      <div class="flex lg:flex-row-reverse items-center font-semibold gap-x-3">
+      <div class="flex lg:flex-row-reverse items-center font-semibold gap-x-3 overflow-hidden">
         <div class="flex-shrink-0 p-1 rounded-lg">
           <Icon name="heroicons-outline:view-grid" class="w-6 h-6" />
         </div>
 
-        <span>On this page</span>
+        <span class="truncate">On this page</span>
       </div>
 
       <ul class="pl-3 lg:pr-3 mr-1 border-gray-500">
@@ -66,12 +66,12 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       </ul>
     </template>
 
-    <NuxtLink v-if="next" :to="next.slug" class="flex lg:flex-row-reverse items-center text-primary font-semibold group gap-x-3">
+    <NuxtLink v-if="next" :to="next.slug" class="flex lg:flex-row-reverse items-center text-primary font-semibold group gap-x-3 overflow-hidden">
       <div class="flex-shrink-0 p-1 rounded-lg text-secondary-group-hover transition-base">
         <Icon name="heroicons-solid:chevron-double-right" class="w-6 h-6" />
       </div>
 
-      <span>Next page</span>
+      <span class="truncate">Next page</span>
     </NuxtLink>
   </div>
 </template>

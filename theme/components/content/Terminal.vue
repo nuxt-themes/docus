@@ -43,7 +43,7 @@ onMounted(() => setupCopyInstall())
         Copied!
       </div>
     </div>
-    <div class="relative flex items-center w-full h-12 border-b border-gray-700">
+    <div class="relative flex items-center w-full h-12 border-b-2 border-gray-700">
       <div class="flex ml-4">
         <div class="w-3 h-3 bg-red-400 rounded-full" />
         <div class="w-3 h-3 ml-2 bg-yellow-400 rounded-full" />

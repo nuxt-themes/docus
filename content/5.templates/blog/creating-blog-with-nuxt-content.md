@@ -58,14 +58,14 @@ To get started with content module we will first need to install the module usin
 <code-group>
   <code-block label="Yarn" active>
 
-```bash
+```zsh
 yarn add @nuxt/content
 ```
 
 </code-block>
 <code-block label="npm">
 
-```bash
+```zsh
 npm install @nuxt/content
 ```
 
@@ -90,7 +90,7 @@ If you have created a new project with `create-nuxt-app` you can choose to add t
 
 The content module works by reading the files in our `content/` directory.
 
-```bash
+```zsh
 mkdir content
 ```
 
@@ -102,13 +102,13 @@ If you have created your project with `create-nuxt-app`, the `content/` director
 
 Let's create an `articles/` directory where we can add the articles for our blog.
 
-```bash
+```zsh
 mkdir content/articles
 ```
 
 The content module can parse markdown, csv, yaml, json, json5 or xml. Let's create our first article with a markdown file:
 
-```bash
+```zsh
 touch content/articles/my-first-blog-post.md
 ```
 
@@ -130,7 +130,7 @@ In markdown we create a `<h1>` title by using `#`. Make sure you leave a space b
 
 To display our content in our page, we can use a [dynamic page](https://nuxtjs.org/docs/2.x/directory-structure/pages#dynamic-pages) by prefixing the page with an underscore(`_`). By creating a page component named `_slug.vue` inside our blog folder, we are able to use the `params.slug` variable provided by vue router to get the name of each article.
 
-```bash
+```zsh
 touch pages/blog/_slug.vue
 ```
 
@@ -195,7 +195,7 @@ We can access all these variables by using the `article` variable that we create
 
 Now on our page we can see we have an object with a variable property which is an empty array and a body variable which has our h1 and p tag as well as some other info that we will look at later. If we scroll down you will see we have all the other variables that we have access to.
 
-```bash
+```zsh
 "dir": "/articles",
 "path": "/articles/my-first-blog-post",
 "extension": ".md",
@@ -382,7 +382,7 @@ export default {
 
 Auto importing components will not work for `<nuxt-content>` unless we globally register them by adding a global folder inside the components folder.
 
-```bash
+```zsh
 mkdir components/global
 ```
 
@@ -428,7 +428,7 @@ author:
 
 We can now create the author component.
 
-```bash
+```zsh
 touch components/global/Author.vue
 ```
 
@@ -505,7 +505,7 @@ With the content module we can style our code blocks with the automatic inclusio
 
 ```js
 export default {
-  nuxt: 'is the best'
+  nuxt: 'is the best',
 }
 ```
 
@@ -534,7 +534,7 @@ The file name will be converted to a span with a filename class which we can the
 
 Different theme can be used, for example [prism-themes](https://github.com/PrismJS/prism-themes), we can install it and then add our preferred theme to the content options of your `nuxt.config file`.
 
-```bash
+```zsh
 npm install prism-themes
 // or
 yarn add prism-themes
@@ -556,7 +556,7 @@ content: {
 
 We now have a pretty complete blog post but wouldn't it be great if users could easily go from one post to another. First let's duplicate our post so we have 3 posts. Then, let's create a new component for our previous and next posts.
 
-```bash
+```zsh
 touch components/PrevNext.vue
 ```
 
@@ -734,7 +734,7 @@ Our articles are now available to us just like any data property so we can use i
 
 With the content module we can also filter our results using the where query. We could have an author page that shows the author details and all posts by that author.
 
-```bash
+```zsh
 touch pages/blog/author/_author.vue
 ```
 
@@ -850,7 +850,7 @@ The Nuxt content module gives us the possibility of searching through our articl
 
 Let's first create a search component.
 
-```bash
+```zsh
 touch components/AppSearchInput.vue
 ```
 

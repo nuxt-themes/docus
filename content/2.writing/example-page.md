@@ -21,7 +21,7 @@ The next big thing
 The favorite package of your favorite package.
 ::
 
-::container{padded}
+::container
 Don't forget to follow us on [Twitter](https://twitter.com/nuxtlabs).
 
 [Go back](/writing/my-first-page).

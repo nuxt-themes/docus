@@ -5,10 +5,10 @@ const { theme } = useDocus()
 </script>
 
 <template>
-  <div class="w-full flex min-h-screen flex-col">
+  <div class="w-full flex flex-col">
     <Debug v-if="theme?.debug" :config="theme?.debug" />
 
-    <div class="min-h-[calc(100vh-12rem)] sm:min-h-[calc(100vh-8rem)] flex flex-col">
+    <div class="flex flex-col">
       <Navbar />
 
       <DocsPage>
@@ -17,7 +17,7 @@ const { theme } = useDocus()
         </template>
 
         <DocsPageContent>
-          <div class="max-w-none">
+          <div class="max-w-none min-h-page">
             <NuxtPage />
           </div>
         </DocsPageContent>

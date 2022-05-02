@@ -2,15 +2,15 @@
 import { computed, useDocus } from '#imports'
 
 const { theme } = useDocus()
-const hasLogo = computed(() => theme.value?.header?.logo)
-const hasTitle = computed(() => theme.value?.header?.title)
+const hasLogo = computed(() => theme.value?.header?.logo || false)
+const hasTitle = computed(() => theme.value?.header?.title || false)
 </script>
 
 <template>
-  <NuxtLink to="/" :aria-label="theme.header.title">
+  <NuxtLink to="/" :aria-label="theme?.header?.title">
     <!-- Only title -->
     <span v-if="!hasLogo && hasTitle">
-      {{ theme.header.title }}
+      {{ theme?.header?.title }}
     </span>
 
     <!-- Title and Logo -->
@@ -18,7 +18,7 @@ const hasTitle = computed(() => theme.value?.header?.title)
       <Logo />
 
       <span>
-        {{ theme.header.title }}
+        {{ theme?.header?.title || '' }}
       </span>
     </template>
 

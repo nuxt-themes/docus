@@ -5,6 +5,9 @@
 /* Variables */
 :root {
   --header-height: 4rem;
+  --stacked-toc-height: 4rem;
+  --used-space: calc(calc(var(--header-height) * 2) + var(--stacked-toc-height));
+  --page-min-height: calc(100vh - var(--used-space));
   --codeblocks-background: theme('colors.gray.900');
 }
 
@@ -88,6 +91,11 @@
 
   .dark-img {
     @apply hidden;
+  }
+
+  /* Sizes */
+  .min-h-page {
+    @apply min-h-[var(--page-min-height)];
   }
 }
 

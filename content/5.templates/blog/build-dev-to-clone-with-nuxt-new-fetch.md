@@ -90,14 +90,14 @@ For styling we will use the most common CSS pre-processor Sass/SCSS and leverage
 <code-group>
   <code-block label="Yarn" active>
 
-```bash
+```zsh
 yarn add sass sass-loader@10 -D
 ```
 
   </code-block>
   <code-block label="npm">
 
-```bash
+```zsh
 npm install sass sass-loader@10 --save-dev
 ```
 
@@ -109,14 +109,14 @@ We also will use [@nuxtjs/style-resources](https://github.com/nuxt-community/sty
 <code-group>
   <code-block label="Yarn" active>
 
-```bash
+```zsh
 yarn add @nuxtjs/style-resources
 ```
 
   </code-block>
   <code-block label="npm">
 
-```bash
+```zsh
 npm install @nuxtjs/style-resources
 ```
 
@@ -156,14 +156,14 @@ For SVG icons lets use [@nuxt/svg](https://github.com/nuxt-community/svg-module)
 <code-group>
   <code-block label="Yarn" active>
 
-```bash
+```zsh
 yarn add @nuxtjs/svg -D
 ```
 
   </code-block>
   <code-block label="npm">
 
-```bash
+```zsh
 npm install @nuxtjs/svg -D
 ```
 

@@ -50,7 +50,7 @@ ngrok will create a http-https-tcp tunnel. Check out the [ngrok npm package](htt
 
 To use a custom module within our app we need to create a modules folder if you haven't already got one. Inside it let's create a folder called ngrok and add an index.js file into it. You can use your editor to create these folders and files or use the commands below.
 
-```bash
+```zsh
 mkdir modules modules/ngrok
 touch modules/ngrok/index.js
 ```
@@ -68,14 +68,14 @@ As we will use the [ngrok npm package](https://www.npmjs.com/package/ngrok) we w
 <code-group>
   <code-block label="Yarn" active>
 
-```bash
+```zsh
 yarn add --dev ngrok
 ```
 
 </code-block>
 <code-block label="npm">
 
-```bash
+```zsh
 npm install --dev ngrok
 ```
 
@@ -191,7 +191,7 @@ Although this should work we might run into some issues regarding max connection
 
 Once we have our token we can set up our `.env` file and add our token.
 
-```bash{}[.env]
+```zsh{}[.env]
 NGROK_TOKEN=my-authtoken-from-ngrok
 ```
 

@@ -75,11 +75,13 @@ export default defineNuxtConfig({
   head: {
     title: 'Docus',
     link: [
+      /*
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
       },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      */
     ],
     meta: [
       { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
@@ -129,6 +131,9 @@ export default defineNuxtConfig({
           spacing: {
             base: '320px',
             header: 'var(--header-height)',
+          },
+          maxWidth: {
+            '8xl': '90rem',
           },
         },
       },
