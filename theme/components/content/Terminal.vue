@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from '#imports'
+import { ref, useClipboard } from '#imports'
 
 const props = defineProps({
   content: {
