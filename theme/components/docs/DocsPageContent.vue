@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useDocus } from '#imports'
+import { computed, ref, useDocus } from '#imports'
 
 const { page } = useDocus()
 
@@ -16,7 +16,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <div class="flex flex-col-reverse flex-grow- lg:grid lg:grid-cols-10 gap-8 relative">
+  <div class="flex flex-col-reverse lg:grid lg:grid-cols-10 gap-8 relative">
     <div
       class="col-span-10 lg:col-span-8 mt-4 lg:mt-0"
       :class="{

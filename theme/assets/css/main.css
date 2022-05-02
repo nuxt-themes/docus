@@ -52,7 +52,7 @@
     @apply bg-gray-500 dark:bg-gray-400;
   }
 
-  .blurry-surface {
+  .surface-blurry {
     @apply backdrop-blur bg-white/95 dark:bg-gray-900/95;
   }
 

@@ -1,4 +1,4 @@
-import { defineNuxtPlugin, ref } from '#imports'
+import { defineNuxtPlugin, ref, watch } from '#imports'
 
 export default defineNuxtPlugin((ctx: any) => {
   // Menu visible reference

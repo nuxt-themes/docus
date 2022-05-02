@@ -10,14 +10,14 @@ const icons = computed(() => theme.value?.footer?.icons || [])
   <footer class="py-6 sm:py-0 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 h-header">
     <Container class="flex h-full flex-col gap-y-4 sm:flex-row justify-between items-center">
       <a
-        v-if="theme.footer.credits"
+        v-if="theme?.footer?.credits"
         href="https://nuxtlabs.com"
         rel="noopener"
         target="_blank"
         class="flex items-end text-secondary transition-base dark:hover:text-gray-100 hover:text-gray-600 mb-3 sm:mb-0"
       >
-        <IconNuxtLabs class="mr-2" />
-        <p class="font-semibold text-sm">Made by Nuxt Labs</p>
+        <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="mr-2" />
+        <p class="font-semibold text-sm">{{ theme?.footer?.credits?.text }}</p>
       </a>
 
       <div class="flex">
