@@ -13,7 +13,7 @@ definePageMeta({
 const { page, theme } = useDocus()
 
 useHead({
-  title: `${theme.value?.title} | ${page.value?.title}`,
+  title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
   description: page.value?.description || theme.value?.description || '',
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
