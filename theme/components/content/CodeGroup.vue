@@ -1,6 +1,6 @@
 <script lang="ts">
 import TabsHeader from './TabsHeader.vue'
-import { defineComponent } from '#imports'
+import { defineComponent, h } from '#imports'
 
 const isTag = (slot: any, tag: string) => {
   return slot.type && slot.type.tag && slot.type.tag === tag
