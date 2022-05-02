@@ -2,6 +2,9 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import colors from 'tailwindcss/colors.js'
 import { resolve } from 'pathe'
+import { defineNuxtModule } from '@nuxt/kit'
+import consola from 'consola'
+import { version } from '../package.json'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
 const resolveThemeDir = (path: string) => resolve(themeDir, path)
@@ -173,5 +176,16 @@ export default defineNuxtConfig({
     '@nuxthq/admin',
     // 'vue-plausible',
     '@vueuse/nuxt',
+    // Docus module
+    defineNuxtModule({
+      meta: {
+        name: 'docus',
+      },
+      setup(_, nuxt) {
+        nuxt.hook('modules:done', () => {
+          consola.success(`Using Docus v${version}`)
+        })
+      },
+    }),
   ],
 })
