@@ -139,7 +139,8 @@ export default defineNuxtConfig({
       },
       plugins: [
         require('@tailwindcss/typography'),
-        require('@tailwindcss/forms'),
+        // Gives errors in console (color-adjust)
+        // require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
       ],
