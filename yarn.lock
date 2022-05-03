@@ -466,9 +466,9 @@
     fastq "^1.6.0"
 
 "@nuxt/content@npm:@nuxt/content-edge@latest":
-  version "2.0.0-27526485.056fb07"
-  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27526485.056fb07.tgz#8394b798de78e1d337de0dd4007a558359e2fd00"
-  integrity sha512-c3dZcb0BfumyRoONZslpoc/G+lI0THLLOyucFtOiXDPOaixl5iUC7LOVTofyimtlTkaDyqo8/d5sC66/S2n5sg==
+  version "2.0.0-27526542.929a8c5"
+  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27526542.929a8c5.tgz#04af20f063e19d132465412e6f4c2092768a350f"
+  integrity sha512-r6HEh7F372A0XGMUUlks7ul4xUTsZwBbyxEbA4wmwsWmmZpvi1FmM67HUqGUivRJBBctFWS7pcPd24oHMxJ/BA==
   dependencies:
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
     base64-js "^1.5.1"
