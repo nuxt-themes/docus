@@ -26,7 +26,7 @@ defineProps({
 
 <style lang="postcss" scoped>
 :not(h1, h2, h3, h4) > a {
-  @apply font-medium no-underline text-primary-500 border-b border-transparent hover:border-primary-500 transition-colors;
+  @apply font-medium no-underline text-secondary-active border-b border-transparent hover:border-primary-600 transition-colors;
 }
 
 h1 a,
@@ -50,6 +50,7 @@ h4 a {
     content: '';
     height: calc(100% + 4px);
   }
+
   &:hover:before {
     @apply border-b border-dashed border-gray-900 dark:border-gray-100;
   }

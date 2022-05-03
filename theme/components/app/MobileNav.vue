@@ -13,7 +13,7 @@ const tree = computed(() => {
   )
 })
 
-const { visible, open, close, toggle } = useMenu()
+const { visible, open, close, toggle, scrollBarGap } = useMenu()
 
 const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
@@ -25,7 +25,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
 <template>
   <div class="relative lg:hidden">
     <button :class="[buttonClasses]" class="z-10 relative" @click="toggle">
-      <IconDots class="w-6 h-6 icon-base h-full mx-auto" />
+      <IconDots class="w-6 h-6 icon-base mx-auto" />
     </button>
 
     <ClientOnly>
@@ -52,14 +52,14 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
           class="z-30 fixed"
           @click="toggle"
         >
-          <IconLine class="w-6 h-6 icon-base h-full mx-auto" />
+          <IconLine class="w-6 h-6 icon-base mx-auto" />
         </button>
 
         <!-- Nav menu surface -->
         <div
           id="mobile-nav-surface"
           :class="[visible ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none']"
-          class="fixed z-20 w-[calc(100%-3rem)] md:w-auto min-w-full md:min-w-[calc(320px-2rem)] transform origin-top-right transition-transform ease-out"
+          class="fixed z-20 w-[calc(100%-4rem)] sm:w-auto min-w-full sm:min-w-[calc(320px-2rem)] transform origin-top-right transition-transform ease-out"
           @click="toggle"
         >
           <div
@@ -92,7 +92,8 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
 }
 
 #mobile-nav-button {
-  @apply right-4 top-4;
+  @apply top-4;
+  right: calc(theme('spacing.4') + var(--scrollbar-gap));
 }
 
 @screen sm {
@@ -103,7 +104,8 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
   }
 
   #mobile-nav-button {
-    @apply right-6 top-4;
+    @apply top-4;
+    right: calc(theme('spacing.6') + var(--scrollbar-gap));
   }
 }
 </style>

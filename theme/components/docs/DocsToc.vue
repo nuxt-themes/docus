@@ -15,9 +15,10 @@ watch(
     if (process.client) {
       setTimeout(() => {
         updateHeadings([
-          ...document.querySelectorAll('.content h1'),
-          ...document.querySelectorAll('.content h2'),
-          ...document.querySelectorAll('.content h3'),
+          ...document.querySelectorAll('.docus-content h1'),
+          ...document.querySelectorAll('.docus-content h2'),
+          ...document.querySelectorAll('.docus-content h3'),
+          ...document.querySelectorAll('.docus-content h4'),
         ])
       }, 100)
     }
@@ -38,7 +39,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         <Icon name="heroicons-solid:chevron-double-left" class="w-6 h-6" />
       </div>
 
-      <span class="truncate">Previous page</span>
+      <span class="truncate">{{ prev.title }}</span>
     </NuxtLink>
 
     <template v-if="toc?.links?.length">
@@ -51,12 +52,13 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       </div>
 
       <ul class="pl-3 lg:pr-3 mr-1 border-gray-500">
-        <li v-for="link in toc.links" :key="link.text" class="group border-l-2 lg:border-r-2 lg:border-l-0 min-w-0 lg:text-right" :class="activeHeadings.includes(link.id) ? 'border-primary-600' : 'border-primary-600'">
+        <li v-for="link in toc.links" :key="link.text" class="group border-l-2 lg:border-r-2 lg:border-l-0 min-w-0 lg:text-right transition-colors transition-base" :class="activeHeadings.includes(link.id) ? 'border-primary-600' : 'border-primary-300'">
           <a
             :href="`#${link.id}`"
-            class="text-secondary text-secondary-group-hover py-1 pl-3 lg:pr-3 block truncate"
+            class="text-secondary-group-hover py-1 pl-3 lg:pr-3 block truncate"
             :class="{
-              'text-primary-500 dark:text-primary-400': activeHeadings.includes(link.id),
+              'text-secondary-active': activeHeadings.includes(link.id),
+              'text-secondary': !activeHeadings.includes(link.id)
             }"
             @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
           >
@@ -71,7 +73,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         <Icon name="heroicons-solid:chevron-double-right" class="w-6 h-6" />
       </div>
 
-      <span class="truncate">Next page</span>
+      <span class="truncate">{{ next.title }}</span>
     </NuxtLink>
   </div>
 </template>

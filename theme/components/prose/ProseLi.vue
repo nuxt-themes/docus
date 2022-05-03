@@ -12,7 +12,7 @@ li {
 
 ul > li {
   &::before {
-    @apply absolute left-0 top-[0.5em] surface-secondary rounded-full w-1.5 h-1.5;
+    @apply absolute left-0 top-[0.5em] bg-primary-600 rounded-full w-1.5 h-1.5;
     content: '';
   }
 }

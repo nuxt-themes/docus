@@ -7,7 +7,7 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="py-6 sm:py-0 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 h-header">
+  <footer class="py-6 sm:py-0 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 h-footer">
     <Container class="flex h-full flex-col gap-y-4 sm:flex-row justify-between items-center">
       <a
         v-if="theme?.footer?.credits"

@@ -134,6 +134,7 @@ export default defineNuxtConfig({
           spacing: {
             base: '320px',
             header: 'var(--header-height)',
+            footer: 'var(--footer-height)',
           },
           maxWidth: {
             '8xl': '90rem',

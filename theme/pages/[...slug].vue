@@ -49,7 +49,7 @@ useHead({
 </script>
 
 <template>
-  <Content v-if="page" :key="(page as string)" class="content" :document="page" />
+  <Content v-if="page" :key="(page as string)" class="docus-content" :document="page" />
   <p v-else>
     <Alert type="warning">
       Page not found!
@@ -58,7 +58,7 @@ useHead({
 </template>
 
 <style scoped>
-.content {
+.docus-content {
   & > :first-child {
     margin-top: 0 !important;
   }
