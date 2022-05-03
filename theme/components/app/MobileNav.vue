@@ -16,7 +16,7 @@ const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
 watch(visible, (v) => (v ? open() : close()))
 
-const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmgray-100 dark:bg-warmgray-800 rounded-xl'
+const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
     <ClientOnly>
       <teleport to="body">
         <!-- Scrim overlay -->
-        <div id="mobile-nav-scrim" :class="[visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0']" class="bg-warmgray-100 dark:bg-warmgray-800 fixed top-0 left-0 z-10 h-full w-full bg-opacity-50 backdrop-blur transition dark:bg-opacity-50" @click="toggle" />
+        <div id="mobile-nav-scrim" :class="[visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0']" class="fixed top-0 left-0 z-10 h-full w-full bg-opacity-50 backdrop-blur transition dark:bg-opacity-50" @click="toggle" />
 
         <!-- clone AppHeader button, due to stacking context limitations -->
         <button id="mobile-nav-button" :class="[buttonClasses, visible ? 'pointer-events-auto opacity-100' : `opacity-0 transition ${isDesktopSafari || isDesktopFirefox ? 'duration-0' : 'duration-400'} pointer-events-none`]" class="fixed z-30" @click="toggle">

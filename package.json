@@ -8,7 +8,7 @@
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.22.0",
+    "@antfu/eslint-config": "^0.23.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
@@ -31,9 +31,9 @@
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "@vueuse/core": "^8.3.1",
+    "@vueuse/core": "^8.4.0",
     "@vueuse/motion": "2.0.0-beta.12",
-    "@vueuse/nuxt": "^8.3.1",
+    "@vueuse/nuxt": "^8.4.0",
     "defu": "^6.0.0",
     "lodash-es": "^4.17.21",
     "tailwindcss": "^3.0.24",
