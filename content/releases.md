@@ -1,6 +1,5 @@
-# Releases
-
-Discover all the release notes.
-
+---
+toc: false
+---
 
 :releases
