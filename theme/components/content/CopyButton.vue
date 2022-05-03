@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref, useClipboard } from '#imports'
-
-const { copy: copyToClipboard } = useClipboard()
-
-const state = ref('init')
+import { useClipboard } from '@vueuse/core'
+import { ref } from '#imports'
 
 const props = defineProps({
   content: {
@@ -11,6 +8,10 @@ const props = defineProps({
     default: '',
   },
 })
+
+const { copy: copyToClipboard } = useClipboard()
+
+const state = ref('init')
 
 const copy = (e: MouseEvent) => {
   copyToClipboard(props.content)

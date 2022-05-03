@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, useClipboard } from '#imports'
+import { useClipboard } from '@vueuse/core'
+import { ref } from '#imports'
 
 const props = defineProps({
   content: {
