@@ -15,11 +15,19 @@ const props = defineProps({
 })
 
 // Guess title from link!
-const computedTitle = computed(() => (props.title || props.link).split('/').filter(Boolean).map(part => splitByCase(part).map(p => upperFirst(p)).join(' ')).join(' > '))
+const computedTitle = computed(() =>
+  (props.title || props.link)
+    .split('/')
+    .filter(Boolean)
+    .map((part) =>
+      splitByCase(part)
+        .map((p) => upperFirst(p))
+        .join(' '),
+    )
+    .join(' > '),
+)
 </script>
 
 <template>
-  <Alert icon="👉">
-    Read more in <NuxtLink :to="link" v-html="computedTitle" />.
-  </Alert>
+  <Alert icon="👉"> Read more in <NuxtLink :to="link" v-html="computedTitle" />. </Alert>
 </template>

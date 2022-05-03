@@ -18,7 +18,11 @@ useHead({
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
-    { hid: 'twitter:site', name: 'twitter:site', content: theme.value?.url || theme.value?.twitter || '' },
+    {
+      hid: 'twitter:site',
+      name: 'twitter:site',
+      content: theme.value?.url || theme.value?.twitter || '',
+    },
     {
       hid: 'twitter:card',
       name: 'twitter:card',
@@ -49,12 +53,7 @@ useHead({
 </script>
 
 <template>
-  <Content v-if="page" :key="(page as string)" class="docus-content" :document="page" />
-  <p v-else>
-    <Alert type="warning">
-      Page not found!
-    </Alert>
-  </p>
+  <Content v-if="page" class="docus-content" :document="page" />
 </template>
 
 <style scoped>

@@ -1,8 +1,8 @@
 <template>
-  <ol class="relative space-y-2 mb-16">
-    <li class="relative xl:grid grid-cols-5 gap-16 ">
-      <div class="mb-6 col-span-2 xl:mb-0">
-        <h4 class="leading-6 text-slate-900 font-semibold mb-2 dark:text-slate-200">
+  <ol class="relative mb-16 space-y-2">
+    <li class="relative grid-cols-5 gap-16 xl:grid">
+      <div class="col-span-2 mb-6 xl:mb-0">
+        <h4 class="mb-2 font-semibold leading-6 text-slate-900 dark:text-slate-200">
           <Markdown :use="$slots.title" unwrap="p" />
         </h4>
         <div>
@@ -18,6 +18,6 @@
 
 <style scoped lang="postcss">
 :deep(.prose-code) {
-  @apply mt-0 my-0 !important;
+  @apply my-0 mt-0 !important;
 }
 </style>

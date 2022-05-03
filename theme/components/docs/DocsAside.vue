@@ -4,14 +4,11 @@ import { computed, useDocus } from '#imports'
 const { navigation } = useDocus()
 
 const tree = computed(() => {
-  return navigation.value.filter(
-    (item) => {
-      if (item.slug === '/')
-        return false
+  return navigation.value.filter((item) => {
+    if (item.slug === '/') return false
 
-      return true
-    },
-  )
+    return true
+  })
 })
 </script>
 

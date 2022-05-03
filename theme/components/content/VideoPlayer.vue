@@ -19,8 +19,7 @@ const props = defineProps({
 const provider = ref(null)
 const loaded = ref(false)
 
-if (!props.src && !props.sources.length)
-  throw new Error('VideoPlayer: you need to provide either `src` or `sources` props')
+if (!props.src && !props.sources.length) throw new Error('VideoPlayer: you need to provide either `src` or `sources` props')
 
 const src = props.src || props.sources[0].src
 
@@ -36,32 +35,18 @@ if (src && src.includes('youtube.com/watch')) {
 </script>
 
 <template>
-  <div class="video-player relative my-4 bg-black bg-opacity-25 rounded-sm overflow-hidden" :class="{ loaded }">
-    <NuxtImg
-      v-if="provider ? provider.poster : poster"
-      class="video absolute top-0 left-0 w-full h-full object-cover"
-      :src="provider ? provider.poster : poster"
-      :width="670"
-      :height="377"
-    />
-    <div v-if="loaded" class="video absolute top-0 left-0 w-full h-full">
+  <div class="video-player relative my-4 overflow-hidden rounded-sm bg-black bg-opacity-25" :class="{ loaded }">
+    <NuxtImg v-if="provider ? provider.poster : poster" class="video absolute top-0 left-0 h-full w-full object-cover" :src="provider ? provider.poster : poster" :width="670" :height="377" />
+    <div v-if="loaded" class="video absolute top-0 left-0 h-full w-full">
       <!-- remote videos -->
       <video v-if="!provider" :poster="poster" controls autoplay>
-        <source v-if="src" :src="src">
-        <source v-for="source in sources" :key="source.src || source" :src="source.src || source" :type="source.type">
+        <source v-if="src" :src="src" />
+        <source v-for="source in sources" :key="source.src || source" :src="source.src || source" :type="source.type" />
       </video>
       <!-- youtube -->
-      <iframe
-        v-else-if="provider.name === 'youtube'"
-        width="560"
-        height="377"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen=""
-        class="w-full h-full"
-        :src="provider.src"
-      />
+      <iframe v-else-if="provider.name === 'youtube'" width="560" height="377" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="h-full w-full" :src="provider.src" />
     </div>
-    <div v-if="!loaded" class="overlay absolute top-0 left-0 w-full h-full cursor-pointer" @click="loaded = true">
+    <div v-if="!loaded" class="overlay absolute top-0 left-0 h-full w-full cursor-pointer" @click="loaded = true">
       <button class="play" />
     </div>
   </div>

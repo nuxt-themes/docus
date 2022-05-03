@@ -9,8 +9,8 @@ defineProps({
     default: false,
   },
   /**
-     * `true` if `href` points to a static file
-     */
+   * `true` if `href` points to a static file
+   */
   static: {
     type: Boolean,
     default: false,
@@ -26,7 +26,7 @@ defineProps({
 
 <style lang="postcss" scoped>
 :not(h1, h2, h3, h4) > a {
-  @apply font-medium no-underline text-secondary-active border-b border-transparent hover:border-primary-600 transition-colors;
+  @apply text-secondary-active hover:border-primary-600 border-b border-transparent font-medium no-underline transition-colors;
 }
 
 h1 a,
@@ -35,7 +35,7 @@ h3 a,
 h4 a {
   @apply relative;
   &::after {
-    @apply absolute pl-2 w-6 h-6 opacity-0;
+    @apply absolute h-6 w-6 pl-2 opacity-0;
     content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23111827"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /%3E%3C/svg%3E');
   }
   &:hover {

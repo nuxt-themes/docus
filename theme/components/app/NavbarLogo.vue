@@ -23,11 +23,11 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
     </template>
 
     <!-- Only Logo -->
-    <Logo v-else-if="hasLogo" class="w-12 h-12" />
+    <Logo v-else-if="hasLogo" class="h-12 w-12" />
 
     <!-- Placeholder -->
     <template v-else>
-      <IconDots class="w-12 h-12" />
+      <IconDots class="h-12 w-12" />
     </template>
   </NuxtLink>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, resolveComponent, computed } from '#imports'
+import { computed, defineComponent, resolveComponent } from '#imports'
 
 const iconTypeMap = {
   primary: 'IconCheck',
@@ -38,20 +38,11 @@ export default defineComponent({
     // Usage of render function is mandatory to access default slot
     // Otherwise Vue warns that slot "default" was invoked outside of the render function
     return () => {
-      const items = flatUnwrap((slots.default && slots.default()) ?? [], ['ul']).map(li => unwrap(li, ['li']))
+      const items = flatUnwrap((slots.default && slots.default()) ?? [], ['ul']).map((li) => unwrap(li, ['li']))
 
       return h(
         'ul',
-        items.map(item =>
-          h('li', { class: 'mb-3 flex items-center' }, [
-            h(
-              'span',
-              { class: `list-${props.type} mt-px mr-3 flex-shrink-0` },
-              h(resolveComponent(iconName.value), { class: 'h-6 w-6' }),
-            ),
-            h('span', h(resolveComponent('Markdown'), { use: () => item })),
-          ]),
-        ),
+        items.map((item) => h('li', { class: 'mb-3 flex items-center' }, [h('span', { class: `list-${props.type} mt-px mr-3 flex-shrink-0` }, h(resolveComponent(iconName.value), { class: 'h-6 w-6' })), h('span', h(resolveComponent('Markdown'), { use: () => item }))])),
       )
     }
   },

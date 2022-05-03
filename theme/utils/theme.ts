@@ -23,10 +23,12 @@ export interface ThemeConfig {
     logo: boolean | string
   }
   footer: {
-    credits: false | {
-      icon: string
-      text: string
-    }
+    credits:
+      | false
+      | {
+          icon: string
+          text: string
+        }
     icons: ThemeIcon[]
   }
   debug: boolean | ThemeDebugConfig

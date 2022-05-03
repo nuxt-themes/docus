@@ -5,7 +5,7 @@ const { theme } = useDocus()
 </script>
 
 <template>
-  <div id="docus-page" class="w-full flex min-h-screen flex-col">
+  <div id="docus-page" class="flex min-h-screen w-full flex-col">
     <Debug v-if="theme?.debug" :config="theme?.debug" />
 
     <Navbar />

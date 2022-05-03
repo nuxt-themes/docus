@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-full my-6 overflow-x-auto">
+  <div class="my-6 max-w-full overflow-x-auto">
     <table>
       <slot />
     </table>
@@ -8,6 +8,6 @@
 
 <style lang="postcss" scoped>
 table {
-  @apply leading-5 text-sm w-full table-auto text-left;
+  @apply w-full table-auto text-left text-sm leading-5;
 }
 </style>

@@ -19,11 +19,7 @@ export default defineComponent({
   render() {
     const slots = this.$slots.default()
     const tabs = slots
-      .filter(
-        slot =>
-          isTag(slot, 'code-block')
-            || isTag(slot, 'code'),
-      )
+      .filter((slot) => isTag(slot, 'code-block') || isTag(slot, 'code'))
       .map((slot, index) => {
         return {
           label: slot?.props?.filename || slot?.props?.label || `${index}`,
@@ -41,15 +37,12 @@ export default defineComponent({
         },
       },
       [
-        h(
-          TabsHeader,
-          {
-            'ref': 'tabs-header',
-            'activeTabIndex': this.activeTabIndex,
-            tabs,
-            'onUpdate:activeTabIndex': $event => (this.activeTabIndex = $event),
-          },
-        ),
+        h(TabsHeader, {
+          ref: 'tabs-header',
+          activeTabIndex: this.activeTabIndex,
+          tabs,
+          'onUpdate:activeTabIndex': ($event) => (this.activeTabIndex = $event),
+        }),
         h(
           'div',
           {
@@ -57,12 +50,14 @@ export default defineComponent({
             text: this.activeTabIndex,
           },
           // Map slots to content children
-          slots.map(
-            (slot, index) => h(
+          slots.map((slot, index) =>
+            h(
               'div',
               {
                 // Current slot is displayed, others are hidden
-                style: { display: index === this.activeTabIndex ? 'block' : 'none' },
+                style: {
+                  display: index === this.activeTabIndex ? 'block' : 'none',
+                },
                 class: {
                   '': !isTag(slot, 'code'),
                 },
@@ -72,14 +67,14 @@ export default defineComponent({
                 isTag(slot, 'code')
                   ? slot
                   : h(
-                    'div',
-                    {
-                      class: {
-                        'preview-canvas': true,
+                      'div',
+                      {
+                        class: {
+                          'preview-canvas': true,
+                        },
                       },
-                    },
-                    [slot.children.default()],
-                  ),
+                      [slot.children.default()],
+                    ),
               ],
             ),
           ),
@@ -93,14 +88,14 @@ export default defineComponent({
 <style lang="postcss">
 li {
   .code-group {
-      @apply my-4;
+    @apply my-4;
   }
 }
 
 html.dark {
   .code-group-content {
     .preview-canvas {
-      @apply p-4 my-0 overflow-x-auto leading-normal bg-gray-900 rounded-bl-lg rounded-br-lg rounded-tl-none rounded-tr-none z-0;
+      @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg rounded-tl-none rounded-tr-none bg-gray-900 p-4 leading-normal;
     }
   }
 }
@@ -108,7 +103,7 @@ html.dark {
 
 <style scoped lang="postcss">
 .code-group {
-  @apply rounded-lg overflow-hidden border-2 surface-border;
+  @apply surface-border overflow-hidden rounded-lg border-2;
 
   :deep(.prose-code) {
     @apply mt-0 mb-0 rounded-none !important;
@@ -125,7 +120,7 @@ html.dark {
 
 .code-group-content {
   .preview-canvas {
-    @apply p-4 my-0 overflow-x-auto leading-normal bg-gray-100 dark:bg-gray-800 rounded-bl-lg rounded-br-lg z-0;
+    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-100 p-4 leading-normal dark:bg-gray-800;
 
     & > * {
       @apply my-0;

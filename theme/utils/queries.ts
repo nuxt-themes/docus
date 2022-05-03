@@ -13,26 +13,21 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   try {
     await Promise.all([
       queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
-      queryContent().where({ partial: { $not: true }, navigation: { $not: false } }).findSurround(path) as Promise<ParsedContent[]>,
-    ]).then(
-      ([_page, _surround]) => {
-        if (_page)
-          page.value = _page
-        else page.value = undefined
+      queryContent()
+        .where({ partial: { $not: true }, navigation: { $not: false } })
+        .findSurround(path) as Promise<ParsedContent[]>,
+    ]).then(([_page, _surround]) => {
+      if (_page) page.value = _page
+      else page.value = undefined
 
-        if (_surround && _surround.length)
-          surround.value = _surround
-        else surround.value = undefined
+      if (_surround && _surround.length) surround.value = _surround
+      else surround.value = undefined
 
-        // Handle layout update from page
-        if (_page?.layout)
-          route.meta.layout = _page?.layout
-        else
-          route.meta.layout = 'default'
-      },
-    )
-  }
-  catch (e) {
+      // Handle layout update from page
+      if (_page?.layout) route.meta.layout = _page?.layout
+      else route.meta.layout = 'default'
+    })
+  } catch (e) {
     console.warn(`Could not find page for path ${path}!`)
     page.value = undefined
     surround.value = undefined
@@ -42,20 +37,24 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
 export const queryNavigation = async () => {
   const { navigation } = useDocusState()
 
-  navigation.value = await fetchContentNavigation(queryContent().where({
-    navigation: {
-      $not: false,
-    },
-  }))
+  navigation.value = await fetchContentNavigation(
+    queryContent().where({
+      navigation: {
+        $not: false,
+      },
+    }),
+  )
 }
 
 export const queryTheme = async () => {
   const { theme } = useDocusState()
 
   // Fetch _theme.yml at `content/` root.
-  const query = await queryContent().where({
-    id: 'content:_theme.yml',
-  }).findOne()
+  const query = await queryContent()
+    .where({
+      id: 'content:_theme.yml',
+    })
+    .findOne()
 
   if (!query) {
     // Assign default theme config if none found.

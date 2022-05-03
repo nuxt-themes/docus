@@ -4,10 +4,10 @@
 
 <style lang="postcss" scoped>
 p {
-  @apply leading-relaxed my-4;
+  @apply my-4 leading-relaxed;
 
   :deep(br) {
-    @apply block mt-4;
+    @apply mt-4 block;
     content: '';
   }
 }

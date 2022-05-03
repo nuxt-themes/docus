@@ -15,7 +15,7 @@ h3 {
   /* TODO */
   /* extend.fontSize do not work in Windi */
   font-size: 1.25rem;
-  @apply tracking-tight leading-snug font-semibold mt-[1.25em] mb-[0.5em];
+  @apply mt-[1.25em] mb-[0.5em] font-semibold leading-snug tracking-tight;
 }
 
 h3 + * {

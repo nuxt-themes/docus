@@ -7,30 +7,16 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="py-6 sm:py-0 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 h-footer">
-    <Container class="flex h-full flex-col gap-y-4 sm:flex-row justify-between items-center">
-      <a
-        v-if="theme?.footer?.credits"
-        href="https://nuxtlabs.com"
-        rel="noopener"
-        target="_blank"
-        class="flex items-end text-secondary transition-base dark:hover:text-gray-100 hover:text-gray-600 mb-3 sm:mb-0"
-      >
+  <footer class="h-footer bg-gray-50 py-6 dark:bg-gray-800 dark:bg-opacity-25 sm:py-0">
+    <Container class="flex h-full flex-col items-center justify-between gap-y-4 sm:flex-row">
+      <a v-if="theme?.footer?.credits" href="https://nuxtlabs.com" rel="noopener" target="_blank" class="text-secondary transition-base mb-3 flex items-end hover:text-gray-600 dark:hover:text-gray-100 sm:mb-0">
         <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="mr-2" />
-        <p class="font-semibold text-sm">{{ theme?.footer?.credits?.text }}</p>
+        <p class="text-sm font-semibold">{{ theme?.footer?.credits?.text }}</p>
       </a>
 
       <div class="flex">
-        <a
-          v-for="icon in icons"
-          :key="icon.label"
-          rel="noopener"
-          :aria-label="icon.label"
-          :href="icon.href"
-          target="_blank"
-          class="text-sm flex items-center font-medium p-1 icon-base"
-        >
-          <Component :is="icon.component" class="w-8 h-8" />
+        <a v-for="icon in icons" :key="icon.label" rel="noopener" :aria-label="icon.label" :href="icon.href" target="_blank" class="icon-base flex items-center p-1 text-sm font-medium">
+          <Component :is="icon.component" class="h-8 w-8" />
         </a>
 
         <SocialIcons size="w-8 h-8" padding="p-1" />

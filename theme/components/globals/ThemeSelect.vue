@@ -18,18 +18,12 @@ const onClick = () => (mode.value === 'light' ? (mode.value = 'dark') : (mode.va
 </script>
 
 <template>
-  <button
-    class="icon-base w-6 h-6"
-    aria-label="Color Mode"
-    @click="onClick"
-  >
+  <button class="icon-base h-6 w-6" aria-label="Color Mode" @click="onClick">
     <ClientOnly>
       <IconSun v-if="mode === 'dark'" />
       <IconMoon v-else />
 
-      <template #placeholder>
-        ...
-      </template>
+      <template #placeholder> ... </template>
     </ClientOnly>
   </button>
 </template>

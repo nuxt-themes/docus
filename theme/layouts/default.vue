@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { useDocus, computed } from '#imports'
+import { computed, useDocus } from '#imports'
 
 const { theme, page } = useDocus()
 
-const showToc = computed(
-  () => {
-    if (typeof page.value?.toc !== 'undefined')
-      return page.value.toc
+const showToc = computed(() => {
+  if (typeof page.value?.toc !== 'undefined') return page.value.toc
 
-    return true
-  },
-)
+  return true
+})
 </script>
 
 <template>
-  <div id="docus-docs-page" class="flex flex-col min-h-screen">
+  <div id="docus-docs-page" class="flex min-h-screen flex-col">
     <Debug v-if="theme?.debug" :config="theme?.debug" />
 
     <Navbar />

@@ -114,9 +114,7 @@ export default defineNuxtConfig({
   // ],
   // To enable for working build
   components,
-  css: [
-    resolveThemeDir('assets/css/fonts.css'),
-  ],
+  css: [resolveThemeDir('assets/css/fonts.css')],
   tailwindcss: {
     viewer: false,
     cssPath: resolveThemeDir('assets/css/main.css'),
@@ -148,14 +146,8 @@ export default defineNuxtConfig({
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
       ],
-      content: [
-        '~/content/**/*.{md,yml,json,json5,csv}',
-        resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('components/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('pages/**/*.{mjs,vue,js,ts}'),
-      ],
-      safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map(number => `pl-[${number}px]`),
+      content: ['~/content/**/*.{md,yml,json,json5,csv}', resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
+      safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map((number) => `pl-[${number}px]`),
     },
   },
   content: {
