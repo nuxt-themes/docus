@@ -22,7 +22,7 @@ defineEmits(['update:activeTabIndex'])
         v-for="({ label }, i) in tabs"
         ref="tabs"
         :key="`${i}${label}`"
-        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono font-medium tracking-tight focus:outline-none font-bold"
+        class="relative px-3 py-1.5 xs:py-3 my-1.5 xs:my-0 text-sm font-mono tracking-tight focus:outline-none font-bold"
         :class="[activeTabIndex === i ? 'active text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-400']"
         @click="$emit('update:activeTabIndex', i)"
       >

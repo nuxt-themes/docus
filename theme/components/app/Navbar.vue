@@ -20,7 +20,7 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
 <template>
   <header class="sticky w-full top-0 surface surface-blurry border-b border-gray-200 dark:border-gray-800 border-opacity-50 h-header z-10">
     <Container class="grid grid-cols-12 items-center h-full">
-      <div class="col-span-6 lg:col-span-3">
+      <div class="col-span-6 lg:col-span-3 transition-base text-secondary-hover">
         <NavbarLogo />
       </div>
 

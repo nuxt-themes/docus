@@ -13,7 +13,7 @@ definePageMeta({
 const { page, theme } = useDocus()
 
 useHead({
-  title: `${theme.value?.title} | ${page.value?.title}`,
+  title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
   description: page.value?.description || theme.value?.description || '',
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
@@ -49,7 +49,7 @@ useHead({
 </script>
 
 <template>
-  <Content v-if="page" :key="(page as string)" class="content" :document="page" />
+  <Content v-if="page" :key="(page as string)" class="docus-content" :document="page" />
   <p v-else>
     <Alert type="warning">
       Page not found!
@@ -58,7 +58,7 @@ useHead({
 </template>
 
 <style scoped>
-.content {
+.docus-content {
   & > :first-child {
     margin-top: 0 !important;
   }

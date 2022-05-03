@@ -1,5 +1,5 @@
 <script lang="ts">
-import { resolveComponent } from 'vue'
+import { defineComponent, resolveComponent, computed } from '#imports'
 
 const iconTypeMap = {
   primary: 'IconCheck',

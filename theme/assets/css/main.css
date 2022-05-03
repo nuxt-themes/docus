@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variables */
-:root {
-  --header-height: 4rem;
-  --stacked-toc-height: 4rem;
-  --used-space: calc(calc(var(--header-height) * 2) + var(--stacked-toc-height));
-  --page-min-height: calc(100vh - var(--used-space));
-  --codeblocks-background: theme('colors.gray.900');
-}
-
 @layer components {
   /* Text primary */
 
@@ -25,21 +16,21 @@
   }
 
   .text-secondary-active {
-    @apply text-primary-500 dark:text-primary-400;
+    @apply text-primary-600 dark:text-primary-500;
   }
 
   .text-secondary-hover {
-    @apply hover:text-primary-500 hover:dark:text-primary-400;
+    @apply hover:text-primary-600 hover:dark:text-primary-500;
   }
 
   .text-secondary-group-hover {
-    @apply group-hover:dark:text-primary-400 group-hover:text-primary-500;
+    @apply group-hover:text-primary-600;
   }
 
   /* Transitions */
 
   .transition-base {
-    @apply transition-colors transition-opacity duration-100 ease-in-out;
+    @apply duration-100 ease-in-out;
   }
 
   /* Surface */
@@ -49,7 +40,7 @@
   }
 
   .surface-secondary {
-    @apply bg-gray-500 dark:bg-gray-400;
+    @apply bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25;
   }
 
   .surface-blurry {
@@ -73,7 +64,7 @@
   /* Icons */
 
   .icon-base {
-    @apply transition-base text-secondary text-secondary-hover;
+    @apply transition-base transition-colors text-secondary text-secondary-hover;
   }
 
   /* Code blocks */
@@ -92,15 +83,23 @@
   .dark-img {
     @apply hidden;
   }
+}
 
-  /* Sizes */
-  .min-h-page {
-    @apply min-h-[var(--page-min-height)];
+/* Variables */
+:root {
+  --header-height: 4rem;
+  --footer-height: 8rem;
+  --codeblocks-background: theme('colors.gray.900');
+}
+
+@screen sm{
+  :root {
+    --footer-height: 4rem;
   }
 }
 
 html {
-  @apply text-primary bg-white overflow-y-scroll;
+  @apply text-primary bg-white overflow-y-scroll min-h-screen;
 
   &.dark {
     @apply bg-gray-900;
@@ -108,5 +107,5 @@ html {
 }
 
 body {
-  @apply antialiased font-sans text-gray-700 dark:text-gray-200;
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200 min-h-screen;
 }

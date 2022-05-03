@@ -1,28 +1,33 @@
 <script setup lang="ts">
-import { useDocus } from '#imports'
+import { useDocus, computed } from '#imports'
 
-const { theme } = useDocus()
+const { theme, page } = useDocus()
+
+const showToc = computed(
+  () => {
+    if (typeof page.value?.toc !== 'undefined')
+      return page.value.toc
+
+    return true
+  },
+)
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
+  <div id="docus-docs-page" class="flex flex-col min-h-screen">
     <Debug v-if="theme?.debug" :config="theme?.debug" />
 
-    <div class="flex flex-col">
-      <Navbar />
+    <Navbar />
 
-      <DocsPage>
-        <template #aside>
-          <DocsAside />
-        </template>
+    <DocsPage class="flex-1">
+      <template #aside>
+        <DocsAside />
+      </template>
 
-        <DocsPageContent>
-          <div class="max-w-none min-h-page">
-            <NuxtPage />
-          </div>
-        </DocsPageContent>
-      </DocsPage>
-    </div>
+      <DocsPageContent :toc="showToc">
+        <NuxtPage />
+      </DocsPageContent>
+    </DocsPage>
 
     <Footer />
   </div>

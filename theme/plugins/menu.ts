@@ -31,10 +31,15 @@ export default defineNuxtPlugin((ctx: any) => {
     watch(
       visible,
       (isVisible) => {
-        const html = document.querySelector('html')
+        const html = document.documentElement
+
+        // Init once, this value can be keeped
+        if (!scrollBarGap.value) {
+          scrollBarGap.value = window.innerWidth - html.clientWidth
+          html.style.setProperty('--scrollbar-gap', `${scrollBarGap.value}px`)
+        }
 
         if (isVisible) {
-          scrollBarGap.value = window.innerWidth - document.documentElement.clientWidth
           html.style.overflow = 'hidden'
           html.style.paddingRight = `${scrollBarGap.value}px`
         }

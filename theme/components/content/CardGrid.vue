@@ -8,8 +8,8 @@ defineProps({
 </script>
 
 <template>
-  <section class="py-12 lg:py-24 bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25">
-    <Container>
+  <section class="bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25">
+    <Container class="py-8 w-full">
       <h2 class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
         <slot name="title" />
       </h2>

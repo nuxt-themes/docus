@@ -66,14 +66,14 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.slug"
-      :class="{
+      :class="['transition-base transition-colors', {
         'border-l-2': level > 0,
         'border-primary-600': isActive(link),
-        'border-primary-300 hover:border-primary-300': !isActive(link)
-      }"
+        'border-primary-300 hover:border-primary-600': !isActive(link)
+      }]"
     >
       <NuxtLink
-        class="block py-1.5 flex items-center justify-between focus:outline-none cursor-pointer"
+        class="py-1.5 flex items-center justify-between focus:outline-none cursor-pointer"
         :exact="link.exact"
         :class="{
           'pl-4': level > 0,
