@@ -4,6 +4,11 @@ import { computed } from '#imports'
 export const useDocus = () => {
   const { theme, navigation, page, surround } = useDocusState()
 
+  // Disable debug in production
+  if (process.env.NODE_ENV === 'production') {
+    if (theme.value) theme.value.debug = false
+  }
+
   /**
    * Table of contents from parsed page.
    */

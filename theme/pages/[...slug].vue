@@ -54,6 +54,9 @@ useHead({
 
 <template>
   <Content v-if="page" class="docus-content" :document="page" />
+  <p v-else>
+    <Alert type="warning"> Page not found! </Alert>
+  </p>
 </template>
 
 <style scoped>

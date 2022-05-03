@@ -6,11 +6,13 @@ const { theme } = useDocus()
 
 <template>
   <div id="docus-page" class="flex min-h-screen w-full flex-col">
-    <Debug v-if="theme?.debug" :config="theme?.debug" />
+    <template v-if="theme?.debug">
+      <component :is="'debug'" :config="theme?.debug" />
+    </template>
 
     <Navbar />
 
-    <div class="flex flex-col">
+    <div class="flex flex-1 flex-col">
       <NuxtPage />
     </div>
 
