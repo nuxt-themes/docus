@@ -5,5 +5,5 @@ import { defineNuxtRouteMiddleware } from '#imports'
 export default defineNuxtRouteMiddleware(async () => {
   const { theme } = useDocusState()
 
-  if (!theme.value) await queryTheme()
+  if (process.server && !theme.value) await queryTheme()
 })
