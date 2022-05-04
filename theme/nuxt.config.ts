@@ -2,8 +2,7 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import colors from 'tailwindcss/colors.js'
 import { resolve } from 'pathe'
-import { defineNuxtModule } from '@nuxt/kit'
-import consola from 'consola'
+import { defineNuxtModule, logger } from '@nuxt/kit'
 import { version } from '../package.json'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
@@ -144,7 +143,7 @@ export default defineNuxtConfig({
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
       ],
-      content: ['~/content/**/*.{md,yml,json,json5,csv}', resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
+      content: [resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
       safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map((number) => `pl-[${number}px]`),
     },
   },
@@ -161,6 +160,14 @@ export default defineNuxtConfig({
    * Modules
    */
   modules: [
+    defineNuxtModule({
+      meta: { name: 'pre-docus' },
+      setup(_, nuxt) {
+        const { srcDir } = nuxt.options
+        // Push tailwindcss defaults https://github.com/nuxt-community/tailwindcss-module/blob/main/src/tailwind.config.ts#L7
+        nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`, `${srcDir}/components/**/*.{vue,js,ts}`, `${srcDir}/layouts/**/*.vue`, `${srcDir}/pages/**/*.vue`, `${srcDir}/composables/**/*.{js,ts}`, `${srcDir}/plugins/**/*.{js,ts}`, `${srcDir}/App.{js,ts,vue}`, `${srcDir}/app.{js,ts,vue}`)
+      },
+    }),
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -174,7 +181,7 @@ export default defineNuxtConfig({
       },
       setup(_, nuxt) {
         nuxt.hook('modules:done', () => {
-          consola.success(`Using Docus v${version}`)
+          logger.success(`Using Docus v${version}`)
         })
       },
     }),
