@@ -1,21 +1,35 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
-import { computed, useColorMode } from '#imports'
-
-export interface NuxtImg {
-  light: string
-  dark: string
-}
+import { computed } from '#imports'
 
 const props = defineProps({
   src: {
     type: [String, Object] as PropType<NuxtImg>,
     default: null,
   },
+  imageClasses: {
+    type: String,
+    default: '',
+  },
+  alt: {
+    type: String,
+    default: '',
+  },
+  width: {
+    type: [String, Number],
+    default: undefined,
+  },
+  height: {
+    type: [String, Number],
+    default: undefined,
+  },
 })
 
-const colorMode = useColorMode()
+type NuxtImg = string & {
+  light: string
+  dark: string
+}
 
 const src = computed(() => {
   let src = props.src
@@ -28,12 +42,12 @@ const src = computed(() => {
 
   if (typeof src === 'string') return props.src
 
-  if (colorMode.value === 'dark') return props.src.dark || props.src.light
-
-  if (colorMode.value === 'light') return props.src.light || props.src.light
+  return src
 })
 </script>
 
 <template>
-  <img :src="src" />
+  <img v-if="typeof src === 'string'" :src="src" :alt="alt" :width="width" :height="height" />
+  <img v-if="src?.light" class="dark-img" :src="src.light" :alt="alt" :width="width" :height="height" />
+  <img v-if="src?.dark" class="light-img" :src="src.dark" :alt="alt" :width="width" :height="height" />
 </template>

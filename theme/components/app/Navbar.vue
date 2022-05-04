@@ -27,9 +27,10 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
         <NavbarCenter />
       </div>
 
-      <div class="flex flex-1 items-center justify-end">
+      <div class="flex flex-1 items-center justify-end lg:gap-4">
         <MobileNav class="flex lg:hidden" />
-        <ThemeSelect class="hidden lg:block" />
+        <SocialIcons size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />
+        <ThemeSelect size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />
       </div>
     </Container>
   </header>

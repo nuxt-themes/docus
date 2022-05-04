@@ -178,7 +178,7 @@ export default defineNuxtConfig({
       meta: { name: 'pre-docus' },
       setup(_, nuxt) {
         const { srcDir } = nuxt.options
-        // Push content dir
+        // @ts-expect-error - Push content dir
         nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
       },
     }),
@@ -186,13 +186,11 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxthq/admin',
+    'nuxt-component-meta',
     // 'vue-plausible',
     '@vueuse/nuxt',
-    // Docus module
     defineNuxtModule({
-      meta: {
-        name: 'docus',
-      },
+      meta: { name: 'docus' },
       setup(_, nuxt) {
         nuxt.hook('modules:done', () => {
           logger.success(`Using Docus v${version}`)

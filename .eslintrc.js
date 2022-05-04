@@ -14,6 +14,7 @@ module.exports = {
     'vue/static-class-names-order': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/require-component-is': 'off',
+    'vue/no-multiple-template-root': 'off',
     '@typescript-eslint/no-unused-vars': ['off'],
     '@typescript-eslint/semi': ['error'],
     '@typescript-eslint/comma-dangle': ['error'],

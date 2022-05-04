@@ -77,11 +77,11 @@
   /* Images */
 
   .light-img {
-    @apply dark:hidden;
+    @apply block dark:hidden;
   }
 
   .dark-img {
-    @apply hidden;
+    @apply hidden dark:block;
   }
 }
 

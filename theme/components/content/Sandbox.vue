@@ -58,8 +58,6 @@ onMounted(() => {
 
   // Set active tab
   activeTabIndex.value = Object.keys(providers).indexOf(provider.value)
-
-  setTimeout(() => tabs.value.updateTabs(activeTabIndex.value), 100)
 })
 </script>
 
@@ -69,7 +67,7 @@ onMounted(() => {
       <template #footer>
         <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-2">
           <Link class="flex items-center text-gray-500 dark:text-gray-400" :to="sandBoxUrl" blank>
-            <IconExternalLink class="h-5 w-5" />
+            <Icon name="heroicons-outline:link" class="h-5 w-5" />
           </Link>
         </div>
       </template>

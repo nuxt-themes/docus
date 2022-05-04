@@ -1,5 +1,5 @@
 <script setup>
-import { Icon } from '@iconify/vue/dist/offline'
+import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
 import { ref, watch } from '#imports'
 
@@ -23,5 +23,5 @@ watch(
 </script>
 
 <template>
-  <Icon :icon="icon" />
+  <Iconify :icon="icon" />
 </template>

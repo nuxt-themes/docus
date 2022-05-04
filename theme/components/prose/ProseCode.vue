@@ -24,13 +24,13 @@ defineProps({
 
 <template>
   <div class="prose-code group w-full text-gray-50">
-    <span v-if="filename" class="filename transition-base absolute top-2 right-2 z-0 m-1 rounded-lg bg-gray-900 py-1.5 px-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
+    <span v-if="filename" class="filename transition-base absolute top-1 right-1 z-0 rounded-lg bg-gray-900 py-1.5 px-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
 
     <slot />
 
-    <CopyButton :content="code" class="copy-button transition-base opacity-0" />
+    <CopyButton :content="code" class="copy-button transition-base absolute right-1 bottom-1 scale-0 opacity-0" />
   </div>
 </template>
 
@@ -56,12 +56,8 @@ div {
 }
 
 .group:hover {
-  .filename {
-    @apply opacity-0;
-  }
-
   .copy-button {
-    @apply opacity-100;
+    @apply scale-100 opacity-100;
   }
 }
 </style>

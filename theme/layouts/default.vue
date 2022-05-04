@@ -18,15 +18,9 @@ const showToc = computed(() => {
 
     <Navbar />
 
-    <DocsPage class="flex-1">
-      <template #aside>
-        <DocsAside />
-      </template>
-
-      <DocsPageContent :toc="showToc">
-        <NuxtPage />
-      </DocsPageContent>
-    </DocsPage>
+    <DocsPageContent class="flex-1" :toc="showToc">
+      <NuxtPage />
+    </DocsPageContent>
 
     <Footer />
   </div>

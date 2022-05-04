@@ -14,7 +14,7 @@ const { page, theme } = useDocus()
 
 useHead({
   bodyAttrs: {
-    class: ['docus-scrollbar'],
+    class: [],
   },
   title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
   description: page.value?.description || theme.value?.description || '',
@@ -34,22 +34,22 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
     {
       hid: 'og:image:secure_url',
       property: 'og:image:secure_url',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: theme.value?.coverAlt || '',
+      content: theme.value?.cover?.alt || '',
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
   ],
 })

@@ -1,25 +1,20 @@
 {
-  "version": "3.0.0",
   "name": "docus",
+  "version": "3.0.0",
+  "exports": {
+    "./theme": "./theme/nuxt.config.ts",
+    "./theme/*": "./theme/*/*.*"
+  },
+  "main": "./nuxt.config.ts",
+  "files": [
+    "README.md",
+    "theme"
+  ],
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
-    "preview": "nuxi preview",
-    "lint": "eslint --ext .ts,.js,.vue,.css . --fix"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.23.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "eslint": "^8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-prettier-vue": "^3.1.0",
-    "jiti": "^1.13.0",
-    "nuxt": "npm:nuxt3@latest",
-    "parse-entities": "^4.0.0",
-    "prettier": "^2.6.2",
-    "prettier-plugin-tailwindcss": "^0.1.10",
-    "typescript": "^4.6.4"
+    "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
+    "preview": "nuxi preview"
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
@@ -36,16 +31,22 @@
     "@vueuse/nuxt": "^8.4.1",
     "defu": "^6.0.0",
     "lodash-es": "^4.17.21",
+    "nuxt-component-meta": "^0.1.2",
     "tailwindcss": "^3.0.24",
     "vue-plausible": "^1.3.1"
   },
-  "main": "./nuxt.config.ts",
-  "exports": {
-    "./theme": "./theme/nuxt.config.ts",
-    "./theme/*": "./theme/*/*.*"
-  },
-  "files": [
-    "README.md",
-    "theme"
-  ]
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.23.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier-vue": "^3.1.0",
+    "jiti": "^1.13.0",
+    "nuxt": "npm:nuxt3@latest",
+    "parse-entities": "^4.0.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-tailwindcss": "^0.1.10",
+    "typescript": "^4.6.4"
+  }
 }

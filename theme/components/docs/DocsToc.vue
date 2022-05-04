@@ -30,9 +30,9 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 </script>
 
 <template>
-  <div class="space-y-2">
+  <div class="flex flex-col space-y-4">
     <NuxtLink v-if="prev" :to="prev.slug" class="text-primary group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
-      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg p-1">
+      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
         <Icon name="heroicons-solid:chevron-double-left" class="h-6 w-6" />
       </div>
 
@@ -41,14 +41,14 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 
     <template v-if="toc?.links?.length">
       <div class="flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
-        <div class="flex-shrink-0 rounded-lg p-1">
+        <div class="flex-shrink-0 rounded-lg">
           <Icon name="heroicons-outline:view-grid" class="h-6 w-6" />
         </div>
 
         <span class="truncate">On this page</span>
       </div>
 
-      <ul class="mr-1 border-gray-500 pl-3 lg:pr-3">
+      <ul class="mr-[-1px] border-gray-500 pl-3 lg:pr-3">
         <li v-for="link in toc.links" :key="link.text" class="transition-base group min-w-0 border-l-2 transition-colors lg:border-r-2 lg:border-l-0 lg:text-right" :class="activeHeadings.includes(link.id) ? 'border-primary-600' : 'border-primary-300'">
           <a
             :href="`#${link.id}`"
@@ -66,7 +66,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
     </template>
 
     <NuxtLink v-if="next" :to="next.slug" class="text-primary group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
-      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg p-1">
+      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
         <Icon name="heroicons-solid:chevron-double-right" class="h-6 w-6" />
       </div>
 

@@ -24,7 +24,7 @@ const isExternal = computed(() => hasProtocol(props.href, true))
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href">
     <Markdown :use="$slots.default" unwrap="p ul li" />
 
-    <IconExternalLink v-if="isExternal" class="ml-2 h-4 w-4" />
+    <Icon v-if="isExternal" name="heroicons-outline:link" class="ml-2 h-4 w-4" />
   </NuxtLink>
 </template>
 

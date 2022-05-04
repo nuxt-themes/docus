@@ -14,12 +14,12 @@ const icons = computed(() => theme.value?.footer?.icons || [])
         <p class="text-sm font-semibold">{{ theme?.footer?.credits?.text }}</p>
       </a>
 
-      <div class="flex">
-        <a v-for="icon in icons" :key="icon.label" rel="noopener" :aria-label="icon.label" :href="icon.href" target="_blank" class="icon-base flex items-center p-1 text-sm font-medium">
-          <Component :is="icon.component" class="h-8 w-8" />
+      <div class="flex items-center gap-4">
+        <a v-for="icon in icons" :key="icon.label" rel="noopener" :aria-label="icon.label" :href="icon.href" target="_blank" class="icon-base flex items-center text-sm font-medium">
+          <Component :is="icon.component" class="h-7 w-7" />
         </a>
 
-        <SocialIcons size="w-8 h-8" padding="p-1" />
+        <SocialIcons size="w-6 h-6" />
       </div>
     </Container>
   </footer>

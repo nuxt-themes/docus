@@ -27,7 +27,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
 
     <!-- Placeholder -->
     <template v-else>
-      <IconDots class="h-12 w-12" />
+      <Icon name="heroicons-outline:cloud" class="h-12 w-12" />
     </template>
   </NuxtLink>
 </template>

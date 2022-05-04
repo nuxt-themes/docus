@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { PropType } from 'vue'
 import { ref } from '#imports'
 
 const props = defineProps({
@@ -11,41 +12,45 @@ const props = defineProps({
     default: '',
   },
   sources: {
-    type: Array,
+    type: Array as PropType<any[]>,
     default: () => [],
   },
 })
 
-const provider = ref(null)
+const provider = computed(() => {
+  if (props.src && props.src.includes('youtube.com/watch')) {
+    const match = props.src.match(/\?v=([^&]*)/)
+
+    return {
+      name: 'youtube',
+      src: `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1`,
+      poster: props.poster || `https://i3.ytimg.com/vi/${match[1]}/hqdefault.jpg`,
+    }
+  }
+})
+
 const loaded = ref(false)
 
 if (!props.src && !props.sources.length) throw new Error('VideoPlayer: you need to provide either `src` or `sources` props')
 
-const src = props.src || props.sources[0].src
-
-if (src && src.includes('youtube.com/watch')) {
-  const match = src.match(/\?v=([^&]*)/)
-
-  provider.value = {
-    name: 'youtube',
-    src: `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1`,
-    poster: props.poster || `https://i3.ytimg.com/vi/${match[1]}/hqdefault.jpg`,
-  }
-}
+const src = computed(() => props.src || props.sources?.[0]?.src || false)
 </script>
 
 <template>
   <div class="video-player relative my-4 overflow-hidden rounded-sm bg-black bg-opacity-25" :class="{ loaded }">
-    <NuxtImg v-if="provider ? provider.poster : poster" class="video absolute top-0 left-0 h-full w-full object-cover" :src="provider ? provider.poster : poster" :width="670" :height="377" />
+    <NuxtImg v-if="provider ? provider.poster : poster" image-classes="video absolute top-0 left-0 h-full w-full object-fit" :src="(provider ? provider.poster : poster as any)" />
+
     <div v-if="loaded" class="video absolute top-0 left-0 h-full w-full">
-      <!-- remote videos -->
+      <!-- Remote -->
       <video v-if="!provider" :poster="poster" controls autoplay>
         <source v-if="src" :src="src" />
         <source v-for="source in sources" :key="source.src || source" :src="source.src || source" :type="source.type" />
       </video>
-      <!-- youtube -->
-      <iframe v-else-if="provider.name === 'youtube'" width="560" height="377" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="h-full w-full" :src="provider.src" />
+
+      <!-- YouTube -->
+      <iframe v-else-if="provider.name === 'youtube'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" :src="provider.src" />
     </div>
+
     <div v-if="!loaded" class="overlay absolute top-0 left-0 h-full w-full cursor-pointer" @click="loaded = true">
       <button class="play" />
     </div>
@@ -68,10 +73,11 @@ if (src && src.includes('youtube.com/watch')) {
     transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
     z-index: 1;
   }
+
   &:after {
+    position: absolute;
     content: ' ';
     display: block;
-    padding-bottom: 56.25%;
   }
 
   .play {
@@ -89,6 +95,7 @@ if (src && src.includes('youtube.com/watch')) {
     transition: filter 0.1s cubic-bezier(0, 0, 0.2, 1);
     border: none;
   }
+
   &:hover .play {
     filter: none;
   }

@@ -10,19 +10,19 @@ const tree = computed(() => {
   })
 })
 
-const { visible, open, close, toggle, scrollBarGap } = useMenu()
+const { visible, open, close, toggle } = useMenu()
 
 const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
 watch(visible, (v) => (v ? open() : close()))
 
-const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
+const buttonClasses = 'w-8 h-8 focus:outline-none icon-base rounded-xl'
 </script>
 
 <template>
   <div class="relative lg:hidden">
     <button :class="[buttonClasses]" class="relative z-10" @click="toggle">
-      <IconDots class="icon-base mx-auto h-6 w-6" />
+      <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" />
     </button>
 
     <ClientOnly>
@@ -32,7 +32,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
 
         <!-- clone AppHeader button, due to stacking context limitations -->
         <button id="mobile-nav-button" :class="[buttonClasses, visible ? 'pointer-events-auto opacity-100' : `opacity-0 transition ${isDesktopSafari || isDesktopFirefox ? 'duration-0' : 'duration-400'} pointer-events-none`]" class="fixed z-30" @click="toggle">
-          <IconLine class="icon-base mx-auto h-6 w-6" />
+          <Icon name="heroicons-outline:minus" class="icon-base mx-auto h-6 w-6" />
         </button>
 
         <!-- Nav menu surface -->
@@ -40,8 +40,9 @@ const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
           <div class="surface surface-border z-40 mb-2 max-h-full overflow-y-auto rounded-2xl border-2 pl-8 pr-0 pb-6 pt-12 shadow-xl" @click.stop.prevent>
             <DocsAsideTree :tree="tree" />
 
-            <div class="flex items-center justify-end px-6">
-              <ThemeSelect class="block" />
+            <div class="mt-4 flex items-center justify-end gap-4 px-6">
+              <SocialIcons size="h-7 w-7" spacing="lg:mr-1.5" />
+              <ThemeSelect size="h-7 w-7" spacing="lg:mr-1.5" />
             </div>
           </div>
         </div>
