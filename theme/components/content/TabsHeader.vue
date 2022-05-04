@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick } from 'vue'
+import { nextTick, ref } from 'vue'
 import type { PropType } from 'vue'
 
 const props = defineProps({
@@ -38,7 +38,7 @@ function updateTabs(i) {
 onMounted(() => {
   setTimeout(() => {
     updateHighlightUnderlinePosition()
-  })
+  }, 50)
 })
 </script>
 
