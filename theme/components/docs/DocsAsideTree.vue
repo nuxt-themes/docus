@@ -69,7 +69,7 @@ watch(
         {
           'border-l-2': level > 0,
           'border-primary-600': isActive(link),
-          'border-primary-300 hover:border-primary-600': !isActive(link),
+          'hover:border-primary-600 border-gray-300': !isActive(link),
         },
       ]"
     >
@@ -78,7 +78,7 @@ watch(
         :exact="link.exact"
         :class="{
           'pl-4': level > 0,
-          '!text-primary text-xl font-bold': level === 0,
+          '!text-primary text-lg font-semibold': level === 0,
           '!pt-0': level === 0 && index === 0,
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link),
