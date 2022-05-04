@@ -85,7 +85,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       ],
       meta: [
-        { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Docus' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
       ],
     },
@@ -192,6 +192,8 @@ export default defineNuxtConfig({
     defineNuxtModule({
       meta: { name: 'docus' },
       setup(_, nuxt) {
+        // Make also VT detects it
+        nuxt.options.runtimeConfig.public.docus = nuxt.options.runtimeConfig.public.docus || {}
         nuxt.hook('modules:done', () => {
           logger.success(`Using Docus v${version}`)
         })
