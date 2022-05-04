@@ -13,7 +13,7 @@ const showToc = computed(() => {
 <template>
   <div id="docus-docs-page" class="flex min-h-screen flex-col">
     <template v-if="theme?.debug">
-      <component :is="'debug'" :config="theme?.debug" />
+      <component is="debug" :config="theme?.debug" />
     </template>
 
     <Navbar />

@@ -24,7 +24,7 @@ defineProps({
 
 <template>
   <div class="prose-code group w-full text-gray-50">
-    <span v-if="filename" class="filename transition-base absolute top-2 right-2 right-0 z-0 m-1 rounded-lg bg-gray-900 py-1.5 px-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
+    <span v-if="filename" class="filename transition-base absolute top-2 right-2 z-0 m-1 rounded-lg bg-gray-900 py-1.5 px-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
 
@@ -40,7 +40,7 @@ div {
 }
 
 :deep(pre) {
-  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 text-sm leading-relaxed;
+  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed;
 }
 
 :deep(code) {

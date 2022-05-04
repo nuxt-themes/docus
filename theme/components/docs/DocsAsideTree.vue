@@ -64,8 +64,8 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.slug"
+      class="transition-base transition-colors"
       :class="[
-        'transition-base transition-colors',
         {
           'border-l-2': level > 0,
           'border-primary-600': isActive(link),

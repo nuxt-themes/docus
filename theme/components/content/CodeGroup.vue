@@ -109,6 +109,10 @@ html.dark {
     @apply mt-0 mb-0 rounded-none !important;
   }
 
+  :deep(.prose-code-header) {
+    @apply hidden;
+  }
+
   :deep(pre) {
     @apply mt-0 !important;
   }

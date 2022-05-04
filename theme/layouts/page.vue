@@ -7,7 +7,7 @@ const { theme } = useDocus()
 <template>
   <div id="docus-page" class="flex min-h-screen w-full flex-col">
     <template v-if="theme?.debug">
-      <component :is="'debug'" :config="theme?.debug" />
+      <component is="debug" :config="theme?.debug" />
     </template>
 
     <Navbar />
