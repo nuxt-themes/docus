@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { computed, useColorMode } from '#imports'
 
+defineProps({
+  size: {
+    type: String,
+    default: 'w-8 h-8',
+  },
+  spacing: {
+    type: String,
+    default: 'p-0',
+  },
+})
+
 const colorMode = useColorMode()
 
 type ColorMode = 'light' | 'dark'
@@ -18,18 +29,12 @@ const onClick = () => (mode.value === 'light' ? (mode.value = 'dark') : (mode.va
 </script>
 
 <template>
-  <button
-    class="icon-base w-6 h-6"
-    aria-label="Color Mode"
-    @click="onClick"
-  >
+  <button :class="[size]" class="icon-base" aria-label="Color Mode" @click="onClick">
     <ClientOnly>
-      <IconSun v-if="mode === 'dark'" />
-      <IconMoon v-else />
+      <Icon v-if="mode === 'dark'" name="heroicons-outline:sun" :class="[spacing, size]" />
+      <Icon v-else name="heroicons-outline:moon" :class="[spacing, size]" />
 
-      <template #placeholder>
-        ...
-      </template>
+      <template #placeholder> ... </template>
     </ClientOnly>
   </button>
 </template>

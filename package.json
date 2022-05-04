@@ -1,20 +1,20 @@
 {
-  "version": "3.0.0",
   "name": "docus",
+  "version": "3.0.0",
+  "exports": {
+    "./theme": "./theme/nuxt.config.ts",
+    "./theme/*": "./theme/*/*.*"
+  },
+  "main": "./nuxt.config.ts",
+  "files": [
+    "README.md",
+    "theme"
+  ],
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev",
-    "preview": "nuxi preview",
-    "lint": "eslint --ext .ts,.js,.vue,.css ."
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.22.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "eslint": "^8.14.0",
-    "jiti": "^1.13.0",
-    "nuxt": "npm:nuxt3@latest",
-    "parse-entities": "^4.0.0",
-    "typescript": "^4.6.4"
+    "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
+    "preview": "nuxi preview"
   },
   "dependencies": {
     "@docus/github": "^1.2.2",
@@ -24,24 +24,30 @@
     "@nuxtjs/color-mode": "^3.0.2",
     "@nuxtjs/tailwindcss": "^5.0.3",
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/forms": "^0.5.1",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "@vueuse/core": "^8.3.1",
+    "@vueuse/core": "^8.4.1",
     "@vueuse/motion": "2.0.0-beta.12",
-    "@vueuse/nuxt": "^8.3.1",
+    "@vueuse/nuxt": "^8.4.1",
     "defu": "^6.0.0",
     "lodash-es": "^4.17.21",
+    "nuxt-component-meta": "^0.1.2",
     "tailwindcss": "^3.0.24",
     "vue-plausible": "^1.3.1"
   },
-  "main": "./nuxt.config.ts",
-  "exports": {
-    "./theme": "./theme/nuxt.config.ts",
-    "./theme/*": "./theme/*/*.*"
-  },
-  "files": [
-    "README.md",
-    "theme"
-  ]
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.23.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier-vue": "^3.1.0",
+    "jiti": "^1.13.0",
+    "nuxt": "npm:nuxt3@latest",
+    "parse-entities": "^4.0.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-tailwindcss": "^0.1.10",
+    "typescript": "^4.6.4"
+  }
 }

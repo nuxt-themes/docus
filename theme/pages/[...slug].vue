@@ -13,12 +13,19 @@ definePageMeta({
 const { page, theme } = useDocus()
 
 useHead({
+  bodyAttrs: {
+    class: [],
+  },
   title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
   description: page.value?.description || theme.value?.description || '',
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
-    { hid: 'twitter:site', name: 'twitter:site', content: theme.value?.url || theme.value?.twitter || '' },
+    {
+      hid: 'twitter:site',
+      name: 'twitter:site',
+      content: theme.value?.url || theme.value?.twitter || '',
+    },
     {
       hid: 'twitter:card',
       name: 'twitter:card',
@@ -27,33 +34,31 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
     {
       hid: 'og:image:secure_url',
       property: 'og:image:secure_url',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: theme.value?.coverAlt || '',
+      content: theme.value?.cover?.alt || '',
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: theme.value?.cover || '',
+      content: theme.value?.cover?.src || '',
     },
   ],
 })
 </script>
 
 <template>
-  <Content v-if="page" :key="(page as string)" class="docus-content" :document="page" />
+  <Content v-if="page" class="docus-content" :document="page" />
   <p v-else>
-    <Alert type="warning">
-      Page not found!
-    </Alert>
+    <Alert type="warning"> Page not found! </Alert>
   </p>
 </template>
 

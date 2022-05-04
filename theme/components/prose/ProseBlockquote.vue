@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 blockquote {
-  @apply text-base mt-[1.5em] mb-[1.5em] font-medium pl-4 text-secondary border-l-2 border-gray-200 dark:border-gray-700;
+  @apply text-secondary mt-[1.5em] mb-[1.5em] border-l-2 border-gray-200 pl-4 text-base font-medium dark:border-gray-700;
 
   quotes: '201C' '201D' '2018' '2019';
 }

@@ -31,7 +31,7 @@ const providers = {
   StackBlitz: () => `https://stackblitz.com/github/${props.repo}/tree/${props.branch}/${props.dir}?embed=1&file=${props.file}&theme=${colorMode.value}`,
 }
 
-const providersTabs = Object.keys(providers).map(p => ({ label: p }))
+const providersTabs = Object.keys(providers).map((p) => ({ label: p }))
 const activeTabIndex = ref(-1)
 const tabs = ref()
 const url = ref('')
@@ -58,45 +58,31 @@ onMounted(() => {
 
   // Set active tab
   activeTabIndex.value = Object.keys(providers).indexOf(provider.value)
-
-  setTimeout(() => tabs.value.updateTabs(activeTabIndex.value), 100)
 })
 </script>
 
 <template>
-  <div class="w-full min-h-[500px] mx-auto mb-6 overflow-hidden text-3xl rounded-lg sandbox mt-4">
-    <TabsHeader
-      v-if="!src"
-      ref="tabs"
-      :active-tab-index="activeTabIndex"
-      :tabs="providersTabs"
-      @update:active-tab-index="updateTab"
-    >
+  <div class="sandbox mx-auto mb-6 mt-4 min-h-[500px] w-full overflow-hidden rounded-lg text-3xl">
+    <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
       <template #footer>
-        <div class="absolute top-1/2 transform -translate-y-1/2 right-0 px-2">
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-2">
           <Link class="flex items-center text-gray-500 dark:text-gray-400" :to="sandBoxUrl" blank>
-            <IconExternalLink class="h-5 w-5" />
+            <Icon name="heroicons-outline:link" class="h-5 w-5" />
           </Link>
         </div>
       </template>
     </TabsHeader>
 
-    <iframe
-      v-if="url"
-      :src="url"
-      title="Sandbox editor"
-      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      class="w-full h-full min-h-[700px] overflow-hidden bg-gray-100 dark:bg-gray-800"
-    />
+    <iframe v-if="url" :src="url" title="Sandbox editor" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" class="h-full min-h-[700px] w-full overflow-hidden bg-gray-100 dark:bg-gray-800" />
 
-    <span v-else class="text-white flex-1">Loading Sandbox...</span>
+    <span v-else class="flex-1 text-white">Loading Sandbox...</span>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .sandbox,
 .sandbox iframe {
-  @apply w-full rounded-lg rounded-tl-none rounded-tr-none overflow-hidden h-64;
+  @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;
   height: 700px;
 }
 </style>

@@ -1,25 +1,28 @@
-title: Docus
-debug:
-  page: true
-  navigation: false
-  theme: false
-description: Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.
+title: "Docus"
+debug: true
+#  page: true
+#  navigation: false
+#  theme: false
+description: "Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience."
 twitter: "@docus_"
-github: nuxtlabs/docus
-cover: https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png
-coverAlt: A screenshot of a website built with Docus with the Docus logo on top of it.
+github:
+  repository: "nuxtlabs/docus"
+  branch: "dev"
+cover:
+  src: "https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png"
+  alt: "A screenshot of a website built with Docus with the Docus logo on top of it."
 url: "https://docus.dev"
 header:
   title: false
   logo: true
 footer:
   credits:
-    icon: IconNuxtLabs
-    text: Made by NuxtLabs
+    icon: "IconNuxtLabs"
+    text: "Made by NuxtLabs"
   icons:
-  - label: NuxtJS
-    href: https://nuxtjs.org
-    component: IconNuxt
-  - label: Vue Telescope
-    href: https://vuetelescope.com
-    component: IconVueTelescope
+  - label: "NuxtJS"
+    href: "https://nuxtjs.org"
+    component: "IconNuxt"
+  - label: "Vue Telescope"
+    href: "https://vuetelescope.com"
+    component: "IconVueTelescope"

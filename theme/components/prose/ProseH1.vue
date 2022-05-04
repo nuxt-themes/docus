@@ -8,12 +8,13 @@ defineProps<{ id: string }>()
       <slot />
     </NuxtLink>
   </h1>
-</template>>
+</template>
+>
 
 <style lang="postcss" scoped>
 h1 {
   font-size: 2rem;
-  @apply tracking-tight leading-snug font-semibold mt-[1em] mb-[0.5em];
+  @apply mt-[1em] mb-[0.5em] font-semibold leading-snug tracking-tight;
 }
 
 h1 + * {

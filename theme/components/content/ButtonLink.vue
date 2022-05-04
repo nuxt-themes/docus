@@ -17,22 +17,20 @@ const props = defineProps({
   },
 })
 
-const isExternal = computed(
-  () => hasProtocol(props.href, true),
-)
+const isExternal = computed(() => hasProtocol(props.href, true))
 </script>
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href">
     <Markdown :use="$slots.default" unwrap="p ul li" />
 
-    <IconExternalLink v-if="isExternal" class="w-4 h-4 ml-2" />
+    <Icon v-if="isExternal" name="heroicons-outline:link" class="ml-2 h-4 w-4" />
   </NuxtLink>
 </template>
 
 <style lang="postcss" scoped>
 a.button-link {
-  @apply inline-flex items-center flex-none rounded-lg px-3 py-1.5 text-sm leading-4 text-white transition-colors duration-200 border border-transparent bg-primary-500 hover:bg-primary-600  focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900 focus:ring-primary-600 focus:outline-none;
+  @apply bg-primary-500 hover:bg-primary-600 focus:ring-primary-600 inline-flex flex-none items-center rounded-lg border border-transparent px-3 py-1.5 text-sm leading-4 text-white transition-colors  duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
 
   &.medium {
     @apply px-4 py-2 text-base leading-4;

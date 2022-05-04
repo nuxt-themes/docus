@@ -13,7 +13,7 @@ defineProps<{ id: string }>()
 <style lang="postcss" scoped>
 h2 {
   font-size: 1.5rem;
-  @apply tracking-tight leading-snug font-semibold mt-[1.25em] mb-[0.5em];
+  @apply mt-[1.25em] mb-[0.5em] font-semibold leading-snug tracking-tight;
 }
 
 h2 + * {

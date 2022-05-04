@@ -1,8 +1,21 @@
+import { defaultThemeConfig } from '../utils/theme'
 import { useDocusState } from '../utils/state'
 import { computed } from '#imports'
 
 export const useDocus = () => {
-  const { theme, navigation, page, surround } = useDocusState()
+  const { theme: _theme, navigation, page, surround } = useDocusState()
+
+  /**
+   * Theme computed.
+   */
+  const theme = computed(() => {
+    // Disable debug in production
+    if (process.env.NODE_ENV === 'production') {
+      if (_theme.value) _theme.value.debug = false
+    }
+
+    return Object.assign(defaultThemeConfig, _theme.value)
+  })
 
   /**
    * Table of contents from parsed page.

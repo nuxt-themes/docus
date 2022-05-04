@@ -23,24 +23,24 @@ defineProps({
 </script>
 
 <template>
-  <div class="prose-code text-gray-50 w-full group">
-    <span v-if="filename" class="filename transition-base top-2 right-2 opacity-100 absolute right-0 z-0 m-1 py-1.5 px-2 text-gray-400 bg-gray-900 rounded-lg font-mono text-xs leading-none tracking-tight">
+  <div class="prose-code group w-full text-gray-50">
+    <span v-if="filename" class="filename transition-base absolute top-1 right-1 z-0 rounded-lg bg-gray-900 py-1.5 px-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
 
     <slot />
 
-    <CopyButton :content="code" class="copy-button opacity-0 transition-base" />
+    <CopyButton :content="code" class="copy-button transition-base absolute right-1 bottom-1 scale-0 opacity-0" />
   </div>
 </template>
 
 <style lang="postcss" scoped>
 div {
-  @apply relative rounded-lg overflow-hidden my-4;
+  @apply relative my-4 overflow-hidden rounded-lg;
 }
 
 :deep(pre) {
-  @apply flex flex-1 p-4 my-0 overflow-x-auto leading-relaxed text-sm code-background;
+  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed;
 }
 
 :deep(code) {
@@ -56,12 +56,8 @@ div {
 }
 
 .group:hover {
-  .filename {
-    @apply opacity-0;
-  }
-
   .copy-button {
-    @apply opacity-100;
+    @apply scale-100 opacity-100;
   }
 }
 </style>

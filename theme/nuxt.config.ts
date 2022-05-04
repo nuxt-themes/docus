@@ -2,8 +2,7 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import colors from 'tailwindcss/colors.js'
 import { resolve } from 'pathe'
-import { defineNuxtModule } from '@nuxt/kit'
-import consola from 'consola'
+import { defineNuxtModule, logger } from '@nuxt/kit'
 import { version } from '../package.json'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
@@ -75,24 +74,21 @@ export default defineNuxtConfig({
   },
   */
   plugins,
-  head: {
-    title: 'Docus',
-    link: [
-      /*
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
-      },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      */
-    ],
-    meta: [
-      { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
-      { hid: 'og:type', property: 'og:type', content: 'website' },
-    ],
-  },
-  loading: {
-    color: '#00DC82',
+  app: {
+    head: {
+      title: 'Docus',
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+        },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      ],
+      meta: [
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Docus' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+      ],
+    },
   },
   /**
    * Components
@@ -114,9 +110,6 @@ export default defineNuxtConfig({
   // ],
   // To enable for working build
   components,
-  css: [
-    resolveThemeDir('assets/css/fonts.css'),
-  ],
   tailwindcss: {
     viewer: false,
     cssPath: resolveThemeDir('assets/css/main.css'),
@@ -125,8 +118,19 @@ export default defineNuxtConfig({
       theme: {
         extend: {
           colors: {
-            gray: colors.gray,
-            primary: colors.indigo,
+            gray: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b',
+            },
+            primary: colors.teal,
           },
           fontFamily: {
             sans: 'Inter, sans-serif',
@@ -135,6 +139,8 @@ export default defineNuxtConfig({
             base: '320px',
             header: 'var(--header-height)',
             footer: 'var(--footer-height)',
+            18: '4.5rem',
+            46: '11.5rem',
           },
           maxWidth: {
             '8xl': '90rem',
@@ -148,14 +154,8 @@ export default defineNuxtConfig({
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
       ],
-      content: [
-        '~/content/**/*.{md,yml,json,json5,csv}',
-        resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('components/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'),
-        resolveThemeDir('pages/**/*.{mjs,vue,js,ts}'),
-      ],
-      safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map(number => `pl-[${number}px]`),
+      content: [resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
+      safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map((number) => `pl-[${number}px]`),
     },
   },
   content: {
@@ -174,21 +174,29 @@ export default defineNuxtConfig({
    * Modules
    */
   modules: [
+    defineNuxtModule({
+      meta: { name: 'pre-docus' },
+      setup(_, nuxt) {
+        const { srcDir } = nuxt.options
+        // @ts-expect-error - Push content dir
+        nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
+      },
+    }),
     '@docus/github',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     '@nuxthq/admin',
+    'nuxt-component-meta',
     // 'vue-plausible',
     '@vueuse/nuxt',
-    // Docus module
     defineNuxtModule({
-      meta: {
-        name: 'docus',
-      },
+      meta: { name: 'docus' },
       setup(_, nuxt) {
+        // Make also VT detects it
+        nuxt.options.runtimeConfig.public.docus = nuxt.options.runtimeConfig.public.docus || {}
         nuxt.hook('modules:done', () => {
-          consola.success(`Using Docus v${version}`)
+          logger.success(`Using Docus v${version}`)
         })
       },
     }),

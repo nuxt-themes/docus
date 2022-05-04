@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref, useClipboard } from '#imports'
-
-const { copy: copyToClipboard } = useClipboard()
-
-const state = ref('init')
+import { useClipboard } from '@vueuse/core'
+import { ref } from '#imports'
 
 const props = defineProps({
   content: {
@@ -12,46 +9,28 @@ const props = defineProps({
   },
 })
 
+const { copy: copyToClipboard } = useClipboard()
+
+const state = ref('init')
+
 const copy = (e: MouseEvent) => {
   copyToClipboard(props.content)
-    .then(
-      () => {
-        state.value = 'copied'
+    .then(() => {
+      state.value = 'copied'
 
-        setTimeout(() => {
-          state.value = 'init'
-        }, 1000)
-      },
-    ).catch(
-      () => {
-        console.warn('Couldn\'t copy to clipboard!')
-      },
-    )
+      setTimeout(() => {
+        state.value = 'init'
+      }, 1000)
+    })
+    .catch(() => {
+      console.warn("Couldn't copy to clipboard!")
+    })
 }
 </script>
 
 <template>
-  <button
-    class="
-      copy
-      focus:outline-none
-      absolute
-      right-1
-      bottom-1
-      px-2
-      py-2
-      m-1
-      text-gray-400
-      bg-gray-900
-      text-xs
-      leading-none
-      rounded-lg
-      font-mono
-      font-semibold
-    "
-    @click="copy"
-  >
-    <Icon v-if="state === 'copied'" name="fa-check" class="w-4 h-4" />
-    <Icon v-else name="fa-copy" class="w-4 h-4" />
+  <button class="copy rounded-lg bg-gray-900 px-2 py-2 font-mono text-xs font-semibold leading-none text-gray-400 focus:outline-none" @click="copy">
+    <Icon v-if="state === 'copied'" name="fa-check" class="h-4 w-4" />
+    <Icon v-else name="fa-copy" class="h-4 w-4" />
   </button>
 </template>

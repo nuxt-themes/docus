@@ -20,8 +20,7 @@ export default defineNuxtPlugin((ctx: any) => {
   const toggle = () => (visible.value = !visible.value)
 
   // Toggle a tab from its id
-  const toggleTab = (tab: string) =>
-    currentTab.value === tab ? (currentTab.value = undefined) : (currentTab.value = tab)
+  const toggleTab = (tab: string) => (currentTab.value === tab ? (currentTab.value = undefined) : (currentTab.value = tab))
 
   // Watch route change, close on change
   ctx.$router.afterEach(() => setTimeout(close, 50))
@@ -42,8 +41,7 @@ export default defineNuxtPlugin((ctx: any) => {
         if (isVisible) {
           html.style.overflow = 'hidden'
           html.style.paddingRight = `${scrollBarGap.value}px`
-        }
-        else {
+        } else {
           setTimeout(() => {
             html.style.overflow = ''
             html.style.paddingRight = ''

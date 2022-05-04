@@ -33,10 +33,8 @@ function onClick(link) {
     toggleDir(link.slug)
 
     // Select element for mobile nav
-    if (props.max !== null && props.level + 1 === props.max)
-      emit('select', link)
-  }
-  else {
+    if (props.max !== null && props.level + 1 === props.max) emit('select', link)
+  } else {
     router.push(link.slug)
     emit('close')
   }
@@ -66,21 +64,24 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.slug"
-      :class="['transition-base transition-colors', {
-        'border-l-2': level > 0,
-        'border-primary-600': isActive(link),
-        'border-primary-300 hover:border-primary-600': !isActive(link)
-      }]"
+      class="transition-colors transition-base"
+      :class="[
+        {
+          'border-l-2': level > 0,
+          'border-primary-400 dark:border-primary-600': isActive(link),
+          'hover:border-primary-400 border-gray-200 dark:border-gray-700': !isActive(link),
+        },
+      ]"
     >
       <NuxtLink
-        class="py-1.5 flex items-center justify-between focus:outline-none cursor-pointer"
+        class="flex cursor-pointer items-center justify-between py-1.5 focus:outline-none"
         :exact="link.exact"
         :class="{
           'pl-4': level > 0,
-          'text-xl !text-primary font-bold': level === 0,
+          '!text-primary text-lg font-semibold': level === 0,
           '!pt-0': level === 0 && index === 0,
           'text-secondary-active': isActive(link),
-          'text-secondary text-secondary-hover': !isActive(link)
+          'text-secondary text-secondary-hover': !isActive(link),
         }"
         @click.stop.prevent="onClick(link)"
       >
@@ -89,16 +90,7 @@ watch(
         <Icon v-if="link.icon" :name="link.icon" class="w-5 h-5 u-text-gray-500" />
       </NuxtLink>
 
-      <DocsAsideTree
-        v-if="link.children?.length && (max === null || ((level + 1) < max))"
-        v-show="isChildOpen[link.slug]"
-        :tree="link.children"
-        :level="level + 1"
-        :max="max"
-        class="py-2"
-        @select="link => $emit('select', link)"
-        @close="$emit('close')"
-      />
+      <DocsAsideTree v-if="link.children?.length && (max === null || level + 1 < max)" :tree="link.children" :level="level + 1" :max="max" class="py-2" @select="(link) => $emit('select', link)" @close="$emit('close')" />
     </li>
   </ul>
 </template>

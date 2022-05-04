@@ -4,72 +4,45 @@ import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
 const { navigation } = useDocus()
 
 const tree = computed(() => {
-  return navigation.value.filter(
-    (item) => {
-      if (item.slug === '/' || item.slug === '/templates')
-        return false
-      return true
-    },
-  )
+  return navigation.value.filter((item) => {
+    if (item.slug === '/' || item.slug === '/templates') return false
+    return true
+  })
 })
 
-const { visible, open, close, toggle, scrollBarGap } = useMenu()
+const { visible, open, close, toggle } = useMenu()
 
 const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
-watch(visible, v => (v ? open() : close()))
+watch(visible, (v) => (v ? open() : close()))
 
-const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmgray-100 dark:bg-warmgray-800 rounded-xl'
+const buttonClasses = 'w-8 h-8 focus:outline-none icon-base rounded-xl'
 </script>
 
 <template>
   <div class="relative lg:hidden">
-    <button :class="[buttonClasses]" class="z-10 relative" @click="toggle">
-      <IconDots class="w-6 h-6 icon-base mx-auto" />
+    <button :class="[buttonClasses]" class="relative z-10" @click="toggle">
+      <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" />
     </button>
 
     <ClientOnly>
       <teleport to="body">
         <!-- Scrim overlay -->
-        <div
-          id="mobile-nav-scrim"
-          :class="[visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none']"
-          class="fixed top-0 left-0 z-10 w-full h-full bg-warmgray-100 bg-opacity-50 dark:bg-warmgray-800 dark:bg-opacity-50 backdrop-blur transition"
-          @click="toggle"
-        />
+        <div id="mobile-nav-scrim" :class="[visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0']" class="fixed top-0 left-0 z-10 h-full w-full bg-opacity-50 backdrop-blur transition dark:bg-opacity-50" @click="toggle" />
 
         <!-- clone AppHeader button, due to stacking context limitations -->
-        <button
-          id="mobile-nav-button"
-          :class="[
-            buttonClasses,
-            visible
-              ? 'opacity-100 pointer-events-auto'
-              : `opacity-0 transition ${
-                isDesktopSafari || isDesktopFirefox ? 'duration-0' : 'duration-400'
-              } pointer-events-none`
-          ]"
-          class="z-30 fixed"
-          @click="toggle"
-        >
-          <IconLine class="w-6 h-6 icon-base mx-auto" />
+        <button id="mobile-nav-button" :class="[buttonClasses, visible ? 'pointer-events-auto opacity-100' : `opacity-0 transition ${isDesktopSafari || isDesktopFirefox ? 'duration-0' : 'duration-400'} pointer-events-none`]" class="fixed z-30" @click="toggle">
+          <Icon name="heroicons-outline:minus" class="icon-base mx-auto h-6 w-6" />
         </button>
 
         <!-- Nav menu surface -->
-        <div
-          id="mobile-nav-surface"
-          :class="[visible ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none']"
-          class="fixed z-20 w-[calc(100%-4rem)] sm:w-auto min-w-full sm:min-w-[calc(320px-2rem)] transform origin-top-right transition-transform ease-out"
-          @click="toggle"
-        >
-          <div
-            class="pl-8 pr-0 overflow-y-auto mb-2 surface pb-6 pt-12 rounded-2xl shadow-xl border-2 surface-border max-h-full z-40"
-            @click.stop.prevent
-          >
+        <div id="mobile-nav-surface" :class="[visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0']" class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)]" @click="toggle">
+          <div class="surface surface-border z-40 mb-2 max-h-full overflow-y-auto rounded-2xl border-2 pl-8 pr-0 pb-6 pt-12 shadow-xl" @click.stop.prevent>
             <DocsAsideTree :tree="tree" />
 
-            <div class="flex items-center justify-end px-6">
-              <ThemeSelect class="block" />
+            <div class="mt-4 flex items-center justify-end gap-4 px-6">
+              <SocialIcons size="h-7 w-7" spacing="lg:mr-1.5" />
+              <ThemeSelect size="h-7 w-7" spacing="lg:mr-1.5" />
             </div>
           </div>
         </div>
@@ -92,7 +65,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
 }
 
 #mobile-nav-button {
-  @apply top-4;
+  @apply top-3;
   right: calc(theme('spacing.4') + var(--scrollbar-gap));
 }
 
@@ -104,7 +77,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none bg-warmgray-50 hover:bg-warmg
   }
 
   #mobile-nav-button {
-    @apply top-4;
+    @apply top-5;
     right: calc(theme('spacing.6') + var(--scrollbar-gap));
   }
 }

@@ -16,8 +16,6 @@ defineProps({
 <template>
   <Alert type="warning" :icon="icon">
     Documentation for this section is not yet complete. You can
-    <NuxtLink :to="to">
-      contribute to the documentation.
-    </NuxtLink>
+    <NuxtLink :to="to"> contribute to the documentation. </NuxtLink>
   </Alert>
 </template>
