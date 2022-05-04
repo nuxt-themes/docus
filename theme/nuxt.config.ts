@@ -74,19 +74,21 @@ export default defineNuxtConfig({
   },
   */
   plugins,
-  head: {
-    title: 'Docus',
-    // link: [
-    //   {
-    //     rel: 'stylesheet',
-    //     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
-    //   },
-    //   { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-    // ],
-    meta: [
-      { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
-      { hid: 'og:type', property: 'og:type', content: 'website' },
-    ],
+  app: {
+    head: {
+      title: 'Docus',
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+        },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      ],
+      meta: [
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+      ],
+    },
   },
   loading: {
     color: '#00DC82',
