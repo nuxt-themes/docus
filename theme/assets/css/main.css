@@ -87,22 +87,46 @@
 
 /* Variables */
 :root {
-  --header-height: 4rem;
+  --header-height: theme('spacing.14');
   --footer-height: 8rem;
   --codeblocks-background: theme("colors.gray.900");
 }
 
 @screen sm {
   :root {
+    --header-height: theme('spacing.18');
     --footer-height: 4rem;
   }
 }
 
 html {
-  @apply text-primary min-h-screen overflow-y-scroll bg-white;
+  @apply text-primary antialiased font-sans min-h-screen overflow-y-scroll bg-white;
+
+  /* Scrollbar settings */
+  --scrollbar-track: theme('colors.gray.300');
+  --scrollbar-thumb: theme('colors.gray.200');
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+  }
+
+  &::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: .25rem
+  }
 
   &.dark {
     @apply bg-gray-900;
+    --scrollbar-track: theme('colors.gray.900');
+    --scrollbar-thumb: theme('colors.gray.800');
   }
 }
 

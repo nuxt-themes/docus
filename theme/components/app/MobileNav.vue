@@ -64,7 +64,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
 }
 
 #mobile-nav-button {
-  @apply top-4;
+  @apply top-3;
   right: calc(theme('spacing.4') + var(--scrollbar-gap));
 }
 
@@ -76,7 +76,7 @@ const buttonClasses = 'w-12 h-8 focus:outline-none icon-base rounded-xl'
   }
 
   #mobile-nav-button {
-    @apply top-4;
+    @apply top-5;
     right: calc(theme('spacing.6') + var(--scrollbar-gap));
   }
 }

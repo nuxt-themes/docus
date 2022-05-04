@@ -18,16 +18,16 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
 
 <template>
   <header class="surface surface-blurry h-header sticky top-0 z-10 w-full border-b border-gray-200 border-opacity-50 dark:border-gray-800">
-    <Container class="grid h-full grid-cols-12 items-center">
-      <div class="transition-base text-secondary-hover col-span-6 lg:col-span-3">
+    <Container class="flex h-full flex-none">
+      <div class="transition-base text-secondary-hover flex flex-1 items-center lg:flex-none">
         <NavbarLogo />
       </div>
 
-      <div class="hidden lg:col-span-6 lg:block">
-        <!-- <HeaderNavigation /> -->
+      <div class="flex flex-1 items-center">
+        <NavbarCenter />
       </div>
 
-      <div class="col-span-6 flex justify-end lg:col-span-3">
+      <div class="flex flex-1 items-center justify-end">
         <MobileNav class="flex lg:hidden" />
         <ThemeSelect class="hidden lg:block" />
       </div>

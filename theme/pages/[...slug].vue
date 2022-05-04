@@ -13,6 +13,9 @@ definePageMeta({
 const { page, theme } = useDocus()
 
 useHead({
+  bodyAttrs: {
+    class: ['docus-scrollbar'],
+  },
   title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
   description: page.value?.description || theme.value?.description || '',
   meta: [

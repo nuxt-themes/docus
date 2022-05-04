@@ -15,7 +15,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
 
     <!-- Title and Logo -->
     <template v-else-if="hasLogo && hasTitle">
-      <Logo class="h-6 w-auto md:h-8" />
+      <Logo class="h-6 w-auto sm:h-8" />
 
       <span>
         {{ theme?.header?.title || '' }}
@@ -23,7 +23,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
     </template>
 
     <!-- Only Logo -->
-    <Logo v-else-if="hasLogo" class="h-6 w-auto md:h-8" />
+    <Logo v-else-if="hasLogo" class="h-6 w-auto sm:h-8" />
 
     <!-- Placeholder -->
     <template v-else>
