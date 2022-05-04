@@ -178,7 +178,7 @@ export default defineNuxtConfig({
       meta: { name: 'pre-docus' },
       setup(_, nuxt) {
         const { srcDir } = nuxt.options
-        // Push content dir
+        // Push user content dir
         nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
       },
     }),
@@ -194,6 +194,8 @@ export default defineNuxtConfig({
         name: 'docus',
       },
       setup(_, nuxt) {
+        // Make also VT detects it
+        nuxt.options.runtimeConfig.public.docus = nuxt.options.runtimeConfig.public.docus || {}
         nuxt.hook('modules:done', () => {
           logger.success(`Using Docus v${version}`)
         })
