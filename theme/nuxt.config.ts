@@ -164,8 +164,8 @@ export default defineNuxtConfig({
       meta: { name: 'pre-docus' },
       setup(_, nuxt) {
         const { srcDir } = nuxt.options
-        // Push tailwindcss defaults https://github.com/nuxt-community/tailwindcss-module/blob/main/src/tailwind.config.ts#L7
-        nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`, `${srcDir}/components/**/*.{vue,js,ts}`, `${srcDir}/layouts/**/*.vue`, `${srcDir}/pages/**/*.vue`, `${srcDir}/composables/**/*.{js,ts}`, `${srcDir}/plugins/**/*.{js,ts}`, `${srcDir}/App.{js,ts,vue}`, `${srcDir}/app.{js,ts,vue}`)
+        // Push content dir
+        nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
       },
     }),
     '@nuxt/content',
