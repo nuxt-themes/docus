@@ -90,9 +90,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-  loading: {
-    color: '#00DC82',
-  },
   /**
    * Components
    */
@@ -133,7 +130,7 @@ export default defineNuxtConfig({
               800: '#27272a',
               900: '#18181b',
             },
-            primary: colors.indigo,
+            primary: colors.teal,
           },
           fontFamily: {
             sans: 'Inter, sans-serif',

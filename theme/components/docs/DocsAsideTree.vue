@@ -64,12 +64,12 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.slug"
-      class="transition-base transition-colors"
+      class="transition-colors transition-base"
       :class="[
         {
           'border-l-2': level > 0,
-          'border-primary-600': isActive(link),
-          'hover:border-primary-600 border-gray-300': !isActive(link),
+          'border-primary-400 dark:border-primary-600': isActive(link),
+          'hover:border-primary-400 border-gray-200 dark:border-gray-700': !isActive(link),
         },
       ]"
     >
@@ -87,10 +87,10 @@ watch(
       >
         <span>{{ link.title }}</span>
 
-        <Icon v-if="link.icon" :name="link.icon" class="u-text-gray-500 h-5 w-5" />
+        <Icon v-if="link.icon" :name="link.icon" class="w-5 h-5 u-text-gray-500" />
       </NuxtLink>
 
-      <DocsAsideTree v-if="link.children?.length && (max === null || level + 1 < max)" v-show="isChildOpen[link.slug]" :tree="link.children" :level="level + 1" :max="max" class="py-2" @select="(link) => $emit('select', link)" @close="$emit('close')" />
+      <DocsAsideTree v-if="link.children?.length && (max === null || level + 1 < max)" :tree="link.children" :level="level + 1" :max="max" class="py-2" @select="(link) => $emit('select', link)" @close="$emit('close')" />
     </li>
   </ul>
 </template>
