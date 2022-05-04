@@ -2,8 +2,7 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import colors from 'tailwindcss/colors.js'
 import { resolve } from 'pathe'
-import { defineNuxtModule } from '@nuxt/kit'
-import consola from 'consola'
+import { defineNuxtModule, logger } from '@nuxt/kit'
 import { version } from '../package.json'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
@@ -77,13 +76,13 @@ export default defineNuxtConfig({
   plugins,
   head: {
     title: 'Docus',
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
-      },
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-    ],
+    // link: [
+    //   {
+    //     rel: 'stylesheet',
+    //     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+    //   },
+    //   { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+    // ],
     meta: [
       { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
@@ -112,7 +111,6 @@ export default defineNuxtConfig({
   // ],
   // To enable for working build
   components,
-  css: [resolveThemeDir('assets/css/fonts.css')],
   tailwindcss: {
     viewer: false,
     cssPath: resolveThemeDir('assets/css/main.css'),
@@ -157,7 +155,7 @@ export default defineNuxtConfig({
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
       ],
-      content: ['~/content/**/*.{md,yml,json,json5,csv}', resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
+      content: [resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'), resolveThemeDir('components/**/*.{mjs,vue,js,ts}'), resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'), resolveThemeDir('pages/**/*.{mjs,vue,js,ts}')],
       safelist: [24, 36, 48, 60, 72, 84, 96, 108, 120].map((number) => `pl-[${number}px]`),
     },
   },
@@ -174,6 +172,14 @@ export default defineNuxtConfig({
    * Modules
    */
   modules: [
+    defineNuxtModule({
+      meta: { name: 'pre-docus' },
+      setup(_, nuxt) {
+        const { srcDir } = nuxt.options
+        // Push content dir
+        nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
+      },
+    }),
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -187,7 +193,7 @@ export default defineNuxtConfig({
       },
       setup(_, nuxt) {
         nuxt.hook('modules:done', () => {
-          consola.success(`Using Docus v${version}`)
+          logger.success(`Using Docus v${version}`)
         })
       },
     }),
