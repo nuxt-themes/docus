@@ -466,12 +466,11 @@
     fastq "^1.6.0"
 
 "@nuxt/content@npm:@nuxt/content-edge@latest":
-  version "2.0.0-27527074.9c50eab"
-  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27527074.9c50eab.tgz#a4f92e037ecbf5e65aeb19efe79fbf1ef4e80e1e"
-  integrity sha512-npSZ84mzVIqXFWCIMHknxOQYNC2QoJsb+rARCUhjdkAWP+ta61Fy/uqLXhrpjB4ubjZrD1dLwANPHZKpeDjrRQ==
+  version "2.0.0-27527918.b85bb01"
+  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27527918.b85bb01.tgz#b7f785f014845d482cead546eff481a9a83cbf72"
+  integrity sha512-XDw8g1Xkn3gmXn3xLZ7jzAz8oloMuuPrF10fxPRggur7db+clqE/8afsp9XkZyplIRR5N1oFMEFi/4ohwk+hAQ==
   dependencies:
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
-    base64-js "^1.5.1"
     csvtojson "^2.0.10"
     debounce "^1.2.1"
     defu "^6.0.0"
@@ -517,7 +516,7 @@
     unist-util-position "^4.0.3"
     unist-util-visit "^4.1.0"
     unist-util-visit-parents "^5.1.0"
-    unstorage "^0.4.0"
+    unstorage "^0.4.1"
     ws "^8.6.0"
 
 "@nuxt/devalue@^2.0.0":
@@ -1209,7 +1208,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.33.tgz#69a8c99ceb37c1b031d5cc4aec2ff1dc77e1161e"
   integrity sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==
 
-"@vueuse/core@8.4.1", "@vueuse/core@^8.4.1":
+"@vueuse/core@8.4.1", "@vueuse/core@^8.0.1", "@vueuse/core@^8.4.1":
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-8.4.1.tgz#68d06039bee53e08db5e9761aa06cb018e190535"
   integrity sha512-YRM2+wZj/XWzch44sgFaRWtTGEZ8xgTsleaGy6cuULIU1q6o9Z/XHDHqofzNXrEqEhN6EtJqM4m8puURFO0nzg==
@@ -1218,24 +1217,10 @@
     "@vueuse/shared" "8.4.1"
     vue-demi "*"
 
-"@vueuse/core@^8.0.1":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-8.4.0.tgz#94b1b198274a05dba85e7bf3debfba63bed6492b"
-  integrity sha512-W0ZHkuYN0B21L/LAP4kzX5V4ABsqkYYVkb7Lkd4vMHMI+3RBlhPKAX3ySD0EOu6TSQEggmqnIFfs2TjMNmiOOQ==
-  dependencies:
-    "@vueuse/metadata" "8.4.0"
-    "@vueuse/shared" "8.4.0"
-    vue-demi "*"
-
 "@vueuse/head@^0.7.6":
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.6.tgz#39eb2aa593db6f02d10ba469b33d8cfbce038183"
   integrity sha512-cOWqCkT3WiF5oEpw+VVEWUJd9RLD5rc7DmnFp3cePsejp+t7686uKD9Z9ZU7Twb7R/BI8iexKTmXo9D/F3v6UA==
-
-"@vueuse/metadata@8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-8.4.0.tgz#6cf2a3011bc1b47a1e0f57a2adff4f39d88b95c9"
-  integrity sha512-jFS3lFLohwlT/W3C1PTZSNSgFh/jckSG0G8aMWwMORQ8V5pwvmhdMwqCm8G35R6xLME71yJuq7G1742ljtRcOA==
 
 "@vueuse/metadata@8.4.1":
   version "8.4.1"
@@ -1265,14 +1250,7 @@
     local-pkg "^0.4.1"
     vue-demi "*"
 
-"@vueuse/shared@8.4.0", "@vueuse/shared@^8.0.1":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-8.4.0.tgz#a8a99ad843321bf83620e0234b5f6145a2131583"
-  integrity sha512-8ECJyrr6e/PTkJOTP4ym2KDVfabWfcx+8K2sz00XofzjKBlUeYEiBTaXor/SzoInlQLkJtMpa6Z81NYNpxzIOw==
-  dependencies:
-    vue-demi "*"
-
-"@vueuse/shared@8.4.1":
+"@vueuse/shared@8.4.1", "@vueuse/shared@^8.0.1":
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-8.4.1.tgz#a6856fc04db1db74c4d3252cce5f16641313ca50"
   integrity sha512-yzWNzvqaTGkc25fNsGkaF3pnMdXDax3EasYgPKlC4/eXSo0TqwG+xLz0Y8t6KN52x/kIHlpSwtry4LXfw7LSBA==
@@ -3554,13 +3532,13 @@ gzip-size@^7.0.0:
     duplexer "^0.1.2"
 
 h3@^0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.6.tgz#e6ae873f9ddc478ce6b07fde8847ceb152eab3fc"
-  integrity sha512-OoxDWBBpGNAStSVCOQagN+3EKRbCSgwQKFIeu4p4XvsLvd4L9KaQV6GDY5H8ZDYHsWfnsx4KTa2eFwSw530jnQ==
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.7.tgz#6021f14425e30b2c0566f741d49fc72d0516dda1"
+  integrity sha512-Yyp8RKDFpPceqwepk0Z6sOmobQ0PJhjIWPXkdbD+B2RWF7yWdea+UvM3fAgT2kMFntbMInE4QTnVK+M1wmvsBA==
   dependencies:
     cookie-es "^0.5.0"
     destr "^1.1.1"
-    radix3 "^0.1.1"
+    radix3 "^0.1.2"
     ufo "^0.8.3"
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
@@ -6423,10 +6401,10 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-radix3@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/radix3/-/radix3-0.1.1.tgz#33f783184fc6f2ae2b1d15427ae63c17d44e43cb"
-  integrity sha512-9Np01fn+penHvC05A9EkRpyObPMS0ht3t1UP6KlnQPCfTNzArmEZW/+t2SLsDtPcZyXPDbYCGWA8dSQqWaVwQQ==
+radix3@^0.1.1, radix3@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/radix3/-/radix3-0.1.2.tgz#5f7351af7fc5e4b1d9a1b14a7266b6a4a8cac0ba"
+  integrity sha512-Mpfd/OuX0zoJ6ojLD/RTOHvJPg6e6PjINtmYzV87kIXc5iUtDz34i7gg4SV4XjqRJTmSiYO/g9i/mKWGf4z8wg==
 
 randombytes@^2.1.0:
   version "2.1.0"
@@ -7707,7 +7685,7 @@ unplugin@^0.6.1, unplugin@^0.6.2:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.3"
 
-unstorage@^0.4.0:
+unstorage@^0.4.0, unstorage@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/unstorage/-/unstorage-0.4.1.tgz#66d174886f017a5ceef567b8f007c5966b4690f4"
   integrity sha512-nK2XsRV2lfB6aNCuoatsQUhRVMnDDP5pm3D4UrgRMxP3D57Rn5+dx3aNaLCi5rcq6QAdOmhjyBvKcW8d3PY+Sw==
