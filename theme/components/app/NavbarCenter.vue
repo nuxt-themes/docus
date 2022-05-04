@@ -1,5 +1,5 @@
 <template>
-  <div v-if="true" class="flex flex-1 items-center justify-center">
+  <div v-if="false" class="flex flex-1 items-center justify-center">
     <span class="mx-2 sm:hidden">xs</span>
     <span class="mx-2 md:hidden">sm</span>
     <span class="mx-2 lg:hidden">md</span>
