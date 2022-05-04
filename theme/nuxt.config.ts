@@ -85,7 +85,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       ],
       meta: [
-        { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt 3' },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Docus' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
       ],
     },
