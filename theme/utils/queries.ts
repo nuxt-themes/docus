@@ -5,13 +5,26 @@ import { defaultThemeConfig } from './theme'
 import { useDocusState } from './state'
 import { fetchContentNavigation, queryContent } from '#imports'
 
-export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded) => {
+const applyPage = (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, page: ParsedContent) => {
+  // Handle layout update from page
+  if (page?.layout) route.meta.layout = page?.layout
+  else route.meta.layout = 'default'
+}
+
+export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, force = false) => {
   const path = withoutTrailingSlash(route.path)
 
   const { page, surround } = useDocusState()
 
+  // Page is already fetched, apply it
+  if (!force && page.value && page.value.slug === path) {
+    applyPage(route, page.value)
+    return
+  }
+
+  // Fetch page
   try {
-    await Promise.all([
+    return await Promise.all([
       queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
       queryContent()
         .where({ partial: { $not: true }, navigation: { $not: false } })
@@ -23,9 +36,7 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
       if (_surround && _surround.length) surround.value = _surround
       else surround.value = undefined
 
-      // Handle layout update from page
-      if (_page?.layout) route.meta.layout = _page?.layout
-      else route.meta.layout = 'default'
+      applyPage(route, _page)
     })
   } catch (e) {
     console.warn(`Could not find page for path ${path}!`)
@@ -34,34 +45,41 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   }
 }
 
-export const queryNavigation = async () => {
+export const queryNavigation = async (force = false) => {
   const { navigation } = useDocusState()
 
-  navigation.value = await fetchContentNavigation(
+  if (!force && navigation.value) return
+
+  await fetchContentNavigation(
     queryContent().where({
       navigation: {
         $not: false,
       },
     }),
-  )
+  ).then((_navigation) => {
+    navigation.value = _navigation
+  })
 }
 
-export const queryTheme = async () => {
+export const queryTheme = async (force = false) => {
   const { theme } = useDocusState()
 
+  if (!force && theme.value) return
+
   // Fetch _theme.yml at `content/` root.
-  const query = await queryContent()
+  await queryContent()
     .where({
       id: 'content:_theme.yml',
     })
     .findOne()
+    .then((_theme) => {
+      if (!_theme) {
+        // Assign default theme config if none found.
+        theme.value = defaultThemeConfig
 
-  if (!query) {
-    // Assign default theme config if none found.
-    theme.value = defaultThemeConfig
+        return
+      }
 
-    return
-  }
-
-  theme.value = query.body
+      theme.value = _theme.body
+    })
 }

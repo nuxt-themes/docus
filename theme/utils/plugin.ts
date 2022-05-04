@@ -10,9 +10,9 @@ export default defineNuxtPlugin((nuxt) => {
     if (process.client) {
       const route = useRoute()
 
-      await queryNavigation()
-      await queryTheme()
-      await queryPage(route)
+      await queryNavigation(true)
+      await queryTheme(true)
+      await queryPage(route, true)
     }
   })
 })
