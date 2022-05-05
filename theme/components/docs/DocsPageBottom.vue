@@ -1,7 +1,6 @@
 <script lang="ts">
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import { joinURL } from 'ufo'
-import { defineComponent, useDocus } from '#imports'
+import { computed, defineComponent, useDocus } from '#imports'
 
 export default defineComponent({
   setup() {
@@ -12,7 +11,7 @@ export default defineComponent({
     const repoUrl = computed(() => joinURL('https://github.com', theme.value?.github?.repository || ''))
 
     const link = computed(() => {
-      if (!theme.value?.github) return
+      if (!theme.value?.github || !page.value || !page.value?.id) return
 
       const key = page.value.id.split(':')
       const dir = key[key.length - 2]
