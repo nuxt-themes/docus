@@ -5,6 +5,9 @@ definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
   middleware: [
+    'theme',
+    'navigation',
+    'github',
     'page',
     /* 'components' */
   ],
@@ -61,11 +64,3 @@ useHead({
     <Alert type="warning"> Page not found! </Alert>
   </p>
 </template>
-
-<style scoped>
-.docus-content {
-  & > :first-child {
-    margin-top: 0 !important;
-  }
-}
-</style>

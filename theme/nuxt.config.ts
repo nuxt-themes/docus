@@ -184,6 +184,7 @@ export default defineNuxtConfig({
         nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
       },
     }),
+    '@docus/github',
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',

@@ -19,6 +19,7 @@ export interface ThemeGitHubConfig {
   repository: string
   branch: string
   dir: string
+  releases: boolean
 }
 
 export interface ThemeFooterConfig {
@@ -54,6 +55,7 @@ export const defaultThemeConfig: ThemeConfig = {
     repository: 'nuxtlabs/docus',
     branch: 'dev',
     dir: '',
+    releases: true,
   },
   description: 'Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.',
   header: {

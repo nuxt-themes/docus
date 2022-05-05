@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
 
-const { navigation } = useDocus()
+const { navigation, theme } = useDocus()
 
 const tree = computed(() => {
   return navigation.value.filter((item) => {
-    if (item.slug === '/' || item.slug === '/templates') return false
+    if (item.slug === '/') return false
     return true
   })
 })
@@ -41,6 +41,7 @@ const buttonClasses = 'w-8 h-8 focus:outline-none icon-base rounded-xl'
             <DocsAsideTree :tree="tree" />
 
             <div class="mt-4 flex items-center justify-end gap-4 px-6">
+              <LastRelease v-if="theme?.github?.releases" class="mr-1.5" />
               <SocialIcons size="h-7 w-7" spacing="lg:mr-1.5" />
               <ThemeSelect size="h-7 w-7" spacing="lg:mr-1.5" />
             </div>
