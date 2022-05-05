@@ -12,7 +12,7 @@ li {
 
 ul > li {
   &::before {
-    @apply bg-primary-600 absolute left-0 top-[0.5em] h-1.5 w-1.5 rounded-full;
+    @apply absolute left-0 top-[0.5em] h-1.5 w-1.5 rounded-full bg-gray-500;
     content: '';
   }
 }
