@@ -77,8 +77,8 @@ watch(
         class="flex cursor-pointer items-center justify-between py-1.5 focus:outline-none"
         :exact="link.exact"
         :class="{
-          'pl-4': level > 0,
-          '!text-primary text-lg font-semibold': level === 0,
+          'pl-3': level > 0,
+          '!text-primary font-semibold': level === 0,
           '!pt-0': level === 0 && index === 0,
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link),

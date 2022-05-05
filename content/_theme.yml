@@ -15,6 +15,8 @@ url: "https://docus.dev"
 header:
   title: false
   logo: true
+aside:
+  level: 1
 footer:
   credits:
     icon: "IconNuxtLabs"

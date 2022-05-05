@@ -19,7 +19,7 @@ export const findBottomLink = (link: NavItem) => {
  */
 export const navFromPath = (path: string, tree: NavItem[]) => {
   for (const file of tree) {
-    if (file.slug === path && !file.id) return file
+    if (file.slug === path && !file.id) return file.children
 
     if (file.children) {
       const result = navFromPath(path, file.children)

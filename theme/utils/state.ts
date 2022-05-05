@@ -1,4 +1,5 @@
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
+
 import type { ThemeConfig } from './theme'
 import { useState } from '#imports'
 

@@ -11,7 +11,7 @@ const showToc = computed(() => {
 </script>
 
 <template>
-  <div id="docus-docs-page" class="flex min-h-screen flex-col">
+  <div id="docus-docs-page" class="flex flex-col min-h-screen">
     <template v-if="theme?.debug">
       <component is="debug" :config="theme?.debug" />
     </template>
