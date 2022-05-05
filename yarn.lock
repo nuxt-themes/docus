@@ -474,9 +474,9 @@
     fastq "^1.6.0"
 
 "@nuxt/content@npm:@nuxt/content-edge@latest":
-  version "2.0.0-27527918.b85bb01"
-  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27527918.b85bb01.tgz#b7f785f014845d482cead546eff481a9a83cbf72"
-  integrity sha512-XDw8g1Xkn3gmXn3xLZ7jzAz8oloMuuPrF10fxPRggur7db+clqE/8afsp9XkZyplIRR5N1oFMEFi/4ohwk+hAQ==
+  version "2.0.0-27529358.7b122ae"
+  resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.0.0-27529358.7b122ae.tgz#193d32a48940084da0ef3aebb33c608a85b9bda0"
+  integrity sha512-RRqriGmhYGqZqQMGBsgQ6uCKDNC/x2yVrhB3M5cw8yt+MbR3TA/YWYtjo9kytBGjT7ylX65qYtjpsUJRQYspkw==
   dependencies:
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
     csvtojson "^2.0.10"
@@ -1706,10 +1706,15 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001335:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001335:
   version "1.0.30001335"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001335.tgz#899254a0b70579e5a957c32dced79f0727c61f2a"
   integrity sha512-ddP1Tgm7z2iIxu6QTtbZUv6HJxSaV/PZeSrWFZtbY4JZ69tOeNhBCl3HyRQgeNZKE5AOn1kpV7fhljigy0Ty3w==
+
+caniuse-lite@^1.0.30001332:
+  version "1.0.30001336"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001336.tgz#a9eb13edd2613f418ebc632c8d6c9ab9fde7ccc4"
+  integrity sha512-/YxSlBmL7iKXTbIJ48IQTnAOBk7XmWsxhBF1PZLOko5Dt9qc4Pl+84lfqG3Tc4EuavurRn1QLoVJGxY2iSycfw==
 
 ccount@^2.0.0:
   version "2.0.1"
@@ -2433,9 +2438,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.118:
-  version "1.4.132"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.132.tgz#b64599eb018221e52e2e4129de103b03a413c55d"
-  integrity sha512-JYdZUw/1068NWN+SwXQ7w6Ue0bWYGihvSUNNQwurvcDV/SM7vSiGZ3NuFvFgoEiCs4kB8xs3cX2an3wB7d4TBw==
+  version "1.4.134"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.134.tgz#9baca7a018ca489d8e81a00c7cfe15161da38568"
+  integrity sha512-OdD7M2no4Mi8PopfvoOuNcwYDJ2mNFxaBfurA6okG3fLBaMcFah9S+si84FhX+FIWLKkdaiHfl4A+5ep/gOVrg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -3540,9 +3545,9 @@ gzip-size@^7.0.0:
     duplexer "^0.1.2"
 
 h3@^0.7.6:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.7.tgz#6021f14425e30b2c0566f741d49fc72d0516dda1"
-  integrity sha512-Yyp8RKDFpPceqwepk0Z6sOmobQ0PJhjIWPXkdbD+B2RWF7yWdea+UvM3fAgT2kMFntbMInE4QTnVK+M1wmvsBA==
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.8.tgz#98aab2b1128e0f4edf4515d1477e6389230d1388"
+  integrity sha512-E5hqrzQvQEYVE4h579pLb9gipHagQVZIMP2v83vSKxa40b7ctG1zNylXtW57BT3BGNVeQTccl6vIwyVK1L6lLw==
   dependencies:
     cookie-es "^0.5.0"
     destr "^1.1.1"
