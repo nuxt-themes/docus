@@ -341,12 +341,12 @@
   dependencies:
     mime "^3.0.0"
 
-"@docus/github@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@docus/github/-/github-1.2.3.tgz#21884d7d0fad416308b8f3a7b26d0d35fae781e3"
-  integrity sha512-+Hx3cz8v0VMbWOT2BI5Vh722WL+N+zTk4Uh2YsRYYz91XC2s2bq2eY2+wWCvHKAzETw38ucDF3au6diyENbXsg==
+"@docus/github@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@docus/github/-/github-1.2.4.tgz#899fe51c135785c3e2924895538acf6e91cdbc5c"
+  integrity sha512-7lC8ajy6fdfjQ9Z8h+5upFGz5KJnnawzIVAhkdqJ7r+kBDf2faQiJk/W5bT0M7T9yI/Jq6qFSCqSQTg9DjcQtg==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.2"
+    "@nuxt/kit" "^3.0.0-rc.1"
     remark-github "^11.2.2"
 
 "@eslint/eslintrc@^1.2.2":
