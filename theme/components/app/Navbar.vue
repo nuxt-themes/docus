@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from '#imports'
+import { onMounted, onUnmounted, ref, useDocus } from '#imports'
 
 const { theme } = useDocus()
 
