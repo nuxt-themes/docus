@@ -16,7 +16,7 @@ const formatDateByLocale = (date: string) => {
 
 <template>
   <div class="relative my-4">
-    <div v-for="release of [...releases, ...releases, ...releases]" :key="release.name" class="release surface-border relative flex flex-col-reverse border-b lg:flex-row">
+    <div v-for="release of releases" :key="release.name" class="release surface-border relative flex flex-col-reverse border-b lg:flex-row">
       <!-- Body -->
       <Content :document="release" class="docus-content flex-1" />
 
@@ -57,7 +57,8 @@ const formatDateByLocale = (date: string) => {
 }
 
 .release-meta {
-  @apply top-header flex-row items-center justify-between pt-4 pb-4 lg:items-end;
+  top: calc(var(--header-height)-1px);
+  @apply flex-row items-center justify-between pt-4 pb-4 lg:items-end;
 }
 
 @screen lg {

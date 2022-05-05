@@ -22,6 +22,16 @@ export interface ThemeGitHubConfig {
   releases: boolean
 }
 
+export interface ThemeHeaderConfig {
+  title: false | string
+  logo: boolean | string
+}
+
+export interface ThemeAsideConfig {
+  level: number
+  filter: string[]
+}
+
 export interface ThemeFooterConfig {
   credits:
     | false
@@ -36,15 +46,13 @@ export interface ThemeConfig {
   title: string
   url: string
   description: string
-  header: {
-    title: false | string
-    logo: boolean | string
-  }
+  header: ThemeHeaderConfig
   twitter: string
   footer: ThemeFooterConfig
   cover: ThemeCoverConfig
   debug: boolean | ThemeDebugConfig
   github: ThemeGitHubConfig
+  aside: ThemeAsideConfig
 }
 
 export const defaultThemeConfig: ThemeConfig = {
@@ -56,6 +64,10 @@ export const defaultThemeConfig: ThemeConfig = {
     branch: 'dev',
     dir: '',
     releases: true,
+  },
+  aside: {
+    level: 0,
+    filter: [],
   },
   description: 'Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.',
   header: {
