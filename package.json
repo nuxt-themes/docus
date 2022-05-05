@@ -17,6 +17,7 @@
     "preview": "nuxi preview"
   },
   "dependencies": {
+    "@docus/github": "^1.2.4",
     "@iconify/vue": "^3.2.1",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",

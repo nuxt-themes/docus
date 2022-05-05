@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from '#imports'
 
+const { theme } = useDocus()
+
 const onTop = ref(true)
 
 function setOnTop(): void {

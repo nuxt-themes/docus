@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from '#imports'
+import { ref, useDocus } from '#imports'
 
 defineProps({
   toc: {
@@ -8,6 +8,8 @@ defineProps({
     default: true,
   },
 })
+
+const { page } = useDocus()
 
 const isOpen = ref(false)
 </script>
@@ -21,19 +23,19 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="mt-4 lg:mt-0"
+      class="relative lg:mt-0"
       :class="{
-        'min-height-without-toc lg:col-span-12': !toc,
+        'min-height-without-toc lg:col-span-10': !toc,
         'min-height-with-toc lg:col-span-8': toc,
       }"
     >
       <slot />
 
-      <DocsPageBottom />
+      <DocsPageBottom v-if="page && toc" />
 
-      <ProseHr />
+      <ProseHr v-if="page && toc" />
 
-      <DocsPrevNext />
+      <DocsPrevNext v-if="page && toc" />
     </div>
 
     <!-- TOC -->
