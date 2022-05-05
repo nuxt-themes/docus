@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { fileFromPath, navFromPath } from '../../utils/navigation'
-import { computed, useDocus } from '#imports'
+import { computed, useDocus, useRoute } from '#imports'
 
 const { navigation, theme, page } = useDocus()
 

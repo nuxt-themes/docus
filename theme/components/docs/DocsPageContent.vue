@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useDocus } from '#imports'
+import { computed, ref, useDocus } from '#imports'
 
 const { page } = useDocus()
 
