@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, resolveComponent } from '#imports'
+import { computed, defineComponent, resolveComponent, useSlots } from '#imports'
 
 const iconTypeMap = {
   primary: 'IconCheck',
