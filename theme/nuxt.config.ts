@@ -28,7 +28,7 @@ const components = [
   },
   {
     prefix: '',
-    path: './components/globals',
+    path: './components/global',
     global: true,
   },
   {
@@ -196,6 +196,14 @@ export default defineNuxtConfig({
       setup(_, nuxt) {
         // Make also VT detects it
         nuxt.options.runtimeConfig.public.docus = nuxt.options.runtimeConfig.public.docus || {}
+        // Add ~/components/global directory
+        if (nuxt.options.components?.dirs) {
+          nuxt.options.components.dirs.push({
+            prefix: '',
+            path: '~/components/global',
+            global: true,
+          })
+        }
         nuxt.hook('modules:done', () => {
           logger.success(`Using Docus v${version}`)
         })
