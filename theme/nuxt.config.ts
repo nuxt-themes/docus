@@ -73,6 +73,9 @@ export default defineNuxtConfig({
     },
   },
   */
+  build: {
+    transpile: [themeDir],
+  },
   plugins,
   app: {
     head: {
