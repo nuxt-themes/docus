@@ -33,7 +33,6 @@ export const navFromPath = (path: string, tree: NavItem[]) => {
  */
 export const fileFromPath = (path: string, tree: NavItem[]) => {
   for (const file of tree) {
-    console.log({ path, file })
     if (file.slug === path) return file
 
     if (file.children) {
