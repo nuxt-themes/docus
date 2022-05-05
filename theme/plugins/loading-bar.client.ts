@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { defineNuxtPlugin } from '#app'
 import { NuxtLoadingBar } from '#components'
 
 export default defineNuxtPlugin((nuxtApp) => {

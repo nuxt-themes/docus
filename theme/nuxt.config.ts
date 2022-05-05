@@ -73,9 +73,11 @@ export default defineNuxtConfig({
     },
   },
   */
-  build: {
-    transpile: [themeDir],
-  },
+  // TODO: enable to have auto-import in the theme directory
+  // We need to find a way to update https://github.com/unjs/unimport/blob/a2a2951c8a62866b7a2f6a88202de62b8d3a7355/src/unplugin.ts#L18
+  // build: {
+  //   transpile: [themeDir],
+  // },
   plugins,
   app: {
     head: {
