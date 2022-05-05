@@ -64,7 +64,7 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.slug"
-      class="transition-colors transition-base"
+      class="transition-base transition-colors"
       :class="[
         {
           'border-l-2': level > 0,
@@ -87,7 +87,7 @@ watch(
       >
         <span>{{ link.title }}</span>
 
-        <Icon v-if="link.icon" :name="link.icon" class="w-5 h-5 u-text-gray-500" />
+        <Icon v-if="link.icon" :name="link.icon" class="h-5 w-5" />
       </NuxtLink>
 
       <DocsAsideTree v-if="link.children?.length && (max === null || level + 1 < max)" :tree="link.children" :level="level + 1" :max="max" class="py-2" @select="(link) => $emit('select', link)" @close="$emit('close')" />

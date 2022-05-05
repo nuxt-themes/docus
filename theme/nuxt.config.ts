@@ -167,9 +167,6 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
-  github: {
-    repo: 'nuxt/framework',
-  },
   /**
    * Modules
    */

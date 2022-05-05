@@ -83,6 +83,12 @@
   .dark-img {
     @apply hidden dark:block;
   }
+
+  /* Link */
+
+  .link {
+    @apply hover:text-secondary-hover transition-colors transition-base;
+  }
 }
 
 /* Variables */
@@ -132,4 +138,10 @@ html {
 
 body {
   @apply min-h-screen font-sans text-gray-700 antialiased dark:text-gray-200;
+}
+
+.docus-content {
+  & > :first-child {
+    margin-top: 0 !important;
+  }
 }
