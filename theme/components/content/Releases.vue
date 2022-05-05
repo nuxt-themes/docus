@@ -21,7 +21,7 @@ const formatDateByLocale = (date: string) => {
       <Content :document="release" class="docus-content flex-1" />
 
       <!-- Header -->
-      <div class="release-meta surface surface-blurry z-1 sticky flex w-full flex-col justify-end gap-2 self-start px-8 text-right lg:w-1/4 lg:px-0">
+      <div class="release-meta surface surface-blurry z-1 sticky flex w-full flex-col justify-end gap-2 self-start px-8 text-right lg:w-1/4 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
         <a :href="release.url" target="_blank">
           <h2 :id="release.name" class="hover:text-secondary-hover transition-base cursor-pointer text-2xl font-bold transition-colors lg:text-3xl">
             {{ release.name }}
