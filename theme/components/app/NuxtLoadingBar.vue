@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, reactive } from '#app'
+import { onBeforeUnmount, reactive } from '#imports'
 
 const props = defineProps({
   nuxtApp: {
