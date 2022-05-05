@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDocus } from '#imports'
+import { githubReleases } from '#imports'
 
 const { data: releases } = await useAsyncData<any>('releases', () => githubReleases())
 
