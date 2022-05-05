@@ -48,7 +48,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         <span class="truncate">On this page</span>
       </div>
 
-      <ul class="mr-[-1px] border-gray-500 pl-3 lg:pr-3">
+      <ul class="-mr-0.5 border-gray-500 pl-3 lg:pr-3">
         <li v-for="link in toc.links" :key="link.text" class="min-w-0 transition-colors border-l-2 transition-base group lg:border-r-2 lg:border-l-0 lg:text-right" :class="activeHeadings.includes(link.id) ? 'border-primary-400 dark:border-primary-600' : 'border-gray-200 dark:border-gray-700'">
           <a
             :href="`#${link.id}`"
