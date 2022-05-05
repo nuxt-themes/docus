@@ -1,5 +1,5 @@
 import { useDocusState } from '../utils/state'
-import { defineNuxtRouteMiddleware, githubReleases } from '#imports'
+import { defineNuxtRouteMiddleware, githubReleases, useState } from '#imports'
 
 export default defineNuxtRouteMiddleware(async (to) => {
   const { theme } = useDocusState()
