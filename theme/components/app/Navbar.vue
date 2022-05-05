@@ -19,17 +19,17 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
 </script>
 
 <template>
-  <header class="sticky top-0 z-10 w-full border-b border-gray-200 border-opacity-50 surface surface-blurry h-header dark:border-gray-800">
-    <Container class="flex flex-none h-full">
-      <div class="flex items-center flex-1 lg:flex-none">
+  <header class="surface surface-blurry h-header sticky top-0 z-10 w-full border-b border-gray-200 border-opacity-50 dark:border-gray-800">
+    <Container class="flex h-full lg:grid lg:grid-cols-12">
+      <div class="transition-base text-secondary-hover flex flex-none items-center lg:col-span-2 lg:flex-none">
         <NavbarLogo />
       </div>
 
-      <div class="flex items-center flex-1">
-        <NavbarCenter />
+      <div class="flex flex-1 items-center lg:col-span-8">
+        <NavbarCenter class="hidden lg:flex" />
       </div>
 
-      <div class="flex items-center justify-end flex-1 lg:gap-4">
+      <div class="flex flex-none items-center justify-end lg:col-span-2 lg:gap-4 lg:pl-4">
         <LastRelease v-if="theme?.github?.releases" class="mr-1.5 hidden lg:block" />
         <MobileNav class="flex lg:hidden" />
         <SocialIcons size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />

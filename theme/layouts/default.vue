@@ -2,12 +2,6 @@
 import { computed, useDocus } from '#imports'
 
 const { theme, page } = useDocus()
-
-const showToc = computed(() => {
-  if (typeof page.value?.toc !== 'undefined') return page.value.toc
-
-  return true
-})
 </script>
 
 <template>
@@ -18,7 +12,7 @@ const showToc = computed(() => {
 
     <Navbar />
 
-    <DocsPageContent class="flex-1" :toc="showToc">
+    <DocsPageContent class="flex-1">
       <NuxtPage />
     </DocsPageContent>
 

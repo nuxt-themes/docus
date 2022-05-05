@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { joinURL } from 'ufo'
-import { useDocus } from '#imports'
+import { computed, useDocus } from '#imports'
 
 const props = defineProps({
   repository: {
@@ -30,18 +30,6 @@ const props = defineProps({
 })
 
 const { theme, page } = useDocus()
-
-const sourceFromId = (id: string) => {
-  const key = id.split(':')
-  const source = key[key.length - 1]
-  return source
-}
-
-const dirFromId = (id: string) => {
-  const key = id.split(':')
-  const dir = key[key.length - 1]
-  return dir
-}
 
 const url = computed(() => joinURL('https://github.com', typeof props.repository === 'string' ? props.repository : theme.value?.github?.repository || ''))
 

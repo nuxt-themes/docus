@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import { ref, useDocus } from '#imports'
 
-defineProps({
-  toc: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-})
-
 const { page } = useDocus()
+
+const toc = computed(() => {
+  if (typeof page.value?.toc !== 'undefined') return page.value.toc
+
+  return true
+})
 
 const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative flex flex-col-reverse gap-8 pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:py-8">
+  <Container
+    :class="{
+      'gap-8': toc.value,
+      'gap-16': !toc.value,
+    }"
+    padded
+    class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:py-8"
+  >
     <!-- Aside -->
     <aside class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
       <DocsAside />
@@ -23,10 +28,10 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative lg:mt-0"
+      class="relative flex-1 lg:mt-0"
       :class="{
-        'min-height-without-toc lg:col-span-10': !toc,
-        'min-height-with-toc lg:col-span-8': toc,
+        'pt-8 lg:col-span-10 lg:pt-0': !toc,
+        'lg:col-span-8': toc,
       }"
     >
       <slot />
@@ -44,7 +49,7 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="surface surface-blurry top-header sticky -mx-4 -mt-8 flex items-center overflow-x-hidden px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:px-0 lg:pt-8"
+      class="surface surface-blurry top-header sticky -mx-4 -mt-8 flex items-center overflow-x-hidden px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div>
         <button class="flex items-center gap-3 py-3 lg:hidden" @click="isOpen = !isOpen">

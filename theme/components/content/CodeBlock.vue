@@ -28,7 +28,7 @@ defineProps({
   <div
     class="code-block"
     :class="{
-      active: active,
+      active,
       'rounded-b-lg border-2 border-t-0 border-gray-100 p-4 dark:border-gray-800': preview,
     }"
   >
