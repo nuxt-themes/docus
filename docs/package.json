@@ -8,7 +8,7 @@
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
     "preview": "nuxi preview",
     "build:vercel": "cd .. && pnpm run build:docs",
-    "install:vercel": "cd .. && pnpm install"
+    "install:vercel": "cd .. && pnpm install --no-frozen-lockfile"
   },
   "devDependencies": {
     "nuxt": "npm:nuxt3@latest",
