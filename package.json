@@ -2,13 +2,15 @@
   "name": "docus",
   "version": "3.0.0",
   "exports": {
-    "./theme": "./theme/nuxt.config.ts",
-    "./theme/*": "./theme/*/*.*"
+    "./base": "./packages/theme/nuxt.config.ts",
+    "./base/*": "./packages/theme/*/*.*",
+    "./theme": "./packages/theme/nuxt.config.ts",
+    "./theme/*": "./packages/theme/*/*.*"
   },
   "main": "./nuxt.config.ts",
   "files": [
     "README.md",
-    "theme"
+    "packages"
   ],
   "scripts": {
     "build": "nuxi build",
@@ -39,6 +41,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@types/tailwindcss": "^3.0.10",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

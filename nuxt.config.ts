@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
-  extends: ['./theme'],
+  extends: ['./packages/theme'],
   github: {
     repo: 'nuxt/content',
   },

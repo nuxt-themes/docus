@@ -15,6 +15,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/require-component-is': 'off',
     'vue/no-multiple-template-root': 'off',
+    'vue/no-v-text-v-html-on-component': 'off',
     '@typescript-eslint/no-unused-vars': ['off'],
     '@typescript-eslint/semi': ['error'],
     '@typescript-eslint/comma-dangle': ['error'],
@@ -26,7 +27,7 @@ module.exports = {
         // Override all options of `prettier` here
         // @see https://prettier.io/docs/en/options.html
         // plugins: ['prettier-plugin-tailwindcss'],
-        printWidth: 999,
+        printWidth: 180,
         semi: false,
         singleQuote: true,
         tabWidth: 2,
