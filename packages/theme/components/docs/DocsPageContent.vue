@@ -13,14 +13,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container
-    :class="{
-      'gap-8': toc.value,
-      'gap-16': !toc.value,
-    }"
-    padded
-    class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:py-8"
-  >
+  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:py-8">
     <!-- Aside -->
     <aside class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
       <DocsAside />
@@ -28,9 +21,9 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative lg:mt-0"
+      class="relative mt-8 pt-8 lg:mt-0 lg:pt-0"
       :class="{
-        'pt-8 lg:col-span-10 lg:pt-0': !toc,
+        'lg:col-span-10 lg:pt-0': !toc,
         'lg:col-span-8': toc,
       }"
     >
@@ -58,7 +51,7 @@ const isOpen = ref(false)
           <Icon name="heroicons-outline:chevron-right" class="h-6 w-6 transform transition-transform duration-100" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
         </button>
 
-        <DocsToc class="mt-2 mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
+        <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
       </div>
     </div>
   </Container>

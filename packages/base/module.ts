@@ -41,12 +41,12 @@ declare module '@nuxt/schema' {
       nuxt.options.runtimeConfig.public.docus.defaultThemeConfig = theme
     })
 
-    nuxt.hook('modules:done', async () => {
-      motd()
-    })
-
     nuxt.hook('prepare:types', (opts) => {
       opts.references.push({ path: resolve(nuxt.options.buildDir, 'types/theme.d.ts') })
+    })
+
+    nuxt.hook('modules:done', async () => {
+      motd()
     })
   },
 })

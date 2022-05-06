@@ -1,7 +1,6 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import page from '../middleware/page'
 import { useDocusState } from './state'
 import { fetchContentNavigation, queryContent, useDocus, useDocusNavigation } from '#imports'
 import layouts from '#build/layouts'
@@ -20,6 +19,10 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   const path = withoutTrailingSlash(route.path)
 
   const { page, surround, navigation } = useDocusState()
+
+  // We can use `theme` from useDocus here as we know this middleware
+  // will always run after `theme` middleware, but this is not a recommended pattern.
+  // Queries should avoid depending on each others.
   const { theme } = useDocus()
 
   // Page is already fetched, apply it
@@ -37,12 +40,13 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
         .findSurround(path) as Promise<ParsedContent[]>,
     ]).then(async ([_page, _surround]) => {
       const layoutName = findLayout(_page, theme.value, navigation.value)
-      console.log('layoutName', layoutName)
+
       // Prefetch layout component
       const layout = layouts[layoutName]
       if (layout?.__asyncLoader && !layout.__asyncResolved) {
         await layout.__asyncLoader()
       }
+
       // Update values
       route.meta.layout = layoutName
       if (_page) page.value = _page
