@@ -24,6 +24,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default defineNuxtConfig({
+  /**
+   * The base configuration.
+   *
+   * Holds most basic theme configurations that can be shared across any theme.
+   */
   theme: {
     title: 'Docus',
     url: 'https://docus.dev',

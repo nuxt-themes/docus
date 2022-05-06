@@ -49,6 +49,11 @@ export default defineNuxtConfig({
   // Extends `docus/base`
   extends: [resolveThemeDir('../base')],
 
+  /**
+   * Docs theme configuration.
+   *
+   * Holds every configuration that applies to docs theme.
+   */
   theme: themeConfig,
 
   app: {

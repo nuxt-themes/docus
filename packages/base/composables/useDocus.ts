@@ -6,25 +6,24 @@ export const useDocus = () => {
 
   const { theme: _theme, navigation, page, surround } = useDocusState()
 
+  const defaultThemeConfig = computed(() => {
+    return docusRuntimeConfig?.defaultThemeConfig || {}
+  })
+
   /**
    * Theme computed.
    */
   const theme = computed(() => {
     // Grab _theme.yml value
-    const themeValue = { ..._theme.value } || {}
-
-    // Grab default theme config
-    const defaultThemeConfig = docusRuntimeConfig?.defaultThemeConfig || {}
+    const themeValue = unref(_theme.value) || {}
 
     // Disable debug in production
     if (process.env.NODE_ENV === 'production') {
-      if (themeValue) _theme.value.debug = false
+      if (themeValue) themeValue.debug = false
     }
 
     // Return merged config
-    const themeConfig = Object.assign({}, defaultThemeConfig, themeValue)
-
-    console.log(themeConfig)
+    const themeConfig = Object.assign({}, defaultThemeConfig.value, themeValue)
 
     return themeConfig
   })

@@ -14,10 +14,10 @@ const icons = computed(() => theme.value?.footer?.icons || [])
         href="https://nuxtlabs.com"
         rel="noopener"
         target="_blank"
-        class="text-secondary transition-base mb-3 flex items-end hover:text-gray-600 dark:hover:text-gray-100 sm:mb-0"
+        class="text-secondary transition-base hover:text-secondary-hover transition-base mb-3 flex items-end transition-colors sm:mb-0"
       >
-        <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="mr-2" />
-        <p class="text-sm font-semibold">{{ theme?.footer?.credits?.text }}</p>
+        <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="mr-2 h-7 w-7 fill-current" />
+        <p class="font-semibold">{{ theme?.footer?.credits?.text }}</p>
       </a>
 
       <div class="flex items-center gap-4">
