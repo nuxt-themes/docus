@@ -1,17 +1,30 @@
 {
   "name": "@docus/base",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "exports": {
     ".": "./nuxt.config.ts",
     "./*": "./*/*.*"
   },
   "main": "./nuxt.config.ts",
+  "files": [
+    "nuxt.config.ts",
+    "module.ts",
+    "assets",
+    "components",
+    "composables",
+    "middleware",
+    "pages",
+    "plugins",
+    "utils"
+  ],
   "scripts": {
     "build": "nuxi build",
     "generate": "nuxi generate",
     "dev": "nuxi dev",
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
-    "preview": "nuxi preview"
+    "preview": "nuxi preview",
+    "release": "../../.github/scripts/release.sh",
+    "release-edge": "../../.github/scripts/release-edge.sh"
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",

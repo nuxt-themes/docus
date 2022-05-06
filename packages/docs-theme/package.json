@@ -1,6 +1,6 @@
 {
   "name": "@docus/docs-theme",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "exports": {
     ".": "./nuxt.config.ts",
     "./*": "./*/*.*"
@@ -11,10 +11,12 @@
     "generate": "nuxi generate",
     "dev": "nuxi dev",
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
-    "preview": "nuxi preview"
+    "preview": "nuxi preview",
+    "release": "../../.github/scripts/release.sh",
+    "release-edge": "../../.github/scripts/release-edge.sh"
   },
   "dependencies": {
-    "@docus/base": "1.0.0",
+    "@docus/base": "latest",
     "@docus/github": "^1.2.6",
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.0.2",

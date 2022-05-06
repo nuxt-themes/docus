@@ -13,6 +13,12 @@
     "lint": {
       "outputs": []
     },
+    "release": {
+      "dependsOn": ["^build"]
+    },
+    "release-edge": {
+      "dependsOn": ["^build"]
+    },
     "dev": {
       "cache": false
     }

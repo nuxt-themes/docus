@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "nuxt": "npm:nuxt3@latest",
-    "@docus/docs-theme": "workspace:1.0.0"
+    "@docus/docs-theme": "workspace:3.0.0"
   }
 }

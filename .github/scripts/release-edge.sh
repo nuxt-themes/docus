@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Restore all git changes
-git restore -s@ -SW  -- theme
-
 # Bump versions to edge
 yarn jiti ./.github/scripts/bump-edge
 
@@ -15,5 +12,5 @@ if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
 fi
 
 # Release package
-echo "Publishing docus-edge"
-npm publish -q --access public
+echo "Publishing $PWD"
+# npm publish -q --access public

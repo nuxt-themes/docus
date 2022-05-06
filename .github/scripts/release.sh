@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Restore all git changes
-git restore -s@ -SW  -- theme
-
 # Update token
 if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
   echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
@@ -12,6 +9,6 @@ if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
 fi
 
 # Release package
-echo "Publishing Docus..."
-npm publish -q --access public
+echo "Publishing $PWD"
+# npm publish -q --access public
 echo "Published!"

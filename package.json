@@ -12,13 +12,20 @@
   "scripts": {
     "dev": "pnpm dev:docs",
     "build": "pnpm turbo run build",
+    "lint": "pnpm turbo run lint",
+    "release": "pnpm turbo run release",
+    "release:edge": "pnpm turbo run release:edge",
     "dev:docs": "nuxi dev docs",
     "dev:base": "nuxi dev packages/base",
     "dev:theme": "nuxi dev packages/theme",
-    "lint": "eslint --ext .ts,.js,.vue,.css . --fix"
+    "cleanup": "./.github/scripts/cleanup.sh"
   },
   "resolutions": {
-    "nuxt": "npm:nuxt3@3.0.0-rc.2-27530596.a862a67"
+    "nuxt": "npm:nuxt3@3.0.0-rc.2-27530596.a862a67",
+    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-rc.2-27530596.a862a67"
+  },
+  "dependencies": {
+    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-rc.2-27530596.a862a67"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.0",
@@ -30,6 +37,7 @@
     "eslint-plugin-prettier-vue": "^3.1.0",
     "jiti": "^1.13.0",
     "nuxt": "npm:nuxt3@latest",
+    "nuxi": "npm:nuxi-edge@latest",
     "parse-entities": "^4.0.0",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
