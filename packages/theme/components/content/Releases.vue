@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { githubReleases } from '#imports'
+import { githubReleases, useAsyncData } from '#imports'
 
 const { data: releases } = await useAsyncData<any>('releases', () => githubReleases())
 

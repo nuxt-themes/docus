@@ -28,7 +28,7 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative flex-1 lg:mt-0"
+      class="relative lg:mt-0"
       :class="{
         'pt-8 lg:col-span-10 lg:pt-0': !toc,
         'lg:col-span-8': toc,

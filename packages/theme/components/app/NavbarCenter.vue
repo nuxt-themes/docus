@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, useDocus } from '#imports'
+import { computed, useDocus, useDocusNavigation } from '#imports'
+
+const { findBottomLink } = useDocusNavigation()
 
 const { navigation, theme } = useDocus()
 
@@ -13,19 +15,17 @@ const tree = computed(() => {
     return true
   })
 })
-
-const getPath = (link) => {
-  if (link.children && link.children[0].slug !== '/') {
-    return link.children[0].slug
-  }
-
-  return link.slug
-}
 </script>
 
 <template>
   <nav v-if="hasNavigation" class="flex max-w-full flex-1 items-center justify-center gap-8 overflow-hidden truncate font-medium">
-    <NuxtLink v-for="link in tree" :key="link.slug" :to="getPath(link)" class="transition-base hover:text-secondary-hover transition-colors" active-class="text-secondary-active">
+    <NuxtLink
+      v-for="link in tree"
+      :key="link.slug"
+      :to="findBottomLink(link)"
+      class="transition-base hover:text-secondary-hover transition-colors"
+      active-class="text-secondary-active"
+    >
       {{ link.title }}
     </NuxtLink>
   </nav>

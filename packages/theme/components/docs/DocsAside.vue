@@ -20,7 +20,7 @@ const tree = computed(() => {
 
     // Get level
     if (level.value) {
-      const leveledPath = path.splice(0, path.length - level.value).join('/')
+      const leveledPath = path.splice(0, 1 + level.value).join('/')
 
       nav = navFromPath(leveledPath, navigation.value) || fileFromPath(leveledPath, navigation.value) || []
 
