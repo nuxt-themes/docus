@@ -1,23 +1,30 @@
 import { withoutTrailingSlash } from 'ufo'
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
+import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
+import page from '../middleware/page'
 import { useDocusState } from './state'
-import { fetchContentNavigation, queryContent } from '#imports'
+import { fetchContentNavigation, queryContent, useDocus, useDocusNavigation } from '#imports'
+import layouts from '#build/layouts'
 
-const applyPage = (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, page: ParsedContent) => {
-  // Handle layout update from page
-  if (page?.layout) route.meta.layout = page?.layout
-  else route.meta.layout = 'default'
+const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
+  if (page.layout) return page.layout
+
+  const { layoutFromPath } = useDocusNavigation()
+  const layoutFromNav = layoutFromPath(page.slug, navigation)
+  if (layoutFromNav) return layoutFromNav
+
+  return theme.layout
 }
 
 export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, force = false) => {
   const path = withoutTrailingSlash(route.path)
 
-  const { page, surround } = useDocusState()
+  const { page, surround, navigation } = useDocusState()
+  const { theme } = useDocus()
 
   // Page is already fetched, apply it
   if (!force && page.value && page.value.slug === path) {
-    applyPage(route, page.value)
+    route.meta.layout = findLayout(page.value, theme.value, navigation.value)
     return
   }
 
@@ -28,17 +35,24 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
       queryContent()
         .where({ partial: { $not: true }, navigation: { $not: false } })
         .findSurround(path) as Promise<ParsedContent[]>,
-    ]).then(([_page, _surround]) => {
+    ]).then(async ([_page, _surround]) => {
+      const layoutName = findLayout(_page, theme.value, navigation.value)
+      console.log('layoutName', layoutName)
+      // Prefetch layout component
+      const layout = layouts[layoutName]
+      if (layout?.__asyncLoader && !layout.__asyncResolved) {
+        await layout.__asyncLoader()
+      }
+      // Update values
+      route.meta.layout = layoutName
       if (_page) page.value = _page
       else page.value = undefined
 
       if (_surround && _surround.length) surround.value = _surround
       else surround.value = undefined
-
-      applyPage(route, _page)
     })
   } catch (e) {
-    console.warn(`Could not find page for path ${path}!`)
+    console.warn(`Could not find page for path ${path}`)
     page.value = undefined
     surround.value = undefined
   }

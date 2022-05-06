@@ -1,4 +1,5 @@
 export const themeConfig = {
+  layout: 'docs',
   socials: {
     twitter: '@docus_',
   },
