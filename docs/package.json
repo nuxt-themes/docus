@@ -6,7 +6,9 @@
     "generate": "nuxi generate",
     "dev": "nuxi dev",
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
-    "preview": "nuxi preview"
+    "preview": "nuxi preview",
+    "build:vercel": "cd .. && pnpm run build:docs",
+    "install:vercel": "cd .. && pnpm install"
   },
   "devDependencies": {
     "nuxt": "npm:nuxt3@latest",
