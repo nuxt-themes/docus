@@ -10,5 +10,5 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   if (state.value) return
 
-  await githubReleases().then(([release]) => (state.value = release))
+  await githubReleases({ per_page: '1' }).then(([release]) => (state.value = release))
 })

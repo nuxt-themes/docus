@@ -341,10 +341,10 @@
   dependencies:
     mime "^3.0.0"
 
-"@docus/github@^1.2.4":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@docus/github/-/github-1.2.5.tgz#e3de4572d25b75a3230fc578894613acc59a5bec"
-  integrity sha512-t2QQrOTQoXfJobIPyi8BFIoQVCYzJIPYggWvBQ4Bhw0pk5ZrNqpntHrNEeSNgYoBC3j1uLNRPlBeOpwXhAtaVg==
+"@docus/github@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@docus/github/-/github-1.2.6.tgz#f9e3be779bfcbc4e34c21a937e1080b2d88593b1"
+  integrity sha512-tvYQQT/LnnyxXV49J4H1SOiwUHK3Vj7xX1u6ty1Gw352MWNckXJWhhPXT+1xYWuNEwxEF/H7PKayuAgmKNlP4w==
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.2"
     remark-github "^11.2.2"
@@ -757,7 +757,7 @@
     eslint-plugin-unicorn "^42.0.0"
     eslint-plugin-vue "^8.7.1"
 
-"@nuxtjs/tailwindcss@^5.0.3":
+"@nuxtjs/tailwindcss@^5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-5.0.4.tgz#de57a821b195fa791428658d93299da799791045"
   integrity sha512-sNU7L0GueSP0dnZzHoqLjO6zqNjVImXvJtm8q+aouxuK+RsnzHorY5DKwNmNN3eJqSw6u7zL0dcIeOXFUjdoWQ==
@@ -1222,7 +1222,7 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.33.tgz#69a8c99ceb37c1b031d5cc4aec2ff1dc77e1161e"
   integrity sha512-UBc1Pg1T3yZ97vsA2ueER0F6GbJebLHYlEi4ou1H5YL4KWvMOOWwpYo9/QpWq93wxKG6Wo13IY74Hcn/f7c7Bg==
 
-"@vueuse/core@8.4.2", "@vueuse/core@^8.0.1", "@vueuse/core@^8.4.1":
+"@vueuse/core@8.4.2", "@vueuse/core@^8.0.1", "@vueuse/core@^8.4.2":
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-8.4.2.tgz#e5be73f40394150e6a1b6abd59e5adb7c6bb6c1f"
   integrity sha512-dUVU96lii1ZdWoNJXauQNt+4QrHz1DKbuW+y6pDR2N10q7rGZJMDU7pQeMcC2XeosX7kMODfaBuqsF03NozzLg==
@@ -1253,7 +1253,7 @@
     style-value-types "^5.1.0"
     vue-demi "*"
 
-"@vueuse/nuxt@^8.4.1":
+"@vueuse/nuxt@^8.4.2":
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/@vueuse/nuxt/-/nuxt-8.4.2.tgz#2ec32650697ebaf0ace838f7c573062e9f4c20c1"
   integrity sha512-f9fEJPIl2zaNC5Dymh/M24xEWecvCJ6fC2BWzvkenSMdnBgqOgxnMxR3cxx40fnc8JDn9Z/zLTHvphq8U3H0Lg==
@@ -5556,7 +5556,7 @@ number-is-nan@^1.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt-component-meta@^0.1.2:
+nuxt-component-meta@^0.1.2, nuxt-component-meta@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/nuxt-component-meta/-/nuxt-component-meta-0.1.3.tgz#2c3047f196146135522e5a368cd16820dcf0bfe7"
   integrity sha512-EdE9OVvs7vjf0MPcGYJrdZlY4gIGFqSDW+HEguuxhsxZ9LwYRAkmruzD7aXMYQNlEHbX7oI3VMT9p++ZLmPyCA==
