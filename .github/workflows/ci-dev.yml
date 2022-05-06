@@ -5,11 +5,12 @@ on:
     branches:
       - dev
   pull_request:
+    types: [opened, synchronize]
     branches:
       - dev
 
 jobs:
-  ci:
+  build:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -22,21 +23,29 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
-          fetch-depth: 0
+          fetch-depth: 2
 
-      - name: Setup node v16
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.2
+
+      - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
-      - name: Build project
-        run: yarn build
+      - name: Build
+        run: pnpm build
 
-      - name: Release Edge version
-        if: github.event_name == 'push'
-        run: ./.github/scripts/release-edge.sh
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+#      - name: Test
+#        run: pnpm test
+
+#      - name: Release Edge version
+#        if: github.event_name == 'push'
+#        run: ./.github/scripts/release-edge.sh
+#        env:
+#           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}

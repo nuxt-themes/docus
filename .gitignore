@@ -11,4 +11,8 @@ framework
 .yarn/cache
 .yarn/*state*
 
+# Turbo
+.turbo
+
+# Local History
 .history

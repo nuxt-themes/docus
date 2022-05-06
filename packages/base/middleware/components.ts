@@ -1,6 +1,6 @@
-import { flattenComponents, useDocusState } from '../utils'
+import { flattenComponents } from '../utils'
 import * as Components from '#components'
-import { defineNuxtRouteMiddleware, useNuxtApp } from '#imports'
+import { defineNuxtRouteMiddleware, useDocusState, useNuxtApp } from '#imports'
 
 /**
  * This middleware is currently unused.

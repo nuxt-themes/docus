@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "dev": "nuxi dev",
+    "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
+    "preview": "nuxi preview"
+  },
+  "devDependencies": {
+    "nuxt": "npm:nuxt3@latest",
+    "@docus/docs-theme": "workspace:1.0.0"
+  }
+}

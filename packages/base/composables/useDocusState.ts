@@ -1,6 +1,4 @@
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
-
-import type { ThemeConfig } from './theme'
 import { useState } from '#imports'
 
 export const useDocusState = () => {
@@ -23,7 +21,7 @@ export const useDocusState = () => {
   /**
    * Theme configuration.
    */
-  const theme = useState<ThemeConfig>('docus-theme', () => null)
+  const theme = useState<DocusThemeConfig>('docus-theme', () => null)
 
   return {
     navigation,

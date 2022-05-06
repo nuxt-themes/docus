@@ -1,11 +1,13 @@
 import { addTemplate, defineNuxtModule, logger } from '@nuxt/kit'
+import { greenBright } from 'chalk'
 import { generateTypes, resolveSchema } from 'untyped'
 import { resolve } from 'pathe'
-import { version } from '../../package.json'
+import { name, version } from './package.json'
 import type { NuxtLayer } from './utils/theme'
 import { resolveTheme } from './utils/theme'
 
-const motd = () => logger.success(`Using Docus v${version}`)
+const pkgName = greenBright(name)
+const motd = () => logger.success(`Using ${pkgName} v${version}`)
 
 export default defineNuxtModule({
   meta: {
@@ -43,6 +45,12 @@ declare module '@nuxt/schema' {
 
     nuxt.hook('modules:done', async () => {
       motd()
+
+      // Transpile @nuxt/content
+      nuxt.options.build.transpile = [...(nuxt.options.build.transpile || []), '@nuxt/content']
+
+      // Related: https://github.com/nuxt/framework/pull/4070
+      nuxt.options.build.transpile = [...(nuxt.options.build.transpile || []), '@nuxt/content-edge']
     })
 
     nuxt.hook('prepare:types', (opts) => {

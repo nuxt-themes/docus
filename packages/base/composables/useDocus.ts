@@ -1,5 +1,4 @@
-import { useDocusState } from '../utils'
-import { computed, unref, useRuntimeConfig } from '#imports'
+import { computed, unref, useDocusState, useRuntimeConfig } from '#imports'
 
 export const useDocus = () => {
   const { docus: docusRuntimeConfig } = useRuntimeConfig()

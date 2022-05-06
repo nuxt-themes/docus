@@ -1,8 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import { useDocusState } from './state'
-import { fetchContentNavigation, queryContent } from '#imports'
+import { fetchContentNavigation, queryContent, useDocusState } from '#imports'
 
 const applyPage = (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, page: ParsedContent) => {
   // Handle layout update from page
