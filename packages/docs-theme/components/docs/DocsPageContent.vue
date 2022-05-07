@@ -9,7 +9,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="bg-blue-500 relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8 lg:py-8">
+  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8 lg:py-8">
     <!-- Aside -->
     <aside class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
       <DocsAside />

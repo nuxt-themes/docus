@@ -50,10 +50,10 @@ const formatDateByLocale = (date: string) => {
 
 <style lang="postcss" scoped>
 .release {
-  @apply lg:pb-8 lg:mt-8;
+  @apply my-8;
 
   &:first-of-type {
-    @apply mt-0;
+    @apply mt-0 border-b;
   }
 
   &:last-of-type {
