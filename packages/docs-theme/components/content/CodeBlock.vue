@@ -29,7 +29,7 @@ defineProps({
     class="code-block"
     :class="{
       active,
-      'rounded-b-lg border-2 border-t-0 border-gray-100 p-4 dark:border-gray-800': preview,
+      'rounded-lg border-2 border-t-0 border-gray-100 p-4 dark:border-gray-800': preview,
     }"
   >
     <slot />

@@ -62,6 +62,9 @@ export default defineNuxtConfig({
       theme: 'one-dark-pro',
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash'],
     },
+    navigation: {
+      fields: ['layout'],
+    },
   },
 
   modules: ['@nuxt/content', '@nuxthq/admin', 'nuxt-component-meta', '@vueuse/nuxt', resolveThemeDir('module')],

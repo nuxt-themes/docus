@@ -1,3 +1,4 @@
+import { themeMerger } from '../utils'
 import { computed, unref, useDocusState, useRuntimeConfig } from '#imports'
 
 export const useDocus = () => {
@@ -22,7 +23,7 @@ export const useDocus = () => {
     }
 
     // Return merged config
-    const themeConfig = Object.assign({}, defaultThemeConfig.value, themeValue)
+    const themeConfig = themeMerger(themeValue, defaultThemeConfig.value)
 
     return themeConfig
   })

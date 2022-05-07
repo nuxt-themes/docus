@@ -62,13 +62,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sandbox mx-auto mb-6 mt-4 min-h-[500px] w-full overflow-hidden rounded-lg text-3xl">
+  <div class="sandbox my-4 min-h-[500px] w-full">
     <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
       <template #footer>
-        <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-2">
-          <Link class="flex items-center text-gray-500 dark:text-gray-400" :to="sandBoxUrl" blank>
-            <Icon name="heroicons-outline:link" class="h-5 w-5" />
-          </Link>
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-4">
+          <NuxtLink
+            class="flex text-secondary hover:text-secondary-hover transition-colors transition-base items-center text-gray-500 dark:text-gray-400"
+            :to="sandBoxUrl"
+            target="_blank"
+          >
+            <Icon name="heroicons-outline:arrows-expand" class="h-6 w-6" />
+          </NuxtLink>
         </div>
       </template>
     </TabsHeader>
@@ -78,7 +82,7 @@ onMounted(() => {
       :src="url"
       title="Sandbox editor"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      class="h-full min-h-[700px] w-full overflow-hidden bg-gray-100 dark:bg-gray-800"
+      class="h-full min-h-[700px] w-full overflow-hidden"
     />
 
     <span v-else class="flex-1 text-white">Loading Sandbox...</span>
@@ -86,9 +90,12 @@ onMounted(() => {
 </template>
 
 <style lang="postcss" scoped>
-.sandbox,
-.sandbox iframe {
-  @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;
-  height: 700px;
+.sandbox {
+  @apply rounded-lg overflow-hidden rounded-lg text-3xl surface surface-border border-2;
+
+  iframe {
+    @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;
+    height: 700px;
+  }
 }
 </style>

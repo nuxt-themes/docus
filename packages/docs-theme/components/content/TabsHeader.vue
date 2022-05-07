@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onUpdated, ref } from 'vue'
 import type { PropType } from 'vue'
 
 const props = defineProps({
@@ -37,11 +37,19 @@ function updateTabs(i) {
   nextTick(() => updateHighlightUnderlinePosition())
 }
 
-onMounted(() => {
-  setTimeout(() => {
-    updateHighlightUnderlinePosition()
-  }, 50)
-})
+watch(
+  tabsRef,
+  (newVal) => {
+    if (!newVal) return
+
+    setTimeout(() => {
+      updateHighlightUnderlinePosition()
+    }, 50)
+  },
+  {
+    immediate: true,
+  },
+)
 </script>
 
 <template>
@@ -68,6 +76,8 @@ onMounted(() => {
         <span class="flex h-full w-full rounded-lg bg-gray-300 dark:bg-gray-600" />
       </span>
     </div>
+
+    <slot name="footer" />
   </div>
 </template>
 

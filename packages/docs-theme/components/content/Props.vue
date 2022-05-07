@@ -43,7 +43,7 @@ export default defineComponent({
 
     const { data: meta } = await useAsyncData(props.of, () => $fetch(query))
 
-    const properties = computed(() => meta.value.props /* ?.filter((prop) => !prop.tags?.ignore) */)
+    const properties = computed(() => meta.value.props.filter((prop) => !prop.tags?.ignore.includes(prop)))
 
     const showRequired = computed(() => {
       if (props.required !== undefined) {

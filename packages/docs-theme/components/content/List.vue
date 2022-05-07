@@ -2,11 +2,11 @@
 import { computed, defineComponent, h, resolveComponent, useSlots, useUnwrap } from '#imports'
 
 const iconTypeMap = {
-  primary: 'IconCheck',
-  info: 'IconInformationCircle',
-  success: 'IconCheckCircle',
-  warning: 'IconExclamationTriangle',
-  danger: 'IconXCircle',
+  primary: 'heroicons-outline:check',
+  info: 'heroicons-outline:information-circle',
+  success: 'heroicons-outline:check-circle',
+  warning: 'heroicons-outline:exclamation',
+  danger: 'heroicons-outline:exclamation-circle',
 }
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
         'ul',
         items.map((item) =>
           h('li', { class: 'mb-3 flex items-center' }, [
-            h('span', { class: `list-${props.type} mt-px mr-3 flex-shrink-0` }, h(resolveComponent(iconName.value), { class: 'h-6 w-6' })),
+            h('span', { class: `list-${props.type} mt-px mr-3 flex-shrink-0` }, h(resolveComponent('icon'), { name: iconName.value, class: 'h-6 w-6' })),
             h('span', h(resolveComponent('Markdown'), { use: () => item })),
           ]),
         ),
