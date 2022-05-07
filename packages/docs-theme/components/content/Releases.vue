@@ -15,15 +15,13 @@ const formatDateByLocale = (date: string) => {
 </script>
 
 <template>
-  <div class="relative">
+  <div>
     <div v-for="release of releases" :key="release.name" class="release surface-border border-b-2 relative flex flex-col-reverse border-b lg:flex-row">
       <!-- Body -->
       <Content :document="release" class="docus-content flex-1 pt-8" />
 
       <!-- Header -->
-      <div
-        class="relative release-meta surface z-1 sticky flex w-full flex-col justify-end gap-2 self-start px-8 text-right lg:w-1/4 lg:bg-transparent lg:px-0 lg:backdrop-blur-none"
-      >
+      <div class="release-meta surface z-1 sticky flex w-full flex-col justify-end gap-2 self-start px-8 text-right lg:w-1/4 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
         <a :href="release.url" target="_blank">
           <h2 :id="release.name" class="hover:text-secondary-hover transition-base cursor-pointer text-2xl font-bold transition-colors lg:text-3xl">
             {{ release.name }}
@@ -61,17 +59,16 @@ const formatDateByLocale = (date: string) => {
   &:last-of-type {
     @apply border-none;
   }
+
+  &:before {
+    content: ' ';
+    right: 0;
+    @apply block w-screen absolute z-[1] top-0 surface surface-blurry;
+  }
 }
 
 .release-meta {
   @apply top-header flex-row items-center justify-between pt-4 pb-4 lg:items-end;
-
-  &:before {
-    content: ' ';
-    width: 100%;
-    right: 0;
-    @apply block absolute z-[-1] top-0 surface surface-blurry h-full;
-  }
 }
 
 @screen lg {

@@ -46,6 +46,6 @@ jobs:
 
       - name: Release Edge version
         if: github.event_name == 'push'
-        run: ./.github/scripts/release-edge.sh
+        run: pnpm run release
         env:
            NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
