@@ -1,8 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import consola from 'consola'
-import { fetchContentNavigation, queryContent, useDocusNavigation, useDocusState } from '#imports'
+import { fetchContentNavigation, queryContent, useDocus, useDocusNavigation, useDocusState } from '#imports'
 import layouts from '#build/layouts'
 
 const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
@@ -58,12 +57,7 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
       else surround.value = undefined
     })
   } catch (e) {
-    if (process.server) {
-      consola.warn(`Could not find page for path ${path}`)
-    } else {
-      console.warn(`Could not find page for path ${path}`)
-    }
-
+    console.warn(`Could not find page for path ${path}`)
     page.value = undefined
     surround.value = undefined
   }
