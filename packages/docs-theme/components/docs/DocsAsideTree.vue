@@ -74,7 +74,7 @@ watch(
       ]"
     >
       <NuxtLink
-        class="flex cursor-pointer items-center justify-between py-1.5 focus:outline-none"
+        class="flex cursor-pointer items-center justify-between py-1.5"
         :exact="link.exact"
         :class="{
           'pl-3': level > 0,

@@ -18,7 +18,7 @@ const tree = computed(() => {
 </script>
 
 <template>
-  <nav v-if="hasNavigation" class="flex max-w-full flex-1 items-center justify-center gap-8 overflow-hidden truncate font-medium">
+  <nav v-if="hasNavigation" class="flex max-w-full flex-1 items-center justify-center gap-8 overflow-hidden py-1 truncate font-medium">
     <NuxtLink
       v-for="link in tree"
       :key="link.slug"

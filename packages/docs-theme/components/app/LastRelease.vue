@@ -6,7 +6,7 @@ const { last } = useReleases()
 
 <template>
   <NuxtLink to="/releases" class="transition-base text-secondary hover:text-secondary-hover font-semibold transition-colors" exact-active-class="text-secondary-active">
-    <Badge type="success">
+    <Badge type="primary">
       {{ last?.name }}
     </Badge>
   </NuxtLink>

@@ -48,7 +48,7 @@ const tree = computed(() => {
   <nav>
     <DocsAsideTree v-if="tree && tree.length > 0" :tree="tree" />
 
-    <NuxtLink v-else to="/" class="text-secondary hover:text-secondary-hover flex cursor-pointer items-center text-lg focus:outline-none">
+    <NuxtLink v-else to="/" class="text-secondary hover:text-secondary-hover flex cursor-pointer items-center text-lg">
       <Icon name="heroicons-outline:arrow-left" class="h-6 w-6" />
       <span class="ml-2">Go back</span>
     </NuxtLink>

@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div v-if="prev || next" class="group mt-8 flex flex-row-reverse items-center justify-between gap-4 font-medium leading-7">
+  <div v-if="prev || next" class="group flex flex-row-reverse items-center justify-between gap-4 font-medium leading-7">
     <div class="flex w-full flex-1 items-center justify-start">
       <NuxtLink
         v-if="prev"

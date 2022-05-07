@@ -7,7 +7,7 @@ defineProps({
     type: String,
     default: 'info',
     validator(value: string) {
-      return ['info', 'success', 'warning', 'danger'].includes(value)
+      return ['info', 'success', 'warning', 'danger', 'primary'].includes(value)
     },
   },
 })

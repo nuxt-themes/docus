@@ -9,7 +9,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:py-8">
+  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8 lg:py-8">
     <!-- Aside -->
     <aside class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
       <DocsAside />
@@ -17,10 +17,10 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative mt-8 pt-8 lg:mt-0 lg:pt-0"
+      class="relative flex flex-1 flex-col lg:mt-0 lg:pt-0"
       :class="{
         'lg:col-span-10 lg:pt-0': !toc,
-        'lg:col-span-8': toc,
+        'lg:col-span-8 pt-12': toc,
       }"
     >
       <slot />
@@ -38,7 +38,7 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="surface surface-blurry top-header sticky -mx-4 -mt-8 flex items-center overflow-x-hidden px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+      class="surface-border border-b-2 lg:border-none border-b relative toc top-header sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div>
         <button class="flex items-center gap-3 py-3 lg:hidden" @click="isOpen = !isOpen">
@@ -52,3 +52,22 @@ const isOpen = ref(false)
     </div>
   </Container>
 </template>
+
+<style lang="postcss" scoped>
+.toc {
+  &:before {
+    content: ' ';
+    width: 100%;
+    right: 0;
+    @apply block absolute z-[-1] top-0 surface surface-blurry h-full;
+  }
+}
+
+@screen lg {
+  .toc {
+    &:before {
+      display: none;
+    }
+  }
+}
+</style>

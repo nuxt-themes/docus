@@ -29,12 +29,14 @@ const onClick = () => (mode.value === 'light' ? (mode.value = 'dark') : (mode.va
 </script>
 
 <template>
-  <button :class="[size]" class="icon-base" aria-label="Color Mode" @click="onClick">
+  <button :class="[size, spacing]" class="block icon-base" aria-label="Color Mode" @click="onClick">
     <ClientOnly>
       <Icon v-if="mode === 'dark'" name="heroicons-outline:sun" :class="[spacing, size]" />
       <Icon v-else name="heroicons-outline:moon" :class="[spacing, size]" />
 
-      <template #placeholder> ... </template>
+      <template #placeholder>
+        <span class="block" :class="[size, spacing]"> ... </span>
+      </template>
     </ClientOnly>
   </button>
 </template>

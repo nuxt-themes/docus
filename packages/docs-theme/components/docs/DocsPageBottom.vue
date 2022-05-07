@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div v-if="page && theme?.github" class="text-secondary mt-8 mb-4 flex flex-row justify-between text-sm">
+  <div v-if="page && theme?.github" class="text-secondary mt-8 flex flex-row justify-between text-sm">
     <EditOnGithub />
 
     <span v-if="page.mtime" class="flex items-center">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
