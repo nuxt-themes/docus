@@ -16,7 +16,7 @@
     "release": {
       "dependsOn": ["^build"]
     },
-    "release-edge": {
+    "release:edge": {
       "dependsOn": ["^build"]
     },
     "dev": {

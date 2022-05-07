@@ -13,7 +13,7 @@
     "lint": "eslint --ext .ts,.js,.vue,.css . --fix",
     "preview": "nuxi preview",
     "release": "../../.github/scripts/release.sh",
-    "release-edge": "../../.github/scripts/release-edge.sh"
+    "release:edge": "../../.github/scripts/release-edge.sh"
   },
   "dependencies": {
     "@docus/base": "latest",
