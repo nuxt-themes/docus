@@ -38,7 +38,7 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="surface-border border-b-2 lg:border-none border-b relative toc top-header sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+      class="surface-border border-b lg:border-none border-b relative toc top-header sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-[calc(100vh-var(--layout-height))] lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div>
         <button class="flex items-center gap-3 py-3 lg:hidden" @click="isOpen = !isOpen">

@@ -44,8 +44,8 @@ jobs:
 #      - name: Test
 #        run: pnpm test
 
-#      - name: Release Edge version
-#        if: github.event_name == 'push'
-#        run: ./.github/scripts/release-edge.sh
-#        env:
-#           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+      - name: Release Edge version
+        if: github.event_name == 'push'
+        run: ./.github/scripts/release-edge.sh
+        env:
+           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
