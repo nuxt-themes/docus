@@ -17,7 +17,9 @@ async function loadPackage(dir: string) {
 }
 
 async function main() {
-  const pkg = await loadPackage(process.cwd())
+  const path = process.argv[2]
+
+  const pkg = await loadPackage(path)
 
   const commit = execSync('git rev-parse --short HEAD').toString('utf-8').trim()
 

@@ -17,7 +17,7 @@
       "dependsOn": ["^build"]
     },
     "release:edge": {
-      "dependsOn": ["^build"]
+      "dependsOn": []
     },
     "dev": {
       "cache": false
