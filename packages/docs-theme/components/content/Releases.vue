@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { githubReleases, useAsyncData } from '#imports'
+import { githubReleases } from '#imports'
 
-const { data: releases } = await useAsyncData<any>('releases', () => githubReleases())
+const releases = await githubReleases()
 
 const formatDateByLocale = (date: string) => {
   const currentLocale = 'en-US'
