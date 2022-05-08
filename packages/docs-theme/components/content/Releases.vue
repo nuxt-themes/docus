@@ -15,20 +15,26 @@ const formatDateByLocale = (date: string) => {
 </script>
 
 <template>
-  <div>
-    <div v-for="release of releases" :key="release.name" class="release surface-border border-b-2 relative flex flex-col-reverse border-b lg:flex-row">
+  <Container class="relative flex flex-col lg:py-4 lg:gap-4 lg:px-6">
+    <div v-for="release of releases" :key="release.name" class="release surface-border flex flex-col-reverse lg:border-b lg:flex-row lg:pb-0">
       <!-- Body -->
-      <Content :document="release" class="docus-content flex-1 pt-8" />
+      <div class="flex-1 p-4 sm:p-6 lg:p-0">
+        <Content :document="release" class="docus-content" />
+
+        <ReleasesReactions class="lg:mb-4" :release="release" />
+      </div>
 
       <!-- Header -->
-      <div class="release-meta surface z-1 sticky flex w-full flex-col justify-end gap-2 self-start px-8 text-right lg:w-1/4 lg:bg-transparent lg:px-0 lg:backdrop-blur-none">
+      <div
+        class="py-2 lg:py-4 lg:py-0 release-meta surface z-1 sticky lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none flex flex-row items-center justify-between lg:items-end w-full lg:flex-col justify-end gap-2 self-start text-right px-4 sm:px-6 lg:px-0"
+      >
         <a :href="release.url" target="_blank">
           <h2 :id="release.name" class="hover:text-secondary-hover transition-base cursor-pointer text-2xl font-bold transition-colors lg:text-3xl">
             {{ release.name }}
           </h2>
         </a>
 
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 pb-4">
           <a
             v-if="release.author"
             target="_blank"
@@ -45,36 +51,38 @@ const formatDateByLocale = (date: string) => {
         </div>
       </div>
     </div>
-  </div>
+  </Container>
 </template>
 
 <style lang="postcss" scoped>
 .release {
-  @apply my-8;
-
-  &:first-of-type {
-    @apply mt-0 border-b;
-  }
-
   &:last-of-type {
     @apply border-none;
-  }
-
-  &:before {
-    content: ' ';
-    right: 0;
-    @apply block w-screen absolute z-[1] top-0 surface surface-blurry;
   }
 }
 
 .release-meta {
-  @apply top-header flex-row items-center justify-between pt-4 pb-4 lg:items-end;
+  @apply top-header;
+
+  &:before {
+    content: ' ';
+    width: 100%;
+    right: 0;
+    @apply block absolute z-[-1] top-0 surface surface-blurry h-full;
+  }
 }
 
 @screen lg {
   .release-meta {
-    @apply flex-col pt-0;
-    top: calc(var(--header-height) + theme('spacing.8'));
+    &:before {
+      display: none;
+    }
+  }
+}
+
+@screen lg {
+  .release-meta {
+    @apply flex-col;
 
     &:before {
       display: none;

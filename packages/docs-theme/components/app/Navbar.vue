@@ -19,8 +19,8 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
 </script>
 
 <template>
-  <header class="surface surface-blurry h-header sticky top-0 z-10 w-full border-b border-gray-200 border-opacity-50 dark:border-gray-800">
-    <Container class="flex h-full lg:grid lg:grid-cols-12">
+  <header class="surface surface-blurry h-header sticky top-0 z-10 w-full border-b surface-border">
+    <Container padded class="flex h-full lg:grid lg:grid-cols-12 lg:gap-8">
       <div class="transition-base text-secondary-hover flex flex-none items-center lg:col-span-2 lg:flex-none">
         <NavbarLogo />
       </div>
@@ -33,7 +33,7 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
         <LastRelease v-if="theme?.github?.releases" class="mr-1.5 hidden lg:block" />
         <MobileNav />
         <SocialIcons size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />
-        <ThemeSelect size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />
+        <ThemeSelect size="h-6 w-6 hidden lg:block" />
       </div>
     </Container>
   </header>

@@ -6,20 +6,26 @@ import { ref, watch } from '#imports'
 const props = defineProps({
   name: {
     type: [String, Object],
-    required: true,
+    required: false,
+  },
+  icon: {
+    type: Object,
+    required: false,
   },
 })
 
-const icon = ref(null)
+const icon = ref(props.icon || null)
 
-icon.value = await loadIcon(props.name)
+if (!props.icon) {
+  icon.value = await loadIcon(props.name)
 
-watch(
-  () => props.name,
-  async () => {
-    icon.value = await loadIcon(props.name)
-  },
-)
+  watch(
+    () => props.name,
+    async () => {
+      icon.value = await loadIcon(props.name)
+    },
+  )
+}
 </script>
 
 <template>

@@ -1,5 +1,15 @@
+<script setup lang="ts">
+defineProps({
+  padded: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+})
+</script>
+
 <template>
-  <div class="mx-auto max-w-full px-4 sm:px-6 lg:max-w-7xl">
+  <div :class="[padded ? 'px-4 sm:px-6' : '']" class="mx-auto max-w-full lg:max-w-7xl">
     <slot />
   </div>
 </template>

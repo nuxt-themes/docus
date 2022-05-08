@@ -1,4 +1,6 @@
 ---
+layout: page
+navigation: false
 toc: false
 ---
 

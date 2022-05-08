@@ -8,7 +8,7 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 
 <template>
   <footer class="h-footer bg-gray-50 py-6 dark:bg-gray-800 dark:bg-opacity-25 sm:py-0">
-    <Container class="flex h-full flex-col items-center justify-between gap-y-4 sm:flex-row">
+    <Container padded class="flex h-full flex-col items-center justify-between gap-y-4 sm:flex-row">
       <a
         v-if="theme?.footer?.credits"
         href="https://nuxtlabs.com"

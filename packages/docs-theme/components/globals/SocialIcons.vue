@@ -18,7 +18,7 @@ const { theme } = useDocus()
 <template>
   <a
     v-if="theme?.socials?.twitter"
-    :href="`https://twitter.com/${theme?.twitter}`"
+    :href="`https://twitter.com/${theme?.socials?.twitter}`"
     target="_blank"
     rel="noopener noreferrer"
     title="Twitter"

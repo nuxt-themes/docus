@@ -4,11 +4,13 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
  * Find first child link from a navigation node.
  */
 const findBottomLink = (link: NavItem) => {
-  for (const child of link.children) {
+  if (!link.children) return link.slug
+
+  for (const child of link?.children || []) {
     if (!child.children) return child.slug
   }
 
-  for (const child of link.children) {
+  for (const child of link?.children || []) {
     const result = findBottomLink(child)
     if (result) return result
   }

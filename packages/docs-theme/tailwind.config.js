@@ -34,11 +34,15 @@ export default {
         base: '320px',
         header: 'var(--header-height)',
         footer: 'var(--footer-height)',
+        page: 'var(--page-height)',
         18: '4.5rem',
         46: '11.5rem',
       },
       maxWidth: {
         '8xl': '90rem',
+      },
+      minHeight: {
+        page: 'var(--page-height)',
       },
     },
   },

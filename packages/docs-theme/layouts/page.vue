@@ -12,9 +12,7 @@ const { theme } = useDocus()
 
     <Navbar />
 
-    <div class="flex flex-1 flex-col">
-      <NuxtPage />
-    </div>
+    <NuxtPage class="min-h-page" />
 
     <Footer />
   </div>

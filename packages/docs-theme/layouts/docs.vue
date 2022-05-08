@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed, useDocus } from '#imports'
+import { useDocus } from '#imports'
 
-const { theme, page } = useDocus()
+const { theme } = useDocus()
 </script>
 
 <template>
-  <div id="docus-docs-page" class="flex min-h-screen flex-col">
+  <div id="docus-docs-page">
     <template v-if="theme?.debug">
       <component is="debug" :config="theme?.debug" />
     </template>
 
     <Navbar />
 
-    <DocsPageContent class="flex-1">
+    <DocsPageContent class="min-h-page">
       <NuxtPage />
     </DocsPageContent>
 

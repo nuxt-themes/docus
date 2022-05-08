@@ -35,8 +35,8 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 </script>
 
 <template>
-  <div class="flex flex-col space-y-4 lg:px-1">
-    <NuxtLink v-if="prev" :to="prev.slug" class="text-secondary group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
+  <div class="flex flex-col space-y-4">
+    <NuxtLink v-if="prev" :to="prev.slug" class="group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
       <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
         <Icon name="heroicons-solid:chevron-double-left" class="h-6 w-6" />
       </div>
@@ -75,7 +75,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       </ul>
     </template>
 
-    <NuxtLink v-if="next" :to="next.slug" class="text-secondary group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
+    <NuxtLink v-if="next" :to="next.slug" class="group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
       <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
         <Icon name="heroicons-solid:chevron-double-right" class="h-6 w-6" />
       </div>

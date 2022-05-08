@@ -17,7 +17,7 @@ defineProps({
 
 <template>
   <section class="py-12 lg:py-24">
-    <Container class="my-16 flex flex-col lg:flex-row">
+    <Container padded class="my-16 flex flex-col lg:flex-row">
       <div class="mb-8 flex flex-col items-center pr-0 lg:mb-0 lg:w-2/3 lg:items-start lg:pr-8">
         <h2 class="mb-8 text-center text-5xl font-semibold tracking-tighter text-gray-900 dark:text-gray-100 sm:text-6xl sm:leading-none lg:text-left lg:text-7xl">
           <Markdown use="title" unwrap="p" />
