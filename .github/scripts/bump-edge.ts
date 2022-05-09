@@ -2,6 +2,11 @@ import { promises as fsp } from 'fs'
 import { resolve } from 'path'
 import { execSync } from 'child_process'
 
+const packages = {
+  '@docus/base': 'npm:@docus/base-edge@',
+  '@docus/docs-theme': 'npm:@docus/docs-theme-edge@',
+}
+
 async function loadPackage(dir: string) {
   const pkgPath = resolve(dir, 'package.json')
 
@@ -16,6 +21,16 @@ async function loadPackage(dir: string) {
   }
 }
 
+function replaceWithEdge(pkg: any, commit: string, version: string) {
+  ;[pkg.data.dependencies || {}, pkg.data.devDependencies || {}, pkg.data.peerDependencies || {}].forEach((deps) => {
+    Object.entries(deps).forEach(([key, value]: any) => {
+      if (value.includes(commit)) return
+
+      if (packages[key]) pkg.data.dependencies[key] = packages[key] + version
+    })
+  })
+}
+
 async function main() {
   const path = process.argv[2]
 
@@ -23,11 +38,13 @@ async function main() {
 
   const commit = execSync('git rev-parse --short HEAD').toString('utf-8').trim()
 
-  const date = Math.round(Date.now() / (1000 * 60))
+  const version = `${pkg.data.version}-${commit}`
 
-  pkg.data.name = `${pkg.data.name}-edge`
+  if (!pkg.data.name.includes('-edge')) pkg.data.name = `${pkg.data.name}-edge`
 
-  pkg.data.version = `${pkg.data.version}-${date}.${commit}`
+  if (!pkg.data.version.includes(commit)) pkg.data.version = version
+
+  replaceWithEdge(pkg, commit, version)
 
   pkg.save()
 }

@@ -13,4 +13,4 @@ fi
 
 # # Release package
 echo "Publishing $PWD"
-npm publish -q --access public
+# npm publish -q --access public
