@@ -62,7 +62,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         >
           <a
             :href="`#${link.id}`"
-            class="text-secondary-group-hover block truncate py-1 pl-3 lg:pr-3"
+            class="text-secondary-group-hover block truncate text-sm py-1 pl-3 lg:pr-3"
             :class="{
               'text-secondary-active': activeHeadings.includes(link.id),
               'text-secondary': !activeHeadings.includes(link.id),

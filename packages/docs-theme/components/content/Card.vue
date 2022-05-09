@@ -2,7 +2,6 @@
 defineProps({
   title: {
     type: String,
-    required: true,
   },
   description: {
     type: String,
@@ -31,7 +30,7 @@ const isImage = (icon: string) => String(icon).includes('.')
       <slot />
 
       <div class="text-lg">
-        <h3 class="mb-4 font-semibold tracking-tight">
+        <h3 v-if="title" class="mb-4 font-semibold tracking-tight">
           {{ title }}
         </h3>
 
