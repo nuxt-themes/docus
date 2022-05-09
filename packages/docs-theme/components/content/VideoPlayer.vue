@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue'
-import { ref } from '#imports'
+import { computed, ref } from '#imports'
 
 const props = defineProps({
   poster: {
@@ -37,10 +37,10 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
 </script>
 
 <template>
-  <div class="video-player relative my-4 overflow-hidden rounded-sm bg-black bg-opacity-25" :class="{ loaded }">
+  <div class="relative my-4 overflow-hidden bg-black bg-opacity-25 rounded-sm video-player" :class="{ loaded }">
     <NuxtImg v-if="provider ? provider.poster : poster" image-classes="video absolute top-0 left-0 h-full w-full object-fit" :src="(provider ? provider.poster : poster as any)" />
 
-    <div v-if="loaded" class="video absolute top-0 left-0 h-full w-full">
+    <div v-if="loaded" class="absolute top-0 left-0 w-full h-full video">
       <!-- Remote -->
       <video v-if="!provider" :poster="poster" controls autoplay>
         <source v-if="src" :src="src" />
@@ -51,7 +51,7 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
       <iframe v-else-if="provider.name === 'youtube'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" :src="provider.src" />
     </div>
 
-    <div v-if="!loaded" class="overlay absolute top-0 left-0 h-full w-full cursor-pointer" @click="loaded = true">
+    <div v-if="!loaded" class="absolute top-0 left-0 w-full h-full cursor-pointer overlay" @click="loaded = true">
       <button class="play" />
     </div>
   </div>
