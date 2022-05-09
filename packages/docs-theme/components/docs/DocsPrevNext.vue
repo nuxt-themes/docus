@@ -1,24 +1,21 @@
-<script>
+<script setup lang="ts">
 import { upperFirst } from 'scule'
-import { defineComponent, useDocus } from '#imports'
+import { useDocus, useDocusNavigation } from '#imports'
 
-export default defineComponent({
-  setup() {
-    const { prev, next } = useDocus()
+const { prev, next, navigation } = useDocus()
+const { navFromPath } = useDocusNavigation()
 
-    return {
-      prev,
-      next,
-    }
-  },
-  methods: {
-    directory(link) {
-      const dirs = link.split('/')
-      const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
-      return directory.split('-').map(upperFirst).join(' ')
-    },
-  },
-})
+const directory = (link) => {
+  const nav = navFromPath(link.slug, navigation.value || [])
+
+  if (nav && nav[0]) {
+    return nav[0].slug
+  } else {
+    const dirs = link.split('/')
+    const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
+    return directory.split('-').map(upperFirst).join(' ')
+  }
+}
 </script>
 
 <template>

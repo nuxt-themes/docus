@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onUpdated, ref, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import type { PropType } from 'vue'
 
 const props = defineProps({
@@ -53,7 +53,7 @@ watch(
 </script>
 
 <template>
-  <div class="relative bg-gray-200 text-white dark:bg-gray-700">
+  <div class="tabs-header relative bg-gray-200 text-white dark:bg-gray-700">
     <div v-if="tabs" class="relative z-0 px-2">
       <button
         v-for="({ label }, i) in tabs"
@@ -81,7 +81,7 @@ watch(
   </div>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .highlight-underline {
   /* bottom: -2px; */
   /* height: 2px; */
