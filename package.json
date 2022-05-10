@@ -21,12 +21,8 @@
     "release": "pnpm turbo run release",
     "release:edge": "pnpm turbo run release:edge"
   },
-  "resolutions": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-rc.2-27530596.a862a67",
-    "nuxt": "npm:nuxt3@3.0.0-rc.2-27530596.a862a67"
-  },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@3.0.0-rc.2-27530596.a862a67"
+    "@nuxt/kit": "3.0.0-rc.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.0",
@@ -37,8 +33,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "jiti": "^1.13.0",
-    "nuxi": "npm:nuxi-edge@latest",
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "^3.0.0-rc.3",
     "parse-entities": "^4.0.0",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",

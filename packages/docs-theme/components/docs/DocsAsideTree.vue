@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { reactive, useRoute, useRouter, watch } from '#imports'
+import { computed, reactive, useRoute, useRouter, watch } from '#imports'
 
 const props = defineProps({
   tree: {
@@ -26,6 +26,8 @@ const isChildOpen = reactive({})
 function isActive(link) {
   return link.exact ? route.path === link.slug : route.path.startsWith(link.slug)
 }
+
+const hasNesting = computed(() => props.tree.some((link: any) => link.children))
 
 function onClick(link) {
   if (link.children?.length) {
@@ -67,7 +69,7 @@ watch(
       class="transition-base transition-colors"
       :class="[
         {
-          'border-l-2': level > 0,
+          'border-l-2': level > 0 || !hasNesting,
           'border-primary-400 dark:border-primary-600': isActive(link),
           'hover:border-primary-400 border-gray-200 dark:border-gray-700': !isActive(link),
         },
@@ -77,9 +79,9 @@ watch(
         class="flex cursor-pointer items-center justify-between py-1.5"
         :exact="link.exact"
         :class="{
-          'pl-3': level > 0,
+          'pl-3': level > 0 || !hasNesting,
           '!text-primary font-semibold': level === 0,
-          '!pt-0': level === 0 && index === 0,
+          '!pt-0': level === 0 && index === 0 && hasNesting,
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link),
         }"
