@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDocus, useHead } from '#imports'
+import { computed, useDocus, useHead } from '#imports'
 
 definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
@@ -8,6 +8,14 @@ definePageMeta({
 })
 
 const { page, theme } = useDocus()
+
+const cover = computed(() => {
+  const cover = page.value?.cover || theme.value?.cover
+  if (typeof cover === 'string') {
+    return { src: cover, alt: page.value?.title || theme.value.title }
+  }
+  return cover || {}
+})
 
 useHead({
   bodyAttrs: {
@@ -32,22 +40,22 @@ useHead({
     {
       hid: 'og:image',
       property: 'og:image',
-      content: theme.value?.cover?.src || '',
+      content: cover.value.src || '',
     },
     {
       hid: 'og:image:secure_url',
       property: 'og:image:secure_url',
-      content: theme.value?.cover?.src || '',
+      content: cover.value.src || '',
     },
     {
       hid: 'og:image:alt',
       property: 'og:image:alt',
-      content: theme.value?.cover?.alt || '',
+      content: cover.value.alt || '',
     },
     {
       hid: 'twitter:image',
       name: 'twitter:image',
-      content: theme.value?.cover?.src || '',
+      content: cover.value.src || '',
     },
   ],
 })
