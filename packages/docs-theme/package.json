@@ -19,7 +19,7 @@
     "@docus/base": "latest",
     "@docus/github": "^1.2.6",
     "@iconify/vue": "^3.2.1",
-    "@nuxtjs/color-mode": "^3.0.2",
+    "@nuxtjs/color-mode": "^3.0.3",
     "@nuxtjs/tailwindcss": "^5.0.4",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.1",
