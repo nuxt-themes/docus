@@ -20,8 +20,8 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 </script>
 
 <template>
-  <button :class="[buttonClasses]" class="relative lg:hidden z-10" @click="toggle">
-    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" />
+  <button :class="[buttonClasses]" class="relative lg:hidden z-10" @click="toggle" aria-label="Menu">
+    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" aria-hidden=”true” />
   </button>
 
   <span class="lg:hidden">
