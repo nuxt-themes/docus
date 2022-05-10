@@ -7,5 +7,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     useNuxtApp().callHook('docus:page:start')
   }
 
-  await queryPage(to)
+  const data = await queryPage(to)
+
+  if (typeof data === 'string') return data
 })

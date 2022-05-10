@@ -1,7 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
-import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import { fetchContentNavigation, queryContent, useDocus, useDocusNavigation, useDocusState } from '#imports'
+import type { RouteLocationNormalized, RouteLocationNormalizedLoaded, RouteLocationRaw } from 'vue-router'
+import { fetchContentNavigation, navigateTo, queryContent, useDocus, useDocusNavigation, useDocusState } from '#imports'
 import layouts from '#build/layouts'
 
 const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
@@ -33,7 +33,7 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   }
 
   // Fetch page
-  try {
+
     return await Promise.all([
       queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
       queryContent()
@@ -55,12 +55,12 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
 
       if (_surround && _surround.length) surround.value = _surround
       else surround.value = undefined
+    }).catch((e) => {
+      console.warn(`Could not find page for path ${path}`)
+      page.value = undefined
+      surround.value = undefined
+      return navigateTo('/404')
     })
-  } catch (e) {
-    console.warn(`Could not find page for path ${path}`)
-    page.value = undefined
-    surround.value = undefined
-  }
 }
 
 export const queryNavigation = async (force = false) => {
