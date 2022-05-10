@@ -23,7 +23,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
     </template>
 
     <!-- Only Logo -->
-    <Logo v-else-if="hasLogo" class="w-auto h-6 sm:h-8" />
+    <Logo v-else-if="hasLogo" />
 
     <!-- Placeholder -->
     <template v-else>
