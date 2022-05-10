@@ -7,6 +7,10 @@
 <style lang="postcss" scoped>
 code {
   @apply rounded-lg bg-gray-100 py-[3px] px-[6px] text-sm font-normal text-gray-800 dark:bg-gray-800 dark:text-gray-100;
+
+  &.colored {
+    @apply code-background;
+  }
 }
 
 a code {

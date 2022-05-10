@@ -60,7 +60,7 @@ watch(
         ref="tabsRef"
         :key="`${i}${label}`"
         class="xs:py-3 xs:my-0 relative my-2 rounded-lg px-2 py-1.5 font-mono text-sm tracking-tight focus:outline-none"
-        :class="[activeTabIndex === i ? 'text-gray-800 dark:text-white' : 'text-gray-600 dark:text-gray-400']"
+        :class="[activeTabIndex === i ? 'text-white' : 'text-gray-600 dark:text-gray-400']"
         @click="updateTabs(i)"
       >
         {{ label }}
