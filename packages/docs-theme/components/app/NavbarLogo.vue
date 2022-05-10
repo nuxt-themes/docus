@@ -7,7 +7,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
 </script>
 
 <template>
-  <NuxtLink class="flex flex-none items-center lg:w-48" to="/" :aria-label="theme?.header?.title">
+  <NuxtLink class="flex items-center flex-none" to="/" :aria-label="theme?.header?.title">
     <!-- Only title -->
     <span v-if="!hasLogo && hasTitle">
       {{ theme?.header?.title }}
@@ -15,7 +15,7 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
 
     <!-- Title and Logo -->
     <template v-else-if="hasLogo && hasTitle">
-      <Logo class="h-6 w-auto sm:h-8" />
+      <Logo />
 
       <span>
         {{ theme?.header?.title || '' }}
@@ -23,11 +23,11 @@ const hasTitle = computed(() => theme.value?.header?.title || false)
     </template>
 
     <!-- Only Logo -->
-    <Logo v-else-if="hasLogo" class="h-6 w-auto sm:h-8" />
+    <Logo v-else-if="hasLogo" class="w-auto h-6 sm:h-8" />
 
     <!-- Placeholder -->
     <template v-else>
-      <Icon name="heroicons-outline:cloud" class="h-12 w-12" />
+      <Icon name="heroicons-outline:cloud" class="w-12 h-12" />
     </template>
   </NuxtLink>
 </template>
