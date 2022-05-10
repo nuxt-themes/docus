@@ -13,7 +13,8 @@ useHead({
   bodyAttrs: {
     class: [],
   },
-  title: `${theme.value?.title}${page.value?.title ? ` | ${page.value?.title}` : ''}`,
+  title: page.value?.title,
+  titleTemplate: theme.value?.title ? `%s | ${theme.value.title}` : '%s',
   description: page.value?.description || theme.value?.description || '',
   meta: [
     { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
