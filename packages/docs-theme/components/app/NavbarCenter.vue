@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed, useDocus, useDocusNavigation } from '#imports'
+import { computed, useDocus, useDocusNavigation, useRoute } from '#imports'
+
+const route = useRoute()
 
 const { findBottomLink } = useDocusNavigation()
 
@@ -15,6 +17,8 @@ const tree = computed(() => {
     return true
   })
 })
+
+const isActive = (link: any) => (link.exact ? route.fullPath === link.slug : route.fullPath.startsWith(link.slug))
 </script>
 
 <template>
@@ -24,7 +28,7 @@ const tree = computed(() => {
       :key="link.slug"
       :to="findBottomLink(link)"
       class="transition-base hover:text-secondary-hover transition-colors"
-      active-class="text-secondary-active"
+      :class="[isActive(link) && 'text-secondary-active']"
     >
       {{ link.title }}
     </NuxtLink>
