@@ -80,7 +80,7 @@ watch(
         :exact="link.exact"
         :class="{
           'pl-3': level > 0 || !hasNesting,
-          '!text-primary font-semibold': level === 0,
+          '!text-primary font-semibold': level === 0 && link.children,
           '!pt-0': level === 0 && index === 0 && hasNesting,
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link),
