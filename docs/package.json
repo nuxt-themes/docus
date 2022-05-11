@@ -11,7 +11,7 @@
     "install:vercel": "cd .. && pnpm install --no-frozen-lockfile"
   },
   "devDependencies": {
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "^3.0.0-rc.3",
     "@docus/docs-theme": "latest"
   }
 }

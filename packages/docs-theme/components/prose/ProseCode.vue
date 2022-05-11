@@ -23,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="prose-code group w-full text-gray-50">
+  <div :class="[`highlight-${language}`]" class="prose-code group w-full text-gray-50">
     <span v-if="filename" class="filename transition-base absolute top-1 right-1 z-0 rounded-lg py-1 pr-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
@@ -37,6 +37,23 @@ defineProps({
 <style lang="postcss" scoped>
 div {
   @apply relative my-4 overflow-hidden rounded-lg;
+
+  &.highlight-zsh,
+  &.highlight-sh,
+  &.highlight-bash,
+  &.highlight-shell,
+  &.highlight-shellscript {
+    :deep(code) {
+      .line {
+        @apply pl-4 relative;
+      }
+
+      .line::before {
+        content: '>';
+        @apply top-0 select-none -left-[0.1rem] absolute block text-primary-500 font-mono font-bold;
+      }
+    }
+  }
 }
 
 :deep(pre) {

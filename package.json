@@ -22,7 +22,7 @@
     "release:edge": "pnpm turbo run release:edge"
   },
   "dependencies": {
-    "@nuxt/kit": "3.0.0-rc.3"
+    "@nuxt/kit": "^3.0.0-rc.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.23.0",
