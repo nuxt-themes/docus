@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "nuxt": "^3.0.0-rc.3",
+    "defu": "^6.0.0",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
     "@vueuse/core": "^8.4.2",

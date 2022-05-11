@@ -51,12 +51,14 @@ importers:
       '@nuxthq/admin': npm:@nuxthq/admin-edge@latest
       '@vueuse/core': ^8.4.2
       '@vueuse/nuxt': ^8.4.2
+      defu: ^6.0.0
       nuxt: ^3.0.0-rc.3
     dependencies:
       '@nuxt/content': /@nuxt/content-edge/2.0.0-27536649.61e4b1f
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27531272.b4f169e
       '@vueuse/core': 8.4.2
       '@vueuse/nuxt': 8.4.2
+      defu: 6.0.0
       nuxt: 3.0.0-rc.3
 
   packages/docs-theme:
