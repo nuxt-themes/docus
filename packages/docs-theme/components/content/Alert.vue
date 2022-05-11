@@ -14,9 +14,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="alert mt-4 mb-4 rounded-xl px-4 py-3 text-sm leading-relaxed" :class="[type]">
+  <div class="px-4 py-3 mt-4 mb-4 text-sm leading-relaxed alert rounded-xl" :class="[type]">
     <div class="flex items-start">
-      <div class="alert-content flex-grow">
+      <div class="flex-grow alert-content">
         <Markdown unwrap="p" />
       </div>
     </div>
@@ -41,7 +41,7 @@ defineProps({
       @apply my-4;
 
       code {
-        @apply bg-gray-50 dark:bg-gray-900;
+        @apply bg-transparent;
       }
     }
   }
