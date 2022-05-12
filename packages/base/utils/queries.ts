@@ -1,6 +1,6 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
-import type { RouteLocationNormalized, RouteLocationNormalizedLoaded, RouteLocationRaw } from 'vue-router'
+import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
 import { fetchContentNavigation, navigateTo, queryContent, useDocus, useDocusNavigation, useDocusState } from '#imports'
 import layouts from '#build/layouts'
 
@@ -33,13 +33,13 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   }
 
   // Fetch page
-
-    return await Promise.all([
-      queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
-      queryContent()
-        .where({ partial: { $not: true }, navigation: { $not: false } })
-        .findSurround(path) as Promise<ParsedContent[]>,
-    ]).then(async ([_page, _surround]) => {
+  return await Promise.all([
+    queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
+    queryContent()
+      .where({ partial: { $not: true }, navigation: { $not: false } })
+      .findSurround(path) as Promise<ParsedContent[]>,
+  ])
+    .then(async ([_page, _surround]) => {
       const layoutName = findLayout(_page, theme.value, navigation.value)
 
       // Prefetch layout component
@@ -55,7 +55,8 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
 
       if (_surround && _surround.length) surround.value = _surround
       else surround.value = undefined
-    }).catch((e) => {
+    })
+    .catch((e) => {
       console.warn(`Could not find page for path ${path}`)
       page.value = undefined
       surround.value = undefined

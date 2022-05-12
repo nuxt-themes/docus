@@ -19,7 +19,8 @@
     "dev:theme": "nuxi dev packages/theme",
     "lint": "pnpm turbo run lint",
     "release": "pnpm turbo run release",
-    "release:edge": "pnpm turbo run release:edge"
+    "release:edge": "pnpm turbo run release:edge",
+    "update:packages": "ncu --deep"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.3"
@@ -28,16 +29,17 @@
     "@antfu/eslint-config": "^0.23.0",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@types/tailwindcss": "^3.0.10",
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",
     "jiti": "^1.13.0",
+    "npm-check-updates": "^12.5.11",
     "nuxt": "^3.0.0-rc.3",
     "parse-entities": "^4.0.0",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
-    "turbo": "^1.2.8",
+    "turbo": "^1.2.9",
     "typescript": "^4.6.4"
   }
 }
