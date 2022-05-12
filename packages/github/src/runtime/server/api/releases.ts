@@ -1,37 +1,41 @@
 import { withQuery } from 'ufo'
 import { useQuery } from 'h3'
-import type { GithubQuery, GithubReleasesOptions, GithubRawRelease } from '../../../module'
+import type { GithubQuery, GithubRawRelease, GithubReleasesOptions } from '../../../module'
 import * as imports from '#imports'
+import { parseContent } from '#content/server'
 
 // eslint-disable-next-line import/namespace
-export default imports.defineCachedEventHandler(async ({ req }) => {
-  const { releases: releasesConfig } = imports.useRuntimeConfig().github
+export default imports.defineCachedEventHandler(
+  async ({ req }) => {
+    const { releases: releasesConfig } = imports.useRuntimeConfig().github
 
-  // Get query
-  const query = useQuery(req) as any as GithubQuery
+    // Get query
+    const query = useQuery(req) as any as GithubQuery
 
-  // Fetches releases from GitHub
-  let releases = await fetchGitHubReleases(query, releasesConfig)
+    // Fetches releases from GitHub
+    let releases = await fetchGitHubReleases(query, releasesConfig)
 
-  // Parse release notes when `parse` option is enabled and `@nuxt/content` is installed.
-  // eslint-disable-next-line import/namespace
-  if (releasesConfig.parse && typeof imports.contentParse === 'function') {
-    releases = await Promise.all(
-      releases.map(async release => ({
-        ...release,
-        // eslint-disable-next-line import/namespace
-        ...(await imports.contentParse(`${release.name}.md`, release.body))
-      }))
-    )
-  }
+    // Parse release notes when `parse` option is enabled and `@nuxt/content` is installed.
+    // eslint-disable-next-line import/namespace
+    if (releasesConfig.parse && typeof parseContent === 'function') {
+      releases = await Promise.all(
+        releases.map(async (release) => ({
+          ...release,
+          // eslint-disable-next-line import/namespace
+          ...(await parseContent(`${release.name}.md`, release.body)),
+        })),
+      )
+    }
 
-  // Sort DESC by release version or date
-  releases.sort((a, b) => a.v !== b.v ? b.v - a.v : a.date - b.date)
+    // Sort DESC by release version or date
+    releases.sort((a, b) => (a.v !== b.v ? b.v - a.v : a.date - b.date))
 
-  return releases
-}, {
-  maxAge: 60 // cache for one minute
-})
+    return releases
+  },
+  {
+    maxAge: 60, // cache for one minute
+  },
+)
 
 const normalizeReleaseName = (name: string) => {
   // remove "Release " prefix from release name
@@ -44,7 +48,7 @@ const normalizeReleaseName = (name: string) => {
   return name
 }
 
-export async function fetchGitHubReleases (query: GithubQuery, { api: configApi, repo: configRepo, token: configToken }: GithubReleasesOptions) {
+export async function fetchGitHubReleases(query: GithubQuery, { api: configApi, repo: configRepo, token: configToken }: GithubReleasesOptions) {
   const api = query?.api || configApi
   const token = query?.token || configToken
   const repo = query?.repo || configRepo
@@ -55,8 +59,8 @@ export async function fetchGitHubReleases (query: GithubQuery, { api: configApi,
 
   const rawReleases = await $fetch<Array<GithubRawRelease>>(url, {
     headers: {
-      Authorization: token ? `token ${token}` : undefined
-    }
+      Authorization: token ? `token ${token}` : undefined,
+    },
   }).catch((err) => {
     // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response?.status}]`)
@@ -89,9 +93,9 @@ export async function fetchGitHubReleases (query: GithubQuery, { api: configApi,
           ? {
               name: release.author?.login,
               url: release.author?.html_url,
-              avatar: release.author?.avatar_url
+              avatar: release.author?.avatar_url,
             }
-          : false
+          : false,
       }
     })
 }

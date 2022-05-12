@@ -2,20 +2,22 @@ import { fileURLToPath } from 'url'
 import { addAutoImport, defineNuxtModule, resolveModule } from '@nuxt/kit'
 
 export interface ModuleOptions {
-  repo: string,
-  releases: false | {
-    api: string
-    repo: string
-    token: string
-    /**
-     * Parse release notes markdown and return AST tree
-     *
-     * Note: This option is only available when you have `@nuxt/content` installed in your project.
-     *
-     * @default true
-     */
-    parse: boolean
-  }
+  repo: string
+  releases:
+    | false
+    | {
+        api: string
+        repo: string
+        token: string
+        /**
+         * Parse release notes markdown and return AST tree
+         *
+         * Note: This option is only available when you have `@nuxt/content` installed in your project.
+         *
+         * @default true
+         */
+        parse: boolean
+      }
 }
 
 export interface GithubQuery {
@@ -45,7 +47,7 @@ export interface GithubReleasesOptions {
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@docus/github',
-    configKey: 'github'
+    configKey: 'github',
   },
   defaults: {
     repo: '',
@@ -53,10 +55,10 @@ export default defineNuxtModule<ModuleOptions>({
       api: 'https://api.github.com/repos',
       repo: '',
       token: undefined,
-      parse: true
-    }
+      parse: true,
+    },
   },
-  setup (options, nuxt) {
+  setup(options, nuxt) {
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
     nuxt.options.runtimeConfig.github = {
@@ -65,11 +67,11 @@ export default defineNuxtModule<ModuleOptions>({
         api: options.releases === false ? '' : options.releases.api,
         repo: options.releases === false ? '' : options.releases.repo || options.repo || process.env.GITHUB_REPO,
         token: options.releases === false ? '' : options.releases.token || process.env.GITHUB_TOKEN,
-        parse: options.releases === false ? false : options.releases.parse
-      }
+        parse: options.releases === false ? false : options.releases.parse,
+      },
     }
 
-    // @ts-ignore
+    // @ts-expect-error - Untyped hook
     // Autolink issue/PR/commit links using `remark-github` plugin
     nuxt.hook('content:context', (context) => {
       context.markdown.remarkPlugins = context.markdown.remarkPlugins || []
@@ -85,13 +87,13 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.nitro.handlers = nuxt.options.nitro.handlers || []
       nuxt.options.nitro.handlers.push({
         route: '/api/_github/releases',
-        handler: resolveModule('./server/api/releases', { paths: runtimeDir })
+        handler: resolveModule('./server/api/releases', { paths: runtimeDir }),
       })
 
       addAutoImport({
         name: 'githubReleases',
-        from: resolveModule('./composables/githubReleases', { paths: runtimeDir })
+        from: resolveModule('./composables/githubReleases', { paths: runtimeDir }),
       })
     }
-  }
+  },
 })

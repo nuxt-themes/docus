@@ -17,6 +17,7 @@
     "dev:base": "nuxi dev packages/base",
     "dev:docs": "nuxi dev docs",
     "dev:theme": "nuxi dev packages/theme",
+    "dev:github": "nuxi dev packages/github/playground",
     "lint": "pnpm turbo run lint",
     "release": "pnpm turbo run release",
     "release:edge": "pnpm turbo run release:edge",
