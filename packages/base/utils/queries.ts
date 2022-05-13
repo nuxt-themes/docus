@@ -19,8 +19,6 @@ const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
 export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, force = false) => {
   const path = withoutTrailingSlash(route.path)
 
-  console.log(path)
-
   const { page, surround, navigation } = useDocusState()
 
   // We can use `theme` from useDocus here as we know this middleware
@@ -60,10 +58,9 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
     })
     .catch((e) => {
       console.warn(`Could not find page for path ${path}`)
-      console.log({ e })
       page.value = undefined
       surround.value = undefined
-      // return navigateTo('/404')
+      return navigateTo('/404')
     })
 }
 
