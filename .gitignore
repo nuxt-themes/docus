@@ -6,6 +6,7 @@ nuxt.d.ts
 .env
 package-lock.json
 framework
+dist
 
 # Yarn
 .yarn/cache

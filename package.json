@@ -12,7 +12,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:docs": "nuxi build docs",
-    "cleanup": "./.github/scripts/cleanup.sh",
+    "clean": "./.github/scripts/cleanup.sh",
     "dev": "pnpm dev:docs",
     "dev:base": "nuxi dev packages/base",
     "dev:docs": "nuxi dev docs",
