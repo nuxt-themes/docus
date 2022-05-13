@@ -5,7 +5,7 @@ const { navigation, theme } = useDocus()
 
 const tree = computed(() => {
   return navigation.value.filter((item) => {
-    if (item.slug === '/') return false
+    if (item.path === '/') return false
     return true
   })
 })

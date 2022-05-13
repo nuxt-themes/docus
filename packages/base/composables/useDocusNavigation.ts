@@ -4,10 +4,10 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
  * Find first child link from a navigation node.
  */
 const findBottomLink = (link: NavItem) => {
-  if (!link.children) return link.slug
+  if (!link.children) return link.path
 
   for (const child of link?.children || []) {
-    if (!child.children) return child.slug
+    if (!child.children) return child.path
   }
 
   for (const child of link?.children || []) {
@@ -21,7 +21,7 @@ const findBottomLink = (link: NavItem) => {
  */
 const navFromPath = (path: string, tree: NavItem[]) => {
   for (const file of tree) {
-    if (file.slug === path && !file.id) return file.children
+    if (file.path === path && !file.id) return file.children
 
     if (file.children) {
       const result = navFromPath(path, file.children)
@@ -35,7 +35,7 @@ const navFromPath = (path: string, tree: NavItem[]) => {
  */
 const fileFromPath = (path: string, tree: NavItem[]) => {
   for (const file of tree) {
-    if (file.slug === path) return file
+    if (file.path === path) return file
 
     if (file.children) {
       const result = fileFromPath(path, file.children)
@@ -51,10 +51,10 @@ const layoutFromPath = (path: string, tree: NavItem[]) => {
   let layout
   const goDeep = (path: string, tree: NavItem[]) => {
     for (const file of tree) {
-      if (path.includes(file.slug) && file.layout) {
+      if (path.includes(file.path) && file.layout) {
         layout = file.layout
       }
-      if (file.slug === path) return
+      if (file.path === path) return
       if (file.children) {
         goDeep(path, file.children)
       }

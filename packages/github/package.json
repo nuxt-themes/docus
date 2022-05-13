@@ -1,0 +1,38 @@
+{
+  "name": "@docus/github",
+  "version": "1.2.6",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build",
+    "prepare": "nuxt-module-build --stub && nuxi prepare playground && nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "release": "build && ../../.github/scripts/release.sh",
+    "release:edge": "yarn build && ../../.github/scripts/release-edge.sh",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.0.0-rc.3",
+    "remark-github": "^11.2.2"
+  },
+  "devDependencies": {
+    "@nuxt/content": "npm:@nuxt/content-edge@latest",
+    "@nuxt/module-builder": "latest",
+    "@nuxt/test-utils": "^3.0.0-rc.3",
+    "nuxt": "^3.0.0-rc.3",
+    "vitest": "^0.10.4"
+  }
+}

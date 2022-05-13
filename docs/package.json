@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "nuxt": "^3.0.0-rc.3",
-    "@docus/docs-theme": "latest"
+    "@docus/docs-theme": "latest",
+    "@docus/github": "latest"
   }
 }

@@ -29,7 +29,7 @@ const tree = computed(() => {
 
     // No navigation found; try to resolve page url
     if (nav.length === 0) {
-      nav = fileFromPath(page.value?.slug || '/', navigation.value) || []
+      nav = fileFromPath(page.value?.path || '/', navigation.value) || []
 
       if (!Array.isArray(nav)) nav = [nav]
     }
@@ -37,7 +37,7 @@ const tree = computed(() => {
 
   // Filtered using `aside.filter` in theme configuration
   return nav.filter((item) => {
-    if (filtered.value.includes(item.slug)) return false
+    if (filtered.value.includes(item.path)) return false
 
     return true
   })

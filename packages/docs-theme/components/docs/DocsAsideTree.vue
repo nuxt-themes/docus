@@ -24,7 +24,7 @@ const router = useRouter()
 const isChildOpen = reactive({})
 
 function isActive(link) {
-  return link.exact ? route.path === link.slug : route.path.startsWith(link.slug)
+  return link.exact ? route.path === link.path : route.path.startsWith(link.path)
 }
 
 const hasNesting = computed(() => props.tree.some((link: any) => link.children))
@@ -32,18 +32,18 @@ const hasNesting = computed(() => props.tree.some((link: any) => link.children))
 function onClick(link) {
   if (link.children?.length) {
     // Open dir when element is collapsible
-    toggleDir(link.slug)
+    toggleDir(link.path)
 
     // Select element for mobile nav
     if (props.max !== null && props.level + 1 === props.max) emit('select', link)
   } else {
-    router.push(link.slug)
+    router.push(link.path)
     emit('close')
   }
 }
 
-function toggleDir(slug, force?) {
-  isChildOpen[slug] = force ? true : !isChildOpen[slug]
+function toggleDir(path, force?) {
+  isChildOpen[path] = force ? true : !isChildOpen[path]
 }
 
 watch(
@@ -65,7 +65,7 @@ watch(
   <ul :class="{ 'pl-4': level > 1 }">
     <li
       v-for="(link, index) in tree"
-      :key="link.slug"
+      :key="link.path"
       class="transition-base transition-colors"
       :class="[
         {
