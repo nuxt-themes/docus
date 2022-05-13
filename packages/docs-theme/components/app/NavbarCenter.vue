@@ -13,19 +13,19 @@ const filtered = computed(() => theme.value?.aside?.filter || [])
 
 const tree = computed(() => {
   return (navigation.value || []).filter((item) => {
-    if (filtered.value.includes(item.slug)) return false
+    if (filtered.value.includes(item.path)) return false
     return true
   })
 })
 
-const isActive = (link: any) => (link.exact ? route.fullPath === link.slug : route.fullPath.startsWith(link.slug))
+const isActive = (link: any) => (link.exact ? route.fullPath === link.path : route.fullPath.startsWith(link.path))
 </script>
 
 <template>
   <nav v-if="hasNavigation" class="flex max-w-full flex-1 items-center justify-center gap-8 overflow-hidden py-1 truncate font-medium">
     <NuxtLink
       v-for="link in tree"
-      :key="link.slug"
+      :key="link.path"
       :to="findBottomLink(link)"
       class="transition-base hover:text-secondary-hover transition-colors"
       :class="[isActive(link) && 'text-secondary-active']"

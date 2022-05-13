@@ -9,7 +9,7 @@ const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
 
   const { layoutFromPath } = useDocusNavigation()
 
-  const layoutFromNav = layoutFromPath(page.slug, navigation)
+  const layoutFromNav = layoutFromPath(page.path, navigation)
 
   if (layoutFromNav) return layoutFromNav
 
@@ -19,6 +19,8 @@ const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
 export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, force = false) => {
   const path = withoutTrailingSlash(route.path)
 
+  console.log(path)
+
   const { page, surround, navigation } = useDocusState()
 
   // We can use `theme` from useDocus here as we know this middleware
@@ -27,14 +29,14 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   const { theme } = useDocus()
 
   // Page is already fetched, apply it
-  if (!force && page.value && page.value.slug === path) {
+  if (!force && page.value && page.value.path === path) {
     route.meta.layout = findLayout(page.value, theme.value, navigation.value)
     return
   }
 
   // Fetch page
   return await Promise.all([
-    queryContent().where({ slug: path }).findOne() as Promise<ParsedContent>,
+    queryContent().where({ path }).findOne() as Promise<ParsedContent>,
     queryContent()
       .where({ partial: { $not: true }, navigation: { $not: false } })
       .findSurround(path) as Promise<ParsedContent[]>,
@@ -58,9 +60,10 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
     })
     .catch((e) => {
       console.warn(`Could not find page for path ${path}`)
+      console.log({ e })
       page.value = undefined
       surround.value = undefined
-      return navigateTo('/404')
+      // return navigateTo('/404')
     })
 }
 

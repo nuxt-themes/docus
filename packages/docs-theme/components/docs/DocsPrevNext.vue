@@ -6,10 +6,10 @@ const { prev, next, navigation } = useDocus()
 const { navFromPath } = useDocusNavigation()
 
 const directory = (link) => {
-  const nav = navFromPath(link.slug, navigation.value || [])
+  const nav = navFromPath(link.path, navigation.value || [])
 
   if (nav && nav[0]) {
-    return nav[0].slug
+    return nav[0].path
   } else {
     const dirs = link.split('/')
     const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
@@ -23,12 +23,12 @@ const directory = (link) => {
     <div class="flex w-full flex-1 items-center justify-start">
       <NuxtLink
         v-if="prev"
-        :to="prev.slug"
+        :to="prev.path"
         class="transition-base surface-border hover:surface-border-hover hover:text-secondary-hover group inline-flex w-full items-center justify-start truncate rounded-xl border px-4 py-2.5 transition"
       >
         <span class="relative flex flex-col items-end truncate">
           <span class="d-secondary-text mb-1 text-xs leading-tight">
-            {{ directory(prev.slug) }}
+            {{ directory(prev.path) }}
           </span>
 
           <span class="flex w-full items-center leading-tight">
@@ -42,11 +42,11 @@ const directory = (link) => {
     <div class="order-first flex flex-1 justify-end">
       <NuxtLink
         v-if="next"
-        :to="next.slug"
+        :to="next.path"
         class="transition-base surface-border hover:surface-border-hover hover:text-secondary-hover group inline-flex w-full items-center justify-end truncate rounded-xl border px-4 py-2.5 transition"
       >
         <span class="relative flex flex-col items-start truncate">
-          <span class="d-secondary-text mb-1 text-xs leading-tight"> {{ directory(next.slug) }} </span>
+          <span class="d-secondary-text mb-1 text-xs leading-tight"> {{ directory(next.path) }} </span>
 
           <span class="flex w-full items-center leading-tight">
             <span class="truncate">{{ next.title }}</span>

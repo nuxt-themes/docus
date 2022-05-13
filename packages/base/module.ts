@@ -47,10 +47,8 @@ declare module '@nuxt/schema' {
       motd()
 
       // Transpile @nuxt/content
-      nuxt.options.build.transpile = [...(nuxt.options.build.transpile || []), '@nuxt/content']
-
       // Related: https://github.com/nuxt/framework/pull/4070
-      nuxt.options.build.transpile = [...(nuxt.options.build.transpile || []), '@nuxt/content-edge']
+      nuxt.options.build.transpile = [...(nuxt.options.build.transpile || []), '@nuxt/content', '@nuxt/content-edge']
     })
 
     nuxt.hook('prepare:types', (opts) => {

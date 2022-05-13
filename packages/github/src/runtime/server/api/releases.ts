@@ -19,11 +19,13 @@ export default imports.defineCachedEventHandler(
     // eslint-disable-next-line import/namespace
     if (releasesConfig.parse && typeof parseContent === 'function') {
       releases = await Promise.all(
-        releases.map(async (release) => ({
-          ...release,
-          // eslint-disable-next-line import/namespace
-          ...(await parseContent(`${release.name}.md`, release.body)),
-        })),
+        releases.map(async (release) => {
+          return {
+            ...release,
+            // eslint-disable-next-line import/namespace
+            // ...(await parseContent(`${release.name}.md`, release.body)),
+          }
+        }),
       )
     }
 

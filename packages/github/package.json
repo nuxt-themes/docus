@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "build": "nuxt-module-build",
+    "prepare": "nuxt-module-build --stub && nuxi prepare playground && nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "build && ../../.github/scripts/release.sh",
     "release:edge": "yarn build && ../../.github/scripts/release-edge.sh",

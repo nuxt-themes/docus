@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm turbo run build",
+    "build": "turbo run build",
     "build:docs": "nuxi build docs",
     "cleanup": "./.github/scripts/cleanup.sh",
     "dev": "pnpm dev:docs",
@@ -18,10 +18,11 @@
     "dev:docs": "nuxi dev docs",
     "dev:theme": "nuxi dev packages/theme",
     "dev:github": "nuxi dev packages/github/playground",
-    "lint": "pnpm turbo run lint",
-    "release": "pnpm turbo run release",
-    "release:edge": "pnpm turbo run release:edge",
-    "update:packages": "ncu --deep"
+    "lint": "turbo run lint",
+    "release": "turbo run release",
+    "release:edge": "turbo run release:edge",
+    "update:packages": "ncu --deep",
+    "postinstall": "turbo run prepare"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.3"
