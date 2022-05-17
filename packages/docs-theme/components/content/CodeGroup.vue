@@ -103,7 +103,7 @@ html.dark {
 
 <style scoped lang="postcss">
 .code-group {
-  @apply surface-border overflow-hidden rounded-lg border-2;
+  @apply surface-border overflow-hidden rounded-lg border;
 
   :deep(.prose-code) {
     @apply mt-0 mb-0 rounded-none !important;
@@ -124,7 +124,7 @@ html.dark {
 
 .code-group-content {
   .preview-canvas {
-    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-100 p-4 leading-normal dark:bg-gray-800;
+    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-100 p-4 leading-normal bg-gray-800 text-gray-200 dark:text-gray-700;
 
     & > * {
       @apply my-0;
