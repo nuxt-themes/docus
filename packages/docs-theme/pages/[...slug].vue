@@ -62,5 +62,5 @@ useHead({
 </script>
 
 <template>
-  <Document v-if="page" :value="page" class="docus-content" />
+  <ContentRenderer v-if="page" :value="page" class="docus-content" />
 </template>

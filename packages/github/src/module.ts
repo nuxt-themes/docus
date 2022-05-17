@@ -1,6 +1,7 @@
+import defu from 'defu'
 import { fileURLToPath } from 'url'
 import consola from 'consola'
-import { addAutoImport, addComponent, defineNuxtModule, resolveModule } from '@nuxt/kit'
+import { addAutoImport, addComponent, createResolver, defineNuxtModule, resolveModule } from '@nuxt/kit'
 
 export interface GithubRepositoryOptions {
   owner: string
@@ -79,7 +80,8 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   setup(options, nuxt) {
-    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+    const { resolve } = createResolver(import.meta.url)
+    const runtimeDir = resolve('./runtime')
 
     if (!options?.repo) {
       consola.warn('GitHub repository is not defined.')
@@ -158,13 +160,15 @@ export default defineNuxtModule<ModuleOptions>({
       })
     }
 
+    const nitroConfig = nuxt.options.nitro
+
     // Init Nitro handlers
-    nuxt.options.nitro.handlers = nuxt.options.nitro.handlers || []
-    nuxt.options.nitro.prerender = nuxt.options.nitro.prerender || {}
-    nuxt.options.nitro.prerender.routes = nuxt.options.nitro.prerender.routes || []
+    nitroConfig.handlers = nitroConfig.handlers || []
+    nitroConfig.prerender = nitroConfig.prerender || {}
+    nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
 
     // Setup repository API
-    nuxt.options.nitro.handlers.push({
+    nitroConfig.handlers.push({
       route: '/api/_github/repository',
       handler: resolveModule('./server/api/repository', { paths: runtimeDir }),
     })
@@ -178,11 +182,11 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Setup releases API
     if (options.releases !== false) {
-      nuxt.options.nitro.handlers.push({
+      nitroConfig.handlers.push({
         route: '/api/_github/releases',
         handler: resolveModule('./server/api/releases', { paths: runtimeDir }),
       })
-      nuxt.options.nitro.prerender.routes.push('/api/_github/releases')
+      nitroConfig.prerender.routes.push('/api/_github/releases')
 
       // Releases components
       addComponent({
@@ -199,14 +203,14 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Setup contributors API
     if (options.contributors !== false) {
-      nuxt.options.nitro.handlers.push({
+      nitroConfig.handlers.push({
         route: '/api/_github/contributors',
         handler: resolveModule('./server/api/contributors', { paths: runtimeDir }),
       })
-      nuxt.options.nitro.prerender.routes.push('/api/_github/contributors')
+      nitroConfig.prerender.routes.push('/api/_github/contributors')
 
       // TODO: Add prerender for file arguments (using :source argument)
-      nuxt.options.nitro.handlers.push({
+      nitroConfig.handlers.push({
         route: '/api/_github/contributors/file',
         handler: resolveModule('./server/api/contributors/file', { paths: runtimeDir }),
       })
@@ -228,5 +232,12 @@ export default defineNuxtModule<ModuleOptions>({
       name: 'useGithub',
       from: resolveModule('./composables/useGithub', { paths: runtimeDir }),
     })
+
+    nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
+        inline: [
+          // Inline module runtime in Nitro bundle
+          resolve('./runtime')
+        ]
+      })
   },
 })
