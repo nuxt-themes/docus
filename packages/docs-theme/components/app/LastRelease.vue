@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useReleases } from '#imports'
+import { useRepository } from '#imports'
 
-const { last } = useReleases()
+const { last } = useRepository()
 </script>
 
 <template>
