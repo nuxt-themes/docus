@@ -1,7 +1,9 @@
 import { defineNuxtConfig } from 'nuxt'
 
+const theme = process.env.NODE_ENV === 'development' ? '../packages/docs-theme' : './node_modules/@docus/docs-theme'
+
 export default defineNuxtConfig({
-  extends: ['./node_modules/@docus/docs-theme'],
+  extends: [theme],
   github: {
     repo: 'nuxt/content',
   },
