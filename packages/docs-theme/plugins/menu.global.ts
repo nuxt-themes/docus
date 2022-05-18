@@ -64,7 +64,7 @@ export default defineNuxtPlugin((ctx: any) => {
         toggle,
         currentTab,
         toggleTab,
-      }
-    }
+      },
+    },
   }
 })

@@ -31,7 +31,7 @@
     "defu": "^6.0.0",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
-    "@vueuse/core": "^8.4.2",
-    "@vueuse/nuxt": "^8.4.2"
+    "@vueuse/core": "^8.5.0",
+    "@vueuse/nuxt": "^8.5.0"
   }
 }

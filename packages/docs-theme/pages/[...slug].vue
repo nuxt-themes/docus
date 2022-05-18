@@ -62,5 +62,26 @@ useHead({
 </script>
 
 <template>
-  <ContentRenderer v-if="page" :value="page" class="docus-content" />
+  <ContentRenderer v-if="page" :key="page.id" :value="page">
+    <template #empty="{ value }">
+      <Alert style="margin: 0" type="primary">
+        <p>
+          You have succesfully created the page <span>{{ value.path }}</span>
+
+          <br /><br />
+
+          You can now start writing into it!
+        </p>
+      </Alert>
+    </template>
+  </ContentRenderer>
 </template>
+
+<style scoped>
+div {
+  /* Drop margin for first child element in page so it is aligned with navigation */
+  & > :first-child {
+    margin-top: 0 !important;
+  }
+}
+</style>

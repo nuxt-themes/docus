@@ -1,3 +1,23 @@
+<script setup lang="ts">
+defineProps({
+  name: {
+    type: String,
+    required: false,
+    default: 'Page not found',
+  },
+  message: {
+    type: String,
+    required: false,
+    default: "This is not the page you're looking for.",
+  },
+  statusCode: {
+    type: Number,
+    required: false,
+    default: 404,
+  },
+})
+</script>
+
 <template>
   <div class="flex-1 px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
     <div class="max-w-max mx-auto">
@@ -15,32 +35,10 @@
             </p>
           </div>
           <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-            <ButtonLink href="/" size="large" variant="primary">
-              Go back home
-            </ButtonLink>
+            <ButtonLink href="/" size="large" variant="primary"> Go back home </ButtonLink>
           </div>
         </div>
       </main>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: false,
-    default: 'Page not found'
-  },
-  message: {
-    type: String,
-    required: false,
-    default: 'This is not the page you\'re looking for.'
-  },
-  statusCode: {
-    type: Number,
-    required: false,
-    default: 404
-  },
-})
-</script>

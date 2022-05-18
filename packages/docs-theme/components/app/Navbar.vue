@@ -30,7 +30,7 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
       </div>
 
       <div class="flex flex-none items-center justify-end lg:col-span-2 lg:gap-4 lg:pl-4">
-        <LastRelease v-if="theme?.github?.releases" class="mr-1.5 hidden lg:block" />
+        <LastRelease v-if="theme?.github?.releases && theme?.github?.showVersion" class="mr-1.5 hidden lg:block" />
         <MobileNav />
         <SocialIcons size="h-6 w-6 hidden lg:block" spacing="lg:mr-1.5" />
         <ThemeSelect size="h-6 w-6 hidden lg:block" />

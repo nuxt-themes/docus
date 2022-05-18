@@ -124,7 +124,7 @@ html.dark {
 
 .code-group-content {
   .preview-canvas {
-    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-100 p-4 leading-normal bg-gray-800 text-gray-200 dark:text-gray-700;
+    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-100 p-4 leading-normal bg-gray-800 text-gray-200;
 
     & > * {
       @apply my-0;

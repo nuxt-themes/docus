@@ -13,10 +13,6 @@ export default defineComponent({
       type: [String, Object] as PropType<NuxtImg>,
       default: null,
     },
-    imageClasses: {
-      type: String,
-      default: '',
-    },
     alt: {
       type: String,
       default: '',
@@ -30,7 +26,7 @@ export default defineComponent({
       default: undefined,
     },
   },
-  setup() {
+  setup(props) {
     const imgSrc = computed(() => {
       let src = props.src
 
@@ -50,17 +46,21 @@ export default defineComponent({
     }
   },
   render({ imgSrc }) {
-    if (!imgSrc.value) return null
+    // String as `src`; return a single image
+    if (typeof imgSrc === 'string') {
+      return h('img', { src: imgSrc })
+    }
 
-    return typeof imgSrc.value === 'string'
-      ? h('img', { src: imgSrc.value })
-      : [imgSrc?.value?.light ? h('img', { src: imgSrc.value?.light }) : null, imgSrc?.value?.dark ? h('img', { src: imgSrc.value?.dark }) : null]
+    // Object as `src`; return a light and dark image if present
+    const nodes = []
+    if (imgSrc.light) {
+      nodes.push(h('img', { src: imgSrc.light, class: ['dark-img'] }))
+    }
+    if (imgSrc.dark) {
+      nodes.push(h('img', { src: imgSrc.dark, class: ['light-img'] }))
+    }
+
+    return nodes
   },
 })
 </script>
-
-<template>
-  <img v-if="typeof src === 'string'" :src="src" :alt="alt" :width="width" :height="height" />
-  <img v-if="src?.light" class="dark-img" :src="src.light" :alt="alt" :width="width" :height="height" />
-  <img v-if="src?.dark" class="light-img" :src="src.dark" :alt="alt" :width="width" :height="height" />
-</template>

@@ -20,8 +20,8 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 </script>
 
 <template>
-  <button :class="[buttonClasses]" class="relative lg:hidden z-10" @click="toggle" aria-label="Menu">
-    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" aria-hidden=”true” />
+  <button :class="[buttonClasses]" class="relative lg:hidden z-10" aria-label="Menu" @click="toggle">
+    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" aria-hidden="”true”" />
   </button>
 
   <span class="lg:hidden">
@@ -59,7 +59,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
             <DocsAsideTree :tree="tree" />
 
             <div class="mt-4 flex items-center justify-end gap-4 px-6">
-              <LastRelease v-if="theme?.github?.releases" class="mr-1.5" />
+              <LastRelease v-if="theme?.github?.releases && theme?.github?.releases && theme?.github?.showVersion" class="mr-1.5" />
               <SocialIcons size="h-7 w-7" spacing="lg:mr-1.5" />
               <ThemeSelect size="h-7 w-7" spacing="lg:mr-1.5" />
             </div>

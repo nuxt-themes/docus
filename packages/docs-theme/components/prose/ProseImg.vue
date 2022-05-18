@@ -20,7 +20,7 @@ defineProps({
 </script>
 
 <template>
-  <NuxtImg :src="src" :alt="alt" :width="width" :height="height" />
+  <NuxtImg v-bind="$attrs" :src="src" :alt="alt" :width="width" :height="height" />
 </template>
 
 <style lang="postcss" scoped>

@@ -1,5 +1,5 @@
-import defu from 'defu'
 import { fileURLToPath } from 'url'
+import defu from 'defu'
 import consola from 'consola'
 import { addAutoImport, addComponent, createResolver, defineNuxtModule, resolveModule } from '@nuxt/kit'
 
@@ -234,10 +234,10 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
-        inline: [
-          // Inline module runtime in Nitro bundle
-          resolve('./runtime')
-        ]
-      })
+      inline: [
+        // Inline module runtime in Nitro bundle
+        resolve('./runtime'),
+      ],
+    })
   },
 })

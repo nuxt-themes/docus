@@ -4,9 +4,7 @@ export const themeConfig = {
     twitter: '@docus_',
   },
   github: {
-    repository: 'nuxtlabs/docus',
-    branch: 'dev',
-    dir: '',
+    showVersion: true,
     releases: true,
   },
   aside: {

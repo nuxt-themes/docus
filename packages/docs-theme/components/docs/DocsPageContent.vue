@@ -18,48 +18,48 @@ const isOpen = ref(false)
 
 <template>
   <Container padded class="relative pb-4 flex flex-col-reverse sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
-      <!-- Aside -->
-      <aside v-if="aside" class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
-        <DocsAside />
-      </aside>
+    <!-- Aside -->
+    <aside v-if="aside" class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
+      <DocsAside />
+    </aside>
 
-      <!-- Page Body -->
-      <div
-        class="relative flex flex-1 flex-col lg:mt-0 lg:pt-8"
-        :class="{
-          'lg:flex lg:flex-1 lg:col-span-12': !aside && !toc,
-          'lg:col-span-10 pt-8 lg:pt-8': !toc || !aside,
-          'lg:col-span-8 pt-12': toc && aside,
-        }"
-      >
-        <slot />
+    <!-- Page Body -->
+    <div
+      class="relative flex flex-1 flex-col lg:mt-0 lg:pt-8"
+      :class="{
+        'lg:flex lg:flex-1 lg:col-span-12': !aside && !toc,
+        'lg:col-span-10 pt-8 lg:pt-8': !toc || !aside,
+        'lg:col-span-8 pt-12': toc && aside,
+      }"
+    >
+      <slot />
 
-        <DocsPageBottom v-if="page && toc" />
+      <DocsPageBottom v-if="page && toc" />
 
-        <ProseHr v-if="page && toc" />
+      <ProseHr v-if="page && toc" />
 
-        <DocsPrevNext v-if="page && toc" />
+      <DocsPrevNext v-if="page && toc" />
+    </div>
+
+    <!-- TOC -->
+    <div
+      v-if="toc"
+      :class="{
+        'flex items-center lg:block': !isOpen,
+      }"
+      class="surface-border border-b lg:border-none border-b relative toc top-header sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-page lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+    >
+      <div>
+        <button class="flex items-center gap-3 py-3 lg:hidden" @click="isOpen = !isOpen">
+          <span class="font-semibold">Table of Contents</span>
+
+          <Icon name="heroicons-outline:chevron-right" class="h-6 w-6 transform transition-transform duration-100" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
+        </button>
+
+        <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
       </div>
-
-      <!-- TOC -->
-      <div
-        v-if="toc"
-        :class="{
-          'flex items-center lg:block': !isOpen,
-        }"
-        class="surface-border border-b lg:border-none border-b relative toc top-header sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-page lg:self-start lg:border-none lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
-      >
-        <div>
-          <button class="flex items-center gap-3 py-3 lg:hidden" @click="isOpen = !isOpen">
-            <span class="font-semibold">Table of Contents</span>
-
-            <Icon name="heroicons-outline:chevron-right" class="h-6 w-6 transform transition-transform duration-100" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
-          </button>
-
-          <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
-        </div>
-      </div>
-    </Container>
+    </div>
+  </Container>
 </template>
 
 <style lang="postcss" scoped>

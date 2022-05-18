@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { computed, reactive, useRoute, useRouter, watch } from '#imports'
+import { NuxtLink } from '#components'
 
 const props = defineProps({
   tree: {
@@ -28,19 +29,6 @@ function isActive(link) {
 }
 
 const hasNesting = computed(() => props.tree.some((link: any) => link.children))
-
-function onClick(link) {
-  if (link.children?.length) {
-    // Open dir when element is collapsible
-    toggleDir(link.path)
-
-    // Select element for mobile nav
-    if (props.max !== null && props.level + 1 === props.max) emit('select', link)
-  } else {
-    router.push(link.path)
-    emit('close')
-  }
-}
 
 function toggleDir(path, force?) {
   isChildOpen[path] = force ? true : !isChildOpen[path]
@@ -75,9 +63,11 @@ watch(
         },
       ]"
     >
-      <NuxtLink
-        class="flex cursor-pointer items-center justify-between py-1.5"
+      <component
+        :is="link?.children ? 'span' : NuxtLink"
+        :to="link.path"
         :exact="link.exact"
+        class="flex cursor-pointer items-center justify-between py-1.5"
         :class="{
           'pl-3': level > 0 || !hasNesting,
           '!text-primary font-semibold': link.children,
@@ -85,12 +75,10 @@ watch(
           'text-secondary-active': isActive(link),
           'text-secondary text-secondary-hover': !isActive(link),
         }"
-        @click.stop.prevent="onClick(link)"
       >
         <span>{{ link.title }}</span>
-
         <Icon v-if="link.icon" :name="link.icon" class="h-5 w-5" />
-      </NuxtLink>
+      </component>
 
       <DocsAsideTree
         v-if="link.children?.length && (max === null || level + 1 < max)"
