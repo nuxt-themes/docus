@@ -87,7 +87,13 @@ export default defineNuxtConfig({
     },
   },
 
+  content: {
+    navigation: {
+      fields: ['icon'],
+    },
+  },
+
   colorMode: {
     classSuffix: '',
-  },
+  }
 })

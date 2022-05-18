@@ -17,17 +17,18 @@ const props = defineProps({
 const icon = ref(props.icon || null)
 
 if (!props.icon) {
-  icon.value = await loadIcon(props.name)
+  icon.value = await loadIcon(props.name).catch(e => null)
 
   watch(
     () => props.name,
     async () => {
-      icon.value = await loadIcon(props.name)
+      icon.value = await loadIcon(props.name).catch(e => null)
     },
   )
 }
 </script>
 
 <template>
-  <Iconify :icon="icon" />
+  <Iconify v-if="icon" :icon="icon" />
+  <span v-else>{{ props.name }}</span>
 </template>
