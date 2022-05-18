@@ -2,6 +2,7 @@ export const themeConfig = {
   layout: 'docs',
   socials: {
     twitter: '@docus_',
+    github: 'nuxtlabs/docus'
   },
   github: {
     showVersion: true,

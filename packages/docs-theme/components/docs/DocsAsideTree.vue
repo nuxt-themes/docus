@@ -19,7 +19,7 @@ const props = defineProps({
 const route = useRoute()
 
 function isActive (link) {
-  return link.exact ? route.path === link.path : route.path.startsWith(link.path)
+  return link.exact ? route.path === link._path : route.path.startsWith(link._path)
 }
 
 const hasNesting = computed(() => props.tree.some((link: any) => link.children))
@@ -29,13 +29,13 @@ const hasNesting = computed(() => props.tree.some((link: any) => link.children))
   <ul :class="{ 'pl-4': level > 1 }">
     <li
       v-for="(link, index) in tree"
-      :key="link.path"
+      :key="link._path"
       class="transition-colors transition-base"
       :class="[
         {
-          'border-l-2': level > 0 || !hasNesting,
+          'border-l': level > 0 || !hasNesting,
           'border-primary-400 dark:border-primary-600': isActive(link),
-          'hover:border-primary-400 border-gray-200 dark:border-gray-700': !isActive(link),
+          'hover:border-gray-300 border-gray-100 dark:border-gray-700 hover:dark:border-gray-500': !isActive(link),
         },
       ]"
     >
@@ -47,14 +47,14 @@ const hasNesting = computed(() => props.tree.some((link: any) => link.children))
       </div>
       <NuxtLink
         v-else
-        :to="link.path"
+        :to="link._path"
         class="flex items-center justify-between text-sm py-1.5"
         :exact="link.exact"
         :class="{
           'pl-3': level > 0 || !hasNesting,
           '!pt-0': level === 0 && index === 0,
-          'text-primary font-semibold': isActive(link),
-          'hover:text-secondary-hover': !isActive(link),
+          'text-primary font-medium': isActive(link),
+          'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200': !isActive(link),
         }"
       >
         <span class="inline-flex items-center">

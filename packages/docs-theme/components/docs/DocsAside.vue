@@ -29,7 +29,7 @@ const tree = computed(() => {
 
     // No navigation found; try to resolve page url
     if (nav.length === 0) {
-      nav = fileFromPath(page.value?.path || '/', navigation.value) || []
+      nav = fileFromPath(page.value?._path || '/', navigation.value) || []
 
       if (!Array.isArray(nav)) nav = [nav]
     }
@@ -37,7 +37,7 @@ const tree = computed(() => {
 
   // Filtered using `aside.filter` in theme configuration
   return nav.filter((item) => {
-    if (filtered.value.includes(item.path)) return false
+    if (filtered.value.includes(item._path)) return false
 
     return true
   })
@@ -48,8 +48,8 @@ const tree = computed(() => {
   <nav>
     <DocsAsideTree v-if="tree && tree.length > 0" :tree="tree" />
 
-    <NuxtLink v-else to="/" class="text-secondary hover:text-secondary-hover flex cursor-pointer items-center text-lg">
-      <Icon name="heroicons-outline:arrow-left" class="h-6 w-6" />
+    <NuxtLink v-else to="/" class="flex items-center text-lg cursor-pointer text-secondary hover:text-secondary-hover">
+      <Icon name="heroicons-outline:arrow-left" class="w-6 h-6" />
       <span class="ml-2">Go back</span>
     </NuxtLink>
   </nav>

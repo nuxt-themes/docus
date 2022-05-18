@@ -7,17 +7,17 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="h-footer bg-gray-50 py-6 dark:bg-gray-800 dark:bg-opacity-25 sm:py-0">
-    <Container padded class="flex h-full flex-col items-center justify-between gap-y-4 sm:flex-row">
+  <footer class="py-6 h-footer bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 sm:py-0">
+    <Container padded class="flex flex-col items-center justify-between h-full gap-y-4 sm:flex-row">
       <a
         v-if="theme?.footer?.credits"
         href="https://nuxtlabs.com"
         rel="noopener"
         target="_blank"
-        class="text-secondary transition-base hover:text-secondary-hover transition-base mb-3 flex items-end transition-colors sm:mb-0"
+        class="flex items-center mb-3 transition-colors text-secondary transition-base hover:text-secondary-hover sm:mb-0"
       >
-        <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="mr-2 h-7 w-7 fill-current" />
-        <p class="font-semibold">{{ theme?.footer?.credits?.text }}</p>
+        <Component :is="theme?.footer?.credits?.icon || 'Logo'" class="w-5 h-5 mr-2 fill-current" />
+        <p class="text-sm font-semibold">{{ theme?.footer?.credits?.text }}</p>
       </a>
 
       <div class="flex items-center gap-4">
@@ -28,12 +28,12 @@ const icons = computed(() => theme.value?.footer?.icons || [])
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
-          class="icon-base flex items-center text-sm font-medium"
+          class="flex items-center text-sm font-medium icon-base"
         >
-          <Component :is="icon.component" class="h-7 w-7" />
+          <Component :is="icon.component" />
         </a>
 
-        <SocialIcons size="w-6 h-6" />
+        <SocialIcons />
       </div>
     </Container>
   </footer>

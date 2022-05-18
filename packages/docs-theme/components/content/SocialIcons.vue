@@ -4,7 +4,7 @@ import { useDocus } from '#imports'
 defineProps({
   size: {
     type: String,
-    default: 'w-4 h-4',
+    default: 'w-5 h-5',
   },
   spacing: {
     type: String,
@@ -18,23 +18,21 @@ const { theme } = useDocus()
 <template>
   <a
     v-if="theme?.socials?.twitter"
-    :href="`https://twitter.com/${theme?.socials?.twitter}`"
+    :href="`https://twitter.com/${theme.socials.twitter}`"
     target="_blank"
     rel="noopener noreferrer"
-    title="Twitter"
-    name="Twitter"
+    :title="theme.socials.twitter"
     class="icon-base"
     :class="[spacing]"
   >
     <Icon name="fa-brands:twitter" :class="size" />
   </a>
   <a
-    v-if="theme.github?.repository"
-    :href="`https://github.com/${theme?.github?.repository}`"
+    v-if="theme.socials?.github"
+    :href="`https://github.com/${theme.socials.github}`"
     target="_blank"
     rel="noopener noreferrer"
-    title="GitHub"
-    name="GitHub"
+    :title="theme.socials.github"
     class="icon-base"
     :class="[spacing]"
   >

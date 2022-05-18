@@ -8,4 +8,4 @@
   <a href="https://www.npmjs.com/package/docus"><img src="https://badgen.net/npm/license/docus" alt="License"></a>
 </p>
 
-Docus is the fastest way to create documentations websites with [**Nuxt3**](https://v3.nuxtjs.org).
+Docus is the fastest way to create document-driven websites.

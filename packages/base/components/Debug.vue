@@ -40,7 +40,7 @@ Object.entries({
     () => {
       if (key === 'page')
         // eslint-disable-next-line no-console
-        console.log(`[${icons[key]}] Page updates detected! ${`(${(reference.value as ParsedContent)?.title})` || `(${(reference.value as ParsedContent)?.id})` || ''}`)
+        console.log(`[${icons[key]}] Page updates detected! ${`(${(reference.value as ParsedContent)?.title})` || `(${(reference.value as ParsedContent)?._id})` || ''}`)
       // eslint-disable-next-line no-console
       else console.log(`[${icons[key]}] ${key[0].toUpperCase() + key.slice(1, key.length)} updates detected!`)
 

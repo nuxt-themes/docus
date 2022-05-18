@@ -63,16 +63,13 @@ useHead({
 
 <template>
   <div>
-    <ContentRenderer v-if="page" :key="page.id" class="docus-content" :value="page">
+    <ContentRenderer v-if="page" :key="page._id" class="docus-content" :value="page">
       <template #empty="{ value }">
-        <Alert style="margin: 0" type="primary">
-          <p>
-            You have succesfully created the page <span>{{ value.path }}</span>
-
-            <br /><br />
-
-            You can now start writing into it!
-          </p>
+        <Alert type="success">
+          You have succesfully created the page: <span class="font-bold">{{ value._path }}</span>
+        </Alert>
+        <Alert type="info">
+          You can now start writing into <span>{{ value._source }}/{{ value._file }}</span>
         </Alert>
       </template>
     </ContentRenderer>

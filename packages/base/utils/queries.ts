@@ -9,7 +9,7 @@ const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
 
   const { layoutFromPath } = useDocusNavigation()
 
-  const layoutFromNav = layoutFromPath(page.path, navigation)
+  const layoutFromNav = layoutFromPath(page._path, navigation)
 
   if (layoutFromNav) return layoutFromNav
 
@@ -27,16 +27,16 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   const { theme } = useDocus()
 
   // Page is already fetched, apply it
-  if (!force && page.value && page.value.path === path) {
+  if (!force && page.value && page.value._path === path) {
     route.meta.layout = findLayout(page.value, theme.value, navigation.value)
     return
   }
 
   // Fetch page
   return await Promise.all([
-    queryContent().where({ path }).findOne() as Promise<ParsedContent>,
+    queryContent().where({ _path: path }).findOne() as Promise<ParsedContent>,
     queryContent()
-      .where({ partial: { $not: true }, navigation: { $not: false } })
+      .where({ _partial: { $not: true }, navigation: { $not: false } })
       .findSurround(path) as Promise<ParsedContent[]>,
   ])
     .then(async ([_page, _surround]) => {
@@ -88,15 +88,17 @@ export const queryTheme = async (force = false) => {
   // Fetch _theme.yml at `content/` root.
   await queryContent()
     .where({
-      id: 'content:_theme.yml',
+      _id: 'content:_theme.yml',
     })
+    .without('_')
     .findOne()
+    .catch((e) => null)
     .then((_theme) => {
       if (!_theme) {
-        console.warn('Could not find _theme.yml!')
+        console.warn('Could not find theme configuration, create a content/_theme.yml file')
         return
       }
 
-      theme.value = _theme.body
+      theme.value = _theme
     })
 }

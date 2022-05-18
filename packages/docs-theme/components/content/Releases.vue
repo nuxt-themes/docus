@@ -11,51 +11,48 @@ const formatDateByLocale = (date: string) => {
 </script>
 
 <template>
-  <Container class="relative flex flex-col lg:py-4 lg:gap-4 lg:px-6">
-    <GithubReleases v-slot="{ releases }">
-      <div v-for="release of releases" :key="release.name" class="release surface-border flex flex-col-reverse lg:border-b lg:flex-row lg:pb-0">
-        <!-- Body -->
-        <div class="flex-1 p-4 sm:p-6 lg:p-0">
-          <ContentRenderer :value="release" class="docus-content" />
+  <GithubReleases v-slot="{ releases }">
+    <div v-for="release of releases" :key="release.name" class="flex flex-col-reverse pb-6 mb-6 border-gray-100 release dark:border-gray-800 lg:border-b lg:flex-row">
+      <!-- Body -->
+      <div class="flex-1 p-4 sm:p-6 lg:p-0">
+        <ContentRenderer :value="release" class="docus-content" />
+        <ReleasesReactions class="lg:mb-4" :release="release" />
+      </div>
 
-          <ReleasesReactions class="lg:mb-4" :release="release" />
-        </div>
+      <!-- Header -->
+      <div
+        class="sticky flex flex-row items-center self-start justify-end justify-between w-full gap-2 px-4 py-2 text-right lg:py-4 lg:py-0 release-meta surface z-1 lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none lg:items-end lg:flex-col sm:px-6 lg:px-0"
+      >
+        <a :href="release.url" target="_blank">
+          <h2 :id="release.name" class="text-2xl font-bold transition-colors cursor-pointer hover:text-secondary-hover transition-base lg:text-3xl">
+            {{ release.name }}
+          </h2>
+        </a>
 
-        <!-- Header -->
-        <div
-          class="py-2 lg:py-4 lg:py-0 release-meta surface z-1 sticky lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none flex flex-row items-center justify-between lg:items-end w-full lg:flex-col justify-end gap-2 self-start text-right px-4 sm:px-6 lg:px-0"
-        >
-          <a :href="release.url" target="_blank">
-            <h2 :id="release.name" class="hover:text-secondary-hover transition-base cursor-pointer text-2xl font-bold transition-colors lg:text-3xl">
-              {{ release.name }}
-            </h2>
+        <div class="flex flex-col gap-2 pb-4">
+          <a
+            v-if="release.author"
+            target="_blank"
+            :href="release.author.url"
+            class="flex items-center justify-end gap-2 transition-colors hover:text-secondary-hover transition-base"
+          >
+            <div class="flex-shrink-0">
+              <img class="w-6 h-6 rounded-full" :src="release.author?.avatar" alt="" />
+            </div>
+            <p class="text-sm lg:text-base">@{{ release.author.name }}</p>
           </a>
 
-          <div class="flex flex-col gap-2 pb-4">
-            <a
-              v-if="release.author"
-              target="_blank"
-              :href="release.author.url"
-              class="hover:text-secondary-hover transition-base flex items-center justify-end gap-2 transition-colors"
-            >
-              <div class="flex-shrink-0">
-                <img class="h-6 w-6 rounded-full" :src="release.author?.avatar" alt="" />
-              </div>
-              <p class="text-sm lg:text-base">@{{ release.author.name }}</p>
-            </a>
-
-            <p class="text-xs lg:text-base">{{ formatDateByLocale(release.date) }}</p>
-          </div>
+          <p class="text-xs lg:text-base">{{ formatDateByLocale(release.date) }}</p>
         </div>
       </div>
-    </GithubReleases>
-  </Container>
+    </div>
+  </GithubReleases>
 </template>
 
 <style lang="postcss" scoped>
 .release {
   &:last-of-type {
-    @apply border-none;
+    @apply border-none mb-0;
   }
 }
 

@@ -9,9 +9,6 @@ header:
   logo: true
 aside:
   level: 1
-  filter:
-    - /releases
-    - /
 footer:
   credits:
     icon: "IconNuxtLabs"

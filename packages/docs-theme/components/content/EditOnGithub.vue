@@ -51,7 +51,7 @@ const path = computed(() => {
     // Use content dir
     if (props.contentDir) dirParts.push(props.contentDir)
     // Get page file from page data
-    dirParts.push(`${page.value.path}.${page.value.extension}`)
+    dirParts.push(`${page.value._path}.${page.value.extension}`)
     return dirParts
   }
 

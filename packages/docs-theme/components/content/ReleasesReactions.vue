@@ -38,10 +38,10 @@ const reactions = computed(() => {
 </script>
 
 <template>
-  <div v-if="reactions.length" class="flex gap-4 flex-1 flex-wrap">
-    <Badge v-for="reaction of reactions" :key="reaction.key" type="primary">
+  <div v-if="reactions.length" class="flex flex-wrap flex-1 gap-4">
+    <Badge v-for="reaction of reactions" :key="reaction.key" type="gray">
       {{ map[reaction.key] }}
-      <span class="font-semibold ml-2">
+      <span class="ml-2 font-semibold">
         {{ reaction.value }}
       </span>
     </Badge>
