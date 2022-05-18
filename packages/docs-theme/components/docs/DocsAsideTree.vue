@@ -16,10 +16,7 @@ const props = defineProps({
     default: null
   }
 })
-const emit = defineEmits(['close', 'select'])
-
 const route = useRoute()
-const router = useRouter()
 
 function isActive (link) {
   return link.exact ? route.path === link.path : route.path.startsWith(link.path)
@@ -72,7 +69,6 @@ const hasNesting = computed(() => props.tree.some((link: any) => link.children))
         :level="level + 1"
         :max="max"
         class="py-2"
-        @select="(link) => $emit('select', link)"
         @close="$emit('close')"
       />
     </li>
