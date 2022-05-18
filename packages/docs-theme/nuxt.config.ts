@@ -25,11 +25,6 @@ const components = [
   },
   {
     prefix: '',
-    path: './components/globals',
-    global: true,
-  },
-  {
-    prefix: '',
     path: './components/content',
     global: true,
   },

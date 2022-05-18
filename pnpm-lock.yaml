@@ -58,7 +58,7 @@ importers:
       defu: ^6.0.0
       nuxt: ^3.0.0-rc.3
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27548036.26c8e11
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27548144.649a93c
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27547729.5c0f515
       '@vueuse/core': 8.5.0
       '@vueuse/nuxt': 8.5.0
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27548036.26c8e11
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27548144.649a93c
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -693,8 +693,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.0-27548036.26c8e11:
-    resolution: {integrity: sha512-cBj0D9r5CvdQkXsmSBe6xwvi192PvAGLmDta+LOwd+7/qIFJgUOjFZQgZDlbzeuSfPq08hZ+0slWoDBKyEoVdA==}
+  /@nuxt/content-edge/2.0.0-27548144.649a93c:
+    resolution: {integrity: sha512-/4bwegZC5RM+CogsyYuW1h6Wz7QWFZIzee/9ww0K6s1V9Wn02lsmfVOFInVHdeCl8JleasKKndDYnbQf9r/utw==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -9685,7 +9685,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
 
   /widest-line/3.1.0:
     resolution: {integrity: sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==}

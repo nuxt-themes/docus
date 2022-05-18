@@ -144,6 +144,12 @@ body {
   @apply min-h-screen font-sans antialiased text-gray-700 dark:text-gray-200;
 }
 
+.docus-content {
+  & > :first-child {
+    margin-top: 0 !important;
+  }
+}
+
 .alert,
 .badge {
   &.primary {

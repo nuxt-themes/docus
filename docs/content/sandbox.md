@@ -1,5 +1,3 @@
 ---
 layout: docs
 ---
-
-Hello
