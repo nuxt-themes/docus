@@ -3,7 +3,7 @@ import { useConvertPropToPixels } from '../composables/useScrollToHeading'
 
 // https://router.vuejs.org/api/#routeroptions
 export default <RouterConfig>{
-  scrollBehavior: (to) => {
+  scrollBehavior: (to, _, savedPosition) => {
     // Scroll to heading on click
     if (to.hash) {
       setTimeout(() => {
@@ -28,8 +28,10 @@ export default <RouterConfig>{
     }
 
     // Scroll to top of window
-    window.scrollTo({
-      top: 0,
-    })
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
   },
 }
