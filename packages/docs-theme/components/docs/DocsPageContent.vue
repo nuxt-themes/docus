@@ -17,8 +17,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative">
-    <div class="pb-4 flex flex-col-reverse sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
+  <Container padded class="relative pb-4 flex flex-col-reverse sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
       <!-- Aside -->
       <aside v-if="aside" class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
         <DocsAside />
@@ -60,8 +59,7 @@ const isOpen = ref(false)
           <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
         </div>
       </div>
-    </div>
-  </Container>
+    </Container>
 </template>
 
 <style lang="postcss" scoped>

@@ -89,6 +89,26 @@
   .link {
     @apply hover:text-secondary-hover transition-colors transition-base;
   }
+
+  /* Scrollbar */
+  .custom-scrollbar {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: var(--scrollbar-track);
+    }
+
+    &::-webkit-scrollbar{
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: .25rem
+    }
+  }
 }
 
 /* Variables */
@@ -107,38 +127,21 @@
 }
 
 html {
-  @apply text-primary antialiased font-sans min-h-screen overflow-y-scroll overflow-x-hidden bg-white;
+  @apply text-primary antialiased font-sans min-h-screen overflow-y-scroll overflow-x-hidden bg-white custom-scrollbar;
 
   /* Scrollbar settings */
-  --scrollbar-track: theme('colors.gray.300');
-  --scrollbar-thumb: theme('colors.gray.200');
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb);
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: var(--scrollbar-track);
-  }
-
-  &::-webkit-scrollbar{
-    width: 8px;
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: .25rem
-  }
+  --scrollbar-track: theme('colors.gray.200');
+  --scrollbar-thumb: theme('colors.gray.300');
 
   &.dark {
     @apply bg-gray-900;
-    --scrollbar-track: theme('colors.gray.900');
-    --scrollbar-thumb: theme('colors.gray.800');
+    --scrollbar-track: theme('colors.gray.800');
+    --scrollbar-thumb: theme('colors.gray.900');
   }
 }
 
 body {
-  @apply min-h-screen font-sans text-gray-700 antialiased dark:text-gray-200;
+  @apply min-h-screen font-sans antialiased text-gray-700 dark:text-gray-200;
 }
 
 .docus-content {

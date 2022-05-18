@@ -57,7 +57,7 @@ div {
 }
 
 :deep(pre) {
-  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed;
+  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed custom-scrollbar;
 }
 
 :deep(code) {

@@ -26,6 +26,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.3",
+    "@octokit/graphql": "^4.8.0",
+    "@octokit/rest": "^18.12.0",
     "remark-github": "^11.2.2"
   },
   "devDependencies": {

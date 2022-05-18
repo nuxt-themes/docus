@@ -1,13 +1,20 @@
-import { defineNuxtRouteMiddleware, githubReleases, useDocusState, useState } from '#imports'
+import { defineNuxtRouteMiddleware, useDocusState, useGithub, useState } from '#imports'
 
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async () => {
   const { theme } = useDocusState()
 
-  if (!theme.value?.github || !theme.value?.github?.repository) return
+  if (!theme.value?.github) return
 
-  const state = useState('docus-last-release')
+  const { fetchRepository, fetchLastRelease } = useGithub()
 
-  if (state.value) return
+  const lastReleaseState = useState('docus-last-release')
 
-  await githubReleases({ per_page: '1' }).then(([release]) => (state.value = release))
+  const repositoryState = useState('docus-repository')
+
+  if (lastReleaseState.value && repositoryState.value) return
+
+  await Promise.all([fetchLastRelease(), fetchRepository()]).then(([lastRelease, repository]) => {
+    lastReleaseState.value = lastRelease
+    repositoryState.value = repository
+  })
 })
