@@ -1,52 +1,31 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { computed, reactive, useRoute, useRouter, watch } from '#imports'
-import { NuxtLink } from '#components'
+import { computed, useRoute, useRouter } from '#imports'
 
 const props = defineProps({
   tree: {
     type: Array as PropType<any>,
-    default: () => [],
+    default: () => []
   },
   level: {
     type: Number,
-    default: 0,
+    default: 0
   },
   max: {
     type: Number,
-    default: null,
-  },
+    default: null
+  }
 })
 const emit = defineEmits(['close', 'select'])
 
 const route = useRoute()
 const router = useRouter()
 
-const isChildOpen = reactive({})
-
-function isActive(link) {
+function isActive (link) {
   return link.exact ? route.path === link.path : route.path.startsWith(link.path)
 }
 
 const hasNesting = computed(() => props.tree.some((link: any) => link.children))
-
-function toggleDir(path, force?) {
-  isChildOpen[path] = force ? true : !isChildOpen[path]
-}
-
-watch(
-  () => route.path,
-  () => {
-    const paths = route.path.split('/')
-    for (let i = paths.length; i > 1; i--) {
-      paths.pop()
-      toggleDir(paths.join('/'), true)
-    }
-
-    toggleDir(route.path, true)
-  },
-  { immediate: true },
-)
 </script>
 
 <template>
@@ -54,7 +33,7 @@ watch(
     <li
       v-for="(link, index) in tree"
       :key="link.path"
-      class="transition-base transition-colors"
+      class="transition-colors transition-base"
       :class="[
         {
           'border-l-2': level > 0 || !hasNesting,
@@ -63,22 +42,29 @@ watch(
         },
       ]"
     >
-      <component
-        :is="link?.children ? 'span' : NuxtLink"
+      <div v-if="link.children" class="flex items-center justify-between mt-2 text-sm font-semibold text-gray-900 dark:text-gray-200">
+        <span class="inline-flex items-center">
+          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-2" />
+          <span>{{ link.title }}</span>
+        </span>
+      </div>
+      <NuxtLink
+        v-else
         :to="link.path"
+        class="flex items-center justify-between text-sm py-1.5"
         :exact="link.exact"
-        class="flex cursor-pointer items-center justify-between py-1.5"
         :class="{
           'pl-3': level > 0 || !hasNesting,
-          '!text-primary font-semibold': link.children,
-          '!pt-0': level === 0 && index === 0 && hasNesting,
-          'text-secondary-active': isActive(link),
-          'text-secondary text-secondary-hover': !isActive(link),
+          '!pt-0': level === 0 && index === 0,
+          'text-primary font-semibold': isActive(link),
+          'hover:text-secondary-hover': !isActive(link),
         }"
       >
-        <span>{{ link.title }}</span>
-        <Icon v-if="link.icon" :name="link.icon" class="h-5 w-5" />
-      </component>
+        <span class="inline-flex items-center">
+          <Icon v-if="link.icon" :name="link.icon" class="w-5 h-5 mr-2" />
+          <span>{{ link.title }}</span>
+        </span>
+      </NuxtLink>
 
       <DocsAsideTree
         v-if="link.children?.length && (max === null || level + 1 < max)"

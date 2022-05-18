@@ -83,8 +83,8 @@ const link = computed(() => {
 </script>
 
 <template>
-  <a :href="link" target="_blank" rel="noopener" class="hover:text-secondary-hover transition-base flex items-center transition-colors">
-    <Icon name="heroicons-outline:pencil-alt" class="mr-1 h-6 w-6" />
+  <a :href="link" target="_blank" rel="noopener" class="flex items-center transition-colors hover:text-primary-hover transition-base">
+    <Icon name="heroicons-outline:pencil-alt" class="w-6 h-6 mr-1" />
     <span>Edit on GitHub</span>
   </a>
 </template>

@@ -36,18 +36,18 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 
 <template>
   <div class="flex flex-col space-y-4">
-    <NuxtLink v-if="prev" :to="prev.path" class="group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
-      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
-        <Icon name="heroicons-solid:chevron-double-left" class="h-6 w-6" />
+    <NuxtLink v-if="prev" :to="prev.path" class="flex items-center overflow-hidden font-semibold group gap-x-3 lg:flex-row-reverse">
+      <div class="flex-shrink-0 rounded-lg text-secondary-group-hover transition-base">
+        <Icon name="heroicons-solid:chevron-double-left" class="w-6 h-6" />
       </div>
 
       <span class="truncate">{{ prev.title }}</span>
     </NuxtLink>
 
     <template v-if="toc?.links?.length">
-      <div class="flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
+      <div class="flex items-center overflow-hidden font-semibold gap-x-3 lg:flex-row-reverse">
         <div class="flex-shrink-0 rounded-lg">
-          <Icon name="heroicons-outline:view-grid" class="h-6 w-6" />
+          <Icon name="heroicons-outline:view-grid" class="w-6 h-6" />
         </div>
 
         <span class="truncate">On this page</span>
@@ -57,14 +57,14 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         <li
           v-for="link in toc.links"
           :key="link.text"
-          class="transition-base group min-w-0 border-l-2 transition-colors lg:border-r-2 lg:border-l-0 lg:text-right"
+          class="min-w-0 transition-colors border-l-2 transition-base group lg:border-r-2 lg:border-l-0 lg:text-right"
           :class="activeHeadings.includes(link.id) ? 'border-primary-400 dark:border-primary-600' : 'border-gray-200 dark:border-gray-700'"
         >
           <a
             :href="`#${link.id}`"
-            class="text-secondary-group-hover block truncate text-sm py-1 pl-3 lg:pr-3"
+            class="block py-1 pl-3 text-sm truncate text-secondary-group-hover lg:pr-3"
             :class="{
-              'text-secondary-active': activeHeadings.includes(link.id),
+              'text-primary-active': activeHeadings.includes(link.id),
               'text-secondary': !activeHeadings.includes(link.id),
             }"
             @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
@@ -75,9 +75,9 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
       </ul>
     </template>
 
-    <NuxtLink v-if="next" :to="next.path" class="group flex items-center gap-x-3 overflow-hidden font-semibold lg:flex-row-reverse">
-      <div class="text-secondary-group-hover transition-base flex-shrink-0 rounded-lg">
-        <Icon name="heroicons-solid:chevron-double-right" class="h-6 w-6" />
+    <NuxtLink v-if="next" :to="next.path" class="flex items-center overflow-hidden font-semibold group gap-x-3 lg:flex-row-reverse">
+      <div class="flex-shrink-0 rounded-lg text-secondary-group-hover transition-base">
+        <Icon name="heroicons-solid:chevron-double-right" class="w-6 h-6" />
       </div>
 
       <span class="truncate">{{ next.title }}</span>
