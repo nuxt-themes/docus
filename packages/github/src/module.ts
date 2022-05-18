@@ -152,7 +152,7 @@ export default defineNuxtModule<ModuleOptions>({
       // @ts-expect-error - Untyped hook
       nuxt.hook('content:context', (context) => {
         context.markdown.remarkPlugins = context.markdown.remarkPlugins || []
-        context.markdown.remarkPlugins.push(['remark-github', { repository: `${options.repo}/${options.owner}` }])
+        context.markdown.remarkPlugins.push(['remark-github', { repository: `${options.owner}/${options.repo}` }])
       })
       nuxt.hook('nitro:config', (nitroConfig) => {
         nitroConfig.externals.traceInclude = nitroConfig.externals.traceInclude || []
