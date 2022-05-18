@@ -16,7 +16,7 @@ const formatDateByLocale = (date: string) => {
       <div v-for="release of releases" :key="release.name" class="release surface-border flex flex-col-reverse lg:border-b lg:flex-row lg:pb-0">
         <!-- Body -->
         <div class="flex-1 p-4 sm:p-6 lg:p-0">
-          <Document :value="release" class="docus-content" />
+          <ContentRenderer :value="release" class="docus-content" />
 
           <ReleasesReactions class="lg:mb-4" :release="release" />
         </div>

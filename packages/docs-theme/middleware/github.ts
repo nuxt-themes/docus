@@ -1,23 +1,11 @@
-import { withQuery } from 'ufo'
-import { defineNuxtRouteMiddleware, useDocusState, useState } from '#imports'
+import { defineNuxtRouteMiddleware, useDocusState, useGithub, useState } from '#imports'
 
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async () => {
   const { theme } = useDocusState()
 
-  const fetchRepository = async () => {
-    const url = '/api/_github/repository'
+  if (!theme.value?.github) return
 
-    return $fetch(url)
-  }
-
-  const fetchLastRelease = async () => {
-    const url = withQuery('/api/_github/releases', { last: true } as any)
-
-    return $fetch(url)
-  }
-
-  /*
-  if (!theme.value?.github || !theme.value?.github?.repository) return
+  const { fetchRepository, fetchLastRelease } = useGithub()
 
   const lastReleaseState = useState('docus-last-release')
 
@@ -29,5 +17,4 @@ export default defineNuxtRouteMiddleware(async (to) => {
     lastReleaseState.value = lastRelease
     repositoryState.value = repository
   })
-  */
 })

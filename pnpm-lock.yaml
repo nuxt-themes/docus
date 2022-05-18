@@ -58,8 +58,8 @@ importers:
       defu: ^6.0.0
       nuxt: ^3.0.0-rc.3
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27546708.e5a83d4
-      '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27546723.218b36a
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27546821.e67a75f
+      '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27547729.5c0f515
       '@vueuse/core': 8.5.0
       '@vueuse/nuxt': 8.5.0
       defu: 6.0.0
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27546708.e5a83d4
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27546821.e67a75f
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -690,8 +690,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.0-27546708.e5a83d4:
-    resolution: {integrity: sha512-ex33+L9beIE89Unf6YipyV7drIeIsp5ZOHjbC9K8rWNhQJimqlgDvj+ONhkpTy45FXc3bOb/2DdIi2drI3vmiw==}
+  /@nuxt/content-edge/2.0.0-27546821.e67a75f:
+    resolution: {integrity: sha512-Z+NoOvJo1wmEwQRV8Pl7PwlaG/mLkxrgcsam2iHO/5oIFe8ABujNm2SSbcdYJyO1+Lskco4QVrUaWMoDROPqOQ==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -1027,7 +1027,7 @@ packages:
       defu: 6.0.0
       esbuild: 0.14.39
       escape-string-regexp: 5.0.0
-      externality: 0.2.1
+      externality: 0.2.2
       fs-extra: 10.1.0
       get-port-please: 2.5.0
       h3: 0.7.8
@@ -1054,12 +1054,12 @@ packages:
       - supports-color
       - webpack
 
-  /@nuxthq/admin-edge/0.0.1-27546723.218b36a:
-    resolution: {integrity: sha512-4Lz4hDLnDO5v4cQBUppxuojx9+P5LAYYi5ZSBO3YR9IBY0xZIT2wk1VMev9ECXk8IXfr17wMqY/PImS47E+81A==}
+  /@nuxthq/admin-edge/0.0.1-27547729.5c0f515:
+    resolution: {integrity: sha512-G34kn0cdYhb+qOu90lalCBFVrwDU5EvZcwC3OTTbWETFPkVDue9goUekRtQqMi41/8bVb14cFSEPI9xqow73LQ==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       nuxt-component-meta: 0.1.5
-      socket.io-client: 4.5.0
+      socket.io-client: 4.5.1
       unstorage: 0.4.1
     transitivePeerDependencies:
       - bufferutil
@@ -2250,8 +2250,8 @@ packages:
       pathe: 0.2.0
       rc9: 1.2.2
 
-  /cacache/16.0.7:
-    resolution: {integrity: sha512-a4zfQpp5vm4Ipdvbj+ZrPonikRhm6WBEd4zT1Yc1DXsmAxrPgDwWBLF/u/wTVXSFPIgOJ1U3ghSa2Xm4s3h28w==}
+  /cacache/16.1.0:
+    resolution: {integrity: sha512-Pk4aQkwCW82A4jGKFvcGkQFqZcMspfP9YWq9Pr87/ldDvlWf718zeI6KWCdKt/jeihu6BytHRUicJPB1K2k8EQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       '@npmcli/fs': 2.1.0
@@ -4033,13 +4033,13 @@ packages:
       iconv-lite: 0.4.24
       tmp: 0.0.33
 
-  /externality/0.2.1:
-    resolution: {integrity: sha512-1R7M3n0wE/Db4Qc/oCqMiQ/MK6kbMhoIQyvpIqneQyZrnaCSlg6Gz7pOxH/xiiuVRI+Qb8rCtK0VYIFHZhTrlg==}
+  /externality/0.2.2:
+    resolution: {integrity: sha512-seYffJRrRVI3qrCC0asf2mWAvQ/U0jZA+eECylqIxCDHzBs/W+ZeEv3D0bsjNeEewIYZKfELyY96mRactx8C4w==}
     dependencies:
       enhanced-resolve: 5.9.3
-      mlly: 0.4.3
-      pathe: 0.2.0
-      ufo: 0.7.11
+      mlly: 0.5.2
+      pathe: 0.3.0
+      ufo: 0.8.4
 
   /fast-deep-equal/3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -5604,7 +5604,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       agentkeepalive: 4.2.1
-      cacache: 16.0.7
+      cacache: 16.1.0
       http-cache-semantics: 4.1.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
@@ -6200,6 +6200,7 @@ packages:
 
   /mlly/0.4.3:
     resolution: {integrity: sha512-xezyv7hnfFPuiDS3AiJuWs0OxlvooS++3L2lURvmh/1n7UG4O2Ehz9UkwWgg3wyLEPKGVfJLlr2DjjTCl9UJTg==}
+    dev: true
 
   /mlly/0.5.2:
     resolution: {integrity: sha512-4GTELSSErv6ZZJYU98fZNuIBJcXSz+ktHdRrCYEqU1m6ZlebOCG0jwZ+IEd9vOrbpYsVBBMC5OTrEyLnKRcauQ==}
@@ -6470,7 +6471,7 @@ packages:
       lodash: 4.17.21
       minimatch: 5.1.0
       p-map: 4.0.0
-      pacote: 13.3.0
+      pacote: 13.4.0
       parse-github-url: 1.0.2
       progress: 2.0.3
       prompts: 2.4.2
@@ -6912,8 +6913,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /pacote/13.3.0:
-    resolution: {integrity: sha512-auhJAUlfC2TALo6I0s1vFoPvVFgWGx+uz/PnIojTTgkGwlK3Np8sGJ0ghfFhiuzJXTZoTycMLk8uLskdntPbDw==}
+  /pacote/13.4.0:
+    resolution: {integrity: sha512-GCeiEtCeaXBB00lqsVek87pozP16AguQ2OeW5COVD/ItTFkidfbd1zX1+s7P4k+mjmpqB6RPcCgAGY7/zM8rtQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -6921,7 +6922,7 @@ packages:
       '@npmcli/installed-package-contents': 1.0.7
       '@npmcli/promise-spawn': 3.0.0
       '@npmcli/run-script': 3.0.2
-      cacache: 16.0.7
+      cacache: 16.1.0
       chownr: 2.0.0
       fs-minipass: 2.1.0
       infer-owner: 1.0.4
@@ -8275,8 +8276,8 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: true
 
-  /socket.io-client/4.5.0:
-    resolution: {integrity: sha512-HW61c1G7OrYGxaI79WRn17+b03iBCdvhBj4iqyXHBoL5M8w2MSO/vChsjA93knG4GYEai1/vbXWJna9dzxXtSg==}
+  /socket.io-client/4.5.1:
+    resolution: {integrity: sha512-e6nLVgiRYatS+AHXnOnGi4ocOpubvOUCGhyWw8v+/FxW8saHkinG6Dfhi9TU0Kt/8mwJIAASxvw6eujQmjdZVA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@socket.io/component-emitter': 3.1.0
@@ -8964,6 +8965,7 @@ packages:
 
   /ufo/0.7.11:
     resolution: {integrity: sha512-IT3q0lPvtkqQ8toHQN/BkOi4VIqoqheqM1FnkNWT9y0G8B3xJhwnoKBu5OHx8zHDOvveQzfKuFowJ0VSARiIDg==}
+    dev: false
 
   /ufo/0.8.4:
     resolution: {integrity: sha512-/+BmBDe8GvlB2nIflWasLLAInjYG0bC9HRnfEpNi4sw77J2AJNnEVnTDReVrehoh825+Q/evF3THXTAweyam2g==}
@@ -9653,7 +9655,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 4.2.3
+      string-width: 1.0.2
 
   /widest-line/3.1.0:
     resolution: {integrity: sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==}
