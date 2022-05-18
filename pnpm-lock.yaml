@@ -535,6 +535,9 @@ packages:
     resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
     peerDependencies:
       vue: 3.x
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dev: false
 
   /@ioredis/commands/1.1.1:
@@ -993,6 +996,9 @@ packages:
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     peerDependencies:
       vue: 3.2.33
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       '@nuxt/schema': 3.0.0-rc.3
@@ -1017,6 +1023,9 @@ packages:
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     peerDependencies:
       vue: 3.2.33
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3_e6dh3b4pqlsdgc6etod5gyjrxy
       '@vitejs/plugin-vue': 2.3.3_vite@2.9.9+vue@3.2.33
@@ -1673,6 +1682,9 @@ packages:
     peerDependencies:
       vite: ^2.5.10
       vue: ^3.2.25
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       vite: 2.9.9
       vue: 3.2.33
@@ -1764,6 +1776,9 @@ packages:
     resolution: {integrity: sha512-4jpJHRD4ORv8PlbYi+/MfP8ec1okz6rybe36MdpkDrGIdEItHEUyaHSKvz+ptNEyQpALmmVfRteHkU9F8vxOew==}
     peerDependencies:
       vue: 3.2.33
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       '@vue/compiler-ssr': 3.2.33
       '@vue/shared': 3.2.33
@@ -1792,6 +1807,9 @@ packages:
     resolution: {integrity: sha512-cOWqCkT3WiF5oEpw+VVEWUJd9RLD5rc7DmnFp3cePsejp+t7686uKD9Z9ZU7Twb7R/BI8iexKTmXo9D/F3v6UA==}
     peerDependencies:
       vue: '>=3'
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       vue: 3.2.33
 
@@ -1806,6 +1824,8 @@ packages:
       vue: ^2.0.0 || >=3.0.0-rc.0
     peerDependenciesMeta:
       '@vue/composition-api':
+        optional: true
+      vue:
         optional: true
     dependencies:
       '@vueuse/core': 8.5.0
@@ -2679,6 +2699,9 @@ packages:
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       webpack: ^4.27.0 || ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       icss-utils: 5.1.0_postcss@8.4.13
       loader-utils: 2.0.2
@@ -7251,6 +7274,9 @@ packages:
     peerDependencies:
       postcss: ^7.0.0 || ^8.0.1
       webpack: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      webpack:
+        optional: true
     dependencies:
       cosmiconfig: 7.0.1
       klona: 2.0.5
@@ -9554,6 +9580,8 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+      vue:
+        optional: true
     dev: false
 
   /vue-eslint-parser/8.3.0_eslint@8.15.0:
@@ -9584,6 +9612,9 @@ packages:
     resolution: {integrity: sha512-xa+pIN9ZqORdIW1MkN2+d9Ui2pCM1b/UMgwYUCZOiFYHAvz/slKKBDha8DLrh5aCG/RibtrpyhKjKOZ85tYyWg==}
     peerDependencies:
       vue: ^3.2.0
+    peerDependenciesMeta:
+      vue:
+        optional: true
     dependencies:
       '@vue/devtools-api': 6.1.4
       vue: 3.2.33
