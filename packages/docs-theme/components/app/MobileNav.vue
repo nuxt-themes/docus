@@ -53,11 +53,12 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
         <div
           id="mobile-nav-surface"
           :class="[visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0']"
-          class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)]"
+          class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right overflow-hidden transform transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)] border shadow-xl surface surface-border rounded-2xl"
           @click="toggle"
         >
-          <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto border shadow-xl surface surface-border rounded-2xl" @click.stop.prevent>
+          <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto custom-scrollbar" @click.stop.prevent>
             <DocsAsideTree :links="links" />
+
             <div class="flex items-center justify-end gap-4 px-6 mt-4">
               <SocialIcons />
               <ThemeSelect size="h-6 w-6" />

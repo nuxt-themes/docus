@@ -2,11 +2,15 @@
 const formatDateByLocale = (date: string) => {
   const currentLocale = 'en-US'
 
-  return new Intl.DateTimeFormat(currentLocale, {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(Date.parse(date))
+  try {
+    return new Intl.DateTimeFormat(currentLocale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(Date.parse(date))
+  } catch (_) {
+    return date
+  }
 }
 </script>
 
