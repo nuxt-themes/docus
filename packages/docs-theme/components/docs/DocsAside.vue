@@ -11,7 +11,7 @@ const level = computed(() => theme.value?.aside?.level || 0)
 
 const filtered = computed(() => theme.value?.aside?.filter || [])
 
-const tree = computed(() => {
+const links = computed(() => {
   let nav = navigation.value || []
 
   // Filter if `aside.level` is enabled in theme configuration
@@ -46,8 +46,7 @@ const tree = computed(() => {
 
 <template>
   <nav>
-    <DocsAsideTree v-if="tree && tree.length > 0" :tree="tree" />
-
+    <DocsAsideTree v-if="links?.length > 0" :links="links" />
     <NuxtLink v-else to="/" class="flex items-center text-lg cursor-pointer text-secondary hover:text-secondary-hover">
       <Icon name="heroicons-outline:arrow-left" class="w-6 h-6" />
       <span class="ml-2">Go back</span>

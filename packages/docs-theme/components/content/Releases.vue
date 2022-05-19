@@ -14,14 +14,14 @@ const formatDateByLocale = (date: string) => {
   <GithubReleases v-slot="{ releases }">
     <div v-for="release of releases" :key="release.name" class="flex flex-col-reverse pb-6 mb-6 border-gray-100 release dark:border-gray-800 lg:border-b lg:flex-row">
       <!-- Body -->
-      <div class="flex-1 p-4 sm:p-6 lg:p-0">
+      <div class="flex-1">
         <ContentRenderer :value="release" class="docus-content" />
         <ReleasesReactions class="lg:mb-4" :release="release" />
       </div>
 
       <!-- Header -->
       <div
-        class="sticky flex flex-row items-center self-start justify-end justify-between w-full gap-2 px-4 py-2 text-right lg:py-4 lg:py-0 release-meta surface z-1 lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none lg:items-end lg:flex-col sm:px-6 lg:px-0"
+        class="sticky flex flex-row items-center self-start justify-between w-full gap-2 py-2 text-right lg:py-0 release-meta surface z-1 lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none lg:items-end lg:flex-col"
       >
         <a :href="release.url" target="_blank">
           <h2 :id="release.name" class="text-2xl font-bold transition-colors cursor-pointer hover:text-secondary-hover transition-base lg:text-3xl">

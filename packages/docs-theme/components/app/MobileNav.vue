@@ -3,15 +3,16 @@ import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
 
 const { navigation, theme } = useDocus()
 
-const tree = computed(() => {
-  return navigation.value.filter((item) => {
-    if (item._path === '/') return false
+const asideLevel = computed(() => theme.value.aside?.level || 0)
+const filtered = computed(() => theme.value?.aside?.filter || [])
+const links = computed(() => {
+  return (navigation.value || []).filter((item) => {
+    if (filtered.value.includes(item._path)) return false
     return true
   })
 })
 
 const { visible, open, close, toggle } = useMenu()
-
 const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
 watch(visible, (v) => (v ? open() : close()))
@@ -56,11 +57,10 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
           @click="toggle"
         >
           <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto border-2 shadow-xl surface surface-border rounded-2xl" @click.stop.prevent>
-            <DocsAsideTree :tree="tree" />
-
+            <DocsAsideTree :links="links" />
             <div class="flex items-center justify-end gap-4 px-6 mt-4">
-              <SocialIcons size="h-6 w-6" spacing="lg:mr-1.5" />
-              <ThemeSelect size="h-6 w-6" spacing="lg:mr-1.5" />
+              <SocialIcons />
+              <ThemeSelect />
             </div>
           </div>
         </div>
