@@ -18,3 +18,4 @@ const { theme } = useDocus()
 
     <Footer />
   </div>
+</template>
