@@ -36,16 +36,9 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
 
 <template>
   <div class="flex flex-col space-y-1 sm:space-y-2">
-    <NuxtLink v-if="prev" :to="prev._path" class="flex items-center overflow-hidden font-semibold group gap-x-3 lg:flex-row-reverse">
-      <div class="flex-shrink-0 rounded-lg text-secondary-group-hover transition-base">
-        <Icon name="heroicons-solid:chevron-double-left" class="w-6 h-6" />
-      </div>
-      <span class="truncate">{{ prev.title }}</span>
-    </NuxtLink>
-
     <template v-if="toc?.links?.length">
-      <div class="items-center hidden overflow-hidden font-semibold truncate lg:flex">
-        Table of Contents
+      <div class="items-center hidden overflow-hidden font-semibold lg:flex">
+        <span>Table of Contents</span>
       </div>
       <ul class="pl-3">
         <li
@@ -69,13 +62,5 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
         </li>
       </ul>
     </template>
-
-    <NuxtLink v-if="next" :to="next._path" class="flex items-center overflow-hidden font-semibold group gap-x-3 lg:flex-row-reverse">
-      <div class="flex-shrink-0 rounded-lg text-secondary-group-hover transition-base">
-        <Icon name="heroicons-solid:chevron-double-right" class="w-6 h-6" />
-      </div>
-
-      <span class="truncate">{{ next.title }}</span>
-    </NuxtLink>
   </div>
 </template>

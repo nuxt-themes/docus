@@ -49,8 +49,8 @@ const isOpen = ref(false)
       }"
       class="relative sticky flex items-center px-4 -mx-4 -mt-8 border-b surface-border lg:border-none toc top-header sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-page lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
-      <div>
-        <button class="flex items-center gap-1 py-3 lg:hidden" @click="isOpen = !isOpen">
+      <div class="w-full cursor-pointer" @click="isOpen = !isOpen">
+        <button class="flex items-center gap-1 py-3 lg:hidden">
           <span class="text-xs font-semibold">Table of Contents</span>
           <Icon name="heroicons-outline:chevron-right" class="w-4 h-4 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
         </button>
