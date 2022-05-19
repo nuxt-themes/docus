@@ -47,7 +47,7 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="relative sticky flex items-center px-4 -mx-4 -mt-8 border-b surface-border lg:border-none toc top-header sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-page lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+      class="relative sticky flex items-center px-4 -mx-4 -mt-8 toc top-header sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:max-h-page lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div class="w-full cursor-pointer" @click="isOpen = !isOpen">
         <button class="flex items-center gap-1 py-3 lg:hidden">

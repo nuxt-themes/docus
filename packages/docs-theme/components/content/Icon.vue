@@ -1,7 +1,7 @@
 <script setup>
 import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
-import { useNuxtApp, ref, watch } from '#imports'
+import { useNuxtApp, ref, watch, computed } from '#imports'
 
 const nuxtApp = useNuxtApp()
 const props = defineProps({
