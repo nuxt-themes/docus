@@ -7,10 +7,6 @@ const findBottomLink = (link: NavItem) => {
   if (!link.children) return link._path
 
   for (const child of link?.children || []) {
-    if (!child.children) return child._path
-  }
-
-  for (const child of link?.children || []) {
     const result = findBottomLink(child)
     if (result) return result
   }

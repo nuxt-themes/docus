@@ -55,7 +55,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         class="flex items-center justify-between text-sm py-1.5"
         :exact="link.exact"
         :class="{
-          'pl-3': level > 0 || !hasNesting,
+          'pl-4': level > 0 || !hasNesting,
           '!pt-0': level === 0 && index === 0,
           'text-primary font-medium': isActive(link),
           'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200': !isActive(link),
