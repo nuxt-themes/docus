@@ -30,7 +30,7 @@ const icons = computed(() => theme.value?.footer?.icons || [])
           target="_blank"
           class="flex items-center text-sm font-medium icon-base"
         >
-          <Component :is="icon.component" />
+          <Icon :name="icon.component" />
         </a>
 
         <SocialIcons />

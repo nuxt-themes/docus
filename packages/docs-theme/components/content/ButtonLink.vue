@@ -15,16 +15,17 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  icon: {
+    type: String,
+    default: ''
+  }
 })
-
-const isExternal = computed(() => hasProtocol(props.href, true))
 </script>
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href">
+    <Icon v-if="icon" :name="icon" class="w-4 h-4 mr-2" />
     <Markdown :use="$slots.default" unwrap="p ul li" />
-
-    <Icon v-if="isExternal" name="heroicons-outline:link" class="ml-2 h-4 w-4" />
   </NuxtLink>
 </template>
 

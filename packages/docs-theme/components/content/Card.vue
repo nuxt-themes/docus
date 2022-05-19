@@ -25,7 +25,7 @@ const isImage = (icon: string) => String(icon).includes('.')
     <div class="relative w-full p-8 bg-gray-100 rounded-lg dark:bg-gray-900 dark:bg-opacity-50">
       <img v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
 
-      <component :is="icon" v-else class="inline-block w-16 h-16 mb-4 text-6xl" />
+      <Icon :name="icon" v-else class="inline-block w-16 h-16 mb-4 text-6xl" />
 
       <slot />
 

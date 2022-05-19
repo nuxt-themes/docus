@@ -1,8 +1,9 @@
 <script setup>
 import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
-import { ref, watch } from '#imports'
+import { useNuxtApp, ref, watch } from '#imports'
 
+const nuxtApp = useNuxtApp()
 const props = defineProps({
   name: {
     type: [String, Object],
@@ -15,6 +16,7 @@ const props = defineProps({
 })
 
 const icon = ref(props.icon || null)
+const component = computed(() => nuxtApp.vueApp.component(props.name))
 
 if (!props.icon) {
   icon.value = await loadIcon(props.name).catch(e => null)
@@ -29,6 +31,7 @@ if (!props.icon) {
 </script>
 
 <template>
-  <Iconify v-if="icon" :icon="icon" />
+  <Component v-if="component" :is="component" />
+  <Iconify v-else-if="icon" :icon="icon" />
   <span v-else>{{ props.name }}</span>
 </template>
