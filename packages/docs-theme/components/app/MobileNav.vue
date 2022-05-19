@@ -56,11 +56,11 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
           class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)]"
           @click="toggle"
         >
-          <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto border-2 shadow-xl surface surface-border rounded-2xl" @click.stop.prevent>
+          <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto border shadow-xl surface surface-border rounded-2xl" @click.stop.prevent>
             <DocsAsideTree :links="links" />
             <div class="flex items-center justify-end gap-4 px-6 mt-4">
               <SocialIcons />
-              <ThemeSelect />
+              <ThemeSelect size="h-6 w-6" />
             </div>
           </div>
         </div>

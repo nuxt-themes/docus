@@ -13,9 +13,6 @@ defineProps({
   },
 })
 
-// Preload icons as they are only rendered client-side
-const [lightIcon, darkIcon] = await Promise.all([await loadIcon('heroicons-outline:sun'), await loadIcon('heroicons-outline:moon')])
-
 const colorMode = useColorMode()
 
 type ColorMode = 'light' | 'dark'
@@ -35,8 +32,8 @@ const onClick = () => (mode.value === 'light' ? (mode.value = 'dark') : (mode.va
 <template>
   <button :class="[size, spacing]" class="block icon-base" aria-label="Color Mode" @click="onClick">
     <ClientOnly>
-      <Icon v-if="mode === 'dark'" :icon="lightIcon" :class="[spacing, size]" />
-      <Icon v-else :icon="darkIcon" :class="[spacing, size]" />
+      <Icon v-if="mode === 'dark'" name="heroicons-outline:sun" :class="[spacing, size]" />
+      <Icon v-else name="heroicons-outline:moon" :class="[spacing, size]" />
 
       <template #placeholder>
         <span class="block" :class="[size, spacing]"> ... </span>
