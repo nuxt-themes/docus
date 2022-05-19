@@ -22,8 +22,9 @@ export const themeConfig = {
   },
   footer: {
     credits: {
-      icon: 'IconNuxtLabs',
-      text: 'Made by NuxtLabs',
+      icon: 'IconDocus',
+      text: 'Powered by Docus',
+      href: 'https://docus.com'
     },
     icons: [
       {

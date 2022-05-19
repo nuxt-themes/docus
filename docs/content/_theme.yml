@@ -13,6 +13,7 @@ footer:
   credits:
     icon: "IconNuxtLabs"
     text: "Made by NuxtLabs"
+    href: "https://nuxtlabs.com"
   icons:
   - label: "NuxtJS"
     href: "https://nuxtjs.org"
