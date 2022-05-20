@@ -1,8 +1,8 @@
-import { defineComponent, useSlots } from 'vue'
+import { defineComponent, ref, useSlots } from 'vue'
 import type { PropType } from 'vue'
 import { useGithub } from '../composables/useGithub'
 import type { GithubReleasesQuery } from '../../module'
-import { onMounted, useAsyncData, useState } from '#imports'
+import { useAsyncData, useState } from '#imports'
 
 export default defineComponent({
   props: {
@@ -16,7 +16,8 @@ export default defineComponent({
 
     const { data: _releases, refresh } = await useAsyncData('github-releases-component', () => fetchReleases(props.query))
     // TODO: remove this painful workaround: hotfix for https://github.com/vuejs/core/issues/5513
-    const releases = useState('github-releases', () => _releases.value)
+    const releases = process.client ? useState('github-releases') : ref()
+    releases.value = releases.value || _releases.value
 
     return {
       releases,
