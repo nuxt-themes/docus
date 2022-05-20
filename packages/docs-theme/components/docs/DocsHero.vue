@@ -23,14 +23,14 @@ defineProps({
       <UBadge rounded label="Warning" />
 
       <span class="u-text-gray-500">
-        <Markdown unwrap="p" :use="$slots.badge" />
+        <Markdown :use="$slots.badge" unwrap="p" />
       </span>
     </div>
     <h1 v-if="$slots.title" class="mb-0 text-center text-7xl font-bold">
-      <Markdown unwrap="p" :use="$slots.title" />
+      <Markdown :use="$slots.title" unwrap="p" />
     </h1>
     <p v-if="$slots.description" class="w-1/2 text-center text-lg">
-      <Markdown unwrap="p" :use="$slots.description" />
+      <Markdown :use="$slots.description" unwrap="p" />
     </p>
     <div class="flex gap-x-8">
       <UButton

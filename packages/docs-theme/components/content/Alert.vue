@@ -17,7 +17,7 @@ defineProps({
   <div class="px-4 py-3 mt-4 mb-4 text-sm leading-relaxed alert rounded-xl" :class="[type]">
     <div class="flex items-start">
       <div class="flex-grow alert-content">
-        <Markdown unwrap="p" />
+        <Markdown :use="$slots.default" unwrap="p" />
       </div>
     </div>
   </div>
