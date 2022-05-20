@@ -15,7 +15,7 @@ export default defineComponent({
     const { fetchReleases } = useGithub()
 
     const { data: _releases, refresh } = await useAsyncData('github-releases-component', () => fetchReleases(props.query))
-    // TODO: remove this painful workaround
+    // TODO: remove this painful workaround: hotfix for https://github.com/vuejs/core/issues/5513
     const releases = useState('github-releases', () => _releases.value)
 
     return {
