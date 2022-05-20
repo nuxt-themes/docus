@@ -2,7 +2,7 @@ import { defineComponent, useSlots } from 'vue'
 import type { PropType } from 'vue'
 import { useGithub } from '../composables/useGithub'
 import type { GithubReleasesQuery } from '../../module'
-import { useAsyncData, useState } from '#imports'
+import { onMounted, useAsyncData, useState } from '#imports'
 
 export default defineComponent({
   props: {

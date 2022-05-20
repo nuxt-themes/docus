@@ -28,7 +28,7 @@ const directory = (link) => {
       >
         <span class="relative flex flex-col items-end truncate">
           <span class="mb-1 text-xs leading-tight d-secondary-text">
-            {{ directory(prev._path) }}
+            {{ directory(prev._path) || '&nbsp;' }}
           </span>
 
           <span class="flex items-center w-full leading-tight">
@@ -46,7 +46,7 @@ const directory = (link) => {
         class="transition-base surface-border hover:surface-border-hover hover:text-secondary-hover group inline-flex w-full h-full items-center justify-end truncate rounded-xl border px-4 py-2.5 transition"
       >
         <span class="relative flex flex-col items-start truncate">
-          <span class="mb-1 text-xs leading-tight d-secondary-text"> {{ directory(next._path) }} </span>
+          <span class="mb-1 text-xs leading-tight d-secondary-text"> {{ directory(next._path) || '&nbsp;' }} </span>
 
           <span class="flex items-center w-full leading-tight">
             <span class="truncate">{{ next.title }}</span>
