@@ -156,31 +156,14 @@ body {
 .badge,
 .callout,
 .card {
-  a {
-    @apply !text-current !border-none !font-semibold !underline;
-  }
-
-
-  strong {
-    @apply !font-semibold !text-current;
-  }
-
-  li::before {
-    @apply !text-current !bg-current;
-  }
-
   /*
     Color Schemes
 
     TODO: Improve the usage of these styles across components.
   */
-
-  &.blurry {
-    @apply !backdrop-blur-lg !bg-opacity-20;
-  }
-
   &.base {
     @apply border border-gray-100 bg-gray-50 text-gray-600 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
+
     code {
       @apply text-current shadow-none border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
     }
@@ -229,7 +212,6 @@ body {
         @apply border-blue-400 dark:border-blue-700;
       }
     }
-
   }
 
   &.warning {
@@ -256,6 +238,30 @@ body {
       code {
         @apply border-red-400 dark:border-red-700;
       }
+    }
+  }
+
+  &.blurry {
+    @apply !backdrop-blur-lg !bg-opacity-20;
+  }
+
+  a {
+    @apply !text-current !border-none !font-semibold !underline;
+  }
+
+  strong {
+    @apply !font-semibold !text-current;
+  }
+
+  li::before {
+    @apply !text-current !bg-current;
+  }
+
+  .prose-code {
+    @apply my-4;
+
+    code {
+      @apply !bg-transparent;
     }
   }
 }
