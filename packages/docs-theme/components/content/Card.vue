@@ -31,27 +31,20 @@ defineProps({
     required: false,
   },
 })
-
-const isImage = (icon: string) => String(icon).includes('.')
 </script>
 
 <template>
   <div class="flex">
-    <div :class="[type, { blurry }]" class="card relative w-full p-8 rounded-xl">
-      <img v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
-
-      <Icon v-else :name="icon" class="inline-block w-16 h-16 mb-4 text-6xl" />
-
+    <div :class="[type, { blurry }]" class="relative w-full p-8 card rounded-xl">
+      <Icon v-if="icon" :name="icon" class="inline-block w-8 h-8 mb-2 text-2xl" />
       <slot />
-
-      <div class="text-lg">
-        <h3 v-if="title" class="mb-4 font-semibold tracking-tight">
+      <div>
+        <h3 v-if="title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
         </h3>
-
-        <div class="font-medium text-secondary">
+        <div class="text-secondary">
           <slot name="description">
-            <p v-if="description" class="inline font-medium tracking-tight">
+            <p v-if="description" class="inline text-sm font-medium tracking-tight">
               {{ description }}
             </p>
           </slot>
