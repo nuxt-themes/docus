@@ -162,10 +162,10 @@ body {
     TODO: Improve the usage of these styles across components.
   */
   &.base {
-    @apply border border-gray-100 bg-gray-50 text-gray-600 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
+    @apply text-gray-600 border border-gray-100 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
 
     code {
-      @apply text-current shadow-none border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
+      @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
     }
     a:hover {
       code {
