@@ -42,11 +42,9 @@
   .surface {
     @apply bg-white dark:bg-gray-900;
   }
-
   .surface-secondary {
     @apply bg-gray-50 dark:bg-opacity-25 dark:bg-gray-800;
   }
-
   .surface-blurry {
     @apply bg-white/95 backdrop-blur dark:bg-gray-900/95;
   }
@@ -150,12 +148,38 @@ body {
 
 .docus-content {
   & > :first-child {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 }
 
 .alert,
-.badge {
+.badge,
+.callout,
+.card {
+  a {
+    @apply text-current hover:border-current;
+  }
+
+  li::before {
+    @apply !text-current !bg-current;
+  }
+
+  &.blurry {
+    @apply !backdrop-blur-lg !bg-opacity-20;
+  }
+
+  &.base {
+    @apply border border-gray-100 bg-gray-50 text-gray-600 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
+    code {
+      @apply text-current shadow-none border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-gray-400 dark:border-gray-700;
+      }
+    }
+  }
+
   &.primary {
     @apply border border-primary-100 bg-primary-50 text-primary-600 dark:border-primary-900 dark:bg-primary-800 dark:bg-opacity-25 dark:text-primary-200;
 
@@ -220,19 +244,6 @@ body {
     a:hover {
       code {
         @apply border-red-400 dark:border-red-700;
-      }
-    }
-  }
-
-  &.gray {
-    @apply text-gray-600 border border-gray-100 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-100;
-
-    code {
-      @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
-    }
-    a:hover {
-      code {
-        @apply border-gray-400 dark:border-gray-700;
       }
     }
   }

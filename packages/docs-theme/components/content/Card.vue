@@ -15,6 +15,21 @@ defineProps({
     type: String,
     default: '',
   },
+  /**
+   * @values info, success, warning, danger
+   */
+  type: {
+    type: String,
+    default: 'base',
+    validator(value: string) {
+      return ['info', 'success', 'warning', 'danger', 'primary', 'base'].includes(value)
+    },
+  },
+  blurry: {
+    type: Boolean,
+    default: true,
+    required: false,
+  },
 })
 
 const isImage = (icon: string) => String(icon).includes('.')
@@ -22,10 +37,10 @@ const isImage = (icon: string) => String(icon).includes('.')
 
 <template>
   <div class="flex">
-    <div class="relative w-full p-8 bg-gray-100 rounded-lg dark:bg-gray-900 dark:bg-opacity-50">
+    <div :class="[type, { blurry }]" class="card relative w-full p-8 rounded-xl">
       <img v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
 
-      <Icon :name="icon" v-else class="inline-block w-16 h-16 mb-4 text-6xl" />
+      <Icon v-else :name="icon" class="inline-block w-16 h-16 mb-4 text-6xl" />
 
       <slot />
 
