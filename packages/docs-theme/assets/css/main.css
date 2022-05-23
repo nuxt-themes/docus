@@ -157,12 +157,23 @@ body {
 .callout,
 .card {
   a {
-    @apply text-current hover:border-current;
+    @apply !text-current !border-none !font-semibold !underline;
+  }
+
+
+  strong {
+    @apply !font-semibold !text-current;
   }
 
   li::before {
     @apply !text-current !bg-current;
   }
+
+  /*
+    Color Schemes
+
+    TODO: Improve the usage of these styles across components.
+  */
 
   &.blurry {
     @apply !backdrop-blur-lg !bg-opacity-20;

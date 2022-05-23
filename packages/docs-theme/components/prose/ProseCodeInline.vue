@@ -6,9 +6,8 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply rounded-lg py-[3px] px-[6px] text-sm font-normal dark:code-background text-gray-100;
+  @apply rounded-lg py-[3px] px-[6px] text-sm font-normal bg-gray-50 text-gray-700 dark:code-background dark:text-gray-100;
 }
-
 a code {
   &:hover {
     @apply border-primary-500;
@@ -25,14 +24,7 @@ h3 a,
 h4 a {
   code {
     @apply relative;
-    font-size: inherit;
-  }
-
-  & code:before {
-    @apply pointer-events-none absolute top-[-2px] left-[-2px] -z-[1] rounded-lg;
-    content: '';
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    font-size: inherit !important;
   }
 }
 </style>
