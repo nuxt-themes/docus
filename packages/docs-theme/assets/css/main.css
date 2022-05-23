@@ -42,11 +42,9 @@
   .surface {
     @apply bg-white dark:bg-gray-900;
   }
-
   .surface-secondary {
     @apply bg-gray-50 dark:bg-opacity-25 dark:bg-gray-800;
   }
-
   .surface-blurry {
     @apply bg-white/95 backdrop-blur dark:bg-gray-900/95;
   }
@@ -150,12 +148,32 @@ body {
 
 .docus-content {
   & > :first-child {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
 }
 
 .alert,
-.badge {
+.badge,
+.callout,
+.card {
+  /*
+    Color Schemes
+
+    TODO: Improve the usage of these styles across components.
+  */
+  &.base {
+    @apply text-gray-600 border border-gray-100 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
+
+    code {
+      @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-gray-400 dark:border-gray-700;
+      }
+    }
+  }
+
   &.primary {
     @apply border border-primary-100 bg-primary-50 text-primary-600 dark:border-primary-900 dark:bg-primary-800 dark:bg-opacity-25 dark:text-primary-200;
 
@@ -194,7 +212,6 @@ body {
         @apply border-blue-400 dark:border-blue-700;
       }
     }
-
   }
 
   &.warning {
@@ -224,16 +241,27 @@ body {
     }
   }
 
-  &.gray {
-    @apply text-gray-600 border border-gray-100 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-100;
+  &.blurry {
+    @apply !backdrop-blur-lg !bg-opacity-20;
+  }
+
+  a {
+    @apply !text-current !border-none !font-semibold !underline;
+  }
+
+  strong {
+    @apply !font-semibold !text-current;
+  }
+
+  li::before {
+    @apply !text-current !bg-current;
+  }
+
+  .prose-code {
+    @apply my-4;
 
     code {
-      @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
-    }
-    a:hover {
-      code {
-        @apply border-gray-400 dark:border-gray-700;
-      }
+      @apply !bg-transparent;
     }
   }
 }

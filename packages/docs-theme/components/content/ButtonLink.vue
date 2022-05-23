@@ -17,8 +17,8 @@ const props = defineProps({
   },
   icon: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 </script>
 

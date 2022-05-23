@@ -24,7 +24,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
       :key="link._path"
       :to="findBottomLink(link)"
       class="text-sm transition-colors transition-base"
-      :class="[ isActive(link) ? 'text-primary hover:text-primary' : 'text-gray-700 hover:text-gray-400 dark:text-gray-200 hover:dark:text-gray-300' ]"
+      :class="[isActive(link) ? 'text-primary hover:text-primary' : 'text-gray-700 hover:text-gray-400 dark:text-gray-200 hover:dark:text-gray-300']"
     >
       {{ link.title }}
     </NuxtLink>

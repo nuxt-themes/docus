@@ -2,7 +2,7 @@ export const themeConfig = {
   layout: 'docs',
   socials: {
     twitter: '@docus_',
-    github: 'nuxtlabs/docus'
+    github: 'nuxtlabs/docus',
   },
   github: {
     showVersion: true,
@@ -24,7 +24,7 @@ export const themeConfig = {
     credits: {
       icon: 'IconDocus',
       text: 'Powered by Docus',
-      href: 'https://docus.com'
+      href: 'https://docus.com',
     },
     icons: [
       {

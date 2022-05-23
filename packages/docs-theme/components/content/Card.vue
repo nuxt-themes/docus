@@ -15,28 +15,36 @@ defineProps({
     type: String,
     default: '',
   },
+  /**
+   * @values info, success, warning, danger
+   */
+  type: {
+    type: String,
+    default: 'base',
+    validator(value: string) {
+      return ['info', 'success', 'warning', 'danger', 'primary', 'base'].includes(value)
+    },
+  },
+  blurry: {
+    type: Boolean,
+    default: true,
+    required: false,
+  },
 })
-
-const isImage = (icon: string) => String(icon).includes('.')
 </script>
 
 <template>
   <div class="flex">
-    <div class="relative w-full rounded-lg bg-gray-100 p-8 dark:bg-gray-900 dark:bg-opacity-50">
-      <img v-if="isImage(icon)" :src="icon" class="mb-3 inline-block h-16 w-16" />
-
-      <Icon v-else :name="icon" class="mb-4 inline-block h-16 w-16 text-6xl" />
-
+    <div :class="[type, { blurry }]" class="relative w-full p-8 card rounded-xl">
+      <Icon v-if="icon" :name="icon" class="inline-block w-8 h-8 mb-2 text-2xl" />
       <slot />
-
-      <div class="text-lg">
-        <h3 v-if="title" class="mb-4 font-semibold tracking-tight">
+      <div>
+        <h3 v-if="title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
         </h3>
-
-        <div class="text-secondary font-medium">
+        <div class="text-secondary">
           <slot name="description">
-            <p v-if="description" class="inline font-medium tracking-tight">
+            <p v-if="description" class="inline text-sm font-medium tracking-tight">
               {{ description }}
             </p>
           </slot>
