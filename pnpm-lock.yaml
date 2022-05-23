@@ -58,7 +58,7 @@ importers:
       defu: ^6.0.0
       nuxt: ^3.0.0-rc.3
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27549538.8186622
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555126.58f2d50
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27549305.d2c61b7
       '@vueuse/core': 8.5.0
       '@vueuse/nuxt': 8.5.0
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27549538.8186622
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555126.58f2d50
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -709,8 +709,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.0-27549538.8186622:
-    resolution: {integrity: sha512-qnD0GFgb8jQ1gZxibG3jsBOITTUw2tX4qaw3WjZY2Rg2yYV3enXRdbyRQ1umii51RXDie/dMqbq9toEwdGa85Q==}
+  /@nuxt/content-edge/2.0.0-27555126.58f2d50:
+    resolution: {integrity: sha512-lsfz24qzsaO9VUDcMVvCNm3NTPoeYdiIa+av3RnNnK05QSQUxhnEgjNDeVWW7WvS91/KRDxBhjpcrqKCBl8/Yg==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -718,8 +718,8 @@ packages:
       destr: 1.1.1
       detab: 3.0.1
       flat: 5.0.2
-      gray-matter: 4.0.3
       html-tags: 3.2.0
+      js-yaml: 4.1.0
       json5: 2.2.1
       listhen: 0.2.11
       mdast-util-from-markdown: 1.2.0
@@ -2093,14 +2093,8 @@ packages:
     resolution: {integrity: sha512-e0hDa9H2Z9AwFkk2qDlwhoMYE4eToKarchkQHovNdLTCYMHZHeRjI71crOh+dio4K6u1IcwubQqo79Ga4CyAQA==}
     dev: false
 
-  /argparse/1.0.10:
-    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
-    dependencies:
-      sprintf-js: 1.0.3
-
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-    dev: true
 
   /array-includes/3.1.5:
     resolution: {integrity: sha512-iSDYZMMyTPkiFasVqfuAQnWAYcvO/SeBSCGKePoEthjp4LEMTe4uLc7b025o4jAZpHhihh8xPo99TNWUWWkGDQ==}
@@ -4090,11 +4084,6 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /esprima/4.0.1:
-    resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
-    engines: {node: '>=4'}
-    hasBin: true
-
   /esquery/1.4.0:
     resolution: {integrity: sha512-cCDispWt5vHHtwMY2YrAQ4ibFkAL8RbH5YGBnZBc90MolvvfkkQcJro/aZiAQUlQ3qgrYS6D6v8Gc5G5CQsc9w==}
     engines: {node: '>=0.10'}
@@ -4168,12 +4157,6 @@ packages:
       signal-exit: 3.0.7
       strip-final-newline: 3.0.0
     dev: true
-
-  /extend-shallow/2.0.1:
-    resolution: {integrity: sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8=}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      is-extendable: 0.1.1
 
   /extend/3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
@@ -4629,15 +4612,6 @@ packages:
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
-
-  /gray-matter/4.0.3:
-    resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
-    engines: {node: '>=6.0'}
-    dependencies:
-      js-yaml: 3.14.1
-      kind-of: 6.0.3
-      section-matter: 1.0.0
-      strip-bom-string: 1.0.0
 
   /gzip-size/7.0.0:
     resolution: {integrity: sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==}
@@ -5144,10 +5118,6 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
 
-  /is-extendable/0.1.1:
-    resolution: {integrity: sha1-YrEQ4omkcUGOPsNqYX1HLjAd/Ik=}
-    engines: {node: '>=0.10.0'}
-
   /is-extglob/2.1.1:
     resolution: {integrity: sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=}
     engines: {node: '>=0.10.0'}
@@ -5352,19 +5322,11 @@ packages:
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
-  /js-yaml/3.14.1:
-    resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
-    hasBin: true
-    dependencies:
-      argparse: 1.0.10
-      esprima: 4.0.1
-
   /js-yaml/4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
     dependencies:
       argparse: 2.0.1
-    dev: true
 
   /jsesc/2.5.2:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==}
@@ -5455,10 +5417,6 @@ packages:
     dependencies:
       json-buffer: 3.0.0
     dev: true
-
-  /kind-of/6.0.3:
-    resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
-    engines: {node: '>=0.10.0'}
 
   /kleur/3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
@@ -8312,13 +8270,6 @@ packages:
   /scule/0.2.1:
     resolution: {integrity: sha512-M9gnWtn3J0W+UhJOHmBxBTwv8mZCan5i1Himp60t6vvZcor0wr+IM0URKmIglsWJ7bRujNAVVN77fp+uZaWoKg==}
 
-  /section-matter/1.0.0:
-    resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
-    engines: {node: '>=4'}
-    dependencies:
-      extend-shallow: 2.0.1
-      kind-of: 6.0.3
-
   /selfsigned/2.0.1:
     resolution: {integrity: sha512-LmME957M1zOsUhG+67rAjKfiWFox3SBxE/yymatMZsAx+oMrJ0YQ8AToOnyCm7xbeg2ep37IHLxdu0o2MavQOQ==}
     engines: {node: '>=10'}
@@ -8558,9 +8509,6 @@ packages:
     resolution: {integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==}
     engines: {node: '>=6'}
 
-  /sprintf-js/1.0.3:
-    resolution: {integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=}
-
   /ssri/9.0.0:
     resolution: {integrity: sha512-Y1Z6J8UYnexKFN1R/hxUaYoY2LVdKEzziPmVAFKiKX8fiwvCJTVzn/xYE9TEWod5OVyNfIHHuVfIEuBClL/uJQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
@@ -8662,10 +8610,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       ansi-regex: 5.0.1
-
-  /strip-bom-string/1.0.0:
-    resolution: {integrity: sha1-5SEekiQ2n7uB1jOi8ABE3IztrZI=}
-    engines: {node: '>=0.10.0'}
 
   /strip-bom/2.0.0:
     resolution: {integrity: sha1-YhmoVhZSBJHzV4i9vxRHqZx+aw4=}

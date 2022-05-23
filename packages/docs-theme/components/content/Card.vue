@@ -22,10 +22,10 @@ const isImage = (icon: string) => String(icon).includes('.')
 
 <template>
   <div class="flex">
-    <div class="relative w-full p-8 bg-gray-100 rounded-lg dark:bg-gray-900 dark:bg-opacity-50">
-      <img v-if="isImage(icon)" :src="icon" class="inline-block w-16 h-16 mb-3" />
+    <div class="relative w-full rounded-lg bg-gray-100 p-8 dark:bg-gray-900 dark:bg-opacity-50">
+      <img v-if="isImage(icon)" :src="icon" class="mb-3 inline-block h-16 w-16" />
 
-      <Icon :name="icon" v-else class="inline-block w-16 h-16 mb-4 text-6xl" />
+      <Icon v-else :name="icon" class="mb-4 inline-block h-16 w-16 text-6xl" />
 
       <slot />
 
@@ -34,7 +34,7 @@ const isImage = (icon: string) => String(icon).includes('.')
           {{ title }}
         </h3>
 
-        <div class="font-medium text-secondary">
+        <div class="text-secondary font-medium">
           <slot name="description">
             <p v-if="description" class="inline font-medium tracking-tight">
               {{ description }}
