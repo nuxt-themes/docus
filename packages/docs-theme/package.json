@@ -20,7 +20,7 @@
     "@docus/github": "latest",
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.0.3",
-    "@nuxtjs/tailwindcss": "^5.1.1",
+    "@nuxtjs/tailwindcss": "^5.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",

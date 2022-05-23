@@ -71,7 +71,7 @@ importers:
       '@docus/github': latest
       '@iconify/vue': ^3.2.1
       '@nuxtjs/color-mode': ^3.0.3
-      '@nuxtjs/tailwindcss': ^5.1.1
+      '@nuxtjs/tailwindcss': ^5.1.2
       '@tailwindcss/aspect-ratio': ^0.4.0
       '@tailwindcss/forms': ^0.5.2
       '@tailwindcss/line-clamp': ^0.4.0
@@ -84,7 +84,7 @@ importers:
       '@docus/github': link:../github
       '@iconify/vue': 3.2.1
       '@nuxtjs/color-mode': 3.0.3
-      '@nuxtjs/tailwindcss': 5.1.1
+      '@nuxtjs/tailwindcss': 5.1.2
       '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.0.24
       '@tailwindcss/forms': 0.5.2_tailwindcss@3.0.24
       '@tailwindcss/line-clamp': 0.4.0_tailwindcss@3.0.24
@@ -1147,8 +1147,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxtjs/tailwindcss/5.1.1:
-    resolution: {integrity: sha512-CQclKTUsKzxnFV3Yacaa7Bwl2d6pkMsBexpXit7hmMUXgI5BvxfYEJxgEa4+7q2zbjXwoWKw1/FROULgGlP97w==}
+  /@nuxtjs/tailwindcss/5.1.2:
+    resolution: {integrity: sha512-GURUcEyAE6hsOWbLNGOiu832HX53ff2yrbfFJ7qqkFXnq0RNeaoOip+z5MX2mLcmyxlDtFjNmu2rw2rfCTsvHA==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       '@nuxt/postcss8': 1.1.3
