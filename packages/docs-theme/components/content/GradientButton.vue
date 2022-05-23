@@ -1,11 +1,8 @@
 <template>
-  <NuxtLink
-    class="gradient-border px-6 py-2.5 text-lg font-medium leading-6"
-    :to="href"
-  >
+  <NuxtLink class="gradient-border px-6 py-2.5 text-lg font-medium leading-6" :to="href">
     <Markdown :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
-</template>
+</template> 
 
 <style>
 .gradient-border {
@@ -18,14 +15,7 @@
     /* background-color: rgba(255, 255, 255, 0.3); */
   }
   .gradient-border::before {
-    background: linear-gradient(
-      90deg,
-      #e2e2e2 0%,
-      #e2e2e2 25%,
-      #00dc82 50%,
-      #36e4da 75%,
-      #0047e1 100%
-    );
+    background: linear-gradient(90deg, #e2e2e2 0%, #e2e2e2 25%, #00dc82 50%, #36e4da 75%, #0047e1 100%);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -33,14 +23,7 @@
     /* background-color: rgba(20, 20, 20, 0.3); */
   }
   .gradient-border::before {
-    background: linear-gradient(
-      90deg,
-      #303030 0%,
-      #303030 25%,
-      #00dc82 50%,
-      #36e4da 75%,
-      #0047e1 100%
-    );
+    background: linear-gradient(90deg, #303030 0%, #303030 25%, #00dc82 50%, #36e4da 75%, #0047e1 100%);
   }
 }
 .gradient-border::before {
