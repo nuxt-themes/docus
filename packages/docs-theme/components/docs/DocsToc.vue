@@ -51,9 +51,7 @@ function scrollToHeading(id: string, scrollMarginCssVar: string) {
             :href="`#${link.id}`"
             class="block py-1 text-sm truncate lg:pr-3"
             :class="[
-              activeHeadings.includes(link.id) ?
-                'text-gray-900 dark:text-gray-200' :
-                'text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-200',
+              activeHeadings.includes(link.id) ? 'text-gray-900 dark:text-gray-200' : 'text-gray-500 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-200',
             ]"
             @click.prevent="scrollToHeading(link.id, '--docs-scroll-margin-block')"
           >

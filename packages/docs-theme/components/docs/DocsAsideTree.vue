@@ -5,24 +5,24 @@ import { computed, useRoute, useRouter } from '#imports'
 const props = defineProps({
   links: {
     type: Array as PropType<any>,
-    default: () => []
+    default: () => [],
   },
   level: {
     type: Number,
-    default: 0
+    default: 0,
   },
   max: {
     type: Number,
-    default: null
+    default: null,
   },
   parent: {
     type: Object as PropType<any>,
-    default: null
-  }
+    default: null,
+  },
 })
 const route = useRoute()
 
-function isActive (link) {
+function isActive(link) {
   return link.exact ? route.path === link._path : route.path.startsWith(link._path)
 }
 
@@ -40,7 +40,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         'pl-4': level > 0 && link.children,
         'border-l': level > 0 || !hasNesting,
         'border-primary-400 dark:border-primary-600': isActive(link),
-        'hover:border-gray-300 border-gray-100 dark:border-gray-700 hover:dark:border-gray-500': !isActive(link)
+        'hover:border-gray-300 border-gray-100 dark:border-gray-700 hover:dark:border-gray-500': !isActive(link),
       }"
     >
       <div v-if="link.children" class="flex items-center justify-between pt-2 text-sm font-semibold text-gray-900 dark:text-gray-200">
@@ -67,14 +67,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         </span>
       </NuxtLink>
 
-      <DocsAsideTree
-        v-if="link.children?.length && (max === null || level + 1 < max)"
-        :links="link.children"
-        :level="level + 1"
-        :parent="link"
-        :max="max"
-        class="py-2"
-      />
+      <DocsAsideTree v-if="link.children?.length && (max === null || level + 1 < max)" :links="link.children" :level="level + 1" :parent="link" :max="max" class="py-2" />
     </li>
   </ul>
 </template>
