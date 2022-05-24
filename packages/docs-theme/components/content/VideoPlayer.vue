@@ -37,7 +37,7 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
 </script>
 
 <template>
-  <div class="relative my-4 overflow-hidden bg-black bg-opacity-25 rounded-sm video-player" :class="{ loaded }">
+  <div class="relative inline-block my-4 overflow-hidden bg-black bg-opacity-25 rounded-sm video-player" :class="{ loaded }">
     <NuxtImg v-if="provider ? provider.poster : poster" image-classes="video absolute top-0 left-0 h-full w-full object-fit" :src="(provider ? provider.poster : poster as any)" />
 
     <div v-if="loaded" class="absolute top-0 left-0 w-full h-full video">
@@ -48,7 +48,7 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
       </video>
 
       <!-- YouTube -->
-      <iframe v-else-if="provider.name === 'youtube'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" :src="provider.src" />
+      <iframe v-else-if="provider.name === 'youtube'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" class="w-full h-full" :src="provider.src" />
     </div>
 
     <div v-if="!loaded" class="absolute top-0 left-0 w-full h-full cursor-pointer overlay" @click="loaded = true">
