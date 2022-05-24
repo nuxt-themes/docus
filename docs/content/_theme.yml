@@ -3,7 +3,6 @@ debug: false
 github:
   root: docs/content
   releases: true
-  showVersion: true
   edit: true
 cover:
   src: "https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png"

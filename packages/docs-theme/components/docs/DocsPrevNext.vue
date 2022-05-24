@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import { useDocus, useDocusNavigation } from '#imports'
+import { useDocus, useDocusHelpers } from '#imports'
 
 const { prev, next, navigation } = useDocus()
-const { navFromPath } = useDocusNavigation()
+const { navFromPath } = useDocusHelpers()
 
 const directory = (link) => {
   const nav = navFromPath(link._path, navigation.value || [])

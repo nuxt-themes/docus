@@ -5,8 +5,9 @@ export const themeConfig = {
     github: 'nuxtlabs/docus',
   },
   github: {
-    showVersion: true,
+    root: 'content',
     releases: true,
+    edit: true,
   },
   aside: {
     level: 0,

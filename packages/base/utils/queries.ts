@@ -1,15 +1,15 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import { fetchContentNavigation, navigateTo, queryContent, useDocus, useDocusNavigation, useDocusState } from '#imports'
+import { fetchContentNavigation, navigateTo, queryContent, useDocus, useDocusHelpers, useDocusState } from '#imports'
 import layouts from '#build/layouts'
 
 const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
   if (page.layout) return page.layout
 
-  const { layoutFromPath } = useDocusNavigation()
+  const { navKeyFromPath } = useDocusHelpers()
 
-  const layoutFromNav = layoutFromPath(page._path, navigation)
+  const layoutFromNav = navKeyFromPath(page._path, 'layout', navigation)
 
   if (layoutFromNav) return layoutFromNav
 
@@ -40,21 +40,25 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
       .findSurround(path) as Promise<ParsedContent[]>,
   ])
     .then(async ([_page, _surround]) => {
-      const layoutName = findLayout(_page, theme.value, navigation.value)
+      try {
+        const layoutName = findLayout(_page, theme.value, navigation.value)
 
-      // Prefetch layout component
-      const layout = layouts[layoutName]
-      if (layout?.__asyncLoader && !layout.__asyncResolved) {
-        await layout.__asyncLoader()
+        // Prefetch layout component
+        const layout = layouts[layoutName]
+        if (layout?.__asyncLoader && !layout.__asyncResolved) {
+          await layout.__asyncLoader()
+        }
+
+        // Update values
+        route.meta.layout = layoutName
+        if (_page) page.value = _page
+        else page.value = undefined
+
+        if (_surround && _surround.length) surround.value = _surround
+        else surround.value = undefined
+      } catch (e) {
+        console.log(e)
       }
-
-      // Update values
-      route.meta.layout = layoutName
-      if (_page) page.value = _page
-      else page.value = undefined
-
-      if (_surround && _surround.length) surround.value = _surround
-      else surround.value = undefined
     })
     .catch((e) => {
       console.warn(`Could not find page for path ${path}`)

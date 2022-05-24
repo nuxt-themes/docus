@@ -43,12 +43,12 @@ const fileFromPath = (path: string, tree: NavItem[]) => {
 /**
  * Find a nav field node from a path.
  */
-const layoutFromPath = (path: string, tree: NavItem[]) => {
-  let layout
+const navKeyFromPath = (path: string, key: string, tree: NavItem[]) => {
+  let value
   const goDeep = (path: string, tree: NavItem[]) => {
     for (const file of tree) {
-      if (path.includes(file._path) && file.layout) {
-        layout = file.layout
+      if (path.includes(file._path) && file[key]) {
+        value = file[key]
       }
       if (file._path === path) return
       if (file.children) {
@@ -57,14 +57,14 @@ const layoutFromPath = (path: string, tree: NavItem[]) => {
     }
   }
   goDeep(path, tree)
-  return layout
+  return value
 }
 
-export const useDocusNavigation = () => {
+export const useDocusHelpers = () => {
   return {
     findBottomLink,
     navFromPath,
     fileFromPath,
-    layoutFromPath,
+    navKeyFromPath,
   }
 }

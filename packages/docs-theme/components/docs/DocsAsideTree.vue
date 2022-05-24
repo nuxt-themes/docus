@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { computed, useRoute, useRouter } from '#imports'
+import { computed, useRoute } from '#imports'
 
 const props = defineProps({
   links: {
@@ -20,6 +20,7 @@ const props = defineProps({
     default: null,
   },
 })
+
 const route = useRoute()
 
 function isActive(link) {

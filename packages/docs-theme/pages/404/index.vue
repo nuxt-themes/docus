@@ -3,7 +3,7 @@ definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
   layout: 'page',
-  middleware: ['navigation', 'github'],
+  middleware: ['navigation'],
 })
 </script>
 

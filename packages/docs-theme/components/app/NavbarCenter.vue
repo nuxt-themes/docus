@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { computed, useDocus, useDocusNavigation, useRoute } from '#imports'
+import { computed, useDocus, useDocusHelpers, useRoute } from '#imports'
 
 const route = useRoute()
-const { findBottomLink } = useDocusNavigation()
+const { findBottomLink } = useDocusHelpers()
 const { navigation, theme } = useDocus()
 
 const hasNavigation = computed(() => !!theme.value.aside?.level)
+
 const filtered = computed(() => theme.value?.aside?.filter || [])
+
 const tree = computed(() => {
   return (navigation.value || []).filter((item) => {
     if (filtered.value.includes(item._path)) return false

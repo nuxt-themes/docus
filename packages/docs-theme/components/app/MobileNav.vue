@@ -4,7 +4,9 @@ import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
 const { navigation, theme } = useDocus()
 
 const asideLevel = computed(() => theme.value.aside?.level || 0)
+
 const filtered = computed(() => theme.value?.aside?.filter || [])
+
 const links = computed(() => {
   return (navigation.value || []).filter((item) => {
     if (filtered.value.includes(item._path)) return false
@@ -13,6 +15,7 @@ const links = computed(() => {
 })
 
 const { visible, open, close, toggle } = useMenu()
+
 const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
 watch(visible, (v) => (v ? open() : close()))
