@@ -14,10 +14,12 @@
       "outputs": []
     },
     "release": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
     },
     "release:edge": {
-      "dependsOn": []
+      "dependsOn": [],
+      "cache": false
     },
     "dev": {
       "cache": false
