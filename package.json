@@ -46,7 +46,10 @@
   },
   "pnpm": {
     "peerDependencyRules": {
-      "ignoreMissing": ["vue", "webpack"],
+      "ignoreMissing": [
+        "vue",
+        "webpack"
+      ],
       "allowedVersions": {
         "vue": "^3.2.33"
       }

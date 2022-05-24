@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@docus/base": "latest",
-    "@docus/github": "latest",
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.0.3",
     "@nuxtjs/tailwindcss": "^5.1.2",

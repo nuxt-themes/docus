@@ -158,7 +158,6 @@ body {
 .card {
   /*
     Color Schemes
-
     TODO: Improve the usage of these styles across components.
   */
   &.base {

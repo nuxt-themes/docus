@@ -70,7 +70,7 @@ export default defineNuxtConfig({
 
   components,
 
-  modules: [resolveThemeDir('module.ts'), '@docus/github', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: [resolveThemeDir('module.ts'), '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
 
   // @ts-expect-error - Broken TailwindCSS type
   tailwindcss: {

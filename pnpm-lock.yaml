@@ -57,18 +57,19 @@ importers:
       '@vueuse/nuxt': ^8.5.0
       defu: ^6.0.0
       nuxt: ^3.0.0-rc.3
+      pkg-types: ^0.3.2
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555000.f43ec4d
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555461.4c365fc
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27549305.d2c61b7
       '@vueuse/core': 8.5.0
       '@vueuse/nuxt': 8.5.0
       defu: 6.0.0
       nuxt: 3.0.0-rc.3
+      pkg-types: 0.3.2
 
   packages/docs-theme:
     specifiers:
       '@docus/base': latest
-      '@docus/github': latest
       '@iconify/vue': ^3.2.1
       '@nuxtjs/color-mode': ^3.0.3
       '@nuxtjs/tailwindcss': ^5.1.2
@@ -81,7 +82,6 @@ importers:
       vue-plausible: ^1.3.1
     dependencies:
       '@docus/base': link:../base
-      '@docus/github': link:../github
       '@iconify/vue': 3.2.1
       '@nuxtjs/color-mode': 3.0.3
       '@nuxtjs/tailwindcss': 5.1.2
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555000.f43ec4d
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555461.4c365fc
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -709,8 +709,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.0-27555000.f43ec4d:
-    resolution: {integrity: sha512-ounSa5oOkNTA2y9e99Sb0xRCx9WQj77OCNAH20MBxucGLU5BLeV87w+0ovOIPfGPqcOVBOQbNcvcVu27yUgHTQ==}
+  /@nuxt/content-edge/2.0.0-27555461.4c365fc:
+    resolution: {integrity: sha512-Au7chaXEsr1vXASXzZCwuLMYyJTmfic23MpPaT8B+/YmA7WlUbNu+u1q+gnykfje2xL1M3bIONykRdpCOPnDRQ==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -6327,6 +6327,8 @@ packages:
       debug: 3.2.7
       iconv-lite: 0.4.24
       sax: 1.2.4
+    transitivePeerDependencies:
+      - supports-color
 
   /negotiator/0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
@@ -6478,6 +6480,8 @@ packages:
       rimraf: 2.7.1
       semver: 5.7.1
       tar: 4.4.19
+    transitivePeerDependencies:
+      - supports-color
 
   /node-releases/2.0.4:
     resolution: {integrity: sha512-gbMzqQtTtDz/00jQzZ21PQzdI9PyLYqUSvD0p3naOhX4odFji0ZxYdnVwPTxmSwkmxhcFImpozceidSG+AgoPQ==}
@@ -8279,6 +8283,8 @@ packages:
       on-finished: 2.4.1
       range-parser: 1.2.1
       statuses: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
 
   /serialize-javascript/4.0.0:
     resolution: {integrity: sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==}
@@ -8298,6 +8304,8 @@ packages:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 0.18.0
+    transitivePeerDependencies:
+      - supports-color
 
   /set-blocking/2.0.0:
     resolution: {integrity: sha1-BF+XgtARrppoA93TgrJDkrPYkPc=}

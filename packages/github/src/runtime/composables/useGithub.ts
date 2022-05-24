@@ -7,13 +7,13 @@ export const useGithub = () => {
     return $fetch(url, { responseType: 'json' })
   }
 
-  const fetchReleases = async (query: Partial<any>) => {
+  const fetchReleases = async (query: any) => {
     const url = withQuery('/api/_github/releases', query as any)
 
     return $fetch(url, { responseType: 'json' })
   }
 
-  const fetchLastRelease = async (query: Partial<any>) => {
+  const fetchLastRelease = async (query: any) => {
     const url = withQuery('/api/_github/releases', { ...query, last: true } as any)
 
     return $fetch(url, { responseType: 'json' })

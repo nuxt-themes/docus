@@ -1,10 +1,10 @@
 <template>
-  <div class="ellipse" />
+  <div class="ellipsis" />
 </template>
 
 
 <style lang="postcss" scoped>
-.ellipse {
+.ellipsis {
   position: absolute;
   width: 600px;
   height: 160px;

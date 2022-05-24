@@ -5,8 +5,9 @@ const theme = process.env.NODE_ENV === 'development' ? '../packages/docs-theme' 
 export default defineNuxtConfig({
   extends: [theme],
   github: {
-    owner: 'nuxt',
-    repo: 'content',
+    owner: 'nuxtlabs',
+    repo: 'docus',
   },
   theme: {},
+  modules: ['@docus/github'],
 })

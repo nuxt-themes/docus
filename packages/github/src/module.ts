@@ -173,10 +173,17 @@ export default defineNuxtModule<ModuleOptions>({
       handler: resolveModule('./server/api/repository', { paths: runtimeDir }),
     })
 
-    // Repository component components
+    // Repository component
     addComponent({
       name: 'GithubRepository',
       filePath: resolveModule('./components/GithubRepository', { paths: runtimeDir }),
+      global: true,
+    })
+
+    // EditOnGithub component
+    addComponent({
+      name: 'EditOnGithub',
+      filePath: resolveModule('./components/EditOnGithub', { paths: runtimeDir }),
       global: true,
     })
 

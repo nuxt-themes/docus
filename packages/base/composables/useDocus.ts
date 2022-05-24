@@ -1,4 +1,4 @@
-import { themeMerger } from '../utils'
+import { themeMerger } from '../utils/theme'
 import { computed, unref, useDocusState, useRuntimeConfig } from '#imports'
 
 export const useDocus = () => {

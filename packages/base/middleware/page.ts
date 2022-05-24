@@ -1,4 +1,4 @@
-import { queryPage } from '../utils'
+import { queryPage } from '../utils/queries'
 import { defineNuxtRouteMiddleware, useNuxtApp } from '#imports'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {

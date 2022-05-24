@@ -27,11 +27,12 @@
     "release:edge": "../../.github/scripts/release-edge.sh"
   },
   "dependencies": {
-    "nuxt": "^3.0.0-rc.3",
-    "defu": "^6.0.0",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
     "@vueuse/core": "^8.5.0",
-    "@vueuse/nuxt": "^8.5.0"
+    "@vueuse/nuxt": "^8.5.0",
+    "defu": "^6.0.0",
+    "nuxt": "^3.0.0-rc.3",
+    "pkg-types": "^0.3.2"
   }
 }

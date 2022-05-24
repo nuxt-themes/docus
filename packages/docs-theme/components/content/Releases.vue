@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { useRuntimeConfig } from '#imports'
+
+const config = useRuntimeConfig()
+
+if (!config?.github) {
+  throw new Error('If you want to use `Releases` component, you must specify: `owner`, `repo` and `branch` in your nuxt.config `github` key.')
+}
+
 const formatDateByLocale = (date: string) => {
   const currentLocale = 'en-US'
 

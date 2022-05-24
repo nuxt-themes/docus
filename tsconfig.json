@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "module": "es2022",
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "resolveJsonModule": true
   },
   "include": [
     "packages/**/*"
