@@ -37,7 +37,7 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
 </script>
 
 <template>
-  <div class="relative inline-block my-4 overflow-hidden bg-black bg-opacity-25 rounded-sm video-player" :class="{ loaded }">
+  <div class="relative inline-block my-4 overflow-hidden bg-black bg-opacity-25 rounded-lg video-player" :class="{ loaded }">
     <NuxtImg v-if="provider ? provider.poster : poster" image-classes="video absolute top-0 left-0 h-full w-full object-fit" :src="(provider ? provider.poster : poster as any)" />
 
     <div v-if="loaded" class="absolute top-0 left-0 w-full h-full video">
@@ -48,7 +48,14 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
       </video>
 
       <!-- YouTube -->
-      <iframe v-else-if="provider.name === 'youtube'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true" class="w-full h-full" :src="provider.src" />
+      <iframe
+        v-else-if="provider.name === 'youtube'"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen="true"
+        :autoplay="autoplay"
+        class="w-full h-full"
+        :src="provider.src"
+      />
     </div>
 
     <div v-if="!loaded" class="absolute top-0 left-0 w-full h-full cursor-pointer overlay" @click="loaded = true">
@@ -59,21 +66,6 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
 
 <style scoped lang="postcss">
 .video-player {
-  &:not(.loaded):before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    top: 0;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==');
-    background-position: top;
-    background-repeat: repeat-x;
-    height: 60px;
-    padding-bottom: 50px;
-    width: 100%;
-    transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-    z-index: 1;
-  }
-
   &:after {
     position: absolute;
     content: ' ';

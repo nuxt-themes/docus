@@ -30,7 +30,8 @@ const icons = computed(() => theme.value?.footer?.icons || [])
           target="_blank"
           class="flex items-center text-sm font-medium icon-base"
         >
-          <Icon :name="icon.component" />
+          <Icon v-if="icon.icon" :name="icon.icon" />
+          <Component :is="icon.component" v-else-if="icon?.component" :class="[icon?.class ? icon.class : 'w-5 h-5']" />
         </a>
 
         <SocialIcons />

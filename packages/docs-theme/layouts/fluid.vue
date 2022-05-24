@@ -12,7 +12,7 @@ const { theme } = useDocus()
 
     <Navbar />
 
-    <div class="min-h-page">
+    <div class="min-h-page overflow-x-hidden">
       <NuxtPage />
     </div>
 

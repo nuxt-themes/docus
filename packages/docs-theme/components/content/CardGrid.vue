@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <section>
-    <Container padded class="relative w-full py-8 overflow-hidden">
+    <Container padded class="relative w-full py-8">
       <Markdown :use="$slots.root" unwrap="*" />
 
       <h2 class="mb-8 text-3xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">

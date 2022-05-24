@@ -20,6 +20,8 @@ footer:
   - label: "NuxtJS"
     href: "https://nuxtjs.org"
     component: "IconNuxt"
+    class: "w-6 h-6"
   - label: "Vue Telescope"
     href: "https://vuetelescope.com"
     component: "IconVueTelescope"
+    class: "w-6 h-6"
