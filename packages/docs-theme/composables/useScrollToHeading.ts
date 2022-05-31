@@ -1,3 +1,5 @@
+import routerOptions from '../app/router.options'
+
 export const useConvertPropToPixels = (prop: string): number => {
   const tempDiv = document.createElement('div')
 
@@ -16,20 +18,17 @@ export const useConvertPropToPixels = (prop: string): number => {
 
 export const useScrollToHeading = (id: string, scrollMarginCssVar: string) => {
   // Use replaceState to prevent page jump when adding hash
-  history.replaceState({}, '', `#${id}`)
+  // history.replaceState({}, '', `#${id}`)
+  const router = useRouter()
+
+  router.push(`#${id}`)
 
   // Do not remove setTimeout (does not work in Safari)
-  setTimeout(() => {
-    const escapedId = id.replace(/\./g, '\\.')
-
-    const heading = document.querySelector(`#${escapedId}`) as any
-
-    const offset = heading.offsetTop - useConvertPropToPixels(scrollMarginCssVar)
-
-    window.scrollTo({
-      top: offset,
-      left: 0,
-      behavior: 'smooth',
-    })
-  })
+  // setTimeout(() => {
+  //   window.scrollTo({
+  //     el: `#${id}`,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   })
+  // })
 }

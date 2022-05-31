@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 ol {
-  @apply mx-0 my-[1.25em] list-none p-0;
+  @apply mx-0 my-[1.25em] list-decimal p-0 pl-6;
 
   :deep(ul),
   :deep(ol) {

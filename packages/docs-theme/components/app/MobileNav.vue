@@ -25,7 +25,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 
 <template>
   <button :class="[buttonClasses]" class="relative z-10 lg:hidden" aria-label="Menu" @click="toggle">
-    <Icon name="heroicons-outline:menu" class="w-6 h-6 mx-auto icon-base" aria-hidden="”true”" />
+    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" aria-hidden="”true”" />
   </button>
 
   <span class="lg:hidden">
@@ -35,7 +35,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
         <div
           id="mobile-nav-scrim"
           :class="[visible ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0']"
-          class="fixed top-0 left-0 z-10 w-full h-full transition bg-opacity-50 backdrop-blur dark:bg-opacity-50"
+          class="fixed top-0 left-0 z-10 h-full w-full bg-opacity-50 backdrop-blur transition dark:bg-opacity-50"
           @click="toggle"
         />
 
@@ -49,20 +49,20 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
           class="fixed z-30"
           @click="toggle"
         >
-          <Icon name="heroicons-outline:x" class="w-6 h-6 mx-auto icon-base" />
+          <Icon name="heroicons-outline:x" class="icon-base mx-auto h-6 w-6" />
         </button>
 
         <!-- Nav menu surface -->
         <div
           id="mobile-nav-surface"
           :class="[visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0']"
-          class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right overflow-hidden transform transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)] border shadow-xl surface surface-border rounded-2xl"
+          class="surface surface-border fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform overflow-hidden rounded-2xl border shadow-xl transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)]"
           @click="toggle"
         >
-          <div class="z-40 max-h-full pt-12 pb-6 pl-8 pr-0 mb-2 overflow-y-auto custom-scrollbar" @click.stop.prevent>
+          <div class="z-40 mb-2 max-h-full overflow-y-auto p-6" @click.stop.prevent>
             <DocsAsideTree :links="links" />
 
-            <div class="flex items-center justify-end gap-4 px-6 mt-4">
+            <div class="mt-4 flex items-center justify-end gap-4">
               <SocialIcons />
               <ThemeSelect size="h-6 w-6" />
             </div>

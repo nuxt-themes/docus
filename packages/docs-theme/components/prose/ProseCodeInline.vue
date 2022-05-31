@@ -6,20 +6,24 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply rounded-lg py-[3px] px-[6px] text-sm font-normal dark:bg-gray-800 bg-gray-50 text-gray-800 dark:text-gray-100;
+  @apply rounded-lg bg-gray-50 py-[3px] px-[6px] text-sm font-normal text-gray-800 dark:bg-gray-800 dark:text-gray-100;
   &.colored {
-    @apply dark:bg-gray-800 bg-gray-700;
-  }
-}
-
-a code {
-  &:hover {
-    @apply border-primary-500;
+    @apply bg-gray-700 dark:bg-gray-800;
   }
 }
 
 tbody code {
-  @apply text-[12px];
+  @apply text-sm;
+}
+
+a {
+  code {
+    @apply text-primary-500 border border-dashed border-transparent font-medium;
+
+    &:hover {
+      @apply border-gray-900 dark:border-white;
+    }
+  }
 }
 
 h1 a,
@@ -27,7 +31,7 @@ h2 a,
 h3 a,
 h4 a {
   code {
-    @apply relative;
+    @apply relative font-bold;
     font-size: inherit !important;
   }
 }

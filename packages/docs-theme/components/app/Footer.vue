@@ -7,16 +7,16 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="py-6 h-footer bg-gray-50 dark:bg-gray-800 dark:bg-opacity-25 sm:py-0">
-    <Container padded class="flex flex-col items-center justify-between h-full gap-y-4 sm:flex-row">
+  <footer class="sm:h-footer py-6 sm:py-0">
+    <Container padded class="flex h-full flex-col items-center justify-between gap-4 sm:flex-row">
       <a
         v-if="theme?.footer?.credits"
         :href="theme.footer.credits.href"
         rel="noopener"
         target="_blank"
-        class="flex items-center mb-3 transition-colors text-secondary transition-base hover:text-secondary-hover sm:mb-0"
+        class="text-secondary transition-base hover:text-secondary-hover flex items-center transition-colors"
       >
-        <Component :is="theme.footer.credits.icon || 'Logo'" class="w-4 h-4 mr-2 fill-current" />
+        <Component :is="theme.footer.credits.icon || 'Logo'" class="mr-2 h-4 w-4 fill-current" />
         <p class="text-sm font-semibold">{{ theme.footer.credits.text }}</p>
       </a>
 
@@ -28,10 +28,10 @@ const icons = computed(() => theme.value?.footer?.icons || [])
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
-          class="flex items-center text-sm font-medium icon-base"
+          class="icon-base flex items-center text-sm font-medium"
         >
           <Icon v-if="icon.icon" :name="icon.icon" />
-          <Component :is="icon.component" v-else-if="icon?.component" :class="[icon?.class ? icon.class : 'w-5 h-5']" />
+          <Component :is="icon.component" v-else-if="icon?.component" :class="[icon?.class ? icon.class : 'h-5 w-5']" />
         </a>
 
         <SocialIcons />

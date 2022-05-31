@@ -85,32 +85,6 @@
   .dark-img {
     @apply hidden dark:block;
   }
-
-  /* Link */
-
-  .link {
-    @apply transition-colors hover:text-secondary-hover transition-base;
-  }
-
-  /* Scrollbar */
-  .custom-scrollbar {
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-thumb);
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: var(--scrollbar-track);
-    }
-
-    &::-webkit-scrollbar{
-      width: 8px;
-      height: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: .25rem
-    }
-  }
 }
 
 /* Variables */
@@ -128,17 +102,15 @@
   }
 }
 
-html {
-  @apply min-h-screen overflow-x-hidden overflow-y-scroll font-sans antialiased bg-white text-primary custom-scrollbar;
+.dark:root {
+  color-scheme: dark;
+}
 
-  /* Scrollbar settings */
-  --scrollbar-track: theme('colors.gray.200');
-  --scrollbar-thumb: theme('colors.gray.300');
+html {
+  @apply min-h-screen overflow-x-hidden overflow-y-scroll font-sans antialiased bg-white text-primary scroll-mt-16;
 
   &.dark {
     @apply bg-gray-900;
-    --scrollbar-track: theme('colors.gray.800');
-    --scrollbar-thumb: theme('colors.gray.900');
   }
 }
 

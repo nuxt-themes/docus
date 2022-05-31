@@ -45,19 +45,19 @@ div {
   &.highlight-shellscript {
     :deep(code) {
       .line {
-        @apply pl-4 relative;
+        @apply relative pl-4;
       }
 
       .line::before {
         content: '>';
-        @apply top-0 select-none -left-[0.1rem] absolute block text-primary-500 font-mono font-bold;
+        @apply text-primary-500 absolute top-0 -left-[0.1rem] block select-none font-mono font-bold;
       }
     }
   }
 }
 
 :deep(pre) {
-  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed custom-scrollbar;
+  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed;
 }
 
 :deep(code) {
