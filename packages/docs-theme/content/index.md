@@ -12,7 +12,7 @@ cta:
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx degit nuxtlabs/docus-starter
+snippet: npx nuxi init docus-app -t nuxtlabs/docus-starter
 ---
 #title
 The best place to start your documentation.
@@ -31,16 +31,13 @@ What's included
 #default
   ::card
   ---
-  icon: IconNuxt
   description: Harness the full power of Nuxt and the Nuxt ecosystem.
-  iconClass: 'text-hex-00DC82' 
   title: Nuxt Architecture.
   ---
   ::
 
   ::card
   ---
-  icon: IconVue
   title: Vue Components.
   description: Use built-in components (or your own!) inside your content.
   ---
@@ -48,33 +45,8 @@ What's included
 
   ::card
   ---
-  icon: IconMarkdown
   title: Write Markdown.
   description: Enjoy the ease and simplicity of Markdown and discover MDC syntax.
-  ---
-  ::
-
-  ::card
-  ---
-  icon: logos:tailwindcss-icon
-  title: TailwindCSS.
-  description: Tailwind is built in for great developer experience and rapid customization.
-  ---
-  ::
-
-  ::card
-  ---
-  icon: 🚀
-  title: Hybrid Rendering.
-  description: Your content and its server can be deployed in any node environment.
-  ---
-  ::
-
-  ::card
-  ---
-  icon: noto:puzzle-piece
-  title: Extensible.
-  description: Customize the whole design, or add components using slots - you can make Docus your own.
   ---
   ::
 ::

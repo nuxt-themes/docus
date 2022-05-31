@@ -59,8 +59,8 @@ importers:
       nuxt: ^3.0.0-rc.3
       pkg-types: ^0.3.2
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555461.4c365fc
-      '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27549305.d2c61b7
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27565331.564b2e8
+      '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27556623.cee307a
       '@vueuse/core': 8.5.0
       '@vueuse/nuxt': 8.5.0
       defu: 6.0.0
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.0-27555461.4c365fc
+      '@nuxt/content': /@nuxt/content-edge/2.0.0-27565331.564b2e8
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -709,8 +709,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.0-27555461.4c365fc:
-    resolution: {integrity: sha512-Au7chaXEsr1vXASXzZCwuLMYyJTmfic23MpPaT8B+/YmA7WlUbNu+u1q+gnykfje2xL1M3bIONykRdpCOPnDRQ==}
+  /@nuxt/content-edge/2.0.0-27565331.564b2e8:
+    resolution: {integrity: sha512-lt7Y6OMeLNF9xhtxgSBpRE0nxUz2re2dcuoj24SW5qgg6JBLpf/Srhfd3LLnnb5bZTxRzxl5q1dWj5yCW+6UzA==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -756,7 +756,7 @@ packages:
       unist-util-position: 4.0.3
       unist-util-visit: 4.1.0
       unstorage: 0.4.1
-      ws: 8.6.0
+      ws: 8.7.0
     transitivePeerDependencies:
       - bufferutil
       - esbuild
@@ -1078,8 +1078,8 @@ packages:
       - supports-color
       - webpack
 
-  /@nuxthq/admin-edge/0.0.1-27549305.d2c61b7:
-    resolution: {integrity: sha512-l7QZsmAyp0RreT7+Hb60CIsbusCl9LRmRSWc+rkEBsP9/I+sJolq7pLV09e/Whmtjj0DsQ89Meh/WoNU9Y5TQA==}
+  /@nuxthq/admin-edge/0.0.1-27556623.cee307a:
+    resolution: {integrity: sha512-y8ivZ630z77J7N+muBV/K3Y80LA7qhWL1nQqw47tX7eYIlimEnc4Lc9mU3U6koqCn8uyxE+4eBNT+8M4xSoahA==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       nuxt-component-meta: 0.1.5
@@ -4501,7 +4501,7 @@ packages:
     resolution: {integrity: sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==}
 
   /gittar/0.1.1:
-    resolution: {integrity: sha1-1pk+phYKhsi3895yKmH3O8meFLQ=}
+    resolution: {integrity: sha512-p+XuqWJpW9ahUuNTptqeFjudFq31o6Jd+maMBarkMAR5U3K9c7zJB4sQ4BV8mIqrTOV29TtqikDhnZfCD4XNfQ==}
     engines: {node: '>=4'}
     dependencies:
       mkdirp: 0.5.6
@@ -5263,7 +5263,7 @@ packages:
     engines: {node: '>=10'}
 
   /is-utf8/0.2.1:
-    resolution: {integrity: sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=}
+    resolution: {integrity: sha512-rMYPYvCzsXywIsldgLaSoPlw5PfoB/ssr7hY4pLfcodrA5M/eArza1a9VmTiNIBNMjOGr1Ow9mTyU2o69U6U9Q==}
 
   /is-weakref/1.0.2:
     resolution: {integrity: sha512-qctsuLZmIQ0+vSSMfoVvyFe2+GSEvnmZ2ezTup1SBse9+twCCeial6EEi3Nc2KFcf6+qz2FBPnjXsk8xhKSaPQ==}
@@ -9793,6 +9793,18 @@ packages:
 
   /ws/8.6.0:
     resolution: {integrity: sha512-AzmM3aH3gk0aX7/rZLYvjdvZooofDu3fFOzGqcSnQ1tOcTWwhM/o+q++E8mAyVVIyUdajrkzWUGftaVSDLn1bw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
+  /ws/8.7.0:
+    resolution: {integrity: sha512-c2gsP0PRwcLFzUiA8Mkr37/MI7ilIlHQxaEAtd0uNMbVMoy8puJyafRlm0bV9MbGSabUPeLrRRaqIBcFcA2Pqg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1

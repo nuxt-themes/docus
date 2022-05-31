@@ -33,11 +33,6 @@ const components = [
     path: './components/icons',
     global: true,
   },
-  {
-    prefix: '',
-    path: './components/icons',
-    global: true,
-  },
 ]
 
 export default defineNuxtConfig({

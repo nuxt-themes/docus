@@ -1,17 +1,19 @@
 ---
 navigation: false
-layout: page
+layout: fluid
 ---
 
 ::block-hero
 ---
 cta:
   - Get started
-  - /writing/my-first-page
+  - /getting-started
+
 secondary:
   - Open on GitHub →
   - https://github.com/nuxtlabs/docus
-snippet: npx nuxi init --template=docus
+
+snippet: npx nuxi init docus-app -t nuxtlabs/docus-starter
 ---
 
 #title
@@ -22,7 +24,9 @@ The favorite package of your favorite package.
 ::
 
 ::container{padded}
+
 Don't forget to follow us on [Twitter](https://twitter.com/nuxtlabs).
 
-[Go back](/writing/my-first-page).
+[Go back](/guide/authoring/my-first-page).
+
 ::

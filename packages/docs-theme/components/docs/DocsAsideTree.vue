@@ -46,7 +46,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
     >
       <div v-if="link.children" class="flex items-center justify-between pt-2 text-sm font-semibold text-gray-900 dark:text-gray-200">
         <span class="inline-flex items-center">
-          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-2" />
+          <Icon v-if="link.icon" :name="link.icon" :class="[link?.iconClasses ? link.iconClasses : 'w-4 h-4 mr-2']" />
           <span>{{ link.title }}</span>
         </span>
       </div>
