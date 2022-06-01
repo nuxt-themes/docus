@@ -25,7 +25,7 @@ defineProps({
 </template>
 
 <style lang="postcss" scoped>
-:not(h1, h2, h3, h4) > a:not(:has(code)) {
+:not(h1, h2, h3, h4) > a {
   @apply text-primary-500 hover:border-primary-500 border-b-2 border-transparent font-medium no-underline hover:border-b-2;
 }
 </style>
