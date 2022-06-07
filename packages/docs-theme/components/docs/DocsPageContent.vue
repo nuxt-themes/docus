@@ -21,7 +21,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative flex scroll-pt-2 flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
+  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
     <!-- Aside -->
     <aside v-if="aside" class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
       <DocsAside />
@@ -67,7 +67,7 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="toc top-header lg:max-h-page relative sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+      class="toc top-header lg:max-h-page sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div class="w-full cursor-pointer sm:cursor-auto" @click="isOpen = !isOpen">
         <button class="flex items-center gap-1 py-3 lg:hidden">

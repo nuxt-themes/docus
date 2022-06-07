@@ -184,21 +184,18 @@ export default {
     require('@tailwindcss/aspect-ratio'),
   ],
   theme: {
+    colors: {
+      primary: nuxtPalette.blue,
+      ...nuxtPalette,
+    },
     extend: {
-      colors: {
-        primary: nuxtPalette.blue,
-        ...nuxtPalette,
-      },
       fontFamily: {
         sans: 'Inter, sans-serif',
       },
       spacing: {
-        base: '320px',
         header: 'var(--header-height)',
         footer: 'var(--footer-height)',
         page: 'var(--page-height)',
-        18: '4.5rem',
-        46: '11.5rem',
       },
       maxWidth: {
         '8xl': '90rem',

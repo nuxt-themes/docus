@@ -3,8 +3,6 @@ import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
 
 const { navigation, theme } = useDocus()
 
-const asideLevel = computed(() => theme.value.aside?.level || 0)
-
 const filtered = computed(() => theme.value?.aside?.filter || [])
 
 const links = computed(() => {

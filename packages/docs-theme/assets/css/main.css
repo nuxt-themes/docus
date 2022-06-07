@@ -89,15 +89,14 @@
 
 /* Variables */
 :root {
-  --header-height: theme('spacing.14');
-  --footer-height: 8rem;
+  --header-height: 4rem;
+  --footer-height: 6rem;
   --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
-  --codeblocks-background: theme("colors.gray.900");
 }
 
 @screen sm {
   :root {
-    --header-height: theme('spacing.18');
+    --header-height: 4rem;
     --footer-height: 4rem;
   }
 }
@@ -107,7 +106,7 @@
 }
 
 html {
-  @apply min-h-screen overflow-x-hidden overflow-y-scroll font-sans antialiased bg-white text-primary scroll-mt-16;
+  @apply min-h-screen overflow-x-hidden overflow-y-scroll font-sans antialiased bg-white;
 
   &.dark {
     @apply bg-gray-900;

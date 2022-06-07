@@ -5,15 +5,19 @@ export default <RouterConfig>{
   scrollBehavior: (to, _, savedPosition) => {
     // Scroll to heading on click
     if (to.hash) {
+      const el = document.querySelector(to.hash)
+      // vue-router does not incorporate scroll-margin-top on its own.
+      if (el) {
+        const top = parseFloat(getComputedStyle(el).scrollMarginTop)
+        return {
+          el: to.hash,
+          behavior: 'smooth',
+          top,
+        }
+      }
+
       return {
         el: to.hash,
-        behavior: 'smooth',
-      }
-    }
-
-    if (to.params?.smooth) {
-      return {
-        el: to.params?.smooth,
         behavior: 'smooth',
       }
     }
