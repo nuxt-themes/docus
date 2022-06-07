@@ -20,25 +20,23 @@ const directory = (link) => {
 
 <template>
   <div v-if="prev || next" class="flex items-center justify-between gap-3">
-    <NuxtLink v-if="prev" :to="prev._path" class="group relative flex flex-col items-start truncate">
-      <span class="relative flex flex-col items-end truncate">
-        <span class="mb-1 text-xs font-bold leading-tight tracking-tight">{{ directory(prev._path) || '&nbsp;' }}</span>
+    <NuxtLink v-if="prev" :to="prev._path" class="hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3">
+      <p v-if="directory(prev._path)" class="mb-1 text-right text-xs font-medium text-gray-400">{{ directory(prev._path) }}</p>
 
-        <span class="group-hover:text-primary-500 flex w-full items-center leading-tight">
-          <Icon name="heroicons-outline:arrow-sm-left" class="mr-2 h-4 w-4 flex-shrink-0" />
-          <span class="truncate">{{ prev.title }}</span>
-        </span>
-      </span>
+      <p class="flex items-center gap-3">
+        <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
+        <span class="text-right font-medium leading-5">{{ prev.title }}</span>
+      </p>
     </NuxtLink>
     <span v-else />
 
-    <NuxtLink v-if="next" :to="next._path" class="group relative flex flex-col items-start truncate">
-      <span v-if="directory(next._path)" class="mb-1 text-xs font-bold leading-tight tracking-tight">{{ directory(next._path) }}</span>
+    <NuxtLink v-if="next" :to="next._path" class="hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3">
+      <p v-if="directory(next._path)" class="mb-1 text-xs font-medium text-gray-400">{{ directory(next._path) }}</p>
 
-      <span class="group-hover:text-primary-500 flex w-full items-center leading-tight">
-        <span class="truncate">{{ next.title }}</span>
-        <Icon name="heroicons-outline:arrow-sm-right" class="ml-2 h-4 w-4 flex-shrink-0" />
-      </span>
+      <p class="flex items-center gap-3">
+        <span class="font-medium leading-5">{{ next.title }}</span>
+        <Icon name="heroicons-outline:arrow-sm-right" class="h-5 w-5 flex-shrink-0" />
+      </p>
     </NuxtLink>
   </div>
 </template>
