@@ -43,7 +43,7 @@ function scrollToHeading(id: string) {
       </div>
 
       <ul>
-        <li v-for="link in toc.links" :key="link.text" class="transition-base group min-w-0 transition-colors" :class="[{ 'pl-3': link.depth === 3, 'pl-6': link.depth === 4 }]">
+        <li v-for="link in toc.links" :key="link.text" class="group min-w-0" :class="[{ 'pl-3': link.depth === 3, 'pl-6': link.depth === 4 }]">
           <a
             :href="`#${link.id}`"
             class="block truncate py-1 text-sm lg:pr-3"

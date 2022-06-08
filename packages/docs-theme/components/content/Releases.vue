@@ -24,7 +24,7 @@ const formatDateByLocale = (date: string) => {
 
 <template>
   <GithubReleases v-slot="{ releases }">
-    <div v-for="release of releases" :key="release.name" class="flex flex-col-reverse pb-6 mb-6 border-gray-100 release dark:border-gray-800 lg:border-b lg:flex-row">
+    <div v-for="release of releases" :key="release.name" class="release mb-6 flex flex-col-reverse border-gray-100 pb-6 dark:border-gray-800 lg:flex-row lg:border-b">
       <!-- Body -->
       <div class="flex-1">
         <ContentRenderer :value="release" class="docus-content" />
@@ -33,23 +33,18 @@ const formatDateByLocale = (date: string) => {
 
       <!-- Header -->
       <div
-        class="sticky flex flex-row items-center self-start justify-between w-full gap-2 py-2 text-right lg:py-0 release-meta surface z-1 lg:w-1/4 lg:bg-transparent lg:backdrop-blur-none lg:items-end lg:flex-col"
+        class="release-meta surface z-1 sticky flex w-full flex-row items-center justify-between gap-2 self-start py-2 text-right lg:w-1/4 lg:flex-col lg:items-end lg:bg-transparent lg:py-0 lg:backdrop-blur-none"
       >
         <a :href="release.url" target="_blank">
-          <h2 :id="release.name" class="text-2xl font-bold transition-colors cursor-pointer hover:text-secondary-hover transition-base lg:text-3xl">
+          <h2 :id="release.name" class="hover:text-secondary-hover cursor-pointer text-2xl font-bold lg:text-3xl">
             {{ release.name }}
           </h2>
         </a>
 
         <div class="flex flex-col gap-2 pb-4">
-          <a
-            v-if="release.author"
-            target="_blank"
-            :href="release.author.url"
-            class="flex items-center justify-end gap-2 transition-colors hover:text-secondary-hover transition-base"
-          >
+          <a v-if="release.author" target="_blank" :href="release.author.url" class="hover:text-secondary-hover flex items-center justify-end gap-2">
             <div class="flex-shrink-0">
-              <img class="w-6 h-6 rounded-full" :src="release.author?.avatar" alt="" />
+              <img class="h-6 w-6 rounded-full" :src="release.author?.avatar" alt="" />
             </div>
             <p class="text-sm lg:text-base">@{{ release.author.name }}</p>
           </a>
@@ -64,7 +59,7 @@ const formatDateByLocale = (date: string) => {
 <style lang="postcss" scoped>
 .release {
   &:last-of-type {
-    @apply border-none mb-0;
+    @apply mb-0 border-none;
   }
 }
 
@@ -75,7 +70,7 @@ const formatDateByLocale = (date: string) => {
     content: ' ';
     width: 100%;
     right: 0;
-    @apply block absolute z-[-1] top-0 surface surface-blurry h-full;
+    @apply surface surface-blurry absolute top-0 z-[-1] block h-full;
   }
 }
 

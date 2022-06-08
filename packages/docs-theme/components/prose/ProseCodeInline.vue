@@ -21,18 +21,22 @@ a {
   @apply overflow-hidden;
 
   code {
-    @apply text-primary-500 border border-dashed border-transparent font-medium;
+    @apply text-primary-500 dark:text-primary-500 border border-dashed border-transparent font-medium;
   }
 }
 
 a:hover code {
-  @apply border-gray-900 dark:border-white;
+  @apply border-primary-500 dark:border-primary-500;
 }
 
 h1 a,
 h2 a,
 h3 a,
 h4 a {
+  &:hover code {
+    @apply border-gray-900 dark:border-white;
+  }
+
   code {
     @apply relative px-2 py-1.5 font-bold text-gray-900 dark:text-white;
     font-size: inherit !important;

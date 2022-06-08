@@ -53,14 +53,14 @@ watch(
 </script>
 
 <template>
-  <div class="tabs-header relative text-white bg-gray-700">
+  <div class="tabs-header relative bg-gray-700 text-white">
     <div v-if="tabs" class="relative z-0 px-2">
       <button
         v-for="({ label }, i) in tabs"
         ref="tabsRef"
         :key="`${i}${label}`"
         class="xs:py-3 xs:my-0 relative my-2 rounded-lg px-2 py-1.5 font-mono text-sm tracking-tight focus:outline-none"
-        :class="[activeTabIndex === i ? 'text-white' : 'text-gray-200 hover:text-gray-100 transition-base transition-colors']"
+        :class="[activeTabIndex === i ? 'text-white' : 'text-gray-200 hover:text-gray-100']"
         @click="updateTabs(i)"
       >
         {{ label }}

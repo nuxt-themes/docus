@@ -24,13 +24,13 @@ defineProps({
 
 <template>
   <div :class="[`highlight-${language}`]" class="prose-code group w-full text-gray-50">
-    <span v-if="filename" class="filename transition-base absolute top-1 right-1 z-0 rounded-lg py-1 pr-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
+    <span v-if="filename" class="filename absolute top-1 right-1 z-0 rounded-lg py-1 pr-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
 
     <slot />
 
-    <CopyButton :content="code" class="copy-button transition-base absolute right-1 bottom-1 scale-0 opacity-0" />
+    <CopyButton :content="code" class="copy-button absolute right-1 bottom-1 scale-0 opacity-0 transition" />
   </div>
 </template>
 
@@ -57,7 +57,7 @@ div {
 }
 
 :deep(pre) {
-  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed;
+  @apply my-0 flex flex-1 overflow-x-auto bg-gray-800 p-4 leading-relaxed;
 }
 
 :deep(code) {

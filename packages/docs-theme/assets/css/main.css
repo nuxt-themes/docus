@@ -31,12 +31,6 @@
     @apply group-hover:text-gray-600 dark:group-hover:text-gray-100;
   }
 
-  /* Transitions */
-
-  .transition-base {
-    @apply duration-100 ease-in-out;
-  }
-
   /* Surface */
 
   .surface {
@@ -49,31 +43,10 @@
     @apply bg-white/95 backdrop-blur dark:bg-gray-900/95;
   }
 
-  /* Borders */
-
-  .surface-border {
-    @apply border-gray-200 dark:border-gray-800;
-  }
-
-  .surface-border-hover {
-    @apply border-primary-200 dark:border-gray-700;
-  }
-
-  .surface-border-header {
-    @apply border-b border-gray-200 border-opacity-50 dark:border-gray-800;
-  }
-
   /* Icons */
 
   .icon-base {
     @apply text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200;
-  }
-
-  /* Code blocks */
-
-  .code-background {
-    /* background-color: var(--codeblocks-background); */
-    @apply bg-gray-800;
   }
 
   /* Images */
@@ -90,15 +63,8 @@
 /* Variables */
 :root {
   --header-height: 4rem;
-  --footer-height: 6rem;
+  --footer-height: 4rem;
   --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
-}
-
-@screen sm {
-  :root {
-    --header-height: 4rem;
-    --footer-height: 4rem;
-  }
 }
 
 .dark:root {

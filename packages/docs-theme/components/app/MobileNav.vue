@@ -54,7 +54,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
         <div
           id="mobile-nav-surface"
           :class="[visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0']"
-          class="surface surface-border fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform overflow-hidden rounded-2xl border shadow-xl transition-transform ease-out sm:w-auto sm:min-w-[calc(320px-2rem)]"
+          class="surface fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform overflow-hidden rounded-2xl border border-gray-200 shadow-xl transition-transform ease-out dark:border-gray-800 sm:w-auto sm:min-w-[calc(320px-2rem)]"
           @click="toggle"
         >
           <div class="z-40 mb-2 max-h-full overflow-y-auto p-6" @click.stop.prevent>
@@ -79,14 +79,14 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 }
 
 #mobile-nav-surface {
-  @apply right-4 top-[0.5rem] bottom-[0.5rem];
-  max-height: calc(100vh- 2rem);
-  min-width: calc(100% - 2rem);
+  @apply right-3 top-[0.5rem] bottom-[0.5rem];
+  max-height: calc(100vh - 1rem);
+  min-width: calc(100% - 1.5rem);
 }
 
 #mobile-nav-button {
   @apply top-3;
-  right: calc(theme('spacing.4') + var(--scrollbar-gap));
+  right: calc(theme('spacing.4'));
 }
 
 @screen sm {
@@ -98,7 +98,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 
   #mobile-nav-button {
     @apply top-5;
-    right: calc(theme('spacing.6') + var(--scrollbar-gap));
+    right: calc(theme('spacing.6'));
   }
 }
 </style>

@@ -35,7 +35,6 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
     <li
       v-for="(link, index) in links"
       :key="link._path"
-      class="transition-base transition-colors"
       :class="{
         'ml-2': parent?.icon,
         'pl-4': level > 0 && link.children,
