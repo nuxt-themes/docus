@@ -27,9 +27,9 @@ const directory = (link) => {
     >
       <p v-if="directory(prev._path)" class="mb-1 text-right text-xs font-medium text-gray-400">{{ directory(prev._path) }}</p>
 
-      <p class="flex items-center gap-3">
+      <p class="flex min-w-0 items-center gap-3">
         <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
-        <span class="text-right font-medium leading-5">{{ prev.title }}</span>
+        <span class="truncate text-right font-medium leading-5">{{ prev.title }}</span>
       </p>
     </NuxtLink>
     <span v-else />
@@ -41,8 +41,8 @@ const directory = (link) => {
     >
       <p v-if="directory(next._path)" class="mb-1 text-xs font-medium text-gray-400">{{ directory(next._path) }}</p>
 
-      <p class="flex items-center gap-3">
-        <span class="font-medium leading-5">{{ next.title }}</span>
+      <p class="flex min-w-0 items-center gap-3">
+        <span class="truncate font-medium leading-5">{{ next.title }}</span>
         <Icon name="heroicons-outline:arrow-sm-right" class="h-5 w-5 flex-shrink-0" />
       </p>
     </NuxtLink>

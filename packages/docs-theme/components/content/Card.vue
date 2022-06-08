@@ -35,8 +35,8 @@ defineProps({
 
 <template>
   <div class="flex">
-    <div :class="[type, { blurry }]" class="relative w-full p-8 card rounded-xl">
-      <Icon v-if="icon" :name="icon" class="inline-block w-8 h-8 mb-2 text-2xl" />
+    <div :class="[type, { blurry }]" class="card relative w-full rounded-xl p-8">
+      <Icon v-if="icon" :name="icon" class="mb-2 inline-block h-8 w-8 text-2xl" />
       <slot />
       <div>
         <h3 v-if="title" class="mb-2 text-lg font-semibold tracking-tight">

@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <span :class="[type]" class="inline-flex items-center px-3 py-1 text-base leading-5 tracking-tight rounded-full badge">
+  <span :class="[type]" class="badge inline-flex items-center rounded-full px-3 py-1 text-base leading-5 tracking-tight">
     <slot />
   </span>
 </template>
