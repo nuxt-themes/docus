@@ -57,7 +57,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         :class="{
           'pl-4': level > 0 || !hasNesting,
           '!pt-0': level === 0 && index === 0,
-          'text-primary font-medium': isActive(link),
+          'text-primary-500 font-medium': isActive(link),
           'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200': !isActive(link),
         }"
       >

@@ -87,7 +87,7 @@ const isOpen = ref(false)
     content: ' ';
     width: 100%;
     right: 0;
-    @apply surface surface-blurry absolute top-0 z-[-1] block h-full;
+    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-gray-900/95;
   }
 }
 

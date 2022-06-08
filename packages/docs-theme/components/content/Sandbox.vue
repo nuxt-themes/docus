@@ -87,7 +87,7 @@ onMounted(() => {
 
 <style lang="postcss" scoped>
 .sandbox {
-  @apply surface overflow-hidden rounded-lg text-3xl;
+  @apply overflow-hidden rounded-lg bg-white text-3xl dark:bg-gray-900;
 
   iframe {
     @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;

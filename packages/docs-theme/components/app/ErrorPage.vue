@@ -26,8 +26,8 @@ defineProps({
           {{ statusCode }}
         </p>
         <div class="sm:ml-6">
-          <div class="text-secondary dark:text-white sm:border-l sm:border-gray-200 sm:pl-6">
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <div class="sm:border-l sm:border-gray-200 sm:pl-6 sm:dark:border-gray-800">
+            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
               {{ name || 'Not Found' }}
             </h1>
             <p class="mt-1 text-xl">

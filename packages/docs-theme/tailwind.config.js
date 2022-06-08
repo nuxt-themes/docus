@@ -1,4 +1,4 @@
-const nuxtPalette = {
+const colors = {
   transparent: 'transparent',
   current: 'currentColor',
   white: '#fff',
@@ -184,11 +184,11 @@ export default {
     require('@tailwindcss/aspect-ratio'),
   ],
   theme: {
-    colors: {
-      primary: nuxtPalette.blue,
-      ...nuxtPalette,
-    },
+    colors,
     extend: {
+      colors: {
+        primary: colors.blue,
+      },
       fontFamily: {
         sans: 'Inter, sans-serif',
       },

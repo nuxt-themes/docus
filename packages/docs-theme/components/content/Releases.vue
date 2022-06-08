@@ -33,10 +33,10 @@ const formatDateByLocale = (date: string) => {
 
       <!-- Header -->
       <div
-        class="release-meta surface z-1 sticky flex w-full flex-row items-center justify-between gap-2 self-start py-2 text-right lg:w-1/4 lg:flex-col lg:items-end lg:bg-transparent lg:py-0 lg:backdrop-blur-none"
+        class="release-meta z-1 sticky -mt-8 flex w-full flex-row items-center justify-between gap-2 self-start bg-white pt-8 text-right dark:bg-gray-900 lg:w-1/4 lg:flex-col lg:items-end lg:bg-transparent lg:backdrop-blur-none"
       >
         <a :href="release.url" target="_blank">
-          <h2 :id="release.name" class="hover:text-secondary-hover cursor-pointer text-2xl font-bold lg:text-3xl">
+          <h2 :id="release.name" class="hover:text-secondary-hover cursor-pointer text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
             {{ release.name }}
           </h2>
         </a>
@@ -70,7 +70,7 @@ const formatDateByLocale = (date: string) => {
     content: ' ';
     width: 100%;
     right: 0;
-    @apply surface surface-blurry absolute top-0 z-[-1] block h-full;
+    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-gray-900/95;
   }
 }
 

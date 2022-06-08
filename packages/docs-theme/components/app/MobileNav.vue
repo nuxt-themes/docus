@@ -54,10 +54,10 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
         <div
           id="mobile-nav-surface"
           :class="[visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0']"
-          class="surface fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform overflow-hidden rounded-2xl border border-gray-200 shadow-xl transition-transform ease-out dark:border-gray-800 sm:w-auto sm:min-w-[calc(320px-2rem)]"
+          class="fixed z-20 w-[calc(100%-4rem)] min-w-full origin-top-right transform overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl transition-transform ease-out dark:border-gray-800 dark:bg-gray-900 sm:w-auto sm:min-w-[calc(320px-2rem)]"
           @click="toggle"
         >
-          <div class="z-40 mb-2 max-h-full overflow-y-auto p-6" @click.stop.prevent>
+          <div class="z-40 mb-2 max-h-full overflow-y-auto p-4" @click.stop.prevent>
             <DocsAsideTree :links="links" />
 
             <div class="mt-4 flex items-center justify-end gap-4">
@@ -85,8 +85,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
 }
 
 #mobile-nav-button {
-  @apply top-3;
-  right: calc(theme('spacing.4'));
+  @apply top-4 right-4;
 }
 
 @screen sm {
@@ -97,8 +96,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
   }
 
   #mobile-nav-button {
-    @apply top-5;
-    right: calc(theme('spacing.6'));
+    @apply top-4 right-6;
   }
 }
 </style>

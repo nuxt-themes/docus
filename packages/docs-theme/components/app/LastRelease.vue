@@ -5,7 +5,12 @@ const { last } = useRepository()
 </script>
 
 <template>
-  <NuxtLink v-if="last" to="/releases" class="text-secondary hover:text-primary-hover font-semibold" exact-active-class="text-primary-active">
+  <NuxtLink
+    v-if="last"
+    to="/releases"
+    class="hover:text-primary-500 dark:hover:text-primary-500 font-medium text-gray-500 dark:text-gray-200"
+    exact-active-class="text-primary-500"
+  >
     {{ last?.name }}
   </NuxtLink>
 </template>
