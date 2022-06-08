@@ -20,7 +20,11 @@ const directory = (link) => {
 
 <template>
   <div v-if="prev || next" class="flex items-center justify-between gap-3">
-    <NuxtLink v-if="prev" :to="prev._path" class="hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3">
+    <NuxtLink
+      v-if="prev"
+      :to="prev._path"
+      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3 dark:border-gray-800"
+    >
       <p v-if="directory(prev._path)" class="mb-1 text-right text-xs font-medium text-gray-400">{{ directory(prev._path) }}</p>
 
       <p class="flex items-center gap-3">
@@ -30,7 +34,11 @@ const directory = (link) => {
     </NuxtLink>
     <span v-else />
 
-    <NuxtLink v-if="next" :to="next._path" class="hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3">
+    <NuxtLink
+      v-if="next"
+      :to="next._path"
+      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 relative rounded-lg border border-gray-100 p-3 dark:border-gray-800"
+    >
       <p v-if="directory(next._path)" class="mb-1 text-xs font-medium text-gray-400">{{ directory(next._path) }}</p>
 
       <p class="flex items-center gap-3">
