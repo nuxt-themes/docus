@@ -29,11 +29,12 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative flex flex-1 flex-col lg:mt-0 lg:pt-8"
+      class="relative flex flex-1 flex-col pt-8 lg:mt-0"
       :class="{
-        'lg:col-span-12 lg:flex lg:flex-1': !aside && !toc,
-        'pt-8 lg:col-span-10 lg:pt-8': !(toc || aside) && (toc || aside),
-        'pt-12 lg:col-span-8': toc && aside,
+        'lg:col-span-12': !aside && !toc,
+        'lg:col-span-10': (!toc || !aside) && !(!aside && !toc),
+        'lg:col-span-8': toc && aside,
+        'pt-12 lg:pt-8': toc,
       }"
     >
       <DocsPageHeader v-if="page" />
