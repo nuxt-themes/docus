@@ -22,39 +22,39 @@ defineProps({
 </script>
 
 <template>
-  <section class="py-8 lg:py-16">
-    <Container padded class="my-16 flex flex-col items-center lg:flex-row">
-      <div class="flex flex-col items-center pr-0 lg:mb-0 lg:w-2/3 lg:items-start lg:pr-8">
-        <!-- Title -->
-        <h2 class="mb-8 text-center text-5xl font-semibold tracking-tighter text-gray-900 dark:text-gray-100 sm:text-6xl sm:leading-none lg:text-left lg:text-7xl">
-          <Markdown :use="$slots.title" unwrap="p" />
-        </h2>
+  <section class="py-20 sm:py-24 lg:py-32">
+    <Container padded class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <p v-if="$slots.top" class="mb-2 text-center sm:text-left">
+          <Markdown :use="$slots.top" unwrap="p" />
+        </p>
 
-        <!-- Description -->
-        <p class="leading-base mb-8 text-center text-lg font-medium tracking-tight text-gray-700 dark:text-gray-300 sm:text-xl lg:text-left xl:text-xl">
+        <h1 class="u-text-gray-900 text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-left lg:text-6xl">
+          <Markdown :use="$slots.title" unwrap="p" />
+        </h1>
+
+        <p class="u-text-gray-500 mt-4 max-w-3xl text-center text-lg lg:text-left">
           <Markdown :use="$slots.description" unwrap="p" />
         </p>
 
-        <div class="flex flex-col items-center space-y-4 mb-8 lg:mb-0 sm:flex-row sm:space-y-0 sm:space-x-4 lg:space-x-6">
-          <!-- CTA -->
-          <ButtonLink v-if="cta" class="mx-auto md:mx-0 !mb-0" bold size="large" :href="cta[1]">
+        <div v-if="$slots.extra" class="mt-6">
+          <Markdown :use="$slots.extra" unwrap="p" />
+        </div>
+
+        <div class="mt-6 flex flex-col items-center gap-4 sm:mt-10 sm:flex-row sm:gap-6">
+          <ButtonLink v-if="cta" class="mx-auto !mb-0 md:mx-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>
 
-          <!-- Secondary CTA -->
-          <ButtonLink v-if="secondary" type="primary" transparent bold :href="secondary[1]">
+          <a v-if="secondary" :href="(secondary[1] as any)" class="u-text-gray-500 hover:u-text-gray-700 py-px font-medium">
             {{ secondary[0] }}
           </ButtonLink>
         </div>
       </div>
 
-      <div class="sm:w-580px flex lg:flex-col flex-col-reverse gap-4 mb-8 lg:mb-0 mx-auto w-full lg:w-1/3">
-        <!-- Video -->
-        <VideoPlayer v-if="video" class="border-2 shadow-lg surface-border" :src="video[0]" :poster="video[1]" />
-
-        <!-- Snippet -->
+      <slot name="right">
         <Terminal v-if="snippet" :content="snippet" />
-      </div>
+      </slot>
     </Container>
   </section>
 </template>

@@ -26,6 +26,6 @@ defineProps({
 
 <style lang="postcss" scoped>
 :not(h1, h2, h3, h4) > a {
-  @apply text-secondary-active hover:border-primary-600 border-b border-transparent font-medium no-underline transition-colors;
+  @apply text-primary-500 hover:border-primary-500 border-b border-transparent font-medium no-underline;
 }
 </style>

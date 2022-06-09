@@ -3,79 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  /* Text primary */
-
-  .text-primary {
-    @apply text-primary-500 dark:text-primary-500;
-  }
-  .text-primary-active {
-    @apply text-primary-600 dark:text-primary-500;
-  }
-  .text-primary-hover {
-    @apply hover:text-primary-600 hover:dark:text-primary-500;
-  }
-  .text-primary-group-hover {
-    @apply group-hover:text-primary-600;
-  }
-
-  /* Text secondary */
-
-  .text-secondary {
-    @apply text-gray-500 dark:text-gray-200;
-  }
-  .text-secondary-hover,
-  .text-secondary-active {
-    @apply text-gray-700 dark:text-gray-50;
-  }
-  .text-secondary-group-hover {
-    @apply group-hover:text-gray-600 dark:group-hover:text-gray-100;
-  }
-
-  /* Transitions */
-
-  .transition-base {
-    @apply duration-100 ease-in-out;
-  }
-
-  /* Surface */
-
-  .surface {
-    @apply bg-white dark:bg-gray-900;
-  }
-  .surface-secondary {
-    @apply bg-gray-50 dark:bg-opacity-25 dark:bg-gray-800;
-  }
-  .surface-blurry {
-    @apply bg-white/95 backdrop-blur dark:bg-gray-900/95;
-  }
-
-  /* Borders */
-
-  .surface-border {
-    @apply border-gray-200 dark:border-gray-800;
-  }
-
-  .surface-border-hover {
-    @apply border-primary-200 dark:border-gray-700;
-  }
-
-  .surface-border-header {
-    @apply border-b border-gray-200 border-opacity-50 dark:border-gray-800;
-  }
-
-  /* Icons */
-
-  .icon-base {
-    @apply text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200;
-  }
-
-  /* Code blocks */
-
-  .code-background {
-    /* background-color: var(--codeblocks-background); */
-    @apply bg-gray-800;
-  }
-
   /* Images */
 
   .light-img {
@@ -85,65 +12,93 @@
   .dark-img {
     @apply hidden dark:block;
   }
+}
 
-  /* Link */
-
-  .link {
-    @apply transition-colors hover:text-secondary-hover transition-base;
-  }
-
-  /* Scrollbar */
-  .custom-scrollbar {
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-thumb);
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: var(--scrollbar-track);
-    }
-
-    &::-webkit-scrollbar{
-      width: 8px;
-      height: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: .25rem
-    }
-  }
+@layer utilities {
+  .u-bg-white { @apply bg-white dark:bg-black; }
+  .u-bg-gray-50 { @apply bg-gray-50 dark:bg-gray-900; }
+  .u-bg-gray-100 { @apply bg-gray-100 dark:bg-gray-800; }
+  .u-bg-gray-200 { @apply bg-gray-200 dark:bg-gray-700; }
+  .u-bg-gray-300 { @apply bg-gray-300 dark:bg-gray-600; }
+  .u-bg-gray-400 { @apply bg-gray-400 dark:bg-gray-500; }
+  .u-bg-gray-500 { @apply bg-gray-500 dark:bg-gray-400; }
+  .u-bg-gray-600 { @apply bg-gray-600 dark:bg-gray-300; }
+  .u-bg-gray-700 { @apply bg-gray-700 dark:bg-gray-200; }
+  .u-bg-gray-800 { @apply bg-gray-800 dark:bg-gray-100; }
+  .u-bg-gray-900 { @apply bg-gray-900 dark:bg-gray-50; }
+  .u-bg-black { @apply bg-black dark:bg-white; }
+  .u-text-white { @apply text-white dark:text-black; }
+  .u-text-gray-50 { @apply text-gray-50 dark:text-gray-900; }
+  .u-text-gray-100 { @apply text-gray-100 dark:text-gray-800; }
+  .u-text-gray-200 { @apply text-gray-200 dark:text-gray-700; }
+  .u-text-gray-300 { @apply text-gray-300 dark:text-gray-600; }
+  .u-text-gray-400 { @apply text-gray-400 dark:text-gray-500; }
+  .u-text-gray-500 { @apply text-gray-500 dark:text-gray-400; }
+  .u-text-gray-600 { @apply text-gray-600 dark:text-gray-300; }
+  .u-text-gray-700 { @apply text-gray-700 dark:text-gray-200; }
+  .u-text-gray-800 { @apply text-gray-800 dark:text-gray-100; }
+  .u-text-gray-900 { @apply text-gray-900 dark:text-gray-50; }
+  .u-text-black { @apply text-black dark:text-white; }
+  .u-border-white { @apply border-white dark:border-black; }
+  .u-border-gray-100 { @apply border-gray-100 dark:border-gray-900; }
+  .u-border-gray-200 { @apply border-gray-200 dark:border-gray-800; }
+  .u-border-gray-300 { @apply border-gray-300 dark:border-gray-700; }
+  .u-border-gray-400 { @apply border-gray-400 dark:border-gray-600; }
+  .u-border-gray-500 { @apply border-gray-500 dark:border-gray-500; }
+  .u-border-gray-600 { @apply border-gray-600 dark:border-gray-400; }
+  .u-border-gray-700 { @apply border-gray-700 dark:border-gray-300; }
+  .u-border-gray-800 { @apply border-gray-800 dark:border-gray-200; }
+  .u-border-gray-900 { @apply border-gray-900 dark:border-gray-100; }
+  .u-border-black { @apply border-black dark:border-white; }
+  .u-divide-white { @apply divide-white dark:divide-black; }
+  .u-divide-gray-100 { @apply divide-gray-100 dark:divide-gray-900; }
+  .u-divide-gray-200 { @apply divide-gray-200 dark:divide-gray-800; }
+  .u-divide-gray-300 { @apply divide-gray-300 dark:divide-gray-700; }
+  .u-divide-gray-400 { @apply divide-gray-400 dark:divide-gray-600; }
+  .u-divide-gray-500 { @apply divide-gray-500 dark:divide-gray-500; }
+  .u-divide-gray-600 { @apply divide-gray-600 dark:divide-gray-400; }
+  .u-divide-gray-700 { @apply divide-gray-700 dark:divide-gray-300; }
+  .u-divide-gray-800 { @apply divide-gray-800 dark:divide-gray-200; }
+  .u-divide-gray-900 { @apply divide-gray-900 dark:divide-gray-100; }
+  .u-divide-black { @apply divide-black dark:divide-white; }
+  .u-ring-white { @apply ring-white dark:ring-black; }
+  .u-ring-gray-100 { @apply ring-gray-100 dark:ring-gray-900; }
+  .u-ring-gray-200 { @apply ring-gray-200 dark:ring-gray-800; }
+  .u-ring-gray-300 { @apply ring-gray-300 dark:ring-gray-700; }
+  .u-ring-gray-400 { @apply ring-gray-400 dark:ring-gray-600; }
+  .u-ring-gray-500 { @apply ring-gray-500 dark:ring-gray-500; }
+  .u-ring-gray-600 { @apply ring-gray-600 dark:ring-gray-400; }
+  .u-ring-gray-700 { @apply ring-gray-700 dark:ring-gray-300; }
+  .u-ring-gray-800 { @apply ring-gray-800 dark:ring-gray-200; }
+  .u-ring-gray-900 { @apply ring-gray-900 dark:ring-gray-100; }
+  .u-ring-black { @apply ring-black dark:ring-white; }
 }
 
 /* Variables */
 :root {
-  --header-height: theme('spacing.14');
-  --footer-height: 8rem;
-  --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
-  --codeblocks-background: theme("colors.gray.900");
+  --header-height: 4rem;
+  --footer-height: 108px;
+  --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height) + 50px));
 }
 
 @screen sm {
   :root {
-    --header-height: theme('spacing.18');
+    --header-height: 4rem;
     --footer-height: 4rem;
+    --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
   }
 }
 
-html {
-  @apply min-h-screen overflow-x-hidden overflow-y-scroll font-sans antialiased bg-white text-primary custom-scrollbar;
+.dark:root {
+  color-scheme: dark;
+}
 
-  /* Scrollbar settings */
-  --scrollbar-track: theme('colors.gray.200');
-  --scrollbar-thumb: theme('colors.gray.300');
-
-  &.dark {
-    @apply bg-gray-900;
-    --scrollbar-track: theme('colors.gray.800');
-    --scrollbar-thumb: theme('colors.gray.900');
-  }
+html.dark {
+  @apply bg-black;
 }
 
 body {
-  @apply min-h-screen font-sans antialiased text-gray-700 dark:text-gray-200;
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black;
 }
 
 .docus-content {
@@ -163,7 +118,7 @@ body {
     TODO: Improve the usage of these styles across components.
   */
   &.base {
-    @apply text-gray-600 border border-gray-100 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-200;
+    @apply border border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-50;
 
     code {
       @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;

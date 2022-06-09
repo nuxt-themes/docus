@@ -1,28 +1,23 @@
 import type { RouterConfig } from '@nuxt/schema'
-import { useConvertPropToPixels } from '../composables/useScrollToHeading'
 
 // https://router.vuejs.org/api/#routeroptions
 export default <RouterConfig>{
   scrollBehavior: (to, _, savedPosition) => {
     // Scroll to heading on click
     if (to.hash) {
-      setTimeout(() => {
-        const heading = document.querySelector(to.hash) as any
-
-        const offset = heading.offsetTop - useConvertPropToPixels('--header-height')
-
-        window.scrollTo({
-          top: offset,
+      const el = document.querySelector(to.hash)
+      // vue-router does not incorporate scroll-margin-top on its own.
+      if (el) {
+        const top = parseFloat(getComputedStyle(el).scrollMarginTop)
+        return {
+          el: to.hash,
           behavior: 'smooth',
-        })
-      })
+          top,
+        }
+      }
 
-      return
-    }
-
-    if (to.params?.smooth) {
       return {
-        el: to.params?.smooth,
+        el: to.hash,
         behavior: 'smooth',
       }
     }

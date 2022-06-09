@@ -57,7 +57,7 @@ export default defineComponent({
 <style lang="postcss">
 /* Primary */
 .list-primary {
-  @apply text-primary;
+  @apply text-primary-500;
 }
 /* Info */
 .list-info {

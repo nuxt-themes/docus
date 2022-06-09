@@ -19,41 +19,24 @@ const directory = (link) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="flex flex-row-reverse items-center justify-between gap-4 font-medium leading-7 group">
-    <div class="flex items-center justify-start flex-1 w-full">
-      <NuxtLink
-        v-if="prev"
-        :to="prev._path"
-        class="transition-base surface-border hover:surface-border-hover hover:text-secondary-hover group inline-flex w-full items-center justify-start truncate rounded-xl border px-4 py-2.5 transition"
-      >
-        <span class="relative flex flex-col items-end truncate">
-          <span class="mb-1 text-xs leading-tight d-secondary-text">
-            {{ directory(prev._path) || '&nbsp;' }}
-          </span>
+  <div v-if="prev || next" class="flex items-center justify-between gap-3">
+    <NuxtLink v-if="prev" :to="prev._path" class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative rounded-lg border p-3">
+      <p v-if="directory(prev._path)" class="u-text-gray-500 mb-1 text-right text-xs font-medium">{{ directory(prev._path) }}</p>
 
-          <span class="flex items-center w-full leading-tight">
-            <Icon name="heroicons-outline:chevron-double-left" class="flex-shrink-0 w-4 h-4 mr-2" />
-            <span class="truncate">{{ prev.title }}</span>
-          </span>
-        </span>
-      </NuxtLink>
-    </div>
+      <p class="flex min-w-0 items-center gap-3">
+        <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
+        <span class="truncate text-right font-medium leading-5">{{ prev.title }}</span>
+      </p>
+    </NuxtLink>
+    <span v-else />
 
-    <div class="flex justify-end flex-1 order-first h-full">
-      <NuxtLink
-        v-if="next"
-        :to="next._path"
-        class="transition-base surface-border hover:surface-border-hover hover:text-secondary-hover group inline-flex w-full h-full items-center justify-end truncate rounded-xl border px-4 py-2.5 transition"
-      >
-        <span class="relative flex flex-col items-start truncate">
-          <span class="mb-1 text-xs leading-tight d-secondary-text"> {{ directory(next._path) || '&nbsp;' }} </span>
+    <NuxtLink v-if="next" :to="next._path" class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative rounded-lg border p-3">
+      <p v-if="directory(next._path)" class="u-text-gray-500 mb-1 text-xs font-medium">{{ directory(next._path) }}</p>
 
-          <span class="flex items-center w-full leading-tight">
-            <span class="truncate">{{ next.title }}</span>
-            <Icon name="heroicons-outline:chevron-double-right" class="flex-shrink-0 w-4 h-4 ml-2" />
-          </span>
-        </span>
-      </NuxtLink>
-    </div>
+      <p class="flex min-w-0 items-center gap-3">
+        <span class="truncate font-medium leading-5">{{ next.title }}</span>
+        <Icon name="heroicons-outline:arrow-sm-right" class="h-5 w-5 flex-shrink-0" />
+      </p>
+    </NuxtLink>
   </div>
 </template>

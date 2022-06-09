@@ -24,13 +24,13 @@ defineProps({
 
 <template>
   <div :class="[`highlight-${language}`]" class="prose-code group w-full text-gray-50">
-    <span v-if="filename" class="filename transition-base absolute top-1 right-1 z-0 rounded-lg py-1 pr-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
+    <span v-if="filename" class="filename absolute top-1 right-1 z-0 rounded-lg py-1 pr-2 font-mono text-xs leading-none tracking-tight text-gray-400 opacity-100">
       {{ filename }}
     </span>
 
     <slot />
 
-    <CopyButton :content="code" class="copy-button transition-base absolute right-1 bottom-1 scale-0 opacity-0" />
+    <CopyButton :content="code" class="copy-button absolute right-1 bottom-1 scale-0 opacity-0 transition" />
   </div>
 </template>
 
@@ -45,19 +45,19 @@ div {
   &.highlight-shellscript {
     :deep(code) {
       .line {
-        @apply pl-4 relative;
+        @apply relative pl-4;
       }
 
       .line::before {
         content: '>';
-        @apply top-0 select-none -left-[0.1rem] absolute block text-primary-500 font-mono font-bold;
+        @apply text-primary-500 absolute top-0 -left-[0.1rem] block select-none font-mono font-bold;
       }
     }
   }
 }
 
 :deep(pre) {
-  @apply code-background my-0 flex flex-1 overflow-x-auto p-4 leading-relaxed custom-scrollbar;
+  @apply my-0 flex flex-1 overflow-x-auto bg-gray-900 p-4 leading-relaxed;
 }
 
 :deep(code) {

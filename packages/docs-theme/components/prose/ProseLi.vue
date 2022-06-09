@@ -4,24 +4,18 @@
 
 <style lang="postcss" scoped>
 li {
-  @apply relative my-[0.25em] pl-4;
-  p {
-    @apply my-[0.75em];
-  }
+  @apply relative my-3 pl-2;
 }
 
 ul > li {
-  &::before {
-    @apply absolute left-0 top-[0.5em] h-1.5 w-1.5 rounded-full bg-gray-500;
-    content: '';
+  &::marker {
+    @apply u-text-gray-300;
   }
 }
 
 ol > li {
-  &::before {
-    @apply text-secondary absolute left-0 top-0;
-    content: counter(list-item, decimal) '.';
-    content: counter(list-item, var(--list-counter-style, decimal)) '.';
+  &::marker {
+    @apply u-text-gray-400;
   }
 }
 
