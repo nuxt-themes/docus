@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply u-bg-gray-50 u-text-gray-900 inline-flex overflow-hidden rounded-md py-[3px] px-[6px] text-sm font-normal;
+  @apply u-bg-gray-50 u-text-gray-900 overflow-hidden rounded-md py-[3px] px-[6px] text-sm font-normal;
 
   &.colored {
     @apply bg-gray-900;
