@@ -9,13 +9,13 @@ li {
 
 ul > li {
   &::marker {
-    @apply text-gray-200 dark:text-gray-600;
+    @apply u-text-gray-300;
   }
 }
 
 ol > li {
   &::marker {
-    @apply text-gray-400 dark:text-gray-300;
+    @apply u-text-gray-400;
   }
 }
 

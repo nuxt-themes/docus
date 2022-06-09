@@ -28,7 +28,7 @@ h4 > a {
 
   &:hover {
     &:before {
-      @apply border-b border-dashed border-gray-900 dark:border-white;
+      @apply u-border-gray-900 border-b border-dashed;
     }
     &:after {
       @apply absolute -right-5 h-3 w-3;

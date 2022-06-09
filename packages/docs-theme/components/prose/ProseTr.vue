@@ -6,6 +6,6 @@
 
 <style lang="postcss" scoped>
 tbody tr {
-  @apply border-b border-gray-100 dark:border-gray-800;
+  @apply u-border-gray-100 border-b;
 }
 </style>

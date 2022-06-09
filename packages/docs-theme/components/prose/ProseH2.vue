@@ -12,7 +12,7 @@ defineProps<{ id: string }>()
 
 <style lang="postcss" scoped>
 h2 {
-  @apply mt-8 mb-4 scroll-mt-[calc(var(--header-height)+4.5rem)] text-2xl font-semibold leading-snug tracking-tight u-text-gray-900 sm:scroll-mt-[calc(var(--header-height)+2rem)];
+  @apply u-text-gray-900 mt-8 mb-4 scroll-mt-[calc(var(--header-height)+4.5rem)] text-2xl font-semibold leading-snug tracking-tight sm:scroll-mt-[calc(var(--header-height)+2rem)];
 }
 
 h2 + * {
@@ -28,7 +28,7 @@ h2 > a {
 
   &:hover {
     &:before {
-      @apply border-b border-dashed border-gray-900 dark:border-white;
+      @apply u-border-gray-900 border-b border-dashed;
     }
     &:after {
       @apply absolute -right-5 h-3 w-3;

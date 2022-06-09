@@ -15,6 +15,6 @@ defineProps({
 
 <template>
   <span :class="[type]" class="badge inline-flex items-center rounded-full px-3 py-1 text-base leading-5 tracking-tight">
-    <slot />
+    <Markdown :use="$slots.default" unwrap="p" />
   </span>
 </template>
