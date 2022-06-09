@@ -6,28 +6,39 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply rounded-lg py-[3px] px-[6px] text-sm font-normal dark:bg-gray-800 bg-gray-50 text-gray-800 dark:text-gray-100;
-  &.colored {
-    @apply dark:bg-gray-800 bg-gray-700;
-  }
-}
+  @apply u-bg-gray-50 u-text-gray-900 overflow-hidden rounded-md py-[3px] px-[6px] text-sm font-normal;
 
-a code {
-  &:hover {
-    @apply border-primary-500;
+  &.colored {
+    @apply bg-gray-900;
   }
 }
 
 tbody code {
-  @apply text-[12px];
+  @apply text-sm;
+}
+
+a {
+  @apply overflow-hidden;
+
+  code {
+    @apply text-primary-500 dark:text-primary-500 border border-dashed border-transparent font-medium;
+  }
+}
+
+a:hover code {
+  @apply border-primary-500 dark:border-primary-500;
 }
 
 h1 a,
 h2 a,
 h3 a,
 h4 a {
+  &:hover code {
+    @apply u-border-gray-900;
+  }
+
   code {
-    @apply relative;
+    @apply u-text-gray-900 relative px-2 py-1.5 font-bold;
     font-size: inherit !important;
   }
 }

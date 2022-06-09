@@ -35,35 +35,33 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
     <li
       v-for="(link, index) in links"
       :key="link._path"
-      class="transition-colors transition-base"
       :class="{
         'ml-2': parent?.icon,
         'pl-4': level > 0 && link.children,
         'border-l': level > 0 || !hasNesting,
         'border-primary-400 dark:border-primary-600': isActive(link),
-        'hover:border-gray-300 border-gray-100 dark:border-gray-700 hover:dark:border-gray-500': !isActive(link),
+        'u-border-gray-100 hover:u-border-gray-300': !isActive(link),
       }"
     >
-      <div v-if="link.children" class="flex items-center justify-between pt-2 text-sm font-semibold text-gray-900 dark:text-gray-200">
+      <div v-if="link.children" class="u-text-gray-900 flex items-center justify-between pt-2 text-sm font-semibold">
         <span class="inline-flex items-center">
-          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-2" />
+          <Icon v-if="link.icon" :name="link.icon" class="mr-2 h-4 w-4" />
           <span>{{ link.title }}</span>
         </span>
       </div>
       <NuxtLink
         v-else
         :to="link._path"
-        class="flex items-center justify-between text-sm py-1.5"
+        class="flex items-center justify-between py-1.5 text-sm"
         :exact="link.exact"
         :class="{
           'pl-4': level > 0 || !hasNesting,
-          '!pt-0': level === 0 && index === 0,
-          'text-primary font-medium': isActive(link),
-          'text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200': !isActive(link),
+          'text-primary-500 font-medium': isActive(link),
+          'u-text-gray-500 hover:u-text-gray-900': !isActive(link),
         }"
       >
         <span class="inline-flex items-center">
-          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-1" />
+          <Icon v-if="link.icon" :name="link.icon" class="mr-1 h-4 w-4" />
           <span>{{ link.title }}</span>
         </span>
       </NuxtLink>

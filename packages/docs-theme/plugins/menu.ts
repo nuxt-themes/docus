@@ -7,9 +7,6 @@ export default defineNuxtPlugin((ctx: any) => {
   // Current tab visible reference
   const currentTab = ref()
 
-  // Scrollbar gap (used for responsive menu)
-  const scrollBarGap = ref()
-
   // Open the menu
   const open = () => (visible.value = true)
 
@@ -32,19 +29,11 @@ export default defineNuxtPlugin((ctx: any) => {
       (isVisible) => {
         const html = document.documentElement
 
-        // Init once, this value can be keeped
-        if (!scrollBarGap.value) {
-          scrollBarGap.value = window.innerWidth - html.clientWidth
-          html.style.setProperty('--scrollbar-gap', `${scrollBarGap.value}px`)
-        }
-
         if (isVisible) {
           html.style.overflow = 'hidden'
-          html.style.paddingRight = `${scrollBarGap.value}px`
         } else {
           setTimeout(() => {
             html.style.overflow = ''
-            html.style.paddingRight = ''
           }, 100) /* had to put it, because of layout shift on leave transition */
         }
       },
@@ -57,7 +46,6 @@ export default defineNuxtPlugin((ctx: any) => {
   return {
     provide: {
       menu: {
-        scrollBarGap,
         visible,
         close,
         open,

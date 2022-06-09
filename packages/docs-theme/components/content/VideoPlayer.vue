@@ -37,10 +37,10 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
 </script>
 
 <template>
-  <div class="relative inline-block my-4 overflow-hidden bg-black bg-opacity-25 rounded-lg video-player" :class="{ loaded }">
+  <div class="video-player relative my-4 inline-block overflow-hidden rounded-lg bg-black bg-opacity-25" :class="{ loaded }">
     <NuxtImg v-if="provider ? provider.poster : poster" image-classes="video absolute top-0 left-0 h-full w-full object-fit" :src="(provider ? provider.poster : poster as any)" />
 
-    <div v-if="loaded" class="absolute top-0 left-0 w-full h-full video">
+    <div v-if="loaded" class="video absolute top-0 left-0 h-full w-full">
       <!-- Remote -->
       <video v-if="!provider" :poster="poster" controls autoplay>
         <source v-if="src" :src="src" />
@@ -53,12 +53,12 @@ const src = computed(() => props.src || props.sources?.[0]?.src || false)
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen="true"
         :autoplay="autoplay"
-        class="w-full h-full"
+        class="h-full w-full"
         :src="provider.src"
       />
     </div>
 
-    <div v-if="!loaded" class="absolute top-0 left-0 w-full h-full cursor-pointer overlay" @click="loaded = true">
+    <div v-if="!loaded" class="overlay absolute top-0 left-0 h-full w-full cursor-pointer" @click="loaded = true">
       <button class="play" />
     </div>
   </div>

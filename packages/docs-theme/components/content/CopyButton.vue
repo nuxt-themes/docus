@@ -29,7 +29,7 @@ const copy = (e: MouseEvent) => {
 </script>
 
 <template>
-  <button class="copy rounded-lg bg-gray-900 px-2 py-2 font-mono text-xs font-semibold leading-none text-gray-400 focus:outline-none" @click="copy">
+  <button class="copy rounded-lg bg-gray-800 px-2 py-2 font-mono text-xs font-semibold leading-none text-gray-400 focus:outline-none dark:bg-black" @click="copy">
     <Icon v-if="state === 'copied'" name="fa-check" class="h-4 w-4" />
     <Icon v-else name="fa-copy" class="h-4 w-4" />
   </button>

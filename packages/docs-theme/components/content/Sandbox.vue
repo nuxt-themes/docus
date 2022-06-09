@@ -66,11 +66,7 @@ onMounted(() => {
     <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
       <template #footer>
         <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-4">
-          <NuxtLink
-            class="flex text-secondary hover:text-secondary-hover transition-colors transition-base items-center text-gray-500 dark:text-gray-400"
-            :to="sandBoxUrl"
-            target="_blank"
-          >
+          <NuxtLink class="u-text-gray-500 hover:u-text-gray-700 flex items-center" :to="sandBoxUrl" target="_blank">
             <Icon name="heroicons-outline:arrows-expand" class="h-6 w-6" />
           </NuxtLink>
         </div>
@@ -91,7 +87,7 @@ onMounted(() => {
 
 <style lang="postcss" scoped>
 .sandbox {
-  @apply rounded-lg overflow-hidden rounded-lg text-3xl surface surface-border border-2;
+  @apply overflow-hidden rounded-lg bg-white text-3xl dark:bg-gray-900;
 
   iframe {
     @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;

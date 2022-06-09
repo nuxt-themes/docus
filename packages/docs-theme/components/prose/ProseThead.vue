@@ -6,6 +6,6 @@
 
 <style lang="postcss" scoped>
 thead {
-  @apply border-b border-gray-200 dark:border-gray-700;
+  @apply u-border-gray-200 border-b;
 }
 </style>

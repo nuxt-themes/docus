@@ -20,13 +20,13 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation" class="flex items-center justify-center flex-1 max-w-full gap-8 py-1 overflow-hidden font-medium truncate">
+  <nav v-if="hasNavigation" class="flex max-w-full flex-1 items-center justify-center gap-8 overflow-hidden truncate py-1 font-medium">
     <NuxtLink
       v-for="link in tree"
       :key="link._path"
       :to="findBottomLink(link)"
-      class="text-sm transition-colors transition-base"
-      :class="[isActive(link) ? 'text-primary hover:text-primary' : 'text-gray-700 hover:text-gray-400 dark:text-gray-200 hover:dark:text-gray-300']"
+      class="text-sm"
+      :class="[isActive(link) ? 'text-primary-500' : 'u-text-gray-500 hover:u-text-gray-700']"
     >
       {{ link.title }}
     </NuxtLink>

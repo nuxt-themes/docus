@@ -22,7 +22,7 @@ const { theme } = useDocus()
     target="_blank"
     rel="noopener noreferrer"
     :title="theme.socials.twitter"
-    class="icon-base"
+    class="u-text-gray-500 hover:u-text-gray-700"
     :class="[spacing]"
   >
     <Icon name="fa-brands:twitter" :class="size" />
@@ -33,7 +33,7 @@ const { theme } = useDocus()
     target="_blank"
     rel="noopener noreferrer"
     :title="theme.socials.github"
-    class="icon-base"
+    class="u-text-gray-500 hover:u-text-gray-700"
     :class="[spacing]"
   >
     <Icon name="fa-brands:github" :class="size" />
