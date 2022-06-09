@@ -7,7 +7,7 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="h-footer u-border-gray-100 my-6 border-t sm:my-0">
+  <footer class="h-footer u-border-gray-100 border-t py-6 sm:py-0">
     <Container padded class="flex h-full flex-col items-center justify-between gap-4 sm:flex-row">
       <a v-if="theme?.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="u-text-gray-500 hover:u-text-gray-700 flex items-center">
         <Component :is="theme.footer.credits.icon || 'Logo'" class="mr-2 h-5 w-5 fill-current" />

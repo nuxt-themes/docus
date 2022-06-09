@@ -19,7 +19,7 @@ defineProps({
   <section class="py-20 sm:py-24 lg:py-32">
     <Container padded class="grid gap-8 lg:grid-cols-3">
       <div class="lg:col-span-2">
-        <p v-if="$slots.top" class="mb-2">
+        <p v-if="$slots.top" class="mb-2 text-center sm:text-left">
           <Markdown :use="$slots.top" unwrap="p" />
         </p>
 

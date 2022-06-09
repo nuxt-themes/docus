@@ -77,7 +77,7 @@
 /* Variables */
 :root {
   --header-height: 4rem;
-  --footer-height: 4rem;
+  --footer-height: 108px;
   --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height) + 50px));
 }
 
