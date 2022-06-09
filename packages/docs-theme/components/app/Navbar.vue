@@ -16,9 +16,9 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
 </script>
 
 <template>
-  <header class="h-header sticky top-0 z-10 w-full border-b border-gray-100 bg-white/95 backdrop-blur dark:border-gray-800 dark:bg-gray-900/95">
+  <header class="h-header u-border-gray-100 sticky top-0 z-10 w-full border-b bg-white/95 backdrop-blur dark:bg-black/95">
     <Container padded class="flex h-full lg:grid lg:grid-cols-12 lg:gap-8">
-      <div class="text-secondary-hover flex flex-none items-center lg:col-span-2 lg:flex-none">
+      <div class="flex flex-none items-center lg:col-span-2 lg:flex-none">
         <NavbarLogo />
       </div>
 

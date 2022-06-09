@@ -27,7 +27,7 @@ defineProps({
         </p>
         <div class="sm:ml-6">
           <div class="sm:border-l sm:border-gray-200 sm:pl-6 sm:dark:border-gray-800">
-            <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            <h1 class="text-4xl font-extrabold tracking-tight u-text-gray-900 sm:text-5xl">
               {{ name || 'Not Found' }}
             </h1>
             <p class="mt-1 text-xl">

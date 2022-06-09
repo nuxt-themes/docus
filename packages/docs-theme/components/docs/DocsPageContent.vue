@@ -39,18 +39,18 @@ const isOpen = ref(false)
       <header id="header" class="relative">
         <div>
           <div class="flex items-center">
-            <h1 class="inline-block text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
+            <h1 class="u-text-gray-900 inline-block text-2xl font-extrabold tracking-tight sm:text-3xl">
               {{ page.title }}
             </h1>
           </div>
         </div>
 
-        <p class="mt-2 text-lg text-gray-600 dark:text-gray-300">
+        <p class="u-text-gray-500 mt-2 text-lg">
           {{ page.description }}
         </p>
       </header>
 
-      <hr class="my-8 border-gray-100 dark:border-gray-800" />
+      <hr class="u-border-gray-100 my-8" />
 
       <slot />
 
@@ -87,7 +87,7 @@ const isOpen = ref(false)
     content: ' ';
     width: 100%;
     right: 0;
-    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-gray-900/95;
+    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
   }
 }
 

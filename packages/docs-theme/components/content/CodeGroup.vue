@@ -126,7 +126,7 @@ html.dark {
   @apply rounded-b-lg;
 
   .preview-canvas {
-    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg bg-gray-50 p-4 leading-normal text-gray-800 dark:bg-gray-800 dark:text-gray-200;
+    @apply u-bg-gray-50 z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg p-4 leading-normal text-gray-800 dark:text-gray-200;
 
     & > * {
       @apply my-0;

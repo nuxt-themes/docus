@@ -57,7 +57,7 @@ div {
 }
 
 :deep(pre) {
-  @apply my-0 flex flex-1 overflow-x-auto bg-gray-800 p-4 leading-relaxed;
+  @apply my-0 flex flex-1 overflow-x-auto bg-gray-900 p-4 leading-relaxed;
 }
 
 :deep(code) {

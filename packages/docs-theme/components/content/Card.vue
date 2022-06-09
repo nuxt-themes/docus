@@ -42,7 +42,7 @@ defineProps({
         <h3 v-if="title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
         </h3>
-        <div class="text-secondary">
+        <div>
           <slot name="description">
             <p v-if="description" class="inline text-sm font-medium tracking-tight">
               {{ description }}

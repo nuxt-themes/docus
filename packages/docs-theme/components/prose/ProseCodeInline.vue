@@ -6,7 +6,7 @@
 
 <style lang="postcss" scoped>
 code {
-  @apply inline-flex overflow-hidden rounded-md bg-gray-50 py-[3px] px-[6px] text-sm font-normal text-gray-800 dark:bg-gray-800 dark:text-gray-100;
+  @apply u-bg-gray-50 inline-flex overflow-hidden rounded-md py-[3px] px-[6px] text-sm font-normal text-gray-800 dark:text-gray-100;
 
   &.colored {
     @apply bg-gray-700 dark:bg-gray-800;
@@ -38,7 +38,7 @@ h4 a {
   }
 
   code {
-    @apply relative px-2 py-1.5 font-bold text-gray-900 dark:text-white;
+    @apply relative px-2 py-1.5 font-bold u-text-gray-900;
     font-size: inherit !important;
   }
 }

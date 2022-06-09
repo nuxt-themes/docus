@@ -47,7 +47,7 @@ function scrollToHeading(id: string) {
           <a
             :href="`#${link.id}`"
             class="block truncate py-1 text-sm lg:pr-3"
-            :class="[activeHeadings.includes(link.id) ? 'text-primary-500' : 'text-gray-500 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-200']"
+            :class="[activeHeadings.includes(link.id) ? 'text-primary-500' : 'u-text-gray-500 group-hover:u-text-gray-900']"
             @click.prevent="scrollToHeading(link.id)"
           >
             {{ link.text }}

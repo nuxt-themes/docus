@@ -66,7 +66,7 @@ onMounted(() => {
     <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
       <template #footer>
         <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-4">
-          <NuxtLink class="text-secondary hover:text-secondary-hover flex items-center" :to="sandBoxUrl" target="_blank">
+          <NuxtLink class="u-text-gray-500 hover:u-text-gray-700 flex items-center" :to="sandBoxUrl" target="_blank">
             <Icon name="heroicons-outline:arrows-expand" class="h-6 w-6" />
           </NuxtLink>
         </div>

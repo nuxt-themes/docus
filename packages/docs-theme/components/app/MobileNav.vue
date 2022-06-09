@@ -18,12 +18,12 @@ const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
 
 watch(visible, (v) => (v ? open() : close()))
 
-const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
+const buttonClasses = 'w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl'
 </script>
 
 <template>
   <button :class="[buttonClasses]" class="relative z-10 lg:hidden" aria-label="Menu" @click="toggle">
-    <Icon name="heroicons-outline:menu" class="icon-base mx-auto h-6 w-6" aria-hidden="”true”" />
+    <Icon name="heroicons-outline:menu" class="u-text-gray-500 hover:u-text-gray-700 mx-auto h-6 w-6" aria-hidden="”true”" />
   </button>
 
   <span class="lg:hidden">
@@ -47,7 +47,7 @@ const buttonClasses = 'w-8 h-8 icon-base rounded-xl'
           class="fixed z-30"
           @click="toggle"
         >
-          <Icon name="heroicons-outline:x" class="icon-base mx-auto h-6 w-6" />
+          <Icon name="heroicons-outline:x" class="u-text-gray-500 hover:u-text-gray-700 mx-auto h-6 w-6" />
         </button>
 
         <!-- Nav menu surface -->

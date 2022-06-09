@@ -13,7 +13,7 @@ defineProps<{ id: string }>()
 
 <style lang="postcss" scoped>
 h1 {
-  @apply mt-8 mb-4 scroll-mt-[calc(var(--header-height)+4.5rem)] text-3xl font-semibold leading-snug tracking-tight text-gray-900 dark:text-white sm:scroll-mt-[calc(var(--header-height)+2rem)];
+  @apply u-text-gray-900 mt-8 mb-4 scroll-mt-[calc(var(--header-height)+4.5rem)] text-3xl font-semibold leading-snug tracking-tight sm:scroll-mt-[calc(var(--header-height)+2rem)];
 }
 
 h1 + * {

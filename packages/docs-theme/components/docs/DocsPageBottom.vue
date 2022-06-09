@@ -13,7 +13,7 @@ const { page, theme } = useDocus()
 </script>
 
 <template>
-  <div v-if="page" class="text-secondary mt-8 flex flex-row justify-between text-sm">
+  <div v-if="page" class="u-text-gray-500 mt-8 flex flex-row justify-between text-sm">
     <component :is="githubComponent" v-if="config?.github && theme?.github && theme?.github?.edit" v-slot="data" :content-dir="theme?.github?.root" :page="page">
       <NuxtLink :href="data?.url" target="_blank" rel="noopener" class="hover:text-primary-500 flex items-center gap-1 text-sm">
         <span>Edit this page on GitHub</span>

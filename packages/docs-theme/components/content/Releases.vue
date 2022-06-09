@@ -33,16 +33,16 @@ const formatDateByLocale = (date: string) => {
 
       <!-- Header -->
       <div
-        class="release-meta z-1 sticky -mt-8 flex w-full flex-row items-center justify-between gap-2 self-start bg-white pt-8 text-right dark:bg-gray-900 lg:w-1/4 lg:flex-col lg:items-end lg:bg-transparent lg:backdrop-blur-none"
+        class="release-meta z-1 sticky -mt-8 flex w-full flex-row items-center justify-between gap-2 self-start pt-8 text-right lg:w-1/4 lg:flex-col lg:items-end lg:bg-transparent lg:backdrop-blur-none"
       >
         <a :href="release.url" target="_blank">
-          <h2 :id="release.name" class="hover:text-secondary-hover cursor-pointer text-2xl font-bold text-gray-900 dark:text-white lg:text-3xl">
+          <h2 :id="release.name" class="hover:text-primary-500 u-text-gray-900 cursor-pointer text-2xl font-bold lg:text-3xl">
             {{ release.name }}
           </h2>
         </a>
 
         <div class="flex flex-col gap-2 pb-4">
-          <a v-if="release.author" target="_blank" :href="release.author.url" class="hover:text-secondary-hover flex items-center justify-end gap-2">
+          <a v-if="release.author" target="_blank" :href="release.author.url" class="hover:u-text-gray-900 flex items-center justify-end gap-2">
             <div class="flex-shrink-0">
               <img class="h-6 w-6 rounded-full" :src="release.author?.avatar" alt="" />
             </div>
