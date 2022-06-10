@@ -30,6 +30,11 @@ const components = [
   },
   {
     prefix: '',
+    path: './components/github',
+    global: true,
+  },
+  {
+    prefix: '',
     path: './components/icons',
     global: true,
   },

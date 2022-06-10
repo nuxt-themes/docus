@@ -14,8 +14,6 @@ const links = computed(() => {
 
 const { visible, open, close, toggle } = useMenu()
 
-const { isDesktopSafari, isDesktopFirefox } = useUserAgent()
-
 watch(visible, (v) => (v ? open() : close()))
 
 const buttonClasses = 'w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl'
@@ -40,10 +38,7 @@ const buttonClasses = 'w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl'
         <!-- clone AppHeader button, due to stacking context limitations -->
         <button
           id="mobile-nav-button"
-          :class="[
-            buttonClasses,
-            visible ? 'pointer-events-auto opacity-100' : `opacity-0 transition ${isDesktopSafari || isDesktopFirefox ? 'duration-0' : 'duration-400'} pointer-events-none`,
-          ]"
+          :class="[buttonClasses, visible ? 'pointer-events-auto opacity-100' : `opacity-0 transition duration-400 pointer-events-none`]"
           class="fixed z-30"
           @click="toggle"
         >

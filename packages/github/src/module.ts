@@ -180,10 +180,10 @@ export default defineNuxtModule<ModuleOptions>({
       global: true,
     })
 
-    // EditOnGithub component
+    // GithubLink component
     addComponent({
-      name: 'EditOnGithub',
-      filePath: resolveModule('./components/EditOnGithub', { paths: runtimeDir }),
+      name: 'GithubLink',
+      filePath: resolveModule('./components/GithubLink', { paths: runtimeDir }),
       global: true,
     })
 

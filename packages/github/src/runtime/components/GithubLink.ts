@@ -63,10 +63,18 @@ export default defineComponent({
       required: false,
       default: 'content',
     },
+    /**
+     * Send to an edit page or not.
+     */
+    edit: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
   },
   setup(props) {
     if (!props.owner || !props.repo || !props.branch) {
-      throw new Error('If you want to use `EditOnGithub` component, you must specify: `owner`, `repo` and `branch`.')
+      throw new Error('If you want to use `GithubLink` component, you must specify: `owner`, `repo` and `branch`.')
     }
 
     const base = computed(() => joinURL('https://github.com', `${props.owner}/${props.repo}`))
@@ -103,7 +111,13 @@ export default defineComponent({
      * Create edit link.
      */
     const url = computed(() => {
-      const parts = [base.value, 'edit', props.branch, ...path.value]
+      const parts = [base.value]
+
+      if (props.edit) parts.push('edit')
+      else parts.push('tree')
+
+      parts.push(props.branch, ...path.value)
+
       return parts.filter(Boolean).join('/')
     })
 

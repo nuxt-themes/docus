@@ -41,14 +41,14 @@ defineProps({
           <Markdown :use="$slots.extra" unwrap="p" />
         </div>
 
-        <div class="mt-6 flex flex-col items-center gap-4 sm:mt-10 sm:flex-row sm:gap-6">
+        <div class="mt-6 flex flex-col items-center justify-center lg:justify-start gap-4 sm:mt-10 sm:flex-row sm:gap-6">
           <ButtonLink v-if="cta" class="mx-auto !mb-0 md:mx-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>
 
           <a v-if="secondary" :href="(secondary[1] as any)" class="u-text-gray-500 hover:u-text-gray-700 py-px font-medium">
             {{ secondary[0] }}
-          </ButtonLink>
+          </a>
         </div>
       </div>
 

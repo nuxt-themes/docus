@@ -1,4 +1,4 @@
-import { defineComponent, ref, useSlots, watch } from 'vue'
+import { defineComponent, ref, toRefs, useSlots, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useGithub } from '../composables/useGithub'
 import type { GithubContributorsQuery } from '../../module'
@@ -15,13 +15,15 @@ export default defineComponent({
     },
   },
   async setup(props) {
+    const { source, query } = toRefs(props)
+
     const { fetchFileContributors } = useGithub()
 
     const contributors = ref<any>([])
 
-    const refresh = async () => (contributors.value = await fetchFileContributors(props.source, props.query))
+    const refresh = async () => (contributors.value = await fetchFileContributors(source.value, query.value))
 
-    watch([props.source, props.query], refresh)
+    watch([source, query], refresh)
 
     await refresh()
 
