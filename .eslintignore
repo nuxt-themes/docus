@@ -1,12 +1,5 @@
-# Common
-node_modules
 dist
+.output
 .nuxt
-coverage
-
-# Docus
-
-# Ignore sw.js as it's a generated file
-sw.js
-# Ignore every `plugin.js` as it's using <% %> syntaxes, that are not supported by ESLint
-plugin.js
+*.css
+*.md

@@ -1,23 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "outDir": "./dist",
-    "strict": false,
-    "sourceMap": true,
-    "target": "ESNext",
-    "allowJs": true,
-    "module": "CommonJS",
+    "module": "es2022",
     "moduleResolution": "Node",
-    "lib": ["ESNext", "DOM"],
-    "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "types": ["@types/node", "@nuxt/types", "nuxt-i18n", "nuxt-windicss"],
-    "paths": {
-      "src/*": ["./src/*"]
-    }
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*", "src/index.ts"]
+  "include": [
+    "packages/**/*"
+  ]
 }

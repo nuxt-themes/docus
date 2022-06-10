@@ -1,15 +1,20 @@
 node_modules
-*.iml
-.idea
-*.log*
-.nuxt*
-.vscode
-.DS_Store
-coverage
-dist
-sw.*
+*.log
+.nuxt
+nuxt.d.ts
+.output
 .env
+package-lock.json
+framework
 dist
+.DS_Store
 
-# TODO: Remove that
-!1.logos.md
+# Yarn
+.yarn/cache
+.yarn/*state*
+
+# Turbo
+.turbo
+
+# Local History
+.history

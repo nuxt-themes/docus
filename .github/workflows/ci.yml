@@ -1,56 +1,58 @@
-name: ci
+name: ci-main
 
 on:
   push:
     branches:
       - main
-      - dev
   pull_request:
+    types: [opened, synchronize]
     branches:
       - main
-      - dev
+
 
 jobs:
-  ci:
+  build:
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
-        os: [ubuntu-latest] # macos-latest, windows-latest - TODO: Fix sharp on Windows
+        os: [ubuntu-latest] # macos-latest, windows-latest
         node: [16]
 
     steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-
-      # Checkout repositoroy
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@master
-
-      # Cache node_modules
-      - name: cache node_modules
-        uses: actions/cache@v2
         with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          persist-credentials: false
+          fetch-depth: 2
 
-      # Instal deps
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn
+        run: pnpm install
 
-      # Run linting
-      - name: Lint
-        run: yarn lint
-
-      # Run tests
-      - name: Run tests
-        run: yarn test
-
-      # Build Docus package
       - name: Build
-        run: yarn build
+        run: pnpm build
 
-      # Code coverage
-      # - name: Coverage
-      #   uses: codecov/codecov-action@v1
+#      - name: Test
+#        run: pnpm test
+
+      - name: Check if the version has been bumped
+        id: check
+        uses: EndBug/version-check@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Release Main version
+#        if: github.event_name == 'push' && steps.check.outputs.changed == 'true'
+#        run: pnpm release
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

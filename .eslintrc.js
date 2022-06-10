@@ -2,65 +2,37 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
-  plugins: ['prettier'],
-  extends: [
-    '@nuxtjs',
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:nuxt/recommended',
-    '@nuxtjs/eslint-config-typescript'
-  ],
+  extends: ['@nuxtjs/eslint-config-typescript', '@antfu', 'plugin:prettier-vue/recommended', 'prettier'],
+  settings: {
+    'import/ignore': ['vue'],
+  },
   rules: {
-    // Vue rules
-    'vue/component-name-in-template-casing': [
+    semi: 'error',
+    'antfu/if-newline': 0,
+    'vue/static-class-names-order': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/require-component-is': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'vue/no-v-text-v-html-on-component': 'off',
+    '@typescript-eslint/no-unused-vars': ['off'],
+    '@typescript-eslint/semi': ['error'],
+    '@typescript-eslint/comma-dangle': ['error'],
+    'comma-dangle': 'error',
+    'no-unused-vars': 0,
+    'prettier-vue/prettier': [
       'error',
-      'PascalCase',
       {
-        registeredComponentsOnly: true
-      }
+        // Override all options of `prettier` here
+        // @see https://prettier.io/docs/en/options.html
+        // plugins: ['prettier-plugin-tailwindcss'],
+        printWidth: 180,
+        semi: false,
+        singleQuote: true,
+        tabWidth: 2,
+        trailingComma: 'all',
+      },
     ],
-    'vue/singleline-html-element-content-newline': [0],
-    'vue/multiline-html-element-content-newline': [0],
-    'vue/html-self-closing': [0],
-    'vue/no-v-html': [0],
-    'vue/max-attributes-per-line': [0],
-    'vue/html-closing-bracket-newline': [0],
-    'vue/html-indent': [0],
-    // Prettier rules
-    'max-len': [0, 120],
-    code: [0, 120],
-    'print-width': [0, 120],
-    'no-console': [1],
-    'space-before-function-paren': [0],
-    'arrow-parens': [0],
-    curly: [0],
-    'keyword-spacing': [0],
-    // TODO: Remove all configs below
-    //
-    // This is done in order to avoid src/admin/app
-    // Errors on multiple roots, as this is a Vue 3 project
-    // And Vue 3 allows multiple roots.
-    //
-    // Note:
-    // If you still have the error displayed, it means Vetur is trying
-    // To lint your file with Vue 2 configuration, to avoid that
-    // Add:
-    // 'vetur.validation.template': false,
-    // 'vetur.validation.script': false,
-    // 'vetur.validation.style': false,
-    // To your `settings.json`, from VSCode.
-    //
-    'vue/no-multiple-template-root': 0
   },
-  // controlled by Volar
-  overrides: [
-    {
-      files: ['*.vue'],
-      rules: {
-        '@typescript-eslint/no-unused-vars': 'off'
-      }
-    }
-  ]
 }
