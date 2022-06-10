@@ -25,7 +25,7 @@ defineProps({
   <section class="py-20 sm:py-24 lg:py-32">
     <Container padded class="grid gap-8 lg:grid-cols-3">
       <div class="lg:col-span-2">
-        <p v-if="$slots.top" class="mb-2 text-center sm:text-left">
+        <p v-if="$slots.top" class="mb-2 text-center lg:text-left">
           <Markdown :use="$slots.top" unwrap="p" />
         </p>
 
@@ -42,7 +42,7 @@ defineProps({
         </div>
 
         <div class="mt-6 flex flex-col items-center justify-center lg:justify-start gap-4 sm:mt-10 sm:flex-row sm:gap-6">
-          <ButtonLink v-if="cta" class="mx-auto !mb-0 md:mx-0" bold size="large" :href="(cta[1] as any)">
+          <ButtonLink v-if="cta" class="!mb-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>
 
