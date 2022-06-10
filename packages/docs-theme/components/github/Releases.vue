@@ -70,7 +70,7 @@ const formatDateByLocale = (date: string) => {
     content: ' ';
     width: 100%;
     right: 0;
-    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-gray-900/95;
+    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
   }
 }
 
