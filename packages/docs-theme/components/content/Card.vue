@@ -39,8 +39,9 @@ defineProps({
       <Icon v-if="icon" :name="icon" class="mb-2 inline-block h-8 w-8 text-2xl" />
       <slot />
       <div>
-        <h3 v-if="title" class="mb-2 text-lg font-semibold tracking-tight">
+        <h3 v-if="title || $slots.title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
+          <Markdown :use="$slots.title" unwrap="p" />
         </h3>
         <div>
           <slot name="description">

@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   github: {
     owner: 'nuxtlabs',
     repo: 'docus',
+    branch: 'dev',
   },
   theme: {},
   modules: ['@docus/github'],

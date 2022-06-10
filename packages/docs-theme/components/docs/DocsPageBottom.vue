@@ -6,7 +6,7 @@ const config = useRuntimeConfig()
 
 const githubComponent = shallowRef()
 if (config?.github) {
-  githubComponent.value = resolveComponent('EditOnGithub')
+  githubComponent.value = resolveComponent('GithubLink')
 }
 
 const { page, theme } = useDocus()

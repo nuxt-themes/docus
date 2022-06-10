@@ -111,6 +111,8 @@ body {
 .badge,
 .callout,
 .card {
+
+
   /*
     Color Schemes
     TODO: Improve the usage of these styles across components.
@@ -204,7 +206,7 @@ body {
   }
 
   strong {
-    @apply !font-semibold !text-current;
+    @apply !font-bold !text-current;
   }
 
   li::before {

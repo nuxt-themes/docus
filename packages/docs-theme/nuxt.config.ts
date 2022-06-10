@@ -30,7 +30,7 @@ const components = [
   },
   {
     prefix: '',
-    path: './components/icons',
+    path: './components/github',
     global: true,
   },
   {

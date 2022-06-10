@@ -73,7 +73,7 @@ export default defineComponent({
                           'preview-canvas': true,
                         },
                       },
-                      [slot.children.default()],
+                      [slot.children?.default?.() || h('div')],
                     ),
               ],
             ),

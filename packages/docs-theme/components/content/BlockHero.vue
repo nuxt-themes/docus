@@ -1,16 +1,22 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
+
 defineProps({
   cta: {
-    type: Array,
-    default: () => ['Get started', '/get-started'],
+    type: Array as PropType<string[]>,
+    required: false,
   },
   secondary: {
-    type: Array,
-    default: () => ['Open on GitHub', 'https://github.com'],
+    type: Array as PropType<string[]>,
+    required: false,
   },
   snippet: {
-    type: [String],
-    default: () => '',
+    type: String,
+    required: false,
+  },
+  video: {
+    type: Array as PropType<string[]>,
+    required: false,
   },
 })
 </script>
@@ -35,7 +41,7 @@ defineProps({
           <Markdown :use="$slots.extra" unwrap="p" />
         </div>
 
-        <div class="mt-6 flex flex-col items-center gap-4 sm:mt-10 sm:flex-row sm:gap-6">
+        <div class="mt-6 flex flex-col items-center justify-center lg:justify-start gap-4 sm:mt-10 sm:flex-row sm:gap-6">
           <ButtonLink v-if="cta" class="mx-auto !mb-0 md:mx-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>

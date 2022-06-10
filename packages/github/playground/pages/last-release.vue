@@ -3,8 +3,6 @@
     <GithubLastRelease v-slot="{ release }">
       <ProseH2 :id="release.name"> Last Release: {{ release.name }} </ProseH2>
 
-      <Document :value="release" />
-
       <p>Version: {{ release.v }}</p>
 
       <p>URL: {{ release.url }}</p>

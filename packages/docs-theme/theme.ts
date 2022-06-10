@@ -6,7 +6,6 @@ export const themeConfig = {
   },
   github: {
     root: 'content',
-    releases: true,
     edit: true,
   },
   aside: {

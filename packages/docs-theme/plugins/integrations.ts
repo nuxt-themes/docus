@@ -21,11 +21,13 @@ export default defineNuxtPlugin(async () => {
 
           return $fetch(url, { responseType: 'json' })
         }
+
         const fetchLastRelease = async () => {
           const url = withQuery('/api/_github/releases', { last: true } as any)
 
           return $fetch(url, { responseType: 'json' })
         }
+
         await Promise.all([fetchLastRelease(), fetchRepository()]).then(([lastRelease, repository]) => {
           lastReleaseState.value = lastRelease
           repositoryState.value = repository

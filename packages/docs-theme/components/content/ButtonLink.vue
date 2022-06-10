@@ -19,6 +19,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  transparent: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -39,6 +43,10 @@ a.button-link {
 
   &.large {
     @apply px-6 py-2.5 text-lg leading-6;
+  }
+
+  &.transparent {
+    @apply px-0 py-0 bg-transparent;
   }
 }
 </style>

@@ -6,8 +6,6 @@
           {{ release.name }}
         </ProseH2>
 
-        <Document :value="release" />
-
         <p>Version: {{ release.v }}</p>
 
         <p>URL: {{ release.url }}</p>

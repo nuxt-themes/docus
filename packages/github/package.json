@@ -35,6 +35,6 @@
     "@nuxt/module-builder": "latest",
     "@nuxt/test-utils": "^3.0.0-rc.3",
     "nuxt": "^3.0.0-rc.3",
-    "vitest": "^0.12.9"
+    "vitest": "^0.14.1"
   }
 }
