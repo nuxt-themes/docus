@@ -7,6 +7,7 @@ nuxt.d.ts
 package-lock.json
 framework
 dist
+.DS_Store
 
 # Yarn
 .yarn/cache
