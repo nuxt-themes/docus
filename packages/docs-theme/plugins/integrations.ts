@@ -13,25 +13,25 @@ export default defineNuxtPlugin(async () => {
         const lastReleaseState = useState('docus-last-release')
         const repositoryState = useState('docus-repository')
 
-        if (lastReleaseState.value && repositoryState.value) return
+        // Check if data is already present
+        if (typeof lastReleaseState.value !== 'undefined' && typeof repositoryState.value !== 'undefined') return
 
-        // TODO: Dynamically import `useGithub`
-        const fetchRepository = async () => {
-          const url = '/api/_github/repository'
+        try {
+          await Promise.all([$fetch('/api/_github/releases/last', { responseType: 'json' }), $fetch('/api/_github/repository', { responseType: 'json' })]).then(
+            ([lastRelease, repository]) => {
+              lastReleaseState.value = lastRelease
+              repositoryState.value = repository
+            },
+          )
+        } catch (e) {
+          lastReleaseState.value = false
+          repositoryState.value = false
 
-          return $fetch(url, { responseType: 'json' })
+          console.warn(`Cannot fetch GitHub global data.`)
+
+          // eslint-disable-next-line no-console
+          console.info('If your repository is private, make sure to provide GITHUB_TOKEN environment in `.env`')
         }
-
-        const fetchLastRelease = async () => {
-          const url = withQuery('/api/_github/releases', { last: true } as any)
-
-          return $fetch(url, { responseType: 'json' })
-        }
-
-        await Promise.all([fetchLastRelease(), fetchRepository()]).then(([lastRelease, repository]) => {
-          lastReleaseState.value = lastRelease
-          repositoryState.value = repository
-        })
       },
       { global: true },
     )

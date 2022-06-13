@@ -72,7 +72,6 @@ export default defineNuxtConfig({
 
   modules: [resolveThemeDir('module.ts'), '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
 
-  // @ts-expect-error - Broken TailwindCSS type
   tailwindcss: {
     viewer: false,
     cssPath: resolveThemeDir('assets/css/main.css'),

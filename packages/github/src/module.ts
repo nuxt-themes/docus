@@ -39,13 +39,21 @@ export interface GithubReleasesQuery extends GithubRepositoryOptions {
 }
 
 export interface GithubRawRelease {
-  draft: boolean
   name: string
-  // eslint-disable-next-line camelcase
-  tag_name: string
   body: string
-  // eslint-disable-next-line camelcase
-  published_at: number
+  v: number
+  tag_name: string
+  date: number
+  url: string
+  tarball: string
+  zipball: string
+  prerelease: boolean
+  reactions: Array<any>
+  author: {
+    name: string
+    url: string
+    avatar: string
+  }
 }
 
 export interface GithubRawContributors {
@@ -189,11 +197,19 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Setup releases API
     if (options.releases !== false) {
+      // Releases list
       nitroConfig.handlers.push({
         route: '/api/_github/releases',
-        handler: resolveModule('./server/api/releases', { paths: runtimeDir }),
+        handler: resolveModule('./server/api/releases/index', { paths: runtimeDir }),
       })
       nitroConfig.prerender.routes.push('/api/_github/releases')
+
+      // Last release (pre-render friendly)
+      nitroConfig.handlers.push({
+        route: '/api/_github/releases/last',
+        handler: resolveModule('./server/api/releases/last', { paths: runtimeDir }),
+      })
+      nitroConfig.prerender.routes.push('/api/_github/releases/last')
 
       // Releases components
       addComponent({
