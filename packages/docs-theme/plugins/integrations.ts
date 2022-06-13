@@ -16,7 +16,7 @@ export default defineNuxtPlugin(async () => {
         if (typeof lastReleaseState.value !== 'undefined' && typeof repositoryState.value !== 'undefined') return
 
         try {
-          await Promise.all([$fetch('/api/_github/releases/last', { responseType: 'json' }), $fetch('/api/_github/repository', { responseType: 'json' })]).then(
+          await Promise.all([$fetch('/api/_github/last-release', { responseType: 'json' }), $fetch('/api/_github/repository', { responseType: 'json' })]).then(
             ([lastRelease, repository]) => {
               lastReleaseState.value = lastRelease
               repositoryState.value = repository

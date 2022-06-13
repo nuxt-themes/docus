@@ -3,7 +3,7 @@ import { withQuery } from 'ufo'
 export const useGithub = () => {
   const fetchRepository = async () => $fetch('/api/_github/repository', { responseType: 'json' })
 
-  const fetchLastRelease = async () => $fetch('/api/_github/releases/last', { responseType: 'json' })
+  const fetchLastRelease = async () => $fetch('/api/_github/last-release', { responseType: 'json' })
 
   const fetchReleases = async (query: any) => {
     const url = withQuery('/api/_github/releases', query as any)

@@ -197,19 +197,22 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Setup releases API
     if (options.releases !== false) {
+      // Last release (pre-render friendly)
+      //
+      // Have to use `last-release` instead of `release/last` otherwise pre-rendering will throw
+      // an error as the cached file will try to overwrite `/releases` one.
+      nitroConfig.handlers.push({
+        route: '/api/_github/last-release',
+        handler: resolveModule('./server/api/releases/last', { paths: runtimeDir }),
+      })
+      nitroConfig.prerender.routes.push('/api/_github/last-release')
+
       // Releases list
       nitroConfig.handlers.push({
         route: '/api/_github/releases',
         handler: resolveModule('./server/api/releases/index', { paths: runtimeDir }),
       })
       nitroConfig.prerender.routes.push('/api/_github/releases')
-
-      // Last release (pre-render friendly)
-      nitroConfig.handlers.push({
-        route: '/api/_github/releases/last',
-        handler: resolveModule('./server/api/releases/last', { paths: runtimeDir }),
-      })
-      nitroConfig.prerender.routes.push('/api/_github/releases/last')
 
       // Releases components
       addComponent({
