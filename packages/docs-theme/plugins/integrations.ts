@@ -1,4 +1,3 @@
-import { withQuery } from 'ufo'
 import { addRouteMiddleware, defineNuxtPlugin, useRuntimeConfig, useState } from '#imports'
 
 export default defineNuxtPlugin(async () => {

@@ -1,5 +1,6 @@
 import { useQuery } from 'h3'
 import { fetchReleases, parseRelease } from '../../utils/queries'
+import type { GithubRawRelease } from '../../../../module'
 import * as imports from '#imports'
 
 let handler
@@ -19,7 +20,7 @@ export default handler(
     let release = await fetchReleases({ last: true }, config.releases)
 
     if (config?.releases?.parse) {
-      release = await parseRelease(release)
+      release = await parseRelease(release as GithubRawRelease)
     }
 
     return release

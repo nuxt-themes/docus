@@ -21,7 +21,7 @@ function normalizeRelease(release: any): GithubRawRelease {
     tag_name: release?.tag_name,
     date: release?.published_at,
     body: release?.body,
-    v: +normalizeReleaseName(release?.tag_name).substring(1, 2),
+    v: +normalizeReleaseName(release?.tag_name)?.substring(1, 2) || 0,
     url: release?.html_url,
     tarball: release?.tarball_url,
     zipball: release?.zipball_url,
@@ -36,6 +36,8 @@ function normalizeRelease(release: any): GithubRawRelease {
 }
 
 function normalizeReleaseName(name: string) {
+  if (!name) return ''
+
   // remove "Release " prefix from release name
   name = name.replace('Release ', '')
 
@@ -61,7 +63,7 @@ export const parseRelease = async (release: GithubRawRelease) => {
   return {
     ...release,
     // Parse release notes when `@nuxt/content` is installed.
-    ...(typeof parseContent === 'function' ? await parseContent(`github:${release.name}.md`, release.body) : {}),
+    ...(typeof parseContent === 'function' && release?.body && release?.name ? await parseContent(`github:${release.name}.md`, release.body) : {}),
   }
 }
 
