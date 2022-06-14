@@ -9,22 +9,35 @@ import type {
   GithubReleasesQuery,
   GithubRepositoryOptions,
 } from '../../../module'
-
-export function githubGraphqlQuery<T = any>(query: string, options: Partial<GithubRepositoryOptions>): Promise<T> {
-  const gq = graphql.defaults({
-    headers: {
-      authorization: `token ${options.token}`,
-    },
-  })
-
-  return gq<T>(query).catch(() => ({} as any))
-}
+import { parseContent } from '#content/server'
 
 function isBot(user) {
   return user.login.includes('[bot]') || user.login.includes('-bot') || user.login.includes('.bot')
 }
 
+function normalizeRelease(release: any): GithubRawRelease {
+  return {
+    name: normalizeReleaseName(release?.name || release?.tag_name),
+    tag_name: release?.tag_name,
+    date: release?.published_at,
+    body: release?.body,
+    v: +normalizeReleaseName(release?.tag_name)?.substring(1, 2) || 0,
+    url: release?.html_url,
+    tarball: release?.tarball_url,
+    zipball: release?.zipball_url,
+    prerelease: release?.prerelease,
+    reactions: release?.reactions,
+    author: {
+      name: release?.author?.login,
+      url: release?.author?.html_url,
+      avatar: release?.author?.avatar_url,
+    },
+  }
+}
+
 function normalizeReleaseName(name: string) {
+  if (!name) return ''
+
   // remove "Release " prefix from release name
   name = name.replace('Release ', '')
 
@@ -36,6 +49,24 @@ function normalizeReleaseName(name: string) {
   return name
 }
 
+export function githubGraphqlQuery<T = any>(query: string, options: Partial<GithubRepositoryOptions>): Promise<T> {
+  const gq = graphql.defaults({
+    headers: {
+      authorization: `token ${options.token}`,
+    },
+  })
+
+  return gq<T>(query).catch(() => ({} as any))
+}
+
+export const parseRelease = async (release: GithubRawRelease) => {
+  return {
+    ...release,
+    // Parse release notes when `@nuxt/content` is installed.
+    ...(typeof parseContent === 'function' && release?.body && release?.name ? await parseContent(`github:${release.name}.md`, release.body) : {}),
+  }
+}
+
 export async function fetchRepository({ api, owner, repo, token }: GithubContributorsOptions) {
   const url = `${api}/repos/${owner}/${repo}`
 
@@ -44,7 +75,6 @@ export async function fetchRepository({ api, owner, repo, token }: GithubContrib
       Authorization: token ? `token ${token}` : undefined,
     },
   }).catch((err) => {
-    // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub Repository on ${url} [${err.response?.status}]`)
 
     // eslint-disable-next-line no-console
@@ -66,7 +96,6 @@ export async function fetchRepositoryContributors(query: Partial<GithubContribut
       Authorization: token ? `token ${token}` : undefined,
     },
   }).catch((err) => {
-    // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub contributors on ${url} [${err.response?.status}]`)
 
     // eslint-disable-next-line no-console
@@ -127,7 +156,7 @@ export async function fetchFileContributors({ source, max }: Partial<GithubContr
   return users.map(({ avatarUrl, name, login }) => ({ avatar_url: avatarUrl, name, login }))
 }
 
-export async function fetchReleases(query: GithubReleasesQuery, { api, repo, token, owner }: GithubReleasesOptions) {
+export async function fetchReleases(query: Partial<GithubReleasesQuery>, { api, repo, token, owner }: GithubReleasesOptions) {
   const page = query?.page || 1
   const perPage = query?.per_page || 100
   const last = query?.last || false
@@ -147,7 +176,6 @@ export async function fetchReleases(query: GithubReleasesQuery, { api, repo, tok
       Authorization: token ? `token ${token}` : undefined,
     },
   }).catch((err) => {
-    // eslint-disable-next-line no-console
     console.warn(`Cannot fetch GitHub releases on ${url} [${err.response?.status}]`)
 
     // eslint-disable-next-line no-console
@@ -161,30 +189,5 @@ export async function fetchReleases(query: GithubReleasesQuery, { api, repo, tok
     return []
   })
 
-  if (!Array.isArray(rawReleases)) {
-    return [rawReleases]
-  }
-
-  return rawReleases
-    .filter((r: any) => !r.draft)
-    .map((release) => {
-      return {
-        name: normalizeReleaseName(release?.name || release?.tag_name),
-        date: release?.published_at,
-        body: release?.body,
-        v: +normalizeReleaseName(release?.tag_name).substring(1, 2),
-        url: release?.html_url,
-        tarball: release?.tarball_url,
-        zipball: release?.zipball_url,
-        prerelease: release?.prerelease,
-        reactions: release?.reactions,
-        author: release?.author
-          ? {
-              name: release.author?.login,
-              url: release.author?.html_url,
-              avatar: release.author?.avatar_url,
-            }
-          : false,
-      }
-    })
+  return last ? normalizeRelease(rawReleases) : rawReleases.filter((r: any) => !r.draft).map(normalizeRelease)
 }

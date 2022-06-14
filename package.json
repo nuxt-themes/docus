@@ -25,7 +25,7 @@
     "postinstall": "turbo run prepare"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.3"
+    "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
     "@types/tailwindcss": "^3.0.10",
@@ -34,11 +34,11 @@
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-prettier-vue": "^3.1.0",
-    "prettier": "^2.6.2",
+    "eslint-plugin-prettier-vue": "^4.1.0",
+    "prettier": "^2.7.0",
     "prettier-plugin-tailwindcss": "^0.1.11",
     "jiti": "^1.13.0",
-    "npm-check-updates": "^13.1.2",
+    "npm-check-updates": "^13.1.5",
     "nuxt": "^3.0.0-rc.3",
     "parse-entities": "^4.0.0",
     "turbo": "^1.2.16",

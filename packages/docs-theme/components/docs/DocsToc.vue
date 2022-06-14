@@ -15,13 +15,6 @@ watch(
   () => {
     if (process.client) {
       setTimeout(() => {
-        console.log([
-          ...document.querySelectorAll('.docus-content h1'),
-          ...document.querySelectorAll('.docus-content h2'),
-          ...document.querySelectorAll('.docus-content h3'),
-          ...document.querySelectorAll('.docus-content h4'),
-        ])
-
         updateHeadings([
           ...document.querySelectorAll('.docus-content h1'),
           ...document.querySelectorAll('.docus-content h2'),

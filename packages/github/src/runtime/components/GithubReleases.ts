@@ -1,5 +1,6 @@
 import { defineComponent, ref, useSlots } from 'vue'
 import type { PropType } from 'vue'
+import { hash } from 'ohash'
 import { useGithub } from '../composables/useGithub'
 import type { GithubReleasesQuery } from '../../module'
 import { useAsyncData, useState } from '#imports'
@@ -14,10 +15,13 @@ export default defineComponent({
   async setup(props) {
     const { fetchReleases } = useGithub()
 
-    const { data: _releases, refresh } = await useAsyncData('github-releases-component', () => fetchReleases(props.query))
+    const id = `github-releases-component-${hash(props.query)}`
+
+    const { data: _releases, refresh } = await useAsyncData(id, () => fetchReleases(props.query))
 
     // TODO: remove this painful workaround: hotfix for https://github.com/vuejs/core/issues/5513
-    const releases = process.client ? useState('github-releases') : ref()
+    // @ts-expect-error - Workaround
+    const releases = process.client ? useState(id) : ref()
     releases.value = releases.value || _releases.value
 
     return {
