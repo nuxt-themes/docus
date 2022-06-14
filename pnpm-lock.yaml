@@ -59,7 +59,7 @@ importers:
       nuxt: ^3.0.0-rc.3
       pkg-types: ^0.3.2
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.1-27579606.ede65e8
+      '@nuxt/content': /@nuxt/content-edge/2.0.1-27580918.8cab297
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27556623.cee307a
       '@vueuse/core': 8.6.0
       '@vueuse/nuxt': 8.6.0
@@ -110,7 +110,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.1-27579606.ede65e8
+      '@nuxt/content': /@nuxt/content-edge/2.0.1-27580918.8cab297
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.3
       nuxt: 3.0.0-rc.3
@@ -709,8 +709,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.1-27579606.ede65e8:
-    resolution: {integrity: sha512-6HgyO/ocF6M7QezhIik9Jntko0VjAi245/usOCaWez83UuDk/TxI6Wd5Pw9sFFwL/wGm7dPbz9AbNbwI9qq7tA==}
+  /@nuxt/content-edge/2.0.1-27580918.8cab297:
+    resolution: {integrity: sha512-LJhjBVyOx3QhCjLVZBWP9JUVkb8ksbjjBm6V5ZBM04rX9PJfDsTTP8A6WTIMkYkyf0TzPUFwMEZ6KPN4oAwnXg==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.3
       csvtojson: 2.0.10
@@ -756,7 +756,7 @@ packages:
       unist-util-position: 4.0.3
       unist-util-visit: 4.1.0
       unstorage: 0.4.1
-      ws: 8.7.0
+      ws: 8.8.0
     transitivePeerDependencies:
       - bufferutil
       - esbuild
@@ -9920,6 +9920,18 @@ packages:
 
   /ws/8.7.0:
     resolution: {integrity: sha512-c2gsP0PRwcLFzUiA8Mkr37/MI7ilIlHQxaEAtd0uNMbVMoy8puJyafRlm0bV9MbGSabUPeLrRRaqIBcFcA2Pqg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
+  /ws/8.8.0:
+    resolution: {integrity: sha512-JDAgSYQ1ksuwqfChJusw1LSJ8BizJ2e/vVu5Lxjq3YvNJNlROv1ui4i+c/kUUrPheBvQl4c5UbERhTwKa6QBJQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
