@@ -21,15 +21,18 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative flex flex-col-reverse pb-4 sm:pb-6 lg:grid lg:grid-cols-12 lg:gap-8">
+  <Container padded class="relative flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-8">
     <!-- Aside -->
-    <aside v-if="aside" class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:self-start lg:pb-0 lg:pt-8">
+    <aside
+      v-if="aside"
+      class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
+    >
       <DocsAside />
     </aside>
 
     <!-- Page Body -->
     <div
-      class="relative flex flex-1 flex-col pt-8 lg:mt-0"
+      class="relative flex flex-1 flex-col pt-8 pb-8 lg:mt-0"
       :class="{
         'lg:col-span-12': !aside && !toc,
         'lg:col-span-10': (!toc || !aside) && !(!aside && !toc),
