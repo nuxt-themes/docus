@@ -99,7 +99,7 @@ export const queryTheme = async (force = false) => {
     .catch((e) => null)
     .then((_theme) => {
       if (!_theme) {
-        console.warn('Could not find theme configuration, create a content/_theme.yml file')
+        theme.value = {}
         return
       }
 
