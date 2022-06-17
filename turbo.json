@@ -4,7 +4,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".output/**", ".nuxt/**"]
+      "outputs": ["packages/docs-theme/.output/**", "package/docs-theme/.nuxt/**", "packages/base/.output/**", "package/base/.nuxt/**", "package/github/dist"]
     },
     "test": {
       "dependsOn": ["^build"],

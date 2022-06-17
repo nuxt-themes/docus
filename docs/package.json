@@ -10,6 +10,9 @@
     "build:vercel": "cd .. && pnpm run build:docs",
     "install:vercel": "cd .. && pnpm install --no-frozen-lockfile"
   },
+  "resolutions": {
+    "@vercel/nft": "0.18.2"
+  },
   "devDependencies": {
     "nuxt": "^3.0.0-rc.4",
     "@docus/docs-theme": "latest",

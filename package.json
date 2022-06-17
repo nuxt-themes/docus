@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=docs",
     "build:docs": "nuxi build docs",
     "clean": "./.github/scripts/cleanup.sh",
     "dev": "pnpm dev:docs",
@@ -23,6 +23,9 @@
     "release:edge": "turbo run release:edge",
     "update:packages": "ncu --deep -i",
     "postinstall": "turbo run prepare"
+  },
+  "resolutions": {
+    "@vercel/nft": "0.18.2"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.4"
