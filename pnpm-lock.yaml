@@ -6,7 +6,6 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.25.1
       '@nuxt/kit': ^3.0.0-rc.4
-      '@nuxtjs/algolia': ^0.9.2
       '@nuxtjs/eslint-config-typescript': ^10.0.0
       '@types/tailwindcss': ^3.0.10
       eslint: ^8.17.0
@@ -25,7 +24,6 @@ importers:
       '@nuxt/kit': 3.0.0-rc.4
     devDependencies:
       '@antfu/eslint-config': 0.25.1_ud6rd4xtew5bv4yhvkvu24pzm4
-      '@nuxtjs/algolia': 0.9.2
       '@nuxtjs/eslint-config-typescript': 10.0.0_ud6rd4xtew5bv4yhvkvu24pzm4
       '@types/tailwindcss': 3.0.10
       eslint: 8.17.0
@@ -43,12 +41,18 @@ importers:
 
   docs:
     specifiers:
+      '@docsearch/css': latest
+      '@docsearch/js': latest
       '@docus/docs-theme': latest
       '@docus/github': latest
+      '@nuxtjs/algolia': ^0.9.2
       nuxt: ^3.0.0-rc.4
     devDependencies:
+      '@docsearch/css': 3.1.0
+      '@docsearch/js': 3.1.0
       '@docus/docs-theme': link:../packages/docs-theme
       '@docus/github': link:../packages/github
+      '@nuxtjs/algolia': 0.9.2
       nuxt: 3.0.0-rc.4
 
   packages/base:
@@ -122,6 +126,16 @@ importers:
     specifiers: {}
 
 packages:
+
+  /@algolia/autocomplete-core/1.6.3:
+    resolution: {integrity: sha512-dqQqRt01fX3YuVFrkceHsoCnzX0bLhrrg8itJI1NM68KjrPYQPYsE+kY8EZTCM4y8VDnhqJErR73xe/ZsV+qAA==}
+    dependencies:
+      '@algolia/autocomplete-shared': 1.6.3
+    dev: true
+
+  /@algolia/autocomplete-shared/1.6.3:
+    resolution: {integrity: sha512-UV46bnkTztyADFaETfzFC5ryIdGVb2zpAoYgu0tfcuYWjhg1KbLXveFffZIrGVoboqmAk1b+jMrl6iCja1i3lg==}
+    dev: true
 
   /@algolia/cache-browser-local-storage/4.13.1:
     resolution: {integrity: sha512-UAUVG2PEfwd/FfudsZtYnidJ9eSCpS+LW9cQiesePQLz41NAcddKxBak6eP2GErqyFagSlnVXe/w2E9h2m2ttg==}
@@ -619,6 +633,40 @@ packages:
       postcss: 8.4.14
       postcss-selector-parser: 6.0.10
     dev: false
+
+  /@docsearch/css/3.1.0:
+    resolution: {integrity: sha512-bh5IskwkkodbvC0FzSg1AxMykfDl95hebEKwxNoq4e5QaGzOXSBgW8+jnMFZ7JU4sTBiB04vZWoUSzNrPboLZA==}
+    dev: true
+
+  /@docsearch/js/3.1.0:
+    resolution: {integrity: sha512-5XSK+xbP0hcTIp54MECqxkWLs6kf7Ug4nWdxWNtx8cUpLiFNFnKXDxCb35wnyNpjukmrx7Q9DkO5tFFsmNVxng==}
+    dependencies:
+      '@docsearch/react': 3.1.0
+      preact: 10.8.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+      - react-dom
+    dev: true
+
+  /@docsearch/react/3.1.0:
+    resolution: {integrity: sha512-bjB6ExnZzf++5B7Tfoi6UXgNwoUnNOfZ1NyvnvPhWgCMy5V/biAtLL4o7owmZSYdAKeFSvZ5Lxm0is4su/dBWg==}
+    peerDependencies:
+      '@types/react': '>= 16.8.0 < 19.0.0'
+      react: '>= 16.8.0 < 19.0.0'
+      react-dom: '>= 16.8.0 < 19.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@algolia/autocomplete-core': 1.6.3
+      '@docsearch/css': 3.1.0
+      algoliasearch: 4.13.1
+    dev: true
 
   /@eslint/eslintrc/1.3.0:
     resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
