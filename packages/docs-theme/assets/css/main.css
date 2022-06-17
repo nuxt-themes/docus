@@ -74,32 +74,7 @@
   .u-ring-black { @apply ring-black dark:ring-white; }
 }
 
-/* Variables */
-:root {
-  --header-height: 4rem;
-  --footer-height: 108px;
-  --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height) + 50px));
-}
-
-@screen sm {
-  :root {
-    --header-height: 4rem;
-    --footer-height: 4rem;
-    --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
-  }
-}
-
-.dark:root {
-  color-scheme: dark;
-}
-
-html.dark {
-  @apply bg-black;
-}
-
-body {
-  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black;
-}
+/* Components */
 
 .docus-content {
   & > :first-child {
@@ -111,8 +86,6 @@ body {
 .badge,
 .callout,
 .card {
-
-
   /*
     Color Schemes
     TODO: Improve the usage of these styles across components.
@@ -219,5 +192,61 @@ body {
     code {
       @apply !bg-transparent;
     }
+  }
+}
+
+/* Base */
+
+.dark:root {
+  color-scheme: dark;
+  /* DocSearch */
+  --docsearch-primary-color: theme('colors.primary.500') !important;
+  --docsearch-text-color: rgb(245, 246, 247);
+  --docsearch-container-background: rgba(9, 10, 17, 0.8);
+  --docsearch-modal-background: rgb(21, 23, 42);
+  --docsearch-modal-shadow: inset 1px 1px 0 0 rgb(44, 46, 64),
+    0 3px 8px 0 rgb(0, 3, 9);
+  --docsearch-searchbox-background: rgb(9, 10, 17);
+  --docsearch-searchbox-focus-background: #000;
+  --docsearch-hit-color: rgb(190, 195, 201);
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: rgb(9, 10, 17);
+  --docsearch-key-gradient: linear-gradient(
+    -26.5deg,
+    rgb(86, 88, 114) 0%,
+    rgb(49, 53, 91) 100%
+  );
+  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(40, 45, 85),
+    inset 0 0 1px 1px rgb(81, 87, 125), 0 2px 2px 0 rgba(3, 4, 9, 0.3);
+  --docsearch-footer-background: rgb(30, 33, 54);
+  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
+    0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+  --docsearch-logo-color: rgb(255, 255, 255);
+  --docsearch-muted-color: rgb(127, 132, 151);
+}
+
+body {
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black;
+}
+
+:root {
+  /* Base */
+  --header-height: 4rem;
+  --footer-height: 108px;
+  --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height) + 50px));
+
+  /* DocSearch */
+  --docsearch-primary-color: theme('colors.primary.500') !important;
+}
+
+html.dark {
+  @apply bg-black;
+}
+
+@screen sm {
+  :root {
+    --header-height: 4rem;
+    --footer-height: 4rem;
+    --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
   }
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from '#imports'
+import { onMounted, onUnmounted, ref, useDocSearch } from '#imports'
+
 const onTop = ref(true)
+
 function setOnTop(): void {
   if (window.pageYOffset <= 0) {
     onTop.value = true
@@ -8,11 +10,15 @@ function setOnTop(): void {
     onTop.value = false
   }
 }
+
 onMounted(() => {
   setOnTop()
   document.addEventListener('scroll', setOnTop)
 })
+
 onUnmounted(() => document.removeEventListener('scroll', setOnTop))
+
+const { hasDocSearch } = useDocSearch()
 </script>
 
 <template>
@@ -27,8 +33,9 @@ onUnmounted(() => document.removeEventListener('scroll', setOnTop))
       </div>
 
       <div class="flex flex-none items-center justify-end lg:col-span-2 lg:gap-4 lg:pl-4">
+        <Search v-if="hasDocSearch" class="mr-2 lg:mr-0" />
         <MobileNav />
-        <ThemeSelect size="h-5 w-5 hidden lg:block" />
+        <ThemeSelect size="min-h-5 min-w-5 h-5 w-5 hidden lg:block" />
         <SocialIcons size="h-5 w-5 hidden lg:block" />
       </div>
     </Container>
