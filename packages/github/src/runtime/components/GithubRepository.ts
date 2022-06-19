@@ -6,16 +6,17 @@ export default defineComponent({
   async setup(props) {
     const { fetchRepository } = useGithub()
 
-    const { data: repository, refresh } = await useAsyncData('github-repository-component', () => fetchRepository())
+    const { data: repository, refresh, pending } = await useAsyncData('github-repository-component', () => fetchRepository())
 
     return {
       repository,
       refresh,
+      pending,
     }
   },
-  render({ repository, refresh }) {
+  render({ repository, refresh, pending }) {
     const slots = useSlots()
 
-    return slots?.default?.({ repository, refresh })
+    return slots?.default?.({ repository, refresh, pending })
   },
 })

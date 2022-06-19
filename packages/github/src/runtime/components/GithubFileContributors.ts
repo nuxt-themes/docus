@@ -21,16 +21,17 @@ export default defineComponent({
 
     const { fetchFileContributors } = useGithub()
 
-    const { data: contributors, refresh } = await useAsyncData(`github-file-contributors-${hash(query)}`, () => fetchFileContributors(source.value, query.value))
+    const { data: contributors, refresh, pending } = await useAsyncData(`github-file-contributors-${hash(query)}`, () => fetchFileContributors(source.value, query.value))
 
     return {
       contributors,
       refresh,
+      pending,
     }
   },
-  render({ contributors, refresh }) {
+  render({ contributors, refresh, pending }) {
     const slots = useSlots()
 
-    return slots?.default?.({ contributors, refresh })
+    return slots?.default?.({ contributors, refresh, pending })
   },
 })

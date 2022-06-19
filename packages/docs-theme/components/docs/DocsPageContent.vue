@@ -17,6 +17,13 @@ const aside = computed(() => {
   return true
 })
 
+const bottom = computed(() => {
+  if (typeof page.value?.bottom !== 'undefined') {
+    return page.value.bottom
+  }
+  return true
+})
+
 const isOpen = ref(false)
 </script>
 
@@ -44,11 +51,11 @@ const isOpen = ref(false)
 
       <slot />
 
-      <DocsPageBottom v-if="page && toc" />
+      <DocsPageBottom v-if="page && bottom" />
 
-      <ProseHr v-if="page && toc" />
+      <ProseHr v-if="page && bottom" />
 
-      <DocsPrevNext v-if="page && toc" />
+      <DocsPrevNext v-if="page && bottom" />
     </div>
 
     <!-- TOC -->
