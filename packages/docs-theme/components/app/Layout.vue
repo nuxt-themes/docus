@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useDocus } from '#imports'
-
-const config = useRuntimeConfig()
+import { useDocSearch, useDocus } from '#imports'
 
 const { theme } = useDocus()
 
