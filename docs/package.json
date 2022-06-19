@@ -10,9 +10,15 @@
     "build:vercel": "cd .. && pnpm run build:docs",
     "install:vercel": "cd .. && pnpm install --no-frozen-lockfile"
   },
+  "resolutions": {
+    "@vercel/nft": "0.18.2"
+  },
   "devDependencies": {
-    "nuxt": "^3.0.0-rc.3",
+    "nuxt": "^3.0.0-rc.4",
     "@docus/docs-theme": "latest",
-    "@docus/github": "latest"
+    "@docus/github": "latest",
+    "@docsearch/js": "latest",
+    "@docsearch/css": "latest",
+    "@nuxtjs/algolia": "^0.9.2"
   }
 }

@@ -34,7 +34,7 @@
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxt/module-builder": "latest",
     "@nuxt/test-utils": "^3.0.0-rc.4",
-    "nuxt": "^3.0.0-rc.3",
-    "vitest": "^0.14.2"
+    "nuxt": "^3.0.0-rc.4",
+    "vitest": "^0.15.1"
   }
 }

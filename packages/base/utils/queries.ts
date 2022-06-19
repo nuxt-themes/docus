@@ -1,7 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { NavItem, ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { RouteLocationNormalized, RouteLocationNormalizedLoaded } from 'vue-router'
-import { fetchContentNavigation, navigateTo, queryContent, useDocus, useDocusHelpers, useDocusState } from '#imports'
+import { fetchContentNavigation, queryContent, useDocus, useDocusHelpers, useDocusState } from '#imports'
 import layouts from '#build/layouts'
 
 const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
@@ -41,6 +41,9 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   ])
     .then(async ([_page, _surround]) => {
       try {
+        // Use `redirect` key to redirect to another page
+        if (_page?.redirect) return _page?.redirect
+
         const layoutName = findLayout(_page, theme.value, navigation.value)
 
         // Prefetch layout component
@@ -64,7 +67,7 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
       console.warn(`Could not find page for path ${path}`)
       page.value = undefined
       surround.value = undefined
-      return navigateTo('/404')
+      return '/404'
     })
 }
 
@@ -99,7 +102,7 @@ export const queryTheme = async (force = false) => {
     .catch((e) => null)
     .then((_theme) => {
       if (!_theme) {
-        console.warn('Could not find theme configuration, create a content/_theme.yml file')
+        theme.value = {}
         return
       }
 

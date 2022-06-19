@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=docs",
     "build:docs": "nuxi build docs",
     "clean": "./.github/scripts/cleanup.sh",
     "dev": "pnpm dev:docs",
@@ -24,23 +24,26 @@
     "update:packages": "ncu --deep -i",
     "postinstall": "turbo run prepare"
   },
+  "resolutions": {
+    "@vercel/nft": "0.18.2"
+  },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
-    "@types/tailwindcss": "^3.0.10",
-    "eslint": "^8.17.0",
     "@antfu/eslint-config": "^0.25.1",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@types/tailwindcss": "^3.0.10",
+    "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^4.1.0",
-    "prettier": "^2.7.0",
-    "prettier-plugin-tailwindcss": "^0.1.11",
     "jiti": "^1.13.0",
-    "npm-check-updates": "^13.1.5",
-    "nuxt": "^3.0.0-rc.3",
+    "npm-check-updates": "^14.0.1",
+    "nuxt": "^3.0.0-rc.4",
     "parse-entities": "^4.0.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.11",
     "turbo": "^1.2.16",
     "typescript": "^4.7.3"
   },
@@ -48,7 +51,10 @@
     "peerDependencyRules": {
       "ignoreMissing": [
         "vue",
-        "webpack"
+        "webpack",
+        "react",
+        "react-dom",
+        "@types/react"
       ],
       "allowedVersions": {
         "vue": "^3.2.33"

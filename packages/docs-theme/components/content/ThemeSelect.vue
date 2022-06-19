@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { loadIcon } from '@iconify/vue'
 import { computed, useColorMode } from '#imports'
 
 defineProps({

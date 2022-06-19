@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useDocus, useMenu, useUserAgent, watch } from '#imports'
+import { computed, useDocSearch, useDocus, useMenu, useUserAgent, watch } from '#imports'
 
 const { navigation, theme } = useDocus()
 
@@ -15,6 +15,8 @@ const links = computed(() => {
 const { visible, open, close, toggle } = useMenu()
 
 watch(visible, (v) => (v ? open() : close()))
+
+const { hasDocSearch } = useDocSearch()
 
 const buttonClasses = 'w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl'
 </script>
@@ -56,6 +58,7 @@ const buttonClasses = 'w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl'
             <DocsAsideTree :links="links" />
 
             <div class="mt-4 flex items-center justify-end gap-4">
+              <Search v-if="hasDocSearch" size="h-6 w-6" />
               <SocialIcons />
               <ThemeSelect size="h-6 w-6" />
             </div>

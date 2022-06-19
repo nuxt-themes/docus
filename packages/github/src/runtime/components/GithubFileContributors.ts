@@ -1,7 +1,9 @@
-import { defineComponent, ref, toRefs, useSlots, watch } from 'vue'
+import { hash } from 'ohash'
+import { defineComponent, toRefs, useSlots } from 'vue'
 import type { PropType } from 'vue'
 import { useGithub } from '../composables/useGithub'
 import type { GithubContributorsQuery } from '../../module'
+import { useAsyncData } from '#imports'
 
 export default defineComponent({
   props: {
@@ -19,13 +21,7 @@ export default defineComponent({
 
     const { fetchFileContributors } = useGithub()
 
-    const contributors = ref<any>([])
-
-    const refresh = async () => (contributors.value = await fetchFileContributors(source.value, query.value))
-
-    watch([source, query], refresh)
-
-    await refresh()
+    const { data: contributors, refresh } = await useAsyncData(`github-file-contributors-${hash(query)}`, () => fetchFileContributors(source.value, query.value))
 
     return {
       contributors,

@@ -1,6 +1,21 @@
 <script setup lang="ts">
 import { useDocus } from '#imports'
 
+defineProps({
+  title: {
+    type: String,
+    required: false,
+  },
+  description: {
+    type: String,
+    required: false,
+  },
+  icon: {
+    type: String,
+    required: false,
+  },
+})
+
 const { page } = useDocus()
 </script>
 
