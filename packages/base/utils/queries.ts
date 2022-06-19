@@ -41,6 +41,9 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
   ])
     .then(async ([_page, _surround]) => {
       try {
+        // Use `redirect` key to redirect to another page
+        if (_page?.redirect) return _page?.redirect
+
         const layoutName = findLayout(_page, theme.value, navigation.value)
 
         // Prefetch layout component
