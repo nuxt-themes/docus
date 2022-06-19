@@ -6,16 +6,17 @@ export default defineComponent({
   async setup(props) {
     const { fetchLastRelease } = useGithub()
 
-    const { data: release, refresh } = await useAsyncData('github-last-releases-component', () => fetchLastRelease())
+    const { data: release, refresh, pending } = await useAsyncData('github-last-releases-component', () => fetchLastRelease())
 
     return {
       release,
       refresh,
+      pending,
     }
   },
-  render({ release, refresh }) {
+  render({ release, refresh, pending }) {
     const slots = useSlots()
 
-    return slots?.default?.({ release, refresh })
+    return slots?.default?.({ release, refresh, pending })
   },
 })

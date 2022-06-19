@@ -14,16 +14,17 @@ export default defineComponent({
   async setup(props) {
     const { fetchContributors } = useGithub()
 
-    const { data: contributors, refresh } = await useAsyncData('github-contributors-component', () => fetchContributors(props.query))
+    const { data: contributors, refresh, pending } = await useAsyncData('github-contributors-component', () => fetchContributors(props.query))
 
     return {
       contributors,
       refresh,
+      pending,
     }
   },
-  render({ contributors, refresh }) {
+  render({ contributors, refresh, pending }) {
     const slots = useSlots()
 
-    return slots?.default?.({ contributors, refresh })
+    return slots?.default?.({ contributors, refresh, pending })
   },
 })

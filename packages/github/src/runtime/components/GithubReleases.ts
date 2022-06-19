@@ -17,7 +17,7 @@ export default defineComponent({
 
     const id = `github-releases-component-${hash(props.query)}`
 
-    const { data: _releases, refresh } = await useAsyncData(id, () => fetchReleases(props.query))
+    const { data: _releases, refresh, pending } = await useAsyncData(id, () => fetchReleases(props.query))
 
     // TODO: remove this painful workaround: hotfix for https://github.com/vuejs/core/issues/5513
     // @ts-expect-error - Workaround
@@ -27,11 +27,12 @@ export default defineComponent({
     return {
       releases,
       refresh,
+      pending,
     }
   },
-  render({ releases, refresh }) {
+  render({ releases, refresh, pending }) {
     const slots = useSlots()
 
-    return slots?.default?.({ releases, refresh })
+    return slots?.default?.({ releases, refresh, pending })
   },
 })
