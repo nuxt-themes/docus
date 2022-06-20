@@ -17,7 +17,5 @@ const { hasDocSearch } = useDocSearch()
     <slot />
 
     <Footer />
-
-    <div v-if="hasDocSearch" id="docsearch-container" style="width: 0; height: 0; display: none" />
   </div>
 </template>

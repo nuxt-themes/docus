@@ -1,9 +1,11 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { DocSearchOptions } from '@nuxtjs/algolia/dist/module.d'
-import { computed, defineNuxtPlugin, useRoute, useRouter, useRuntimeConfig } from '#imports'
+import { computed, defineNuxtPlugin, ref, useRoute, useRouter, useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin(async () => {
   const config = useRuntimeConfig()
+
+  const docSearchElement = ref()
 
   const hasDocSearch = computed(() => config?.algolia?.docSearch)
 
@@ -48,6 +50,14 @@ export default defineNuxtPlugin(async () => {
      * @param userOptions
      */
     const initialize = async (userOptions: DocSearchOptions) => {
+      const el = document.createElement('div')
+      el.id = '#docsearch-container'
+      el.style.width = '0'
+      el.style.height = '0'
+      el.style.display = 'none'
+      document.body.appendChild(el)
+      docSearchElement.value = el
+
       // Import @docsearch at runtime
       const docsearch = await Promise.all([import(/* webpackChunkName: "docsearch" */ '@docsearch/js'), import(/* webpackChunkName: "docsearch" */ '@docsearch/css')]).then(
         ([docsearch]) => docsearch.default,
@@ -68,7 +78,7 @@ export default defineNuxtPlugin(async () => {
         /**
          * Local implementation of this DocSearch box uses a local element with an `docsearch` id.
          */
-        container: '#docsearch-container',
+        container: el,
         appId: userOptions.applicationId,
         apiKey: userOptions.apiKey,
         indexName: userOptions.indexName,
@@ -160,6 +170,7 @@ export default defineNuxtPlugin(async () => {
   return {
     provide: {
       docSearch: {
+        element: docSearchElement,
         hasDocSearch,
       },
     },

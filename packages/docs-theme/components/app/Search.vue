@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const onClick = () => document.querySelector('#docsearch > button').click()
+import { useDocSearch } from '#imports'
+
+const { element } = useDocSearch()
+
+const onClick = () => element.value.querySelector('button').click()
 </script>
 
 <template>
@@ -10,7 +14,7 @@ const onClick = () => document.querySelector('#docsearch > button').click()
     >
       <Icon name="heroicons-outline:search" class="mr-3 flex-none" />
       <span class="text-xs font-semibold">Search</span>
-      <span class="ml-auto pl-3 flex-none text-xs font-semibold">⌘K</span>
+      <span class="ml-auto pl-3 flex-none text-xs font-semibold hidden md:block">⌘K</span>
     </button>
   </div>
 </template>
