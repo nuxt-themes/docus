@@ -25,7 +25,7 @@ useHead({
   titleTemplate: theme.value?.title ? `%s | ${theme.value.title}` : '%s',
   meta: [
     { hid: 'description', name: 'description', content: page.value?.description || theme.value?.description },
-    { hid: 'og:site_name', property: 'og:site_name', content: 'Nuxt' },
+    { hid: 'og:site_name', property: 'og:site_name', content: theme.value?.title || '' },
     { hid: 'og:type', property: 'og:type', content: 'website' },
     {
       hid: 'twitter:site',
