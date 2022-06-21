@@ -33,9 +33,6 @@ const isActive = (link) => {
 
 const isCollapsed = (link) => {
   if (link.children) {
-    // If directory is active force uncollapse mode
-    if (isActive(link)) return false
-
     // Directory has been toggled manually, use its state
     if (typeof collapsedMap.value[link._path] !== 'undefined') {
       return collapsedMap.value[link._path]
@@ -51,9 +48,6 @@ const isCollapsed = (link) => {
 }
 
 const toggleCollapse = (link) => {
-  // Avoid collapsing active section
-  if (isActive(link)) return
-
   collapsedMap.value[link._path] = !isCollapsed(link)
 }
 
@@ -75,17 +69,15 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
     >
       <button
         v-if="link.children"
-        :disabled="isActive(link)"
         class="u-text-gray-900 flex items-center justify-between w-full py-1.5 text-sm font-semibold cursor-pointer group"
         @click="toggleCollapse(link, index)"
       >
         <span class="flex items-center">
-          <Icon v-if="link.icon" :name="link.icon" class="mr-2 h-4 w-4" />
+          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-2" />
           <span>{{ link.title }}</span>
         </span>
         <span class="flex">
-          <Icon v-if="isCollapsed(link)" name="heroicons-outline:plus" class="h-4 w-4 group-hover:text-primary-500" />
-          <Icon v-else name="heroicons-outline:minus" class="h-4 w-4 group-hover:text-primary-500" />
+          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="w-3 h-3 u-text-gray-400 group-hover:u-text-gray-800" />
         </span>
       </button>
 
@@ -101,13 +93,13 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         }"
       >
         <span class="inline-flex items-center">
-          <Icon v-if="link.icon" :name="link.icon" class="mr-1 h-4 w-4" />
+          <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4 mr-1" />
           <span>{{ link.title }}</span>
         </span>
       </NuxtLink>
 
       <DocsAsideTree
-        v-show="isActive(link) || !isCollapsed(link)"
+        v-show="!isCollapsed(link)"
         v-if="link.children?.length && (max === null || level + 1 < max)"
         :links="link.children"
         :level="level + 1"
