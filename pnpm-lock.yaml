@@ -68,7 +68,7 @@ importers:
       nuxt: ^3.0.0-rc.4
       pkg-types: ^0.3.2
     dependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.1-27594175.6a05508
+      '@nuxt/content': /@nuxt/content-edge/2.0.1-27599923.67ff7a40
       '@nuxthq/admin': /@nuxthq/admin-edge/0.0.1-27556623.cee307a
       '@vueuse/core': 8.7.3
       '@vueuse/nuxt': 8.7.3
@@ -119,7 +119,7 @@ importers:
       '@octokit/rest': 18.12.0
       remark-github: 11.2.3
     devDependencies:
-      '@nuxt/content': /@nuxt/content-edge/2.0.1-27594175.6a05508
+      '@nuxt/content': /@nuxt/content-edge/2.0.1-27599923.67ff7a40
       '@nuxt/module-builder': 0.1.7
       '@nuxt/test-utils': 3.0.0-rc.4
       nuxt: 3.0.0-rc.4
@@ -891,8 +891,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/content-edge/2.0.1-27594175.6a05508:
-    resolution: {integrity: sha512-nmSoH0AHqIbRZKGLLMcuLB1r+/00v8jStYaByRSsCtQAbjOuUKshY1K4LPLRL46Jf+TvZ0Oa3Q9BjnEL3c24Pg==}
+  /@nuxt/content-edge/2.0.1-27599923.67ff7a40:
+    resolution: {integrity: sha512-hT6Z1aBGokPwaH8D5KCmMdvoiV7AlyixAPZ2WR9UruofpzyKXa0/wcL8ZZkCPbmLH3XLzDaRCxFpQflfAJaYcA==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.4
       csvtojson: 2.0.10

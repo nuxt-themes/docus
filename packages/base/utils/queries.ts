@@ -13,7 +13,7 @@ const findLayout = (page: ParsedContent, theme: any, navigation: NavItem[]) => {
 
   if (layoutFromNav) return layoutFromNav
 
-  return theme.layout
+  return 'default'
 }
 
 export const queryPage = async (route: RouteLocationNormalized | RouteLocationNormalizedLoaded, force = false) => {
@@ -34,34 +34,32 @@ export const queryPage = async (route: RouteLocationNormalized | RouteLocationNo
 
   // Fetch page
   return await Promise.all([
+    // _page
     queryContent().where({ _path: path }).findOne() as Promise<ParsedContent>,
+    // _surround
     queryContent()
       .where({ _partial: { $not: true }, navigation: { $not: false } })
       .findSurround(path) as Promise<ParsedContent[]>,
   ])
     .then(async ([_page, _surround]) => {
-      try {
-        // Use `redirect` key to redirect to another page
-        if (_page?.redirect) return _page?.redirect
+      // Use `redirect` key to redirect to another page
+      if (_page?.redirect) return _page?.redirect
 
-        const layoutName = findLayout(_page, theme.value, navigation.value)
+      const layoutName = findLayout(_page, theme.value, navigation.value)
 
-        // Prefetch layout component
-        const layout = layouts[layoutName]
-        if (layout?.__asyncLoader && !layout.__asyncResolved) {
-          await layout.__asyncLoader()
-        }
-
-        // Update values
-        route.meta.layout = layoutName
-        if (_page) page.value = _page
-        else page.value = undefined
-
-        if (_surround && _surround.length) surround.value = _surround
-        else surround.value = undefined
-      } catch (e) {
-        console.log(e)
+      // Prefetch layout component
+      const layout = layouts[layoutName]
+      if (layout?.__asyncLoader && !layout.__asyncResolved) {
+        await layout.__asyncLoader()
       }
+
+      // Update values
+      route.meta.layout = layoutName
+      if (_page) page.value = _page
+      else page.value = undefined
+
+      if (_surround && _surround.length) surround.value = _surround
+      else surround.value = undefined
     })
     .catch((e) => {
       console.warn(`Could not find page for path ${path}`)
