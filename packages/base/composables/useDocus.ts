@@ -1,10 +1,10 @@
 import { themeMerger } from '../utils/theme'
-import { computed, unref, useDocusState, useRuntimeConfig } from '#imports'
+import { computed, useContent, useRuntimeConfig } from '#imports'
 
 export const useDocus = () => {
   const { docus: docusRuntimeConfig } = useRuntimeConfig()
 
-  const { theme: _theme, navigation, page, surround } = useDocusState()
+  const { globals, navigation, page, surround, toc, type, layout, next, prev } = useContent()
 
   const defaultThemeConfig = computed(() => {
     return docusRuntimeConfig?.defaultThemeConfig || {}
@@ -15,7 +15,7 @@ export const useDocus = () => {
    */
   const theme = computed(() => {
     // Grab _theme.yml value
-    const themeValue = unref(_theme.value) || {}
+    const themeValue = globals.value?.theme || {}
 
     // Disable debug in production
     if (process.env.NODE_ENV === 'production') {
@@ -28,32 +28,8 @@ export const useDocus = () => {
     return themeConfig
   })
 
-  /**
-   * Table of contents from parsed page.
-   */
-  const toc = computed(() => page?.value?.body?.toc || [])
-
-  /**
-   * Content type from parsed page.
-   */
-  const type = computed(() => page.value?.meta?.type)
-
-  /**
-   * Layout type from parsed page.
-   */
-  const layout = computed(() => page.value?.meta?.layout)
-
-  /**
-   * Next page from `surround`.
-   */
-  const next = computed(() => surround.value?.[1] || null)
-
-  /**
-   * Previous page from `surround`.
-   */
-  const prev = computed(() => surround.value?.[0] || null)
-
   return {
+    globals,
     theme,
     navigation,
     surround,

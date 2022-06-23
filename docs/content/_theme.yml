@@ -4,6 +4,7 @@ github:
   root: docs/content/
   edit: true
   contributors: true
+layout: docs
 cover:
   src: "https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png"
   alt: "A screenshot of a website built with Docus with the Docus logo on top of it."
