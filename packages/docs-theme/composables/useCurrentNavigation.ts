@@ -1,7 +1,7 @@
-import { computed, useDocus, useDocusHelpers, useRoute } from '#imports'
+import { computed, useDocus, useContentHelpers, useRoute } from '#imports'
 
 export const useCurrentNavigation = () => {
-  const { fileFromPath, navFromPath, navKeyFromPath } = useDocusHelpers()
+  const { navPageFromPath, navDirFromPath, navKeyFromPath } = useContentHelpers()
 
   const { navigation, theme, page } = useDocus()
 
@@ -27,7 +27,7 @@ export const useCurrentNavigation = () => {
       _path = asideConfig.value?.root
 
       // Filter nav from local `root` value
-      nav = navFromPath(_path, navigation.value)
+      nav = navDirFromPath(_path, navigation.value)
     }
 
     if (level.value) {
@@ -37,14 +37,14 @@ export const useCurrentNavigation = () => {
       // Get level
       const leveledPath = path.splice(0, 1 + level.value).join('/')
 
-      nav = navFromPath(leveledPath, nav) || []
+      nav = navDirFromPath(leveledPath, nav) || []
 
       if (!Array.isArray(nav)) nav = [nav]
     }
 
     // No navigation found; try to resolve page url
     if (nav.length === 0) {
-      nav = fileFromPath(page.value?._path || '/', navigation.value) || []
+      nav = navPageFromPath(page.value?._path || '/', navigation.value) || []
 
       if (!Array.isArray(nav)) nav = [nav]
     }

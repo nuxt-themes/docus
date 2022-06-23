@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, useDocus, useDocusHelpers, useRoute } from '#imports'
+import { computed, useDocus, useContentHelpers, useRoute } from '#imports'
 
 const route = useRoute()
-const { findBottomLink } = useDocusHelpers()
+const { navBottomLink } = useContentHelpers()
 const { navigation, theme } = useDocus()
 
 const hasNavigation = computed(() => !!theme.value.aside?.level)
@@ -24,7 +24,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
     <NuxtLink
       v-for="link in tree"
       :key="link._path"
-      :to="findBottomLink(link)"
+      :to="navBottomLink(link)"
       class="text-sm"
       :class="[isActive(link) ? 'text-primary-500' : 'u-text-gray-500 hover:u-text-gray-700']"
     >

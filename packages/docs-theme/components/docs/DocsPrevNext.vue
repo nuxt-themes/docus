@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import { useDocus, useDocusHelpers } from '#imports'
+import { useDocus, useContentHelpers } from '#imports'
 
 const { prev, next, navigation } = useDocus()
-const { navFromPath } = useDocusHelpers()
+const { navDirFromPath } = useContentHelpers()
 
 const directory = (link) => {
-  const nav = navFromPath(link._path, navigation.value || [])
+  const nav = navDirFromPath(link._path, navigation.value || [])
 
   if (nav && nav[0]) {
     return nav[0]._path

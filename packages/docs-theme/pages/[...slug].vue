@@ -4,7 +4,6 @@ import { computed, useDocus, useHead } from '#imports'
 definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
-  middleware: ['navigation', 'page'],
 })
 
 const { page, theme } = useDocus()

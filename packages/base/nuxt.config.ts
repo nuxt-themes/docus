@@ -5,8 +5,6 @@ import { resolve } from 'pathe'
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
 const resolveThemeDir = (path: string) => resolve(themeDir, path)
 
-const plugins = []
-
 const components = [
   {
     prefix: '',
@@ -14,14 +12,6 @@ const components = [
     global: true,
   },
 ]
-
-// Only register the plugin in development as it's not needed in production
-if (process.env.NODE_ENV === 'development') {
-  // Dev plugin
-  plugins.push({
-    src: resolveThemeDir('utils/plugin.ts'),
-  })
-}
 
 export default defineNuxtConfig({
   /**
@@ -35,8 +25,6 @@ export default defineNuxtConfig({
     description: 'Write pages in markdown, use Vue components and enjoy the power of Nuxt with a blazing fast developer experience.',
     debug: false,
   },
-
-  plugins,
 
   app: {
     head: {
@@ -64,6 +52,9 @@ export default defineNuxtConfig({
     },
     navigation: {
       fields: ['layout'],
+    },
+    documentDriven: {
+      injectPage: false
     },
   },
 
