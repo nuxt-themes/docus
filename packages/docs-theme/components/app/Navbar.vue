@@ -36,7 +36,7 @@ const { hasDocSearch } = useDocSearch()
 
       <div class="flex flex-none items-center justify-end col-span-2 lg:gap-4 lg:pl-4">
         <Search v-if="hasDocSearch" />
-        <ThemeSelect size="min-h-5 min-w-5 h-5 w-5 hidden lg:block" />
+        <ThemeSelect :size="`h-5 w-5 ${hasDocSearch ? 'hidden lg:block' : ''}`" />
         <SocialIcons size="h-5 w-5 hidden lg:block" />
       </div>
     </Container>
