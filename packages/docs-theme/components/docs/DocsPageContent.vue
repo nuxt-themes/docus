@@ -3,26 +3,21 @@ import { computed, ref, useDocus } from '#imports'
 
 const { page } = useDocus()
 
-const toc = computed(() => {
-  if (typeof page.value?.toc !== 'undefined') {
-    return page.value.toc
+const fallbackValue = (value: string, fallback = true) => {
+  if (typeof page.value?.[value] !== 'undefined') {
+    return page.value[value]
   }
-  return true
-})
 
-const aside = computed(() => {
-  if (typeof page.value?.aside !== 'undefined') {
-    return page.value.aside
-  }
-  return true
-})
+  return fallback
+}
 
-const bottom = computed(() => {
-  if (typeof page.value?.bottom !== 'undefined') {
-    return page.value.bottom
-  }
-  return true
-})
+const toc = computed(() => fallbackValue('toc', true))
+
+const header = computed(() => fallbackValue('header', true))
+
+const aside = computed(() => fallbackValue('aside', true))
+
+const bottom = computed(() => fallbackValue('bottom', true))
 
 const isOpen = ref(false)
 </script>
@@ -47,7 +42,7 @@ const isOpen = ref(false)
         'pt-12 lg:pt-8': toc,
       }"
     >
-      <DocsPageHeader v-if="page" />
+      <DocsPageHeader v-if="page && header" />
 
       <slot />
 

@@ -19,7 +19,7 @@ const source = computed(() => root.value + page.value._file || '')
 </script>
 
 <template>
-  <div v-if="page" :key="page._id" class="u-text-gray-500 mt-8 flex flex-col-reverse md:flex-row gap-4 justify-between text-sm">
+  <div v-if="page" class="u-text-gray-500 mt-8 flex flex-col-reverse md:flex-row gap-4 justify-between text-sm">
     <div class="flex-1 flex flex-col gap-4 w-full md:w-1/2">
       <component :is="githubLinkComponent" v-if="page && config?.github && theme?.github && theme?.github?.edit" v-slot="data" :content-dir="root" :page="page">
         <span class="flex">
@@ -45,7 +45,7 @@ const source = computed(() => root.value + page.value._file || '')
             <Icon name="heroicons-outline:user-group" class="h-5 w-5" />
             <span>Contributors</span>
           </span>
-          <div v-if="contributors.length" class="flex flex-wrap gap-2">
+          <div v-if="contributors?.length" class="flex flex-wrap gap-2">
             <NuxtLink
               v-for="contributor in contributors"
               :key="contributor.login"
@@ -57,7 +57,7 @@ const source = computed(() => root.value + page.value._file || '')
             </NuxtLink>
           </div>
           <span v-else-if="pending" class="h-6 w-6 opacity-0 block">&nbsp;</span>
-          <span v-else-if="!pending && !contributors.length" class="u-text-gray-500 block">No contributors.</span>
+          <span v-else-if="!pending && !contributors?.length" class="u-text-gray-500 block">No contributors.</span>
         </div>
       </component>
     </div>
