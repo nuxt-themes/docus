@@ -28,7 +28,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
       class="text-sm"
       :class="[isActive(link) ? 'text-primary-500' : 'u-text-gray-500 hover:u-text-gray-700']"
     >
-      {{ link.title }}
+      {{ link?.navigation?.title || link.title }}
     </NuxtLink>
   </nav>
 </template>

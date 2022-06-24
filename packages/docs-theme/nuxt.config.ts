@@ -88,7 +88,7 @@ export default defineNuxtConfig({
 
   content: {
     navigation: {
-      fields: ['icon', 'aside', 'collapsed'],
+      fields: ['icon', 'aside', 'collapsed', 'navigation'],
     },
   },
 
