@@ -12,31 +12,23 @@ const links = computed(() => {
   })
 })
 
-const { visible, open, close, toggle } = useMenu()
+const { visible, open, close } = useMenu()
 
 watch(visible, (v) => (v ? open() : close()))
 </script>
 
 <template>
-  <button class="relative z-10 lg:hidden w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="toggle">
-    <Icon name="heroicons-outline:menu" class="u-text-gray-500 hover:u-text-gray-700 mx-auto h-6 w-6" aria-hidden="”true”" />
+  <button class="relative z-10 lg:hidden u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="open">
+    <Icon name="heroicons-outline:menu" class="u-text-gray-500 hover:u-text-gray-700 h-6 w-6" aria-hidden="”true”" />
   </button>
 
   <teleport to="body">
-    <div v-if="visible" class="fixed inset-0 z-50 flex items-start overflow-y-auto lg:hidden pr-10" @click="toggle">
-      <div
-        class="fixed inset-0 bg-opacity-50 bg-opacity-50 dark:bg-opacity-50 backdrop-blur transition-opacity pointer-events-none z-10"
-        :class="[visible ? 'opacity-100' : 'opacity-0']"
-        @click="toggle"
-      />
-
-      <div class="min-h-full w-full max-w-xs bg-white shadow px-4 pb-12 dark:bg-black sm:px-6 z-20" @click.stop.prevent>
+    <div v-if="visible" class="fixed inset-0 z-50 flex items-start overflow-y-auto lg:hidden bg-opacity-50 dark:bg-opacity-50 backdrop-blur" @click="close">
+      <div class="min-h-full w-full max-w-xs u-bg-white shadow px-4 pb-12 sm:px-6" @click.stop>
         <div class="flex items-center justify-between gap-2 h-header border-b border-transparent">
-          <button class="relative z-10 lg:hidden w-8 h-8 u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="toggle">
-            <Icon name="heroicons-outline:x" class="u-text-gray-500 hover:u-text-gray-700 mx-auto h-6 w-6" aria-hidden="”true”" />
+          <button class="relative z-10 u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="close">
+            <Icon name="heroicons-outline:x" class="u-text-gray-500 hover:u-text-gray-700 h-6 w-6" aria-hidden="”true”" />
           </button>
-
-          <!-- <NavbarLogo /> -->
 
           <div class="flex items-center gap-4">
             <SocialIcons />
