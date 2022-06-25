@@ -23,19 +23,20 @@ const { hasDocSearch } = useDocSearch()
 
 <template>
   <header class="h-header u-border-gray-100 sticky top-0 z-10 w-full border-b bg-white/95 backdrop-blur dark:bg-black/95">
-    <Container padded class="flex h-full lg:grid lg:grid-cols-12 lg:gap-8">
-      <div class="flex flex-none items-center lg:col-span-2 lg:flex-none">
-        <NavbarLogo />
+    <Container padded class="h-full grid grid-cols-12 lg:gap-8">
+      <div class="flex flex-none items-center col-span-2 lg:flex-none">
+        <NavbarDialog />
+        <NavbarLogo class="hidden lg:block" />
       </div>
 
-      <div class="flex flex-1 items-center lg:col-span-8">
+      <div class="flex flex-1 justify-center items-center col-span-8">
+        <NavbarLogo class="lg:hidden" />
         <NavbarCenter class="hidden lg:flex" />
       </div>
 
-      <div class="flex flex-none items-center justify-end lg:col-span-2 lg:gap-4 lg:pl-4">
-        <Search v-if="hasDocSearch" class="mr-2 lg:mr-0" />
-        <MobileNav />
-        <ThemeSelect size="min-h-5 min-w-5 h-5 w-5 hidden lg:block" />
+      <div class="flex flex-none items-center justify-end col-span-2 lg:gap-4 lg:pl-4">
+        <Search v-if="hasDocSearch" />
+        <ThemeSelect :size="`h-5 w-5 ${hasDocSearch ? 'hidden lg:block' : ''}`" />
         <SocialIcons size="h-5 w-5 hidden lg:block" />
       </div>
     </Container>
