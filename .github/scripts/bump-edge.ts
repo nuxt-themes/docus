@@ -3,7 +3,6 @@ import { resolve } from 'path'
 import { execSync } from 'child_process'
 
 const packages = {
-  '@docus/base': 'npm:@docus/base-edge@',
   '@docus/docs-theme': 'npm:@docus/docs-theme-edge@',
 }
 

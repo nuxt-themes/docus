@@ -1,8 +1,9 @@
 import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import { resolve } from 'pathe'
-import tailwindConfig from './tailwind.config'
+import tailwindConfig from './app/tailwind.config'
 import { themeConfig } from './theme'
+import localModule from './module'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
 const resolveThemeDir = (path: string) => resolve(themeDir, path)
@@ -41,15 +42,21 @@ const components = [
 ]
 
 export default defineNuxtConfig({
-  // Extends `docus/base`
-  extends: [resolveThemeDir('../base')],
-
   /**
    * Docs theme configuration.
    *
    * Holds every configuration that applies to docs theme.
    */
-  theme: themeConfig,
+  theme: {
+    options: themeConfig,
+    tokens: {
+      colors: {
+        primary: {
+          value: 'blue',
+        },
+      },
+    },
+  },
 
   app: {
     head: {
@@ -70,11 +77,11 @@ export default defineNuxtConfig({
 
   components,
 
-  modules: [resolveThemeDir('module.ts'), '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: ['nuxt-theme-kit', '@nuxt/content', '@nuxthq/admin', localModule, '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
 
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('assets/css/main.css'),
+    cssPath: resolveThemeDir('assets/css/tailwind.css'),
     config: {
       ...tailwindConfig,
       content: [
@@ -87,8 +94,15 @@ export default defineNuxtConfig({
   },
 
   content: {
+    highlight: {
+      theme: 'one-dark-pro',
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini'],
+    },
+    documentDriven: {
+      injectPage: false,
+    },
     navigation: {
-      fields: ['icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],
+      fields: ['layout', 'icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],
     },
   },
 

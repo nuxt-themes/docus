@@ -18,9 +18,6 @@ export default defineNuxtModule({
   setup(_, nuxt) {
     const { srcDir } = nuxt.options
 
-    // @ts-expect-error - Push content dir
-    nuxt.options.tailwindcss.config.content.push(`${srcDir}/content/**/*.{md,yml,json,json5,csv}`)
-
     if (nuxt.options.github) {
       addPlugin({
         src: resolveThemeDir('integrations/github.ts'),

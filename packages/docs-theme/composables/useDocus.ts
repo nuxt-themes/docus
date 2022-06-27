@@ -1,5 +1,12 @@
-import { themeMerger } from '../utils/theme'
+import { createDefu } from 'defu'
 import { computed, useContent, useRuntimeConfig } from '#imports'
+
+const themeMerger = createDefu((obj, key, value) => {
+  if (obj[key] && Array.isArray(obj[key])) {
+    obj[key] = value
+    return true
+  }
+})
 
 export const useDocus = () => {
   const { docus: docusRuntimeConfig } = useRuntimeConfig()

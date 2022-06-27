@@ -16,7 +16,15 @@
     "release:edge": "../../.github/scripts/release-edge.sh"
   },
   "dependencies": {
-    "@docus/base": "latest",
+    "nuxt-theme-kit": "npm:nuxt-theme-kit-edge@latest",
+    "browser-style-dictionary": "^3.1.1-browser.1",
+    "@nuxt/content": "npm:@nuxt/content-edge@latest",
+    "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
+    "@vueuse/core": "^8.7.3",
+    "@vueuse/nuxt": "^8.7.3",
+    "defu": "^6.0.0",
+    "nuxt": "^3.0.0-rc.4",
+    "pkg-types": "^0.3.2",
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "^5.1.2",

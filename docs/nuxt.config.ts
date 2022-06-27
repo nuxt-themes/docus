@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 
   theme: {},
 
-  modules: ['@docus/github' /* , '@nuxtjs/algolia' */],
+  buildModules: ['@docus/github' /* , '@nuxtjs/algolia' */],
 
   /*
   algolia: {

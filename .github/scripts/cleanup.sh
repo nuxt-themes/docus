@@ -4,12 +4,6 @@
 rm -rf node_modules
 rm -rf pnpm-lock.yaml
 
-# Base
-rm -rf packages/base/.nuxt
-rm -rf packages/base/.output
-rm -rf packages/base/.turbo
-rm -rf packages/base/node_modules
-
 # Docs Theme
 rm -rf packages/docs-theme/.nuxt
 rm -rf packages/docs-theme/.output
