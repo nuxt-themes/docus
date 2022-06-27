@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { computed, reactive, useDocus, useRoute } from '#imports'
+import { computed, useDocus, useRoute, useState } from '#imports'
 
 const props = defineProps({
   links: {
@@ -21,11 +21,20 @@ const props = defineProps({
   },
 })
 
+const route = useRoute()
 const { theme } = useDocus()
 
-const collapsedMap = useState('docus-docs-aside-collapse-map', () => ({}))
-
-const route = useRoute()
+const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._path || '/'}`, () => {
+  if (props.level === 0) {
+    return {}
+  }
+  return props.links
+    .filter((link) => !!link.children)
+    .reduce((map, link) => {
+      map[link._path] = true
+      return map
+    }, {})
+})
 
 const isActive = (link) => {
   return link.exact ? route.path === link._path : route.path.startsWith(link._path)
@@ -57,21 +66,17 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
 <template>
   <ul>
     <li
-      v-for="(link, index) in links"
+      v-for="link in links"
       :key="link._path"
       :class="{
         'ml-2': parent?.icon,
-        'pl-4 pr-4': level > 0 && link.children,
+        'pl-4': level > 0 && link.children,
         'border-l': level > 0 || !hasNesting,
         'border-primary-400 dark:border-primary-600': isActive(link),
         'u-border-gray-100 hover:u-border-gray-300': !isActive(link),
       }"
     >
-      <button
-        v-if="link.children"
-        class="u-text-gray-900 flex items-center justify-between w-full py-1.5 text-sm font-semibold cursor-pointer group"
-        @click="toggleCollapse(link, index)"
-      >
+      <button v-if="link.children" class="u-text-gray-900 flex items-center justify-between w-full py-1.5 text-sm font-semibold cursor-pointer group" @click="toggleCollapse(link)">
         <span class="flex items-center">
           <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-2" />
           <span>{{ link?.navigation?.title || link.title }}</span>
