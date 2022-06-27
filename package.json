@@ -31,21 +31,21 @@
     "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.25.1",
+    "@antfu/eslint-config": "^0.25.2",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@types/tailwindcss": "^3.0.10",
-    "eslint": "^8.17.0",
+    "@types/tailwindcss": "^3.0.11",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.1.0",
     "eslint-plugin-prettier-vue": "^4.1.0",
-    "jiti": "^1.13.0",
-    "npm-check-updates": "^14.0.1",
+    "jiti": "^1.14.0",
+    "npm-check-updates": "^14.1.1",
     "nuxt": "^3.0.0-rc.4",
     "parse-entities": "^4.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "turbo": "^1.2.16",
-    "typescript": "^4.7.3"
+    "turbo": "^1.3.1",
+    "typescript": "^4.7.4"
   },
   "pnpm": {
     "peerDependencyRules": {

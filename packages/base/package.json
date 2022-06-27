@@ -29,10 +29,10 @@
   "dependencies": {
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
-    "@vueuse/core": "^8.7.3",
-    "@vueuse/nuxt": "^8.7.3",
+    "@vueuse/core": "^8.7.5",
+    "@vueuse/nuxt": "^8.7.5",
     "defu": "^6.0.0",
     "nuxt": "^3.0.0-rc.4",
-    "pkg-types": "^0.3.2"
+    "pkg-types": "^0.3.3"
   }
 }
