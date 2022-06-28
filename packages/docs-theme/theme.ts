@@ -1,9 +1,17 @@
 export const themeConfig = {
   layout: 'docs',
-  socials: {
-    twitter: '@docus_',
-    github: 'nuxtlabs/docus',
-  },
+  socials: [
+    {
+      label: 'Twitter',
+      href: 'https://twitter.com/@docus_',
+      icon: 'fa-brands:twitter',
+    },
+    {
+      label: 'Github',
+      href: 'https://github.com/nuxtlabs/docus',
+      icon: 'fa-brands:github',
+    },
+  ],
   github: {
     root: 'content',
     edit: true,
