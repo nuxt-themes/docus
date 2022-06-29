@@ -19,6 +19,6 @@
     "@docus/github": "latest",
     "@docsearch/js": "latest",
     "@docsearch/css": "latest",
-    "@nuxtjs/algolia": "^0.9.2"
+    "@nuxtjs/algolia": "^1.0.0"
   }
 }

@@ -54,7 +54,8 @@
         "webpack",
         "react",
         "react-dom",
-        "@types/react"
+        "@types/react",
+        "storyblock-algolia-indexer"
       ],
       "allowedVersions": {
         "vue": "^3.2.33"
