@@ -226,7 +226,7 @@
 }
 
 body {
-  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black;
+  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black overflow-y-scroll;
 }
 
 :root {
