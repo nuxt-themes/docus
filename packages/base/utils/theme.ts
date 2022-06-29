@@ -7,7 +7,7 @@ export interface NuxtLayer {
 }
 
 export const themeMerger = createDefu((obj, key, value) => {
-  if (obj[key] && Array.isArray(obj[key])) {
+  if (obj[key] && typeof obj[key] === 'object') {
     obj[key] = value
     return true
   }

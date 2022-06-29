@@ -54,7 +54,17 @@ export default defineNuxtConfig({
       fields: ['layout'],
     },
     documentDriven: {
-      injectPage: false
+      injectPage: false,
+      globals: {
+        theme: {
+          where: [
+            {
+              _id: 'content:_theme.yml',
+            },
+          ],
+          without: ['_'],
+        },
+      },
     },
   },
 
