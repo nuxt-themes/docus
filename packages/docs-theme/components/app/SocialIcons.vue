@@ -38,7 +38,7 @@ const icons = computed(() => {
 </script>
 
 <template>
-  <a
+  <NuxtLink
     v-for="icon in icons"
     :key="icon.label"
     rel="noopener noreferrer"
@@ -50,5 +50,5 @@ const icons = computed(() => {
     :class="[spacing]"
   >
     <Icon v-if="icon.icon" :name="icon.icon" :class="size" />
-  </a>
+  </NuxtLink>
 </template>
