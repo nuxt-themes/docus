@@ -27,7 +27,7 @@ const icons = computed(() => {
         return {
           href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
-          label: key,
+          label: value,
         }
       } else {
         return null
