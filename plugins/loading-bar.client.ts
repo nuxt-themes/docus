@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { defineNuxtPlugin } from '#app'
-import { NuxtLoadingBar } from '#components'
+import NuxtLoadingBar from '../components/NuxtLoadingBar.vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hooks.hookOnce('app:mounted', () => {

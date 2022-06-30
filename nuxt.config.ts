@@ -2,7 +2,6 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import { resolve } from 'pathe'
 import tailwindConfig from './app/tailwind.config'
-import { themeConfig } from './theme'
 import localModule from './module'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
@@ -48,14 +47,13 @@ export default defineNuxtConfig({
    * Holds every configuration that applies to docs theme.
    */
   theme: {
-    options: themeConfig,
-    tokens: {
-      colors: {
-        primary: {
-          value: 'blue',
-        },
-      },
+    meta: {
+      name: 'docus',
+      description: 'The best palce to start your documentation.',
+      author: 'NuxtLabs'
     },
+    theme: true,
+    tokens: true,
   },
 
   app: {
@@ -77,7 +75,7 @@ export default defineNuxtConfig({
 
   components,
 
-  modules: ['nuxt-theme-kit', '@nuxt/content', '@nuxthq/admin', localModule, '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: ['nuxt-theme-kit/module', '@nuxt/content', '@nuxthq/admin', localModule, '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
 
   tailwindcss: {
     viewer: false,
@@ -100,6 +98,16 @@ export default defineNuxtConfig({
     },
     documentDriven: {
       injectPage: false,
+      globals: {
+        theme: {
+          where: [
+            {
+              _id: 'content:_theme.yml',
+            },
+          ],
+          without: ['_'],
+        },
+      },
     },
     navigation: {
       fields: ['layout', 'icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],

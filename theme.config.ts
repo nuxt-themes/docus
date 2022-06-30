@@ -1,4 +1,6 @@
-export const themeConfig = {
+import { defineTheme } from 'nuxt-theme-kit'
+
+export default defineTheme({
   layout: 'docs',
   socials: {
     twitter: '@docus_',
@@ -39,4 +41,4 @@ export const themeConfig = {
       },
     ],
   },
-}
+})

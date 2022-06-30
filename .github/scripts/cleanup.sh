@@ -19,7 +19,6 @@ rm -rf packages/github/dist
 rm -rf packages/github/.turbo
 rm -rf packages/github/node_modules
 
-
 # Docs
 rm -rf docs/.nuxt
 rm -rf docs/.output

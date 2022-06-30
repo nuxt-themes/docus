@@ -1,5 +1,5 @@
 import { createDefu } from 'defu'
-import { computed, useContent, useRuntimeConfig } from '#imports'
+import { computed, useContent, useNuxtApp } from '#imports'
 
 const themeMerger = createDefu((obj, key, value) => {
   if (obj[key] && Array.isArray(obj[key])) {
@@ -9,12 +9,12 @@ const themeMerger = createDefu((obj, key, value) => {
 })
 
 export const useDocus = () => {
-  const { docus: docusRuntimeConfig } = useRuntimeConfig()
+  const { $theme } = useNuxtApp()
 
   const { globals, navigation, page, surround, toc, type, layout, next, prev } = useContent()
 
   const defaultThemeConfig = computed(() => {
-    return docusRuntimeConfig?.defaultThemeConfig || {}
+    return $theme.value
   })
 
   /**
