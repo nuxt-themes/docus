@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
 import { resolve } from 'pathe'
 import tailwindConfig from './app/tailwind.config'
-import localModule from './module'
+import localModule from './app/module'
 
 const themeDir = fileURLToPath(new URL('./', import.meta.url))
 const resolveThemeDir = (path: string) => resolve(themeDir, path)
@@ -79,7 +79,7 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('assets/css/main.css'),
+    cssPath: resolveThemeDir('app/css/main.css'),
     config: {
       ...tailwindConfig,
       content: [
