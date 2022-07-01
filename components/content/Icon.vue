@@ -13,18 +13,23 @@ const props = defineProps({
   },
 })
 
+const state = useState('docus-icons-state', () => ({}))
+
 const nuxtApp = useNuxtApp()
-const icon: Ref<IconifyIcon | null> = ref(null)
+const icon = computed<IconifyIcon | null>(() => {
+  return state.value?.[props.name]
+})
 const component = computed(() => nuxtApp.vueApp.component(props.name))
 
-icon.value = await loadIcon(props.name).catch((_) => null)
+const refreshComponent = async () => {
+  if (!state.value?.[props.name]) {
+    state.value[props.name] = await loadIcon(props.name).catch(() => {})
+  }
+}
 
-watch(
-  () => props.name,
-  async () => {
-    icon.value = await loadIcon(props.name).catch((_) => null)
-  },
-)
+await refreshComponent()
+
+watch(() => props.name, refreshComponent)
 </script>
 
 <template>
