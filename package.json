@@ -24,7 +24,7 @@
   "scripts": {
     "build": "nuxi build",
     "dev:prepare": "nuxi prepare",
-    "build:docs": "nuxi build docs",
+    "build:docs": "nuxi generate docs",
     "clean": "./.github/scripts/cleanup.sh",
     "dev": "nuxi dev",
     "dev:docs": "nuxi dev docs",
