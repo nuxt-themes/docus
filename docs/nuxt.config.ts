@@ -9,5 +9,5 @@ export default defineNuxtConfig({
     branch: 'dev',
   },
 
-  buildModules: ['@nuxtlabs/github-module'],
+  modules: ['@nuxtlabs/github-module'],
 })

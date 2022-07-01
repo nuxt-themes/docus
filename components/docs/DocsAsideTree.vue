@@ -76,13 +76,13 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         'u-border-gray-100 hover:u-border-gray-300': !isActive(link),
       }"
     >
-      <button v-if="link.children" class="u-text-gray-900 flex items-center justify-between w-full py-1.5 text-sm font-semibold cursor-pointer group" @click="toggleCollapse(link)">
+      <button v-if="link.children" class="u-text-gray-900 group flex w-full cursor-pointer items-center justify-between py-1.5 text-sm font-semibold" @click="toggleCollapse(link)">
         <span class="flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-2" />
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="mr-2 h-4 w-4" />
           <span>{{ link?.navigation?.title || link.title }}</span>
         </span>
         <span class="flex">
-          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="w-3 h-3 u-text-gray-400 group-hover:u-text-gray-800" />
+          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="u-text-gray-400 group-hover:u-text-gray-800 h-3 w-3" />
         </span>
       </button>
 
@@ -98,7 +98,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         }"
       >
         <span class="inline-flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-1" />
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="mr-1 h-4 w-4" />
           <span>{{ link?.navigation?.title || link.title }}</span>
         </span>
       </NuxtLink>

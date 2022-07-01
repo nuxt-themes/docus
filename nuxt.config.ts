@@ -48,9 +48,9 @@ export default defineNuxtConfig({
    */
   theme: {
     meta: {
-      name: 'docus',
-      description: 'The best palce to start your documentation.',
-      author: 'NuxtLabs'
+      name: 'Docus 📃',
+      description: 'The best place to start your documentation.',
+      author: 'NuxtLabs',
     },
     theme: true,
     tokens: true,
@@ -79,7 +79,7 @@ export default defineNuxtConfig({
 
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('assets/css/tailwind.css'),
+    cssPath: resolveThemeDir('assets/css/main.css'),
     config: {
       ...tailwindConfig,
       content: [
@@ -98,16 +98,6 @@ export default defineNuxtConfig({
     },
     documentDriven: {
       injectPage: false,
-      globals: {
-        theme: {
-          where: [
-            {
-              _id: 'content:_theme.yml',
-            },
-          ],
-          without: ['_'],
-        },
-      },
     },
     navigation: {
       fields: ['layout', 'icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],

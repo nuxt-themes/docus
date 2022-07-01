@@ -4,11 +4,9 @@
 
 @layer components {
   /* Images */
-
   .light-img {
     @apply block dark:hidden;
   }
-
   .dark-img {
     @apply hidden dark:block;
   }
@@ -226,15 +224,11 @@
 }
 
 body {
-  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-black overflow-y-scroll;
+  @apply antialiased text-gray-700 dark:text-gray-200 bg-white dark:bg-black overflow-y-scroll;
+  font-family: var(--fonts-primary);
 }
 
 :root {
-  /* Base */
-  --header-height: 4rem;
-  --footer-height: 108px;
-  --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height) + 50px));
-
   /* DocSearch */
   --docsearch-primary-color: theme('colors.primary.500') !important;
 }
@@ -243,10 +237,7 @@ html.dark {
   @apply bg-black;
 }
 
-@screen sm {
-  :root {
-    --header-height: 4rem;
-    --footer-height: 4rem;
-    --page-height: calc(100vh - calc(var(--header-height) + var(--footer-height)));
-  }
+code, kbd, pre, samp {
+  font-family: var(--fonts-code);
+  font-size: 1em;
 }

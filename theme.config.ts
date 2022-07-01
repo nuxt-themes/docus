@@ -1,7 +1,7 @@
 import { defineTheme } from 'nuxt-theme-kit'
 
 export default defineTheme({
-  layout: 'docs',
+  name: 'Docus',
   socials: {
     twitter: '@docus_',
     github: 'nuxtlabs/docus',
@@ -11,7 +11,7 @@ export default defineTheme({
     edit: true,
   },
   aside: {
-    level: 0,
+    level: 1,
     filter: [],
   },
   header: {

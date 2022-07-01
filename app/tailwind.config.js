@@ -176,21 +176,12 @@ const colors = {
 /** @type { import('tailwindcss/tailwind-config').TailwindConfig } */
 export default {
   darkMode: 'class',
-  plugins: [
-    require('@tailwindcss/typography'),
-    // Gives errors in console (color-adjust)
-    // require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms'), require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
   theme: {
     colors,
     extend: {
       colors: {
         primary: colors.blue,
-      },
-      fontFamily: {
-        sans: 'Inter, sans-serif',
       },
       spacing: {
         header: 'var(--header-height)',
@@ -198,7 +189,7 @@ export default {
         page: 'var(--page-height)',
       },
       maxWidth: {
-        '8xl': '90rem',
+        '8xl': 'var(--page-max-width)',
       },
       minHeight: {
         page: 'var(--page-height)',
