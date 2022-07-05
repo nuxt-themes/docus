@@ -3,7 +3,6 @@ definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
   layout: 'page',
-  middleware: ['navigation'],
 })
 </script>
 
