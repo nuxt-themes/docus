@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <div>
     <div :id="value.name" class="flex items-center gap-4">
-      <NuxtImg v-if="value?.owner?.avatar_url" :src="value?.owner?.avatar_url" class="w-8 h-8 rounded-full" />
+      <NuxtImg v-if="value?.owner?.avatar_url" :src="value?.owner?.avatar_url" class="h-8 w-8 rounded-full" />
 
       <span class="text-2xl font-bold">
         {{ value.name }}

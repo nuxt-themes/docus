@@ -18,15 +18,15 @@ watch(visible, (v) => (v ? open() : close()))
 </script>
 
 <template>
-  <button class="relative z-10 lg:hidden u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="open">
+  <button class="u-text-gray-500 hover:u-text-gray-700 relative z-10 rounded-xl lg:hidden" aria-label="Menu" @click="open">
     <Icon name="heroicons-outline:menu" class="u-text-gray-500 hover:u-text-gray-700 h-6 w-6" aria-hidden="”true”" />
   </button>
 
   <teleport to="body">
-    <div v-if="visible" class="fixed inset-0 z-50 flex items-start overflow-y-auto lg:hidden bg-opacity-50 dark:bg-opacity-50 backdrop-blur" @click="close">
-      <div class="min-h-full w-full max-w-xs u-bg-white shadow px-4 pb-12 sm:px-6" @click.stop>
-        <div class="flex items-center justify-between gap-2 h-header border-b border-transparent">
-          <button class="relative z-10 u-text-gray-500 hover:u-text-gray-700 rounded-xl" aria-label="Menu" @click="close">
+    <div v-if="visible" class="fixed inset-0 z-50 flex items-start overflow-y-auto bg-opacity-50 backdrop-blur dark:bg-opacity-50 lg:hidden" @click="close">
+      <div class="u-bg-white min-h-full w-full max-w-xs px-4 pb-12 shadow sm:px-6" @click.stop>
+        <div class="h-header flex items-center justify-between gap-2 border-b border-transparent">
+          <button class="u-text-gray-500 hover:u-text-gray-700 relative z-10 rounded-xl" aria-label="Menu" @click="close">
             <Icon name="heroicons-outline:x" class="u-text-gray-500 hover:u-text-gray-700 h-6 w-6" aria-hidden="”true”" />
           </button>
 

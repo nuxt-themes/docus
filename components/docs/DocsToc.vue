@@ -29,7 +29,7 @@ watch(
   },
 )
 
-function scrollToHeading(id: string) {
+const scrollToHeading = (id: string) => {
   router.push(`#${id}`)
   emit('move', id)
 }

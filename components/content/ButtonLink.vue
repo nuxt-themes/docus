@@ -51,7 +51,7 @@ a.button-link {
   }
 
   &.transparent {
-    @apply px-0 py-0 bg-transparent;
+    @apply bg-transparent px-0 py-0;
   }
 }
 </style>

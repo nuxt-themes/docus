@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useDocus, useContentHelpers, useRoute } from '#imports'
+import { computed, useContentHelpers, useDocus, useRoute } from '#imports'
 
 const route = useRoute()
 const { navBottomLink } = useContentHelpers()

@@ -58,7 +58,7 @@ export default defineNuxtPlugin(async () => {
       document.body.appendChild(el)
       docSearchElement.value = el
 
-      // Import @docsearch at runtime
+      // @ts-expect-errors - Import @docsearch at runtime
       const docsearch = await Promise.all([import(/* webpackChunkName: "docsearch" */ '@docsearch/js'), import(/* webpackChunkName: "docsearch" */ '@docsearch/css')]).then(
         ([docsearch]) => docsearch.default,
       )
@@ -120,6 +120,7 @@ export default defineNuxtPlugin(async () => {
                 }
               },
             },
+        // @ts-expect-error - We don't actually use `hitComponent` but react on its calls.
         hitComponent: userOptions.hitComponent
           ? userOptions.hitComponent
           : ({ hit, children }) => {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import { useDocus, useContentHelpers } from '#imports'
+import { useContentHelpers, useDocus } from '#imports'
 
 const { prev, next, navigation } = useDocus()
 const { navDirFromPath } = useContentHelpers()
@@ -20,7 +20,11 @@ const directory = (link) => {
 
 <template>
   <div v-if="prev || next" class="flex items-center justify-between gap-3">
-    <NuxtLink v-if="prev" :to="prev._path" class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative rounded-lg border p-3 min-w-0">
+    <NuxtLink
+      v-if="prev"
+      :to="prev._path"
+      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
+    >
       <p v-if="directory(prev._path)" class="u-text-gray-500 mb-1 text-right text-xs font-medium">{{ directory(prev._path) }}</p>
 
       <p class="flex items-center gap-3">
@@ -30,7 +34,11 @@ const directory = (link) => {
     </NuxtLink>
     <span v-else />
 
-    <NuxtLink v-if="next" :to="next._path" class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative rounded-lg border p-3 min-w-0">
+    <NuxtLink
+      v-if="next"
+      :to="next._path"
+      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
+    >
       <p v-if="directory(next._path)" class="u-text-gray-500 mb-1 text-xs font-medium">{{ directory(next._path) }}</p>
 
       <p class="flex items-center gap-3">

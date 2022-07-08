@@ -16,7 +16,7 @@ const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'mediu
 
 const { theme } = useDocus()
 
-const icons = computed(() => {
+const icons = computed<any>(() => {
   theme.value.socials = theme.value.socials || {}
 
   return Object.entries(theme.value.socials)

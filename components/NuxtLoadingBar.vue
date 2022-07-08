@@ -19,7 +19,9 @@ const props = defineProps({
     default: 3,
   },
 })
+
 const { nuxtApp } = props
+
 // Options & Data
 const data = reactive({
   percent: 0,

@@ -4,7 +4,7 @@ const file = ref('package.json')
 
 <template>
   <GithubFileContributors v-slot="{ contributors, refresh }" :source="file">
-    <input v-model="file" disabled class="mb-4 p-2 rounded-lg" type="text" @input="refresh" />
+    <input v-model="file" disabled class="mb-4 rounded-lg p-2" type="text" @input="refresh" />
 
     <div v-if="contributors" class="flex flex-col gap-2">
       <Contributor v-for="contributor of contributors" :key="contributor.login" :contributor="contributor" />

@@ -35,7 +35,7 @@ defineProps({
             </p>
           </div>
           <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-            <ButtonLink href="/" size="large" variant="primary"> Go back home </ButtonLink>
+            <ButtonLink href="/" size="large" variant="primary">Go back home</ButtonLink>
           </div>
         </div>
       </main>

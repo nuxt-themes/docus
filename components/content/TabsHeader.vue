@@ -19,7 +19,7 @@ const tabsRef = ref()
 
 const highlightUnderline = ref()
 
-function updateHighlightUnderlinePosition() {
+const updateHighlightUnderlinePosition = () => {
   const activeTab = tabsRef.value[props.activeTabIndex]
 
   if (!activeTab) return
@@ -32,7 +32,7 @@ function updateHighlightUnderlinePosition() {
   highlightUnderline.value.style.opacity = 1
 }
 
-function updateTabs(i) {
+const updateTabs = (i) => {
   emit('update:activeTabIndex', i)
   nextTick(() => updateHighlightUnderlinePosition())
 }

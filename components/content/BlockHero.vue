@@ -41,7 +41,7 @@ defineProps({
           <Markdown :use="$slots.extra" unwrap="p" />
         </div>
 
-        <div class="mt-6 flex flex-col items-center justify-center lg:justify-start gap-4 sm:mt-10 sm:flex-row sm:gap-6">
+        <div class="mt-6 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row sm:gap-6 lg:justify-start">
           <ButtonLink v-if="cta" class="!mb-0" bold size="large" :href="(cta[1] as any)">
             {{ cta[0] }}
           </ButtonLink>
