@@ -4,6 +4,7 @@ import { computed, useDocus, useHead } from '#imports'
 definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
+  pageTransition: false,
 })
 
 const { page, theme } = useDocus()
@@ -61,7 +62,7 @@ useHead({
 </script>
 
 <template>
-  <div>
+  <NuxtLayout :name="page?.layout || 'default'">
     <ContentRenderer v-if="page" :key="page._id" class="docus-content" :value="page">
       <template #empty="{ value }">
         <Alert type="success">
@@ -81,5 +82,5 @@ useHead({
         </Alert>
       </template>
     </ContentRenderer>
-  </div>
+  </NuxtLayout>
 </template>

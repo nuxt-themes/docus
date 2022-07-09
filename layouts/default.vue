@@ -1,7 +1,7 @@
 <template>
   <Layout id="docus-docs-page">
     <DocsPageContent class="min-h-page">
-      <NuxtPage />
+      <slot />
     </DocsPageContent>
   </Layout>
 </template>
