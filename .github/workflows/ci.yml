@@ -33,18 +33,13 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
       - name: Check if the version has been bumped
         id: check
         uses: EndBug/version-check@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+# Temporarily disable CI main package releases
 #      - name: Release Main version
 #        if: github.event_name == 'push' && steps.check.outputs.changed == 'true'
 #        run: pnpm release
