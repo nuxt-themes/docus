@@ -1,7 +1,6 @@
 {
   "name": "@nuxt-themes/docus",
   "version": "3.0.0",
-  "private": true,
   "main": "./nuxt.config.ts",
   "exports": {
     ".": "./nuxt.config.ts"
