@@ -1,3 +1,3 @@
-import { defineTheme } from 'nuxt-theme-kit'
+import { defineTheme } from '@nuxt-themes/kit'
 
 export default defineTheme({})

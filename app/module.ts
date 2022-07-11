@@ -30,6 +30,8 @@ export default defineNuxtModule({
     // Origin: https://github.com/nuxt/framework/pull/5709
     // Issue: https://github.com/nuxt/framework/issues/5827
     nuxt.hook('nitro:config', (nitroConfig) => {
+      nuxt.options.nitro.prerender = nuxt.options.nitro.prerender || {}
+      nuxt.options.nitro.prerender.routes = nuxt.options.nitro.prerender.routes || []
       nuxt.options.nitro.prerender.routes.push(...nitroConfig.prerender.routes)
     })
 

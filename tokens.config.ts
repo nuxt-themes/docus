@@ -1,4 +1,4 @@
-import { defineThemeTokens } from 'nuxt-theme-kit'
+import { defineThemeTokens } from '@nuxt-themes/kit'
 
 export default defineThemeTokens({
   fonts: {
