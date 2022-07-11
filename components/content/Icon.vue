@@ -11,6 +11,7 @@ const props = defineProps({
     required: true,
   },
 })
+
 const nuxtApp = useNuxtApp()
 const state = useState('docus-icons', () => ({}))
 const isFetching = ref(false)
@@ -18,9 +19,8 @@ const icon = computed<IconifyIcon | null>(() => state.value?.[props.name])
 const component = computed(() => nuxtApp.vueApp.component(props.name))
 
 const loadIconComponent = async () => {
-  if (component.value) {
-    return
-  }
+  if (component.value) return
+
   if (!state.value?.[props.name]) {
     isFetching.value = true
     state.value[props.name] = await loadIcon(props.name).catch(() => null)
@@ -35,7 +35,7 @@ watch(() => props.name, loadIconComponent)
 
 <template>
   <span v-if="isFetching" />
-  <Iconify v-else-if="icon" :icon="icon" class="inline-block" />
+  <Iconify v-else-if="icon" :icon="icon" />
   <Component :is="component" v-else-if="component" />
   <span v-else>{{ name }}</span>
 </template>
