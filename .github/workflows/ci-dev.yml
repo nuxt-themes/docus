@@ -36,4 +36,4 @@ jobs:
         if: github.event_name == 'push'
         run: yarn release:edge
         env:
-           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
