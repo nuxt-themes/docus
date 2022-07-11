@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Bump versions to edge
-npx jiti ../../.github/scripts/bump-edge $PWD
+npx jiti ./.github/scripts/bump-edge $PWD
 
 # Update token
 if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
