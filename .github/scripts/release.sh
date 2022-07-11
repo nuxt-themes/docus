@@ -14,5 +14,5 @@ fi
 
 # Release package
 echo "Publishing $PWD"
-# yarn npm publish --access public --tolerate-republish
+# npm publish --access public --tolerate-republish
 echo "Published!"
