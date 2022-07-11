@@ -17,11 +17,14 @@ export default defineNuxtModule({
   },
   setup(_, nuxt) {
     // Pre-render 404 page
+    /*
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.prerender = nitroConfig.prerender || {}
       nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
       nitroConfig.prerender.routes.push('/404')
+      nitroConfig.prerender.routes.push('/')
     })
+    */
 
     // @ts-expect-error - GitHub module might not be installed
     if (nuxt.options?.github) {

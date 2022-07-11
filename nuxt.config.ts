@@ -10,32 +10,32 @@ const resolveThemeDir = (path: string) => resolve(themeDir, path)
 const components = [
   {
     prefix: '',
-    path: './components/app',
+    path: resolveThemeDir('./components/app'),
     global: true,
   },
   {
     prefix: '',
-    path: './components/docs',
+    path: resolveThemeDir('./components/docs'),
     global: true,
   },
   {
     prefix: '',
-    path: './components/prose',
+    path: resolveThemeDir('./components/prose'),
     global: true,
   },
   {
     prefix: '',
-    path: './components/content',
+    path: resolveThemeDir('./components/content'),
     global: true,
   },
   {
     prefix: '',
-    path: './components/github',
+    path: resolveThemeDir('./components/github'),
     global: true,
   },
   {
     prefix: '',
-    path: './components/icons',
+    path: resolveThemeDir('./components/icons'),
     global: true,
   },
 ]
@@ -96,9 +96,7 @@ export default defineNuxtConfig({
       theme: 'one-dark-pro',
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini'],
     },
-    documentDriven: {
-      injectPage: false,
-    },
+    documentDriven: true,
     navigation: {
       fields: ['layout', 'icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],
     },

@@ -3,9 +3,12 @@ definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
   layoutTransition: false,
   layout: 'page',
+  documentDriven: false,
 })
 </script>
 
 <template>
-  <ErrorPage />
+  <NuxtLayout>
+    <ErrorPage />
+  </NuxtLayout>
 </template>
