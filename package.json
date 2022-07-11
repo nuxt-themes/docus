@@ -25,6 +25,8 @@
     "build": "nuxi build",
     "dev:prepare": "nuxi prepare",
     "build:docs": "nuxi generate docs",
+    "release": "./.github/scripts/release.sh",
+    "release:edge": "./.github/scripts/release-edge.sh",
     "clean": "./.github/scripts/cleanup.sh",
     "dev": "nuxi dev",
     "dev:docs": "nuxi dev docs",
