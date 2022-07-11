@@ -26,6 +26,13 @@ export default defineNuxtModule({
     })
     */
 
+    // TODO: Remove this workaround
+    // Origin: https://github.com/nuxt/framework/pull/5709
+    // Issue: https://github.com/nuxt/framework/issues/5827
+    nuxt.hook('nitro:config', (nitroConfig) => {
+      nuxt.options.nitro.prerender.routes.push(...nitroConfig.prerender.routes)
+    })
+
     // @ts-expect-error - GitHub module might not be installed
     if (nuxt.options?.github) {
       addPlugin({
