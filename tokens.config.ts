@@ -3,7 +3,7 @@ import { defineThemeTokens } from '@nuxt-themes/kit'
 export default defineThemeTokens({
   fonts: {
     primary: {
-      value: 'Roboto, sans-serif',
+      value: 'Inter, sans-serif',
     },
     code: {
       value: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',

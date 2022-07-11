@@ -60,11 +60,11 @@ export default defineNuxtConfig({
     head: {
       title: 'Docus',
       link: [
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap',
         },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       ],
       meta: [
         { hid: 'og:site_name', property: 'og:site_name', content: 'Docus' },
