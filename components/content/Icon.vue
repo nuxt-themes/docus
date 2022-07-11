@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { IconifyIcon } from '@iconify/vue'
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
-import { useNuxtApp } from '#imports'
+import { useNuxtApp, useState } from '#imports'
 
 const props = defineProps({
   name: {
@@ -11,28 +11,31 @@ const props = defineProps({
     required: true,
   },
 })
-
-const state = useState('docus-icons-state', () => ({}))
-
 const nuxtApp = useNuxtApp()
-const icon = computed<IconifyIcon | null>(() => {
-  return state.value?.[props.name]
-})
+const state = useState('docus-icons', () => ({}))
+const isFetching = ref(false)
+const icon = computed<IconifyIcon | null>(() => state.value?.[props.name])
 const component = computed(() => nuxtApp.vueApp.component(props.name))
 
-const refreshComponent = async () => {
+const loadIconComponent = async () => {
+  if (component.value) {
+    return
+  }
   if (!state.value?.[props.name]) {
-    state.value[props.name] = await loadIcon(props.name).catch(() => {})
+    isFetching.value = true
+    state.value[props.name] = await loadIcon(props.name).catch(() => null)
+    isFetching.value = false
   }
 }
 
-await refreshComponent()
+watch(() => props.name, loadIconComponent)
 
-watch(() => props.name, refreshComponent)
+!component.value && (await loadIconComponent())
 </script>
 
 <template>
-  <Iconify v-if="icon" :icon="icon" />
+  <span v-if="isFetching" />
+  <Iconify v-else-if="icon" :icon="icon" class="inline-block" />
   <Component :is="component" v-else-if="component" />
   <span v-else>{{ name }}</span>
 </template>
