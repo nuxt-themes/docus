@@ -7,10 +7,10 @@ const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
 
 <template>
-  <footer class="h-footer u-border-gray-100 border-t py-6 sm:py-0">
-    <Container padded class="flex h-full flex-col items-center justify-between gap-4 sm:flex-row">
-      <a v-if="theme?.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="u-text-gray-500 hover:u-text-gray-700 flex items-center">
-        <Component :is="theme.footer.credits.icon || 'Logo'" class="mr-2 h-5 w-5 fill-current" />
+  <footer class="py-6 border-t h-footer u-border-gray-100 sm:py-0">
+    <Container padded class="flex flex-col items-center justify-between h-full gap-4 sm:flex-row">
+      <a v-if="theme?.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="flex items-center u-text-gray-500 hover:u-text-gray-700">
+        <Component :is="theme.footer.credits.icon || 'Logo'" class="w-5 h-5 mr-2 fill-current" />
         <p class="text-sm font-semibold">{{ theme.footer.credits.text }}</p>
       </a>
 
@@ -22,12 +22,10 @@ const icons = computed(() => theme.value?.footer?.icons || [])
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
-          class="u-text-gray-500 hover:u-text-gray-700 flex items-center text-sm font-medium"
+          class="flex items-center text-sm font-medium u-text-gray-500 hover:u-text-gray-700"
         >
-          <Icon v-if="icon.icon" :name="icon.icon" />
-          <Component :is="icon.component" v-else-if="icon?.component" :class="[icon?.class ? icon.class : 'h-5 w-5']" />
+          <Icon :name="icon.icon || icon.component" />
         </a>
-
         <SocialIcons />
       </div>
     </Container>
