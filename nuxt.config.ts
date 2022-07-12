@@ -75,7 +75,7 @@ export default defineNuxtConfig({
 
   components,
 
-  modules: ['@nuxt-themes/kit/module', '@nuxt/content', '@nuxthq/admin', localModule, '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
+  modules: ['@nuxt-themes/kit/module', '@nuxt/content', '@nuxthq/studio', localModule, '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode'],
 
   tailwindcss: {
     viewer: false,

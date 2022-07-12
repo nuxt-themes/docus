@@ -896,12 +896,12 @@
     vite-node "^0.17.1"
     vite-plugin-checker "^0.4.8"
 
-"@nuxthq/admin@npm:@nuxthq/admin-edge@latest":
-  version "0.0.1-27556623.cee307a"
-  resolved "https://registry.yarnpkg.com/@nuxthq/admin-edge/-/admin-edge-0.0.1-27556623.cee307a.tgz#8beb83982308e451f16f30f0a000695fb11392d5"
-  integrity sha512-y8ivZ630z77J7N+muBV/K3Y80LA7qhWL1nQqw47tX7eYIlimEnc4Lc9mU3U6koqCn8uyxE+4eBNT+8M4xSoahA==
+"@nuxthq/studio@npm:@nuxthq/studio-edge@latest":
+  version "0.0.1-27627218.25a110d"
+  resolved "https://registry.yarnpkg.com/@nuxthq/studio-edge/-/studio-edge-0.0.1-27627218.25a110d.tgz#969962247a13e6a0fb5723dda6743d766c20c26d"
+  integrity sha512-0pSlaYz5gzxpIWN7LSCqU8bRUwlgHfzyIG+pWj3Rm6zQKBA7W2nPjQ8nbbAMooBv9Y78Ql05Zlf+WzTdXuxaGQ==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.3"
+    "@nuxt/kit" "^3.0.0-rc.4"
     nuxt-component-meta "^0.1.5"
     socket.io-client "^4.5.1"
     unstorage "^0.4.1"
