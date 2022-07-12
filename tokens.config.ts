@@ -1,6 +1,20 @@
 import { defineThemeTokens } from '@nuxt-themes/kit'
 
 export default defineThemeTokens({
+  colors: {
+    primary: {
+      50: { value: '#d9f1ff' },
+      100: { value: '#b3e4ff' },
+      200: { value: '#8dd6ff' },
+      300: { value: '#66c8ff' },
+      400: { value: '#40bbff' },
+      500: { value: '#1aadff' },
+      600: { value: '#0090e1' },
+      700: { value: '#006ca9' },
+      800: { value: '#004870' },
+      900: { value: '#002438' },
+    },
+  },
   fonts: {
     primary: {
       value: 'Inter, sans-serif',

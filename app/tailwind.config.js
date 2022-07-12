@@ -1,3 +1,10 @@
+import { fileURLToPath } from 'url'
+import { $dt } from '@nuxt-themes/kit'
+import { resolve } from 'pathe'
+
+const themeDir = fileURLToPath(new URL('../', import.meta.url))
+const resolveThemeDir = (path) => resolve(themeDir, path)
+
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
@@ -176,12 +183,18 @@ const colors = {
 /** @type { import('tailwindcss/tailwind-config').TailwindConfig } */
 export default {
   darkMode: 'class',
+  content: [
+    resolveThemeDir('assets/**/*.{mjs,vue,js,ts}'),
+    resolveThemeDir('components/**/*.{mjs,vue,js,ts}'),
+    resolveThemeDir('layouts/**/*.{mjs,vue,js,ts}'),
+    resolveThemeDir('pages/**/*.{mjs,vue,js,ts}'),
+  ],
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms'), require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
   theme: {
     colors,
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: $dt('colors.primary'),
       },
       spacing: {
         header: 'var(--header-height)',
