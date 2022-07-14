@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { $dt } from '@nuxt-themes/kit'
+import { $dt } from '@nuxtjs/design-tokens'
 import { resolve } from 'pathe'
 
 const themeDir = fileURLToPath(new URL('../', import.meta.url))

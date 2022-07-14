@@ -1,4 +1,4 @@
-import { defineTheme } from '@nuxt-themes/kit'
+import { defineTheme } from '@nuxt-themes/config'
 
 export default defineTheme({
   title: 'Docus',
@@ -28,6 +28,6 @@ export default defineTheme({
       text: 'Powered by Docus',
       href: 'https://docus.dev',
     },
-    icons: []
+    icons: [],
   },
 })
