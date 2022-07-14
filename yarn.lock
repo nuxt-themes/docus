@@ -897,12 +897,12 @@
     vite-node "^0.18.0"
     vite-plugin-checker "^0.4.9"
 
-"@nuxthq/admin@npm:@nuxthq/admin-edge@latest":
-  version "0.0.1-27627055.9933660"
-  resolved "https://registry.yarnpkg.com/@nuxthq/admin-edge/-/admin-edge-0.0.1-27627055.9933660.tgz#103850977a1b1cc9e5a0321d474446e1fec28616"
-  integrity sha512-H4kOUOk+4t3BUY2wSaFAzPS+I/REblNOTJT35kchHQGEMEB0ScVswctN4kMClZ0PS1XXIo380o0Zo84I4qVq0g==
+"@nuxthq/studio@npm:@nuxthq/studio-edge@latest":
+  version "0.0.1-27629141.aeb359e"
+  resolved "https://registry.yarnpkg.com/@nuxthq/studio-edge/-/studio-edge-0.0.1-27629141.aeb359e.tgz#6b3bb6595f7a5f1c8186ac2dcd233f5fbe17034a"
+  integrity sha512-M+bLlm0ntQ7ptIOQIF5KIodG7gXDNvbGBEusNyCytglF1GuQH/GRXl/xwbkEJdxz/OVL3wGm2C743kmJweVszw==
   dependencies:
-    "@nuxt/kit" "^3.0.0-rc.4"
+    "@nuxt/kit" "^3.0.0-rc.5"
     nuxt-component-meta "^0.1.5"
     socket.io-client "^4.5.1"
     unstorage "^0.4.1"
@@ -2163,11 +2163,6 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001335, caniuse-lite@^1.0.30001366:
   version "1.0.30001366"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001366.tgz#c73352c83830a9eaf2dea0ff71fb4b9a4bbaa89c"
   integrity sha512-yy7XLWCubDobokgzudpkKux8e0UOOnLHE6mlNJBzT3lZJz6s5atSEzjoL+fsCPkI0G8MP5uVdDx1ur/fXEWkZA==
-
-caniuse-lite@^1.0.30001359:
-  version "1.0.30001365"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001365.tgz#72c2c3863b1a545cfd3d9953535bd2ee17568158"
-  integrity sha512-VDQZ8OtpuIPMBA4YYvZXECtXbddMCUFJk1qu8Mqxfm/SZJNSr1cy4IuLCOL7RJ/YASrvJcYg1Zh+UEUQ5m6z8Q==
 
 capital-case@^1.0.4:
   version "1.0.4"

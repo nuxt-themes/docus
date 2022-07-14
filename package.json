@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
-    "@nuxt-themes/kit": "npm:@nuxt-themes/kit-edge@latest",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxt/kit": "^3.0.0-rc.5",
     "@nuxthq/studio": "npm:@nuxthq/studio-edge@latest",

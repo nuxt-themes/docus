@@ -25,7 +25,7 @@ export default defineTokens({
   },
   page: {
     height: {
-      value: 'calc(100vh - calc({header.height} + {footer.height} + 50px))',
+      value: 'calc(100vh - calc(calc({header.height} + {footer.height})))',
     },
     maxWidth: {
       value: '90rem',
