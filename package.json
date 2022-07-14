@@ -34,9 +34,10 @@
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
+    "@nuxt-themes/kit": "npm:@nuxt-themes/kit-edge@latest",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxt/kit": "^3.0.0-rc.5",
-    "@nuxthq/admin": "npm:@nuxthq/admin-edge@latest",
+    "@nuxthq/studio": "npm:@nuxthq/studio-edge@latest",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss-edge@latest",
     "@tailwindcss/aspect-ratio": "^0.4.0",
