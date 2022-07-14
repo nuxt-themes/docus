@@ -20,30 +20,18 @@ jobs:
         node: [16]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          persist-credentials: false
-          fetch-depth: 2
+      - uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: actions/setup-node@v3
         with:
-          version: 6.32.2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: 'pnpm'
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: pnpm install
+        run: yarn --immutable
 
       - name: Build
-        run: pnpm build
-
-#      - name: Test
-#        run: pnpm test
+        run: yarn build
 
       - name: Check if the version has been bumped
         id: check
@@ -51,6 +39,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+# Temporarily disable CI main package releases
 #      - name: Release Main version
 #        if: github.event_name == 'push' && steps.check.outputs.changed == 'true'
 #        run: pnpm release
