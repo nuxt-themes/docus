@@ -1,4 +1,4 @@
-import { defineTheme } from '@nuxt-themes/kit'
+import { defineTheme } from '@nuxt-themes/config'
 
 export default defineTheme({
   title: 'Docus',
@@ -26,19 +26,8 @@ export default defineTheme({
     credits: {
       icon: 'IconDocus',
       text: 'Powered by Docus',
-      href: 'https://docus.com',
+      href: 'https://docus.dev',
     },
-    icons: [
-      {
-        label: 'NuxtJS',
-        href: 'https://nuxtjs.org',
-        component: 'IconNuxtLabs',
-      },
-      {
-        label: 'Vue Telescope',
-        href: 'https://vuetelescope.com',
-        component: 'IconVueTelescope',
-      },
-    ],
+    icons: [],
   },
 })

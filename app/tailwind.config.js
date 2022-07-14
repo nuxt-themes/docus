@@ -1,3 +1,10 @@
+import { fileURLToPath } from 'url'
+import { $dt } from '@nuxtjs/design-tokens'
+import { resolve } from 'pathe'
+
+const themeDir = fileURLToPath(new URL('../', import.meta.url))
+const resolveThemeDir = (path) => resolve(themeDir, path)
+
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
@@ -181,7 +188,7 @@ export default {
     colors,
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: $dt('colors.primary'),
       },
       spacing: {
         header: 'var(--header-height)',

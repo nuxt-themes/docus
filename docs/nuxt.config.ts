@@ -9,5 +9,9 @@ export default defineNuxtConfig({
     branch: 'dev',
   },
 
+  tailwindcss: {
+    configPath: './tailwind.config.js',
+  },
+
   modules: ['@nuxtlabs/github-module'],
 })
