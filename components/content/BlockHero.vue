@@ -42,13 +42,16 @@ defineProps({
         </div>
 
         <div class="mt-6 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row sm:gap-6 lg:justify-start">
-          <ButtonLink v-if="cta" class="!mb-0" bold size="large" :href="(cta[1] as any)">
-            {{ cta[0] }}
-          </ButtonLink>
+          <template v-if="!$slots.actions">
+            <ButtonLink v-if="cta" class="!mb-0" bold size="large" :href="(cta[1] as any)">
+              {{ cta[0] }}
+            </ButtonLink>
 
-          <a v-if="secondary" :href="(secondary[1] as any)" class="u-text-gray-500 hover:u-text-gray-700 py-px font-medium">
-            {{ secondary[0] }}
-          </a>
+            <a v-if="secondary" :href="(secondary[1] as any)" class="u-text-gray-500 hover:u-text-gray-700 py-px font-medium">
+              {{ secondary[0] }}
+            </a>
+          </template>
+          <Markdown v-else :use="$slots.actions" unwrap="p" />
         </div>
       </div>
 
