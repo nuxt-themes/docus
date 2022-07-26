@@ -19,7 +19,7 @@ const directory = (link) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="flex items-center justify-between gap-3">
+  <div v-if="prev || next" class="flex flex-col-reverse justify-between gap-3 sm:flex-row sm:items-center">
     <NuxtLink
       v-if="prev"
       :to="prev._path"
@@ -29,7 +29,7 @@ const directory = (link) => {
 
       <p class="flex items-center gap-3">
         <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
-        <span class="truncate text-right font-medium leading-5">{{ prev.title }}</span>
+        <span class="flex-1 truncate text-right font-medium leading-5">{{ prev.title }}</span>
       </p>
     </NuxtLink>
     <span v-else />
@@ -42,7 +42,7 @@ const directory = (link) => {
       <p v-if="directory(next._path)" class="u-text-gray-500 mb-1 text-xs font-medium">{{ directory(next._path) }}</p>
 
       <p class="flex items-center gap-3">
-        <span class="truncate font-medium leading-5">{{ next.title }}</span>
+        <span class="flex-1 truncate font-medium leading-5">{{ next.title }}</span>
         <Icon name="heroicons-outline:arrow-sm-right" class="h-5 w-5 flex-shrink-0" />
       </p>
     </NuxtLink>
