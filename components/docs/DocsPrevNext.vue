@@ -25,7 +25,7 @@ const directory = (link) => {
       :to="prev._path"
       class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
     >
-      <p v-if="directory(prev._path)" class="u-text-gray-500 mb-1 text-right text-xs font-medium">{{ directory(prev._path) }}</p>
+      <p class="u-text-gray-500 mb-1 h-4 truncate text-right text-xs font-medium">{{ directory(prev._path) }}</p>
 
       <p class="flex items-center gap-3">
         <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
@@ -39,7 +39,7 @@ const directory = (link) => {
       :to="next._path"
       class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
     >
-      <p v-if="directory(next._path)" class="u-text-gray-500 mb-1 text-xs font-medium">{{ directory(next._path) }}</p>
+      <p class="u-text-gray-500 mb-1 h-4 truncate text-xs font-medium">{{ directory(next._path) }}</p>
 
       <p class="flex items-center gap-3">
         <span class="flex-1 truncate font-medium leading-5">{{ next.title }}</span>
