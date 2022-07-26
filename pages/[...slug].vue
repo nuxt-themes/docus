@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useDocus, useHead } from '#imports'
+import { computed, useContent, useHead, useTheme } from '#imports'
 
 definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
@@ -7,7 +7,8 @@ definePageMeta({
   pageTransition: false,
 })
 
-const { page, theme } = useDocus()
+const { page } = useContent()
+const theme = useTheme()
 
 const cover = computed(() => {
   const cover = page.value?.cover || theme.value?.cover

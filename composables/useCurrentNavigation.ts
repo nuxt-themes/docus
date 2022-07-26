@@ -1,9 +1,10 @@
-import { computed, useContentHelpers, useDocus, useRoute } from '#imports'
+import { computed, useContent, useContentHelpers, useRoute, useTheme } from '#imports'
 
 export const useCurrentNavigation = () => {
   const { navPageFromPath, navDirFromPath, navKeyFromPath } = useContentHelpers()
 
-  const { navigation, theme, page } = useDocus()
+  const { navigation, page } = useContent()
+  const theme = useTheme()
 
   const route = useRoute()
 

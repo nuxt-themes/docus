@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useDocus } from '#imports'
+import { useContent } from '#imports'
 
-const { page } = useDocus()
+const { page } = useContent()
 
 const formatDateByLocale = (locale, d) => {
   return new Date(d).toLocaleDateString(locale, {

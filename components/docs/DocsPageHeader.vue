@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDocus } from '#imports'
+import { useContent } from '#imports'
 
 defineProps({
   title: {
@@ -16,7 +16,7 @@ defineProps({
   },
 })
 
-const { page } = useDocus()
+const { page } = useContent()
 </script>
 
 <template>

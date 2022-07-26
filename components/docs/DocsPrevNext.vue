@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import { useContentHelpers, useDocus } from '#imports'
+import { useContent, useContentHelpers } from '#imports'
 
-const { prev, next, navigation } = useDocus()
+const { prev, next, navigation } = useContent()
 const { navDirFromPath } = useContentHelpers()
 
 const directory = (link) => {

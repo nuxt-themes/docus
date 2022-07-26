@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, useContentHelpers, useDocus, useRoute } from '#imports'
+import { computed, useContent, useContentHelpers, useRoute, useTheme } from '#imports'
 
 const route = useRoute()
 const { navBottomLink } = useContentHelpers()
-const { navigation, theme } = useDocus()
+const { navigation } = useContent()
+const theme = useTheme()
 
 const hasNavigation = computed(() => !!theme.value.aside?.level)
 

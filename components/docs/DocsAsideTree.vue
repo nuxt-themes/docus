@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { computed, useDocus, useRoute, useState } from '#imports'
+import { computed, useRoute, useState, useTheme } from '#imports'
 
 const props = defineProps({
   links: {
@@ -22,7 +22,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const { theme } = useDocus()
+const theme = useTheme()
 
 const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._path || '/'}`, () => {
   if (props.level === 0) {

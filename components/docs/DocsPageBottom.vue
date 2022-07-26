@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { resolveComponent, shallowRef } from 'vue'
-import { useDocus, useRuntimeConfig } from '#imports'
+import { useContent, useRuntimeConfig, useTheme } from '#imports'
 
 const config = useRuntimeConfig()
 
@@ -11,7 +11,8 @@ if (config?.github) {
   githubFileContributorsComponent.value = resolveComponent('GithubFileContributors')
 }
 
-const { page, theme } = useDocus()
+const { page } = useContent()
+const theme = useTheme()
 
 const root = computed(() => theme.value?.github?.root || '/')
 

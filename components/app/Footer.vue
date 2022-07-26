@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, useDocus } from '#imports'
+import { computed, useTheme } from '#imports'
 
-const { theme } = useDocus()
+const theme = useTheme()
 
 const icons = computed(() => theme.value?.footer?.icons || [])
 </script>
