@@ -40,21 +40,6 @@ const components = [
 ]
 
 export default defineNuxtConfig({
-  /**
-   * Docs theme configuration.
-   *
-   * Holds every configuration that applies to docs theme.
-   */
-  theme: {
-    meta: {
-      name: 'Docus 📃',
-      description: 'The best place to start your documentation.',
-      author: 'NuxtLabs',
-    },
-    theme: true,
-    tokens: true,
-  },
-
   app: {
     head: {
       title: 'Docus',
@@ -69,6 +54,21 @@ export default defineNuxtConfig({
         { hid: 'og:site_name', property: 'og:site_name', content: 'Docus' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
       ],
+    },
+    /**
+     * https://nuxt-theme-kit.netlify.app
+     */
+    // TODO: Remove this ignore
+    // https://github.com/nuxt-themes/config/issues/5
+    // @ts-ignore
+    theme: {
+      meta: {
+        name: 'Docus 📃',
+        description: 'The best place to start your documentation.',
+        author: 'NuxtLabs',
+      },
+      theme: true,
+      tokens: true,
     },
   },
 
