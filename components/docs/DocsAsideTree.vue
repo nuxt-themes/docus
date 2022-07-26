@@ -37,7 +37,7 @@ const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._pa
 })
 
 const isActive = (link) => {
-  return link.exact ? route.path === link._path : route.path.startsWith(link._path)
+  return route.path === link._path
 }
 
 const isCollapsed = (link) => {
