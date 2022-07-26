@@ -19,31 +19,33 @@ const tabsRef = ref()
 
 const highlightUnderline = ref()
 
-const updateHighlightUnderlinePosition = () => {
-  const activeTab = tabsRef.value[props.activeTabIndex]
-
-  if (!activeTab) return
+const updateHighlightUnderlinePosition = (activeTab) => {
+  if (!activeTab) {
+    return
+  }
 
   highlightUnderline.value.style.left = `${activeTab.offsetLeft}px`
   highlightUnderline.value.style.top = `${activeTab.offsetTop}px`
   highlightUnderline.value.style.width = `${activeTab.clientWidth}px`
   highlightUnderline.value.style.height = `${activeTab.clientHeight}px`
-  highlightUnderline.value.style.transform = `scale(1)`
+  highlightUnderline.value.style.transform = 'scale(1)'
   highlightUnderline.value.style.opacity = 1
 }
 
-const updateTabs = (i) => {
+const updateTabs = ($event, i) => {
   emit('update:activeTabIndex', i)
-  nextTick(() => updateHighlightUnderlinePosition())
+  nextTick(() => updateHighlightUnderlinePosition($event.target))
 }
 
 watch(
   tabsRef,
   (newVal) => {
-    if (!newVal) return
+    if (!newVal) {
+      return
+    }
 
     setTimeout(() => {
-      updateHighlightUnderlinePosition()
+      updateHighlightUnderlinePosition(tabsRef.value.children[props.activeTabIndex])
     }, 50)
   },
   {
@@ -54,14 +56,13 @@ watch(
 
 <template>
   <div class="tabs-header relative bg-gray-800 text-white">
-    <div v-if="tabs" class="relative z-0 px-2">
+    <div v-if="tabs" ref="tabsRef" class="relative z-0 px-2">
       <button
         v-for="({ label }, i) in tabs"
-        ref="tabsRef"
         :key="`${i}${label}`"
         class="xs:py-3 xs:my-0 relative my-2 rounded-lg px-2 py-1.5 font-mono text-sm tracking-tight focus:outline-none"
         :class="[activeTabIndex === i ? 'text-white' : 'text-gray-200 hover:text-white']"
-        @click="updateTabs(i)"
+        @click="updateTabs($event, i)"
       >
         {{ label }}
       </button>
