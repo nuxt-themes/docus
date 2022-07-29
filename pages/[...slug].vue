@@ -9,6 +9,16 @@ definePageMeta({
 
 const { page, theme } = useDocus()
 
+// Page not found
+if (!page.value) {
+  throwError(
+    createError({
+      statusCode: 404,
+      statusMessage: `Page not found: ${useRoute().path}`,
+    }),
+  )
+}
+
 const cover = computed(() => {
   const cover = page.value?.cover || theme.value?.cover
   if (typeof cover === 'string') {
