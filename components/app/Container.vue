@@ -1,15 +1,30 @@
 <script setup lang="ts">
-defineProps({
+import { classNames } from '../../utils'
+
+const props = defineProps({
   padded: {
     type: Boolean,
-    required: false,
+    default: true,
+  },
+  fluid: {
+    type: Boolean,
     default: false,
   },
+  constrainedClass: {
+    type: String,
+    default: 'max-w-7xl',
+  },
 })
+
+const containerClass = computed(() => {
+  return classNames('mx-auto w-full sm:px-6 lg:px-8', props.padded && 'px-4', !props.fluid && props.constrainedClass, props.fluid && 'overflow-x-hidden')
+})
+
+console.log(props.padded)
 </script>
 
 <template>
-  <div :class="[padded ? 'px-4 sm:px-6' : '']" class="lg:max-w-8xl mx-auto max-w-full">
+  <div :class="containerClass">
     <slot />
   </div>
 </template>

@@ -3,6 +3,7 @@ title: Get Started
 description: How to start with Nuxt Content, by creating a fresh new project or adding it to your Nuxt application.
 icon: heroicons-outline:lightning-bolt
 layout: page
+fluid: true
 ---
 
 ::alert{type="warning"}
