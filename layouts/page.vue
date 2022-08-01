@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { page } = useDocus()
+const { page } = useContent()
 </script>
 
 <template>
