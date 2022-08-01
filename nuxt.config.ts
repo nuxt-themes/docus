@@ -83,6 +83,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    '@nuxtlabs/github-module',
   ],
 
   tailwindcss: {
@@ -104,5 +105,11 @@ export default defineNuxtConfig({
 
   colorMode: {
     classSuffix: '',
+  },
+
+  github: {
+    owner: 'nuxtlabs',
+    repo: 'docus',
+    branch: 'dev',
   },
 })
