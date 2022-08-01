@@ -1,7 +1,8 @@
 ---
 title: Home
 navigation: false
-layout: fluid
+layout: page
+padded: false
 ---
 
 ::block-hero

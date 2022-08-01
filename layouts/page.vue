@@ -1,6 +1,10 @@
+<script setup lang="ts">
+const { page } = useDocus()
+</script>
+
 <template>
-  <Layout id="docus-page" class="flex min-h-screen w-full flex-col">
-    <Container class="min-h-page relative flex flex-col px-4 py-2 sm:py-4 sm:px-6 lg:gap-4 lg:py-8">
+  <Layout id="docus-page" class="flex flex-col min-h-screen">
+    <Container :fluid="page.fluid" :constrained-class="page.constrainedClass" :padded="page.padded">
       <slot />
     </Container>
   </Layout>

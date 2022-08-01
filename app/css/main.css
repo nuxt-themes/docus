@@ -72,14 +72,6 @@
   .u-ring-black { @apply ring-black dark:ring-white; }
 }
 
-/* Components */
-
-.docus-content {
-  & > :first-child {
-    margin-top: 0;
-  }
-}
-
 .alert,
 .badge,
 .callout,
@@ -224,7 +216,7 @@
 }
 
 body {
-  @apply antialiased text-gray-700 dark:text-gray-200 bg-white dark:bg-black overflow-y-scroll;
+  @apply overflow-y-scroll antialiased text-gray-700 bg-white dark:text-gray-200 dark:bg-black;
   font-family: var(--fonts-primary);
 }
 
