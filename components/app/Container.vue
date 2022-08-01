@@ -19,8 +19,6 @@ const props = defineProps({
 const containerClass = computed(() => {
   return classNames('mx-auto w-full sm:px-6 lg:px-8', props.padded && 'px-4', !props.fluid && props.constrainedClass, props.fluid && 'overflow-x-hidden')
 })
-
-console.log(props.padded)
 </script>
 
 <template>
