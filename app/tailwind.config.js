@@ -192,7 +192,6 @@ export default {
       },
       spacing: {
         header: 'var(--header-height)',
-        footer: 'var(--footer-height)',
         page: 'var(--page-height)',
       },
       maxWidth: {
@@ -200,6 +199,7 @@ export default {
       },
       minHeight: {
         page: 'var(--page-height)',
+        footer: 'var(--footer-height)',
       },
     },
   },
