@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, useDocus } from '#imports'
+import { computed, ref, useContent } from '#imports'
 
-const { page } = useDocus()
+const { page } = useContent()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {

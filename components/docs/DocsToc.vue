@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDocus, useRoute, useRouter, useScrollspy, watch } from '#imports'
+import { useContent, useRoute, useRouter, useScrollspy, watch } from '#imports'
 
 const emit = defineEmits(['move'])
 
@@ -8,7 +8,7 @@ const router = useRouter()
 
 const { activeHeadings, updateHeadings } = useScrollspy()
 
-const { toc } = useDocus()
+const { toc } = useContent()
 
 watch(
   () => route.path,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useDocus } from '#imports'
+import { computed, useTheme } from '#imports'
 
 defineProps({
   size: {
@@ -14,7 +14,7 @@ defineProps({
 
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 
-const { theme } = useDocus()
+const theme = useTheme()
 
 const icons = computed<any>(() => {
   theme.value.socials = theme.value.socials || {}

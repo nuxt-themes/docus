@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, useDocus } from '#imports'
+import { computed, useTheme } from '#imports'
 
-const { theme } = useDocus()
+const theme = useTheme()
 const hasLogo = computed(() => theme.value?.header?.logo || false)
 const hasTitle = computed(() => theme.value?.header?.title || false)
 </script>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, useDocus, useMenu, watch } from '#imports'
+import { computed, useContent, useMenu, useTheme, watch } from '#imports'
 
-const { navigation, theme } = useDocus()
+const { navigation } = useContent()
+const theme = useTheme()
 
 const filtered = computed(() => theme.value?.aside?.filter || [])
 

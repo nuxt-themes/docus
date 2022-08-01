@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useDocSearch, useDocus } from '#imports'
+import { useDocSearch, useTheme } from '#imports'
 
-const { theme } = useDocus()
+const theme = useTheme()
 
 const { hasDocSearch } = useDocSearch()
 </script>

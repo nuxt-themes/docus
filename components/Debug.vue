@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import { watchDebounced } from '@vueuse/core'
-import { computed, useDocus } from '#imports'
+import { computed, useContent, useTheme } from '#imports'
 
-const { page, navigation, theme } = useDocus()
+const { page, navigation } = useContent()
+const theme = useTheme()
 
 const defaultConfig = {
   page: true,
