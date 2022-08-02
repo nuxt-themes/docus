@@ -15,6 +15,7 @@
     "layouts",
     "pages",
     "plugins",
+    "utils",
     "module.ts",
     "nuxt.config.ts",
     "theme.config.ts",
