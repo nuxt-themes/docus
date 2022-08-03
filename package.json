@@ -1,37 +1,22 @@
 {
   "name": "@nuxt-themes/docus",
   "version": "3.0.0",
-  "main": "./nuxt.config.ts",
-  "exports": {
-    ".": "./nuxt.config.ts"
-  },
+  "type": "module",
+  "exports": "./theme/nuxt.config.ts",
   "files": [
-    "README.md",
-    "app",
-    "assets",
-    "components",
-    "composables",
-    "integrations",
-    "layouts",
-    "pages",
-    "plugins",
-    "utils",
-    "module.ts",
-    "nuxt.config.ts",
-    "theme.config.ts",
-    "tokens.config.ts"
+    "theme"
   ],
   "scripts": {
-    "build": "nuxi build",
-    "dev:prepare": "nuxi prepare",
-    "build:docs": "nuxi generate docs",
+    "build": "nuxi build theme",
+    "dev:prepare": "nuxi prepare theme",
+    "build:template": "nuxi generate template",
     "release": "./.github/scripts/release.sh",
     "release:edge": "./.github/scripts/release-edge.sh",
     "clean": "./.github/scripts/cleanup.sh",
-    "dev": "nuxi dev",
-    "dev:docs": "nuxi dev docs",
+    "dev": "nuxi dev theme",
+    "dev:template": "nuxi dev template",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "prepare": "yarn dev:prepare"
+    "prepare": "yarn dev:prepare theme"
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
