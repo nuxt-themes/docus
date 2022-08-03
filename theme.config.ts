@@ -28,17 +28,6 @@ export default defineTheme({
       text: 'Powered by Docus',
       href: 'https://docus.dev',
     },
-    icons: [
-      {
-        label: 'NuxtJS',
-        href: 'https://nuxtjs.org',
-        icon: 'IconNuxtLabs',
-      },
-      {
-        label: 'Vue Telescope',
-        href: 'https://vuetelescope.com',
-        icon: 'IconVueTelescope',
-      },
-    ],
+    icons: [],
   },
 })

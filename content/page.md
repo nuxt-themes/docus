@@ -1,0 +1,142 @@
+---
+title: Get Started
+description: How to start with Nuxt Content, by creating a fresh new project or adding it to your Nuxt application.
+icon: heroicons-outline:lightning-bolt
+layout: page
+fluid: true
+---
+
+::alert{type="warning"}
+This page is imported from `content.nuxtjs.org` in order to test the page layout locally.
+::
+
+## Play online
+
+You can start playing with Nuxt Content in your browser using our online sandboxes:
+
+:button-link[Play on StackBlitz]{icon="IconStackBlitz" href="https://stackblitz.com/github/nuxt/starter/tree/content" blank .mr-2}
+:button-link[Play on CodeSandbox]{icon="IconCodeSandBox" href="https://codesandbox.io/s/github/nuxt/starter/tree/content" blank}
+
+## New Project
+
+::callout
+#summary
+Before getting started, please **make sure to have installed the recommended setup**:
+
+#content
+* Follow the [Nuxt 3 Prerequisites](https://v3.nuxtjs.org/getting-started/quick-start#prerequisites)
+
+* Download the [VS Code **MDC Extension**](https://marketplace.visualstudio.com/items?itemName=Nuxt.mdc)
+::
+
+1. You can start a fresh Nuxt Content project with:
+
+::code-group
+  ```bash [npx]
+  npx nuxi init content-app -t content
+  ```
+  ```bash [pnpm]
+  pnpm dlx nuxi init content-app -t content
+  ```
+::
+
+2. Install the dependencies in the `content-app` folder:
+
+::code-group
+  ```bash [yarn]
+  yarn install
+  ```
+  ```bash [npm]
+  npm install
+  ```
+  ```bash [pnpm]
+  pnpm install --shamefully-hoist
+  ```
+::
+
+3. Now you'll be able to use `yarn dev` to start your Nuxt content app in development mode:
+
+::code-group
+
+```bash [yarn]
+yarn dev
+```
+
+```bash [npm]
+npm run dev
+```
+
+```bash [pnpm]
+pnpm run dev
+```
+
+::
+
+::alert{type="success"}
+✨ Well done! A browser window should automatically open for <http://localhost:3000>
+::
+
+::alert{type="info"}
+👉 Next step is to head over the [Writing section](/guide/writing/content-directory) to learn how to use Nuxt Content.
+::
+
+## Add to a project
+
+You can add Nuxt Content at anytime during your Nuxt project development by installing the `@nuxt/content` module:
+
+::code-group
+  ```bash [yarn]
+  yarn add --dev @nuxt/content
+  ```
+  ```bash [npm]
+  npm install --save-dev @nuxt/content
+  ```
+  ```bash [pnpm]
+  pnpm add -D @nuxt/content
+  ```
+::
+
+Then, add `@nuxt/content` to the `modules` section of `nuxt.config.ts`:
+
+```ts [nuxt.config.ts]
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/content'
+  ],
+  content: {
+    // https://content.nuxtjs.org/api/configuration
+  }
+})
+```
+
+## Create content
+
+Place your markdown files inside the `content/` directory in the root directory of your project.
+
+```md [content/index.md]
+# Hello Content
+```
+
+The module automatically loads and parses them.
+
+## Render pages
+
+To render content pages, add a [catch-all route](https://v3.nuxtjs.org/guide/directory-structure/pages/#catch-all-route) using the `ContentDoc` component:
+
+```vue [pages/[...slug].vue]
+<template>
+  <main>
+    <ContentDoc />
+  </main>
+</template>
+```
+
+::alert{type=warning}
+⚠️ Content v2 requires [Nuxt 3](https://v3.nuxtjs.org). If you are using Nuxt 2, checkout [Content v1 documentation](https://content.nuxtjs.org/v1/getting-started/installation).
+::
+
+::alert{type="info"}
+👉 Next step is to head over the [Writing section](/guide/writing/content-directory) to learn how to use Nuxt Content.
+::
