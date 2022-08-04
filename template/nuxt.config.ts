@@ -1,17 +1,12 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
-  extends: ['../theme'],
-
+  extends: ['@nuxt-themes/docus'],
+  modules: ['@nuxtlabs/github-module'],
   github: {
-    owner: 'nuxtlabs',
+    // TODO: handle shortcut repository: 'nuxt-themes/docus#dev', see nuxtlabs/github-module#25
+    owner: 'nuxt-themes',
     repo: 'docus',
     branch: 'dev',
-  },
-
-  tailwindcss: {
-    configPath: './tailwind.config.js',
-  },
-
-  modules: ['@nuxtlabs/github-module'],
+  }
 })

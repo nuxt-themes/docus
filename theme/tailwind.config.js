@@ -1,9 +1,4 @@
-import { fileURLToPath } from 'url'
 import { $dt } from '@nuxtjs/design-tokens'
-import { resolve } from 'pathe'
-
-const themeDir = fileURLToPath(new URL('../', import.meta.url))
-const resolveThemeDir = (path) => resolve(themeDir, path)
 
 const colors = {
   transparent: 'transparent',

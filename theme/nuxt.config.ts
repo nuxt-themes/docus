@@ -1,45 +1,51 @@
 import { fileURLToPath } from 'url'
 import { defineNuxtConfig } from 'nuxt'
-import { resolve } from 'pathe'
+import { createResolver } from '@nuxt/kit'
 import localModule from './app/module'
 
-const themeDir = fileURLToPath(new URL('./', import.meta.url))
-const resolveThemeDir = (path: string) => resolve(themeDir, path)
+const { resolve } = createResolver(import.meta.url)
 
+// TODO: refacto using Nuxt Studio Elements
 const components = [
   {
     prefix: '',
-    path: resolveThemeDir('./components/app'),
+    path: resolve('./components/app'),
     global: true,
   },
   {
     prefix: '',
-    path: resolveThemeDir('./components/docs'),
+    path: resolve('./components/docs'),
     global: true,
   },
   {
     prefix: '',
-    path: resolveThemeDir('./components/prose'),
+    path: resolve('./components/prose'),
     global: true,
   },
   {
     prefix: '',
-    path: resolveThemeDir('./components/content'),
+    path: resolve('./components/content'),
     global: true,
   },
   {
     prefix: '',
-    path: resolveThemeDir('./components/github'),
+    path: resolve('./components/github'),
     global: true,
   },
   {
     prefix: '',
-    path: resolveThemeDir('./components/icons'),
+    path: resolve('./components/icons'),
     global: true,
   },
 ]
 
 export default defineNuxtConfig({
+  metadata: {
+    title: 'Docus'
+  },
+  appConfig: {
+
+  },
   app: {
     head: {
       title: 'Docus',
@@ -71,9 +77,7 @@ export default defineNuxtConfig({
       tokens: true,
     },
   },
-
   components,
-
   modules: [
     '@nuxt-themes/config/module',
     '@nuxtjs/design-tokens/module',
@@ -84,13 +88,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
   ],
-
   tailwindcss: {
     viewer: false,
-    cssPath: resolveThemeDir('app/css/main.css'),
-    configPath: resolveThemeDir('app/tailwind.config.js'),
+    cssPath: resolve('assets/css/main.css'),
   },
-
   content: {
     highlight: {
       theme: 'one-dark-pro',
@@ -101,8 +102,10 @@ export default defineNuxtConfig({
       fields: ['layout', 'icon', 'aside', 'toc', 'bottom', 'collapsed', 'navigation'],
     },
   },
-
   colorMode: {
     classSuffix: '',
   },
+  experimental: {
+    viteNode: true
+  }
 })

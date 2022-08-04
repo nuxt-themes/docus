@@ -7,23 +7,25 @@
     "theme"
   ],
   "scripts": {
+    "dev": "nuxi dev template",
+    "dev:prepare": "nuxi prepare template",
     "build": "nuxi build theme",
-    "dev:prepare": "nuxi prepare theme",
     "build:template": "nuxi generate template",
+    "clean": " npx nuxi clean template",
     "release": "./.github/scripts/release.sh",
     "release:edge": "./.github/scripts/release-edge.sh",
-    "clean": "./.github/scripts/cleanup.sh",
-    "dev": "nuxi dev theme",
     "dev:template": "nuxi dev template",
     "lint": "eslint --ext .js,.ts,.vue .",
     "prepare": "yarn dev:prepare theme"
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
+    "@nuxt-themes/config": "npm:@nuxt-themes/config-edge@latest",
     "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxt/kit": "^3.0.0-rc.6",
     "@nuxthq/studio": "npm:@nuxthq/studio-edge@latest",
     "@nuxtjs/color-mode": "^3.1.4",
+    "@nuxtjs/design-tokens": "npm:@nuxtjs/design-tokens-edge@latest",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss-edge@latest",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
@@ -34,14 +36,11 @@
     "@vueuse/nuxt": "^8.9.4",
     "browser-style-dictionary": "^3.1.1-browser.1",
     "defu": "^6.0.0",
-    "@nuxt-themes/config": "npm:@nuxt-themes/config-edge@latest",
-    "@nuxtjs/design-tokens": "npm:@nuxtjs/design-tokens-edge@latest",
     "pkg-types": "^0.3.3",
     "tailwindcss": "^3.1.6",
     "vue-plausible": "^1.3.2"
   },
   "devDependencies": {
-    "nuxt": "npm:nuxt3@latest",
     "@antfu/eslint-config": "^0.25.2",
     "@docsearch/css": "^3.1.1",
     "@docsearch/js": "^3.1.1",
@@ -54,6 +53,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-prettier-vue": "^4.2.0",
     "jiti": "^1.14.0",
+    "nuxt": "npm:nuxt3@latest",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
     "typescript": "^4.7.4"
