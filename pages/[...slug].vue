@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useContent, useHead, useTheme } from '#imports'
+import { computed, useContent, useHead, useRequestEvent, useTheme } from '#imports'
 
 definePageMeta({
   /* Layout transitions creates layout shifts with defaults */
@@ -10,14 +10,10 @@ definePageMeta({
 const { page } = useContent()
 const theme = useTheme()
 
-// Page not found
-if (!page.value) {
-  throwError(
-    createError({
-      statusCode: 404,
-      statusMessage: `Page not found: ${useRoute().path}`,
-    }),
-  )
+// Page not found, set correct status code on SSR
+if (!page.value && process.server) {
+  const event = useRequestEvent()
+  event.res.statusCode = 404
 }
 
 const cover = computed(() => {
