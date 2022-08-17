@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { classNames } from '../../utils'
+import { computed } from '#imports'
 
 const props = defineProps({
   padded: {
