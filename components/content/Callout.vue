@@ -31,7 +31,7 @@ const toggle = () => {
 <template>
   <div class="callout relative mt-4 mb-4 rounded-xl px-4 text-sm leading-relaxed" :class="[type]">
     <span class="flex items-center justify-between" @click="toggle">
-      <Markdown :use="$slots.summary" />
+      <ContentSlot :use="$slots.summary" />
       <Icon
         name="heroicons-outline:chevron-right"
         class="h-5 w-5 transform transition-transform"
@@ -42,7 +42,7 @@ const toggle = () => {
     </span>
 
     <div v-show="isOpen" class="-mt-4">
-      <Markdown :use="$slots.content" />
+      <ContentSlot :use="$slots.content" />
     </div>
   </div>
 </template>

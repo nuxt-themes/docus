@@ -31,7 +31,7 @@ defineProps({
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
     <Icon v-if="icon" :name="icon" class="mr-2 h-4 w-4" />
-    <Markdown :use="$slots.default" unwrap="p ul li" />
+    <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
 </template>
 

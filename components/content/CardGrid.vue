@@ -10,7 +10,7 @@ defineProps({
 <template>
   <section class="pb-20 sm:pb-24 lg:pb-32">
     <Container padded class="relative w-full">
-      <Markdown :use="$slots.root" unwrap="*" />
+      <ContentSlot :use="$slots.root" unwrap="*" />
 
       <h2 class="u-text-gray-900 mb-8 text-3xl font-bold tracking-tight sm:text-4xl">
         <slot name="title" />

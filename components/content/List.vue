@@ -45,7 +45,7 @@ export default defineComponent({
         items.map((item) =>
           h('li', { class: 'mb-3 flex items-center' }, [
             h('span', { class: `list-${props.type} mt-px mr-3 flex-shrink-0` }, h(resolveComponent('icon'), { name: iconName.value, class: 'h-6 w-6' })),
-            h('span', h(resolveComponent('Markdown'), { use: () => item })),
+            h('span', h(resolveComponent('ContentSlot'), { use: () => item })),
           ]),
         ),
       )

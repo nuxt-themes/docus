@@ -41,7 +41,7 @@ defineProps({
       <div>
         <h3 v-if="title || $slots.title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
-          <Markdown :use="$slots.title" unwrap="p" />
+          <ContentSlot :use="$slots.title" unwrap="p" />
         </h3>
         <div>
           <slot name="description">
