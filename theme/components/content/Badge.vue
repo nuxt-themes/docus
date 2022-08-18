@@ -6,15 +6,15 @@ defineProps({
   type: {
     type: String,
     default: 'info',
-    validator(value: string) {
+    validator (value: string) {
       return ['info', 'success', 'warning', 'danger', 'primary', 'gray'].includes(value)
-    },
-  },
+    }
+  }
 })
 </script>
 
 <template>
-  <span :class="[type]" class="badge inline-flex items-center rounded-full px-3 py-1 text-base leading-5 tracking-tight">
-    <Markdown :use="$slots.default" unwrap="p" />
+  <span :class="[type]" class="inline-flex items-center px-3 py-1 text-base leading-5 tracking-tight rounded-full badge">
+    <ContentSlot :use="$slots.default" unwrap="p" />
   </span>
 </template>

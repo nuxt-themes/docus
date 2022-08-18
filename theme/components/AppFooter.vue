@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { computed, useTheme } from '#imports'
-
 const theme = useTheme()
-
 const socialIcons = ref(null)
-
 const icons = computed(() => theme.value?.footer?.icons || [])
-
 const nbSocialIcons = computed(() => (socialIcons.value ? Object.keys(theme.value?.socials).length : 0))
-
 const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
 </script>
 
 <template>
-  <footer class="border-t u-bg-white u-border-gray-100 h-footer">
-    <Container padded>
+  <footer class="border-t u-bg-white u-border-gray-100">
+    <AppContainer>
       <div class="flex flex-col items-center h-full gap-4 py-5 sm:flex-row sm:justify-between sm:gap-x-16">
-        <a v-if="theme?.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="flex items-center u-text-gray-500 hover:u-text-gray-700">
+        <a v-if="theme?.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="flex items-center u-text-gray-700 hover:u-text-gray-900">
           <Component :is="theme.footer.credits.icon || 'Logo'" class="w-5 h-5 mr-2 fill-current" />
           <p class="text-sm font-semibold">{{ theme.footer.credits.text }}</p>
         </a>
@@ -29,7 +23,7 @@ const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
             :aria-label="icon.label"
             :href="icon.href"
             target="_blank"
-            class="flex items-center text-sm font-medium u-text-gray-500 hover:u-text-gray-700"
+            class="flex items-center text-sm font-medium u-text-gray-700 hover:u-text-gray-900"
           >
             <Icon :name="icon.icon || icon.component" class="w-5 h-5" />
           </a>
@@ -41,6 +35,6 @@ const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
           <p>Please consider to override Footer.vue if you want to add more icons</p>
         </div>
       </Alert>
-    </Container>
+    </AppContainer>
   </footer>
 </template>

@@ -2,22 +2,20 @@
 defineProps({
   title: {
     type: String,
-    default: 'Features',
-  },
+    default: 'Features'
+  }
 })
 </script>
 
 <template>
-  <section class="pb-20 sm:pb-24 lg:pb-32">
-    <Container padded class="relative w-full">
-      <Markdown :use="$slots.root" unwrap="*" />
+  <section class="relative pb-20 sm:pb-24 lg:pb-32">
+    <ContentSlot :use="$slots.root" unwrap="*" />
 
-      <h2 class="u-text-gray-900 mb-8 text-3xl font-bold tracking-tight sm:text-4xl">
-        <slot name="title" />
-      </h2>
-      <div class="u-text-gray-900 grid gap-4 text-left font-semibold sm:grid-cols-2 lg:grid-cols-3 2xl:gap-8">
-        <slot />
-      </div>
-    </Container>
+    <h2 class="mb-8 text-3xl font-bold tracking-tight u-text-gray-900 sm:text-4xl">
+      <slot name="title" />
+    </h2>
+    <div class="grid gap-4 font-semibold text-left u-text-gray-900 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-8">
+      <slot />
+    </div>
   </section>
 </template>

@@ -23,7 +23,7 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <Container padded class="relative flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-8">
+  <AppContainer padded class="relative flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-8">
     <!-- Aside -->
     <aside
       v-if="aside"
@@ -34,7 +34,7 @@ const isOpen = ref(false)
 
     <!-- Page Body -->
     <div
-      class="relative flex flex-1 flex-col pt-8 pb-8 lg:mt-0"
+      class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0"
       :class="{
         'lg:col-span-12': !aside && !toc,
         'lg:col-span-10': (!toc || !aside) && !(!aside && !toc),
@@ -59,18 +59,18 @@ const isOpen = ref(false)
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="toc top-header lg:max-h-page sticky -mx-4 -mt-8 flex items-center px-4 sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
+      class="sticky flex items-center px-4 -mx-4 -mt-8 toc top-header lg:max-h-page sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none"
     >
       <div class="w-full cursor-pointer sm:cursor-auto" @click="isOpen = !isOpen">
         <button class="flex items-center gap-1 py-3 lg:hidden">
           <span class="text-xs font-semibold">Table of Contents</span>
-          <Icon name="heroicons-outline:chevron-right" class="h-4 w-4 transform transition-transform duration-100" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
+          <Icon name="heroicons-outline:chevron-right" class="w-4 h-4 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
         </button>
 
         <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
       </div>
     </div>
-  </Container>
+  </AppContainer>
 </template>
 
 <style lang="postcss" scoped>

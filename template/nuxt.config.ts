@@ -7,6 +7,6 @@ export default defineNuxtConfig({
     // TODO: handle shortcut repository: 'nuxt-themes/docus#dev', see nuxtlabs/github-module#25
     owner: 'nuxt-themes',
     repo: 'docus',
-    branch: 'dev',
+    branch: 'dev'
   }
 })

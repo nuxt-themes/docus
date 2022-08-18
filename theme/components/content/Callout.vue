@@ -8,14 +8,14 @@ const props = defineProps({
   type: {
     type: String,
     default: 'info',
-    validator(value: string) {
+    validator (value: string) {
       return ['info', 'success', 'warning', 'danger', 'primary'].includes(value)
-    },
+    }
   },
   modelValue: {
     required: false,
-    default: ref(false),
-  },
+    default: ref(false)
+  }
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -29,12 +29,12 @@ const toggle = () => {
 </script>
 
 <template>
-  <div class="callout relative mt-4 mb-4 rounded-xl px-4 text-sm leading-relaxed" :class="[type]">
+  <div class="relative px-4 mt-4 mb-4 text-sm leading-relaxed callout rounded-xl" :class="[type]">
     <span class="flex items-center justify-between" @click="toggle">
-      <Markdown :use="$slots.summary" />
+      <ContentSlot :use="$slots.summary" />
       <Icon
         name="heroicons-outline:chevron-right"
-        class="h-5 w-5 transform transition-transform"
+        class="w-5 h-5 transition-transform transform"
         :class="{
           'rotate-90': isOpen,
         }"
@@ -42,7 +42,7 @@ const toggle = () => {
     </span>
 
     <div v-show="isOpen" class="-mt-4">
-      <Markdown :use="$slots.content" />
+      <ContentSlot :use="$slots.content" />
     </div>
   </div>
 </template>

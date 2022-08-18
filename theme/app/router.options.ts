@@ -12,13 +12,13 @@ export default <RouterConfig>{
         return {
           el: to.hash,
           behavior: 'smooth',
-          top,
+          top
         }
       }
 
       return {
         el: to.hash,
-        behavior: 'smooth',
+        behavior: 'smooth'
       }
     }
 
@@ -28,5 +28,5 @@ export default <RouterConfig>{
     } else {
       return { top: 0 }
     }
-  },
+  }
 }

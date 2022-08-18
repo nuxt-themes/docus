@@ -14,6 +14,6 @@ export const useRepository = () => {
 
   return {
     repository,
-    last,
+    last
   }
 }

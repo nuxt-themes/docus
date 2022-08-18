@@ -15,3 +15,7 @@ dist
 
 # Local History
 .history
+
+# VSCode
+.vscode/
+tailwind.config.js.local

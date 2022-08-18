@@ -15,7 +15,7 @@ const colors = {
     600: '#52525b',
     700: '#3f3f46',
     800: '#27272a',
-    900: '#18181b',
+    900: '#18181b'
   },
   green: {
     50: '#d6ffee',
@@ -27,7 +27,7 @@ const colors = {
     600: '#009d5d',
     700: '#007e4a',
     800: '#005e38',
-    900: '#003f25',
+    900: '#003f25'
   },
   yellow: {
     50: '#fdf6db',
@@ -39,7 +39,7 @@ const colors = {
     600: '#daac0a',
     700: '#a38108',
     800: '#6d5605',
-    900: '#362b03',
+    900: '#362b03'
   },
   orange: {
     50: '#ffe9d9',
@@ -51,7 +51,7 @@ const colors = {
     600: '#e15e00',
     700: '#a94700',
     800: '#702f00',
-    900: '#381800',
+    900: '#381800'
   },
   red: {
     50: '#ffdbd9',
@@ -63,7 +63,7 @@ const colors = {
     600: '#e10e00',
     700: '#a90a00',
     800: '#700700',
-    900: '#380300',
+    900: '#380300'
   },
   pear: {
     50: '#f7f8dc',
@@ -75,7 +75,7 @@ const colors = {
     600: '#a8aa24',
     700: '#7e801b',
     800: '#545512',
-    900: '#2a2b09',
+    900: '#2a2b09'
   },
   teal: {
     50: '#d7faf8',
@@ -87,7 +87,7 @@ const colors = {
     600: '#16a79e',
     700: '#117d77',
     800: '#0b544f',
-    900: '#062a28',
+    900: '#062a28'
   },
   lightblue: {
     50: '#d9f8ff',
@@ -99,7 +99,7 @@ const colors = {
     600: '#00b9e1',
     700: '#008aa9',
     800: '#005c70',
-    900: '#002e38',
+    900: '#002e38'
   },
   blue: {
     50: '#d9f1ff',
@@ -111,7 +111,7 @@ const colors = {
     600: '#0090e1',
     700: '#006ca9',
     800: '#004870',
-    900: '#002438',
+    900: '#002438'
   },
   royalblue: {
     50: '#dfdbfb',
@@ -123,7 +123,7 @@ const colors = {
     600: '#2c15c4',
     700: '#211093',
     800: '#160a62',
-    900: '#0b0531',
+    900: '#0b0531'
   },
   indigo: {
     50: '#d9e5ff',
@@ -135,7 +135,7 @@ const colors = {
     600: '#0047e1',
     700: '#0035a9',
     800: '#002370',
-    900: '#001238',
+    900: '#001238'
   },
   purple: {
     50: '#ead9ff',
@@ -147,7 +147,7 @@ const colors = {
     600: '#6500e1',
     700: '#4c00a9',
     800: '#330070',
-    900: '#190038',
+    900: '#190038'
   },
   pink: {
     50: '#ffd9f2',
@@ -159,7 +159,7 @@ const colors = {
     600: '#e10095',
     700: '#a90070',
     800: '#70004b',
-    900: '#380025',
+    900: '#380025'
   },
   ruby: {
     50: '#ffd9e4',
@@ -171,8 +171,8 @@ const colors = {
     600: '#e10043',
     700: '#a90032',
     800: '#700021',
-    900: '#380011',
-  },
+    900: '#380011'
+  }
 }
 
 /** @type { import('tailwindcss/tailwind-config').TailwindConfig } */
@@ -183,19 +183,19 @@ export default {
     colors,
     extend: {
       colors: {
-        primary: $dt('colors.primary'),
+        primary: $dt('colors.primary')
       },
       spacing: {
         header: 'var(--header-height)',
-        page: 'var(--page-height)',
+        page: 'var(--page-height)'
       },
       maxWidth: {
-        '8xl': 'var(--page-max-width)',
+        '8xl': 'var(--page-max-width)'
       },
       minHeight: {
         page: 'var(--page-height)',
-        footer: 'var(--footer-height)',
-      },
-    },
-  },
+        footer: 'var(--footer-height)'
+      }
+    }
+  }
 }

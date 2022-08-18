@@ -2,36 +2,36 @@
 defineProps({
   href: {
     type: String,
-    default: '',
+    default: ''
   },
   size: {
     type: String,
-    default: 'medium',
+    default: 'medium'
   },
   bold: {
     type: Boolean,
-    default: false,
+    default: false
   },
   icon: {
     type: String,
-    default: '',
+    default: ''
   },
   transparent: {
     type: Boolean,
-    default: false,
+    default: false
   },
   blank: {
     type: Boolean,
     required: false,
-    default: false,
-  },
+    default: false
+  }
 })
 </script>
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
-    <Icon v-if="icon" :name="icon" class="mr-2 h-4 w-4" />
-    <Markdown :use="$slots.default" unwrap="p ul li" />
+    <Icon v-if="icon" :name="icon" class="w-4 h-4 mr-2" />
+    <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
 </template>
 

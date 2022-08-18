@@ -12,33 +12,33 @@ export default defineTokens({
       600: { value: '#0090e1' },
       700: { value: '#006ca9' },
       800: { value: '#004870' },
-      900: { value: '#002438' },
-    },
+      900: { value: '#002438' }
+    }
   },
   fonts: {
     primary: {
-      value: 'Inter, sans-serif',
+      value: 'Inter, sans-serif'
     },
     code: {
-      value: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
-    },
+      value: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace'
+    }
   },
   page: {
     height: {
-      value: 'calc(100vh - calc(calc({header.height} + {footer.height})))',
+      value: 'calc(100vh - calc(calc({header.height} + {footer.height})))'
     },
     maxWidth: {
-      value: '90rem',
-    },
+      value: '90rem'
+    }
   },
   header: {
     height: {
-      value: '4rem',
-    },
+      value: '4rem'
+    }
   },
   footer: {
     height: {
-      value: '4rem',
-    },
-  },
+      value: '4rem'
+    }
+  }
 })

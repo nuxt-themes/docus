@@ -1,19 +1,19 @@
 <script setup lang="ts">
 defineProps({
   title: {
-    type: String,
+    type: String
   },
   description: {
     type: String,
-    default: '',
+    default: ''
   },
   icon: {
     type: String,
-    default: '',
+    default: ''
   },
   iconClass: {
     type: String,
-    default: '',
+    default: ''
   },
   /**
    * @values info, success, warning, danger
@@ -21,15 +21,15 @@ defineProps({
   type: {
     type: String,
     default: 'base',
-    validator(value: string) {
+    validator (value: string) {
       return ['info', 'success', 'warning', 'danger', 'primary', 'base'].includes(value)
-    },
+    }
   },
   blurry: {
     type: Boolean,
     default: true,
-    required: false,
-  },
+    required: false
+  }
 })
 </script>
 
@@ -41,7 +41,7 @@ defineProps({
       <div>
         <h3 v-if="title || $slots.title" class="mb-2 text-lg font-semibold tracking-tight">
           {{ title }}
-          <Markdown :use="$slots.title" unwrap="p" />
+          <ContentSlot :use="$slots.title" unwrap="p" />
         </h3>
         <div>
           <slot name="description">

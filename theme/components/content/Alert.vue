@@ -6,10 +6,10 @@ defineProps({
   type: {
     type: String,
     default: 'info',
-    validator(value: string) {
+    validator (value: string) {
       return ['info', 'success', 'warning', 'danger', 'primary'].includes(value)
-    },
-  },
+    }
+  }
 })
 </script>
 
@@ -17,7 +17,7 @@ defineProps({
   <div class="alert mt-4 mb-4 rounded-xl px-4 py-3 text-sm leading-relaxed" :class="[type]">
     <div class="flex items-start">
       <div class="alert-content flex-grow">
-        <Markdown :use="$slots.default" unwrap="p" />
+        <ContentSlot :use="$slots.default" unwrap="p" />
       </div>
     </div>
   </div>
