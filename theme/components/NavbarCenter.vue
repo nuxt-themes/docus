@@ -4,9 +4,9 @@ const { navBottomLink } = useContentHelpers()
 const { navigation } = useContent()
 const theme = useTheme()
 
-const hasNavigation = computed(() => !!theme.value.aside?.level)
+const hasNavigation = computed(() => !!theme.aside?.level)
 
-const filtered = computed(() => theme.value?.aside?.filter || [])
+const filtered = computed(() => theme.aside?.filter || [])
 
 const tree = computed(() => {
   return (navigation.value || []).filter((item) => {

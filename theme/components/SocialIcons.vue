@@ -13,7 +13,7 @@ defineProps({
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 const theme = useTheme()
 const icons = computed<any>(() => {
-  theme.value.socials = theme.value.socials || {}
+  theme.socials = theme.value.socials || {}
 
   return Object.entries(theme.value.socials)
     .map(([key, value]) => {

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, useContent, useMenu, useTheme, watch } from '#imports'
-
 const { navigation } = useContent()
 const theme = useTheme()
 
-const filtered = computed(() => theme.value?.aside?.filter || [])
+const filtered = computed(() => theme.value.aside?.filter || [])
 
 const links = computed(() => {
   return (navigation.value || []).filter((item) => {

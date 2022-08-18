@@ -1,24 +1,23 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { computed, useRoute, useState, useTheme } from '#imports'
 
 const props = defineProps({
   links: {
     type: Array as PropType<any>,
-    default: () => [],
+    default: () => []
   },
   level: {
     type: Number,
-    default: 0,
+    default: 0
   },
   max: {
     type: Number,
-    default: null,
+    default: null
   },
   parent: {
     type: Object as PropType<any>,
-    default: null,
-  },
+    default: null
+  }
 })
 
 const route = useRoute()
@@ -29,7 +28,7 @@ const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._pa
     return {}
   }
   return props.links
-    .filter((link) => !!link.children)
+    .filter(link => !!link.children)
     .reduce((map, link) => {
       map[link._path] = true
       return map
@@ -48,9 +47,9 @@ const isCollapsed = (link) => {
     }
 
     // Return value grabbed from the link
-    if (link?.collapsed) return link?.collapsed
+    if (link?.collapsed) { return link?.collapsed }
 
-    if (theme.value?.aside?.collapsed) return theme.value?.aside?.collapsed
+    if (theme.value.aside?.collapsed) { return theme.value.aside?.collapsed }
   }
 
   return false
@@ -78,11 +77,11 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
     >
       <button v-if="link.children" class="u-text-gray-900 group flex w-full cursor-pointer items-center justify-between py-1.5 text-sm font-semibold" @click="toggleCollapse(link)">
         <span class="flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="mr-2 h-4 w-4" />
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-2" />
           <span>{{ link?.navigation?.title || link.title }}</span>
         </span>
         <span class="flex">
-          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="u-text-gray-400 group-hover:u-text-gray-800 h-3 w-3" />
+          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="w-3 h-3 u-text-gray-400 group-hover:u-text-gray-800" />
         </span>
       </button>
 
@@ -98,7 +97,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         }"
       >
         <span class="inline-flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="mr-1 h-4 w-4" />
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-1" />
           <span>{{ link?.navigation?.title || link.title }}</span>
         </span>
       </NuxtLink>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { resolveComponent, shallowRef } from 'vue'
-import { useContent, useRuntimeConfig, useTheme } from '#imports'
 
 const config = useRuntimeConfig()
 
@@ -14,18 +13,18 @@ if (config?.github) {
 const { page } = useContent()
 const theme = useTheme()
 
-const root = computed(() => theme.value?.github?.root || '/')
+const root = computed(() => theme.value.github?.root || '/')
 
 const source = computed(() => root.value + page.value._file || '')
 </script>
 
 <template>
-  <div v-if="page" class="u-text-gray-500 mt-8 flex flex-col-reverse justify-between gap-4 text-sm md:flex-row">
-    <div class="flex w-full flex-1 flex-col gap-4 md:w-1/2">
+  <div v-if="page" class="flex flex-col-reverse justify-between gap-4 mt-8 text-sm u-text-gray-500 md:flex-row">
+    <div class="flex flex-col flex-1 w-full gap-4 md:w-1/2">
       <component :is="githubLinkComponent" v-if="page && config?.github && theme?.github && theme?.github?.edit" v-slot="data" :content-dir="root" :page="page">
         <span class="flex">
-          <NuxtLink :href="data?.url" target="_blank" rel="noopener" class="hover:text-primary-500 inline-block flex grow-0 items-center gap-2 text-sm">
-            <Icon name="heroicons-outline:external-link" class="h-5 w-5" />
+          <NuxtLink :href="data?.url" target="_blank" rel="noopener" class="flex items-center inline-block gap-2 text-sm hover:text-primary-500 grow-0">
+            <Icon name="heroicons-outline:external-link" class="w-5 h-5" />
             <span>Edit this page on GitHub</span>
           </NuxtLink>
         </span>
@@ -34,7 +33,7 @@ const source = computed(() => root.value + page.value._file || '')
       <span v-if="page.mtime" class="flex items-center">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
     </div>
 
-    <div class="w-full flex-1 md:w-1/2">
+    <div class="flex-1 w-full md:w-1/2">
       <component
         :is="githubFileContributorsComponent"
         v-if="page && config?.github && theme?.github && theme?.github?.contributors"
@@ -42,8 +41,8 @@ const source = computed(() => root.value + page.value._file || '')
         :source="root + page?._file"
       >
         <div class="flex flex-col gap-4">
-          <span class="inline-block flex grow-0 items-center gap-2 text-sm">
-            <Icon name="heroicons-outline:user-group" class="h-5 w-5" />
+          <span class="flex items-center inline-block gap-2 text-sm grow-0">
+            <Icon name="heroicons-outline:user-group" class="w-5 h-5" />
             <span>Contributors</span>
           </span>
           <div v-if="contributors?.length" class="flex flex-wrap gap-2">
@@ -54,11 +53,11 @@ const source = computed(() => root.value + page.value._file || '')
               :title="`@${contributor.login} on GitHub`"
               :to="`https://github.com/${contributor.login}`"
             >
-              <img :src="contributor.avatar_url" class="u-ring-gray-200 hover:ring-primary-500 inline-block h-6 w-6 rounded-full ring-2 transition-colors" />
+              <img :src="contributor.avatar_url" class="inline-block w-6 h-6 transition-colors rounded-full u-ring-gray-200 hover:ring-primary-500 ring-2">
             </NuxtLink>
           </div>
-          <span v-else-if="pending" class="block h-6 w-6 opacity-0">&nbsp;</span>
-          <span v-else-if="!pending && !contributors?.length" class="u-text-gray-500 block">No contributors.</span>
+          <span v-else-if="pending" class="block w-6 h-6 opacity-0">&nbsp;</span>
+          <span v-else-if="!pending && !contributors?.length" class="block u-text-gray-500">No contributors.</span>
         </div>
       </component>
     </div>

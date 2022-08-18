@@ -5,7 +5,6 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxt-themes/config/module',
     '@nuxtjs/design-tokens/module',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',

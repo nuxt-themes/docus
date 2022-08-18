@@ -635,14 +635,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nuxt-themes/config@npm:@nuxt-themes/config-edge@latest":
-  version "0.0.1-27648855.385c9ae"
-  resolved "https://registry.yarnpkg.com/@nuxt-themes/config-edge/-/config-edge-0.0.1-27648855.385c9ae.tgz#0fd6e199066d978edf95c08b8c6793f3e1263af4"
-  integrity sha512-F6F/tmJ9JUoWnJXD9nq8xH41xdwu4XpoRvF5tmKBclF9IPjX8c8lvbLMLhi/5c4mD8X/TUVDrzDJ+9PnUWJeLQ==
-  dependencies:
-    "@nuxt/kit" "^3.0.0-rc.6"
-    untyped "^0.4.4"
-
 "@nuxt/content@npm:@nuxt/content-edge@latest":
   version "2.1.0-27680354.5a64f46"
   resolved "https://registry.yarnpkg.com/@nuxt/content-edge/-/content-edge-2.1.0-27680354.5a64f46.tgz#72caab10439a653968fde8311ecacd501bc58fe1"

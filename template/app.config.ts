@@ -1,11 +1,10 @@
-import { defineTheme } from '@nuxt-themes/config'
-
-export default defineTheme({
-  title: 'Docus',
-  description: 'The best place to start your documentation.',
-  image: '/social-card-preview.png',
-  footer: {
-    icons: [
+export default defineAppConfig({
+  theme: {
+    title: 'Docus',
+    description: 'The best place to start your documentation.',
+    image: '/social-card-preview.png',
+    footer: {
+      icons: [
       // {
       //   label: 'NuxtJS',
       //   href: 'https://nuxtjs.org',
@@ -16,6 +15,7 @@ export default defineTheme({
       //   href: 'https://vuetelescope.com',
       //   icon: 'IconVueTelescope'
       // }
-    ]
+      ]
+    }
   }
 })

@@ -1,5 +1,3 @@
-import { computed, useContent, useContentHelpers, useRoute, useTheme } from '#imports'
-
 export const useCurrentNavigation = () => {
   const { navPageFromPath, navDirFromPath, navKeyFromPath } = useContentHelpers()
 
@@ -14,13 +12,13 @@ export const useCurrentNavigation = () => {
 
   const level = computed(() => {
     // Use `aside.level` key from file or navigation
-    if (typeof asideConfig.value?.level !== 'undefined') return asideConfig.value?.level
+    if (typeof asideConfig.value?.level !== 'undefined') { return asideConfig.value?.level }
 
     // Fallback to theme config
-    return theme.value?.aside?.level || 0
+    return theme.value.aside?.level || 0
   })
 
-  const filtered = computed(() => theme.value?.aside?.filter || [])
+  const filtered = computed(() => theme.value.aside?.filter || [])
 
   const tree = computed(() => {
     let nav = navigation.value || []
@@ -42,21 +40,21 @@ export const useCurrentNavigation = () => {
 
       nav = navDirFromPath(leveledPath, nav) || []
 
-      if (!Array.isArray(nav)) nav = [nav]
+      if (!Array.isArray(nav)) { nav = [nav] }
     }
 
     // No navigation found; try to resolve page url
     if (nav.length === 0) {
       nav = navPageFromPath(page.value?._path || '/', navigation.value || [])
 
-      if (!nav) return []
+      if (!nav) { return [] }
 
-      if (!Array.isArray(nav)) nav = [nav]
+      if (!Array.isArray(nav)) { nav = [nav] }
     }
 
     // Filtered using `aside.filter` in theme configuration
     return nav.filter((item) => {
-      if (filtered.value.includes(item._path)) return false
+      if (filtered.value.includes(item._path)) { return false }
 
       return true
     })
