@@ -2,7 +2,7 @@ export const useCurrentNavigation = () => {
   const { navPageFromPath, navDirFromPath, navKeyFromPath } = useContentHelpers()
 
   const { navigation, page } = useContent()
-  const theme = useTheme()
+  const docus = useDocus()
 
   const route = useRoute()
 
@@ -14,11 +14,11 @@ export const useCurrentNavigation = () => {
     // Use `aside.level` key from file or navigation
     if (typeof asideConfig.value?.level !== 'undefined') { return asideConfig.value?.level }
 
-    // Fallback to theme config
-    return theme.value.aside?.level || 0
+    // Fallback to docus config
+    return docus.value.aside?.level || 0
   })
 
-  const filtered = computed(() => theme.value.aside?.filter || [])
+  const filtered = computed(() => docus.value.aside?.filter || [])
 
   const tree = computed(() => {
     let nav = navigation.value || []
@@ -32,7 +32,7 @@ export const useCurrentNavigation = () => {
     }
 
     if (level.value) {
-      // Filter if `aside.level` is enabled in theme configuration
+      // Filter if `aside.level` is enabled in docus configuration
       const path = _path.split('/')
 
       // Get level
@@ -52,7 +52,7 @@ export const useCurrentNavigation = () => {
       if (!Array.isArray(nav)) { nav = [nav] }
     }
 
-    // Filtered using `aside.filter` in theme configuration
+    // Filtered using `aside.filter` in docus configuration
     return nav.filter((item) => {
       if (filtered.value.includes(item._path)) { return false }
 

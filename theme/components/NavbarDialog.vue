@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const { navigation } = useContent()
-const theme = useTheme()
+const docus = useDocus()
 
-const filtered = computed(() => theme.value.aside?.filter || [])
+const filtered = computed(() => docus.value.aside?.filter || [])
 
 const links = computed(() => {
   return (navigation.value || []).filter((item) => {

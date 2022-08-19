@@ -1,5 +1,5 @@
 export default defineAppConfig({
-  theme: {
+  docus: {
     title: 'Docus',
     description: 'The best place to start your documentation.',
     image: '/social-card-preview.png',

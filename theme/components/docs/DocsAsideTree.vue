@@ -21,7 +21,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const theme = useTheme()
+const docus = useDocus()
 
 const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._path || '/'}`, () => {
   if (props.level === 0) {
@@ -49,7 +49,7 @@ const isCollapsed = (link) => {
     // Return value grabbed from the link
     if (link?.collapsed) { return link?.collapsed }
 
-    if (theme.value.aside?.collapsed) { return theme.value.aside?.collapsed }
+    if (docus.value.aside?.collapsed) { return docus.value.aside?.collapsed }
   }
 
   return false

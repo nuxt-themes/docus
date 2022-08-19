@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const theme = useTheme()
+const docus = useDocus()
 
 const socialIcons = ref(null)
-const icons = computed(() => theme.value.footer?.icons || [])
-const nbSocialIcons = computed(() => (socialIcons.value ? Object.keys(theme.value.socials).length : 0))
+const icons = computed(() => docus.value.footer?.icons || [])
+const nbSocialIcons = computed(() => (socialIcons.value ? Object.keys(docus.value.socials).length : 0))
 const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
 </script>
 
@@ -11,9 +11,9 @@ const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
   <footer class="border-t u-bg-white u-border-gray-100">
     <AppContainer>
       <div class="flex flex-col items-center h-full gap-4 py-5 sm:flex-row sm:justify-between sm:gap-x-16">
-        <a v-if="theme.footer?.credits" :href="theme.footer.credits.href" rel="noopener" target="_blank" class="flex items-center u-text-gray-700 hover:u-text-gray-900">
-          <Component :is="theme.footer.credits.icon || 'Logo'" class="w-5 h-5 mr-2 fill-current" />
-          <p class="text-sm font-semibold">{{ theme.footer.credits.text }}</p>
+        <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank" class="flex items-center u-text-gray-700 hover:u-text-gray-900">
+          <Component :is="docus.footer.credits.icon || 'Logo'" class="w-5 h-5 mr-2 fill-current" />
+          <p class="text-sm font-semibold">{{ docus.footer.credits.text }}</p>
         </a>
 
         <div class="flex items-center gap-4">

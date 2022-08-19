@@ -11,11 +11,9 @@ defineProps({
 })
 
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
-const theme = useTheme()
+const docus = useDocus()
 const icons = computed<any>(() => {
-  theme.socials = theme.value.socials || {}
-
-  return Object.entries(theme.value.socials)
+  return Object.entries(docus.value.socials || {})
     .map(([key, value]) => {
       if (typeof value === 'object') {
         return value

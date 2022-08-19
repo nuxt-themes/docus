@@ -11,9 +11,9 @@ if (config?.github) {
 }
 
 const { page } = useContent()
-const theme = useTheme()
+const docus = useDocus()
 
-const root = computed(() => theme.value.github?.root || '/')
+const root = computed(() => docus.value.github?.root || '/')
 
 const source = computed(() => root.value + page.value._file || '')
 </script>
@@ -21,7 +21,7 @@ const source = computed(() => root.value + page.value._file || '')
 <template>
   <div v-if="page" class="flex flex-col-reverse justify-between gap-4 mt-8 text-sm u-text-gray-500 md:flex-row">
     <div class="flex flex-col flex-1 w-full gap-4 md:w-1/2">
-      <component :is="githubLinkComponent" v-if="page && config?.github && theme?.github && theme?.github?.edit" v-slot="data" :content-dir="root" :page="page">
+      <component :is="githubLinkComponent" v-if="page && config?.github && docus?.github && docus?.github?.edit" v-slot="data" :content-dir="root" :page="page">
         <span class="flex">
           <NuxtLink :href="data?.url" target="_blank" rel="noopener" class="flex items-center inline-block gap-2 text-sm hover:text-primary-500 grow-0">
             <Icon name="heroicons-outline:external-link" class="w-5 h-5" />

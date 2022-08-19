@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const theme = useTheme()
+const docus = useDocus()
 
 defineProps({
   padded: {
@@ -9,20 +9,20 @@ defineProps({
 })
 
 useHead({
-  titleTemplate: `%s | ${theme.value.title}`,
+  titleTemplate: `%s | ${docus.value.title}`,
   meta: [
     { name: 'twitter:card', content: 'summary_large_image' }
   ]
 })
 
-useContentHead(theme.value)
+useContentHead(docus.value)
 </script>
 
 <template>
   <div>
     <AppLoadingBar />
-    <Navbar v-if="theme.header" />
+    <Navbar v-if="docus.header" />
     <slot />
-    <AppFooter v-if="theme.footer" />
+    <AppFooter v-if="docus.footer" />
   </div>
 </template>
