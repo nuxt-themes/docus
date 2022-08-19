@@ -33,12 +33,12 @@ export default defineTokens({
   },
   header: {
     height: {
-      value: '4rem'
+      value: '64px'
     }
   },
   footer: {
     height: {
-      value: '4rem'
+      value: '50px'
     }
   }
 })

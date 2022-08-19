@@ -10,10 +10,8 @@ const fallbackValue = (value: string, fallback = true) => {
 }
 
 const hasBody = computed(() => !page.value || page.value?.body?.children?.length > 0)
-
-const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length > 0)
-
-const header = computed(() => fallbackValue('header', true))
+const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
+const hasHeader = computed(() => page.value && page.value.title)
 
 // TODO: get navigation links from aside level
 const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
@@ -21,6 +19,22 @@ const hasAside = computed(() => page.value?.aside !== false && navigation.value.
 const bottom = computed(() => fallbackValue('bottom', true))
 
 const isOpen = ref(false)
+
+watch(page, (page) => {
+  if (page?.body?.children) {
+    // top level `text` and `hr` can be ignored
+    const children = page.body.children.filter(node => node.type !== 'text' && node.tag !== 'hr')
+    // Remove first H1
+    if (children.length && children[0].tag === 'h1') {
+      children.shift()
+    }
+    // Remove first paragraph (used as description)
+    if (children.length && children[0].tag === 'p') {
+      children.shift()
+    }
+    page.body.children = children
+  }
+}, { immediate: true })
 </script>
 
 <template>
@@ -43,20 +57,15 @@ const isOpen = ref(false)
         'pt-12 lg:pt-8': hasToc,
       }"
     >
-      <Alert v-if="!hasBody" type="info" class="!mt-0">
+      <DocsPageHeader v-if="hasHeader" />
+      <slot v-if="hasBody" />
+      <Alert v-else-if="!hasHeader" type="info" class="!mt-0">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
-      <DocsPageHeader v-if="hasBody && page && header" />
-
-      <slot v-if="hasBody" />
-
-      <DocsPageBottom v-if="hasBody && page && bottom" />
-
+      <!-- <DocsPageBottom v-if="hasBody && page && bottom" />
       <ProseHr v-if="hasBody && page && bottom" />
-
-      <DocsPrevNext v-if="hasBody && page && bottom" />
+      <DocsPrevNext v-if="hasBody && page && bottom" /> -->
     </div>
-
     <!-- TOC -->
     <div
       v-if="hasToc"

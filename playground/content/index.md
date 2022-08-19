@@ -2,6 +2,8 @@
 navigation: false
 ---
 
-# Get started
+# Nuxt 3
 
-How to setup Docus in few seconds.
+Welcome to Nuxt 3 repository: **The Hybrid Vue Framework** ✨
+
+Weird error

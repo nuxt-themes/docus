@@ -3,6 +3,10 @@ export default defineAppConfig({
     title: 'Docus',
     description: 'The best place to start your documentation.',
     image: '/social-card-preview.png',
+    socials: {
+      twitter: '@docus_',
+      github: 'nuxt-themes/docus'
+    },
     footer: {
       icons: [
       // {

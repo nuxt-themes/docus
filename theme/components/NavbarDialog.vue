@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ColorModeSwitch from './ColorModeSwitch.vue'
 const { navigation } = useContent()
 const docus = useDocus()
 
@@ -32,7 +33,7 @@ watch(visible, v => (v ? open() : close()))
 
           <div class="flex items-center gap-4">
             <SocialIcons />
-            <ThemeSelect size="h-6 w-6" />
+            <ColorModeSwitch size="h-6 w-6" />
           </div>
         </div>
 

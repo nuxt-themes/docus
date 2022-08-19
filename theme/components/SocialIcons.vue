@@ -17,7 +17,7 @@ const icons = computed<any>(() => {
     .map(([key, value]) => {
       if (typeof value === 'object') {
         return value
-      } else if (typeof value === 'string' && socials.includes(key)) {
+      } else if (typeof value === 'string' && value && socials.includes(key)) {
         return {
           href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
@@ -41,7 +41,7 @@ const icons = computed<any>(() => {
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
-    class="u-text-gray-700 hover:u-text-gray-900"
+    class="u-text-gray-500 hover:u-text-gray-700"
     :class="[spacing]"
   >
     <Icon v-if="icon.icon" :name="icon.icon" :class="size" />

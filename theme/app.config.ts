@@ -4,8 +4,12 @@ export default defineAppConfig({
     description: 'The best place to start your documentation.',
     image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
     socials: {
-      twitter: '@docus_',
-      github: 'nuxtlabs/docus'
+      twitter: '',
+      github: '',
+      facebook: '',
+      instagram: '',
+      youtube: '',
+      medium: ''
     },
     github: {
       root: 'content',
@@ -15,9 +19,10 @@ export default defineAppConfig({
       level: 1,
       filter: []
     },
+    // TODO: replace to navbar
     header: {
-      title: false,
-      logo: true
+      title: '',
+      logo: false // TODO: handle logo as string for component
     },
     footer: {
       credits: {
