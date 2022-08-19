@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useContent } from '#imports'
-
-const { page } = useContent()
+const { page, navigation } = useContent()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
@@ -11,11 +9,14 @@ const fallbackValue = (value: string, fallback = true) => {
   return fallback
 }
 
-const toc = computed(() => fallbackValue('toc', true))
+const hasBody = computed(() => !page.value || page.value?.body?.children?.length > 0)
+
+const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length > 0)
 
 const header = computed(() => fallbackValue('header', true))
 
-const aside = computed(() => fallbackValue('aside', true))
+// TODO: get navigation links from aside level
+const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
 
 const bottom = computed(() => fallbackValue('bottom', true))
 
@@ -26,7 +27,7 @@ const isOpen = ref(false)
   <AppContainer padded class="relative flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-8">
     <!-- Aside -->
     <aside
-      v-if="aside"
+      v-if="hasAside"
       class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
     >
       <DocsAside />
@@ -36,26 +37,29 @@ const isOpen = ref(false)
     <div
       class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0"
       :class="{
-        'lg:col-span-12': !aside && !toc,
-        'lg:col-span-10': (!toc || !aside) && !(!aside && !toc),
-        'lg:col-span-8': toc && aside,
-        'pt-12 lg:pt-8': toc,
+        'lg:col-span-12': !hasAside && !hasToc,
+        'lg:col-span-10': (!hasToc || !hasAside) && !(!hasAside && !hasToc),
+        'lg:col-span-8': hasToc && hasAside,
+        'pt-12 lg:pt-8': hasToc,
       }"
     >
-      <DocsPageHeader v-if="page && header" />
+      <Alert v-if="!hasBody" type="info" class="!mt-0">
+        Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
+      </Alert>
+      <DocsPageHeader v-if="hasBody && page && header" />
 
-      <slot />
+      <slot v-if="hasBody" />
 
-      <DocsPageBottom v-if="page && bottom" />
+      <DocsPageBottom v-if="hasBody && page && bottom" />
 
-      <ProseHr v-if="page && bottom" />
+      <ProseHr v-if="hasBody && page && bottom" />
 
-      <DocsPrevNext v-if="page && bottom" />
+      <DocsPrevNext v-if="hasBody && page && bottom" />
     </div>
 
     <!-- TOC -->
     <div
-      v-if="toc"
+      v-if="hasToc"
       :class="{
         'flex items-center lg:block': !isOpen,
       }"

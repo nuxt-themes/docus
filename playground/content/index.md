@@ -1,6 +1,7 @@
 ---
-title: WOWed
+navigation: false
 ---
 
+# Get started
 
-# Hello Docux
+How to setup Docus in few seconds.
