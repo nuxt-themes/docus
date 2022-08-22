@@ -11,7 +11,6 @@ const fallbackValue = (value: string, fallback = true) => {
 
 const hasBody = computed(() => !page.value || page.value?.body?.children?.length > 0)
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
-const hasHeader = computed(() => page.value && page.value.title)
 
 // TODO: get navigation links from aside level
 const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
@@ -19,22 +18,6 @@ const hasAside = computed(() => page.value?.aside !== false && navigation.value.
 const bottom = computed(() => fallbackValue('bottom', true))
 
 const isOpen = ref(false)
-
-watch(page, (page) => {
-  if (page?.body?.children) {
-    // top level `text` and `hr` can be ignored
-    const children = page.body.children.filter(node => node.type !== 'text' && node.tag !== 'hr')
-    // Remove first H1
-    if (children.length && children[0].tag === 'h1') {
-      children.shift()
-    }
-    // Remove first paragraph (used as description)
-    if (children.length && children[0].tag === 'p') {
-      children.shift()
-    }
-    page.body.children = children
-  }
-}, { immediate: true })
 </script>
 
 <template>
@@ -49,7 +32,7 @@ watch(page, (page) => {
 
     <!-- Page Body -->
     <div
-      class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0"
+      class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0 page-body"
       :class="{
         'lg:col-span-12': !hasAside && !hasToc,
         'lg:col-span-10': (!hasToc || !hasAside) && !(!hasAside && !hasToc),
@@ -57,9 +40,8 @@ watch(page, (page) => {
         'pt-12 lg:pt-8': hasToc,
       }"
     >
-      <DocsPageHeader v-if="hasHeader" />
       <slot v-if="hasBody" />
-      <Alert v-else-if="!hasHeader" type="info" class="!mt-0">
+      <Alert v-else type="info" class="!mt-0">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <!-- <DocsPageBottom v-if="hasBody && page && bottom" />
@@ -87,6 +69,15 @@ watch(page, (page) => {
 </template>
 
 <style lang="postcss" scoped>
+.page-body >>> div:first-child h1:first-child {
+  @apply mt-0 text-2xl font-extrabold tracking-tight u-text-gray-900 sm:text-3xl;
+}
+.page-body >>> div:first-child h1:first-child + p {
+  @apply mt-0 mb-8 text-lg u-text-gray-500 pb-8 border-b u-border-gray-100;
+  & a {
+    @apply u-text-gray-700 hover:border-gray-700;
+  }
+}
 .toc {
   &:before {
     content: ' ';
