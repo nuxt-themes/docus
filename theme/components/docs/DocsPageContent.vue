@@ -69,11 +69,11 @@ const isOpen = ref(false)
 </template>
 
 <style lang="postcss" scoped>
-.page-body >>> div:first-child h1:first-child {
+.page-body :deep(div:first-child h1:first-child) {
   @apply mt-0 text-2xl font-extrabold tracking-tight u-text-gray-900 sm:text-3xl;
 }
-.page-body >>> div:first-child h1:first-child + p {
-  @apply mt-0 mb-8 text-lg u-text-gray-500 pb-8 border-b u-border-gray-100;
+.page-body :deep(div:first-child h1:first-child + p) {
+  @apply mt-0 mb-8 sm:text-lg u-text-gray-500 pb-8 border-b u-border-gray-100;
   & a {
     @apply u-text-gray-700 hover:border-gray-700;
   }

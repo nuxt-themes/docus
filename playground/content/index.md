@@ -1,9 +1,3 @@
----
-navigation: false
----
+# Hello
 
-# Nuxt 3
-
-Welcome to Nuxt 3 repository: **The Hybrid Vue Framework** ✨
-
-Weird error
+Learn how to setup [Docus](https://docus.dev) and get a documentation website in few minutes.
