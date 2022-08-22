@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
-import { ref } from '#imports'
 
 const props = defineProps({
   content: {
     type: String,
-    default: '',
-  },
+    default: ''
+  }
 })
 
 const { copy: copyToClipboard } = useClipboard()

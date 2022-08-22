@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useRuntimeConfig } from '#imports'
-
 const config = useRuntimeConfig()
 
 if (!config?.github) {
@@ -14,7 +12,7 @@ const formatDateByLocale = (date: string) => {
     return new Intl.DateTimeFormat(currentLocale, {
       day: 'numeric',
       month: 'long',
-      year: 'numeric',
+      year: 'numeric'
     }).format(Date.parse(date))
   } catch (_) {
     return date
@@ -44,12 +42,14 @@ const formatDateByLocale = (date: string) => {
         <div class="flex flex-col gap-2 pb-4">
           <a v-if="release.author" target="_blank" :href="release.author.url" class="hover:u-text-gray-900 mt-4 flex items-center justify-end gap-2 lg:mt-0">
             <div class="flex-shrink-0">
-              <img class="h-6 w-6 rounded-full" :src="release.author?.avatar" alt="" />
+              <img class="h-6 w-6 rounded-full" :src="release.author?.avatar" alt="">
             </div>
             <p class="text-sm lg:text-base">@{{ release.author.name }}</p>
           </a>
 
-          <p class="text-xs lg:text-base">{{ formatDateByLocale(release.date) }}</p>
+          <p class="text-xs lg:text-base">
+            {{ formatDateByLocale(release.date) }}
+          </p>
         </div>
       </div>
     </div>

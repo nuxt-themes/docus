@@ -1,5 +1,4 @@
 import type { Ref } from 'vue'
-import { onBeforeMount, onBeforeUnmount, ref, watch } from '#imports'
 
 /**
  * Scrollspy allows you to watch visible headings in a specific page.
@@ -14,8 +13,7 @@ export const useScrollspy = () => {
     entries.forEach((entry) => {
       const id = entry.target.id
 
-      if (entry.isIntersecting) visibleHeadings.value.push(id)
-      else visibleHeadings.value = visibleHeadings.value.filter((t) => t !== id)
+      if (entry.isIntersecting) { visibleHeadings.value.push(id) } else { visibleHeadings.value = visibleHeadings.value.filter(t => t !== id) }
     })
 
   const updateHeadings = (headings: Element[]) =>
@@ -24,8 +22,7 @@ export const useScrollspy = () => {
     })
 
   watch(visibleHeadings, (val, oldVal) => {
-    if (val.length === 0) activeHeadings.value = oldVal
-    else activeHeadings.value = val
+    if (val.length === 0) { activeHeadings.value = oldVal } else { activeHeadings.value = val }
   })
 
   // Create intersection observer
@@ -37,6 +34,6 @@ export const useScrollspy = () => {
   return {
     visibleHeadings,
     activeHeadings,
-    updateHeadings,
+    updateHeadings
   }
 }

@@ -1,6 +1,4 @@
 <script setup>
-import { useNuxtApp, onBeforeUnmount, reactive } from '#imports'
-
 const props = defineProps({
   throttle: {
     type: Number,

@@ -1,6 +1,5 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { DocSearchOptions } from '@nuxtjs/algolia/dist/module.d'
-import { computed, defineNuxtPlugin, ref, useRoute, useRouter, useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin(async () => {
   const config = useRuntimeConfig()
@@ -60,7 +59,7 @@ export default defineNuxtPlugin(async () => {
 
       // @ts-expect-errors - Import @docsearch at runtime
       const docsearch = await Promise.all([import(/* webpackChunkName: "docsearch" */ '@docsearch/js'), import(/* webpackChunkName: "docsearch" */ '@docsearch/css')]).then(
-        ([docsearch]) => docsearch.default,
+        ([docsearch]) => docsearch.default
       )
 
       // TODO: Maybe bind this with @nuxt/i18n ?
@@ -83,15 +82,14 @@ export default defineNuxtPlugin(async () => {
         apiKey: userOptions.apiKey,
         indexName: userOptions.indexName,
         searchParameters: {
-          ...// Prefix facetFilters with langAttribute, otherwise use raw facetFilters
-          (!lang
+          ...(!lang
             ? {
-                facetFilters: userFacetFilters,
+                facetFilters: userFacetFilters
               }
             : {
-                facetFilters: [langPrefix].concat(userFacetFilters),
+                facetFilters: [langPrefix].concat(userFacetFilters)
               }),
-          ...userOptions.searchParameters,
+          ...userOptions.searchParameters
         },
         /**
          * Transform items into relative URL format (compatibiltiy with Vue Router).
@@ -102,7 +100,7 @@ export default defineNuxtPlugin(async () => {
               return items.map((item) => {
                 return {
                   ...item,
-                  url: getRelativePath(item.url),
+                  url: getRelativePath(item.url)
                 }
               })
             },
@@ -118,7 +116,7 @@ export default defineNuxtPlugin(async () => {
                 } else {
                   router.push(itemUrl)
                 }
-              },
+              }
             },
         // @ts-expect-error - We don't actually use `hitComponent` but react on its calls.
         hitComponent: userOptions.hitComponent
@@ -148,8 +146,8 @@ export default defineNuxtPlugin(async () => {
                       event.preventDefault()
                     }
                     router.push(hit.url)
-                  },
-                },
+                  }
+                }
               }
             },
         // Spread user options, except the ones that are already used in the instance.
@@ -160,20 +158,20 @@ export default defineNuxtPlugin(async () => {
           .reduce((acc, [key, value]) => {
             acc[key] = value
             return acc
-          }, {}),
+          }, {})
       })
     }
 
     // Watch options and restart the instance if needed.
-    if (process.client) initialize(options.value)
+    if (process.client) { initialize(options.value) }
   }
 
   return {
     provide: {
       docSearch: {
         element: docSearchElement,
-        hasDocSearch,
-      },
-    },
+        hasDocSearch
+      }
+    }
   }
 })

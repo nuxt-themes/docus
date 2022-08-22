@@ -1,4 +1,3 @@
-import { useRuntimeConfig, useState } from '#imports'
 import {} from '@nuxtlabs/github-module'
 
 export const useRepository = () => {

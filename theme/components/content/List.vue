@@ -1,6 +1,4 @@
 <script lang="ts">
-import { computed, defineComponent, h, resolveComponent, useSlots, useUnwrap } from '#imports'
-
 const iconTypeMap = {
   primary: 'heroicons-outline:check',
   info: 'heroicons-outline:information-circle',

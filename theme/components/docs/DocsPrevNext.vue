@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { upperFirst } from 'scule'
-import { useContent, useContentHelpers } from '#imports'
 
 const { prev, next, navigation } = useContent()
 const { navDirFromPath } = useContentHelpers()
@@ -23,13 +22,15 @@ const directory = (link) => {
     <NuxtLink
       v-if="prev"
       :to="prev._path"
-      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
+      class="relative min-w-0 p-3 border rounded-lg hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100"
     >
-      <p class="u-text-gray-500 mb-1 h-4 truncate text-right text-xs font-medium">{{ directory(prev._path) }}</p>
+      <p class="h-4 mb-1 text-xs font-medium text-right truncate u-text-gray-500">
+        {{ directory(prev._path) }}
+      </p>
 
       <p class="flex items-center gap-3">
-        <Icon name="heroicons-outline:arrow-sm-left" class="h-5 w-5 flex-shrink-0" />
-        <span class="flex-1 truncate text-right font-medium leading-5">{{ prev.title }}</span>
+        <Icon name="heroicons-outline:arrow-sm-left" class="flex-shrink-0 w-5 h-5" />
+        <span class="flex-1 font-medium leading-5 text-right truncate">{{ prev.title }}</span>
       </p>
     </NuxtLink>
     <span v-else />
@@ -37,13 +38,15 @@ const directory = (link) => {
     <NuxtLink
       v-if="next"
       :to="next._path"
-      class="hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100 relative min-w-0 rounded-lg border p-3"
+      class="relative min-w-0 p-3 border rounded-lg hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100"
     >
-      <p class="u-text-gray-500 mb-1 h-4 truncate text-xs font-medium">{{ directory(next._path) }}</p>
+      <p class="h-4 mb-1 text-xs font-medium truncate u-text-gray-500">
+        {{ directory(next._path) }}
+      </p>
 
       <p class="flex items-center gap-3">
-        <span class="flex-1 truncate font-medium leading-5">{{ next.title }}</span>
-        <Icon name="heroicons-outline:arrow-sm-right" class="h-5 w-5 flex-shrink-0" />
+        <span class="flex-1 font-medium leading-5 truncate">{{ next.title }}</span>
+        <Icon name="heroicons-outline:arrow-sm-right" class="flex-shrink-0 w-5 h-5" />
       </p>
     </NuxtLink>
   </div>

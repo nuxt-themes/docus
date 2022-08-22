@@ -1,5 +1,3 @@
-import { defineNuxtPlugin, ref, watch } from '#imports'
-
 export default defineNuxtPlugin((ctx: any) => {
   // Menu visible reference
   const visible = ref(false)
@@ -32,8 +30,8 @@ export default defineNuxtPlugin((ctx: any) => {
         }
       },
       {
-        immediate: true,
-      },
+        immediate: true
+      }
     )
   }
 
@@ -43,8 +41,8 @@ export default defineNuxtPlugin((ctx: any) => {
         visible,
         close,
         open,
-        toggle,
-      },
-    },
+        toggle
+      }
+    }
   }
 })

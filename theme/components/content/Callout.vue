@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from '#imports'
-
 const props = defineProps({
   /**
    * @values info, success, warning, danger
