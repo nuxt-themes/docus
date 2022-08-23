@@ -1,22 +1,8 @@
-<script setup lang="ts">
-defineProps({
-  width: {
-    type: String,
-    default: '600px',
-  },
-  height: {
-    type: String,
-    default: '160px',
-  },
-})
-</script>
-
 <template>
-  <div class="absolute left-0 top-0 w-full max-w-full">
+  <div class="absolute top-0 left-0 w-full max-w-full">
     <div class="ellipsis" />
   </div>
 </template>
-
 
 <style lang="postcss" scoped>
 .ellipsis {

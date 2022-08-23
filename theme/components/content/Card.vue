@@ -1,12 +1,5 @@
 <script setup lang="ts">
 defineProps({
-  title: {
-    type: String
-  },
-  description: {
-    type: String,
-    default: ''
-  },
   icon: {
     type: String,
     default: ''
@@ -14,16 +7,6 @@ defineProps({
   iconClass: {
     type: String,
     default: ''
-  },
-  /**
-   * @values info, success, warning, danger
-   */
-  type: {
-    type: String,
-    default: 'base',
-    validator (value: string) {
-      return ['info', 'success', 'warning', 'danger', 'primary', 'base'].includes(value)
-    }
   },
   blurry: {
     type: Boolean,
@@ -35,22 +18,60 @@ defineProps({
 
 <template>
   <div class="flex">
-    <div :class="[type, { blurry }]" class="card relative w-full rounded-xl p-8">
-      <Icon v-if="icon" :name="icon" class="mb-2 inline-block h-8 w-8 text-2xl" />
+    <div :class="{ blurry }" class="relative w-full p-8 card rounded-xl">
+      <Icon v-if="icon" :name="icon" class="inline-block w-8 h-8 mb-2 text-2xl" />
       <slot />
       <div>
-        <h3 v-if="title || $slots.title" class="mb-2 text-lg font-semibold tracking-tight">
-          {{ title }}
-          <ContentSlot :use="$slots.title" unwrap="p" />
+        <h3 class="mb-2 text-lg font-semibold tracking-tight">
+          <ContentSlot :use="$slots.title" unwrap="p">
+            Card title
+          </ContentSlot>
         </h3>
-        <div>
-          <slot name="description">
-            <p v-if="description" class="inline text-sm font-medium tracking-tight">
-              {{ description }}
-            </p>
-          </slot>
-        </div>
+        <p class="inline text-sm font-medium tracking-tight">
+          <ContentSlot :use="$slots.description" unwrap="p">
+            Card description
+          </ContentSlot>
+        </p>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped lang="postcss">
+.card {
+  @apply border border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-50;
+  &.blurry {
+    @apply !backdrop-blur-lg !bg-opacity-20 backdrop-saturate-150;
+  }
+
+  :deep(code) {
+    @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
+  }
+
+  :deep(a) {
+    @apply text-current border-none font-semibold underline;
+    &:hover {
+      @apply dark:text-white text-black;
+      code {
+        @apply border-gray-400 dark:border-gray-700;
+      }
+    }
+  }
+
+  :deep(strong) {
+    @apply !font-bold !text-current;
+  }
+
+  :deep(li::before) {
+    @apply !text-current !bg-current;
+  }
+
+  :deep(.prose-code) {
+    @apply my-4;
+
+    code {
+      @apply !bg-transparent;
+    }
+  }
+}
+</style>

@@ -74,8 +74,7 @@
 
 .alert,
 .badge,
-.callout,
-.card {
+.callout {
   /*
     Color Schemes
     TODO: Improve the usage of these styles across components.
