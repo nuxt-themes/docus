@@ -34,7 +34,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 
 <style scoped lang="postcss">
 .link {
-  @apply text-sm px-4 py-2 rounded;
+  @apply text-sm px-4 py-2 rounded transition;
   &:hover,
   &:focus {
     @apply bg-gray-100 dark:bg-gray-900 outline-none;

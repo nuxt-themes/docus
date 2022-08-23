@@ -7,7 +7,7 @@
     "theme"
   ],
   "scripts": {
-    "dev": "nuxi dev template",
+    "dev": "nuxi prepare theme && nuxi dev template",
     "build": "nuxi build template",
     "generate": "nuxi generate template",
     "preview": "nuxi preview template",
