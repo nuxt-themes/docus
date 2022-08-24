@@ -27,18 +27,20 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
       class="link"
       :class="{ active: isActive(link) }"
     >
-      {{ link?.navigation?.title || link.title }}
+      <Icon v-if="link.icon" :name="link.icon" class="w-4 h-4" />
+      {{ link.title }}
     </NuxtLink>
   </nav>
 </template>
 
 <style scoped lang="postcss">
 .link {
-  @apply text-sm px-4 py-2 rounded transition;
+  @apply text-sm px-4 py-2 rounded transition inline-flex items-center gap-1;
   &:hover,
   &:focus {
     @apply bg-gray-100 dark:bg-gray-900 outline-none;
   }
+  &:active,
   &.active {
     @apply bg-gray-100 dark:bg-gray-900 shadow-inner font-semibold;
   }
