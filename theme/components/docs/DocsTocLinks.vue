@@ -22,10 +22,10 @@ watch(
     if (process.client) {
       setTimeout(() => {
         updateHeadings([
-          ...document.querySelectorAll('.document-driven-page h1'),
-          ...document.querySelectorAll('.document-driven-page h2'),
-          ...document.querySelectorAll('.document-driven-page h3'),
-          ...document.querySelectorAll('.document-driven-page h4')
+          ...document.querySelectorAll('.document-driven-page h1, .docus-content h1'),
+          ...document.querySelectorAll('.document-driven-page h2, .docus-content h2'),
+          ...document.querySelectorAll('.document-driven-page h3, .docus-content h3'),
+          ...document.querySelectorAll('.document-driven-page h4, .docus-content h4')
         ])
       }, 300)
     }
@@ -43,7 +43,6 @@ const scrollToHeading = (id: string) => {
 
 <template>
   <ul>
-    {{ activeHeadings }}
     <li v-for="link in links" :key="link.text" class="min-w-0 group" :class="[{ 'pl-3': link.depth === 3, 'pl-6': link.depth === 4 }]">
       <a
         :href="`#${link.id}`"
