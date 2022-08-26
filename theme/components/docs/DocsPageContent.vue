@@ -44,9 +44,11 @@ const isOpen = ref(false)
       <Alert v-else type="info" class="!mt-0">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
-      <!-- <DocsPageBottom v-if="hasBody && page && bottom" />
-      <ProseHr v-if="hasBody && page && bottom" />
-      <DocsPrevNext v-if="hasBody && page && bottom" /> -->
+      <template v-if="hasBody && page && bottom">
+        <DocsPageBottom />
+        <ProseHr />
+        <DocsPrevNext />
+      </template>
     </div>
     <!-- TOC -->
     <div

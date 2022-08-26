@@ -13,7 +13,8 @@ export default defineAppConfig({
     },
     github: {
       root: 'content',
-      edit: true
+      edit: true,
+      contributors: true
     },
     aside: {
       level: 1,
