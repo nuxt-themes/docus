@@ -40,5 +40,10 @@ export default defineTokens({
     height: {
       value: '50px'
     }
+  },
+  screens: {
+    lg: {
+      value: '1024px'
+    }
   }
 })
