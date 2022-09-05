@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Images */
+  .light-img {
+    @apply block dark:hidden;
+  }
+  .dark-img {
+    @apply hidden dark:block;
+  }
+}
+
+@layer utilities {
+  .u-bg-white { @apply bg-white dark:bg-black; }
+  .u-bg-gray-50 { @apply bg-gray-50 dark:bg-gray-900; }
+  .u-bg-gray-100 { @apply bg-gray-100 dark:bg-gray-800; }
+  .u-bg-gray-200 { @apply bg-gray-200 dark:bg-gray-700; }
+  .u-bg-gray-300 { @apply bg-gray-300 dark:bg-gray-600; }
+  .u-bg-gray-400 { @apply bg-gray-400 dark:bg-gray-500; }
+  .u-bg-gray-500 { @apply bg-gray-500 dark:bg-gray-400; }
+  .u-bg-gray-600 { @apply bg-gray-600 dark:bg-gray-300; }
+  .u-bg-gray-700 { @apply bg-gray-700 dark:bg-gray-200; }
+  .u-bg-gray-800 { @apply bg-gray-800 dark:bg-gray-100; }
+  .u-bg-gray-900 { @apply bg-gray-900 dark:bg-gray-50; }
+  .u-bg-black { @apply bg-black dark:bg-white; }
+  .u-text-white { @apply text-white dark:text-black; }
+  .u-text-gray-50 { @apply text-gray-50 dark:text-gray-900; }
+  .u-text-gray-100 { @apply text-gray-100 dark:text-gray-800; }
+  .u-text-gray-200 { @apply text-gray-200 dark:text-gray-700; }
+  .u-text-gray-300 { @apply text-gray-300 dark:text-gray-600; }
+  .u-text-gray-400 { @apply text-gray-400 dark:text-gray-500; }
+  .u-text-gray-500 { @apply text-gray-500 dark:text-gray-400; }
+  .u-text-gray-600 { @apply text-gray-600 dark:text-gray-300; }
+  .u-text-gray-700 { @apply text-gray-700 dark:text-gray-200; }
+  .u-text-gray-800 { @apply text-gray-800 dark:text-gray-100; }
+  .u-text-gray-900 { @apply text-gray-900 dark:text-gray-50; }
+  .u-text-black { @apply text-black dark:text-white; }
+  .u-border-white { @apply border-white dark:border-black; }
+  .u-border-gray-100 { @apply border-gray-100 dark:border-gray-900; }
+  .u-border-gray-200 { @apply border-gray-200 dark:border-gray-800; }
+  .u-border-gray-300 { @apply border-gray-300 dark:border-gray-700; }
+  .u-border-gray-400 { @apply border-gray-400 dark:border-gray-600; }
+  .u-border-gray-500 { @apply border-gray-500 dark:border-gray-500; }
+  .u-border-gray-600 { @apply border-gray-600 dark:border-gray-400; }
+  .u-border-gray-700 { @apply border-gray-700 dark:border-gray-300; }
+  .u-border-gray-800 { @apply border-gray-800 dark:border-gray-200; }
+  .u-border-gray-900 { @apply border-gray-900 dark:border-gray-100; }
+  .u-border-black { @apply border-black dark:border-white; }
+  .u-divide-white { @apply divide-white dark:divide-black; }
+  .u-divide-gray-100 { @apply divide-gray-100 dark:divide-gray-900; }
+  .u-divide-gray-200 { @apply divide-gray-200 dark:divide-gray-800; }
+  .u-divide-gray-300 { @apply divide-gray-300 dark:divide-gray-700; }
+  .u-divide-gray-400 { @apply divide-gray-400 dark:divide-gray-600; }
+  .u-divide-gray-500 { @apply divide-gray-500 dark:divide-gray-500; }
+  .u-divide-gray-600 { @apply divide-gray-600 dark:divide-gray-400; }
+  .u-divide-gray-700 { @apply divide-gray-700 dark:divide-gray-300; }
+  .u-divide-gray-800 { @apply divide-gray-800 dark:divide-gray-200; }
+  .u-divide-gray-900 { @apply divide-gray-900 dark:divide-gray-100; }
+  .u-divide-black { @apply divide-black dark:divide-white; }
+  .u-ring-white { @apply ring-white dark:ring-black; }
+  .u-ring-gray-100 { @apply ring-gray-100 dark:ring-gray-900; }
+  .u-ring-gray-200 { @apply ring-gray-200 dark:ring-gray-800; }
+  .u-ring-gray-300 { @apply ring-gray-300 dark:ring-gray-700; }
+  .u-ring-gray-400 { @apply ring-gray-400 dark:ring-gray-600; }
+  .u-ring-gray-500 { @apply ring-gray-500 dark:ring-gray-500; }
+  .u-ring-gray-600 { @apply ring-gray-600 dark:ring-gray-400; }
+  .u-ring-gray-700 { @apply ring-gray-700 dark:ring-gray-300; }
+  .u-ring-gray-800 { @apply ring-gray-800 dark:ring-gray-200; }
+  .u-ring-gray-900 { @apply ring-gray-900 dark:ring-gray-100; }
+  .u-ring-black { @apply ring-black dark:ring-white; }
+}
+
+.alert,
+.badge,
+.callout {
+  /*
+    Color Schemes
+    TODO: Improve the usage of these styles across components.
+  */
+  &.base {
+    @apply border border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-gray-800 dark:bg-opacity-25 dark:text-gray-50;
+
+    code {
+      @apply text-current bg-gray-100 border-gray-200 shadow-none dark:border-gray-800 dark:bg-gray-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-gray-400 dark:border-gray-700;
+      }
+    }
+  }
+
+  &.primary {
+    @apply border border-primary-100 bg-primary-50 text-primary-600 dark:border-primary-900 dark:bg-primary-800 dark:bg-opacity-25 dark:text-primary-200;
+
+    code {
+      @apply text-current shadow-none border-primary-200 bg-primary-100 dark:border-primary-800 dark:bg-primary-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-primary-400 dark:border-primary-700;
+      }
+    }
+  }
+
+  &.success {
+    @apply text-green-600 border border-green-100 bg-green-50 dark:border-green-900 dark:bg-green-800 dark:bg-opacity-25 dark:text-green-200;
+
+    code {
+      @apply text-current bg-green-100 border-green-200 shadow-none dark:border-green-800 dark:bg-green-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-green-400 dark:border-green-700;
+      }
+    }
+
+  }
+
+  &.info {
+    @apply text-blue-600 border border-blue-100 bg-blue-50 dark:border-blue-900 dark:bg-blue-800 dark:bg-opacity-25 dark:text-blue-200;
+
+    code {
+      @apply text-current bg-blue-100 border-blue-200 shadow-none dark:border-blue-800 dark:bg-blue-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-blue-400 dark:border-blue-700;
+      }
+    }
+  }
+
+  &.warning {
+    @apply text-yellow-600 border border-yellow-100 bg-yellow-50 dark:border-yellow-900 dark:bg-yellow-800 dark:bg-opacity-25 dark:text-yellow-100;
+
+    code {
+      @apply text-current bg-yellow-100 border-yellow-200 shadow-none dark:border-yellow-800 dark:bg-yellow-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-yellow-400 dark:border-yellow-700;
+      }
+    }
+
+  }
+
+  &.danger {
+    @apply text-red-600 border border-red-100 bg-red-50 dark:border-red-900 dark:bg-red-800 dark:bg-opacity-25 dark:text-red-100;
+
+    code {
+      @apply text-current bg-red-100 border-red-200 shadow-none dark:border-red-800 dark:bg-red-900 dark:bg-opacity-50;
+    }
+    a:hover {
+      code {
+        @apply border-red-400 dark:border-red-700;
+      }
+    }
+  }
+
+  &.blurry {
+    @apply !backdrop-blur-lg !bg-opacity-20;
+  }
+
+  a {
+    @apply !text-current !border-none !font-semibold !underline;
+  }
+
+  strong {
+    @apply !font-bold !text-current;
+  }
+
+  li::before {
+    @apply !text-current !bg-current;
+  }
+
+  .prose-code {
+    @apply my-4;
+
+    code {
+      @apply !bg-transparent;
+    }
+  }
+}
+
+/* Base */
+
+.dark:root {
+  color-scheme: dark;
+  /* DocSearch */
+  --docsearch-primary-color: theme('colors.primary.500') !important;
+  --docsearch-text-color: rgb(245, 246, 247);
+  --docsearch-container-background: rgba(9, 10, 17, 0.8);
+  --docsearch-modal-background: rgb(21, 23, 42);
+  --docsearch-modal-shadow: inset 1px 1px 0 0 rgb(44, 46, 64),
+    0 3px 8px 0 rgb(0, 3, 9);
+  --docsearch-searchbox-background: rgb(9, 10, 17);
+  --docsearch-searchbox-focus-background: #000;
+  --docsearch-hit-color: rgb(190, 195, 201);
+  --docsearch-hit-shadow: none;
+  --docsearch-hit-background: rgb(9, 10, 17);
+  --docsearch-key-gradient: linear-gradient(
+    -26.5deg,
+    rgb(86, 88, 114) 0%,
+    rgb(49, 53, 91) 100%
+  );
+  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(40, 45, 85),
+    inset 0 0 1px 1px rgb(81, 87, 125), 0 2px 2px 0 rgba(3, 4, 9, 0.3);
+  --docsearch-footer-background: rgb(30, 33, 54);
+  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
+    0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+  --docsearch-logo-color: rgb(255, 255, 255);
+  --docsearch-muted-color: rgb(127, 132, 151);
+}
+
+body {
+  @apply overflow-y-scroll antialiased text-gray-700 bg-white dark:text-gray-200 dark:bg-black;
+  font-family: var(--fonts-primary);
+}
+
+:root {
+  /* DocSearch */
+  --docsearch-primary-color: theme('colors.primary.500') !important;
+}
+
+html.dark {
+  @apply bg-black;
+}
+
+code, kbd, pre, samp {
+  font-family: var(--fonts-code);
+  font-size: 1em;
+}

@@ -42,6 +42,6 @@ jobs:
 # Temporarily disable CI main package releases
 #      - name: Release Main version
 #        if: github.event_name == 'push' && steps.check.outputs.changed == 'true'
-#        run: pnpm release
+#        run: ./.github/scripts/release.sh
 #        env:
 #          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

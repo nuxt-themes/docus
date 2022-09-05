@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "rootDir": "./"
-  },
-  "extends": "./.nuxt/tsconfig.json"
-}
