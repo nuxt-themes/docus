@@ -19,7 +19,6 @@ export default defineNuxtConfig({
     '@fontsource/inter/700.css'
   ],
   components: [
-    resolve('./components'),
     {
       prefix: '',
       path: resolve('./components/prose'),
@@ -34,7 +33,9 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/icons'),
       global: true
-    }
+    },
+    resolve('./components')
+
   ],
   app: {
     // TODO: Remove this ignore

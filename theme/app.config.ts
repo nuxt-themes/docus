@@ -11,11 +11,7 @@ export default defineAppConfig({
       // youtube: '',
       // medium: ''
     },
-    github: {
-      root: 'content',
-      edit: true,
-      contributors: false
-    },
+    github: false,
     aside: {
       level: 1,
       filter: []
