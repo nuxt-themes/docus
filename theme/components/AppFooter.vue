@@ -3,8 +3,9 @@ const docus = useDocus()
 
 const socialIcons = ref(null)
 const icons = computed(() => docus.value.footer?.icons || [])
-const nbSocialIcons = computed(() => (socialIcons.value ? Object.keys(docus.value.socials).length : 0))
-const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
+const socialIconsCount = computed(() => Object.entries(docus.value.socials).filter(([_, v]) => v).length)
+const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
+const showOverrideAlert = computed(() => process.dev && (nbSocialIcons.value + icons.value.length) > 6)
 </script>
 
 <template>
@@ -30,9 +31,9 @@ const nbIcons = computed(() => nbSocialIcons.value + icons.value.length)
           <SocialIcons ref="socialIcons" size="w-4 h-4" />
         </div>
       </div>
-      <Alert v-if="nbIcons > 6" type="info">
+      <Alert v-if="showOverrideAlert" type="info">
         <div>
-          <p>Please consider to override Footer.vue if you want to add more icons</p>
+          <p>Please consider to override <code>AppFooter.vue</code> if you want to add more icons</p>
         </div>
       </Alert>
     </AppContainer>
