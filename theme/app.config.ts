@@ -11,11 +11,7 @@ export default defineAppConfig({
       // youtube: '',
       // medium: ''
     },
-    github: {
-      root: 'content',
-      edit: true,
-      contributors: false
-    },
+    github: false,
     aside: {
       level: 1,
       filter: []
@@ -23,7 +19,8 @@ export default defineAppConfig({
     // TODO: replace to navbar
     header: {
       title: '',
-      logo: false // TODO: handle logo as string for component
+      logo: false, // TODO: handle logo as string for component
+      showLinksIcons: false // Toggle links icons in the header
     },
     footer: {
       credits: {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { compile } from 'vue'
-
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
 
