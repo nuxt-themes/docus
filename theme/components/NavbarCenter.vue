@@ -27,7 +27,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
       class="link"
       :class="{ active: isActive(link) }"
     >
-      <Icon v-if="link.icon && link.showIcon" :name="link.icon" class="w-4 h-4" />
+      <Icon v-if="link.icon && docus.header.showLinksIcons" :name="link.icon" class="w-4 h-4" />
       {{ link.title }}
     </NuxtLink>
   </nav>
