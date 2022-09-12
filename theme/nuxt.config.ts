@@ -5,19 +5,20 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/design-tokens/module',
+    'pinceau/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
     '@vueuse/nuxt'
-    // resolve('./app/module')
   ],
+
   css: [
     '@fontsource/inter/400.css',
     '@fontsource/inter/500.css',
     '@fontsource/inter/600.css',
     '@fontsource/inter/700.css'
   ],
+
   components: [
     {
       prefix: '',
@@ -37,22 +38,16 @@ export default defineNuxtConfig({
     resolve('./components')
 
   ],
-  app: {
-    // TODO: Remove this ignore
-    // https://github.com/nuxt-themes/config/issues/5
-    // @ts-ignore
-    theme: {
-      meta: {
-        name: 'Docus 📃',
-        description: 'The best place to start your documentation.',
-        author: 'NuxtLabs'
-      }
-    }
-  },
+
   tailwindcss: {
     viewer: false,
     cssPath: resolve('assets/css/main.css')
   },
+
+  pinceau: {
+    configFileName: 'tokens.config'
+  },
+
   content: {
     documentDriven: true,
     highlight: {
@@ -63,6 +58,7 @@ export default defineNuxtConfig({
       fields: ['icon']
     }
   },
+
   colorMode: {
     classSuffix: ''
   }
