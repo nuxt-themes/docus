@@ -36,7 +36,7 @@
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest",
     "eslint": "^8.23.1",
-    "nuxt": "3.0.0-rc.9",
+    "nuxt": "npm:nuxt3@latest",
     "typescript": "^4.8.3"
   }
 }
