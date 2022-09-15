@@ -1,42 +1,21 @@
 {
-  "name": "@nuxt-themes/docus",
-  "version": "3.0.0",
-  "type": "module",
-  "exports": "./theme/nuxt.config.ts",
-  "files": [
-    "theme"
+  "private": true,
+  "workspaces": [
+    "./theme",
+    "./template"
   ],
   "scripts": {
-    "dev": "nuxi prepare theme && nuxi dev template",
+    "dev": "nuxi prepare theme & nuxi dev template",
+    "play": "nuxi dev playground",
     "build": "nuxi build template",
     "generate": "nuxi generate template",
     "preview": "nuxi preview template",
-    "play": "nuxi dev playground",
     "lint": "eslint ."
   },
-  "dependencies": {
-    "@fontsource/inter": "^4.5.12",
-    "@iconify/vue": "^3.2.1",
-    "@nuxt/content": "npm:@nuxt/content-edge@latest",
-    "@nuxtjs/color-mode": "^3.1.4",
-    "@nuxtjs/design-tokens": "npm:@nuxtjs/design-tokens-edge@latest",
-    "@nuxtjs/tailwindcss": "^5.3.2",
-    "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.5.2",
-    "@tailwindcss/line-clamp": "^0.4.0",
-    "@tailwindcss/typography": "^0.5.4",
-    "@vueuse/core": "^9.1.0",
-    "@vueuse/nuxt": "^9.1.0",
-    "vue-plausible": "^1.3.2"
-  },
   "devDependencies": {
-    "@docsearch/css": "^3.2.1",
-    "@docsearch/js": "^3.2.1",
-    "@nuxtjs/algolia": "^1.1.1",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest",
-    "eslint": "^8.22.0",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "eslint": "^8.23.0",
     "nuxt": "^3.0.0-rc.9",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.3"
   }
 }
