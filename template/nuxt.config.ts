@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
-
 export default defineNuxtConfig({
   extends: ['@nuxt-themes/docus'],
   modules: ['@nuxtlabs/github-module'],
