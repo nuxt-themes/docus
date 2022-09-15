@@ -25,7 +25,7 @@ const isOpen = ref(false)
     <!-- Aside -->
     <aside
       v-if="hasAside"
-      class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:-mt-8 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
+      class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
     >
       <DocsAside />
     </aside>
