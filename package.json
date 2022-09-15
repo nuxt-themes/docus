@@ -5,12 +5,13 @@
     "./template"
   ],
   "scripts": {
-    "dev": "nuxi prepare theme & nuxi dev template",
+    "dev": "nuxi dev template",
     "play": "nuxi dev playground",
     "build": "nuxi build template",
     "generate": "nuxi generate template",
     "preview": "nuxi preview template",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "nuxi prepare theme"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
