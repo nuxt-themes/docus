@@ -1,5 +1,3 @@
-import { $dt } from '@nuxtjs/design-tokens'
-
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
@@ -183,7 +181,19 @@ export default {
     colors,
     extend: {
       colors: {
-        primary: $dt('colors.primary')
+        primary: {
+          DEFAULT: 'var(--colors-primary-500)',
+          50: 'var(--colors-primary-50)',
+          100: 'var(--colors-primary-100)',
+          200: 'var(--colors-primary-200)',
+          300: 'var(--colors-primary-300)',
+          400: 'var(--colors-primary-400)',
+          500: 'var(--colors-primary-500)',
+          600: 'var(--colors-primary-600)',
+          700: 'var(--colors-primary-700)',
+          800: 'var(--colors-primary-800)',
+          900: 'var(--colors-primary-900)'
+        }
       },
       spacing: {
         header: 'var(--header-height)',

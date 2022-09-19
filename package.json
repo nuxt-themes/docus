@@ -1,22 +1,44 @@
 {
   "private": true,
   "workspaces": [
+    "./playground",
     "./theme",
     "./template"
   ],
   "scripts": {
-    "dev": "nuxi dev template",
-    "play": "nuxi dev playground",
-    "build": "nuxi build template",
-    "generate": "nuxi generate template",
-    "preview": "nuxi preview template",
+    "dev": "nuxi dev playground",
+    "build": "nuxi build playground",
+    "generate": "nuxi generate playground",
+    "preview": "nuxi preview playground",
+
+    "dev:template": "nuxi dev template",
+    "build:template": "nuxi build template",
+    "generate:template": "nuxi generate template",
+    "preview:template": "nuxi preview template",
+
     "lint": "eslint .",
-    "postinstall": "nuxi prepare theme"
+    "prepare": "nuxi prepare theme"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
-    "eslint": "^8.23.0",
-    "nuxt": "^3.0.0-rc.10",
-    "typescript": "^4.8.3"
+    "eslint": "^8.23.1",
+    "nuxt": "3.0.0-rc.10",
+    "postcss": "^8.4.16",
+    "tailwind": "^4.0.0",
+    "typescript": "^4.8.3",
+    "vue": "^3.2.39"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "postcss",
+        "webpack",
+        "axios"
+      ],
+      "allowAny": [
+        "axios",
+        "tailwindcss"
+      ]
+    }
   }
 }

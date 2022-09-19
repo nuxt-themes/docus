@@ -29,11 +29,11 @@ defineProps({
           <ContentSlot :use="$slots.top" unwrap="p" />
         </p>
 
-        <h1 class="text-4xl font-extrabold tracking-tight text-center u-text-gray-900 sm:text-5xl lg:text-left lg:text-6xl">
+        <h1 v-if="$slots.title" class="text-4xl font-extrabold tracking-tight text-center u-text-gray-900 sm:text-5xl lg:text-left lg:text-6xl">
           <ContentSlot :use="$slots.title" unwrap="p" />
         </h1>
 
-        <p class="max-w-3xl mt-4 text-lg text-center u-text-gray-500 lg:text-left">
+        <p v-if="$slots.description" class="max-w-3xl mt-4 text-lg text-center u-text-gray-500 lg:text-left">
           <ContentSlot :use="$slots.description" unwrap="p" />
         </p>
 
