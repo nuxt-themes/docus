@@ -6,11 +6,10 @@
     "./template"
   ],
   "scripts": {
-    "dev": "nuxi dev template",
-    "play": "nuxi dev playground",
-    "build": "nuxi build template",
-    "generate": "nuxi generate template",
-    "preview": "nuxi preview template",
+    "dev": "nuxi dev playground",
+    "build": "nuxi build playground",
+    "generate": "nuxi generate playground",
+    "preview": "nuxi preview playground",
     "lint": "eslint .",
     "prepare": "nuxi prepare theme"
   },
