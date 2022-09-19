@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd theme/
+
 # Bump versions to edge
 npx jiti ./.github/scripts/bump-edge $PWD
 
