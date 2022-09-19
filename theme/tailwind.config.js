@@ -192,7 +192,7 @@ export default {
           600: 'var(--colors-primary-600)',
           700: 'var(--colors-primary-700)',
           800: 'var(--colors-primary-800)',
-          900: 'var(--colors-primary-900)',
+          900: 'var(--colors-primary-900)'
         }
       },
       spacing: {
