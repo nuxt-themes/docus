@@ -11,6 +11,6 @@ if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
 fi
 
 # Release package
-echo "Publishing $PWD"
+echo "Publishing $PWD/theme"
 npm publish --access public --tolerate-republish
 echo "Published!"

@@ -3,7 +3,7 @@
 cd theme/
 
 # Bump versions to edge
-npx jiti ./.github/scripts/bump-edge $PWD
+npx jiti ./.github/scripts/bump-edge $PWD/theme
 
 # Update token
 if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
@@ -14,6 +14,6 @@ if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
 fi
 
 # # Release package
-echo "Publishing $PWD"
+echo "Publishing $PWD/theme"
 npm publish --access public --tolerate-republish
-echo "Published $PWD"
+echo "Published $PWD/theme"
