@@ -33,11 +33,9 @@ importers:
   template:
     specifiers:
       '@nuxt-themes/docus': latest
-      '@nuxtlabs/github-module': ^1.4.10
       nuxt: ^3.0.0-rc.10
     devDependencies:
       '@nuxt-themes/docus': link:../theme
-      '@nuxtlabs/github-module': 1.4.10
       nuxt: 3.0.0-rc.10
 
   theme:
