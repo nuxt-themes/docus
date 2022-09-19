@@ -1,13 +1,12 @@
 {
-  "name": "@nuxt-themes/docus",
-  "version": "3.0.0",
-  "type": "module",
-  "exports": "./theme/nuxt.config.ts",
-  "files": [
-    "theme"
+  "private": true,
+  "workspaces": [
+    "./theme",
+    "./template"
   ],
   "scripts": {
-    "dev": "nuxi prepare theme && nuxi dev template",
+    "dev": "nuxi dev template",
+    "play": "nuxi dev playground",
     "build": "nuxi build template",
     "generate": "nuxi generate template",
     "preview": "nuxi preview template",

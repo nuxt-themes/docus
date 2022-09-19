@@ -54,7 +54,7 @@ export default defineNuxtConfig({
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
     },
     navigation: {
-      fields: ['icon']
+      fields: ['icon', 'titleTemplate']
     }
   },
 
