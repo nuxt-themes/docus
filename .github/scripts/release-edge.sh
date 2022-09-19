@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd theme/
-
 # Bump versions to edge
 npx jiti ./.github/scripts/bump-edge $PWD/theme
+
+cd theme/
 
 # Update token
 if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
