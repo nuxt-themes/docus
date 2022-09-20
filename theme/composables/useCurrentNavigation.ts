@@ -2,6 +2,7 @@ export const useCurrentNavigation = () => {
   const { navPageFromPath, navDirFromPath, navKeyFromPath } = useContentHelpers()
 
   const { navigation, page } = useContent()
+
   const docus = useDocus()
 
   const route = useRoute()

@@ -7,8 +7,8 @@
     "preview": "nuxi preview"
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "latest",
-    "@nuxtlabs/github-module": "^1.4.10",
-    "nuxt": "^3.0.0-rc.10"
+    "nuxt": "^3.0.0-rc.10",
+    "@nuxt/kit": "^3.0.0-rc.10",
+    "vue": "^3.2.39"
   }
 }

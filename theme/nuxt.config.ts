@@ -4,11 +4,8 @@ const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   modules: [
-    'pinceau/nuxt',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
     '@nuxt/content',
-    '@vueuse/nuxt'
+    '@nuxt-themes/tokens'
   ],
 
   css: [
@@ -21,31 +18,10 @@ export default defineNuxtConfig({
   components: [
     {
       prefix: '',
-      path: resolve('./components/prose'),
+      path: resolve('./components'),
       global: true
     },
-    {
-      prefix: '',
-      path: resolve('./components/github'),
-      global: true
-    },
-    {
-      prefix: '',
-      path: resolve('./components/icons'),
-      global: true
-    },
-    resolve('./components')
-
   ],
-
-  tailwindcss: {
-    viewer: false,
-    cssPath: resolve('assets/css/main.css')
-  },
-
-  pinceau: {
-    configFileName: 'tokens.config'
-  },
 
   content: {
     documentDriven: true,
@@ -56,9 +32,5 @@ export default defineNuxtConfig({
     navigation: {
       fields: ['icon', 'titleTemplate']
     }
-  },
-
-  colorMode: {
-    classSuffix: ''
   }
 })

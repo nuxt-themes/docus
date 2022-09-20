@@ -1,5 +1,5 @@
 <template>
-  <DocsPageContent class="min-h-page">
+  <Container>
     <slot />
-  </DocsPageContent>
+  </Container>
 </template>
