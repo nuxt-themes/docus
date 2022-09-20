@@ -14,7 +14,7 @@ export default defineAppConfig({
     github: true,
     aside: {
       level: 1,
-      filter: []
+      exclude: []
     },
     // TODO: replace to navbar
     header: {

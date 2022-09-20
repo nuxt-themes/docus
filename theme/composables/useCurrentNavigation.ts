@@ -18,7 +18,7 @@ export const useCurrentNavigation = () => {
     return docus.value.aside?.level || 0
   })
 
-  const filtered = computed(() => docus.value.aside?.filter || [])
+  const filtered = computed(() => docus.value.aside?.exclude || [])
 
   const tree = computed(() => {
     let nav = navigation.value || []
@@ -52,7 +52,7 @@ export const useCurrentNavigation = () => {
       if (!Array.isArray(nav)) { nav = [nav] }
     }
 
-    // Filtered using `aside.filter` in docus configuration
+    // Filtered using `aside.exclude` in docus configuration
     return nav.filter((item) => {
       if (filtered.value.includes(item._path)) { return false }
 

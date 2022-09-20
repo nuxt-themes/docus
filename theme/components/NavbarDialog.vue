@@ -3,7 +3,7 @@ import ColorModeSwitch from './ColorModeSwitch.vue'
 const { navigation } = useContent()
 const docus = useDocus()
 
-const filtered = computed(() => docus.value.aside?.filter || [])
+const filtered = computed(() => docus.value.header?.exclude || [])
 
 const links = computed(() => {
   return (navigation.value || []).filter((item) => {
