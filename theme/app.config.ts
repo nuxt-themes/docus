@@ -20,7 +20,8 @@ export default defineAppConfig({
     header: {
       title: '',
       logo: false, // TODO: handle logo as string for component
-      showLinksIcons: false // Toggle links icons in the header
+      showLinksIcons: false, // Toggle links icons in the header
+      exclude: []
     },
     footer: {
       credits: {
@@ -32,3 +33,13 @@ export default defineAppConfig({
     }
   }
 })
+
+// TODO: declare types when happy about them
+// declare module '@nuxt/schema' {
+//   interface AppConfigInput {
+//     docus?: {
+//       /** Project name */
+//       title?: string
+//     }
+//   }
+// }

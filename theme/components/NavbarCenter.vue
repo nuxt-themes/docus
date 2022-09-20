@@ -6,7 +6,7 @@ const docus = useDocus()
 
 const hasNavigation = computed(() => !!docus.value.aside?.level)
 
-const filtered = computed(() => docus.value.aside?.filter || [])
+const filtered = computed(() => docus.value.header?.exclude || [])
 
 const tree = computed(() => {
   return (navigation.value || []).filter((item) => {
