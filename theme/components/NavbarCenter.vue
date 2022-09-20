@@ -23,7 +23,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
     <NuxtLink
       v-for="link in tree"
       :key="link._path"
-      :to="navBottomLink(link)"
+      :to="link.redirect? link.redirect : navBottomLink(link)"
       class="link"
       :class="{ active: isActive(link) }"
     >

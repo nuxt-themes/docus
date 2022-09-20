@@ -23,7 +23,7 @@
 
       <NuxtLink
         v-else
-        :to="link._path"
+        :to="link.redirect? link.redirect : link._path"
         class="flex items-center justify-between py-1.5 text-sm"
         :exact="link.exact"
         :class="{
