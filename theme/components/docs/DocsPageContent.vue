@@ -18,6 +18,20 @@ const hasAside = computed(() => page.value?.aside !== false && navigation.value.
 const bottom = computed(() => fallbackValue('bottom', true))
 
 const isOpen = ref(false)
+
+const asideNav = ref(null)
+
+const scroll = useState('scroll', () => asideNav.value?.scrollTop || 0)
+
+onMounted(() => {
+  setTimeout(() => {
+    asideNav.value.scrollTop = scroll.value
+  }, 50)
+})
+
+onBeforeUnmount(() => {
+  scroll.value = asideNav.value.scrollTop
+})
 </script>
 
 <template>
@@ -25,6 +39,7 @@ const isOpen = ref(false)
     <!-- Aside -->
     <aside
       v-if="hasAside"
+      ref="asideNav"
       class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
     >
       <DocsAside />
