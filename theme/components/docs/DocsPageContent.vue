@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
+const route = useRoute()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
@@ -14,10 +15,40 @@ const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc
 
 // TODO: get navigation links from aside level
 const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
-
 const bottom = computed(() => fallbackValue('bottom', true))
-
 const isOpen = ref(false)
+
+/*
+** This below is a workaround until Nuxt has a proper support for layouts and Suspense
+*/
+const asideNav = ref(null)
+
+const getParentPath = () => route.path.split('/').slice(0, 2).join('/')
+const asideScroll = useState('asideScroll', () => {
+  return {
+    parentPath: getParentPath(),
+    scrollTop: asideNav.value?.scrollTop || 0
+  }
+})
+
+function watchScrollHeight () {
+  if (asideNav.value.scrollHeight === 0) {
+    setTimeout(watchScrollHeight, 0)
+  }
+  asideNav.value.scrollTop = asideScroll.value.scrollTop
+}
+onMounted(() => {
+  if (asideScroll.value.parentPath !== getParentPath()) {
+    asideScroll.value.parentPath = getParentPath()
+    asideScroll.value.scrollTop = 0
+  } else {
+    watchScrollHeight()
+  }
+})
+
+onBeforeUnmount(() => {
+  asideScroll.value.scrollTop = asideNav.value.scrollTop
+})
 </script>
 
 <template>
@@ -25,6 +56,7 @@ const isOpen = ref(false)
     <!-- Aside -->
     <aside
       v-if="hasAside"
+      ref="asideNav"
       class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
     >
       <DocsAside />
