@@ -15,11 +15,12 @@ const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc
 
 // TODO: get navigation links from aside level
 const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
-
 const bottom = computed(() => fallbackValue('bottom', true))
-
 const isOpen = ref(false)
 
+/*
+** This below is a workaround until Nuxt has a proper support for layouts and Suspense
+*/
 const asideNav = ref(null)
 
 const getParentPath = () => route.path.split('/').slice(0, 2).join('/')
