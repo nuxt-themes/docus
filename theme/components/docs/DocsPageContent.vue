@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
+const route = useRoute()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
@@ -21,16 +22,31 @@ const isOpen = ref(false)
 
 const asideNav = ref(null)
 
-const scroll = useState('scroll', () => asideNav.value?.scrollTop || 0)
+const getParentPath = () => route.path.split('/').slice(0, 2).join('/')
+const asideScroll = useState('asideScroll', () => {
+  return {
+    parentPath: getParentPath(),
+    scrollTop: asideNav.value?.scrollTop || 0
+  }
+})
 
+function watchScrollHeight () {
+  if (asideNav.value.scrollHeight === 0) {
+    setTimeout(watchScrollHeight, 0)
+  }
+  asideNav.value.scrollTop = asideScroll.value.scrollTop
+}
 onMounted(() => {
-  setTimeout(() => {
-    asideNav.value.scrollTop = scroll.value
-  }, 50)
+  if (asideScroll.value.parentPath !== getParentPath()) {
+    asideScroll.value.parentPath = getParentPath()
+    asideScroll.value.scrollTop = 0
+  } else {
+    watchScrollHeight()
+  }
 })
 
 onBeforeUnmount(() => {
-  scroll.value = asideNav.value.scrollTop
+  asideScroll.value.scrollTop = asideNav.value.scrollTop
 })
 </script>
 
