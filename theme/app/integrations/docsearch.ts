@@ -40,8 +40,8 @@ export default defineNuxtPlugin(() => {
     const getRelativePath = (absoluteUrl: string) => {
       const { pathname, hash } = new URL(absoluteUrl)
       const url = window.location.origin
-      const relativeUrl = pathname.replace(url, '/') + hash
-      return withoutTrailingSlash(relativeUrl)
+      const relativeUrl = pathname.replace(url, '/')
+      return withoutTrailingSlash(relativeUrl) + hash
     }
 
     /**
