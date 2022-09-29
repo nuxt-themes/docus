@@ -19,23 +19,31 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation" class="flex items-center justify-center flex-1 max-w-full space-x-2 overflow-hidden font-medium truncate">
-    <NuxtLink
-      v-for="link in tree"
-      :key="link._path"
-      :to="link.redirect? link.redirect : navBottomLink(link)"
-      class="link"
-      :class="{ active: isActive(link) }"
-    >
-      <Icon v-if="link.icon && docus.header.showLinksIcons" :name="link.icon" class="w-4 h-4" />
-      {{ link.title }}
-    </NuxtLink>
+  <nav v-if="hasNavigation">
+    <ul class="flex items-center justify-center flex-1 max-w-full space-x-2 overflow-hidden font-medium truncate">
+      <li
+        v-for="link in tree"
+        :key="link._path"
+      >
+        <NuxtLink
+          class="link"
+          :to="link.redirect? link.redirect : navBottomLink(link)"
+          :class="{ active: isActive(link) }"
+        >
+          <Icon v-if="link.icon && docus.header.showLinksIcons" :name="link.icon" class="w-4 h-4" />
+          {{ link.title }}
+        </NuxtLink>
+      </li>
+    </ul>
   </nav>
 </template>
 
 <style scoped lang="postcss">
+li {
+  @apply inline-flex items-center gap-1;
+}
 .link {
-  @apply text-sm px-4 py-2 rounded transition inline-flex items-center gap-1;
+  @apply text-sm px-4 py-2 rounded transition;
   &:hover,
   &:focus {
     @apply bg-gray-100 dark:bg-gray-900 outline-none;
