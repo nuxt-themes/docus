@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
     '@nuxt/content',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    resolve('./app/module')
   ],
 
   css: [
