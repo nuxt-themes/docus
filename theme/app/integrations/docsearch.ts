@@ -1,12 +1,12 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { DocSearchOptions } from '@nuxtjs/algolia/dist/module.d'
 
-export default defineNuxtPlugin(async () => {
+export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
 
   const docSearchElement = ref()
 
-  const hasDocSearch = computed(() => config?.algolia?.docSearch)
+  const hasDocSearch = computed(() => config?.public?.algolia?.docSearch)
 
   // Setup Algolia DocSearch integration
   if (hasDocSearch.value) {
@@ -23,7 +23,7 @@ export default defineNuxtPlugin(async () => {
       const { algolia } = useRuntimeConfig()
 
       if (algolia && algolia.docSearch) {
-        return algolia.docSearch
+        return algolia
       }
 
       return {}
@@ -70,7 +70,7 @@ export default defineNuxtPlugin(async () => {
       const langPrefix = `${userOptions.langAttribute || 'language'}:${lang}`
 
       // Get facet filters
-      const userFacetFilters = userOptions.facetFilters || []
+      const userFacetFilters = userOptions.docSearch.facetFilters || []
 
       // Create DocSearch instance
       docsearch({
@@ -80,7 +80,7 @@ export default defineNuxtPlugin(async () => {
         container: el,
         appId: userOptions.applicationId,
         apiKey: userOptions.apiKey,
-        indexName: userOptions.indexName,
+        indexName: userOptions.docSearch.indexName,
         searchParameters: {
           ...(!lang
             ? {

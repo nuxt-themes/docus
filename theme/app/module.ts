@@ -11,11 +11,11 @@ export default defineNuxtModule({
     version: '3.0.0',
     compatibility: {
       nuxt: '^3.0.0-rc.4',
-      bridge: false,
+      bridge: false
     },
-    configKey: 'docus',
+    configKey: 'docus'
   },
-  setup(_, nuxt) {
+  setup (_, nuxt) {
     // Pre-render 404 page
     /*
     nuxt.hook('nitro:config', (nitroConfig) => {
@@ -38,15 +38,15 @@ export default defineNuxtModule({
     // @ts-expect-error - GitHub module might not be installed
     if (nuxt.options?.github) {
       addPlugin({
-        src: resolveThemeDir('integrations/github.ts'),
+        src: resolveThemeDir('integrations/github.ts')
       })
     }
 
     // @ts-expect-error - Algolia module might not be installed
-    if (nuxt.options?.algolia?.docSearch) {
+    if (nuxt.options?.runtimeConfig?.public?.algolia?.docSearch) {
       addPlugin({
-        src: resolveThemeDir('integrations/docsearch.ts'),
+        src: resolveThemeDir('integrations/docsearch.ts')
       })
     }
-  },
+  }
 })
