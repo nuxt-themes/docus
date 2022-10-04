@@ -32,6 +32,7 @@ const asideScroll = useState('asideScroll', () => {
 })
 
 function watchScrollHeight () {
+  if (!asideNav.value) { return }
   if (asideNav.value.scrollHeight === 0) {
     setTimeout(watchScrollHeight, 0)
   }
