@@ -48,6 +48,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  if (!asideNav.value) { return }
   asideScroll.value.scrollTop = asideNav.value.scrollTop
 })
 </script>
