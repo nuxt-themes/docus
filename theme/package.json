@@ -19,6 +19,7 @@
     "@vueuse/core": "^9.2.0",
     "@vueuse/nuxt": "^9.2.0",
     "pinceau": "latest",
+    "socket.io-client": "^4.5.2",
     "vue-plausible": "^1.3.2"
   },
   "devDependencies": {
