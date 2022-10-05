@@ -8,7 +8,7 @@
     "@docsearch/js": "^3.2.1",
     "@fontsource/inter": "^4.5.12",
     "@iconify/vue": "^4.0.0",
-    "@nuxt/content": "2.1.1",
+    "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "@nuxtjs/algolia": "^1.1.1",
     "@nuxtjs/color-mode": "^3.1.5",
     "@nuxtjs/tailwindcss": "^5.3.3",
@@ -29,7 +29,7 @@
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest",
     "eslint": "^8.23.1",
-    "nuxt": "3.0.0-rc.10",
+    "nuxt": "3.0.0-rc.11",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3",
     "vue": "^3.2.39"
