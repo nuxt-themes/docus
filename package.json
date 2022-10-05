@@ -27,18 +27,5 @@
     "tailwind": "^4.0.0",
     "typescript": "^4.8.3",
     "vue": "^3.2.39"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "postcss",
-        "webpack",
-        "axios"
-      ],
-      "allowAny": [
-        "axios",
-        "tailwindcss"
-      ]
-    }
   }
 }
