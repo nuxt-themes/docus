@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
     </aside>
 
     <!-- Page Body -->
-    <div
+    <article
       class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0 page-body"
       :class="{
         'lg:col-span-12': !hasAside && !hasToc,
@@ -83,7 +83,7 @@ onBeforeUnmount(() => {
         <ProseHr />
         <DocsPrevNext />
       </template>
-    </div>
+    </article>
     <!-- TOC -->
     <div
       v-if="hasToc"
