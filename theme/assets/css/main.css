@@ -213,6 +213,9 @@
   --docsearch-logo-color: rgb(255, 255, 255);
   --docsearch-muted-color: rgb(127, 132, 151);
 }
+.DocSearch-Input:focus {
+  box-shadow: none !important;
+}
 
 body {
   @apply overflow-y-scroll antialiased text-gray-700 bg-white dark:text-gray-200 dark:bg-black;
