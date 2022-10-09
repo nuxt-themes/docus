@@ -1,11 +1,39 @@
-<h1>
-<img src="https://user-images.githubusercontent.com/904724/105075054-872fac80-5a89-11eb-8aab-46dd254ad986.png">
-</h1>
+[![Docus](https://user-images.githubusercontent.com/904724/194751054-9a267ea6-be9d-420b-9935-c76bf30baaf3.png)](https://docus.dev)
 
-<p>
-  <a href="https://www.npmjs.com/package/docus"><img src="https://badgen.net/npm/dm/docus" alt="Downloads"></a>
-  <a href="https://www.npmjs.com/package/docus"><img src="https://badgen.net/npm/v/docus" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/docus"><img src="https://badgen.net/npm/license/docus" alt="License"></a>
-</p>
+## Docus
 
-Docus is the fastest way to create document-driven websites.
+[![npm version][npm-version-src]][npm-version-href]
+[![License][license-src]][license-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+
+> Docus is the fastest way to create document-driven websites.
+
+https://docus.dev
+
+## Features ✨
+
+- Write your document with Markdown and built-in Vue components
+- Powered by Nuxt 3
+- Emoji Support
+- Custom SVG support (via Vue component)
+
+## Contributing 🙏
+
+1. Clone this repository
+2. Install dependencies using `yarn install` or `npm install`
+3. Run `npm run prepare` to generate type stubs.
+4. Use `npm run dev` to start [playground](./playground) in development mode.
+
+## License 📎
+
+[MIT License](./LICENSE)
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/@nuxt-themes/docus-edge/latest.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/@nuxt-themes/docus-edge
+
+[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt-themes/docus-edge.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/@nuxt-themes/docus-edge
+
+[license-src]: https://img.shields.io/github/license/nuxt-themes/docus.svg?style=flat&colorA=002438&colorB=28CF8D
+[license-href]: https://github.com/nuxt-themes/docus/blob/main/LICENSE
