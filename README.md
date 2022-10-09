@@ -8,7 +8,7 @@
 
 > Docus is the fastest way to create document-driven websites.
 
-https://docus.dev
+https://docus.dev (password: `ilovenuxt`)
 
 ## Features ✨
 
