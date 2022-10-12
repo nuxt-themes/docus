@@ -14,7 +14,7 @@ const hasBody = computed(() => !page.value || page.value?.body?.children?.length
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
 // TODO: get navigation links from aside level
-const hasAside = computed(() => page.value?.aside !== false && navigation.value.length > 1)
+const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 1)
 const bottom = computed(() => fallbackValue('bottom', true))
 const isOpen = ref(false)
 

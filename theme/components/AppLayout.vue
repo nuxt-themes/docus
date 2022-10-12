@@ -6,7 +6,7 @@ const { navKeyFromPath } = useContentHelpers()
 const titleTemplate = computed(() => {
   const appTitleTemplate = docus.value.head?.titleTemplate || `%s · ${docus.value.title}`
   if (page.value) {
-    return page.value.head?.titleTemplate || navKeyFromPath(page.value._path, 'titleTemplate', navigation.value) || appTitleTemplate
+    return page.value.head?.titleTemplate || navKeyFromPath(page.value._path, 'titleTemplate', navigation.value || []) || appTitleTemplate
   }
   return appTitleTemplate
 })
