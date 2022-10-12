@@ -2,7 +2,7 @@
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
 
-const hasNavbarDialog = computed(() => navigation.value.length > 1)
+const hasNavbarDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
