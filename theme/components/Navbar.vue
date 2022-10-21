@@ -35,9 +35,13 @@ css({
     top: 0,
     zIndex: 10,
     width: '100%',
-    borderBottom: '1px red solid'
-    backgroundColor: 'rgba(255, 255, 255, 0.80)',
-    height: '{header.height}'
+    borderBottom: '1px solid {colors.gray.100}',
+    backgroundColor: 'rgba({colors.white}, 0.8)',
+    height: '{header.height}',
+    '@dark': {
+      borderBottom: '1px solid {colors.gray.900}',
+      backgroundColor: 'rgba({colors.black}, 0.8)',
+    }
   }
 })
 </style>
