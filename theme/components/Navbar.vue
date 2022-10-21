@@ -6,7 +6,7 @@ const hasNavbarDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
-  <header class="sticky top-0 z-10 w-full border-b h-header u-border-gray-100 bg-white/80 dark:bg-black/80">
+  <header>
     <AppContainer padded class="grid h-full grid-cols-12 lg:gap-8">
       <div class="flex items-center flex-none col-span-2">
         <NavbarDialog v-if="hasNavbarDialog" />
@@ -27,8 +27,17 @@ const hasNavbarDialog = computed(() => navigation.value?.length > 1)
   </header>
 </template>
 
-<style scoped>
-header {
-  backdrop-filter: saturate(180%) blur(20px);
-}
+<style scoped lang="ts">
+css({
+  header: {
+    backdropFilter: 'saturate(180%) blur(20px)',
+    position: 'sticky',
+    top: 0,
+    zIndex: 10,
+    width: '100%',
+    borderBottom: '1px red solid'
+    backgroundColor: 'rgba(255, 255, 255, 0.80)',
+    height: '{header.height}'
+  }
+})
 </style>
