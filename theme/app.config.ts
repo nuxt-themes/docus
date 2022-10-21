@@ -16,7 +16,6 @@ export default defineAppConfig({
       level: 1,
       exclude: []
     },
-    // TODO: replace to navbar
     header: {
       title: '',
       logo: false, // TODO: handle logo as string for component

@@ -46,14 +46,10 @@ export default defineTheme({
     }
   },
   header: {
-    height: {
-      value: '64px'
-    }
+    height: { value: '64px' }
   },
   footer: {
-    height: {
-      value: '50px'
-    }
+    height: { value: '50px' }
   },
   screens: {
     lg: {

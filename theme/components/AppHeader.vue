@@ -1,21 +1,22 @@
 <script setup lang="ts">
+import HeaderNavigation from './HeaderNavigation.vue'
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
 
-const hasNavbarDialog = computed(() => navigation.value?.length > 1)
+const hasHeaderDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
   <header>
     <AppContainer padded class="grid h-full grid-cols-12 lg:gap-8">
       <div class="flex items-center flex-none col-span-2">
-        <NavbarDialog v-if="hasNavbarDialog" />
-        <NavbarLogo :class="hasNavbarDialog ? 'hidden lg:block' : 'block'" />
+        <HeaderDialog v-if="hasHeaderDialog" />
+        <HeaderLogo :class="hasHeaderDialog ? 'hidden lg:block' : 'block'" />
       </div>
 
       <div class="flex items-center justify-center flex-1 col-span-8">
-        <NavbarLogo v-if="hasNavbarDialog" class="lg:hidden" />
-        <NavbarCenter class="hidden lg:flex" />
+        <HeaderLogo v-if="hasHeaderDialog" class="lg:hidden" />
+        <HeaderNavigation class="hidden lg:flex" />
       </div>
 
       <div class="flex items-center justify-end flex-none col-span-2 lg:gap-4 lg:pl-4">
