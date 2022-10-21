@@ -1,3 +1,4 @@
 import { defineTheme } from 'pinceau'
 
-export default defineTheme({})
+export default defineTheme({
+})
