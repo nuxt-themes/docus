@@ -1,34 +1,50 @@
 <script setup lang="ts">
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
-
-const hasNavbarDialog = computed(() => navigation.value?.length > 1)
+const hasDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
-  <header>
-    <AppContainer padded class="grid h-full grid-cols-12 lg:gap-8">
-      <div class="flex items-center flex-none col-span-2">
-        <NavbarDialog v-if="hasNavbarDialog" />
-        <NavbarLogo :class="hasNavbarDialog ? 'hidden lg:block' : 'block'" />
-      </div>
+  <header :class="{ 'has-dialog': hasDialog }">
+    <AppContainer>
+      <section class="left">
+        <NavbarDialog v-if="hasDialog" />
+        <NavbarLogo />
+      </section>
 
-      <div class="flex items-center justify-center flex-1 col-span-8">
-        <NavbarLogo v-if="hasNavbarDialog" class="lg:hidden" />
+      <section class="center">
+        <NavbarLogo v-if="hasDialog" />
         <NavbarCenter class="hidden lg:flex" />
-      </div>
+      </section>
 
-      <div class="flex items-center justify-end flex-none col-span-2 lg:gap-4 lg:pl-4">
+      <section class="right">
         <AppSearch v-if="hasDocSearch" />
         <ColorModeSwitch size="w-5 h-5" :class="hasDocSearch ? 'hidden lg:block' : ''" />
         <SocialIcons size="h-5 w-5 hidden lg:block" />
-      </div>
+      </section>
     </AppContainer>
   </header>
 </template>
 
 <style scoped lang="ts">
 css({
+  '.navbar-logo': {
+    '.left &': {
+      '.has-dialog &': {
+        display: 'none',
+        '@mq.lg': {
+          display: 'block'
+        }
+      },
+    },
+    '.center &': {
+      display: 'block',
+      '@mq.lg': {
+        display: 'none'
+      }
+    }
+  },
+
   header: {
     backdropFilter: 'saturate(180%) blur(20px)',
     position: 'sticky',
@@ -37,10 +53,42 @@ css({
     width: '100%',
     borderBottom: '1px solid {colors.gray.100}',
     backgroundColor: 'rgba({colors.white}, 0.8)',
-    height: '{header.height}',
+    height: '{docus.header.height}',
+
     '@dark': {
       borderBottom: '1px solid {colors.gray.900}',
       backgroundColor: 'rgba({colors.black}, 0.8)',
+    },
+
+    '.container': {
+      display: 'grid',
+      height: '100%',
+      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+      gap: '2rem'
+    },
+
+    section: {
+      display: 'flex',
+      alignItems: 'center',
+      flex: 'none',
+      '&.left': {
+        gridColumn: 'span 2 / span 2'
+      },
+      '&.center': {
+        gridColumn: 'span 8 / span 8',
+        justifyContent: 'center',
+        flex: '1'
+      },
+      '&.right': {
+        gridColumn: 'span 2 / span 2',
+        justifyContent: 'end',
+        flex: 'none',
+
+        '@mq.lg': {
+          gap: '1rem',
+          paddingLeft: '1rem'
+        }
+      }
     }
   }
 })

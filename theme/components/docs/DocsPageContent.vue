@@ -90,7 +90,7 @@ onBeforeUnmount(() => {
       :class="{
         'flex items-center lg:block': !isOpen,
       }"
-      class="sticky flex items-center px-4 -mx-4 -mt-8 toc top-header lg:max-h-page sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none overflow-y-auto overflow-x-hidden"
+      class="toc sticky flex items-center px-4 -mx-4 -mt-8 top-header lg:max-h-page sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none overflow-y-auto overflow-x-hidden"
     >
       <div class="w-full cursor-pointer sm:cursor-auto" @click="isOpen = !isOpen">
         <button class="flex items-center gap-1 py-3 lg:hidden">

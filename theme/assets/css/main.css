@@ -217,6 +217,13 @@
   box-shadow: none !important;
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
 body {
   @apply overflow-y-scroll antialiased text-gray-700 bg-white dark:text-gray-200 dark:bg-black;
   font-family: var(--fonts-primary);

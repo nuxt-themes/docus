@@ -1,6 +1,6 @@
 export default defineAppConfig({
   docus: {
-    title: 'Docux',
+    title: 'Docus',
     socials: {
       twitter: '@docus_',
       github: 'nuxt-themes/docus'

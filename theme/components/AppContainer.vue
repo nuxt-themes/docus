@@ -1,31 +1,46 @@
 <script setup lang="ts">
-const props = defineProps({
-  padded: {
-    type: Boolean,
-    default: true
-  },
-  fluid: {
-    type: Boolean,
-    default: false
-  },
-  constrainedClass: {
-    type: String,
-    default: 'max-w-7xl'
-  }
-})
-
-const containerClass = computed(() => {
-  return [
-    'mx-auto w-full',
-    props.padded && 'px-4 sm:px-6 lg:px-8',
-    !props.fluid && props.constrainedClass,
-    props.fluid && 'overflow-x-hidden'
-  ].filter(Boolean).join(' ')
+defineProps({
+  ...variants
 })
 </script>
 
 <template>
-  <div :class="containerClass">
+  <div class="container">
     <slot />
   </div>
 </template>
+
+<style lang="ts" scoped>
+css({
+  '.container': {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '100%'
+  },
+  variants: {
+    padded: {
+      true: {
+        padding: '1rem',
+        '@mq.sm': {
+          paddingLeft: '1.5rem',
+          paddingRight: '1.5rem',
+        }
+      },
+      options: {
+        default: true
+      }
+    },
+    fluid: {
+      true: {
+        overflowX: 'hidden',
+      },
+      false: {
+        maxWidth: '80rem'
+      },
+      options: {
+        default: false
+      }
+    }
+  }
+})
+</style>

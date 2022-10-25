@@ -196,15 +196,15 @@ export default {
         }
       },
       spacing: {
-        header: 'var(--header-height)',
-        page: 'var(--page-height)'
+        header: 'var(--docus-header-height)',
+        page: 'var(--docus-page-height)'
       },
       maxWidth: {
-        '8xl': 'var(--page-max-width)'
+        '8xl': 'var(--docus-page-max-width)'
       },
       minHeight: {
-        page: 'var(--page-height)',
-        footer: 'var(--footer-height)'
+        page: 'var(--docus-page-height)',
+        footer: 'var(--docus-footer-height)'
       }
     }
   }
