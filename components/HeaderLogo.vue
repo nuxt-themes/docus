@@ -23,7 +23,7 @@ css({
     alignItems: 'center',
     flex: 'none',
 
-    '& > span': {
+    span: {
       fontSize: '{fontSizes.xl}',
       fontWeight: '{fontWeights.bold}',
       color: '{colors.gray.900}',

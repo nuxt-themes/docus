@@ -11,7 +11,7 @@ export default defineAppConfig({
       // youtube: '',
       // medium: ''
     },
-    github: true,
+    github: false,
     aside: {
       level: 1,
       exclude: []
@@ -32,13 +32,3 @@ export default defineAppConfig({
     }
   }
 })
-
-// TODO: declare types when happy about them
-// declare module '@nuxt/schema' {
-//   interface AppConfigInput {
-//     docus?: {
-//       /** Project name */
-//       title?: string
-//     }
-//   }
-// }

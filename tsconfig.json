@@ -1,8 +1,3 @@
 {
-  "extends": "./theme/.nuxt/tsconfig.json",
-  "include": [
-    "theme/**/*",
-    "playground/**/*",
-    "template/**/*"
-  ]
+  "extends": "./.nuxt/tsconfig.json"
 }

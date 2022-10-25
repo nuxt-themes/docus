@@ -20,6 +20,18 @@ export default defineTheme({
   colors: {
     black: '#0C0D0C',
     white: '#fff',
+    primary: {
+      50: { value: '#d9f1ff' },
+      100: { value: '#b3e4ff' },
+      200: { value: '#8dd6ff' },
+      300: { value: '#66c8ff' },
+      400: { value: '#40bbff' },
+      500: { value: '#1aadff' },
+      600: { value: '#0090e1' },
+      700: { value: '#006ca9' },
+      800: { value: '#004870' },
+      900: { value: '#002438' }
+    },
     slate: {
       50: '#f8fafc',
       100: '#f1f5f9',
@@ -500,23 +512,23 @@ export default defineTheme({
     '9xl': '8rem'
   },
   fontWeights: {
-    thin: 100,
-    extralight: 200,
-    light: 300,
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-    extrabold: 800,
-    black: 900
+    thin: '100',
+    extralight: '200',
+    light: '300',
+    normal: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+    extrabold: '800',
+    black: '900'
   },
   leads: {
-    none: 1,
-    tight: 1.25,
-    snug: 1.375,
-    normal: 1.5,
-    relaxed: 1.625,
-    loose: 2
+    none: '1',
+    tight: '1.25',
+    snug: '1.375',
+    normal: '1.5',
+    relaxed: '1.625',
+    loose: '2'
   },
   letterSpacings: {
     tighter: '-0.05em',
@@ -525,11 +537,5 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
-  },
-  transitions: {
-    default: '{transitions.in-out}',
-    in: [0.4, 0, 1, 1],
-    out: [0.4, 0, 0.2, 1],
-    'in-out': [0.4, 0, 0.2, 1]
   }
 })

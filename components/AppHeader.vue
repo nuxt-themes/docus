@@ -8,13 +8,13 @@ const hasDialog = computed(() => navigation.value?.length > 1)
   <header :class="{ 'has-dialog': hasDialog }">
     <AppContainer>
       <section class="left">
-        <NavbarDialog v-if="hasDialog" />
-        <NavbarLogo />
+        <HeaderDialog v-if="hasDialog" />
+        <HeaderLogo />
       </section>
 
       <section class="center">
-        <NavbarLogo v-if="hasDialog" />
-        <NavbarCenter class="hidden lg:flex" />
+        <HeaderLogo v-if="hasDialog" />
+        <HeaderNavigation class="hidden lg:flex" />
       </section>
 
       <section class="right">
