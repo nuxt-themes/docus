@@ -35,7 +35,7 @@ useContentHead(docus.value as any)
 <template>
   <div>
     <AppLoadingBar />
-    <Navbar v-if="docus.header" />
+    <AppHeader v-if="docus.header" />
     <slot />
     <AppFooter v-if="docus.footer" />
   </div>
