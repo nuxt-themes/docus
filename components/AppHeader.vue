@@ -5,7 +5,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
-  <header :class="{ 'has-dialog': hasDialog }">
+  <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
     <AppContainer>
       <section class="left">
         <HeaderDialog v-if="hasDialog" />
@@ -19,8 +19,8 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 
       <section class="right">
         <AppSearch v-if="hasDocSearch" />
-        <ColorModeSwitch size="w-5 h-5" :class="hasDocSearch ? 'hidden lg:block' : ''" />
-        <SocialIcons size="h-5 w-5 hidden lg:block" />
+        <ColorModeSwitch size="5" />
+        <SocialIcons />
       </section>
     </AppContainer>
   </header>
@@ -43,6 +43,10 @@ css({
         display: 'none'
       }
     }
+  },
+
+  '.has-doc-search': {
+
   },
 
   header: {
@@ -83,11 +87,7 @@ css({
         gridColumn: 'span 2 / span 2',
         justifyContent: 'end',
         flex: 'none',
-
-        '@mq.lg': {
-          gap: '1rem',
-          paddingLeft: '1rem'
-        }
+        gap: '{space.4}',
       }
     }
   }

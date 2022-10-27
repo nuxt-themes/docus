@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import { computedStyle } from 'pinceau/runtime'
+
 defineProps({
-  size: {
-    type: String,
-    default: 'w-5 h-5'
-  }
+  size: computedStyle('gap', '5', false)
 })
 
 const colorMode = useColorMode()
@@ -17,11 +16,31 @@ const onClick = () => {
 </script>
 
 <template>
-  <button aria-label="Color Mode" class="inline-block u-text-gray-500 hover:u-text-gray-700" @click="onClick">
+  <button aria-label="Color Mode" @click="onClick">
     <ColorScheme placeholder="...">
-      <Icon v-if="colorMode.preference === 'dark'" :class="size" name="uil:moon" />
-      <Icon v-else-if="colorMode.preference === 'light'" :class="size" name="uil:sun" />
-      <Icon v-else :class="size" name="uil:desktop" />
+      <Icon :size="size" v-if="colorMode.preference === 'dark'" name="uil:moon" />
+      <Icon :size="size" v-else-if="colorMode.preference === 'light'" name="uil:sun" />
+      <Icon :size="size" v-else name="uil:desktop" />
     </ColorScheme>
   </button>
 </template>
+
+<style lang="ts" scoped>
+css({
+  button: {
+    display: 'inline-block',
+
+    color: '{colors.gray.500}',
+    '@dark': {
+      color: '{colors.gray.400}'
+    },
+
+    '&:hover': {
+      color: '{colors.gray.700}',
+      '@dark': {
+        color: '{colors.gray.200}',
+      }
+    },
+  }
+})
+</style>

@@ -1,18 +1,15 @@
 <script setup lang="ts">
+import { computedStyle } from 'pinceau/runtime'
+
 defineProps({
-  size: {
-    type: String,
-    default: 'w-5 h-5'
-  },
-  spacing: {
-    type: String,
-    default: 'p-0'
-  }
+  size: computedStyle('gap', '5', false)
 })
 
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
+
 const docus = useDocus()
-const icons = computed<any>(() => {
+
+const icons = computed(() => {
   return Object.entries(docus.value.socials || {})
     .map(([key, value]) => {
       if (typeof value === 'object') {
@@ -32,7 +29,6 @@ const icons = computed<any>(() => {
 </script>
 
 <template>
-  <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <NuxtLink
     v-for="icon in icons"
     :key="icon.label"
@@ -41,9 +37,26 @@ const icons = computed<any>(() => {
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
-    class="u-text-gray-500 hover:u-text-gray-700"
-    :class="[spacing]"
   >
-    <Icon v-if="icon.icon" :name="icon.icon" :class="size" />
+    <Icon v-if="icon.icon" :name="icon.icon" :size="size" />
   </NuxtLink>
 </template>
+
+<style lang="ts" scoped>
+css({
+  a: {
+    color: '{colors.gray.500}',
+
+    '@dark': {
+      color: '{colors.gray.400}'
+    },
+
+    '&:hover': {
+      color: '{colors.gray.700}',
+      '@dark': {
+        color: '{colors.gray.200}',
+      }
+    },
+  }
+})
+</style>

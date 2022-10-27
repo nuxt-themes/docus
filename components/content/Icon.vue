@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { computedStyle } from 'pinceau/runtime'
 import type { IconifyIcon } from '@iconify/vue'
 import { computed, ref, watch } from 'vue'
 import { Icon as Iconify } from '@iconify/vue/dist/offline'
 import { loadIcon } from '@iconify/vue'
 
 const props = defineProps({
+  size: computedStyle('gap', '5', false),
   name: {
     type: String,
     required: true
@@ -38,3 +40,12 @@ watch(() => props.name, loadIconComponent)
   <Component :is="component" v-else-if="component" />
   <span v-else>{{ name }}</span>
 </template>
+
+<style scoped lang="ts">
+css({
+  svg: {
+    width: (props, utils) => utils.isToken(props.size) ? props.size : `{space.${props.size}}`,
+    height: (props, utils) => utils.isToken(props.size) ? props.size : `{space.${props.size}}`,
+  }
+})
+</style>

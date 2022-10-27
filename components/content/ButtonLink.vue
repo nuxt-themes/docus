@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { computedStyle } from 'pinceau/runtime'
+
 defineProps({
+  size: computedStyle('gap', '5', false),
+  color: computedStyle('color', 'primary', false),
   href: {
     type: String,
     default: ''
-  },
-  size: {
-    type: String,
-    default: 'medium'
   },
   bold: {
     type: Boolean,
@@ -30,14 +30,28 @@ defineProps({
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
-    <Icon v-if="icon" :name="icon" class="w-4 h-4 mr-2" />
+    <Icon v-if="icon" :size="size" :name="icon" class="w-4 h-4 mr-2" />
     <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
 </template>
 
+<style lang="ts" scoped>
+css({
+  '.button-link': {
+    backgroundColor: (props, utils) => utils.scale('colors', props.color, '500'),
+    '&:hover': {
+      backgroundColor: (props, utils) => utils.scale('colors', props.color, '600')
+    },
+    '&:focus': {
+      ring: (props, utils) => utils.scale('colors', props.color, '600')
+    }
+  }
+})
+</style>
+
 <style lang="postcss" scoped>
 a.button-link {
-  @apply bg-primary-500 hover:bg-primary-600 focus:ring-primary-600 mb-2 inline-flex flex-none items-center rounded-lg border border-transparent px-3 py-1.5 text-sm leading-4 text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
+  @apply focus:ring-primary-600 mb-2 inline-flex flex-none items-center rounded-lg border border-transparent px-3 py-1.5 text-sm leading-4 text-white transition-colors duration-200;
 
   &.medium {
     @apply px-4 py-2 text-base leading-4;

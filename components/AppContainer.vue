@@ -1,13 +1,22 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
+
+type HTMLElementsTags = keyof HTMLElementTagNameMap
+
 defineProps({
+  as: {
+    type: String as PropType<HTMLElementsTags>,
+    required: false,
+    default: 'div'
+  },
   ...variants
 })
 </script>
 
 <template>
-  <div class="container">
+  <component :is="as" class="container">
     <slot />
-  </div>
+  </component>
 </template>
 
 <style lang="ts" scoped>
