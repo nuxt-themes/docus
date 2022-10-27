@@ -4,11 +4,11 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
-    "dev": "nuxi dev",
-    "prepare": "nuxi prepare",
-    "build": "nuxi build",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
+    "prepare": "nuxi prepare && nuxi prepare .docs",
+    "dev": "nuxi dev .docs/",
+    "build": "nuxi build .docs/",
+    "generate": "nuxi generate .docs/",
+    "preview": "nuxi preview .docs/",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "@docsearch/js": "^3.3.0",
     "@fontsource/inter": "^4.5.14",
     "@iconify/vue": "^4.0.0",
-    "@nuxt/content": "^2.2.0",
+    "@nuxt/content": "^2.2.1",
     "@nuxtjs/algolia": "^1.1.4",
     "@nuxtjs/color-mode": "^3.1.8",
     "@nuxtjs/tailwindcss": "^6.1.1",
@@ -34,6 +34,7 @@
     "@algolia/client-search": "^4.14.2",
     "@docsearch/css": "^3.3.0",
     "@docsearch/js": "^3.3.0",
+    "@nuxthq/studio": "^0.1.0",
     "@nuxtjs/algolia": "^1.1.4",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest",
