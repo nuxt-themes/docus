@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components'),
       global: true
-    },
+    }
   ],
 
   content: {

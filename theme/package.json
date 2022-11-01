@@ -5,7 +5,7 @@
   "main": "./nuxt.config.ts",
   "dependencies": {
     "@fontsource/inter": "^4.5.12",
-    "@nuxt/content": "2.1.1",
+    "@nuxt/content": "2.2.1",
     "@nuxt-themes/tokens": "latest"
   },
   "devDependencies": {
