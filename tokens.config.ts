@@ -523,6 +523,14 @@ export default defineTheme({
     black: '900'
   },
   leads: {
+    3: '.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    7: '1.75rem',
+    8: '2rem',
+    9: '2.25rem',
+    10: '2.5rem',
     none: '1',
     tight: '1.25',
     snug: '1.375',
@@ -537,5 +545,11 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
+  },
+  text: {
+    sm: {
+      fontSize: '{fontSizes.sm}',
+      lineHeight: '{leads.5}'
+    }
   }
 })

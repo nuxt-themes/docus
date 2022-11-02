@@ -84,6 +84,7 @@ onBeforeUnmount(() => {
         <DocsPrevNext />
       </template>
     </article>
+
     <!-- TOC -->
     <div
       v-if="hasToc"
@@ -98,7 +99,9 @@ onBeforeUnmount(() => {
           <Icon name="heroicons-outline:chevron-right" class="w-4 h-4 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
         </button>
 
-        <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
+        <div class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']">
+          <DocsToc @move="isOpen = false" />
+        </div>
       </div>
     </div>
   </AppContainer>

@@ -4,9 +4,9 @@ const emit = defineEmits(['move'])
 </script>
 
 <template>
-  <div class="flex flex-col space-y-1 sm:space-y-2">
+  <div class="docs-toc">
     <template v-if="toc?.links?.length">
-      <div class="items-center hidden overflow-hidden text-sm font-semibold lg:flex">
+      <div class="docs-toc-title">
         <span>Table of Contents</span>
       </div>
 
@@ -14,3 +14,23 @@ const emit = defineEmits(['move'])
     </template>
   </div>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.docs-toc': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    '.docs-toc-title': {
+      display: 'none',
+      '@mq.lg': {
+        display: 'block',
+        overflow: 'hidden',
+        fontSize: '{text.sm.fontSize}',
+        lineHeight: '{text.sm.lineHeight}',
+        fontWeight: '{fontWeights.semibold}'
+      }
+    }
+  }
+})
+</style>
