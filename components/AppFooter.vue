@@ -2,7 +2,7 @@
 const docus = useDocus()
 
 const socialIcons = ref(null)
-const icons = computed(() => docus.value.footer?.icons || [])
+const icons = computed(() => docus.value.footer?.iconLinks || [])
 const socialIconsCount = computed(() => Object.entries(docus.value.socials).filter(([_, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
 </script>

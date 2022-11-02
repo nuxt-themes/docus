@@ -11,15 +11,14 @@ export default defineAppConfig({
       // youtube: '',
       // medium: ''
     },
-    github: false,
     aside: {
-      level: 1,
+      level: 0,
       exclude: []
     },
     header: {
       title: '',
       logo: false, // TODO: handle logo as string for component
-      showLinksIcons: false, // Toggle links icons in the header
+      showLinkIcon: false, // Toggle links icons in the header
       exclude: []
     },
     footer: {
@@ -32,3 +31,41 @@ export default defineAppConfig({
     }
   }
 })
+
+declare module '@nuxt/schema' {
+  interface AppConfigInput {
+    docus?: {
+      title?: string
+      description?: string
+      image?: string
+      socials?: {
+        twitter?: string
+        github?: string
+        facebook?: string
+        instagram?: string
+        youtube?: string
+        medium?: string
+      },
+      aside?: {
+        level: number
+        exclude?: string[]
+      },
+      header?: {
+        title?: string,
+        logo?: boolean
+        showLinkIcon?: boolean
+        exclude?: string[]
+      },
+      footer?: {
+        credits?: boolean
+        iconLinks?: IconLink[]
+      }
+    }
+  }
+}
+
+interface IconLink {
+  href: string
+  icon: string
+  label?: string
+}
