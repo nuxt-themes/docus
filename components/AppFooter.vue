@@ -24,9 +24,9 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           target="_blank"
           class="flex items-center text-sm font-medium u-text-gray-700 hover:u-text-gray-900"
         >
-          <Icon :name="icon.icon || icon.component" class="w-4 h-4" />
+          <Icon :name="icon.icon || icon.component" size="4" />
         </a>
-        <SocialIcons ref="socialIcons" size="4" space="2" />
+        <SocialIcons ref="socialIcons" size="4" />
       </div>
     </AppContainer>
   </footer>

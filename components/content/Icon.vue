@@ -35,10 +35,10 @@ watch(() => props.name, loadIconComponent)
 </script>
 
 <template>
-  <span v-if="isFetching" />
-  <Iconify v-else-if="icon" :icon="icon" />
-  <Component :is="component" v-else-if="component" />
-  <span v-else>{{ name }}</span>
+  <span v-if="isFetching" :class="$pinceau" />
+  <Iconify v-else-if="icon" :class="$pinceau" :icon="icon" />
+  <Component :is="component" :class="$pinceau" v-else-if="component" />
+  <span :class="$pinceau" v-else>{{ name }}</span>
 </template>
 
 <style scoped lang="ts">
