@@ -71,6 +71,7 @@ css({
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       color: '{colors.gray.500}',
+      // TODO: truncate
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',

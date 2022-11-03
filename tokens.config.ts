@@ -547,6 +547,10 @@ export default defineTheme({
     widest: '0.1em'
   },
   text: {
+    xs: {
+      fontSize: '{fontSizes.xs}',
+      lineHeight: '{leads.4}'
+    },
     sm: {
       fontSize: '{fontSizes.sm}',
       lineHeight: '{leads.5}'
