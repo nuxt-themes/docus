@@ -5,9 +5,32 @@ const { tree } = useCurrentNavigation()
 <template>
   <nav>
     <DocsAsideTree v-if="tree?.length > 0" :links="tree" />
-    <NuxtLink v-else to="/" class="flex items-center text-sm cursor-pointer u-text-gray-500 hover:u-text-gray-700">
-      <Icon name="heroicons-outline:arrow-left" class="w-4 h-4" />
-      <span class="ml-2">Go back</span>
+    <NuxtLink v-else to="/" class="go-back-link">
+      <Icon name="heroicons-outline:arrow-left" class="icon" />
+      <span class="text">Go back</span>
     </NuxtLink>
   </nav>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.go-back-link': {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '{text.sm.fontSize}',
+    lineHeight: '{text.sm.lineHeight}',
+    cursor: 'pointer',
+    color: '{colors.gray.500}',
+    '&:hover': {
+      color: '{colors.gray.700}',
+    },
+    '.icon': {
+      width: '{space.4}',
+      height: '{space.4}'
+    },
+    '.text': {
+      marginLeft: '{space.2}'
+    }
+  }
+})
+</style>
