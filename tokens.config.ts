@@ -18,6 +18,12 @@ export default defineTheme({
     '2xl': '(min-width: 1536px)'
   },
   colors: {
+    text: {
+      primary: {
+        initial: 'red',
+        dark: 'green'
+      }
+    },
     black: '#0C0D0C',
     white: '#fff',
     primary: {
@@ -554,6 +560,18 @@ export default defineTheme({
     sm: {
       fontSize: '{fontSizes.sm}',
       lineHeight: '{leads.5}'
+    },
+    lg: {
+      fontSize: '{fontSizes.lg}',
+      lineHeight: '{leads.7}'
+    },
+    '2xl': {
+      fontSize: '{fontSizes.2xl}',
+      lineHeight: '{leads.8}'
+    },
+    '3xl': {
+      fontSize: '{fontSizes.3xl}',
+      lineHeight: '{leads.9}'
     }
   }
 })
