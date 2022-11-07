@@ -250,6 +250,7 @@ css({
         display: 'block'
       }
     },
+    // TODO: before does not work
     "&:before": {
       content: ' ',
       position: 'absolule',
