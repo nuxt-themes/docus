@@ -3,8 +3,7 @@ import { defineTheme } from 'pinceau'
 export default defineTheme({
   docus: {
     page: {
-      height:
-        'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
+      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },
@@ -20,17 +19,18 @@ export default defineTheme({
   colors: {
     black: '#0C0D0C',
     white: '#fff',
+
     primary: {
-      50: { value: '#d9f1ff' },
-      100: { value: '#b3e4ff' },
-      200: { value: '#8dd6ff' },
-      300: { value: '#66c8ff' },
-      400: { value: '#40bbff' },
-      500: { value: '#1aadff' },
-      600: { value: '#0090e1' },
-      700: { value: '#006ca9' },
-      800: { value: '#004870' },
-      900: { value: '#002438' }
+      50: '#d9f1ff',
+      100: '#b3e4ff',
+      200: '#8dd6ff',
+      300: '#66c8ff',
+      400: '#40bbff',
+      500: '#1aadff',
+      600: '#0090e1',
+      700: '#006ca9',
+      800: '#004870',
+      900: '#002438'
     },
     slate: {
       50: '#f8fafc',
@@ -45,16 +45,16 @@ export default defineTheme({
       900: '#0f172a'
     },
     gray: {
-      50: '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827'
+      50: '#fafafa',
+      100: '#f4f4f5',
+      200: '#e4e4e7',
+      300: '#d4d4d8',
+      400: '#a1a1aa',
+      500: '#71717a',
+      600: '#52525b',
+      700: '#3f3f46',
+      800: '#27272a',
+      900: '#18181b'
     },
     zinc: {
       50: '#fafafa',

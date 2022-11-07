@@ -8,7 +8,7 @@ export default defineAppConfig({
       github: 'nuxt-themes/docus',
     },
     aside: {
-      level: 0,
+      level: 1,
       exclude: []
     },
     header: {
@@ -21,6 +21,10 @@ export default defineAppConfig({
         {
           href: 'https://nuxt.com',
           icon: 'IconNuxtLabs'
+        },
+        {
+          href: 'https://vuetelescope.com',
+          icon: 'IconVueTelescope'
         }
       ]
     }
