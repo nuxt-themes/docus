@@ -251,11 +251,11 @@ css({
       }
     },
     // TODO: before does not work
-    "&:before": {
-      content: ' ',
-      position: 'absolule',
-      width: '100%',
-      height: '100%',
+    "&::before": {
+      content: '\'\'',
+      position: 'absolute',
+      width: '16px', // 100%
+      height: '16px', // 100%
       right: 0,
       top: 0,
       zIndex: -1,
