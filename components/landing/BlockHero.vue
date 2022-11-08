@@ -25,8 +25,8 @@ defineProps({
   <section class="block-hero">
     <div class="layout">
       <div class="content">
-        <p v-if="$slots.top" class="mb-2 text-center lg:text-left">
-          <ContentSlot :use="$slots.top" unwrap="p" />
+        <p v-if="$slots.announce" class="announce">
+          <ContentSlot :use="$slots.announce" unwrap="p" />
         </p>
 
         <h1 v-if="$slots.title" class="title">
@@ -37,17 +37,17 @@ defineProps({
           <ContentSlot :use="$slots.description" unwrap="p" />
         </p>
 
-        <div v-if="$slots.extra" class="mt-6">
+        <div v-if="$slots.extra" class="extra">
           <ContentSlot :use="$slots.extra" unwrap="p" />
         </div>
 
-        <div class="flex flex-col items-center justify-center gap-4 mt-6 sm:mt-10 sm:flex-row sm:gap-6 lg:justify-start">
+        <div class="actions">
           <template v-if="!$slots.actions">
-            <ButtonLink v-if="cta" class="!mb-0" bold size="large" :href="(cta[1] as any)">
+            <ButtonLink v-if="cta" class="cta" bold size="large" :href="(cta[1] as any)">
               {{ cta[0] }}
             </ButtonLink>
 
-            <a v-if="secondary" :href="(secondary[1] as any)" class="py-px font-medium u-text-gray-500 hover:u-text-gray-700">
+            <a v-if="secondary" :href="(secondary[1] as any)" class="secondary">
               {{ secondary[0] }}
             </a>
           </template>
@@ -86,6 +86,13 @@ css({
       '@mq.lg': {
         gridColumn: 'span 2 / span 2'
       },
+      '.announce': {
+        marginBottom: '{space.2}',
+        textAlign: 'center',
+        '@mq.lg': {
+          textAlign: 'left'
+        }
+      },
       '.title': {
         color: '{docus.text.color.primary}',
         fontWeight: '{fontWeights.extrabold}',
@@ -111,6 +118,35 @@ css({
         color: '{docus.text.color.secondary}',
         '@mq.lg': {
           textAlign: 'left'
+        }
+      },
+      '.extra': {
+        marginTop: '{space.6}'
+      },
+      '.actions': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '{space.4}',
+        marginTop: '{space.6}',
+        '@mq.sm': {
+          marginTop: '{space.10}',
+          flexDirection: 'row',
+          gap: '{space.6}'
+        },
+        '@mq.lg': {
+          justifyContent: 'flex-start'
+        },
+        '.cta': {
+          marginBottom: 0
+        },
+        '.secondary': {
+          fontWeight: '{fontWeights.medium}',
+          color: '{docus.text.color.secondary}',
+          '&:hover': {
+            color: '{docus.text.color.secondaryHover}'
+          }
         }
       }
     }

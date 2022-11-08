@@ -18,6 +18,10 @@ export default defineTheme({
         secondary: {
           initial: '{colors.gray.500}',
           dark: '{colors.gray.400}'
+        },
+        secondaryHover: {
+          initial: '{colors.gray.700}',
+          dark: '{colors.gray.200}'
         }
       }
     },
@@ -41,6 +45,13 @@ export default defineTheme({
           dark: '{colors.red.400}'
         }
       }
+    }
+  },
+  backdrop: {
+    filter: 'saturate(200%) blur(20px)',
+    background: {
+      initial: '#fafafabf',
+      dark: '#181818bf',
     }
   },
   media: {

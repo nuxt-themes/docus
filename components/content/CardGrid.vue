@@ -8,14 +8,57 @@ defineProps({
 </script>
 
 <template>
-  <section class="relative pb-20 sm:pb-24 lg:pb-32">
+  <section class="card-grid">
     <ContentSlot :use="$slots.root" unwrap="*" />
 
-    <h2 class="mb-8 text-3xl font-bold tracking-tight u-text-gray-900 sm:text-4xl">
-      <slot name="title" />
+    <h2 class="title">
+      <ContentSlot :use="$slots.title" unwrap="p" />
     </h2>
-    <div class="grid gap-4 font-semibold text-left u-text-gray-900 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-8">
+    <div class="layout">
       <slot />
     </div>
   </section>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.card-grid': {
+    position: 'relative',
+    paddingBottom: '{space.20}',
+    '@mq.sm': {
+      paddingBottom: '{space.24}',
+    },
+    '@mq.lg': {
+      paddingBottom: '{space.32}',
+    },
+    '.title': {
+      marginBottom: '{space.8}',
+      fontSize: '{text.3xl.fontSize}',
+      lineHeight: '{text.3xl.lineHeight}',
+      fontWeight: '{fontWeights.bold}',
+      letterSpacing: '{letterSpacings.tight}',
+      color: '{docus.text.color.primary}',
+      '@mq.sm': {
+        fontSize: '{text.4xl.fontSize}',
+        lineHeight: '{text.4xl.lineHeight}',
+      }
+    },
+    '.layout': {
+      display: 'grid',
+      gap: '{space.4}',
+      fontWeight: '{fontWeights.semibold}',
+      textAlign: 'left',
+      color: '{docus.text.color.primary}',
+      '@mq.sm': {
+        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))'
+      },
+      '@mq.lg': {
+        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'
+      },
+      '@mq.2xl': {
+        gap: '{space.8}'
+      }
+    }
+  }
+})
+</style>
