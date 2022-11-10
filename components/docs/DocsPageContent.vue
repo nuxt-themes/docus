@@ -259,7 +259,8 @@ css({
       top: 0,
       zIndex: -1,
       display: 'block',
-      background: 'red'
+      background: 'red',
+      opacity: 0,
 
   //     &:before {
   //   content: ' ';
