@@ -42,12 +42,11 @@ const scrollToHeading = (id: string) => {
 </script>
 
 <template>
-  <ul>
-    <li v-for="link in links" :key="link.text" class="min-w-0 group" :class="[{ 'pl-3': link.depth === 3, 'pl-6': link.depth === 4 }]">
+  <ul class="docs-toc-links">
+    <li v-for="link in links" :key="link.text" :class="[`depth-${link.depth}`]">
       <a
         :href="`#${link.id}`"
-        class="block py-1 text-sm truncate lg:pr-3"
-        :class="[activeHeadings.includes(link.id) ? 'text-primary-500' : 'u-text-gray-500 hover:u-text-gray-900']"
+        :class="[activeHeadings.includes(link.id) && 'active']"
         @click.prevent="scrollToHeading(link.id)"
       >
         {{ link.text }}
@@ -56,3 +55,36 @@ const scrollToHeading = (id: string) => {
     </li>
   </ul>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.docs-toc-links': {
+    '.depth-3': {
+      paddingLeft: '{space.3}'
+    },
+    '.depth-4': {
+      paddingLeft: '{space.6}'
+    },
+    a: {
+      display: 'block',
+      padding: '{space.1} 0',
+      fontSize: '{text.sm.fontSize}',
+      lineHeight: '{text.sm.lineHeight}',
+      color: '{colors.gray.500}',
+      // TODO: truncate
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      '@mq.lg': {
+        paddingRight: '{space.3}'
+      },
+      '&:hover': {
+        color: '{colors.gray.900}',
+      },
+      '&.active': {
+        color: '{colors.primary.500}'
+      }
+    }
+  }
+})
+</style>

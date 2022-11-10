@@ -1,56 +1,3 @@
-<template>
-  <ul>
-    <li
-      v-for="link in links"
-      :key="link._path"
-      :class="{
-        'ml-2': parent?.icon,
-        'pl-4': level > 0 && link.children,
-        'border-l': level > 0 || !hasNesting,
-        'border-primary-400 dark:border-primary-600': isActive(link),
-        'u-border-gray-100 hover:u-border-gray-300': !isActive(link),
-      }"
-    >
-      <button v-if="link.children" class="u-text-gray-900 group flex w-full cursor-pointer items-center justify-between py-1.5 text-sm font-semibold" @click="toggleCollapse(link)">
-        <span class="flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-2" />
-          <span>{{ link?.navigation?.title || link.title || link._path }}</span>
-        </span>
-        <span class="flex">
-          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="w-3 h-3 u-text-gray-400 group-hover:u-text-gray-800" />
-        </span>
-      </button>
-
-      <NuxtLink
-        v-else
-        :to="link.redirect? link.redirect : link._path"
-        class="flex items-center justify-between py-1.5 text-sm"
-        :exact="link.exact"
-        :class="{
-          'pl-4': level > 0 || !hasNesting,
-          'text-primary-500 font-medium': isActive(link),
-          'u-text-gray-500 hover:u-text-gray-900': !isActive(link),
-        }"
-      >
-        <span class="inline-flex items-center">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="w-4 h-4 mr-1" />
-          <span>{{ link?.navigation?.title || link.title || link._path }}</span>
-        </span>
-      </NuxtLink>
-
-      <DocsAsideTree
-        v-show="!isCollapsed(link)"
-        v-if="link.children?.length && (max === null || level + 1 < max)"
-        :links="link.children"
-        :level="level + 1"
-        :parent="link"
-        :max="max"
-        class="py-2"
-      />
-    </li>
-  </ul>
-</template>
-
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
@@ -114,3 +61,157 @@ const toggleCollapse = (link) => {
 
 const hasNesting = computed(() => props.links.some((link: any) => link.children))
 </script>
+
+<template>
+  <ul class="docs-aside-tree">
+    <li
+      v-for="link in links"
+      :key="link._path"
+      :class="{
+        'has-parent-icon': parent?.icon,
+        'has-children': level > 0 && link.children,
+        'bordered': level > 0 || !hasNesting,
+        'active': isActive(link),
+      }"
+    >
+      <button v-if="link.children" class="title-collapsible-button" @click="toggleCollapse(link)">
+        <span class="content">
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <span>{{ link?.navigation?.title || link.title || link._path }}</span>
+        </span>
+        <span>
+          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="collapsible-icon" />
+        </span>
+      </button>
+
+      <NuxtLink
+        v-else
+        :to="link.redirect ? link.redirect : link._path"
+        class="link"
+        :exact="link.exact"
+        :class="{
+          'padded': level > 0 || !hasNesting,
+          'active': isActive(link),
+        }"
+      >
+        <span class="content">
+          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <span>{{ link?.navigation?.title || link.title || link._path }}</span>
+        </span>
+      </NuxtLink>
+
+      <DocsAsideTree
+        v-show="!isCollapsed(link)"
+        v-if="link.children?.length && (max === null || level + 1 < max)"
+        :links="link.children"
+        :level="level + 1"
+        :parent="link"
+        :max="max"
+        class="recursive"
+      />
+    </li>
+  </ul>
+</template>
+
+<style scoped lang="ts">
+css({
+  '.docs-aside-tree': {
+    li: {
+      '&.bordered': {
+        borderLeft: '1px solid {colors.gray.100}',
+        '@dark': {
+          borderColor: '{colors.gray.800}'
+        },
+        '&:hover': {
+          borderColor: '{colors.gray.300}',
+          '@dark': {
+            borderColor: '{colors.gray.600}'
+          },
+        },
+        '&.active': {
+          borderColor: '{colors.primary.400}',
+          '@dark': {
+            borderColor: '{colors.primary.600}'
+          },
+        },
+        '&.has-children': {
+          paddingLeft: '{space.4}'
+        },
+        '&.has-parent-icon': {
+          marginLeft: '{space.2}'
+        }
+      }
+    },
+    '.recursive': {
+      padding: '{space.2} 0'
+    },
+    '.title-collapsible-button': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '{space.1-5} 0',
+      fontSize: '{text.sm.fontSize}',
+      lineHeight: '{text.sm.lineHeight}',
+      fontWeight: '{fontWeights.semibold}',
+      width: "100%",
+      color: '{colors.gray.900}',
+      '@dark': {
+        color: '{colors.gray.50}'
+      },
+      '.content': {
+        display: 'flex',
+        alignItems: 'center',
+        '.icon': {
+          width: '{space.4}',
+          height: '{space.4}',
+          marginRight: '{space.2}'
+        }
+      },
+      '.collapsible-icon': {
+        width: '{space.3}',
+        height: '{space.3}',
+        color: '{colors.gray.400}',
+        '@dark': {
+          color: '{colors.gray.500}',
+        }
+      }
+    },
+    '.link': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '{space.1-5} 0',
+      fontSize: '{text.sm.fontSize}',
+      lineHeight: '{text.sm.lineHeight}',
+      color: '{colors.gray.500}',
+      '&:hover': {
+        color: '{colors.gray.900}',
+      },
+      '@dark': {
+        '&:not(.active)': {
+          color: '{colors.gray.400}',
+          '&:hover': {
+            color: '{colors.gray.50}',
+          }
+        }
+      },
+      '&.padded': {
+        paddingLeft: '{space.4}'
+      },
+      '&.active': {
+        color: '{colors.primary.500}',
+        fontWeight: '{fontWeights.medium}'
+      },
+      '.content': {
+        display: 'inline-flex',
+        alignItems: 'center'
+      },
+      '.icon': {
+        width: '{space.4}',
+        height: '{space.4}',
+        marginRight: '{space.1}'
+      }
+    }
+  }
+})
+</style>

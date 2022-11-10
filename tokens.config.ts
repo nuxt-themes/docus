@@ -47,14 +47,6 @@ export default defineTheme({
       }
     }
   },
-  backdrop: {
-    filter: 'saturate(200%) blur(20px)',
-    background: {
-      initial: '#fafafabf',
-      dark: '#181818bf',
-    }
-  },
-
   media: {
     sm: '(min-width: 640px)',
     md: '(min-width: 768px)',
@@ -62,8 +54,13 @@ export default defineTheme({
     xl: '(min-width: 1280px)',
     '2xl': '(min-width: 1536px)'
   },
-
   colors: {
+    text: {
+      primary: {
+        initial: 'red',
+        dark: 'green'
+      }
+    },
     black: '#0C0D0C',
     white: '#fff',
     primary: {
@@ -91,16 +88,16 @@ export default defineTheme({
       900: '#0f172a'
     },
     gray: {
-      50: '#fafafa',
-      100: '#f4f4f5',
-      200: '#e4e4e7',
-      300: '#d4d4d8',
-      400: '#a1a1aa',
-      500: '#71717a',
-      600: '#52525b',
-      700: '#3f3f46',
-      800: '#27272a',
-      900: '#18181b'
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827'
     },
     zinc: {
       50: '#fafafa',
@@ -375,10 +372,10 @@ export default defineTheme({
     80: '20rem',
     96: '24rem',
     px: '1px',
-    0.5: '0.125rem',
-    1.5: '0.375rem',
-    2.5: '0.625rem',
-    3.5: '0.875rem'
+    '0-5': '0.125rem',
+    '1-5': '0.375rem',
+    '2-5': '0.625rem',
+    '3-5': '0.875rem'
   },
   size: {
     xs: '20rem',
@@ -591,6 +588,13 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
+  },
+  backdrop: {
+    filter: 'saturate(200%) blur(20px)',
+    background: {
+      initial: '#fafafabf',
+      dark: '#181818bf',
+    }
   },
   text: {
     xs: {
