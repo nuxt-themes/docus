@@ -84,7 +84,6 @@ onBeforeUnmount(() => {
         <DocsPrevNext />
       </template>
     </article>
-
     <!-- TOC -->
     <div
       v-if="hasToc"

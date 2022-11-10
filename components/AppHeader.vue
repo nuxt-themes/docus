@@ -14,7 +14,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 
       <section class="center">
         <HeaderLogo v-if="hasDialog" />
-        <HeaderNavigation class="hidden lg:flex" />
+        <HeaderNavigation />
       </section>
 
       <section class="right">
@@ -43,10 +43,6 @@ css({
         display: 'none'
       }
     }
-  },
-
-  '.has-doc-search': {
-
   },
 
   header: {

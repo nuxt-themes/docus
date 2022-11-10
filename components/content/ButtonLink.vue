@@ -2,7 +2,7 @@
 import { computedStyle } from 'pinceau/runtime'
 
 defineProps({
-  size: computedStyle('gap', '5', false),
+  size: computedStyle('gap', '4', false),
   color: computedStyle('color', 'primary', false),
   href: {
     type: String,
@@ -30,7 +30,7 @@ defineProps({
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
-    <Icon v-if="icon" :size="size" :name="icon" class="w-4 h-4 mr-2" />
+    <Icon v-if="icon" :size="size" :name="icon" />
     <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
 </template>

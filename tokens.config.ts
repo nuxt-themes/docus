@@ -3,8 +3,7 @@ import { defineTheme } from 'pinceau'
 export default defineTheme({
   docus: {
     page: {
-      height:
-        'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
+      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },
@@ -17,6 +16,28 @@ export default defineTheme({
     xl: '(min-width: 1280px)',
     '2xl': '(min-width: 1536px)'
   },
+  text: {
+    xs: {
+      fontSize: '{fontSizes.xs}',
+      lineHeight: '{leads.4}'
+    },
+    sm: {
+      fontSize: '{fontSizes.sm}',
+      lineHeight: '{leads.5}'
+    },
+    lg: {
+      fontSize: '{fontSizes.lg}',
+      lineHeight: '{leads.7}'
+    },
+    '2xl': {
+      fontSize: '{fontSizes.2xl}',
+      lineHeight: '{leads.8}'
+    },
+    '3xl': {
+      fontSize: '{fontSizes.3xl}',
+      lineHeight: '{leads.9}'
+    }
+  },
   colors: {
     text: {
       primary: {
@@ -27,16 +48,16 @@ export default defineTheme({
     black: '#0C0D0C',
     white: '#fff',
     primary: {
-      50: { value: '#d9f1ff' },
-      100: { value: '#b3e4ff' },
-      200: { value: '#8dd6ff' },
-      300: { value: '#66c8ff' },
-      400: { value: '#40bbff' },
-      500: { value: '#1aadff' },
-      600: { value: '#0090e1' },
-      700: { value: '#006ca9' },
-      800: { value: '#004870' },
-      900: { value: '#002438' }
+      50: '#d9f1ff',
+      100: '#b3e4ff',
+      200: '#8dd6ff',
+      300: '#66c8ff',
+      400: '#40bbff',
+      500: '#1aadff',
+      600: '#0090e1',
+      700: '#006ca9',
+      800: '#004870',
+      900: '#002438'
     },
     slate: {
       50: '#f8fafc',
@@ -551,27 +572,5 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
-  },
-  text: {
-    xs: {
-      fontSize: '{fontSizes.xs}',
-      lineHeight: '{leads.4}'
-    },
-    sm: {
-      fontSize: '{fontSizes.sm}',
-      lineHeight: '{leads.5}'
-    },
-    lg: {
-      fontSize: '{fontSizes.lg}',
-      lineHeight: '{leads.7}'
-    },
-    '2xl': {
-      fontSize: '{fontSizes.2xl}',
-      lineHeight: '{leads.8}'
-    },
-    '3xl': {
-      fontSize: '{fontSizes.3xl}',
-      lineHeight: '{leads.9}'
-    }
   }
 })

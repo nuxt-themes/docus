@@ -9,7 +9,7 @@ const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'mediu
 
 const docus = useDocus()
 
-const icons = computed(() => {
+const icons = computed<any>(() => {
   return Object.entries(docus.value.socials || {})
     .map(([key, value]) => {
       if (typeof value === 'object') {
