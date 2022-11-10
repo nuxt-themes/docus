@@ -21,10 +21,6 @@ export default defineAppConfig({
         {
           href: 'https://nuxt.com',
           icon: 'IconNuxtLabs'
-        },
-        {
-          href: 'https://vuetelescope.com',
-          icon: 'IconVueTelescope'
         }
       ]
     }

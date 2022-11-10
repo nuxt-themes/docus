@@ -3,11 +3,49 @@ import { defineTheme } from 'pinceau'
 export default defineTheme({
   docus: {
     page: {
-      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
+      height:
+        'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },
-    footer: { height: '50px' }
+    footer: { height: '50px' },
+    text: {
+      color: {
+        primary: {
+          initial: '{colors.gray.900}',
+          dark: '{colors.gray.50}'
+        },
+        secondary: {
+          initial: '{colors.gray.500}',
+          dark: '{colors.gray.400}'
+        },
+        secondaryHover: {
+          initial: '{colors.gray.700}',
+          dark: '{colors.gray.200}'
+        }
+      }
+    },
+    state: {
+      color: {
+        primary: '{colors.primary.500}',
+        info: {
+          initial: '{colors.blue.500}',
+          dark: '{colors.blue.400}'
+        },
+        success: {
+          initial: '{colors.green.500}',
+          dark: '{colors.green.400}'
+        },
+        warning: {
+          initial: '{colors.yellow.500}',
+          dark: '{colors.yellow.400}'
+        },
+        danger: {
+          initial: '{colors.red.500}',
+          dark: '{colors.red.400}'
+        }
+      }
+    }
   },
   media: {
     sm: '(min-width: 640px)',
@@ -15,28 +53,6 @@ export default defineTheme({
     lg: '(min-width: 1024px)',
     xl: '(min-width: 1280px)',
     '2xl': '(min-width: 1536px)'
-  },
-  text: {
-    xs: {
-      fontSize: '{fontSizes.xs}',
-      lineHeight: '{leads.4}'
-    },
-    sm: {
-      fontSize: '{fontSizes.sm}',
-      lineHeight: '{leads.5}'
-    },
-    lg: {
-      fontSize: '{fontSizes.lg}',
-      lineHeight: '{leads.7}'
-    },
-    '2xl': {
-      fontSize: '{fontSizes.2xl}',
-      lineHeight: '{leads.8}'
-    },
-    '3xl': {
-      fontSize: '{fontSizes.3xl}',
-      lineHeight: '{leads.9}'
-    }
   },
   colors: {
     text: {
@@ -572,5 +588,46 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
+  },
+  backdrop: {
+    filter: 'saturate(200%) blur(20px)',
+    background: {
+      initial: '#fafafabf',
+      dark: '#181818bf',
+    }
+  },
+  text: {
+    xs: {
+      fontSize: '{fontSizes.xs}',
+      lineHeight: '{leads.4}'
+    },
+    sm: {
+      fontSize: '{fontSizes.sm}',
+      lineHeight: '{leads.5}'
+    },
+    lg: {
+      fontSize: '{fontSizes.lg}',
+      lineHeight: '{leads.7}'
+    },
+    '2xl': {
+      fontSize: '{fontSizes.2xl}',
+      lineHeight: '{leads.8}'
+    },
+    '3xl': {
+      fontSize: '{fontSizes.3xl}',
+      lineHeight: '{leads.9}'
+    },
+    '4xl': {
+      fontSize: '{fontSizes.4xl}',
+      lineHeight: '{leads.10}'
+    },
+    '5xl': {
+      fontSize: '{fontSizes.5xl}',
+      lineHeight: '{leads.none}'
+    },
+    '6xl': {
+      fontSize: '{fontSizes.6xl}',
+      lineHeight: '{leads.none}'
+    }
   }
 })
