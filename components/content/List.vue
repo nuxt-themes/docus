@@ -41,8 +41,8 @@ export default defineComponent({
       return h(
         'ul',
         items.map(item =>
-          h('li', { class: 'mb-3 flex items-center' }, [
-            h('span', { class: `list-${props.type} mt-px mr-3 flex-shrink-0` }, h(resolveComponent('icon'), { name: iconName.value, class: 'h-6 w-6' })),
+          h('li', [
+            h('span', { class: `list-icon ${props.type}-icon` }, h(resolveComponent('icon'), { name: iconName.value, class: 'icon' })),
             h('span', h(resolveComponent('ContentSlot'), { use: () => item }))
           ])
         )
@@ -52,25 +52,35 @@ export default defineComponent({
 })
 </script>
 
-<style lang="postcss">
-/* Primary */
-.list-primary {
-  @apply text-primary-500;
-}
-/* Info */
-.list-info {
-  @apply text-blue-500 dark:text-blue-400;
-}
-/* Success */
-.list-success {
-  @apply text-green-500 dark:text-green-400;
-}
-/* Warning */
-.list-warning {
-  @apply text-yellow-500 dark:text-yellow-400;
-}
-/* Danger */
-.list-danger {
-  @apply text-red-500 dark:text-red-400;
-}
+<style scoped lang="ts">
+css({
+  li: {
+    marginBottom: '{space.3}',
+    display: 'flex',
+    alignItems: 'center',
+    '.list-icon': {
+      marginRight: '{space.3}',
+      flexShrink: 0,
+      '&.primary-icon': {
+        color: '{docus.state.color.primary}'
+      },
+      '&.info-icon': {
+        color: '{docus.state.color.info}'
+      },
+      '&.success-icon': {
+        color: '{docus.state.color.success}'
+      },
+      '&.warning-icon': {
+        color: '{docus.state.color.warning}'
+      },
+      '&.danger-icon': {
+        color: '{docus.state.color.danger}'
+      },
+      '.icon': {
+        width: '{space.6}',
+        height: '{space.6}',
+      }
+    }
+  }
+})
 </style>

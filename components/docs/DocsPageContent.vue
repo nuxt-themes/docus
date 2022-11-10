@@ -54,28 +54,28 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <AppContainer padded class="relative flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-8">
+  <AppContainer padded class="docs-page-content">
     <!-- Aside -->
     <aside
       v-if="hasAside"
       ref="asideNav"
-      class="lg:top-header hidden overflow-y-auto overflow-x-hidden pb-8 lg:sticky lg:col-span-2 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:self-start lg:pt-8"
+      class="aside-nav"
     >
       <DocsAside />
     </aside>
 
     <!-- Page Body -->
     <article
-      class="relative flex flex-col flex-1 pt-8 pb-8 lg:mt-0 page-body"
+      class="page-body"
       :class="{
-        'lg:col-span-12': !hasAside && !hasToc,
-        'lg:col-span-10': (!hasToc || !hasAside) && !(!hasAside && !hasToc),
-        'lg:col-span-8': hasToc && hasAside,
-        'pt-12 lg:pt-8': hasToc,
+        'one-column': !hasAside && !hasToc,
+        'two-column': (!hasToc || !hasAside) && !(!hasAside && !hasToc),
+        'three-column': hasToc && hasAside,
+        'with-toc': hasToc,
       }"
     >
       <slot v-if="hasBody" />
-      <Alert v-else type="info" class="!mt-0">
+      <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <template v-if="hasBody && page && bottom">
@@ -88,40 +88,33 @@ onBeforeUnmount(() => {
     <div
       v-if="hasToc"
       :class="{
-        'flex items-center lg:block': !isOpen,
+        'closed': !isOpen,
       }"
-      class="toc sticky flex items-center px-4 -mx-4 -mt-8 top-header lg:max-h-page sm:-mx-6 sm:px-6 lg:col-span-2 lg:mx-0 lg:self-start lg:bg-transparent lg:px-0 lg:pt-8 lg:backdrop-blur-none overflow-y-auto overflow-x-hidden"
+      class="toc"
     >
-      <div class="w-full cursor-pointer sm:cursor-auto" @click="isOpen = !isOpen">
-        <button class="flex items-center gap-1 py-3 lg:hidden">
-          <span class="text-xs font-semibold">Table of Contents</span>
-          <Icon name="heroicons-outline:chevron-right" class="w-4 h-4 transition-transform duration-100 transform" :class="[isOpen ? 'rotate-90' : 'rotate-0']" />
+      <div class="toc-wrapper" @click="isOpen = !isOpen">
+        <button>
+          <span class="title">Table of Contents</span>
+          <Icon name="heroicons-outline:chevron-right" class="icon" :class="[isOpen && 'rotate']" />
         </button>
 
-        <DocsToc class="mb-4 lg:mt-0" :class="[isOpen ? 'lg:block' : 'hidden lg:block']" @move="isOpen = false" />
+        <div class="docs-toc-wrapper" :class="[isOpen && 'opened']">
+          <DocsToc @move="isOpen = false" />
+        </div>
       </div>
     </div>
   </AppContainer>
 </template>
 
 <style lang="postcss" scoped>
-.page-body :deep(div:first-child h1:first-child) {
-  @apply mt-0 text-2xl font-extrabold tracking-tight u-text-gray-900 sm:text-3xl;
-}
-.page-body :deep(div:first-child h1:first-child + p) {
-  @apply mt-0 mb-8 sm:text-lg u-text-gray-500 pb-8 border-b u-border-gray-100;
-  & a {
-    @apply u-text-gray-700 hover:border-gray-700;
-  }
-}
-.toc {
+/* .toc {
   &:before {
     content: ' ';
     width: 100%;
     right: 0;
     @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
   }
-}
+} */
 
 @screen lg {
   .toc {
@@ -130,4 +123,189 @@ onBeforeUnmount(() => {
     }
   }
 }
+</style>
+
+<style scoped lang="ts">
+css({
+  '.docs-page-content': {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column-reverse',
+    '@mq.lg': {
+      display: 'grid',
+      gap: '{space.8}',
+      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
+    }
+  },
+  '.aside-nav': {
+    display: 'none',
+    overflowY: 'auto',
+    paddingBottom: '{space.8}',
+    '@mq.lg': {
+      display: 'block',
+      position: 'sticky',
+      top: '{docus.header.height}',
+      gridColumn: 'span 2/span 2',
+      alignSelf: 'flex-start',
+      height: 'calc(100vh - {docus.header.height})',
+      paddingTop: '{space.8}'
+    }
+  },
+  '.page-body': {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: "column",
+    flex: '1 1 0%',
+    paddingTop: '{space.8}',
+    paddingBottom: '{space.8}',
+    '&.one-column': {
+      '@mq.lg': {
+        gridColumn: 'span 12 / span 12'
+      }
+    },
+    '&.two-column': {
+      '@mq.lg': {
+        gridColumn: 'span 10 / span 10'
+      }
+    },
+    '&.three-column': {
+      '@mq.lg': {
+        gridColumn: 'span 8 / span 8'
+      }
+    },
+    '&.with-toc': {
+      paddingTop: '{space.12}',
+      '@mq.lg': {
+        paddingTop: '{space.8}',
+      }
+    },
+    '@mq.lg': {
+      marginTop: 0
+    },
+    ':deep(h1:first-child)': {
+      marginTop: 0,
+      fontSize: '{text.2xl.fontSize}',
+      lineHeight: '{text.2xl.lineHeight}',
+      fontWeight: '{fontWeights.extrabold}',
+      letterSpacing: '{letterSpacings.tight}',
+      '@mq.sm': {
+        fontSize: '{text.3xl.fontSize}',
+        lineHeight: '{text.3xl.lineHeight}',
+      }
+    },
+    ':deep(h1:first-child + p)': {
+      marginTop: 0,
+      marginBottom: '{space.8}',
+      paddingBottom: '{space.8}',
+      borderBottom: '1px solid {colors.gray.100}',
+      color: '{colors.gray.500}',
+      '@mq.sm': {
+        fontSize: '{text.lg.fontSize}',
+        lineHeight: '{text.lg.lineHeight}',
+      },
+      '@dark': {
+        color: '{colors.gray.400}',
+        borderColor: '{colors.gray.800}'
+      },
+      a: {
+        color: '{colors.gray.700}',
+        '@dark': {
+          color: '{colors.gray.200}',
+        },
+        "&:hover": {
+          borderColor: '{colors.gray.700}'
+        }
+      }
+    }
+  },
+  '.toc': {
+    position: 'sticky',
+    top: '{docus.header.height}',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 {space.4}',
+    // TODO: negative spaces
+    margin: '-{space.8} -{space.4} 0',
+    '@mq.sm': {
+      margin: '0 -{space.6}',
+      padding: '0 {space.6}'
+    },
+    '@mq.lg': {
+      maxHeight: '{docus.page.height}',
+      gridColumn: 'span 2 / span 2',
+      marginLeft: 0,
+      marginRight: 0,
+      alignSelf: 'flex-start',
+      background: 'transparent',
+      paddingLeft: 0,
+      paddingRight: 0,
+      paddingTop: '{space.8}',
+      backdropFilter: 'blur(0)'
+    },
+    '&.closed': {
+      display: 'flex',
+      alignItems: 'center',
+      '@mq.lg': {
+        display: 'block'
+      }
+    },
+    // TODO: before does not work
+    "&::before": {
+      content: '\'\'',
+      position: 'absolute',
+      width: '16px', // 100%
+      height: '16px', // 100%
+      right: 0,
+      top: 0,
+      zIndex: -1,
+      display: 'block',
+      background: 'red',
+      opacity: 0,
+
+  //     &:before {
+  //   content: ' ';
+  //   width: 100%;
+  //   right: 0;
+  //   @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
+  // }
+    },
+    '.toc-wrapper': {
+      width: '100%',
+      button: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '{space.1}',
+        paddingTop: '{space.3}',
+        paddingBottom: '{space.3}',
+        '@mq.lg': {
+          display: 'none'
+        },
+        '.title': {
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeights.semibold}'
+        },
+        '.icon': {
+          width: '{space.4}',
+          height: '{space.4}',
+          transition: 'transform 100ms',
+          '&.rotate': {
+            transform: 'rotate(90deg)'
+          }
+        }
+      },
+      '.docs-toc-wrapper': {
+        display: 'none',
+        marginBottom: '{space.4}',
+        '&.opened': {
+          display: 'block'
+        },
+        '@mq.lg': {
+          marginTop: 0,
+          display: 'block'
+        }
+      }
+    }
+  }
+})
 </style>

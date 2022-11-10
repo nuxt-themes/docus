@@ -35,6 +35,11 @@ export default defineNuxtConfig({
       path: resolve('./components/icons'),
       global: true
     },
+    {
+      prefix: '',
+      path: resolve('./components/landing'),
+      global: true
+    },
     resolve('./components')
 
   ],

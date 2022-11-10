@@ -37,7 +37,6 @@ css({
         }
       },
     },
-
     '.center &': {
       display: 'block',
       '@mq.lg': {

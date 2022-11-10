@@ -12,7 +12,7 @@ export default defineAppConfig({
       // medium: ''
     },
     aside: {
-      level: 1,
+      level: 0,
       exclude: []
     },
     header: {
@@ -26,7 +26,8 @@ export default defineAppConfig({
         icon: 'IconDocus',
         text: 'Powered by Docus',
         href: 'https://docus.dev'
-      }
+      },
+      icons: []
     }
   }
 })

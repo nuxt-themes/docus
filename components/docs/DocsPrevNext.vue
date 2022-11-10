@@ -18,36 +18,117 @@ const directory = (link) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="flex flex-col-reverse justify-between gap-3 sm:flex-row sm:items-center">
+  <div v-if="prev || next" class="docs-prev-next">
     <NuxtLink
       v-if="prev"
       :to="prev._path"
-      class="relative min-w-0 p-3 border rounded-lg hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100"
+      class="prev"
     >
-      <p class="h-4 mb-1 text-xs font-medium text-right truncate u-text-gray-500">
+      <span class="directory">
         {{ directory(prev._path) }}
-      </p>
+      </span>
 
-      <p class="flex items-center gap-3">
-        <Icon name="heroicons-outline:arrow-sm-left" class="flex-shrink-0 w-5 h-5" />
-        <span class="flex-1 font-medium leading-5 text-right truncate">{{ prev.title }}</span>
-      </p>
+      <span class="title-wrapper">
+        <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
+        <span class="title">{{ prev.title }}</span>
+      </span>
     </NuxtLink>
+
     <span v-else />
 
     <NuxtLink
       v-if="next"
       :to="next._path"
-      class="relative min-w-0 p-3 border rounded-lg hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-500 u-border-gray-100"
+      class="next"
     >
-      <p class="h-4 mb-1 text-xs font-medium truncate u-text-gray-500">
+      <span class="directory">
         {{ directory(next._path) }}
-      </p>
+      </span>
 
-      <p class="flex items-center gap-3">
-        <span class="flex-1 font-medium leading-5 truncate">{{ next.title }}</span>
-        <Icon name="heroicons-outline:arrow-sm-right" class="flex-shrink-0 w-5 h-5" />
-      </p>
+      <span class="title-wrapper">
+        <span class="title">{{ next.title }}</span>
+        <Icon name="heroicons-outline:arrow-sm-right" class="icon" />
+      </span>
     </NuxtLink>
   </div>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.docs-prev-next': {
+    display: 'flex',
+    flexDirection: 'column-reverse',
+    justifyContent: 'space-between',
+    gap: '{space.3}',
+    '@mq.sm': {
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    a: {
+      position: 'relative',
+      minWidth: '0px',
+      padding: '{space.3}',
+      border: '1px solid {colors.gray.200}',
+      borderRadius: '{radii.lg}',
+      '&:hover': {
+        borderColor: '{colors.primary.100}',
+        color: '{colors.primary.500}',
+      },
+      '@dark': {
+        borderColor: '{colors.gray.800}',
+        '&:hover': {
+          borderColor: '{colors.primary.700}',
+        }
+      },
+      '&.prev': {
+        '.directory': {
+          display: 'block',
+          marginBottom: '{space.1}',
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeights.medium}',
+          textAlign: 'right',
+          color: '{colors.gray.500}',
+          // TODO: truncate
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }
+      },
+      '&.next': {
+        '.directory': {
+          display: 'block',
+          marginBottom: '{space.1}',
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeights.medium}',
+          color: '{colors.gray.500}',
+          // TODO: truncate
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }
+      },
+      '.title-wrapper': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '{space.3}'
+      },
+      '.icon': {
+        flexShrink: 0,
+        width: '{space.5}',
+        height: '{space.5}'
+      },
+      '.title': {
+        flex: '1 1 0%',
+        fontWeight: '{fontWeights.medium}',
+        lineHeight: '{leads.5}',
+        // TODO: truncate
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }
+    }
+  }
+})
+</style>

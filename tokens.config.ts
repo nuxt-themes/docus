@@ -29,7 +29,8 @@ export default defineTheme({
   },
   docus: {
     page: {
-      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
+      height:
+        'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },
@@ -39,6 +40,43 @@ export default defineTheme({
         base: {
           initial: '{colors.gray.100}',
           dark: '{colors.gray.900}',
+        }
+      }
+    },
+    text: {
+      color: {
+        primary: {
+          initial: '{colors.gray.900}',
+          dark: '{colors.gray.50}'
+        },
+        secondary: {
+          initial: '{colors.gray.500}',
+          dark: '{colors.gray.400}'
+        },
+        secondaryHover: {
+          initial: '{colors.gray.700}',
+          dark: '{colors.gray.200}'
+        }
+      }
+    },
+    state: {
+      color: {
+        primary: '{colors.primary.500}',
+        info: {
+          initial: '{colors.blue.500}',
+          dark: '{colors.blue.400}'
+        },
+        success: {
+          initial: '{colors.green.500}',
+          dark: '{colors.green.400}'
+        },
+        warning: {
+          initial: '{colors.yellow.500}',
+          dark: '{colors.yellow.400}'
+        },
+        danger: {
+          initial: '{colors.red.500}',
+          dark: '{colors.red.400}'
         }
       }
     }
@@ -51,9 +89,14 @@ export default defineTheme({
     '2xl': '(min-width: 1536px)'
   },
   colors: {
+    text: {
+      primary: {
+        initial: 'red',
+        dark: 'green'
+      }
+    },
     black: '#0C0D0C',
     white: '#fff',
-
     primary: {
       50: '#d9f1ff',
       100: '#b3e4ff',
@@ -79,16 +122,16 @@ export default defineTheme({
       900: '#0f172a'
     },
     gray: {
-      50: '#fafafa',
-      100: '#f4f4f5',
-      200: '#e4e4e7',
-      300: '#d4d4d8',
-      400: '#a1a1aa',
-      500: '#71717a',
-      600: '#52525b',
-      700: '#3f3f46',
-      800: '#27272a',
-      900: '#18181b'
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827'
     },
     zinc: {
       50: '#fafafa',
@@ -548,6 +591,13 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
+  },
+  backdrop: {
+    filter: 'saturate(200%) blur(20px)',
+    background: {
+      initial: '#fafafabf',
+      dark: '#181818bf',
+    }
   },
   text: {
     xs: {
