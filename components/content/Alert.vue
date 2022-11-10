@@ -14,11 +14,22 @@ defineProps({
 </script>
 
 <template>
-  <div class="alert mt-4 mb-4 rounded-xl px-4 py-3 text-sm leading-relaxed" :class="[type]">
-    <div class="flex items-start">
-      <div class="alert-content flex-grow">
-        <ContentSlot :use="$slots.default" unwrap="p" />
-      </div>
+  <div class="alert" :class="[type]">
+    <div class="alert-content">
+      <ContentSlot :use="$slots.default" unwrap="p" />
     </div>
   </div>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.alert': {
+    my: '{space.4}',
+    borderRadius: '{radii.xl}',
+    px: '{space.4}',
+    py: '{space.3}',
+    fontSize: '{text.sm.fontSize}',
+    lineHeight: '{text.sm.lineHeight}',
+  }
+})
+</style>

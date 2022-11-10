@@ -1,6 +1,32 @@
 import { defineTheme } from 'pinceau'
 
 export default defineTheme({
+  utils: {
+    my: (value) => {
+      return {
+        marginTop: value,
+        marginBottom: value,
+      }
+    },
+    mx: (value) => {
+      return {
+        marginLeft: value,
+        marginRight: value,
+      }
+    },
+    py: (value) => {
+      return {
+        paddingTop: value,
+        paddingBottom: value,
+      }
+    },
+    px: (value) => {
+      return {
+        paddingLeft: value,
+        paddingRight: value,
+      }
+    }
+  },
   docus: {
     page: {
       height:
@@ -9,6 +35,14 @@ export default defineTheme({
     },
     header: { height: '64px' },
     footer: { height: '50px' },
+    surface: {
+      background: {
+        base: {
+          initial: '{colors.gray.100}',
+          dark: '{colors.gray.900}',
+        }
+      }
+    },
     text: {
       color: {
         primary: {
@@ -504,40 +538,9 @@ export default defineTheme({
     }
   },
   font: {
-    sans: [
-      'ui-sans-serif',
-      'system-ui',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'Roboto',
-      'Helvetica Neue',
-      'Arial',
-      'Noto Sans',
-      'sans-serif',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
-      'Noto Color Emoji'
-    ],
-    serif: [
-      'ui-serif',
-      'Georgia',
-      'Cambria',
-      'Times New Roman',
-      'Times',
-      'serif'
-    ],
-    mono: [
-      'ui-monospace',
-      'SFMono-Regular',
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace'
-    ]
+    sans: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+    serif: 'ui-serif, Georgia, Cambria, Times New Roman, Times, serif',
+    mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace'
   },
   fontSizes: {
     xs: '0.75rem',
@@ -604,6 +607,10 @@ export default defineTheme({
     sm: {
       fontSize: '{fontSizes.sm}',
       lineHeight: '{leads.5}'
+    },
+    base: {
+      fontSize: '{fontSizes.base}',
+      lineHeight: '{leads.6}'
     },
     lg: {
       fontSize: '{fontSizes.lg}',

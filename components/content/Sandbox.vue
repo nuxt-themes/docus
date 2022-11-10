@@ -60,7 +60,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="sandbox my-4 min-h-[500px] w-full">
+  <div class="sandbox">
     <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
       <template #footer>
         <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-4">
@@ -76,20 +76,42 @@ onMounted(() => {
       :src="url"
       title="Sandbox editor"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      class="h-full min-h-[700px] w-full overflow-hidden"
     />
 
-    <span v-else class="flex-1 text-white">Loading Sandbox...</span>
+    <span v-else>Loading Sandbox...</span>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .sandbox {
-  @apply overflow-hidden rounded-lg bg-white text-3xl dark:bg-gray-900;
 
   iframe {
     @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;
     height: 700px;
   }
 }
+</style>
+
+<style scoped lang="ts">
+css({
+  '.sandbox': {
+    '--sandbox-height': '700px',
+    my: '{space.4}',
+    background: '{docus.surface.background.base}',
+    width: '100%',
+    height: 'var(--sandbox-height)',
+    overflow: 'hidden',
+    borderRadius: '{radii.xl}',
+    fontSize: '{text.3xl.fontSize}',
+    lineHeight: '{text.3xl.lineHeight}',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    iframe: {
+      width: '100%',
+      height: '100%',
+      overflow: 'hidden'
+    }
+  }
+})
 </style>
