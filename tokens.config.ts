@@ -16,10 +16,37 @@ export default defineTheme({
     xl: '(min-width: 1280px)',
     '2xl': '(min-width: 1536px)'
   },
+  text: {
+    xs: {
+      fontSize: '{fontSizes.xs}',
+      lineHeight: '{leads.4}'
+    },
+    sm: {
+      fontSize: '{fontSizes.sm}',
+      lineHeight: '{leads.5}'
+    },
+    lg: {
+      fontSize: '{fontSizes.lg}',
+      lineHeight: '{leads.7}'
+    },
+    '2xl': {
+      fontSize: '{fontSizes.2xl}',
+      lineHeight: '{leads.8}'
+    },
+    '3xl': {
+      fontSize: '{fontSizes.3xl}',
+      lineHeight: '{leads.9}'
+    }
+  },
   colors: {
+    text: {
+      primary: {
+        initial: 'red',
+        dark: 'green'
+      }
+    },
     black: '#0C0D0C',
     white: '#fff',
-
     primary: {
       50: '#d9f1ff',
       100: '#b3e4ff',
@@ -45,16 +72,16 @@ export default defineTheme({
       900: '#0f172a'
     },
     gray: {
-      50: '#fafafa',
-      100: '#f4f4f5',
-      200: '#e4e4e7',
-      300: '#d4d4d8',
-      400: '#a1a1aa',
-      500: '#71717a',
-      600: '#52525b',
-      700: '#3f3f46',
-      800: '#27272a',
-      900: '#18181b'
+      50: '#f9fafb',
+      100: '#f3f4f6',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827'
     },
     zinc: {
       50: '#fafafa',
@@ -329,10 +356,10 @@ export default defineTheme({
     80: '20rem',
     96: '24rem',
     px: '1px',
-    0.5: '0.125rem',
-    1.5: '0.375rem',
-    2.5: '0.625rem',
-    3.5: '0.875rem'
+    '0-5': '0.125rem',
+    '1-5': '0.375rem',
+    '2-5': '0.625rem',
+    '3-5': '0.875rem'
   },
   size: {
     xs: '20rem',
@@ -523,6 +550,14 @@ export default defineTheme({
     black: '900'
   },
   leads: {
+    3: '.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    7: '1.75rem',
+    8: '2rem',
+    9: '2.25rem',
+    10: '2.5rem',
     none: '1',
     tight: '1.25',
     snug: '1.375',
