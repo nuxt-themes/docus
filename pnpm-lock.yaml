@@ -1751,10 +1751,10 @@ packages:
       '@volar/source-map': 1.0.9
       '@vue/compiler-dom': 3.2.44
       '@vue/compiler-sfc': 3.2.44
-      '@vue/reactivity': 3.2.41
+      '@vue/reactivity': 3.2.44
       '@vue/shared': 3.2.44
       minimatch: 5.1.0
-      vue-template-compiler: 2.7.13
+      vue-template-compiler: 2.7.14
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
     resolution: {integrity: sha512-hz4R8tS5jMn8lDq6iD+yWL6XNB699pGIVLk7WSJnn1dbpjaazsjZQkieJoRX6gW5zpYSCFqQ7jUquPNY65tQYA==}
@@ -1778,7 +1778,7 @@ packages:
   /@vue/compiler-core/3.2.44:
     resolution: {integrity: sha512-TwzeVSnaklb8wIvMtwtkPkt9wnU+XD70xJ7N9+eIHtjKAG7OoZttm+14ZL6vWOL+2RcMtSZ+cYH+gvkUqsrmSQ==}
     dependencies:
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@vue/shared': 3.2.44
       estree-walker: 2.0.2
       source-map: 0.6.1
@@ -1792,7 +1792,7 @@ packages:
   /@vue/compiler-sfc/3.2.44:
     resolution: {integrity: sha512-8cFZcUWlrtnfM/GlRwYJdlfgbEOy0OZ/osLDU3h/wJu24HuYAc7QIML1USaKqiZzkjOaTd4y8mvYvcWXq3o5dA==}
     dependencies:
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@vue/compiler-core': 3.2.44
       '@vue/compiler-dom': 3.2.44
       '@vue/compiler-ssr': 3.2.44
@@ -1815,16 +1815,11 @@ packages:
   /@vue/reactivity-transform/3.2.44:
     resolution: {integrity: sha512-WGbEiXaS2qAOTS9Z3kKk2Nk4bi8OUl73Sih+h0XV9RTUATnaJSEQedveHUDQnHyXiZwyBMKosrxJg8aThHO/rw==}
     dependencies:
-      '@babel/parser': 7.20.2
+      '@babel/parser': 7.20.3
       '@vue/compiler-core': 3.2.44
       '@vue/shared': 3.2.44
       estree-walker: 2.0.2
       magic-string: 0.25.9
-
-  /@vue/reactivity/3.2.41:
-    resolution: {integrity: sha512-9JvCnlj8uc5xRiQGZ28MKGjuCoPhhTwcoAdv3o31+cfGgonwdPNuvqAXLhlzu4zwqavFEG5tvaoINQEfxz+l6g==}
-    dependencies:
-      '@vue/shared': 3.2.44
 
   /@vue/reactivity/3.2.44:
     resolution: {integrity: sha512-Fe0s52fTsPl+RSdvoqUZ3HRKlaVsKhIh1mea5EWOedFvZCjnymzlj3YC1wZMxi89qXRFSdEASVA/BWUGypk0Ig==}
@@ -1856,9 +1851,6 @@ packages:
   /@vue/shared/3.2.44:
     resolution: {integrity: sha512-mGZ44bnn0zpZ36nXtxbrBPno43yr96wjQE1dBEKS1Sieugt27HS4OGZVBRIgsdGzosB7vqZAvu0ttu1FDVdolA==}
 
-  /@vue/shared/3.2.44:
-    resolution: {integrity: sha512-mGZ44bnn0zpZ36nXtxbrBPno43yr96wjQE1dBEKS1Sieugt27HS4OGZVBRIgsdGzosB7vqZAvu0ttu1FDVdolA==}
-
   /@vueuse/core/9.5.0_vue@3.2.44:
     resolution: {integrity: sha512-6GsWBsJHEb3sYw15mbLrcbslAVY45pkzjJYTKYKCXv88z7srAF0VEW0q+oXKsl58tCbqooplInahXFg8Yo1m4w==}
     dependencies:
@@ -1876,7 +1868,7 @@ packages:
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@vueuse/shared': 9.4.0_vue@3.2.44
+      '@vueuse/shared': 9.5.0_vue@3.2.44
       '@zhead/schema': 0.9.9
       '@zhead/schema-vue': 0.9.9_vue@3.2.44
       vue: 3.2.44
@@ -1905,14 +1897,6 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared/9.4.0_vue@3.2.44:
-    resolution: {integrity: sha512-fTuem51KwMCnqUKkI8B57qAIMcFovtGgsCtAeqxIzH3i6nE9VYge+gVfneNHAAy7lj8twbkNfqQSygOPJTm4tQ==}
-    dependencies:
-      vue-demi: 0.13.11_vue@3.2.44
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-
   /@vueuse/shared/9.5.0_vue@3.2.44:
     resolution: {integrity: sha512-HnnCWU1Vg9CVWRCcI8ohDKDRB2Sc4bTgT1XAIaoLSfVHHn+TKbrox6pd3klCSw4UDxkhDfOk8cAdcK+Z5KleCA==}
     dependencies:
@@ -1920,14 +1904,13 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
 
   /@zhead/schema-vue/0.9.9_vue@3.2.44:
     resolution: {integrity: sha512-f7sOPMc1zQJ+tDDWWaksNsGoGGuRv5aHvOdZvsL3dIxbiHVlGVhDi/HZbUUupCtlYAPv2D8E/tUmwWKh/UrbXw==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@vueuse/shared': 9.4.0_vue@3.2.44
+      '@vueuse/shared': 9.5.0_vue@3.2.44
       '@zhead/schema': 0.9.9
       vue: 3.2.44
     transitivePeerDependencies:
@@ -6034,8 +6017,8 @@ packages:
       '@nuxt/telemetry': 2.1.6
       '@nuxt/ui-templates': 0.4.0
       '@nuxt/vite-builder': 3.0.0-rc.12_atqz5rje562gkbthczujozs6zq
-      '@vue/reactivity': 3.2.41
-      '@vue/shared': 3.2.41
+      '@vue/reactivity': 3.2.44
+      '@vue/shared': 3.2.44
       '@vueuse/head': 1.0.0-rc.14_vue@3.2.44
       chokidar: 3.5.3
       cookie-es: 0.5.0
