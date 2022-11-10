@@ -54,6 +54,7 @@ export default defineTheme({
       dark: '#181818bf',
     }
   },
+
   media: {
     sm: '(min-width: 640px)',
     md: '(min-width: 768px)',
@@ -61,20 +62,21 @@ export default defineTheme({
     xl: '(min-width: 1280px)',
     '2xl': '(min-width: 1536px)'
   },
+
   colors: {
     black: '#0C0D0C',
     white: '#fff',
     primary: {
-      50: { value: '#d9f1ff' },
-      100: { value: '#b3e4ff' },
-      200: { value: '#8dd6ff' },
-      300: { value: '#66c8ff' },
-      400: { value: '#40bbff' },
-      500: { value: '#1aadff' },
-      600: { value: '#0090e1' },
-      700: { value: '#006ca9' },
-      800: { value: '#004870' },
-      900: { value: '#002438' }
+      50: '#d9f1ff',
+      100: '#b3e4ff',
+      200: '#8dd6ff',
+      300: '#66c8ff',
+      400: '#40bbff',
+      500: '#1aadff',
+      600: '#0090e1',
+      700: '#006ca9',
+      800: '#004870',
+      900: '#002438'
     },
     slate: {
       50: '#f8fafc',
