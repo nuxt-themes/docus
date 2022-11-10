@@ -25,11 +25,7 @@ const updateHighlightUnderlinePosition = (activeTab) => {
   }
 
   highlightUnderline.value.style.left = `${activeTab.offsetLeft}px`
-  highlightUnderline.value.style.top = `${activeTab.offsetTop}px`
   highlightUnderline.value.style.width = `${activeTab.clientWidth}px`
-  highlightUnderline.value.style.height = `${activeTab.clientHeight}px`
-  highlightUnderline.value.style.transform = 'scale(1)'
-  highlightUnderline.value.style.opacity = 1
 }
 
 const updateTabs = ($event, i) => {
@@ -55,26 +51,21 @@ watch(
 </script>
 
 <template>
-  <div class="tabs-header relative bg-gray-800 text-white">
-    <div v-if="tabs" ref="tabsRef" class="relative z-0 px-2">
+  <div class="tabs-header">
+    <div v-if="tabs" ref="tabsRef" class="tabs">
       <button
         v-for="({ label }, i) in tabs"
         :key="`${i}${label}`"
-        class="xs:py-3 xs:my-0 relative my-2 rounded-lg px-2 py-1.5 font-mono text-sm tracking-tight focus:outline-none"
-        :class="[activeTabIndex === i ? 'text-white' : 'text-gray-200 hover:text-white']"
+        :class="[activeTabIndex === i ? 'active' : 'not-active']"
         @click="updateTabs($event, i)"
       >
         {{ label }}
       </button>
       <span
         ref="highlightUnderline"
-        class="highlight-underline xs:py-1.5 absolute -z-[1]"
-        :style="{
-          transform: `scale(0)`,
-          opacity: 0,
-        }"
+        class="highlight-underline"
       >
-        <span class="flex h-full w-full rounded-lg bg-gray-700 dark:bg-gray-900" />
+        <span class="flex h-full w-full bg-gray-700 dark:bg-gray-900" />
       </span>
     </div>
 
@@ -82,10 +73,47 @@ watch(
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.highlight-underline {
-  /* bottom: -2px; */
-  /* height: 2px; */
-  transition: left 150ms, top 150ms, width 150ms, height 150ms, transform 100ms, opacity 100ms;
-}
+<style scoped lang="ts">
+css({
+  ".tabs-header": {
+    // relative bg-gray-800 text-white
+    position: 'relative',
+    background: '{colors.gray.800}',
+    color: '{colors.white}',
+    '.tabs': {
+      //relative z-0 px-2
+      position: 'relative',
+      zIndex: 0,
+      px: '{space.2}',
+      button: {
+        py: '{space.3}',
+        px: '{space.4}',
+        position: 'relative',
+        fontFamily: '{font.mono}',
+        fontSize: '{text.sm.fontSize}',
+        lineHeight: '{text.sm.lineHeight}',
+        letterSpacing: '{letterSpacings.tight}',
+        userSelect: 'none',
+        transition: 'color 100ms, background 100ms',
+        '&.not-active': {
+          color: '{colors.gray.400}',
+          '&:hover': {
+            color: '{colors.gray.200}',
+            background: '{colors.gray.700}'
+          },
+        },
+        '&.active': {
+          color: '{colors.gray.100}'
+        }
+      },
+      '.highlight-underline': {
+        position: 'absolute',
+        zIndex: -1,
+        top: 0,
+        height: '100%',
+        transition: 'left 150ms, width 150ms'
+      }
+    }
+  }
+})
 </style>

@@ -1,13 +1,47 @@
 import { defineTheme } from 'pinceau'
 
 export default defineTheme({
+  utils: {
+    my: (value) => {
+      return {
+        marginTop: value,
+        marginBottom: value,
+      }
+    },
+    mx: (value) => {
+      return {
+        marginLeft: value,
+        marginRight: value,
+      }
+    },
+    py: (value) => {
+      return {
+        paddingTop: value,
+        paddingBottom: value,
+      }
+    },
+    px: (value) => {
+      return {
+        paddingLeft: value,
+        paddingRight: value,
+      }
+    }
+  },
   docus: {
     page: {
       height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },
-    footer: { height: '50px' }
+    footer: { height: '50px' },
+    surface: {
+      background: {
+        base: {
+          initial: '{colors.gray.100}',
+          dark: '{colors.gray.900}',
+        }
+      }
+    }
   },
   media: {
     sm: '(min-width: 640px)',
@@ -329,10 +363,10 @@ export default defineTheme({
     80: '20rem',
     96: '24rem',
     px: '1px',
-    0.5: '0.125rem',
-    1.5: '0.375rem',
-    2.5: '0.625rem',
-    3.5: '0.875rem'
+    '0-5': '0.125rem',
+    '1-5': '0.375rem',
+    '2-5': '0.625rem',
+    '3-5': '0.875rem'
   },
   size: {
     xs: '20rem',
@@ -461,40 +495,9 @@ export default defineTheme({
     }
   },
   font: {
-    sans: [
-      'ui-sans-serif',
-      'system-ui',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      'Segoe UI',
-      'Roboto',
-      'Helvetica Neue',
-      'Arial',
-      'Noto Sans',
-      'sans-serif',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
-      'Noto Color Emoji'
-    ],
-    serif: [
-      'ui-serif',
-      'Georgia',
-      'Cambria',
-      'Times New Roman',
-      'Times',
-      'serif'
-    ],
-    mono: [
-      'ui-monospace',
-      'SFMono-Regular',
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace'
-    ]
+    sans: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+    serif: 'ui-serif, Georgia, Cambria, Times New Roman, Times, serif',
+    mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace'
   },
   fontSizes: {
     xs: '0.75rem',
@@ -523,6 +526,14 @@ export default defineTheme({
     black: '900'
   },
   leads: {
+    3: '.75rem',
+    4: '1rem',
+    5: '1.25rem',
+    6: '1.5rem',
+    7: '1.75rem',
+    8: '2rem',
+    9: '2.25rem',
+    10: '2.5rem',
     none: '1',
     tight: '1.25',
     snug: '1.375',
@@ -537,5 +548,43 @@ export default defineTheme({
     wide: '0.025em',
     wider: '0.05em',
     widest: '0.1em'
+  },
+  text: {
+    xs: {
+      fontSize: '{fontSizes.xs}',
+      lineHeight: '{leads.4}'
+    },
+    sm: {
+      fontSize: '{fontSizes.sm}',
+      lineHeight: '{leads.5}'
+    },
+    base: {
+      fontSize: '{fontSizes.base}',
+      lineHeight: '{leads.6}'
+    },
+    lg: {
+      fontSize: '{fontSizes.lg}',
+      lineHeight: '{leads.7}'
+    },
+    '2xl': {
+      fontSize: '{fontSizes.2xl}',
+      lineHeight: '{leads.8}'
+    },
+    '3xl': {
+      fontSize: '{fontSizes.3xl}',
+      lineHeight: '{leads.9}'
+    },
+    '4xl': {
+      fontSize: '{fontSizes.4xl}',
+      lineHeight: '{leads.10}'
+    },
+    '5xl': {
+      fontSize: '{fontSizes.5xl}',
+      lineHeight: '{leads.none}'
+    },
+    '6xl': {
+      fontSize: '{fontSizes.6xl}',
+      lineHeight: '{leads.none}'
+    }
   }
 })

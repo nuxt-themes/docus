@@ -27,8 +27,8 @@ const toggle = () => {
 </script>
 
 <template>
-  <div class="relative px-4 mt-4 mb-4 text-sm leading-relaxed callout rounded-xl" :class="[type]">
-    <span class="flex items-center justify-between" @click="toggle">
+  <div class="callout" :class="[type]">
+    <span class="preview" @click="toggle">
       <ContentSlot :use="$slots.summary" />
       <Icon
         name="heroicons-outline:chevron-right"
@@ -39,8 +39,29 @@ const toggle = () => {
       />
     </span>
 
-    <div v-show="isOpen" class="-mt-4">
+    <div v-show="isOpen" class="content">
       <ContentSlot :use="$slots.content" />
     </div>
   </div>
 </template>
+
+<style scoped lang="ts">
+css({
+  '.callout': {
+    position: 'relative',
+    px: '{space.4}',
+    my: '{space.4}',
+    fontSize: '{text.sm.fontSize}',
+    lineHeight: '{text.sm.lineHeight}',
+    borderRadius: '{radii.xl}',
+    '.preview': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    },
+    '.content': {
+      marginTop: 'calc(0px - {space.4})'
+    }
+  }
+})
+</style>
