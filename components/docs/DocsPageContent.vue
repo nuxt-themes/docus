@@ -92,8 +92,8 @@ onBeforeUnmount(() => {
       }"
       class="toc"
     >
-      <div class="toc-wrapper" @click="isOpen = !isOpen">
-        <button>
+      <div class="toc-wrapper" >
+        <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
           <Icon name="heroicons-outline:chevron-right" class="icon" :class="[isOpen && 'rotate']" />
         </button>
@@ -105,25 +105,6 @@ onBeforeUnmount(() => {
     </div>
   </AppContainer>
 </template>
-
-<style lang="postcss" scoped>
-/* .toc {
-  &:before {
-    content: ' ';
-    width: 100%;
-    right: 0;
-    @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
-  }
-} */
-
-@screen lg {
-  .toc {
-    &:before {
-      display: none;
-    }
-  }
-}
-</style>
 
 <style scoped lang="ts">
 css({
@@ -140,7 +121,6 @@ css({
   '.aside-nav': {
     display: 'none',
     overflowY: 'auto',
-    paddingBottom: '{space.8}',
     '@mq.lg': {
       display: 'block',
       position: 'sticky',
@@ -148,7 +128,7 @@ css({
       gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
-      paddingTop: '{space.8}'
+      py: '{space.8}',
     }
   },
   '.page-body': {
@@ -156,8 +136,7 @@ css({
     display: 'flex',
     flexDirection: "column",
     flex: '1 1 0%',
-    paddingTop: '{space.8}',
-    paddingBottom: '{space.8}',
+    py: '{space.8}',
     '&.one-column': {
       '@mq.lg': {
         gridColumn: 'span 12 / span 12'
@@ -223,24 +202,16 @@ css({
     top: '{docus.header.height}',
     display: 'flex',
     alignItems: 'center',
-    padding: '0 {space.4}',
-    // TODO: negative spaces
-    margin: '-{space.8} -{space.4} 0',
+    mx: 'calc(0px - {space.4})',
     '@mq.sm': {
-      margin: '0 -{space.6}',
-      padding: '0 {space.6}'
+      mx: 'calc(0px - {space.6})',
     },
     '@mq.lg': {
       maxHeight: '{docus.page.height}',
       gridColumn: 'span 2 / span 2',
-      marginLeft: 0,
-      marginRight: 0,
+      mx: 0,
       alignSelf: 'flex-start',
-      background: 'transparent',
-      paddingLeft: 0,
-      paddingRight: 0,
-      paddingTop: '{space.8}',
-      backdropFilter: 'blur(0)'
+      py: '{space.8}',
     },
     '&.closed': {
       display: 'flex',
@@ -249,41 +220,33 @@ css({
         display: 'block'
       }
     },
-    // TODO: before does not work
-    "&::before": {
-      content: '\'\'',
-      position: 'absolute',
-      width: '16px', // 100%
-      height: '16px', // 100%
-      right: 0,
-      top: 0,
-      zIndex: -1,
-      display: 'block',
-      background: 'red',
-      opacity: 0,
-
-  //     &:before {
-  //   content: ' ';
-  //   width: 100%;
-  //   right: 0;
-  //   @apply absolute top-0 z-[-1] block h-full bg-white/95 backdrop-blur dark:bg-black/95;
-  // }
-    },
     '.toc-wrapper': {
       width: '100%',
+      // TODO: rgba() doesn't work in tokens.config; replace with backdrop tokens
+      backgroundColor: 'red',
+      px: '{space.4}',
+      '@mq.sm': {
+        px: '{space.6}',
+      },
+      '@mq.lg': {
+        px: 0,
+        backgroundColor: 'transparent',
+        backdropFilter: 'none'
+      },
       button: {
         display: 'flex',
         alignItems: 'center',
-        gap: '{space.1}',
-        paddingTop: '{space.3}',
-        paddingBottom: '{space.3}',
+        py: '{space.3}',
+        width: '100%',
+        height: '100%',
         '@mq.lg': {
           display: 'none'
         },
         '.title': {
           fontSize: '{text.xs.fontSize}',
           lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeights.semibold}'
+          fontWeight: '{fontWeights.semibold}',
+          marginRight: '{space.1}',
         },
         '.icon': {
           width: '{space.4}',
