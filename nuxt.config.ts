@@ -3,6 +3,8 @@ import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
+  extends: ['@nuxt-themes/typography'],
+
   modules: [
     'pinceau/nuxt',
     '@nuxtjs/color-mode',
@@ -22,7 +24,17 @@ export default defineNuxtConfig({
   components: [
     {
       prefix: '',
-      path: resolve('./components/prose'),
+      path: resolve('./components/app'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/docs'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/content'),
       global: true
     },
     {
@@ -39,9 +51,7 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/landing'),
       global: true
-    },
-    resolve('./components')
-
+    }
   ],
 
   tailwindcss: {

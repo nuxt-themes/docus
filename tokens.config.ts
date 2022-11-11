@@ -5,25 +5,25 @@ export default defineTheme({
     my: (value) => {
       return {
         marginTop: value,
-        marginBottom: value,
+        marginBottom: value
       }
     },
     mx: (value) => {
       return {
         marginLeft: value,
-        marginRight: value,
+        marginRight: value
       }
     },
     py: (value) => {
       return {
         paddingTop: value,
-        paddingBottom: value,
+        paddingBottom: value
       }
     },
     px: (value) => {
       return {
         paddingLeft: value,
-        paddingRight: value,
+        paddingRight: value
       }
     }
   },
@@ -39,7 +39,7 @@ export default defineTheme({
       background: {
         base: {
           initial: '{colors.gray.100}',
-          dark: '{colors.gray.900}',
+          dark: '{colors.gray.900}'
         }
       }
     },
@@ -81,6 +81,34 @@ export default defineTheme({
       }
     }
   },
+  typography: {
+    colors: {
+      primary: {
+        50: '{colors.primary.50}',
+        100: '{colors.primary.100}',
+        200: '{colors.primary.200}',
+        300: '{colors.primary.300}',
+        400: '{colors.primary.400}',
+        500: '{colors.primary.500}',
+        600: '{colors.primary.600}',
+        700: '{colors.primary.700}',
+        800: '{colors.primary.800}',
+        900: '{colors.primary.900}'
+      },
+      secondary: {
+        50: '{colors.gray.50}',
+        100: '{colors.gray.100}',
+        200: '{colors.gray.200}',
+        300: '{colors.gray.300}',
+        400: '{colors.gray.400}',
+        500: '{colors.gray.500}',
+        600: '{colors.gray.600}',
+        700: '{colors.gray.700}',
+        800: '{colors.gray.800}',
+        900: '{colors.gray.900}'
+      }
+    }
+  },
   media: {
     sm: '(min-width: 640px)',
     md: '(min-width: 768px)',
@@ -89,12 +117,6 @@ export default defineTheme({
     '2xl': '(min-width: 1536px)'
   },
   colors: {
-    text: {
-      primary: {
-        initial: 'red',
-        dark: 'green'
-      }
-    },
     black: '#0C0D0C',
     white: '#fff',
     primary: {
@@ -122,16 +144,16 @@ export default defineTheme({
       900: '#0f172a'
     },
     gray: {
-      50: '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827'
+      50: '#fafafa',
+      100: '#f4f4f5',
+      200: '#e4e4e7',
+      300: '#d4d4d8',
+      400: '#a1a1aa',
+      500: '#71717a',
+      600: '#52525b',
+      700: '#3f3f46',
+      800: '#27272a',
+      900: '#18181b'
     },
     zinc: {
       50: '#fafafa',
@@ -596,7 +618,7 @@ export default defineTheme({
     filter: 'saturate(200%) blur(20px)',
     background: {
       initial: '#fafafabf',
-      dark: '#181818bf',
+      dark: '#181818bf'
     }
   },
   text: {

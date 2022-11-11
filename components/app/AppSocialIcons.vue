@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import { computedStyle } from 'pinceau/runtime'
-
-defineProps({
-  size: computedStyle('gap', '5', false)
-})
-
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 
 const docus = useDocus()
@@ -38,7 +32,7 @@ const icons = computed<any>(() => {
     :href="icon.href"
     target="_blank"
   >
-    <Icon v-if="icon.icon" :name="icon.icon" :size="size" />
+    <Icon v-if="icon.icon" :name="icon.icon" />
   </NuxtLink>
 </template>
 

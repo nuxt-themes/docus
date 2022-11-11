@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import { computedStyle } from 'pinceau/runtime'
-
-defineProps({
-  size: computedStyle('gap', '5', false)
-})
-
 const colorMode = useColorMode()
 const onClick = () => {
   const values = ['system', 'light', 'dark']
@@ -18,9 +12,9 @@ const onClick = () => {
 <template>
   <button aria-label="Color Mode" @click="onClick">
     <ColorScheme placeholder="...">
-      <Icon :size="size" v-if="colorMode.preference === 'dark'" name="uil:moon" />
-      <Icon :size="size" v-else-if="colorMode.preference === 'light'" name="uil:sun" />
-      <Icon :size="size" v-else name="uil:desktop" />
+      <Icon v-if="colorMode.preference === 'dark'" name="uil:moon" />
+      <Icon v-else-if="colorMode.preference === 'light'" name="uil:sun" />
+      <Icon v-else name="uil:desktop" />
     </ColorScheme>
   </button>
 </template>

@@ -2,8 +2,12 @@
 import { computedStyle } from 'pinceau/runtime'
 
 defineProps({
-  size: computedStyle('gap', '4', false),
+  iconSize: computedStyle('gap', '5', false),
   color: computedStyle('color', 'primary', false),
+  size: {
+    type: String,
+    default: 'medium'
+  },
   href: {
     type: String,
     default: ''
@@ -30,7 +34,7 @@ defineProps({
 
 <template>
   <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
-    <Icon v-if="icon" :size="size" :name="icon" />
+    <Icon v-if="icon" :name="icon" />
     <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
 </template>
@@ -38,6 +42,11 @@ defineProps({
 <style lang="ts" scoped>
 css({
   '.button-link': {
+    '& > .icon': {
+      marginRight: `{space.1}`,
+      width: (props) => `{space.${props.iconSize}}`,
+      height: (props) => `{space.${props.iconSize}}`
+    },
     backgroundColor: (props, utils) => utils.scale('colors', props.color, '500'),
     '&:hover': {
       backgroundColor: (props, utils) => utils.scale('colors', props.color, '600')

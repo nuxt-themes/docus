@@ -31,7 +31,7 @@ export default defineComponent({
 
     const { flatUnwrap, unwrap } = useUnwrap()
 
-    const iconName = computed(() => props.icon || iconTypeMap[props.type])
+    const iconName = computed(() => props.icon || (iconTypeMap as any)[props.type])
 
     // Usage of render function is mandatory to access default slot
     // Otherwise Vue warns that slot "default" was invoked outside of the render function

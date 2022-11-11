@@ -8,19 +8,19 @@ const hasDialog = computed(() => navigation.value?.length > 1)
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
     <AppContainer>
       <section class="left">
-        <HeaderDialog v-if="hasDialog" />
-        <HeaderLogo />
+        <AppHeaderDialog v-if="hasDialog" />
+        <AppHeaderLogo />
       </section>
 
       <section class="center">
-        <HeaderLogo v-if="hasDialog" />
-        <HeaderNavigation />
+        <AppHeaderLogo v-if="hasDialog" />
+        <AppHeaderNavigation />
       </section>
 
       <section class="right">
         <AppSearch v-if="hasDocSearch" />
-        <ColorModeSwitch size="5" />
-        <SocialIcons />
+        <ThemeSelect />
+        <AppSocialIcons />
       </section>
     </AppContainer>
   </header>
@@ -28,6 +28,11 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 
 <style scoped lang="ts">
 css({
+  ':deep(.icon)': {
+    width: '{space.4}',
+    height: '{space.4}'
+  },
+
   '.navbar-logo': {
     '.left &': {
       '.has-dialog &': {

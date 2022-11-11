@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { page } = useContent()
 
-const formatDateByLocale = (locale, d) => {
+const formatDateByLocale = (locale: any, d: any) => {
   return new Date(d).toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',

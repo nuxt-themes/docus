@@ -18,20 +18,20 @@ defineProps({
 
 <template>
   <div :class="{ blurry }" class="card">
-      <Icon v-if="icon" :name="icon" size="8" class="icon" />
-      <slot />
-      <div>
-        <h3 class="title">
-          <ContentSlot :use="$slots.title" unwrap="p">
-            Card title
-          </ContentSlot>
-        </h3>
-        <p class="description">
-          <ContentSlot :use="$slots.description" unwrap="p">
-            Card description
-          </ContentSlot>
-        </p>
-      </div>
+    <Icon v-if="icon" :name="icon" />
+    <slot />
+    <div>
+      <h3 class="title">
+        <ContentSlot :use="$slots.title" unwrap="p">
+          Card title
+        </ContentSlot>
+      </h3>
+      <p class="description">
+        <ContentSlot :use="$slots.description" unwrap="p">
+          Card description
+        </ContentSlot>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -62,7 +62,9 @@ css({
     },
     '.icon': {
       display: 'inline-block',
-      marginBottom: '{space.2}'
+      marginBottom: '{space.2}',
+      width: '{space.6}',
+      height: '{space.6}'
     },
     '.title': {
       marginBottom: '{space.2}',

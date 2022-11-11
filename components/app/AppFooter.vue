@@ -25,9 +25,9 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           :href="icon.href"
           target="_blank"
         >
-          <Icon :name="icon.icon || icon.component" size="4" />
+          <Icon :name="icon.icon || icon.component" />
         </a>
-        <SocialIcons ref="socialIcons" size="4" />
+        <AppSocialIcons ref="socialIcons" />
       </div>
     </AppContainer>
   </footer>
@@ -42,6 +42,11 @@ css({
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: '{colors.gray.100}',
+
+    ':deep(.icon)': {
+      width: '{space.4}',
+      height: '{space.4}'
+    },
 
     a: {
       color: '{colors.gray.500}',

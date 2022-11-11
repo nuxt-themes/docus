@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import ColorModeSwitch from './ColorModeSwitch.vue'
+import ThemeSelect from './ThemeSelect.vue'
+
 const { navigation } = useContent()
 const docus = useDocus()
 
 const filtered = computed(() => docus.value.header?.exclude || [])
 
 const links = computed(() => {
-  return (navigation.value || []).filter((item) => {
+  return (navigation.value || []).filter((item: any) => {
     if (filtered.value.includes(item._path)) { return false }
     return true
   })
@@ -32,8 +33,8 @@ watch(visible, v => (v ? open() : close()))
           </button>
 
           <div class="flex items-center gap-4">
-            <SocialIcons />
-            <ColorModeSwitch size="h-6 w-6" />
+            <AppSocialIcons />
+            <ThemeSelect />
           </div>
         </div>
 
@@ -42,3 +43,12 @@ watch(visible, v => (v ? open() : close()))
     </div>
   </teleport>
 </template>
+
+<style scoped lang="ts">
+css({
+  ':deep(.icon)': {
+    width: '{space.4}',
+    height: '{space.4}'
+  }
+})
+</style>
