@@ -29,10 +29,9 @@ css({
   variants: {
     padded: {
       true: {
-        padding: '1rem',
+        px: '{space.4}',
         '@mq.sm': {
-          paddingLeft: '1.5rem',
-          paddingRight: '1.5rem',
+          px: '{space.6}',
         }
       },
       options: {

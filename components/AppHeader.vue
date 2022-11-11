@@ -46,18 +46,17 @@ css({
   },
 
   header: {
-    backdropFilter: 'saturate(180%) blur(20px)',
+    backdropFilter: '{backdrop.filter}',
     position: 'sticky',
     top: 0,
     zIndex: 10,
     width: '100%',
     borderBottom: '1px solid {colors.gray.100}',
-    backgroundColor: 'rgba({colors.white}, 0.8)',
+    backgroundColor: '{backdrop.background}',
     height: '{docus.header.height}',
 
     '@dark': {
       borderBottom: '1px solid {colors.gray.900}',
-      backgroundColor: 'rgba({colors.black}, 0.8)',
     },
 
     '.container': {
