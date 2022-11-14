@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   extends: ['@nuxt-themes/typography'],
 
   modules: [
+    '@nuxthq/studio',
     'pinceau/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
