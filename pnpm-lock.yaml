@@ -24,9 +24,9 @@ specifiers:
   nuxt: npm:nuxt3@latest
   pinceau: latest
   socket.io-client: ^4.5.3
-  tailwindcss: ^3.2.3
+  tailwindcss: ^3.2.4
   typescript: ^4.8.4
-  vue: ^3.2.44
+  vue: ^3.2.45
   vue-plausible: ^1.3.2
 
 dependencies:
@@ -39,10 +39,10 @@ dependencies:
   '@nuxtjs/algolia': 1.1.4_vue@3.2.45
   '@nuxtjs/color-mode': 3.1.8
   '@nuxtjs/tailwindcss': 6.1.3
-  '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.3
-  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.3
-  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.3
-  '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.3
+  '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.4
+  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
+  '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@vueuse/core': 9.5.0_vue@3.2.45
   '@vueuse/nuxt': 9.5.0_605f398561a7a5f377e0c906fb74e1da
   pinceau: 0.6.17
@@ -55,8 +55,13 @@ devDependencies:
   '@nuxtjs/eslint-config-typescript': 11.0.0_eslint@8.27.0+typescript@4.8.4
   '@nuxtlabs/github-module': /@nuxtlabs/github-module-edge/1.3.1-27629534.edb1935
   eslint: 8.27.0
+<<<<<<< Updated upstream
   nuxt: /nuxt3/3.0.0-rc.14-27802701.2f53495_eslint@8.27.0+typescript@4.8.4
   tailwindcss: 3.2.3
+=======
+  nuxt: /nuxt3/3.0.0-rc.14-27802701.2f53495_rmayb2veg2btbq6mbmnyivgasy
+  tailwindcss: 3.2.4
+>>>>>>> Stashed changes
   typescript: 4.8.4
   vue: 3.2.45
 
@@ -1132,8 +1137,8 @@ packages:
       postcss: 8.4.19
       postcss-custom-properties: 12.1.10_postcss@8.4.19
       postcss-nesting: 10.2.0_postcss@8.4.19
-      tailwind-config-viewer: 1.7.2_tailwindcss@3.2.3
-      tailwindcss: 3.2.3
+      tailwind-config-viewer: 1.7.2_tailwindcss@3.2.4
+      tailwindcss: 3.2.4
       ufo: 0.8.6
     transitivePeerDependencies:
       - rollup
@@ -1520,32 +1525,32 @@ packages:
       defer-to-connect: 2.0.1
     dev: false
 
-  /@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.2.3:
+  /@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.2.4:
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     dev: false
 
-  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.3:
+  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.4:
     resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     dev: false
 
-  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.3:
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.4:
     resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     dev: false
 
-  /@tailwindcss/typography/0.5.8_tailwindcss@3.2.3:
+  /@tailwindcss/typography/0.5.8_tailwindcss@3.2.4:
     resolution: {integrity: sha512-xGQEp8KXN8Sd8m6R4xYmwxghmswrd0cPnNI2Lc6fmrC3OojysTBJJGSIVwPV56q4t6THFUK3HJ0EaWwpglSxWw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
@@ -1554,7 +1559,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     dev: false
 
   /@trysound/sax/0.2.0:
@@ -8176,7 +8181,7 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /tailwind-config-viewer/1.7.2_tailwindcss@3.2.3:
+  /tailwind-config-viewer/1.7.2_tailwindcss@3.2.4:
     resolution: {integrity: sha512-3JJCeAAlvG+i/EBj+tQb0x4weo30QjdSAo4hlcnVbtD+CkpzHi/UwU9InbPMcYH+ESActoa2kCyjpLEyjEkn0Q==}
     engines: {node: '>=8'}
     hasBin: true
@@ -8191,13 +8196,13 @@ packages:
       open: 7.4.2
       portfinder: 1.0.32
       replace-in-file: 6.3.5
-      tailwindcss: 3.2.3
+      tailwindcss: 3.2.4
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /tailwindcss/3.2.3:
-    resolution: {integrity: sha512-Xt9D4PK4zuuQCEB8bwK9JUCKmTgUwyac/6b0/42Vqhgl6YJkep+Wf5wq+5uXYfmrupdAD0YY2NY1hyZp1HjRrg==}
+  /tailwindcss/3.2.4:
+    resolution: {integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependenciesMeta:

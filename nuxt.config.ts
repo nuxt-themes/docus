@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   ],
 
   css: [
+    resolve('./assets/css/main.css'),
     '@fontsource/inter/400.css',
     '@fontsource/inter/500.css',
     '@fontsource/inter/600.css',

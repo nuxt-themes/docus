@@ -1,8 +1,8 @@
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
+  black: '#0C0D0C',
   white: '#fff',
-  black: '#0c0c0d',
   gray: {
     DEFAULT: 'var(--colors-gray-500)',
     50: 'var(--colors-gray-50)',
