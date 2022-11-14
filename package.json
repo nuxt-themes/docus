@@ -22,7 +22,8 @@
     "build": "nuxi build .docs/",
     "generate": "nuxi generate .docs/",
     "preview": "nuxi preview .docs/",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "standard-version && git push --follow-tags && npx npm publish"
   },
   "dependencies": {
     "@docsearch/css": "^3.3.0",
@@ -38,7 +39,6 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.8",
     "@vueuse/core": "^9.5.0",
     "@vueuse/nuxt": "^9.5.0",
     "pinceau": "latest",
@@ -54,6 +54,7 @@
     "@nuxtlabs/github-module": "npm:@nuxtlabs/github-module-edge@latest",
     "eslint": "^8.27.0",
     "nuxt": "npm:nuxt3@latest",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4",
     "vue": "^3.2.45"
