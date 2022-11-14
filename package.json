@@ -1,9 +1,10 @@
 {
   "name": "@nuxt-themes/docus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "./nuxt.config.ts",
   "files": [
+    "app",
     "assets",
     "components",
     "composables",
