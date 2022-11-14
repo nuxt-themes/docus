@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  /* Images */
-  .light-img {
-    @apply block dark:hidden;
+.light-img {
+  display: block;
+  @dark {
+    display: hidden;
   }
-  .dark-img {
-    @apply hidden dark:block;
+}
+
+.dark-img {
+  display: hidden;
+  @dark {
+    display: block;
   }
 }
 
@@ -225,17 +229,21 @@ body {
 }
 
 body {
-  @apply overflow-y-scroll antialiased text-gray-700 bg-white dark:text-gray-200 dark:bg-black;
-  font-family: var(--fonts-primary);
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $dt('colors.white');
+  color: $dt('colors.gray.700');
+  font-family: $dt('font.sans');
+  @dark {
+    background: $dt('colors.black');
+    color: $dt('colors.gray.200');
+  }
 }
 
 :root {
   /* DocSearch */
   --docsearch-primary-color: theme('colors.primary.500') !important;
-}
-
-html.dark {
-  @apply bg-black;
 }
 
 code, kbd, pre, samp {
