@@ -1,8 +1,20 @@
 {
   "name": "@nuxt-themes/docus",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "./nuxt.config.ts",
+  "files": [
+    "assets",
+    "components",
+    "composables",
+    "layouts",
+    "plugins",
+    "app.config.ts",
+    "app.vue",
+    "nuxt.config.ts",
+    "tailwind.config.js",
+    "tokens.config.ts"
+  ],
   "scripts": {
     "prepare": "nuxi prepare && nuxi prepare .docs && nuxi prepare .playground",
     "play": "nuxi dev .playground/",
