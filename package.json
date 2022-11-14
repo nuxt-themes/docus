@@ -1,6 +1,6 @@
 {
   "name": "@nuxt-themes/docus",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "main": "./nuxt.config.ts",
   "files": [
