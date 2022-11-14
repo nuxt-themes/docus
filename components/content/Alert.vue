@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   /**
    * @values info, success, warning, danger
    */
@@ -30,6 +30,23 @@ css({
     py: '{space.3}',
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
+    border: '1px solid',
+    // TODO: rewrite with utility
+    '&.primary': {
+      stateColors: 'primary'
+    },
+    '&.info': {
+      stateColors: 'info'
+    },
+    '&.success': {
+      stateColors: 'success'
+    },
+    '&.warning': {
+      stateColors: 'warning'
+    },
+    '&.danger': {
+      stateColors: 'danger'
+    }
   }
 })
 </style>

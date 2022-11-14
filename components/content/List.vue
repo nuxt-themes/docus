@@ -62,19 +62,19 @@ css({
       marginRight: '{space.3}',
       flexShrink: 0,
       '&.primary-icon': {
-        color: '{docus.state.color.primary}'
+        color: '{docus.state.primary.color}'
       },
       '&.info-icon': {
-        color: '{docus.state.color.info}'
+        color: '{docus.state.info.color}'
       },
       '&.success-icon': {
-        color: '{docus.state.color.success}'
+        color: '{docus.state.success.color}'
       },
       '&.warning-icon': {
-        color: '{docus.state.color.warning}'
+        color: '{docus.state.warning.color}'
       },
       '&.danger-icon': {
-        color: '{docus.state.color.danger}'
+        color: '{docus.state.danger.color}'
       },
       '.icon': {
         width: '{space.6}',
