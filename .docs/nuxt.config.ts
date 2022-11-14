@@ -1,3 +1,4 @@
 export default defineNuxtConfig({
-  extends: '../'
+  extends: '../',
+  modules: ['nuxt-plausible']
 })
