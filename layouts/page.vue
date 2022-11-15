@@ -3,7 +3,7 @@ const { page } = useContent()
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="page-layout">
     <AppContainer :fluid="page.fluid" :constrained-class="page.constrainedClass" :padded="page.padded">
       <article>
         <slot />
@@ -11,3 +11,13 @@ const { page } = useContent()
     </AppContainer>
   </div>
 </template>
+
+<style lang="ts" scoped>
+css({
+  '.page-layout': {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '{docus.page.height}'
+  }
+})
+</style>
