@@ -46,7 +46,8 @@ css({
     left: (props) => props.left,
     right: (props) => props.right,
     zIndex: (props) => props.zIndex,
-    width: (props) => props.width,
+    width: '-webkit-fill-available',
+    maxWidth: (props) => props.width,
     height: (props) => props.height,
     filter: (props) => `blur(${props.blur})`,
     '.ellipsis-item': {
