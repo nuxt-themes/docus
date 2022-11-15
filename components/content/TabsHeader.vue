@@ -5,12 +5,12 @@ import type { PropType } from 'vue'
 const props = defineProps({
   tabs: {
     type: Array as PropType<{ label: string }[]>,
-    required: true,
+    required: true
   },
   activeTabIndex: {
     type: Number,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const emit = defineEmits(['update:activeTabIndex'])
@@ -45,8 +45,8 @@ watch(
     }, 50)
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 )
 </script>
 
@@ -65,7 +65,7 @@ watch(
         ref="highlightUnderline"
         class="highlight-underline"
       >
-        <span class="flex h-full w-full bg-gray-700 dark:bg-gray-900" />
+        <span class="tab" />
       </span>
     </div>
 
@@ -76,17 +76,19 @@ watch(
 <style scoped lang="ts">
 css({
   ".tabs-header": {
-    // relative bg-gray-800 text-white
     position: 'relative',
-    background: '{colors.gray.800}',
-    color: '{colors.white}',
+    background: '{colors.gray.200}',
+    color: '{colors.red.700}',
+    '@dark': {
+      color: '{colors.red.500}',
+      background: '{colors.gray.800}',
+    },
     '.tabs': {
-      //relative z-0 px-2
       position: 'relative',
       zIndex: 0,
       px: '{space.2}',
       button: {
-        py: '{space.3}',
+        py: '{space.2-5}',
         px: '{space.4}',
         position: 'relative',
         fontFamily: '{font.mono}',
@@ -96,14 +98,24 @@ css({
         userSelect: 'none',
         transition: 'color 100ms, background 100ms',
         '&.not-active': {
-          color: '{colors.gray.400}',
+          color: '{colors.gray.700}',
           '&:hover': {
-            color: '{colors.gray.200}',
-            background: '{colors.gray.700}'
+            color: '{colors.gray.800}',
+            background: '{colors.gray.300}'
           },
+          '@dark': {
+            color: '{colors.gray.200}',
+            '&:hover': {
+              color: '{colors.gray.200}',
+              background: '{colors.gray.700}'
+            },
+          }
         },
         '&.active': {
-          color: '{colors.gray.100}'
+          color: '{colors.gray.500}',
+          '@dark': {
+            color: '{colors.gray.300}',
+          }
         }
       },
       '.highlight-underline': {
@@ -111,7 +123,16 @@ css({
         zIndex: -1,
         top: 0,
         height: '100%',
-        transition: 'left 150ms, width 150ms'
+        transition: 'left 150ms, width 150ms',
+        '.tab': {
+          display: 'flex',
+          width: '100%',
+          height: '100%',
+          backgroundColor: '{colors.gray.100}',
+          '@dark': {
+            backgroundColor: '{colors.gray.900}',
+          }
+        }
       }
     }
   }

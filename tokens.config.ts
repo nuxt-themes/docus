@@ -687,8 +687,10 @@ export default defineTheme({
   backdrop: {
     filter: 'saturate(200%) blur(20px)',
     background: {
-      initial: 'rgba({colors.white}, 0.8)',
-      dark: 'rgba({colors.black}, 0.8)'
+      // TODO: rgba 80% from colors.white
+      initial: '#fffc',
+      // TODO: rgba 80% from colors.black
+      dark: '#0c0d0ccc'
     }
   },
   text: {
