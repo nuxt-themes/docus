@@ -223,8 +223,8 @@ css({
     },
     '.toc-wrapper': {
       width: '100%',
-      // TODO: rgba() doesn't work in tokens.config; replace with backdrop tokens
-      backgroundColor: 'red',
+      backdropFilter: '{backdrop.filter}',
+      backgroundColor: '{backdrop.background}',
       px: '{space.4}',
       '@mq.sm': {
         px: '{space.6}',

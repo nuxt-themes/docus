@@ -84,52 +84,25 @@ export default defineComponent({
 })
 </script>
 
-<style lang="postcss">
-li {
-  .code-group {
-    @apply my-4;
-  }
-}
-
-html.dark {
-  .code-group-content {
-    .preview-canvas {
-      @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg rounded-tl-none rounded-tr-none bg-gray-900 p-4 leading-normal;
+<style scoped lang="ts">
+css({
+  '.code-group': {
+    border: '1px solid {docus.border.secondary.default}',
+    borderRadius: '{radii.md}',
+    overflow: 'hidden',
+    ':deep(.prose-code)': {
+      margin: 0,
+      border: 'none',
+      borderRadius: 0,
+      // TODO: update token in typography
+      '--prose-code-block-background-color-dark': '{colors.gray.900}'
+    },
+    ':deep(.filename)': {
+      display: 'none'
+    },
+    '.preview-canvas': {
+      padding: '{space.4}'
     }
   }
-}
-</style>
-
-<style scoped lang="postcss">
-.code-group {
-  @apply overflow-hidden rounded-lg;
-
-  :deep(.prose-code) {
-    @apply mt-0 mb-0 rounded-none !important;
-  }
-
-  :deep(.prose-code-header) {
-    @apply hidden;
-  }
-
-  :deep(pre) {
-    @apply mt-0 !important;
-  }
-
-  :deep(.filename) {
-    @apply hidden;
-  }
-}
-
-.code-group-content {
-  @apply rounded-b-lg;
-
-  .preview-canvas {
-    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg p-4 leading-normal text-gray-800 dark:text-gray-200;
-
-    & > * {
-      @apply my-0;
-    }
-  }
-}
+})
 </style>

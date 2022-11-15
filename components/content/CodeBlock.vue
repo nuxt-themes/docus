@@ -5,22 +5,22 @@ defineProps({
    */
   label: {
     type: String,
-    required: true,
+    required: true
   },
   /**
    * Select which tab should be active
    */
   active: {
     type: Boolean,
-    default: false,
+    default: false
   },
   /**
    * Preiew block are bordered and have small padding.
    */
   preview: {
     type: Boolean,
-    default: false,
-  },
+    default: false
+  }
 })
 </script>
 
