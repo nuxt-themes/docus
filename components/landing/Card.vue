@@ -35,14 +35,6 @@ defineProps({
   </div>
 </template>
 
-<style scoped lang="postcss">
-.card {
-  &.blurry {
-    @apply !backdrop-blur-lg !bg-opacity-20 backdrop-saturate-150;
-  }
-}
-</style>
-
 <style scoped lang="ts">
 css({
   '.card': {

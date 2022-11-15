@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     'pinceau/nuxt',
     '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
+    // '@nuxtjs/tailwindcss',
     '@nuxt/content',
     '@vueuse/nuxt',
     resolve('./app/module')
