@@ -136,7 +136,6 @@ css({
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: '{fontWeights.semibold}',
-        // TODO: array not working
         fontFamily: '{font.mono}'
       }
     },

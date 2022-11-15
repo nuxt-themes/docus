@@ -29,7 +29,9 @@ const toggle = () => {
 <template>
   <div class="callout" :class="[type]">
     <span class="preview" @click="toggle">
-      <ContentSlot :use="$slots.summary" />
+      <span class="summary">
+        <ContentSlot :use="$slots.summary" />
+      </span>
       <Icon
         name="heroicons-outline:chevron-right"
         class="w-5 h-5 transition-transform transform"
@@ -50,17 +52,50 @@ css({
   '.callout': {
     position: 'relative',
     px: '{space.4}',
+    py: '{space.3}',
     my: '{space.4}',
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
     borderRadius: '{radii.xl}',
+    border: '1px solid',
+
+    '&.primary': {
+      stateColors: 'primary'
+    },
+    '&.info': {
+      stateColors: 'info'
+    },
+    '&.success': {
+      stateColors: 'success'
+    },
+    '&.warning': {
+      stateColors: 'warning'
+    },
+    '&.danger': {
+      stateColors: 'danger'
+    },
     '.preview': {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      cursor: 'pointer',
+      '.summary': {
+        ':deep(p)': {
+          margin: 0,
+          '& + p': {
+            marginTop: '{space.2}'
+          }
+        }
+      }
     },
     '.content': {
-      marginTop: 'calc(0px - {space.4})'
+      paddingTop: '{space.3}',
+      ':deep(p)': {
+        margin: 0,
+        '& + p': {
+          marginTop: '{space.2}'
+        }
+      }
     }
   }
 })

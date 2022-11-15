@@ -22,7 +22,7 @@ const root = computed(() => docus.value.github?.root || '/')
           :title="`@${contributor.login} on GitHub`"
           :to="`https://github.com/${contributor.login}`"
         >
-          <img :src="contributor.avatar_url" class="inline-block w-6 h-6 transition-colors rounded-full u-ring-gray-200 hover:ring-primary-500 ring-2">
+          <img :src="contributor.avatar_url" class="inline-block w-6 h-6 transition-colors rounded-full border-gray-200 hover:border-primary-500 border-2">
         </NuxtLink>
       </div>
       <span v-else-if="pending" class="block w-6 h-6 opacity-0">&nbsp;</span>

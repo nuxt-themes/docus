@@ -2,6 +2,24 @@ import { defineTheme } from 'pinceau'
 
 export default defineTheme({
   utils: {
+    stateColors: (value) => {
+      return {
+        color: `{docus.state.${value}.color.primary}`,
+        backgroundColor: `{docus.state.${value}.backgroundColor.primary}`,
+        borderColor: `{docus.state.${value}.borderColor.primary}`,
+        ':deep(code)': {
+          color: `{docus.state.${value}.color.secondary}`,
+          backgroundColor: `{docus.state.${value}.backgroundColor.secondary}`
+        },
+        ':deep(a)': {
+          borderColor: 'currentColor',
+          '&:hover': {
+            color: `{docus.state.${value}.color.secondary}`,
+            borderColor: 'currentColor'
+          }
+        }
+      }
+    },
     my: (value) => {
       return {
         marginTop: value,
@@ -59,24 +77,172 @@ export default defineTheme({
         }
       }
     },
+    border: {
+      primary: {
+        default: {
+          initial: '{colors.gray.100}',
+          dark: '{colors.gray.800}'
+        },
+        hover: {
+          initial: '{colors.gray.200}',
+          dark: '{colors.gray.700}'
+        }
+      },
+      secondary: {
+        default: {
+          initial: '{colors.gray.200}',
+          dark: '{colors.gray.700}'
+        },
+        hover: {
+          initial: '',
+          dark: ''
+        }
+      }
+    },
     state: {
-      color: {
-        primary: '{colors.primary.500}',
-        info: {
-          initial: '{colors.blue.500}',
-          dark: '{colors.blue.400}'
+      primary: {
+        color: {
+          primary: {
+            initial: '{colors.primary.600}',
+            dark: '{colors.primary.400}'
+          },
+          secondary: {
+            initial: '{colors.primary.700}',
+            dark: '{colors.primary.200}'
+          }
         },
-        success: {
-          initial: '{colors.green.500}',
-          dark: '{colors.green.400}'
+        backgroundColor: {
+          primary: {
+            initial: '{colors.primary.50}',
+            dark: '{colors.primary.900}'
+          },
+          secondary: {
+            initial: '{colors.primary.100}',
+            dark: '{colors.primary.800}'
+          }
         },
-        warning: {
-          initial: '{colors.yellow.500}',
-          dark: '{colors.yellow.400}'
+        borderColor: {
+          primary: {
+            initial: '{colors.primary.100}',
+            dark: '{colors.primary.800}'
+          },
+          secondary: {}
+        }
+      },
+      info: {
+        color: {
+          primary: {
+            initial: '{colors.blue.500}',
+            dark: '{colors.blue.400}'
+          },
+          secondary: {
+            initial: '{colors.blue.600}',
+            dark: '{colors.blue.200}'
+          }
         },
-        danger: {
-          initial: '{colors.red.500}',
-          dark: '{colors.red.400}'
+        backgroundColor: {
+          primary: {
+            initial: '{colors.blue.50}',
+            dark: '{colors.blue.900}'
+          },
+          secondary: {
+            initial: '{colors.blue.100}',
+            dark: '{colors.blue.800}'
+          }
+        },
+        borderColor: {
+          primary: {
+            initial: '{colors.blue.100}',
+            dark: '{colors.blue.800}'
+          },
+          secondary: {}
+        }
+      },
+      success: {
+        color: {
+          primary: {
+            initial: '{colors.green.500}',
+            dark: '{colors.green.400}'
+          },
+          secondary: {
+            initial: '{colors.green.600}',
+            dark: '{colors.green.200}'
+          }
+        },
+        backgroundColor: {
+          primary: {
+            initial: '{colors.green.50}',
+            dark: '{colors.green.900}'
+          },
+          secondary: {
+            initial: '{colors.green.100}',
+            dark: '{colors.green.800}'
+          }
+        },
+        borderColor: {
+          primary: {
+            initial: '{colors.green.100}',
+            dark: '{colors.green.800}'
+          },
+          secondary: {}
+        }
+      },
+      warning: {
+        color: {
+          primary: {
+            initial: '{colors.yellow.600}',
+            dark: '{colors.yellow.400}'
+          },
+          secondary: {
+            initial: '{colors.yellow.700}',
+            dark: '{colors.yellow.200}'
+          }
+        },
+        backgroundColor: {
+          primary: {
+            initial: '{colors.yellow.50}',
+            dark: '{colors.yellow.900}'
+          },
+          secondary: {
+            initial: '{colors.yellow.100}',
+            dark: '{colors.yellow.800}'
+          }
+        },
+        borderColor: {
+          primary: {
+            initial: '{colors.yellow.100}',
+            dark: '{colors.yellow.800}'
+          },
+          secondary: {}
+        }
+      },
+      danger: {
+        color: {
+          primary: {
+            initial: '{colors.red.500}',
+            dark: '{colors.red.300}'
+          },
+          secondary: {
+            initial: '{colors.red.600}',
+            dark: '{colors.red.200}'
+          }
+        },
+        backgroundColor: {
+          primary: {
+            initial: '{colors.red.50}',
+            dark: '{colors.red.900}'
+          },
+          secondary: {
+            initial: '{colors.red.100}',
+            dark: '{colors.red.800}'
+          }
+        },
+        borderColor: {
+          primary: {
+            initial: '{colors.red.100}',
+            dark: '{colors.red.800}'
+          },
+          secondary: {}
         }
       }
     }

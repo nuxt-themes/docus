@@ -42,7 +42,7 @@ export default defineComponent({
         'ul',
         items.map(item =>
           h('li', [
-            h('span', { class: `list-icon ${props.type}-icon` }, h(resolveComponent('icon'), { name: iconName.value, class: 'icon' })),
+            h('span', { class: `list-icon ${props.type}` }, h(resolveComponent('icon'), { name: iconName.value, class: 'icon' })),
             h('span', h(resolveComponent('ContentSlot'), { use: () => item }))
           ])
         )
@@ -61,20 +61,20 @@ css({
     '.list-icon': {
       marginRight: '{space.3}',
       flexShrink: 0,
-      '&.primary-icon': {
-        color: '{docus.state.color.primary}'
+      '&.primary': {
+        color: '{docus.state.primary.color.primary}'
       },
-      '&.info-icon': {
-        color: '{docus.state.color.info}'
+      '&.info': {
+        color: '{docus.state.info.color.primary}'
       },
-      '&.success-icon': {
-        color: '{docus.state.color.success}'
+      '&.success': {
+        color: '{docus.state.success.color.primary}'
       },
-      '&.warning-icon': {
-        color: '{docus.state.color.warning}'
+      '&.warning': {
+        color: '{docus.state.warning.color.primary}'
       },
-      '&.danger-icon': {
-        color: '{docus.state.color.danger}'
+      '&.danger': {
+        color: '{docus.state.danger.color.primary}'
       },
       '.icon': {
         width: '{space.6}',

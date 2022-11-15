@@ -7,7 +7,7 @@ defineProps({
     type: String,
     default: 'info',
     validator (value: string) {
-      return ['info', 'success', 'warning', 'danger', 'primary', 'gray'].includes(value)
+      return ['info', 'success', 'warning', 'danger', 'primary'].includes(value)
     }
   }
 })
@@ -29,7 +29,24 @@ css({
     fontSize: '{text.base.fontSize}',
     lineHeight: '{text.base.lineHeight}',
     letterSpacing: '{letterSpacings.tight}',
-    borderRadius: '{radii.full}'
+    borderRadius: '{radii.full}',
+    border: '1px solid',
+
+    '&.primary': {
+      stateColors: 'primary'
+    },
+    '&.info': {
+      stateColors: 'info'
+    },
+    '&.success': {
+      stateColors: 'success'
+    },
+    '&.warning': {
+      stateColors: 'warning'
+    },
+    '&.danger': {
+      stateColors: 'danger'
+    }
   }
 })
 </style>
