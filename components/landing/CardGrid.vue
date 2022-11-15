@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <section class="card-grid">
-    <ContentSlot :use="$slots.root" unwrap="*" />
+    <ContentSlot :use="$slots.root" />
 
     <h2 class="title">
       <ContentSlot :use="$slots.title" unwrap="p" />

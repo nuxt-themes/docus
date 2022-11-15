@@ -57,10 +57,9 @@ defineProps({
 
       <div class="support">
         <slot name="support">
-          <Terminal v-if="snippet" :content="snippet"  />
+          <Terminal v-if="snippet" :content="snippet" />
         </slot>
       </div>
-      
     </div>
   </section>
 </template>
@@ -95,7 +94,7 @@ css({
       },
       '.title': {
         color: '{docus.text.color.primary}',
-        fontWeight: '{fontWeights.extrabold}',
+        fontWeight: '{fontWeights.bold}',
         letterSpacing: '{letterSpacings.tight}',
         textAlign: 'center',
         fontSize: '{text.4xl.fontSize}',

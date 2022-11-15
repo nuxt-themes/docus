@@ -61,6 +61,7 @@ export default defineTheme({
         }
       }
     },
+    // TODO: improve structure to text.color.primary[default|hover]
     text: {
       color: {
         primary: {

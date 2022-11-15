@@ -101,7 +101,14 @@ css({
       display: 'none'
     },
     '.preview-canvas': {
-      padding: '{space.4}'
+      padding: '{space.4}',
+      '&:has(.sandbox)': {
+        padding: 0,
+        ':deep(.sandbox)': {
+          border: 0,
+          borderRadius: 0
+        }
+      }
     }
   }
 })

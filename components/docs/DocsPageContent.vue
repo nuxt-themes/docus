@@ -164,13 +164,11 @@ css({
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
     ':deep(h1:not(.not-prose):first-child)': {
       marginTop: 0,
-      fontSize: '{text.2xl.fontSize}',
-      lineHeight: '{text.2xl.lineHeight}',
-      fontWeight: '{fontWeights.extrabold}',
-      letterSpacing: '{letterSpacings.tight}',
+      fontSize: '{text.4xl.fontSize}',
+      lineHeight: '{text.4xl.lineHeight}',
       '@mq.sm': {
-        fontSize: '{text.3xl.fontSize}',
-        lineHeight: '{text.3xl.lineHeight}',
+        fontSize: '{text.5xl.fontSize}',
+        lineHeight: '{text.5xl.lineHeight}',
       }
     },
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
