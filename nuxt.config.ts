@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     'pinceau/nuxt',
     '@nuxtjs/color-mode',
-    // '@nuxtjs/tailwindcss',
     '@nuxt/content',
     '@vueuse/nuxt',
     resolve('./app/module')
@@ -55,12 +54,6 @@ export default defineNuxtConfig({
       global: true
     }
   ],
-
-  // @ts-ignore
-  tailwindcss: {
-    viewer: false,
-    cssPath: resolve('assets/css/main.css')
-  },
 
   pinceau: {
     configFileName: 'tokens.config'

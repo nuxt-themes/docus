@@ -20,7 +20,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 
 <template>
   <nav v-if="hasNavigation">
-    <ul class="truncate">
+    <ul>
       <li
         v-for="link in tree"
         :key="link._path"
@@ -48,6 +48,10 @@ css({
       flex: '1',
       maxWidth: '100%',
       overflow: 'hidden',
+      // TODO: truncate
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
 
       '& > * + *': {
         marginLeft: '{space.2}'

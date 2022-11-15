@@ -34,10 +34,8 @@ const toggle = () => {
       </span>
       <Icon
         name="heroicons-outline:chevron-right"
-        class="w-5 h-5 transition-transform transform"
-        :class="{
-          'rotate-90': isOpen,
-        }"
+        class="icon"
+        :class="[isOpen && 'rotate']"
       />
     </span>
 
@@ -85,6 +83,14 @@ css({
           '& + p': {
             marginTop: '{space.2}'
           }
+        }
+      },
+      '.icon': {
+        width: '{space.5}',
+        height: '{space.5}',
+        transition: 'transform 100ms',
+        '&.rotate': {
+          transform: 'rotate(90deg)'
         }
       }
     },
