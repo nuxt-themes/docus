@@ -77,6 +77,28 @@ export default defineTheme({
         }
       }
     },
+    border: {
+      primary: {
+        default: {
+          initial: '{colors.gray.100}',
+          dark: '{colors.gray.800}'
+        },
+        hover: {
+          initial: '{colors.gray.200}',
+          dark: '{colors.gray.700}'
+        }
+      },
+      secondary: {
+        default: {
+          initial: '{colors.gray.200}',
+          dark: '{colors.gray.700}'
+        },
+        hover: {
+          initial: '',
+          dark: ''
+        }
+      }
+    },
     state: {
       primary: {
         color: {

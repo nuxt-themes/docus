@@ -16,20 +16,6 @@
   }
 }
 
-@layer utilities {
-  .u-bg-white { @apply bg-white dark:bg-black; }
-  .u-bg-gray-50 { @apply bg-gray-50 dark:bg-gray-900; }
-  .u-text-gray-50 { @apply text-gray-50 dark:text-gray-900; }
-  .u-text-gray-400 { @apply text-gray-400 dark:text-gray-500; }
-  .u-text-gray-500 { @apply text-gray-500 dark:text-gray-400; }
-  .u-text-gray-700 { @apply text-gray-700 dark:text-gray-200; }
-  .u-text-gray-900 { @apply text-gray-900 dark:text-gray-50; }
-  .u-border-gray-200 { @apply border-gray-200 dark:border-gray-800; }
-  .u-ring-gray-100 { @apply ring-gray-100 dark:ring-gray-900; }
-  .u-ring-gray-200 { @apply ring-gray-200 dark:ring-gray-800; }
-  .u-ring-gray-300 { @apply ring-gray-300 dark:ring-gray-700; }
-}
-
 /* Base */
 
 :root {

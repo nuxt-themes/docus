@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
       }"
       class="toc"
     >
-      <div class="toc-wrapper" >
+      <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
           <Icon name="heroicons-outline:chevron-right" class="icon" :class="[isOpen && 'rotate']" />
@@ -176,7 +176,7 @@ css({
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
-      borderBottom: '1px solid {colors.gray.100}',
+      borderBottom: '1px solid {docus.border.primary.default}',
       color: '{colors.gray.500}',
       '@mq.sm': {
         fontSize: '{text.lg.fontSize}',
@@ -184,7 +184,6 @@ css({
       },
       '@dark': {
         color: '{colors.gray.400}',
-        borderColor: '{colors.gray.800}'
       },
       a: {
         color: '{colors.gray.700}',

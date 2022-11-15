@@ -68,14 +68,13 @@ css({
       position: 'relative',
       minWidth: '0px',
       padding: '{space.3}',
-      border: '1px solid {colors.gray.200}',
+      border: '1px solid {docus.border.primary.default}',
       borderRadius: '{radii.lg}',
       '&:hover': {
         borderColor: '{colors.primary.100}',
         color: '{colors.primary.500}',
       },
       '@dark': {
-        borderColor: '{colors.gray.800}',
         '&:hover': {
           borderColor: '{colors.primary.700}',
         }
