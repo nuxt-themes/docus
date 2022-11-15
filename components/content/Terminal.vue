@@ -65,6 +65,7 @@ css({
     height: '{space.64}',
     cursor: 'pointer',
     overflow: 'hidden',
+    border: '1px solid {docus.border.primary.default}',
     borderRadius: '{radii.lg}',
     background: '{colors.gray.900}',
     '.copied': {

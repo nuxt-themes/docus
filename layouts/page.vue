@@ -17,7 +17,8 @@ css({
   '.page-layout': {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '{docus.page.height}'
+    minHeight: '{docus.page.height}',
+    position: 'relative'
   }
 })
 </style>

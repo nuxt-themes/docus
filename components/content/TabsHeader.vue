@@ -86,6 +86,7 @@ css({
     '.tabs': {
       position: 'relative',
       zIndex: 0,
+      display: 'flex',
       px: '{space.2}',
       button: {
         py: '{space.2-5}',

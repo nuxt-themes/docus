@@ -57,10 +57,9 @@ defineProps({
 
       <div class="support">
         <slot name="support">
-          <Terminal v-if="snippet" :content="snippet"  />
+          <Terminal v-if="snippet" :content="snippet" />
         </slot>
       </div>
-      
     </div>
   </section>
 </template>

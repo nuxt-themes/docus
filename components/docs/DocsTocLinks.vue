@@ -81,6 +81,11 @@ css({
       '&:hover': {
         color: '{colors.gray.900}',
       },
+      '@dark': {
+        '&:hover': {
+          color: '{colors.gray.400}',
+        },
+      },
       '&.active': {
         color: '{colors.primary.500}'
       }

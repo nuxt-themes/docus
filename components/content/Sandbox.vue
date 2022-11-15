@@ -61,15 +61,7 @@ onMounted(() => {
 
 <template>
   <div class="sandbox">
-    <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab">
-      <template #footer>
-        <div class="absolute top-1/2 right-0 -translate-y-1/2 transform px-4">
-          <NuxtLink class="u-text-gray-500 hover:u-text-gray-700 flex items-center" :to="sandBoxUrl" target="_blank">
-            <Icon name="heroicons-outline:arrows-expand" class="h-6 w-6" />
-          </NuxtLink>
-        </div>
-      </template>
-    </TabsHeader>
+    <TabsHeader v-if="!src" ref="tabs" :active-tab-index="activeTabIndex" :tabs="providersTabs" @update:active-tab-index="updateTab" />
 
     <iframe
       v-if="url"
@@ -82,31 +74,18 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.sandbox {
-
-  iframe {
-    @apply h-64 w-full overflow-hidden rounded-lg rounded-tl-none rounded-tr-none;
-    height: 700px;
-  }
-}
-</style>
-
 <style scoped lang="ts">
 css({
   '.sandbox': {
     '--sandbox-height': '700px',
-    my: '{space.4}',
     background: '{docus.surface.background.base}',
     width: '100%',
     height: 'var(--sandbox-height)',
     overflow: 'hidden',
-    borderRadius: '{radii.xl}',
     fontSize: '{text.3xl.fontSize}',
     lineHeight: '{text.3xl.lineHeight}',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    border: '1px solid {docus.border.secondary.default}',
+    borderRadius: '{radii.md}',
     iframe: {
       width: '100%',
       height: '100%',
