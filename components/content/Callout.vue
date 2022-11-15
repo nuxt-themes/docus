@@ -58,7 +58,7 @@ css({
     lineHeight: '{text.sm.lineHeight}',
     borderRadius: '{radii.xl}',
     border: '1px solid',
-    // TODO: rewrite with utility
+
     '&.primary': {
       stateColors: 'primary'
     },

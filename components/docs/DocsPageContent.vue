@@ -21,7 +21,7 @@ const isOpen = ref(false)
 /*
 ** This below is a workaround until Nuxt has a proper support for layouts and Suspense
 */
-const asideNav = ref(null)
+const asideNav = ref<any>(null)
 
 const getParentPath = () => route.path.split('/').slice(0, 2).join('/')
 const asideScroll = useState('asideScroll', () => {

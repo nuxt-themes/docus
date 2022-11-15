@@ -16,7 +16,7 @@ export default defineComponent({
     }
   },
   render () {
-    const slots = this.$slots.default()
+    const slots = this.$slots?.default?.() || []
     const tabs = slots
       .filter(slot => isTag(slot, 'code-block') || isTag(slot, 'code'))
       .map((slot, index) => {
@@ -72,7 +72,7 @@ export default defineComponent({
                         'preview-canvas': true
                       }
                     },
-                    [slot.children?.default?.() || h('div')]
+                    [(slot.children as any)?.default?.() || h('div')]
                   )
               ]
             )
@@ -125,7 +125,7 @@ html.dark {
   @apply rounded-b-lg;
 
   .preview-canvas {
-    @apply u-bg-gray-50 z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg p-4 leading-normal text-gray-800 dark:text-gray-200;
+    @apply z-0 my-0 overflow-x-auto rounded-bl-lg rounded-br-lg p-4 leading-normal text-gray-800 dark:text-gray-200;
 
     & > * {
       @apply my-0;

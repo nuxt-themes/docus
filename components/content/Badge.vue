@@ -31,7 +31,7 @@ css({
     letterSpacing: '{letterSpacings.tight}',
     borderRadius: '{radii.full}',
     border: '1px solid',
-    // TODO: rewrite with utility
+
     '&.primary': {
       stateColors: 'primary'
     },

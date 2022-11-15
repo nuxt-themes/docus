@@ -31,7 +31,7 @@ css({
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
     border: '1px solid',
-    // TODO: rewrite with utility
+
     '&.primary': {
       stateColors: 'primary'
     },

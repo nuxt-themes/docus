@@ -56,6 +56,7 @@ export default defineNuxtConfig({
     }
   ],
 
+  // @ts-ignore
   tailwindcss: {
     viewer: false,
     cssPath: resolve('assets/css/main.css')
