@@ -84,8 +84,10 @@ css({
         flex: '1'
       },
       '&.right': {
+        display: 'flex',
         gridColumn: 'span 2 / span 2',
-        justifyContent: 'end',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
         flex: 'none',
         gap: '{space.4}',
       }

@@ -161,7 +161,8 @@ css({
     '@mq.lg': {
       marginTop: 0
     },
-    ':deep(h1:first-child)': {
+    // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
+    ':deep(h1:not(.not-prose):first-child)': {
       marginTop: 0,
       fontSize: '{text.2xl.fontSize}',
       lineHeight: '{text.2xl.lineHeight}',
@@ -172,7 +173,8 @@ css({
         lineHeight: '{text.3xl.lineHeight}',
       }
     },
-    ':deep(h1:first-child + p)': {
+    // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
+    ':deep(h1:not(.not-prose)first-child + p)': {
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
