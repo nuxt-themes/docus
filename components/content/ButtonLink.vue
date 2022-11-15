@@ -2,38 +2,26 @@
 import { computedStyle } from 'pinceau/runtime'
 
 defineProps({
-  iconSize: computedStyle('gap', '5', false),
-  color: computedStyle('color', 'primary', false),
-  size: {
-    type: String,
-    default: 'medium'
+  blank: {
+    type: Boolean,
+    required: false,
+    default: false
   },
+  color: computedStyle('color', 'primary', false),
   href: {
     type: String,
     default: ''
-  },
-  bold: {
-    type: Boolean,
-    default: false
   },
   icon: {
     type: String,
     default: ''
   },
-  transparent: {
-    type: Boolean,
-    default: false
-  },
-  blank: {
-    type: Boolean,
-    required: false,
-    default: false
-  }
+  ...variants
 })
 </script>
 
 <template>
-  <NuxtLink class="button-link" :class="[size, bold ? 'font-semibold' : 'font-medium']" :to="href" :target="blank ? '_blank' : undefined">
+  <NuxtLink class="button-link" :to="href" :target="blank ? '_blank' : undefined">
     <Icon v-if="icon" :name="icon" />
     <ContentSlot :use="$slots.default" unwrap="p ul li" />
   </NuxtLink>
@@ -42,36 +30,48 @@ defineProps({
 <style lang="ts" scoped>
 css({
   '.button-link': {
-    '& > .icon': {
-      marginRight: `{space.1}`,
-      width: (props) => `{space.${props.iconSize}}`,
-      height: (props) => `{space.${props.iconSize}}`
-    },
-    backgroundColor: (props, utils) => utils.scale('colors', props.color, '500'),
+    display: 'inline-flex',
+    flex: 'none',
+    alignItems: 'center',
+    borderRadius: '{radii.lg}',
+    transition: 'all 100ms ease-in-out',
+    fontWeight: '{fontWeights.bold}',
+    color: '{colors.white}',
+    backgroundColor: (props, utils) => utils.scale('colors', props.color, '600'),
     '&:hover': {
-      backgroundColor: (props, utils) => utils.scale('colors', props.color, '600')
+      backgroundColor: (props, utils) => utils.scale('colors', props.color, '500')
     },
     '&:focus': {
-      ring: (props, utils) => utils.scale('colors', props.color, '600')
+      border: (props, utils) => `1px solid ${utils.scale('colors', props.color, '600')}`
+    }
+  },
+  variants: {
+    size: {
+      small: {
+        padding: `{space.1-5} {space.1-5}`,
+        lineHeight: '{leads.3}',
+      },
+      medium: {
+        padding: `{space.1-5} {space.2}`,
+        lineHeight: '{leads.4}',
+      },
+      large: {
+        padding: `{space.3} {space.2-5}`,
+        lineHeight: '{leads.6}',
+      },
+      giant: {
+        padding: `{space.8} {space.4}`,
+        fontWeight: `{fontWeights.medium}`
+      },
+      options: {
+        default: 'medium'
+      }
+    },
+    transparent: {
+      true: {
+        backgroundColor: `transparent`,
+      }
     }
   }
 })
-</style>
-
-<style lang="postcss" scoped>
-a.button-link {
-  @apply focus:ring-primary-600 mb-2 inline-flex flex-none items-center rounded-lg border border-transparent px-3 py-1.5 text-sm leading-4 text-white transition-colors duration-200;
-
-  &.medium {
-    @apply px-4 py-2 text-base leading-4;
-  }
-
-  &.large {
-    @apply px-6 py-2.5 text-lg leading-6;
-  }
-
-  &.transparent {
-    @apply bg-transparent px-0 py-0;
-  }
-}
 </style>

@@ -1,3 +1,8 @@
 {
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "#pinceau/types": ["./.docs/.nuxt/pinceau/types.ts"]
+    }
+  }
 }

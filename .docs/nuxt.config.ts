@@ -1,4 +1,4 @@
 export default defineNuxtConfig({
   extends: '../',
-  modules: ['@nuxthq/studio']
+  modules: ['nuxt-plausible']
 })
