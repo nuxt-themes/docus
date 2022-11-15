@@ -12,7 +12,7 @@ const props = defineProps({
   },
   modelValue: {
     required: false,
-    default: ref(false)
+    default: () => ref(false)
   }
 })
 
