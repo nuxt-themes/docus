@@ -38,6 +38,7 @@ function watchScrollHeight () {
   }
   asideNav.value.scrollTop = asideScroll.value.scrollTop
 }
+
 onMounted(() => {
   if (asideScroll.value.parentPath !== getParentPath()) {
     asideScroll.value.parentPath = getParentPath()
@@ -79,8 +80,8 @@ onBeforeUnmount(() => {
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <template v-if="hasBody && page && bottom">
-        <DocsPageBottom />
-        <ProseHr />
+        <!-- TODO: Finish rewrite -->
+        <DocsPageBottom v-if="false" />
         <DocsPrevNext />
       </template>
     </article>
@@ -112,6 +113,7 @@ css({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column-reverse',
+    minHeight: '{docus.page.height}',
     '@mq.lg': {
       display: 'grid',
       gap: '{space.8}',
@@ -194,6 +196,9 @@ css({
           borderColor: '{colors.gray.700}'
         }
       }
+    },
+    '.docs-prev-next': {
+      marginTop: '{space.4}'
     }
   },
   '.toc': {

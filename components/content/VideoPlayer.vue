@@ -13,6 +13,10 @@ const props = defineProps({
   sources: {
     type: Array as PropType<any[]>,
     default: () => []
+  },
+  autoplay: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -22,8 +26,8 @@ const provider = computed(() => {
 
     return {
       name: 'youtube',
-      src: `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1`,
-      poster: props.poster || `https://i3.ytimg.com/vi/${match[1]}/hqdefault.jpg`
+      src: `https://www.youtube-nocookie.com/embed/${match?.[1] || ''}?autoplay=1`,
+      poster: props.poster || `https://i3.ytimg.com/vi/${match?.[1] || ''}/hqdefault.jpg`
     }
   }
 })
@@ -67,7 +71,7 @@ css({
   '.video-player': {
     position: 'relative',
     display: 'inline-block',
-    my: '{space.4}',
+    my: '{space.8}',
     overflow: 'hidden',
     background: '{colors.gray.900}',
     borderRadius: '{radii.lg}',

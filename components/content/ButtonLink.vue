@@ -43,16 +43,19 @@ css({
     },
     '&:focus': {
       border: (props, utils) => `1px solid ${utils.scale('colors', props.color, '600')}`
+    },
+    '.icon': {
+      marginRight: '{space.1}'
     }
   },
   variants: {
     size: {
       small: {
-        padding: `{space.1-5} {space.1-5}`,
+        padding: `{space.2} {space.1-5}`,
         lineHeight: '{leads.3}',
       },
       medium: {
-        padding: `{space.1-5} {space.2}`,
+        padding: `{space.3} {space.2}`,
         lineHeight: '{leads.4}',
       },
       large: {

@@ -24,8 +24,8 @@ const props = defineProps({
 <style scoped lang="ts">
 css({
   '.alert': {
-    my: '{space.4}',
-    borderRadius: '{radii.xl}',
+    my: '{space.8}',
+    borderRadius: '{radii.md}',
     px: '{space.4}',
     py: '{space.3}',
     fontSize: '{text.sm.fontSize}',

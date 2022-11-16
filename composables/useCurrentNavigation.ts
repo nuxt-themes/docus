@@ -53,9 +53,8 @@ export const useCurrentNavigation = () => {
     }
 
     // Filtered using `aside.exclude` in docus configuration
-    return nav.filter((item) => {
+    return nav.filter((item: any) => {
       if (filtered.value.includes(item._path)) { return false }
-
       return true
     })
   })

@@ -2,6 +2,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "paths": {
+      "#imports": ["./.docs/.nuxt/imports.d.ts"],
       "#pinceau/types": ["./.docs/.nuxt/pinceau/types.ts"]
     }
   }

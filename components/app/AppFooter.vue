@@ -93,10 +93,8 @@ css({
       alignItems: 'center',
       height: '100%',
       gap: '{space.4}',
-      '@mq.sm': {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-      }
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     }
   }
 })

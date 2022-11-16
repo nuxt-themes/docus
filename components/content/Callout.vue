@@ -51,7 +51,7 @@ css({
     position: 'relative',
     px: '{space.4}',
     py: '{space.3}',
-    my: '{space.4}',
+    my: '{space.8}',
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
     borderRadius: '{radii.xl}',

@@ -47,8 +47,7 @@ export default defineTheme({
   },
   docus: {
     page: {
-      height:
-        'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
+      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
       maxWidth: '90rem'
     },
     header: { height: '64px' },

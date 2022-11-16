@@ -4,7 +4,7 @@ import { upperFirst } from 'scule'
 const { prev, next, navigation } = useContent()
 const { navDirFromPath } = useContentHelpers()
 
-const directory = (link) => {
+const directory = (link: any) => {
   const nav = navDirFromPath(link._path, navigation.value || [])
 
   if (nav && nav[0]) {
