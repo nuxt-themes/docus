@@ -55,6 +55,16 @@ onBeforeUnmount(() => {
 
 <template>
   <AppContainer padded class="docs-page-content">
+    <Ellipsis
+      position="fixed"
+      bottom="-11%"
+      left="43%"
+      top="auto"
+      blur="110px"
+      height="15rem"
+      width="38rem"
+      z-index="0"
+    />
     <!-- Aside -->
     <aside
       v-if="hasAside"

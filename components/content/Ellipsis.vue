@@ -1,5 +1,9 @@
 <script setup lang="ts">
 defineProps({
+  position: {
+    type: String,
+    default: 'absolute'
+  },
   width: {
     type: String,
     default: '10rem'
@@ -15,6 +19,10 @@ defineProps({
   top: {
     type: String,
     default: '0'
+  },
+  bottom: {
+    type: String,
+    default: 'auto'
   },
   left: {
     type: String,
@@ -41,8 +49,9 @@ defineProps({
 css({
   '.ellipsis': {
     pointerEvents: 'none',
-    position: 'absolute',
+    position: (props) => props.position,
     top: (props) => props.top,
+    bottom: (props) => props.bottom,
     left: (props) => props.left,
     right: (props) => props.right,
     zIndex: (props) => props.zIndex,
