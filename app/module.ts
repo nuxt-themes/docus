@@ -10,18 +10,12 @@ export default defineNuxtModule({
     name: 'docus',
     version: '3.0.0',
     compatibility: {
-      nuxt: '^3.0.0-rc.4',
+      nuxt: '^3.0.0-rc.14',
       bridge: false
     },
     configKey: 'docus'
   },
-  setup (_, nuxt) {
-    if (nuxt.options?.github) {
-      addPlugin({
-        src: resolveThemeDir('integrations/github.ts')
-      })
-    }
-
+  setup(_, nuxt) {
     if (nuxt.options?.runtimeConfig?.public?.algolia?.docSearch) {
       addPlugin({
         src: resolveThemeDir('integrations/docsearch.ts')

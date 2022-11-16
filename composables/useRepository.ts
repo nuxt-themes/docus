@@ -1,5 +1,3 @@
-import {} from '@nuxtlabs/github-module'
-
 export const useRepository = () => {
   const config = useRuntimeConfig()
 

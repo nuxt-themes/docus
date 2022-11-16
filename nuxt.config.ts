@@ -36,11 +36,6 @@ export default defineNuxtConfig({
     },
     {
       prefix: '',
-      path: resolve('./components/github'),
-      global: true
-    },
-    {
-      prefix: '',
       path: resolve('./components/icons'),
       global: true
     },
