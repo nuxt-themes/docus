@@ -8,7 +8,8 @@
 
 > Docus is the fastest way to create document-driven websites.
 
-[📄 Documentation](https://docus.dev)
+- [📄 Documentation](https://docus.dev)
+- [⚡️ Play on StackBlitz](https://stackblitz.com/github/nuxt-themes/docus-starter)
 
 ## Start a project with Docus
 
