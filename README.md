@@ -12,7 +12,7 @@
 
 ## Start a project with Docus
 
-You can use [this template] to create a new project.
+You can use [this template](https://github.com/nuxt-themes/docus-starter) to create a new project.
 
 If you want to add Docus to an existing codebase, you can do so with:
 
