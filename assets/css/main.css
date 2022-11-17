@@ -50,13 +50,6 @@
   box-shadow: none !important;
 }
 
-/* html,
-body {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-} */
-
 body {
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
