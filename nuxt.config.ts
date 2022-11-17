@@ -48,6 +48,7 @@ export default defineNuxtConfig({
 
   pinceau: {
     configFileName: 'tokens.config'
+    // preflight: false
   },
 
   content: {
