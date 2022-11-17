@@ -87,6 +87,9 @@ body {
   &:hover {
     background: $dt('colors.gray.400');
   }
+  &:active {
+    background: $dt('colors.primary.300');
+  }
 }
 
 .dark {
