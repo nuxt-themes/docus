@@ -16,13 +16,13 @@
 
 :root {
   /* DocSearch */
-  --docsearch-primary-color: theme('colors.primary.500') !important;
+  --docsearch-primary-color: $dt('colors.primary.500') !important;
 }
 
 .dark:root {
   color-scheme: dark;
   /* DocSearch */
-  --docsearch-primary-color: theme('colors.primary.500') !important;
+  --docsearch-primary-color: $dt('colors.primary.500') !important;
   --docsearch-text-color: rgb(245, 246, 247);
   --docsearch-container-background: rgba(9, 10, 17, 0.8);
   --docsearch-modal-background: rgb(21, 23, 42);
