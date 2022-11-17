@@ -85,12 +85,10 @@ onBeforeUnmount(() => {
         <DocsPrevNext />
       </template>
     </article>
+
     <!-- TOC -->
     <div
       v-if="hasToc"
-      :class="{
-        'closed': !isOpen,
-      }"
       class="toc"
     >
       <div class="toc-wrapper">
@@ -216,13 +214,6 @@ css({
       mx: 0,
       alignSelf: 'flex-start',
       py: '{space.8}',
-    },
-    '&.closed': {
-      display: 'flex',
-      alignItems: 'center',
-      '@mq.lg': {
-        display: 'block'
-      }
     },
     '.toc-wrapper': {
       width: '100%',
