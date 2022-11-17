@@ -70,11 +70,11 @@ css({
       '@mq.lg': {
         paddingRight: '{space.3}'
       },
-      '&:hover': {
+      '&:not(.active):hover': {
         color: '{colors.gray.900}',
       },
       '@dark': {
-        '&:hover': {
+        '&:not(.active):hover': {
           color: '{colors.gray.400}',
         },
       },
