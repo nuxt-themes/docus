@@ -3,13 +3,15 @@ import type { RouterConfig } from '@nuxt/schema'
 export default <RouterConfig> {
   scrollBehavior (to, from, savedPosition) {
     if (to.hash) {
-      const { marginTop } = getComputedStyle((document.querySelector(to.hash) as any))
+      const target = document.querySelector(to.hash) as HTMLElement
+      const { marginTop } = getComputedStyle(target)
       const marginTopValue = parseInt(marginTop)
-      const offset = (document.querySelector(to.hash) as any).offsetTop - marginTopValue
+      const offset = target.offsetTop - marginTopValue
       return {
         top: offset,
         behavior: 'smooth'
       }
     }
+    return savedPosition || { left: 0, top: 0 }
   }
 }
