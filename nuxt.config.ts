@@ -4,12 +4,6 @@ import { version } from './package.json'
 
 logger.success(`Using Docus v${version}`)
 
-$fetch('https://ungh.unjs.io/repos/nuxt-themes/docus/releases/latest').then(({ release }) => {
-  if (release.tag !== `v${version}`) {
-    logger.warn(`A new version of Docus (${release.tag}) is available: https://github.com/nuxt-themes/docus/releases/tag/${release.tag}`)
-  }
-}).catch((_) => {})
-
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
@@ -21,7 +15,16 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
-    resolve('./app/module')
+    resolve('./app/module'),
+    (_, nuxt) => {
+      if (nuxt.options.dev) {
+        $fetch('https://ungh.unjs.io/repos/nuxt-themes/docus/releases/latest').then(({ release }) => {
+          if (release.tag !== `v${version}`) {
+            logger.warn(`A new version of Docus (${release.tag}) is available: https://github.com/nuxt-themes/docus/releases/tag/${release.tag}`)
+          }
+        }).catch((_) => {})
+      }
+    }
   ],
 
   css: [
