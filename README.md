@@ -54,11 +54,11 @@ defineNuxtConfig({
 [MIT License](./LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxt-themes/docus-edge/latest.svg?style=flat&colorA=002438&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/@nuxt-themes/docus-edge
+[npm-version-src]: https://img.shields.io/npm/v/@nuxt-themes/docus/latest.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/@nuxt-themes/docus
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt-themes/docus-edge.svg?style=flat&colorA=002438&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/@nuxt-themes/docus-edge
+[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt-themes/docus.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/@nuxt-themes/docus
 
 [license-src]: https://img.shields.io/github/license/nuxt-themes/docus.svg?style=flat&colorA=002438&colorB=28CF8D
 [license-href]: https://github.com/nuxt-themes/docus/blob/main/LICENSE
