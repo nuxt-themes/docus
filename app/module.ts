@@ -1,9 +1,8 @@
 import { fileURLToPath } from 'url'
-import { addPlugin, defineNuxtModule } from '@nuxt/kit'
-import { resolve } from 'pathe'
+import { addPlugin, defineNuxtModule, createResolver } from '@nuxt/kit'
 
-const themeDir = fileURLToPath(new URL('./', import.meta.url))
-const resolveThemeDir = (path: string) => resolve(themeDir, path)
+const { resolve } = createResolver(import.meta.url)
+const resolveThemeDir = (path: string) => resolve('./', path)
 
 export default defineNuxtModule({
   meta: {
