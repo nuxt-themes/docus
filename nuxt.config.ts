@@ -1,4 +1,14 @@
-import { createResolver } from '@nuxt/kit'
+import { createResolver, logger } from '@nuxt/kit'
+import { $fetch } from 'ofetch'
+import { version } from './package.json'
+
+logger.success(`Using Docus v${version}`)
+
+$fetch('https://ungh.unjs.io/repos/nuxt-themes/docus/releases/latest').then(({ release }) => {
+  if (release.tag !== `v${version}`) {
+    logger.warn(`A new version of Docus (${release.tag}) is available: https://github.com/nuxt-themes/docus/releases/tag/${release.tag}`)
+  }
+}).catch((_) => {})
 
 const { resolve } = createResolver(import.meta.url)
 
