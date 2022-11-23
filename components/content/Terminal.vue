@@ -137,14 +137,14 @@ css({
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: '{fontWeights.semibold}',
-        fontFamily: '{font.mono}'
+        fontFamily: '{fonts.mono}'
       }
     },
     '.window': {
       display: 'flex',
       flex: '1 1 0%',
       padding: '{space.4}',
-      fontFamily: '{font.mono}',
+      fontFamily: '{fonts.mono}',
       '.sign': {
         marginRight: '{space.2}',
         display: 'inline-block',

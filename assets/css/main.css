@@ -56,7 +56,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $dt('colors.neutral.white');
   color: $dt('colors.gray.700');
-  font-family: $dt('font.sans');
+  font-family: $dt('fonts.sans');
 
   @dark {
     background: $dt('colors.neutral.black');
