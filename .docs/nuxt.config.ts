@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
   extends: '../',
-  modules: ['nuxt-plausible']
+  modules: ['nuxt-plausible'],
+  typescript: {
+    includeWorkspace: true
+  }
 })

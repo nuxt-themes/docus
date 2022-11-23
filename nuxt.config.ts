@@ -2,12 +2,20 @@ import { createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
 
+// That allows to overwrite these dependencies paths via `.env` for local development
+const envModules = {
+  'tokens': process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
+  'studio': process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
+  'pinceau': process?.env?.THEME_DEV_PINCEAU_PATH || 'pinceau/nuxt',
+  'typography': process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
+}
+
 export default defineNuxtConfig({
-  extends: ['@nuxt-themes/typography'],
+  extends: [envModules.typography],
 
   modules: [
-    '@nuxthq/studio',
-    'pinceau/nuxt',
+    envModules.tokens,
+    envModules.studio,
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
@@ -47,13 +55,17 @@ export default defineNuxtConfig({
   ],
 
   pinceau: {
-    configFileName: 'tokens.config'
+    configFileName: 'tokens.config',
+    debug: true
   },
 
   content: {
     documentDriven: true,
     highlight: {
-      theme: 'one-dark-pro',
+      theme: {
+        dark: 'github-dark',
+        default: 'github-light'
+      },
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
     },
     navigation: {

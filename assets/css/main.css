@@ -54,12 +54,12 @@ body {
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $dt('colors.white');
+  background: $dt('colors.neutral.white');
   color: $dt('colors.gray.700');
   font-family: $dt('font.sans');
 
   @dark {
-    background: $dt('colors.black');
+    background: $dt('colors.neutral.black');
     color: $dt('colors.gray.200');
   }
 }
