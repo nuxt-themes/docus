@@ -14,7 +14,7 @@ const hasBody = computed(() => !page.value || page.value?.body?.children?.length
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
 // TODO: get navigation links from aside level
-const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 1)
+const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 0)
 const bottom = computed(() => fallbackValue('bottom', true))
 const isOpen = ref(false)
 
@@ -176,7 +176,7 @@ css({
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
-      borderBottom: '1px solid {docus.border.primary.default}',
+      borderBottom: '1px solid {borders.primary.default}',
       color: '{colors.gray.500}',
       '@mq.sm': {
         fontSize: '{text.lg.fontSize}',

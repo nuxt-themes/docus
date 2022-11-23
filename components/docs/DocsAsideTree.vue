@@ -118,9 +118,9 @@ css({
   '.docs-aside-tree': {
     li: {
       '&.bordered': {
-        borderLeft: '1px solid {docus.border.primary.default}',
+        borderLeft: '1px solid {borders.primary.default}',
         '&:hover': {
-          borderColor: '{docus.border.primary.hover}'
+          borderColor: '{borders.primary.hover}'
         },
         '&.active': {
           borderColor: '{colors.primary.400}',
