@@ -25,21 +25,17 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
+      - uses: pnpm/action-setup@v2.2.2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Build
-        run: yarn build
+        run: pnpm prepare
 
-      - name: Check if the version has been bumped
-        id: check
-        uses: EndBug/version-check@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-# Temporarily disable CI main package releases
-#      - name: Release Main version
-#        if: github.event_name == 'push' && steps.check.outputs.changed == 'true'
-#        run: ./.github/scripts/release.sh
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Build
+        run: pnpm build
