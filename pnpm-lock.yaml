@@ -6,6 +6,7 @@ specifiers:
   '@docsearch/js': ^3.3.0
   '@fontsource/inter': ^4.5.14
   '@iconify/vue': ^4.0.0
+  '@nuxt-themes/elements': ^0.1.0
   '@nuxt-themes/tokens': latest
   '@nuxt-themes/typography': latest
   '@nuxt/content': ^2.2.2
@@ -28,7 +29,8 @@ dependencies:
   '@docsearch/js': 3.3.0_tbpndr44ulefs3hehwpi2mkf2y
   '@fontsource/inter': 4.5.14
   '@iconify/vue': 4.0.0_vue@3.2.45
-  '@nuxt-themes/tokens': 1.1.12_vue@3.2.45
+  '@nuxt-themes/elements': 0.1.0_vue@3.2.45
+  '@nuxt-themes/tokens': 1.1.13_vue@3.2.45
   '@nuxt-themes/typography': 0.0.24_vue@3.2.45
   '@nuxt/content': 2.2.2
   '@nuxthq/studio': 0.2.6
@@ -653,8 +655,22 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@nuxt-themes/tokens/1.1.12_vue@3.2.45:
-    resolution: {integrity: sha512-NxhOhzazzp+Qm4MrXlgvwa+UIej4G/H32axNzYlIsaadPkfGpw0EwkqqTppQvITWoTL1SVIZopEWCLy1ujsYUQ==}
+  /@nuxt-themes/elements/0.1.0_vue@3.2.45:
+    resolution: {integrity: sha512-OndK0hf2vy/4MoUOGE9FuRZDZuMBGgUaKcThkiWhlfXzqV7zz/Kjv8v1oQbAWlF/ISePmMCkVMmPh1Aq/8dLdQ==}
+    dependencies:
+      '@nuxt-themes/tokens': 1.1.13_vue@3.2.45
+      '@vueuse/core': 9.6.0_vue@3.2.45
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - postcss
+      - rollup
+      - sass
+      - supports-color
+      - vue
+    dev: false
+
+  /@nuxt-themes/tokens/1.1.13_vue@3.2.45:
+    resolution: {integrity: sha512-XseCu1sACziUOIXS/MXKPZA4NwoWVTp7jnZ6qKQ433w/6qP5VUVeqH0/MmXDojIamlZGD/wSfUPB8z4xHGRDWA==}
     dependencies:
       '@nuxtjs/color-mode': 3.1.8
       '@vueuse/core': 9.6.0_vue@3.2.45
@@ -672,7 +688,7 @@ packages:
   /@nuxt-themes/typography/0.0.24_vue@3.2.45:
     resolution: {integrity: sha512-WJV2AO7bDP32Au8o7S+0eMUNeXKsH6VYKoz2feXdOaHk9Wu+sb0AUMR/+bHQAUva6m7uavLAlTb/AVinO/BYhA==}
     dependencies:
-      '@nuxt-themes/tokens': 1.1.12_vue@3.2.45
+      '@nuxt-themes/tokens': 1.1.13_vue@3.2.45
       '@nuxtjs/color-mode': 3.1.8
       nuxt-icon: 0.1.7_vue@3.2.45
       pinceau: 0.6.26
@@ -3041,8 +3057,8 @@ packages:
       memory-fs: 0.5.0
       tapable: 1.1.3
 
-  /enhanced-resolve/5.11.0:
-    resolution: {integrity: sha512-0Gcraf7gAJSQoPg+bTSXNhuzAYtXqLc4C011vb8S3B8XUSEkGYNBk20c68X9291VF4vvsCD8SPkr6Mza+DwU+g==}
+  /enhanced-resolve/5.12.0:
+    resolution: {integrity: sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -3382,7 +3398,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4
-      enhanced-resolve: 5.11.0
+      enhanced-resolve: 5.12.0
       eslint: 8.28.0
       eslint-plugin-import: 2.26.0_vc54pluhgv7booofyyjouvuf74
       get-tsconfig: 4.2.0
@@ -3748,7 +3764,7 @@ packages:
   /externality/1.0.0:
     resolution: {integrity: sha512-MAU9ci3XdpqOX1aoIoyL2DMzW97P8LYeJxIUkfXhOfsrkH4KLHFaYDwKN0B2l6tqedVJWiTIJtWmxmZfa05vOQ==}
     dependencies:
-      enhanced-resolve: 5.11.0
+      enhanced-resolve: 5.12.0
       mlly: 1.0.0
       pathe: 1.0.0
       ufo: 1.0.0
