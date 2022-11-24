@@ -95,7 +95,6 @@ css({
       },
       // Dialog header
       '& > div': {
-        // flex items-center justify-between gap-2 border-b border-transparent h-header
         height: '{docus.header.height}',
         display: 'flex',
         alignItems: 'center',
