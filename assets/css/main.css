@@ -64,3 +64,41 @@ body {
   }
 }
 
+.docus-scrollbars {
+  & ::-webkit-scrollbar {
+    width: 0.6em;
+    height: 0.6em;
+    background: transparent;
+  }
+  
+  & ::-webkit-scrollbar-track {
+    background: $dt('colors.gray.100');
+  }
+  
+  & ::-webkit-scrollbar-thumb {
+    border-radius: 0.6em;
+    background: $dt('colors.gray.300');
+    &:hover {
+      background: $dt('colors.gray.400');
+    }
+    &:active {
+      background: $dt('colors.gray.500');
+    }
+  }
+  
+  &.dark {
+    & ::-webkit-scrollbar-track {
+      background: $dt('colors.gray.800');
+    }
+  
+    & ::-webkit-scrollbar-thumb {
+      background: $dt('colors.gray.700');
+      &:hover {
+        background: $dt('colors.gray.600');
+      }
+      &:active {
+        background: $dt('colors.gray.500');
+      }
+    }
+  }
+}
