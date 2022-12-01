@@ -40,14 +40,5 @@ export default defineTheme({
         900: '{color.gray.900}'
       }
     }
-  },
-  backdrop: {
-    filter: 'saturate(200%) blur(20px)',
-    background: {
-      // TODO: rgba 80% from color.white
-      initial: '#fffc',
-      // TODO: rgba 80% from color.black
-      dark: '#0c0d0ccc'
-    }
   }
 })
