@@ -23,7 +23,7 @@ export const useScrollspy = () => {
 
   watch(visibleHeadings, (val, oldVal) => {
     if (val.length === 0) { activeHeadings.value = oldVal } else { activeHeadings.value = val }
-  })
+  }, { deep: true })
 
   // Create intersection observer
   onBeforeMount(() => (observer.value = new IntersectionObserver(observerCallback)))
