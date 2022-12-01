@@ -1,5 +1,4 @@
 import { createResolver, logger } from '@nuxt/kit'
-import { containsProp } from '@vueuse/core'
 import { $fetch } from 'ofetch'
 import { version } from './package.json'
 

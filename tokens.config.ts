@@ -2,8 +2,8 @@ import { defineTheme } from 'pinceau'
 import nuxtThemeTokens from '@nuxt-themes/tokens/tokens'
 
 export default defineTheme({
-  colors: {
-    primary: (nuxtThemeTokens.colors as any).lightblue
+  color: {
+    primary: (nuxtThemeTokens.color as any).lightblue
   },
   docus: {
     page: {
@@ -11,42 +11,42 @@ export default defineTheme({
       maxWidth: '90rem'
     },
     header: { height: '64px' },
-    footer: { height: '50px' },
+    footer: { height: '50px' }
   },
   typography: {
-    colors: {
+    color: {
       primary: {
-        50: '{colors.primary.50}',
-        100: '{colors.primary.100}',
-        200: '{colors.primary.200}',
-        300: '{colors.primary.300}',
-        400: '{colors.primary.400}',
-        500: '{colors.primary.500}',
-        600: '{colors.primary.600}',
-        700: '{colors.primary.700}',
-        800: '{colors.primary.800}',
-        900: '{colors.primary.900}'
+        50: '{color.primary.50}',
+        100: '{color.primary.100}',
+        200: '{color.primary.200}',
+        300: '{color.primary.300}',
+        400: '{color.primary.400}',
+        500: '{color.primary.500}',
+        600: '{color.primary.600}',
+        700: '{color.primary.700}',
+        800: '{color.primary.800}',
+        900: '{color.primary.900}'
       },
       secondary: {
-        50: '{colors.gray.50}',
-        100: '{colors.gray.100}',
-        200: '{colors.gray.200}',
-        300: '{colors.gray.300}',
-        400: '{colors.gray.400}',
-        500: '{colors.gray.500}',
-        600: '{colors.gray.600}',
-        700: '{colors.gray.700}',
-        800: '{colors.gray.800}',
-        900: '{colors.gray.900}'
+        50: '{color.gray.50}',
+        100: '{color.gray.100}',
+        200: '{color.gray.200}',
+        300: '{color.gray.300}',
+        400: '{color.gray.400}',
+        500: '{color.gray.500}',
+        600: '{color.gray.600}',
+        700: '{color.gray.700}',
+        800: '{color.gray.800}',
+        900: '{color.gray.900}'
       }
     }
   },
   backdrop: {
     filter: 'saturate(200%) blur(20px)',
     background: {
-      // TODO: rgba 80% from colors.white
+      // TODO: rgba 80% from color.white
       initial: '#fffc',
-      // TODO: rgba 80% from colors.black
+      // TODO: rgba 80% from color.black
       dark: '#0c0d0ccc'
     }
   }

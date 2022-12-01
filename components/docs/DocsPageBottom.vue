@@ -20,10 +20,10 @@ css({
     justifyContent: 'space-between',
     gap: '{space.4}',
     marginTop: '{space.8}',
-    fontSize: '{fontSizes.sm}',
-    color: '{colors.gray.500}',
+    fontSize: '{fontSize.sm}',
+    color: '{color.gray.500}',
     '@dark': {
-      color: '{colors.gray.400}'
+      color: '{color.gray.400}'
     },
     '.edit-link': {
       display: 'flex',
@@ -31,7 +31,7 @@ css({
       flex: '1',
       width: '100%',
       gap: '{space.4}',
-      '@mq.md': {
+      '@md': {
         width: '50%'
       },
       span: {

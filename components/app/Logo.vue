@@ -28,13 +28,13 @@
 <style lang="ts" scoped>
 css({
   svg: {
-    color: '{colors.black}',
+    color: '{color.black}',
     height: '{space.6}',
     width: 'auto',
     '@dark': {
-      color: '{colors.white}'
+      color: '{color.white}'
     },
-    '@mq.sm': {
+    '@sm': {
       height: '{space.8}'
     }
   }

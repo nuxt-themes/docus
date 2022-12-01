@@ -31,17 +31,17 @@ css({
     flex: '1',
     px: '{space.4}',
     py: '{space.16}',
-    '@mq.sm': {
+    '@sm': {
       px: '{space.6}',
       py: '{space.24}',
     },
 
-    '@mq.md': {
+    '@md': {
       display: 'grid',
       placeItems: 'center',
     },
 
-    '@mq.lg': {
+    '@lg': {
       px: '{space.8}',
     },
 
@@ -49,60 +49,59 @@ css({
       mx: 'auto',
       maxWidth: '{size.full}',
 
-      '@mq.sm': {
+      '@sm': {
         display: 'flex',
         gap: '{space.6}'
       },
 
       // 404
       '& > p': {
-        fontSize: '{fontSizes.4xl}',
-        fontWeight: '{fontWeights.bold}',
-        lineHeight: '{leads.tight}',
-        color: '{colors.primary.500}',
-        '@mq.sm': {
-          fontSize: '{fontSizes.5xl}',
+        fontSize: '{fontSize.4xl}',
+        fontWeight: '{fontWeight.bold}',
+        lineHeight: '{lead.tight}',
+        color: '{color.primary.500}',
+        '@sm': {
+          fontSize: '{fontSize.5xl}',
         }
       },
 
       '.content': {
         '.text-section': {
-          borderColor: '{colors.gray.200}',
+          borderColor: '{color.gray.200}',
           borderLeftStyle: 'solid',
           borderLeftWidth: '1px',
           border: 'none',
 
-
           '@dark': {
-            borderColor: '{colors.gray.800}',
+            borderColor: '{color.gray.800}',
           },
 
-          '@mq.sm': {
-            borderColor: '{colors.gray.200}',
+          '@sm': {
+            borderColor: '{color.gray.200}',
             borderLeftStyle: 'solid',
             borderLeftWidth: '1px',
             paddingLeft: '{space.6}'
           },
 
           h1: {
-            fontSize: '{fontSizes.4xl}',
-            fontWeight: '{fontWeights.extrabold}',
-            letterSpacing: '{letterSpacings.tight}',
-            color: '{colors.gray.900}',
+            fontSize: '{fontSize.4xl}',
+            fontWeight: '{fontWeight.extrabold}',
+            letterSpacing: '{letterSpacing.tight}',
+            color: '{color.gray.900}',
             '@dark': {
-              color: '{colors.gray.200}',
+              color: '{color.gray.200}',
             },
-            '@mq.sm': {
-              fontSize: '{fontSizes.5xl}',
+            '@sm': {
+              fontSize: '{fontSize.5xl}',
             },
           },
 
           p: {
             marginTop: '{space.1}',
-            fontSize: '{fontSizes.xl}',
-            color: '{colors.gray.700}',
+            fontSize: '{fontSize.xl}',
+            color: '{color.gray.700}',
             '@dark': {
-              color: '{colors.gray.400}',
+              color: '{color.gray.400}',
             },
           }
         },

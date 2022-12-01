@@ -30,7 +30,7 @@ css({
     padded: {
       true: {
         px: '{space.4}',
-        '@mq.sm': {
+        '@sm': {
           px: '{space.6}',
         }
       },

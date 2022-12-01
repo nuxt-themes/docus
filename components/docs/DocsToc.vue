@@ -23,12 +23,12 @@ css({
     gap: '8px',
     '.docs-toc-title': {
       display: 'none',
-      '@mq.lg': {
+      '@lg': {
         display: 'block',
         overflow: 'hidden',
         fontSize: '{text.sm.fontSize}',
         lineHeight: '{text.sm.lineHeight}',
-        fontWeight: '{fontWeights.semibold}'
+        fontWeight: '{fontWeight.semibold}'
       }
     }
   }

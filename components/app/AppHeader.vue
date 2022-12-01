@@ -37,14 +37,14 @@ css({
     '.left &': {
       '.has-dialog &': {
         display: 'none',
-        '@mq.lg': {
+        '@lg': {
           display: 'block'
         }
       },
     },
     '.center &': {
       display: 'block',
-      '@mq.lg': {
+      '@lg': {
         display: 'none'
       }
     }
@@ -56,12 +56,12 @@ css({
     top: 0,
     zIndex: 10,
     width: '100%',
-    borderBottom: '1px solid {colors.gray.100}',
+    borderBottom: '1px solid {color.gray.100}',
     backgroundColor: '{backdrop.background}',
     height: '{docus.header.height}',
 
     '@dark': {
-      borderBottom: '1px solid {colors.gray.900}',
+      borderBottom: '1px solid {color.gray.900}',
     },
 
     '.container': {

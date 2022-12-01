@@ -50,17 +50,17 @@ css({
     position: 'relative',
     zIndex: '10',
     borderRadius: '{radii.xl}',
-    '@mq.lg': {
+    '@lg': {
       display: 'none'
     },
-    color: '{colors.gray.500}',
+    color: '{color.gray.500}',
     '@dark': {
-      color: '{colors.gray.400}',
+      color: '{color.gray.400}',
     },
     '&:hover': {
-      color: '{colors.gray.700}',
+      color: '{color.gray.700}',
       '@dark': {
-        color: '{colors.gray.200}',
+        color: '{color.gray.200}',
       }
     },
   },
@@ -76,7 +76,7 @@ css({
     '@dark': {
       backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },
-    '@mq.lg': {
+    '@lg': {
       display: 'none'
     },
     // Dialog content
@@ -84,13 +84,13 @@ css({
       maxWidth: '{size.xs}',
       width: '100%',
       minHeight: '100%',
-      boxShadow: '{shadows.md}',
+      boxShadow: '{shadow.md}',
       px: '{space.4}',
-      backgroundColor: '{colors.white}',
+      backgroundColor: '{color.white}',
       '@dark': {
-        backgroundColor: '{colors.black}',
+        backgroundColor: '{color.black}',
       },
-      '@mq.sm': {
+      '@sm': {
         px: '{space.6}',
       },
       // Dialog header

@@ -123,9 +123,9 @@ css({
           borderColor: '{borders.primary.hover}'
         },
         '&.active': {
-          borderColor: '{colors.primary.400}',
+          borderColor: '{color.primary.400}',
           '@dark': {
-            borderColor: '{colors.primary.600}'
+            borderColor: '{color.primary.600}'
           },
         },
         '&.has-children': {
@@ -146,11 +146,11 @@ css({
       padding: '{space.1-5} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
-      fontWeight: '{fontWeights.semibold}',
+      fontWeight: '{fontWeight.semibold}',
       width: "100%",
-      color: '{colors.gray.900}',
+      color: '{color.gray.900}',
       '@dark': {
-        color: '{colors.gray.50}'
+        color: '{color.gray.50}'
       },
       '.content': {
         display: 'flex',
@@ -164,9 +164,9 @@ css({
       '.collapsible-icon': {
         width: '{space.3}',
         height: '{space.3}',
-        color: '{colors.gray.400}',
+        color: '{color.gray.400}',
         '@dark': {
-          color: '{colors.gray.500}',
+          color: '{color.gray.500}',
         }
       }
     },
@@ -177,15 +177,15 @@ css({
       padding: '{space.1-5} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
-      color: '{colors.gray.500}',
+      color: '{color.gray.500}',
       '&:hover': {
-        color: '{colors.gray.900}',
+        color: '{color.gray.900}',
       },
       '@dark': {
         '&:not(.active)': {
-          color: '{colors.gray.400}',
+          color: '{color.gray.400}',
           '&:hover': {
-            color: '{colors.gray.50}',
+            color: '{color.gray.50}',
           }
         }
       },
@@ -193,8 +193,8 @@ css({
         paddingLeft: '{space.4}'
       },
       '&.active': {
-        color: '{colors.primary.500}',
-        fontWeight: '{fontWeights.medium}'
+        color: '{color.primary.500}',
+        fontWeight: '{fontWeight.medium}'
       },
       '.content': {
         display: 'inline-flex',

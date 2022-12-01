@@ -67,7 +67,7 @@ css({
         alignItems: 'center',
         gap: '{space.2}',
         padding: '{space.2} {space.4}',
-        fontSize: '{fontSizes.sm}',
+        fontSize: '{fontSize.sm}',
         borderRadius: '{radii.md}',
         outline: 'none',
         transition: 'background 200ms ease',
@@ -77,15 +77,15 @@ css({
         },
 
         '&:active,&.active,&:hover': {
-          backgroundColor: '{colors.gray.100}',
+          backgroundColor: '{color.gray.100}',
           '@dark': {
-            backgroundColor: '{colors.gray.900}',
+            backgroundColor: '{color.gray.900}',
           },
         },
 
         '&.active': {
           boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-          fontWeight: '{fontWeights.semibold}'
+          fontWeight: '{fontWeight.semibold}'
         }
       }
     }

@@ -25,14 +25,14 @@ css({
     flex: 'none',
 
     span: {
-      fontSize: '{fontSizes.xl}',
-      fontWeight: '{fontWeights.bold}',
-      color: '{colors.gray.900}',
+      fontSize: '{fontSize.xl}',
+      fontWeight: '{fontWeight.bold}',
+      color: '{color.gray.900}',
       '@dark': {
-        color: '{colors.gray.100}',
+        color: '{color.gray.100}',
       },
       '&:hover': {
-        color: '{colors.gray.500}',
+        color: '{color.gray.500}',
       }
     }
   }

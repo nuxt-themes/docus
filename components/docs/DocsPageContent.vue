@@ -112,7 +112,7 @@ css({
     display: 'flex',
     flexDirection: 'column-reverse',
     minHeight: '{docus.page.height}',
-    '@mq.lg': {
+    '@lg': {
       display: 'grid',
       gap: '{space.8}',
       gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
@@ -121,7 +121,7 @@ css({
   '.aside-nav': {
     display: 'none',
     overflowY: 'auto',
-    '@mq.lg': {
+    '@lg': {
       display: 'block',
       position: 'sticky',
       top: '{docus.header.height}',
@@ -138,27 +138,27 @@ css({
     flex: '1 1 0%',
     py: '{space.8}',
     '&.one-column': {
-      '@mq.lg': {
+      '@lg': {
         gridColumn: 'span 12 / span 12'
       }
     },
     '&.two-column': {
-      '@mq.lg': {
+      '@lg': {
         gridColumn: 'span 10 / span 10'
       }
     },
     '&.three-column': {
-      '@mq.lg': {
+      '@lg': {
         gridColumn: 'span 8 / span 8'
       }
     },
     '&.with-toc': {
       paddingTop: '{space.12}',
-      '@mq.lg': {
+      '@lg': {
         paddingTop: '{space.8}',
       }
     },
-    '@mq.lg': {
+    '@lg': {
       marginTop: 0
     },
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
@@ -166,7 +166,7 @@ css({
       marginTop: 0,
       fontSize: '{text.4xl.fontSize}',
       lineHeight: '{text.4xl.lineHeight}',
-      '@mq.sm': {
+      '@sm': {
         fontSize: '{text.5xl.fontSize}',
         lineHeight: '{text.5xl.lineHeight}',
       }
@@ -177,21 +177,21 @@ css({
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
       borderBottom: '1px solid {borders.primary.default}',
-      color: '{colors.gray.500}',
-      '@mq.sm': {
+      color: '{color.gray.500}',
+      '@sm': {
         fontSize: '{text.lg.fontSize}',
         lineHeight: '{text.lg.lineHeight}',
       },
       '@dark': {
-        color: '{colors.gray.400}',
+        color: '{color.gray.400}',
       },
       a: {
-        color: '{colors.gray.700}',
+        color: '{color.gray.700}',
         '@dark': {
-          color: '{colors.gray.200}',
+          color: '{color.gray.200}',
         },
         "&:hover": {
-          borderColor: '{colors.gray.700}'
+          borderColor: '{color.gray.700}'
         }
       }
     },
@@ -205,10 +205,10 @@ css({
     display: 'flex',
     alignItems: 'center',
     mx: 'calc(0px - {space.4})',
-    '@mq.sm': {
+    '@sm': {
       mx: 'calc(0px - {space.6})',
     },
-    '@mq.lg': {
+    '@lg': {
       maxHeight: '{docus.page.height}',
       gridColumn: 'span 2 / span 2',
       mx: 0,
@@ -220,10 +220,10 @@ css({
       backdropFilter: '{backdrop.filter}',
       backgroundColor: '{backdrop.background}',
       px: '{space.4}',
-      '@mq.sm': {
+      '@sm': {
         px: '{space.6}',
       },
-      '@mq.lg': {
+      '@lg': {
         px: 0,
         backgroundColor: 'transparent',
         backdropFilter: 'none'
@@ -234,13 +234,13 @@ css({
         py: '{space.3}',
         width: '100%',
         height: '100%',
-        '@mq.lg': {
+        '@lg': {
           display: 'none'
         },
         '.title': {
           fontSize: '{text.xs.fontSize}',
           lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeights.semibold}',
+          fontWeight: '{fontWeight.semibold}',
           marginRight: '{space.1}',
         },
         '.icon': {
@@ -258,7 +258,7 @@ css({
         '&.opened': {
           display: 'block'
         },
-        '@mq.lg': {
+        '@lg': {
           marginTop: 0,
           display: 'block'
         }

@@ -60,7 +60,7 @@ css({
     flexDirection: 'column-reverse',
     justifyContent: 'space-between',
     gap: '{space.3}',
-    '@mq.sm': {
+    '@sm': {
       flexDirection: 'row',
       alignItems: 'center'
     },
@@ -71,12 +71,12 @@ css({
       border: '1px solid {borders.primary.default}',
       borderRadius: '{radii.lg}',
       '&:hover': {
-        borderColor: '{colors.primary.100}',
-        color: '{colors.primary.500}',
+        borderColor: '{color.primary.100}',
+        color: '{color.primary.500}',
       },
       '@dark': {
         '&:hover': {
-          borderColor: '{colors.primary.700}',
+          borderColor: '{color.primary.700}',
         }
       },
       '&.prev': {
@@ -85,9 +85,9 @@ css({
           marginBottom: '{space.1}',
           fontSize: '{text.xs.fontSize}',
           lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeights.medium}',
+          fontWeight: '{fontWeight.medium}',
           textAlign: 'right',
-          color: '{colors.gray.500}',
+          color: '{color.gray.500}',
           // TODO: truncate
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -100,8 +100,8 @@ css({
           marginBottom: '{space.1}',
           fontSize: '{text.xs.fontSize}',
           lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeights.medium}',
-          color: '{colors.gray.500}',
+          fontWeight: '{fontWeight.medium}',
+          color: '{color.gray.500}',
           // TODO: truncate
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -120,8 +120,8 @@ css({
       },
       '.title': {
         flex: '1 1 0%',
-        fontWeight: '{fontWeights.medium}',
-        lineHeight: '{leads.5}',
+        fontWeight: '{fontWeight.medium}',
+        lineHeight: '{lead.5}',
         // TODO: truncate
         overflow: 'hidden',
         textOverflow: 'ellipsis',

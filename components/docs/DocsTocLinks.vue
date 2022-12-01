@@ -62,24 +62,24 @@ css({
       padding: '{space.1} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
-      color: '{colors.gray.500}',
+      color: '{color.gray.500}',
       // TODO: truncate
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
-      '@mq.lg': {
+      '@lg': {
         paddingRight: '{space.3}'
       },
       '&:not(.active):hover': {
-        color: '{colors.gray.900}',
+        color: '{color.gray.900}',
       },
       '@dark': {
         '&:not(.active):hover': {
-          color: '{colors.gray.400}',
+          color: '{color.gray.400}',
         },
       },
       '&.active': {
-        color: '{colors.primary.500}'
+        color: '{color.primary.500}'
       }
     }
   }

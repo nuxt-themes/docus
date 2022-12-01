@@ -41,7 +41,7 @@ css({
     alignItems: 'center',
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
-    borderTopColor: '{colors.gray.100}',
+    borderTopColor: '{color.gray.100}',
 
     ':deep(.icon)': {
       width: '{space.4}',
@@ -49,20 +49,20 @@ css({
     },
 
     a: {
-      color: '{colors.gray.500}',
+      color: '{color.gray.500}',
       '@dark': {
-        color: '{colors.gray.400}'
+        color: '{color.gray.400}'
       },
       '&:hover': {
-        color: '{colors.gray.700}',
+        color: '{color.gray.700}',
         '@dark': {
-          color: '{colors.gray.200}',
+          color: '{color.gray.200}',
         }
       },
     },
 
     '@dark': {
-      borderTopColor: '{colors.gray.900}'
+      borderTopColor: '{color.gray.900}'
     },
 
     '.left': {
@@ -70,8 +70,8 @@ css({
       alignItems: 'center',
 
       p: {
-        fontSize: '{fontSizes.xs}',
-        fontWeight: '{fontWeights.bold}'
+        fontSize: '{fontSize.xs}',
+        fontWeight: '{fontWeight.bold}'
       },
 
       '&-icon': {

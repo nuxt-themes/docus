@@ -39,16 +39,16 @@ const icons = computed<any>(() => {
 <style lang="ts" scoped>
 css({
   a: {
-    color: '{colors.gray.500}',
+    color: '{color.gray.500}',
 
     '@dark': {
-      color: '{colors.gray.400}'
+      color: '{color.gray.400}'
     },
 
     '&:hover': {
-      color: '{colors.gray.700}',
+      color: '{color.gray.700}',
       '@dark': {
-        color: '{colors.gray.200}',
+        color: '{color.gray.200}',
       }
     },
   }
