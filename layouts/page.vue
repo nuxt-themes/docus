@@ -4,11 +4,11 @@ const { page } = useContent()
 
 <template>
   <div class="page-layout">
-    <AppContainer :fluid="page.fluid" :constrained-class="page.constrainedClass" :padded="page.padded">
+    <Container :fluid="page.fluid" :constrained-class="page.constrainedClass" :padded="page.padded">
       <article>
         <slot />
       </article>
-    </AppContainer>
+    </Container>
   </div>
 </template>
 
