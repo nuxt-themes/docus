@@ -83,6 +83,12 @@ export default defineAppConfig({
   }
 })
 
+interface IconLink {
+  href: string
+  icon: string
+  label?: string
+}
+
 declare module '@nuxt/schema' {
   interface AppConfigInput {
     docus?: {
@@ -100,6 +106,7 @@ declare module '@nuxt/schema' {
       aside?: {
         level: number
         exclude?: string[]
+        collapsed?: boolean
       },
       header?: {
         title?: string,
@@ -108,15 +115,13 @@ declare module '@nuxt/schema' {
         exclude?: string[]
       },
       footer?: {
-        credits?: boolean
+        credits?: boolean | {
+          icon: string
+          text: string
+          href: string
+        }
         iconLinks?: IconLink[]
       }
     }
   }
-}
-
-interface IconLink {
-  href: string
-  icon: string
-  label?: string
 }
