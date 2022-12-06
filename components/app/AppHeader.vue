@@ -6,7 +6,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
-    <AppContainer>
+    <Container>
       <section class="left">
         <AppHeaderDialog v-if="hasDialog" />
         <AppHeaderLogo />
@@ -22,7 +22,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
         <ThemeSelect />
         <AppSocialIcons />
       </section>
-    </AppContainer>
+    </Container>
   </header>
 </template>
 

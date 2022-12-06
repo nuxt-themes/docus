@@ -8,7 +8,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 
 <template>
   <footer>
-    <AppContainer padded class="footer-container">
+    <Container padded class="footer-container">
       <!-- Left -->
       <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank" class="left">
         <Component :is="docus.footer.credits.icon" v-if="docus.footer.credits.icon" class="left-icon" />
@@ -29,7 +29,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         </a>
         <AppSocialIcons ref="socialIcons" />
       </div>
-    </AppContainer>
+    </Container>
   </footer>
 </template>
 
