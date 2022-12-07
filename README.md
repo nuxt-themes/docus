@@ -42,6 +42,20 @@ defineNuxtConfig({
 - Leverages [**@nuxt-themes/typography**](https://github.com/nuxt-themes/typography)
 - Used on [Content Documentation](https://content.nuxtjs.org)
 
+## They are using it 🎨
+
+- [nuxt/http](https://github.com/nuxt/http)
+- [nuxt/content](https://github.com/nuxt/content)
+- [nuxt/image](https://github.com/nuxt/image)
+- [nuxt-modules/tailwindcss](https://github.com/nuxt-modules/tailwindcss)
+- [nuxt-modules/strapi](https://github.com/nuxt-modules/strapi)
+- [nuxt-modules/sanity](https://github.com/nuxt-modules/sanity)
+- [nuxt-modules/i18n](https://github.com/nuxt-modules/i18n)
+- [nuxt-modules/color-mode](https://github.com/nuxt-modules/color-mode)
+- [nuxt-modules/apollo](https://github.com/nuxt-modules/apollo)
+- [nuxt-community/ackee-module](https://github.com/nuxt-community/ackee-module)
+- [Do you use Docus? Get listed here!](https://github.com/nuxt-themes/docus/issues/713)
+
 ## Contributing 🙏
 
 1. Clone this repository
