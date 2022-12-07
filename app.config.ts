@@ -78,7 +78,7 @@ export default defineAppConfig({
       /**
        * Icons to be added to Social Icons in footer.
        */
-      icons: []
+      iconLinks: []
     }
   }
 })
