@@ -19,7 +19,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation">
+  <nav>
     <ul>
       <li
         v-for="link in tree"
@@ -41,13 +41,16 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 <style scoped lang="ts">
 css({
   nav: {
+    display: 'none',
+    '@lg': {
+      display: 'block'
+    },
     ul: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       flex: '1',
       maxWidth: '100%',
-      overflow: 'hidden',
       // TODO: truncate
       overflow: 'hidden',
       textOverflow: 'ellipsis',
