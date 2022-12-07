@@ -55,6 +55,7 @@ defineNuxtConfig({
 - [nuxt-modules/apollo](https://github.com/nuxt-modules/apollo)
 - [nuxt-community/ackee-module](https://github.com/nuxt-community/ackee-module)
 - [hubble-exchange/docs](https://github.com/hubble-exchange/docs)
+- [sidebase](https://sidebase.io)
 - [Do you use Docus? Get listed here!](https://github.com/nuxt-themes/docus/issues/713)
 
 ## Contributing 🙏
