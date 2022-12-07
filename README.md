@@ -54,6 +54,7 @@ defineNuxtConfig({
 - [nuxt-modules/color-mode](https://github.com/nuxt-modules/color-mode)
 - [nuxt-modules/apollo](https://github.com/nuxt-modules/apollo)
 - [nuxt-community/ackee-module](https://github.com/nuxt-community/ackee-module)
+- [hubble-exchange/docs](https://github.com/hubble-exchange/docs)
 - [Do you use Docus? Get listed here!](https://github.com/nuxt-themes/docus/issues/713)
 
 ## Contributing 🙏
