@@ -15,19 +15,17 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         <p>{{ docus.footer.credits.text }}</p>
       </a>
 
-      <!-- Right -->
-      <div class="right">
-        <a
-          v-for="icon in icons.slice(0, 6 - nbSocialIcons)"
-          :key="icon.label"
-          rel="noopener"
-          :aria-label="icon.label"
-          :href="icon.href"
-          target="_blank"
-        >
+      <div class="center">
+        <a v-for="icon in icons.slice(0, 6 - nbSocialIcons)" :key="icon.label" rel="noopener" :aria-label="icon.label"
+          :href="icon.href" target="_blank">
           <Icon :name="icon.icon || icon.component" />
         </a>
         <AppSocialIcons ref="socialIcons" />
+      </div>
+
+      <!-- Right -->
+      <div class="right">
+        <ThemeSelect />
       </div>
     </Container>
   </footer>
@@ -36,12 +34,14 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 <style lang="ts" scoped>
 css({
   footer: {
-    height: '{docus.footer.height}',
-    display: 'flex',
-    alignItems: 'center',
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: '{color.gray.100}',
+    padding: '{docus.footer.padding}',
+
+    '@dark': {
+      borderTopColor: '{color.gray.900}'
+    },
 
     ':deep(.icon)': {
       width: '{space.4}',
@@ -61,19 +61,13 @@ css({
       },
     },
 
-    '@dark': {
-      borderTopColor: '{color.gray.900}'
-    },
-
     '.left': {
       display: 'flex',
       alignItems: 'center',
-
       p: {
         fontSize: '{fontSize.xs}',
         fontWeight: '{fontWeight.bold}'
       },
-
       '&-icon': {
         width: '{space.4}',
         fill: 'currentcolor',
@@ -81,20 +75,43 @@ css({
       }
     },
 
-    '.right': {
+    '.center': {
       display: 'flex',
       alignItems: 'center',
       gap: '{space.4}'
     },
 
     '.footer-container': {
-      display: 'flex',
-      flexDirection: 'col',
-      alignItems: 'center',
-      height: '100%',
-      gap: '{space.4}',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+      justifyItems: 'center',
+      gap: '{space.2}',
+      '@sm': {
+        justifyItems: 'legacy',
+
+      },
+      '.left': {
+        gridColumn: 'span 12 / span 12',
+        '@sm': {
+          gridColumn: 'span 4 / span 4'
+        }
+      },
+      '.center': {
+        gridColumn: 'span 12 / span 12',
+        justifyContent: 'center',
+        '@sm': {
+          gridColumn: 'span 4 / span 4'
+        }
+      },
+      '.right': {
+        display: 'flex',
+        gridColumn: 'span 12 / span 12',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        '@sm': {
+          gridColumn: 'span 4 / span 4'
+        }
+      }
     }
   }
 })

@@ -7,21 +7,19 @@ const hasDialog = computed(() => navigation.value?.length > 1)
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
     <Container>
-      <section class="left">
+      <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
         <AppHeaderLogo />
-      </section>
+      </div>
 
-      <section class="center">
+      <div class="section center">
         <AppHeaderLogo v-if="hasDialog" />
         <AppHeaderNavigation />
-      </section>
+      </div>
 
-      <section class="right">
+      <div class="section right">
         <AppSearch v-if="hasDocSearch" />
-        <ThemeSelect />
-        <AppSocialIcons />
-      </section>
+      </div>
     </Container>
   </header>
 </template>
@@ -71,7 +69,7 @@ css({
       gap: '2rem'
     },
 
-    section: {
+    '.section': {
       display: 'flex',
       alignItems: 'center',
       flex: 'none',

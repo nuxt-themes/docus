@@ -32,7 +32,6 @@ css({
       borderRadius: '{radii.md}',
       display: 'flex',
       alignItems: 'center',
-      fontSize: '{fontSize.sm}',
       color: '{color.gray.500}',
       borderStyle: 'solid',
       borderWidth: '1px',
@@ -55,20 +54,16 @@ css({
     },
     span: {
       '&:first-child': {
-        // hidden text-xs font-medium lg:block
-        display: 'none',
+        display: 'block',
         fontSize: '{fontSize.xs}',
         fontWeight: '{fontWeight.medium}',
-        '@lg': {
-          display: 'block'
-        }
       },
       '&:nth-child(2)': {
         flex: 'none',
         display: 'none',
         fontSize: '{fontSize.xs}',
         fontWeight: '{fontWeight.semibold}',
-        '@lg': {
+        '@sm': {
           display: 'block'
         }
       }
