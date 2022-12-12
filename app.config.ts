@@ -32,7 +32,7 @@ export default defineAppConfig({
        * Use 0 to disable all nesting.
        * Use 1 and more to display nested navigation in header and aside navigation.
        */
-      level: 1,
+      level: 0,
       /**
        * Specify if default collapsibles state globally for aside navigation.
        */
