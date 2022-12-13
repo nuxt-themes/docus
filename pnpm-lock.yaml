@@ -18,7 +18,7 @@ specifiers:
   '@vueuse/nuxt': ^9.6.0
   eslint: ^8.28.0
   nuxt: 3.0.0
-  nuxt-config-schema: ^0.3.4
+  nuxt-config-schema: ^0.3.5
   nuxt-plausible: ^0.1.2
   pinceau: latest
   release-it: ^15.5.0
@@ -39,8 +39,8 @@ dependencies:
   '@nuxtjs/color-mode': 3.2.0
   '@vueuse/core': 9.6.0_vue@3.2.45
   '@vueuse/nuxt': 9.6.0_nuxt@3.0.0+vue@3.2.45
-  nuxt-config-schema: 0.3.4
-  pinceau: 0.8.7
+  nuxt-config-schema: 0.3.5
+  pinceau: 0.8.9
 
 devDependencies:
   '@algolia/client-search': 4.14.2
@@ -676,7 +676,7 @@ packages:
     dependencies:
       '@nuxtjs/color-mode': 3.2.0
       '@vueuse/core': 9.6.0_vue@3.2.45
-      pinceau: 0.8.7
+      pinceau: 0.8.9
       style-value-types: 5.1.2
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -692,9 +692,9 @@ packages:
     dependencies:
       '@nuxt-themes/tokens': 1.2.0_vue@3.2.45
       '@nuxtjs/color-mode': 3.2.0
-      nuxt-config-schema: 0.3.4
+      nuxt-config-schema: 0.3.5
       nuxt-icon: 0.1.8_vue@3.2.45
-      pinceau: 0.8.7
+      pinceau: 0.8.9
     transitivePeerDependencies:
       - '@vue/composition-api'
       - postcss
@@ -936,7 +936,7 @@ packages:
       '@nuxt/schema': 3.0.0
       defu: 6.1.1
       nuxt-component-meta: 0.3.6
-      nuxt-config-schema: 0.3.4
+      nuxt-config-schema: 0.3.5
       socket.io-client: 4.5.4
       ufo: 1.0.1
     transitivePeerDependencies:
@@ -6022,14 +6022,14 @@ packages:
       - supports-color
     dev: false
 
-  /nuxt-config-schema/0.3.4:
-    resolution: {integrity: sha512-VYmV6vVkg3QAuMNC0H/goSi7RQN/DoKoICvQy9ycuKxePc/XOYvWdDI3aIlc4XHrN1qWPdtujmE87lj6RL2r9Q==}
+  /nuxt-config-schema/0.3.5:
+    resolution: {integrity: sha512-/yTFnTFjRSSevLY0LiqMC+Y8JIK+zemCA+ozG8BWomBGpPipUIHcqhGS1TcDxaD0Ht27z97DpdPgMu/jwkmI4w==}
     dependencies:
       '@nuxt/kit': 3.0.0
       defu: 6.1.1
       jiti: 1.16.0
       pathe: 1.0.0
-      untyped: 1.0.0
+      untyped: 1.1.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -6460,8 +6460,8 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
 
-  /pinceau/0.8.7:
-    resolution: {integrity: sha512-10Zkus5HQ+5l1/XE+cMJPvKC0PX7QnpuJIlJYIFsaeJQFvbGlg8hdsZRs32Vaier9BkKC3C0K1nAbAyI+1RmhA==}
+  /pinceau/0.8.9:
+    resolution: {integrity: sha512-5iUN4FuLUK2oyP0a7vMYJooyXlF8DutrSbWuBqp0FrVqcDI9j5WG+RZUY57uFkUICcSXmoghQ3nJZ/Dxnr77nA==}
     dependencies:
       '@unocss/reset': 0.47.6
       '@volar/vue-language-core': 1.0.13
@@ -8202,7 +8202,7 @@ packages:
       rollup-plugin-dts: 5.0.0_b62htvnbshcybhtkm3m3gan63e
       scule: 1.0.0
       typescript: 4.9.3
-      untyped: 1.0.0
+      untyped: 1.1.0
     transitivePeerDependencies:
       - sass
       - supports-color
@@ -8262,7 +8262,7 @@ packages:
       pkg-types: 1.0.1
       scule: 1.0.0
       strip-literal: 1.0.0
-      unplugin: 1.0.0
+      unplugin: 1.0.1
     transitivePeerDependencies:
       - rollup
 
@@ -8279,7 +8279,7 @@ packages:
       pkg-types: 1.0.1
       scule: 1.0.0
       strip-literal: 1.0.0
-      unplugin: 1.0.0
+      unplugin: 1.0.1
     transitivePeerDependencies:
       - rollup
 
@@ -8372,7 +8372,6 @@ packages:
       chokidar: 3.5.3
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
-    dev: false
 
   /unstorage/1.0.1:
     resolution: {integrity: sha512-J1c4b8K2KeihHrQtdgl/ybIapArUbPaPb+TyJy/nGSauDwDYqciZsEKdkee568P3c8SSH4TIgnGRHDWMPGw+Lg==}
@@ -8402,6 +8401,17 @@ packages:
       scule: 1.0.0
     transitivePeerDependencies:
       - supports-color
+
+  /untyped/1.1.0:
+    resolution: {integrity: sha512-v4H7juRA2cWFr+V4L2HExXwlRCwZv2A6o2M33+9aN/DPUyzqtFFMCTpiKF7sdOV8EaLxm+LTpDb0BoeGv2NswQ==}
+    dependencies:
+      '@babel/core': 7.20.5
+      '@babel/standalone': 7.20.6
+      '@babel/types': 7.20.5
+      scule: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /update-browserslist-db/1.0.10_browserslist@4.21.4:
     resolution: {integrity: sha512-OztqDenkfFkbSG+tRxBeAnCVPckDBcvibKd35yDONx6OU8N7sqgwc7rCbkJ/WcYtVRZ4ba68d6byhC21GFh7sQ==}
@@ -8761,7 +8771,6 @@ packages:
 
   /webpack-virtual-modules/0.5.0:
     resolution: {integrity: sha512-kyDivFZ7ZM0BVOUteVbDFhlRt7Ah/CSPwJdi8hBpkK7QLumUqdLtVfm/PX/hkcnrvr0i77fO5+TjZ94Pe+C9iw==}
-    dev: false
 
   /whatwg-url/5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
