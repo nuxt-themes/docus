@@ -14,7 +14,8 @@ export default defineNuxtConfigSchema({
        *
        * @example '/cover.jpg'
        */
-      image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
+      image:
+        'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
       /**
        * Social links.
        *
@@ -108,6 +109,7 @@ export default defineNuxtConfigSchema({
             type: 'array',
             items: {
               type: 'object',
+              required: ['icon', 'href'],
               properties: {
                 icon: { type: 'string', description: 'Icon name' },
                 href: {
