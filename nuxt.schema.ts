@@ -116,7 +116,7 @@ export default defineNuxtConfigSchema({
                   type: 'string',
                   description: 'Link when clicking on the icon'
                 },
-                label: { type: 'number', description: 'Label of the icon' }
+                label: { type: 'string', description: 'Label of the icon' }
               }
             }
           }
