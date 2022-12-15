@@ -39,6 +39,7 @@
     "@nuxtjs/color-mode": "^3.2.0",
     "@vueuse/core": "^9.6.0",
     "@vueuse/nuxt": "^9.6.0",
+    "nuxt-config-schema": "^0.3.6",
     "pinceau": "latest"
   },
   "devDependencies": {
