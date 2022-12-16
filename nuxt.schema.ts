@@ -72,7 +72,11 @@ export default defineNuxtConfigSchema({
          */
         medium: ''
       },
-
+      /**
+       * Aside navigation configuration
+       *
+       * @studio-icon fluent:document-page-24-regular
+       */
       aside: {
         /**
          * The level to which the navigation should be scaled.
@@ -92,6 +96,11 @@ export default defineNuxtConfigSchema({
          */
         exclude: []
       },
+      /**
+       * Header configuration
+       *
+       * @studio-icon fluent:document-header-24-regular
+       */
       header: {
         /**
          * Title to be displayed in header or as aria-label if logo is defined
@@ -123,6 +132,11 @@ export default defineNuxtConfigSchema({
          */
         exclude: []
       },
+      /**
+       * Footer configuration
+       *
+       * @studio-icon fluent:document-footer-24-regular
+       */
       footer: {
         /**
          * Credits configuration
