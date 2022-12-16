@@ -16,13 +16,13 @@ const envModules = {
 
 export default defineNuxtConfig({
   extends: [envModules.typography, envModules.elements],
-
   modules: [
     envModules.tokens,
     envModules.studio,
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
+    'nuxt-config-schema',
     resolve('./app/module'),
     (_, nuxt) => {
       if (nuxt.options.dev) {
@@ -34,11 +34,9 @@ export default defineNuxtConfig({
       }
     }
   ],
-
   css: [
     resolve('./assets/css/main.css')
   ],
-
   components: [
     {
       prefix: '',
@@ -51,12 +49,10 @@ export default defineNuxtConfig({
       global: true
     }
   ],
-
   pinceau: {
     configFileName: 'tokens.config',
     debug: false
   },
-
   content: {
     documentDriven: true,
     highlight: {
@@ -70,7 +66,6 @@ export default defineNuxtConfig({
       fields: ['icon', 'titleTemplate', 'aside']
     }
   },
-
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'

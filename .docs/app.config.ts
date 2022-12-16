@@ -20,7 +20,8 @@ export default defineAppConfig({
       iconLinks: [
         {
           href: 'https://nuxt.com',
-          icon: 'IconNuxtLabs'
+          icon: 'IconNuxtLabs',
+          label: 'Nuxt'
         }
       ]
     }

@@ -5,7 +5,7 @@ const title = computed(() => docus.value.header?.title || docus.value.title)
 </script>
 
 <template>
-  <NuxtLink class="navbar-logo" to="/" :aria-label="docus?.header?.title">
+  <NuxtLink class="navbar-logo" to="/" :aria-label="title">
     <!-- Only Logo -->
     <component :is="logo" v-if="logo && typeof logo === 'string'" />
     <Logo v-else-if="logo" />

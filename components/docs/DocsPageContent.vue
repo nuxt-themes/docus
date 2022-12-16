@@ -204,6 +204,7 @@ css({
     display: 'flex',
     alignItems: 'center',
     mx: 'calc(0px - {space.4})',
+    overflow: 'auto',
     '@sm': {
       mx: 'calc(0px - {space.6})',
     },
