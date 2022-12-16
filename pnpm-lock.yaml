@@ -9,8 +9,8 @@ specifiers:
   '@nuxt-themes/elements': ^0.2.2
   '@nuxt-themes/tokens': latest
   '@nuxt-themes/typography': latest
-  '@nuxt/content': ^2.2.2
-  '@nuxthq/studio': ^0.3.5
+  '@nuxt/content': ^2.3.0
+  '@nuxthq/studio': ^0.3.6
   '@nuxtjs/algolia': ^1.3.1
   '@nuxtjs/color-mode': ^3.2.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
@@ -33,8 +33,8 @@ dependencies:
   '@nuxt-themes/elements': 0.2.2_vue@3.2.45
   '@nuxt-themes/tokens': 1.2.0_vue@3.2.45
   '@nuxt-themes/typography': 0.1.4_vue@3.2.45
-  '@nuxt/content': 2.2.2
-  '@nuxthq/studio': 0.3.5
+  '@nuxt/content': 2.3.0
+  '@nuxthq/studio': 0.3.6
   '@nuxtjs/algolia': 1.3.1_vue@3.2.45
   '@nuxtjs/color-mode': 3.2.0
   '@vueuse/core': 9.6.0_vue@3.2.45
@@ -704,8 +704,8 @@ packages:
       - vue
     dev: false
 
-  /@nuxt/content/2.2.2:
-    resolution: {integrity: sha512-qHkyeD0cVRjd+KJH82+V4Twn1QTJh43m9VGMjljLUvZVdFGxU/ZAe4gq0rdTbi8CtCZNvcR9vvNApYjOP1LNYA==}
+  /@nuxt/content/2.3.0:
+    resolution: {integrity: sha512-7IudXOiycHXWxRDe7tWFwnIVT6bp0YG5O4wttCYYd7cvyjX3k6d3zD2j1IkjJMhfqU2PWQ/Wd+A2+oeiLNg3gA==}
     dependencies:
       '@nuxt/kit': 3.0.0
       consola: 2.15.3
@@ -761,7 +761,7 @@ packages:
       c12: 1.0.1
       consola: 2.15.3
       defu: 6.1.1
-      globby: 13.1.2
+      globby: 13.1.3
       hash-sum: 2.0.0
       ignore: 5.2.1
       jiti: 1.16.0
@@ -774,7 +774,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.1
       unimport: 1.0.1
-      untyped: 1.0.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -787,7 +787,7 @@ packages:
       c12: 1.0.1
       consola: 2.15.3
       defu: 6.1.1
-      globby: 13.1.2
+      globby: 13.1.3
       hash-sum: 2.0.0
       ignore: 5.2.1
       jiti: 1.16.0
@@ -800,7 +800,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.1
       unimport: 1.0.1_rollup@2.79.1
-      untyped: 1.0.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -929,8 +929,8 @@ packages:
       - vls
       - vti
 
-  /@nuxthq/studio/0.3.5:
-    resolution: {integrity: sha512-FAAB36wqfGVMDCagVN2HEBj4wFcp9Fm5Im02/21nVicWnwPfA3XVTyrqKe1cKE1H1rM5we+M8GKiTVNOgtBcUA==}
+  /@nuxthq/studio/0.3.6:
+    resolution: {integrity: sha512-7yukA2Vi/GHKSa7KMriwOKjVhTS50n0H6oGv79dt7Y00I2OUh+I4a61xIDrBawG3d24kiYWoivTbR2D/ejusUQ==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@nuxt/schema': 3.0.0
