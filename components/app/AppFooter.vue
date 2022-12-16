@@ -8,7 +8,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 
 <template>
   <footer>
-    <Container padded class="footer-container">
+    <Container fluid padded class="footer-container">
       <!-- Left -->
       <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank" class="left">
         <Component :is="docus.footer.credits.icon" v-if="docus.footer.credits.icon" class="left-icon" />
@@ -33,12 +33,8 @@ css({
   footer: {
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
-    borderTopColor: '{color.gray.100}',
+    borderTopColor: '{borders.primary.default}',
     padding: '{docus.footer.padding}',
-
-    '@dark': {
-      borderTopColor: '{color.gray.900}'
-    },
 
     ':deep(.icon)': {
       width: '{space.4}',

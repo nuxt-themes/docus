@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container padded class="docs-page-content">
+  <Container fluid padded class="SUKA docs-page-content">
     <!-- Aside -->
     <aside
       v-if="hasAside"
@@ -114,7 +114,8 @@ css({
     '@lg': {
       display: 'grid',
       gap: '{space.8}',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
+      // gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
+      gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr) minmax(250px, 250px)'
     }
   },
   '.aside-nav': {
@@ -124,10 +125,12 @@ css({
       display: 'block',
       position: 'sticky',
       top: '{docus.header.height}',
-      gridColumn: 'span 2/span 2',
+      // gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
       py: '{space.8}',
+      paddingRight: '{space.8}',
+      borderRight: '1px solid {borders.primary.default}',
     }
   },
   '.page-body': {
@@ -136,19 +139,20 @@ css({
     flexDirection: "column",
     flex: '1 1 0%',
     py: '{space.8}',
+    // TODO: check carefully old implementation need after changing parent gridTemplateColumns
     '&.one-column': {
       '@lg': {
-        gridColumn: 'span 12 / span 12'
+        // gridColumn: 'span 12 / span 12'
       }
     },
     '&.two-column': {
       '@lg': {
-        gridColumn: 'span 10 / span 10'
+        // gridColumn: 'span 10 / span 10'
       }
     },
     '&.three-column': {
       '@lg': {
-        gridColumn: 'span 8 / span 8'
+        // gridColumn: 'span 8 / span 8'
       }
     },
     '&.with-toc': {
@@ -202,43 +206,47 @@ css({
     position: 'sticky',
     top: '{docus.header.height}',
     display: 'flex',
-    alignItems: 'center',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
+    borderBottom: '1px solid {borders.primary.default}',
     '@sm': {
       mx: 'calc(0px - {space.6})',
     },
     '@lg': {
-      gridColumn: 'span 2 / span 2',
       mx: 0,
       alignSelf: 'flex-start',
       py: '{space.8}',
+      px: '{space.8}',
+      borderLeft: '1px solid {borders.primary.default}',
+      height: 'calc(100vh - {docus.header.height})',
+      maxHeight: 'none',
+      borderBottom: 'none',
     },
     '.toc-wrapper': {
       width: '100%',
+      height: '100%',
       backdropFilter: '{backdrop.filter}',
       backgroundColor: '{backdrop.background}',
-      px: '{space.4}',
-      '@sm': {
-        px: '{space.6}',
-      },
       '@lg': {
-        px: 0,
         backgroundColor: 'transparent',
         backdropFilter: 'none'
       },
       button: {
         display: 'flex',
         alignItems: 'center',
-        py: '{space.3}',
         width: '100%',
         height: '100%',
+        py: '{space.4}',
+        px: '{space.4}',
+        '@sm': {
+          px: '{space.6}',
+        },
         '@lg': {
           display: 'none'
         },
         '.title': {
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
           fontWeight: '{fontWeight.semibold}',
           marginRight: '{space.1}',
         },
@@ -255,7 +263,16 @@ css({
         display: 'none',
         marginBottom: '{space.4}',
         '&.opened': {
-          display: 'block'
+          display: 'block',
+          px: '{space.4}',
+          maxHeight: '50vh',
+          overflow: 'auto',
+          '@sm': {
+            px: '{space.6}',
+          },
+          '@lg': {
+            px: 0,
+          },
         },
         '@lg': {
           marginTop: 0,
