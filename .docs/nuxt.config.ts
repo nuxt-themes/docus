@@ -7,10 +7,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: [
-    'nuxt-plausible',
-    '@unlighthouse/nuxt'
-  ],
+  modules: ['nuxt-plausible'],
   typescript: {
     includeWorkspace: true
   }
