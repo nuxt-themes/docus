@@ -110,7 +110,7 @@ css({
   '.docs-page-content': {
     position: 'relative',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     '@lg': {
       display: 'grid',
       gap: '{space.8}',
