@@ -110,8 +110,7 @@ css({
   '.docs-page-content': {
     position: 'relative',
     display: 'flex',
-    flexDirection: 'column-reverse',
-    minHeight: '{docus.page.height}',
+    flexDirection: 'column',
     '@lg': {
       display: 'grid',
       gap: '{space.8}',
@@ -210,7 +209,6 @@ css({
       mx: 'calc(0px - {space.6})',
     },
     '@lg': {
-      maxHeight: '{docus.page.height}',
       gridColumn: 'span 2 / span 2',
       mx: 0,
       alignSelf: 'flex-start',

@@ -6,12 +6,8 @@ export default defineTheme({
     primary: (nuxtThemeTokens.color as any).lightblue
   },
   docus: {
-    page: {
-      height: 'calc(100vh - calc(calc({docus.header.height} + {docus.footer.height})))',
-      maxWidth: '90rem'
-    },
     header: { height: '64px' },
-    footer: { height: '50px' }
+    footer: { padding: '{space.6} 0' }
   },
   typography: {
     color: {
