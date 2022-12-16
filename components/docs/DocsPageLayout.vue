@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container fluid padded class="SUKA docs-page-content">
+  <Container fluid padded class="docs-page-content">
     <!-- Aside -->
     <aside
       v-if="hasAside"
