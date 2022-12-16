@@ -39,6 +39,7 @@ const icons = computed<any>(() => {
 <style lang="ts" scoped>
 css({
   a: {
+    display: 'flex',
     color: '{color.gray.500}',
 
     '@dark': {

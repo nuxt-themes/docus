@@ -15,6 +15,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         <p>{{ docus.footer.credits.text }}</p>
       </a>
 
+      <!-- Center -->
       <div class="center">
         <a v-for="icon in icons.slice(0, 6 - nbSocialIcons)" :key="icon.label" rel="noopener" :aria-label="icon.label"
           :href="icon.href" target="_blank">
@@ -23,10 +24,6 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         <AppSocialIcons ref="socialIcons" />
       </div>
 
-      <!-- Right -->
-      <div class="right">
-        <ThemeSelect />
-      </div>
     </Container>
   </footer>
 </template>
@@ -97,21 +94,16 @@ css({
         }
       },
       '.center': {
-        gridColumn: 'span 12 / span 12',
+        display: 'flex',
         justifyContent: 'center',
+        gridColumn: 'span 12 / span 12',
         '@sm': {
           gridColumn: 'span 4 / span 4'
+        },
+        a: {
+          display: 'flex'
         }
       },
-      '.right': {
-        display: 'flex',
-        gridColumn: 'span 12 / span 12',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        '@sm': {
-          gridColumn: 'span 4 / span 4'
-        }
-      }
     }
   }
 })

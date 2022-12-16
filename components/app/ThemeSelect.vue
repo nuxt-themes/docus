@@ -22,7 +22,7 @@ const onClick = () => {
 <style lang="ts" scoped>
 css({
   button: {
-    display: 'inline-block',
+    display: 'flex',
 
     color: '{color.gray.500}',
     '@dark': {

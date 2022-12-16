@@ -18,7 +18,11 @@ const hasDialog = computed(() => navigation.value?.length > 1)
       </div>
 
       <div class="section right">
-        <AppSearch v-if="hasDocSearch" />
+        <AppSearch v-if="hasDocSearch"/>
+        <ThemeSelect />
+        <div class="social-icons">
+          <AppSocialIcons />
+        </div>
       </div>
     </Container>
   </header>
@@ -88,6 +92,14 @@ css({
         alignItems: 'center',
         flex: 'none',
         gap: '{space.4}',
+        '.social-icons': {
+          display: 'none',
+          '@md': {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '{space.4}'
+          }
+        }
       }
     }
   }

@@ -33,8 +33,8 @@ watch(visible, v => (v ? open() : close()))
           </button>
 
           <div class="icons">
-            <AppSocialIcons />
             <ThemeSelect />
+            <AppSocialIcons />
           </div>
         </div>
 
