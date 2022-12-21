@@ -70,7 +70,7 @@ css({
       display: 'grid',
       height: '100%',
       gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      gap: '2rem'
+      gap: '{space.2}'
     },
 
     '.section': {
@@ -78,26 +78,25 @@ css({
       alignItems: 'center',
       flex: 'none',
       '&.left': {
-        gridColumn: 'span 2 / span 2'
+        gridColumn: 'span 4 / span 4'
       },
       '&.center': {
-        gridColumn: 'span 8 / span 8',
+        gridColumn: 'span 4 / span 4',
         justifyContent: 'center',
         flex: '1'
       },
       '&.right': {
         display: 'flex',
-        gridColumn: 'span 2 / span 2',
+        gridColumn: 'span 4 / span 4',
         justifyContent: 'flex-end',
         alignItems: 'center',
         flex: 'none',
-        gap: '{space.4}',
+        marginRight: 'calc(0px - {space.4})',
         '.social-icons': {
           display: 'none',
           '@md': {
             display: 'flex',
             alignItems: 'center',
-            gap: '{space.4}'
           }
         }
       }

@@ -2,6 +2,7 @@
 const docus = useDocus()
 const socialIcons = ref(null)
 const icons = computed(() => docus.value.footer?.iconLinks || [])
+const textLinks = computed(() => docus.value.footer?.textLinks || [])
 const socialIconsCount = computed(() => Object.entries(docus.value.socials).filter(([_, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
 </script>
@@ -17,13 +18,34 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 
       <!-- Center -->
       <div class="center">
-        <a v-for="icon in icons.slice(0, 6 - nbSocialIcons)" :key="icon.label" rel="noopener" :aria-label="icon.label"
-          :href="icon.href" target="_blank">
+        <!-- TODO: inner app links with NuxtLink -->
+        <!-- TODO: link.target bug -->
+        <a
+          v-for="link in textLinks"
+          :key="link.href"
+          class="text-link"
+          :aria-label="link.text"
+          :href="link.href"
+          :target="link.target || '_self'"
+        >
+          {{ link.text }}
+        </a>
+      </div>
+
+      <div class="right">
+        <a
+          v-for="icon in icons.slice(0, 6 - nbSocialIcons)"
+          :key="icon.label"
+          class="icon-link"
+          rel="noopener"
+          :aria-label="icon.label"
+          :href="icon.href"
+          target="_blank"
+        >
           <Icon :name="icon.icon || icon.component" />
         </a>
         <AppSocialIcons ref="socialIcons" />
       </div>
-
     </Container>
   </footer>
 </template>
@@ -40,44 +62,6 @@ css({
       borderTopColor: '{color.gray.900}'
     },
 
-    ':deep(.icon)': {
-      width: '{space.4}',
-      height: '{space.4}'
-    },
-
-    a: {
-      color: '{color.gray.500}',
-      '@dark': {
-        color: '{color.gray.400}'
-      },
-      '&:hover': {
-        color: '{color.gray.700}',
-        '@dark': {
-          color: '{color.gray.200}',
-        }
-      },
-    },
-
-    '.left': {
-      display: 'flex',
-      alignItems: 'center',
-      p: {
-        fontSize: '{fontSize.xs}',
-        fontWeight: '{fontWeight.bold}'
-      },
-      '&-icon': {
-        width: '{space.4}',
-        fill: 'currentcolor',
-        marginRight: '{space.2}',
-      }
-    },
-
-    '.center': {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '{space.4}'
-    },
-
     '.footer-container': {
       display: 'grid',
       gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
@@ -87,24 +71,91 @@ css({
         justifyItems: 'legacy',
 
       },
+
+      ':deep(.icon)': {
+        width: '{space.4}',
+        height: '{space.4}'
+      },
+
+      a: {
+        color: '{color.gray.500}',
+        '@dark': {
+          color: '{color.gray.400}'
+        },
+        '&:hover': {
+          color: '{color.gray.700}',
+          '@dark': {
+            color: '{color.gray.200}',
+          }
+        },
+      },
+
       '.left': {
         gridColumn: 'span 12 / span 12',
-        '@sm': {
-          gridColumn: 'span 4 / span 4'
-        }
-      },
-      '.center': {
         display: 'flex',
-        justifyContent: 'center',
-        gridColumn: 'span 12 / span 12',
+        alignItems: 'center',
+        py: '{space.4}',
+        order: 1,
+
         '@sm': {
-          gridColumn: 'span 4 / span 4'
+          gridColumn: 'span 3 / span 3',
+          order: 0,
         },
-        a: {
-          display: 'flex'
+
+        p: {
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeight.medium}'
+        },
+
+        '&-icon': {
+          flexShrink: 0,
+          width: '{space.4}',
+          height: '{space.4}',
+          fill: 'currentcolor',
+          marginRight: '{space.2}',
+        },
+      },
+
+      '.center': {
+        gridColumn: 'span 12 / span 12',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+        '@sm': {
+          gridColumn: 'span 6 / span 6',
+          flexDirection: 'row',
+          justifyContent: 'center',
+        },
+
+        '.text-link': {
+          padding: '{space.2}',
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
+          fontWeight: '{fontWeight.medium}'
+        }
+
+      },
+
+      '.right': {
+        gridColumn: 'span 12 / span 12',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        // marginLeft: 'calc(0px - {space.4})',
+
+        '@sm': {
+          gridColumn: 'span 3 / span 3',
+          marginRight: 'calc(0px - {space.4})',
+        },
+
+        '.icon-link': {
+          display: 'flex',
+          padding: '{space.4}'
         }
       },
-    }
+    },
   }
 })
 </style>

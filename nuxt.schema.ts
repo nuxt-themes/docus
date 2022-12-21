@@ -157,6 +157,28 @@ export default defineNuxtConfigSchema({
           href: 'https://docus.dev'
         },
         /**
+         * Text links to be added into center section of the footer.
+         *
+         * @studio-icon material-symbols:add-link
+         */
+        textLinks: {
+          $schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['text', 'href'],
+              properties: {
+                href: {
+                  type: 'string',
+                  description: 'URL when clicking the link'
+                },
+                text: { type: 'string', description: 'Text of the link' },
+                target: { type: 'string', description: 'Target attribute of the link' }
+              }
+            }
+          }
+        },
+        /**
          * Icons to be added to Social Icons in footer.
          *
          * @studio-icon material-symbols:add-link
