@@ -19,7 +19,6 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
       <!-- Center -->
       <div class="center">
         <!-- TODO: inner app links with NuxtLink -->
-        <!-- TODO: link.target bug -->
         <a
           v-for="link in textLinks"
           :key="link.href"
