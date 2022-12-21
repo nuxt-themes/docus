@@ -17,20 +17,6 @@ export default defineAppConfig({
       exclude: []
     },
     footer: {
-      textLinks: [
-        {
-          href: 'https://nuxt.com',
-          text: 'Imprint'
-        },
-        {
-          href: 'https://nuxt.com',
-          text: 'Affiliate'
-        },
-        {
-          href: 'https://nuxt.com',
-          text: 'Another link'
-        },
-      ],
       iconLinks: [
         {
           href: 'https://nuxt.com',

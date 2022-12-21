@@ -7,7 +7,7 @@ export default defineTheme({
   },
   docus: {
     header: { height: '64px' },
-    footer: { padding: '{space.6} 0' }
+    footer: { padding: '{space.4} 0' }
   },
   typography: {
     color: {
