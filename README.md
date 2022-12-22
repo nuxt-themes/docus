@@ -5,6 +5,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Volta][volta-src]][volta-href]
 
 > Docus is the fastest way to create document-driven websites.
 
@@ -71,11 +72,14 @@ defineNuxtConfig({
 [MIT License](./LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxt-themes/docus/latest.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-version-src]: https://img.shields.io/npm/v/@nuxt-themes/docus/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@nuxt-themes/docus
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt-themes/docus.svg?style=flat&colorA=002438&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxt-themes/docus.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@nuxt-themes/docus
 
-[license-src]: https://img.shields.io/github/license/nuxt-themes/docus.svg?style=flat&colorA=002438&colorB=28CF8D
+[license-src]: https://img.shields.io/github/license/nuxt-themes/docus.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://github.com/nuxt-themes/docus/blob/main/LICENSE
+
+[volta-src]: https://user-images.githubusercontent.com/904724/209143798-32345f6c-3cf8-4e06-9659-f4ace4a6acde.svg
+[volta-href]: https://volta.net/nuxt-themes/docus?utm_source=readme_docus
