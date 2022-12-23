@@ -668,7 +668,7 @@ packages:
     dependencies:
       '@nuxtjs/color-mode': 3.2.0
       '@vueuse/core': 9.8.2_vue@3.2.45
-      pinceau: 0.9.10
+      pinceau: 0.9.11
     transitivePeerDependencies:
       - '@vue/composition-api'
       - postcss
@@ -1635,28 +1635,28 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@unhead/dom/1.0.13:
-    resolution: {integrity: sha512-ErfhK3Nwk3kpxnPEOrkruKAdS3/TrNlKs0nYtKgFJ1ywJYg+uNwRFDe82v4JdUMhnfmbgL/qcO3PTx3Dv09IEQ==}
+  /@unhead/dom/1.0.14:
+    resolution: {integrity: sha512-AMOOMUNbybHrvtuddy5aEkDibL3grwUCoUT1aHHqfvtEy86t/ftRGKT4T9znx54IxlXN9FnoNpeSOg4D8OP/5w==}
     dependencies:
-      '@unhead/schema': 1.0.13
+      '@unhead/schema': 1.0.14
 
-  /@unhead/schema/1.0.13:
-    resolution: {integrity: sha512-K8SiAEkM8G7GaF1QvsKlthLmRqGB8R9SvZXMCucZqb2VQ6bU4IFSs/4q6dKxmV0fXb5AHdKUL9+rX/4rQ6FsZg==}
+  /@unhead/schema/1.0.14:
+    resolution: {integrity: sha512-eL03X15KvI10igudFkvV1sWUIMcMGQed0qOk+V5fyp036NZLQ5MF9ygyZOKkZ71jbdL8/1Afe8+f2tklc4v8zQ==}
     dependencies:
-      '@zhead/schema': 1.0.8
+      '@zhead/schema': 1.0.9
       hookable: 5.4.2
 
-  /@unhead/ssr/1.0.13:
-    resolution: {integrity: sha512-pach3THVx8LU54M6aQ4qZeQdcLjXVnPlpHe7pQjHGvD6iBJC5bZc8TL+CHdTRxeiq2DqMA5uyfoor7VJJTi5AQ==}
+  /@unhead/ssr/1.0.14:
+    resolution: {integrity: sha512-ScireDoj8AJenQPi60KjGM21d9RePBqMKOKgJbTMLQIyEC34mssoOYU1r5tOexKZJiWJXzbu5qE+NIwoY8P/yA==}
     dependencies:
-      '@unhead/schema': 1.0.13
+      '@unhead/schema': 1.0.14
 
-  /@unhead/vue/1.0.13_vue@3.2.45:
-    resolution: {integrity: sha512-sGl640UQqN8HUYTKXOh6gErk/vw8byPdx1+ECqX4ec7UZYktsWgfyIReYBu09Qm3O6pIYfX8HlZbDipX+wQAOQ==}
+  /@unhead/vue/1.0.14_vue@3.2.45:
+    resolution: {integrity: sha512-PwJLCSq/eVLbLw7SbMCa20rEeL301w52UG2YhRpQTfsChBMBRGg3Nsl/PPWIurwkBXPpCsVL3AFppaCK5BCJ5Q==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@unhead/schema': 1.0.13
+      '@unhead/schema': 1.0.14
       hookable: 5.4.2
       vue: 3.2.45
 
@@ -1848,10 +1848,10 @@ packages:
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@unhead/dom': 1.0.13
-      '@unhead/schema': 1.0.13
-      '@unhead/ssr': 1.0.13
-      '@unhead/vue': 1.0.13_vue@3.2.45
+      '@unhead/dom': 1.0.14
+      '@unhead/schema': 1.0.14
+      '@unhead/ssr': 1.0.14
+      '@unhead/vue': 1.0.14_vue@3.2.45
       vue: 3.2.45
 
   /@vueuse/metadata/9.8.2:
@@ -1885,8 +1885,8 @@ packages:
       - vue
     dev: false
 
-  /@zhead/schema/1.0.8:
-    resolution: {integrity: sha512-PD8VozzjkWTMVdrqLPjjT+idekAOYmbWatw3vI7piaVbJDxBP/3alclgc/3FTqj9PA46aJwr3zY3rywghkhI7Q==}
+  /@zhead/schema/1.0.9:
+    resolution: {integrity: sha512-MBubVXXEJX86ZBL6CDK0rYi1mC82zuben1MwwAEe98EFN1w4Oy0l2roJaM51MwQEvZ+WTi6o4lCxUShtLQJk8A==}
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -6042,7 +6042,7 @@ packages:
       '@nuxt/telemetry': 2.1.8
       '@nuxt/ui-templates': 1.0.0
       '@nuxt/vite-builder': 3.0.0_jsq3ycdnenhwr4lctnpw27cze4
-      '@unhead/ssr': 1.0.13
+      '@unhead/ssr': 1.0.14
       '@vue/reactivity': 3.2.45
       '@vue/shared': 3.2.45
       '@vueuse/head': 1.0.22_vue@3.2.45
@@ -6072,7 +6072,7 @@ packages:
       ultrahtml: 1.2.0
       unctx: 2.1.1
       unenv: 1.0.0
-      unhead: 1.0.13
+      unhead: 1.0.14
       unimport: 1.1.0
       unplugin: 1.0.1
       untyped: 1.2.0
@@ -6435,8 +6435,8 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
 
-  /pinceau/0.9.10:
-    resolution: {integrity: sha512-vG8RzUjbiTrl+PRHWnw1dLKmoC+j++/ZaqbbWOWUSThndgADxrENpa4EOV95Vh8uxOT+zOJoUWaSZi0rVIXGaA==}
+  /pinceau/0.9.11:
+    resolution: {integrity: sha512-4Yg959IMGJZi7g8i+WTWV9lAqczoXTPMDHbwQi3oPCWhHSaHJoAQyhx+uk112lAF0+4B+kEEfYdoZPwgmtVLPQ==}
     dependencies:
       '@unocss/reset': 0.48.0
       '@volar/vue-language-core': 1.0.16
@@ -8184,11 +8184,11 @@ packages:
       node-fetch-native: 1.0.1
       pathe: 1.0.0
 
-  /unhead/1.0.13:
-    resolution: {integrity: sha512-stWC9VawHWq27WiAsgNPLFXI61LaNy1E3Zs/0cSgPTvz4ti8fYuqLOz930pzVRIKrWnxQVGndw8UZLSEcK7ikA==}
+  /unhead/1.0.14:
+    resolution: {integrity: sha512-0i0UA6DS44ul0QN4ibP389EiykjHCe3B9gM5eg40O4O8KfDyXgFJ5osdGdfwkmzWR8uWUMLwauNE4FIEFk5NGg==}
     dependencies:
-      '@unhead/dom': 1.0.13
-      '@unhead/schema': 1.0.13
+      '@unhead/dom': 1.0.14
+      '@unhead/schema': 1.0.14
       hookable: 5.4.2
 
   /unified/10.1.2:
