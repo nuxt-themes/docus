@@ -39,7 +39,7 @@ css({
         borderColor: '{color.gray.100}',
         fontSize: '{fontSize.xs}',
         gap: '{space.2}',
-        padding: '{space.1-5}',
+        padding: '{space.rem.375}',
         '@dark': {
           color: '{color.gray.400}',
           borderColor: '{color.gray.900}',
