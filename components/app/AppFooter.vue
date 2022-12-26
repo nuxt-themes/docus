@@ -93,6 +93,7 @@ css({
 
       '.left': {
         gridColumn: 'span 12 / span 12',
+        display: 'flex',
         py: '{space.4}',
         order: 1,
 
