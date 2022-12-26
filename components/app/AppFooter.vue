@@ -11,10 +11,12 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
   <footer>
     <Container padded class="footer-container">
       <!-- Left -->
-      <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank" class="left">
-        <Component :is="docus.footer.credits.icon" v-if="docus.footer.credits.icon" class="left-icon" />
-        <p>{{ docus.footer.credits.text }}</p>
-      </a>
+      <div class="left">
+        <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank">
+          <Component :is="docus.footer.credits.icon" v-if="docus.footer.credits.icon" class="left-icon" />
+          <p>{{ docus.footer.credits.text }}</p>
+        </a>
+      </div>
 
       <!-- Center -->
       <div class="center">
@@ -91,14 +93,17 @@ css({
 
       '.left': {
         gridColumn: 'span 12 / span 12',
-        display: 'flex',
-        alignItems: 'center',
         py: '{space.4}',
         order: 1,
 
         '@sm': {
           gridColumn: 'span 3 / span 3',
           order: 0,
+        },
+
+        a: {
+          display: 'flex',
+          alignItems: 'center',
         },
 
         p: {
