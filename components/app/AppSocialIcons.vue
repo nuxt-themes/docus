@@ -41,6 +41,7 @@ css({
   a: {
     display: 'flex',
     color: '{color.gray.500}',
+    padding: '{space.4}',
 
     '@dark': {
       color: '{color.gray.400}'
