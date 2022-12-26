@@ -20,8 +20,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 
       <!-- Center -->
       <div class="center">
-        <!-- TODO: inner app links with NuxtLink -->
-        <a
+        <NuxtLink
           v-for="link in textLinks"
           :key="link.href"
           class="text-link"
@@ -30,7 +29,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           :target="link.target || '_self'"
         >
           {{ link.text }}
-        </a>
+        </NuxtLink>
       </div>
 
       <div class="right">

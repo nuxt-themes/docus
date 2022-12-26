@@ -10,7 +10,7 @@ const filtered = computed(() => docus.value.header?.exclude || [])
 
 const tree = computed(() => {
   return (navigation.value || []).filter((item: any) => {
-    if (filtered.value.includes(item._path)) { return false }
+    if (filtered.value.includes(item._path as never)) { return false }
     return true
   })
 })
@@ -51,10 +51,7 @@ css({
       justifyContent: 'center',
       flex: '1',
       maxWidth: '100%',
-      // TODO: truncate
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
+      truncate: true,
 
       '& > * + *': {
         marginLeft: '{space.2}'
