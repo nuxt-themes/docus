@@ -72,7 +72,7 @@ css({
     alignItems: 'flex-start',
     overflowY: 'auto',
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    backdropFilter: '{backdrop.filter}',
+    backdropFilter: '{elements.backdrop.filter}',
     '@dark': {
       backgroundColor: 'rgba(0, 0, 0, 0.5)'
     },

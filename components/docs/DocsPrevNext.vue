@@ -68,7 +68,7 @@ css({
       position: 'relative',
       minWidth: '0px',
       padding: '{space.3}',
-      border: '1px solid {borders.primary.default}',
+      border: '1px solid {elements.border.primary.default}',
       borderRadius: '{radii.lg}',
       '&:hover': {
         borderColor: '{color.primary.100}',

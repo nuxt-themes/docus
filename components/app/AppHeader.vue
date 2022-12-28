@@ -18,7 +18,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
       </div>
 
       <div class="section right">
-        <AppSearch v-if="hasDocSearch"/>
+        <AppSearch v-if="hasDocSearch" />
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
@@ -53,13 +53,13 @@ css({
   },
 
   header: {
-    backdropFilter: '{backdrop.filter}',
+    backdropFilter: '{elements.backdrop.filter}',
     position: 'sticky',
     top: 0,
     zIndex: 10,
     width: '100%',
     borderBottom: '1px solid {color.gray.100}',
-    backgroundColor: '{backdrop.background}',
+    backgroundColor: '{elements.backdrop.background}',
     height: '{docus.header.height}',
 
     '@dark': {
