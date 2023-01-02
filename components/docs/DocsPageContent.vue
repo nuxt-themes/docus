@@ -175,7 +175,7 @@ css({
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
-      borderBottom: '1px solid {borders.primary.default}',
+      borderBottom: '1px solid {elements.border.primary.default}',
       color: '{color.gray.500}',
       '@sm': {
         fontSize: '{text.lg.fontSize}',
@@ -216,8 +216,8 @@ css({
     },
     '.toc-wrapper': {
       width: '100%',
-      backdropFilter: '{backdrop.filter}',
-      backgroundColor: '{backdrop.background}',
+      backdropFilter: '{elements.backdrop.filter}',
+      backgroundColor: '{elements.backdrop.background}',
       px: '{space.4}',
       '@sm': {
         px: '{space.6}',
