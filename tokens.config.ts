@@ -6,6 +6,12 @@ export default defineTheme({
     primary: (nuxtThemeTokens.color as any).lightblue
   },
   docus: {
+    $schema: {
+      title: 'All the configurable tokens from Docus.',
+      tags: [
+        '@studio-icon material-symbols:docs'
+      ]
+    },
     header: { height: '64px' },
     footer: { padding: '{space.4} 0' }
   },
