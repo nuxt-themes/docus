@@ -6,15 +6,14 @@ const onClick = () => element.value.querySelector('button').click()
 
 <template>
   <div class="doc-search" @click="onClick">
-    <button
-      type="button"
-      aria-label="Search"
-    >
-      <Icon name="heroicons-outline:search" />
-      <span>Search</span>
-      <span>
-        <kbd>⌘</kbd>
-        <kbd>K</kbd>
+    <button type="button" aria-label="Search">
+      <span class="content">
+        <Icon name="heroicons-outline:search" />
+        <span>Search</span>
+        <span>
+          <kbd>⌘</kbd>
+          <kbd>K</kbd>
+        </span>
       </span>
     </button>
   </div>
@@ -29,45 +28,49 @@ css({
       }
     },
     button: {
-      borderRadius: '{radii.md}',
-      display: 'flex',
-      alignItems: 'center',
-      color: '{color.gray.500}',
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      borderColor: '{color.gray.100}',
-      fontSize: '{fontSize.xs}',
-      gap: '{space.2}',
-      padding: '{space.1-5}',
-      '@dark': {
-        color: '{color.gray.400}',
-        borderColor: '{color.gray.900}',
-      },
-      '&:hover': {
-        color: '{color.gray.700}',
-        borderColor: '{color.gray.400}',
+      padding: '{space.2} {space.4}',
+      '.content': {
+        borderRadius: '{radii.md}',
+        display: 'flex',
+        alignItems: 'center',
+        color: '{color.gray.500}',
+        borderStyle: 'solid',
+        borderWidth: '1px',
+        borderColor: '{color.gray.100}',
+        fontSize: '{fontSize.xs}',
+        gap: '{space.2}',
+        padding: '{space.rem.375}',
         '@dark': {
-          color: '{color.gray.200}',
-          borderColor: '{color.gray.700}',
+          color: '{color.gray.400}',
+          borderColor: '{color.gray.900}',
+        },
+        '&:hover': {
+          color: '{color.gray.700}',
+          borderColor: '{color.gray.400}',
+          '@dark': {
+            color: '{color.gray.200}',
+            borderColor: '{color.gray.700}',
+          }
+        },
+        span: {
+          '&:first-child': {
+            display: 'block',
+            fontSize: '{fontSize.xs}',
+            fontWeight: '{fontWeight.medium}',
+          },
+          '&:nth-child(2)': {
+            flex: 'none',
+            display: 'none',
+            fontSize: '{fontSize.xs}',
+            fontWeight: '{fontWeight.semibold}',
+            '@sm': {
+              display: 'block'
+            }
+          }
         }
       }
     },
-    span: {
-      '&:first-child': {
-        display: 'block',
-        fontSize: '{fontSize.xs}',
-        fontWeight: '{fontWeight.medium}',
-      },
-      '&:nth-child(2)': {
-        flex: 'none',
-        display: 'none',
-        fontSize: '{fontSize.xs}',
-        fontWeight: '{fontWeight.semibold}',
-        '@sm': {
-          display: 'block'
-        }
-      }
-    }
+
   }
 })
 </style>

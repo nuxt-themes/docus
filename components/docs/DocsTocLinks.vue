@@ -11,7 +11,6 @@ defineProps({
 
 const emit = defineEmits(['move'])
 
-const route = useRoute()
 const router = useRouter()
 
 const { activeHeadings, updateHeadings } = useScrollspy()
@@ -63,10 +62,7 @@ css({
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       color: '{color.gray.500}',
-      // TODO: truncate
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
+      truncate: true,
       '@lg': {
         paddingRight: '{space.3}'
       },

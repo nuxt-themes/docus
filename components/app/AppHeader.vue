@@ -18,7 +18,7 @@ const hasDialog = computed(() => navigation.value?.length > 1)
       </div>
 
       <div class="section right">
-        <AppSearch v-if="hasDocSearch"/>
+        <AppSearch v-if="hasDocSearch" />
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
@@ -53,20 +53,20 @@ css({
   },
 
   header: {
-    backdropFilter: '{backdrop.filter}',
+    backdropFilter: '{elements.backdrop.filter}',
     position: 'sticky',
     top: 0,
     zIndex: 10,
     width: '100%',
-    borderBottom: '1px solid {borders.primary.default}',
-    backgroundColor: '{backdrop.background}',
+    borderBottom: '1px solid {elements.border.primary.default}',
+    backgroundColor: '{elements.backdrop.background}',
     height: '{docus.header.height}',
 
     '.container': {
       display: 'grid',
       height: '100%',
       gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      gap: '2rem'
+      gap: '{space.2}'
     },
 
     '.section': {
@@ -74,26 +74,25 @@ css({
       alignItems: 'center',
       flex: 'none',
       '&.left': {
-        gridColumn: 'span 2 / span 2'
+        gridColumn: 'span 4 / span 4'
       },
       '&.center': {
-        gridColumn: 'span 8 / span 8',
+        gridColumn: 'span 4 / span 4',
         justifyContent: 'center',
         flex: '1'
       },
       '&.right': {
         display: 'flex',
-        gridColumn: 'span 2 / span 2',
+        gridColumn: 'span 4 / span 4',
         justifyContent: 'flex-end',
         alignItems: 'center',
         flex: 'none',
-        gap: '{space.4}',
+        marginRight: 'calc(0px - {space.4})',
         '.social-icons': {
           display: 'none',
           '@md': {
             display: 'flex',
             alignItems: 'center',
-            gap: '{space.4}'
           }
         }
       }

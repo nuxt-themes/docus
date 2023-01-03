@@ -68,7 +68,7 @@ css({
       position: 'relative',
       minWidth: '0px',
       padding: '{space.3}',
-      border: '1px solid {borders.primary.default}',
+      border: '1px solid {elements.border.primary.default}',
       borderRadius: '{radii.lg}',
       '&:hover': {
         borderColor: '{color.primary.100}',
@@ -88,10 +88,7 @@ css({
           fontWeight: '{fontWeight.medium}',
           textAlign: 'right',
           color: '{color.gray.500}',
-          // TODO: truncate
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
+          truncate: true
         }
       },
       '&.next': {
@@ -102,10 +99,7 @@ css({
           lineHeight: '{text.xs.lineHeight}',
           fontWeight: '{fontWeight.medium}',
           color: '{color.gray.500}',
-          // TODO: truncate
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
+          truncate: true
         }
       },
       '.title-wrapper': {
@@ -122,10 +116,7 @@ css({
         flex: '1 1 0%',
         fontWeight: '{fontWeight.medium}',
         lineHeight: '{lead.5}',
-        // TODO: truncate
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
+        truncate: true
       }
     }
   }

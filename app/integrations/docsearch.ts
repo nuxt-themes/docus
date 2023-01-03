@@ -48,7 +48,7 @@ export default defineNuxtPlugin(() => {
      * Initialize the DocSearch instance.
      * @param userOptions
      */
-    const initialize = async (userOptions: DocSearchOptions) => {
+    const initialize = async (userOptions: any & DocSearchOptions) => {
       const el = document.createElement('div')
       el.id = '#docsearch-container'
       el.style.width = '0'
@@ -118,7 +118,6 @@ export default defineNuxtPlugin(() => {
                 }
               }
             },
-        // @ts-expect-error - We don't actually use `hitComponent` but react on its calls.
         hitComponent: userOptions.hitComponent
           ? userOptions.hitComponent
           : ({ hit, children }) => {
@@ -155,7 +154,7 @@ export default defineNuxtPlugin(() => {
           // Skip already used keys
           .filter(([key]) => !['applicationId', 'apiKey', 'indexName', 'transformItems', 'navigator', 'hitComponent', 'facetFilters', 'langAttribute', 'lang'].includes(key))
           // Recompose options
-          .reduce((acc, [key, value]) => {
+          .reduce((acc: any, [key, value]) => {
             acc[key] = value
             return acc
           }, {})

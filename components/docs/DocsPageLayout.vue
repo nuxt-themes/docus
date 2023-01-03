@@ -130,7 +130,7 @@ css({
       height: 'calc(100vh - {docus.header.height})',
       py: '{space.8}',
       paddingRight: '{space.8}',
-      borderRight: '1px solid {borders.primary.default}',
+      borderRight: '1px solid {elements.border.primary.default}',
     }
   },
   '.page-body': {
@@ -179,7 +179,7 @@ css({
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
-      borderBottom: '1px solid {borders.primary.default}',
+      borderBottom: '1px solid {elements.border.primary.default}',
       color: '{color.gray.500}',
       '@sm': {
         fontSize: '{text.lg.fontSize}',
@@ -208,7 +208,7 @@ css({
     display: 'flex',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
-    borderBottom: '1px solid {borders.primary.default}',
+    borderBottom: '1px solid {elements.border.primary.default}',
     '@sm': {
       mx: 'calc(0px - {space.6})',
     },
@@ -217,7 +217,7 @@ css({
       alignSelf: 'flex-start',
       py: '{space.8}',
       px: '{space.8}',
-      borderLeft: '1px solid {borders.primary.default}',
+      borderLeft: '1px solid {elements.border.primary.default}',
       height: 'calc(100vh - {docus.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',
@@ -225,8 +225,12 @@ css({
     '.toc-wrapper': {
       width: '100%',
       height: '100%',
-      backdropFilter: '{backdrop.filter}',
-      backgroundColor: '{backdrop.background}',
+      backdropFilter: '{elements.backdrop.filter}',
+      backgroundColor: '{elements.backdrop.background}',
+      // px: '{space.4}',
+      // '@sm': {
+      //   px: '{space.6}',
+      // },
       '@lg': {
         backgroundColor: 'transparent',
         backdropFilter: 'none'
@@ -271,6 +275,7 @@ css({
             px: '{space.6}',
           },
           '@lg': {
+            maxHeight: 'none',
             px: 0,
           },
         },

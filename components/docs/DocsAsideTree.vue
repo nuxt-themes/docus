@@ -118,9 +118,9 @@ css({
   '.docs-aside-tree': {
     li: {
       '&.bordered': {
-        borderLeft: '1px solid {borders.primary.default}',
+        borderLeft: '1px solid {elements.border.primary.default}',
         '&:hover': {
-          borderColor: '{borders.primary.hover}'
+          borderColor: '{elements.border.primary.hover}'
         },
         '&.active': {
           borderColor: '{color.primary.400}',
@@ -143,7 +143,7 @@ css({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '{space.1-5} 0',
+      padding: '{space.rem.375} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       fontWeight: '{fontWeight.semibold}',
@@ -174,7 +174,7 @@ css({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '{space.1-5} 0',
+      padding: '{space.rem.375} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       color: '{color.gray.500}',
