@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
 const route = useRoute()
+const docus = useDocus()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
@@ -31,7 +32,7 @@ const asideScroll = useState('asideScroll', () => {
   }
 })
 
-function watchScrollHeight () {
+function watchScrollHeight() {
   if (!asideNav.value) { return }
   if (asideNav.value.scrollHeight === 0) {
     setTimeout(watchScrollHeight, 0)
@@ -55,26 +56,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container padded class="docs-page-content">
+  <!-- TODO: update Elements Container with 'fluid' class -->
+  <Container :fluid="docus.layout.fluid" padded class="docs-page-content" :class="[docus.layout.fluid && 'fluid']">
     <!-- Aside -->
-    <aside
-      v-if="hasAside"
-      ref="asideNav"
-      class="aside-nav"
-    >
+    <aside v-if="hasAside" ref="asideNav" class="aside-nav">
       <DocsAside />
     </aside>
 
     <!-- Page Body -->
-    <article
-      class="page-body"
-      :class="{
-        'one-column': !hasAside && !hasToc,
-        'two-column': (!hasToc || !hasAside) && !(!hasAside && !hasToc),
-        'three-column': hasToc && hasAside,
-        'with-toc': hasToc,
-      }"
-    >
+    <article class="page-body" :class="{
+      'with-toc': hasToc,
+    }">
       <slot v-if="hasBody" />
       <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
@@ -87,10 +79,7 @@ onBeforeUnmount(() => {
     </article>
 
     <!-- TOC -->
-    <div
-      v-if="hasToc"
-      class="toc"
-    >
+    <div v-if="hasToc" class="toc">
       <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
@@ -114,7 +103,8 @@ css({
     '@lg': {
       display: 'grid',
       gap: '{space.8}',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
+      // gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
+      gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr) minmax(250px, 250px)'
     }
   },
   '.aside-nav': {
@@ -124,10 +114,14 @@ css({
       display: 'block',
       position: 'sticky',
       top: '{docus.header.height}',
-      gridColumn: 'span 2/span 2',
+      // gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
       py: '{space.8}',
+      paddingRight: '{space.8}',
+      '.fluid &&': {
+        borderRight: '1px solid {elements.border.primary.default}',
+      }
     }
   },
   '.page-body': {
@@ -136,21 +130,9 @@ css({
     flexDirection: "column",
     flex: '1 1 0%',
     py: '{space.8}',
-    '&.one-column': {
-      '@lg': {
-        gridColumn: 'span 12 / span 12'
-      }
-    },
-    '&.two-column': {
-      '@lg': {
-        gridColumn: 'span 10 / span 10'
-      }
-    },
-    '&.three-column': {
-      '@lg': {
-        gridColumn: 'span 8 / span 8'
-      }
-    },
+    width: '100%',
+    maxWidth: '{docus.readableLine}',
+    mx: 'auto',
     '&.with-toc': {
       paddingTop: '{space.12}',
       '@lg': {
@@ -202,43 +184,49 @@ css({
     position: 'sticky',
     top: '{docus.header.height}',
     display: 'flex',
-    alignItems: 'center',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
+    borderBottom: '1px solid {elements.border.primary.default}',
     '@sm': {
       mx: 'calc(0px - {space.6})',
     },
     '@lg': {
-      gridColumn: 'span 2 / span 2',
       mx: 0,
       alignSelf: 'flex-start',
       py: '{space.8}',
+      px: '{space.8}',
+      height: 'calc(100vh - {docus.header.height})',
+      maxHeight: 'none',
+      borderBottom: 'none',
+      '.fluid &&': {
+        borderLeft: '1px solid {elements.border.primary.default}',
+      }
     },
     '.toc-wrapper': {
       width: '100%',
+      height: '100%',
       backdropFilter: '{elements.backdrop.filter}',
       backgroundColor: '{elements.backdrop.background}',
-      px: '{space.4}',
-      '@sm': {
-        px: '{space.6}',
-      },
       '@lg': {
-        px: 0,
         backgroundColor: 'transparent',
         backdropFilter: 'none'
       },
       button: {
         display: 'flex',
         alignItems: 'center',
-        py: '{space.3}',
         width: '100%',
         height: '100%',
+        py: '{space.4}',
+        px: '{space.4}',
+        '@sm': {
+          px: '{space.6}',
+        },
         '@lg': {
           display: 'none'
         },
         '.title': {
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
           fontWeight: '{fontWeight.semibold}',
           marginRight: '{space.1}',
         },
@@ -255,7 +243,17 @@ css({
         display: 'none',
         marginBottom: '{space.4}',
         '&.opened': {
-          display: 'block'
+          display: 'block',
+          px: '{space.4}',
+          maxHeight: '50vh',
+          overflow: 'auto',
+          '@sm': {
+            px: '{space.6}',
+          },
+          '@lg': {
+            maxHeight: 'none',
+            px: 0,
+          },
         },
         '@lg': {
           marginTop: 0,

@@ -13,7 +13,8 @@ export default defineTheme({
       ]
     },
     header: { height: '64px' },
-    footer: { padding: '{space.4} 0' }
+    footer: { padding: '{space.4} 0' },
+    readableLine: '78ch'
   },
   typography: {
     color: {

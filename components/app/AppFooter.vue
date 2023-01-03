@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const docus = useDocus()
+
 const socialIcons = ref(null)
 const icons = computed(() => docus.value.footer?.iconLinks || [])
 const textLinks = computed(() => docus.value.footer?.textLinks || [])
@@ -9,7 +10,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 
 <template>
   <footer>
-    <Container padded class="footer-container">
+    <Container :fluid="docus.layout.fluid" padded class="footer-container">
       <!-- Left -->
       <div class="left">
         <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank">
@@ -55,12 +56,8 @@ css({
   footer: {
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
-    borderTopColor: '{color.gray.100}',
+    borderTopColor: '{elements.border.primary.default}',
     padding: '{docus.footer.padding}',
-
-    '@dark': {
-      borderTopColor: '{color.gray.900}'
-    },
 
     '.footer-container': {
       display: 'grid',
