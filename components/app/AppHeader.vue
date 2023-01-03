@@ -1,12 +1,14 @@
 <script setup lang="ts">
+const docus = useDocus()
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
+
 const hasDialog = computed(() => navigation.value?.length > 1)
 </script>
 
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
-    <Container fluid>
+    <Container :fluid="docus.layout.fluid">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
         <AppHeaderLogo />

@@ -45,7 +45,7 @@ css({
       color: '{color.gray.100}'
     },
     '@sm': {
-      height: '{space.8}'
+      height: '{space.7}'
     }
   }
 })

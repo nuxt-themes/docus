@@ -73,6 +73,10 @@ export default defineNuxtConfigSchema({
         medium: ''
       },
       /**
+       * Theme layout.
+       */
+      layout: { fluid: true },
+      /**
        * Aside navigation configuration
        *
        * @studio-icon fluent:document-page-24-regular
