@@ -60,17 +60,12 @@ css({
 
   header: {
     backdropFilter: '{elements.backdrop.filter}',
-    // position: 'static',
     top: 0,
     zIndex: 10,
     width: '100%',
     borderBottom: '1px solid {elements.border.primary.default}',
     backgroundColor: '{elements.backdrop.background}',
     height: '{docus.header.height}',
-
-    '@lg': {
-      // position: 'sticky',
-    },
 
     '.container': {
       display: 'grid',
