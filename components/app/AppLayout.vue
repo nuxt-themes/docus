@@ -11,6 +11,7 @@ const titleTemplate = computed(() => {
   return appTitleTemplate
 })
 
+// TODO: remove?
 defineProps({
   padded: {
     type: Boolean,
