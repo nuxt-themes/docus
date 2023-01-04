@@ -106,12 +106,12 @@ css({
           }
         }
       }
-    },
-    variants: {
-      fixed: {
-        true: { position: 'sticky' },
-        false: {},
-      }
+    }
+  },
+  variants: {
+    fixed: {
+      true: { position: 'sticky' },
+      false: {},
     }
   }
 })
