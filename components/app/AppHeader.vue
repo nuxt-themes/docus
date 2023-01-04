@@ -4,6 +4,10 @@ const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
 
 const hasDialog = computed(() => navigation.value?.length > 1)
+
+defineProps({
+  ...variants
+})
 </script>
 
 <template>
@@ -56,7 +60,7 @@ css({
 
   header: {
     backdropFilter: '{elements.backdrop.filter}',
-    position: 'static',
+    // position: 'static',
     top: 0,
     zIndex: 10,
     width: '100%',
@@ -65,7 +69,7 @@ css({
     height: '{docus.header.height}',
 
     '@lg': {
-      position: 'sticky',
+      // position: 'sticky',
     },
 
     '.container': {
@@ -101,6 +105,12 @@ css({
             alignItems: 'center',
           }
         }
+      }
+    },
+    variants: {
+      fixed: {
+        true: { position: 'sticky' },
+        false: {},
       }
     }
   }

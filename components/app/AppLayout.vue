@@ -36,7 +36,7 @@ useContentHead(docus.value as any)
 <template>
   <div>
     <AppLoadingBar />
-    <AppHeader v-if="docus.header" />
+    <AppHeader v-if="docus.header" :fixed="docus.header.fixed"/>
     <slot />
     <AppFooter v-if="docus.footer" />
   </div>
