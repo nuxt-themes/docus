@@ -47,7 +47,7 @@ const isCollapsed = (link) => {
     }
 
     // Check if aside.collapsed has been set in YML
-    if(link.aside?.hasOwnProperty('collapsed')) { return link.aside.collapsed }
+    if (link.aside?.hasOwnProperty('collapsed')) { return link.aside.collapsed }
 
     // Return value grabbed from the link
     if (link?.collapsed) { return link?.collapsed }
