@@ -25,8 +25,7 @@ export default defineNuxtConfigSchema({
        *
        * @studio-icon dashicons:cover-image
        */
-      image:
-        'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
+      image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
       /**
        * Social links.
        *
@@ -73,11 +72,18 @@ export default defineNuxtConfigSchema({
         medium: ''
       },
       /**
-       * Theme layout.
+       * Theme layout configuration.
+       *
+       * @studio-icon tabler:arrow-autofit-width
        */
-      layout: { fluid: true },
+      layout: {
+        /**
+         * Enables the `fluid` layout mode.
+         */
+        fluid: true
+      },
       /**
-       * Aside navigation configuration
+       * Aside navigation configuration.
        *
        * @studio-icon fluent:document-page-24-regular
        */
@@ -101,7 +107,7 @@ export default defineNuxtConfigSchema({
         exclude: []
       },
       /**
-       * Header configuration
+       * Header configuration.
        *
        * @studio-icon fluent:document-header-24-regular
        */
@@ -115,7 +121,7 @@ export default defineNuxtConfigSchema({
          */
         title: '',
         /**
-         * Logo configuration
+         * Logo configuration.
          *
          * Boolean to disable or use the `Logo.vue` component.
          *

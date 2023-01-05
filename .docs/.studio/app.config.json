@@ -11,6 +11,9 @@
       "youtube": "",
       "medium": ""
     },
+    "layout": {
+      "fluid": true
+    },
     "aside": {
       "level": 0,
       "collapsed": false,
