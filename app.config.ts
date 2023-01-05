@@ -16,12 +16,14 @@ export default defineAppConfig({
       level: 0,
       collapsed: false,
       exclude: []
-    }, header: {
+    },
+    header: {
       title: '',
       logo: false,
       showLinkIcon: false,
       exclude: []
-    }, footer: {
+    },
+    footer: {
       credits: {
         icon: 'IconDocus',
         text: 'Powered by Docus',
