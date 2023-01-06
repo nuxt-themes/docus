@@ -1,21 +1,20 @@
 <script setup lang="ts">
 const docus = useDocus()
-
 const socialIcons = ref(null)
-const icons = computed(() => docus.value.footer?.iconLinks || [])
-const textLinks = computed(() => docus.value.footer?.textLinks || [])
-const socialIconsCount = computed(() => Object.entries(docus.value.socials).filter(([_, v]) => v).length)
+const icons = computed(() => docus.value?.footer?.iconLinks || [])
+const textLinks = computed(() => docus.value?.footer?.textLinks || [])
+const socialIconsCount = computed(() => Object.entries(docus.value?.socials || {}).filter(([_, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
 </script>
 
 <template>
   <footer>
-    <Container :fluid="docus.layout.fluid" padded class="footer-container">
+    <Container :fluid="docus?.layout?.fluid" padded class="footer-container">
       <!-- Left -->
       <div class="left">
-        <a v-if="docus.footer?.credits" :href="docus.footer.credits.href" rel="noopener" target="_blank">
-          <Component :is="docus.footer.credits.icon" v-if="docus.footer.credits.icon" class="left-icon" />
-          <p>{{ docus.footer.credits.text }}</p>
+        <a v-if="docus?.footer?.credits" :href="docus?.footer?.credits?.href || '#'" rel="noopener" target="_blank">
+          <Component :is="docus?.footer?.credits?.icon" v-if="docus?.footer?.credits?.icon" class="left-icon" />
+          <p v-if="docus?.footer?.credits?.text">{{ docus.footer.credits.text }}</p>
         </a>
       </div>
 
