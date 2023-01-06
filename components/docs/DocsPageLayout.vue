@@ -32,7 +32,7 @@ const asideScroll = useState('asideScroll', () => {
   }
 })
 
-function watchScrollHeight() {
+function watchScrollHeight () {
   if (!asideNav.value) { return }
   if (asideNav.value.scrollHeight === 0) {
     setTimeout(watchScrollHeight, 0)
@@ -56,17 +56,19 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <!-- TODO: update Elements Container with 'fluid' class -->
-  <Container :fluid="docus.layout.fluid" padded class="docs-page-content" :class="[docus.layout.fluid && 'fluid']">
+  <Container :fluid="docus?.layout?.fluid" padded class="docs-page-content" :class="[docus?.layout?.fluid && 'fluid']">
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
       <DocsAside />
     </aside>
 
     <!-- Page Body -->
-    <article class="page-body" :class="{
-      'with-toc': hasToc,
-    }">
+    <article
+      class="page-body"
+      :class="{
+        'with-toc': hasToc,
+      }"
+    >
       <slot v-if="hasBody" />
       <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
@@ -182,7 +184,7 @@ css({
   },
   '.toc': {
     position: 'sticky',
-    top: 0, 
+    top: 0,
     display: 'flex',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',

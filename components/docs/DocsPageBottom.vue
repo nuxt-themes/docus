@@ -6,7 +6,7 @@ const docus = useDocus()
 <template>
   <div v-if="page" class="docs-page-bottom">
     <div class="edit-link">
-      <EditOnLink v-if="docus?.socials.github && docus?.github?.edit" :page="page" />
+      <EditOnLink v-if="docus?.socials?.github && docus?.github?.edit" :page="page" />
       <span v-if="page.mtime">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
     </div>
   </div>
