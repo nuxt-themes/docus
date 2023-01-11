@@ -4,7 +4,7 @@ const { page } = useContent()
 
 <template>
   <div class="page-layout">
-    <Container :fluid="page.fluid" :constrained-class="page.constrainedClass" :padded="page.padded">
+    <Container :fluid="page?.fluid" :padded="page?.padded">
       <article>
         <slot />
       </article>
