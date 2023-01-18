@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
       </Alert>
       <template v-if="hasBody && page && bottom">
         <!-- TODO: Finish rewrite -->
-        <DocsPageBottom v-if="false" />
+        <DocsPageBottom />
         <DocsPrevNext />
       </template>
     </article>
