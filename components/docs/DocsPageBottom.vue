@@ -14,6 +14,7 @@ const docus = useDocus()
           </span>
         </NuxtLink>
       </EditOnLink>
+      <!-- Need to be supported by @nuxt/content -->
       <span v-if="page.mtime">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
     </div>
   </div>
