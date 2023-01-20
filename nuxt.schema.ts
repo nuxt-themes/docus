@@ -28,9 +28,9 @@ export default defineNuxtConfigSchema({
        */
       image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
       /**
-       * Social links.
+       * Social links
        *
-       * Will be used in Social Icons component, in AppHeader and AppFooter.
+       * Will be used in AppSocialIcons component.
        *
        * @studio-icon material-symbols:share-outline
        */
@@ -90,7 +90,7 @@ export default defineNuxtConfigSchema({
        */
       aside: {
         /**
-         * The level to which the navigation should be scaled.
+         * Aside navigation level
          *
          * Use 0 to disable all nesting.
          * Use 1 and more to display nested navigation in header and aside navigation.
@@ -114,7 +114,9 @@ export default defineNuxtConfigSchema({
        */
       header: {
         /**
-         * Title to be displayed in header or as aria-label if logo is defined
+         * Website title
+         *
+         * Title to be displayed in header or as aria-label if logo is defined.
          *
          * Default to docus.title
          *
@@ -122,7 +124,7 @@ export default defineNuxtConfigSchema({
          */
         title: '',
         /**
-         * Logo configuration.
+         * Logo configuration
          *
          * Boolean to disable or use the `Logo.vue` component.
          *
@@ -133,6 +135,8 @@ export default defineNuxtConfigSchema({
          */
         logo: false,
         /**
+         * Header links
+         *
          * Toggle links icons in the header.
          */
         showLinkIcon: false,
@@ -151,9 +155,7 @@ export default defineNuxtConfigSchema({
        */
       footer: {
         /**
-         * Credits configuration
-         *
-         * Object configuring the credits part of footer.
+         * Website credits configuration.
          *
          * @type {false|object}
          *
@@ -169,7 +171,9 @@ export default defineNuxtConfigSchema({
           href: 'https://docus.dev'
         },
         /**
-         * Text links to be added into center section of the footer.
+         * Text links
+         *
+         * Will be added into center section of the footer.
          *
          * @studio-icon material-symbols:add-link
          */
@@ -191,6 +195,8 @@ export default defineNuxtConfigSchema({
           }
         },
         /**
+         * Icon links
+         *
          * Icons to be added to Social Icons in footer.
          *
          * @studio-icon material-symbols:add-link
