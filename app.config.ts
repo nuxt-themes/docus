@@ -21,7 +21,18 @@ export default defineAppConfig({
       title: '',
       logo: false,
       showLinkIcon: false,
+      fixed: {
+        initial: true,
+        lg: true
+      },
       exclude: []
+    },
+    github: {
+      dir: undefined,
+      branch: undefined,
+      repo: undefined,
+      owner: undefined,
+      edit: false
     },
     footer: {
       credits: {
