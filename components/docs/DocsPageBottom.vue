@@ -6,7 +6,15 @@ const docus = useDocus()
 <template>
   <div v-if="page" class="docs-page-bottom">
     <div class="edit-link">
-      <EditOnLink v-if="docus?.socials?.github && docus?.github?.edit" :page="page" />
+      <EditOnLink v-if="docus?.github?.edit" v-slot="{url}" :page="page">
+        <NuxtLink :to="url">
+          <Icon name="uil:edit" />
+          <span>
+            Edit this page on GitHub
+          </span>
+        </NuxtLink>
+      </EditOnLink>
+      <!-- Need to be supported by @nuxt/content -->
       <span v-if="page.mtime">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
     </div>
   </div>
@@ -30,14 +38,15 @@ css({
       flexDirection: 'column',
       flex: '1',
       width: '100%',
-      gap: '{space.4}',
       '@md': {
         width: '50%'
       },
-      span: {
+      a: {
         display: 'flex',
-        alignItems: 'center'
-      }
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: '{space.4}',
+      },
     }
   }
 })

@@ -13,6 +13,10 @@ export default defineNuxtConfigSchema({
        */
       title: 'Docus',
       /**
+       * The website title template, to overwrite the default one.
+       */
+      titleTemplate: '%s · Docus',
+      /**
        * Website description, used for meta description.
        *
        * @studioIcon material-symbols:description
@@ -146,7 +150,17 @@ export default defineNuxtConfigSchema({
          * @type {string[]}
          *
          */
-        exclude: []
+        exclude: [],
+        /**
+         * Sets the header to fixed or static mode.
+         *
+         * @studioInput object
+         * @type {{[key: import('pincea').PinceauMediaQueries]: boolean }}
+         */
+        fixed: {
+          initial: true,
+          lg: true
+        }
       },
       /**
        * Footer configuration
@@ -218,6 +232,45 @@ export default defineNuxtConfigSchema({
             }
           }
         }
+      },
+      /**
+       * GitHub integration
+       *
+       * Configure the Edit on Github integration.
+       *
+       * @studioIcon simple-icons:github
+       */
+      github: {
+        /**
+         * Directory
+         *
+         * Your GitHub repository root directory.
+         */
+        dir: '',
+        /**
+         * Branch
+         *
+         * Your GitHub repository branch.
+         */
+        branch: '',
+        /**
+         * Repository
+         *
+         * Your GitHub repository name.
+         */
+        repo: '',
+        /**
+         * Owner
+         *
+         * Your GitHub repository owner.
+         */
+        owner: '',
+        /**
+         * EditOnGithub
+         *
+         * Display EditOnGithub button.
+         */
+        edit: false
       }
     }
   }

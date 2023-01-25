@@ -26,6 +26,13 @@
         "lg": true
       }
     },
+    "github": {
+      "dir": ".docs/content",
+      "branch": "dev",
+      "repo": "docus",
+      "owner": "nuxt-themes",
+      "edit": true
+    },
     "footer": {
       "credits": {
         "icon": "IconDocus",
