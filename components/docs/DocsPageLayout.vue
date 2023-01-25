@@ -141,7 +141,8 @@ css({
       }
     },
     '@lg': {
-      marginTop: 0
+      marginTop: 0,
+      gridColumnStart: 2,
     },
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
     ':deep(h1:not(.not-prose):first-child)': {

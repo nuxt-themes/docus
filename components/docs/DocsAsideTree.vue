@@ -27,7 +27,7 @@ const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._pa
   if (props.level === 0) {
     return {}
   }
-  return props.links
+  return (props.links as any [])
     .filter(link => !!link.children)
     .reduce((map, link) => {
       map[link._path] = true
@@ -35,29 +35,30 @@ const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._pa
     }, {})
 })
 
-const isActive = (link) => {
+const isActive = (link: any) => {
   return route.path === link._path
 }
 
-const isCollapsed = (link) => {
+const isCollapsed = (link: any) => {
   if (link.children) {
     // Directory has been toggled manually, use its state
     if (typeof collapsedMap.value[link._path] !== 'undefined') {
       return collapsedMap.value[link._path]
     }
 
+    // Check if aside.collapsed has been set in YML
+    if (link.aside?.hasOwnProperty('collapsed')) { return link.aside.collapsed }
+
     // Return value grabbed from the link
     if (link?.collapsed) { return link?.collapsed }
 
-    if (docus.value.aside?.collapsed) { return docus.value.aside?.collapsed }
+    if (docus?.value?.aside?.collapsed) { return docus.value.aside?.collapsed }
   }
 
   return false
 }
 
-const toggleCollapse = (link) => {
-  collapsedMap.value[link._path] = !isCollapsed(link)
-}
+const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isCollapsed(link))
 
 const hasNesting = computed(() => props.links.some((link: any) => link.children))
 </script>

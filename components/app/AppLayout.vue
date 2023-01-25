@@ -3,6 +3,10 @@ const docus = useDocus()
 const { navigation, page } = useContent()
 const { navKeyFromPath } = useContentHelpers()
 
+const headerPosition = computed(() => {
+  return page.value.header?.fixed || docus.value.header.fixed
+})
+
 const titleTemplate = computed(() => {
   const appTitleTemplate = docus.value.head?.titleTemplate || `%s · ${docus.value.title}`
   if (page.value) {
@@ -36,7 +40,7 @@ useContentHead(docus.value as any)
 <template>
   <div>
     <AppLoadingBar />
-    <AppHeader v-if="docus.header" />
+    <AppHeader v-if="docus.header" :fixed="headerPosition"/>
     <slot />
     <AppFooter v-if="docus.footer" />
   </div>
