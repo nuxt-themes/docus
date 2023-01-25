@@ -9,7 +9,7 @@ export default defineTheme({
     $schema: {
       title: 'All the configurable tokens from Docus.',
       tags: [
-        '@studio-icon material-symbols:docs'
+        '@studioIcon material-symbols:docs'
       ]
     },
     header: { height: '64px' },
