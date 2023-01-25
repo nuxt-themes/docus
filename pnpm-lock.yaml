@@ -4,7 +4,7 @@ specifiers:
   '@algolia/client-search': ^4.14.3
   '@docsearch/css': ^3.3.2
   '@docsearch/js': ^3.3.2
-  '@nuxt-themes/elements': ^0.5.1
+  '@nuxt-themes/elements': ^0.5.2
   '@nuxt-themes/tokens': ^1.6.0
   '@nuxt-themes/typography': ^0.5.0
   '@nuxt/content': ^2.3.0
@@ -20,7 +20,7 @@ specifiers:
   vue: ^3.2.45
 
 dependencies:
-  '@nuxt-themes/elements': 0.5.1_vue@3.2.45
+  '@nuxt-themes/elements': 0.5.2_vue@3.2.45
   '@nuxt-themes/tokens': 1.6.0_vue@3.2.45
   '@nuxt-themes/typography': 0.5.0_vue@3.2.45
   '@nuxt/content': 2.3.0
@@ -1017,8 +1017,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@nuxt-themes/elements/0.5.1_vue@3.2.45:
-    resolution: {integrity: sha512-/+mnldYwQT1Sb/+SSa6i5ybfAzJ5MKmRBW7ebqEbbBVdeSSve2jH0VhdfaNGg034m3KY2JwNaFWsTaDSEHUACA==}
+  /@nuxt-themes/elements/0.5.2_vue@3.2.45:
+    resolution: {integrity: sha512-jwcMbXJ9zK8mGi8vJJqKObVlfpkfyr3f1ngKyrX3n8Hphy/G8wKpTLvUKPL28Rzr2fj0FPTT6aOe6VBsB47EJA==}
     dependencies:
       '@nuxt-themes/tokens': 1.6.0_vue@3.2.45
       '@vueuse/core': 9.11.1_vue@3.2.45
