@@ -20,7 +20,11 @@
       "title": "",
       "logo": true,
       "showLinkIcon": true,
-      "exclude": []
+      "exclude": [],
+      "fixed": {
+        "initial": false,
+        "lg": true
+      }
     },
     "footer": {
       "credits": {
