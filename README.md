@@ -58,6 +58,7 @@ defineNuxtConfig({
 - [hubble-exchange/docs](https://github.com/hubble-exchange/docs)
 - [sidebase](https://sidebase.io)
 - [haraka](https://github.com/haraka/haraka.github.io)
+- [pinia-orm](https://github.com/CodeDredd/pinia-orm)
 - [Do you use Docus? Get listed here!](https://github.com/nuxt-themes/docus/issues/713)
 
 ## Contributing 🙏
