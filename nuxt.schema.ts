@@ -79,14 +79,10 @@ export default defineNuxtConfigSchema({
       /**
        * Theme layout configuration.
        *
+       * @type {'default'|'page'}
        * @studioIcon tabler:arrow-autofit-width
        */
-      layout: {
-        /**
-         * Enables the `fluid` layout mode.
-         */
-        fluid: true
-      },
+      layout: 'default',
       /**
        * Aside navigation configuration.
        *

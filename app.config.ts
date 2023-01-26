@@ -11,7 +11,7 @@ export default defineAppConfig({
       youtube: '',
       medium: ''
     },
-    layout: { fluid: false },
+    layout: 'default',
     aside: {
       level: 0,
       collapsed: false,
