@@ -11,7 +11,7 @@ export default defineAppConfig({
       youtube: '',
       medium: ''
     },
-    layout: { fluid: false },
+    layout: 'default',
     aside: {
       level: 0,
       collapsed: false,
@@ -25,6 +25,7 @@ export default defineAppConfig({
         initial: true,
         lg: true
       },
+      fluid: true,
       exclude: []
     },
     github: {
@@ -41,7 +42,8 @@ export default defineAppConfig({
         href: 'https://docus.dev'
       },
       textLinks: [],
-      iconLinks: []
+      iconLinks: [],
+      fluid: true,
     }
   }
 })

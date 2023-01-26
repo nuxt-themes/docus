@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
 const route = useRoute()
-const docus = useDocus()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
@@ -56,7 +55,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container :fluid="docus?.layout?.fluid" padded class="docs-page-content" :class="[docus?.layout?.fluid && 'fluid']">
+  <Container :fluid="page?.fluid" :padded="page?.padded" class="docs-page-content" :class="[page?.fluid && 'fluid']">
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
       <DocsAside />

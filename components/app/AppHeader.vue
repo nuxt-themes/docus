@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
-    <Container :fluid="docus?.layout?.fluid || false">
+    <Container :fluid="docus?.header?.fluid || false">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
         <AppHeaderLogo />

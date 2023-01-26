@@ -30,7 +30,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
           :to="link.redirect? link.redirect : navBottomLink(link)"
           :class="{ active: isActive(link) }"
         >
-          <Icon v-if="link.icon && docus.header.showLinkIcon" :name="link.icon" />
+          <Icon v-if="link.icon && docus?.header?.showLinkIcon" :name="link.icon" />
           {{ link.title }}
         </NuxtLink>
       </li>
