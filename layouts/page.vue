@@ -1,10 +1,14 @@
 <script setup lang="ts">
 const { page } = useContent()
+const { layoutConfig } = useCurrentNavigation()
 </script>
 
 <template>
   <div class="page-layout">
-    <Container :fluid="page?.fluid" :padded="page?.padded">
+    <Container
+      :fluid="page?.fluid || layoutConfig?.fluid"
+      :padded="page?.padded || layoutConfig?.padded || true"
+    >
       <article>
         <slot />
       </article>

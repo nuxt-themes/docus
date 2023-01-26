@@ -5,18 +5,19 @@ const docus = useDocus()
 
 <template>
   <div v-if="page" class="docs-page-bottom">
-    <div class="edit-link">
-      <EditOnLink v-if="docus?.github?.edit" v-slot="{url}" :page="page">
-        <NuxtLink :to="url">
-          <Icon name="uil:edit" />
+    <div v-if="docus?.github?.edit" class="edit-link">
+      <Icon name="uil:edit" />
+      <EditOnLink v-slot="{ url }" :page="page">
+        <ProseA :to="url">
           <span>
             Edit this page on GitHub
           </span>
-        </NuxtLink>
+        </ProseA>
       </EditOnLink>
-      <!-- Need to be supported by @nuxt/content -->
-      <span v-if="page.mtime">Updated on: {{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</span>
     </div>
+
+    <!-- Need to be supported by @nuxt/content -->
+    <span v-if="page?.mtime">Updated on <b>{{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</b></span>
   </div>
 </template>
 
@@ -24,8 +25,9 @@ const docus = useDocus()
 css({
   '.docs-page-bottom': {
     display: 'flex',
-    flexDirection: 'column-reverse',
+    alignItems: 'center',
     justifyContent: 'space-between',
+    flexDirection: 'row',
     gap: '{space.4}',
     marginTop: '{space.8}',
     fontSize: '{fontSize.sm}',
@@ -34,19 +36,10 @@ css({
       color: '{color.gray.400}'
     },
     '.edit-link': {
+      flex: 1,
       display: 'flex',
-      flexDirection: 'column',
-      flex: '1',
-      width: '100%',
-      '@md': {
-        width: '50%'
-      },
-      a: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: '{space.4}',
-      },
+      alignItems: 'center',
+      gap: '{space.2}'
     }
   }
 })

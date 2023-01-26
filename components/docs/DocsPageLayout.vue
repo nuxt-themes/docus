@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
+const { layoutConfig } = useCurrentNavigation()
 const route = useRoute()
 
 const fallbackValue = (value: string, fallback = true) => {
   if (typeof page.value?.[value] !== 'undefined') {
     return page.value[value]
   }
-
   return fallback
 }
 
@@ -55,7 +55,14 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container :fluid="page?.fluid" :padded="page?.padded" class="docs-page-content" :class="[page?.fluid && 'fluid']">
+  <Container
+    :fluid="page?.fluid || layoutConfig?.fluid"
+    :padded="page?.padded || layoutConfig?.padded || true"
+    class="docs-page-content"
+    :class="{
+      fluid: page?.fluid || layoutConfig?.fluid
+    }"
+  >
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
       <DocsAside />

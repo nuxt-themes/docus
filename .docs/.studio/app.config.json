@@ -16,15 +16,17 @@
       "collapsed": false,
       "exclude": []
     },
+    "main": {
+      "padded": true,
+      "fluid": true
+    },
     "header": {
       "title": "",
       "logo": true,
       "showLinkIcon": true,
       "exclude": [],
-      "fixed": {
-        "initial": false,
-        "lg": true
-      }
+      "fixed": true,
+      "fluid": true
     },
     "github": {
       "dir": ".docs/content",
@@ -45,7 +47,8 @@
           "icon": "IconNuxtLabs",
           "label": "Nuxt"
         }
-      ]
+      ],
+      "fluid": true
     }
   },
   "prose": {
