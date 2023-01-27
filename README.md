@@ -59,6 +59,7 @@ defineNuxtConfig({
 - [sidebase](https://sidebase.io)
 - [haraka](https://github.com/haraka/haraka.github.io)
 - [pinia-orm](https://github.com/CodeDredd/pinia-orm)
+- [nuxt-typed-router](https://github.com/victorgarciaesgi/nuxt-typed-router)
 - [Do you use Docus? Get listed here!](https://github.com/nuxt-themes/docus/issues/713)
 
 ## Contributing 🙏
