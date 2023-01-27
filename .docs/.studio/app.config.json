@@ -30,7 +30,7 @@
     },
     "github": {
       "dir": ".docs/content",
-      "branch": "dev",
+      "branch": "main",
       "repo": "docus",
       "owner": "nuxt-themes",
       "edit": true
