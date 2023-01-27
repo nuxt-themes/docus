@@ -60,6 +60,7 @@ css({
 
   header: {
     backdropFilter: '{elements.backdrop.filter}',
+    position: 'sticky',
     top: 0,
     zIndex: 10,
     width: '100%',
@@ -101,12 +102,6 @@ css({
           }
         }
       }
-    }
-  },
-  variants: {
-    fixed: {
-      true: { position: 'sticky' },
-      false: {},
     }
   }
 })

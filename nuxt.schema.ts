@@ -152,10 +152,6 @@ export default defineNuxtSchema({
          */
         exclude: [],
         /**
-         * Sets the header to fixed or static mode.
-         */
-        fixed: true,
-        /**
          * Makes the content of the header fluid.
          */
         fluid: false

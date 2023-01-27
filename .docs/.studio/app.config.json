@@ -25,10 +25,6 @@
       "logo": true,
       "showLinkIcon": true,
       "exclude": [],
-      "fixed": {
-        "initial": false,
-        "lg": true
-      },
       "fluid": true
     },
     "footer": {

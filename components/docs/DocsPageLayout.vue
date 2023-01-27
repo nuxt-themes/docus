@@ -101,18 +101,6 @@ onBeforeUnmount(() => {
 
 <style scoped lang="ts">
 css({
-  variants: {
-    fixed: {
-      true: {
-        '.app-aside': {
-          backgroundColor: 'blue'
-        },
-      },
-      options: {
-        default: true
-      }
-    }
-  },
   '.docs-page-content': {
     position: 'relative',
     display: 'flex',

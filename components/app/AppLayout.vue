@@ -19,7 +19,7 @@ useContentHead(config.value as any)
 <template>
   <div>
     <AppLoadingBar />
-    <AppHeader v-if="Object.keys(config?.header).length" :fixed="config?.header?.fixed" />
+    <AppHeader v-if="Object.keys(config?.header).length" />
     <slot />
     <AppFooter v-if="Object.keys(config?.footer).length" />
   </div>
