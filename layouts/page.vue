@@ -6,7 +6,7 @@ const { config } = useDocus()
   <div class="page-layout">
     <Container
       :fluid="config?.main?.fluid"
-      :padded="config?.main.padded"
+      :padded="config?.main?.padded"
     >
       <article>
         <slot />

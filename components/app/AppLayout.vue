@@ -8,7 +8,10 @@ useHead({
   ]
 })
 
-watch(config.value.titleTemplate, () => useHead({ titleTemplate: config.value.titleTemplate }))
+watch(
+  () => config.value.titleTemplate,
+  () => useHead({ titleTemplate: config.value.titleTemplate })
+)
 
 useContentHead(config.value as any)
 </script>

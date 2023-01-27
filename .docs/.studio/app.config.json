@@ -25,15 +25,11 @@
       "logo": true,
       "showLinkIcon": true,
       "exclude": [],
-      "fixed": true,
+      "fixed": {
+        "initial": false,
+        "lg": true
+      },
       "fluid": true
-    },
-    "github": {
-      "dir": ".docs/content",
-      "branch": "main",
-      "repo": "docus",
-      "owner": "nuxt-themes",
-      "edit": true
     },
     "footer": {
       "credits": {
@@ -49,6 +45,13 @@
         }
       ],
       "fluid": true
+    },
+    "github": {
+      "dir": ".docs/content",
+      "branch": "main",
+      "repo": "docus",
+      "owner": "nuxt-themes",
+      "edit": true
     }
   },
   "prose": {
