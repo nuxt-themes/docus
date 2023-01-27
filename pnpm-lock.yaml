@@ -7,7 +7,7 @@ specifiers:
   '@nuxt-themes/elements': ^0.5.2
   '@nuxt-themes/tokens': ^1.6.2
   '@nuxt-themes/typography': ^0.6.0
-  '@nuxt/content': ^2.4.1
+  '@nuxt/content': ^2.4.2
   '@nuxthq/studio': ^0.6.5
   '@nuxtjs/algolia': ^1.5.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
@@ -23,7 +23,7 @@ dependencies:
   '@nuxt-themes/elements': 0.5.2_vue@3.2.45
   '@nuxt-themes/tokens': 1.6.2_vue@3.2.45
   '@nuxt-themes/typography': 0.6.0_vue@3.2.45
-  '@nuxt/content': 2.4.1
+  '@nuxt/content': 2.4.2
   '@nuxthq/studio': 0.6.5
   '@vueuse/nuxt': 9.11.1_nuxt@3.1.1+vue@3.2.45
 
@@ -1063,8 +1063,8 @@ packages:
       - vue
     dev: false
 
-  /@nuxt/content/2.4.1:
-    resolution: {integrity: sha512-p9QWo/Erl75inMPZd+9ez9F60Mgua+vQK55R4QOgnBv2EbtVGM0wAm159u5WBHw0k6VbrT/ULvwQf+xMOHQ+kg==}
+  /@nuxt/content/2.4.2:
+    resolution: {integrity: sha512-Nz2ZcC7R505UY5NQN+WE1pZ4ie8PBBr12qJHFAZqhWCXenzsdb87p48fvr6Zhlj8CyCTQqWg0B2fs7Lyg/CKwg==}
     dependencies:
       '@nuxt/kit': 3.1.1
       consola: 2.15.3
