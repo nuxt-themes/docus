@@ -1,4 +1,4 @@
-export default defineNuxtConfigSchema({
+export default defineNuxtSchema({
   appConfig: {
     /**
      * Docus theme configuration.
@@ -31,6 +31,7 @@ export default defineNuxtConfigSchema({
        * @studioInput file
        */
       image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
+
       /**
        * Social links
        *
@@ -76,17 +77,15 @@ export default defineNuxtConfigSchema({
          */
         medium: ''
       },
+
       /**
        * Theme layout configuration.
        *
+       * @type {'default'|'page'}
        * @studioIcon tabler:arrow-autofit-width
        */
-      layout: {
-        /**
-         * Enables the `fluid` layout mode.
-         */
-        fluid: true
-      },
+      layout: 'default',
+
       /**
        * Aside navigation configuration.
        *
@@ -111,6 +110,7 @@ export default defineNuxtConfigSchema({
          */
         exclude: []
       },
+
       /**
        * Header configuration.
        *
@@ -153,15 +153,30 @@ export default defineNuxtConfigSchema({
         exclude: [],
         /**
          * Sets the header to fixed or static mode.
-         *
-         * @studioInput object
-         * @type {{[key: import('pincea').PinceauMediaQueries]: boolean }}
          */
-        fixed: {
-          initial: true,
-          lg: true
-        }
+        fixed: true,
+        /**
+         * Makes the content of the header fluid.
+         */
+        fluid: false
       },
+
+      /**
+       * Main content configuration.
+       *
+       * @studioIcon fluent:document-header-footer-24-filled
+       */
+      main: {
+        /**
+         * Makes the content of the main container fluid.
+         */
+        fluid: false,
+        /**
+         * Makes the content of the main container padded.
+         */
+        padded: true
+      },
+
       /**
        * Footer configuration
        *
@@ -231,8 +246,13 @@ export default defineNuxtConfigSchema({
               }
             }
           }
-        }
+        },
+        /**
+         * Makes the content of the footer fluid.
+         */
+        fluid: true
       },
+
       /**
        * GitHub integration
        *

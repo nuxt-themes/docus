@@ -6,9 +6,12 @@ export const useCurrentNavigation = () => {
 
   const route = useRoute()
 
-  const asideConfig = computed(() => {
-    return navKeyFromPath(route.path, 'aside', navigation.value || [])
-  })
+  const asideConfig = computed(() => navKeyFromPath(route.path, 'aside', navigation.value || []))
+
+  const layoutConfig = computed(() => ({
+    fluid: navKeyFromPath(route.path, 'fluid', navigation.value || []),
+    padded: navKeyFromPath(route.path, 'padded', navigation.value || [])
+  }))
 
   const level = computed(() => {
     // Use `aside.level` key from file or navigation
@@ -59,5 +62,5 @@ export const useCurrentNavigation = () => {
     })
   })
 
-  return { tree, asideConfig }
+  return { tree, asideConfig, layoutConfig }
 }
