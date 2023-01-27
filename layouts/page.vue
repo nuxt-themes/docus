@@ -1,13 +1,12 @@
 <script setup lang="ts">
-const { page } = useContent()
-const { layoutConfig } = useCurrentNavigation()
+const { config } = useDocus()
 </script>
 
 <template>
   <div class="page-layout">
     <Container
-      :fluid="page?.fluid || layoutConfig?.fluid"
-      :padded="page?.padded || layoutConfig?.padded || true"
+      :fluid="config?.main?.fluid"
+      :padded="config?.main.padded"
     >
       <article>
         <slot />

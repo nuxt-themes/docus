@@ -1,12 +1,10 @@
 <script setup lang="ts">
 const { page, navigation } = useContent()
-const { layoutConfig } = useCurrentNavigation()
+const { config } = useDocus()
 const route = useRoute()
 
 const fallbackValue = (value: string, fallback = true) => {
-  if (typeof page.value?.[value] !== 'undefined') {
-    return page.value[value]
-  }
+  if (typeof page.value?.[value] !== 'undefined') { return page.value[value] }
   return fallback
 }
 
@@ -56,16 +54,16 @@ onBeforeUnmount(() => {
 
 <template>
   <Container
-    :fluid="page?.fluid || layoutConfig?.fluid"
-    :padded="page?.padded || layoutConfig?.padded || true"
+    :fluid="config?.main?.fluid"
+    :padded="config?.main?.padded"
     class="docs-page-content"
     :class="{
-      fluid: page?.fluid || layoutConfig?.fluid
+      fluid: config?.main?.fluid,
     }"
   >
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
-      <DocsAside />
+      <DocsAside class="app-aside" />
     </aside>
 
     <!-- Page Body -->
@@ -103,6 +101,18 @@ onBeforeUnmount(() => {
 
 <style scoped lang="ts">
 css({
+  variants: {
+    fixed: {
+      true: {
+        '.app-aside': {
+          backgroundColor: 'blue'
+        },
+      },
+      options: {
+        default: true
+      }
+    }
+  },
   '.docs-page-content': {
     position: 'relative',
     display: 'flex',

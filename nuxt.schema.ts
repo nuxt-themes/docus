@@ -186,7 +186,7 @@ export default defineNuxtSchema({
         /**
          * Website credits configuration.
          *
-         * @type {false|object}
+         * @type {false|{icon: string, text: string, href: string}}
          *
          * @studioIcon material-symbols:copyright
          */

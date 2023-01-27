@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { tree } = useCurrentNavigation()
+const { tree } = useDocus()
 </script>
 
 <template>

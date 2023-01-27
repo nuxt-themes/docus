@@ -2,9 +2,9 @@
 import ThemeSelect from './ThemeSelect.vue'
 
 const { navigation } = useContent()
-const docus = useDocus()
+const { config } = useDocus()
 
-const filtered = computed(() => docus.value.aside?.exclude || [])
+const filtered = computed(() => config.value.aside?.exclude || [])
 
 const links = computed(() => {
   return (navigation.value || []).filter((item: any) => {

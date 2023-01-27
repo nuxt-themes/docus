@@ -21,7 +21,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const docus = useDocus()
+const { config } = useDocus()
 
 const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._path || '/'}`, () => {
   if (props.level === 0) {
@@ -47,12 +47,12 @@ const isCollapsed = (link: any) => {
     }
 
     // Check if aside.collapsed has been set in YML
-    if (link.aside?.hasOwnProperty('collapsed')) { return link.aside.collapsed }
+    if (link?.aside?.collapsed) { return link.aside.collapsed }
 
     // Return value grabbed from the link
     if (link?.collapsed) { return link?.collapsed }
 
-    if (docus?.value?.aside?.collapsed) { return docus.value.aside?.collapsed }
+    if (config?.value?.aside?.collapsed) { return config.value.aside?.collapsed }
   }
 
   return false

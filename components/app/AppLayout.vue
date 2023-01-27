@@ -1,43 +1,23 @@
 <script setup lang="ts">
-const docus = useDocus()
-const { navigation, page } = useContent()
-const { navKeyFromPath } = useContentHelpers()
-
-const headerPosition = computed(() => page.value?.header?.fixed || docus?.value?.header?.fixed || true)
-
-const titleTemplate = computed(() => {
-  const appTitleTemplate = docus?.value?.titleTemplate || `%s · ${docus?.value?.title}`
-  if (page.value) {
-    return page.value.head?.titleTemplate || navKeyFromPath(page.value._path, 'titleTemplate', navigation.value || []) || appTitleTemplate
-  }
-  return appTitleTemplate
-})
-
-// TODO: remove?
-defineProps({
-  padded: {
-    type: Boolean,
-    default: true
-  }
-})
+const { config } = useDocus()
 
 useHead({
-  titleTemplate: titleTemplate.value,
+  titleTemplate: config.value.titleTemplate,
   meta: [
     { name: 'twitter:card', content: 'summary_large_image' }
   ]
 })
 
-watch(titleTemplate, () => useHead({ titleTemplate: titleTemplate.value }))
+watch(config.value.titleTemplate, () => useHead({ titleTemplate: config.value.titleTemplate }))
 
-useContentHead(docus.value as any)
+useContentHead(config.value as any)
 </script>
 
 <template>
   <div>
     <AppLoadingBar />
-    <AppHeader v-if="docus?.header" :fixed="headerPosition" />
+    <AppHeader v-if="Object.keys(config?.header).length" :fixed="config?.header?.fixed" />
     <slot />
-    <AppFooter v-if="docus?.footer" />
+    <AppFooter v-if="Object.keys(config?.footer).length" />
   </div>
 </template>

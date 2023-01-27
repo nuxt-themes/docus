@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 
-const docus = useDocus()
+const { config } = useDocus()
 
 const icons = computed<any>(() => {
-  return Object.entries(docus.value.socials || {})
+  return Object.entries(config.value.socials || {})
     .map(([key, value]) => {
       if (typeof value === 'object') {
         return value

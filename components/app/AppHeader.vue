@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const docus = useDocus()
+const { config } = useDocus()
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
 
@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
-    <Container :fluid="docus?.header?.fluid ">
+    <Container :fluid="config?.header?.fluid ">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
         <AppHeaderLogo />
