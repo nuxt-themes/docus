@@ -188,7 +188,7 @@ css({
   },
   '.toc': {
     position: 'sticky',
-    top: 0,
+    top: '{docus.header.height}',
     display: 'flex',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
@@ -197,7 +197,6 @@ css({
       mx: 'calc(0px - {space.6})',
     },
     '@lg': {
-      top: '{docus.header.height}',
       mx: 0,
       alignSelf: 'flex-start',
       py: '{space.8}',
