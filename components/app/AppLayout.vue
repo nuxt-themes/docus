@@ -3,7 +3,7 @@ const docus = useDocus()
 const { navigation, page } = useContent()
 const { navKeyFromPath } = useContentHelpers()
 
-const headerPosition = computed(() => page.value?.header?.fixed || docus?.value?.header?.fixed || false)
+const headerPosition = computed(() => page.value?.header?.fixed || docus?.value?.header?.fixed || true)
 
 const titleTemplate = computed(() => {
   const appTitleTemplate = docus?.value?.titleTemplate || `%s · ${docus?.value?.title}`
