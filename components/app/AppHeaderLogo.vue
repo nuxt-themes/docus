@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const docus = useDocus()
-const logo = computed(() => docus.value.header?.logo || false)
-const title = computed(() => docus.value.header?.title || docus.value.title)
+const { config } = useDocus()
+const logo = computed(() => config.value.header?.logo || false)
+const title = computed(() => config.value.header?.title || config.value.title)
 </script>
 
 <template>

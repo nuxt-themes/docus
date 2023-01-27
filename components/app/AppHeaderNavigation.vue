@@ -2,11 +2,11 @@
 const route = useRoute()
 const { navBottomLink } = useContentHelpers()
 const { navigation } = useContent()
-const docus = useDocus()
+const { config } = useDocus()
 
-const hasNavigation = computed(() => !!docus.value.aside?.level)
+const hasNavigation = computed(() => !!config.value.aside?.level)
 
-const filtered = computed(() => docus.value.header?.exclude || [])
+const filtered = computed(() => config.value.header?.exclude || [])
 
 const tree = computed(() => {
   return (navigation.value || []).filter((item: any) => {
@@ -30,7 +30,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
           :to="link.redirect? link.redirect : navBottomLink(link)"
           :class="{ active: isActive(link) }"
         >
-          <Icon v-if="link.icon && docus?.header?.showLinkIcon" :name="link.icon" />
+          <Icon v-if="link.icon && config?.header?.showLinkIcon" :name="link.icon" />
           {{ link.title }}
         </NuxtLink>
       </li>

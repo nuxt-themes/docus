@@ -64,7 +64,7 @@ export default defineNuxtConfig({
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
     },
     navigation: {
-      fields: ['icon', 'titleTemplate', 'aside', 'fluid', 'padded']
+      fields: ['icon', 'titleTemplate', 'header', 'main', 'aside', 'footer']
     }
   },
   colorMode: {

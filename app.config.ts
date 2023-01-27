@@ -21,7 +21,6 @@ export default defineAppConfig({
       title: '',
       logo: false,
       showLinkIcon: false,
-      fixed: true,
       fluid: false,
       exclude: []
     },

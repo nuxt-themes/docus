@@ -152,10 +152,6 @@ export default defineNuxtSchema({
          */
         exclude: [],
         /**
-         * Sets the header to fixed or static mode.
-         */
-        fixed: true,
-        /**
          * Makes the content of the header fluid.
          */
         fluid: false
@@ -186,7 +182,7 @@ export default defineNuxtSchema({
         /**
          * Website credits configuration.
          *
-         * @type {false|object}
+         * @type {false|{icon: string, text: string, href: string}}
          *
          * @studioIcon material-symbols:copyright
          */
