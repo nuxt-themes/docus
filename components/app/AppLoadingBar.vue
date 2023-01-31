@@ -7,10 +7,6 @@ const props = defineProps({
   duration: {
     type: Number,
     default: 2000
-  },
-  height: {
-    type: Number,
-    default: 3
   }
 })
 
@@ -86,23 +82,25 @@ onBeforeUnmount(() => clear)
     :style="{
       width: `${data.percent}%`,
       left: data.left,
-      height: `${props.height}px`,
       opacity: data.show ? 1 : 0,
       backgroundSize: `${(100 / data.percent) * 100}% auto`,
     }"
   />
 </template>
 
-<style>
-.nuxt-progress {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  width: 0%;
-  opacity: 1;
-  transition: width 0.1s, height 0.4s, opacity 0.4s;
-  background: repeating-linear-gradient(to right, #00dc82 0%, #34cdfe 50%, #0047e1 100%);
-  z-index: 999999;
-}
+<style lang="ts">
+css({
+  '.nuxt-progress': {
+    height: '{docus.loadingBar.height}',
+    position: 'fixed',
+    top: '0px',
+    left: '0px',
+    right: '0px',
+    width: '0%',
+    opacity: 1,
+    transition: 'width 0.1s, height 0.4s, opacity 0.4s',
+    background: 'repeating-linear-gradient(to right, {docus.loadingBar.gradientColorStop1} 0%, {docus.loadingBar.gradientColorStop2} 50%, {docus.loadingBar.gradientColorStop3} 100%)',
+    zIndex: '999999',
+  }
+})
 </style>
