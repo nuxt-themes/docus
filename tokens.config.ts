@@ -1,9 +1,9 @@
 import { defineTheme } from 'pinceau'
-import nuxtThemeTokens from '@nuxt-themes/tokens/tokens'
+import theme from '@nuxt-themes/tokens/config'
 
 export default defineTheme({
   color: {
-    primary: (nuxtThemeTokens.color as any).lightblue
+    primary: (theme as any).color.lightblue
   },
   docus: {
     $schema: {
