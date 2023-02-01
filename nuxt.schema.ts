@@ -154,7 +154,7 @@ export default defineNuxtSchema({
         /**
          * Makes the content of the header fluid.
          */
-        fluid: false
+        fluid: true
       },
 
       /**
@@ -166,7 +166,7 @@ export default defineNuxtSchema({
         /**
          * Makes the content of the main container fluid.
          */
-        fluid: false,
+        fluid: true,
         /**
          * Makes the content of the main container padded.
          */
