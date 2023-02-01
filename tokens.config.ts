@@ -14,7 +14,13 @@ export default defineTheme({
     },
     header: { height: '64px' },
     footer: { padding: '{space.4} 0' },
-    readableLine: '78ch'
+    readableLine: '78ch',
+    loadingBar: {
+      height: '3px',
+      gradientColorStop1: '#00dc82',
+      gradientColorStop2: '#34cdfe',
+      gradientColorStop3: '#0047e1'
+    }
   },
   typography: {
     color: {
