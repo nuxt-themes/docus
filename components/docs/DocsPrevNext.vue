@@ -24,14 +24,13 @@ const directory = (link: any) => {
       :to="prev._path"
       class="prev"
     >
-      <span class="directory">
-        {{ directory(prev._path) }}
-      </span>
-
-      <span class="title-wrapper">
-        <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
+      <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
+      <div class="wrapper">
+        <span class="directory">
+          {{ directory(prev._path) }}
+        </span>
         <span class="title">{{ prev.title }}</span>
-      </span>
+      </div>
     </NuxtLink>
 
     <span v-else />
@@ -41,14 +40,13 @@ const directory = (link: any) => {
       :to="next._path"
       class="next"
     >
-      <span class="directory">
-        {{ directory(next._path) }}
-      </span>
-
-      <span class="title-wrapper">
+      <div class="wrapper">
+        <span class="directory">
+          {{ directory(next._path) }}
+        </span>
         <span class="title">{{ next.title }}</span>
-        <Icon name="heroicons-outline:arrow-sm-right" class="icon" />
-      </span>
+      </div>
+      <Icon name="heroicons-outline:arrow-sm-right" class="icon" />
     </NuxtLink>
   </div>
 </template>
@@ -57,7 +55,7 @@ const directory = (link: any) => {
 css({
   '.docs-prev-next': {
     display: 'flex',
-    flexDirection: 'column-reverse',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     gap: '{space.3}',
     '@sm': {
@@ -69,29 +67,42 @@ css({
       minWidth: '0px',
       padding: '{space.3}',
       border: '1px solid {elements.border.primary.default}',
-      borderRadius: '{radii.lg}',
+      borderRadius: '{radii.md}',
       '&:hover': {
-        borderColor: '{color.primary.100}',
+        backgroundColor: '{color.gray.50}',
+        borderColor: '{color.gray.50}',
         color: '{color.primary.500}',
       },
       '@dark': {
         '&:hover': {
-          borderColor: '{color.primary.700}',
+          backgroundColor: '{color.gray.900}',
+          borderColor: '{color.gray.900}',
         }
       },
       '&.prev': {
+        textAlign: 'left',
+        display: 'flex',
+        gap: '{space.3}',
         '.directory': {
           display: 'block',
           marginBottom: '{space.1}',
           fontSize: '{text.xs.fontSize}',
           lineHeight: '{text.xs.lineHeight}',
           fontWeight: '{fontWeight.medium}',
-          textAlign: 'right',
           color: '{color.gray.500}',
           truncate: true
+        },
+        '@sm': {
+          '.wrapper': {
+            alignItems: 'flex-end'
+          }
         }
       },
       '&.next': {
+        textAlign: 'right',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        gap: '{space.3}',
         '.directory': {
           display: 'block',
           marginBottom: '{space.1}',
@@ -100,14 +111,19 @@ css({
           fontWeight: '{fontWeight.medium}',
           color: '{color.gray.500}',
           truncate: true
+        },
+        '@sm': {
+          '.wrapper': {
+            alignItems: 'flex-start'
+          }
         }
       },
-      '.title-wrapper': {
+      '.wrapper': {
         display: 'flex',
-        alignItems: 'center',
-        gap: '{space.3}'
+        flexDirection: 'column',
       },
       '.icon': {
+        alignSelf: 'flex-end',
         flexShrink: 0,
         width: '{space.5}',
         height: '{space.5}'
