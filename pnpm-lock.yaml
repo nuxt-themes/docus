@@ -11,10 +11,10 @@ specifiers:
   '@nuxthq/studio': ^0.6.6
   '@nuxtjs/algolia': ^1.5.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
+  '@nuxtjs/plausible': ^0.2.0
   '@vueuse/nuxt': ^9.12.0
   eslint: ^8.33.0
   nuxt: 3.1.1
-  nuxt-plausible: ^0.1.2
   release-it: ^15.6.0
   typescript: ^4.9.5
   vue: ^3.2.45
@@ -33,9 +33,9 @@ devDependencies:
   '@docsearch/js': 3.3.2_2r467mdhb7mblpaox4bg7fatdi
   '@nuxtjs/algolia': 1.5.0_vue@3.2.45
   '@nuxtjs/eslint-config-typescript': 12.0.0_4vsywjlpuriuw3tl5oq6zy5a64
+  '@nuxtjs/plausible': 0.2.0
   eslint: 8.33.0
   nuxt: 3.1.1_4vsywjlpuriuw3tl5oq6zy5a64
-  nuxt-plausible: 0.1.2
   release-it: 15.6.0
   typescript: 4.9.5
   vue: 3.2.45
@@ -1378,6 +1378,18 @@ packages:
       - '@typescript-eslint/parser'
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
+
+  /@nuxtjs/plausible/0.2.0:
+    resolution: {integrity: sha512-mke+eW94PCca7zK0kNpNA9ULat5JCrBP2JUCmas6ZKpskU3+IaBv2OzWYzWJb/SsungfV9a/dukKbjAJeBTzhQ==}
+    dependencies:
+      '@nuxt/kit': 3.1.1
+      defu: 6.1.2
+      pathe: 1.1.0
+      plausible-tracker: 0.3.8
+    transitivePeerDependencies:
+      - rollup
       - supports-color
     dev: true
 
@@ -6235,19 +6247,6 @@ packages:
       - supports-color
       - vue
     dev: false
-
-  /nuxt-plausible/0.1.2:
-    resolution: {integrity: sha512-w3Flmonlb73L/IpPkkNfSuUgahXtmp/xyp33MWdqaxMUgwRAdXNZy+YNJyFUPZObp/yruZquisoMy0WLKfcCJQ==}
-    deprecated: Moved to @nuxtjs/plausible. Please use this package instead.
-    dependencies:
-      '@nuxt/kit': 3.1.1
-      defu: 6.1.2
-      pathe: 1.1.0
-      plausible-tracker: 0.3.8
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: true
 
   /nuxt/3.1.1_4vsywjlpuriuw3tl5oq6zy5a64:
     resolution: {integrity: sha512-GVdmV88lR01OX0slxTPyTzwQkge7fxNREkx2QW0Lo66fb6aHcJlRXzFMBCOTjas+Ncng6AalIyIiPREEteGKSg==}
