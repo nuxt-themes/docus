@@ -1,9 +1,4 @@
-import { fileURLToPath } from 'url'
-import { addPlugin, defineNuxtModule } from '@nuxt/kit'
-import { resolve } from 'pathe'
-
-const themeDir = fileURLToPath(new URL('./', import.meta.url))
-const resolveThemeDir = (path: string) => resolve(themeDir, path)
+import { addPlugin, defineNuxtModule, createResolver } from '@nuxt/kit'
 
 export default defineNuxtModule({
   meta: {
@@ -15,10 +10,11 @@ export default defineNuxtModule({
     },
     configKey: 'docus'
   },
-  setup(_, nuxt) {
+  setup (_, nuxt) {
+    const { resolve } = createResolver(import.meta.url)
     if (nuxt.options?.runtimeConfig?.public?.algolia?.docSearch) {
       addPlugin({
-        src: resolveThemeDir('integrations/docsearch.ts')
+        src: resolve('integrations/docsearch')
       })
     }
   }

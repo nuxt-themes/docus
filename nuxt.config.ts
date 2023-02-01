@@ -4,8 +4,6 @@ import { version } from './package.json'
 
 logger.success(`Using Docus v${version}`)
 
-process.env.NUXT_INLINE_STYLES = 'true'
-
 const { resolve } = createResolver(import.meta.url)
 
 // That allows to overwrite these dependencies paths via `.env` for local development
@@ -51,9 +49,6 @@ export default defineNuxtConfig({
       global: true
     }
   ],
-  pinceau: {
-    studio: true
-  },
   content: {
     documentDriven: true,
     highlight: {
