@@ -3,7 +3,7 @@ import theme from '@nuxt-themes/tokens/config'
 
 export default defineTheme({
   color: {
-    primary: (theme as any).color.lightblue
+    primary: theme.color.lightblue
   },
   docus: {
     $schema: {
