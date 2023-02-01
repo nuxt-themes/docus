@@ -80,7 +80,11 @@ css({
       alignItems: 'center',
       flex: 'none',
       '&.left': {
-        gridColumn: 'span 4 / span 4'
+        gridColumn: 'span 4 / span 4',
+        marginLeft: 'calc(0px - {space.4})',
+        '@lg': {
+          marginLeft: 0
+        },
       },
       '&.center': {
         gridColumn: 'span 4 / span 4',

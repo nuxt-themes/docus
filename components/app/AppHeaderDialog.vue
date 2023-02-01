@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ThemeSelect from './ThemeSelect.vue'
-
 const { navigation } = useContent()
 const { config } = useDocus()
 
@@ -27,13 +25,12 @@ watch(visible, v => (v ? open() : close()))
   <teleport to="body">
     <nav v-if="visible" class="dialog" @click="close">
       <div @click.stop>
-        <div>
+        <div class="wrapper">
           <button aria-label="Menu" @click="close">
             <Icon name="heroicons-outline:x" aria-hidden="”true”" />
           </button>
 
           <div class="icons">
-            <ThemeSelect />
             <AppSocialIcons />
           </div>
         </div>
@@ -49,7 +46,8 @@ css({
   button: {
     position: 'relative',
     zIndex: '10',
-    borderRadius: '{radii.xl}',
+    display: 'flex',
+    padding: '{space.4}',
     '@lg': {
       display: 'none'
     },
@@ -79,6 +77,12 @@ css({
     '@lg': {
       display: 'none'
     },
+    '.wrapper': {
+      marginLeft: 'calc(0px - {space.4})',
+    },
+    '.icons': {
+      overflow: 'auto'
+    },
     // Dialog content
     '& > div': {
       maxWidth: '{size.xs}',
@@ -104,7 +108,6 @@ css({
         '.icons': {
           display: 'flex',
           alignItems: 'center',
-          gap: '{space.4}'
         }
       }
     }
