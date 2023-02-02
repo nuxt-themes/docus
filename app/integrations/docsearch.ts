@@ -92,7 +92,7 @@ export default defineNuxtPlugin(() => {
           ...userOptions.searchParameters
         },
         /**
-         * Transform items into relative URL format (compatibiltiy with Vue Router).
+         * Transform items into relative URL format (compatibility with Vue Router).
          */
         transformItems: userOptions.transformItems
           ? userOptions.transformItems
