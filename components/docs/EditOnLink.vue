@@ -11,7 +11,7 @@ export default defineComponent({
      */
     owner: {
       type: String,
-      default: () => useAppConfig()?.docus.github?.owner,
+      default: () => useAppConfig()?.docus?.github?.owner,
       required: false
     },
     /**
@@ -19,7 +19,7 @@ export default defineComponent({
      */
     repo: {
       type: String,
-      default: () => useAppConfig()?.docus.github?.repo,
+      default: () => useAppConfig()?.docus?.github?.repo,
       required: false
     },
     /**
@@ -27,7 +27,7 @@ export default defineComponent({
      */
     branch: {
       type: String,
-      default: () => useAppConfig()?.docus.github?.branch,
+      default: () => useAppConfig()?.docus?.github?.branch,
       required: false
     },
     /**
@@ -37,7 +37,7 @@ export default defineComponent({
      */
     dir: {
       type: String,
-      default: () => useAppConfig()?.docus.github?.dir,
+      default: () => useAppConfig()?.docus?.github?.dir,
       required: false
     },
     /**
@@ -64,7 +64,7 @@ export default defineComponent({
     contentDir: {
       type: String,
       required: false,
-      default: () => useAppConfig()?.docus.github?.dir || 'content'
+      default: () => useAppConfig()?.docus?.github?.dir || 'content'
     },
     /**
      * Send to an edit page or not.
@@ -72,7 +72,7 @@ export default defineComponent({
     edit: {
       type: Boolean,
       required: false,
-      default: () => useAppConfig()?.docus.github?.edit
+      default: () => useAppConfig()?.docus?.github?.edit
     }
   },
   setup (props) {

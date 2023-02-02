@@ -15,7 +15,7 @@ export default defineNuxtModule({
     },
     configKey: 'docus'
   },
-  setup(_, nuxt) {
+  setup (_, nuxt) {
     if (nuxt.options?.runtimeConfig?.public?.algolia?.docSearch) {
       addPlugin({
         src: resolveThemeDir('integrations/docsearch.ts')
