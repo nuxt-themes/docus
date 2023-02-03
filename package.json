@@ -27,9 +27,9 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt-themes/elements": "^0.6.1",
-    "@nuxt-themes/tokens": "^1.7.2",
-    "@nuxt-themes/typography": "^0.7.1",
+    "@nuxt-themes/elements": "^0.6.3",
+    "@nuxt-themes/tokens": "^1.7.3",
+    "@nuxt-themes/typography": "^0.7.2",
     "@nuxt/content": "^2.4.3",
     "@nuxthq/studio": "^0.7.0",
     "@vueuse/nuxt": "^9.12.0"
@@ -41,11 +41,11 @@
     "@nuxtjs/algolia": "^1.5.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.33.0",
-    "nuxt": "3.1.1",
+    "nuxt": "3.1.2",
     "nuxt-plausible": "^0.1.2",
     "release-it": "^15.6.0",
     "typescript": "^4.9.5",
-    "vue": "^3.2.45"
+    "vue": "^3.2.47"
   },
   "pnpm": {
     "peerDependencyRules": {
