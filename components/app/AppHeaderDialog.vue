@@ -47,7 +47,7 @@ css({
     position: 'relative',
     zIndex: '10',
     display: 'flex',
-    padding: '{space.4}',
+    padding: '{space.4} {space.4} {space.4} 0',
     '@lg': {
       display: 'none'
     },
@@ -76,9 +76,6 @@ css({
     },
     '@lg': {
       display: 'none'
-    },
-    '.wrapper': {
-      marginLeft: 'calc(0px - {space.4})',
     },
     '.icons': {
       overflow: 'auto'
