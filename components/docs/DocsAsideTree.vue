@@ -119,7 +119,7 @@ css({
   '.docs-aside-tree': {
     li: {
       '&.bordered': {
-        borderLeft: '1px solid {elements.border.primary.default}',
+        borderLeft: '1px solid {elements.border.primary.static}',
         '&:hover': {
           borderColor: '{elements.border.primary.hover}'
         },

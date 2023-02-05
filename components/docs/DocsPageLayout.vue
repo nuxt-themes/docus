@@ -125,7 +125,7 @@ css({
       py: '{space.8}',
       paddingRight: '{space.8}',
       '.fluid &&': {
-        borderRight: '1px solid {elements.border.primary.default}',
+        borderRight: '1px solid {elements.border.primary.static}',
       }
     }
   },
@@ -163,7 +163,7 @@ css({
       marginTop: 0,
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
-      borderBottom: '1px solid {elements.border.primary.default}',
+      borderBottom: '1px solid {elements.border.primary.static}',
       color: '{color.gray.500}',
       '@sm': {
         fontSize: '{text.lg.fontSize}',
@@ -192,7 +192,7 @@ css({
     display: 'flex',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
-    borderBottom: '1px solid {elements.border.primary.default}',
+    borderBottom: '1px solid {elements.border.primary.static}',
     '@sm': {
       mx: 'calc(0px - {space.6})',
     },
@@ -205,7 +205,7 @@ css({
       maxHeight: 'none',
       borderBottom: 'none',
       '.fluid &&': {
-        borderLeft: '1px solid {elements.border.primary.default}',
+        borderLeft: '1px solid {elements.border.primary.static}',
       }
     },
     '.toc-wrapper': {

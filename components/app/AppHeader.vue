@@ -64,7 +64,7 @@ css({
     top: 0,
     zIndex: 10,
     width: '100%',
-    borderBottom: '1px solid {elements.border.primary.default}',
+    borderBottom: '1px solid {elements.border.primary.static}',
     backgroundColor: '{elements.backdrop.background}',
     height: '{docus.header.height}',
 

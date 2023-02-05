@@ -66,7 +66,7 @@ css({
       position: 'relative',
       minWidth: '0px',
       padding: '{space.3}',
-      border: '1px solid {elements.border.primary.default}',
+      border: '1px solid {elements.border.primary.static}',
       borderRadius: '{radii.md}',
       '&:hover': {
         backgroundColor: '{color.gray.50}',
