@@ -55,7 +55,7 @@ css({
   footer: {
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
-    borderTopColor: '{elements.border.primary.default}',
+    borderTopColor: '{elements.border.primary.static}',
     padding: '{docus.footer.padding}',
 
     '.footer-container': {
