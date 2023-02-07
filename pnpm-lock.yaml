@@ -8,7 +8,7 @@ specifiers:
   '@nuxt-themes/tokens': ^1.7.3
   '@nuxt-themes/typography': ^0.8.0
   '@nuxt/content': ^2.4.3
-  '@nuxthq/studio': ^0.7.0
+  '@nuxthq/studio': ^0.7.2
   '@nuxtjs/algolia': ^1.5.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
   '@vueuse/nuxt': ^9.12.0
@@ -24,7 +24,7 @@ dependencies:
   '@nuxt-themes/tokens': 1.7.3_vue@3.2.47
   '@nuxt-themes/typography': 0.8.0_vue@3.2.47
   '@nuxt/content': 2.4.3
-  '@nuxthq/studio': 0.7.0
+  '@nuxthq/studio': 0.7.2
   '@vueuse/nuxt': 9.12.0_nuxt@3.1.2+vue@3.2.47
 
 devDependencies:
@@ -1340,11 +1340,11 @@ packages:
       - vti
       - vue-tsc
 
-  /@nuxthq/studio/0.7.0:
-    resolution: {integrity: sha512-Uryq+UVUgzTeqnlSuAVIXYnJGIF0OgjAHOykYP/Vaa6e9ZVojDR14P6ecqCRK2/hZw2zOSvQXXpt6S6oAcXl4Q==}
+  /@nuxthq/studio/0.7.2:
+    resolution: {integrity: sha512-8TRUJra53nl+P3XyjcHUKOh/nFo+6MqCy+OXqscKG7MuY8DZ9GNKO8mIIMkyjwseJTGPhSDNqVAsHiHQ0SFfwQ==}
     dependencies:
-      '@nuxt/kit': 3.1.1
-      '@nuxt/schema': 3.1.1
+      '@nuxt/kit': 3.1.2
+      '@nuxt/schema': 3.1.2
       defu: 6.1.2
       nuxt-component-meta: 0.4.3
       nuxt-config-schema: 0.4.4
@@ -6258,7 +6258,7 @@ packages:
   /nuxt-component-meta/0.4.3:
     resolution: {integrity: sha512-40wsnbCh2neNdKVrwSiqV/ea7QshYjp3kpfk8JZaxSW/XcgNg2tzka4L+M8caOvQalyAKi6AaENPLaTYOZDbQg==}
     dependencies:
-      '@nuxt/kit': 3.1.1
+      '@nuxt/kit': 3.1.2
       scule: 1.0.0
       typescript: 4.9.5
       vue-component-meta: 1.0.24_typescript@4.9.5
@@ -6270,7 +6270,7 @@ packages:
   /nuxt-config-schema/0.4.4:
     resolution: {integrity: sha512-5NnyyH2qSgraQo6kcW/8SWqBZ/pEY/PwyepODPWYYv4ZZ8BiqC850OTmyO2oTBL4O+Xg4fR7hAwSB4g5pIMpSg==}
     dependencies:
-      '@nuxt/kit': 3.1.1
+      '@nuxt/kit': 3.1.2
       changelogen: 0.4.1
       defu: 6.1.2
       jiti: 1.16.2
