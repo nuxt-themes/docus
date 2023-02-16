@@ -26,7 +26,7 @@ const directory = (link: any) => {
     >
       <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
       <div class="wrapper">
-        <span class="directory">
+        <span v-if="!!directory(prev._path)" class="directory">
           {{ directory(prev._path) }}
         </span>
         <span class="title">{{ prev.title }}</span>
@@ -41,7 +41,7 @@ const directory = (link: any) => {
       class="next"
     >
       <div class="wrapper">
-        <span class="directory">
+        <span v-if="!!directory(next._path)" class="directory">
           {{ directory(next._path) }}
         </span>
         <span class="title">{{ next.title }}</span>
