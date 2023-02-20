@@ -16,13 +16,13 @@
 
 :root {
   /* DocSearch */
-  --docsearch-primary-color: $dt('color.primary.500') !important;
+  --docsearch-primary-color: $dt("color.primary.500") !important;
 }
 
 .dark:root {
   color-scheme: dark;
   /* DocSearch */
-  --docsearch-primary-color: $dt('color.primary.500') !important;
+  --docsearch-primary-color: $dt("color.primary.500") !important;
   --docsearch-text-color: rgb(245, 246, 247);
   --docsearch-container-background: rgba(9, 10, 17, 0.8);
   --docsearch-modal-background: rgb(21, 23, 42);
@@ -54,14 +54,14 @@ body {
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $dt('color.white');
-  color: $dt('color.gray.700');
-  font-family: $dt('font.sans');
-  min-width: $dt('size.xs');
+  background: $dt("color.white");
+  color: $dt("color.gray.700");
+  font-family: $dt("font.sans");
+  min-width: $dt("size.xs");
 
   @dark {
-    background: $dt('color.black');
-    color: $dt('color.gray.200');
+    background: $dt("color.black");
+    color: $dt("color.gray.200");
   }
 }
 
@@ -73,33 +73,37 @@ body {
   }
 
   & ::-webkit-scrollbar-track {
-    background: $dt('color.gray.100');
+    background: $dt("color.gray.100");
   }
 
   & ::-webkit-scrollbar-thumb {
     border-radius: 0.6em;
-    background: $dt('color.gray.300');
+    background: $dt("color.gray.300");
     &:hover {
-      background: $dt('color.gray.400');
+      background: $dt("color.gray.400");
     }
     &:active {
-      background: $dt('color.gray.500');
+      background: $dt("color.gray.500");
     }
   }
 
   &.dark {
     & ::-webkit-scrollbar-track {
-      background: $dt('color.gray.800');
+      background: $dt("color.gray.800");
     }
 
     & ::-webkit-scrollbar-thumb {
-      background: $dt('color.gray.700');
+      background: $dt("color.gray.700");
       &:hover {
-        background: $dt('color.gray.600');
+        background: $dt("color.gray.600");
       }
       &:active {
-        background: $dt('color.gray.500');
+        background: $dt("color.gray.500");
       }
     }
   }
+}
+
+html[dir="rtl"] * {
+  text-align: right !important;
 }
