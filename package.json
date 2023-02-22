@@ -27,12 +27,12 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt-themes/elements": "^0.8.0",
+    "@nuxt-themes/elements": "^0.8.1",
     "@nuxt-themes/tokens": "^1.8.2",
     "@nuxt-themes/typography": "^0.8.3",
     "@nuxt/content": "^2.4.3",
-    "@nuxthq/studio": "^0.7.2",
-    "@vueuse/nuxt": "^9.12.0"
+    "@nuxthq/studio": "^0.7.5",
+    "@vueuse/nuxt": "^9.13.0"
   },
   "devDependencies": {
     "@algolia/client-search": "^4.14.3",
