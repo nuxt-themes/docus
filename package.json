@@ -29,7 +29,7 @@
   "dependencies": {
     "@nuxt-themes/elements": "^0.9.0",
     "@nuxt-themes/tokens": "^1.9.0",
-    "@nuxt-themes/typography": "^0.9.0",
+    "@nuxt-themes/typography": "^0.9.1",
     "@nuxt/content": "^2.4.3",
     "@nuxthq/studio": "^0.7.7",
     "@vueuse/nuxt": "^9.13.0"
@@ -38,12 +38,13 @@
     "@algolia/client-search": "^4.14.3",
     "@docsearch/css": "^3.3.3",
     "@docsearch/js": "^3.3.3",
+    "@nuxt/devtools": "^0.2.4",
     "@nuxtjs/algolia": "^1.5.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/plausible": "^0.2.0",
     "eslint": "^8.35.0",
-    "nuxt": "3.2.2",
-    "nuxt-plausible": "^0.1.2",
-    "release-it": "^15.6.0",
+    "nuxt": "3.2.3",
+    "release-it": "^15.6.1",
     "typescript": "^4.9.5",
     "vue": "^3.2.47"
   },

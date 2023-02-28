@@ -1,3 +1,7 @@
 export default defineNuxtConfig({
-  extends: '../'
+  extends: '../',
+  modules: ['@nuxt/devtools'],
+  typescript: {
+    includeWorkspace: true
+  }
 })
