@@ -61,6 +61,7 @@ css({
   header: {
     backdropFilter: '{elements.backdrop.filter}',
     position: 'sticky',
+    // top: 'var(--scroll-top, 0px)',
     top: 0,
     zIndex: 10,
     width: '100%',

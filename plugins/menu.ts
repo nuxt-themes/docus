@@ -22,11 +22,19 @@ export default defineNuxtPlugin((ctx: any) => {
         const html = document.documentElement
 
         if (isVisible) {
-          html.style.overflow = 'hidden'
+          const top = window.scrollY || window.pageYOffset || html.scrollTop
+          html.style.setProperty('--scroll-top', `${top}`)
+          html.style.top = `-${top}px`
+          html.style.position = 'fixed'
+          html.style.width = '100%'
+          html.style.overflowY = 'scroll'
         } else {
-          setTimeout(() => {
-            html.style.overflow = ''
-          }, 100) /* had to put it, because of layout shift on leave transition */
+          const top = parseInt(html.style.getPropertyValue('--scroll-top'))
+          html.style.top = ''
+          html.style.position = ''
+          html.style.width = ''
+          html.style.overflowY = ''
+          window.scrollTo(0, top)
         }
       },
       {

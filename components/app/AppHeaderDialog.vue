@@ -23,21 +23,24 @@ watch(visible, v => (v ? open() : close()))
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <teleport to="body">
-    <nav v-if="visible" class="dialog" @click="close">
-      <div @click.stop>
-        <div class="wrapper">
-          <button aria-label="Menu" @click="close">
-            <Icon name="heroicons-outline:x" aria-hidden="”true”" />
-          </button>
+    <transition name="nested" :duration="200">
+      <div v-if="visible" class="dialog-wrapper" @click="close">
+        <div class="scrim" />
+        <nav class="nav" @click.stop>
+          <div class="dialog-header">
+            <button aria-label="Menu" @click="close">
+              <Icon name="heroicons-outline:x" aria-hidden="”true”" />
+            </button>
 
-          <div class="icons">
-            <AppSocialIcons />
+            <div class="icons">
+              <AppSocialIcons />
+            </div>
           </div>
-        </div>
 
-        <DocsAsideTree :links="links" />
+          <DocsAsideTree :links="links" />
+        </nav>
       </div>
-    </nav>
+    </transition>
   </teleport>
 </template>
 
@@ -62,30 +65,39 @@ css({
       }
     },
   },
-  '.dialog': {
+  '.dialog-wrapper': {
     position: 'fixed',
     inset: '0 0 0 0',
     zIndex: '50',
     display: 'flex',
     alignItems: 'flex-start',
     overflowY: 'auto',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    backdropFilter: '{elements.backdrop.filter}',
-    '@dark': {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)'
-    },
     '@lg': {
       display: 'none'
     },
+
+    // Scrim
+    '& .scrim': {
+      position: 'fixed',
+      inset: '0 0 0 0',
+      zIndex: '-1',
+      backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      backdropFilter: 'saturate(200%) blur(10px)',
+      // transformOrigin: 'left',
+      '@dark': {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      },
+    },
+
     '.icons': {
       overflow: 'auto'
     },
     // Dialog content
-    '& > div': {
+    '& nav': {
       maxWidth: '{size.xs}',
       width: '100%',
       minHeight: '100%',
-      boxShadow: '{shadow.md}',
+      borderRight: '1px solid {elements.border.primary.static}',
       px: '{space.4}',
       backgroundColor: '{color.white}',
       '@dark': {
@@ -95,7 +107,7 @@ css({
         px: '{space.6}',
       },
       // Dialog header
-      '& > div': {
+      '& .dialog-header': {
         height: '{docus.header.height}',
         display: 'flex',
         alignItems: 'center',
@@ -114,4 +126,35 @@ css({
     height: '{space.4}'
   }
 })
+</style>
+
+<style scoped>
+@media (prefers-reduced-motion: reduce)  {
+  .nav, .scrim {
+    transition: all 0ms !important;
+  }
+}
+
+.nested-enter-active .scrim,
+.nested-leave-active .scrim {
+  transition: transform 200ms ease-out, opacity 200ms linear;
+}
+
+.nested-enter-from .scrim,
+.nested-leave-to .scrim {
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.nested-enter-active .nav,
+.nested-leave-active .nav {
+  transition: transform 200ms ease-out, opacity 200ms linear;
+}
+
+.nested-enter-from .nav,
+.nested-leave-to .nav {
+  opacity: 0;
+  transform: translate3d(-50px, 0, 0);
+}
 </style>
