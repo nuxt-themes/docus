@@ -78,7 +78,7 @@ export default defineNuxtPlugin(() => {
          * Local implementation of this DocSearch box uses a local element with an `docsearch` id.
          */
         container: el,
-        appId: userOptions.applicationId,
+        appId: userOptions.appId,
         apiKey: userOptions.apiKey,
         indexName: userOptions.docSearch.indexName,
         searchParameters: {
@@ -152,7 +152,7 @@ export default defineNuxtPlugin(() => {
         // Spread user options, except the ones that are already used in the instance.
         ...Object.entries(userOptions)
           // Skip already used keys
-          .filter(([key]) => !['applicationId', 'apiKey', 'indexName', 'transformItems', 'navigator', 'hitComponent', 'facetFilters', 'langAttribute', 'lang'].includes(key))
+          .filter(([key]) => !['appId', 'apiKey', 'indexName', 'transformItems', 'navigator', 'hitComponent', 'facetFilters', 'langAttribute', 'lang'].includes(key))
           // Recompose options
           .reduce((acc: any, [key, value]) => {
             acc[key] = value
