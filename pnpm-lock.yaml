@@ -7,7 +7,7 @@ specifiers:
   '@nuxt-themes/elements': ^0.9.0
   '@nuxt-themes/tokens': ^1.9.0
   '@nuxt-themes/typography': ^0.9.1
-  '@nuxt/content': ^2.5.0
+  '@nuxt/content': ^2.5.2
   '@nuxt/devtools': ^0.2.5
   '@nuxthq/studio': ^0.8.2
   '@nuxtjs/algolia': ^1.5.0
@@ -24,7 +24,7 @@ dependencies:
   '@nuxt-themes/elements': 0.9.0_vue@3.2.47
   '@nuxt-themes/tokens': 1.9.0_vue@3.2.47
   '@nuxt-themes/typography': 0.9.1_vue@3.2.47
-  '@nuxt/content': 2.5.0
+  '@nuxt/content': 2.5.2
   '@nuxthq/studio': 0.8.2
   '@vueuse/nuxt': 9.13.0_nuxt@3.2.3+vue@3.2.47
 
@@ -428,9 +428,9 @@ packages:
       '@azure/core-tracing': 1.0.1
       '@azure/core-util': 1.2.0
       '@azure/logger': 1.0.4
-      '@azure/msal-browser': 2.33.0
+      '@azure/msal-browser': 2.34.0
       '@azure/msal-common': 9.1.1
-      '@azure/msal-node': 1.15.0
+      '@azure/msal-node': 1.16.0
       events: 3.3.0
       jws: 4.0.0
       open: 8.4.2
@@ -468,15 +468,15 @@ packages:
       tslib: 2.5.0
     optional: true
 
-  /@azure/msal-browser/2.33.0:
-    resolution: {integrity: sha512-c7CVh1tfUfxiWkEIhoIb11hL4PGo4hz0M+gMy34ATagAKdLK7qyEu/5AXJWAf5lz5eE+vQhm7+LKiuETrcXXGw==}
+  /@azure/msal-browser/2.34.0:
+    resolution: {integrity: sha512-stoXdlfAtyVIMOp1lS5PorgO5f66MGRi3Q1FBlXhVZFTsTfAWrNdSOx1m/PXWHskWE9aXO+NEzXVOoWmDNnvNA==}
     engines: {node: '>=0.8.0'}
     dependencies:
-      '@azure/msal-common': 10.0.0
+      '@azure/msal-common': 11.0.0
     optional: true
 
-  /@azure/msal-common/10.0.0:
-    resolution: {integrity: sha512-/LghpT93jsZLy55QzTsRZWMx6R1Mjc1Aktwps8sKSGE3WbrGwbSsh2uhDlpl6FMcKChYjJ0ochThWwwOodrQNg==}
+  /@azure/msal-common/11.0.0:
+    resolution: {integrity: sha512-SZH8ObQ3Hq5v3ogVGBYJp1nNW7p+MtM4PH4wfNadBP9wf7K0beQHF9iOtRcjPOkwZf+ZD49oXqw91LndIkdk8g==}
     engines: {node: '>=0.8.0'}
     optional: true
 
@@ -485,11 +485,11 @@ packages:
     engines: {node: '>=0.8.0'}
     optional: true
 
-  /@azure/msal-node/1.15.0:
-    resolution: {integrity: sha512-fwC5M0c8pxOAzmScPbpx7j28YVTDebUaizlVF7bR0xvlU0r3VWW5OobCcr9ybqKS6wGyO7u4EhXJS9rjRWAuwA==}
+  /@azure/msal-node/1.16.0:
+    resolution: {integrity: sha512-eGXPp65i++mAIvziafbCH970TCeECB6iaQP7aRzZEjtU238cW4zKm40U8YxkiCn9rR1G2VeMHENB5h6WRk7ZCQ==}
     engines: {node: 10 || 12 || 14 || 16 || 18}
     dependencies:
-      '@azure/msal-common': 10.0.0
+      '@azure/msal-common': 11.0.0
       jsonwebtoken: 9.0.0
       uuid: 8.3.2
     optional: true
@@ -1497,8 +1497,8 @@ packages:
       - vue
     dev: false
 
-  /@nuxt/content/2.5.0:
-    resolution: {integrity: sha512-ra0IlLYn4UsxYRyAVZeER5e9JlfUaMfOhjgEJSnJd5owCiYsKWJEKSaRKQT8oo6yho09FE4iozgxyFtmYm9FrA==}
+  /@nuxt/content/2.5.2:
+    resolution: {integrity: sha512-bSO4g2aNk7AT5abAIJtHLTN+FZFYMvwP6MH9oP6XAo/SsIowvFq7g38in3jK/OMDR+dZq3Nt1z8GrMDGipzsfQ==}
     dependencies:
       '@nuxt/kit': 3.2.3
       consola: 2.15.3
@@ -1533,7 +1533,7 @@ packages:
       unist-builder: 3.0.1
       unist-util-position: 4.0.4
       unist-util-visit: 4.1.2
-      unstorage: 1.3.0
+      unstorage: 1.4.0
       ws: 8.12.1
     transitivePeerDependencies:
       - bufferutil
@@ -1786,7 +1786,7 @@ packages:
       metadata-scraper: 0.2.61
       rollup-plugin-node-polyfills: 0.2.1
       storyblok-algolia-indexer: 1.0.3
-      vue-instantsearch: 4.8.5_wgc6pxfjm4q6wdrwnygdroc7qu
+      vue-instantsearch: 4.8.7_wgc6pxfjm4q6wdrwnygdroc7qu
     transitivePeerDependencies:
       - '@vue/server-renderer'
       - debug
@@ -2236,8 +2236,8 @@ packages:
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
 
-  /@types/google.maps/3.52.1:
-    resolution: {integrity: sha512-O0MTQyE57zSWf04q/uNmKa3XHvgEj5pvDwJ4N3SqfYaHdusGVQWzkXkNYHeJPL09yHjvSdSy0WcDEX9C/do9kQ==}
+  /@types/google.maps/3.52.2:
+    resolution: {integrity: sha512-zhzHLgAU4EDai3/NDorWTYUskS7KSoK6m8MYPu66lPVbz1RsKJjEEEI+89oj3rPG5Zw8bszoGGXrsH5ehXkuTw==}
     dev: true
 
   /@types/hast/2.3.4:
@@ -2457,38 +2457,38 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@unhead/dom/1.1.19:
-    resolution: {integrity: sha512-P45nMOV2onnrdyafF6BomMGo9zahl7O31MLrvvzB6rODOtCpRj6eauA8f+WRK87wkUt0gZU2LJeNCTeOqHzG4A==}
+  /@unhead/dom/1.1.21:
+    resolution: {integrity: sha512-69kip2vrJIoAD7NKQXS9VhNeTyzRp90vIRFsaOM6L6emWlBc3NmMVdmFUrEcBmGNnGBN6/+vAESPGGG+vvQSIQ==}
     dependencies:
-      '@unhead/schema': 1.1.19
-      '@unhead/shared': 1.1.19
+      '@unhead/schema': 1.1.21
+      '@unhead/shared': 1.1.21
 
-  /@unhead/schema/1.1.19:
-    resolution: {integrity: sha512-pDvVnO4qyQ5RMw7a8jc6usgXyw2gdeoCuxrCLuxeNiz03hBRtcU8crKm1HqkjFKF+6mrHWbsai6RhgwkuOOfeg==}
+  /@unhead/schema/1.1.21:
+    resolution: {integrity: sha512-JfOX2TGlxWY/ZRpEeOJohzDn0MWGjgvsI8O7nwqpOEIr/hu/sMz7Y4+3UYVAKkbHUAIi7edXtiDKLvKvfC7wtg==}
     dependencies:
       hookable: 5.4.2
       zhead: 2.0.4
 
-  /@unhead/shared/1.1.19:
-    resolution: {integrity: sha512-4CKfeNAr9mE9dquAvdcPDZJ5iU5rhNNLXxmmg6w9jecLBjShzOIJU8RwdMXxNKMxybqwPIfKhMOlBSGyglmNBw==}
+  /@unhead/shared/1.1.21:
+    resolution: {integrity: sha512-LuWYzcrt6TouUeQ4Qr5En1VluTUBLD7an60FGCp2U/Nzl8go4RQBZ9LLMKkWaLKjv5LqnGTuH3MfL8e0xcrUVQ==}
     dependencies:
-      '@unhead/schema': 1.1.19
+      '@unhead/schema': 1.1.21
 
-  /@unhead/ssr/1.1.19:
-    resolution: {integrity: sha512-dk9A4sELITkDNu+DalNmX6Nz1EN6MLuUj1UM13qU8MZXAh5LYPtO8sz/0LHBYDi/h+2naBcushQxuihX87Cwrw==}
+  /@unhead/ssr/1.1.21:
+    resolution: {integrity: sha512-QZ/6oeVGQzm1GWixqf0LVj/XiJrbN5W2USNcp5xfmXc7hdsI0r+6r1lEWJVwNRfohGRSwpP5lZMuB84JJH7RfA==}
     dependencies:
-      '@unhead/schema': 1.1.19
-      '@unhead/shared': 1.1.19
+      '@unhead/schema': 1.1.21
+      '@unhead/shared': 1.1.21
 
-  /@unhead/vue/1.1.19_vue@3.2.47:
-    resolution: {integrity: sha512-Dd6ttpyS7x6KxKf2yaj0x8Z9vrbJFdQESnjHRc0F1p83Ec1yqtfBV9oVx/JYDRWOAxmlCXEx1gtuyYhweQ+DWg==}
+  /@unhead/vue/1.1.21_vue@3.2.47:
+    resolution: {integrity: sha512-zX4tIoHAhF7SRe2N89b1bylo2yWY6ClQ5PRdaZzaK5FcwTi6i7RCYC/feQdP9U5TxZLLmdBw3aqBxx4s1m6tyQ==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@unhead/schema': 1.1.19
-      '@unhead/shared': 1.1.19
+      '@unhead/schema': 1.1.21
+      '@unhead/shared': 1.1.21
       hookable: 5.4.2
-      unhead: 1.1.19
+      unhead: 1.1.21
       vue: 3.2.47
 
   /@unocss/reset/0.50.4:
@@ -2699,15 +2699,15 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/head/1.1.15_vue@3.2.47:
-    resolution: {integrity: sha512-LJqvb7dpSqnsdn6YWUxv97vWCnn/s6IfBrE4ih5kRlh8XQXr/HjXJ8IyIxxp0X7QDr3FhOsjRDpJSiQbDYbBdQ==}
+  /@vueuse/head/1.1.19_vue@3.2.47:
+    resolution: {integrity: sha512-ow6HqD0gDfz97rsS3CSJ3lKrQjMpvzK6gy2+N5reWyk6mOYzOpVx96iLYaq7KETDxC820aqx1SDukhXgEMwqCg==}
     peerDependencies:
       vue: '>=2.7 || >=3'
     dependencies:
-      '@unhead/dom': 1.1.19
-      '@unhead/schema': 1.1.19
-      '@unhead/ssr': 1.1.19
-      '@unhead/vue': 1.1.19_vue@3.2.47
+      '@unhead/dom': 1.1.21
+      '@unhead/schema': 1.1.21
+      '@unhead/ssr': 1.1.21
+      '@unhead/vue': 1.1.21_vue@3.2.47
       vue: 3.2.47
 
   /@vueuse/metadata/9.13.0:
@@ -3121,7 +3121,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001462
-      electron-to-chromium: 1.4.322
+      electron-to-chromium: 1.4.324
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
 
@@ -3976,8 +3976,8 @@ packages:
   /ee-first/1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /electron-to-chromium/1.4.322:
-    resolution: {integrity: sha512-KovjizNC9XB7dno/2GjxX8VS0SlfPpCjtyoKft+bCO+UfD8bFy16hY4Sh9s0h9BDxbRH2U0zX5VBjpM1LTcNlg==}
+  /electron-to-chromium/1.4.324:
+    resolution: {integrity: sha512-m+eBs/kh3TXnCuqDF6aHLLRwLK2U471JAbZ1KYigf0TM96fZglxv0/ZFBvyIxnLKsIWUoDiVnHTA2mhYz1fqdA==}
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5525,8 +5525,8 @@ packages:
     resolution: {integrity: sha512-iIGBYjCokU93DDB8kbeztKtlu4qVEyTg1xvS6iSO1YvqRwkIZgf0tmsl/GytsLdZhuw8j4wEaeYsCzNbeJ/zEQ==}
     dev: true
 
-  /instantsearch.js/4.51.1_algoliasearch@4.15.0:
-    resolution: {integrity: sha512-l4nETzassgSMBqOhNxntNH2MGG0KvFagwVwnXFis9P06nlspAyOdFLCQ0HA5wnlRDDev2WAZg9xRcTPCTLrwZw==}
+  /instantsearch.js/4.52.0_algoliasearch@4.15.0:
+    resolution: {integrity: sha512-3GzSiZKmLv51pEoiN1fgRrziYKf/j3PWXQrtWPK3sVJ1DzicFlfy9XMdJ0+ThI0k+aweSGfaesO0WwUuL8i2WQ==}
     peerDependencies:
       algoliasearch: '>= 3.1 < 6'
     dependencies:
@@ -5534,7 +5534,7 @@ packages:
       '@algolia/ui-components-highlight-vdom': 1.2.1
       '@algolia/ui-components-shared': 1.2.1
       '@types/dom-speech-recognition': 0.0.1
-      '@types/google.maps': 3.52.1
+      '@types/google.maps': 3.52.2
       '@types/hogan.js': 3.0.1
       '@types/qs': 6.9.7
       algoliasearch: 4.15.0
@@ -7038,7 +7038,7 @@ packages:
       ufo: 1.1.1
       unenv: 1.2.1
       unimport: 2.2.4_rollup@3.18.0
-      unstorage: 1.2.0
+      unstorage: 1.4.0
     transitivePeerDependencies:
       - debug
       - encoding
@@ -7329,10 +7329,10 @@ packages:
       '@nuxt/telemetry': 2.1.10
       '@nuxt/ui-templates': 1.1.1
       '@nuxt/vite-builder': 3.2.3_cvsfxgm4ztd56vnx4opdesknua
-      '@unhead/ssr': 1.1.19
+      '@unhead/ssr': 1.1.21
       '@vue/reactivity': 3.2.47
       '@vue/shared': 3.2.47
-      '@vueuse/head': 1.1.15_vue@3.2.47
+      '@vueuse/head': 1.1.19_vue@3.2.47
       chokidar: 3.5.3
       cookie-es: 0.5.0
       defu: 6.1.2
@@ -7359,7 +7359,7 @@ packages:
       ufo: 1.1.1
       unctx: 2.1.2
       unenv: 1.2.1
-      unhead: 1.1.19
+      unhead: 1.1.21
       unimport: 2.2.4
       unplugin: 1.1.0
       untyped: 1.2.2
@@ -9674,12 +9674,12 @@ packages:
       node-fetch-native: 1.0.2
       pathe: 1.1.0
 
-  /unhead/1.1.19:
-    resolution: {integrity: sha512-35ePpj3orODzvXqxTGv+mksYp/Dc5qX49AKSbU5/iZVwHwDseYCki42Z2Dejxym/EJuZnMm8/OzbtZM46oJMng==}
+  /unhead/1.1.21:
+    resolution: {integrity: sha512-+ZFPAfHDVEpYpS8ucz0jjreIsgcMnR/NEiDuGXV3w6uWGzP9Tcyyi8Z5k5zhSVCEksSP98C2cbfhWa0CGFK4zA==}
     dependencies:
-      '@unhead/dom': 1.1.19
-      '@unhead/schema': 1.1.19
-      '@unhead/shared': 1.1.19
+      '@unhead/dom': 1.1.21
+      '@unhead/schema': 1.1.21
+      '@unhead/shared': 1.1.21
       hookable: 5.4.2
 
   /unified/10.1.2:
@@ -9836,8 +9836,8 @@ packages:
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
 
-  /unstorage/1.2.0:
-    resolution: {integrity: sha512-QRCcetx19ug1QiYkWk7M5SyrQkjMy2NKY1LsbzdQhSEhIp7Td+tUkAJc64XeCHhzqiHDZ/69S0xseQs6gByESA==}
+  /unstorage/1.4.0:
+    resolution: {integrity: sha512-l4ggmklguKsfkoEcO9QiSgnYLEUTVqHk+Sl9Y63FzhUnCqGz7icxLX7WmvDwPtAYH6qI4hBkfJbVVjS5rispMQ==}
     dependencies:
       anymatch: 3.1.3
       chokidar: 3.5.3
@@ -9861,33 +9861,6 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
-
-  /unstorage/1.3.0:
-    resolution: {integrity: sha512-2ux0UDXBTR7VzJHZFBiLM1b5sB9XEXMlqoG8cd6lkBIxrD8jhj5tZGkRXTD2RgNXp+ndCgSOs9oUmEV5VpR8WQ==}
-    dependencies:
-      anymatch: 3.1.3
-      chokidar: 3.5.3
-      destr: 1.2.2
-      h3: 1.5.0
-      ioredis: 5.3.1
-      listhen: 1.0.3
-      lru-cache: 7.18.3
-      mri: 1.2.0
-      node-fetch-native: 1.0.2
-      ofetch: 1.0.1
-      ufo: 1.1.1
-    optionalDependencies:
-      '@azure/app-configuration': 1.3.1
-      '@azure/cosmos': 3.17.3
-      '@azure/data-tables': 13.2.1
-      '@azure/identity': 3.1.3
-      '@azure/keyvault-secrets': 4.6.0
-      '@azure/storage-blob': 12.13.0
-      '@planetscale/database': 1.6.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
 
   /untyped/1.2.2:
     resolution: {integrity: sha512-EANYd5L6AdpgfldlgMcmvOOnj092nWhy0ybhc7uhEH12ipytDYz89EOegBQKj8qWL3u1wgYnmFjADhsuCJs5Aw==}
@@ -10257,8 +10230,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-instantsearch/4.8.5_wgc6pxfjm4q6wdrwnygdroc7qu:
-    resolution: {integrity: sha512-9wumMXdsJSQfjEHJs2Fwx5gS183THumeXrrzqZ+wDUuurVHps9St9j4Im6eBPtn90B3t2Ak4EiopgIxSoL9FPw==}
+  /vue-instantsearch/4.8.7_wgc6pxfjm4q6wdrwnygdroc7qu:
+    resolution: {integrity: sha512-Iqlc506fQpJPfX6+d2WW1pmiFkc67w5hF/WzpkJ4aj/C4aIS3jNyWK4oZkFu3n/7jybxQWM7BRX0t+SlK+0BFg==}
     peerDependencies:
       '@vue/server-renderer': ^3.1.2
       algoliasearch: '>= 3.32.0 < 5'
@@ -10271,7 +10244,7 @@ packages:
         optional: true
     dependencies:
       algoliasearch: 4.15.0
-      instantsearch.js: 4.51.1_algoliasearch@4.15.0
+      instantsearch.js: 4.52.0_algoliasearch@4.15.0
       mitt: 2.1.0
       vue: 3.2.47
     dev: true

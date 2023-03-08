@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { page, navigation } = useContent()
-const { config } = useDocus()
+const { page } = useContent()
+const { config, tree } = useDocus()
 const route = useRoute()
 
 const fallbackValue = (value: string, fallback = true) => {
@@ -11,8 +11,7 @@ const fallbackValue = (value: string, fallback = true) => {
 const hasBody = computed(() => !page.value || page.value?.body?.children?.length > 0)
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
-// TODO: get navigation links from aside level
-const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 1)
+const hasAside = computed(() => page.value?.aside !== false && tree.value?.length > 1)
 const bottom = computed(() => fallbackValue('bottom', true))
 const isOpen = ref(false)
 
