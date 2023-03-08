@@ -104,6 +104,6 @@ body {
   }
 }
 
-html[dir="rtl"] * {
+/* html[dir="rtl"] * {
   text-align: right !important;
-}
+} */

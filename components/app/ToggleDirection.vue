@@ -6,9 +6,12 @@ const onClick = () => {
 </script>
 
 <template>
-  <button aria-label="Text direction" @click="onClick">
-    <Icon name="uil:arrows-merge" />
-  </button>
+  <ClientOnly>
+    <button aria-label="Text direction" @click="onClick">
+      <Icon v-if="direction === 'ltr'" name="fluent:text-direction-horizontal-right-24-regular" />
+      <Icon v-if="direction === 'rtl'" name="fluent:text-direction-horizontal-left-24-regular" />
+    </button>
+  </ClientOnly>
 </template>
 
 <style lang="ts" scoped>
