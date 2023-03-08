@@ -17,20 +17,10 @@ useContentHead(config.value as any)
 </script>
 
 <template>
-  <div class="app-layout">
+  <div>
     <AppLoadingBar />
     <AppHeader />
     <slot />
     <AppFooter />
   </div>
 </template>
-
-<style scoped lang="ts">
-css({
-  '.app-layout': {
-    minHeight: '100vh',
-    display: 'grid',
-    gridTemplateRows: 'auto 1fr auto',
-  }
-})
-</style>
