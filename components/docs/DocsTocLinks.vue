@@ -30,6 +30,10 @@ function scrollToHeading (id: string) {
   router.push(`#${id}`)
   emit('move', id)
 }
+
+function childMove(id: string) {
+  emit('move', id)
+}
 </script>
 
 <template>
@@ -42,7 +46,7 @@ function scrollToHeading (id: string) {
       >
         {{ link.text }}
       </a>
-      <DocsTocLinks v-if="link.children" :links="link.children" />
+      <DocsTocLinks v-if="link.children" :links="link.children" @move="childMove($event)" />
     </li>
   </ul>
 </template>
