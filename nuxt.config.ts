@@ -1,10 +1,6 @@
-import { createResolver, logger } from '@nuxt/kit'
+import { createResolver, logger, defineNuxtModule } from '@nuxt/kit'
 import { $fetch } from 'ofetch'
 import { version } from './package.json'
-
-logger.success(`Using Docus v${version}`)
-
-process.env.NUXT_INLINE_STYLES = 'true'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -26,15 +22,20 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-config-schema',
     resolve('./app/module'),
-    (_, nuxt) => {
-      if (nuxt.options.dev) {
-        $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
-          if (release.version > version) {
-            logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
-          }
-        }).catch((_) => {})
+    defineNuxtModule({
+      meta: {
+        name: '@nuxt-themes/docus'
+      },
+      setup (_, nuxt) {
+        if (nuxt.options.dev) {
+          $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
+            if (release.version > version) {
+              logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
+            }
+          }).catch((_) => {})
+        }
       }
-    }
+    })
   ],
   css: [
     resolve('./assets/css/main.css')

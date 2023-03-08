@@ -12,7 +12,7 @@ const hasBody = computed(() => !page.value || page.value?.body?.children?.length
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
 // TODO: get navigation links from aside level
-const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 0)
+const hasAside = computed(() => page.value?.aside !== false && navigation.value?.length > 1)
 const bottom = computed(() => fallbackValue('bottom', true))
 const isOpen = ref(false)
 
@@ -59,6 +59,8 @@ onBeforeUnmount(() => {
     class="docs-page-content"
     :class="{
       fluid: config?.main?.fluid,
+      'has-toc': hasToc,
+      'has-aside': hasAside,
     }"
   >
     <!-- Aside -->
@@ -67,12 +69,7 @@ onBeforeUnmount(() => {
     </aside>
 
     <!-- Page Body -->
-    <article
-      class="page-body"
-      :class="{
-        'with-toc': hasToc,
-      }"
-    >
+    <article class="page-body">
       <slot v-if="hasBody" />
       <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
@@ -108,9 +105,22 @@ css({
     '@lg': {
       display: 'grid',
       gap: '{space.8}',
-      // gridTemplateColumns: 'repeat(12, minmax(0, 1fr))'
-      gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr) minmax(250px, 250px)'
-    }
+    },
+    '&.has-toc': {
+      '@lg': {
+        gridTemplateColumns: 'minmax(320px, 1fr) minmax(250px, 250px)'
+      }
+    },
+    '&.has-aside': {
+      '@lg': {
+        gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr)'
+      }
+    },
+    '&.has-aside.has-toc': {
+      '@lg': {
+        gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr) minmax(250px, 250px)'
+      }
+    },
   },
   '.aside-nav': {
     display: 'none',
@@ -136,9 +146,9 @@ css({
     flex: '1 1 0%',
     py: '{space.8}',
     width: '100%',
-    maxWidth: '{docus.readableLine}',
+    // maxWidth: '{docus.readableLine}',
     mx: 'auto',
-    '&.with-toc': {
+    '.has-toc &&': {
       paddingTop: '{space.12}',
       '@lg': {
         paddingTop: '{space.8}',
@@ -146,7 +156,7 @@ css({
     },
     '@lg': {
       marginTop: 0,
-      gridColumnStart: 2,
+      // gridColumnStart: 2,
     },
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
     ':deep(h1:not(.not-prose):first-child)': {

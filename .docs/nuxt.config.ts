@@ -8,8 +8,5 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: ['nuxt-plausible'],
-  typescript: {
-    includeWorkspace: true
-  }
+  modules: ['@nuxtjs/plausible', '@nuxt/devtools']
 })
