@@ -62,11 +62,6 @@
     }
   },
   "release-it": {
-    "hooks": {
-      "before:init": [
-        "pnpm build"
-      ]
-    },
     "npm": {
       "access": "public"
     },
