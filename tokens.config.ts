@@ -13,7 +13,7 @@ export default defineTheme({
       ]
     },
     header: { height: '64px' },
-    footer: { padding: '{space.4} 0' },
+    footer: { height: { initial: '145px', sm: '100px' }, padding: '{space.4} 0' },
     readableLine: '78ch',
     loadingBar: {
       height: '3px',
