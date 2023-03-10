@@ -10,8 +10,6 @@ export default defineAppConfig({
 
     layout: 'default',
 
-    // textDirection: 'rtl',
-
     header: {
       title: '',
       logo: false,
