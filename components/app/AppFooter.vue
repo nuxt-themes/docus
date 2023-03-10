@@ -113,7 +113,7 @@ css({
           width: '{space.4}',
           height: '{space.4}',
           fill: 'currentcolor',
-          marginRight: '{space.2}',
+          marginInlineEnd: '{space.2}',
         },
       },
 
@@ -143,11 +143,11 @@ css({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        // marginLeft: 'calc(0px - {space.4})',
+        // marginInlineStart: 'calc(0px - {space.4})',
 
         '@sm': {
           gridColumn: 'span 3 / span 3',
-          marginRight: 'calc(0px - {space.4})',
+          marginInlineEnd: 'calc(0px - {space.4})',
         },
 
         '.icon-link': {

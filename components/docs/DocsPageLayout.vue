@@ -133,9 +133,9 @@ css({
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
       py: '{space.8}',
-      paddingRight: '{space.8}',
+      paddingInlineEnd: '{space.8}',
       '.fluid &&': {
-        borderRight: '1px solid {elements.border.primary.static}',
+        borderInlineEnd: '1px solid {elements.border.primary.static}',
       }
     }
   },
@@ -215,7 +215,7 @@ css({
       maxHeight: 'none',
       borderBottom: 'none',
       '.fluid &&': {
-        borderLeft: '1px solid {elements.border.primary.static}',
+        borderInlineStart: '1px solid {elements.border.primary.static}',
       }
     },
     '.toc-wrapper': {
@@ -244,7 +244,7 @@ css({
           fontSize: '{text.sm.fontSize}',
           lineHeight: '{text.sm.lineHeight}',
           fontWeight: '{fontWeight.semibold}',
-          marginRight: '{space.1}',
+          marginInlineEnd: '{space.1}',
         },
         '.icon': {
           width: '{space.4}',

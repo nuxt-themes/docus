@@ -80,7 +80,7 @@ css({
         }
       },
       '&.prev': {
-        textAlign: 'left',
+        textAlign: 'end',
         display: 'flex',
         gap: '{space.3}',
         '.directory': {
@@ -99,7 +99,7 @@ css({
         }
       },
       '&.next': {
-        textAlign: 'right',
+        textAlign: 'start',
         display: 'flex',
         justifyContent: 'flex-end',
         gap: '{space.3}',

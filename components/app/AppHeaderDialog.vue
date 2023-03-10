@@ -47,7 +47,8 @@ css({
     position: 'relative',
     zIndex: '10',
     display: 'flex',
-    padding: '{space.4} {space.4} {space.4} 0',
+    padding: '{space.4}',
+    paddingInlineStart: '0px',
     '@lg': {
       display: 'none'
     },

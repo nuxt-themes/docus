@@ -81,7 +81,7 @@ onBeforeUnmount(() => clear)
     }"
     :style="{
       width: `${data.percent}%`,
-      left: data.left,
+      insetInlineStart: data.left,
       opacity: data.show ? 1 : 0,
       backgroundSize: `${(100 / data.percent) * 100}% auto`,
     }"
@@ -94,8 +94,8 @@ css({
     height: '{docus.loadingBar.height}',
     position: 'fixed',
     top: '0px',
-    left: '0px',
-    right: '0px',
+    insetInlineStart: '0px',
+    insetInlineEnd: '0px',
     width: '0%',
     opacity: 1,
     transition: 'width 0.1s, height 0.4s, opacity 0.4s',

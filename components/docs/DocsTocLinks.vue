@@ -51,10 +51,10 @@ function scrollToHeading (id: string) {
 css({
   '.docs-toc-links': {
     '.depth-3': {
-      paddingLeft: '{space.3}'
+      paddingInlineStart: '{space.3}'
     },
     '.depth-4': {
-      paddingLeft: '{space.6}'
+      paddingInlineStart: '{space.6}'
     },
     a: {
       display: 'block',
@@ -64,7 +64,7 @@ css({
       color: '{color.gray.500}',
       truncate: true,
       '@lg': {
-        paddingRight: '{space.3}'
+        paddingInlineEnd: '{space.3}'
       },
       '&:not(.active):hover': {
         color: '{color.gray.900}',
