@@ -9,7 +9,7 @@
 [![Nuxt Studio][nuxt-studio-src]][nuxt-studio-href]
 [![Volta][volta-src]][volta-href]
 
-> Docus is the fastest way to create document-driven websites.
+Docus is the fastest way to create document-driven websites with Vue & Markdown.
 
 - [📄 Documentation](https://docus.dev)
 - [⚡️ Play on StackBlitz](https://stackblitz.com/github/nuxt-themes/docus-starter)
