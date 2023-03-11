@@ -6,7 +6,7 @@ specifiers:
   '@docsearch/js': ^3.3.3
   '@nuxt-themes/elements': ^0.9.0
   '@nuxt-themes/tokens': ^1.9.0
-  '@nuxt-themes/typography': ^0.9.2
+  '@nuxt-themes/typography': ^0.10.0
   '@nuxt/content': ^2.5.2
   '@nuxt/devtools': ^0.2.5
   '@nuxthq/studio': ^0.8.5
@@ -23,7 +23,7 @@ specifiers:
 dependencies:
   '@nuxt-themes/elements': 0.9.0_vue@3.2.47
   '@nuxt-themes/tokens': 1.9.0_vue@3.2.47
-  '@nuxt-themes/typography': 0.9.2_vue@3.2.47
+  '@nuxt-themes/typography': 0.10.0_vue@3.2.47
   '@nuxt/content': 2.5.2
   '@nuxthq/studio': 0.8.5
   '@vueuse/nuxt': 9.13.0_nuxt@3.2.3+vue@3.2.47
@@ -1494,8 +1494,8 @@ packages:
       - vue
     dev: false
 
-  /@nuxt-themes/typography/0.9.2_vue@3.2.47:
-    resolution: {integrity: sha512-18FELiIkl6govA6hu/oZl3TsUBOHc1ERuSGxux0bZ9pT2K3zFqsAw0JsN41y+ABzpjmIMM2mELsFQAdExFR96Q==}
+  /@nuxt-themes/typography/0.10.0_vue@3.2.47:
+    resolution: {integrity: sha512-paC+s9205Ww6YLg2i2CgGnmfkZZzSbmxJyrWjb3KuI5eaJlIJ/EPUjfsUw15tOsFiM8your+akuH4f20UDKg1w==}
     dependencies:
       '@nuxtjs/color-mode': 3.2.0
       nuxt-config-schema: 0.4.5
@@ -4567,6 +4567,15 @@ packages:
     hasBin: true
     dependencies:
       tsx: 3.12.3
+    dev: true
+
+  /espree/9.5.0:
+    resolution: {integrity: sha512-JPbJGhKc47++oo4JkEoTe2wjy4fmMwvFpgJT9cQzmfXKp22Dr6Hf1tdCteLz1h0P3t+mGvWZ+4Uankvh8+c6zw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dependencies:
+      acorn: 8.8.2
+      acorn-jsx: 5.3.2_acorn@8.8.2
+      eslint-visitor-keys: 3.3.0
     dev: true
 
   /espree/9.5.0:
