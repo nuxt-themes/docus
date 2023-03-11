@@ -23,9 +23,6 @@ export default defineTheme({
     }
   },
   typography: {
-    verticalMargin: {
-      base: '22px'
-    },
     color: {
       primary: {
         50: '{color.primary.50}',
