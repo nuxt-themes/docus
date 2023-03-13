@@ -83,7 +83,6 @@ css({
       zIndex: '-1',
       backgroundColor: 'rgba(255, 255, 255, 0.5)',
       backdropFilter: 'saturate(200%) blur(10px)',
-      // transformOrigin: 'left',
       '@dark': {
         backgroundColor: 'rgba(0, 0, 0, 0.5)'
       },
@@ -137,19 +136,17 @@ css({
 
 .nested-enter-active .scrim,
 .nested-leave-active .scrim {
-  transition: transform 200ms ease-out, opacity 200ms linear;
+  transition: opacity 200ms linear;
 }
 
 .nested-enter-from .scrim,
 .nested-leave-to .scrim {
-  transform-origin: left;
-  transform: scaleX(0);
   opacity: 0;
 }
 
 .nested-enter-active .nav,
 .nested-leave-active .nav {
-  transition: transform 200ms ease-out, opacity 200ms linear;
+  transition: transform 200ms ease-in-out, opacity 200ms linear;
 }
 
 .nested-enter-from .nav,
