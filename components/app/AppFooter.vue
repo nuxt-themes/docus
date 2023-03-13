@@ -53,6 +53,8 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
 <style lang="ts" scoped>
 css({
   footer: {
+    display: 'flex',
+    minHeight: '{docus.footer.height}',
     borderTopWidth: '1px',
     borderTopStyle: 'solid',
     borderTopColor: '{elements.border.primary.static}',

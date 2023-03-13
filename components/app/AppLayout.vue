@@ -20,17 +20,19 @@ useContentHead(config.value as any)
   <div class="app-layout">
     <AppLoadingBar />
     <AppHeader />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <AppFooter />
   </div>
 </template>
 
-<style scoped lang="ts">
+<style lang="ts" scoped>
 css({
   '.app-layout': {
-    minHeight: '100vh',
-    display: 'grid',
-    gridTemplateRows: 'auto 1fr auto',
+    main: {
+      minHeight: 'calc(100vh - {docus.header.height} - {docus.footer.height})',
+    }
   }
 })
 </style>

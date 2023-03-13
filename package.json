@@ -1,6 +1,6 @@
 {
   "name": "@nuxt-themes/docus",
-  "version": "1.9.1",
+  "version": "1.9.9",
   "type": "module",
   "main": "./nuxt.config.ts",
   "files": [
@@ -29,9 +29,9 @@
   "dependencies": {
     "@nuxt-themes/elements": "^0.9.0",
     "@nuxt-themes/tokens": "^1.9.0",
-    "@nuxt-themes/typography": "^0.9.1",
-    "@nuxt/content": "^2.4.3",
-    "@nuxthq/studio": "^0.8.1",
+    "@nuxt-themes/typography": "^0.10.0",
+    "@nuxt/content": "^2.5.2",
+    "@nuxthq/studio": "^0.8.5",
     "@vueuse/nuxt": "^9.13.0"
   },
   "devDependencies": {
@@ -42,9 +42,9 @@
     "@nuxtjs/algolia": "^1.5.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/plausible": "^0.2.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "nuxt": "3.2.3",
-    "release-it": "^15.7.0",
+    "release-it": "^15.8.0",
     "typescript": "^4.9.5",
     "vue": "^3.2.47"
   },
@@ -62,11 +62,6 @@
     }
   },
   "release-it": {
-    "hooks": {
-      "before:init": [
-        "pnpm build"
-      ]
-    },
     "npm": {
       "access": "public"
     },
