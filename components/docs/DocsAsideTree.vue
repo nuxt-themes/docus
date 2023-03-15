@@ -24,11 +24,9 @@ const route = useRoute()
 const { config } = useDocus()
 
 const collapsedMap = useState(`docus-docs-aside-collapse-map-${props.parent?._path || '/'}`, () => {
-  if (props.level === 0) {
-    return {}
-  }
   return (props.links as any [])
     .filter(link => !!link.children)
+    .filter(link => link?.collapsed || route.path.includes(link._path))
     .reduce((map, link) => {
       map[link._path] = true
       return map
@@ -102,7 +100,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
       </NuxtLink>
 
       <DocsAsideTree
-        v-show="!isCollapsed(link)"
+        v-show="isCollapsed(link)"
         v-if="link.children?.length && (max === null || level + 1 < max)"
         :links="link.children"
         :level="level + 1"

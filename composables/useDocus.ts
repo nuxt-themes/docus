@@ -35,7 +35,6 @@ export const useDocus = () => {
         } as typeof header,
         aside: {
           ...aside,
-          ...navKeyFromPath(route.path, 'aside', navigation.value || []),
           ...page.value?.aside
         } as typeof aside,
         footer: {
