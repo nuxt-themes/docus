@@ -55,7 +55,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: $dt('color.white');
-  color: $dt('color.gray.700');
+  color: $dt('color.gray.800');
   font-family: $dt('font.sans');
   min-width: $dt('size.xs');
 
