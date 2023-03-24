@@ -1,5 +1,4 @@
 import { defineTheme } from 'pinceau'
-// import theme from '@nuxt-themes/tokens/config'
 
 export default defineTheme({
   color: {
@@ -50,12 +49,12 @@ export default defineTheme({
       500: '#1AADFF',
       600: '#0069A6',
       700: '#003351',
-      800: '#001A29',
+      800: '#002235',
       900: '#00131D'
     },
     green: {
       50: '#ECFFF7',
-      100: '#E1FFF2',
+      100: '#D6FDEC',
       200: '#C3FFE6',
       300: '#86FBCB',
       400: '#3CEEA5',
@@ -67,11 +66,11 @@ export default defineTheme({
     },
     yellow: {
       50: '#FFFDEA',
-      100: '#FFFACD',
+      100: '#FFF9C6',
       200: '#FFF7A9',
       300: '#FFEF8A',
       400: '#FFE854',
-      500: '#F6D70E',
+      500: '#EECF00',
       600: '#C2A905',
       700: '#6B5D02',
       800: '#282300',
