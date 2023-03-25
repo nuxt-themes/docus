@@ -7,12 +7,12 @@ export default defineTheme({
     primary: {
       50: '#F1FCFF',
       100: '#DCF7FF',
-      200: '#B2EEFF',
+      200: '#C5F2FF',
       300: '#82E3FF',
       400: '#55E1FF',
       500: '#1AD6FF',
-      600: '#09A7CE',
-      700: '#024C5E',
+      600: '#09A0C1',
+      700: '#024757',
       800: '#00232B',
       900: '#001A1F'
     },
@@ -31,7 +31,7 @@ export default defineTheme({
     red: {
       50: '#FFF9F8',
       100: '#FFF3F0',
-      200: '#FFD2C8',
+      200: '#FFDED7',
       300: '#FFA692',
       400: '#FF7353',
       500: '#FF3B10',
@@ -54,7 +54,7 @@ export default defineTheme({
     },
     green: {
       50: '#ECFFF7',
-      100: '#D6FDEC',
+      100: '#DEFFF1',
       200: '#C3FFE6',
       300: '#86FBCB',
       400: '#3CEEA5',
@@ -66,10 +66,10 @@ export default defineTheme({
     },
     yellow: {
       50: '#FFFDEA',
-      100: '#FFF9C6',
-      200: '#FFF7A9',
+      100: '#FFF8CC',
+      200: '#FEF5A4',
       300: '#FFEF8A',
-      400: '#FFE854',
+      400: '#FFE53C',
       500: '#EECF00',
       600: '#C2A905',
       700: '#6B5D02',
