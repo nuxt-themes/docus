@@ -88,7 +88,8 @@ css({
       '&.center': {
         gridColumn: 'span 4 / span 4',
         justifyContent: 'center',
-        flex: '1'
+        flex: '1',
+        zIndex: '1'
       },
       '&.right': {
         display: 'flex',
