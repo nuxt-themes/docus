@@ -84,6 +84,17 @@ export default defineTheme({
         '@studioIcon material-symbols:docs'
       ]
     },
+    body: {
+      backgroundColor: {
+        initial: '{color.white}',
+        dark: '{color.black}'
+      },
+      color: {
+        initial: '{color.gray.800}',
+        dark: '{color.gray.200}'
+      },
+      fontFamily: '{font.sans}',
+    },
     header: { height: '64px' },
     footer: { height: { initial: '145px', sm: '100px' }, padding: '{space.4} 0' },
     readableLine: '78ch',
