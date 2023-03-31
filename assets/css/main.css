@@ -54,15 +54,10 @@ body {
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $dt('color.white');
-  color: $dt('color.gray.800');
-  font-family: $dt('font.sans');
+  background-color: $dt('docus.body.backgroundColor');
+  color: $dt('docus.body.color');
+  font-family: $dt('docus.body.fontFamily');
   min-width: $dt('size.xs');
-
-  @dark {
-    background: $dt('color.black');
-    color: $dt('color.gray.200');
-  }
 }
 
 .docus-scrollbars {
