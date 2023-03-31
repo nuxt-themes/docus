@@ -84,7 +84,18 @@ export default defineTheme({
         '@studioIcon material-symbols:docs'
       ]
     },
-    header: { 
+    body: {
+      backgroundColor: {
+        initial: '{color.white}',
+        dark: '{color.black}'
+      },
+      color: {
+        initial: '{color.gray.800}',
+        dark: '{color.gray.200}'
+      },
+      fontFamily: '{font.sans}',
+    },
+    header: {
       height: '64px',
       logo: {
         height: {
