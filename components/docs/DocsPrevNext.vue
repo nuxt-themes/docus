@@ -66,18 +66,15 @@ css({
       position: 'relative',
       minWidth: '0px',
       padding: '{space.3}',
-      border: '1px solid {elements.border.primary.static}',
+      borderWidth: '1px',
+      borderStyle: 'solid',
       borderRadius: '{radii.md}',
+      backgroundColor: '{docus.docs.prevNext.backgroundColor.static}',
+      borderColor: '{docus.docs.prevNext.borderColor.static}',
       '&:hover': {
-        backgroundColor: '{color.gray.50}',
-        borderColor: '{color.gray.50}',
+        backgroundColor: '{docus.docs.prevNext.backgroundColor.hover}',
+        borderColor: '{docus.docs.prevNext.borderColor.hover}',
         color: '{color.primary.500}',
-      },
-      '@dark': {
-        '&:hover': {
-          backgroundColor: '{color.gray.900}',
-          borderColor: '{color.gray.900}',
-        }
       },
       '&.prev': {
         textAlign: 'left',

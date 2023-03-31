@@ -92,6 +92,30 @@ export default defineTheme({
       gradientColorStop1: '#00dc82',
       gradientColorStop2: '#34cdfe',
       gradientColorStop3: '#0047e1'
+    },
+    docs: {
+      prevNext: {
+        backgroundColor: {
+          static: {
+            initial: '{color.gray.50}',
+            dark: '{color.gray.900}'
+          },
+          hover: {
+            initial: '{color.gray.50}',
+            dark: '{color.gray.900}'
+          }
+        },
+        borderColor: {
+          static: {
+            initial: '{color.gray.100}',
+            dark: '{color.gray.800}'
+          },
+          hover: {
+            initial: '{color.gray.100}',
+            dark: '{color.gray.800}'
+          }
+        }
+      }
     }
   },
   typography: {
