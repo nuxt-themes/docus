@@ -31,7 +31,7 @@ css({
     flex: 'none',
 
     '.logo': {
-      height: '{space.6}',
+      height: '{docus.header.logo.height}',
       width: 'auto',
       'img, svg': {
         height: 'inherit',
@@ -48,20 +48,14 @@ css({
           display: 'block'
         }
       },
-      '@sm': {
-        height: '{space.7}'
-      }
     },
 
     '.title': {
-      fontSize: '{fontSize.xl}',
-      fontWeight: '{fontWeight.bold}',
-      color: '{color.gray.900}',
-      '@dark': {
-        color: '{color.gray.100}',
-      },
+      fontSize: '{docus.header.title.fontSize}',
+      fontWeight: '{docus.header.title.fontWeight}',
+      color: '{docus.header.title.color.static}',
       '&:hover': {
-        color: '{color.gray.500}',
+        color: '{docus.header.title.color.hover}',
       }
     }
   }
