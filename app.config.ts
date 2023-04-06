@@ -42,5 +42,14 @@ export default defineAppConfig({
       owner: undefined,
       edit: false
     }
+  },
+  prose: {
+    copyButton: {
+      iconCopy: 'ph:copy',
+      iconCopied: 'ph:check'
+    },
+    headings: {
+      icon: 'ph:link'
+    }
   }
 })
