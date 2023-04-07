@@ -6,18 +6,21 @@ const { resolve } = createResolver(import.meta.url)
 
 // That allows to overwrite these dependencies paths via `.env` for local development
 const envModules = {
-  studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio'
+  tokens: process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
+  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '@nuxt-themes/elements',
+  studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
+  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
 }
 
 export default defineNuxtConfig({
+  extends: [envModules.typography, envModules.elements],
   modules: [
-    'pinceau/nuxt',
+    envModules.tokens,
     envModules.studio,
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-config-schema',
-    'nuxt-icon',
     resolve('./app/module'),
     defineNuxtModule({
       meta: {
@@ -46,26 +49,6 @@ export default defineNuxtConfig({
     {
       prefix: '',
       path: resolve('./components/docs'),
-      global: true
-    },
-    {
-      prefix: '',
-      path: resolve('./components/prose'),
-      global: true
-    },
-    {
-      prefix: '',
-      path: resolve('./components/elements/globals'),
-      global: true
-    },
-    {
-      prefix: '',
-      path: resolve('./components/elements/icons'),
-      global: true
-    },
-    {
-      prefix: '',
-      path: resolve('./components/elements/landing'),
       global: true
     }
   ],
