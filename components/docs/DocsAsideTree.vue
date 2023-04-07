@@ -60,7 +60,7 @@ const isCollapsed = (link: any) => {
 
 const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isCollapsed(link))
 
-const hasNesting = computed(() => props.links.some((link: any) => link.children))
+// const hasNesting = computed(() => props.links.some((link: any) => link.children))
 </script>
 
 <template>
@@ -69,21 +69,22 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
       v-for="link in links"
       :key="link._path"
       :class="{
+        'has-icon': link?.navigation?.icon || link.icon,
         'has-parent-icon': parent?.icon,
-        'has-children': level > 0 && link.children,
-        'bordered': level > 0 || !hasNesting,
+        'has-children': link.children,
+        'bordered': level > 0 && !link.children,
         'active': isActive(link),
       }"
     >
-      <button v-if="link.children" class="title-collapsible-button" @click="toggleCollapse(link)">
+      <component :is="config.aside?.collapsible ? 'button' : 'h5'" v-if="link.children" class="title-collapsible-button" @click="() => config.aside?.collapsible && toggleCollapse(link)">
         <span class="content">
           <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
           <span>{{ link?.navigation?.title || link.title || link._path }}</span>
         </span>
-        <span>
+        <span v-if="config.aside?.collapsible">
           <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="collapsible-icon" />
         </span>
-      </button>
+      </component>
 
       <NuxtLink
         v-else
@@ -91,7 +92,6 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         class="link"
         :exact="link.exact"
         :class="{
-          'padded': level > 0 || !hasNesting,
           'active': isActive(link),
         }"
       >
@@ -118,6 +118,13 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
 css({
   '.docs-aside-tree': {
     li: {
+      '&:first-child': {
+        marginTop: '0 !important',
+      },
+      // marginBottom: '{space.12}',
+      '&.has-children': {
+        margin: '{space.8} 0',
+      },
       '&.bordered': {
         borderLeft: '1px solid {elements.border.primary.static}',
         '&:hover': {
@@ -129,8 +136,8 @@ css({
             borderColor: '{color.primary.600}'
           },
         },
-        '&.has-children': {
-          paddingLeft: '{space.4}'
+        '.has-children &': {
+          paddingLeft: '{space.4}',
         },
         '&.has-parent-icon': {
           marginLeft: '{space.2}'
@@ -138,13 +145,20 @@ css({
       }
     },
     '.recursive': {
-      padding: '{space.2} 0'
+      padding: '0',
+      li: {
+        margin: '0',
+        '&.has-children': {
+          borderLeft: '1px solid transparent',
+          marginLeft: '{space.4}',
+        },
+      },
     },
     '.title-collapsible-button': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '{space.rem.375} 0',
+      padding: '{space.2} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       fontWeight: '{fontWeight.semibold}',
@@ -157,8 +171,8 @@ css({
         display: 'flex',
         alignItems: 'center',
         '.icon': {
-          width: '{space.4}',
-          height: '{space.4}',
+          width: '{space.5}',
+          height: '{space.5}',
           marginRight: '{space.2}'
         }
       },
@@ -175,7 +189,7 @@ css({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: '{space.rem.375} 0',
+      padding: '{space.2} 0',
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
       color: '{color.gray.500}',
