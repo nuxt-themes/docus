@@ -101,9 +101,9 @@ css({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column-reverse',
+    gap: '{docus.docs.page.layout.spacing}',
     '@lg': {
       display: 'grid',
-      gap: '{space.8}',
     },
     '&.has-toc': {
       '@lg': {
@@ -117,6 +117,9 @@ css({
     },
     '&.has-aside.has-toc': {
       '@lg': {
+        gridTemplateColumns: 'minmax(200px, 200px) minmax(320px, 1fr) minmax(200px, 200px)'
+      },
+      '@xl': {
         gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr) minmax(250px, 250px)'
       }
     },
@@ -131,8 +134,8 @@ css({
       // gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
-      py: '{space.8}',
-      paddingRight: '{space.8}',
+      py: '{docus.docs.page.layout.spacing}',
+      paddingRight: '{docus.docs.page.layout.spacing}',
       '.fluid &&': {
         borderRight: '1px solid {elements.border.primary.static}',
       }
@@ -145,11 +148,14 @@ css({
     flex: '1 1 0%',
     py: '{space.8}',
     width: '100%',
-    // maxWidth: '{docus.readableLine}',
+    maxWidth: '{docus.readableLine}',
     mx: 'auto',
     '.has-toc &&': {
       paddingTop: '{space.12}',
       '@lg': {
+        paddingTop: '{space.6}',
+      },
+      '@xl': {
         paddingTop: '{space.8}',
       }
     },
@@ -208,8 +214,7 @@ css({
     '@lg': {
       mx: 0,
       alignSelf: 'flex-start',
-      py: '{space.8}',
-      px: '{space.8}',
+      padding: '{docus.docs.page.layout.spacing} 0 {docus.docs.page.layout.spacing} {docus.docs.page.layout.spacing}',
       height: 'calc(100vh - {docus.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',

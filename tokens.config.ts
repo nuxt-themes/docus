@@ -116,6 +116,17 @@ export default defineTheme({
       gradientColorStop1: '#00dc82',
       gradientColorStop2: '#34cdfe',
       gradientColorStop3: '#0047e1'
+    },
+    docs: {
+      page: {
+        layout: {
+          spacing: {
+            initial: '0px',
+            lg: '{space.6}',
+            xl: '{space.8}'
+          }
+        }
+      }
     }
   },
   typography: {
