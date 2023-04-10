@@ -7,11 +7,17 @@ const title = computed(() => config.value.header?.title || config.value.title)
 <template>
   <NuxtLink class="navbar-logo" to="/" :aria-label="title">
     <!-- Only Logo -->
-    <component :is="logo" v-if="logo && typeof logo === 'string'" />
-    <Logo v-else-if="logo" />
+    <span class="logo" v-if="logo">
+      <component :is="logo" v-if="typeof logo === 'string'" />
+      <template v-else-if="logo.light && logo.dark">
+        <img :src="logo.light" alt="" class="light-img">
+        <img :src="logo.dark" alt="" class="dark-img">
+      </template>
+      <Logo v-else-if="logo" />
+    </span>
 
     <!-- Only title -->
-    <span v-else>
+    <span class="title" v-else>
       {{ title }}
     </span>
   </NuxtLink>
@@ -24,15 +30,32 @@ css({
     alignItems: 'center',
     flex: 'none',
 
-    span: {
-      fontSize: '{fontSize.xl}',
-      fontWeight: '{fontWeight.bold}',
-      color: '{color.gray.900}',
-      '@dark': {
-        color: '{color.gray.100}',
+    '.logo': {
+      height: '{docus.header.logo.height}',
+      width: 'auto',
+      'img, svg': {
+        height: 'inherit',
       },
+      '.light-img': {
+        display: 'block',
+        '@dark': {
+          display: 'none'
+        }
+      },
+      '.dark-img': {
+        display: 'none',
+        '@dark': {
+          display: 'block'
+        }
+      },
+    },
+
+    '.title': {
+      fontSize: '{docus.header.title.fontSize}',
+      fontWeight: '{docus.header.title.fontWeight}',
+      color: '{docus.header.title.color.static}',
       '&:hover': {
-        color: '{color.gray.500}',
+        color: '{docus.header.title.color.hover}',
       }
     }
   }
