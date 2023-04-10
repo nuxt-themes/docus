@@ -8,7 +8,7 @@ const directory = (link: any) => {
   const nav = navDirFromPath(link._path, navigation.value || [])
 
   if (nav && nav[0]) {
-    return nav[0]._path
+    return nav[0]?._path ?? ''
   } else {
     const dirs = link.split('/')
     const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
@@ -20,7 +20,7 @@ const directory = (link: any) => {
 <template>
   <div v-if="prev || next" class="docs-prev-next">
     <NuxtLink
-      v-if="prev"
+      v-if="prev && prev._path"
       :to="prev._path"
       class="prev"
     >
@@ -36,7 +36,7 @@ const directory = (link: any) => {
     <span v-else />
 
     <NuxtLink
-      v-if="next"
+      v-if="next && next._path"
       :to="next._path"
       class="next"
     >
