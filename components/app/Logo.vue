@@ -55,14 +55,10 @@
 css({
   svg: {
     color: '{color.gray.900}',
-    height: '{space.6}',
-    width: 'auto',
+    height: 'inherit',
     '@dark': {
       color: '{color.gray.100}'
     },
-    '@sm': {
-      height: '{space.7}'
-    }
   }
 })
 </style>

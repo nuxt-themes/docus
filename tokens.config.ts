@@ -108,7 +108,26 @@ export default defineTheme({
       },
       fontFamily: '{font.sans}'
     },
-    header: { height: '64px' },
+    header: {
+      height: '64px',
+      logo: {
+        height: {
+          initial: '{space.6}',
+          sm: '{space.7}'
+        }
+      },
+      title: {
+        fontSize: '{fontSize.2xl}', 
+        fontWeight: '{fontWeight.bold}', 
+        color: {
+          static: {
+            initial: '{color.gray.900}', 
+            dark: '{color.gray.100}', 
+          },
+          hover: '{color.primary.500}', 
+        }
+      }
+    },
     footer: { height: { initial: '145px', sm: '100px' }, padding: '{space.4} 0' },
     readableLine: '78ch',
     loadingBar: {
