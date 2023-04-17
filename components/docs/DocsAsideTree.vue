@@ -126,7 +126,7 @@ css({
         margin: '{space.8} 0',
       },
       '&.bordered': {
-        borderLeft: '1px solid {elements.border.primary.static}',
+        borderInlineStart: '1px solid {elements.border.primary.static}',
         '&:hover': {
           borderColor: '{elements.border.primary.hover}'
         },
@@ -137,10 +137,10 @@ css({
           },
         },
         '.has-children &': {
-          paddingLeft: '{space.4}',
+          paddingInlineStart: '{space.4}',
         },
         '&.has-parent-icon': {
-          marginLeft: '{space.2}'
+          marginInlineStart: '{space.2}'
         }
       }
     },
@@ -149,8 +149,8 @@ css({
       li: {
         margin: '0',
         '&.has-children': {
-          borderLeft: '1px solid transparent',
-          marginLeft: '{space.4}',
+          borderInlineStart: '1px solid transparent',
+          marginInlineStart: '{space.4}',
         },
       },
     },
@@ -173,7 +173,7 @@ css({
         '.icon': {
           width: '{space.5}',
           height: '{space.5}',
-          marginRight: '{space.2}'
+          marginInlineEnd: '{space.2}'
         }
       },
       '.collapsible-icon': {
@@ -205,7 +205,7 @@ css({
         }
       },
       '&.padded': {
-        paddingLeft: '{space.4}'
+        paddingInlineStart: '{space.4}'
       },
       '&.active': {
         color: '{color.primary.500}',
@@ -218,7 +218,7 @@ css({
       '.icon': {
         width: '{space.4}',
         height: '{space.4}',
-        marginRight: '{space.1}'
+        marginInlineEnd: '{space.1}'
       }
     }
   }

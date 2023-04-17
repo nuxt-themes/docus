@@ -12,7 +12,7 @@ defineProps({
   },
   zIndex: {
     type: String,
-    default: '10'
+    default: '0'
   },
   top: {
     type: String,

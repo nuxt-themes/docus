@@ -30,7 +30,8 @@ css({
     flexDirection: 'row',
     gap: '{space.4}',
     marginTop: '{space.8}',
-    fontSize: '{fontSize.sm}',
+    fontSize: '{text.sm.fontSize}',
+    lineHeight: '{text.sm.lineHeight}',
     color: '{color.gray.500}',
     '@dark': {
       color: '{color.gray.400}'

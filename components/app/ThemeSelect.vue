@@ -12,9 +12,9 @@ const onClick = () => {
 <template>
   <button aria-label="Color Mode" @click="onClick">
     <ColorScheme placeholder="...">
-      <Icon v-if="colorMode.preference === 'dark'" name="uil:moon" />
-      <Icon v-else-if="colorMode.preference === 'light'" name="uil:sun" />
-      <Icon v-else name="uil:desktop" />
+      <Icon v-if="colorMode.preference === 'dark'" name="ph:moon-fill" />
+      <Icon v-else-if="colorMode.preference === 'light'" name="ph:sun-dim-fill" />
+      <Icon v-else name="ph:desktop-fill" />
     </ColorScheme>
   </button>
 </template>

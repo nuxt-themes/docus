@@ -70,6 +70,7 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
-    dataValue: 'theme'
+    dataValue: 'theme',
+    preference: 'dark'
   }
 })

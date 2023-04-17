@@ -54,7 +54,7 @@ css({
       truncate: true,
 
       '& > * + *': {
-        marginLeft: '{space.2}'
+        marginInlineStart: '{space.2}'
       },
 
       li: {

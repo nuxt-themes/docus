@@ -68,8 +68,8 @@ css({
       '.content': {
         '.text-section': {
           borderColor: '{color.gray.200}',
-          borderLeftStyle: 'solid',
-          borderLeftWidth: '1px',
+          borderInlineStartStyle: 'solid',
+          borderInlineStartWidth: '1px',
           border: 'none',
 
           '@dark': {
@@ -78,9 +78,9 @@ css({
 
           '@sm': {
             borderColor: '{color.gray.200}',
-            borderLeftStyle: 'solid',
-            borderLeftWidth: '1px',
-            paddingLeft: '{space.6}'
+            borderInlineStartStyle: 'solid',
+            borderInlineStartWidth: '1px',
+            paddingInlineStart: '{space.6}'
           },
 
           h1: {

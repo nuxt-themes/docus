@@ -29,7 +29,7 @@ css({
       height: '{space.4}'
     },
     '.text': {
-      marginLeft: '{space.2}'
+      marginInlineStart: '{space.2}'
     }
   }
 })

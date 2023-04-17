@@ -25,6 +25,7 @@ defineProps({
 
       <div class="section right">
         <AppSearch v-if="hasDocSearch" />
+        <ToggleDirection />
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
@@ -82,7 +83,7 @@ css({
       '&.left': {
         gridColumn: 'span 4 / span 4',
         '@lg': {
-          marginLeft: 0
+          marginInlineStart: 0
         },
       },
       '&.center': {
@@ -97,7 +98,7 @@ css({
         justifyContent: 'flex-end',
         alignItems: 'center',
         flex: 'none',
-        marginRight: 'calc(0px - {space.4})',
+        marginInlineEnd: 'calc(0px - {space.4})',
         '.social-icons': {
           display: 'none',
           '@md': {

@@ -72,5 +72,8 @@
       "release": true,
       "releaseName": "v${version}"
     }
+  },
+  "resolutions": {
+    "@nuxt-themes/tokens": "file:/Users/serhii/code/github/nuxt-themes/tokens"
   }
 }

@@ -47,7 +47,8 @@ css({
     position: 'relative',
     zIndex: '10',
     display: 'flex',
-    padding: '{space.4} {space.4} {space.4} 0',
+    padding: '{space.4}',
+    paddingInlineStart: '0px',
     '@lg': {
       display: 'none'
     },
@@ -69,10 +70,10 @@ css({
     display: 'flex',
     alignItems: 'flex-start',
     overflowY: 'auto',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: 'rgba({temp.color.white}, 0.5)',
     backdropFilter: '{elements.backdrop.filter}',
     '@dark': {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      backgroundColor: 'rgba({temp.color.black}, 0.5)'
     },
     '@lg': {
       display: 'none'

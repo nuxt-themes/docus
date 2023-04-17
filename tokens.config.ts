@@ -1,85 +1,40 @@
 import { defineTheme } from 'pinceau'
+import theme from '@nuxt-themes/tokens/config'
 
 export default defineTheme({
-  color: {
-    black: '#0B0A0A',
-    // Primary is modified lightblue
-    primary: {
-      50: '#F1FCFF',
-      100: '#DCF7FF',
-      200: '#C5F2FF',
-      300: '#82E3FF',
-      400: '#55E1FF',
-      500: '#1AD6FF',
-      600: '#09A0C1',
-      700: '#024757',
-      800: '#00232B',
-      900: '#001A1F'
-    },
-    gray: {
-      50: '#FBFBFB',
-      100: '#F6F5F4',
-      200: '#ECEBE8',
-      300: '#DBD9D3',
-      400: '#ADA9A4',
-      500: '#97948F',
-      600: '#67635D',
-      700: '#36332E',
-      800: '#201E1B',
-      900: '#121110'
-    },
-    red: {
-      50: '#FFF9F8',
-      100: '#FFF3F0',
-      200: '#FFDED7',
-      300: '#FFA692',
-      400: '#FF7353',
-      500: '#FF3B10',
-      600: '#BB2402',
-      700: '#701704',
-      800: '#340A01',
-      900: '#1C0301'
-    },
-    blue: {
-      50: '#F2FAFF',
-      100: '#DFF3FF',
-      200: '#C6EAFF',
-      300: '#A1DDFF',
-      400: '#64C7FF',
-      500: '#1AADFF',
-      600: '#0069A6',
-      700: '#014267',
-      800: '#002235',
-      900: '#00131D'
-    },
-    green: {
-      50: '#ECFFF7',
-      100: '#DEFFF1',
-      200: '#C3FFE6',
-      300: '#86FBCB',
-      400: '#3CEEA5',
-      500: '#0DD885',
-      600: '#00B467',
-      700: '#006037',
-      800: '#002817',
-      900: '#00190F'
-    },
-    yellow: {
-      50: '#FFFCEE',
-      100: '#FFF6D3',
-      200: '#FFF0B1',
-      300: '#FFE372',
-      400: '#FFDC4E',
-      500: '#FBCA05',
-      600: '#CBA408',
-      700: '#614E02',
-      800: '#292100',
-      900: '#1B1500'
-    },
-    shadow: {
-      initial: '{color.gray.400}',
-      dark: '{color.gray.800}'
+  temp: {
+    color: {
+      white: '255, 255, 255',
+      black: '14, 13, 13',
+      gray: {
+        50: '251, 251, 251',
+        100: '246, 245, 244',
+        200: '236, 235, 232',
+        300: '219, 217, 211',
+        400: '173, 169, 164',
+        500: '151, 148, 143',
+        600: '103, 99, 93',
+        700: '54, 51, 46',
+        800: '32, 30, 27',
+        900: '18, 17, 16'
+      }
     }
+  },
+  color: {
+    primary: theme.color.lightblue
+    // black: '14, 13, 13',
+    // gray: {
+    //   50: '251, 251, 251',
+    //   100: '246, 245, 244',
+    //   200: '236, 235, 232',
+    //   300: '219, 217, 211',
+    //   400: '173, 169, 164',
+    //   500: '151, 148, 143',
+    //   600: '103, 99, 93',
+    //   700: '54, 51, 46',
+    //   800: '32, 30, 27',
+    //   900: '18, 17, 16'
+    // }
   },
   shadow: {
     xs: '0px 1px 2px 0px {color.shadow}',
@@ -99,7 +54,7 @@ export default defineTheme({
     },
     body: {
       backgroundColor: {
-        initial: '{color.white}',
+        initial: '{color.gray.50}',
         dark: '{color.black}'
       },
       color: {
@@ -117,14 +72,14 @@ export default defineTheme({
         }
       },
       title: {
-        fontSize: '{fontSize.2xl}', 
-        fontWeight: '{fontWeight.bold}', 
+        fontSize: '{fontSize.2xl}',
+        fontWeight: '{fontWeight.bold}',
         color: {
           static: {
-            initial: '{color.gray.900}', 
-            dark: '{color.gray.100}', 
+            initial: '{color.gray.900}',
+            dark: '{color.gray.100}'
           },
-          hover: '{color.primary.500}', 
+          hover: '{color.primary.500}'
         }
       }
     },
@@ -175,5 +130,23 @@ export default defineTheme({
         900: '{color.gray.900}'
       }
     }
+  },
+  elements: {
+    backdrop: {
+      $schema: {
+        title: 'Backdrops used in Elements.',
+        tags: [
+          '@studioInput design-token',
+          '@studioInputTokenType size',
+          '@studioIcon material-symbols:blur-circular'
+        ]
+      },
+      background: {
+        initial: 'rgba({temp.color.gray.50}, 0.8)',
+        dark: 'rgba({temp.color.black}, 0.8)'
+      }
+    }
+    // border
+    // surface
   }
 })

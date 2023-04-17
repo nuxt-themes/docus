@@ -135,9 +135,9 @@ css({
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.header.height})',
       py: '{docus.docs.page.layout.spacing}',
-      paddingRight: '{docus.docs.page.layout.spacing}',
+      paddingInlineEnd: '{docus.docs.page.layout.spacing}',
       '.fluid &&': {
-        borderRight: '1px solid {elements.border.primary.static}',
+        borderInlineEnd: '1px solid {elements.border.primary.static}',
       }
     }
   },
@@ -214,12 +214,13 @@ css({
     '@lg': {
       mx: 0,
       alignSelf: 'flex-start',
-      padding: '{docus.docs.page.layout.spacing} 0 {docus.docs.page.layout.spacing} {docus.docs.page.layout.spacing}',
+      padding: '{docus.docs.page.layout.spacing}',
+      paddingInlineEnd: '0px',
       height: 'calc(100vh - {docus.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',
       '.fluid &&': {
-        borderLeft: '1px solid {elements.border.primary.static}',
+        borderInlineStart: '1px solid {elements.border.primary.static}',
       }
     },
     '.toc-wrapper': {
@@ -248,7 +249,7 @@ css({
           fontSize: '{text.sm.fontSize}',
           lineHeight: '{text.sm.lineHeight}',
           fontWeight: '{fontWeight.semibold}',
-          marginRight: '{space.1}',
+          marginInlineEnd: '{space.1}',
         },
         '.icon': {
           width: '{space.4}',
