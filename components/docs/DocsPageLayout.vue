@@ -74,8 +74,10 @@ onBeforeUnmount(() => {
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <template v-if="hasBody && page && bottom">
-        <DocsPageBottom />
-        <DocsPrevNext />
+        <div class="page-body-bottom">
+          <DocsPageBottom />
+          <DocsPrevNext />
+        </div>
       </template>
     </article>
 
@@ -150,17 +152,23 @@ css({
     width: '100%',
     maxWidth: '{docus.readableLine}',
     mx: 'auto',
-    '.has-toc &&': {
-      paddingTop: '{space.12}',
-      '@lg': {
-        paddingTop: '{space.6}',
-      },
-      '@xl': {
-        paddingTop: '{space.8}',
-      }
+    '.page-body-bottom': {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '{space.8}',
     },
+    // '.has-toc &&': {
+    //   paddingTop: '{space.12}',
+    //   '@lg': {
+    //     paddingTop: '{space.8}',
+    //   },
+    //   '@xl': {
+    //     paddingTop: '{space.12}',
+    //   }
+    // },
     '@lg': {
       marginTop: 0,
+      py: '{space.12}',
       // gridColumnStart: 2,
     },
     // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)

@@ -21,7 +21,11 @@ export default defineTheme({
     }
   },
   color: {
-    primary: theme.color.lightblue
+    primary: theme.color.lightblue,
+    shadow: {
+      initial: '{color.gray.300}',
+      dark: 'black'
+    }
     // black: '14, 13, 13',
     // gray: {
     //   50: '251, 251, 251',
@@ -99,6 +103,52 @@ export default defineTheme({
             lg: '{space.6}',
             xl: '{space.8}'
           }
+        }
+      },
+      prevNext: {
+        gap: '{space.8}',
+        padding: '{space.6}',
+        backgroundColor: {
+          initial: '{color.gray.100}',
+          dark: '{color.gray.900}'
+        },
+        borderRadius: '{radii.2xs}',
+        border: {
+          initial: '1px solid {color.gray.200}',
+          dark: 'none'
+        },
+        boxShadow: {
+          static: {
+            initial: 'none',
+            dark: 'inset 0.25px 0.5px 0px hsla(0,0%,100%,.1), inset -0.25px 0px 0px hsla(0,0%,100%,.1), {shadow.xs}'
+          },
+          hover: {
+            initial: 'none',
+            dark: 'inset 0.25px 0.5px 0px hsla(0,0%,100%,.1), inset -0.25px 0px 0px hsla(0,0%,100%,.1), {shadow.lg}'
+          }
+        },
+        title: {
+          color: {
+            hover: '{color.primary.500}'
+          },
+          fontWeight: '{fontWeight.medium}',
+          marginBottom: '{space.2}'
+        },
+        directory: {
+          marginBottom: '{space.3}',
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeight.medium}',
+          color: '{color.gray.500}'
+        },
+        icon: {
+          size: '{space.8}',
+          marginBottom: '{space.4}'
+        },
+        description: {
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
+          color: '{color.gray.500}'
         }
       }
     }
