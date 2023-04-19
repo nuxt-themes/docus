@@ -9,6 +9,7 @@
     "components",
     "composables",
     "layouts",
+    "dist",
     "plugins",
     "nuxt.schema.ts",
     "app.vue",
