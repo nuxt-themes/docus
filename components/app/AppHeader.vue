@@ -2,6 +2,7 @@
 const { config } = useDocus()
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
+const route = useRoute()
 
 const hasDialog = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
@@ -12,6 +13,7 @@ defineProps({
 
 <template>
   <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
+    {{ route }}
     <Container :fluid="config?.header?.fluid ">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
