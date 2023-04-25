@@ -27,6 +27,7 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           :aria-label="link.text"
           :href="link.href"
           :target="link.target || '_self'"
+          :rel="link.rel"
         >
           {{ link.text }}
         </NuxtLink>
