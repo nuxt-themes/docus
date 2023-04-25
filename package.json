@@ -61,6 +61,7 @@
       ]
     }
   },
+  "license": "MIT",
   "release-it": {
     "npm": {
       "access": "public"
