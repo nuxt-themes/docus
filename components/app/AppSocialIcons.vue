@@ -32,7 +32,10 @@ const icons = computed<any>(() => {
     :href="icon.href"
     target="_blank"
   >
-    <Icon v-if="icon.icon" :name="icon.icon" />
+    <Icon
+      v-if="icon.icon"
+      :name="icon.icon"
+    />
   </NuxtLink>
 </template>
 

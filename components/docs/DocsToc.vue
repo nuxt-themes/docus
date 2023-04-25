@@ -10,7 +10,10 @@ const emit = defineEmits(['move'])
         <span>Table of Contents</span>
       </div>
 
-      <DocsTocLinks :links="toc.links" @move="emit('move')" />
+      <DocsTocLinks
+        :links="toc.links"
+        @move="emit('move')"
+      />
     </template>
   </div>
 </template>

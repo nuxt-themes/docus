@@ -17,17 +17,33 @@ watch(visible, v => (v ? open() : close()))
 </script>
 
 <template>
-  <button aria-label="Menu" @click="open">
-    <Icon name="heroicons-outline:menu" aria-hidden="”true”" />
+  <button
+    aria-label="Menu"
+    @click="open"
+  >
+    <Icon
+      name="heroicons-outline:menu"
+      aria-hidden="”true”"
+    />
   </button>
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <teleport to="body">
-    <nav v-if="visible" class="dialog" @click="close">
+    <nav
+      v-if="visible"
+      class="dialog"
+      @click="close"
+    >
       <div @click.stop>
         <div class="wrapper">
-          <button aria-label="Menu" @click="close">
-            <Icon name="heroicons-outline:x" aria-hidden="”true”" />
+          <button
+            aria-label="Menu"
+            @click="close"
+          >
+            <Icon
+              name="heroicons-outline:x"
+              aria-hidden="”true”"
+            />
           </button>
 
           <div class="icons">

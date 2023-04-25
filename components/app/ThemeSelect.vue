@@ -10,11 +10,23 @@ const onClick = () => {
 </script>
 
 <template>
-  <button aria-label="Color Mode" @click="onClick">
+  <button
+    aria-label="Color Mode"
+    @click="onClick"
+  >
     <ColorScheme placeholder="...">
-      <Icon v-if="colorMode.preference === 'dark'" name="uil:moon" />
-      <Icon v-else-if="colorMode.preference === 'light'" name="uil:sun" />
-      <Icon v-else name="uil:desktop" />
+      <Icon
+        v-if="colorMode.preference === 'dark'"
+        name="uil:moon"
+      />
+      <Icon
+        v-else-if="colorMode.preference === 'light'"
+        name="uil:sun"
+      />
+      <Icon
+        v-else
+        name="uil:desktop"
+      />
     </ColorScheme>
   </button>
 </template>

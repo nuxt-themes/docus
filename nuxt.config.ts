@@ -32,7 +32,7 @@ export default defineNuxtConfig({
             if (release.version > version) {
               logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
             }
-          }).catch((_) => {})
+          }).catch(() => {})
         }
       }
     })

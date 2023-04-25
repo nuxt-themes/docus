@@ -63,14 +63,21 @@ onBeforeUnmount(() => {
     }"
   >
     <!-- Aside -->
-    <aside v-if="hasAside" ref="asideNav" class="aside-nav">
+    <aside
+      v-if="hasAside"
+      ref="asideNav"
+      class="aside-nav"
+    >
       <DocsAside class="app-aside" />
     </aside>
 
     <!-- Page Body -->
     <article class="page-body">
       <slot v-if="hasBody" />
-      <Alert v-else type="info">
+      <Alert
+        v-else
+        type="info"
+      >
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <template v-if="hasBody && page && bottom">
@@ -80,14 +87,24 @@ onBeforeUnmount(() => {
     </article>
 
     <!-- TOC -->
-    <div v-if="hasToc" class="toc">
+    <div
+      v-if="hasToc"
+      class="toc"
+    >
       <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
-          <Icon name="heroicons-outline:chevron-right" class="icon" :class="[isOpen && 'rotate']" />
+          <Icon
+            name="heroicons-outline:chevron-right"
+            class="icon"
+            :class="[isOpen && 'rotate']"
+          />
         </button>
 
-        <div class="docs-toc-wrapper" :class="[isOpen && 'opened']">
+        <div
+          class="docs-toc-wrapper"
+          :class="[isOpen && 'opened']"
+        >
           <DocsToc @move="isOpen = false" />
         </div>
       </div>

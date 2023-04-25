@@ -75,13 +75,24 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         'active': isActive(link),
       }"
     >
-      <button v-if="link.children" class="title-collapsible-button" @click="toggleCollapse(link)">
+      <button
+        v-if="link.children"
+        class="title-collapsible-button"
+        @click="toggleCollapse(link)"
+      >
         <span class="content">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <Icon
+            v-if="link?.navigation?.icon || link.icon"
+            :name="link?.navigation?.icon || link.icon"
+            class="icon"
+          />
           <span>{{ link?.navigation?.title || link.title || link._path }}</span>
         </span>
         <span>
-          <Icon :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'" class="collapsible-icon" />
+          <Icon
+            :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'"
+            class="collapsible-icon"
+          />
         </span>
       </button>
 
@@ -96,7 +107,11 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         }"
       >
         <span class="content">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <Icon
+            v-if="link?.navigation?.icon || link.icon"
+            :name="link?.navigation?.icon || link.icon"
+            class="icon"
+          />
           <span>{{ link?.navigation?.title || link.title || link._path }}</span>
         </span>
       </NuxtLink>

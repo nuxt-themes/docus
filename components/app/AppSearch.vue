@@ -5,8 +5,14 @@ const onClick = () => element.value.querySelector('button').click()
 </script>
 
 <template>
-  <div class="doc-search" @click="onClick">
-    <button type="button" aria-label="Search">
+  <div
+    class="doc-search"
+    @click="onClick"
+  >
+    <button
+      type="button"
+      aria-label="Search"
+    >
       <span class="content">
         <Icon name="heroicons-outline:search" />
         <span>Search</span>

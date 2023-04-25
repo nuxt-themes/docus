@@ -18,15 +18,24 @@ const directory = (link: any) => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="docs-prev-next">
+  <div
+    v-if="prev || next"
+    class="docs-prev-next"
+  >
     <NuxtLink
       v-if="prev && prev._path"
       :to="prev._path"
       class="prev"
     >
-      <Icon name="heroicons-outline:arrow-sm-left" class="icon" />
+      <Icon
+        name="heroicons-outline:arrow-sm-left"
+        class="icon"
+      />
       <div class="wrapper">
-        <span v-if="directory(prev._path)" class="directory">
+        <span
+          v-if="directory(prev._path)"
+          class="directory"
+        >
           {{ directory(prev._path) }}
         </span>
         <span class="title">{{ prev.title }}</span>
@@ -41,12 +50,18 @@ const directory = (link: any) => {
       class="next"
     >
       <div class="wrapper">
-        <span v-if="directory(next._path)" class="directory">
+        <span
+          v-if="directory(next._path)"
+          class="directory"
+        >
           {{ directory(next._path) }}
         </span>
         <span class="title">{{ next.title }}</span>
       </div>
-      <Icon name="heroicons-outline:arrow-sm-right" class="icon" />
+      <Icon
+        name="heroicons-outline:arrow-sm-right"
+        class="icon"
+      />
     </NuxtLink>
   </div>
 </template>
