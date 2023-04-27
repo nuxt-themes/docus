@@ -2,16 +2,30 @@
 const { config } = useDocus()
 const { navigation } = useContent()
 const { hasDocSearch } = useDocSearch()
+const { y } = useWindowScroll()
+const route = useRoute()
 
 const hasDialog = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
 defineProps({
   ...variants
 })
+
+const isIndex = computed(() => route.path === '/')
+
+watch(isIndex, (value) => {
+  updateAppConfig({
+    docus: {
+      header: {
+        fluid: !value
+      }
+    }
+  })
+}, { immediate: true })
 </script>
 
 <template>
-  <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
+  <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch, 'is-index': isIndex, 'on-top': y === 0 }">
     <Container :fluid="config?.header?.fluid ">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
@@ -68,6 +82,12 @@ css({
     borderBottom: '1px solid {elements.border.primary.static}',
     backgroundColor: '{elements.backdrop.background}',
     height: '{docus.header.height}',
+
+    '&.is-index.on-top': {
+      background: 'transparent',
+      borderColor: 'transparent',
+      backdropFilter: 'none',
+    },
 
     '.container': {
       display: 'grid',

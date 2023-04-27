@@ -1,10 +1,23 @@
 <script setup lang="ts">
 const { config } = useDocus()
+const route = useRoute()
 const socialIcons = ref(null)
 const icons = computed(() => config.value?.footer?.iconLinks || [])
 const textLinks = computed(() => config.value?.footer?.textLinks || [])
 const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([_, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
+
+const isIndex = computed(() => route.path === '/')
+
+watch(isIndex, (value) => {
+  updateAppConfig({
+    docus: {
+      footer: {
+        fluid: !value
+      }
+    }
+  })
+}, { immediate: true })
 </script>
 
 <template>

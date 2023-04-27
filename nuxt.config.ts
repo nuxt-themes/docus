@@ -50,6 +50,11 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/docs'),
       global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/landing'),
+      global: true
     }
   ],
   pinceau: {
