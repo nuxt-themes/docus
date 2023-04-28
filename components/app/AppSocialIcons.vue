@@ -26,7 +26,7 @@ const icons = computed<any>(() => {
   <NuxtLink
     v-for="icon in icons"
     :key="icon.label"
-    rel="noopener noreferrer"
+    :rel="icon.rel"
     :title="icon.label"
     :aria-label="icon.label"
     :href="icon.href"
