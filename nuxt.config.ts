@@ -71,5 +71,8 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
+  },
+  experimental: {
+    inlineSSRStyles: false
   }
 })
