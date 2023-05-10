@@ -170,7 +170,73 @@ export default defineTheme({
         padding: '{space.4} 0',
         borderTopWidth: '1px',
         borderTopStyle: 'solid',
-        borderTopColor: '{elements.border.primary.static}'
+        borderTopColor: '{elements.border.primary.static}',
+        layout: {
+          gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+          justifyItems: {
+            initial: 'center',
+            sm: 'stretch'
+          },
+          gap: '{space.2}',
+          left: {
+            gridColumn: {
+              initial: 'span 12 / span 12',
+              sm: 'span 3 / span 3'
+            },
+            order: {
+              initial: '1',
+              sm: '0'
+            },
+            paddingY: '{space.4}'
+          },
+          center: {
+            gridColumn: {
+              initial: 'span 12 / span 12',
+              sm: 'span 6 / span 6'
+            },
+            flexDirection: {
+              initial: 'column',
+              sm: 'row'
+            },
+            alignItems: 'center',
+            justifyContent: {
+              initial: 'flex-start',
+              sm: 'center'
+            }
+          },
+          right: {
+            gridColumn: {
+              initial: 'span 12 / span 12',
+              sm: 'span 3 / span 3'
+            },
+            marginInlineEnd: {
+              initial: '0px',
+              sm: 'calc(0px - {space.4})'
+            }
+          }
+        },
+        credits: {
+          fontSize: '{text.xs.fontSize}',
+          lineHeight: '{text.xs.lineHeight}',
+          fontWeight: '{fontWeight.medium}',
+          icon: {
+            size: '{space.4}',
+            marginInlineEnd: '{space.2}',
+            color: 'currentColor'
+          }
+        },
+        icon: {
+          size: '{space.4}'
+        },
+        textLink: {
+          padding: '{space.2}',
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
+          fontWeight: '{fontWeight.medium}'
+        },
+        iconLink: {
+          padding: '{space.4}'
+        }
       },
       navigation: {
         gap: '{space.2}',

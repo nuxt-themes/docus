@@ -22,11 +22,11 @@ watch(isIndex, (value) => {
 
 <template>
   <footer>
-    <Container :fluid="config?.footer?.fluid" padded class="footer-container">
+    <Container :fluid="config?.footer?.fluid" padded class="footer-layout">
       <!-- Left -->
       <div class="left">
-        <a v-if="config?.footer?.credits" :href="config?.footer?.credits?.href || '#'" rel="noopener" target="_blank">
-          <Component :is="config?.footer?.credits?.icon" v-if="config?.footer?.credits?.icon" class="left-icon" />
+        <a v-if="config?.footer?.credits" :href="config?.footer?.credits?.href || '#'" rel="noopener" target="_blank" class="footer-credits">
+          <Component :is="config?.footer?.credits?.icon" v-if="config?.footer?.credits?.icon" class="credits-icon" />
           <p v-if="config?.footer?.credits?.text">{{ config.footer.credits.text }}</p>
         </a>
       </div>
@@ -73,19 +73,15 @@ css({
     borderTopColor: '{docus.app.footer.borderTopColor}',
     padding: '{docus.app.footer.padding}',
 
-    '.footer-container': {
+    '.footer-layout': {
       display: 'grid',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      justifyItems: 'center',
-      gap: '{space.2}',
-      '@sm': {
-        justifyItems: 'legacy',
-
-      },
+      gridTemplateColumns: '{docus.app.footer.layout.gridTemplateColumns}',
+      justifyItems: '{docus.app.footer.layout.justifyItems}',
+      gap: '{docus.app.footer.layout.gap}',
 
       ':deep(.icon)': {
-        width: '{space.4}',
-        height: '{space.4}'
+        width: '{docus.app.footer.icon.size}',
+        height: '{docus.app.footer.icon.size}'
       },
 
       a: {
@@ -96,72 +92,56 @@ css({
       },
 
       '.left': {
-        gridColumn: 'span 12 / span 12',
+        gridColumn: '{docus.app.footer.layout.left.gridColumn}',
         display: 'flex',
-        py: '{space.4}',
-        order: 1,
+        py: '{docus.app.footer.layout.left.paddingY}',
+        order: '{docus.app.footer.layout.left.order}',
 
-        '@sm': {
-          gridColumn: 'span 3 / span 3',
-          order: 0,
-        },
-
-        a: {
+        '.footer-credits': {
           display: 'flex',
           alignItems: 'center',
+          p: {
+            fontSize: '{docus.app.footer.credits.fontSize}',
+            lineHeight: '{docus.app.footer.credits.lineHeight}',
+            fontWeight: '{docus.app.footer.credits.fontWeight}'
+          },
+          '.credits-icon': {
+            flexShrink: 0,
+            width: '{docus.app.footer.credits.icon.size}',
+            height: '{docus.app.footer.credits.icon.size}',
+            color: '{docus.app.footer.credits.icon.color}',
+            marginInlineEnd: '{docus.app.footer.credits.icon.marginInlineEnd}',
+          },
         },
 
-        p: {
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeight.medium}'
-        },
-
-        '&-icon': {
-          flexShrink: 0,
-          width: '{space.4}',
-          height: '{space.4}',
-          fill: 'currentcolor',
-          marginInlineEnd: '{space.2}',
-        },
       },
 
       '.center': {
-        gridColumn: 'span 12 / span 12',
+        gridColumn: '{docus.app.footer.layout.center.gridColumn}',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-        '@sm': {
-          gridColumn: 'span 6 / span 6',
-          flexDirection: 'row',
-          justifyContent: 'center',
-        },
+        flexDirection: '{docus.app.footer.layout.center.flexDirection}',
+        alignItems: '{docus.app.footer.layout.center.alignItems}',
+        justifyContent: '{docus.app.footer.layout.center.justifyContent}',
 
         '.text-link': {
-          padding: '{space.2}',
-          fontSize: '{text.sm.fontSize}',
-          lineHeight: '{text.sm.lineHeight}',
-          fontWeight: '{fontWeight.medium}'
+          padding: '{docus.app.footer.textLink.padding}',
+          fontSize: '{docus.app.footer.textLink.fontSize}',
+          lineHeight: '{docus.app.footer.textLink.lineHeight}',
+          fontWeight: '{docus.app.footer.textLink.fontWeight}'
         }
 
       },
 
       '.right': {
-        gridColumn: 'span 12 / span 12',
+        gridColumn: '{docus.app.footer.layout.right.gridColumn}',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        // marginInlineStart: 'calc(0px - {space.4})',
-
-        '@sm': {
-          gridColumn: 'span 3 / span 3',
-          marginInlineEnd: 'calc(0px - {space.4})',
-        },
+        marginInlineEnd: '{docus.app.footer.layout.right.marginInlineEnd}',
 
         '.icon-link': {
           display: 'flex',
-          padding: '{space.4}'
+          padding: '{docus.app.footer.iconLink.padding}',
         }
       },
     },
