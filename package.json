@@ -20,6 +20,7 @@
   "scripts": {
     "prepare": "nuxi prepare && nuxi prepare .docs && nuxi prepare .playground",
     "play": "nuxi dev .playground/",
+    "play:starter": "nuxi dev .starters/default",
     "dev": "nuxi dev .docs/",
     "build": "nuxi build .docs/",
     "generate": "nuxi generate .docs/",
