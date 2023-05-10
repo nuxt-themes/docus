@@ -5,9 +5,9 @@ const title = computed(() => config.value.header?.title || config.value.title)
 </script>
 
 <template>
-  <NuxtLink class="navbar-logo" to="/" :aria-label="title">
+  <NuxtLink class="header-logo" to="/" :aria-label="title">
     <!-- Only Logo -->
-    <span class="logo" v-if="logo">
+    <span v-if="logo" class="logo">
       <component :is="logo" v-if="typeof logo === 'string'" />
       <template v-else-if="logo.light && logo.dark">
         <img :src="logo.light" alt="" class="light-img">
@@ -17,7 +17,7 @@ const title = computed(() => config.value.header?.title || config.value.title)
     </span>
 
     <!-- Only title -->
-    <span class="title" v-else>
+    <span v-else class="title">
       {{ title }}
     </span>
   </NuxtLink>
@@ -31,7 +31,7 @@ css({
     flex: 'none',
 
     '.logo': {
-      height: '{docus.header.logo.height}',
+      height: '{docus.app.header.logo.height}',
       width: 'auto',
       'img, svg': {
         height: 'inherit',
@@ -51,11 +51,11 @@ css({
     },
 
     '.title': {
-      fontSize: '{docus.header.title.fontSize}',
-      fontWeight: '{docus.header.title.fontWeight}',
-      color: '{docus.header.title.color.static}',
+      fontSize: '{docus.app.header.title.fontSize}',
+      fontWeight: '{docus.app.header.title.fontWeight}',
+      color: '{docus.app.header.title.color.static}',
       '&:hover': {
-        color: '{docus.header.title.color.hover}',
+        color: '{docus.app.header.title.color.hover}',
       }
     }
   }

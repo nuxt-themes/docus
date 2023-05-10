@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { toc, page } = useContent()
+const { config } = useDocus()
 const emit = defineEmits(['move'])
 </script>
 
@@ -13,11 +14,13 @@ const emit = defineEmits(['move'])
       <DocsTocLinks :links="toc.links" @move="emit('move')" />
     </template>
     <div class="docs-toc-bottom">
-      <EditOnLink v-slot="{ url }" :page="page">
-        <ProseA :href="url">
-          Edit this page on GitHub
-        </ProseA>
-      </EditOnLink>
+      <div v-if="config?.github?.edit">
+        <EditOnLink v-slot="{ url }" :page="page">
+          <ProseA :href="url">
+            Edit this page on GitHub
+          </ProseA>
+        </EditOnLink>
+      </div>
     </div>
   </div>
 </template>
@@ -41,7 +44,7 @@ css({
     '.docs-toc-bottom': {
       fontSize: '{text.sm.fontSize}',
       lineHeight: '{text.sm.lineHeight}',
-      color: '{color.gray.500}',
+      color: '{elements.text.secondary.color.static}',
       py: '{space.2}',
     }
   }

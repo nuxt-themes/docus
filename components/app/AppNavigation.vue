@@ -4,6 +4,13 @@ const { navBottomLink } = useContentHelpers()
 const { navigation } = useContent()
 const { config } = useDocus()
 
+defineProps({
+  vertical: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const hasNavigation = computed(() => !!config.value.aside?.level)
 
 const filtered = computed(() => config.value.header?.exclude || [])
@@ -19,7 +26,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation">
+  <nav v-if="hasNavigation" :class="{vertical}">
     <ul>
       <li
         v-for="link in tree"
@@ -45,6 +52,9 @@ css({
     '@lg': {
       display: 'block'
     },
+    '&.vertical': {
+      marginBottom: '{docus.app.navigation.vertical.marginBottom}',
+    },
     ul: {
       display: 'flex',
       alignItems: 'center',
@@ -52,41 +62,53 @@ css({
       flex: '1',
       maxWidth: '100%',
       truncate: true,
+      gap: '{docus.app.navigation.gap}',
 
-      '& > * + *': {
-        marginInlineStart: '{space.2}'
+      '.vertical &&': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: '{docus.app.navigation.vertical.gap}',
+        '.link': {
+          padding: '{docus.app.navigation.vertical.link.padding}',
+        }
       },
 
       li: {
         display: 'inline-flex',
-        gap: '{space.1}',
+        fontWeight: '{docus.app.navigation.link.fontWeight}',
+        width: '100%',
       },
 
       '.link': {
         display: 'flex',
         alignItems: 'center',
-        gap: '{space.2}',
-        padding: '{space.2} {space.4}',
-        fontSize: '{fontSize.sm}',
-        borderRadius: '{radii.md}',
+        gap: '{docus.app.navigation.link.gap}',
+        padding: '{docus.app.navigation.link.padding}',
+        fontSize: '{docus.app.navigation.link.fontSize}',
+        // borderRadius: '{radii.2xs}',
+        width: '100%',
         outline: 'none',
         transition: 'background 200ms ease',
 
         svg: {
-          display: 'inline-block'
+          display: 'inline-block',
+          width: '{docus.app.navigation.link.icon.size}',
+          height: '{docus.app.navigation.link.icon.size}',
         },
 
-        '&:active,&.active,&:hover': {
-          backgroundColor: '{color.gray.100}',
-          '@dark': {
-            backgroundColor: '{color.gray.900}',
-          },
+        '&:active, &.active, &:hover': {
+          color: '{color.primary.500}',
+          // backgroundColor: '{color.gray.100}',
+          // '@dark': {
+          //   backgroundColor: '{color.gray.800}',
+          // },
         },
 
-        '&.active': {
-          boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
-          fontWeight: '{fontWeight.semibold}'
-        }
+        // '&.active': {
+        //   boxShadow: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+        //   fontWeight: '{fontWeight.semibold}'
+        // }
       }
     }
   }

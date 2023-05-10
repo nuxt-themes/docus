@@ -32,10 +32,7 @@ css({
     marginTop: '{space.8}',
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
-    color: '{color.gray.500}',
-    '@dark': {
-      color: '{color.gray.400}'
-    },
+    color: '{elements.text.secondary.color.static}',
     '.edit-link': {
       flex: 1,
       display: 'flex',

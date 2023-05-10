@@ -14,7 +14,8 @@
     "aside": {
       "level": 1,
       "collapsed": false,
-      "exclude": []
+      "exclude": [],
+      "navigation": true
     },
     "main": {
       "padded": true,
@@ -25,7 +26,8 @@
       "logo": true,
       "showLinkIcon": true,
       "exclude": [],
-      "fluid": true
+      "fluid": true,
+      "navigation": true
     },
     "footer": {
       "credits": {

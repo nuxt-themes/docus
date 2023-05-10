@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const { config } = useDocus()
+// const { config } = useDocus()
 </script>
 
 <template>
   <div class="page-layout">
-    <Container
+    <!-- <Container
       :fluid="config?.main?.fluid"
       :padded="config?.main?.padded"
-    >
-      <article>
-        <slot />
-      </article>
-    </Container>
+    > -->
+    <article>
+      <slot />
+    </article>
+    <!-- </Container> -->
   </div>
 </template>
 

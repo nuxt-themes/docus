@@ -64,6 +64,7 @@ onBeforeUnmount(() => {
   >
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
+      <AppNavigation v-if="config.aside?.navigation" vertical />
       <DocsAside class="app-aside" />
     </aside>
 
@@ -109,11 +110,17 @@ css({
     },
     '&.has-toc': {
       '@lg': {
+        gridTemplateColumns: 'minmax(320px, 1fr) minmax(200px, 200px)'
+      },
+      '@xl': {
         gridTemplateColumns: 'minmax(320px, 1fr) minmax(250px, 250px)'
       }
     },
     '&.has-aside': {
       '@lg': {
+        gridTemplateColumns: 'minmax(200px, 200px) minmax(320px, 1fr)',
+      },
+      '@xl': {
         gridTemplateColumns: 'minmax(250px, 250px) minmax(320px, 1fr)'
       }
     },
@@ -132,10 +139,10 @@ css({
     '@lg': {
       display: 'block',
       position: 'sticky',
-      top: '{docus.header.height}',
+      top: '{docus.app.header.height}',
       // gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
-      height: 'calc(100vh - {docus.header.height})',
+      height: 'calc(100vh - {docus.app.header.height})',
       py: '{docus.docs.page.layout.spacing}',
       paddingInlineEnd: '{docus.docs.page.layout.spacing}',
       '.fluid &&': {
@@ -187,13 +194,10 @@ css({
       marginBottom: '{space.8}',
       paddingBottom: '{space.8}',
       borderBottom: '1px solid {elements.border.primary.static}',
-      color: '{color.gray.500}',
+      color: '{elements.text.secondary.color.static}',
       '@sm': {
         fontSize: '{text.lg.fontSize}',
         lineHeight: '{text.lg.lineHeight}',
-      },
-      '@dark': {
-        color: '{color.gray.400}',
       },
       a: {
         color: '{color.gray.700}',
@@ -211,7 +215,7 @@ css({
   },
   '.toc': {
     position: 'sticky',
-    top: '{docus.header.height}',
+    top: '{docus.app.header.height}',
     display: 'flex',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
@@ -224,7 +228,7 @@ css({
       alignSelf: 'flex-start',
       padding: '{docus.docs.page.layout.spacing}',
       paddingInlineEnd: '0px',
-      height: 'calc(100vh - {docus.header.height})',
+      height: 'calc(100vh - {docus.app.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',
       '.fluid &&': {

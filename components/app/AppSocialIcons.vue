@@ -40,19 +40,11 @@ const icons = computed<any>(() => {
 css({
   a: {
     display: 'flex',
-    color: '{color.gray.500}',
-    padding: '{space.4}',
-
-    '@dark': {
-      color: '{color.gray.400}'
-    },
-
+    padding: '{docus.app.socialIcons.padding}',
+    color: '{elements.text.secondary.color.static}',
     '&:hover': {
-      color: '{color.gray.700}',
-      '@dark': {
-        color: '{color.gray.200}',
-      }
-    },
+      color: '{elements.text.secondary.color.hover}'
+    }
   }
 })
 </style>

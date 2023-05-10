@@ -20,9 +20,9 @@ css({
     fontSize: '{text.sm.fontSize}',
     lineHeight: '{text.sm.lineHeight}',
     cursor: 'pointer',
-    color: '{color.gray.500}',
+    color: '{elements.text.secondary.color.static}',
     '&:hover': {
-      color: '{color.gray.700}',
+      color: '{elements.text.secondary.color.hover}'
     },
     '.icon': {
       width: '{space.4}',

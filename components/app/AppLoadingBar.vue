@@ -91,7 +91,7 @@ onBeforeUnmount(() => clear)
 <style lang="ts">
 css({
   '.nuxt-progress': {
-    height: '{docus.loadingBar.height}',
+    height: '{docus.app.loadingBar.height}',
     position: 'fixed',
     top: '0px',
     insetInlineStart: '0px',
@@ -99,7 +99,7 @@ css({
     width: '0%',
     opacity: 1,
     transition: 'width 0.1s, height 0.4s, opacity 0.4s',
-    background: 'repeating-linear-gradient(to right, {docus.loadingBar.gradientColorStop1} 0%, {docus.loadingBar.gradientColorStop2} 50%, {docus.loadingBar.gradientColorStop3} 100%)',
+    background: 'repeating-linear-gradient(to right, {docus.app.loadingBar.gradientColorStop1} 0%, {docus.app.loadingBar.gradientColorStop2} 50%, {docus.app.loadingBar.gradientColorStop3} 100%)',
     zIndex: '999999',
   }
 })

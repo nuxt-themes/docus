@@ -25,17 +25,17 @@ defineProps({
   }
 })
 
-const blockHeroRef = ref(null) as Ref<HTMLElement | null>
-const { height } = useElementBounding(blockHeroRef)
+const heroRef = ref(null) as Ref<HTMLElement | null>
+const { height } = useElementBounding(heroRef)
 
 watch(height, (value) => {
-  document.documentElement.style.setProperty('--block-hero-height', `${value}px`)
+  document.documentElement.style.setProperty('--hero-height', `${value}px`)
 })
 
 </script>
 
 <template>
-  <section ref="blockHeroRef" class="block-hero">
+  <div ref="heroRef" class="hero">
     <span v-if="$slots.root" class="root">
       <slot name="root" />
     </span>
@@ -92,14 +92,14 @@ watch(height, (value) => {
         </slot>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped lang="ts">
 css({
-  '.block-hero': {
+  '.hero': {
     // position: 'relative',
-    padding: '{docus.landing.blockHero.padding}',
+    padding: '{docus.landing.hero.padding}',
     // '.root': {
     //   position: 'absolute',
     //   top: '0px',
@@ -112,8 +112,8 @@ css({
     '.layout': {
       position: 'relative',
       display: 'grid',
-      gap: '{docus.landing.blockHero.layout.gap}',
-      gridTemplateColumns: '{docus.landing.blockHero.layout.gridTemplateColumns}',
+      gap: '{docus.landing.hero.layout.gap}',
+      gridTemplateColumns: '{docus.landing.hero.layout.gridTemplateColumns}',
     },
     '.background': {
       position: 'absolute',
@@ -124,50 +124,50 @@ css({
       zIndex: '-1',
     },
     '.content': {
-      gridColumn: '{docus.landing.blockHero.content.gridColumn}',
+      gridColumn: '{docus.landing.hero.content.gridColumn}',
       '.announce': {
-        marginBottom: '{docus.landing.blockHero.content.announce.marginBottom}',
-        textAlign: '{docus.landing.blockHero.content.announce.textAlign}',
+        marginBottom: '{docus.landing.hero.content.announce.marginBottom}',
+        textAlign: '{docus.landing.hero.content.announce.textAlign}',
       },
       '.title': {
-        color: '{docus.landing.blockHero.content.title.color}',
-        fontWeight: '{docus.landing.blockHero.content.title.fontWeight}',
-        letterSpacing: '{docus.landing.blockHero.content.title.letterSpacing}',
-        textAlign: '{docus.landing.blockHero.content.title.textAlign}',
-        fontSize: '{docus.landing.blockHero.content.title.fontSize}',
-        lineHeight: '{docus.landing.blockHero.content.title.lineHeight}',
-        marginBottom: '{docus.landing.blockHero.content.title.marginBottom}',
-        px: '{docus.landing.blockHero.content.title.paddingX}',
-        gradientText: '{docus.landing.blockHero.content.title.gradientText}',
-        mixBlendMode: '{docus.landing.blockHero.content.title.mixBlendMode}'
+        color: '{docus.landing.hero.content.title.color}',
+        fontWeight: '{docus.landing.hero.content.title.fontWeight}',
+        letterSpacing: '{docus.landing.hero.content.title.letterSpacing}',
+        textAlign: '{docus.landing.hero.content.title.textAlign}',
+        fontSize: '{docus.landing.hero.content.title.fontSize}',
+        lineHeight: '{docus.landing.hero.content.title.lineHeight}',
+        marginBottom: '{docus.landing.hero.content.title.marginBottom}',
+        px: '{docus.landing.hero.content.title.paddingX}',
+        gradientText: '{docus.landing.hero.content.title.gradientText}',
+        mixBlendMode: '{docus.landing.hero.content.title.mixBlendMode}'
       },
       '.description': {
-        marginBottom: '{docus.landing.blockHero.content.description.marginBottom}',
-        fontSize: '{docus.landing.blockHero.content.description.fontSize}',
-        lineHeight: '{docus.landing.blockHero.content.description.lineHeight}',
-        textAlign: '{docus.landing.blockHero.content.description.textAlign}',
-        color: '{docus.landing.blockHero.content.description.color}',
-        px: '{docus.landing.blockHero.content.description.paddingX}',
-        mixBlendMode: '{docus.landing.blockHero.content.description.mixBlendMode}',
+        marginBottom: '{docus.landing.hero.content.description.marginBottom}',
+        fontSize: '{docus.landing.hero.content.description.fontSize}',
+        lineHeight: '{docus.landing.hero.content.description.lineHeight}',
+        textAlign: '{docus.landing.hero.content.description.textAlign}',
+        color: '{docus.landing.hero.content.description.color}',
+        px: '{docus.landing.hero.content.description.paddingX}',
+        mixBlendMode: '{docus.landing.hero.content.description.mixBlendMode}',
       },
       '.extra': {
-        marginBottom: '{docus.landing.blockHero.content.extra.marginBottom}',
+        marginBottom: '{docus.landing.hero.content.extra.marginBottom}',
         display: 'flex',
-        justifyContent: '{docus.landing.blockHero.content.extra.justifyContent}',
+        justifyContent: '{docus.landing.hero.content.extra.justifyContent}',
       },
       '.actions': {
         display: 'flex',
-        flexDirection: '{docus.landing.blockHero.content.actions.flexDirection}',
+        flexDirection: '{docus.landing.hero.content.actions.flexDirection}',
         alignItems: 'center',
-        justifyContent: '{docus.landing.blockHero.content.actions.justifyContent}',
-        gap: '{docus.landing.blockHero.content.actions.gap}',
+        justifyContent: '{docus.landing.hero.content.actions.justifyContent}',
+        gap: '{docus.landing.hero.content.actions.gap}',
         '.cta': {
-          marginBottom: '{docus.landing.blockHero.content.actions.cta.marginBottom}'
+          marginBottom: '{docus.landing.hero.content.actions.cta.marginBottom}'
         },
       }
     },
     '.support': {
-      gridColumn: '{docus.landing.blockHero.support.gridColumn}',
+      gridColumn: '{docus.landing.hero.support.gridColumn}',
       position: 'relative',
       display: 'flex',
       alignItems: 'center',

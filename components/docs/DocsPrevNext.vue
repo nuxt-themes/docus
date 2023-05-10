@@ -54,11 +54,12 @@ const nextMeta = computed(() => {
       :to="prev._path"
       class="prev"
     >
-      <Icon v-if="prev.icon !== false" :name="prev.icon || prevMeta?.directoryIcon" />
+      <Icon v-if="prev.icon || prevMeta?.directoryIcon" :name="prev.icon || prevMeta?.directoryIcon" />
       <span v-if="prevMeta" class="directory">
         {{ prevMeta?.directoryTitle }}
       </span>
       <span class="title">{{ prev.title }}</span>
+      <span class="description">{{ prev.description }}</span>
     </NuxtLink>
 
     <NuxtLink
@@ -66,7 +67,7 @@ const nextMeta = computed(() => {
       :to="next._path"
       class="next"
     >
-      <Icon v-if="next.icon !== false" :name="next.icon || nextMeta?.directoryIcon" />
+      <Icon v-if="next.icon || nextMeta?.directoryIcon" :name="next.icon || nextMeta?.directoryIcon" />
       <span v-if="nextMeta" class="directory">
         {{ nextMeta?.directoryTitle }}
       </span>
@@ -88,7 +89,9 @@ css({
     a: {
       position: 'relative',
       padding: '{docus.docs.prevNext.padding}',
-      border: '{docus.docs.prevNext.border}',
+      borderWidth: '{docus.docs.prevNext.borderWidth}',
+      borderStyle: '{docus.docs.prevNext.borderStyle}',
+      borderColor: '{docus.docs.prevNext.borderColor}',
       borderRadius: '{docus.docs.prevNext.borderRadius}',
       backgroundColor: '{docus.docs.prevNext.backgroundColor}',
       boxShadow: '{docus.docs.prevNext.boxShadow.static}',

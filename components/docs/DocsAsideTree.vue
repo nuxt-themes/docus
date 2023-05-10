@@ -118,13 +118,12 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
 css({
   '.docs-aside-tree': {
     li: {
-      '&:first-child': {
-        marginTop: '0 !important',
-      },
-      // marginBottom: '{space.12}',
-      '&.has-children': {
-        margin: '{space.8} 0',
-      },
+      // '&:first-child': {
+      //   marginTop: '0 !important',
+      // },
+      // '&.has-children': {
+      //   margin: '{space.8} 0',
+      // },
       '&.bordered': {
         borderInlineStart: '1px solid {elements.border.primary.static}',
         '&:hover': {
@@ -146,8 +145,9 @@ css({
     },
     '.recursive': {
       padding: '0',
+      marginBottom: '{space.4}',
       li: {
-        margin: '0',
+        // margin: '0',
         '&.has-children': {
           borderInlineStart: '1px solid transparent',
           marginInlineStart: '{space.4}',
@@ -179,10 +179,7 @@ css({
       '.collapsible-icon': {
         width: '{space.3}',
         height: '{space.3}',
-        color: '{color.gray.400}',
-        '@dark': {
-          color: '{color.gray.500}',
-        }
+        color: '{elements.text.secondary.color.static}',
       }
     },
     '.link': {

@@ -67,11 +67,11 @@ watch(isIndex, (value) => {
 css({
   footer: {
     display: 'flex',
-    minHeight: '{docus.footer.height}',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: '{elements.border.primary.static}',
-    padding: '{docus.footer.padding}',
+    minHeight: '{docus.app.footer.height}',
+    borderTopWidth: '{docus.app.footer.borderTopWidth}',
+    borderTopStyle: '{docus.app.footer.borderTopStyle}',
+    borderTopColor: '{docus.app.footer.borderTopColor}',
+    padding: '{docus.app.footer.padding}',
 
     '.footer-container': {
       display: 'grid',
@@ -89,15 +89,9 @@ css({
       },
 
       a: {
-        color: '{color.gray.500}',
-        '@dark': {
-          color: '{color.gray.400}'
-        },
+        color: '{elements.text.secondary.color.static}',
         '&:hover': {
-          color: '{color.gray.700}',
-          '@dark': {
-            color: '{color.gray.200}',
-          }
+          color: '{elements.text.secondary.color.hover}'
         },
       },
 

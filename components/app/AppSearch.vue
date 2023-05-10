@@ -33,7 +33,7 @@ css({
         borderRadius: '{radii.md}',
         display: 'flex',
         alignItems: 'center',
-        color: '{color.gray.500}',
+        color: '{elements.text.secondary.color.static}',
         borderStyle: 'solid',
         borderWidth: '1px',
         borderColor: '{color.gray.100}',
@@ -41,14 +41,12 @@ css({
         gap: '{space.2}',
         padding: '{space.rem.375}',
         '@dark': {
-          color: '{color.gray.400}',
           borderColor: '{color.gray.900}',
         },
         '&:hover': {
-          color: '{color.gray.700}',
+          color: '{elements.text.secondary.color.hover}',
           borderColor: '{color.gray.400}',
           '@dark': {
-            color: '{color.gray.200}',
             borderColor: '{color.gray.700}',
           }
         },

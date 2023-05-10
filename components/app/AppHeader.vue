@@ -5,7 +5,7 @@ const { hasDocSearch } = useDocSearch()
 const { y } = useWindowScroll()
 const route = useRoute()
 
-const hasDialog = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
+const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
 defineProps({
   ...variants
@@ -25,24 +25,26 @@ watch(isIndex, (value) => {
 </script>
 
 <template>
-  <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch, 'is-index': isIndex, 'on-top': y === 0 }">
+  <header :class="{ 'has-drawer': hasDrawer, 'has-doc-search': hasDocSearch, 'is-index': isIndex, 'on-top': y === 0 }">
     <Container :fluid="config?.header?.fluid ">
-      <div class="section left">
-        <AppHeaderDialog v-if="hasDialog" />
-        <AppHeaderLogo />
-      </div>
+      <div class="header-layout">
+        <div class="section left">
+          <AppHeaderDrawer v-if="hasDrawer" />
+          <AppHeaderLogo />
+        </div>
 
-      <div class="section center">
-        <AppHeaderLogo v-if="hasDialog" />
-        <AppHeaderNavigation />
-      </div>
+        <div class="section center">
+          <AppHeaderLogo v-if="hasDrawer" />
+          <AppNavigation v-if="config.header.navigation" />
+        </div>
 
-      <div class="section right">
-        <AppSearch v-if="hasDocSearch" />
-        <ToggleDirection />
-        <ThemeSelect />
-        <div class="social-icons">
-          <AppSocialIcons />
+        <div class="section right">
+          <AppSearch v-if="hasDocSearch" />
+          <AppTextDirection />
+          <AppColorMode />
+          <div class="social-icons">
+            <AppSocialIcons />
+          </div>
         </div>
       </div>
     </Container>
@@ -52,13 +54,13 @@ watch(isIndex, (value) => {
 <style scoped lang="ts">
 css({
   ':deep(.icon)': {
-    width: '{space.4}',
-    height: '{space.4}'
+    width: '{docus.app.header.icon.size}',
+    height: '{docus.app.header.icon.size}'
   },
 
-  '.navbar-logo': {
+  '.header-logo': {
     '.left &': {
-      '.has-dialog &': {
+      '.has-drawer &': {
         display: 'none',
         '@lg': {
           display: 'block'
@@ -74,14 +76,16 @@ css({
   },
 
   header: {
-    backdropFilter: '{elements.backdrop.filter}',
+    backdropFilter: '{docus.app.header.backdropFilter}',
     position: 'sticky',
     top: 0,
     zIndex: 10,
     width: '100%',
-    borderBottom: '1px solid {elements.border.primary.static}',
-    backgroundColor: '{elements.backdrop.background}',
-    height: '{docus.header.height}',
+    borderBottomWidth: '{docus.app.header.borderBottomWidth}',
+    borderBottomStyle: '{docus.app.header.borderBottomStyle}',
+    borderBottomColor: '{docus.app.header.borderBottomColor}',
+    backgroundColor: '{docus.app.header.backgroundColor}',
+    height: '{docus.app.header.height}',
 
     '&.is-index.on-top': {
       background: 'transparent',
@@ -89,11 +93,11 @@ css({
       backdropFilter: 'none',
     },
 
-    '.container': {
+    '.header-layout': {
       display: 'grid',
       height: '100%',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      gap: '{space.2}'
+      gridTemplateColumns: '{docus.app.header.layout.gridTemplateColumns}',
+      gap: '{docus.app.header.layout.gap}',
     },
 
     '.section': {
@@ -101,20 +105,20 @@ css({
       alignItems: 'center',
       flex: 'none',
       '&.left': {
-        gridColumn: 'span 4 / span 4',
+        gridColumn: '{docus.app.header.layout.left.gridColumn}',
         '@lg': {
           marginInlineStart: 0
         },
       },
       '&.center': {
-        gridColumn: 'span 4 / span 4',
+        gridColumn: '{docus.app.header.layout.center.gridColumn}',
         justifyContent: 'center',
         flex: '1',
         zIndex: '1'
       },
       '&.right': {
         display: 'flex',
-        gridColumn: 'span 4 / span 4',
+        gridColumn: '{docus.app.header.layout.right.gridColumn}',
         justifyContent: 'flex-end',
         alignItems: 'center',
         flex: 'none',

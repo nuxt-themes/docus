@@ -4,7 +4,6 @@ const onClick = () => {
   const values = ['system', 'light', 'dark']
   const index = values.indexOf(colorMode.preference)
   const next = (index + 1) % values.length
-
   colorMode.preference = values[next]
 }
 </script>
@@ -23,19 +22,11 @@ const onClick = () => {
 css({
   button: {
     display: 'flex',
-    padding: '{space.4}',
-
-    color: '{color.gray.500}',
-    '@dark': {
-      color: '{color.gray.400}'
-    },
-
+    padding: '{docus.app.colorMode.padding}',
+    color: '{docus.app.colorMode.color.static}',
     '&:hover': {
-      color: '{color.gray.700}',
-      '@dark': {
-        color: '{color.gray.200}',
-      }
-    },
+      color: '{docus.app.colorMode.color.hover}'
+    }
   }
 })
 </style>

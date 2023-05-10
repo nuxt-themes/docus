@@ -11,7 +11,7 @@ defineProps({
     default: 1
   },
   row: {
-    type: [String, Number],
+    type: [String, Number, Object],
     default: 1
   },
   show: {
@@ -20,7 +20,7 @@ defineProps({
   },
   noise: {
     type: Boolean,
-    default: true
+    default: false
   },
   aspectRatio: {
     type: String,
@@ -68,28 +68,19 @@ css({
     '--row': (props) => props.row,
     '--aspectRatio': (props) => props.aspectRatio,
 
+    position: 'relative',
     textAlign: 'center',
-
     gridColumnEnd: 'span {col}',
     gridRowEnd: 'span {row}',
-
-    backgroundImage: 'linear-gradient(135deg, rgba({temp.color.gray.400}, 0.15), rgba({temp.color.gray.600},.08))',
-    borderRadius: '{radii.sm}',
-    padding: '1px',
-    position: 'relative',
-    // boxShadow: '{elements.card.boxShadow}',
-
-    // display: 'flex',
-    // width: '100%',
-    // height: '100%',
-    // borderRadius: '{elements.card.borderRadius}',
-    // borderWidth: '{elements.card.borderWidth}',
-    // borderStyle: '{elements.card.borderStyle}',
-    // borderColor: '{elements.card.borderColor}',
-    // backgroundColor: '{elements.card.backgroundColor}',
-    // backgroundImage: 'linear-gradient(180deg, {color.gray.800} 0%, {color.gray.900} 100%)',
-    // backdropFilter: '{elements.card.backdropFilter}',
-    // overflow: 'hidden',
+    borderRadius: '{docus.landing.card.borderRadius}',
+    padding: '{docus.landing.card.padding}',
+    boxShadow: '{docus.landing.card.boxShadow}',
+    borderWidth: '{docus.landing.card.borderWidth}',
+    borderStyle: '{docus.landing.card.borderStyle}',
+    borderColor: '{docus.landing.card.borderColor}',
+    backgroundColor: '{docus.landing.card.backgroundColor}',
+    backgroundImage: '{docus.landing.card.backgroundImage}',
+    backdropFilter: '{docus.landing.card.backdropFilter}',
 
     '&::before': {
       content: '""',
@@ -107,18 +98,15 @@ css({
     '.wrapper': {
       width: '100%',
       height: '100%',
-      borderRadius: '{radii.xs}',
+      borderRadius: '{docus.landing.card.wrapper.borderRadius}',
       position: 'relative',
       overflow: 'hidden',
-
-      // display: 'flex',
-      // flexDirection: '{flexDirection}',
-      // justifyContent: 'space-between',
-      // alignItems: '{alignItems}',
-      backgroundImage: '{elements.card.wrapper.backgroundImage}',
+      backgroundColor: '{docus.landing.card.wrapper.backgroundColor}',
+      backgroundImage: '{docus.landing.card.wrapper.backgroundImage}',
 
       '&:after': {
-        backgroundImage: 'radial-gradient(500px at var(--x) var(--y), rgba({temp.color.gray.700}, .2) 40%, transparent 80% )',
+        // backgroundImage: '{docus.landing.card.wrapper.after.backgroundImage}', // TODO bug in tokens with vars
+        backgroundImage: 'none',
         backgroundSize: 'auto',
         backgroundOrigin: 'padding-box',
         borderRadius: 'inherit',
@@ -128,59 +116,53 @@ css({
         zIndex: '1',
         transition: 'background-image 0.2s ease, opacity 0.2s ease',
         willChange: 'background-image, opacity',
+        '@dark': {
+          backgroundImage: 'radial-gradient(500px at var(--x) var(--y), rgba({temp.color.gray.900}, .4) 20%, rgba({temp.color.gray.900}, .4) 100% )'
+        }
       }
     },
 
     '.content': {
-      // position: 'absolute',
-      padding: '{elements.card.padding}',
+      padding: '{docus.landing.card.content.padding}',
       flex: '1',
       position: 'relative',
       zIndex: '2',
-
     },
 
     '.icon-wrapper': {
       display: 'inline-block',
       alignSelf: 'flex-start',
-      marginBottom: '{elements.card.icon.marginBottom}',
-      padding: '{elements.card.icon.padding}',
-      borderRadius: '{elements.card.icon.borderRadius}',
-      backgroundColor: '{elements.card.icon.backgroundColor}',
-      boxShadow: '{elements.card.icon.boxShadow}',
-      // boxShadow: 'inset 0 0 2px 1px {color.gray.900}',
+      marginBottom: '{docus.landing.card.icon.marginBottom}',
+      padding: '{docus.landing.card.icon.padding}',
+      borderRadius: '{docus.landing.card.icon.borderRadius}',
+      backgroundColor: '{docus.landing.card.icon.backgroundColor}',
+      boxShadow: '{docus.landing.card.icon.boxShadow}',
       '.icon': {
         display: 'block',
-        width: '{elements.card.icon.width}',
-        height: '{elements.card.icon.height}',
+        width: '{docus.landing.card.icon.width}',
+        height: '{docus.landing.card.icon.height}',
       },
     },
     '.title': {
-      marginBottom: '{elements.card.title.marginBottom}',
-      fontSize: '{elements.card.title.fontSize}',
-      lineHeight: '{elements.card.title.lineHeight}',
-      fontWeight: '{elements.card.title.fontWeight}',
-      letterSpacing: '{elements.card.title.letterSpacing}',
-      color: '{elements.card.title.color}'
+      marginBottom: '{docus.landing.card.title.marginBottom}',
+      fontSize: '{docus.landing.card.title.fontSize}',
+      lineHeight: '{docus.landing.card.title.lineHeight}',
+      fontWeight: '{docus.landing.card.title.fontWeight}',
+      letterSpacing: '{docus.landing.card.title.letterSpacing}',
+      color: '{docus.landing.card.title.color}'
     },
     '.description': {
-      fontSize: '{elements.card.description.fontSize}',
-      lineHeight: '{elements.card.description.lineHeight}',
-      fontWeight: '{elements.card.description.fontWeight}',
-      color: '{elements.card.description.color}',
+      fontSize: '{docus.landing.card.description.fontSize}',
+      lineHeight: '{docus.landing.card.description.lineHeight}',
+      fontWeight: '{docus.landing.card.description.fontWeight}',
+      color: '{docus.landing.card.description.color}',
     },
     '.noise': {
       position: 'absolute',
-      top: '1px',
-      left: '1px',
-      right: '1px',
-      bottom: '1px',
+      inset: '0',
       filter: 'url(#card-noise)',
       background: '{docus.body.backgroundColor}',
-      // backgroundImage: 'radial-gradient(circle at var(--x) var(--y), red 4%, transparent 21%, red 36%)',
-      // width: '100%',
-      // height: '100%',
-      opacity: '{elements.card.noise.opacity}',
+      opacity: '{docus.landing.card.noise.opacity}',
       zIndex: '-1',
     }
   }

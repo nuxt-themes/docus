@@ -22,6 +22,7 @@ export default defineTheme({
   },
   color: {
     primary: theme.color.orange,
+    secondary: theme.color.purple,
     shadow: {
       initial: '{color.gray.400}',
       dark: '{color.black}'
@@ -67,33 +68,142 @@ export default defineTheme({
       },
       fontFamily: '{font.sans}'
     },
-    header: {
-      height: '64px',
-      logo: {
-        height: {
-          initial: '{space.6}',
-          sm: '{space.7}'
+    readableLine: '78ch',
+    app: {
+      loadingBar: {
+        height: '3px',
+        gradientColorStop1: '{color.primary.600}',
+        gradientColorStop2: '{color.primary.500}',
+        gradientColorStop3: '{color.secondary.500}'
+      },
+      header: {
+        height: '64px',
+        logo: {
+          height: {
+            initial: '{space.6}',
+            sm: '{space.7}'
+          }
+        },
+        backdropFilter: '{elements.backdrop.filter}',
+        backgroundColor: '{elements.backdrop.background}',
+        borderBottomWidth: '1px',
+        borderBottomStyle: 'solid',
+        borderBottomColor: '{elements.border.primary.static}',
+        title: {
+          fontSize: '{fontSize.2xl}',
+          fontWeight: '{fontWeight.bold}',
+          color: {
+            static: {
+              initial: '{color.gray.900}',
+              dark: '{color.gray.100}'
+            },
+            hover: '{color.primary.500}'
+          }
+        },
+        icon: {
+          size: '{space.4}'
+        },
+        layout: {
+          gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+          gap: '{space.2}',
+          left: {
+            gridColumn: 'span 4 / span 4'
+          },
+          center: {
+            gridColumn: 'span 4 / span 4'
+          },
+          right: {
+            gridColumn: 'span 4 / span 4'
+          }
+        },
+        drawer: {
+          button: {
+            color: {
+              static: {
+                initial: '{color.gray.500}',
+                dark: '{color.gray.400}'
+              },
+              hover: {
+                initial: '{color.gray.700}',
+                dark: '{color.gray.200}'
+              }
+            },
+            zIndex: '10',
+            padding: '{space.4}',
+            paddingInlineStart: '0px'
+          },
+          menu: {
+            borderRightWidth: '1px',
+            borderRightStyle: 'solid',
+            borderRightColor: '{elements.border.primary.static}',
+            backgroundColor: {
+              initial: '{color.gray.50}',
+              dark: '{color.gray.900}'
+            },
+            paddingX: {
+              initial: '{space.4}',
+              sm: '{space.6}'
+            },
+            header: {
+              height: '{docus.app.header.height}',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              borderBottomWidth: '1px',
+              borderBottomStyle: 'solid',
+              borderBottomColor: '{elements.border.primary.static}',
+              gap: '{space.2}',
+              icon: {
+                size: '{space.4}'
+              }
+            },
+            links: {
+              paddingTop: '{space.6}'
+            }
+          }
         }
       },
-      title: {
-        fontSize: '{fontSize.2xl}',
-        fontWeight: '{fontWeight.bold}',
-        color: {
-          static: {
-            initial: '{color.gray.900}',
-            dark: '{color.gray.100}'
-          },
-          hover: '{color.primary.500}'
+      footer: {
+        height: {
+          initial: '145px',
+          sm: '100px'
+        },
+        padding: '{space.4} 0',
+        borderTopWidth: '1px',
+        borderTopStyle: 'solid',
+        borderTopColor: '{elements.border.primary.static}'
+      },
+      navigation: {
+        gap: '{space.2}',
+        vertical: {
+          marginBottom: '{space.4}',
+          gap: '{space.0}',
+          link: {
+            padding: '{space.2} 0'
+          }
+        },
+        link: {
+          padding: '{space.1} {space.2}',
+          fontWeight: '{fontWeight.semibold}',
+          gap: '{space.2}',
+          fontSize: '{fontSize.sm}',
+          icon: {
+            size: '{space.4}'
+          }
         }
+      },
+      colorMode: {
+        padding: '{space.4}',
+        color: {
+          static: '{elements.text.secondary.color.static}',
+          hover: '{elements.text.secondary.color.hover}'
+        }
+      },
+      textDirection: {
+        padding: '{space.4}'
+      },
+      socialIcons: {
+        padding: '{space.4}'
       }
-    },
-    footer: { height: { initial: '145px', sm: '100px' }, padding: '{space.4} 0' },
-    readableLine: '78ch',
-    loadingBar: {
-      height: '3px',
-      gradientColorStop1: '#00dc82',
-      gradientColorStop2: '#34cdfe',
-      gradientColorStop3: '#0047e1'
     },
     docs: {
       page: {
@@ -109,13 +219,15 @@ export default defineTheme({
         gap: '{space.8}',
         padding: '{space.6}',
         backgroundColor: {
-          initial: '{color.gray.100}',
+          initial: '{color.gray.50}',
           dark: '{color.gray.900}'
         },
         borderRadius: '{radii.2xs}',
-        border: {
-          initial: '1px solid {color.gray.200}',
-          dark: 'none'
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: {
+          initial: '{color.gray.200}',
+          dark: '{color.gray.800}'
         },
         boxShadow: {
           static: {
@@ -153,7 +265,35 @@ export default defineTheme({
       }
     },
     landing: {
-      blockHero: {
+      landingSection: {
+        subtitle: {
+          fontSize: '{text.xl.fontSize}',
+          lineHeight: '{text.xl.lineHeight}',
+          fontWeight: '{fontWeight.normal}',
+          letterSpacing: '{letterSpacing.wide}',
+          marginBottom: '{space.4}'
+        },
+        title: {
+          width: '60%',
+          fontSize: {
+            initial: '{text.3xl.fontSize}',
+            sm: '{text.4xl.fontSize}'
+          },
+          lineHeight: {
+            initial: '{text.3xl.lineHeight}',
+            sm: '{text.4xl.lineHeight}'
+          },
+          marginBottom: '{space.8}',
+          fontWeight: '{fontWeight.semibold}',
+          letterSpacing: '{letterSpacing.tight}',
+          color: '{docus.body.color}',
+          gradientText: {
+            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
+            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
+          }
+        }
+      },
+      hero: {
         padding: {
           initial: '{space.20} 0',
           sm: '{space.24} 0',
@@ -206,7 +346,7 @@ export default defineTheme({
             marginBottom: '{space.8}',
             gradientText: {
               initial: 'linear-gradient(114deg, {color.gray.900} 10%, {color.gray.600} 54%, {color.gray.500})',
-              dark: 'linear-gradient(114deg, {color.gray.600} 10%, {color.gray.200} 54%, {color.gray.50})'
+              dark: 'linear-gradient(114deg, {color.gray.400} 10%, {color.gray.100} 54%, {color.gray.700})'
             },
             mixBlendMode: 'normal'
           },
@@ -226,10 +366,7 @@ export default defineTheme({
             },
             color: '{elements.text.secondary.color.static}',
             paddingX: '{space.2}',
-            mixBlendMode: {
-              initial: 'multiply',
-              dark: 'hard-light'
-            }
+            mixBlendMode: 'normal'
           },
           extra: {
             justifyContent: {
@@ -262,6 +399,73 @@ export default defineTheme({
             xl: 'span 5 / span 5'
           }
         }
+      },
+      cardGrid: {
+        paddingBottom: {
+          initial: '{space.20}',
+          sm: '{space.24}',
+          md: '{space.32}'
+        },
+        layout: {
+          gap: {
+            initial: '{space.4}',
+            '2xl': '{space.6}'
+          }
+        }
+      },
+      card: {
+        padding: '{space.1}',
+        borderRadius: '{radii.sm}',
+        borderWidth: '0px',
+        borderStyle: 'solid',
+        borderColor: 'rgba({temp.color.gray.800}, 0.5)',
+        backgroundColor: 'transparent',
+        backgroundImage: 'none',
+        backdropFilter: '{elements.backdrop.filter}',
+        boxShadow: 'none',
+        wrapper: {
+          borderRadius: '{radii.xs}',
+          backgroundColor: 'transparent',
+          backgroundImage: {
+            initial: 'linear-gradient(135deg, rgba({temp.color.gray.100}, 0.5), rgba({temp.color.gray.200}, .5))',
+            dark: 'linear-gradient(135deg, rgba({temp.color.gray.800}, 0.4), rgba({temp.color.gray.800}, .7))'
+          }
+        },
+        noise: {
+          opacity: {
+            initial: '0.3',
+            dark: '0.2'
+          }
+        },
+        content: {
+          padding: '{space.8}'
+        },
+        icon: {
+          marginBottom: '{space.4}',
+          width: '{space.6}',
+          height: '{space.6}',
+          padding: '{space.3}',
+          borderRadius: '{radii.xs}',
+          backgroundColor: {
+            initial: 'rgba({temp.color.gray.400}, 0.2)',
+            dark: 'rgba({temp.color.gray.900}, 0.2)'
+          },
+          boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
+        },
+        title: {
+          marginBottom: '{space.2}',
+          fontSize: '{text.2xl.fontSize}',
+          lineHeight: '{text.2xl.lineHeight}',
+          fontWeight: '{fontWeight.medium}',
+          letterSpacing: '{letterSpacing.tight}',
+          color: '{elements.text.primary.color.static}'
+        },
+        description: {
+          fontSize: '{text.sm.fontSize}',
+          lineHeight: '{text.sm.lineHeight}',
+          fontWeight: '{fontWeight.medium}',
+          color: '{elements.text.secondary.color.static}'
+        }
       }
     }
   },
@@ -293,6 +497,20 @@ export default defineTheme({
       }
     }
   },
+  prose: {
+    code: {
+      block: {
+        borderColor: '{elements.border.primary.static}'
+      },
+      inline: {
+        color: '{color.primary.500}',
+        backgroundColor: {
+          initial: '{color.primary.50}',
+          dark: '{color.primary.900}'
+        }
+      }
+    }
+  },
   elements: {
     backdrop: {
       $schema: {
@@ -310,107 +528,76 @@ export default defineTheme({
     },
     // border
     // surface
+    container: {
+      $schema: {
+        title: 'Main container sizings.',
+        tags: [
+          '@studioInput design-token',
+          '@studioInputTokenType size',
+          '@studioIcon material-symbols:width-full-outline'
+        ]
+      },
+      maxWidth: '80rem',
+      padding: {
+        initial: '{space.4}',
+        xs: '{space.4}',
+        sm: '{space.6}',
+        xl: '{space.8}'
+      }
+    },
+
     terminal: {
+      maxWidth: '{space.128}',
+      height: '{space.64}',
+      borderWidth: '0px',
+      borderStyle: 'solid',
+      borderColor: '{elements.border.primary.static}',
+      borderRadius: '{radii.xs}',
       backgroundColor: {
         initial: 'rgba({temp.color.gray.200}, 0.7)',
         dark: 'rgba({temp.color.gray.900}, 0.7)'
       },
       boxShadow: 'inset 0px 0px 0px 1px rgba({temp.color.gray.600}, 0.3), {shadow.2xl}',
-      borderWidth: '0px',
+      backdropFilter: 'blur(3px)',
       header: {
         borderBottomWidth: '0px',
+        borderBottomStyle: 'solid',
+        borderBottomColor: '{elements.border.primary.static}',
+        height: '{space.12}',
         boxShadow: 'inset 0px -1px 0px 0px rgba({temp.color.gray.600}, 0.3)'
       },
       window: {
+        fontFamily: '{font.mono}',
+        fontSize: '{text.sm.fontSize}',
+        // mixBlendMode: 'normal',
         mixBlendMode: {
           initial: 'normal',
           dark: 'difference'
+        },
+        sign: {
+          color: {
+            initial: '{color.gray.500}',
+            dark: '{color.gray.700}'
+          }
+        }
+      },
+      copied: {
+        color: {
+          initial: '{color.gray.900}',
+          dark: '{color.gray.100}'
         }
       }
     },
-    card: {
-      padding: '{space.8}',
-      borderRadius: '{radii.xl}',
-      borderWidth: '0px',
-      borderStyle: 'solid',
-      borderColor: '{color.gray.700}',
-      backgroundColor: {
-        initial: 'rgba({temp.color.gray.50}, 0.2)',
-        dark: 'rgba({temp.color.gray.900}, 0.2)'
-      },
-      backgroundImage: 'none',
-      backdropFilter: '{elements.backdrop.filter}',
-      boxShadow: 'inset 0.25px 0.5px 0px hsla(0,0%,100%,.1), inset -0.25px 0px 0px hsla(0,0%,100%,.1), {shadow.xs}',
-      wrapper: {
-        backgroundColor: 'transparent',
-        backgroundImage: {
-          initial: 'linear-gradient(180deg, rgba({temp.color.gray.50}, 0.2) 50%, rgba({temp.color.gray.100}, 0.9) 100%)',
-          dark: 'linear-gradient(180deg, rgba({temp.color.black}, 0.5) 50%, rgba({temp.color.gray.900}, 0.9) 100%)'
-        }
-      },
-      noise: {
-        opacity: {
-          initial: '0.3',
-          dark: '0.2'
-        }
-      },
-      icon: {
-        marginBottom: '{space.4}',
-        width: '{space.6}',
-        height: '{space.6}',
-        padding: '{space.3}',
-        borderRadius: '{radii.xs}',
+
+    codeGroup: {
+      margin: '{typography.verticalMargin.base} 0px'
+    },
+
+    drawer: {
+      scrim: {
         backgroundColor: {
-          initial: 'rgba({temp.color.gray.100}, 0.5)',
-          dark: 'rgba({temp.color.gray.900}, 0.2)'
-        },
-        boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
-      },
-      title: {
-        marginBottom: '{space.2}',
-        fontSize: '{text.2xl.fontSize}',
-        lineHeight: '{text.2xl.lineHeight}',
-        fontWeight: '{fontWeight.medium}',
-        letterSpacing: '{letterSpacing.tight}',
-        color: '{elements.text.primary.color.static}'
-      },
-      description: {
-        fontSize: '{text.sm.fontSize}',
-        lineHeight: '{text.sm.lineHeight}',
-        fontWeight: '{fontWeight.medium}',
-        color: '{elements.text.secondary.color.static}'
-      }
-    },
-    cardGrid: {
-      paddingBottom: {
-        initial: '{space.20}',
-        sm: '{space.24}',
-        md: '{space.32}'
-      },
-      margin: '{space.24} 0',
-      title: {
-        fontSize: {
-          initial: '{text.3xl.fontSize}',
-          sm: '{text.4xl.fontSize}'
-        },
-        lineHeight: {
-          initial: '{text.3xl.lineHeight}',
-          sm: '{text.4xl.lineHeight}'
-        },
-        marginBottom: '{space.8}',
-        fontWeight: '{fontWeight.bold}',
-        letterSpacing: '{letterSpacing.tight}',
-        color: '{elements.text.primary.color.static}'
-      },
-      layout: {
-        gridTemplateColumns: {
-          initial: 'none',
-          sm: 'repeat(2, minmax(0, 1fr))',
-          lg: 'repeat(3, minmax(0, 1fr))'
-        },
-        gap: {
-          initial: '{space.4}',
-          '2xl': '{space.6}'
+          initial: 'rgba({temp.color.gray.50}, 0.95)',
+          dark: 'rgba({temp.color.gray.900}, 0.95)'
         }
       }
     }

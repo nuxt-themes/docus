@@ -18,17 +18,11 @@ const onClick = () => {
 css({
   button: {
     display: 'flex',
-    padding: '{space.4}',
-    color: '{color.gray.500}',
-    '@dark': {
-      color: '{color.gray.400}'
-    },
+    padding: '{docus.app.textDirection.padding}',
+    color: '{elements.text.secondary.color.static}',
     '&:hover': {
-      color: '{color.gray.700}',
-      '@dark': {
-        color: '{color.gray.200}',
-      }
-    },
+      color: '{elements.text.secondary.color.hover}'
+    }
   }
 })
 </style>

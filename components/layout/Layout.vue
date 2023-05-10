@@ -31,7 +31,7 @@ useContentHead(config.value as any)
 css({
   '.app-layout': {
     main: {
-      minHeight: 'calc(100vh - {docus.header.height} - {docus.footer.height})',
+      minHeight: 'calc(100vh - {docus.app.header.height} - {docus.app.footer.height})',
     }
   }
 })

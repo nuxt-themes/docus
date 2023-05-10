@@ -49,6 +49,14 @@ const props = defineProps({
   backgroundImage: {
     type: String,
     default: 'none'
+  },
+  beforeBlendMode: {
+    type: String,
+    default: 'color'
+  },
+  afterBlendMode: {
+    type: [String, Object],
+    default: 'color'
   }
 })
 </script>
@@ -66,6 +74,8 @@ const props = defineProps({
 <style scoped lang="ts">
 css({
   '.glow': {
+    '--beforeBlendMode': (props) => props.beforeBlendMode,
+    '--afterBlendMode': (props) => props.afterBlendMode,
     '--mask-gradient': (props) => typeof props.maskGradient === 'string' ? props.maskGradient : props.maskGradient.light,
     '--gradient': (props) => typeof props.gradient === 'string' ? props.gradient : props.gradient.light,
     '@dark': {
@@ -93,13 +103,17 @@ css({
       mask: 'var(--mask)',
       maskComposite: 'intersect',
       '-webkit-mask-composite': 'source-in',
-      mixBlendMode: 'color'
+      // mixBlendMode: 'color'
     },
     '&.noise::before': {
       filter: 'url(#f)'
     },
+    '&::before': {
+      mixBlendMode: 'var(--beforeBlendMode)',
+    },
     '&::after': {
       background: 'var(--gradient)',
+      mixBlendMode: 'var(--afterBlendMode)',
     }
   }
 })
