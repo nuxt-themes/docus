@@ -34,11 +34,6 @@ export default defineAppConfig({
         {
           href: 'https://nuxt.com',
           icon: 'simple-icons:nuxtdotjs'
-        },
-        {
-          href: 'https://nuxt.com',
-          icon: 'IconNuxtLabs',
-          label: 'Nuxt'
         }
       ]
     }
