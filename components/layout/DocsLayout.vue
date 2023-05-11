@@ -8,7 +8,7 @@ const fallbackValue = (value: string, fallback = true) => {
   return fallback
 }
 
-const hasBody = computed(() => !page.value || page.value?.body?.children?.length > 0)
+const hasContent = computed(() => !page.value || page.value?.body?.children?.length > 0)
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
 const hasAside = computed(() => page.value?.aside !== false && (tree.value?.length > 1 || tree.value?.[0]?.children?.length))
@@ -68,21 +68,21 @@ onBeforeUnmount(() => {
       <DocsAside class="app-aside" />
     </aside>
 
-    <!-- Page Body -->
-    <article class="page-body">
-      <slot v-if="hasBody" />
+    <!-- Page Content -->
+    <article class="page-content">
+      <slot v-if="hasContent" />
       <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
-      <template v-if="hasBody && page && bottom">
-        <div class="page-body-bottom">
-          <DocsPageBottom />
+      <template v-if="hasContent && page && bottom">
+        <div class="page-content-bottom">
+          <DocsContentBottom />
           <DocsPrevNext />
         </div>
       </template>
     </article>
 
-    <!-- TOC -->
+    <!-- ToC -->
     <div v-if="hasToc" class="toc">
       <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
@@ -150,7 +150,7 @@ css({
       }
     }
   },
-  '.page-body': {
+  '.page-content': {
     position: 'relative',
     display: 'flex',
     flexDirection: "column",
@@ -159,7 +159,7 @@ css({
     width: '100%',
     maxWidth: '{docus.readableLine}',
     mx: 'auto',
-    '.page-body-bottom': {
+    '.page-content-bottom': {
       display: 'flex',
       flexDirection: 'column',
       gap: '{space.8}',

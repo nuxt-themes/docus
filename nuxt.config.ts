@@ -48,6 +48,11 @@ export default defineNuxtConfig({
     },
     {
       prefix: '',
+      path: resolve('./components/content'),
+      global: true
+    },
+    {
+      prefix: '',
       path: resolve('./components/app'),
       global: true
     },

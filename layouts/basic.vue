@@ -1,5 +1,5 @@
 <template>
-  <DocsLayout>
+  <BasicLayout>
     <slot />
-  </DocsLayout>
+  </BasicLayout>
 </template>

@@ -15,11 +15,11 @@ const emit = defineEmits(['move'])
     </template>
     <div class="docs-toc-bottom">
       <div v-if="config?.github?.edit">
-        <EditOnLink v-slot="{ url }" :page="page">
+        <DocsEditOn v-slot="{ url }" :page="page">
           <ProseA :href="url">
             Edit this page on GitHub
           </ProseA>
-        </EditOnLink>
+        </DocsEditOn>
       </div>
     </div>
   </div>

@@ -1,14 +1,12 @@
 <template>
-  <div class="page-layout">
-    <article>
-      <slot />
-    </article>
+  <div class="basic-layout">
+    <slot />
   </div>
 </template>
 
 <style lang="ts" scoped>
 css({
-  '.page-layout': {
+  '.basic-layout': {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative'

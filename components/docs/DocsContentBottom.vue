@@ -7,13 +7,13 @@ const { config } = useDocus()
   <div v-if="page" class="docs-page-bottom">
     <div v-if="config?.github?.edit" class="edit-link">
       <Icon name="uil:edit" />
-      <EditOnLink v-slot="{ url }" :page="page">
+      <DocsEditOn v-slot="{ url }" :page="page">
         <ProseA :to="url">
           <span>
             Edit this page on GitHub
           </span>
         </ProseA>
-      </EditOnLink>
+      </DocsEditOn>
     </div>
 
     <!-- Need to be supported by @nuxt/content -->

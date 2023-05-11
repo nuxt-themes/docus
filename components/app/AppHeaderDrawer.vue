@@ -34,7 +34,7 @@ watch(visible, v => (v ? open() : close()))
         </div>
       </div>
 
-      <DocsAsideTree :links="links" class="links" />
+      <DocsNavigation :links="links" class="links" />
     </nav>
   </Drawer>
 </template>

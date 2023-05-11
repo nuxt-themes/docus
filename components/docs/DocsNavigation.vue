@@ -101,7 +101,7 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
         </span>
       </NuxtLink>
 
-      <DocsAsideTree
+      <DocsNavigation
         v-show="!isCollapsed(link)"
         v-if="link.children?.length && (max === null || level + 1 < max)"
         :links="link.children"
