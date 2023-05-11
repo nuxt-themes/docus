@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   modules: [
     // https://github.com/nuxt-modules/plausible
     '@nuxtjs/plausible',
-
     // https://github.com/nuxt/devtools
     '@nuxt/devtools'
   ]
