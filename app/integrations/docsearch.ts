@@ -84,11 +84,11 @@ export default defineNuxtPlugin(() => {
         searchParameters: {
           ...(!lang
             ? {
-                facetFilters: userFacetFilters
-              }
+              facetFilters: userFacetFilters
+            }
             : {
-                facetFilters: [langPrefix].concat(userFacetFilters)
-              }),
+              facetFilters: [langPrefix].concat(userFacetFilters)
+            }),
           ...userOptions.searchParameters
         },
         /**
@@ -97,58 +97,58 @@ export default defineNuxtPlugin(() => {
         transformItems: userOptions.transformItems
           ? userOptions.transformItems
           : (items) => {
-              return items.map((item) => {
-                return {
-                  ...item,
-                  url: getRelativePath(item.url)
-                }
-              })
-            },
+            return items.map((item) => {
+              return {
+                ...item,
+                url: getRelativePath(item.url)
+              }
+            })
+          },
         navigator: userOptions.navigator
           ? userOptions.navigator
           : {
-              navigate: ({ itemUrl }) => {
-                const { pathname: hitPathname } = new URL(window.location.origin + itemUrl)
-                // Vue Router doesn't handle same-page navigation so we use
-                // the native browser location API for anchor navigation.
-                if (route.path === hitPathname) {
-                  window.location.assign(window.location.origin + itemUrl)
-                } else {
-                  router.push(itemUrl)
-                }
+            navigate: ({ itemUrl }) => {
+              const { pathname: hitPathname } = new URL(window.location.origin + itemUrl)
+              // Vue Router doesn't handle same-page navigation so we use
+              // the native browser location API for anchor navigation.
+              if (route.path === hitPathname) {
+                window.location.assign(window.location.origin + itemUrl)
+              } else {
+                router.push(itemUrl)
               }
-            },
+            }
+          },
         hitComponent: userOptions.hitComponent
           ? userOptions.hitComponent
           : ({ hit, children }) => {
-              return {
-                type: 'a',
-                constructor: undefined,
-                __v: 1,
-                props: {
-                  href: hit.url,
-                  children,
-                  onClick: (event: MouseEvent) => {
-                    if (isSpecialClick(event)) {
-                      return
-                    }
-                    // We rely on the native link scrolling when user is
-                    // already on the right anchor because Vue Router doesn't
-                    // support duplicated history entries.
-                    if (route.fullPath === hit.url) {
-                      return
-                    }
-                    const { pathname: hitPathname } = new URL(window.location.origin + hit.url)
-                    // If the hits goes to another page, we prevent the native link behavior
-                    // to leverage the Vue Router loading feature.
-                    if (route.path !== hitPathname) {
-                      event.preventDefault()
-                    }
-                    router.push(hit.url)
+            return {
+              type: 'a',
+              constructor: undefined,
+              __v: 1,
+              props: {
+                href: hit.url,
+                children,
+                onClick: (event: MouseEvent) => {
+                  if (isSpecialClick(event)) {
+                    return
                   }
+                  // We rely on the native link scrolling when user is
+                  // already on the right anchor because Vue Router doesn't
+                  // support duplicated history entries.
+                  if (route.fullPath === hit.url) {
+                    return
+                  }
+                  const { pathname: hitPathname } = new URL(window.location.origin + hit.url)
+                  // If the hits goes to another page, we prevent the native link behavior
+                  // to leverage the Vue Router loading feature.
+                  if (route.path !== hitPathname) {
+                    event.preventDefault()
+                  }
+                  router.push(hit.url)
                 }
               }
-            },
+            }
+          },
         // Spread user options, except the ones that are already used in the instance.
         ...Object.entries(userOptions)
           // Skip already used keys
