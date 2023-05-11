@@ -1,0 +1,1 @@
+export default {data:{},prerenderedAt:void 0}
