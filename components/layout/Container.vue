@@ -30,7 +30,7 @@ css({
   variants: {
     padded: {
       true: {
-        px: '{elements.container.padding}',
+        px: '{docus.layout.container.padding}',
       },
       options: {
         default: true
@@ -39,7 +39,7 @@ css({
     fluid: {
       true: {},
       false: {
-        maxWidth: '{elements.container.maxWidth}'
+        maxWidth: '{docus.layout.container.maxWidth}'
       },
       options: {
         default: false

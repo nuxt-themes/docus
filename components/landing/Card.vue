@@ -22,14 +22,14 @@ defineProps({
     type: Boolean,
     default: false
   },
-  aspectRatio: {
-    type: String,
-    default: '2/1'
+  lights: {
+    type: Boolean,
+    default: false
   }
 })
 
 const cardRef = ref<HTMLElement | null>(null)
-const { elementX, elementY, isOutside } = useMouseInElement(cardRef)
+const { elementX, elementY } = useMouseInElement(cardRef)
 
 watch([elementX, elementY], () => {
   cardRef.value?.style.setProperty('--x', `${elementX.value}px`)
@@ -38,7 +38,7 @@ watch([elementX, elementY], () => {
 </script>
 
 <template>
-  <div ref="cardRef" class="card">
+  <div ref="cardRef" class="card" :class="{lights}">
     <div class="wrapper">
       <div v-if="noise" class="noise" />
       <slot />
@@ -66,7 +66,6 @@ css({
   '.card': {
     '--col': (props) => props.col,
     '--row': (props) => props.row,
-    '--aspectRatio': (props) => props.aspectRatio,
 
     position: 'relative',
     textAlign: 'center',
@@ -82,7 +81,7 @@ css({
     backgroundImage: '{docus.landing.card.backgroundImage}',
     backdropFilter: '{docus.landing.card.backdropFilter}',
 
-    '&::before': {
+    '&.lights::before': {
       content: '""',
       position: 'absolute',
       inset: '0',
@@ -104,7 +103,7 @@ css({
       backgroundColor: '{docus.landing.card.wrapper.backgroundColor}',
       backgroundImage: '{docus.landing.card.wrapper.backgroundImage}',
 
-      '&:after': {
+      '.lights &&:after': {
         // backgroundImage: '{docus.landing.card.wrapper.after.backgroundImage}', // TODO bug in tokens with vars
         backgroundImage: 'none',
         backgroundSize: 'auto',
@@ -143,6 +142,7 @@ css({
         height: '{docus.landing.card.icon.height}',
       },
     },
+
     '.title': {
       marginBottom: '{docus.landing.card.title.marginBottom}',
       fontSize: '{docus.landing.card.title.fontSize}',
@@ -151,12 +151,14 @@ css({
       letterSpacing: '{docus.landing.card.title.letterSpacing}',
       color: '{docus.landing.card.title.color}'
     },
+
     '.description': {
       fontSize: '{docus.landing.card.description.fontSize}',
       lineHeight: '{docus.landing.card.description.lineHeight}',
       fontWeight: '{docus.landing.card.description.fontWeight}',
       color: '{docus.landing.card.description.color}',
     },
+
     '.noise': {
       position: 'absolute',
       inset: '0',

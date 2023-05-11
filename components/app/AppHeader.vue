@@ -67,6 +67,7 @@ css({
         }
       },
     },
+
     '.center &': {
       display: 'block',
       '@lg': {
@@ -104,18 +105,21 @@ css({
       display: 'flex',
       alignItems: 'center',
       flex: 'none',
+
       '&.left': {
         gridColumn: '{docus.app.header.layout.left.gridColumn}',
         '@lg': {
           marginInlineStart: 0
         },
       },
+
       '&.center': {
         gridColumn: '{docus.app.header.layout.center.gridColumn}',
         justifyContent: 'center',
         flex: '1',
         zIndex: '1'
       },
+
       '&.right': {
         display: 'flex',
         gridColumn: '{docus.app.header.layout.right.gridColumn}',
@@ -123,6 +127,7 @@ css({
         alignItems: 'center',
         flex: 'none',
         marginInlineEnd: 'calc(0px - {space.4})',
+
         '.social-icons': {
           display: 'none',
           '@md': {

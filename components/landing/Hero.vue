@@ -98,7 +98,7 @@ watch(height, (value) => {
 <style scoped lang="ts">
 css({
   '.hero': {
-    // position: 'relative',
+    position: 'relative',
     padding: '{docus.landing.hero.padding}',
     // '.root': {
     //   position: 'absolute',

@@ -60,7 +60,6 @@ const copy = (e: MouseEvent) => {
         Click to copy
       </div>
     </div>
-
   </div>
 </template>
 
@@ -71,18 +70,19 @@ css({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    maxWidth: '{elements.terminal.maxWidth}', 
-    height: '{elements.terminal.height}', 
+    maxWidth: '{docus.landing.terminal.maxWidth}',
+    height: '{docus.landing.terminal.height}',
     mx: 'auto',
     cursor: 'pointer',
     overflow: 'hidden',
-    borderWidth: '{elements.terminal.borderWidth}', 
-    borderStyle: '{elements.terminal.borderStyle}', 
-    borderColor: '{elements.terminal.borderColor}',  
-    borderRadius: '{elements.terminal.borderRadius}', 
-    backgroundColor: '{elements.terminal.backgroundColor}',
-    boxShadow: '{elements.terminal.boxShadow}',
-    backdropFilter: '{elements.terminal.backdropFilter}',
+    borderWidth: '{docus.landing.terminal.borderWidth}',
+    borderStyle: '{docus.landing.terminal.borderStyle}',
+    borderColor: '{docus.landing.terminal.borderColor}',
+    borderRadius: '{docus.landing.terminal.borderRadius}',
+    backgroundColor: '{docus.landing.terminal.backgroundColor}',
+    boxShadow: '{docus.landing.terminal.boxShadow}',
+    backdropFilter: '{docus.landing.terminal.backdropFilter}',
+
     '.copied': {
       position: 'absolute',
       top: '0',
@@ -93,21 +93,22 @@ css({
       alignItems: 'center',
       justifyContent: 'center',
       '.content': {
-        color: '{elements.terminal.copied.color}',
+        color: '{docus.landing.terminal.copied.color}',
         fontWeight: '{fontWeight.normal}',
         fontSize: '{text.base.fontSize}',
       }
     },
+
     '.header': {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
-      borderBottomWidth: '{elements.terminal.header.borderBottomWidth}', 
-      borderBottomStyle: '{elements.terminal.header.borderBottomStyle}', 
-      borderBottomColor: '{elements.terminal.header.borderBottomColor}',  
+      borderBottomWidth: '{docus.landing.terminal.header.borderBottomWidth}',
+      borderBottomStyle: '{docus.landing.terminal.header.borderBottomStyle}',
+      borderBottomColor: '{docus.landing.terminal.header.borderBottomColor}',
       width: '100%',
-      height: '{elements.terminal.header.height}',
-      boxShadow: '{elements.terminal.header.boxShadow}',
+      height: '{docus.landing.terminal.header.height}',
+      boxShadow: '{docus.landing.terminal.header.boxShadow}',
       '.controls': {
         display: 'flex',
         marginInlineStart: '{space.4}',
@@ -148,15 +149,16 @@ css({
         fontFamily: '{font.mono}'
       }
     },
+
     '.window': {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       flex: '1 1 0%',
       padding: '{space.4}',
-      fontFamily: '{elements.terminal.window.fontFamily}',  
-      fontSize: '{elements.terminal.window.fontSize}',
-      mixBlendMode: '{elements.terminal.window.mixBlendMode}',
+      fontFamily: '{docus.landing.terminal.window.fontFamily}',
+      fontSize: '{docus.landing.terminal.window.fontSize}',
+      mixBlendMode: '{docus.landing.terminal.window.mixBlendMode}',
       '.line': {
         display: 'flex',
         marginBottom: '{space.1}',
@@ -166,12 +168,13 @@ css({
         display: 'inline-block',
         userSelect: 'none',
         fontWeight: '{fontWeight.bold}',
-        color: '{elements.terminal.window.sign.color}',
+        color: '{docus.landing.terminal.window.sign.color}',
       },
       '.content': {
         display: 'inline-block',
       }
     },
+
     '.prompt': {
       position: 'absolute',
       bottom: '0px',

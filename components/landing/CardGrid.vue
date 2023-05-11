@@ -1,8 +1,12 @@
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   cols: {
     type: [String, Number, Object],
     default: 3
+  },
+  subtitleColor: {
+    type: String,
+    default: '{color.primary.500}'
   }
 })
 </script>
@@ -17,6 +21,14 @@ const props = defineProps({
 
     <ContentSlot :use="$slots.root" />
 
+    <span v-if="$slots.subtitle" class="subtitle">
+      <ContentSlot :use="$slots.subtitle" unwrap="p" />
+    </span>
+
+    <h2 v-if="$slots.title" class="title">
+      <ContentSlot :use="$slots.title" unwrap="p" />
+    </h2>
+
     <div class="card-grid-layout">
       <slot />
     </div>
@@ -26,8 +38,32 @@ const props = defineProps({
 <style scoped lang="ts">
 css({
   '.card-grid': {
-    position: 'relative',
+    '--subtitleColor': (props) => props.subtitleColor,
+
+    position: '{docus.landing.cardGrid.position}',
     paddingBottom: '{docus.landing.cardGrid.paddingBottom}',
+
+    '.subtitle': {
+      display: 'block',
+      fontSize: '{docus.landing.cardGrid.subtitle.fontSize}',
+      lineHeight: '{docus.landing.cardGrid.subtitle.lineHeight}',
+      fontWeight: '{docus.landing.cardGrid.subtitle.fontWeight}',
+      color: 'var(--subtitleColor)',
+      marginBottom: '{docus.landing.cardGrid.subtitle.marginBottom}',
+      letterSpacing: '{docus.landing.cardGrid.subtitle.letterSpacing}',
+    },
+
+    '.title': {
+      width: '{docus.landing.cardGrid.title.width}',
+      marginBottom: '{docus.landing.cardGrid.title.marginBottom}',
+      fontSize: '{docus.landing.cardGrid.title.fontSize}',
+      lineHeight: '{docus.landing.cardGrid.title.lineHeight}',
+      fontWeight: '{docus.landing.cardGrid.title.fontWeight}',
+      letterSpacing: '{docus.landing.cardGrid.title.letterSpacing}',
+      color: '{docus.landing.cardGrid.title.color}',
+      gradientText: '{docus.landing.cardGrid.title.gradientText}',
+    },
+
     '.card-grid-layout': {
       textAlign: 'start',
       display: 'grid',
@@ -36,6 +72,7 @@ css({
       gridAutoRows: 'minmax(180px, auto)',
       gridAutoFlow: 'dense',
     },
+
     '.card-noise': {
       display: 'none',
     }

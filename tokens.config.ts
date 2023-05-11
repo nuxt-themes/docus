@@ -69,6 +69,25 @@ export default defineTheme({
       fontFamily: '{font.sans}'
     },
     readableLine: '78ch',
+    layout: {
+      container: {
+        $schema: {
+          title: 'Main container sizings.',
+          tags: [
+            '@studioInput design-token',
+            '@studioInputTokenType size',
+            '@studioIcon material-symbols:width-full-outline'
+          ]
+        },
+        maxWidth: '80rem',
+        padding: {
+          initial: '{space.4}',
+          xs: '{space.4}',
+          sm: '{space.6}',
+          xl: '{space.8}'
+        }
+      }
+    },
     app: {
       loadingBar: {
         height: '3px',
@@ -331,34 +350,6 @@ export default defineTheme({
       }
     },
     landing: {
-      landingSection: {
-        subtitle: {
-          fontSize: '{text.xl.fontSize}',
-          lineHeight: '{text.xl.lineHeight}',
-          fontWeight: '{fontWeight.normal}',
-          letterSpacing: '{letterSpacing.wide}',
-          marginBottom: '{space.4}'
-        },
-        title: {
-          width: '60%',
-          fontSize: {
-            initial: '{text.3xl.fontSize}',
-            sm: '{text.4xl.fontSize}'
-          },
-          lineHeight: {
-            initial: '{text.3xl.lineHeight}',
-            sm: '{text.4xl.lineHeight}'
-          },
-          marginBottom: '{space.8}',
-          fontWeight: '{fontWeight.semibold}',
-          letterSpacing: '{letterSpacing.tight}',
-          color: '{docus.body.color}',
-          gradientText: {
-            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
-            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
-          }
-        }
-      },
       hero: {
         padding: {
           initial: '{space.20} 0',
@@ -467,6 +458,7 @@ export default defineTheme({
         }
       },
       cardGrid: {
+        position: 'relative',
         paddingBottom: {
           initial: '{space.20}',
           sm: '{space.24}',
@@ -476,6 +468,32 @@ export default defineTheme({
           gap: {
             initial: '{space.4}',
             '2xl': '{space.6}'
+          }
+        },
+        subtitle: {
+          fontSize: '{text.xl.fontSize}',
+          lineHeight: '{text.xl.lineHeight}',
+          fontWeight: '{fontWeight.normal}',
+          letterSpacing: '{letterSpacing.wide}',
+          marginBottom: '{space.4}'
+        },
+        title: {
+          width: '60%',
+          fontSize: {
+            initial: '{text.3xl.fontSize}',
+            sm: '{text.4xl.fontSize}'
+          },
+          lineHeight: {
+            initial: '{text.3xl.lineHeight}',
+            sm: '{text.4xl.lineHeight}'
+          },
+          marginBottom: '{space.8}',
+          fontWeight: '{fontWeight.semibold}',
+          letterSpacing: '{letterSpacing.tight}',
+          color: '{docus.body.color}',
+          gradientText: {
+            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
+            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
           }
         }
       },
@@ -531,6 +549,48 @@ export default defineTheme({
           lineHeight: '{text.sm.lineHeight}',
           fontWeight: '{fontWeight.medium}',
           color: '{elements.text.secondary.color.static}'
+        }
+      },
+      terminal: {
+        maxWidth: '{space.128}',
+        height: '{space.64}',
+        borderWidth: '0px',
+        borderStyle: 'solid',
+        borderColor: '{elements.border.primary.static}',
+        borderRadius: '{radii.xs}',
+        backgroundColor: {
+          initial: 'rgba({temp.color.gray.200}, 0.7)',
+          dark: 'rgba({temp.color.gray.900}, 0.7)'
+        },
+        boxShadow: 'inset 0px 0px 0px 1px rgba({temp.color.gray.600}, 0.3), {shadow.2xl}',
+        backdropFilter: 'blur(3px)',
+        header: {
+          borderBottomWidth: '0px',
+          borderBottomStyle: 'solid',
+          borderBottomColor: '{elements.border.primary.static}',
+          height: '{space.12}',
+          boxShadow: 'inset 0px -1px 0px 0px rgba({temp.color.gray.600}, 0.3)'
+        },
+        window: {
+          fontFamily: '{font.mono}',
+          fontSize: '{text.sm.fontSize}',
+          // mixBlendMode: 'normal',
+          mixBlendMode: {
+            initial: 'normal',
+            dark: 'difference'
+          },
+          sign: {
+            color: {
+              initial: '{color.gray.500}',
+              dark: '{color.gray.700}'
+            }
+          }
+        },
+        copied: {
+          color: {
+            initial: '{color.gray.900}',
+            dark: '{color.gray.100}'
+          }
         }
       }
     }
@@ -592,68 +652,8 @@ export default defineTheme({
         dark: 'rgba({temp.color.gray.900}, 0.8)'
       }
     },
-    // border
-    // surface
-    container: {
-      $schema: {
-        title: 'Main container sizings.',
-        tags: [
-          '@studioInput design-token',
-          '@studioInputTokenType size',
-          '@studioIcon material-symbols:width-full-outline'
-        ]
-      },
-      maxWidth: '80rem',
-      padding: {
-        initial: '{space.4}',
-        xs: '{space.4}',
-        sm: '{space.6}',
-        xl: '{space.8}'
-      }
-    },
-
-    terminal: {
-      maxWidth: '{space.128}',
-      height: '{space.64}',
-      borderWidth: '0px',
-      borderStyle: 'solid',
-      borderColor: '{elements.border.primary.static}',
-      borderRadius: '{radii.xs}',
-      backgroundColor: {
-        initial: 'rgba({temp.color.gray.200}, 0.7)',
-        dark: 'rgba({temp.color.gray.900}, 0.7)'
-      },
-      boxShadow: 'inset 0px 0px 0px 1px rgba({temp.color.gray.600}, 0.3), {shadow.2xl}',
-      backdropFilter: 'blur(3px)',
-      header: {
-        borderBottomWidth: '0px',
-        borderBottomStyle: 'solid',
-        borderBottomColor: '{elements.border.primary.static}',
-        height: '{space.12}',
-        boxShadow: 'inset 0px -1px 0px 0px rgba({temp.color.gray.600}, 0.3)'
-      },
-      window: {
-        fontFamily: '{font.mono}',
-        fontSize: '{text.sm.fontSize}',
-        // mixBlendMode: 'normal',
-        mixBlendMode: {
-          initial: 'normal',
-          dark: 'difference'
-        },
-        sign: {
-          color: {
-            initial: '{color.gray.500}',
-            dark: '{color.gray.700}'
-          }
-        }
-      },
-      copied: {
-        color: {
-          initial: '{color.gray.900}',
-          dark: '{color.gray.100}'
-        }
-      }
-    },
+    // border?
+    // surface?
 
     codeGroup: {
       margin: '{typography.verticalMargin.base} 0px'
