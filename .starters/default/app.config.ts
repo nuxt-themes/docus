@@ -7,18 +7,38 @@ export default defineAppConfig({
       twitter: 'nuxtstudio',
       github: 'nuxt-themes/docus'
     },
+    github: {
+      dir: '.starters/default/content',
+      branch: 'main',
+      repo: 'docus',
+      owner: 'nuxt-themes',
+      edit: true
+    },
     aside: {
       level: 0,
+      collapsed: false,
       exclude: []
     },
+    main: {
+      padded: true,
+      fluid: true
+    },
     header: {
-      logo: true
+      logo: true,
+      showLinkIcon: true,
+      exclude: [],
+      fluid: true
     },
     footer: {
       iconLinks: [
         {
           href: 'https://nuxt.com',
           icon: 'simple-icons:nuxtdotjs'
+        },
+        {
+          href: 'https://nuxt.com',
+          icon: 'IconNuxtLabs',
+          label: 'Nuxt'
         }
       ]
     }

@@ -1,18 +1,9 @@
 import { defineTheme } from 'pinceau'
 
 export default defineTheme({
-  color: {
-    primary: {
-      50: "#FFF6E5",
-      100: "#FFEDCC",
-      200: "#FFDB99",
-      300: "#FFC966",
-      400: "#FFB833",
-      500: "#FFA500",
-      600: "#CC8500",
-      700: "#996300",
-      800: "#664200",
-      900: "#332100"
-    }
-  }
+  // Defaults from:
+  // 1. https://github.com/nuxt-themes/tokens
+  // 2. https://github.com/nuxt-themes/typography/blob/main/tokens.config.ts
+  // 3. https://github.com/nuxt-themes/elements/blob/main/tokens.config.ts
+  // 4. https://github.com/nuxt-themes/docus/blob/main/tokens.config.ts
 })
