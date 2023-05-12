@@ -74,11 +74,13 @@ const props = defineProps({
 <style scoped lang="ts">
 css({
   '.glow': {
-    '--beforeBlendMode': (props) => props.beforeBlendMode,
-    '--afterBlendMode': (props) => props.afterBlendMode,
+    '--beforeBlendMode': (props) => typeof props.beforeBlendMode === 'string' ? props.beforeBlendMode : props.beforeBlendMode.light,
+    '--afterBlendMode': (props) => typeof props.afterBlendMode === 'string' ? props.afterBlendMode : props.afterBlendMode.light,
     '--mask-gradient': (props) => typeof props.maskGradient === 'string' ? props.maskGradient : props.maskGradient.light,
     '--gradient': (props) => typeof props.gradient === 'string' ? props.gradient : props.gradient.light,
     '@dark': {
+      '--beforeBlendMode': (props) => typeof props.beforeBlendMode === 'string' ? props.beforeBlendMode : props.beforeBlendMode.dark,
+      '--afterBlendMode': (props) => typeof props.afterBlendMode === 'string' ? props.afterBlendMode : props.afterBlendMode.dark,
       '--mask-gradient': (props) => typeof props.maskGradient === 'string' ? props.maskGradient : props.maskGradient.dark,
       '--gradient': (props) => typeof props.gradient === 'string' ? props.gradient : props.gradient.dark
     },
@@ -120,8 +122,9 @@ css({
 </style>
 
 <style scoped>
+
 .glow {
-  animation: enter-opacity 1000ms forwards 500ms $dt('ease.expo.inOut');
+  animation: enter-opacity 750ms forwards 500ms $dt('ease.expo.inOut');
 }
 @keyframes enter-opacity {
   from {
@@ -132,16 +135,16 @@ css({
   }
 }
 .glow::after, .glow::before {
-  animation: enter-scale 1000ms forwards 500ms $dt('ease.expo.inOut');
+  animation: enter-scale 0ms forwards 500ms linear;
 }
 @keyframes enter-scale {
   from {
     opacity: 0;
-    transform: scale(2);
+    /* transform: scale(2); */
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    /* transform: scale(1); */
   }
 }
 </style>

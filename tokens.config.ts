@@ -354,7 +354,7 @@ export default defineTheme({
         padding: {
           initial: '{space.20} 0',
           sm: '{space.24} 0',
-          lg: '{space.32} 0'
+          lg: '{space.24} 0 {space.32} 0'
         },
         layout: {
           gap: {
@@ -371,12 +371,12 @@ export default defineTheme({
             initial: 'auto',
             xl: 'span 7 / span 7'
           },
+          alignItems: {
+            initial: 'center',
+            xl: 'flex-start'
+          },
           announce: {
-            textAlign: {
-              initial: 'center',
-              xl: 'start'
-            },
-            marginBottom: '{space.2}'
+            marginBottom: '{space.8}'
           },
           title: {
             fontSize: {
@@ -517,7 +517,7 @@ export default defineTheme({
         },
         noise: {
           opacity: {
-            initial: '0.3',
+            initial: '0.2',
             dark: '0.2'
           }
         },
@@ -574,7 +574,6 @@ export default defineTheme({
         window: {
           fontFamily: '{font.mono}',
           fontSize: '{text.sm.fontSize}',
-          // mixBlendMode: 'normal',
           mixBlendMode: {
             initial: 'normal',
             dark: 'difference'

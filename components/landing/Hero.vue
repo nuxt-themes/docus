@@ -40,9 +40,9 @@ watch(height, (value) => {
       <slot name="root" />
     </span>
     <div class="layout">
-      <span v-if="$slots.background" class="background">
+      <!-- <span v-if="$slots.background" class="background">
         <slot name="background" />
-      </span>
+      </span> -->
       <div class="content">
         <p v-if="$slots.announce" class="announce">
           <ContentSlot :use="$slots.announce" unwrap="p" />
@@ -100,35 +100,24 @@ css({
   '.hero': {
     position: 'relative',
     padding: '{docus.landing.hero.padding}',
-    // '.root': {
-    //   position: 'absolute',
-    //   top: '0px',
-    //   left: '0px',
-    //   width: '100vw',
-    //   height: '100%',
-    //   zIndex: '-1',
-    //   background: 'red',
-    // },
+
     '.layout': {
       position: 'relative',
       display: 'grid',
       gap: '{docus.landing.hero.layout.gap}',
       gridTemplateColumns: '{docus.landing.hero.layout.gridTemplateColumns}',
     },
-    '.background': {
-      position: 'absolute',
-      top: '0px',
-      left: '0px',
-      width: '100%',
-      height: '100%',
-      zIndex: '-1',
-    },
+
     '.content': {
       gridColumn: '{docus.landing.hero.content.gridColumn}',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: '{docus.landing.hero.content.alignItems}',
+
       '.announce': {
         marginBottom: '{docus.landing.hero.content.announce.marginBottom}',
-        textAlign: '{docus.landing.hero.content.announce.textAlign}',
       },
+
       '.title': {
         color: '{docus.landing.hero.content.title.color}',
         fontWeight: '{docus.landing.hero.content.title.fontWeight}',
@@ -141,6 +130,7 @@ css({
         gradientText: '{docus.landing.hero.content.title.gradientText}',
         mixBlendMode: '{docus.landing.hero.content.title.mixBlendMode}'
       },
+
       '.description': {
         marginBottom: '{docus.landing.hero.content.description.marginBottom}',
         fontSize: '{docus.landing.hero.content.description.fontSize}',
@@ -150,11 +140,13 @@ css({
         px: '{docus.landing.hero.content.description.paddingX}',
         mixBlendMode: '{docus.landing.hero.content.description.mixBlendMode}',
       },
+
       '.extra': {
         marginBottom: '{docus.landing.hero.content.extra.marginBottom}',
         display: 'flex',
         justifyContent: '{docus.landing.hero.content.extra.justifyContent}',
       },
+
       '.actions': {
         display: 'flex',
         flexDirection: '{docus.landing.hero.content.actions.flexDirection}',
@@ -166,6 +158,7 @@ css({
         },
       }
     },
+
     '.support': {
       gridColumn: '{docus.landing.hero.support.gridColumn}',
       position: 'relative',
