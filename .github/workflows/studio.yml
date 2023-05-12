@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: .starters/default
+        working-directory: "\\(starters\\)/default"
 
     strategy:
       matrix:
@@ -39,7 +39,7 @@ jobs:
       - name: Identify package manager
         id: pkgman
         run: |
-          cache=`[ -f ".starters/default/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f ".starters/default/package-lock.json" ] && echo "npm" || ([ -f ".starters/default/yarn.lock" ] && echo "yarn" || echo ""))`
+          cache=`[ -f "\\(starters\\)/default/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "\\(starters\\)/default/package-lock.json" ] && echo "npm" || ([ -f "\\(starters\\)/default/yarn.lock" ] && echo "yarn" || echo ""))`
           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
           echo "cache=$cache" >> $GITHUB_OUTPUT
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
@@ -77,4 +77,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .starters/default/.output/public
+          folder: "\\(starters\\)/default/.output/public"

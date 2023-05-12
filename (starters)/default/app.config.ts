@@ -8,7 +8,7 @@ export default defineAppConfig({
       github: 'nuxt-themes/docus'
     },
     github: {
-      dir: '.starters/default/content',
+      dir: '.(starters)/default/content',
       branch: 'main',
       repo: 'docus',
       owner: 'nuxt-themes',
