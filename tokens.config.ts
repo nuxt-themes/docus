@@ -444,9 +444,6 @@ export default defineTheme({
             justifyContent: {
               initial: 'center',
               xl: 'flex-start'
-            },
-            cta: {
-              marginBottom: '0px'
             }
           }
         },

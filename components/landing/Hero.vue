@@ -1,29 +1,5 @@
 <script setup lang="ts">
-import type { PropType } from 'vue'
 import { useElementBounding } from '@vueuse/core'
-
-defineProps({
-  cta: {
-    type: Array as PropType<string[]>,
-    required: false,
-    default: () => []
-  },
-  secondary: {
-    type: Array as PropType<string[]>,
-    required: false,
-    default: () => []
-  },
-  video: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  snippet: {
-    type: [Array, String] as PropType<string[] | string>,
-    required: false,
-    default: ''
-  }
-})
 
 const heroRef = ref(null) as Ref<HTMLElement | null>
 const { height } = useElementBounding(heroRef)
@@ -40,9 +16,6 @@ watch(height, (value) => {
       <slot name="root" />
     </span>
     <div class="layout">
-      <!-- <span v-if="$slots.background" class="background">
-        <slot name="background" />
-      </span> -->
       <div class="content">
         <p v-if="$slots.announce" class="announce">
           <ContentSlot :use="$slots.announce" unwrap="p" />
@@ -64,32 +37,13 @@ watch(height, (value) => {
           <ContentSlot :use="$slots.extra" unwrap="p" />
         </div>
 
-        <div class="actions">
-          <ContentSlot v-if="$slots.actions" :use="$slots.actions" unwrap="p" />
-          <template v-else>
-            <ButtonLink v-if="cta" class="cta" size="medium" :href="(cta[1] as any)">
-              {{ cta[0] }}
-            </ButtonLink>
-            <ButtonLink
-              v-if="secondary"
-              class="cta"
-              size="medium"
-              color="gray"
-              ghost
-              :href="(secondary[1] as any)"
-              blank
-            >
-              {{ secondary[0] }}
-            </ButtonLink>
-          </template>
+        <div v-if="$slots.actions" class="actions">
+          <ContentSlot :use="$slots.actions" unwrap="p" />
         </div>
       </div>
 
       <div class="support">
-        <slot name="support">
-          <Terminal v-if="snippet" :content="snippet" />
-          <VideoPlayer v-else-if="video" :src="video" />
-        </slot>
+        <slot name="support" />
       </div>
     </div>
   </div>
@@ -153,9 +107,6 @@ css({
         alignItems: 'center',
         justifyContent: '{docus.landing.hero.content.actions.justifyContent}',
         gap: '{docus.landing.hero.content.actions.gap}',
-        '.cta': {
-          marginBottom: '{docus.landing.hero.content.actions.cta.marginBottom}'
-        },
       }
     },
 
