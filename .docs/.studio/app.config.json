@@ -27,7 +27,7 @@
       "showLinkIcon": true,
       "exclude": [],
       "fluid": true,
-      "navigation": true
+      "navigation": false
     },
     "footer": {
       "credits": {
