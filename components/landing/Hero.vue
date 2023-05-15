@@ -54,6 +54,7 @@ css({
   '.hero': {
     position: 'relative',
     padding: '{docus.landing.hero.padding}',
+    width: '100%',
 
     '.layout': {
       position: 'relative',

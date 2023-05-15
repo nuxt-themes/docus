@@ -394,6 +394,8 @@ export default defineTheme({
             letterSpacing: '{letterSpacing.tight}',
             paddingX: {
               initial: '{space.8}',
+              md: '{space.12}',
+              lg: '{space.14}',
               xl: '{space.0}'
             },
             textAlign: {
@@ -422,7 +424,11 @@ export default defineTheme({
               lg: '{text.xl.lineHeight}'
             },
             color: '{elements.text.secondary.color.static}',
-            paddingX: '{space.2}',
+            paddingX: {
+              initial: '{space.2}',
+              md: '{space.6}',
+              xl: '{space.0}'
+            },
             mixBlendMode: 'normal'
           },
           extra: {
@@ -454,46 +460,6 @@ export default defineTheme({
           }
         }
       },
-      cardGrid: {
-        position: 'relative',
-        paddingBottom: {
-          initial: '{space.20}',
-          sm: '{space.24}',
-          md: '{space.32}'
-        },
-        layout: {
-          gap: {
-            initial: '{space.4}',
-            '2xl': '{space.6}'
-          }
-        },
-        subtitle: {
-          fontSize: '{text.xl.fontSize}',
-          lineHeight: '{text.xl.lineHeight}',
-          fontWeight: '{fontWeight.normal}',
-          letterSpacing: '{letterSpacing.wide}',
-          marginBottom: '{space.4}'
-        },
-        title: {
-          width: '60%',
-          fontSize: {
-            initial: '{text.3xl.fontSize}',
-            sm: '{text.4xl.fontSize}'
-          },
-          lineHeight: {
-            initial: '{text.3xl.lineHeight}',
-            sm: '{text.4xl.lineHeight}'
-          },
-          marginBottom: '{space.8}',
-          fontWeight: '{fontWeight.semibold}',
-          letterSpacing: '{letterSpacing.tight}',
-          color: '{docus.body.color}',
-          gradientText: {
-            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
-            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
-          }
-        }
-      },
       card: {
         padding: '{space.1}',
         borderRadius: '{radii.sm}',
@@ -504,6 +470,7 @@ export default defineTheme({
         backgroundImage: 'none',
         backdropFilter: '{elements.backdrop.filter}',
         boxShadow: 'none',
+        minHeight: 'auto', // 180px
         wrapper: {
           borderRadius: '{radii.xs}',
           backgroundColor: 'transparent',
@@ -586,6 +553,34 @@ export default defineTheme({
           color: {
             initial: '{color.gray.900}',
             dark: '{color.gray.100}'
+          }
+        }
+      },
+      sectionHeader: {
+        subtitle: {
+          fontSize: '{text.xl.fontSize}',
+          lineHeight: '{text.xl.lineHeight}',
+          fontWeight: '{fontWeight.normal}',
+          letterSpacing: '{letterSpacing.wide}',
+          marginBottom: '{space.4}'
+        },
+        title: {
+          width: '60%',
+          fontSize: {
+            initial: '{text.3xl.fontSize}',
+            sm: '{text.4xl.fontSize}'
+          },
+          lineHeight: {
+            initial: '{text.3xl.lineHeight}',
+            sm: '{text.4xl.lineHeight}'
+          },
+          marginBottom: '{space.8}',
+          fontWeight: '{fontWeight.semibold}',
+          letterSpacing: '{letterSpacing.tight}',
+          color: '{docus.body.color}',
+          gradientText: {
+            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
+            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
           }
         }
       }

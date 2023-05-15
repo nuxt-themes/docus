@@ -41,8 +41,8 @@ watch([elementX, elementY], () => {
   <div ref="cardRef" class="card" :class="{lights}">
     <div class="wrapper">
       <div v-if="noise" class="noise" />
-      <slot />
       <div class="content">
+        <ContentSlot :use="$slots.default" unwrap="p" />
         <span v-if="icon" class="icon-wrapper">
           <Icon :name="icon" />
         </span>
