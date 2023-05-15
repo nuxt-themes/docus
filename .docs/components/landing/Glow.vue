@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
+const { isFirefox } = useUserAgent()
+
 const props = defineProps({
   width: {
     type: String,
@@ -59,10 +61,16 @@ const props = defineProps({
     default: 'color'
   }
 })
+
+const show = ref(false)
+
+onMounted(() => {
+  show.value = isFirefox.value ? false : true
+})
 </script>
 
 <template>
-  <div class="glow" :class="{noise}">
+  <div v-if="show" class="glow" :class="{noise}">
     <svg v-if="noise">
       <filter id="f">
         <feTurbulence type="fractalNoise" baseFrequency="7.5" />

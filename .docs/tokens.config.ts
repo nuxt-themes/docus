@@ -18,7 +18,7 @@ export default defineTheme({
         wrapper: {
           backgroundImage: {
             initial: 'linear-gradient(180deg, rgba({temp.color.gray.100}, 0.3), rgba({temp.color.gray.100}, 0.6))',
-            dark: 'linear-gradient(180deg, rgba({temp.color.gray.900}, 0.3), rgba({temp.color.gray.900}, 0.6))',
+            dark: 'linear-gradient(180deg, rgba({temp.color.gray.800}, 0.3), rgba({temp.color.gray.900}, 0.6))',
           }
         }
       }
