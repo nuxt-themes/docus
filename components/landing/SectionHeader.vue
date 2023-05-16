@@ -10,24 +10,35 @@ defineProps({
   },
   title: {
     type: String,
-    default: 'Section title'
+    default: '',
+    required: true
+  },
+  description: {
+    type: String,
+    default: ''
   }
 })
 </script>
 
 <template>
   <div class="section-header">
-    <span v-if="subtitle || $slots.subtitle" class="subtitle">
+    <span v-if="subtitle || $slots.subtitle" class="section-header-subtitle">
       <ContentSlot :use="$slots.subtitle" unwrap="p">
         {{ subtitle }}
       </ContentSlot>
     </span>
 
-    <h2 v-if="title || $slots.title" class="title">
+    <h2 v-if="title || $slots.title" class="section-header-title">
       <ContentSlot :use="$slots.title" unwrap="p">
         {{ title }}
       </ContentSlot>
     </h2>
+
+    <p v-if="description || $slots.description" class="section-header-description">
+      <ContentSlot :use="$slots.description" unwrap="p">
+        {{ description }}
+      </ContentSlot>
+    </p>
   </div>
 </template>
 
@@ -37,9 +48,10 @@ css({
     display: 'flex',
     flexDirection: 'column',
     alignItems: '{docus.landing.sectionHeader.alignItems}',
+    marginBottom: '{docus.landing.sectionHeader.marginBottom}',
   },
 
-  '.subtitle': {
+  '.section-header-subtitle': {
     '--subtitleColor': (props) => props.subtitleColor,
     display: 'block',
     fontSize: '{docus.landing.sectionHeader.subtitle.fontSize}',
@@ -50,14 +62,17 @@ css({
     letterSpacing: '{docus.landing.sectionHeader.subtitle.letterSpacing}',
   },
 
-  '.title': {
+  '.section-header-title': {
     marginBottom: '{docus.landing.sectionHeader.title.marginBottom}',
     fontSize: '{docus.landing.sectionHeader.title.fontSize}',
     lineHeight: '{docus.landing.sectionHeader.title.lineHeight}',
     fontWeight: '{docus.landing.sectionHeader.title.fontWeight}',
     letterSpacing: '{docus.landing.sectionHeader.title.letterSpacing}',
     color: '{docus.landing.sectionHeader.title.color}',
-    gradientText: '{docus.landing.sectionHeader.title.gradientText}',
   },
+
+  '.section-header-description': {
+    color: '{docus.landing.sectionHeader.description.color}',
+  }
 })
 </style>

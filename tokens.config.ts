@@ -561,9 +561,10 @@ export default defineTheme({
           initial: 'center',
           xl: 'flex-start'
         },
+        marginBottom: '{space.8}',
         subtitle: {
-          fontSize: '{text.xl.fontSize}',
-          lineHeight: '{text.xl.lineHeight}',
+          fontSize: '{text.lg.fontSize}',
+          lineHeight: '{text.lg.lineHeight}',
           fontWeight: '{fontWeight.normal}',
           letterSpacing: '{letterSpacing.wide}',
           marginBottom: '{space.2}'
@@ -577,14 +578,13 @@ export default defineTheme({
             initial: '{text.3xl.lineHeight}',
             sm: '{text.4xl.lineHeight}'
           },
-          marginBottom: '{space.8}',
+          marginBottom: '{space.2}',
           fontWeight: '{fontWeight.semibold}',
           letterSpacing: '{letterSpacing.tight}',
-          color: '{docus.body.color}',
-          gradientText: {
-            initial: 'linear-gradient(90deg, {color.gray.900} 0%, {color.secondary.700} 30%)',
-            dark: 'linear-gradient(90deg, {color.gray.100} 0%, {color.primary.200} 30%)'
-          }
+          color: '{docus.body.color}'
+        },
+        description: {
+          color: '{elements.text.secondary.color.static}'
         }
       }
     }
