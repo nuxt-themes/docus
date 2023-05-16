@@ -213,8 +213,18 @@ export default defineNuxtSchema({
                   type: 'string',
                   description: 'URL when clicking the link'
                 },
-                text: { type: 'string', description: 'Text of the link' },
-                target: { type: 'string', description: 'Target attribute of the link' }
+                text: {
+                  type: 'string',
+                  description: 'Text of the link'
+                },
+                target: {
+                  type: 'string',
+                  description: 'Target attribute of the link'
+                },
+                rel: {
+                  type: 'string',
+                  description: 'Rel attribute of the link'
+                }
               }
             }
           }
@@ -233,12 +243,22 @@ export default defineNuxtSchema({
               type: 'object',
               required: ['icon', 'href'],
               properties: {
-                icon: { type: 'string', description: 'Icon name' },
+                icon: {
+                  type: 'string',
+                  description: 'Icon name'
+                },
                 href: {
                   type: 'string',
                   description: 'Link when clicking on the icon'
                 },
-                label: { type: 'string', description: 'Label of the icon' }
+                label: {
+                  type: 'string',
+                  description: 'Label of the icon'
+                },
+                rel: {
+                  type: 'string',
+                  description: 'Rel attribute of the link'
+                }
               }
             }
           }

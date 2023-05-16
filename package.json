@@ -18,12 +18,11 @@
     "tokens.config.ts"
   ],
   "scripts": {
-    "prepare": "nuxi prepare && nuxi prepare .docs && nuxi prepare .playground",
-    "play": "nuxi dev .playground/",
-    "dev": "nuxi dev .docs/",
-    "build": "nuxi build .docs/",
-    "generate": "nuxi generate .docs/",
-    "preview": "nuxi preview .docs/",
+    "prepare": "nuxi prepare && nuxi prepare .starters/default",
+    "dev": "nuxi dev .starters/default",
+    "build": "nuxi build .starters/default",
+    "generate": "nuxi generate .starters/default",
+    "preview": "nuxi preview .starters/default",
     "lint": "eslint .",
     "release": "release-it"
   },
@@ -32,33 +31,36 @@
     "@nuxt-themes/tokens": "^1.9.1",
     "@nuxt-themes/typography": "^0.11.0",
     "@nuxt/content": "^2.6.0",
-    "@nuxthq/studio": "^0.11.0",
+    "@nuxthq/studio": "^0.12.1",
     "@vueuse/nuxt": "^10.1.2"
   },
   "devDependencies": {
     "@algolia/client-search": "^4.17.0",
     "@docsearch/css": "^3.3.4",
     "@docsearch/js": "^3.3.4",
-    "@nuxt/devtools": "^0.4.5",
+    "@nuxt/devtools": "^0.4.6",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxtjs/algolia": "^1.6.0",
-    "@nuxtjs/plausible": "^0.2.0",
-    "eslint": "^8.39.0",
-    "nuxt": "3.4.3",
+    "@nuxtjs/algolia": "^1.7.0",
+    "@types/node": "^20.1.5",
+    "eslint": "^8.40.0",
+    "nuxt": "^3.5.0",
     "release-it": "^15.10.3",
     "typescript": "^5.0.4",
-    "vue": "^3.2.47"
+    "vite-plugin-inspect": "^0.7.26",
+    "vue": "^3.3.2"
   },
   "pnpm": {
     "peerDependencyRules": {
       "allowedVersions": {
-        "axios": "0.25.0"
+        "axios": "0.25.0",
+        "vite": "*"
       },
       "ignoreMissing": [
         "postcss",
         "postcss-*",
         "webpack",
-        "axios"
+        "axios",
+        "vite"
       ]
     }
   },
