@@ -5,6 +5,10 @@ defineProps({
   margin: {
     type: String,
     default: '0'
+  },
+  padding: {
+    type: String,
+    default: '0'
   }
 })
 </script>
@@ -27,8 +31,10 @@ defineProps({
 css({
   section: {
     '--margin': (props) => props.margin,
+    '--padding': (props) => props.padding,
     position: 'relative',
     margin: 'var(--margin)',
+    padding: 'var(--padding)',
   }
 })
 </style>

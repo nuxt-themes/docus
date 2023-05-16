@@ -470,7 +470,7 @@ export default defineTheme({
         backgroundImage: 'none',
         backdropFilter: '{elements.backdrop.filter}',
         boxShadow: 'none',
-        minHeight: 'auto', // 180px
+        minHeight: 'auto',
         wrapper: {
           borderRadius: '{radii.xs}',
           backgroundColor: 'transparent',
@@ -495,7 +495,7 @@ export default defineTheme({
           padding: '{space.3}',
           borderRadius: '{radii.xs}',
           backgroundColor: {
-            initial: 'rgba({temp.color.gray.400}, 0.2)',
+            initial: 'rgba({temp.color.gray.300}, 0.2)',
             dark: 'rgba({temp.color.gray.900}, 0.2)'
           },
           boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
@@ -557,15 +557,18 @@ export default defineTheme({
         }
       },
       sectionHeader: {
+        alignItems: {
+          initial: 'center',
+          xl: 'flex-start'
+        },
         subtitle: {
           fontSize: '{text.xl.fontSize}',
           lineHeight: '{text.xl.lineHeight}',
           fontWeight: '{fontWeight.normal}',
           letterSpacing: '{letterSpacing.wide}',
-          marginBottom: '{space.4}'
+          marginBottom: '{space.2}'
         },
         title: {
-          width: '60%',
           fontSize: {
             initial: '{text.3xl.fontSize}',
             sm: '{text.4xl.fontSize}'

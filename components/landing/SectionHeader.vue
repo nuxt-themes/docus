@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="section-header">
     <span v-if="subtitle || $slots.subtitle" class="subtitle">
       <ContentSlot :use="$slots.subtitle" unwrap="p">
         {{ subtitle }}
@@ -33,6 +33,12 @@ defineProps({
 
 <style scoped lang="ts">
 css({
+  '.section-header': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: '{docus.landing.sectionHeader.alignItems}',
+  },
+
   '.subtitle': {
     '--subtitleColor': (props) => props.subtitleColor,
     display: 'block',
@@ -45,7 +51,6 @@ css({
   },
 
   '.title': {
-    width: '{docus.landing.sectionHeader.title.width}',
     marginBottom: '{docus.landing.sectionHeader.title.marginBottom}',
     fontSize: '{docus.landing.sectionHeader.title.fontSize}',
     lineHeight: '{docus.landing.sectionHeader.title.lineHeight}',

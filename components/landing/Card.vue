@@ -14,10 +14,6 @@ defineProps({
     type: [String, Number, Object],
     default: 1
   },
-  show: {
-    type: Boolean,
-    default: false
-  },
   noise: {
     type: Boolean,
     default: false
@@ -162,7 +158,7 @@ css({
     '.noise': {
       position: 'absolute',
       inset: '0',
-      filter: 'url(#card-noise)',
+      filter: 'url(#noise-filter)',
       background: '{docus.body.backgroundColor}',
       opacity: '{docus.landing.card.noise.opacity}',
       zIndex: '-1',

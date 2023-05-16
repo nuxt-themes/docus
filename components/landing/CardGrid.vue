@@ -16,12 +16,6 @@ defineProps({
 
 <template>
   <div class="card-grid">
-    <svg class="card-noise">
-      <filter id="card-noise">
-        <feTurbulence type="fractalNoise" baseFrequency="7.5" />
-      </filter>
-    </svg>
-
     <ContentSlot :use="$slots.root" />
 
     <div class="card-grid-layout">
@@ -44,10 +38,6 @@ css({
       gridAutoRows: 'minmax({docus.landing.card.minHeight}, auto)',
       gridAutoFlow: 'dense',
     },
-
-    '.card-noise': {
-      display: 'none',
-    }
   }
 })
 </style>
