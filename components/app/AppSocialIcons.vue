@@ -12,7 +12,8 @@ const icons = computed<any>(() => {
         return {
           href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
-          label: value
+          label: value,
+          rel: 'noopener noreferrer'
         }
       } else {
         return null
