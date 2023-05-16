@@ -39,22 +39,23 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           class="text-link"
           :aria-label="link.text"
           :href="link.href"
-          :target="link.target || '_self'"
-          :rel="link.rel"
+          :target="link?.target || '_self'"
+          :rel="link?.rel || 'noopener noreferrer'"
         >
           {{ link.text }}
         </NuxtLink>
       </div>
 
+      <!-- Right -->
       <div class="right">
         <a
           v-for="icon in icons.slice(0, 6 - nbSocialIcons)"
           :key="icon.label"
           class="icon-link"
-          rel="noopener"
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
+          :rel="icon?.rel || 'noopener noreferrer'"
         >
           <Icon :name="icon.icon" />
         </a>
