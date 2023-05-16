@@ -1127,7 +1127,7 @@ packages:
       '@nuxt/kit': 3.5.0
       '@nuxt/schema': 3.5.0
       execa: 7.1.1
-      nuxt: 3.5.0_eslint@8.40.0
+      nuxt: 3.5.0_eh7aks4wnj6tstoad2zfe6ymnu
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -1175,7 +1175,7 @@ packages:
       is-installed-globally: 0.4.0
       launch-editor: 2.6.0
       local-pkg: 0.4.3
-      nuxt: 3.5.0_eslint@8.40.0
+      nuxt: 3.5.0_eh7aks4wnj6tstoad2zfe6ymnu
       nypm: 0.2.0
       pacote: 15.1.3
       pathe: 1.1.0
@@ -2197,7 +2197,7 @@ packages:
       '@babel/core': 7.21.8
       '@babel/plugin-transform-typescript': 7.21.3_@babel+core@7.21.8
       '@vue/babel-plugin-jsx': 1.1.1_@babel+core@7.21.8
-      vite: 4.3.6
+      vite: 4.3.6_@types+node@20.1.5
       vue: 3.3.2
     transitivePeerDependencies:
       - supports-color
@@ -2212,7 +2212,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.3.6
+      vite: 4.3.6_@types+node@20.1.5
       vue: 3.3.2
 
   /@volar/language-core/1.4.1:
@@ -9821,6 +9821,7 @@ packages:
       rollup: 3.21.8
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /vite/4.3.6_@types+node@20.1.5:
     resolution: {integrity: sha512-cqIyLSbA6gornMS659AXTVKF7cvSHMdKmJJwQ9DXq3lwsT1uZSdktuBRlpHQ8VnOWx0QHtjDwxPpGtyo9Fh/Qg==}
