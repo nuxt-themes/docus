@@ -1,5 +1,5 @@
 <template>
-  <div class="document-driven-not-found not-prose">
+  <div class="document-driven-not-found">
     <main>
       <p>
         404

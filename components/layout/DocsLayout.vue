@@ -104,7 +104,7 @@ css({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column-reverse',
-    gap: '{docus.docs.page.layout.spacing}',
+    gap: '{docus.layout.docs.spacing}',
     '@lg': {
       display: 'grid',
     },
@@ -140,11 +140,10 @@ css({
       display: 'block',
       position: 'sticky',
       top: '{docus.app.header.height}',
-      // gridColumn: 'span 2/span 2',
       alignSelf: 'flex-start',
       height: 'calc(100vh - {docus.app.header.height})',
-      py: '{docus.docs.page.layout.spacing}',
-      paddingInlineEnd: '{docus.docs.page.layout.spacing}',
+      py: '{docus.layout.docs.spacing}',
+      paddingInlineEnd: '{docus.layout.docs.spacing}',
       '.fluid &&': {
         borderInlineEnd: '1px solid {elements.border.primary.static}',
       }
@@ -164,50 +163,9 @@ css({
       flexDirection: 'column',
       gap: '{space.8}',
     },
-    // '.has-toc &&': {
-    //   paddingTop: '{space.12}',
-    //   '@lg': {
-    //     paddingTop: '{space.8}',
-    //   },
-    //   '@xl': {
-    //     paddingTop: '{space.12}',
-    //   }
-    // },
     '@lg': {
       marginTop: 0,
       py: '{space.12}',
-      // gridColumnStart: 2,
-    },
-    // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
-    ':deep(h1:not(.not-prose):first-child)': {
-      marginTop: 0,
-      fontSize: '{text.4xl.fontSize}',
-      lineHeight: '{text.4xl.lineHeight}',
-      '@sm': {
-        fontSize: '{text.5xl.fontSize}',
-        lineHeight: '{text.5xl.lineHeight}',
-      }
-    },
-    // `.not-prose` can be useful if creating <h1> with a component (404 page is an example)
-    ':deep(h1:not(.not-prose)first-child + p)': {
-      marginTop: 0,
-      marginBottom: '{space.8}',
-      paddingBottom: '{space.8}',
-      borderBottom: '1px solid {elements.border.primary.static}',
-      color: '{elements.text.secondary.color.static}',
-      '@sm': {
-        fontSize: '{text.lg.fontSize}',
-        lineHeight: '{text.lg.lineHeight}',
-      },
-      a: {
-        color: '{color.gray.700}',
-        '@dark': {
-          color: '{color.gray.200}',
-        },
-        "&:hover": {
-          borderColor: '{color.gray.700}'
-        }
-      }
     },
     '.docs-prev-next': {
       marginTop: '{space.4}'
@@ -226,7 +184,7 @@ css({
     '@lg': {
       mx: 0,
       alignSelf: 'flex-start',
-      padding: '{docus.docs.page.layout.spacing}',
+      padding: '{docus.layout.docs.spacing}',
       paddingInlineEnd: '0px',
       height: 'calc(100vh - {docus.app.header.height})',
       maxHeight: 'none',

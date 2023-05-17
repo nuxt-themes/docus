@@ -86,6 +86,13 @@ export default defineTheme({
           sm: '{space.6}',
           xl: '{space.8}'
         }
+      },
+      docs: {
+        spacing: {
+          initial: '0px',
+          lg: '{space.6}',
+          xl: '{space.8}'
+        }
       }
     },
     app: {
@@ -291,15 +298,6 @@ export default defineTheme({
       }
     },
     docs: {
-      page: {
-        layout: {
-          spacing: {
-            initial: '0px',
-            lg: '{space.6}',
-            xl: '{space.8}'
-          }
-        }
-      },
       prevNext: {
         gap: '{space.8}',
         padding: '{space.6}',
