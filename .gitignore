@@ -17,3 +17,8 @@ dist
 
 # Unlighthouse
 .unlighthouse
+
+# Starters lockfiles
+.starters/**/yarn.lock
+.starters/**/package-lock.json
+.starters/**/pnpm-lock.yaml

@@ -78,7 +78,11 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
     >
       <component :is="config.aside?.collapsible ? 'button' : 'h5'" v-if="link.children" class="title-collapsible-button" @click="() => config.aside?.collapsible && toggleCollapse(link)">
         <span class="content">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <Icon
+            v-if="link?.navigation?.icon || link.icon"
+            :name="link?.navigation?.icon || link.icon"
+            class="icon"
+          />
           <span>{{ link?.navigation?.title || link.title || link._path }}</span>
         </span>
         <span v-if="config.aside?.collapsible">
@@ -96,7 +100,11 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
         }"
       >
         <span class="content">
-          <Icon v-if="link?.navigation?.icon || link.icon" :name="link?.navigation?.icon || link.icon" class="icon" />
+          <Icon
+            v-if="link?.navigation?.icon || link.icon"
+            :name="link?.navigation?.icon || link.icon"
+            class="icon"
+          />
           <span>{{ link?.navigation?.title || link.title || link._path }}</span>
         </span>
       </NuxtLink>

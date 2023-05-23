@@ -12,7 +12,8 @@ const icons = computed<any>(() => {
         return {
           href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
-          label: value
+          label: value,
+          rel: 'noopener noreferrer'
         }
       } else {
         return null
@@ -26,13 +27,16 @@ const icons = computed<any>(() => {
   <NuxtLink
     v-for="icon in icons"
     :key="icon.label"
-    rel="noopener noreferrer"
+    :rel="icon.rel"
     :title="icon.label"
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
   >
-    <Icon v-if="icon.icon" :name="icon.icon" />
+    <Icon
+      v-if="icon.icon"
+      :name="icon.icon"
+    />
   </NuxtLink>
 </template>
 

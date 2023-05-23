@@ -38,7 +38,11 @@ function childMove (id: string) {
 
 <template>
   <ul class="docs-toc-links">
-    <li v-for="link in links" :key="link.text" :class="[`depth-${link.depth}`]">
+    <li
+      v-for="link in links"
+      :key="link.text"
+      :class="[`depth-${link.depth}`]"
+    >
       <a
         :href="`#${link.id}`"
         :class="[activeHeadings.includes(link.id) && 'active']"
@@ -46,7 +50,11 @@ function childMove (id: string) {
       >
         {{ link.text }}
       </a>
-      <DocsTocLinks v-if="link.children" :links="link.children" @move="childMove($event)" />
+      <DocsTocLinks
+        v-if="link.children"
+        :links="link.children"
+        @move="childMove($event)"
+      />
     </li>
   </ul>
 </template>

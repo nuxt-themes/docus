@@ -15,7 +15,11 @@
         </div>
 
         <div class="button-section">
-          <ButtonLink href="/" size="large" variant="primary">
+          <ButtonLink
+            href="/"
+            size="large"
+            variant="primary"
+          >
             Go back home
           </ButtonLink>
         </div>

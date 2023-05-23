@@ -9,7 +9,10 @@ const onClick = () => {
 </script>
 
 <template>
-  <button aria-label="Color Mode" @click="onClick">
+  <button
+    aria-label="Color Mode"
+    @click="onClick"
+  >
     <ColorScheme placeholder="...">
       <Icon v-if="colorMode.preference === 'dark'" name="ph:moon-fill" />
       <Icon v-else-if="colorMode.preference === 'light'" name="ph:sun-dim-fill" />

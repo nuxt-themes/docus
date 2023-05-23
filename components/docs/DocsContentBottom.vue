@@ -4,8 +4,14 @@ const { config } = useDocus()
 </script>
 
 <template>
-  <div v-if="page" class="docs-page-bottom">
-    <div v-if="config?.github?.edit" class="edit-link">
+  <div
+    v-if="page"
+    class="docs-page-bottom"
+  >
+    <div
+      v-if="config?.github?.edit"
+      class="edit-link"
+    >
       <Icon name="uil:edit" />
       <DocsEditOn v-slot="{ url }" :page="page">
         <ProseA :to="url">

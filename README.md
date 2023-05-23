@@ -67,9 +67,9 @@ defineNuxtConfig({
 ## Contributing 🙏
 
 1. Clone this repository
-2. Install dependencies using `yarn install` or `npm install`
-3. Run `npm run prepare` to generate type stubs.
-4. Use `npm run dev` to start [playground](./playground) in development mode.
+2. Install dependencies using `pnpm install --frozen-lockfile`
+3. Run `pnpm run prepare` to generate type stubs.
+4. Use `pnpm run dev` to start [docs](./docs) or use `pnpm run play` to start [playground](./playground) in development mode.
 
 ## License 📎
 

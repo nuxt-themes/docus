@@ -10,8 +10,16 @@ const title = computed(() => config.value.header?.title || config.value.title)
     <span v-if="logo" class="logo">
       <component :is="logo" v-if="typeof logo === 'string'" />
       <template v-else-if="logo.light && logo.dark">
-        <img :src="logo.light" alt="" class="light-img">
-        <img :src="logo.dark" alt="" class="dark-img">
+        <img
+          :src="logo.light"
+          alt=""
+          class="light-img"
+        >
+        <img
+          :src="logo.dark"
+          alt=""
+          class="dark-img"
+        >
       </template>
       <Logo v-else-if="logo" />
     </span>

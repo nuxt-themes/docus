@@ -4,7 +4,7 @@ const route = useRoute()
 const socialIcons = ref(null)
 const icons = computed(() => config.value?.footer?.iconLinks || [])
 const textLinks = computed(() => config.value?.footer?.textLinks || [])
-const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([_, v]) => v).length)
+const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
 
 const isIndex = computed(() => route.path === '/')
@@ -39,21 +39,23 @@ watch(isIndex, (value) => {
           class="text-link"
           :aria-label="link.text"
           :href="link.href"
-          :target="link.target || '_self'"
+          :target="link?.target || '_self'"
+          :rel="link?.rel || 'noopener noreferrer'"
         >
           {{ link.text }}
         </NuxtLink>
       </div>
 
+      <!-- Right -->
       <div class="right">
         <a
           v-for="icon in icons.slice(0, 6 - nbSocialIcons)"
           :key="icon.label"
           class="icon-link"
-          rel="noopener"
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
+          :rel="icon?.rel || 'noopener noreferrer'"
         >
           <Icon :name="icon.icon" />
         </a>

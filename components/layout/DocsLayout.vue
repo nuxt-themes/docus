@@ -87,10 +87,17 @@ onBeforeUnmount(() => {
       <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
-          <Icon name="heroicons-outline:chevron-right" class="icon" :class="[isOpen && 'rotate']" />
+          <Icon
+            name="heroicons-outline:chevron-right"
+            class="icon"
+            :class="[isOpen && 'rotate']"
+          />
         </button>
 
-        <div class="docs-toc-wrapper" :class="[isOpen && 'opened']">
+        <div
+          class="docs-toc-wrapper"
+          :class="[isOpen && 'opened']"
+        >
           <DocsToc @move="isOpen = false" />
         </div>
       </div>

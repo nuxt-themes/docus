@@ -48,7 +48,10 @@ const nextMeta = computed(() => {
 </script>
 
 <template>
-  <div v-if="prev || next" class="docs-prev-next">
+  <div
+    v-if="prev || next"
+    class="docs-prev-next"
+  >
     <NuxtLink
       v-if="prev && prev._path"
       :to="prev._path"

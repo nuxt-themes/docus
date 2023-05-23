@@ -11,7 +11,10 @@ const emit = defineEmits(['move'])
         <span>Table of Contents</span>
       </div>
 
-      <DocsTocLinks :links="toc.links" @move="emit('move')" />
+      <DocsTocLinks
+        :links="toc.links"
+        @move="emit('move')"
+      />
     </template>
     <div class="docs-toc-bottom">
       <div v-if="config?.github?.edit">
