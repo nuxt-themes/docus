@@ -36,18 +36,18 @@
   },
   "devDependencies": {
     "@algolia/client-search": "^4.17.0",
-    "@docsearch/css": "^3.3.4",
-    "@docsearch/js": "^3.3.4",
-    "@nuxt/devtools": "^0.4.6",
+    "@docsearch/css": "^3.3.5",
+    "@docsearch/js": "^3.3.5",
+    "@nuxt/devtools": "^0.5.1",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/algolia": "^1.7.0",
-    "@types/node": "^20.1.5",
-    "eslint": "^8.40.0",
-    "nuxt": "^3.5.0",
+    "@types/node": "^20.2.3",
+    "eslint": "^8.41.0",
+    "nuxt": "^3.5.1",
     "release-it": "^15.10.3",
     "typescript": "^5.0.4",
-    "vite-plugin-inspect": "^0.7.26",
-    "vue": "^3.3.2"
+    "vite-plugin-inspect": "^0.7.28",
+    "vue": "^3.3.4"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -78,6 +78,6 @@
     }
   },
   "resolutions": {
-    "@nuxt-themes/tokens": "file:/Users/serhii/code/github/nuxt-themes/tokens"
+    "@nuxt-themes/tokens": "file:/Users/yaelguilloux/Code/nuxt/tokens"
   }
 }

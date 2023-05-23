@@ -7,9 +7,9 @@ const { resolve } = createResolver(import.meta.url)
 // That allows to overwrite these dependencies paths via `.env` for local development
 const envModules = {
   tokens: process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
-  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '@nuxt-themes/elements',
+  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '/Users/yaelguilloux/Code/nuxt/elements' || '@nuxt-themes/elements',
   studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
-  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
+  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '/Users/yaelguilloux/Code/nuxt/typography' || '@nuxt-themes/typography'
 }
 
 const updateModule = defineNuxtModule({

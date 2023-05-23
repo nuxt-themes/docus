@@ -15,19 +15,22 @@ export default defineAppConfig({
       edit: true
     },
     aside: {
-      level: 0,
+      level: 1,
       collapsed: false,
-      exclude: []
+      exclude: [],
+      navigation: true
     },
     main: {
       padded: true,
       fluid: true
     },
     header: {
+      title: '',
       logo: true,
       showLinkIcon: true,
       exclude: [],
-      fluid: true
+      fluid: true,
+      navigation: false
     },
     footer: {
       iconLinks: [
