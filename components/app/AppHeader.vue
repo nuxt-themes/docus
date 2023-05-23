@@ -7,10 +7,6 @@ const route = useRoute()
 
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
-defineProps({
-  ...variants
-})
-
 const isIndex = computed(() => route.path === '/')
 
 watch(isIndex, (value) => {
@@ -34,7 +30,7 @@ watch(isIndex, (value) => {
         </div>
 
         <div class="section center">
-          <AppHeaderLogo v-if="hasDrawer" />
+          <AppHeaderLogo />
           <AppNavigation v-if="config.header.navigation" />
         </div>
 
@@ -69,10 +65,13 @@ css({
     },
 
     '.center &': {
-      display: 'block',
-      '@lg': {
-        display: 'none'
-      }
+      display: 'none',
+      '.has-drawer &': {
+        display: 'block',
+        '@lg': {
+          display: 'none'
+        },
+      },
     }
   },
 

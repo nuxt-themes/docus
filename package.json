@@ -78,6 +78,6 @@
     }
   },
   "resolutions": {
-    "@nuxt-themes/tokens": "file:/Users/yaelguilloux/Code/nuxt/tokens"
+    "@nuxt-themes/tokens": "file:/Users/serhii/code/github/nuxt-themes/tokens"
   }
 }
