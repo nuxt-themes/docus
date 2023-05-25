@@ -27,18 +27,18 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt-themes/elements": "^0.9.4",
-    "@nuxt-themes/tokens": "^1.9.1",
-    "@nuxt-themes/typography": "^0.11.0",
+    "@nuxt-themes/elements": "^1.0.0-beta.1",
+    "@nuxt-themes/tokens": "^2.0.0-beta.2",
+    "@nuxt-themes/typography": "^1.0.0-beta.1",
     "@nuxt/content": "^2.6.0",
     "@nuxthq/studio": "^0.12.1",
     "@vueuse/nuxt": "^10.1.2"
   },
   "devDependencies": {
-    "@algolia/client-search": "^4.17.0",
-    "@docsearch/css": "^3.3.5",
-    "@docsearch/js": "^3.3.5",
-    "@nuxt/devtools": "^0.5.1",
+    "@algolia/client-search": "^4.17.1",
+    "@docsearch/css": "^3.4.0",
+    "@docsearch/js": "^3.4.0",
+    "@nuxt/devtools": "^0.5.5",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/algolia": "^1.7.0",
     "@types/node": "^20.2.3",
@@ -76,8 +76,5 @@
       "release": true,
       "releaseName": "v${version}"
     }
-  },
-  "resolutions": {
-    "@nuxt-themes/tokens": "file:/Users/serhii/code/github/nuxt-themes/tokens"
   }
 }
