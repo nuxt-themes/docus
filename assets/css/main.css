@@ -44,6 +44,7 @@ body {
   color: $dt('docus.body.color');
   font-family: $dt('docus.body.fontFamily');
   min-width: $dt('size.xs');
+  word-wrap: break-word;
 }
 
 .docus-scrollbars {
