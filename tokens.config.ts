@@ -294,7 +294,11 @@ export default defineTheme({
         padding: '{space.4}'
       },
       socialIcons: {
-        padding: '{space.4}'
+        padding: '{space.4}',
+        color: {
+          static: '{elements.text.secondary.color.static}',
+          hover: '{elements.text.secondary.color.hover}'
+        }
       }
     },
     docs: {

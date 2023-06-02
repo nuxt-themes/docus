@@ -45,9 +45,9 @@ css({
   a: {
     display: 'flex',
     padding: '{docus.app.socialIcons.padding}',
-    color: '{elements.text.secondary.color.static}',
+    color: '{docus.app.socialIcons.color.static}',
     '&:hover': {
-      color: '{elements.text.secondary.color.hover}'
+      color: '{docus.app.socialIcons.color.hover}'
     }
   }
 })
