@@ -13,7 +13,10 @@ const { config } = useDocus()
       class="edit-link"
     >
       <Icon name="uil:edit" />
-      <DocsEditOn v-slot="{ url }" :page="page">
+      <DocsEditOn
+        v-slot="{ url }"
+        :page="page"
+      >
         <ProseA :to="url">
           <span>
             Edit this page on GitHub

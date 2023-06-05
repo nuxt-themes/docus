@@ -63,15 +63,28 @@ onBeforeUnmount(() => {
     }"
   >
     <!-- Aside -->
-    <aside v-if="hasAside" ref="asideNav" class="aside-nav">
-      <AppNavigation v-if="config.aside?.navigation" vertical />
-      <DocsAside class="app-aside" />
+    <aside
+      v-if="hasAside"
+      ref="asideNav"
+      class="aside-nav"
+    >
+      <AppNavigation
+        v-if="config.aside?.navigation"
+        vertical
+      />
+      <DocsNavigation
+        v-if="tree?.length > 0"
+        :links="tree"
+      />
     </aside>
 
     <!-- Page Content -->
     <article class="page-content">
       <slot v-if="hasContent" />
-      <Alert v-else type="info">
+      <Alert
+        v-else
+        type="info"
+      >
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
       <template v-if="hasContent && page && bottom">
@@ -83,7 +96,10 @@ onBeforeUnmount(() => {
     </article>
 
     <!-- ToC -->
-    <div v-if="hasToc" class="toc">
+    <div
+      v-if="hasToc"
+      class="toc"
+    >
       <div class="toc-wrapper">
         <button @click="isOpen = !isOpen">
           <span class="title">Table of Contents</span>
