@@ -463,7 +463,7 @@ export default defineTheme({
         }
       },
       card: {
-        padding: '{space.1}',
+        padding: '2px',
         borderRadius: '{radii.sm}',
         borderWidth: '0px',
         borderStyle: 'solid',
