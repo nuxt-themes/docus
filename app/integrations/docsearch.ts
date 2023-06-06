@@ -20,7 +20,7 @@ export default defineNuxtPlugin(() => {
      * If not found, fallback on props.
      */
     const options = computed<DocSearchOptions>(() => {
-      const { algolia } = useRuntimeConfig()
+      const { algolia } = useRuntimeConfig().public
 
       if (algolia && algolia.docSearch) {
         return algolia
