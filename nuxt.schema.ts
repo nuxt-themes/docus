@@ -68,6 +68,12 @@ export default defineNuxtSchema({
          * Instagram page url
          * @example https://www.youtube.com/@NuxtLabs
          * @studioIcon simple-icons:youtube
+         */        
+        tiktok: '',
+        /**
+         * TikTok page url
+         * @example https://www.tiktok.com/@tiktok
+         * @studioIcon simple-icons:tiktok
          */
         youtube: '',
         /**

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
+const socials = ['twitter', 'facebook', 'instagram', 'tiktok', 'youtube', 'github', 'medium']
 
 const { config } = useDocus()
 
