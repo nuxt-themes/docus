@@ -1,6 +1,6 @@
 {
   "name": "@nuxt-themes/docus",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "type": "module",
   "main": "./nuxt.config.ts",
   "packageManager": "pnpm@8.5.1",
