@@ -279,7 +279,7 @@ export default defineTheme({
           gap: '{space.2}',
           fontSize: '{fontSize.sm}',
           icon: {
-            size: '{space.4}'
+            size: '{space.5}'
           }
         }
       },

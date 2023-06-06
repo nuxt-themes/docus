@@ -11,7 +11,7 @@ const fallbackValue = (value: string, fallback = true) => {
 const hasContent = computed(() => !page.value || page.value?.body?.children?.length > 0)
 const hasToc = computed(() => page.value?.toc !== false && page.value?.body?.toc?.links?.length >= 2)
 
-const hasAside = computed(() => page.value?.aside !== false && (tree.value?.length > 1 || tree.value?.[0]?.children?.length))
+// const hasAside = computed(() => page.value?.aside !== false && (tree.value?.length > 1 || tree.value?.[0]?.children?.length))
 const bottom = computed(() => fallbackValue('bottom', true))
 const isOpen = ref(false)
 
@@ -59,12 +59,11 @@ onBeforeUnmount(() => {
     :class="{
       fluid: config?.main?.fluid,
       'has-toc': hasToc,
-      'has-aside': hasAside,
+      'has-aside': true,
     }"
   >
     <!-- Aside -->
     <aside
-      v-if="hasAside"
       ref="asideNav"
       class="aside-nav"
     >

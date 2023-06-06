@@ -26,7 +26,10 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation" :class="{vertical}">
+  <nav
+    v-if="hasNavigation"
+    :class="{vertical}"
+  >
     <ul>
       <li
         v-for="link in tree"
@@ -94,10 +97,12 @@ css({
         outline: 'none',
         transition: 'background 200ms ease',
 
-        svg: {
-          display: 'inline-block',
-          width: '{docus.app.navigation.link.icon.size}',
-          height: '{docus.app.navigation.link.icon.size}',
+        '.icon': {
+          display: 'inline-flex !important',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '{docus.app.navigation.link.icon.size} !important',
+          height: '{docus.app.navigation.link.icon.size} !important',
         },
 
         '&:active, &.active, &:hover': {
