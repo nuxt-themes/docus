@@ -11,11 +11,11 @@
   },
   "devDependencies": {
     "@nuxt-themes/docus": "^2.0.0-beta.1",
-    "@nuxt/devtools": "^0.4.6",
+    "@nuxt/devtools": "^0.5.5",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/plausible": "^0.2.1",
-    "@types/node": "^20.1.5",
-    "eslint": "^8.40.0",
-    "nuxt": "^3.5.0"
+    "@types/node": "^20.2.5",
+    "eslint": "^8.42.0",
+    "nuxt": "^3.5.3"
   }
 }
