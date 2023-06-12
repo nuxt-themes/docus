@@ -7,9 +7,9 @@ const textLinks = computed(() => config.value?.footer?.textLinks || [])
 const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
 
-const isIndex = computed(() => route.path === '/')
+const isBasicLayout = computed(() => route.meta.layout === 'basic')
 
-watch(isIndex, (value) => {
+watch(isBasicLayout, (value) => {
   updateAppConfig({
     docus: {
       footer: {
@@ -22,11 +22,25 @@ watch(isIndex, (value) => {
 
 <template>
   <footer>
-    <Container :fluid="config?.footer?.fluid" padded class="footer-layout">
+    <Container
+      :fluid="config?.footer?.fluid"
+      padded
+      class="footer-layout"
+    >
       <!-- Left -->
       <div class="left">
-        <a v-if="config?.footer?.credits" :href="config?.footer?.credits?.href || '#'" rel="noopener" target="_blank" class="footer-credits">
-          <Component :is="config?.footer?.credits?.icon" v-if="config?.footer?.credits?.icon" class="credits-icon" />
+        <a
+          v-if="config?.footer?.credits"
+          :href="config?.footer?.credits?.href || '#'"
+          rel="noopener"
+          target="_blank"
+          class="footer-credits"
+        >
+          <Component
+            :is="config?.footer?.credits?.icon"
+            v-if="config?.footer?.credits?.icon"
+            class="credits-icon"
+          />
           <p v-if="config?.footer?.credits?.text">{{ config.footer.credits.text }}</p>
         </a>
       </div>

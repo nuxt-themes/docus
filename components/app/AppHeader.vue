@@ -7,9 +7,9 @@ const route = useRoute()
 
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
-const isIndex = computed(() => route.path === '/')
+const isBasicLayout = computed(() => route.meta.layout === 'basic')
 
-watch(isIndex, (value) => {
+watch(isBasicLayout, (value) => {
   updateAppConfig({
     docus: {
       header: {
@@ -21,7 +21,7 @@ watch(isIndex, (value) => {
 </script>
 
 <template>
-  <header :class="{ 'has-drawer': hasDrawer, 'has-doc-search': hasDocSearch, 'is-index': isIndex, 'on-top': y === 0 }">
+  <header :class="{ 'has-drawer': hasDrawer, 'has-doc-search': hasDocSearch, 'is-basic-layout': isBasicLayout, 'on-top': y === 0 }">
     <Container :fluid="config?.header?.fluid ">
       <div class="header-layout">
         <div class="section left">
@@ -87,7 +87,7 @@ css({
     backgroundColor: '{docus.app.header.backgroundColor}',
     height: '{docus.app.header.height}',
 
-    '&.is-index.on-top': {
+    '&.is-basic-layout.on-top': {
       background: 'transparent',
       borderColor: 'transparent',
       backdropFilter: 'none',
