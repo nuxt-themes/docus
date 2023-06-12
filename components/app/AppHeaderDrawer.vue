@@ -11,22 +11,37 @@ const links = computed(() => {
   })
 })
 
-const { visible, open, close } = useMenu()
+const { locked, lock, unlock } = useBodyLock()
 
-watch(visible, v => (v ? open() : close()))
+watch(locked, v => (v ? lock() : unlock()))
 </script>
 
 <template>
-  <button aria-label="Menu" @click="open">
-    <Icon name="heroicons-outline:menu" aria-hidden="”true”" />
+  <button
+    aria-label="Menu"
+    @click="lock"
+  >
+    <Icon
+      name="heroicons-outline:menu"
+      aria-hidden="”true”"
+    />
   </button>
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <Drawer v-model="visible">
-    <nav class="nav" @click.stop>
+  <Drawer v-model="locked">
+    <nav
+      class="nav"
+      @click.stop
+    >
       <div class="drawer-header">
-        <button aria-label="Menu" @click="close">
-          <Icon name="heroicons-outline:x" aria-hidden="”true”" />
+        <button
+          aria-label="Menu"
+          @click="unlock"
+        >
+          <Icon
+            name="heroicons-outline:x"
+            aria-hidden="”true”"
+          />
         </button>
 
         <div class="icons">
@@ -34,7 +49,10 @@ watch(visible, v => (v ? open() : close()))
         </div>
       </div>
 
-      <DocsNavigation :links="links" class="links" />
+      <DocsNavigation
+        :links="links"
+        class="links"
+      />
     </nav>
   </Drawer>
 </template>

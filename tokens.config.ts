@@ -648,14 +648,12 @@ export default defineTheme({
         dark: 'rgba({temp.color.gray.900}, 0.8)'
       }
     },
-    // border?
-    // surface?
 
     codeGroup: {
       margin: '{typography.verticalMargin.base} 0px'
     },
 
-    drawer: {
+    modal: {
       scrim: {
         backgroundColor: {
           initial: 'rgba({temp.color.gray.50}, 0.95)',
