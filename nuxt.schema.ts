@@ -284,6 +284,12 @@ export default defineNuxtSchema({
        */
       github: {
         /**
+         * Base URL
+         *
+         * You can use this to link to GitHub Enterprise.
+         */
+        baseUrl: 'https://github.com',
+        /**
          * Directory
          *
          * Your GitHub repository root directory.
