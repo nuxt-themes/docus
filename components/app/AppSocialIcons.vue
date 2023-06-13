@@ -10,7 +10,7 @@ const icons = computed<any>(() => {
         return value
       } else if (typeof value === 'string' && value && socials.includes(key)) {
         return {
-          href: `https://${key}.com/${value}`,
+          href: value.startsWith('http') || value.startsWith('www') ? value : `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
           label: value,
           rel: 'noopener noreferrer'
