@@ -35,7 +35,8 @@ watch(isBasicLayout, (value) => {
         </div>
 
         <div class="section right">
-          <AppSearch v-if="hasDocSearch" />
+          <!-- <AppSearchOLD v-if="hasDocSearch" /> -->
+          <AppSearch />
           <AppTextDirection />
           <AppColorMode />
           <div class="social-icons">

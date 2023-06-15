@@ -1,80 +1,66 @@
 <script setup lang="ts">
-const { element } = useDocSearch()
+import { useFuse } from '@vueuse/integrations/useFuse'
 
-const onClick = () => element.value.querySelector('button').click()
+const show = ref(false)
+
+const { data: files } = await useLazyAsyncData('components', () => queryContent('components').where({ _type: 'markdown', navigation: { $ne: false } }).find(), { default: () => [] })
+
+const { results } = useFuse('te', files)
+
+console.log('files', files.value)
+console.log('results', results.value)
 </script>
 
 <template>
-  <div
-    class="doc-search"
-    @click="onClick"
-  >
-    <button
-      type="button"
-      aria-label="Search"
-    >
-      <span class="content">
-        <Icon name="heroicons-outline:search" />
-        <span>Search</span>
-        <span>
-          <kbd>⌘</kbd>
-          <kbd>K</kbd>
-        </span>
-      </span>
+  <div>
+    <button @click="show = !show">
+      search
     </button>
+
+    <Modal v-model="show">
+      <div class="search-content">
+        <div
+          class="search-window"
+          @click.stop
+        >
+          <input type="text">
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <style scoped lang="ts">
 css({
-  '.doc-search': {
-    '&:hover': {
-      button: {
-        borderColor: '{color.gray.300}'
-      }
-    },
-    button: {
-      padding: '{space.2} {space.4}',
-      '.content': {
-        borderRadius: '{radii.md}',
-        display: 'flex',
-        alignItems: 'center',
-        color: '{elements.text.secondary.color.static}',
-        borderStyle: 'solid',
-        borderWidth: '1px',
-        borderColor: '{color.gray.100}',
-        fontSize: '{fontSize.xs}',
-        gap: '{space.2}',
-        padding: '{space.rem.375}',
-        '@dark': {
-          borderColor: '{color.gray.900}',
-        },
-        '&:hover': {
-          color: '{elements.text.secondary.color.hover}',
-          borderColor: '{color.gray.400}',
-          '@dark': {
-            borderColor: '{color.gray.700}',
-          }
-        },
-        span: {
-          '&:first-child': {
-            display: 'block',
-            fontSize: '{fontSize.xs}',
-            fontWeight: '{fontWeight.medium}',
-          },
-          '&:nth-child(2)': {
-            flex: 'none',
-            display: 'none',
-            fontSize: '{fontSize.xs}',
-            fontWeight: '{fontWeight.semibold}',
-            '@sm': {
-              display: 'block'
-            }
-          }
-        }
-      }
-    },
-
+  '.search-content': {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '.search-window': {
+      padding: '1rem',
+      backgroundColor: 'white',
+      borderRadius: '0.5rem',
+    }
   }
 })
+</style>
+
+
+<style scoped>
+@media (prefers-reduced-motion: reduce)  {
+  .search-window {
+    transition: all 0ms !important;
+  }
+}
+.modal-enter-active .search-window,
+.modal-leave-active .search-window {
+  transition: transform 200ms $dt('ease.back.out'), opacity 200ms $dt('ease.back.out');
+}
+.modal-enter-from .search-window,
+.modal-leave-to .search-window {
+  opacity: 0;
+  transform: translate3d(0, 25px, 0);
+}
 </style>
