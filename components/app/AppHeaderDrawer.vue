@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { navigation } = useContent()
 const { config } = useDocus()
+const router = useRouter()
 
 const filtered = computed(() => config.value.aside?.exclude || [])
 
@@ -11,15 +12,19 @@ const links = computed(() => {
   })
 })
 
-const { locked, lock, unlock } = useBodyLock()
+const show = ref(false)
 
-watch(locked, v => (v ? lock() : unlock()))
+router.afterEach(() => {
+  if (show.value) {
+    show.value = false
+  }
+})
 </script>
 
 <template>
   <button
     aria-label="Menu"
-    @click="lock"
+    @click="show = !show"
   >
     <Icon
       name="heroicons-outline:menu"
@@ -28,7 +33,7 @@ watch(locked, v => (v ? lock() : unlock()))
   </button>
 
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
-  <Drawer v-model="locked">
+  <Drawer v-model="show">
     <nav
       class="nav"
       @click.stop
@@ -36,7 +41,7 @@ watch(locked, v => (v ? lock() : unlock()))
       <div class="drawer-header">
         <button
           aria-label="Menu"
-          @click="unlock"
+          @click="show = false"
         >
           <Icon
             name="heroicons-outline:x"
