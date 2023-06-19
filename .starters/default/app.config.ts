@@ -22,14 +22,12 @@ export default defineAppConfig({
     },
     main: {
       padded: true,
-      fluid: true
     },
     header: {
       title: '',
       logo: true,
       showLinkIcon: true,
       exclude: [],
-      fluid: true,
       navigation: false
     },
     footer: {

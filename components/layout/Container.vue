@@ -14,7 +14,10 @@ defineProps({
 </script>
 
 <template>
-  <component :is="as" class="container">
+  <component
+    :is="as"
+    class="container"
+  >
     <slot />
   </component>
 </template>
@@ -26,6 +29,7 @@ css({
     marginInlineEnd: 'auto',
     width: '100%',
     height: 'inherit',
+    maxWidth: '{docus.layout.container.maxWidth}'
   },
   variants: {
     padded: {
@@ -34,15 +38,6 @@ css({
       },
       options: {
         default: true
-      }
-    },
-    fluid: {
-      true: {},
-      false: {
-        maxWidth: '{docus.layout.container.maxWidth}'
-      },
-      options: {
-        default: false
       }
     }
   }

@@ -6,24 +6,11 @@ const icons = computed(() => config.value?.footer?.iconLinks || [])
 const textLinks = computed(() => config.value?.footer?.textLinks || [])
 const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
-
-const isBasicLayout = computed(() => route.meta.layout === 'basic')
-
-watch(isBasicLayout, (value) => {
-  updateAppConfig({
-    docus: {
-      footer: {
-        fluid: !value
-      }
-    }
-  })
-}, { immediate: true })
 </script>
 
 <template>
   <footer>
     <Container
-      :fluid="config?.footer?.fluid"
       padded
       class="footer-layout"
     >

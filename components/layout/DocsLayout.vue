@@ -53,11 +53,9 @@ onBeforeUnmount(() => {
 
 <template>
   <Container
-    :fluid="config?.main?.fluid"
     :padded="config?.main?.padded"
     class="docs-page-content"
     :class="{
-      fluid: config?.main?.fluid,
       'has-toc': hasToc,
       'has-aside': true,
     }"
@@ -166,9 +164,6 @@ css({
       height: 'calc(100vh - {docus.app.header.height})',
       py: '{docus.layout.docs.spacing}',
       paddingInlineEnd: '{docus.layout.docs.spacing}',
-      '.fluid &&': {
-        borderInlineEnd: '1px solid {elements.border.primary.static}',
-      }
     }
   },
   '.page-content': {
@@ -211,9 +206,6 @@ css({
       height: 'calc(100vh - {docus.app.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',
-      '.fluid &&': {
-        borderInlineStart: '1px solid {elements.border.primary.static}',
-      }
     },
     '.toc-wrapper': {
       width: '100%',
