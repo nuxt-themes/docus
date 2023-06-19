@@ -23,11 +23,13 @@ defineProps({
 
 <template>
   <section class="container-section">
-    <span v-if="$slots.root" class="root">
+    <span
+      v-if="$slots.root"
+      class="root"
+    >
       <slot name="root" />
     </span>
     <Container
-      :fluid="config?.main?.fluid"
       :padded="config?.main?.padded"
     >
       <slot />

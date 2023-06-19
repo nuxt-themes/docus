@@ -151,10 +151,6 @@ export default defineNuxtSchema({
          *
          */
         exclude: [],
-        /**
-         * Makes the content of the header fluid.
-         */
-        fluid: false
       },
 
       /**
@@ -163,10 +159,6 @@ export default defineNuxtSchema({
        * @studioIcon fluent:document-header-footer-24-filled
        */
       main: {
-        /**
-         * Makes the content of the main container fluid.
-         */
-        fluid: false,
         /**
          * Makes the content of the main container padded.
          */
@@ -263,10 +255,6 @@ export default defineNuxtSchema({
             }
           }
         },
-        /**
-         * Makes the content of the footer fluid.
-         */
-        fluid: true
       },
 
       /**

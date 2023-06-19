@@ -14,7 +14,6 @@ export default defineAppConfig({
       title: '',
       logo: false,
       showLinkIcon: false,
-      fluid: false,
       exclude: []
     },
 
@@ -33,7 +32,6 @@ export default defineAppConfig({
       },
       textLinks: [],
       iconLinks: [],
-      fluid: false
     },
 
     github: {
