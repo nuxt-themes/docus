@@ -27,7 +27,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt-themes/elements": "^1.0.0",
+    "@nuxt-themes/elements": "^1.0.1",
     "@nuxt-themes/tokens": "^2.0.0",
     "@nuxt-themes/typography": "^1.0.0",
     "@nuxt/content": "^2.7.0",
