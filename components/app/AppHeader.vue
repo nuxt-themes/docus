@@ -26,7 +26,7 @@ const isBasicLayout = computed(() => route.meta.layout === 'basic')
 
         <div class="section right">
           <!-- <AppSearchOLD v-if="hasDocSearch" /> -->
-          <AppSearch />
+          <DocsSearch />
           <AppTextDirection />
           <AppColorMode />
           <div class="social-icons">
