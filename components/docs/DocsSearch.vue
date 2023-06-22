@@ -2,7 +2,7 @@
 import { useFuse } from '@vueuse/integrations/useFuse'
 const { navigation } = useContent()
 
-const props = defineProps({
+defineProps({
   rememberResult: {
     type: Boolean,
     default: true
@@ -14,18 +14,13 @@ const show = ref(false)
 const q = ref('')
 
 const resultsAreaRef = ref(null)
-const resultsRef = ref([])
-const setResultsRef = el => {
-  if (el) {
-    resultsRef.value.push(el)
-  }
-}
-
-// const searchResults = ref([])
 
 const selected = ref(-1)
 
-const { data: files } = await useLazyAsyncData('components', () => queryContent('components').where({ _type: 'markdown', draft: { $ne: false }, navigation: { $ne: false } }).find(), { default: () => [] })
+const { data: files } = await useLazyAsyncData(
+  'components',
+  () => queryContent('components').where({ _type: 'markdown', draft: { $ne: false }, navigation: { $ne: false } }).find(), { default: () => [] }
+)
 
 const { results } = useFuse(q, files, {
   fuseOptions: {
@@ -40,9 +35,6 @@ const { results } = useFuse(q, files, {
   },
   matchAllWhenSearchEmpty: false
 })
-
-console.log('files', files.value)
-console.log('results', results.value)
 
 function findNavItem (children: any, path: string, parent: any) {
   for (const child of children) {
@@ -62,14 +54,14 @@ function findNavItem (children: any, path: string, parent: any) {
   return undefined
 }
 
-function getNavItemMeta (path: string) {
+function getNavItemMeta(path?: string) {
+  if (!path) return undefined
+
   let result
   for (const item of navigation.value) {
     if (item.children) {
       const found = findNavItem(item.children, path, item)
-      if (found) {
-        result = found
-      }
+      if (found) { result = found }
     }
   }
   return result
@@ -107,52 +99,51 @@ function highlight(text: string, { indices, value }: { indices: number[][], valu
   return content
 }
 
-// console.log('HIGHLIGHT', highlight(q.value, results.value[0].matches[0]))
+function down () {
+  if (selected.value === -1) { selected.value = 0 }
+  else if (selected.value === results.value.length - 1) { /* Do nothing  */ }
+  else { selected.value = selected.value + 1 }
+}
 
-// watch(results, (value) => {
-//   console.log('results', value)
-// })
+function up () {
+  if (selected.value === -1) { selected.value = results.value.length - 1 }
+  else if (selected.value === 0) { /* Do nothing */ }
+  else { selected.value = selected.value - 1 }
+}
 
+function go(index) {
+  const selectedItem = results?.value?.[index]?.item
+  const path = selectedItem?._path
+  if (path) {
+    show.value = false
+    useRouter().push(path)
+  }
+}
+
+// Scroll to selected item on change
+watch(selected, value => {
+  const nextId = results?.value?.[value]?.item?._id
+  if (nextId) document.querySelector(`[id="${nextId}"]`)?.scrollIntoView({ block: 'nearest' })
+})
+
+// Reset selected item on search change
+watch(
+  q,
+  _ => { selected.value = 0 }
+)
+
+// Reset local data when modal closing
 watch(show, (value) => {
   if (!value) {
     q.value = ''
     selected.value = -1
   }
 })
-
-function down () {
-  if (selected.value === -1) {
-    selected.value = 0
-  } else if (selected.value === results.value.length - 1) {
-    // do nothing
-  }
-  else {
-    selected.value = selected.value + 1
-    resultsRef.value[selected.value].scrollIntoView({ block: 'nearest' })
-  }
-}
-
-function up () {
-  if (selected.value === -1) {
-    // Scroll to the last result
-    selected.value = results.value.length - 1
-    resultsRef.value[selected.value].scrollIntoView({ block: 'nearest' })
-  } else if (selected.value === 0) {
-    // do nothing
-  }
-  else {
-    selected.value = selected.value - 1
-    resultsRef.value[selected.value].scrollIntoView({ block: 'nearest' })
-  }
-}
 </script>
 
 <template>
   <div>
-    <button @click="show = !show">
-      search {{ q }}
-    </button>
-
+    <DocsSearchButton @click="show = !show" />
     <Modal v-model="show">
       <div class="search-content">
         <div
@@ -165,24 +156,20 @@ function up () {
               type="text"
               @keydown.up.prevent="up"
               @keydown.down.prevent="down"
-              @keydown.enter="show = false; $router.push(results[selected].item._path)"
+              @keydown.enter="go(selected)"
             >
           </div>
           <div
-            v-if="results.length"
             ref="resultsAreaRef"
             class="search-results"
           >
             <div
               v-for="(result, i) in results"
               :id="result.item._id"
-              :ref="setResultsRef"
               :key="result.item._id"
               class="search-result"
-              :class="{
-                selected: selected === i
-              }"
-              @click="show = false; $router.push(result.item._path)"
+              :class="{ selected: selected === i }"
+              @click="go(selected)"
             >
               <Icon
                 v-if="getNavItemMeta(result?.item?._path)?.directoryIcon"
@@ -196,7 +183,7 @@ function up () {
                 {{ result.item.title }}
               </span>
               →
-              <span v-html="highlight(q, result.matches?.[0])" />
+              <span v-html="highlight(q, result?.matches?.[0] as any)" />
             </div>
           </div>
         </div>

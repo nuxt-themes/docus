@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { config } = useDocus()
 const { navigation } = useContent()
-const { hasDocSearch } = useDocSearch()
 const { y } = useWindowScroll()
 const route = useRoute()
 
@@ -11,7 +10,7 @@ const isBasicLayout = computed(() => route.meta.layout === 'basic')
 </script>
 
 <template>
-  <header :class="{ 'has-drawer': hasDrawer, 'has-doc-search': hasDocSearch, 'is-basic-layout': isBasicLayout, 'on-top': y === 0 }">
+  <header :class="{ 'has-drawer': hasDrawer, 'is-basic-layout': isBasicLayout, 'on-top': y === 0 }">
     <Container>
       <div class="header-layout">
         <div class="section left">
@@ -25,7 +24,6 @@ const isBasicLayout = computed(() => route.meta.layout === 'basic')
         </div>
 
         <div class="section right">
-          <!-- <AppSearchOLD v-if="hasDocSearch" /> -->
           <DocsSearch />
           <AppTextDirection />
           <AppColorMode />
