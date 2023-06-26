@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const {isMac} = useUserAgent()
+</script>
+
 <template>
   <button
     class="doc-search"
@@ -5,13 +9,11 @@
     aria-label="Search"
     v-bind="$attrs"
   >
-    <span class="content">
-      <Icon name="heroicons-outline:search" />
-      <span>Search</span>
-      <span>
-        <kbd>⌘</kbd>
-        <kbd>K</kbd>
-      </span>
+    <Icon name="heroicons-outline:search" />
+    <span class="placeholder">Search</span>
+    <span class="shortcuts">
+      <kbd>{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
+      <kbd>K</kbd>
     </span>
   </button>
 </template>
@@ -19,50 +21,40 @@
 <style scoped lang="ts">
 css({
   '.doc-search': {
-    padding: '{space.2} {space.4}',
+    borderRadius: '{docus.docs.search.input.borderRadius}',
+    display: 'flex',
+    alignItems: 'center',
+    color: '{elements.text.secondary.color.static}',
+    boxShadow: '{elements.buttonLink.boxShadow}',
+    fontSize: '{docus.docs.search.input.fontSize}',
+    gap: '{docus.docs.search.input.gap}',
+    padding: '{docus.docs.search.input.padding}',
+    backgroundColor: '{docus.docs.search.input.backgroundColor}',
+    borderWidth: '{docus.docs.search.input.borderWidth}',
+    borderStyle: '{docus.docs.search.input.borderStyle}',
+    borderColor: '{docus.docs.search.input.borderColor}',
     '&:hover': {
-      button: {
-        borderColor: '{color.gray.300}'
+      color: '{elements.text.secondary.color.hover}',
+    },
+    '@lg': {
+      width: '100%',
+    },
+    '.placeholder': {
+      display: 'none',
+      '@lg': {
+        display: 'block',
       }
     },
-    '.content': {
-      borderRadius: '{radii.md}',
-      display: 'flex',
-      alignItems: 'center',
-      color: '{elements.text.secondary.color.static}',
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      borderColor: '{color.gray.100}',
-      fontSize: '{fontSize.xs}',
-      gap: '{space.2}',
-      padding: '{space.rem.375}',
-      '@dark': {
-        borderColor: '{color.gray.900}',
+    '.shortcuts': {
+      display: 'none',
+      marginLeft: 'auto',
+      kbd: {
+        fontFamily: '{docus.body.fontFamily}',
       },
-      '&:hover': {
-        color: '{elements.text.secondary.color.hover}',
-        borderColor: '{color.gray.400}',
-        '@dark': {
-          borderColor: '{color.gray.700}',
-        }
-      },
-      span: {
-        '&:first-child': {
-          display: 'block',
-          fontSize: '{fontSize.xs}',
-          fontWeight: '{fontWeight.medium}',
-        },
-        '&:nth-child(2)': {
-          flex: 'none',
-          display: 'none',
-          fontSize: '{fontSize.xs}',
-          fontWeight: '{fontWeight.semibold}',
-          '@sm': {
-            display: 'block'
-          }
-        }
+      '@xs': {
+        display: 'block',
       }
-    }
+    },
   }
 })
 </style>
