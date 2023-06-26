@@ -1,12 +1,29 @@
 <script setup lang="ts">
+import { useMagicKeys } from '@vueuse/core'
+
 const { config } = useDocus()
 const { navigation } = useContent()
 const { y } = useWindowScroll()
 const route = useRoute()
 
+const showDocsSearch = ref(true)
+
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
 const isBasicLayout = computed(() => route.meta.layout === 'basic')
+
+const { meta_K, Escape } = useMagicKeys()
+
+watch(meta_K, (v) => {
+  if (v) {
+    showDocsSearch.value = !showDocsSearch.value
+  }
+})
+
+watch(Escape, () => {
+  if (showDocsSearch.value)
+    showDocsSearch.value = false
+})
 </script>
 
 <template>
@@ -21,11 +38,20 @@ const isBasicLayout = computed(() => route.meta.layout === 'basic')
         <div class="section center">
           <AppHeaderLogo />
           <AppNavigation v-if="config.header.navigation" />
+          <DocsSearchButton
+            v-else
+            class="docs-search-button-desktop"
+            @click="showDocsSearch = true"
+          />
+          <DocsSearch v-model="showDocsSearch" />
         </div>
 
         <div class="section right">
-          <DocsSearch />
-          <AppTextDirection />
+          <!-- <AppTextDirection /> -->
+          <DocsSearchButton
+            class="docs-search-button-mobile"
+            @click="showDocsSearch = true"
+          />
           <AppColorMode />
           <div class="social-icons">
             <AppSocialIcons />
@@ -80,6 +106,20 @@ css({
       background: 'transparent',
       borderColor: 'transparent',
       backdropFilter: 'none',
+    },
+
+    '.docs-search-button-desktop': {
+      display: 'none',
+      '@lg': {
+        display: 'flex'
+      }
+    },
+
+    '.docs-search-button-mobile': {
+      display: 'flex',
+      '@lg': {
+        display: 'none'
+      }
     },
 
     '.header-layout': {

@@ -2,11 +2,11 @@
 import { useFuse } from '@vueuse/integrations/useFuse'
 const { navigation } = useContent()
 
-defineProps({
-  rememberResult: {
+const props = defineProps({
+  modelValue: {
     type: Boolean,
-    default: true
-  }
+    default: false
+  },
 })
 
 type DocusSearchResult = {
@@ -20,9 +20,11 @@ type DocusSearchResult = {
 }
 
 const show = ref(false)
+const emit = defineEmits(['update:modelValue'])
 
 const q = ref('')
 
+const searchInputRef = ref(null)
 const resultsAreaRef = ref(null)
 
 const selected = ref(-1)
@@ -138,8 +140,19 @@ function go(index: number) {
   console.log({selectedItem})
 
   if (path) {
-    show.value = false
+    // show.value = false
+    emit('update:modelValue')
     useRouter().push(path)
+  }
+}
+
+function closeButtonHandler() {
+  if (q.value) {
+    q.value = ''
+    selected.value = -1
+    searchInputRef.value?.focus()
+  } else {
+    emit('update:modelValue')
   }
 }
 
@@ -156,7 +169,7 @@ watch(
 )
 
 // Reset local data when modal closing
-watch(show, (value) => {
+watch(() => props.modelValue, (value) => {
   if (!value) {
     q.value = ''
     selected.value = -1
@@ -165,54 +178,106 @@ watch(show, (value) => {
 </script>
 
 <template>
-  <div>
-    <DocsSearchButton @click="show = !show" />
-    <Modal v-model="show">
-      <div class="search-content">
-        <div
-          class="search-window"
-          @click.stop
-        >
-          <div class="search-input">
-            <input
-              v-model="q"
-              type="text"
-              @keydown.up.prevent="up"
-              @keydown.down.prevent="down"
-              @keydown.enter="go(selected)"
+  <Modal
+    :model-value="modelValue"
+    @update:model-value="$emit('update:modelValue')"
+  >
+    <div class="search-content">
+      <div
+        class="search-window"
+        @click.stop
+      >
+        <div class="search-input">
+          <Icon
+            name="heroicons-outline:search"
+            class="search-icon"
+          />
+          <input
+            ref="searchInputRef"
+            v-model="q"
+            type="text"
+            placeholder="Search docs"
+            @keydown.up.prevent="up"
+            @keydown.down.prevent="down"
+            @keydown.enter="go(selected)"
+          >
+          <<<<<<< HEAD
+          <div
+            v-for="(result, i) in results"
+            :id="result.item.id"
+            :key="result.item.id"
+            class="search-result"
+            :class="{ selected: selected === i }"
+            @click="go(selected)"
+          >
+            =======
+            <button
+              class="close-button"
+              @click="closeButtonHandler"
             >
+              <Icon
+                name="heroicons:x-mark"
+                class="close-icon"
+              />
+            </button>
           </div>
           <div
+            v-if="results.length > 0"
             ref="resultsAreaRef"
             class="search-results"
           >
             <div
               v-for="(result, i) in results"
-              :id="result.item.id"
-              :key="result.item.id"
+              :id="result.item._id"
+              :key="result.item._id"
               class="search-result"
               :class="{ selected: selected === i }"
               @click="go(selected)"
+              @mouseenter.prevent="selected = i"
             >
-              <Icon
-                v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
-              />
-              <span>
-                {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
-              </span>
-              →
-              <span>
-                {{ result.item.title }}
-              </span>
-              →
-              <span v-html="highlight(q, result?.matches?.[0] as any)" />
+              <div class="wrapper">
+                >>>>>>> c08fbd8cd739cb236c08c7a3bcc1bba301ec0f6d
+                <Icon
+                  v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                  :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                />
+                <span>
+                  <<<<<<< HEAD
+                  {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
+                  =======
+                  {{ getNavItemMeta(result?.item?._path)?.directoryTitle }}
+                  <span class="arrow">→</span>
+                  >>>>>>> c08fbd8cd739cb236c08c7a3bcc1bba301ec0f6d
+                </span>
+                <span>
+                  {{ result.item.title }}
+                  <span class="arrow">→</span>
+                </span>
+                <span
+                  class="search-result-preview"
+                  v-html="highlight(q, result?.matches?.[0] as any)"
+                />
+              </div>
             </div>
+          </div>
+
+          <div
+            v-else-if="!q"
+            class="search-results empty"
+          >
+            Type your query to search docs
+          </div>
+
+          <div
+            v-else
+            class="search-results empty"
+          >
+            No results found. Try another query
           </div>
         </div>
       </div>
-    </Modal>
-  </div>
+    </div>
+  </Modal>
 </template>
 
 <style scoped lang="ts">
@@ -222,52 +287,100 @@ css({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    // alignItems: 'center',
     '.search-window': {
       display: 'flex',
       flexDirection: 'column',
-      // padding: '1rem',
       border: '1px solid {elements.border.primary.static}',
-      backgroundColor: '{elements.surface.primary.backgroundColor}',
-      borderRadius: '0.5rem',
-      marginTop: '20vh',
-      width: '640px',
+      borderRadius: '{docus.docs.search.results.window.borderRadius}',
+      marginTop: '{docus.docs.search.results.window.marginTop}',
+      width: '100%',
+      maxWidth: '{docus.docs.search.results.window.maxWidth}',
       height: 'fit-content',
-      maxHeight: '320px',
-      transition: 'all 200ms',
+      maxHeight: '{docus.docs.search.results.window.maxHeight}',
+      mx: '{docus.docs.search.results.window.marginX}',
       overflow: 'hidden',
+      backdropFilter: '{docus.docs.search.backdropFilter}',
       '.search-input': {
-        // border: '1px solid {elements.border.primary.static}',
-        // borderRadius: '0.5rem',
-        // backgroundColor: '{elements.surface.secondary.backgroundColor}',
-        backgroundColor: '{color.gray.700}',
-        // color: '{elements.text.primary.static}',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '{docus.docs.search.input.backgroundColor}',
+        '.search-icon': {
+          color: '{elements.text.tertiary.color.static}',
+          flexShrink: 0,
+          marginLeft: '{space.4}',
+          marginRight: '{space.4}',
+          width: '{size.20}',
+          height: '{size.20}',
+        },
+        '.close-button': {
+          display: 'flex',
+          padding: '{space.3}',
+        },
+        '.close-icon': {
+          color: '{elements.text.secondary.color.static}',
+          flexShrink: 0,
+          // padding: '{space.4}',
+          width: '{size.20}',
+          height: '{size.20}',
+        },
         input: {
           width: '100%',
-          padding: '0.5rem',
+          padding: '{space.3} 0',
+          color: '{elements.text.primary.color.static}',
           backgroundColor: 'transparent',
           '&:focus, &:focus-visible': {
             outline: 'none',
-            // borderColor: '{elements.border.primary.focus}',
+          },
+          '&::placeholder': {
+            color: '{elements.text.tertiary.color.static}',
           }
         },
         '&:focus, &:focus-visible': {
           outline: 'none',
-          // borderColor: '{elements.border.primary.focus}',
         }
       },
       '.search-results': {
         overflow: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        '&.empty': {
+          height: '80px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '{elements.text.tertiary.color.static}',
+        }
       },
       '.search-result': {
-        my: '0.5rem',
-        padding: '{space.1} {space.2}',
-        truncate: true,
-        display: 'flex',
-        gap: '0.5rem',
+        padding: '{space.2}',
         cursor: 'pointer',
-        '&.selected': {
-          backgroundColor: 'red'
+        '&.selected .wrapper': {
+          backgroundColor: '{docus.docs.search.results.selected.backgroundColor}',
+        },
+        '.wrapper': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '{space.1}',
+          borderRadius: '{radii.2xs}',
+          padding: '{space.1} {space.2}',
+        },
+        svg: {
+          flexShrink: '0',
+          opacity: '0.5',
+          marginRight: '{space.3}',
+        },
+        span: {
+          whiteSpace: 'nowrap',
+        },
+        '.arrow': {
+          opacity: '0.5'
+        },
+        '.search-result-preview': {
+          truncate: true,
+        },
+        ':deep(mark)': {
+          color: 'white',
+          backgroundColor: '{docus.docs.search.results.highlight.backgroundColor}',
         }
       }
     }

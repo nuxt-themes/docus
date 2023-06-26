@@ -349,6 +349,55 @@ export default defineTheme({
           lineHeight: '{text.sm.lineHeight}',
           color: '{color.gray.500}'
         }
+      },
+      search: {
+        backdropFilter: 'blur(6px)',
+        input: {
+          borderRadius: '{radii.2xs}',
+          borderWidth: '1px',
+          borderStyle: 'solid',
+          borderColor: {
+            initial: '{color.gray.200}',
+            dark: 'transparent'
+          },
+          fontSize: '{fontSize.sm}',
+          gap: '{space.2}',
+          padding: '{space.2} {space.4}',
+          backgroundColor: {
+            initial: 'rgba({temp.color.gray.200}, 0.5)',
+            dark: 'rgba({temp.color.gray.800}, 0.5)'
+          },
+        },
+        results: {
+          window: {
+            marginX: {
+              initial: '0',
+              sm: '{space.4}'
+            },
+            borderRadius: {
+              initial: 'none',
+              sm: '{radii.xs}'
+            },
+            marginTop: {
+              initial: '0',
+              sm: '20vh'
+            },
+            maxWidth: '640px',
+            maxHeight: {
+              initial: '100%',
+              sm: '320px'
+            },
+          },
+          selected: {
+            backgroundColor: {
+              initial: 'rgba({temp.color.gray.300}, 0.5)',
+              dark: 'rgba({temp.color.gray.700}, 0.5)'
+            },
+          },
+          highlight: {
+            backgroundColor: '{color.secondary.500}'
+          }
+        }
       }
     },
     landing: {
