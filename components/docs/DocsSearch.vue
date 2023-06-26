@@ -9,6 +9,16 @@ defineProps({
   }
 })
 
+type DocusSearchResult = {
+  id: string
+  path: string
+  dir: string
+  title: string
+  description: string
+  keywords: string[]
+  body?: any[]
+}
+
 const show = ref(false)
 
 const q = ref('')
@@ -17,28 +27,34 @@ const resultsAreaRef = ref(null)
 
 const selected = ref(-1)
 
-const { data: files } = await useLazyAsyncData(
-  'components',
-  () => queryContent('components').where({ _type: 'markdown', draft: { $ne: false }, navigation: { $ne: false } }).find(), { default: () => [] }
+const { data: files } = await useLazyAsyncData<DocusSearchResult[]>(
+  'search-api',
+  () => $fetch('/api/search')
 )
 
-const { results } = useFuse(q, files, {
-  fuseOptions: {
-    keys: [
-      'title',
-      'description',
-    ],
-    ignoreLocation: true,
-    threshold: 0,
-    includeMatches: true,
-    includeScore: true,
-  },
-  matchAllWhenSearchEmpty: false
-})
+const { results } = useFuse<DocusSearchResult>(
+  q,
+  files as any,
+  {
+    fuseOptions: {
+      keys: [
+        'title',
+        'description',
+        'keywords',
+        'body'
+      ],
+      ignoreLocation: true,
+      threshold: 0,
+      includeMatches: true,
+      includeScore: true,
+    },
+    matchAllWhenSearchEmpty: true
+  }
+)
 
 function findNavItem (children: any, path: string, parent: any) {
   for (const child of children) {
-    if (child._path === path) {
+    if (child.path === path) {
       return {
         directoryTitle: parent.title,
         directoryIcon: parent.icon
@@ -67,10 +83,13 @@ function getNavItemMeta(path?: string) {
   return result
 }
 
-function highlight(text: string, { indices, value }: { indices: number[][], value: string }): string {
-  if (text === value) {
-    return ''
-  }
+function highlight(
+  text: string,
+  result: any
+): string {
+  const { indices, value }: { indices: number[][], value: string } = result || { indices: [], value: '' }
+
+  if (text === value) return ''
 
   let content = ''
   let nextUnhighlightedIndiceStartingIndex = 0
@@ -92,6 +111,7 @@ function highlight(text: string, { indices, value }: { indices: number[][], valu
   content += value.substring(nextUnhighlightedIndiceStartingIndex)
 
   const index = content.indexOf('<mark>')
+
   if (index > 60) {
     content = `...${content.substring(index - 60)}`
   }
@@ -111,9 +131,12 @@ function up () {
   else { selected.value = selected.value - 1 }
 }
 
-function go(index) {
+function go(index: number) {
   const selectedItem = results?.value?.[index]?.item
-  const path = selectedItem?._path
+  const path = selectedItem?.path
+
+  console.log({selectedItem})
+
   if (path) {
     show.value = false
     useRouter().push(path)
@@ -122,7 +145,7 @@ function go(index) {
 
 // Scroll to selected item on change
 watch(selected, value => {
-  const nextId = results?.value?.[value]?.item?._id
+  const nextId = results?.value?.[value]?.item?.id
   if (nextId) document.querySelector(`[id="${nextId}"]`)?.scrollIntoView({ block: 'nearest' })
 })
 
@@ -165,18 +188,18 @@ watch(show, (value) => {
           >
             <div
               v-for="(result, i) in results"
-              :id="result.item._id"
-              :key="result.item._id"
+              :id="result.item.id"
+              :key="result.item.id"
               class="search-result"
               :class="{ selected: selected === i }"
               @click="go(selected)"
             >
               <Icon
-                v-if="getNavItemMeta(result?.item?._path)?.directoryIcon"
-                :name="getNavItemMeta(result?.item?._path)?.directoryIcon"
+                v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
               />
               <span>
-                {{ getNavItemMeta(result?.item?._path)?.directoryTitle }}
+                {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
               </span>
               →
               <span>
