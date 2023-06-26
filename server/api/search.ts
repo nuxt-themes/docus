@@ -1,19 +1,19 @@
-import { prefixStorage } from 'unstorage'
 import { defineEventHandler } from 'h3'
-import { useStorage } from '#imports'
 import { serverQueryContent } from '#content/server'
 
-const sourceStorage = prefixStorage(useStorage(), 'content:source')
+// Source storage
+// import { prefixStorage } from 'unstorage'
+// import { useStorage } from '#imports'
+// const sourceStorage = prefixStorage(useStorage(), 'content:source')
 
 export default defineEventHandler(async (event) => {
   const appConfig = useAppConfig()
 
-  // const mode = appConfig?.docus?.search?.mode || 'meta'
+  // `full-text` or `meta`
+  const mode = appConfig?.docus?.search?.mode || 'meta'
 
   // Fetch all documents
   let docs = await serverQueryContent(event).find()
-
-  console.log({sourceStorage})
 
   docs = await Promise.all(
     docs
@@ -34,7 +34,8 @@ export default defineEventHandler(async (event) => {
             title,
             description,
             keywords: body?.toc?.links.map(link => link?.text),
-            body: await sourceStorage?.getItem?.(id) || ''
+            // Only fetch body for `full-text` mode.
+            body: extractTextFromAst(body) || ''
           }
         }
       )
@@ -42,3 +43,17 @@ export default defineEventHandler(async (event) => {
 
   return docs
 })
+
+function extractTextFromAst(node) {
+  console.log({ node })
+  let text = ''
+  if (node.type === 'text') {
+    text += node.value
+  }
+  if (node.children) {
+    for (const child of node.children) {
+      text += ' ' + extractTextFromAst(child)
+    }
+  }
+  return text
+}

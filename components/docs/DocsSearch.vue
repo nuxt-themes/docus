@@ -19,7 +19,6 @@ type DocusSearchResult = {
   body?: any[]
 }
 
-const show = ref(false)
 const emit = defineEmits(['update:modelValue'])
 
 const q = ref('')
@@ -201,7 +200,21 @@ watch(() => props.modelValue, (value) => {
             @keydown.down.prevent="down"
             @keydown.enter="go(selected)"
           >
-          <<<<<<< HEAD
+          <button
+            class="close-button"
+            @click="closeButtonHandler"
+          >
+            <Icon
+              name="heroicons:x-mark"
+              class="close-icon"
+            />
+          </button>
+        </div>
+        <div
+          v-if="results.length > 0"
+          ref="resultsAreaRef"
+          class="search-results"
+        >
           <div
             v-for="(result, i) in results"
             :id="result.item.id"
@@ -209,71 +222,40 @@ watch(() => props.modelValue, (value) => {
             class="search-result"
             :class="{ selected: selected === i }"
             @click="go(selected)"
+            @mouseenter.prevent="selected = i"
           >
-            =======
-            <button
-              class="close-button"
-              @click="closeButtonHandler"
-            >
+            <div class="wrapper">
               <Icon
-                name="heroicons:x-mark"
-                class="close-icon"
+                v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
               />
-            </button>
-          </div>
-          <div
-            v-if="results.length > 0"
-            ref="resultsAreaRef"
-            class="search-results"
-          >
-            <div
-              v-for="(result, i) in results"
-              :id="result.item._id"
-              :key="result.item._id"
-              class="search-result"
-              :class="{ selected: selected === i }"
-              @click="go(selected)"
-              @mouseenter.prevent="selected = i"
-            >
-              <div class="wrapper">
-                >>>>>>> c08fbd8cd739cb236c08c7a3bcc1bba301ec0f6d
-                <Icon
-                  v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                  :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                />
-                <span>
-                  <<<<<<< HEAD
-                  {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
-                  =======
-                  {{ getNavItemMeta(result?.item?._path)?.directoryTitle }}
-                  <span class="arrow">→</span>
-                  >>>>>>> c08fbd8cd739cb236c08c7a3bcc1bba301ec0f6d
-                </span>
-                <span>
-                  {{ result.item.title }}
-                  <span class="arrow">→</span>
-                </span>
-                <span
-                  class="search-result-preview"
-                  v-html="highlight(q, result?.matches?.[0] as any)"
-                />
-              </div>
+              <span>
+                {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
+              </span>
+              <span>
+                {{ result.item.title }}
+                <span class="arrow">→</span>
+              </span>
+              <span
+                class="search-result-preview"
+                v-html="highlight(q, result?.matches?.[0] as any)"
+              />
             </div>
           </div>
+        </div>
 
-          <div
-            v-else-if="!q"
-            class="search-results empty"
-          >
-            Type your query to search docs
-          </div>
+        <div
+          v-else-if="!q"
+          class="search-results empty"
+        >
+          Type your query to search docs
+        </div>
 
-          <div
-            v-else
-            class="search-results empty"
-          >
-            No results found. Try another query
-          </div>
+        <div
+          v-else
+          class="search-results empty"
+        >
+          No results found. Try another query
         </div>
       </div>
     </div>
