@@ -351,7 +351,7 @@ export default defineTheme({
         }
       },
       search: {
-        backdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(24px)',
         input: {
           borderRadius: '{radii.2xs}',
           borderWidth: '1px',

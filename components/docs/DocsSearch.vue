@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useFuse } from '@vueuse/integrations/useFuse'
-const { navigation } = useContent()
 
 const props = defineProps({
   modelValue: {
@@ -22,11 +21,11 @@ type DocusSearchResult = {
 const emit = defineEmits(['update:modelValue'])
 
 const q = ref('')
-
-const searchInputRef = ref(null)
-const resultsAreaRef = ref(null)
-
+const searchInputRef = ref<HTMLInputElement>()
+const resultsAreaRef = ref<HTMLDivElement>()
 const selected = ref(-1)
+
+const { navigation } = useContent()
 
 const { data: files } = await useLazyAsyncData<DocusSearchResult[]>(
   'search-api',
@@ -53,9 +52,13 @@ const { results } = useFuse<DocusSearchResult>(
   }
 )
 
-function findNavItem (children: any, path: string, parent: any) {
+function findNavItem(
+  children: any,
+  path: string,
+  parent: any
+) {
   for (const child of children) {
-    if (child.path === path) {
+    if (child._path === path) {
       return {
         directoryTitle: parent.title,
         directoryIcon: parent.icon
@@ -71,9 +74,9 @@ function findNavItem (children: any, path: string, parent: any) {
   return undefined
 }
 
-function getNavItemMeta(path?: string) {
-  if (!path) return undefined
-
+function getNavItemMeta(
+  path: string
+) {
   let result
   for (const item of navigation.value) {
     if (item.children) {
@@ -114,19 +117,19 @@ function highlight(
   const index = content.indexOf('<mark>')
 
   if (index > 60) {
-    content = `...${content.substring(index - 60)}`
+    content = `${content.substring(index - 60)}`
   }
 
-  return content
+  return `${content}”`
 }
 
-function down () {
+function down() {
   if (selected.value === -1) { selected.value = 0 }
   else if (selected.value === results.value.length - 1) { /* Do nothing  */ }
   else { selected.value = selected.value + 1 }
 }
 
-function up () {
+function up() {
   if (selected.value === -1) { selected.value = results.value.length - 1 }
   else if (selected.value === 0) { /* Do nothing */ }
   else { selected.value = selected.value - 1 }
@@ -135,8 +138,6 @@ function up () {
 function go(index: number) {
   const selectedItem = results?.value?.[index]?.item
   const path = selectedItem?.path
-
-  console.log({selectedItem})
 
   if (path) {
     // show.value = false
@@ -149,7 +150,7 @@ function closeButtonHandler() {
   if (q.value) {
     q.value = ''
     selected.value = -1
-    searchInputRef.value?.focus()
+    searchInputRef.value?.focus?.()
   } else {
     emit('update:modelValue')
   }
@@ -195,7 +196,7 @@ watch(() => props.modelValue, (value) => {
             ref="searchInputRef"
             v-model="q"
             type="text"
-            placeholder="Search docs"
+            placeholder="Search documentation"
             @keydown.up.prevent="up"
             @keydown.down.prevent="down"
             @keydown.enter="go(selected)"
@@ -224,22 +225,37 @@ watch(() => props.modelValue, (value) => {
             @click="go(selected)"
             @mouseenter.prevent="selected = i"
           >
-            <div class="wrapper">
-              <Icon
-                v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
-              />
-              <span>
-                {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
-              </span>
-              <span>
-                {{ result.item.title }}
-                <span class="arrow">→</span>
-              </span>
-              <span
-                class="search-result-preview"
-                v-html="highlight(q, result?.matches?.[0] as any)"
-              />
+            <div class="search-result-content-wrapper">
+              <div class="search-result-content-head">
+                <Icon
+                  v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                  :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                />
+                <Icon
+                  v-else
+                  name="solar:documents-bold-duotone"
+                />
+                <span v-if="getNavItemMeta(result?.item?.path)?.directoryTitle">
+                  {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
+                  <span
+                    class="arrow"
+                    v-html="`→`"
+                  />
+                </span>
+                <span>
+                  {{ result.item.title }}
+                </span>
+              </div>
+              <p
+                v-if="result?.matches?.[0]"
+                class="search-result-content-preview"
+              >
+                <span>“</span>
+                <span
+                  v-html="`${highlight(q, result?.matches?.[0] as any)}`"
+                />
+                <span>“</span>
+              </p>
             </div>
           </div>
         </div>
@@ -269,6 +285,7 @@ css({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
+
     '.search-window': {
       display: 'flex',
       flexDirection: 'column',
@@ -282,6 +299,7 @@ css({
       mx: '{docus.docs.search.results.window.marginX}',
       overflow: 'hidden',
       backdropFilter: '{docus.docs.search.backdropFilter}',
+
       '.search-input': {
         display: 'flex',
         alignItems: 'center',
@@ -301,13 +319,12 @@ css({
         '.close-icon': {
           color: '{elements.text.secondary.color.static}',
           flexShrink: 0,
-          // padding: '{space.4}',
           width: '{size.20}',
           height: '{size.20}',
         },
         input: {
           width: '100%',
-          padding: '{space.3} 0',
+          padding: '{space.4} 0',
           color: '{elements.text.primary.color.static}',
           backgroundColor: 'transparent',
           '&:focus, &:focus-visible': {
@@ -315,12 +332,14 @@ css({
           },
           '&::placeholder': {
             color: '{elements.text.tertiary.color.static}',
+            opacity: '0.5'
           }
         },
         '&:focus, &:focus-visible': {
           outline: 'none',
         }
       },
+
       '.search-results': {
         overflow: 'auto',
         display: 'flex',
@@ -333,32 +352,46 @@ css({
           color: '{elements.text.tertiary.color.static}',
         }
       },
+
       '.search-result': {
         padding: '{space.2}',
         cursor: 'pointer',
-        '&.selected .wrapper': {
+        display: 'flex',
+        alignItems: 'center',
+        '&.selected': {
           backgroundColor: '{docus.docs.search.results.selected.backgroundColor}',
         },
-        '.wrapper': {
+        '.search-result-content-wrapper': {
+          display: 'flex',
+          gap: '{space.2}',
+          borderRadius: '{radii.2xs}',
+          padding: '{space.2} 0',
+          flexDirection: 'column',
+          overflow: 'hidden'
+        },
+        '.search-result-content-head': {
           display: 'flex',
           alignItems: 'center',
-          gap: '{space.1}',
-          borderRadius: '{radii.2xs}',
-          padding: '{space.1} {space.2}',
+          gap: '{space.2}',
+          svg: {
+            flexShrink: '0',
+            opacity: '0.8',
+            width: '{size.20}',
+            height: '{size.20}',
+            marginLeft: '{space.2}',
+            marginRight: '{space.4}',
+          },
+          span: {
+            whiteSpace: 'nowrap',
+          },
+          '.arrow': {
+            opacity: '0.5'
+          },
         },
-        svg: {
-          flexShrink: '0',
-          opacity: '0.5',
-          marginRight: '{space.3}',
-        },
-        span: {
-          whiteSpace: 'nowrap',
-        },
-        '.arrow': {
-          opacity: '0.5'
-        },
-        '.search-result-preview': {
+        '.search-result-content-preview': {
           truncate: true,
+          opacity: '0.6',
+          position: 'relative',
         },
         ':deep(mark)': {
           color: 'white',

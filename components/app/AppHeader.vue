@@ -6,7 +6,7 @@ const { navigation } = useContent()
 const { y } = useWindowScroll()
 const route = useRoute()
 
-const showDocsSearch = ref(true)
+const showDocsSearch = ref(false)
 
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 

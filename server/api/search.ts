@@ -27,6 +27,12 @@ export default defineEventHandler(async (event) => {
       )
       .map(
         async ({ _id: id, _path: path, _dir: dir, title = '', description = '', body = undefined, ...rest }) => {
+          const { directoryIcon } = rest
+
+          if (directoryIcon) {
+            console.log({ directoryIcon })
+          }
+
           return {
             id,
             path,
@@ -45,7 +51,6 @@ export default defineEventHandler(async (event) => {
 })
 
 function extractTextFromAst(node) {
-  console.log({ node })
   let text = ''
   if (node.type === 'text') {
     text += node.value

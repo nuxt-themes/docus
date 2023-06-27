@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const {isMac} = useUserAgent()
+const { isMac } = useUserAgent()
 </script>
 
 <template>
@@ -12,8 +12,10 @@ const {isMac} = useUserAgent()
     <Icon name="heroicons-outline:search" />
     <span class="placeholder">Search</span>
     <span class="shortcuts">
-      <kbd>{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
-      <kbd>K</kbd>
+      <ClientOnly>
+        <kbd>{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
+        <kbd>K</kbd>
+      </ClientOnly>
     </span>
   </button>
 </template>
