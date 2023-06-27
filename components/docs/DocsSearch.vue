@@ -379,7 +379,7 @@ css({
             width: '{size.20}',
             height: '{size.20}',
             marginLeft: '{space.2}',
-            marginRight: '{space.4}',
+            marginRight: '{space.2}',
           },
           span: {
             whiteSpace: 'nowrap',
