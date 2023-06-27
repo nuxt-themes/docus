@@ -354,7 +354,7 @@ css({
       },
 
       '.search-result': {
-        padding: '{space.2}',
+        padding: '{space.1} {space.2}',
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
@@ -375,7 +375,7 @@ css({
           gap: '{space.2}',
           svg: {
             flexShrink: '0',
-            opacity: '0.8',
+            opacity: '0.5',
             width: '{size.20}',
             height: '{size.20}',
             marginLeft: '{space.2}',
