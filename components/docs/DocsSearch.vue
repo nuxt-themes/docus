@@ -324,7 +324,7 @@ css({
         },
         input: {
           width: '100%',
-          padding: '{space.4} 0',
+          padding: '{space.3} 0',
           color: '{elements.text.primary.color.static}',
           backgroundColor: 'transparent',
           '&:focus, &:focus-visible': {
