@@ -12,6 +12,7 @@
     "layouts",
     "plugins",
     "nuxt.schema.ts",
+    "server",
     "app.vue",
     "app.config.ts",
     "nuxt.config.ts",
