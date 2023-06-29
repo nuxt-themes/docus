@@ -69,9 +69,8 @@ defineNuxtConfig({
 1. Clone this repository
 2. Install dependencies using `pnpm install --frozen-lockfile`
 3. Run `pnpm run prepare` to generate type stubs.
-4. Update the `extends` key in `.starters/default` to `../../` in order to use the local version of Docus.
-5. Use `pnpm run dev` to start [default starter](./.starters/default)
-6. Do not commit any change in `.starters/default` since its your playground.
+4. Use `pnpm run dev` to start [default starter](./.starters/default). You can edit the module because pnpm workspace links it with the default starter.
+5. Do not commit any change in `.starters/default` since its your playground.
 
 ## License 📎
 
