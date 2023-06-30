@@ -105,7 +105,6 @@ export default defineComponent({
         }
 
         if (source?.driver === 'github') {
-          baseUrl = source.baseUrl || props.baseUrl
           repo = source.repo || props.repo || ''
           owner = source.owner || props.owner || ''
           branch = source.branch || props.branch || 'main'
