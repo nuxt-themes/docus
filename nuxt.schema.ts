@@ -139,7 +139,10 @@ export default defineNuxtSchema({
          * Boolean to disable or use the `Logo.vue` component.
          *
          * String to be used as a name of a component.
+         * 
+         * Object that sets the light and dark logos.
          *
+         * @type {boolean|string|{dark: string, light: string}}
          * @example 'MyLogo'
          * @studioInput boolean
          */
