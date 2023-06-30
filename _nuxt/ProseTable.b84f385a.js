@@ -1,0 +1,1 @@
+import{l as t,c as _,e as a,f as s,N as c}from"./entry.ec3affcb.js";const n={},o={class:"table-wrapper"};function r(e,l){return _(),a("div",o,[s("table",null,[c(e.$slots,"default",{},void 0,!0)])])}const f=t(n,[["render",r],["__scopeId","data-v-7cfa8c90"]]);export{f as default};
