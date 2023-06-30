@@ -7,6 +7,14 @@ import { useAppConfig } from '#imports'
 export default defineComponent({
   props: {
     /**
+     * GitHub base URL.
+     */
+    baseUrl: {
+      type: String,
+      default: () => useAppConfig()?.docus?.github?.baseUrl || 'https://github.com',
+      required: false
+    },
+    /**
      * Repository owner.
      */
     owner: {
@@ -81,7 +89,7 @@ export default defineComponent({
     }
 
     const source = computed(() => {
-      let { repo, owner, branch, contentDir } = props
+      let { baseUrl, repo, owner, branch, contentDir } = props
       let prefix = ''
 
       // Resolve source from content sources
@@ -105,10 +113,10 @@ export default defineComponent({
         }
       }
 
-      return { repo, owner, branch, contentDir, prefix }
+      return { baseUrl, repo, owner, branch, contentDir, prefix }
     })
 
-    const base = computed(() => joinURL('https://github.com', `${source.value.owner}/${source.value.repo}`))
+    const base = computed(() => joinURL(`${source.value.baseUrl}/${source.value.owner}/${source.value.repo}`))
 
     const path = computed(() => {
       const dirParts: string[] = []
