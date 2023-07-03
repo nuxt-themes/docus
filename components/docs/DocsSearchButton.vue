@@ -38,9 +38,6 @@ css({
     '&:hover': {
       color: '{elements.text.secondary.color.hover}',
     },
-    '@lg': {
-      width: '100%',
-    },
     '.placeholder': {
       display: 'none',
       '@lg': {

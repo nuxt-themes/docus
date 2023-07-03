@@ -49,6 +49,7 @@ watch(Escape, () => {
         <div class="section right">
           <!-- <AppTextDirection /> -->
           <DocsSearchButton
+            :class="{'has-navigation': config.header.navigation}"
             class="docs-search-button-mobile"
             @click="showDocsSearch = true"
           />
@@ -111,7 +112,8 @@ css({
     '.docs-search-button-desktop': {
       display: 'none',
       '@lg': {
-        display: 'flex'
+        display: 'flex',
+        width: '100%',
       }
     },
 
@@ -119,6 +121,9 @@ css({
       display: 'flex',
       '@lg': {
         display: 'none'
+      },
+      '&.has-navigation': {
+        display: 'flex',
       }
     },
 
