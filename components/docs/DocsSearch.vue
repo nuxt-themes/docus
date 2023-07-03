@@ -390,11 +390,11 @@ css({
         },
         '.search-result-content-preview': {
           truncate: true,
-          opacity: '0.6',
           position: 'relative',
+          color: '{elements.text.secondary.color.static}',
         },
         ':deep(mark)': {
-          color: 'white',
+          color: '{docus.docs.search.results.highlight.color}',
           backgroundColor: '{docus.docs.search.results.highlight.backgroundColor}',
         }
       }

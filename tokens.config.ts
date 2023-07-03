@@ -395,7 +395,8 @@ export default defineTheme({
             },
           },
           highlight: {
-            backgroundColor: '{color.secondary.500}'
+            color: 'white',
+            backgroundColor: '{color.primary.500}'
           }
         }
       }
