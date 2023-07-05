@@ -9,10 +9,8 @@
   </AppLayout>
 </template>
 
-<style scoped lang="ts">
-css({
-  '.noise-filter': {
-    display: 'none',
-  }
-})
+<style scoped>
+.noise-filter {
+  display: 'none';
+}
 </style>

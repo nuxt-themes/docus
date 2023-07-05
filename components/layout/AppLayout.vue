@@ -18,21 +18,18 @@ useContentHead(config.value as any)
 
 <template>
   <div class="app-layout">
-    <AppLoadingBar />
-    <AppHeader />
-    <main>
+    <!-- <AppLoadingBar /> -->
+    <!-- <AppHeader /> -->
+    <!-- <main>
       <slot />
-    </main>
-    <AppFooter />
+    </main> -->
+    hello
+    <!-- <AppFooter /> -->
   </div>
 </template>
 
-<style lang="ts" scoped>
-css({
-  '.app-layout': {
-    main: {
-      minHeight: 'calc(100vh - {docus.app.header.height} - {docus.app.footer.height})',
-    }
-  }
-})
+<style scoped>
+/* main {
+  minHeight: 'calc(100vh - {docus.app.header.height} - {docus.app.footer.height})',
+} */
 </style>
