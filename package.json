@@ -44,7 +44,7 @@
     "@types/node": "^20.3.2",
     "eslint": "^8.43.0",
     "nuxt": "^3.6.1",
-    "release-it": "^15.11.0",
+    "release-it": "^16.0.0",
     "typescript": "^5.1.6",
     "vite-plugin-inspect": "^0.7.31",
     "vue": "^3.3.4"
