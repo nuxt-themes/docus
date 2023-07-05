@@ -21,7 +21,7 @@ const selected = ref(-1)
 
 const show = ref(false)
 
-const { lock, unlock } = useBodyLock()
+const { close, open } = useMenu()
 
 const { activate, deactivate } = useFocusTrap(searchContentRef)
 
@@ -175,9 +175,9 @@ watch(show, (value) => {
     q.value = ''
     selected.value = -1
     deactivate()
-    unlock()
+    close()
   } else {    
-    lock()
+    open()
     nextTick(() => {
       activate()
     })

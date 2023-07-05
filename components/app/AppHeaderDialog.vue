@@ -13,9 +13,9 @@ const links = computed(() => {
   })
 })
 
-const { lock, unlock } = useBodyLock()
+const { close, open } = useMenu()
 
-watch(show, v => (v ? lock() : unlock()))
+watch(show, v => (v ? open() : close()))
 </script>
 
 <template>
