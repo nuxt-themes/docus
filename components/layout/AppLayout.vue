@@ -18,12 +18,14 @@ useContentHead(config.value as any)
 
 <template>
   <div class="app-layout">
-    <!-- <AppLoadingBar /> -->
+    <AppLoadingBar />
     <!-- <AppHeader /> -->
     <!-- <main>
       <slot />
     </main> -->
-    hello
+    <div class="text-primary-500">
+      hello
+    </div>
     <!-- <AppFooter /> -->
   </div>
 </template>

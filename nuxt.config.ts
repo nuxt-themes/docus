@@ -63,11 +63,11 @@ export default defineNuxtConfig({
     //   path: resolve('./components/content'),
     //   global: true
     // },
-    // {
-    //   prefix: '',
-    //   path: resolve('./components/app'),
-    //   global: true
-    // },
+    {
+      prefix: '',
+      path: resolve('./components/app'),
+      global: true
+    },
     // {
     //   prefix: '',
     //   path: resolve('./components/docs'),
@@ -97,9 +97,10 @@ export default defineNuxtConfig({
     dataValue: 'theme',
     preference: 'dark'
   },
-  // tailwindcss: {
-  //   cssPath: '~/assets/css/tailwind.css',
-  // },
+  tailwindcss: {
+    cssPath: resolve('./assets/css/tailwind.css'),
+    configPath: resolve('./tailwind.config.ts')
+  },
   typescript: {
     includeWorkspace: true
   }

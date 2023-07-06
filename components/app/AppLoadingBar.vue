@@ -1,4 +1,21 @@
-<script setup>
+<template>
+  <div
+    class="nuxt-progress fixed top-0 start-0 end-0 w-0 opacity-100 z-[9999]"
+    :class="['nuxt-progress-failed' && !data.canSucceed, tokens.height, tokens.backgroundImage]"
+    :style="{
+      width: `${data.percent}%`,
+      insetInlineStart: data.left,
+      opacity: data.show ? 1 : 0,
+      backgroundSize: `${(100 / data.percent) * 100}% auto`,
+    }"
+  />
+</template>
+
+<script setup lang="ts">
+import appConfig from '#build/app.config'
+
+const { tokens: { loadingBar: tokens } } = appConfig
+
 const props = defineProps({
   throttle: {
     type: Number,
@@ -7,7 +24,7 @@ const props = defineProps({
   duration: {
     type: Number,
     default: 2000
-  }
+  },
 })
 
 const nuxtApp = useNuxtApp()
@@ -73,34 +90,8 @@ nuxtApp.hook('page:finish', finish)
 onBeforeUnmount(() => clear)
 </script>
 
-<template>
-  <div
-    class="nuxt-progress"
-    :class="{
-      'nuxt-progress-failed': !data.canSucceed,
-    }"
-    :style="{
-      width: `${data.percent}%`,
-      insetInlineStart: data.left,
-      opacity: data.show ? 1 : 0,
-      backgroundSize: `${(100 / data.percent) * 100}% auto`,
-    }"
-  />
-</template>
-
-<style lang="ts">
-css({
-  '.nuxt-progress': {
-    height: '{docus.app.loadingBar.height}',
-    position: 'fixed',
-    top: '0px',
-    insetInlineStart: '0px',
-    insetInlineEnd: '0px',
-    width: '0%',
-    opacity: 1,
-    transition: 'width 0.1s, height 0.4s, opacity 0.4s',
-    background: 'repeating-linear-gradient(to right, {docus.app.loadingBar.gradientColorStop1} 0%, {docus.app.loadingBar.gradientColorStop2} 50%, {docus.app.loadingBar.gradientColorStop3} 100%)',
-    zIndex: '999999',
-  }
-})
+<style scoped>
+.nuxt-progress {
+  transition: width 0.1s, height 0.4s, opacity 0.4s;
+}
 </style>

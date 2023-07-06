@@ -2,6 +2,30 @@
   color-scheme: dark;
 }
 
+/* Use colors from tailwind.config.ts orange */
+:root {
+  --color-primary-50: #FFF7F2;
+  --color-primary-100: #FFEFE5;
+  --color-primary-200: #FFE5D7;
+  --color-primary-300: #FDAC7E;
+  --color-primary-400: #FC8E51;
+  --color-primary-500: #FA630E;
+  --color-primary-600: #7E3004;
+  --color-primary-700: #3F1802;
+  --color-primary-800: #2D1102;
+  --color-primary-900: #1A0A01;
+  --color-secondary-50: #F8F5FF;
+  --color-secondary-100: #F1ECFF;
+  --color-secondary-200: #E5DCFF;
+  --color-secondary-300: #A589F9;
+  --color-secondary-400: #8961FD;
+  --color-secondary-500: #6B39FA;
+  --color-secondary-600: #370DAD;
+  --color-secondary-700: #200273;
+  --color-secondary-800: #14014A;
+  --color-secondary-900: #080020;
+}
+
 body {
   /* overflow-y: scroll; */
   -webkit-font-smoothing: antialiased;

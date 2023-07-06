@@ -1,4 +1,7 @@
+import tokens from './tailwind.tokens.config'
+
 export default defineAppConfig({
+  tokens,
   docus: {
     title: 'Docus',
 
