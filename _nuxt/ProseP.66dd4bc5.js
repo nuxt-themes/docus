@@ -1,1 +1,0 @@
-import{l as _,c as t,e as n,N as o}from"./entry.ec3affcb.js";const a={};function c(e,r){return t(),n("p",null,[o(e.$slots,"default",{},void 0,!0)])}const d=_(a,[["render",c],["__scopeId","data-v-652adfac"]]);export{d as default};
