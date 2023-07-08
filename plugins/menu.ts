@@ -1,3 +1,6 @@
+import { defineNuxtPlugin } from "nuxt/app"
+import { ref, watch } from "vue"
+
 export default defineNuxtPlugin((ctx: any) => {
   // Menu visible reference
   const visible = ref(false)

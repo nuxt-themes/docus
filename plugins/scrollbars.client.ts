@@ -3,3 +3,7 @@ export default defineNuxtPlugin(() => {
     document.documentElement.classList.add('docus-scrollbars')
   }
 })
+
+function defineNuxtPlugin(arg0: () => void) {
+  throw new Error("Function not implemented.")
+}
