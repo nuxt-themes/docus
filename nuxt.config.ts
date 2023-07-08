@@ -28,7 +28,7 @@ const updateModule = defineNuxtModule({
 })
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default defineNuxtConfig({
+export default defineNitroConfig({
   app: {
     head: {
       htmlAttrs: {
@@ -63,37 +63,32 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/docs'),
       global: true
-    }
-  ],
-  : {
-    studio: true
-  },
-  content: {
+    },
+ {
+    studio: true,
+  },],
+  content: [
     documentDriven: true,
     highlight: {
       theme: {
         dark: 'github-dark',
         default: 'github-light'
-      },
-      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
-    },
+      }
+  }],
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini'],
+
     navigation: {
       fields: ['icon', 'titleTemplate', 'header', 'main', 'aside', 'footer']
-    }
-  },
+    },
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
   },
-  experimental: {
-    inlineSSRStyles: false
-  },
-  typescript: {
-    includeWorkspace: true
-  },
   nitro: {
     prerender: {
       ignore: ['/___tokens_config.json', '/___tokens_schema.json']
-    }
+    },
   },
-})
+}
+
+)
