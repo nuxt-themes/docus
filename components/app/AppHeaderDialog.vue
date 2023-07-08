@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useContent, useDocus, useMenu, watch } from '../../../.nuxt/imports';
+
 const { navigation } = useContent()
 const { config } = useDocus()
 
