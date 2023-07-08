@@ -65,7 +65,7 @@ export default defineNuxtConfig({
       global: true
     }
   ],
-  pinceau: {
+  : {
     studio: true
   },
   content: {
@@ -93,7 +93,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
+      ignore: ['/___tokens_config.json', '/___tokens_schema.json']
     }
   },
 })

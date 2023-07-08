@@ -1298,7 +1298,7 @@ packages:
     dependencies:
       '@nuxtjs/color-mode': 3.2.0(rollup@3.23.1)
       '@vueuse/core': 9.13.0(vue@3.3.4)
-      pinceau: 0.18.9
+      : 0.18.9
     transitivePeerDependencies:
       - '@vue/composition-api'
       - postcss
@@ -1314,7 +1314,7 @@ packages:
       '@nuxtjs/color-mode': 3.2.0(rollup@3.23.1)
       nuxt-config-schema: 0.4.6(rollup@3.23.1)
       nuxt-icon: 0.3.3(rollup@3.23.1)(vue@3.3.4)
-      pinceau: 0.18.9
+      : 0.18.9
       ufo: 1.1.2
     transitivePeerDependencies:
       - postcss
@@ -8035,7 +8035,7 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pinceau@0.18.9:
+  /@0.18.9:
     resolution: {integrity: sha512-GJ+l8a5Y+7PP/diwuajJhd2QONTIFkk2YXjrVTh7QKC3sMQEphpLH6ZJfXSeeSonQ0/BnhrrMi9a5e14mmqXug==}
     dependencies:
       '@unocss/reset': 0.50.8
