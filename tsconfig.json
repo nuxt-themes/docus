@@ -110,6 +110,7 @@
   "vueCompilerOptions": {
     "plugins": [
       "/volar"
-    ]
+    ],
+    "devtool":true,
   }
 }
