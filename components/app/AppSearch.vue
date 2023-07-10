@@ -176,7 +176,7 @@ watch(show, (value) => {
     selected.value = -1
     deactivate()
     close()
-  } else {    
+  } else {
     open()
     nextTick(() => {
       activate()
@@ -247,7 +247,7 @@ watch(Escape, () => {
             />
           </button>
         </div>
-        
+
         <div
           v-if="results.length > 0"
           ref="resultsAreaRef"
@@ -318,10 +318,7 @@ watch(Escape, () => {
 <style scoped lang="ts">
 css({
   button: {
-    padding: '{space.2} {space.4}',
-    '&:hover': {
-      borderColor: '{color.gray.300}'
-    },
+    padding: '{space.2} {space.2}',
     '.content': {
       borderRadius: '{radii.md}',
       display: 'flex',
@@ -346,19 +343,11 @@ css({
         }
       },
       span: {
-        '&:first-child': {
-          display: 'block',
-          fontSize: '{fontSize.xs}',
-          fontWeight: '{fontWeight.medium}',
-        },
-        '&:nth-child(2)': {
-          flex: 'none',
-          display: 'none',
-          fontSize: '{fontSize.xs}',
-          fontWeight: '{fontWeight.semibold}',
-          '@sm': {
-            display: 'block'
-          }
+        flex: 'none',
+        display: 'none',
+        fontSize: '{fontSize.xs}',
+        '@lg': {
+          display: 'block'
         }
       }
     }
