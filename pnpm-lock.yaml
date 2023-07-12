@@ -17,8 +17,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0(rollup@3.23.1)
       '@nuxthq/studio':
-        specifier: ^0.13.3
-        version: 0.13.3(rollup@3.23.1)
+        specifier: ^0.13.4
+        version: 0.13.4(rollup@3.23.1)
       '@vueuse/integrations':
         specifier: ^10.2.1
         version: 10.2.1(focus-trap@7.5.2)(fuse.js@6.6.2)(vue@3.3.4)
@@ -1773,8 +1773,8 @@ packages:
       - vti
       - vue-tsc
 
-  /@nuxthq/studio@0.13.3(rollup@3.23.1):
-    resolution: {integrity: sha512-wehkz6xLIi+ncwCxDy83siUzOkKZKnew1OxDGN7OGQ4Ak1FOJhW2S6HmXmtztE5vAcn2sKaBK0AGljmqWR+Esw==}
+  /@nuxthq/studio@0.13.4(rollup@3.23.1):
+    resolution: {integrity: sha512-+Jn0iN6TvRTTtTBX4qXWhtOMLL4rsyUIX3/9HM+eBAwr5/cELLw3RuI1tgp942QteTi7PvI5Av4nEi6BlLBr+A==}
     dependencies:
       '@nuxt/kit': 3.6.2(rollup@3.23.1)
       defu: 6.1.2
@@ -5170,7 +5170,6 @@ packages:
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 4.0.0
-    dev: true
 
   /globby@13.2.2:
     resolution: {integrity: sha512-Y1zNGV+pzQdh7H39l9zgB4PJqjRNqydvdYCDG4HFXM4XuvSaQQlEc91IU1yALL8gUTDomgBAfz3XJdmUS+oo0w==}
@@ -7645,7 +7644,7 @@ packages:
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
       fs-extra: 11.1.1
-      globby: 13.2.2
+      globby: 13.2.1
       h3: 1.7.1
       hookable: 5.5.3
       jiti: 1.19.1
