@@ -11,6 +11,7 @@
     "composables",
     "layouts",
     "plugins",
+    "server",
     "nuxt.schema.ts",
     "app.vue",
     "app.config.ts",
