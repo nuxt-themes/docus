@@ -139,7 +139,7 @@ export default defineNuxtPlugin(() => {
                     return
                   }
                   const { pathname: hitPathname } = new URL(window.location.origin + hit.url)
-                  // If the hits goes to another page, we prevent the native link behavior
+                  // If the hits go to another page, we prevent the native link behavior
                   // to leverage the Vue Router loading feature.
                   if (route.path !== hitPathname) {
                     event.preventDefault()
