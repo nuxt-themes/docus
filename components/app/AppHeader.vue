@@ -24,7 +24,7 @@ defineProps({
       </div>
 
       <div class="section right">
-        <ClientOnly><AppSearch /></ClientOnly>
+        <AppSearch />
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
