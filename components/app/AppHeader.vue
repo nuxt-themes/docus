@@ -24,8 +24,7 @@ defineProps({
       </div>
 
       <div class="section right">
-        <!-- <AppSearch v-if="hasDocSearch" /> -->
-        <AppSearch />
+        <ClientOnly><AppSearch /></ClientOnly>
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
