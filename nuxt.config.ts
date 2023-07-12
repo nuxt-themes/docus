@@ -29,6 +29,12 @@ const updateModule = defineNuxtModule({
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  routeRules: {
+    '/api/search': {
+      prerender: true,
+      cache: true
+    }
+  },
   app: {
     head: {
       htmlAttrs: {

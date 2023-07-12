@@ -2,6 +2,8 @@
 const { navigation } = useContent()
 const { config } = useDocus()
 
+const show = ref(false)
+
 const filtered = computed(() => config.value.aside?.exclude || [])
 
 const links = computed(() => {
@@ -11,15 +13,15 @@ const links = computed(() => {
   })
 })
 
-const { visible, open, close } = useMenu()
+const { close, open } = useMenu()
 
-watch(visible, v => (v ? open() : close()))
+watch(show, v => (v ? open() : close()))
 </script>
 
 <template>
   <button
     aria-label="Menu"
-    @click="open"
+    @click="show = true"
   >
     <Icon
       name="heroicons-outline:menu"
@@ -30,15 +32,15 @@ watch(visible, v => (v ? open() : close()))
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <teleport to="body">
     <nav
-      v-if="visible"
+      v-if="show"
       class="dialog"
-      @click="close"
+      @click="show = false"
     >
       <div @click.stop>
         <div class="wrapper">
           <button
             aria-label="Menu"
-            @click="close"
+            @click="show = false"
           >
             <Icon
               name="heroicons-outline:x"
