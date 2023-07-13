@@ -83,7 +83,3 @@ export default defineNuxtConfig({
     // ...other options
   }
 })
-
-function defineNuxtConfig(arg0: { extends: string[]; modules: string[]; css: string[]; components: { prefix: string; path: string; global: boolean }[]; pinceau: { configFileName: string }; content: { documentDriven: boolean; highlight: { theme: string; preload: string[] }; navigation: { fields: string[] }; markdown: { tags: { p: string } } }; colorMode: { classSuffix: string; dataValue: string }; devtools: { enabled: boolean } }) {
-throw new Error('Function not implemented.')
-}
