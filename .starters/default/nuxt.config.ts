@@ -9,11 +9,3 @@ export default defineNuxtConfig({
     '@nuxt/devtools'
   ]
 })
-
-
-function defineNuxtConfig(arg0: {
-// https://github.com/nuxt-themes/docus
-extends: string; modules: string[];
-}) {
-throw new Error("Function not implemented.");
-}
