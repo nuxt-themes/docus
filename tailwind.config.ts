@@ -26,13 +26,15 @@ export default {
       'xl': '0px 20px 25px -5px rgb(var(--color-shadow) / 0.5), 0px 8px 10px -6px #000000',
       '2xl': '0px 25px 50px -12px rgb(var(--color-shadow))',
       'none': '0px 0px 0px 0px transparent',
-      'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-600) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))'
+      'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-600) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
+      'light-up-sm': 'inset 0.25px 0.5px 0px hsla(0, 0%, 100%, .1), inset -0.25px 0px 0px hsla(0, 0%, 100%,.1)',
+      'light-up': 'inset 0.5px 0.75px 0px hsla(0, 0%, 100%, .1), inset -0.5px 0px 0px hsla(0, 0%, 100%, .1)'
     },
 
     extend: {
       colors: {
         black: 'rgb(var(--color-black) / <alpha-value>)',
-        // orange
+        // Orange
         primary: {
           50: 'rgb(var(--color-primary-50) / <alpha-value>)',
           100: 'rgb(var(--color-primary-100) / <alpha-value>)',
@@ -45,7 +47,7 @@ export default {
           800: 'rgb(var(--color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--color-primary-900) / <alpha-value>)',
         },
-        // purple
+        // Purple
         secondary: {
           50: 'rgb(var(--color-secondary-50) / <alpha-value>)',
           100: 'rgb(var(--color-secondary-100) / <alpha-value>)',
@@ -94,6 +96,54 @@ export default {
           800: '#14014A',
           900: '#080020',
         },
+        green: {
+          50: '#ECFFF7',
+          100: '#DBFFF0',
+          200: '#C0FFE4',
+          300: '#86FBCB',
+          400: '#3CEEA5',
+          500: '#0DD885',
+          600: '#039B5A',
+          700: '#01492C',
+          800: '#002817',
+          900: '#00190F',
+        },
+        blue: {
+          50: '#F2FAFF',
+          100: '#E2F4FF',
+          200: '#D0EEFF',
+          300: '#A1DDFF',
+          400: '#64C7FF',
+          500: '#1AADFF',
+          600: '#01659E',
+          700: '#013858',
+          800: '#002235',
+          900: '#00131D',
+        },
+        yellow: {
+          50: '#FFFCEE',
+          100: '#FFF7D9',
+          200: '#FFF3C0',
+          300: '#FFE372',
+          400: '#FFDC4E',
+          500: '#FBCA05',
+          600: '#AB8A07',
+          700: '#463801',
+          800: '#292100',
+          900: '#1B1500',
+        },
+        red: {
+          50: '#FFF9F8',
+          100: '#FFF0EC',
+          200: '#FFE6E1',
+          300: '#FFA692',
+          400: '#FF7353',
+          500: '#FF3B10',
+          600: '#AD2203',
+          700: '#550F00',
+          800: '#340A01',
+          900: '#1C0301',
+        },
       },
       borderRadius: {
         'none': '0px',
@@ -111,9 +161,6 @@ export default {
         '5xl': '28px',
         '6xl': '32px',
         'full': '9999px',
-      },
-      boxShadow: {
-        'light-up': 'inset 0.5px 0.75px 0px hsla(0,0%,100%,.1), inset -0.5px 0px 0px hsla(0,0%,100%,.1)'
       }
     },
   },

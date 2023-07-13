@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import appConfig from '#build/app.config'
 
-const { tokens: { loadingBar: tokens } } = appConfig
+const { tokens } = appConfig
 
 const props = defineProps({
   throttle: {
@@ -80,7 +80,7 @@ onBeforeUnmount(() => clear)
 <template>
   <div
     class="nuxt-progress fixed top-0 start-0 end-0 w-0 opacity-100 z-[9999]"
-    :class="['nuxt-progress-failed' && !data.canSucceed, tokens.height, tokens.backgroundImage]"
+    :class="['nuxt-progress-failed' && !data.canSucceed, tokens.loadingBar.height, tokens.loadingBar.backgroundImage]"
     :style="{
       width: `${data.percent}%`,
       insetInlineStart: data.left,

@@ -2,6 +2,24 @@ import tokens from './tokens.config'
 
 export default defineAppConfig({
   tokens,
+  nuxtIcon: {
+    aliases: {
+      'type:primary': 'tabler:info-square-rounded-filled',
+      'type:secondary': 'tabler:info-square-rounded-filled',
+      'type:info': 'tabler:info-square-rounded-filled',
+      'type:success': 'tabler:square-rounded-check-filled',
+      'type:warning': 'tabler:alert-triangle-filled',
+      'type:danger': 'tabler:alert-circle-filled',
+      'type:neutral': 'tabler:info-square-rounded-filled',
+      'list:primary': 'heroicons-outline:check',
+      'list:secondary': 'heroicons-outline:check',
+      'list:neutral': 'heroicons-outline:check',
+      'list:info': 'ion:information',
+      'list:success': 'heroicons-outline:check',
+      'list:warning': 'bi:exclamation-lg',
+      'list:danger': 'octicon:x-16'
+    }
+  },
   docus: {
     title: 'Docus',
 
