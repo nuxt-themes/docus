@@ -28,7 +28,8 @@ export default {
       'none': '0px 0px 0px 0px transparent',
       'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-600) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
       'light-up-sm': 'inset 0.25px 0.5px 0px hsla(0, 0%, 100%, .1), inset -0.25px 0px 0px hsla(0, 0%, 100%,.1)',
-      'light-up': 'inset 0.5px 0.75px 0px hsla(0, 0%, 100%, .1), inset -0.5px 0px 0px hsla(0, 0%, 100%, .1)'
+      'light-up': 'inset 0.5px 0.75px 0px hsla(0, 0%, 100%, .1), inset -0.5px 0px 0px hsla(0, 0%, 100%, .1)',
+      'outline-current': '0 0 0 1px currentColor'
     },
 
     extend: {
