@@ -63,11 +63,19 @@ export default defineNuxtConfig({
     },
     navigation: {
       fields: ['icon', 'titleTemplate']
-    }
+    },
+    markdown: {
+      tags: {
+        p: ''
+      },
+    },
   },
 
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
+  },
+  devtools: {
+    enabled: true
   }
 })
