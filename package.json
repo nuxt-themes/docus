@@ -42,7 +42,6 @@
     "@docsearch/css": "^3.5.1",
     "@docsearch/js": "^3.5.1",
     "@nuxt/content": "^2.7.0",
-    "@nuxt/devtools": "^0.6.7",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/algolia": "^1.8.0",
     "@types/node": "^20.4.1",
@@ -50,6 +49,7 @@
     "nuxt": "^3.6.2",
     "release-it": "^16.1.0",
     "typescript": "^5.1.6",
+    "@nuxt/devtools": "npm:@nuxt/devtools-edge@latest",
     "vite-plugin-inspect": "^0.7.32",
     "vue": "^3.3.4"
   },

@@ -76,7 +76,11 @@ export default defineNuxtConfig({
     dataValue: 'theme'
   },
   devtools: {
-    enabled: true
+    // Enable devtools (default: true)
+    enabled: true,
+    // VS Code Server options
+    vscode: {},
+    // ...other options
   }
 })
 
