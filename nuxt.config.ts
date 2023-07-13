@@ -28,17 +28,7 @@ const updateModule = defineNuxtModule({
 })
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-<<<<<<< HEAD
-export default defineNuxtConfig({
-  routeRules: {
-    '/api/search': {
-      prerender: true,
-      cache: true
-    }
-  },
-=======
 export default defineNitroConfig({
->>>>>>> 1bdaf274bddbfad4c8ee60b682dcb50708b3830a
   app: {
     head: {
       htmlAttrs: {
@@ -57,6 +47,12 @@ export default defineNitroConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-config-schema',
+     // https://github.com/nuxt-modules/plausible
+     '@nuxtjs/plausible',
+     // https://github.com/nuxt/devtools
+     '@nuxt/devtools',
+     'nuxt-icon',
+     '@nuxt/content',
     resolve('./app/module'),
     updateModule as any
   ],
@@ -74,12 +70,12 @@ export default defineNitroConfig({
       path: resolve('./components/docs'),
       global: true
     },
- {
+{
     studio: true,
   },],
   content: [
     documentDriven: true,
-    highlight: {
+        highlight: {
       theme: {
         dark: 'github-dark',
         default: 'github-light'
@@ -99,6 +95,4 @@ export default defineNitroConfig({
       ignore: ['/___tokens_config.json', '/___tokens_schema.json']
     },
   },
-}
-
-)
+})
