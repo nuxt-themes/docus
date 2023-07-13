@@ -1,5 +1,8 @@
 import { withoutTrailingSlash } from 'ufo'
 import type { DocSearchOptions } from '@nuxtjs/algolia/dist/module.d'
+import { defineNuxtPlugin, useRuntimeConfig } from 'nuxt/app'
+import { ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()

@@ -28,6 +28,7 @@ const updateModule = defineNuxtModule({
 })
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+<<<<<<< HEAD
 export default defineNuxtConfig({
   routeRules: {
     '/api/search': {
@@ -35,6 +36,9 @@ export default defineNuxtConfig({
       cache: true
     }
   },
+=======
+export default defineNitroConfig({
+>>>>>>> 1bdaf274bddbfad4c8ee60b682dcb50708b3830a
   app: {
     head: {
       htmlAttrs: {
@@ -69,37 +73,32 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/docs'),
       global: true
-    }
-  ],
-  pinceau: {
-    studio: true
-  },
-  content: {
+    },
+ {
+    studio: true,
+  },],
+  content: [
     documentDriven: true,
     highlight: {
       theme: {
         dark: 'github-dark',
         default: 'github-light'
-      },
-      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
-    },
+      }
+  }],
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini'],
+
     navigation: {
       fields: ['icon', 'titleTemplate', 'header', 'main', 'aside', 'footer']
-    }
-  },
+    },
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
   },
-  experimental: {
-    inlineSSRStyles: false
-  },
-  typescript: {
-    includeWorkspace: true
-  },
   nitro: {
     prerender: {
-      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
-    }
+      ignore: ['/___tokens_config.json', '/___tokens_schema.json']
+    },
   },
-})
+}
+
+)

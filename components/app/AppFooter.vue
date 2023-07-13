@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useDocus } from '@nuxt-themes/docus/composables/useDocus';
+import { ref, computed } from 'vue';
+
 const { config } = useDocus()
 const socialIcons = ref(null)
 const icons = computed(() => config.value?.footer?.iconLinks || [])

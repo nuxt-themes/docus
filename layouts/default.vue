@@ -1,5 +1,1 @@
-<template>
-  <DocsPageLayout>
-    <slot />
-  </DocsPageLayout>
-</template>
+<template><DocsPageLayout><token /></DocsPageLayout></template>
