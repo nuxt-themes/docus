@@ -1,64 +1,28 @@
-import { createResolver, logger, defineNuxtModule } from '@nuxt/kit'
-import { $fetch } from 'ofetch'
-import { version } from './package.json'
+import { createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
 
-// That allows to overwrite these dependencies paths via `.env` for local development
-const envModules = {
-  tokens: process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
-  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '@nuxt-themes/elements',
-  studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
-  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
-}
+export default defineNuxtConfig({
+  extends: ['@nuxt-themes/typography'],
 
-const updateModule = defineNuxtModule({
-  meta: {
-    name: '@nuxt-themes/docus'
-  },
-  setup (_, nuxt) {
-    if (nuxt.options.dev) {
-      $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
-        if (release.version > version) {
-          logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
-        }
-      }).catch(() => {})
-    }
-  }
-})
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default defineNitroConfig({
-  app: {
-    head: {
-      htmlAttrs: {
-        lang: 'en'
-      }
-    }
-  },
-  extends: [
-    envModules.typography,
-    envModules.elements
-  ],
   modules: [
-    envModules.tokens,
-    envModules.studio,
+    '@nuxthq/studio',
+    'pinceau/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
-    'nuxt-config-schema',
-     // https://github.com/nuxt-modules/plausible
-     '@nuxtjs/plausible',
-     // https://github.com/nuxt/devtools
-     '@nuxt/devtools',
-     'nuxt-icon',
-     '@nuxt/content',
-    resolve('./app/module'),
-    updateModule as any
+    '@nuxt/devtools',
+    'nuxt-icon',
+    '@nuxtjs/plausible',
+    '@nuxt/content',
+
+    resolve('./app/module')
   ],
+
   css: [
     resolve('./assets/css/main.css')
   ],
+
   components: [
     {
       prefix: '',
@@ -70,29 +34,40 @@ export default defineNitroConfig({
       path: resolve('./components/docs'),
       global: true
     },
-{
-    studio: true,
-  },],
-  content: [
-    documentDriven: true,
-        highlight: {
-      theme: {
-        dark: 'github-dark',
-        default: 'github-light'
-      }
-  }],
-      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini'],
-
-    navigation: {
-      fields: ['icon', 'titleTemplate', 'header', 'main', 'aside', 'footer']
+    {
+      prefix: '',
+      path: resolve('./components/content'),
+      global: true
     },
+    {
+      prefix: '',
+      path: resolve('./components/icons'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/landing'),
+      global: true
+    }
+  ],
+
+  pinceau: {
+    configFileName: 'tokens.config'
+  },
+
+  content: {
+    documentDriven: true,
+    highlight: {
+      theme: 'one-dark-pro',
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
+    },
+    navigation: {
+      fields: ['icon', 'titleTemplate']
+    }
+  },
+
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
-  },
-  nitro: {
-    prerender: {
-      ignore: ['/___tokens_config.json', '/___tokens_schema.json']
-    },
-  },
+  }
 })
