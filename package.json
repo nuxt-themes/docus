@@ -31,7 +31,6 @@
     "@nuxt-themes/elements": "^0.9.4",
     "@nuxt-themes/tokens": "^1.9.1",
     "@nuxt-themes/typography": "^0.11.0",
-    "@nuxt/content": "^2.7.0",
     "@nuxthq/studio": "^0.13.4",
     "@vueuse/integrations": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
@@ -42,6 +41,7 @@
     "@algolia/client-search": "^4.18.0",
     "@docsearch/css": "^3.5.1",
     "@docsearch/js": "^3.5.1",
+    "@nuxt/content": "^2.7.0",
     "@nuxt/devtools": "^0.6.7",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/algolia": "^1.8.0",
@@ -62,7 +62,6 @@
         "postcss",
         "postcss-*",
         "webpack",
-
         "vite"
       ]
     }
