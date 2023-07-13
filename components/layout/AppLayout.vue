@@ -20,9 +20,9 @@ useContentHead(config.value as any)
   <div class="app-layout">
     <AppLoadingBar />
     <!-- <AppHeader /> -->
-    <!-- <main>
+    <main>
       <slot />
-    </main> -->
+    </main>
     <div class="text-primary-500">
       hello
     </div>

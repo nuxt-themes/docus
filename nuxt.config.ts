@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     envModules.studio,
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    'nuxt-icon',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-config-schema',
@@ -56,6 +57,11 @@ export default defineNuxtConfig({
     {
       prefix: '',
       path: resolve('./components/layout'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/elements'),
       global: true
     },
     // {
@@ -73,11 +79,11 @@ export default defineNuxtConfig({
     //   path: resolve('./components/docs'),
     //   global: true
     // },
-    // {
-    //   prefix: '',
-    //   path: resolve('./components/landing'),
-    //   global: true
-    // }
+    {
+      prefix: '',
+      path: resolve('./components/landing'),
+      global: true
+    }
   ],
   content: {
     documentDriven: true,

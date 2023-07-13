@@ -1,4 +1,4 @@
-import tokens from './tailwind.tokens.config'
+import tokens from './tokens.config'
 
 export default defineAppConfig({
   tokens,
