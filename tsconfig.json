@@ -111,6 +111,6 @@
     "plugins": [
       "/volar"
     ],
-    "devtool":true,
+    "devtool":true
   }
 }
