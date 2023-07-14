@@ -1,9 +1,3 @@
-import { defineTheme } from ''
-
-export default defineTheme({
-  color: {
-    black: '#0B0A0A',
-    // Primary is modified lightblue
     primary: {
       50: '#F1FCFF',
       100: '#DCF7FF',
