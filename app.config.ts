@@ -1,3 +1,5 @@
+import { defineAppConfig } from "../.nuxt/imports";
+
 export default defineAppConfig({
   docus: {
     title: 'Docus',

@@ -393,7 +393,7 @@ packages:
       - supports-color
 
   /@babel/helper-environment-visitor@7.22.1:
-    resolution: {integrity: sha512-Z2tgopurB/kTbidvzeBrc2To3PUP/9i5MUe+fU6QJCQDyPwSH2oRapkLw3KGECDYSjhQZCNxEvNvZlLw8JjGwA==}
+    resolution: {integrity: sha512-Z2tgopurB/kTbidvzeBrc2To3PUP/9i5MUe+fU6QJCQDybash2oRapkLw3KGECDYSjhQZCNxEvNvZlLw8JjGwA==}
     engines: {node: '>=6.9.0'}
 
   /@babel/helper-function-name@7.21.0:
@@ -1307,7 +1307,7 @@ packages:
     dependencies:
       '@nuxtjs/color-mode': 3.2.0(rollup@3.23.1)
       '@vueuse/core': 9.13.0(vue@3.3.4)
-      pinceau: 0.18.9
+      : 0.18.9
     transitivePeerDependencies:
       - '@vue/composition-api'
       - postcss
@@ -1323,7 +1323,7 @@ packages:
       '@nuxtjs/color-mode': 3.2.0(rollup@3.23.1)
       nuxt-config-schema: 0.4.6(rollup@3.23.1)
       nuxt-icon: 0.3.3(rollup@3.23.1)(vue@3.3.4)
-      pinceau: 0.18.9
+      : 0.18.9
       ufo: 1.1.2
     transitivePeerDependencies:
       - postcss
@@ -3177,24 +3177,7 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /axios@0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
-    dev: true
 
-  /axios@1.4.0:
-    resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
-    dependencies:
-      follow-redirects: 1.15.2
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: true
 
   /bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -8107,7 +8090,7 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pinceau@0.18.9:
+  /@0.18.9:
     resolution: {integrity: sha512-GJ+l8a5Y+7PP/diwuajJhd2QONTIFkk2YXjrVTh7QKC3sMQEphpLH6ZJfXSeeSonQ0/BnhrrMi9a5e14mmqXug==}
     dependencies:
       '@unocss/reset': 0.50.8
@@ -9552,7 +9535,7 @@ packages:
     resolution: {integrity: sha512-Kuy4FAzhdNC//LtZ+FJ3kZ92W9FVe7auUicAj4e2of5j4VE2BXYtg/TdAWtekjvA4vvzHYoYCt1sPPDe45n29A==}
     dependencies:
       algoliasearch: 4.17.1
-      axios: 1.4.0
+
       storyblok-js-client: 5.10.6
     transitivePeerDependencies:
       - debug
@@ -10832,7 +10815,7 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      axios: 0.27.2
+
       joi: 17.9.2
       lodash: 4.17.21
       minimist: 1.2.8

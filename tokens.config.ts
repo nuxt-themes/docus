@@ -1,4 +1,4 @@
-import { defineTheme } from 'pinceau'
+import { defineTheme } from ''
 
 export default defineTheme({
   color: {
@@ -117,14 +117,14 @@ export default defineTheme({
         }
       },
       title: {
-        fontSize: '{fontSize.2xl}', 
-        fontWeight: '{fontWeight.bold}', 
+        fontSize: '{fontSize.2xl}',
+        fontWeight: '{fontWeight.bold}',
         color: {
           static: {
-            initial: '{color.gray.900}', 
-            dark: '{color.gray.100}', 
+            initial: '{color.gray.900}',
+            dark: '{color.gray.100}',
           },
-          hover: '{color.primary.500}', 
+          hover: '{color.primary.500}',
         }
       }
     },

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useColorMode } from '../../../.nuxt/imports';
+
 const colorMode = useColorMode()
 const onClick = () => {
   const values = ['system', 'light', 'dark']
@@ -51,3 +53,4 @@ css({
   }
 })
 </style>
+
