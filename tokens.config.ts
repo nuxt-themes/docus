@@ -190,6 +190,7 @@ export default defineTheme({
   typography: {
     color: {
       primary: {
+        value: 'green',
         50: '{color.primary.50}',
         100: '{color.primary.100}',
         200: '{color.primary.200}',
@@ -202,6 +203,7 @@ export default defineTheme({
         900: '{color.primary.900}'
       },
       secondary: {
+        value: 'yellow',
         50: '{color.gray.50}',
         100: '{color.gray.100}',
         200: '{color.gray.200}',
@@ -216,3 +218,4 @@ export default defineTheme({
     }
   }
 })
+
