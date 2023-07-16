@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [18]
+        node: [14, 16, 18, 20]
 
     steps:
       - name: Checkout
@@ -50,7 +50,6 @@ jobs:
         id: pnpm-install
         with:
           version: 8
-
       - uses: actions/setup-node@v3
         with:
           version: ${{ matrix.node }}
