@@ -45,7 +45,7 @@
     "@algolia/client-search": "^4.18.0",
     "@docsearch/css": "^3.5.1",
     "@docsearch/js": "^3.5.1",
-    "@nuxt/devtools": "^0.6.7",
+    "@nuxt/devtools": "npm:@nuxt/devtools-edge@latest",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@nuxtjs/algolia": "^1.8.0",
