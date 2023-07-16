@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDocus } from '../../../client/Stavanger-Living/nuxt-app/docus/docus/composables/useDocus';
+
 const { tree } = useDocus()
 </script>
 

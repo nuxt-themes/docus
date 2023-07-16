@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
-    "baseUrl": "http://localhost:3000",
+    "baseUrl": "http:localhost:3000",
     "noEmit": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
@@ -110,7 +110,6 @@
   "vueCompilerOptions": {
     "plugins": [
       "/volar"
-    ],
-    "devtool":true
+    ]
   }
 }

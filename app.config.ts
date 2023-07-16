@@ -1,4 +1,4 @@
-import { defineAppConfig } from "../.nuxt/imports";
+import { defineAppConfig } from "./.nuxt/imports";
 
 export default defineAppConfig({
   docus: {

@@ -3,7 +3,7 @@ import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
-  extends: ['@nuxt-themes/typography'],
+  extends: ['@nuxt-themes/typography', ],
 
   modules: [
     '@nuxthq/studio',
@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     '@nuxt/devtools',
+    '@nuxtjs/google-fonts',
     'nuxt-icon',
     '@nuxtjs/plausible',
     '@nuxt/content',
@@ -64,6 +65,13 @@ export default defineNuxtConfig({
     navigation: {
       fields: ['icon', 'titleTemplate']
     }
+  },
+  devtools: {
+    // Enable devtools (default: true)
+    enabled: true,
+    // VS Code Server options
+    vscode: {},
+    // ...other options
   },
 
   colorMode: {

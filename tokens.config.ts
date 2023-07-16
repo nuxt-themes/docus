@@ -1,4 +1,4 @@
-import { defineTheme } from ''
+import { defineTheme } from 'pinceau'
 
 export default defineTheme({
   color: {
