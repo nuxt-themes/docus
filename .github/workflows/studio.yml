@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [14, 16, 18, 20]
+        node: [18]
 
     steps:
       - name: Checkout
