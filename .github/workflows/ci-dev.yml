@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest] # macos-latest, windows-latest
+        os: [ubuntu-latest, windows-latest] # macos-latest, windows-latest
         node: [16]
 
     steps:
