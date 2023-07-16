@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [18]
+        node: [14, 16, 18]
 
     steps:
       - name: Checkout
@@ -68,13 +68,13 @@ jobs:
       - name: Generate
         run: ${{ steps.pkgman.outputs.package_manager }} nuxi generate
         env:
-          NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
-          NUXT_PUBLIC_STUDIO_TOKENS: e6364305a88b20d5fc79b360230231dd743831dff03b55edd6b4237b355bb7d9
+            NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
+            NUXT_PUBLIC_STUDIO_TOKENS:
 
       - name: Add .nojekyll file
         run: touch .output/public/.nojekyll
 
-        # Deployment job
+          # Deployment job
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
