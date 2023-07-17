@@ -2,7 +2,7 @@ import { createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
 
-export default defineNuxtConfig({
+export default defineNitroConfig({
   extends: ['@nuxt-themes/typography', ],
 
   modules: [
