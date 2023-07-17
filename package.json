@@ -47,6 +47,7 @@
     "@docsearch/js": "^3.5.1",
     "@nuxt/devtools": "npm:@nuxt/devtools-edge@latest",
     "@nuxt/eslint-config": "^0.1.1",
+    "@nuxt/image": "^0.7.1",
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@nuxtjs/algolia": "^1.8.0",
     "@types/node": "^20.4.1",
