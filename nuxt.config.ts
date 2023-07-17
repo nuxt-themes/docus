@@ -67,12 +67,27 @@ export default defineNuxtConfig({
       fields: ['icon', 'titleTemplate']
     }
   },
+  vite: {
+    vue: {
+      customElement: true
+    },
+    vueJsx: {
+      mergeProps: true
+    }
+  },
+  vue: {
+    defineModel: true,
+    propsDestructure: true
+  },
   devtools: {
     // Enable devtools (default: true)
     enabled: true,
     // VS Code Server options
     vscode: {},
     // ...other options
+  },
+  typescript: {
+    shim: false
   },
 
   colorMode: {
