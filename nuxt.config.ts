@@ -88,10 +88,7 @@ export default defineNitroConfig({
     vscode: {},
     // ...other options
   },
-  typescript: {
-    shim: false
-  },
-
+ 
   colorMode: {
     classSuffix: '',
     dataValue: 'theme'
