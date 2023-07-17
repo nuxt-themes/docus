@@ -19,7 +19,7 @@ useContentHead(config.value as any)
 <template>
   <div class="app-layout">
     <AppLoadingBar />
-    <!-- <AppHeader /> -->
+    <AppHeader />
     <main>
       <slot />
     </main>

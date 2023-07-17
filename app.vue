@@ -1,6 +1,6 @@
 <template>
   <AppLayout>
-    <svg class="noise-filter">
+    <svg class="noise-filter hidden">
       <filter id="noise-filter">
         <feTurbulence type="fractalNoise" baseFrequency="7.5" />
       </filter>
@@ -9,8 +9,3 @@
   </AppLayout>
 </template>
 
-<style scoped>
-.noise-filter {
-  display: 'none';
-}
-</style>

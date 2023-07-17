@@ -1,3 +1,8 @@
+// const colorVariants = {
+//   primary: {}
+// }
+
+// TODO: find another way to do this
 const state = {
   neutral: {
     color: {

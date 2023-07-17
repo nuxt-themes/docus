@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
-  content: ['./tokens.config.ts'],
+  content: ['./tokens.config.ts', '*/*.md'],
   theme: {
     fontSize: {
       'xs': ['0.75rem', '1rem'],
@@ -162,6 +162,11 @@ export default {
         '5xl': '28px',
         '6xl': '32px',
         'full': '9999px',
+      },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.7, 0, 0.84, 0)',
+        'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'in-out-expo': 'cubic-bezier(0.87, 0, 0.13, 1)',
       }
     },
   },
