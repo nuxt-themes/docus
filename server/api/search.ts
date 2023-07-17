@@ -1,5 +1,6 @@
 import { defineEventHandler } from 'h3'
 import { serverQueryContent } from '#content/server'
+import { useAppConfig } from '../../.nuxt/imports'
 
 // Source storage
 // import { prefixStorage } from 'unstorage'
