@@ -5,5 +5,5 @@ export default defineNuxtPlugin(() => {
 })
 
 function defineNuxtPlugin(arg0: () => void) {
-  throw new Error("Function not implemented.")
+  throw new Error('Function not implemented.')
 }
