@@ -1147,7 +1147,7 @@
     eslint-plugin-vue "^9.8.0"
     typescript "^4.9.3"
 
-"@nuxt/image@^1.0.0-rc.1":
+"@nuxt/image@1.0.0-rc.1":
   version "1.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-1.0.0-rc.1.tgz#d565d2f517a3ee6f7d3360f7e25589d382cf0b97"
   integrity sha512-gCYglIwEuYOdIbcH21RbMfqgQ2jqyd9SJH+GmyvH9M/vBsL7eZ4XEatfZRWa2q1A4DcIMs09/LbQiR3HHy2wZw==
@@ -1774,7 +1774,7 @@
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node@*", "@types/node@^20.4.1":
+"@types/node@*", "@types/node@^20.4.2":
   version "20.4.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.2.tgz#129cc9ae69f93824f92fac653eebfb4812ab4af9"
   integrity sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==
@@ -4066,7 +4066,7 @@ eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.1.tgz#c22c48f48942d08ca824cc526211ae400478a994"
   integrity sha512-pZnmmLwYzf+kWaM/Qgrvpen51upAktaaiI01nsJD/Yr3lMOdNtq0cxkrrg16w64VtisN6okbs7Q8AfGqj4c9fA==
 
-eslint@^8.44.0:
+eslint@^8.45.0:
   version "8.45.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.45.0.tgz#bab660f90d18e1364352c0a6b7c6db8edb458b78"
   integrity sha512-pd8KSxiQpdYRfYa9Wufvdoct3ZPQQuVuU5O6scNgMuOMYuxvH0IGaYK0wUFjo4UYYQQCUndlXiMbnxopwvvTiw==
@@ -6838,6 +6838,11 @@ mkdirp@^1.0.3:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+mkdirp@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-3.0.1.tgz#e44e4c5607fb279c168241713cc6e0fea9adcb50"
+  integrity sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==
+
 mkdist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mkdist/-/mkdist-1.2.0.tgz#c0e94c78d2429bfeccbb44944ff2d2ca74c630cf"
@@ -7287,7 +7292,7 @@ nuxt-icon@^0.3.3:
     "@nuxt/kit" "^3.3.1"
     nuxt-config-schema "^0.4.5"
 
-nuxt@^3.6.1, nuxt@^3.6.2:
+nuxt@^3.6.1, nuxt@^3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.6.3.tgz#d3f093b4fa67106229ee83c014c154de072d38f6"
   integrity sha512-FiD2Ok81wPvQjNBO61h1fA7aqL0EloNspDC05eoQZl13kCthn7103esJNS+KAZNlPcXOYruEe3rGt066Sb/TwA==
@@ -8479,7 +8484,7 @@ rehype-sort-attributes@^4.0.0:
     unified "^10.0.0"
     unist-util-visit "^4.0.0"
 
-release-it@^16.1.0:
+release-it@^16.1.2:
   version "16.1.2"
   resolved "https://registry.yarnpkg.com/release-it/-/release-it-16.1.2.tgz#40f16596cf4442db90e4132c55f9876c87623f97"
   integrity sha512-dRamWBWMLJcsPl0G3M7q/hkwPv4i0buUEKWwNp/MY9mBIBcUmBSCvm4B1CdN28LUgqrBzWVurnnNCcz6IPeQKQ==
@@ -10082,7 +10087,7 @@ vite-plugin-checker@^0.6.1:
     vscode-languageserver-textdocument "^1.0.1"
     vscode-uri "^3.0.2"
 
-vite-plugin-inspect@^0.7.32:
+vite-plugin-inspect@^0.7.32, vite-plugin-inspect@^0.7.33:
   version "0.7.33"
   resolved "https://registry.yarnpkg.com/vite-plugin-inspect/-/vite-plugin-inspect-0.7.33.tgz#02b8c8f828016dd492f5339bc23446374b26a395"
   integrity sha512-cQRLQKa/+Ua++5hN0IZfqNn1JYXBg2eCQOSUatPTwhXMO7nwfSvhhSc45E1nXfBBEhzLLOxgr1OdbDu55PiDDA==
