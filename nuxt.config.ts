@@ -28,7 +28,7 @@ export default defineNitroConfig({
   components: [
     {
       prefix: '',
-      "dirs": [],
+      dirs: [],
       path: resolve('./components/app'),
       global: true
     },
