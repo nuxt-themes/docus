@@ -4,6 +4,7 @@
   ],
   "hints": {
     "typescript-config/is-valid": "off",
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "typescript-config/strict": "off"
   }
 }
