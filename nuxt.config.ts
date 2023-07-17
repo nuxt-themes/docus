@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   components: [
     {
       prefix: '',
+      "dirs": [],
       path: resolve('./components/app'),
       global: true
     },

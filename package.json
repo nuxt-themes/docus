@@ -75,6 +75,7 @@
       ]
     }
   },
+  
   "license": "MIT",
   "release-it": {
     "npm": {
