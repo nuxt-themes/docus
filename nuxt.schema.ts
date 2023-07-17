@@ -326,7 +326,8 @@ export default defineNuxtSchema({
     }
   }
 })
-function defineNuxtSchema(arg0: {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function defineNuxtSchema(_arg0: {
   appConfig: {
     /**
      * Docus theme configuration.
@@ -593,6 +594,6 @@ function defineNuxtSchema(arg0: {
     };
   };
 }) {
-  throw new Error("Function not implemented.");
+  throw new Error('Function not implemented.')
 }
 

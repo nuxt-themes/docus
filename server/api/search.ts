@@ -1,4 +1,5 @@
 import { defineEventHandler } from 'h3'
+// @ts-ignore
 import { serverQueryContent } from '#content/server'
 import { useAppConfig } from '../../.nuxt/imports'
 
@@ -11,6 +12,8 @@ export default defineEventHandler(async (event) => {
   const appConfig = useAppConfig()
 
   // `full-text` or `meta`
+
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const mode = appConfig?.docus?.search?.mode || 'meta'
 
   // Fetch all documents
