@@ -1,3 +1,18 @@
+const text = {
+  primary: {
+    static: 'text-gray-900 dark:text-gray-50',
+    hover: 'hover:text-red-500',
+  },
+  secondary: {
+    static: 'text-gray-500 dark:text-gray-400',
+    hover: 'hover:text-gray-700 dark:hover:text-gray-200',
+  },
+  tertiary: {
+    static: 'text-gray-300 dark:text-gray-600',
+    hover: 'hover:text-red-500',
+  },
+}
+
 // const colorVariants = {
 //   primary: {}
 // }
@@ -231,11 +246,71 @@ const buttonLink = {
   }
 }
 
+const hero = {
+  padding: 'py-20 sm:py-24 lg:py-24',
+  layout: {
+    gap: 'gap-16 xl:gap-4',
+    gridTemplateColumns: 'xl:grid-cols-12',
+  },
+  content: {
+    gridColumn: 'xl:col-span-7',
+    alignItems: 'items-center xl:items-start',
+    announce: {
+      marginBottom: 'mb-8'
+    },
+    title: {
+      color: text.primary.static,
+      fontSize: 'text-4xl sm:text-5xl lg:text-6xl',
+      fontWeight: 'font-semibold',
+      letterSpacing: 'tracking-tight',
+      textAlign: 'text-center xl:text-start',
+      marginBottom: 'mb-8',
+      padding: 'px-8 md:px-12 lg:px-14 xl:px-0',
+      gradientText: 'text-transparent dark:text-transparent bg-clip-text bg-gradient-to-r from-gray-100 dark:from-gray-200 from-10% via-gray-300 dark:via-gray-400 via-54% to-gray-600 dark:to-gray-700',
+      mixBlendMode: 'mix-blend-exclusion',
+    },
+    description: {
+      color: text.secondary.static,
+      fontSize: 'text-lg lg:text-xl',
+      textAlign: 'text-center xl:text-start',
+      marginBottom: 'mb-12',
+      padding: 'px-2 md:px-6 xl:px-0',
+      mixBlendMode: 'mix-blend-normal',
+    },
+    extra: {
+      justifyContent: 'justify-center xl:justify-start',
+      marginBottom: 'mb-16',
+    },
+    actions: {
+      flexDirection: 'flex-col sm:flex-row',
+      gap: 'gap-2 sm:gap-3',
+      justifyContent: 'justify-center xl:justify-start',
+    }
+  },
+  support: {
+    gridColumn: 'xl:col-span-5'
+  }
+}
+
+const container = {
+  maxWidth: 'max-w-[80rem]',
+  padding: 'px-4 sm:px-6 xl:px-8',
+}
+
+const appHeader = {
+  height: 'h-16',
+}
+
+
 export default {
+  text,
   state,
   loadingBar,
   announce,
   terminal,
   list,
-  buttonLink
+  buttonLink,
+  hero,
+  container,
+  appHeader
 }

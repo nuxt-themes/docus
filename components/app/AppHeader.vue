@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { useElementBounding } from '@vueuse/core'
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
+
+const appHeaderRef = ref(null) as Ref<HTMLElement | null>
+const { height } = useElementBounding(appHeaderRef)
 
 const colorMode = useColorMode()
 const onClick = () => {
@@ -8,10 +15,13 @@ const onClick = () => {
   colorMode.preference = values[next]
 }
 
+watch(height, (value) => {
+  document.documentElement.style.setProperty('--app-header-height', `${value}px`)
+})
 </script>
 
 <template>
-  <header>
+  <header ref="appHeaderRef" class="app-header" :class="[tokens.appHeader.height]">
     <button
       aria-label="Color Mode"
       @click="onClick"

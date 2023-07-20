@@ -23,8 +23,9 @@ onMounted(() => {
 <style scoped>
 .glow {
   --mask-gradient: radial-gradient(circle at 51% 64%, rgba(0,0,0, 1) -7%, rgba(0,0,0, 0) 70%);
-  height: calc(var(--hero-height) + var(--docus-app-header-height) + 20rem);
-  top: calc(0px - var(--docus-app-header-height));
+  height: calc(var(--hero-height) + var(--app-header-height) + 20rem);
+  top: calc(0px - var(--app-header-height));
+  /* background-image: TODO; */
   animation: enter-opacity 750ms forwards 500ms theme('transitionTimingFunction.in-out-expo');
 }
 .dark .glow {

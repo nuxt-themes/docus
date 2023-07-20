@@ -18,6 +18,14 @@ export default {
       '8xl': '6rem',
       '9xl': '8rem',
     },
+    letterSpacing: {
+      tighter: '-0.04em',
+      tight: '-0.02em',
+      normal: '0',
+      wide: '0.02em',
+      wider: '0.04em',
+      widest: '0.08em',
+    },
     boxShadow: {
       'xs': '0px 1px 2px 0px rgb(var(--color-shadow))',
       'sm': '0px 1px 3px 0px rgb(var(--color-shadow)), 0px 1px 2px -1px rgb(var(--color-shadow))',
