@@ -22,7 +22,7 @@ defineProps({
 <template>
   <component
     :is="as"
-    class="container mx-auto w-full"
+    class="container mx-auto w-full h-[inherit]"
     :class="[padded ? tokens.container.padding : 'px-0', tokens.container.maxWidth]"
   >
     <slot />

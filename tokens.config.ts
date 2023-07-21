@@ -1,3 +1,8 @@
+const backdrop = {
+  filter: 'backdrop-saturate-200 backdrop-blur-[10px]',
+  backgroundColor: 'bg-gray-50 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80',
+}
+
 const text = {
   primary: {
     static: 'text-gray-900 dark:text-gray-50',
@@ -11,6 +16,17 @@ const text = {
     static: 'text-gray-300 dark:text-gray-600',
     hover: 'hover:text-red-500',
   },
+}
+
+const border = {
+  primary: {
+    static: 'border-gray-200 dark:border-gray-800',
+    hover: 'hover:border-gray-300 dark:hover:border-gray-700',
+  },
+  secondary: {
+    static: 'border-gray-300 dark:border-gray-700',
+    hover: 'hover:border-gray-400 dark:hover:border-gray-600',
+  }
 }
 
 // const colorVariants = {
@@ -299,6 +315,23 @@ const container = {
 
 const appHeader = {
   height: 'h-16',
+  backdropFilter: backdrop.filter,
+  backgroundColor: backdrop.backgroundColor,
+  border: 'border-b ' + border.primary.static,
+  layout: {
+    gridTemplateColumns: 'grid-cols-12',
+    gap: 'gap-2',
+    left: {
+      gridColumn: 'col-span-4'
+    },
+    center: {
+      gridColumn: 'col-span-4'
+    },
+    right: {
+      gridColumn: 'col-span-4'
+    }
+  },
+  icon: '[&>.icon]:w-4 [&>.icon]:h-4'
 }
 
 const appColorMode = {
@@ -318,38 +351,10 @@ const appHeaderLogo = {
   }
 }
 
-// css({
-//   a: {
-//     '.logo': {
-//       height: '{docus.app.header.logo.height}',
-//       width: 'auto',
-//       'img, svg': {
-//         height: 'inherit',
-//       },
-//     },
-
-//     '.title': {
-//       fontSize: '{docus.app.header.title.fontSize}',
-//       fontWeight: '{docus.app.header.title.fontWeight}',
-//       color: '{docus.app.header.title.color.static}',
-//       '&:hover': {
-//         color: '{docus.app.header.title.color.hover}',
-//       }
-//     }
-//   }
-// })
-
-// title: {
-//   fontSize: '{fontSize.2xl}',
-//   fontWeight: '{fontWeight.bold}',
-//   color: {
-//     static: {
-//       initial: '{color.gray.900}',
-//       dark: '{color.gray.100}'
-//     },
-//     hover: '{color.primary.500}'
-//   }
-// },
+const appSocialIcons = {
+  padding: 'p-4',
+  color: text.secondary.static + ' ' + text.secondary.hover,
+}
 
 export default {
   text,
@@ -364,4 +369,5 @@ export default {
   appHeader,
   appColorMode,
   appHeaderLogo,
+  appSocialIcons
 }

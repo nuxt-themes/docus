@@ -65,10 +65,10 @@ watch(Escape, () => {
 
 <style scoped lang="ts">
 css({
-  ':deep(.icon)': {
-    width: '{docus.app.header.icon.size}',
-    height: '{docus.app.header.icon.size}'
-  },
+  // ':deep(.icon)': {
+  //   width: '{docus.app.header.icon.size}',
+  //   height: '{docus.app.header.icon.size}'
+  // },
 
   // '.header-logo': {
   //   '.left &': {
@@ -92,22 +92,22 @@ css({
   // },
 
   header: {
-    backdropFilter: '{docus.app.header.backdropFilter}',
-    position: 'sticky',
-    top: 0,
-    zIndex: 10,
-    width: '100%',
-    borderBottomWidth: '{docus.app.header.borderBottomWidth}',
-    borderBottomStyle: '{docus.app.header.borderBottomStyle}',
-    borderBottomColor: '{docus.app.header.borderBottomColor}',
-    backgroundColor: '{docus.app.header.backgroundColor}',
-    height: '{docus.app.header.height}',
+    // backdropFilter: '{docus.app.header.backdropFilter}',
+    // position: 'sticky',
+    // top: 0,
+    // zIndex: 10,
+    // width: '100%',
+    // borderBottomWidth: '{docus.app.header.borderBottomWidth}',
+    // borderBottomStyle: '{docus.app.header.borderBottomStyle}',
+    // borderBottomColor: '{docus.app.header.borderBottomColor}',
+    // backgroundColor: '{docus.app.header.backgroundColor}',
+    // height: '{docus.app.header.height}',
 
-    '&.is-basic-layout.on-top': {
-      background: 'transparent',
-      borderColor: 'transparent',
-      backdropFilter: 'none',
-    },
+    // '&.is-basic-layout.on-top': {
+    //   background: 'transparent',
+    //   borderColor: 'transparent',
+    //   backdropFilter: 'none',
+    // },
 
     '.docs-search-button-desktop': {
       display: 'none',
@@ -127,49 +127,49 @@ css({
       }
     },
 
-    '.header-layout': {
-      display: 'grid',
-      height: '100%',
-      gridTemplateColumns: '{docus.app.header.layout.gridTemplateColumns}',
-      gap: '{docus.app.header.layout.gap}',
-    },
+    // '.header-layout': {
+    //   display: 'grid',
+    //   height: '100%',
+    //   gridTemplateColumns: '{docus.app.header.layout.gridTemplateColumns}',
+    //   gap: '{docus.app.header.layout.gap}',
+    // },
 
-    '.section': {
-      display: 'flex',
-      alignItems: 'center',
-      flex: 'none',
+    // '.section': {
+      // display: 'flex',
+      // alignItems: 'center',
+      // flex: 'none',
 
-      '&.left': {
-        gridColumn: '{docus.app.header.layout.left.gridColumn}',
-        '@lg': {
-          marginInlineStart: 0
-        },
-      },
+      // '&.left': {
+      //   // gridColumn: '{docus.app.header.layout.left.gridColumn}',
+      //   '@lg': {
+      //     marginInlineStart: 0
+      //   },
+      // },
 
-      '&.center': {
-        gridColumn: '{docus.app.header.layout.center.gridColumn}',
-        justifyContent: 'center',
-        flex: '1',
-        zIndex: '1'
-      },
+      // '&.center': {
+      //   // gridColumn: '{docus.app.header.layout.center.gridColumn}',
+      //   justifyContent: 'center',
+      //   flex: '1',
+      //   zIndex: '1'
+      // },
 
-      '&.right': {
-        display: 'flex',
-        gridColumn: '{docus.app.header.layout.right.gridColumn}',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        flex: 'none',
-        marginInlineEnd: 'calc(0px - {space.4})',
+      // '&.right': {
+      //   // display: 'flex',
+      //   // gridColumn: '{docus.app.header.layout.right.gridColumn}',
+      //   // justifyContent: 'flex-end',
+      //   // alignItems: 'center',
+      //   // flex: 'none',
+      //   marginInlineEnd: 'calc(0px - {space.4})',
 
-        '.social-icons': {
-          display: 'none',
-          '@md': {
-            display: 'flex',
-            alignItems: 'center',
-          }
-        }
-      }
-    }
+      //   // '.social-icons': {
+      //   //   display: 'none',
+      //   //   '@md': {
+      //   //     display: 'flex',
+      //   //     alignItems: 'center',
+      //   //   }
+      //   // }
+      // }
+    // }
   }
 })
 </style>

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
+
 const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 
 const { config } = useDocus()
@@ -26,12 +30,15 @@ const icons = computed<any>(() => {
 <template>
   <NuxtLink
     v-for="icon in icons"
+    v-bind="$attrs"
     :key="icon.label"
     :rel="icon.rel"
     :title="icon.label"
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
+    class="flex"
+    :class="Object.values(tokens.appSocialIcons)"
   >
     <Icon
       v-if="icon.icon"
@@ -39,16 +46,3 @@ const icons = computed<any>(() => {
     />
   </NuxtLink>
 </template>
-
-<style lang="ts" scoped>
-css({
-  a: {
-    display: 'flex',
-    padding: '{docus.app.socialIcons.padding}',
-    color: '{docus.app.socialIcons.color.static}',
-    '&:hover': {
-      color: '{docus.app.socialIcons.color.hover}'
-    }
-  }
-})
-</style>

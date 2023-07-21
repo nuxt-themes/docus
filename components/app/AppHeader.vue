@@ -2,7 +2,10 @@
 import { useElementBounding } from '@vueuse/core'
 import appConfig from '#build/app.config'
 
+const { config } = useDocus()
 const { navigation } = useContent()
+const { y } = useWindowScroll()
+const route = useRoute()
 
 const { tokens } = appConfig
 
@@ -12,31 +15,30 @@ const { height } = useElementBounding(appHeaderRef)
 
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
+const isBasicLayout = computed(() => route.meta.layout === 'basic')
+
 watch(height, (value) => {
   document.documentElement.style.setProperty('--app-header-height', `${value}px`)
 })
 </script>
 
 <template>
-  <header ref="appHeaderRef" class="app-header" :class="[tokens.appHeader.height]">
-    <Container>
-      <div class="header-layout">
-        <div class="section left">
+  <header ref="appHeaderRef" class="app-header sticky top-0 z-10 w-full" :class="[tokens.appHeader.height, isBasicLayout && y === 0 ? '' : `${tokens.appHeader.backdropFilter} ${tokens.appHeader.backgroundColor} ${tokens.appHeader.border}`]">
+    <Container padded>
+      <div class="header-layout grid h-full" :class="[tokens.appHeader.layout.gridTemplateColumns, tokens.appHeader.layout.gap]">
+        <div class="section left lg:ms-0 flex items-center flex-none" :class="[tokens.appHeader.layout.left.gridColumn]">
           <AppHeaderLogo :class="{'hidden lg:block': hasDrawer}" />
         </div>
-        <div class="section center">
+        <div class="section center flex items-center flex-none justify-center flex-1 z-1" :class="[tokens.appHeader.layout.center.gridColumn]">
           <AppHeaderLogo :class="[hasDrawer ? 'block lg:hidden' : 'hidden']"/>
         </div>
-        <div class="section right">
+        <div class="section right -me-4 flex items-center flex-none justify-end items-center flex-none" :class="[tokens.appHeader.layout.right.gridColumn]">
           <AppColorMode />
+          <div class="hidden md:flex md:items-center">
+            <AppSocialIcons :class="[tokens.appHeader.icon]" />
+          </div>
         </div>
       </div>
-      <!-- <button
-        aria-label="Color Mode"
-        @click="onClick"
-      >
-      color mode
-      </button> -->
     </Container>
   </header>
 </template>

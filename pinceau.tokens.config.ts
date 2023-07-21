@@ -129,19 +129,19 @@ export default defineTheme({
         icon: {
           size: '{space.4}'
         },
-        layout: {
-          gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-          gap: '{space.2}',
-          left: {
-            gridColumn: 'span 4 / span 4'
-          },
-          center: {
-            gridColumn: 'span 4 / span 4'
-          },
-          right: {
-            gridColumn: 'span 4 / span 4'
-          }
-        },
+        // layout: {
+        //   gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
+        //   gap: '{space.2}',
+        //   left: {
+        //     gridColumn: 'span 4 / span 4'
+        //   },
+        //   center: {
+        //     gridColumn: 'span 4 / span 4'
+        //   },
+        //   right: {
+        //     gridColumn: 'span 4 / span 4'
+        //   }
+        // },
         drawer: {
           button: {
             color: {
@@ -293,13 +293,13 @@ export default defineTheme({
       textDirection: {
         padding: '{space.4}'
       },
-      socialIcons: {
-        padding: '{space.4}',
-        color: {
-          static: '{elements.text.secondary.color.static}',
-          hover: '{elements.text.secondary.color.hover}'
-        }
-      }
+      // socialIcons: {
+      //   padding: '{space.4}',
+      //   color: {
+      //     static: '{elements.text.secondary.color.static}',
+      //     hover: '{elements.text.secondary.color.hover}'
+      //   }
+      // }
     },
     docs: {
       prevNext: {
