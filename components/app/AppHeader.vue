@@ -22,11 +22,20 @@ watch(height, (value) => {
 
 <template>
   <header ref="appHeaderRef" class="app-header" :class="[tokens.appHeader.height]">
-    <button
-      aria-label="Color Mode"
-      @click="onClick"
-    >
-    color mode
-    </button>
+    <Container>
+      <div class="header-layout">
+        <div class="section left"></div>
+        <div class="section center"></div>
+        <div class="section right">
+          <AppColorMode />
+        </div>
+      </div>
+      <!-- <button
+        aria-label="Color Mode"
+        @click="onClick"
+      >
+      color mode
+      </button> -->
+    </Container>
   </header>
 </template>

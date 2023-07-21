@@ -301,6 +301,10 @@ const appHeader = {
   height: 'h-16',
 }
 
+const appColorMode = {
+  padding: 'p-4',
+  color: text.secondary.static + ' ' + text.secondary.hover,
+}
 
 export default {
   text,
@@ -312,5 +316,6 @@ export default {
   buttonLink,
   hero,
   container,
-  appHeader
+  appHeader,
+  appColorMode,
 }
