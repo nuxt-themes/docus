@@ -70,26 +70,26 @@ css({
     height: '{docus.app.header.icon.size}'
   },
 
-  '.header-logo': {
-    '.left &': {
-      '.has-drawer &': {
-        display: 'none',
-        '@lg': {
-          display: 'block'
-        }
-      },
-    },
+  // '.header-logo': {
+  //   '.left &': {
+  //     '.has-drawer &': {
+  //       display: 'none',
+  //       '@lg': {
+  //         display: 'block'
+  //       }
+  //     },
+  //   },
 
-    '.center &': {
-      display: 'none',
-      '.has-drawer &': {
-        display: 'block',
-        '@lg': {
-          display: 'none'
-        },
-      },
-    }
-  },
+  //   '.center &': {
+  //     display: 'none',
+  //     '.has-drawer &': {
+  //       display: 'block',
+  //       '@lg': {
+  //         display: 'none'
+  //       },
+  //     },
+  //   }
+  // },
 
   header: {
     backdropFilter: '{docus.app.header.backdropFilter}',

@@ -2,18 +2,15 @@
 import { useElementBounding } from '@vueuse/core'
 import appConfig from '#build/app.config'
 
+const { navigation } = useContent()
+
 const { tokens } = appConfig
 
 const appHeaderRef = ref(null) as Ref<HTMLElement | null>
+
 const { height } = useElementBounding(appHeaderRef)
 
-const colorMode = useColorMode()
-const onClick = () => {
-  const values = ['system', 'light', 'dark']
-  const index = values.indexOf(colorMode.preference)
-  const next = (index + 1) % values.length
-  colorMode.preference = values[next]
-}
+const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
 watch(height, (value) => {
   document.documentElement.style.setProperty('--app-header-height', `${value}px`)
@@ -24,8 +21,12 @@ watch(height, (value) => {
   <header ref="appHeaderRef" class="app-header" :class="[tokens.appHeader.height]">
     <Container>
       <div class="header-layout">
-        <div class="section left"></div>
-        <div class="section center"></div>
+        <div class="section left">
+          <AppHeaderLogo :class="{'hidden lg:block': hasDrawer}" />
+        </div>
+        <div class="section center">
+          <AppHeaderLogo :class="[hasDrawer ? 'block lg:hidden' : 'hidden']"/>
+        </div>
         <div class="section right">
           <AppColorMode />
         </div>

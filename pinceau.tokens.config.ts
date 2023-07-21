@@ -70,23 +70,23 @@ export default defineTheme({
     },
     readableLine: '78ch',
     layout: {
-      container: {
-        $schema: {
-          title: 'Main container sizings.',
-          tags: [
-            '@studioInput design-token',
-            '@studioInputTokenType size',
-            '@studioIcon material-symbols:width-full-outline'
-          ]
-        },
-        maxWidth: '80rem',
-        padding: {
-          initial: '{space.4}',
-          xs: '{space.4}',
-          sm: '{space.6}',
-          xl: '{space.8}'
-        }
-      },
+      // container: {
+      //   $schema: {
+      //     title: 'Main container sizings.',
+      //     tags: [
+      //       '@studioInput design-token',
+      //       '@studioInputTokenType size',
+      //       '@studioIcon material-symbols:width-full-outline'
+      //     ]
+      //   },
+      //   maxWidth: '80rem',
+      //   padding: {
+      //     initial: '{space.4}',
+      //     xs: '{space.4}',
+      //     sm: '{space.6}',
+      //     xl: '{space.8}'
+      //   }
+      // },
       docs: {
         spacing: {
           initial: '0px',
@@ -104,28 +104,28 @@ export default defineTheme({
       },
       header: {
         height: '64px',
-        logo: {
-          height: {
-            initial: '{space.6}',
-            sm: '{space.7}'
-          }
-        },
+        // logo: {
+        //   height: {
+        //     initial: '{space.6}',
+        //     sm: '{space.7}'
+        //   }
+        // },
         backdropFilter: '{elements.backdrop.filter}',
         backgroundColor: '{elements.backdrop.background}',
         borderBottomWidth: '1px',
         borderBottomStyle: 'solid',
         borderBottomColor: '{elements.border.primary.static}',
-        title: {
-          fontSize: '{fontSize.2xl}',
-          fontWeight: '{fontWeight.bold}',
-          color: {
-            static: {
-              initial: '{color.gray.900}',
-              dark: '{color.gray.100}'
-            },
-            hover: '{color.primary.500}'
-          }
-        },
+        // title: {
+        //   fontSize: '{fontSize.2xl}',
+        //   fontWeight: '{fontWeight.bold}',
+        //   color: {
+        //     static: {
+        //       initial: '{color.gray.900}',
+        //       dark: '{color.gray.100}'
+        //     },
+        //     hover: '{color.primary.500}'
+        //   }
+        // },
         icon: {
           size: '{space.4}'
         },
@@ -283,13 +283,13 @@ export default defineTheme({
           }
         }
       },
-      colorMode: {
-        padding: '{space.4}',
-        color: {
-          static: '{elements.text.secondary.color.static}',
-          hover: '{elements.text.secondary.color.hover}'
-        }
-      },
+      // colorMode: {
+      //   padding: '{space.4}',
+      //   color: {
+      //     static: '{elements.text.secondary.color.static}',
+      //     hover: '{elements.text.secondary.color.hover}'
+      //   }
+      // },
       textDirection: {
         padding: '{space.4}'
       },

@@ -306,6 +306,51 @@ const appColorMode = {
   color: text.secondary.static + ' ' + text.secondary.hover,
 }
 
+const appHeaderLogo = {
+  logo: {
+    height: 'h-6 sm:h-7',
+    width: 'w-auto',
+  },
+  title: {
+    fontSize: 'text-2xl',
+    fontWeight: 'font-bold',
+    color: 'text-color-900 dark:text-color-100 hover:text-primary-500',
+  }
+}
+
+// css({
+//   a: {
+//     '.logo': {
+//       height: '{docus.app.header.logo.height}',
+//       width: 'auto',
+//       'img, svg': {
+//         height: 'inherit',
+//       },
+//     },
+
+//     '.title': {
+//       fontSize: '{docus.app.header.title.fontSize}',
+//       fontWeight: '{docus.app.header.title.fontWeight}',
+//       color: '{docus.app.header.title.color.static}',
+//       '&:hover': {
+//         color: '{docus.app.header.title.color.hover}',
+//       }
+//     }
+//   }
+// })
+
+// title: {
+//   fontSize: '{fontSize.2xl}',
+//   fontWeight: '{fontWeight.bold}',
+//   color: {
+//     static: {
+//       initial: '{color.gray.900}',
+//       dark: '{color.gray.100}'
+//     },
+//     hover: '{color.primary.500}'
+//   }
+// },
+
 export default {
   text,
   state,
@@ -318,4 +363,5 @@ export default {
   container,
   appHeader,
   appColorMode,
+  appHeaderLogo,
 }
