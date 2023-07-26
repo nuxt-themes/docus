@@ -30,7 +30,7 @@ watch(height, (value) => {
           </ContentSlot>
         </h1>
 
-        <p class="description prose" :class="Object.values(tokens.hero.content.description)">
+        <p class="description" :class="Object.values(tokens.hero.content.description)">
           <ContentSlot :use="$slots.description" unwrap="p">
             Hero default description.
           </ContentSlot>

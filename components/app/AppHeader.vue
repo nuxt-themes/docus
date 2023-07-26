@@ -31,6 +31,7 @@ watch(height, (value) => {
         </div>
         <div class="section center flex items-center flex-none justify-center flex-1 z-1" :class="[tokens.appHeader.layout.center.gridColumn]">
           <AppHeaderLogo :class="[hasDrawer ? 'block lg:hidden' : 'hidden']"/>
+          <AppNavigation v-if="config.header.navigation" class="hidden lg:flex" />
         </div>
         <div class="section right -me-4 flex items-center flex-none justify-end items-center flex-none" :class="[tokens.appHeader.layout.right.gridColumn]">
           <AppColorMode />

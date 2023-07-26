@@ -186,7 +186,7 @@ const terminal = {
   height: 'h-[256px]',
   borderWidth: 'border-0',
   borderStyle: 'border-solid',
-  borderColor: 'border-primary-static', // TODO
+  borderColor: border.primary.static, // TODO
   borderRadius: 'rounded-xs',
   backgroundColor: 'bg-gray-200 bg-opacity-70 dark:bg-gray-900 dark:bg-opacity-70',
   boxShadow: 'shadow-terminal',
@@ -196,7 +196,7 @@ const terminal = {
     borderWidth: 'border-0',
     borderStyle: 'border-solid',
     borderColor: 'border-primary-static', // TODO
-    boxShadow: 'shadow-[inset_0_-1px_0px_0px_rgb(var(--color-gray-600)/0.3)]'
+    boxShadow: 'shadow-[inset_0_-1px_0px_0px_rgb(var(--color-gray-500)/0.3)]'
   },
   window: {
     fontFamily: 'font-mono',
@@ -356,6 +356,31 @@ const appSocialIcons = {
   color: text.secondary.static + ' ' + text.secondary.hover,
 }
 
+const appNavigation = {
+  marginBottom: '[&.vertical]:mb-4',
+  ul: {
+    gap: 'gap-2 [.vertical_&]:gap-0'
+  },
+  link: {
+    padding: '[.vertical_&]:py-2 py-1 px-2',
+    fontSize: 'text-sm',
+    fontWeight: 'font-semibold',
+    gap: 'gap-2',
+    active: {
+      color: '[&.active]:text-primary-500',
+    },
+    hover: {
+      color: 'hover:text-primary-500',
+    }
+  },
+  icon: {
+    width: 'w-5',
+    height: 'h-5',
+  }
+}
+
+
+
 export default {
   text,
   state,
@@ -369,5 +394,6 @@ export default {
   appHeader,
   appColorMode,
   appHeaderLogo,
-  appSocialIcons
+  appSocialIcons,
+  appNavigation
 }

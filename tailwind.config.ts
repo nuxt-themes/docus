@@ -34,7 +34,7 @@ export default {
       'xl': '0px 20px 25px -5px rgb(var(--color-shadow) / 0.5), 0px 8px 10px -6px #000000',
       '2xl': '0px 25px 50px -12px rgb(var(--color-shadow))',
       'none': '0px 0px 0px 0px transparent',
-      'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-600) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
+      'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-500) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
       'light-up-sm': 'inset 0.25px 0.5px 0px hsla(0, 0%, 100%, .1), inset -0.25px 0px 0px hsla(0, 0%, 100%,.1)',
       'light-up': 'inset 0.5px 0.75px 0px hsla(0, 0%, 100%, .1), inset -0.5px 0px 0px hsla(0, 0%, 100%, .1)',
       'outline-current': '0 0 0 1px currentColor'

@@ -50,7 +50,7 @@
   --color-secondary-800: 20 1 74;
   --color-secondary-900: 8 0 32;
 
-  /* --color-gray-50: 251 251 251;
+  --color-gray-50: 251 251 251;
   --color-gray-100: 243 243 242;
   --color-gray-200: 236 235 232;
   --color-gray-300: 219 217 211;
@@ -59,10 +59,10 @@
   --color-gray-600: 61 59 56;
   --color-gray-700: 41 39 36;
   --color-gray-800: 28 27 25;
-  --color-gray-900: 18 17 16; */
+  --color-gray-900: 18 17 16;
 
   /* from temp */
-  --color-gray-50: 251 251 251;
+  /* --color-gray-50: 251 251 251;
   --color-gray-100: 246 245 244;
   --color-gray-200: 236 235 232;
   --color-gray-300: 219 217 211;
@@ -71,7 +71,7 @@
   --color-gray-600: 103 99 93;
   --color-gray-700: 54 51 46;
   --color-gray-800: 32 30 27;
-  --color-gray-900: 18 17 16;
+  --color-gray-900: 18 17 16; */
 
   --color-shadow: var(--color-gray-400);
 }

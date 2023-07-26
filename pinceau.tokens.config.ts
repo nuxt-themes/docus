@@ -110,11 +110,11 @@ export default defineTheme({
         //     sm: '{space.7}'
         //   }
         // },
-        backdropFilter: '{elements.backdrop.filter}',
-        backgroundColor: '{elements.backdrop.background}',
-        borderBottomWidth: '1px',
-        borderBottomStyle: 'solid',
-        borderBottomColor: '{elements.border.primary.static}',
+        // backdropFilter: '{elements.backdrop.filter}',
+        // backgroundColor: '{elements.backdrop.background}',
+        // borderBottomWidth: '1px',
+        // borderBottomStyle: 'solid',
+        // borderBottomColor: '{elements.border.primary.static}',
         // title: {
         //   fontSize: '{fontSize.2xl}',
         //   fontWeight: '{fontWeight.bold}',
@@ -264,25 +264,25 @@ export default defineTheme({
           padding: '{space.4}'
         }
       },
-      navigation: {
-        gap: '{space.2}',
-        vertical: {
-          marginBottom: '{space.4}',
-          gap: '{space.0}',
-          link: {
-            padding: '{space.2} 0'
-          }
-        },
-        link: {
-          padding: '{space.1} {space.2}',
-          fontWeight: '{fontWeight.semibold}',
-          gap: '{space.2}',
-          fontSize: '{fontSize.sm}',
-          icon: {
-            size: '{space.5}'
-          }
-        }
-      },
+      // navigation: {
+      //   gap: '{space.2}',
+      //   vertical: {
+      //     marginBottom: '{space.4}',
+      //     gap: '{space.0}',
+      //     link: {
+      //       padding: '{space.2} 0'
+      //     }
+      //   },
+      //   link: {
+      //     padding: '{space.1} {space.2}',
+      //     fontWeight: '{fontWeight.semibold}',
+      //     gap: '{space.2}',
+      //     fontSize: '{fontSize.sm}',
+      //     icon: {
+      //       size: '{space.5}'
+      //     }
+      //   }
+      // },
       // colorMode: {
       //   padding: '{space.4}',
       //   color: {
@@ -684,20 +684,20 @@ export default defineTheme({
     }
   },
   elements: {
-    backdrop: {
-      $schema: {
-        title: 'Backdrops used in Elements.',
-        tags: [
-          '@studioInput design-token',
-          '@studioInputTokenType size',
-          '@studioIcon material-symbols:blur-circular'
-        ]
-      },
-      background: {
-        initial: 'rgba({temp.color.gray.50}, 0.8)',
-        dark: 'rgba({temp.color.gray.900}, 0.8)'
-      }
-    },
+    // backdrop: {
+    //   $schema: {
+    //     title: 'Backdrops used in Elements.',
+    //     tags: [
+    //       '@studioInput design-token',
+    //       '@studioInputTokenType size',
+    //       '@studioIcon material-symbols:blur-circular'
+    //     ]
+    //   },
+    //   background: {
+    //     initial: 'rgba({temp.color.gray.50}, 0.8)',
+    //     dark: 'rgba({temp.color.gray.900}, 0.8)'
+    //   }
+    // },
 
     codeGroup: {
       margin: '{typography.verticalMargin.base} 0px'
