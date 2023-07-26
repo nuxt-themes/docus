@@ -1,7 +1,28 @@
 <script setup lang="ts">
-import { useFuse } from '@vueuse/integrations/useFuse'
+import { useFuse, UseFuseOptions } from '@vueuse/integrations/useFuse'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { useMagicKeys } from '@vueuse/core'
+
+const props = defineProps({
+  fuse: {
+    type: Object as PropType<Partial<UseFuseOptions<DocusSearchResult>>>,
+    default: () => ({
+      fuseOptions: {
+        keys: [
+          'title',
+          'description',
+          'keywords',
+          'body'
+        ],
+        ignoreLocation: true,
+        threshold: 0,
+        includeMatches: true,
+        includeScore: true,
+      },
+      matchAllWhenSearchEmpty: true
+    })
+  },
+})
 
 type DocusSearchResult = {
   id: string
@@ -37,21 +58,7 @@ const { data: files } = await useLazyAsyncData<DocusSearchResult[]>(
 const { results } = useFuse<DocusSearchResult>(
   q,
   files as any,
-  {
-    fuseOptions: {
-      keys: [
-        'title',
-        'description',
-        'keywords',
-        'body'
-      ],
-      ignoreLocation: true,
-      threshold: 0,
-      includeMatches: true,
-      includeScore: true,
-    },
-    matchAllWhenSearchEmpty: true
-  }
+  props.fuse
 )
 
 function findNavItem(
@@ -216,13 +223,15 @@ watch(Escape, () => {
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <teleport to="body">
     <div
-      ref="searchContentRef"
       v-if="show"
+      ref="searchContentRef"
       class="search-content"
       @click="show = false"
     >
-      <div @click.stop class="search-window">
-
+      <div
+        class="search-window"
+        @click.stop
+      >
         <div class="search-input">
           <Icon
             name="heroicons-outline:search"

@@ -24,7 +24,9 @@ defineProps({
       </div>
 
       <div class="section right">
-        <AppSearch />
+        <AppSearch
+          :fuse="config.fuse"
+        />
         <ThemeSelect />
         <div class="social-icons">
           <AppSocialIcons />
