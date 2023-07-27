@@ -31,7 +31,7 @@ const { meta_K, Escape } = useMagicKeys()
 
 const { data: files } = await useLazyAsyncData<DocusSearchResult[]>(
   'search-api',
-  () => $fetch('/api/search')
+  () => $fetch('/api/search', { parseResponse: JSON.parse })
 )
 
 const { results } = useFuse<DocusSearchResult>(
