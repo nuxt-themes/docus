@@ -187,6 +187,9 @@ export default {
         'in-circ': 'cubic-bezier(0.55, 0, 1, 0.45)',
         'out-circ': 'cubic-bezier(0, 0.55, 0.45, 1)',
         'in-out-circ': 'cubic-bezier(0.85, 0, 0.15, 1)',
+        'in-back': 'cubic-bezier(0.36, 0, 0.66, -0.56)',
+        'out-back': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'in-out-back': 'cubic-bezier(0.68, -0.6, 0.32, 1.6)',
       }
     },
   },

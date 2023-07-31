@@ -407,7 +407,7 @@ const docsSearchButton = {
 
 const docsSearch = {
   window: {
-    border: 'border' + ' ' + border.primary.static,
+    border: 'border ' + border.primary.static,
     borderRadius: 'sm:rounded-xs',
     marginTop: 'sm:mt-[20vh]',
     margin: 'sm:mx-4',
@@ -430,7 +430,7 @@ const docsSearch = {
     },
     close: {
       button: 'flex p-3',
-      icon: 'w-5 h-5' + ' ' + text.secondary.static,
+      icon: 'w-5 h-5 ' + text.secondary.static,
     }
   },
   results: {
@@ -459,6 +459,63 @@ const modal = {
   }
 }
 
+const drawer = {
+  width: 'w-[320px]',
+  height: 'h-screen',
+  overflow: 'overflow-auto',
+}
+
+const appHeaderDrawer = {
+  button: {
+    position: 'relative',
+    zIndex: 'z-10',
+    display: 'flex lg:hidden',
+    padding: 'p-4 ps-0',
+    color: 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200',
+  },
+  nav: {
+    width: 'w-full',
+    border: 'border-r ' + border.primary.static,
+    backgroundColor: 'bg-gray-50 dark:bg-gray-900',
+  },
+  navHeader: {
+    height: appHeader.height,
+    display: 'flex',
+    alignItems: 'items-center',
+    justifyContent: 'justify-between',
+    border: 'border-b ' + border.primary.static,
+    gap: 'gap-2',
+    padding: 'px-4 sm:px-6',
+  },
+  navHeaderIcons: {
+    display: 'flex',
+    alignItems: 'items-center',
+    overflow: 'auto',
+    icon: '[&_.icon]:w-4 [&_.icon]:h-4',
+  },
+  navLinks: {
+    height: 'h-[calc(100vh-var(--app-header-height))]',
+    overflow: 'overflow-y-auto',
+    padding: 'px-4 sm:px-6',
+    paddingTop: 'pt-6',
+  }
+}
+
+const docsNavigation = {
+  item: {
+    bordered: `border-s ${border.primary.static} ${border.primary.hover} [&.active]:border-primary-400 [&.active]:dark:border-primary-600 [.has-children_&]:ps-4 [&.has-parent-icon]:ms-2`,
+    
+  },
+
+  link: 'py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50 [&.active]:text-primary-500 [&.active]:font-medium [&_.icon]:!w-4 [&_.icon]:!h-4 [&_.icon]:!me-1',
+  collapsible: {
+    root: 'py-2 text-sm font-semibold text-gray-900 dark:text-gray-50',
+    content: '[&_.icon]:w-5 [&_.icon]:h-5 [&_.icon]:me-2',
+    icon: 'w-3 h-3 ' + text.secondary.static,
+  },
+  recursive: 'p-0 mb-4 [&_.has-children]:border-s [&_.has-children]:border-transparent [&_.has-children]:ms-4',
+}
+
 export default {
   text,
   state,
@@ -476,5 +533,8 @@ export default {
   appNavigation,
   docsSearchButton,
   docsSearch,
-  modal
+  modal,
+  drawer,
+  appHeaderDrawer,
+  docsNavigation,
 }

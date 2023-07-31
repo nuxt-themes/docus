@@ -142,51 +142,51 @@ export default defineTheme({
         //     gridColumn: 'span 4 / span 4'
         //   }
         // },
-        drawer: {
-          button: {
-            color: {
-              static: {
-                initial: '{color.gray.500}',
-                dark: '{color.gray.400}'
-              },
-              hover: {
-                initial: '{color.gray.700}',
-                dark: '{color.gray.200}'
-              }
-            },
-            zIndex: '10',
-            padding: '{space.4}',
-            paddingInlineStart: '0px'
-          },
-          menu: {
-            borderRightWidth: '1px',
-            borderRightStyle: 'solid',
-            borderRightColor: '{elements.border.primary.static}',
-            backgroundColor: {
-              initial: '{color.gray.50}',
-              dark: '{color.gray.900}'
-            },
-            paddingX: {
-              initial: '{space.4}',
-              sm: '{space.6}'
-            },
-            header: {
-              height: '{docus.app.header.height}',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              borderBottomWidth: '1px',
-              borderBottomStyle: 'solid',
-              borderBottomColor: '{elements.border.primary.static}',
-              gap: '{space.2}',
-              icon: {
-                size: '{space.4}'
-              }
-            },
-            links: {
-              paddingTop: '{space.6}'
-            }
-          }
-        }
+        // drawer: {
+        //   button: {
+        //     color: {
+        //       static: {
+        //         initial: '{color.gray.500}',
+        //         dark: '{color.gray.400}'
+        //       },
+        //       hover: {
+        //         initial: '{color.gray.700}',
+        //         dark: '{color.gray.200}'
+        //       }
+        //     },
+        //     zIndex: '10',
+        //     padding: '{space.4}',
+        //     paddingInlineStart: '0px'
+        //   },
+        //   menu: {
+        //     borderRightWidth: '1px',
+        //     borderRightStyle: 'solid',
+        //     borderRightColor: '{elements.border.primary.static}',
+        //     backgroundColor: {
+        //       initial: '{color.gray.50}',
+        //       dark: '{color.gray.900}'
+        //     },
+        //     paddingX: {
+        //       initial: '{space.4}',
+        //       sm: '{space.6}'
+        //     },
+        //     header: {
+        //       height: '{docus.app.header.height}',
+        //       alignItems: 'center',
+        //       justifyContent: 'space-between',
+        //       borderBottomWidth: '1px',
+        //       borderBottomStyle: 'solid',
+        //       borderBottomColor: '{elements.border.primary.static}',
+        //       gap: '{space.2}',
+        //       icon: {
+        //         size: '{space.4}'
+        //       }
+        //     },
+        //     links: {
+        //       paddingTop: '{space.6}'
+        //     }
+        //   }
+        // }
       },
       footer: {
         height: {
