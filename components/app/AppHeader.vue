@@ -13,6 +13,8 @@ const appHeaderRef = ref(null) as Ref<HTMLElement | null>
 
 const { height } = useElementBounding(appHeaderRef)
 
+const showDocsSearch = ref(false)
+
 const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
 
 const isBasicLayout = computed(() => route.meta.layout === 'basic')
@@ -32,8 +34,18 @@ watch(height, (value) => {
         <div class="section center flex items-center flex-none justify-center flex-1 z-1" :class="[tokens.appHeader.layout.center.gridColumn]">
           <AppHeaderLogo :class="[hasDrawer ? 'block lg:hidden' : 'hidden']"/>
           <AppNavigation v-if="config.header.navigation" class="hidden lg:flex" />
+          <DocsSearchButton
+            v-else
+            class="hidden lg:flex lg:w-full"
+            @click="showDocsSearch = true"
+          />
+          <DocsSearch v-model="showDocsSearch" />
         </div>
         <div class="section right -me-4 flex items-center flex-none justify-end items-center flex-none" :class="[tokens.appHeader.layout.right.gridColumn]">
+          <DocsSearchButton
+            :class="[config.header.navigation ? 'flex': 'flex lg:hidden']"
+            @click="showDocsSearch = true"
+          />
           <AppColorMode />
           <div class="hidden md:flex md:items-center">
             <AppSocialIcons :class="[tokens.appHeader.icon]" />

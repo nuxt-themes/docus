@@ -79,11 +79,11 @@ export default defineNuxtConfig({
       path: resolve('./components/app'),
       global: true
     },
-    // {
-    //   prefix: '',
-    //   path: resolve('./components/docs'),
-    //   global: true
-    // },
+    {
+      prefix: '',
+      path: resolve('./components/docs'),
+      global: true
+    },
     {
       prefix: '',
       path: resolve('./components/landing'),

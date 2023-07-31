@@ -109,23 +109,23 @@ css({
     //   backdropFilter: 'none',
     // },
 
-    '.docs-search-button-desktop': {
-      display: 'none',
-      '@lg': {
-        display: 'flex',
-        width: '100%',
-      }
-    },
+    // '.docs-search-button-desktop': {
+    //   display: 'none',
+    //   '@lg': {
+    //     display: 'flex',
+    //     width: '100%',
+    //   }
+    // },
 
-    '.docs-search-button-mobile': {
-      display: 'flex',
-      '@lg': {
-        display: 'none'
-      },
-      '&.has-navigation': {
-        display: 'flex',
-      }
-    },
+    // '.docs-search-button-mobile': {
+    //   display: 'flex',
+    //   '@lg': {
+    //     display: 'none'
+    //   },
+    //   '&.has-navigation': {
+    //     display: 'flex',
+    //   }
+    // },
 
     // '.header-layout': {
     //   display: 'grid',

@@ -1,14 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 export default {
   darkMode: 'class',
   content: ['./tokens.config.ts', '*/*.md'],
   theme: {
     fontSize: {
-      'xs': ['0.75rem', '1rem'],
-      'sm': ['0.875rem', '1.25rem'],
-      'base': ['1rem', '1.5rem'],
-      'lg': ['1.125rem', '1.75rem'],
-      'xl': ['1.25rem', '1.75rem'],
+      xs: ['0.75rem', '1rem'],
+      sm: ['0.875rem', '1.25rem'],
+      base: ['1rem', '1.5rem'],
+      lg: ['1.125rem', '1.75rem'],
+      xl: ['1.25rem', '1.75rem'],
       '2xl': ['1.5rem', '2rem'],
       '3xl': ['1.875rem', '2.25rem'],
       '4xl': ['2.25rem', '2.5rem'],
@@ -27,20 +30,26 @@ export default {
       widest: '0.08em',
     },
     boxShadow: {
-      'xs': '0px 1px 2px 0px rgb(var(--color-shadow))',
-      'sm': '0px 1px 3px 0px rgb(var(--color-shadow)), 0px 1px 2px -1px rgb(var(--color-shadow))',
-      'md': '0px 4px 6px -1px rgb(var(--color-shadow)), 0px 2px 4px -2px rgb(var(--color-shadow))',
-      'lg': '0px 10px 15px -3px rgb(var(--color-shadow)), 0px 4px 6px -4px rgb(var(--color-shadow))',
-      'xl': '0px 20px 25px -5px rgb(var(--color-shadow) / 0.5), 0px 8px 10px -6px #000000',
+      xs: '0px 1px 2px 0px rgb(var(--color-shadow))',
+      sm: '0px 1px 3px 0px rgb(var(--color-shadow)), 0px 1px 2px -1px rgb(var(--color-shadow))',
+      md: '0px 4px 6px -1px rgb(var(--color-shadow)), 0px 2px 4px -2px rgb(var(--color-shadow))',
+      lg: '0px 10px 15px -3px rgb(var(--color-shadow)), 0px 4px 6px -4px rgb(var(--color-shadow))',
+      xl: '0px 20px 25px -5px rgb(var(--color-shadow) / 0.5), 0px 8px 10px -6px #000000',
       '2xl': '0px 25px 50px -12px rgb(var(--color-shadow))',
-      'none': '0px 0px 0px 0px transparent',
-      'terminal': 'inset 0px 0px 0px 1px rgb(var(--color-gray-500) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
+      none: '0px 0px 0px 0px transparent',
+      terminal: 'inset 0px 0px 0px 1px rgb(var(--color-gray-500) / 0.3), 0px 25px 50px -12px rgb(var(--color-shadow))',
       'light-up-sm': 'inset 0.25px 0.5px 0px hsla(0, 0%, 100%, .1), inset -0.25px 0px 0px hsla(0, 0%, 100%,.1)',
       'light-up': 'inset 0.5px 0.75px 0px hsla(0, 0%, 100%, .1), inset -0.5px 0px 0px hsla(0, 0%, 100%, .1)',
       'outline-current': '0 0 0 1px currentColor'
     },
 
     extend: {
+      screens: {
+        xs: '475px',
+      },
+      fontFamily: {
+        body: defaultTheme.fontFamily.sans,
+      },
       colors: {
         black: 'rgb(var(--color-black) / <alpha-value>)',
         // Orange
@@ -155,26 +164,29 @@ export default {
         },
       },
       borderRadius: {
-        'none': '0px',
+        none: '0px',
         '4xs': '2px',
         '3xs': '4px',
         '2xs': '6px',
-        'xs': '8px',
-        'sm': '10px',
-        'md': '12px',
-        'lg': '14px',
-        'xl': '16px',
+        xs: '8px',
+        sm: '10px',
+        md: '12px',
+        lg: '14px',
+        xl: '16px',
         '2xl': '18px',
         '3xl': '20px',
         '4xl': '24px',
         '5xl': '28px',
         '6xl': '32px',
-        'full': '9999px',
+        full: '9999px',
       },
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.7, 0, 0.84, 0)',
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
         'in-out-expo': 'cubic-bezier(0.87, 0, 0.13, 1)',
+        'in-circ': 'cubic-bezier(0.55, 0, 1, 0.45)',
+        'out-circ': 'cubic-bezier(0, 0.55, 0.45, 1)',
+        'in-out-circ': 'cubic-bezier(0.85, 0, 0.15, 1)',
       }
     },
   },

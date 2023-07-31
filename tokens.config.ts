@@ -379,7 +379,85 @@ const appNavigation = {
   }
 }
 
+const docsSearchButton = {
+  backgroundColor: 'bg-gray-200 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50',
+  padding: 'py-2.5 px-4',
+  borderRadius: 'rounded-2xs',
+  border: 'border border-gray-200 dark:border-transparent',
+  fontSize: 'text-sm',
+  gap: 'gap-2',
+  boxShadow: 'shadow-light-up-sm',
+  color: text.secondary.static + ' ' + text.secondary.hover,
+  placeholder: {
+    display: 'hidden lg:block',
+  },
+  icon: {
+    width: 'w-4',
+    height: 'h-4',
+  },
+  shortcuts: {
+    display: 'hidden xs:block',
+    marginLeft: 'ml-auto',
+    kbd: {
+      background: '[&_kbd]:font-body',
+      fontFamily: '',
+    },
+  }
+}
 
+const docsSearch = {
+  window: {
+    border: 'border' + ' ' + border.primary.static,
+    borderRadius: 'sm:rounded-xs',
+    marginTop: 'sm:mt-[20vh]',
+    margin: 'sm:mx-4',
+    width: 'w-full',
+    maxWidth: 'max-w-[640px]',
+    height: 'h-fit',
+    maxHeight: 'max-h-full sm:max-h-[320px]',
+    backdropFilter: 'backdrop-blur-xl'
+  },
+  input: {
+    backgroundColor: 'bg-gray-200 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50',
+    padding: 'py-3',
+    color: text.primary.static,
+    placeholder: 'placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:opacity-50 dark:placeholder:opacity-50',
+    icon: {
+      width: 'w-5',
+      height: 'h-5',
+      margin: 'mx-4',
+      color: text.tertiary.static,
+    },
+    close: {
+      button: 'flex p-3',
+      icon: 'w-5 h-5' + ' ' + text.secondary.static,
+    }
+  },
+  results: {
+    empty: 'h-20 flex items-center justify-center' + ' ' + text.tertiary.static,
+  },
+  result: {
+    padding: 'py-3 px-2',
+    gap: 'gap-2',
+    selected: '[&.selected]:bg-gray-300 [&.selected]:dark:bg-gray-700 [&.selected]:bg-opacity-50 [&.selected]:dark:bg-opacity-50',
+    head: {
+      gap: 'gap-2',
+      svg: 'shrink-0 opacity-50 w-5 h-5 mx-2',
+    },
+    color: text.secondary.static,
+    highlight: '[&_mark]:bg-primary-500 [&_mark]:text-white'
+  }
+}
+
+const modal = {
+  root: {
+    zIndex: 'z-50',
+  },
+  scrim: {
+    backdropFilter: 'backdrop-blur-none',
+    backgroundColor: 'bg-gray-50 dark:bg-gray-900 opacity-95 dark:opacity-95',
+  }
+}
 
 export default {
   text,
@@ -395,5 +473,8 @@ export default {
   appColorMode,
   appHeaderLogo,
   appSocialIcons,
-  appNavigation
+  appNavigation,
+  docsSearchButton,
+  docsSearch,
+  modal
 }

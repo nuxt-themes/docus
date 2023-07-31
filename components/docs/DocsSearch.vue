@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useFuse } from '@vueuse/integrations/useFuse'
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
 
 const props = defineProps({
   modelValue: {
@@ -182,94 +185,111 @@ watch(() => props.modelValue, (value) => {
     :model-value="modelValue"
     @update:model-value="$emit('update:modelValue')"
   >
-    <div class="search-content">
+    <div class="search-content w-full h-full flex justify-center">
       <div
-        class="search-window"
+        class="search-window flex flex-col overflow-hidden"
+        :class="Object.values(tokens.docsSearch.window)"
         @click.stop
       >
-        <div class="search-input">
+        <div
+          class="search-input flex items-center"
+          :class="[tokens.docsSearch.input.backgroundColor]"
+        >
           <Icon
             name="heroicons-outline:search"
-            class="search-icon"
+            class="search-icon shrink-0"
+            :class="Object.values(tokens.docsSearch.input.icon)"
           />
           <input
             ref="searchInputRef"
             v-model="q"
             type="text"
             placeholder="Search documentation"
+            class="w-full bg-transparent outline-none"
+            :class="[tokens.docsSearch.input.padding, tokens.docsSearch.input.color, tokens.docsSearch.input.placeholder]"
             @keydown.up.prevent="up"
             @keydown.down.prevent="down"
             @keydown.enter="go(selected)"
           >
           <button
             class="close-button"
+            :class="[tokens.docsSearch.input.close.button]"
             @click="closeButtonHandler"
           >
             <Icon
               name="heroicons:x-mark"
-              class="close-icon"
+              class="close-icon shrink-0"
+              :class="[tokens.docsSearch.input.close.icon]"
             />
           </button>
         </div>
         <div
           v-if="results.length > 0"
           ref="resultsAreaRef"
-          class="search-results"
+          class="search-results overflow-auto flex flex-col"
         >
           <div
             v-for="(result, i) in results"
             :id="result.item.id"
             :key="result.item.id"
-            class="search-result"
-            :class="{ selected: selected === i }"
+            class="search-result flex flex-col cursor-pointer"
+            :class="[ selected === i && 'selected', tokens.docsSearch.result.padding, tokens.docsSearch.result.gap, tokens.docsSearch.result.selected ]"
             @click="go(selected)"
             @mouseenter.prevent="selected = i"
           >
-            <div class="search-result-content-wrapper">
-              <div class="search-result-content-head">
-                <Icon
-                  v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                  :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                />
-                <Icon
-                  v-else
-                  name="solar:documents-bold-duotone"
-                />
-                <span v-if="getNavItemMeta(result?.item?.path)?.directoryTitle">
-                  {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
-                  <span
-                    class="arrow"
-                    v-html="`→`"
-                  />
-                </span>
-                <span>
-                  {{ result.item.title }}
-                </span>
-              </div>
-              <p
-                v-if="result?.matches?.[0]"
-                class="search-result-content-preview"
+            <div
+              class="search-result-content-head flex items-center"
+              :class="[tokens.docsSearch.result.head.gap]"
+            >
+              <Icon
+                v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
+                :class="[tokens.docsSearch.result.head.svg]"
+              />
+              <Icon
+                v-else
+                name="solar:documents-bold-duotone"
+                :class="[tokens.docsSearch.result.head.svg]"
+              />
+              <span
+                v-if="getNavItemMeta(result?.item?.path)?.directoryTitle"
+                class="whitespace-nowrap"
               >
-                <span>“</span>
+                {{ getNavItemMeta(result?.item?.path)?.directoryTitle }}
                 <span
-                  v-html="`${highlight(q, result?.matches?.[0] as any)}`"
+                  class="arrow opacity-50"
+                  v-html="`→`"
                 />
-                <span>“</span>
-              </p>
+              </span>
+              <span class="whitespace-nowrap">
+                {{ result.item.title }}
+              </span>
             </div>
+            <p
+              v-if="result?.matches?.[0]"
+              class="search-result-content-preview truncate relative"
+              :class="[tokens.docsSearch.result.color]"
+            >
+              <span>“</span>
+              <span
+                :class="[tokens.docsSearch.result.highlight]"
+                v-html="`${highlight(q, result?.matches?.[0] as any)}`"
+              />
+              <span>“</span>
+            </p>
           </div>
         </div>
 
         <div
           v-else-if="!q"
-          class="search-results empty"
+          :class="[tokens.docsSearch.results.empty]"
         >
           Type your query to search docs
         </div>
 
         <div
           v-else
-          class="search-results empty"
+          :class="[tokens.docsSearch.results.empty]"
         >
           No results found. Try another query
         </div>
@@ -277,132 +297,6 @@ watch(() => props.modelValue, (value) => {
     </div>
   </Modal>
 </template>
-
-<style scoped lang="ts">
-css({
-  '.search-content': {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-
-    '.search-window': {
-      display: 'flex',
-      flexDirection: 'column',
-      border: '1px solid {elements.border.primary.static}',
-      borderRadius: '{docus.docs.search.results.window.borderRadius}',
-      marginTop: '{docus.docs.search.results.window.marginTop}',
-      width: '100%',
-      maxWidth: '{docus.docs.search.results.window.maxWidth}',
-      height: 'fit-content',
-      maxHeight: '{docus.docs.search.results.window.maxHeight}',
-      mx: '{docus.docs.search.results.window.marginX}',
-      overflow: 'hidden',
-      backdropFilter: '{docus.docs.search.backdropFilter}',
-
-      '.search-input': {
-        display: 'flex',
-        alignItems: 'center',
-        backgroundColor: '{docus.docs.search.input.backgroundColor}',
-        '.search-icon': {
-          color: '{elements.text.tertiary.color.static}',
-          flexShrink: 0,
-          marginLeft: '{space.4}',
-          marginRight: '{space.4}',
-          width: '{size.20}',
-          height: '{size.20}',
-        },
-        '.close-button': {
-          display: 'flex',
-          padding: '{space.3}',
-        },
-        '.close-icon': {
-          color: '{elements.text.secondary.color.static}',
-          flexShrink: 0,
-          width: '{size.20}',
-          height: '{size.20}',
-        },
-        input: {
-          width: '100%',
-          padding: '{space.3} 0',
-          color: '{elements.text.primary.color.static}',
-          backgroundColor: 'transparent',
-          '&:focus, &:focus-visible': {
-            outline: 'none',
-          },
-          '&::placeholder': {
-            color: '{elements.text.tertiary.color.static}',
-            opacity: '0.5'
-          }
-        },
-        '&:focus, &:focus-visible': {
-          outline: 'none',
-        }
-      },
-
-      '.search-results': {
-        overflow: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-        '&.empty': {
-          height: '80px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '{elements.text.tertiary.color.static}',
-        }
-      },
-
-      '.search-result': {
-        padding: '{space.1} {space.2}',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        '&.selected': {
-          backgroundColor: '{docus.docs.search.results.selected.backgroundColor}',
-        },
-        '.search-result-content-wrapper': {
-          display: 'flex',
-          gap: '{space.2}',
-          borderRadius: '{radii.2xs}',
-          padding: '{space.2} 0',
-          flexDirection: 'column',
-          overflow: 'hidden'
-        },
-        '.search-result-content-head': {
-          display: 'flex',
-          alignItems: 'center',
-          gap: '{space.2}',
-          svg: {
-            flexShrink: '0',
-            opacity: '0.5',
-            width: '{size.20}',
-            height: '{size.20}',
-            marginLeft: '{space.2}',
-            marginRight: '{space.2}',
-          },
-          span: {
-            whiteSpace: 'nowrap',
-          },
-          '.arrow': {
-            opacity: '0.5'
-          },
-        },
-        '.search-result-content-preview': {
-          truncate: true,
-          position: 'relative',
-          color: '{elements.text.secondary.color.static}',
-        },
-        ':deep(mark)': {
-          color: '{docus.docs.search.results.highlight.color}',
-          backgroundColor: '{docus.docs.search.results.highlight.backgroundColor}',
-        }
-      }
-    }
-  }
-})
-</style>
-
 
 <style scoped>
 @media (prefers-reduced-motion: reduce) {
@@ -413,7 +307,7 @@ css({
 
 .modal-enter-active .search-window,
 .modal-leave-active .search-window {
-  transition: transform 200ms $dt('ease.circ.inOut'), opacity 200ms $dt('ease.circ.inOut');
+  transition: transform 200ms theme('transitionTimingFunction.in-out-circ'), opacity 200ms theme('transitionTimingFunction.in-out-circ');
 }
 
 .modal-enter-from .search-window,
