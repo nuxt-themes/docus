@@ -4,6 +4,7 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "packageManager": "pnpm@8.5.1",
+  "repository": "nuxt-themes/docus",
   "files": [
     "app",
     "assets",
