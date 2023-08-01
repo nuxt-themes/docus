@@ -20,13 +20,10 @@ useContentHead(config.value as any)
   <div class="app-layout">
     <AppLoadingBar />
     <AppHeader />
-    <main>
+    <main class="min-h-[calc(100vh-var(--app-header-height)-var(--app-footer-height))]">
       <slot />
     </main>
-    <div class="text-primary-500">
-      hello
-    </div>
-    <!-- <AppFooter /> -->
+    <AppFooter />
   </div>
 </template>
 

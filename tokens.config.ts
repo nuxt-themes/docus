@@ -516,6 +516,69 @@ const docsNavigation = {
   recursive: 'p-0 mb-4 [&_.has-children]:border-s [&_.has-children]:border-transparent [&_.has-children]:ms-4',
 }
 
+const appFooter = {
+  root: {
+    display: 'flex',
+    minHeight: 'min-h-[145px] sm:min-h-[100px]',
+    border: 'border-t ' + border.primary.static,
+    padding: 'py-4',
+  },
+  layout: {
+    root: {
+      display: 'grid',
+      gridTemplateColumns: 'grid-cols-12',
+      justifyItems: 'justify-items-center sm:justify-items-stretch',
+      gap: 'gap-2',
+    },
+    left: {
+      display: 'flex',
+      gridColumn: 'col-span-12 sm:col-span-3',
+      order: 'order-1 sm:order-none',
+      padding: 'py-4',
+    },
+    center: {
+      display: 'flex',
+      flexDirection: 'flex-col sm:flex-row',
+      alignItems: 'items-center',
+      justifyContent: 'justify-start sm:justify-center',
+      gridColumn: 'col-span-12 sm:col-span-6',
+    },
+    right: {
+      display: 'flex',
+      alignItems: 'items-center',
+      justifyContent: 'justify-end',
+      gridColumn: 'col-span-12 sm:col-span-3',
+      margin: 'sm:-me-4'
+    },
+  },
+  credits: {
+    text: {
+      fontSize: 'text-xs',
+      fontWeight: 'font-medium',
+      color: text.secondary.static + ' ' + text.secondary.hover,
+    },
+    icon: {
+      flexShrink: 'shrink-0',
+      color: 'text-current',
+      width: 'w-4',
+      height: 'h-4',
+      margin: 'me-2',
+    },
+  },
+  textLink: {
+    padding: 'p-2',
+    fontSize: 'text-sm',
+    fontWeight: 'font-medium',
+  },
+  iconLink: {
+    display: 'flex',
+    padding: 'p-4',
+    color: text.secondary.static + ' ' + text.secondary.hover,
+    width: '[&_.icon]:w-4',
+    height: '[&_.icon]:h-4',
+  }
+}
+
 export default {
   text,
   state,
@@ -537,4 +600,5 @@ export default {
   drawer,
   appHeaderDrawer,
   docsNavigation,
+  appFooter,
 }
