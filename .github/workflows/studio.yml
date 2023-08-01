@@ -49,7 +49,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
 
       - uses: actions/setup-node@v3
         with:
@@ -69,6 +69,7 @@ jobs:
         run: ${{ steps.pkgman.outputs.package_manager }} nuxi generate
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
+          NUXT_PUBLIC_STUDIO_TOKENS: e6364305a88b20d5fc79b360230231dd743831dff03b55edd6b4237b355bb7d9
 
       - name: Add .nojekyll file
         run: touch .output/public/.nojekyll

@@ -20,7 +20,7 @@ export default defineNuxtPlugin(() => {
      * If not found, fallback on props.
      */
     const options = computed<DocSearchOptions>(() => {
-      const { algolia } = useRuntimeConfig()
+      const { algolia } = useRuntimeConfig().public
 
       if (algolia && algolia.docSearch) {
         return algolia
@@ -139,7 +139,7 @@ export default defineNuxtPlugin(() => {
                     return
                   }
                   const { pathname: hitPathname } = new URL(window.location.origin + hit.url)
-                  // If the hits goes to another page, we prevent the native link behavior
+                  // If the hits go to another page, we prevent the native link behavior
                   // to leverage the Vue Router loading feature.
                   if (route.path !== hitPathname) {
                     event.preventDefault()

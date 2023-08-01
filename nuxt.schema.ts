@@ -75,6 +75,12 @@ export default defineNuxtSchema({
          * Instagram page url
          * @example https://www.youtube.com/@NuxtLabs
          * @studioIcon simple-icons:youtube
+         */        
+        tiktok: '',
+        /**
+         * TikTok page url
+         * @example https://www.tiktok.com/@tiktok
+         * @studioIcon simple-icons:tiktok
          */
         youtube: '',
         /**
@@ -140,7 +146,10 @@ export default defineNuxtSchema({
          * Boolean to disable or use the `Logo.vue` component.
          *
          * String to be used as a name of a component.
+         * 
+         * Object that sets the light and dark logos.
          *
+         * @type {boolean|string|{dark: string, light: string}}
          * @example 'MyLogo'
          * @studioInput boolean
          */
@@ -272,6 +281,12 @@ export default defineNuxtSchema({
        * @studioIcon simple-icons:github
        */
       github: {
+        /**
+         * Base URL
+         *
+         * You can use this to link to GitHub Enterprise.
+         */
+        baseUrl: 'https://github.com',
         /**
          * Directory
          *
