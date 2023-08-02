@@ -22,9 +22,9 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
           rel="noopener"
           target="_blank"
         >
-          <Component
-            :is="config?.footer?.credits?.icon"
+          <Icon
             v-if="config?.footer?.credits?.icon"
+            :name="config?.footer?.credits?.icon"
             class="left-icon"
           />
           <p v-if="config?.footer?.credits?.text">{{ config.footer.credits.text }}</p>
