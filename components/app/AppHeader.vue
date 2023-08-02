@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <header :class="{ 'has-dialog': hasDialog, 'has-doc-search': hasDocSearch }">
+  <header :class="{ 'has-dialog': hasDialog }">
     <Container :fluid="config?.header?.fluid ">
       <div class="section left">
         <AppHeaderDialog v-if="hasDialog" />
@@ -24,7 +24,9 @@ defineProps({
       </div>
 
       <div class="section right">
+        <AppDocSearch v-if="hasDocSearch" />
         <AppSearch
+          v-else
           :fuse="config.fuse"
         />
         <ThemeSelect />
