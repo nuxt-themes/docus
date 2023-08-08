@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@nuxt-themes/elements": "^0.9.4",
-    "@nuxt-themes/tokens": "^1.9.1",
+    "@nuxt-themes/tokens": "^2.1.1",
     "@nuxt-themes/typography": "^0.11.0",
     "@nuxt/content": "^2.7.2",
     "@nuxthq/studio": "^0.13.4",
