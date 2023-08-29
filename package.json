@@ -29,7 +29,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt-themes/elements": "^0.9.4",
+    "@nuxt-themes/elements": "^1.0.6",
     "@nuxt-themes/tokens": "^1.9.1",
     "@nuxt-themes/typography": "^0.11.0",
     "@nuxt/content": "^2.7.2",
