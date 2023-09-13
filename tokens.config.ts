@@ -579,6 +579,109 @@ const appFooter = {
   }
 }
 
+const card = {
+  root: {
+    textAlign: 'text-center', // TODO: add to props
+    padding: 'p-[2px]',
+    borderRadius: 'rounded-sm',
+    border: 'border-0',
+    backdropFilter: backdrop.filter,
+  },
+  wrapper: {
+    borderRadius: 'rounded-xs',
+    backgroundImage: 'bg-[linear-gradient(135deg,rgba(var(--color-gray-100)/0.5),rgba(var(--color-gray-200)/0.5))] dark:bg-[linear-gradient(135deg,rgba(var(--color-gray-800)/0.4),rgba(var(--color-gray-800)/0.7))]',
+  },
+  content: {
+    position: 'relative',
+    zIndex: 'z-[2]',
+    padding: 'p-8',
+    // flex: 'flex-1',
+  },
+  title: {
+    marginBottom: 'mb-2',
+    fontSize: 'text-2xl',
+    fontWeight: 'font-medium',
+    letterSpacing: 'tracking-tight',
+    color: text.primary.static,
+  },
+  description: {
+    fontSize: 'text-sm',
+    fontWeight: 'font-medium',
+    color: text.secondary.static,
+  },
+  icon: {
+    display: 'inline-flex',
+    marginBottom: 'mb-4',
+    padding: 'p-3',
+    borderRadius: 'rounded-xs',
+    backgroundColor: 'bg-gray-300 dark:bg-gray-900 bg-opacity-20 dark:bg-opacity-20',
+    width: '[&_.icon]:w-6',
+    height: '[&_.icon]:h-6',
+    boxShadow: 'shadow-light-up',
+    //  TODO:   boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
+  },
+  noise: {
+    position: 'absolute',
+    inset: 'inset-0',
+    zIndex: 'z-[-1]',
+    filter: '[filter:url(#noise-filter)]',
+    opacity: 'opacity-20',
+  },
+  lights: {
+    layerOne: 'before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(500px_at_var(--x)_var(--y),rgba(var(--color-gray-400)/0.3),transparent_60%)]',
+    layerTwo: 'after:[&_.wrapper]:bg-red-500'
+  }
+}
+
+// css({
+//   '.card': {
+//     '--col': (props) => props.col,
+//     '--row': (props) => props.row,
+
+//     gridColumnEnd: 'span {col}',
+//     gridRowEnd: 'span {row}',
+
+
+//     '&.lights::before': {
+//       content: '""',
+//       position: 'absolute',
+//       inset: '0',
+//       backgroundImage: 'radial-gradient(500px at var(--x) var(--y), rgba({temp.color.gray.400}, 0.3), transparent 60%)',
+//       backgroundSize: 'auto',
+//       backgroundOrigin: 'padding-box',
+//       zIndex: '0',
+//       borderRadius: 'inherit',
+//       transition: 'background-image 0.2s ease, opacity 0.2s ease',
+//       willChange: 'background-image, opacity',
+//     },
+
+//     '.wrapper': {
+//       '.lights &&:after': {
+//         // backgroundImage: '{docus.landing.card.wrapper.after.backgroundImage}', // TODO bug in tokens with vars
+//         backgroundImage: 'none',
+//         backgroundSize: 'auto',
+//         backgroundOrigin: 'padding-box',
+//         borderRadius: 'inherit',
+//         content: '""',
+//         position: 'absolute',
+//         inset: '0',
+//         zIndex: '1',
+//         transition: 'background-image 0.2s ease, opacity 0.2s ease',
+//         willChange: 'background-image, opacity',
+//         '@dark': {
+//           backgroundImage: 'radial-gradient(500px at var(--x) var(--y), rgba({temp.color.gray.900}, .4) 20%, rgba({temp.color.gray.900}, .4) 100% )'
+//         }
+//       }
+//     },
+
+//   }
+// })
+
+
+// card: {
+//   minHeight: 'auto',
+// },
+
 export default {
   text,
   state,
@@ -601,4 +704,5 @@ export default {
   appHeaderDrawer,
   docsNavigation,
   appFooter,
+  card
 }

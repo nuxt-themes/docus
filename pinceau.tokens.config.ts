@@ -512,61 +512,61 @@ export default defineTheme({
       //     }
       //   }
       // },
-      card: {
-        padding: '2px',
-        borderRadius: '{radii.sm}',
-        borderWidth: '0px',
-        borderStyle: 'solid',
-        borderColor: 'rgba({temp.color.gray.800}, 0.5)',
-        backgroundColor: 'transparent',
-        backgroundImage: 'none',
-        backdropFilter: '{elements.backdrop.filter}',
-        boxShadow: 'none',
-        minHeight: 'auto',
-        wrapper: {
-          borderRadius: '{radii.xs}',
-          backgroundColor: 'transparent',
-          backgroundImage: {
-            initial: 'linear-gradient(135deg, rgba({temp.color.gray.100}, 0.5), rgba({temp.color.gray.200}, .5))',
-            dark: 'linear-gradient(135deg, rgba({temp.color.gray.800}, 0.4), rgba({temp.color.gray.800}, .7))'
-          }
-        },
-        noise: {
-          opacity: {
-            initial: '0.2',
-            dark: '0.2'
-          }
-        },
-        content: {
-          padding: '{space.8}'
-        },
-        icon: {
-          marginBottom: '{space.4}',
-          width: '{space.6}',
-          height: '{space.6}',
-          padding: '{space.3}',
-          borderRadius: '{radii.xs}',
-          backgroundColor: {
-            initial: 'rgba({temp.color.gray.300}, 0.2)',
-            dark: 'rgba({temp.color.gray.900}, 0.2)'
-          },
-          boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
-        },
-        title: {
-          marginBottom: '{space.2}',
-          fontSize: '{text.2xl.fontSize}',
-          lineHeight: '{text.2xl.lineHeight}',
-          fontWeight: '{fontWeight.medium}',
-          letterSpacing: '{letterSpacing.tight}',
-          color: '{elements.text.primary.color.static}'
-        },
-        description: {
-          fontSize: '{text.sm.fontSize}',
-          lineHeight: '{text.sm.lineHeight}',
-          fontWeight: '{fontWeight.medium}',
-          color: '{elements.text.secondary.color.static}'
-        }
-      },
+      // card: {
+      //   padding: '2px',
+      //   borderRadius: '{radii.sm}',
+      //   borderWidth: '0px',
+      //   borderStyle: 'solid',
+      //   borderColor: 'rgba({temp.color.gray.800}, 0.5)',
+      //   backgroundColor: 'transparent',
+      //   backgroundImage: 'none',
+      //   backdropFilter: '{elements.backdrop.filter}',
+      //   boxShadow: 'none',
+      //   minHeight: 'auto',
+      //   wrapper: {
+      //     borderRadius: '{radii.xs}',
+      //     backgroundColor: 'transparent',
+      //     backgroundImage: {
+      //       initial: 'linear-gradient(135deg, rgba({temp.color.gray.100}, 0.5), rgba({temp.color.gray.200}, .5))',
+      //       dark: 'linear-gradient(135deg, rgba({temp.color.gray.800}, 0.4), rgba({temp.color.gray.800}, .7))'
+      //     }
+      //   },
+      //   noise: {
+      //     opacity: {
+      //       initial: '0.2',
+      //       dark: '0.2'
+      //     }
+      //   },
+      //   content: {
+      //     padding: '{space.8}'
+      //   },
+      //   icon: {
+      //     marginBottom: '{space.4}',
+      //     width: '{space.6}',
+      //     height: '{space.6}',
+      //     padding: '{space.3}',
+      //     borderRadius: '{radii.xs}',
+      //     backgroundColor: {
+      //       initial: 'rgba({temp.color.gray.300}, 0.2)',
+      //       dark: 'rgba({temp.color.gray.900}, 0.2)'
+      //     },
+      //     boxShadow: 'inset -0.5px 0.5px 0px hsla(0,0%,100%,.1), inset 0.5px 0px 0px hsla(0,0%,100%,.1)'
+      //   },
+      //   title: {
+      //     marginBottom: '{space.2}',
+      //     fontSize: '{text.2xl.fontSize}',
+      //     lineHeight: '{text.2xl.lineHeight}',
+      //     fontWeight: '{fontWeight.medium}',
+      //     letterSpacing: '{letterSpacing.tight}',
+      //     color: '{elements.text.primary.color.static}'
+      //   },
+      //   description: {
+      //     fontSize: '{text.sm.fontSize}',
+      //     lineHeight: '{text.sm.lineHeight}',
+      //     fontWeight: '{fontWeight.medium}',
+      //     color: '{elements.text.secondary.color.static}'
+      //   }
+      // },
       terminal: {
         maxWidth: '{space.128}',
         height: '{space.64}',
