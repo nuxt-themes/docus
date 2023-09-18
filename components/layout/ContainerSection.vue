@@ -22,7 +22,10 @@ defineProps({
 </script>
 
 <template>
-  <section class="container-section relative" :class="[margin, padding, backgroundColor, backgroundImage]">
+  <section
+    class="container-section relative"
+    :class="[margin, padding, backgroundColor, backgroundImage]"
+  >
     <span
       v-if="$slots.root"
       class="root"

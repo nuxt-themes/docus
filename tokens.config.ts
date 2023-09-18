@@ -166,8 +166,7 @@ const announce = {
   backgroundColor: 'bg-gray-100 dark:bg-gray-800',
   borderRadius: 'rounded-full',
   borderWidth: 'border',
-  borderStyle: 'border-solid',
-  borderColor: 'border-primary-static', // TODO
+  borderStyle: border.primary.static,
   fontSize: 'text-sm',
   fontWeight: 'font-medium',
   boxShadow: 'shadow-light-up',
@@ -186,7 +185,7 @@ const terminal = {
   height: 'h-[256px]',
   borderWidth: 'border-0',
   borderStyle: 'border-solid',
-  borderColor: border.primary.static, // TODO
+  borderColor: border.primary.static,
   borderRadius: 'rounded-xs',
   backgroundColor: 'bg-gray-200 bg-opacity-70 dark:bg-gray-900 dark:bg-opacity-70',
   boxShadow: 'shadow-terminal',
@@ -195,7 +194,7 @@ const terminal = {
     height: 'h-12',
     borderWidth: 'border-0',
     borderStyle: 'border-solid',
-    borderColor: 'border-primary-static', // TODO
+    borderColor: border.primary.static,
     boxShadow: 'shadow-[inset_0_-1px_0px_0px_rgb(var(--color-gray-500)/0.3)]'
   },
   window: {
@@ -581,6 +580,7 @@ const appFooter = {
 
 const card = {
   root: {
+    display: 'flex',
     textAlign: 'text-center', // TODO: add to props
     padding: 'p-[2px]',
     borderRadius: 'rounded-sm',
@@ -702,6 +702,14 @@ const sectionHeader = {
   },
 }
 
+const cardGrid = {
+  root: 'relative w-full',
+  layout: {
+    display: 'grid grid-cols-12',
+    gridAutoFlow: 'grid-flow-dense'
+  },
+}
+
 export default {
   text,
   state,
@@ -725,5 +733,6 @@ export default {
   docsNavigation,
   appFooter,
   card,
-  sectionHeader
+  sectionHeader,
+  cardGrid
 }

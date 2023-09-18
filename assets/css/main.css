@@ -76,11 +76,6 @@
   --color-shadow: var(--color-gray-400);
 }
 
-.border-primary-static {
-  /* elements.border.primary.static */
-  @apply border-gray-200 dark:border-gray-800;
-}
-
 body {
   @apply bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
   /* overflow-y: scroll; */

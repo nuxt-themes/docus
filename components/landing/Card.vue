@@ -9,14 +9,6 @@ defineProps({
     type: String,
     default: ''
   },
-  col: {
-    type: [String, Number, Object],
-    default: 1
-  },
-  row: {
-    type: [String, Number, Object],
-    default: 1
-  },
   noise: {
     type: Boolean,
     default: false
@@ -39,7 +31,7 @@ watch([elementX, elementY], () => {
 <template>
   <div
     ref="cardRef"
-    class="card relative"
+    class="card relative col-span-12 sm:col-span-6 lg:col-span-4"
     :class="[lights && Object.values(tokens.card.lights), Object.values(tokens.card.root)]"
   >
     <div
