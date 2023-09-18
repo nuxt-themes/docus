@@ -628,7 +628,7 @@ const card = {
     opacity: 'opacity-20',
   },
   lights: {
-    layerOne: 'before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(500px_at_var(--x)_var(--y),rgba(var(--color-gray-400)/0.3),transparent_60%)]',
+    layerOne: 'before:absolute before:rounded-[inherit] before:inset-0 before:z-0 before:bg-[radial-gradient(500px_at_var(--x)_var(--y),rgba(var(--color-gray-400)/0.3),transparent_60%)]',
     layerTwo: 'after:[&_.wrapper]:bg-red-500'
   }
 }
@@ -682,6 +682,26 @@ const card = {
 //   minHeight: 'auto',
 // },
 
+const sectionHeader = {
+  root: 'flex flex-col items-center xl:items-start mb-8',
+  subtitle: {
+    display: 'block',
+    fontSize: 'text-lg',
+    fontWeight: 'font-normal',
+    letterSpacing: 'tracking-wide',
+    marginBottom: 'mb-2',
+  },
+  title: {
+    fontSize: 'text-3xl sm:text-4xl',
+    fontWeight: 'font-semibold',
+    letterSpacing: 'tracking-tight',
+    marginBottom: 'mb-2',
+  },
+  description: {
+    color: text.secondary.static,
+  },
+}
+
 export default {
   text,
   state,
@@ -704,5 +724,6 @@ export default {
   appHeaderDrawer,
   docsNavigation,
   appFooter,
-  card
+  card,
+  sectionHeader
 }

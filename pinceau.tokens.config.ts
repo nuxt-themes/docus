@@ -608,37 +608,37 @@ export default defineTheme({
           }
         }
       },
-      sectionHeader: {
-        alignItems: {
-          initial: 'center',
-          xl: 'flex-start'
-        },
-        marginBottom: '{space.8}',
-        subtitle: {
-          fontSize: '{text.lg.fontSize}',
-          lineHeight: '{text.lg.lineHeight}',
-          fontWeight: '{fontWeight.normal}',
-          letterSpacing: '{letterSpacing.wide}',
-          marginBottom: '{space.2}'
-        },
-        title: {
-          fontSize: {
-            initial: '{text.3xl.fontSize}',
-            sm: '{text.4xl.fontSize}'
-          },
-          lineHeight: {
-            initial: '{text.3xl.lineHeight}',
-            sm: '{text.4xl.lineHeight}'
-          },
-          marginBottom: '{space.2}',
-          fontWeight: '{fontWeight.semibold}',
-          letterSpacing: '{letterSpacing.tight}',
-          color: '{docus.body.color}'
-        },
-        description: {
-          color: '{elements.text.secondary.color.static}'
-        }
-      }
+      // sectionHeader: {
+      //   alignItems: {
+      //     initial: 'center',
+      //     xl: 'flex-start'
+      //   },
+      //   marginBottom: '{space.8}',
+      //   subtitle: {
+      //     fontSize: '{text.lg.fontSize}',
+      //     lineHeight: '{text.lg.lineHeight}',
+      //     fontWeight: '{fontWeight.normal}',
+      //     letterSpacing: '{letterSpacing.wide}',
+      //     marginBottom: '{space.2}'
+      //   },
+      //   title: {
+      //     fontSize: {
+      //       initial: '{text.3xl.fontSize}',
+      //       sm: '{text.4xl.fontSize}'
+      //     },
+      //     lineHeight: {
+      //       initial: '{text.3xl.lineHeight}',
+      //       sm: '{text.4xl.lineHeight}'
+      //     },
+      //     marginBottom: '{space.2}',
+      //     fontWeight: '{fontWeight.semibold}',
+      //     letterSpacing: '{letterSpacing.tight}',
+      //     color: '{docus.body.color}'
+      //   },
+      //   description: {
+      //     color: '{elements.text.secondary.color.static}'
+      //   }
+      // }
     }
   },
   typography: {
