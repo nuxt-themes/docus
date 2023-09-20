@@ -710,6 +710,153 @@ const cardGrid = {
   },
 }
 
+// docs: {
+//   spacing: {
+//     initial: '0px',
+//     lg: '{space.6}',
+//     xl: '{space.8}'
+//   }
+// }
+
+const docsLayout = {
+  root: 'relative flex lg:grid flex-col-reverse lg:gap-6 xl:gap-8',
+  hasToc: 'lg:grid-cols-[minmax(320px,1fr)minmax(200px,200px)] xl:grid-cols-[minmax(320px,1fr)minmax(250px,250px)]',
+  hasAside: 'lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)] xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)]',
+  hasAsideHasToc: 'lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)minmax(200px,200px)] xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)minmax(250px,250px)]',
+  asideNav: {
+    display: 'hidden lg:block',
+    position: 'lg:sticky',
+    overflow: 'overflow-y-auto',
+    alignSelf: 'self-start',
+    padding: 'lg:py-6 xl:py-8 lg:pe-6 xl:pe-8',
+    top: 'lg:top-[var(--app-header-height)]',
+    height: 'lg:h-[calc(100vh-var(--app-header-height))]',
+  },
+  toc: {
+    root: {
+      position: 'sticky',
+      display: 'flex lg:self-start',
+      top: 'top-[var(--app-header-height)]',
+      overflow: 'overflow-auto',
+      border: 'border-b lg:border-b-0 ' + border.primary.static,
+      margin: '-mx-4 sm:-mx-6 lg:mx-0',
+      padding: 'lg:p-6 xl:p-8 pe-0',
+      height: 'lg:h-[calc(100vh-var(--app-header-height))]',
+    },
+    //     '@lg': {
+    //       padding: '{docus.layout.docs.spacing}',
+    //       paddingInlineEnd: '0px',
+    //       height: 'calc(100vh - {docus.app.header.height})',
+    //       maxHeight: 'none',
+    //     },
+    wrapper: {
+      width: 'w-full',
+      height: 'h-full',
+      backdropFilter: backdrop.filter + ' lg:backdrop-filter-none',
+      backgroundColor: backdrop.backgroundColor + ' lg:bg-transparent',
+    },
+    button: {
+      display: 'flex lg:hidden',
+      alignItems: 'items-center',
+      width: 'w-full',
+      height: 'h-full',
+      padding: 'p-4 sm:px-6',
+      title: {
+        fontSize: 'text-sm',
+        fontWeight: 'font-semibold',
+        margin: 'me-1'
+      },
+      icon: {
+        width: 'w-4',
+        height: 'h-4',
+        transition: 'transition-transform duration-100 [&.rotate]:rotate-90',
+      }
+    },
+    content: {
+      display: 'hidden [&.opened]:block lg:block',
+      margin: 'mb-4 lg:mt-0',
+      opened: '[&.opened]:px-4 [&.opened]:sm:px-6 [&.opened]:lg:px-0 [&.opened]:overflow-auto [&.opened]:max-h-[50vh] [&.opened]:lg:max-h-none'
+      //       '.docs-toc-wrapper': {
+      //         '&.opened': {
+      //           maxHeight: '50vh',
+      //           overflow: 'auto',
+      //           '@lg': {
+      //             maxHeight: 'none',
+      //           },
+      //         },
+      //       }
+    }
+  }
+}
+
+// css({
+//   '.docs-page-content': {
+//   '.page-content': {
+//     position: 'relative',
+//     display: 'flex',
+//     flexDirection: "column",
+//     flex: '1 1 0%',
+//     py: '{space.8}',
+//     width: '100%',
+//     maxWidth: '{docus.readableLine}',
+//     mx: 'auto',
+//     '.page-content-bottom': {
+//       display: 'flex',
+//       flexDirection: 'column',
+//       gap: '{space.8}',
+//     },
+//     '@lg': {
+//       marginTop: 0,
+//       py: '{space.12}',
+//     },
+//     '.docs-prev-next': {
+//       marginTop: '{space.4}'
+//     }
+//   },
+//   '.toc': {
+//     '.toc-wrapper': {
+
+//     }
+//   }
+// })
+
+const docsToc = {
+  root: 'flex flex-col gap-2',
+  title: 'hidden lg:block overflow-hidden text-sm font-semibold',
+  bottom: 'text-sm py-2' + ' ' + text.secondary.static,
+}
+
+const docsTocLinks = {
+  link: 'block truncate py-1 lg:pe-3 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50',
+}
+
+// css({
+//   '.docs-toc-links': {
+//     a: {
+//       display: 'block',
+//       padding: '{space.1} 0',
+//       fontSize: '{text.sm.fontSize}',
+//       lineHeight: '{text.sm.lineHeight}',
+//       color: '{color.gray.500}',
+//       truncate: true,
+//       '@lg': {
+//         paddingInlineEnd: '{space.3}'
+//       },
+//       '&:not(.active):hover': {
+//         color: '{color.gray.900}',
+//       },
+//       '@dark': {
+//         '&:not(.active):hover': {
+//           color: '{color.gray.400}',
+//         },
+//       },
+//       '&.active': {
+//         color: '{color.primary.500}'
+//       }
+//     }
+//   }
+// })
+
 export default {
   text,
   state,
@@ -734,5 +881,8 @@ export default {
   appFooter,
   card,
   sectionHeader,
-  cardGrid
+  cardGrid,
+  docsLayout,
+  docsToc,
+  docsTocLinks
 }

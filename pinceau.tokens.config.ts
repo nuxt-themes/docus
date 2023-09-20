@@ -87,13 +87,13 @@ export default defineTheme({
       //     xl: '{space.8}'
       //   }
       // },
-      docs: {
-        spacing: {
-          initial: '0px',
-          lg: '{space.6}',
-          xl: '{space.8}'
-        }
-      }
+      // docs: {
+      //   spacing: {
+      //     initial: '0px',
+      //     lg: '{space.6}',
+      //     xl: '{space.8}'
+      //   }
+      // }
     },
     app: {
       loadingBar: {
