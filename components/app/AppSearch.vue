@@ -335,168 +335,168 @@ watch(Escape, () => {
 <style scoped lang="ts">
 css({
   button: {
-  padding: '{space.2} {space.2}',
-'.content': {
-  borderRadius: '{radii.md}',
-  display: 'flex',
-  alignItems: 'center',
-  color: '{color.gray.500}',
-  borderStyle: 'solid',
-  borderWidth: '1px',
-  borderColor: '{color.gray.100}',
-  fontSize: '{fontSize.xs}',
-  gap: '{space.2}',
-  padding: '{space.rem.375}',
-'@dark': {
-  color: '{color.gray.400}',
-  borderColor: '{color.gray.900}',
-},
-'&:hover': {
-  color: '{color.gray.700}',
-  borderColor: '{color.gray.400}',
-'@dark': {
-  color: '{color.gray.200}',
-  borderColor: '{color.gray.700}',
-}
-},
-span: {
-  flex: 'none',
-  display: 'none',
-  fontSize: '{fontSize.xs}',
-'@lg': {
-  display: 'block'
-}
-}
-}
-},
+    padding: '{space.2} {space.2}',
+    '.content': {
+      borderRadius: '{radii.md}',
+      display: 'flex',
+      alignItems: 'center',
+      color: '{color.gray.500}',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: '{color.gray.100}',
+      fontSize: '{fontSize.xs}',
+      gap: '{space.2}',
+      padding: '{space.rem.375}',
+      '@dark': {
+        color: '{color.gray.400}',
+        borderColor: '{color.gray.900}',
+      },
+      '&:hover': {
+        color: '{color.gray.700}',
+        borderColor: '{color.gray.400}',
+        '@dark': {
+          color: '{color.gray.200}',
+          borderColor: '{color.gray.700}',
+        }
+      },
+      span: {
+        flex: 'none',
+        display: 'none',
+        fontSize: '{fontSize.xs}',
+        '@lg': {
+          display: 'block'
+        }
+      }
+    }
+  },
 
-'.search-content': {
-position: 'fixed',
-inset: '0 0 0 0',
-zIndex: '50',
-display: 'flex',
-// alignItems: 'center',
-justifyContent: 'center',
-backgroundColor: 'rgba(255, 255, 255, 0.5)',
-backdropFilter: '{elements.backdrop.filter}',
-'@dark': {
-backgroundColor: 'rgba(0, 0, 0, 0.5)'
-},
+  '.search-content': {
+    position: 'fixed',
+    inset: '0 0 0 0',
+    zIndex: '50',
+    display: 'flex',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backdropFilter: '{elements.backdrop.filter}',
+    '@dark': {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
 
 
-'.search-window': {
-display: 'flex',
-flexDirection: 'column',
-border: '1px solid {elements.border.primary.static}',
-borderRadius: '{docus.search.results.window.borderRadius}',
-marginTop: '{docus.search.results.window.marginTop}',
-width: '100%',
-maxWidth: '{docus.search.results.window.maxWidth}',
-height: 'fit-content',
-maxHeight: '{docus.search.results.window.maxHeight}',
-mx: '{docus.search.results.window.marginX}',
-overflow: 'hidden',
-backdropFilter: '{docus.search.backdropFilter}',
+    '.search-window': {
+      display: 'flex',
+      flexDirection: 'column',
+      border: '1px solid {elements.border.primary.static}',
+      borderRadius: '{docus.search.results.window.borderRadius}',
+      marginTop: '{docus.search.results.window.marginTop}',
+      width: '100%',
+      maxWidth: '{docus.search.results.window.maxWidth}',
+      height: 'fit-content',
+      maxHeight: '{docus.search.results.window.maxHeight}',
+      mx: '{docus.search.results.window.marginX}',
+      overflow: 'hidden',
+      backdropFilter: '{docus.search.backdropFilter}',
 
-'.search-input': {
-display: 'flex',
-alignItems: 'center',
-backgroundColor: '{docus.search.input.backgroundColor}',
-'.search-icon': {
-color: '{elements.text.tertiary.color.static}',
-flexShrink: 0,
-marginLeft: '{space.4}',
-marginRight: '{space.4}',
-width: '{size.20}',
-height: '{size.20}',
-},
-'.close-button': {
-display: 'flex',
-padding: '{space.3}',
-},
-'.close-icon': {
-color: '{elements.text.secondary.color.static}',
-flexShrink: 0,
-width: '{size.20}',
-height: '{size.20}',
-},
-input: {
-width: '100%',
-padding: '{space.2} 0',
-color: '{elements.text.primary.color.static}',
-backgroundColor: 'transparent',
-'&:focus, &:focus-visible': {
-outline: 'none',
-},
-'&::placeholder': {
-color: '{elements.text.tertiary.color.static}',
-opacity: '0.5'
-}
-},
-'&:focus, &:focus-visible': {
-outline: 'none',
-}
-},
+      '.search-input': {
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '{docus.search.input.backgroundColor}',
+        '.search-icon': {
+          color: '{elements.text.tertiary.color.static}',
+          flexShrink: 0,
+          marginLeft: '{space.4}',
+          marginRight: '{space.4}',
+          width: '{size.20}',
+          height: '{size.20}',
+        },
+        '.close-button': {
+          display: 'flex',
+          padding: '{space.3}',
+        },
+        '.close-icon': {
+          color: '{elements.text.secondary.color.static}',
+          flexShrink: 0,
+          width: '{size.20}',
+          height: '{size.20}',
+        },
+        input: {
+          width: '100%',
+          padding: '{space.2} 0',
+          color: '{elements.text.primary.color.static}',
+          backgroundColor: 'transparent',
+          '&:focus, &:focus-visible': {
+            outline: 'none',
+          },
+          '&::placeholder': {
+            color: '{elements.text.tertiary.color.static}',
+            opacity: '0.5'
+          }
+        },
+        '&:focus, &:focus-visible': {
+          outline: 'none',
+        }
+      },
 
-'.search-results': {
-overflow: 'auto',
-display: 'flex',
-flexDirection: 'column',
-'&.empty': {
-height: '80px',
-display: 'flex',
-alignItems: 'center',
-justifyContent: 'center',
-color: '{elements.text.tertiary.color.static}',
-}
-},
+      '.search-results': {
+        overflow: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        '&.empty': {
+          height: '80px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '{elements.text.tertiary.color.static}',
+        }
+      },
 
-'.search-result': {
-padding: '{space.1} {space.2}',
-cursor: 'pointer',
-display: 'flex',
-alignItems: 'center',
-'&.selected': {
-backgroundColor: '{docus.search.results.selected.backgroundColor}',
-},
-'.search-result-content-wrapper': {
-display: 'flex',
-gap: '{space.2}',
-borderRadius: '{radii.2xs}',
-padding: '{space.2} 0',
-flexDirection: 'column',
-overflow: 'hidden'
-},
-'.search-result-content-head': {
-display: 'flex',
-alignItems: 'center',
-gap: '{space.2}',
-svg: {
-flexShrink: '0',
-opacity: '0.5',
-width: '{size.20}',
-height: '{size.20}',
-marginLeft: '{space.2}',
-marginRight: '{space.2}',
-},
-span: {
-whiteSpace: 'nowrap',
-},
-'.arrow': {
-opacity: '0.5'
-},
-},
-'.search-result-content-preview': {
-truncate: true,
-position: 'relative',
-color: '{elements.text.secondary.color.static}',
-},
-':deep(mark)': {
-color: '{docus.search.results.highlight.color}',
-backgroundColor: '{docus.search.results.highlight.backgroundColor}',
-}
-}
-}
-}
+      '.search-result': {
+        padding: '{space.1} {space.2}',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        '&.selected': {
+          backgroundColor: '{docus.search.results.selected.backgroundColor}',
+        },
+        '.search-result-content-wrapper': {
+          display: 'flex',
+          gap: '{space.2}',
+          borderRadius: '{radii.2xs}',
+          padding: '{space.2} 0',
+          flexDirection: 'column',
+          overflow: 'hidden'
+        },
+        '.search-result-content-head': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '{space.2}',
+          svg: {
+            flexShrink: '0',
+            opacity: '0.5',
+            width: '{size.20}',
+            height: '{size.20}',
+            marginLeft: '{space.2}',
+            marginRight: '{space.2}',
+          },
+          span: {
+            whiteSpace: 'nowrap',
+          },
+          '.arrow': {
+            opacity: '0.5'
+          },
+        },
+        '.search-result-content-preview': {
+          truncate: true,
+          position: 'relative',
+          color: '{elements.text.secondary.color.static}',
+        },
+        ':deep(mark)': {
+          color: '{docus.search.results.highlight.color}',
+          backgroundColor: '{docus.search.results.highlight.backgroundColor}',
+        }
+      }
+    }
+  }
 })
 </style>
