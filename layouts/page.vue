@@ -1,5 +1,12 @@
 <script setup lang="ts">
 const { config } = useDocus()
+useHead({
+  link: {
+    rel: 'search',
+    type: 'application/opensearchdescription+xml',
+    href: 'opensearch.xml'
+  }
+})
 </script>
 
 <template>
@@ -17,10 +24,10 @@ const { config } = useDocus()
 
 <style lang="ts" scoped>
 css({
-  '.page-layout': {
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative'
-  }
+'.page-layout': {
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative'
+}
 })
 </style>

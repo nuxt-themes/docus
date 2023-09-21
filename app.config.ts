@@ -41,6 +41,10 @@ export default defineAppConfig({
       repo: undefined,
       owner: undefined,
       edit: false
+    },
+
+    opensearch: {
+      url: 'https://docus.dev'
     }
   }
 })
