@@ -710,14 +710,6 @@ const cardGrid = {
   },
 }
 
-// docs: {
-//   spacing: {
-//     initial: '0px',
-//     lg: '{space.6}',
-//     xl: '{space.8}'
-//   }
-// }
-
 const docsLayout = {
   root: 'relative flex lg:grid flex-col-reverse lg:gap-6 xl:gap-8',
   layout: '[&.has-toc]:lg:grid-cols-[minmax(320px,1fr)minmax(200px,200px)] [&.has-toc]:xl:grid-cols-[minmax(320px,1fr)minmax(250px,250px)] [&.has-aside]:lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)] [&.has-aside]:xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)] [&.has-aside.has-toc]:lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)minmax(200px,200px)] [&.has-aside.has-toc]:xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)minmax(250px,250px)]',
@@ -729,6 +721,17 @@ const docsLayout = {
     padding: 'lg:py-6 xl:py-8 lg:pe-6 xl:pe-8',
     top: 'lg:top-[var(--app-header-height)]',
     height: 'lg:h-[calc(100vh-var(--app-header-height))]',
+  },
+  content: {
+    root: {
+      position: 'relative',
+      display: 'flex flex-1 flex-col',
+      padding: 'py-8 lg:py-12',
+      width: 'w-full',
+      margin: 'mx-auto lg:mt-0',
+      //     maxWidth: '{docus.readableLine}',
+    },
+    bottom: 'flex flex-col gap-8'
   },
   toc: {
     root: {
@@ -778,37 +781,6 @@ const docsLayout = {
   }
 }
 
-// css({
-//   '.docs-page-content': {
-//   '.page-content': {
-//     position: 'relative',
-//     display: 'flex',
-//     flexDirection: "column",
-//     flex: '1 1 0%',
-//     py: '{space.8}',
-//     width: '100%',
-//     maxWidth: '{docus.readableLine}',
-//     mx: 'auto',
-//     '.page-content-bottom': {
-//       display: 'flex',
-//       flexDirection: 'column',
-//       gap: '{space.8}',
-//     },
-//     '@lg': {
-//       marginTop: 0,
-//       py: '{space.12}',
-//     },
-//     '.docs-prev-next': {
-//       marginTop: '{space.4}'
-//     }
-//   },
-//   '.toc': {
-//     '.toc-wrapper': {
-
-//     }
-//   }
-// })
-
 const docsToc = {
   root: 'flex flex-col gap-2',
   title: 'hidden lg:block overflow-hidden text-sm font-semibold',
@@ -816,35 +788,8 @@ const docsToc = {
 }
 
 const docsTocLinks = {
-  link: 'block truncate py-1 lg:pe-3 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50',
+  link: 'block truncate py-1 lg:pe-3 text-sm text-gray-500 dark:text-gray-400 [&.active]:text-primary-500',
 }
-
-// css({
-//   '.docs-toc-links': {
-//     a: {
-//       display: 'block',
-//       padding: '{space.1} 0',
-//       fontSize: '{text.sm.fontSize}',
-//       lineHeight: '{text.sm.lineHeight}',
-//       color: '{color.gray.500}',
-//       truncate: true,
-//       '@lg': {
-//         paddingInlineEnd: '{space.3}'
-//       },
-//       '&:not(.active):hover': {
-//         color: '{color.gray.900}',
-//       },
-//       '@dark': {
-//         '&:not(.active):hover': {
-//           color: '{color.gray.400}',
-//         },
-//       },
-//       '&.active': {
-//         color: '{color.primary.500}'
-//       }
-//     }
-//   }
-// })
 
 const docsPrevNext = {
   root: 'grid grid-cols-1 sm:grid-cols-2 gap-8',
@@ -884,6 +829,34 @@ const docsContentBottom = {
   editLink: 'flex flex-1 items-center gap-2',
 }
 
+const codeGroup = {
+  root: 'w-full overflow-hidden border rounded ' + border.primary.static,
+}
+
+const codeGroupTabs = {
+  tabs: 'relative z-0 flex overflow-x-auto',
+  tab: {
+    display: 'flex items-center flex-1',
+    padding: 'py-2 px-4',
+    position: 'relative',
+    fontFamily: 'font-mono',
+    fontSize: 'text-sm',
+    letterSpacing: 'tracking-tight',
+    border: '[.two-tabs_&&:first-of-type]:border-e [&.active]:border-b-transparent [&.inactive]:border-b [&.active]:border-b first-of-type:border-0 last-of-type:border-0 border-x ' + border.primary.static,
+    textAlign: 'text-start',
+    userSelect: 'select-none',
+    backgroundColor: '[&.inactive]:bg-gray-100 [&.inactive]:dark:bg-black',
+    //       backgroundColor: {
+    //         initial: '{color.gray.50}',
+    //         dark: '{prose.code.block.backgroundColor}'
+    //       },
+    color: '[&.inactive]:text-gray-500 [&.inactive]:hover:text-gray-900 [&.inactive]:hover:dark:text-gray-300 [&.active]:text-gray-900 [&.active]:dark:text-gray-300',
+    filter: '[&.inactive]:grayscale [&.inactive]:hover:grayscale-0',
+    
+  },
+  icon: 'w-4 h-4 me-2',
+}
+
 export default {
   text,
   state,
@@ -913,5 +886,7 @@ export default {
   docsToc,
   docsTocLinks,
   docsPrevNext,
-  docsContentBottom
+  docsContentBottom,
+  codeGroup,
+  codeGroupTabs
 }

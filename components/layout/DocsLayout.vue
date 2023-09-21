@@ -77,16 +77,24 @@ onBeforeUnmount(() => {
       />
     </aside>
 
-    <article class="page-content">
-      <slot v-if="hasContent" />
+    <article
+      class="page-content"
+      :class="[Object.values(tokens.docsLayout.content.root)]"
+    >
+      <div class="prose prose-gray">
+        <slot v-if="hasContent" />
       <!-- <Alert
         v-else
         type="info"
       >
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert> -->
+      </div>
       <template v-if="hasContent && page && bottom">
-        <div class="page-content-bottom">
+        <div
+          class="page-content-bottom"
+          :class="[tokens.docsLayout.content.bottom]"
+        >
           <DocsContentBottom />
           <DocsPrevNext />
         </div>
@@ -128,7 +136,3 @@ onBeforeUnmount(() => {
     </div>
   </Container>
 </template>
-
-<style scoped lang="ts">
-
-</style>
