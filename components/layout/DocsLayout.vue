@@ -87,7 +87,7 @@ onBeforeUnmount(() => {
       </Alert> -->
       <template v-if="hasContent && page && bottom">
         <div class="page-content-bottom">
-          <!-- <DocsContentBottom /> -->
+          <DocsContentBottom />
           <DocsPrevNext />
         </div>
       </template>

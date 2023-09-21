@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
+
 const { page } = useContent()
 const { config } = useDocus()
 </script>
@@ -7,17 +11,19 @@ const { config } = useDocus()
   <div
     v-if="page"
     class="docs-page-bottom"
+    :class="[tokens.docsContentBottom.root]"
   >
     <div
       v-if="config?.github?.edit"
       class="edit-link"
+      :class="[tokens.docsContentBottom.editLink]"
     >
       <Icon name="uil:edit" />
       <DocsEditOn
         v-slot="{ url }"
         :page="page"
       >
-        <ProseA :to="url">
+        <ProseA :href="url">
           <span>
             Edit this page on GitHub
           </span>
@@ -31,23 +37,5 @@ const { config } = useDocus()
 </template>
 
 <style scoped lang="ts">
-css({
-  '.docs-page-bottom': {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    gap: '{space.4}',
-    marginTop: '{space.8}',
-    fontSize: '{text.sm.fontSize}',
-    lineHeight: '{text.sm.lineHeight}',
-    color: '{elements.text.secondary.color.static}',
-    '.edit-link': {
-      flex: 1,
-      display: 'flex',
-      alignItems: 'center',
-      gap: '{space.2}'
-    }
-  }
-})
+
 </style>

@@ -879,6 +879,11 @@ const docsPrevNext = {
   }
 }
 
+const docsContentBottom = {
+  root: 'flex items-center justify-between gap-4 mt-8 text-sm' + ' ' + text.secondary.static,
+  editLink: 'flex flex-1 items-center gap-2',
+}
+
 export default {
   text,
   state,
@@ -907,5 +912,6 @@ export default {
   docsLayout,
   docsToc,
   docsTocLinks,
-  docsPrevNext
+  docsPrevNext,
+  docsContentBottom
 }
