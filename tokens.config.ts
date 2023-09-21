@@ -720,9 +720,7 @@ const cardGrid = {
 
 const docsLayout = {
   root: 'relative flex lg:grid flex-col-reverse lg:gap-6 xl:gap-8',
-  hasToc: 'lg:grid-cols-[minmax(320px,1fr)minmax(200px,200px)] xl:grid-cols-[minmax(320px,1fr)minmax(250px,250px)]',
-  hasAside: 'lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)] xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)]',
-  hasAsideHasToc: 'lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)minmax(200px,200px)] xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)minmax(250px,250px)]',
+  layout: '[&.has-toc]:lg:grid-cols-[minmax(320px,1fr)minmax(200px,200px)] [&.has-toc]:xl:grid-cols-[minmax(320px,1fr)minmax(250px,250px)] [&.has-aside]:lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)] [&.has-aside]:xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)] [&.has-aside.has-toc]:lg:grid-cols-[minmax(200px,200px)minmax(320px,1fr)minmax(200px,200px)] [&.has-aside.has-toc]:xl:grid-cols-[minmax(250px,250px)minmax(320px,1fr)minmax(250px,250px)]',
   asideNav: {
     display: 'hidden lg:block',
     position: 'lg:sticky',
@@ -753,7 +751,7 @@ const docsLayout = {
       width: 'w-full',
       height: 'h-full',
       backdropFilter: backdrop.filter + ' lg:backdrop-filter-none',
-      backgroundColor: backdrop.backgroundColor + ' lg:bg-transparent',
+      backgroundColor: backdrop.backgroundColor + ' lg:bg-transparent dark:lg:bg-transparent',
     },
     button: {
       display: 'flex lg:hidden',
@@ -776,15 +774,6 @@ const docsLayout = {
       display: 'hidden [&.opened]:block lg:block',
       margin: 'mb-4 lg:mt-0',
       opened: '[&.opened]:px-4 [&.opened]:sm:px-6 [&.opened]:lg:px-0 [&.opened]:overflow-auto [&.opened]:max-h-[50vh] [&.opened]:lg:max-h-none'
-      //       '.docs-toc-wrapper': {
-      //         '&.opened': {
-      //           maxHeight: '50vh',
-      //           overflow: 'auto',
-      //           '@lg': {
-      //             maxHeight: 'none',
-      //           },
-      //         },
-      //       }
     }
   }
 }
@@ -857,6 +846,39 @@ const docsTocLinks = {
 //   }
 // })
 
+const docsPrevNext = {
+  root: 'grid grid-cols-1 sm:grid-cols-2 gap-8',
+  directory: {
+    display: 'block',
+    marginBottom: 'mb-3',
+    fontSize: 'text-xs',
+    fontWeight: 'font-medium',
+    color: 'text-gray-500',
+  },
+  icon: {
+    width: 'w-8',
+    height: 'h-8',
+    marginBottom: 'mb-4',
+  },
+  title: {
+    color: 'group-hover:text-primary-500',
+    fontWeight: 'font-medium',
+    marginBottom: 'mb-2',
+  },
+  description: {
+    fontSize: 'text-sm',
+    color: 'text-gray-500',
+    clamp: 'line-clamp-3'
+  },
+  link: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'flex-col',
+    padding: 'p-6',
+    border: 'border rounded-2xs ' + border.primary.static,
+  }
+}
+
 export default {
   text,
   state,
@@ -884,5 +906,6 @@ export default {
   cardGrid,
   docsLayout,
   docsToc,
-  docsTocLinks
+  docsTocLinks,
+  docsPrevNext
 }

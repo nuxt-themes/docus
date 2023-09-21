@@ -60,7 +60,7 @@ onBeforeUnmount(() => {
   <Container
     :padded="config?.main?.padded"
     class="docs-page-content"
-    :class="[hasToc && tokens.docsLayout.hasToc, hasAside && tokens.docsLayout.hasAside, hasToc && hasAside && tokens.docsLayout.hasAsideHasToc, tokens.docsLayout.root]"
+    :class="[hasToc && 'has-toc', hasAside && 'has-aside', tokens.docsLayout.layout, tokens.docsLayout.root]"
   >
     <aside
       ref="asideNav"
@@ -77,21 +77,21 @@ onBeforeUnmount(() => {
       />
     </aside>
 
-    <!-- <article class="page-content">
+    <article class="page-content">
       <slot v-if="hasContent" />
-      <Alert
+      <!-- <Alert
         v-else
         type="info"
       >
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
-      </Alert>
+      </Alert> -->
       <template v-if="hasContent && page && bottom">
         <div class="page-content-bottom">
-          <DocsContentBottom />
+          <!-- <DocsContentBottom /> -->
           <DocsPrevNext />
         </div>
       </template>
-    </article> -->
+    </article>
 
     <div
       v-if="hasToc"
