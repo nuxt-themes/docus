@@ -4,6 +4,7 @@
   "type": "module",
   "main": "./nuxt.config.ts",
   "packageManager": "pnpm@8.5.1",
+  "repository": "nuxt-themes/docus",
   "files": [
     "app",
     "assets",
@@ -28,26 +29,26 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxt/content": "^2.7.0",
-    "@nuxthq/studio": "^0.13.2",
+    "@nuxt/content": "^2.8.2",
+    "@nuxthq/studio": "^0.14.1",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@tailwindcss/typography": "^0.5.9",
-    "@vueuse/integrations": "^10.2.1",
-    "@vueuse/nuxt": "^10.2.1",
-    "focus-trap": "^7.4.3",
+    "@tailwindcss/typography": "^0.5.10",
+    "@vueuse/integrations": "^10.4.1",
+    "@vueuse/nuxt": "^10.4.1",
+    "focus-trap": "^7.5.3",
     "fuse.js": "^6.6.2",
-    "nuxt-icon": "^0.4.2"
+    "nuxt-icon": "^0.5.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.6.4",
-    "@nuxt/eslint-config": "^0.1.1",
-    "@types/node": "^20.3.2",
-    "eslint": "^8.43.0",
-    "nuxt": "^3.6.1",
-    "release-it": "^15.11.0",
-    "typescript": "^5.1.5",
-    "vite-plugin-inspect": "^0.7.30",
+    "@nuxt/devtools": "^0.8.5",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@types/node": "^20.6.5",
+    "eslint": "^8.50.0",
+    "nuxt": "^3.7.3",
+    "release-it": "^16.2.0",
+    "typescript": "^5.2.2",
+    "vite-plugin-inspect": "^0.7.38",
     "vue": "^3.3.4"
   },
   "pnpm": {

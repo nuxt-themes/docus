@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
         // Only use `.md` files which are not drafts and has content
           return doc?._extension === 'md' &&
           doc?._draft === false &&
-          doc?._empty === false
+          !doc?._empty
         }
       )
       .map(

@@ -10,12 +10,12 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "^2.0.0-beta.12",
-    "@nuxt/devtools": "^0.6.4",
-    "@nuxt/eslint-config": "^0.1.1",
-    "@nuxtjs/plausible": "^0.2.1",
-    "@types/node": "^20.3.2",
-    "eslint": "^8.43.0",
-    "nuxt": "^3.6.1"
+    "@nuxt-themes/docus": "latest",
+    "@nuxt/devtools": "^0.8.5",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/plausible": "^0.2.3",
+    "@types/node": "^20.6.5",
+    "eslint": "^8.50.0",
+    "nuxt": "^3.7.3"
   }
 }
