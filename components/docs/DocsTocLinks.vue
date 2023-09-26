@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { TocLink } from '@nuxt/content/dist/runtime/types'
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
 
 defineProps({
   links: {
@@ -31,7 +34,7 @@ function scrollToHeading (id: string) {
   emit('move', id)
 }
 
-function childMove(id: string) {
+function childMove (id: string) {
   emit('move', id)
 }
 </script>
@@ -41,11 +44,11 @@ function childMove(id: string) {
     <li
       v-for="link in links"
       :key="link.text"
-      :class="[`depth-${link.depth}`]"
+      :class="[link.depth === 3 && 'ps-3', link.depth === 4 && 'ps-6']"
     >
       <a
         :href="`#${link.id}`"
-        :class="[activeHeadings.includes(link.id) && 'active']"
+        :class="[activeHeadings.includes(link.id) && 'active', tokens.docsTocLinks.link]"
         @click.prevent="scrollToHeading(link.id)"
       >
         {{ link.text }}
@@ -58,38 +61,3 @@ function childMove(id: string) {
     </li>
   </ul>
 </template>
-
-<style scoped lang="ts">
-css({
-  '.docs-toc-links': {
-    '.depth-3': {
-      paddingLeft: '{space.3}'
-    },
-    '.depth-4': {
-      paddingLeft: '{space.6}'
-    },
-    a: {
-      display: 'block',
-      padding: '{space.1} 0',
-      fontSize: '{text.sm.fontSize}',
-      lineHeight: '{text.sm.lineHeight}',
-      color: '{color.gray.500}',
-      truncate: true,
-      '@lg': {
-        paddingRight: '{space.3}'
-      },
-      '&:not(.active):hover': {
-        color: '{color.gray.900}',
-      },
-      '@dark': {
-        '&:not(.active):hover': {
-          color: '{color.gray.400}',
-        },
-      },
-      '&.active': {
-        color: '{color.primary.500}'
-      }
-    }
-  }
-})
-</style>

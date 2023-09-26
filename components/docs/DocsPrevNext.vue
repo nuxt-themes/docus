@@ -1,155 +1,120 @@
 <script setup lang="ts">
-import { upperFirst } from 'scule'
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
 
 const { prev, next, navigation } = useContent()
-const { navDirFromPath } = useContentHelpers()
 
-const directory = (link: any) => {
-  const nav = navDirFromPath(link._path, navigation.value || [])
-
-  if (nav && nav[0]) {
-    return nav[0]?._path ?? ''
-  } else {
-    const dirs = link.split('/')
-    const directory = dirs.length > 1 ? dirs[dirs.length - 2] : ''
-    return directory.split('-').map(upperFirst).join(' ')
+function findNavItem (children: any, path: string, parent: any) {
+  for (const child of children) {
+    if (child._path === path) {
+      return {
+        directoryTitle: parent.title,
+        directoryIcon: parent.icon
+      }
+    }
+    if (child.children) {
+      const result: any = findNavItem(child.children, path, child)
+      if (result) {
+        return result
+      }
+    }
   }
+  return undefined
 }
+
+function getNavItemMeta (path: string) {
+  let result
+  for (const item of navigation.value) {
+    if (item.children) {
+      const found = findNavItem(item.children, path, item)
+      if (found) {
+        result = found
+      }
+    }
+  }
+  return result
+}
+
+const prevMeta = computed(() => {
+  if (prev.value?._path) {
+    return getNavItemMeta(prev.value._path)
+  }
+  return undefined
+})
+
+const nextMeta = computed(() => {
+  if (next.value?._path) {
+    return getNavItemMeta(next.value._path)
+  }
+  return undefined
+})
 </script>
 
 <template>
   <div
     v-if="prev || next"
     class="docs-prev-next"
+    :class="[tokens.docsPrevNext.root]"
   >
     <NuxtLink
       v-if="prev && prev._path"
       :to="prev._path"
-      class="prev"
+      class="prev group"
+      :class="[Object.values(tokens.docsPrevNext.link)]"
     >
       <Icon
-        name="heroicons-outline:arrow-sm-left"
-        class="icon"
+        v-if="prev.icon || prevMeta?.directoryIcon"
+        :name="prev.icon || prevMeta?.directoryIcon"
+        :class="[Object.values(tokens.docsPrevNext.icon)]"
       />
-      <div class="wrapper">
-        <span
-          v-if="directory(prev._path)"
-          class="directory"
-        >
-          {{ directory(prev._path) }}
-        </span>
-        <span class="title">{{ prev.title }}</span>
-      </div>
+      <span
+        v-if="prevMeta"
+        class="directory"
+        :class="[Object.values(tokens.docsPrevNext.directory)]"
+      >
+        {{ prevMeta?.directoryTitle }}
+      </span>
+      <span
+        class="title"
+        :class="[Object.values(tokens.docsPrevNext.title)]"
+      >{{ prev.title }}</span>
+      <span
+        class="description"
+        :class="[Object.values(tokens.docsPrevNext.description)]"
+      >{{ prev.description }}</span>
     </NuxtLink>
-
-    <span v-else />
 
     <NuxtLink
       v-if="next && next._path"
       :to="next._path"
-      class="next"
+      class="next group"
+      :class="[Object.values(tokens.docsPrevNext.link)]"
     >
-      <div class="wrapper">
-        <span
-          v-if="directory(next._path)"
-          class="directory"
-        >
-          {{ directory(next._path) }}
-        </span>
-        <span class="title">{{ next.title }}</span>
-      </div>
       <Icon
-        name="heroicons-outline:arrow-sm-right"
-        class="icon"
+        v-if="next.icon || nextMeta?.directoryIcon"
+        :name="next.icon || nextMeta?.directoryIcon"
+        :class="[Object.values(tokens.docsPrevNext.icon)]"
       />
+      <span
+        v-if="nextMeta"
+        class="directory"
+        :class="[Object.values(tokens.docsPrevNext.directory)]"
+      >
+        {{ nextMeta?.directoryTitle }}
+      </span>
+      <span
+        class="title"
+        :class="[Object.values(tokens.docsPrevNext.title)]"
+      >{{ next.title }}</span>
+      <span
+        class="description"
+        :class="[Object.values(tokens.docsPrevNext.description)]"
+      >{{ next.description }}</span>
     </NuxtLink>
   </div>
 </template>
 
 <style scoped lang="ts">
-css({
-  '.docs-prev-next': {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    gap: '{space.3}',
-    '@sm': {
-      flexDirection: 'row',
-      alignItems: 'center'
-    },
-    a: {
-      position: 'relative',
-      minWidth: '0px',
-      padding: '{space.3}',
-      border: '1px solid {elements.border.primary.static}',
-      borderRadius: '{radii.md}',
-      '&:hover': {
-        backgroundColor: '{color.gray.50}',
-        borderColor: '{color.gray.50}',
-        color: '{color.primary.500}',
-      },
-      '@dark': {
-        '&:hover': {
-          backgroundColor: '{color.gray.900}',
-          borderColor: '{color.gray.900}',
-        }
-      },
-      '&.prev': {
-        textAlign: 'left',
-        display: 'flex',
-        gap: '{space.3}',
-        '.directory': {
-          display: 'block',
-          marginBottom: '{space.1}',
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeight.medium}',
-          color: '{color.gray.500}',
-          truncate: true
-        },
-        '@sm': {
-          '.wrapper': {
-            alignItems: 'flex-end'
-          }
-        }
-      },
-      '&.next': {
-        textAlign: 'right',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: '{space.3}',
-        '.directory': {
-          display: 'block',
-          marginBottom: '{space.1}',
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeight.medium}',
-          color: '{color.gray.500}',
-          truncate: true
-        },
-        '@sm': {
-          '.wrapper': {
-            alignItems: 'flex-start'
-          }
-        }
-      },
-      '.wrapper': {
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      '.icon': {
-        alignSelf: 'flex-end',
-        flexShrink: 0,
-        width: '{space.5}',
-        height: '{space.5}'
-      },
-      '.title': {
-        flex: '1 1 0%',
-        fontWeight: '{fontWeight.medium}',
-        lineHeight: '{lead.5}',
-        truncate: true
-      }
-    }
-  }
-})
+
 </style>

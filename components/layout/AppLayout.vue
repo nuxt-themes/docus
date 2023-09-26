@@ -1,0 +1,34 @@
+<script setup lang="ts">
+const { config } = useDocus()
+
+useHead({
+  titleTemplate: config.value.titleTemplate,
+  meta: [
+    { name: 'twitter:card', content: 'summary_large_image' }
+  ]
+})
+
+watch(
+  () => config.value.titleTemplate,
+  () => useHead({ titleTemplate: config.value.titleTemplate })
+)
+
+useContentHead(config.value as any)
+</script>
+
+<template>
+  <div class="app-layout">
+    <AppLoadingBar />
+    <AppHeader />
+    <main class="min-h-[calc(100vh-var(--app-header-height)-var(--app-footer-height))]">
+      <slot />
+    </main>
+    <AppFooter />
+  </div>
+</template>
+
+<style scoped>
+/* main {
+  minHeight: 'calc(100vh - {docus.app.header.height} - {docus.app.footer.height})',
+} */
+</style>

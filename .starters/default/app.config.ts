@@ -4,13 +4,8 @@ export default defineAppConfig({
     description: 'The best place to start your documentation.',
     image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
     socials: {
-      twitter: 'nuxt_js',
-      github: 'nuxt-themes/docus',
-      nuxt: {
-        label: 'Nuxt',
-        icon: 'simple-icons:nuxtdotjs',
-        href: 'https://nuxt.com'
-      }
+      twitter: 'nuxtstudio',
+      github: 'nuxt-themes/docus'
     },
     github: {
       dir: '.starters/default/content',
@@ -20,19 +15,28 @@ export default defineAppConfig({
       edit: true
     },
     aside: {
-      level: 0,
+      level: 1,
       collapsed: false,
-      exclude: []
+      exclude: [],
+      navigation: true
     },
     main: {
       padded: true,
-      fluid: true
     },
     header: {
+      title: '',
       logo: true,
       showLinkIcon: true,
       exclude: [],
-      fluid: true
+      navigation: false
+    },
+    footer: {
+      iconLinks: [
+        {
+          href: 'https://nuxt.com',
+          icon: 'simple-icons:nuxtdotjs'
+        }
+      ]
     }
   }
 })

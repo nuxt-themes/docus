@@ -1,52 +1,93 @@
-/* Base */
-
-:root {
-  /* DocSearch */
-  --docsearch-primary-color: $dt('color.primary.500') !important;
-}
-
 .dark:root {
   color-scheme: dark;
-  /* DocSearch */
-  --docsearch-primary-color: $dt('color.primary.500') !important;
-  --docsearch-text-color: rgb(245, 246, 247);
-  --docsearch-container-background: rgba(9, 10, 17, 0.8);
-  --docsearch-modal-background: rgb(21, 23, 42);
-  --docsearch-modal-shadow: inset 1px 1px 0 0 rgb(44, 46, 64),
-    0 3px 8px 0 rgb(0, 3, 9);
-  --docsearch-searchbox-background: rgb(9, 10, 17);
-  --docsearch-searchbox-focus-background: #000;
-  --docsearch-hit-color: rgb(190, 195, 201);
-  --docsearch-hit-shadow: none;
-  --docsearch-hit-background: rgb(9, 10, 17);
-  --docsearch-key-gradient: linear-gradient(
-    -26.5deg,
-    rgb(86, 88, 114) 0%,
-    rgb(49, 53, 91) 100%
-  );
-  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(40, 45, 85),
-    inset 0 0 1px 1px rgb(81, 87, 125), 0 2px 2px 0 rgba(3, 4, 9, 0.3);
-  --docsearch-footer-background: rgb(30, 33, 54);
-  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
-    0 -4px 8px 0 rgba(0, 0, 0, 0.2);
-  --docsearch-logo-color: rgb(255, 255, 255);
-  --docsearch-muted-color: rgb(127, 132, 151);
+
+  --color-shadow: var(--color-black);
 }
-.DocSearch-Input:focus {
-  box-shadow: none !important;
+
+/* Use colors from tailwind.config.ts orange */
+:root {
+  /* --color-primary-50: #FFF7F2;
+  --color-primary-100: #FFEFE5;
+  --color-primary-200: #FFE5D7;
+  --color-primary-300: #FDAC7E;
+  --color-primary-400: #FC8E51;
+  --color-primary-500: #FA630E;
+  --color-primary-600: #7E3004;
+  --color-primary-700: #3F1802;
+  --color-primary-800: #2D1102;
+  --color-primary-900: #1A0A01;
+  --color-secondary-50: #F8F5FF;
+  --color-secondary-100: #F1ECFF;
+  --color-secondary-200: #E5DCFF;
+  --color-secondary-300: #A589F9;
+  --color-secondary-400: #8961FD;
+  --color-secondary-500: #6B39FA;
+  --color-secondary-600: #370DAD;
+  --color-secondary-700: #200273;
+  --color-secondary-800: #14014A;
+  --color-secondary-900: #080020; */
+
+  --color-black: 14 13 13;
+
+  --color-primary-50: 255 247 242;
+  --color-primary-100: 255 239 229;
+  --color-primary-200: 255 229 215;
+  --color-primary-300: 253 172 126;
+  --color-primary-400: 252 142 81;
+  --color-primary-500: 250 99 14;
+  --color-primary-600: 126 48 4;
+  --color-primary-700: 63 24 2;
+  --color-primary-800: 45 17 2;
+  --color-primary-900: 26 10 1;
+  --color-secondary-50: 248 245 255;
+  --color-secondary-100: 241 236 255;
+  --color-secondary-200: 229 220 255;
+  --color-secondary-300: 165 137 249;
+  --color-secondary-400: 137 97 253;
+  --color-secondary-500: 107 57 250;
+  --color-secondary-600: 55 13 173;
+  --color-secondary-700: 32 2 115;
+  --color-secondary-800: 20 1 74;
+  --color-secondary-900: 8 0 32;
+
+  /* --color-gray-50: 251 251 251;
+  --color-gray-100: 243 243 242;
+  --color-gray-200: 236 235 232;
+  --color-gray-300: 219 217 211;
+  --color-gray-400: 173 169 164;
+  --color-gray-500: 151 148 143;
+  --color-gray-600: 61 59 56;
+  --color-gray-700: 41 39 36;
+  --color-gray-800: 28 27 25;
+  --color-gray-900: 18 17 16; */
+
+  /* from temp */
+  --color-gray-50: 251 251 251;
+  --color-gray-100: 246 245 244;
+  --color-gray-200: 236 235 232;
+  --color-gray-300: 219 217 211;
+  --color-gray-400: 173 169 164;
+  --color-gray-500: 151 148 143;
+  --color-gray-600: 103 99 93;
+  --color-gray-700: 54 51 46;
+  --color-gray-800: 32 30 27;
+  --color-gray-900: 18 17 16;
+
+  --color-shadow: var(--color-gray-400);
 }
 
 body {
-  overflow-y: scroll;
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
+  /* overflow-y: scroll; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $dt('docus.body.backgroundColor');
-  color: $dt('docus.body.color');
-  font-family: $dt('docus.body.fontFamily');
-  min-width: $dt('size.xs');
+  /* background-color: $dt('docus.body.backgroundColor'); */
+  /* color: $dt('docus.body.color'); */
+  /* font-family: $dt('docus.body.fontFamily'); */
+  /* min-width: $dt('size.xs'); */
 }
 
-.docus-scrollbars {
+/* .docus-scrollbars {
   & ::-webkit-scrollbar {
     width: 0.6em;
     height: 0.6em;
@@ -83,4 +124,4 @@ body {
       }
     }
   }
-}
+} */

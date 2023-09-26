@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const socials = ['twitter', 'facebook', 'instagram', 'tiktok', 'youtube', 'github', 'medium']
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
+
+const socials = ['twitter', 'facebook', 'instagram', 'youtube', 'github', 'medium']
 
 const { config } = useDocus()
 
@@ -10,7 +14,7 @@ const icons = computed<any>(() => {
         return value
       } else if (typeof value === 'string' && value && socials.includes(key)) {
         return {
-          href: /^https?:\/\//.test(value) ? value : `https://${key}.com/${value}`,
+          href: `https://${key}.com/${value}`,
           icon: `fa-brands:${key}`,
           label: value,
           rel: 'noopener noreferrer'
@@ -26,12 +30,15 @@ const icons = computed<any>(() => {
 <template>
   <NuxtLink
     v-for="icon in icons"
+    v-bind="$attrs"
     :key="icon.label"
     :rel="icon.rel"
     :title="icon.label"
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
+    class="flex"
+    :class="Object.values(tokens.appSocialIcons)"
   >
     <Icon
       v-if="icon.icon"
@@ -39,24 +46,3 @@ const icons = computed<any>(() => {
     />
   </NuxtLink>
 </template>
-
-<style lang="ts" scoped>
-css({
-  a: {
-    display: 'flex',
-    color: '{color.gray.500}',
-    padding: '{space.4}',
-
-    '@dark': {
-      color: '{color.gray.400}'
-    },
-
-    '&:hover': {
-      color: '{color.gray.700}',
-      '@dark': {
-        color: '{color.gray.200}',
-      }
-    },
-  }
-})
-</style>

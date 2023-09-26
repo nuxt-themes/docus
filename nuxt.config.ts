@@ -6,10 +6,7 @@ const { resolve } = createResolver(import.meta.url)
 
 // That allows to overwrite these dependencies paths via `.env` for local development
 const envModules = {
-  tokens: process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
-  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '@nuxt-themes/elements',
   studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
-  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
 }
 
 const updateModule = defineNuxtModule({
@@ -42,14 +39,11 @@ export default defineNuxtConfig({
       }
     }
   },
-  extends: [
-    envModules.typography,
-    envModules.elements
-  ],
   modules: [
-    envModules.tokens,
     envModules.studio,
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    'nuxt-icon',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-config-schema',
@@ -62,6 +56,26 @@ export default defineNuxtConfig({
   components: [
     {
       prefix: '',
+      path: resolve('./components/layout'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/icons'),
+      global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/elements'),
+      global: true
+    },
+    // {
+    //   prefix: '',
+    //   path: resolve('./components/content'),
+    //   global: true
+    // },
+    {
+      prefix: '',
       path: resolve('./components/app'),
       global: true
     },
@@ -69,11 +83,13 @@ export default defineNuxtConfig({
       prefix: '',
       path: resolve('./components/docs'),
       global: true
+    },
+    {
+      prefix: '',
+      path: resolve('./components/landing'),
+      global: true
     }
   ],
-  pinceau: {
-    studio: true
-  },
   content: {
     documentDriven: true,
     highlight: {
@@ -89,10 +105,12 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
-    dataValue: 'theme'
+    dataValue: 'theme',
+    preference: 'dark'
   },
-  experimental: {
-    inlineSSRStyles: false
+  tailwindcss: {
+    cssPath: resolve('./assets/css/tailwind.css'),
+    configPath: resolve('./tailwind.config.ts')
   },
   typescript: {
     includeWorkspace: true

@@ -1,116 +1,92 @@
 <script setup lang="ts">
+import { useElementBounding, useMagicKeys } from '@vueuse/core'
+import appConfig from '#build/app.config'
+
 const { config } = useDocus()
 const { navigation } = useContent()
-const { hasDocSearch } = useDocSearch()
+const { y } = useWindowScroll()
+const route = useRoute()
 
-const hasDialog = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
+const { tokens } = appConfig
 
-defineProps({
-  ...variants
+const appHeaderRef = ref(null) as Ref<HTMLElement | null>
+
+const { height } = useElementBounding(appHeaderRef)
+
+const showDocsSearch = ref(false)
+
+const hasDrawer = computed(() => navigation.value?.length > 1 || navigation.value?.[0]?.children?.length)
+
+const isBasicLayout = computed(() => route.meta.layout === 'basic')
+
+const { meta_K, Escape } = useMagicKeys()
+
+watch(height, (value) => {
+  document.documentElement.style.setProperty('--app-header-height', `${value}px`)
+})
+
+watch(meta_K, (v) => {
+  if (v) {
+    showDocsSearch.value = !showDocsSearch.value
+  }
+})
+
+watch(Escape, () => {
+  if (showDocsSearch.value)
+    showDocsSearch.value = false
 })
 </script>
 
 <template>
-  <header :class="{ 'has-dialog': hasDialog }">
-    <Container :fluid="config?.header?.fluid ">
-      <div class="section left">
-        <AppHeaderDialog v-if="hasDialog" />
-        <AppHeaderLogo />
-      </div>
+  <header
+    ref="appHeaderRef"
+    class="app-header sticky top-0 z-10 w-full"
+    :class="[tokens.appHeader.height, isBasicLayout && y === 0 ? '' : `${tokens.appHeader.backdropFilter} ${tokens.appHeader.backgroundColor} ${tokens.appHeader.border}`]"
+  >
+    <Container padded>
+      <div
+        class="header-layout grid h-full"
+        :class="[tokens.appHeader.layout.gridTemplateColumns, tokens.appHeader.layout.gap]"
+      >
+        <div
+          class="section left lg:ms-0 flex items-center flex-none"
+          :class="[tokens.appHeader.layout.left.gridColumn]"
+        >
+          <AppHeaderDrawer v-if="hasDrawer" />
+          <AppHeaderLogo :class="{'hidden lg:block': hasDrawer}" />
+        </div>
 
-      <div class="section center">
-        <AppHeaderLogo v-if="hasDialog" />
-        <AppHeaderNavigation />
-      </div>
+        <div
+          class="section center flex items-center flex-none justify-center flex-1 z-1"
+          :class="[tokens.appHeader.layout.center.gridColumn]"
+        >
+          <AppHeaderLogo :class="[hasDrawer ? 'block lg:hidden' : 'hidden']" />
+          <AppNavigation
+            v-if="config.header.navigation"
+            class="hidden lg:flex"
+          />
+          <DocsSearchButton
+            v-else
+            class="hidden lg:flex lg:w-full"
+            @click="showDocsSearch = true"
+          />
+          <DocsSearch v-model="showDocsSearch" />
+        </div>
 
-      <div class="section right">
-        <AppDocSearch v-if="hasDocSearch" />
-        <AppSearch
-          v-else
-          :fuse="config.fuse"
-        />
-        <ThemeSelect />
-        <div class="social-icons">
-          <AppSocialIcons />
+        <div
+          class="section right -me-4 flex items-center flex-none justify-end items-center flex-none"
+          :class="[tokens.appHeader.layout.right.gridColumn]"
+        >
+          <DocsSearchButton
+            :class="[config.header.navigation ? 'flex': 'flex lg:hidden']"
+            @click="showDocsSearch = true"
+          />
+          <AppColorMode />
+          <div class="hidden md:flex md:items-center">
+            <AppSocialIcons :class="[tokens.appHeader.icon]" />
+          </div>
         </div>
       </div>
     </Container>
   </header>
 </template>
-
-<style scoped lang="ts">
-css({
-  ':deep(.icon)': {
-    width: '{space.4}',
-    height: '{space.4}'
-  },
-
-  '.navbar-logo': {
-    '.left &': {
-      '.has-dialog &': {
-        display: 'none',
-        '@lg': {
-          display: 'block'
-        }
-      },
-    },
-    '.center &': {
-      display: 'block',
-      '@lg': {
-        display: 'none'
-      }
-    }
-  },
-
-  header: {
-    backdropFilter: '{elements.backdrop.filter}',
-    position: 'sticky',
-    top: 0,
-    zIndex: 10,
-    width: '100%',
-    borderBottom: '1px solid {elements.border.primary.static}',
-    backgroundColor: '{elements.backdrop.background}',
-    height: '{docus.header.height}',
-
-    '.container': {
-      display: 'grid',
-      height: '100%',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      gap: '{space.2}'
-    },
-
-    '.section': {
-      display: 'flex',
-      alignItems: 'center',
-      flex: 'none',
-      '&.left': {
-        gridColumn: 'span 4 / span 4',
-        '@lg': {
-          marginLeft: 0
-        },
-      },
-      '&.center': {
-        gridColumn: 'span 4 / span 4',
-        justifyContent: 'center',
-        flex: '1',
-        zIndex: '1'
-      },
-      '&.right': {
-        display: 'flex',
-        gridColumn: 'span 4 / span 4',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        flex: 'none',
-        marginRight: 'calc(0px - {space.4})',
-        '.social-icons': {
-          display: 'none',
-          '@md': {
-            display: 'flex',
-            alignItems: 'center',
-          }
-        }
-      }
-    }
-  }
-})
-</style>

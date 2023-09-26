@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import appConfig from '#build/app.config'
+
+const { tokens } = appConfig
+
 const { config } = useDocus()
 const logo = computed(() => config.value.header?.logo || false)
 const title = computed(() => config.value.header?.title || config.value.title)
@@ -6,7 +10,7 @@ const title = computed(() => config.value.header?.title || config.value.title)
 
 <template>
   <NuxtLink
-    class="navbar-logo"
+    class="header-logo flex items-center flex-none"
     to="/"
     :aria-label="title"
   >
@@ -14,6 +18,7 @@ const title = computed(() => config.value.header?.title || config.value.title)
     <span
       v-if="logo"
       class="logo"
+      :class="Object.values(tokens.appHeaderLogo.logo)"
     >
       <component
         :is="logo"
@@ -23,12 +28,12 @@ const title = computed(() => config.value.header?.title || config.value.title)
         <img
           :src="logo.light"
           alt=""
-          class="light-img"
+          class="light-img block dark:hidden"
         >
         <img
           :src="logo.dark"
           alt=""
-          class="dark-img"
+          class="dark-img hidden dark:block"
         >
       </template>
       <Logo v-else-if="logo" />
@@ -38,47 +43,9 @@ const title = computed(() => config.value.header?.title || config.value.title)
     <span
       v-else
       class="title"
+      :class="Object.values(tokens.appHeaderLogo.title)"
     >
       {{ title }}
     </span>
   </NuxtLink>
 </template>
-
-<style lang="ts" scoped>
-css({
-  a: {
-    display: 'flex',
-    alignItems: 'center',
-    flex: 'none',
-
-    '.logo': {
-      height: '{docus.header.logo.height}',
-      width: 'auto',
-      'img, svg': {
-        height: 'inherit',
-      },
-      '.light-img': {
-        display: 'block',
-        '@dark': {
-          display: 'none'
-        }
-      },
-      '.dark-img': {
-        display: 'none',
-        '@dark': {
-          display: 'block'
-        }
-      },
-    },
-
-    '.title': {
-      fontSize: '{docus.header.title.fontSize}',
-      fontWeight: '{docus.header.title.fontWeight}',
-      color: '{docus.header.title.color.static}',
-      '&:hover': {
-        color: '{docus.header.title.color.hover}',
-      }
-    }
-  }
-})
-</style>

@@ -1,42 +1,68 @@
 <script setup lang="ts">
+import { useElementBounding } from '@vueuse/core'
+import appConfig from '#build/app.config'
+
+const appFooterRef = ref(null) as Ref<HTMLElement | null>
+
+const { height } = useElementBounding(appFooterRef)
+const { tokens } = appConfig
 const { config } = useDocus()
 const socialIcons = ref(null)
 const icons = computed(() => config.value?.footer?.iconLinks || [])
 const textLinks = computed(() => config.value?.footer?.textLinks || [])
 const socialIconsCount = computed(() => Object.entries(config.value?.socials || {}).filter(([, v]) => v).length)
 const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value : 0))
+
+watch(height, (value) => {
+  document.documentElement.style.setProperty('--app-footer-height', `${value}px`)
+})
 </script>
 
 <template>
-  <footer>
+  <footer
+    ref="appFooterRef"
+    :class="[Object.values(tokens.appFooter.root)]"
+  >
     <Container
-      :fluid="config?.footer?.fluid"
       padded
-      class="footer-container"
+      class="footer-layout"
+      :class="[Object.values(tokens.appFooter.layout.root)]"
     >
-      <!-- Left -->
-      <div class="left">
+      <div
+        class="left"
+        :class="[Object.values(tokens.appFooter.layout.left)]"
+      >
         <a
           v-if="config?.footer?.credits"
           :href="config?.footer?.credits?.href || '#'"
           rel="noopener"
           target="_blank"
+          class="footer-credits flex items-center"
+          :class="[Object.values(tokens.appFooter.credits.text)]"
         >
-          <Icon
+          <Component
+            :is="config?.footer?.credits?.icon"
             v-if="config?.footer?.credits?.icon"
-            :name="config?.footer?.credits?.icon"
-            class="left-icon"
+            class="credits-icon"
+            :class="[Object.values(tokens.appFooter.credits.icon)]"
           />
-          <p v-if="config?.footer?.credits?.text">{{ config.footer.credits.text }}</p>
+          <span
+            v-if="config?.footer?.credits?.text"
+          >
+            {{ config.footer.credits.text }}
+          </span>
         </a>
       </div>
 
-      <!-- Center -->
-      <div class="center">
+      <div
+        class="center"
+        :class="[Object.values(tokens.appFooter.layout.center)]"
+      >
         <NuxtLink
           v-for="link in textLinks"
           :key="link.href"
           class="text-link"
+          :class="[Object.values(tokens.appFooter.textLink)]"
           :aria-label="link.text"
           :href="link.href"
           :target="link?.target || '_self'"
@@ -46,12 +72,15 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         </NuxtLink>
       </div>
 
-      <!-- Right -->
-      <div class="right">
+      <div
+        class="right"
+        :class="[Object.values(tokens.appFooter.layout.right)]"
+      >
         <a
           v-for="icon in icons.slice(0, 6 - nbSocialIcons)"
           :key="icon.label"
           class="icon-link"
+          :class="[Object.values(tokens.appFooter.iconLink)]"
           :aria-label="icon.label"
           :href="icon.href"
           target="_blank"
@@ -59,120 +88,11 @@ const nbSocialIcons = computed(() => (socialIcons.value ? socialIconsCount.value
         >
           <Icon :name="icon.icon" />
         </a>
-        <AppSocialIcons ref="socialIcons" />
+        <AppSocialIcons
+          ref="socialIcons"
+          :class="[tokens.appFooter.iconLink.width, tokens.appFooter.iconLink.height]"
+        />
       </div>
     </Container>
   </footer>
 </template>
-
-<style lang="ts" scoped>
-css({
-  footer: {
-    display: 'flex',
-    minHeight: '{docus.footer.height}',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    borderTopColor: '{elements.border.primary.static}',
-    padding: '{docus.footer.padding}',
-
-    '.footer-container': {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      justifyItems: 'center',
-      gap: '{space.2}',
-      '@sm': {
-        justifyItems: 'legacy',
-
-      },
-
-      ':deep(.icon)': {
-        width: '{space.4}',
-        height: '{space.4}'
-      },
-
-      a: {
-        color: '{color.gray.500}',
-        '@dark': {
-          color: '{color.gray.400}'
-        },
-        '&:hover': {
-          color: '{color.gray.700}',
-          '@dark': {
-            color: '{color.gray.200}',
-          }
-        },
-      },
-
-      '.left': {
-        gridColumn: 'span 12 / span 12',
-        display: 'flex',
-        py: '{space.4}',
-        order: 1,
-
-        '@sm': {
-          gridColumn: 'span 3 / span 3',
-          order: 0,
-        },
-
-        a: {
-          display: 'flex',
-          alignItems: 'center',
-        },
-
-        p: {
-          fontSize: '{text.xs.fontSize}',
-          lineHeight: '{text.xs.lineHeight}',
-          fontWeight: '{fontWeight.medium}'
-        },
-
-        '&-icon': {
-          flexShrink: 0,
-          width: '{space.4}',
-          height: '{space.4}',
-          fill: 'currentcolor',
-          marginRight: '{space.2}',
-        },
-      },
-
-      '.center': {
-        gridColumn: 'span 12 / span 12',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-
-        '@sm': {
-          gridColumn: 'span 6 / span 6',
-          flexDirection: 'row',
-          justifyContent: 'center',
-        },
-
-        '.text-link': {
-          padding: '{space.2}',
-          fontSize: '{text.sm.fontSize}',
-          lineHeight: '{text.sm.lineHeight}',
-          fontWeight: '{fontWeight.medium}'
-        }
-
-      },
-
-      '.right': {
-        gridColumn: 'span 12 / span 12',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        // marginLeft: 'calc(0px - {space.4})',
-
-        '@sm': {
-          gridColumn: 'span 3 / span 3',
-          marginRight: 'calc(0px - {space.4})',
-        },
-
-        '.icon-link': {
-          display: 'flex',
-          padding: '{space.4}'
-        }
-      },
-    },
-  }
-})
-</style>
