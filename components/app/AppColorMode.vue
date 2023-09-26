@@ -20,13 +20,18 @@ const onClick = () => {
     @click="onClick"
   >
     <ColorScheme placeholder="...">
-      <Icon v-if="colorMode.preference === 'dark'" name="ph:moon-fill" />
-      <Icon v-else-if="colorMode.preference === 'light'" name="ph:sun-dim-fill" />
-      <Icon v-else name="ph:desktop-fill" />
+      <Icon
+        v-if="colorMode.preference === 'dark'"
+        name="ph:moon-fill"
+      />
+      <Icon
+        v-else-if="colorMode.preference === 'light'"
+        name="ph:sun-dim-fill"
+      />
+      <Icon
+        v-else
+        name="ph:desktop-fill"
+      />
     </ColorScheme>
   </button>
 </template>
-
-<style lang="ts" scoped>
-
-</style>

@@ -9,10 +9,21 @@ const title = computed(() => config.value.header?.title || config.value.title)
 </script>
 
 <template>
-  <NuxtLink class="header-logo flex items-center flex-none" to="/" :aria-label="title">
+  <NuxtLink
+    class="header-logo flex items-center flex-none"
+    to="/"
+    :aria-label="title"
+  >
     <!-- Only Logo -->
-    <span v-if="logo" class="logo" :class="Object.values(tokens.appHeaderLogo.logo)">
-      <component :is="logo" v-if="typeof logo === 'string'" />
+    <span
+      v-if="logo"
+      class="logo"
+      :class="Object.values(tokens.appHeaderLogo.logo)"
+    >
+      <component
+        :is="logo"
+        v-if="typeof logo === 'string'"
+      />
       <template v-else-if="logo.light && logo.dark">
         <img
           :src="logo.light"
@@ -29,12 +40,12 @@ const title = computed(() => config.value.header?.title || config.value.title)
     </span>
 
     <!-- Only title -->
-    <span v-else class="title" :class="Object.values(tokens.appHeaderLogo.title)">
+    <span
+      v-else
+      class="title"
+      :class="Object.values(tokens.appHeaderLogo.title)"
+    >
       {{ title }}
     </span>
   </NuxtLink>
 </template>
-
-<style lang="ts" scoped>
-
-</style>
