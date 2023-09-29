@@ -1579,8 +1579,8 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@nuxt/kit': 3.7.3(rollup@3.29.3)
-      '@nuxt/schema': 3.7.3(rollup@3.29.3)
+      '@nuxt/kit': 3.7.4(rollup@3.29.3)
+      '@nuxt/schema': 3.7.4(rollup@3.29.3)
       execa: 7.2.0
       nuxt: 3.7.4(@types/node@20.7.1)(eslint@8.50.0)(rollup@3.29.3)(typescript@5.2.2)
     transitivePeerDependencies:
