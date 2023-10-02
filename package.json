@@ -46,12 +46,12 @@
     "@nuxt/devtools": "^0.8.5",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/algolia": "^1.9.0",
-    "@types/node": "^20.7.1",
+    "@types/node": "^20.8.2",
     "eslint": "^8.50.0",
     "nuxt": "^3.7.4",
     "release-it": "^16.2.1",
     "typescript": "^5.2.2",
-    "vite-plugin-inspect": "^0.7.38",
+    "vite-plugin-inspect": "^0.7.40",
     "vue": "^3.3.4"
   },
   "pnpm": {
