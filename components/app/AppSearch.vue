@@ -164,6 +164,14 @@ function closeButtonHandler() {
   }
 }
 
+onMounted (() => {
+  const route = useRoute()
+  if (route.query.q) {
+    show.value = true
+    q.value = route.query.q
+  }
+})
+
 // Scroll to selected item on change
 watch(selected, value => {
   const nextId = results?.value?.[value]?.item?.id

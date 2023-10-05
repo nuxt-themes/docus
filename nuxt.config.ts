@@ -99,7 +99,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
+      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json'],
+      routes: ['/opensearch.xml']
     }
   },
 })
