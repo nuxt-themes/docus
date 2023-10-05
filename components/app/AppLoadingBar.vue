@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 const props = defineProps({
   throttle: {
     type: Number,
@@ -79,8 +75,8 @@ onBeforeUnmount(() => clear)
 
 <template>
   <div
-    class="nuxt-progress fixed top-0 start-0 end-0 w-0 opacity-100 z-[9999]"
-    :class="['nuxt-progress-failed' && !data.canSucceed, tokens.loadingBar.height, tokens.loadingBar.backgroundImage]"
+    class="nuxt-progress fixed top-0 start-0 end-0 w-0 opacity-100 z-[9999] h-[3px] bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500"
+    :class="['nuxt-progress-failed' && !data.canSucceed]"
     :style="{
       width: `${data.percent}%`,
       insetInlineStart: data.left,

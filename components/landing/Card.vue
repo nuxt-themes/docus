@@ -47,11 +47,7 @@ watch([elementX, elementY], () => {
         class="content"
         :class="[Object.values(tokens.card.content)]"
       >
-        <ContentSlot
-          v-if="$slots.default"
-          :use="$slots.default"
-          unwrap="p"
-        />
+        <ContentSlot v-if="$slots.default" :use="$slots.default" unwrap="p"/>
         <span
           v-if="icon"
           class="icon-wrapper"
@@ -64,10 +60,7 @@ watch([elementX, elementY], () => {
           class="title"
           :class="[Object.values(tokens.card.title)]"
         >
-          <ContentSlot
-            :use="$slots.title"
-            unwrap="p"
-          >
+          <ContentSlot :use="$slots.title" unwrap="p">
             Card title
           </ContentSlot>
         </h3>
@@ -76,10 +69,7 @@ watch([elementX, elementY], () => {
           class="description"
           :class="[Object.values(tokens.card.description)]"
         >
-          <ContentSlot
-            :use="$slots.description"
-            unwrap="p"
-          >
+          <ContentSlot :use="$slots.description" unwrap="p">
             Card description
           </ContentSlot>
         </p>
@@ -87,7 +77,3 @@ watch([elementX, elementY], () => {
     </div>
   </div>
 </template>
-
-<style scoped lang="ts">
-
-</style>

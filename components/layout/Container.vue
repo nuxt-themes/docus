@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 type HTMLElementsTags = keyof HTMLElementTagNameMap
 
@@ -22,8 +19,8 @@ defineProps({
 <template>
   <component
     :is="as"
-    class="container mx-auto w-full h-[inherit]"
-    :class="[padded ? tokens.container.padding : 'px-0', tokens.container.maxWidth]"
+    class="container mx-auto w-full h-[inherit] max-w-[80rem]"
+    :class="[padded ? 'px-4 sm:px-6 xl:px-8' : 'px-0']"
   >
     <slot />
   </component>

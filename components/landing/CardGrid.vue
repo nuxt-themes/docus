@@ -26,7 +26,3 @@ defineProps({
     </div>
   </div>
 </template>
-
-<style scoped lang="ts">
-
-</style>

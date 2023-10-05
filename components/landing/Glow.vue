@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { PropType } from 'vue'
-
 const { isFirefox } = useUserAgent()
 
 const show = ref(false)
@@ -11,10 +9,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="show" class="glow pointer-events-none before:pointer-events-none after:pointer-events-none absolute start-0 end-0 z-0 opacity-0 overflow-hidden w-full before:inset-0 before:opacity-0 before:absolute after:absolute after:inset-0 after:opacity-0">
+  <div
+    v-if="show"
+    class="glow pointer-events-none before:pointer-events-none after:pointer-events-none absolute start-0 end-0 z-0 opacity-0 overflow-hidden w-full before:inset-0 before:opacity-0 before:absolute after:absolute after:inset-0 after:opacity-0"
+  >
     <svg>
       <filter id="f">
-        <feTurbulence type="fractalNoise" baseFrequency="7.5" />
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="7.5"
+        />
       </filter>
     </svg>
   </div>

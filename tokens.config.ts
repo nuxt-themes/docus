@@ -156,164 +156,27 @@ const state = {
   },
 }
 
-const loadingBar = {
-  height: 'h-[3px]',
-  backgroundImage: 'bg-gradient-to-r from-primary-600 via-primary-500 to-secondary-500',
-}
-
-const announce = {
-  padding: 'p-1',
-  backgroundColor: 'bg-gray-100 dark:bg-gray-800',
-  borderRadius: 'rounded-full',
-  borderWidth: 'border',
-  borderStyle: border.primary.static,
-  fontSize: 'text-sm',
-  fontWeight: 'font-medium',
-  boxShadow: 'shadow-light-up',
-  content: {
-    paddingX: 'px-3',
-  },
-  icon: {
-    padding: 'py-1 px-2',
-    borderRadius: 'rounded-full',
-    backgroundColor: 'bg-gray-200 dark:bg-gray-700',
-  }
-}
-
-const terminal = {
-  maxWidth: 'max-w-[512px]',
-  height: 'h-[256px]',
-  borderWidth: 'border-0',
-  borderStyle: 'border-solid',
-  borderColor: border.primary.static,
-  borderRadius: 'rounded-xs',
-  backgroundColor: 'bg-gray-200 bg-opacity-70 dark:bg-gray-900 dark:bg-opacity-70',
-  boxShadow: 'shadow-terminal',
-  backdropFilter: 'backdrop-blur-[3px]',
-  header: {
-    height: 'h-12',
-    borderWidth: 'border-0',
-    borderStyle: 'border-solid',
-    borderColor: border.primary.static,
-    boxShadow: 'shadow-[inset_0_-1px_0px_0px_rgb(var(--color-gray-500)/0.3)]'
-  },
-  window: {
-    fontFamily: 'font-mono',
-    fontSize: 'text-sm',
-    mixBlendMode: 'mix-blend-normal dark:mix-blend-difference',
-  }
-}
-
-const list = {
-  item: {
-    marginBottom: 'mb-3',
-  },
-  icon: {
-    marginInlineEnd: 'me-3',
-    padding: 'p-1',
-    borderRadius: 'rounded-full',
-    boxShadow: 'shadow-light-up-sm',
-    width: 'w-4',
-    height: 'h-4',
-  }
-}
-
 const buttonLink = {
-  fontWeight: 'font-semibold',
-  borderWidth: 'border-0',
-  borderStyle: 'border-solid',
-  borderColor: 'border-transparent',
-  borderRadius: 'rounded-2xs',
-  icon: {
-    marginInlineEnd: 'me-2',
-  },
-  variants: {
-    ghost: {
-      true: {
-        primary: 'bg-transparent text-primary-500 hover:bg-primary-100 dark:hover:bg-primary-800',
-        secondary: 'bg-transparent text-secondary-500 hover:bg-secondary-100 dark:hover:bg-secondary-800',
-        gray: 'bg-transparent text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800',
-        orange: 'bg-transparent text-orange-500 hover:bg-orange-100 dark:hover:bg-orange-800',
-        purple: 'bg-transparent text-purple-500 hover:bg-purple-100 dark:hover:bg-purple-800',
-        green: 'bg-transparent text-green-500 hover:bg-green-100 dark:hover:bg-green-800',
-        blue: 'bg-transparent text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-800',
-        yellow: 'bg-transparent text-yellow-500 hover:bg-yellow-100 dark:hover:bg-yellow-800',
-        red: 'bg-transparent text-red-500 hover:bg-red-100 dark:hover:bg-red-800',
-      },
-      false: {
-        primary: 'text-primary-500 bg-primary-100 dark:bg-primary-800 hover:bg-primary-200 dark:hover:bg-primary-700',
-        secondary: 'text-secondary-500 bg-secondary-100 dark:bg-secondary-800 hover:bg-secondary-200 dark:hover:bg-secondary-700',
-        gray: 'text-gray-500 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700',
-        orange: 'text-orange-500 bg-orange-100 dark:bg-orange-800 hover:bg-orange-200 dark:hover:bg-orange-700',
-        purple: 'text-purple-500 bg-purple-100 dark:bg-purple-800 hover:bg-purple-200 dark:hover:bg-purple-700',
-        green: 'text-green-500 bg-green-100 dark:bg-green-800 hover:bg-green-200 dark:hover:bg-green-700',
-        blue: 'text-blue-500 bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700',
-        yellow: 'text-yellow-500 bg-yellow-100 dark:bg-yellow-800 hover:bg-yellow-200 dark:hover:bg-yellow-700',
-        red: 'text-red-500 bg-red-100 dark:bg-red-800 hover:bg-red-200 dark:hover:bg-red-700',
-      }
-    },
-    size: {
-      sm: 'text-sm px-3 py-1',
-      md: 'text-base px-4 py-2',
-      lg: 'text-lg px-4 py-2',
-      xl: 'text-xl px-5 py-3',
-    }
-  }
+  fontWeight: '',
+  borderWidth: '',
+  borderStyle: '',
+  borderColor: '',
+  borderRadius: '',
 }
 
 const hero = {
-  padding: 'py-20 sm:py-24 lg:py-24',
-  layout: {
-    gap: 'gap-16 xl:gap-4',
-    gridTemplateColumns: 'xl:grid-cols-12',
-  },
-  content: {
-    gridColumn: 'xl:col-span-7',
-    alignItems: 'items-center xl:items-start',
-    announce: {
-      marginBottom: 'mb-8'
-    },
-    title: {
-      color: text.primary.static,
-      fontSize: 'text-4xl sm:text-5xl lg:text-6xl',
-      fontWeight: 'font-semibold',
-      letterSpacing: 'tracking-tight',
-      textAlign: 'text-center xl:text-start',
-      marginBottom: 'mb-8',
-      padding: 'px-8 md:px-12 lg:px-14 xl:px-0',
-      gradientText: 'text-transparent dark:text-transparent bg-clip-text bg-gradient-to-r from-gray-100 dark:from-gray-200 from-10% via-gray-300 dark:via-gray-400 via-54% to-gray-600 dark:to-gray-700',
-      mixBlendMode: 'mix-blend-exclusion',
-    },
-    description: {
-      color: text.secondary.static,
-      fontSize: 'text-lg lg:text-xl',
-      textAlign: 'text-center xl:text-start',
-      marginBottom: 'mb-12',
-      padding: 'px-2 md:px-6 xl:px-0',
-      mixBlendMode: 'mix-blend-normal',
-    },
-    extra: {
-      justifyContent: 'justify-center xl:justify-start',
-      marginBottom: 'mb-16',
-    },
-    actions: {
-      flexDirection: 'flex-col sm:flex-row',
-      gap: 'gap-2 sm:gap-3',
-      justifyContent: 'justify-center xl:justify-start',
-    }
-  },
   support: {
-    gridColumn: 'xl:col-span-5'
+    gridColumn: ''
   }
 }
 
 const container = {
-  maxWidth: 'max-w-[80rem]',
-  padding: 'px-4 sm:px-6 xl:px-8',
+  maxWidth: '',
+  padding: '',
 }
 
 const appHeader = {
-  height: 'h-16',
+  height: '',
   backdropFilter: backdrop.filter,
   backgroundColor: backdrop.backgroundColor,
   border: 'border-b ' + border.primary.static,
@@ -860,10 +723,6 @@ const codeGroupTabs = {
 export default {
   text,
   state,
-  loadingBar,
-  announce,
-  terminal,
-  list,
   buttonLink,
   hero,
   container,

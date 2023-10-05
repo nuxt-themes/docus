@@ -36,8 +36,8 @@ export default defineComponent({
       return h(
         'ul',
         items.map(item =>
-          h('li',{ class: ['flex items-start last:mb-0', tokens.list.item.marginBottom] }, [
-            h('span', { class: ['list-icon flex shrink-0', tokens.state[props.type].color.primary, tokens.state[props.type].backgroundColor.secondary, tokens.list.icon.marginInlineEnd, tokens.list.icon.padding, tokens.list.icon.borderRadius, tokens.list.icon.boxShadow] }, h(resolveComponent('Icon'), { name: iconName.value, class: ['icon', tokens.list.icon.width, tokens.list.icon.height] })),
+          h('li',{ class: ['flex items-start last:mb-0 mb-3'] }, [
+            h('span', { class: ['list-icon flex shrink-0 me-3 p-1 rounded-full shadow-light-up-sm', tokens.state[props.type].color.primary, tokens.state[props.type].backgroundColor.secondary] }, h(resolveComponent('Icon'), { name: iconName.value, class: ['icon w-4 h-4'] })),
             h('span', h(resolveComponent('ContentSlot'), { use: () => item }))
           ])
         )

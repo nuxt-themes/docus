@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 defineProps({
   blank: {
     type: Boolean,
@@ -21,26 +17,15 @@ defineProps({
     :is="href ? 'a' : 'span'"
     :href="href"
     :target="blank ? '_blank' : undefined"
-    :class="[
-      tokens.announce.padding, 
-      tokens.announce.backgroundColor, 
-      tokens.announce.borderRadius,
-      tokens.announce.borderWidth,
-      tokens.announce.borderStyle,
-      tokens.announce.borderColor,
-      tokens.announce.fontSize,
-      tokens.announce.fontWeight,
-      tokens.announce.boxShadow
-    ]"
-    class="announce inline-flex items-center"
+    class="announce inline-flex items-center p-1 bg-gray-100 dark:bg-gray-800 rounded-full border border-primary-static text-sm font-medium shadow-light-up"
   >
-    <span class="announce-content" :class="[tokens.announce.content.paddingX]">
+    <span class="announce-content px-3">
       <ContentSlot
         :use="$slots.default"
         unwrap="p"
       />
     </span>
-    <span class="announce-icon flex" :class="[tokens.announce.icon.padding, tokens.announce.icon.borderRadius, tokens.announce.icon.backgroundColor]">
+    <span class="announce-icon flex py-1 px-2 rounded-full bg-gray-200 dark:bg-gray-700">
       <Icon name="ic:round-arrow-forward" />
     </span>
   </component>

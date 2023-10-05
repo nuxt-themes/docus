@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .border-primary-static {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+  .border-primary-hover {
+    @apply hover:border-gray-300 dark:hover:border-gray-700;
+  }
+  .border-secondary-static {
+    @apply border-gray-300 dark:border-gray-700;
+  }
+  .border-secondary-hover {
+    @apply hover:border-gray-400 dark:hover:border-gray-600;
+  }
+  .text-primary-static {
+    @apply text-gray-900 dark:text-gray-50;
+  }
+  .text-primary-hover {
+    @apply hover:text-red-500;
+  }
+  .text-secondary-static {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+  .text-secondary-hover {
+    @apply hover:text-gray-700 dark:hover:text-gray-200;
+  }
+  .text-tertiary-static {
+    @apply text-gray-300 dark:text-gray-600;
+  }
+  .text-tertiary-hover {
+    @apply hover:text-red-500;
+  }
+}

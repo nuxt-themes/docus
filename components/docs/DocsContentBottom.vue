@@ -35,7 +35,3 @@ const { config } = useDocus()
     <span v-if="page?.mtime">Updated on <b>{{ new Intl.DateTimeFormat('en-US').format(Date.parse(page.mtime)) }}</b></span>
   </div>
 </template>
-
-<style scoped lang="ts">
-
-</style>

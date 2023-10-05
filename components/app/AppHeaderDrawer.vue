@@ -75,6 +75,3 @@ router.afterEach(() => {
   </Drawer>
 </template>
 
-<style scoped lang="ts">
-
-</style>

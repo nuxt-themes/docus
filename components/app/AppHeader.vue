@@ -40,8 +40,8 @@ watch(Escape, () => {
 <template>
   <header
     ref="appHeaderRef"
-    class="app-header sticky top-0 z-10 w-full"
-    :class="[tokens.appHeader.height, isBasicLayout && y === 0 ? '' : `${tokens.appHeader.backdropFilter} ${tokens.appHeader.backgroundColor} ${tokens.appHeader.border}`]"
+    class="app-header sticky top-0 z-10 w-full h-16 "
+    :class="[isBasicLayout && y === 0 ? '' : `${tokens.appHeader.backdropFilter} ${tokens.appHeader.backgroundColor} ${tokens.appHeader.border}`]"
   >
     <Container padded>
       <div
