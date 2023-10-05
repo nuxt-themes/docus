@@ -1,5 +1,3 @@
-import {defineEventHandler} from 'h3'
-
 export default defineEventHandler(async () => {
   const config = useAppConfig()
   return '<?xml version="1.0"?>\n' +
