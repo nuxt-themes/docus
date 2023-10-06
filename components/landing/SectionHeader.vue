@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 defineProps({
   subtitle: {
     type: String,
@@ -24,14 +20,11 @@ defineProps({
 </script>
 
 <template>
-  <div
-    class="section-header"
-    :class="[tokens.sectionHeader.root]"
-  >
+  <div class="section-header flex flex-col items-center xl:items-start mb-8">
     <span
       v-if="subtitle || $slots.subtitle"
-      class="section-header-subtitle"
-      :class="[subtitleColor, Object.values(tokens.sectionHeader.subtitle)]"
+      class="section-header-subtitle block text-lg font-normal tracking-wide mb-2"
+      :class="[subtitleColor]"
     >
       <ContentSlot
         :use="$slots.subtitle"
@@ -43,8 +36,7 @@ defineProps({
 
     <h2
       v-if="title || $slots.title"
-      class="section-header-title"
-      :class="[Object.values(tokens.sectionHeader.title)]"
+      class="section-header-title text-3xl sm:text-4xl font-semibold tracking-tight mb-2"
     >
       <ContentSlot
         :use="$slots.title"
@@ -56,8 +48,7 @@ defineProps({
 
     <p
       v-if="description || $slots.description"
-      class="section-header-description"
-      :class="[Object.values(tokens.sectionHeader.description)]"
+      class="section-header-description text-secondary-static"
     >
       <ContentSlot
         :use="$slots.description"

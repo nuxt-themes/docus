@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { TocLink } from '@nuxt/content/dist/runtime/types'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 defineProps({
   links: {
@@ -48,7 +45,8 @@ function childMove (id: string) {
     >
       <a
         :href="`#${link.id}`"
-        :class="[activeHeadings.includes(link.id) && 'active', tokens.docsTocLinks.link]"
+        class="block truncate py-1 lg:pe-3 text-sm text-gray-500 dark:text-gray-400 [&.active]:text-primary-500"
+        :class="[activeHeadings.includes(link.id) && 'active']"
         @click.prevent="scrollToHeading(link.id)"
       >
         {{ link.text }}

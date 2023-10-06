@@ -1,8 +1,5 @@
 <script lang="ts">
 import CodeGroupTabs from './CodeGroupTabs.vue'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 const isTag = (slot: any, tag: string) => {
   return slot.type && slot.type.tag && slot.type.tag === tag
@@ -33,7 +30,7 @@ export default defineComponent({
       'div',
       {
         class: {
-          [tokens.codeGroup.root]: true,
+          'w-full overflow-hidden border rounded border-primary-static': true,
           'code-group': true,
           'first-tab': this.activeTabIndex === 0
         }

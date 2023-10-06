@@ -1,23 +1,13 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 const { toc, page } = useContent()
 const { config } = useDocus()
 const emit = defineEmits(['move'])
 </script>
 
 <template>
-  <div
-    class="docs-toc"
-    :class="[tokens.docsToc.root]"
-  >
+  <div class="docs-toc flex flex-col gap-2">
     <template v-if="toc?.links?.length">
-      <div
-        class="docs-toc-title"
-        :class="[tokens.docsToc.title]"
-      >
+      <div class="docs-toc-title hidden lg:block overflow-hidden text-sm font-semibold">
         <span>Table of Contents</span>
       </div>
 
@@ -26,10 +16,7 @@ const emit = defineEmits(['move'])
         @move="emit('move')"
       />
     </template>
-    <div
-      class="docs-toc-bottom"
-      :class="[tokens.docsToc.bottom]"
-    >
+    <div class="docs-toc-bottom text-sm py-2 text-secondary-static">
       <div v-if="config?.github?.edit">
         <DocsEditOn
           v-slot="{ url }"

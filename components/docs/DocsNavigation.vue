@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 const props = defineProps({
   links: {
@@ -75,21 +72,17 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
         (link?.navigation?.icon || link.icon) && 'has-icon',
         parent?.icon && 'has-parent-icon',
         link.children && 'has-children',
-        (level > 0 && !link.children) && tokens.docsNavigation.item.bordered,
+        (level > 0 && !link.children) && 'border-s border-primary-static border-primary-hover [&.active]:border-primary-400 [&.active]:dark:border-primary-600 [.has-children_&]:ps-4 [&.has-parent-icon]:ms-2',
         isActive(link) && 'active',
       ]"
     >
       <component
         :is="config.aside?.collapsible ? 'button' : 'h5'"
         v-if="link.children"
-        class="title-collapsible-button flex items-center justify-between w-full"
-        :class="[tokens.docsNavigation.collapsible.root]"
+        class="title-collapsible-button flex items-center justify-between w-full py-2 text-sm font-semibold text-gray-900 dark:text-gray-50"
         @click="() => config.aside?.collapsible && toggleCollapse(link)"
       >
-        <span
-          class="content flex items-center"
-          :class="[tokens.docsNavigation.collapsible.content]"
-        >
+        <span class="content flex items-center [&_.icon]:w-5 [&_.icon]:h-5 [&_.icon]:me-2">
           <Icon
             v-if="link?.navigation?.icon || link.icon"
             :name="link?.navigation?.icon || link.icon"
@@ -100,8 +93,7 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
         <span v-if="config.aside?.collapsible">
           <Icon
             :name="isCollapsed(link) ? 'lucide:chevrons-up-down' : 'lucide:chevrons-down-up'"
-            class="collapsible-icon"
-            :class="[tokens.docsNavigation.collapsible.icon]"
+            class="collapsible-icon w-3 h-3 text-secondary-static"
           />
         </span>
       </component>
@@ -109,12 +101,9 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
       <NuxtLink
         v-else
         :to="link.redirect ? link.redirect : link._path"
-        class="link flex items-center justify-between"
+        class="link flex items-center justify-between py-2 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50 [&.active]:text-primary-500 [&.active]:font-medium [&_.icon]:!w-4 [&_.icon]:!h-4 [&_.icon]:!me-1"
         :exact="link.exact"
-        :class="[
-          isActive(link) && 'active',
-          tokens.docsNavigation.link
-        ]"
+        :class="[isActive(link) && 'active']"
       >
         <span class="content inline-flex items-center">
           <Icon
@@ -133,8 +122,7 @@ const toggleCollapse = (link: any) => (collapsedMap.value[link._path] = !isColla
         :level="level + 1"
         :parent="link"
         :max="max"
-        class="recursive"
-        :class="[tokens.docsNavigation.recursive]"
+        class="recursive p-0 mb-4 [&_.has-children]:border-s [&_.has-children]:border-transparent [&_.has-children]:ms-4"
       />
     </li>
   </ul>
