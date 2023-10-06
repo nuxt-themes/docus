@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 const route = useRoute()
 const { navBottomLink } = useContentHelpers()
 const { navigation } = useContent()
@@ -31,22 +28,25 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 <template>
   <nav
     v-if="hasNavigation"
-    :class="[vertical && 'vertical', tokens.appNavigation.marginBottom]"
+    class="[&.vertical]:mb-4"
+    :class="[vertical && 'vertical']"
   >
-    <ul class="flex flex-1 max-w-full truncate justify-center [.vertical_&]:flex-col [.vertical_&]:items-start flex-row items-center" :class="[tokens.appNavigation.ul.gap]">
+    <ul
+      class="flex flex-1 max-w-full truncate justify-center [.vertical_&]:flex-col [.vertical_&]:items-start flex-row items-center gap-2 [.vertical_&]:gap-0"
+    >
       <li
         v-for="link in tree"
         :key="link._path"
         class="inline-flex w-full"
       >
         <NuxtLink
-          class="link w-full flex items-center"
+          class="link w-full flex items-center [.vertical_&]:py-2 py-1 px-2 text-sm font-semibold gap-2 [&.active]:text-primary-500 hover:text-primary-500"
           :to="link.redirect? link.redirect : navBottomLink(link)"
-          :class="[ isActive(link) && 'active', tokens.appNavigation.link.padding, tokens.appNavigation.link.fontSize, tokens.appNavigation.link.fontWeight, tokens.appNavigation.link.gap, Object.values(tokens.appNavigation.link.active), Object.values(tokens.appNavigation.link.hover)]"
+          :class="[ isActive(link) && 'active' ]"
         >
           <Icon
-            :class="[tokens.appNavigation.icon.width, tokens.appNavigation.icon.height]"
             v-if="link.icon && config?.header?.showLinkIcon"
+            class="w-5 h-5"
             :name="link.icon"
           />
           {{ link.title }}

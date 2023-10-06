@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 const { config } = useDocus()
 const logo = computed(() => config.value.header?.logo || false)
 const title = computed(() => config.value.header?.title || config.value.title)
@@ -17,8 +13,7 @@ const title = computed(() => config.value.header?.title || config.value.title)
     <!-- Only Logo -->
     <span
       v-if="logo"
-      class="logo"
-      :class="Object.values(tokens.appHeaderLogo.logo)"
+      class="logo h-6 sm:h-7 w-auto"
     >
       <component
         :is="logo"
@@ -42,8 +37,7 @@ const title = computed(() => config.value.header?.title || config.value.title)
     <!-- Only title -->
     <span
       v-else
-      class="title"
-      :class="Object.values(tokens.appHeaderLogo.title)"
+      class="title text-2xl font-bold text-color-900 dark:text-color-100 hover:text-primary-500"
     >
       {{ title }}
     </span>

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 const colorMode = useColorMode()
 const onClick = () => {
   const values = ['system', 'light', 'dark']
@@ -14,8 +10,7 @@ const onClick = () => {
 
 <template>
   <button
-    class="app-color-mode flex"
-    :class="Object.values(tokens.appColorMode)"
+    class="app-color-mode flex p-4 text-secondary-static text-secondary-hover"
     aria-label="Color Mode"
     @click="onClick"
   >

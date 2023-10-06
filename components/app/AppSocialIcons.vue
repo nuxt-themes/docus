@@ -37,8 +37,7 @@ const icons = computed<any>(() => {
     :aria-label="icon.label"
     :href="icon.href"
     target="_blank"
-    class="flex"
-    :class="Object.values(tokens.appSocialIcons)"
+    class="flex p-4 text-secondary-static text-secondary-hover"
   >
     <Icon
       v-if="icon.icon"

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
-
 defineProps({
   modelValue: {
     type: Boolean,
@@ -19,8 +15,7 @@ defineEmits(['update:modelValue'])
     @update:model-value="$emit('update:modelValue')"
   >
     <div
-      class="drawer-content"
-      :class="Object.values(tokens.drawer)"
+      class="drawer-content w-[320px] h-screen overflow-auto"
     >
       <slot />
     </div>

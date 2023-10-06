@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 const { navigation } = useContent()
 const { config } = useDocus()
 const router = useRouter()
@@ -26,7 +23,7 @@ router.afterEach(() => {
 
 <template>
   <button
-    :class="[Object.values(tokens.appHeaderDrawer.button)]"
+    class="relative z-10 flex lg:hidden p-4 ps-0 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
     aria-label="Menu"
     @click="show = !show"
   >
@@ -39,16 +36,12 @@ router.afterEach(() => {
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <Drawer v-model="show">
     <nav
-      class="nav"
-      :class="[Object.values(tokens.appHeaderDrawer.nav)]"
+      class="nav w-full border-r border-primary-static bg-gray-50 dark:bg-gray-900"
       @click.stop
     >
-      <div
-        class="drawer-header"
-        :class="[Object.values(tokens.appHeaderDrawer.navHeader)]"
-      >
+      <div class="drawer-header flex items-center justify-between border-b border-primary-static gap-2 px-4 sm:px-6 h-16">
         <button
-          :class="[Object.values(tokens.appHeaderDrawer.button)]"
+          class="relative z-10 flex lg:hidden p-4 ps-0 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           aria-label="Menu"
           @click="show = false"
         >
@@ -58,18 +51,14 @@ router.afterEach(() => {
           />
         </button>
 
-        <div
-          class="icons"
-          :class="[Object.values(tokens.appHeaderDrawer.navHeaderIcons)]"
-        >
+        <div class="icons flex items-center overflow-auto [&_.icon]:w-4 [&_.icon]:h-4">
           <AppSocialIcons />
         </div>
       </div>
 
       <DocsNavigation
         :links="links"
-        class="links"
-        :class="[Object.values(tokens.appHeaderDrawer.navLinks)]"
+        class="links h-[calc(100vh-var(--app-header-height))] overflow-y-auto px-4 sm:px-6 pt-6"
       />
     </nav>
   </Drawer>

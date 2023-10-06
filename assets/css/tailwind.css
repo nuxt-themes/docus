@@ -33,4 +33,10 @@
   .text-tertiary-hover {
     @apply hover:text-red-500;
   }
+  .backdrop-filter {
+    @apply backdrop-saturate-200 backdrop-blur-[10px];
+  }
+  .backdrop-backgroundColor {
+    @apply bg-gray-50 dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80;
+  }
 }

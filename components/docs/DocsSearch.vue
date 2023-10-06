@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { useFuse } from '@vueuse/integrations/useFuse'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 const props = defineProps({
   modelValue: {
@@ -187,39 +184,33 @@ watch(() => props.modelValue, (value) => {
   >
     <div class="search-content w-full h-full flex justify-center">
       <div
-        class="search-window flex flex-col overflow-hidden"
-        :class="Object.values(tokens.docsSearch.window)"
+        class="search-window flex flex-col overflow-hidden border border-primary-static sm:rounded-xs sm:mt-[20vh] sm:mx-4 w-full max-w-[640px] h-fit max-h-full sm:max-h-[320px] backdrop-blur-xl"
         @click.stop
       >
         <div
-          class="search-input flex items-center"
-          :class="[tokens.docsSearch.input.backgroundColor]"
+          class="search-input flex items-center bg-gray-200 dark:bg-gray-800 bg-opacity-50 dark:bg-opacity-50"
         >
           <Icon
             name="heroicons-outline:search"
-            class="search-icon shrink-0"
-            :class="Object.values(tokens.docsSearch.input.icon)"
+            class="search-icon shrink-0 w-5 h-5 mx-4 text-tertiary-static"
           />
           <input
             ref="searchInputRef"
             v-model="q"
             type="text"
             placeholder="Search documentation"
-            class="w-full bg-transparent outline-none"
-            :class="[tokens.docsSearch.input.padding, tokens.docsSearch.input.color, tokens.docsSearch.input.placeholder]"
+            class="w-full bg-transparent outline-none py-3 text-primary-static placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:opacity-50 dark:placeholder:opacity-50"
             @keydown.up.prevent="up"
             @keydown.down.prevent="down"
             @keydown.enter="go(selected)"
           >
           <button
-            class="close-button"
-            :class="[tokens.docsSearch.input.close.button]"
+            class="close-button flex p-3"
             @click="closeButtonHandler"
           >
             <Icon
               name="heroicons:x-mark"
-              class="close-icon shrink-0"
-              :class="[tokens.docsSearch.input.close.icon]"
+              class="close-icon shrink-0 w-5 h-5 text-secondary-static"
             />
           </button>
         </div>
@@ -232,24 +223,21 @@ watch(() => props.modelValue, (value) => {
             v-for="(result, i) in results"
             :id="result.item.id"
             :key="result.item.id"
-            class="search-result flex flex-col cursor-pointer"
-            :class="[ selected === i && 'selected', tokens.docsSearch.result.padding, tokens.docsSearch.result.gap, tokens.docsSearch.result.selected ]"
+            class="search-result flex flex-col cursor-pointer py-3 px-2 gap-2 [&.selected]:bg-gray-300 [&.selected]:dark:bg-gray-700 [&.selected]:bg-opacity-50 [&.selected]:dark:bg-opacity-50"
+            :class="[ selected === i && 'selected']"
             @click="go(selected)"
             @mouseenter.prevent="selected = i"
           >
-            <div
-              class="search-result-content-head flex items-center"
-              :class="[tokens.docsSearch.result.head.gap]"
-            >
+            <div class="search-result-content-head flex items-center gap-2">
               <Icon
                 v-if="getNavItemMeta(result?.item?.path)?.directoryIcon"
                 :name="getNavItemMeta(result?.item?.path)?.directoryIcon"
-                :class="[tokens.docsSearch.result.head.svg]"
+                class="shrink-0 opacity-50 w-5 h-5 mx-2"
               />
               <Icon
                 v-else
                 name="solar:documents-bold-duotone"
-                :class="[tokens.docsSearch.result.head.svg]"
+                class="shrink-0 opacity-50 w-5 h-5 mx-2"
               />
               <span
                 v-if="getNavItemMeta(result?.item?.path)?.directoryTitle"
@@ -267,12 +255,11 @@ watch(() => props.modelValue, (value) => {
             </div>
             <p
               v-if="result?.matches?.[0]"
-              class="search-result-content-preview truncate relative"
-              :class="[tokens.docsSearch.result.color]"
+              class="search-result-content-preview truncate relative text-secondary-static"
             >
               <span>“</span>
               <span
-                :class="[tokens.docsSearch.result.highlight]"
+                class="[&_mark]:bg-primary-500 [&_mark]:text-white"
                 v-html="`${highlight(q, result?.matches?.[0] as any)}`"
               />
               <span>“</span>
@@ -282,14 +269,14 @@ watch(() => props.modelValue, (value) => {
 
         <div
           v-else-if="!q"
-          :class="[tokens.docsSearch.results.empty]"
+          class="h-20 flex items-center justify-center text-tertiary-static"
         >
           Type your query to search docs
         </div>
 
         <div
           v-else
-          :class="[tokens.docsSearch.results.empty]"
+          class="h-20 flex items-center justify-center text-tertiary-static"
         >
           No results found. Try another query
         </div>

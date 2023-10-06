@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
-import appConfig from '#build/app.config'
-
-const { tokens } = appConfig
 
 const props = defineProps({
   modelValue: {
@@ -19,7 +16,7 @@ const props = defineProps({
   },
   scrimBackgroundColor: {
     type: String,
-    default: appConfig.tokens.modal.scrim.backgroundColor,
+    default: 'bg-gray-50 dark:bg-gray-900 opacity-95 dark:opacity-95',
   },
 })
 
@@ -57,12 +54,14 @@ watch(() => props.modelValue, (value) => {
       <div
         v-if="modelValue"
         ref="modalRef"
-        class="modal-wrapper fixed inset-0 flex items-start overflow-y-auto"
-        :class="[Object.values(tokens.modal.root)]"
+        class="modal-wrapper fixed inset-0 flex items-start overflow-y-auto z-50"
         tabindex="0"
         @click="$emit('update:modelValue')"
       >
-        <div class="scrim fixed inset-0 -z-[1] pointer-events-none" :class="[scrimBackgroundColor, tokens.modal.scrim.backdropFilter]"/>
+        <div
+          class="scrim fixed inset-0 -z-[1] pointer-events-none backdrop-blur-none"
+          :class="[scrimBackgroundColor ]"
+        />
         <slot />
       </div>
     </transition>
