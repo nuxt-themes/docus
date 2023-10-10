@@ -41,8 +41,9 @@ export default defineNuxtConfig({
   },
   modules: [
     envModules.studio,
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
+    // '@nuxtjs/tailwindcss',
+    // '@nuxtjs/color-mode',
+    '@nuxt/ui',
     'nuxt-icon',
     '@nuxt/content',
     '@vueuse/nuxt',
