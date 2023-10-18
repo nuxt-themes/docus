@@ -43,7 +43,7 @@
     "@algolia/client-search": "^4.20.0",
     "@docsearch/css": "^3.5.2",
     "@docsearch/js": "^3.5.2",
-    "@nuxt/devtools": "^0.8.5",
+    "@nuxt/devtools": "^1.0.0",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/algolia": "^1.9.0",
     "@types/node": "^20.8.2",
