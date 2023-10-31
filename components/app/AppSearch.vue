@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useFuse, UseFuseOptions } from '@vueuse/integrations/useFuse'
+import { useFuse } from '@vueuse/integrations/useFuse'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { useMagicKeys } from '@vueuse/core'
+import type { UseFuseOptions } from '@vueuse/integrations/useFuse'
 
 const props = defineProps({
   fuse: {
