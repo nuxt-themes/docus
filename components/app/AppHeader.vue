@@ -20,6 +20,11 @@ defineProps({
 
       <div class="section center">
         <AppHeaderLogo v-if="hasDialog" />
+          <nav class="app--main-menu">
+            <a :href="link.href" v-for="(link, index) in config?.header?.textLinks" :key="index" :target="link.target" :rel="link.rel">
+              {{ link.text }}
+              </a>
+          </nav>
         <AppHeaderNavigation />
       </div>
 
@@ -113,4 +118,21 @@ css({
     }
   }
 })
+</style>
+<style scoped>
+.app--main-menu {
+  display: none;
+}
+.app--main-menu a {
+  margin-right: 1em;
+  font-weight: 700;
+}
+@media (min-width: 1025px){
+  .app--main-menu {
+    display: block;
+  }
+}
+header .section.center {
+  justify-content: flex-start;
+}
 </style>

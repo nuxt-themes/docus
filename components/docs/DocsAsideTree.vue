@@ -39,13 +39,21 @@ const isActive = (link: any) => {
   return route.path === link._path
 }
 
+const isActiveSection = (link: any) => {
+  return route.path.indexOf(link._path) > -1
+}
+
 const isCollapsed = (link: any) => {
   if (link.children) {
-    // Directory has been toggled manually, use its state
+     // Directory has been toggled manually, use its state
     if (typeof collapsedMap.value[link._path] !== 'undefined') {
       return collapsedMap.value[link._path]
     }
 
+     // if set in configs to open active menu
+    if(config?.value?.aside?.openActiveMenu) {
+      return !isActiveSection(link)
+    }
     // Check if aside.collapsed has been set in YML
     if ([true, false].includes(link?.aside?.collapsed)) { return link.aside.collapsed }
 
