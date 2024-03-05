@@ -25,7 +25,7 @@ importers:
         version: 1.0.0(rollup@3.29.3)
       '@vueuse/integrations':
         specifier: ^10.4.1
-        version: 10.4.1(focus-trap@7.5.3)(fuse.js@6.6.2)(vue@3.3.4)
+        version: 10.4.1(focus-trap@7.5.3)(fuse.js@7.0.0)(vue@3.3.4)
       '@vueuse/nuxt':
         specifier: ^10.4.1
         version: 10.4.1(nuxt@3.7.4)(rollup@3.29.3)(vue@3.3.4)
@@ -33,8 +33,8 @@ importers:
         specifier: ^7.5.3
         version: 7.5.3
       fuse.js:
-        specifier: ^6.6.2
-        version: 6.6.2
+        specifier: ^7.0.0
+        version: 7.0.0
     devDependencies:
       '@algolia/client-search':
         specifier: ^4.20.0
@@ -413,6 +413,24 @@ packages:
       '@babel/helper-split-export-declaration': 7.22.6
       semver: 6.3.1
 
+  /@babel/helper-create-class-features-plugin@7.24.0(@babel/core@7.23.0):
+    resolution: {integrity: sha512-QAH+vfvts51BCsNZ2PhY6HAggnlS6omLLFTsIpeqZk/MmJ6cW7tgz5yRv0fMJThcr6FmbMrENh1RgrWPTYA76g==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.23.0
+      '@babel/helper-annotate-as-pure': 7.22.5
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-function-name': 7.23.0
+      '@babel/helper-member-expression-to-functions': 7.23.0
+      '@babel/helper-optimise-call-expression': 7.22.5
+      '@babel/helper-replace-supers': 7.22.20(@babel/core@7.23.0)
+      '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
+      '@babel/helper-split-export-declaration': 7.22.6
+      semver: 6.3.1
+    dev: true
+
   /@babel/helper-create-class-features-plugin@7.24.0(@babel/core@7.24.0):
     resolution: {integrity: sha512-QAH+vfvts51BCsNZ2PhY6HAggnlS6omLLFTsIpeqZk/MmJ6cW7tgz5yRv0fMJThcr6FmbMrENh1RgrWPTYA76g==}
     engines: {node: '>=6.9.0'}
@@ -614,7 +632,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.23.0
-      '@babel/helper-create-class-features-plugin': 7.22.15(@babel/core@7.23.0)
+      '@babel/helper-create-class-features-plugin': 7.24.0(@babel/core@7.23.0)
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-replace-supers': 7.22.20(@babel/core@7.23.0)
       '@babel/helper-split-export-declaration': 7.22.6
@@ -2444,7 +2462,7 @@ packages:
     resolution: {integrity: sha512-7vZyOHfCAZg1PuCwy3B87MQOezW4pf8BC3gNDL92FW24BuLF0dl/BbFfxPeRxvjivuj5kkNM78x/qzNRCKfZgw==}
     hasBin: true
     dependencies:
-      '@nuxt/kit': 3.7.4(rollup@3.29.3)
+      '@nuxt/kit': 3.10.3(rollup@3.29.3)
       chalk: 5.3.0
       ci-info: 3.8.0
       consola: 3.2.3
@@ -3011,6 +3029,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -4572,7 +4591,7 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /@vueuse/integrations@10.4.1(focus-trap@7.5.3)(fuse.js@6.6.2)(vue@3.3.4):
+  /@vueuse/integrations@10.4.1(focus-trap@7.5.3)(fuse.js@7.0.0)(vue@3.3.4):
     resolution: {integrity: sha512-uRBPyG5Lxoh1A/J+boiioPT3ELEAPEo4t8W6Mr4yTKIQBeW/FcbsotZNPr4k9uz+3QEksMmflWloS9wCnypM7g==}
     peerDependencies:
       async-validator: '*'
@@ -4616,7 +4635,7 @@ packages:
       '@vueuse/core': 10.4.1(vue@3.3.4)
       '@vueuse/shared': 10.4.1(vue@3.3.4)
       focus-trap: 7.5.3
-      fuse.js: 6.6.2
+      fuse.js: 7.0.0
       vue-demi: 0.14.6(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -7015,8 +7034,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /fuse.js@6.6.2:
-    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+  /fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
     engines: {node: '>=10'}
     dev: false
 
