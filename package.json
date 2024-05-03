@@ -47,7 +47,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/algolia": "^1.9.0",
     "@types/node": "^20.8.2",
-    "eslint": "^8.50.0",
+    "eslint": "^9.2.0",
     "nuxt": "^3.7.4",
     "release-it": "^16.2.1",
     "typescript": "^5.2.2",
