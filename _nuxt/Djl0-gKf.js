@@ -1,0 +1,1 @@
+import{l as t,b as n,c as o,Z as c}from"./DiQI10kR.js";const r={};function s(e,_){return n(),o("td",null,[c(e.$slots,"default",{},void 0,!0)])}const d=t(r,[["render",s],["__scopeId","data-v-792f8d68"]]);export{d as default};
