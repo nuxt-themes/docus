@@ -1,1 +1,0 @@
-import{l as r,b as t,c,Z as n}from"./BQtbljBx.js";const o={};function s(e,a){return t(),c("ul",null,[n(e.$slots,"default",{},void 0,!0)])}const d=r(o,[["render",s],["__scopeId","data-v-1f44d0c9"]]);export{d as default};
