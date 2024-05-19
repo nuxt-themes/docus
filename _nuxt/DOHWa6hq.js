@@ -1,0 +1,1 @@
+import{l as t,b as o,c as s,Z as c}from"./DDHqhss1.js";const r={},a={class:"preview-layout"};function n(e,d){return o(),s("div",a,[c(e.$slots,"default",{},void 0,!0)])}const l=t(r,[["render",n],["__scopeId","data-v-e3f87d9c"]]);export{l as default};
