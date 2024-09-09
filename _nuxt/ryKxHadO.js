@@ -1,1 +1,0 @@
-import{l as r,b as t,c as n,Z as o}from"./DDHqhss1.js";const s={};function a(e,c){return t(),n("li",null,[o(e.$slots,"default",{},void 0,!0)])}const d=r(s,[["render",a],["__scopeId","data-v-af54de21"]]);export{d as default};
