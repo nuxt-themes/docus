@@ -81,7 +81,13 @@ export default defineNuxtSchema({
          * @example https://medium.com/nuxt
          * @studioIcon simple-icons:medium
          */
-        medium: ''
+        medium: '',
+        /**
+         * Mastodon page url
+         * @example https://elk.zone/fosstodon.org/@nuxt@webtoo.ls
+         * @studioIcon simple-icons:mastodon
+         */
+        mastodon: ''
       },
 
       /**
