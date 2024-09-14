@@ -20,6 +20,8 @@ const props = defineProps({
   }
 })
 
+const emits = defineEmits(['closeNav'])
+
 const route = useRoute()
 const { config } = useDocus()
 
@@ -99,12 +101,12 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
       <NuxtLink
         v-else
         :to="link.redirect ? link.redirect : link._path"
-        class="link"
         :exact="link.exact"
+        class="link"
         :class="{
           'padded': level > 0 || !hasNesting,
-          'active': isActive(link),
         }"
+        @click.native="emits('closeNav')"
       >
         <span class="content">
           <Icon
@@ -123,6 +125,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
         :level="level + 1"
         :parent="link"
         :max="max"
+        @close-nav="emits('closeNav')"
         class="recursive"
       />
     </li>
