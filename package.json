@@ -40,7 +40,7 @@
     "fuse.js": "^6.6.2"
   },
   "devDependencies": {
-    "@algolia/client-search": "^4.24.0",
+    "@algolia/client-search": "^5.8.1",
     "@docsearch/css": "^3.6.1",
     "@docsearch/js": "^3.6.1",
     "@nuxt/devtools": "^1.4.1",
