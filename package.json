@@ -37,7 +37,7 @@
     "@vueuse/integrations": "^10.11.1",
     "@vueuse/nuxt": "^10.11.1",
     "focus-trap": "^7.6.0",
-    "fuse.js": "^6.6.2"
+    "fuse.js": "^7.0.0"
   },
   "devDependencies": {
     "@algolia/client-search": "^4.24.0",

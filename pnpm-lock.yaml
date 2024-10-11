@@ -25,7 +25,7 @@ importers:
         version: 1.1.2(magicast@0.3.5)(rollup@3.29.4)(webpack-sources@3.2.3)
       '@vueuse/integrations':
         specifier: ^10.11.1
-        version: 10.11.1(axios@1.7.0)(change-case@4.1.2)(focus-trap@7.6.0)(fuse.js@6.6.2)(vue@3.5.12(typescript@5.6.3))
+        version: 10.11.1(axios@1.7.0)(change-case@4.1.2)(focus-trap@7.6.0)(fuse.js@7.0.0)(vue@3.5.12(typescript@5.6.3))
       '@vueuse/nuxt':
         specifier: ^10.11.1
         version: 10.11.1(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@20.16.11)(encoding@0.1.13)(eslint@9.12.0(jiti@1.21.6))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@3.29.4)(terser@5.31.0)(typescript@5.6.3)(vite@5.4.8(@types/node@20.16.11)(terser@5.31.0))(webpack-sources@3.2.3))(rollup@3.29.4)(vue@3.5.12(typescript@5.6.3))(webpack-sources@3.2.3)
@@ -33,8 +33,8 @@ importers:
         specifier: ^7.6.0
         version: 7.6.0
       fuse.js:
-        specifier: ^6.6.2
-        version: 6.6.2
+        specifier: ^7.0.0
+        version: 7.0.0
     devDependencies:
       '@algolia/client-search':
         specifier: ^4.24.0
@@ -3102,6 +3102,10 @@ packages:
 
   fuse.js@6.6.2:
     resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+
+  fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
     engines: {node: '>=10'}
 
   gauge@3.0.2:
@@ -8757,6 +8761,20 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
+  '@vueuse/integrations@10.11.1(axios@1.7.0)(change-case@4.1.2)(focus-trap@7.6.0)(fuse.js@7.0.0)(vue@3.5.12(typescript@5.6.3))':
+    dependencies:
+      '@vueuse/core': 10.11.1(vue@3.5.12(typescript@5.6.3))
+      '@vueuse/shared': 10.11.1(vue@3.5.12(typescript@5.6.3))
+      vue-demi: 0.14.10(vue@3.5.12(typescript@5.6.3))
+    optionalDependencies:
+      axios: 1.7.0
+      change-case: 4.1.2
+      focus-trap: 7.6.0
+      fuse.js: 7.0.0
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   '@vueuse/metadata@10.11.1': {}
 
   '@vueuse/metadata@9.13.0': {}
@@ -10200,6 +10218,8 @@ snapshots:
   function-bind@1.1.2: {}
 
   fuse.js@6.6.2: {}
+
+  fuse.js@7.0.0: {}
 
   gauge@3.0.2:
     dependencies:
