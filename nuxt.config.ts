@@ -1,28 +1,6 @@
-import { createResolver, logger, defineNuxtModule } from '@nuxt/kit'
-import { $fetch } from 'ofetch'
-import { version } from './package.json'
+import { createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
-
-// That allows to overwrite these dependencies paths via `.env` for local development
-const envModules = {
-  studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
-}
-
-const updateModule = defineNuxtModule({
-  meta: {
-    name: '@nuxt-themes/docus'
-  },
-  setup (_, nuxt) {
-    if (nuxt.options.dev) {
-      $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
-        if (release.version > version) {
-          logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
-        }
-      }).catch(() => {})
-    }
-  }
-})
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -40,16 +18,10 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    envModules.studio,
-    // '@nuxtjs/tailwindcss',
-    // '@nuxtjs/color-mode',
     '@nuxt/ui',
-    'nuxt-icon',
     '@nuxt/content',
     '@vueuse/nuxt',
-    'nuxt-config-schema',
-    resolve('./app/module'),
-    updateModule as any
+    resolve('./app/module')
   ],
   css: [
     resolve('./assets/css/main.css')
@@ -109,16 +81,7 @@ export default defineNuxtConfig({
     dataValue: 'theme',
     preference: 'dark'
   },
-  tailwindcss: {
-    cssPath: resolve('./assets/css/tailwind.css'),
-    configPath: resolve('./tailwind.config.ts')
-  },
   typescript: {
     includeWorkspace: true
-  },
-  nitro: {
-    prerender: {
-      ignore: ['/__pinceau_tokens_config.json', '/__pinceau_tokens_schema.json']
-    }
   },
 })

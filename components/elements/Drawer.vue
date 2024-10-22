@@ -28,10 +28,6 @@ defineEmits(['update:modelValue'])
     transition: all 0ms !important;
   }
 }
-.modal-enter-active .drawer-content,
-.modal-leave-active .drawer-content {
-  transition: transform 200ms theme('transitionTimingFunction.out-back'), opacity 200ms theme('transitionTimingFunction.out-back');
-}
 .modal-enter-from .drawer-content,
 .modal-leave-to .drawer-content {
   opacity: 0;

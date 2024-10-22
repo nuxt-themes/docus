@@ -292,11 +292,6 @@ watch(() => props.modelValue, (value) => {
   }
 }
 
-.modal-enter-active .search-window,
-.modal-leave-active .search-window {
-  transition: transform 200ms theme('transitionTimingFunction.in-out-circ'), opacity 200ms theme('transitionTimingFunction.in-out-circ');
-}
-
 .modal-enter-from .search-window,
 .modal-leave-to .search-window {
   opacity: 0;

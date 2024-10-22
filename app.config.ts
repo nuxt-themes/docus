@@ -1,7 +1,4 @@
-import tokens from './tokens.config'
-
 export default defineAppConfig({
-  tokens,
   nuxtIcon: {
     aliases: {
       'type:primary': 'tabler:info-square-rounded-filled',
