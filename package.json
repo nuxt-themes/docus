@@ -33,7 +33,7 @@
     "@nuxt-themes/tokens": "^1.9.1",
     "@nuxt-themes/typography": "^0.11.0",
     "@nuxt/content": "^2.13.4",
-    "@nuxthq/studio": "^1.1.2",
+    "@nuxthq/studio": "^2.1.1",
     "@vueuse/integrations": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "focus-trap": "^7.6.0",
