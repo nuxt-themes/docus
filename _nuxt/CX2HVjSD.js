@@ -1,1 +1,0 @@
-import{k as t,c as n,e as c,X as o}from"./Bg-5mDpA.js";const r={};function s(e,_){return n(),c("th",null,[o(e.$slots,"default",{},void 0,!0)])}const d=t(r,[["render",s],["__scopeId","data-v-6fc645ed"]]);export{d as default};
