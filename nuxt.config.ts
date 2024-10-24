@@ -1,6 +1,7 @@
 import { createResolver, logger, defineNuxtModule } from '@nuxt/kit'
 import { $fetch } from 'ofetch'
 import { version } from './package.json'
+import appModule from './app/module'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -52,7 +53,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
-    resolve('./app/module'),
+    appModule,
     updateModule as any
   ],
   css: [
