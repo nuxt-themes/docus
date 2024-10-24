@@ -83,8 +83,5 @@
       "release": true,
       "releaseName": "v${version}"
     }
-  },
-  "resolutions": {
-    "jiti": "^1.21.6"
   }
 }
