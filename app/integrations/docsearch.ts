@@ -1,5 +1,5 @@
 import { withoutTrailingSlash } from 'ufo'
-import type { DocSearchOptions } from '@nuxtjs/algolia/dist/module.d'
+import type { DocSearchOptions } from '@nuxtjs/algolia'
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
