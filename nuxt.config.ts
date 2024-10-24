@@ -52,7 +52,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@vueuse/nuxt',
-    'nuxt-config-schema',
     resolve('./app/module'),
     updateModule as any
   ],
