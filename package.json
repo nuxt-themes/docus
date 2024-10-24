@@ -3,7 +3,7 @@
   "version": "1.15.0",
   "type": "module",
   "main": "./nuxt.config.ts",
-  "packageManager": "pnpm@9.12.1",
+  "packageManager": "pnpm@9.12.2",
   "repository": "nuxt-themes/docus",
   "files": [
     "app",
@@ -32,7 +32,7 @@
     "@nuxt-themes/elements": "^0.9.5",
     "@nuxt-themes/tokens": "^1.9.1",
     "@nuxt-themes/typography": "^0.11.0",
-    "@nuxt/content": "^2.13.2",
+    "@nuxt/content": "^2.13.4",
     "@nuxthq/studio": "^1.1.2",
     "@vueuse/integrations": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
@@ -43,13 +43,13 @@
     "@algolia/client-search": "^4.24.0",
     "@docsearch/css": "^3.6.2",
     "@docsearch/js": "^3.6.2",
-    "@nuxt/devtools": "^1.5.2",
-    "@nuxt/eslint-config": "^0.5.7",
+    "@nuxt/devtools": "^1.6.0",
+    "@nuxt/eslint-config": "^0.6.0",
     "@nuxtjs/algolia": "^1.10.2",
-    "@types/node": "^20.16.11",
-    "eslint": "^9.12.0",
+    "@types/node": "^20.17.0",
+    "eslint": "^9.13.0",
     "nuxt": "^3.13.2",
-    "release-it": "^17.8.2",
+    "release-it": "^17.10.0",
     "typescript": "^5.6.3",
     "vite-plugin-inspect": "^0.8.7",
     "vue": "^3.5.12"
@@ -81,5 +81,8 @@
       "release": true,
       "releaseName": "v${version}"
     }
+  },
+  "resolutions": {
+    "jiti": "1.21.6"
   }
 }
