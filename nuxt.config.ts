@@ -32,7 +32,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/search': {
       prerender: true,
-      cache: true
+      cache: {}
     }
   },
   app: {
@@ -91,8 +91,8 @@ export default defineNuxtConfig({
     classSuffix: '',
     dataValue: 'theme'
   },
-  experimental: {
-    inlineSSRStyles: false
+  features: {
+    inlineStyles: false
   },
   typescript: {
     includeWorkspace: true
