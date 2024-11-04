@@ -38,7 +38,7 @@
     "@vueuse/integrations": "^11.2.0",
     "@vueuse/nuxt": "^11.2.0",
     "focus-trap": "^7.6.0",
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.0.0",
     "jiti": "^1.21.6"
   },
   "devDependencies": {
