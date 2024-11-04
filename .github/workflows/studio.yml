@@ -35,40 +35,24 @@ jobs:
         node: [18]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Identify package manager
-        id: pkgman
-        run: |
-          cache=`[ -f ".starters/default/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f ".starters/default/package-lock.json" ] && echo "npm" || ([ -f ".starters/default/yarn.lock" ] && echo "yarn" || echo ""))`
-          package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
-          echo "cache=$cache" >> $GITHUB_OUTPUT
-          echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
-
-      - uses: pnpm/action-setup@v2.4.1
-        if: ${{ steps.pkgman.outputs.package_manager == 'pnpm' }}
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-
+      - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
-          version: ${{ matrix.node }}
-          cache: ${{ steps.pkgman.outputs.cache }}
+          node-version: ${{ matrix.node }}
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: ${{ steps.pkgman.outputs.package_manager }} install
+        run: pnpm install
 
       - name: Install @nuxthq/studio
-        run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
+        run: pnpm add -D @nuxthq/studio
 
       - name: Create .nuxtrc
         run: echo 'modules[]=@nuxthq/studio' > .nuxtrc
 
       - name: Generate
-        run: ${{ steps.pkgman.outputs.package_manager }} nuxi generate
+        run: pnpm nuxi generate
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
           NUXT_PUBLIC_STUDIO_TOKENS: e6364305a88b20d5fc79b360230231dd743831dff03b55edd6b4237b355bb7d9
