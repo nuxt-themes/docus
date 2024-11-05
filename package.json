@@ -70,6 +70,9 @@
         "axios",
         "vite"
       ]
+    },
+    "patchedDependencies": {
+      "@nuxt/kit": "patches/@nuxt__kit.patch"
     }
   },
   "license": "MIT",

@@ -1,0 +1,28 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 6d84162e54e2b02c48e024ce937903392e332ff4..f23486aec8998a5e12b20fd9e3e722d7db909d8d 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -23,6 +23,7 @@ import { klona } from 'klona';
+ import hash from 'hash-sum';
+ import { withTrailingSlash } from 'ufo';
+ import { gte } from 'semver';
++import { resolve as resolveMllyModule } from 'mlly'
+ 
+ const logger = consola;
+ function useLogger(tag, options = {}) {
+@@ -2430,11 +2431,11 @@ async function loadNuxtModuleInstance(nuxtModule, nuxt = useNuxt()) {
+   let buildTimeModuleMeta = {};
+   const jiti = createJiti(nuxt.options.rootDir, { alias: nuxt.options.alias });
+   if (typeof nuxtModule === "string") {
+-    const paths = [join(nuxtModule, "nuxt"), join(nuxtModule, "module"), nuxtModule, join(nuxt.options.rootDir, nuxtModule)];
+-    for (const parentURL of nuxt.options.modulesDir) {
+-      for (const path of paths) {
++    const paths = [nuxtModule, join(nuxtModule, "nuxt"), join(nuxtModule, "module"), join(nuxt.options.rootDir, nuxtModule),join(nuxtModule, "index")];
++    for (const path of paths) {
++      for (const parentURL of nuxt.options.modulesDir) {
+         try {
+-          const src = jiti.esmResolve(path, { parentURL: parentURL.replace(/\/node_modules\/?$/, "") });
++          const src = await resolveMllyModule(path, { url: parentURL.replace(/\/node_modules\/?$/, ""), extensions: nuxt.options.extensions })
+           nuxtModule = await jiti.import(src, { default: true });
+           const moduleMetadataPath = join(dirname(src), "module.json");
+           if (existsSync(moduleMetadataPath)) {
