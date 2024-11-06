@@ -1,1 +1,0 @@
-import{k as t,c as a,e as s,f as n,X as o}from"./BFC2__xg.js";const c={},r={class:"table-wrapper"};function _(e,d){return a(),s("div",r,[n("table",null,[o(e.$slots,"default",{},void 0,!0)])])}const f=t(c,[["render",_],["__scopeId","data-v-d0678742"]]);export{f as default};
