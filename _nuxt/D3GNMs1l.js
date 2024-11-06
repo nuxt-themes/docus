@@ -1,0 +1,1 @@
+import{k as t,c,e as n,X as o}from"./BFC2__xg.js";const r={};function a(e,s){return c(),n("td",null,[o(e.$slots,"default",{},void 0,!0)])}const d=t(r,[["render",a],["__scopeId","data-v-c72c5ac2"]]);export{d as default};
