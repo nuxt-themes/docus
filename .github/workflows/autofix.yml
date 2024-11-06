@@ -22,8 +22,6 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm exec playwright install
-
       - run: pnpm prepare
 
       - name: Browser tests
