@@ -33,8 +33,5 @@ jobs:
       - name: Prepare
         run: pnpm prepare
 
-      - name: Build
-        run: pnpm build
-
       - name: Browser tests
         run: pnpm test:browser
