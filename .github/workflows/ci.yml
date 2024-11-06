@@ -27,11 +27,11 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: "pnpm"
 
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm install
 
-      - name: Prepare
-        run: pnpm prepare
+      - run: pnpm exec playwright install
+
+      - run: pnpm prepare
 
       - name: Browser tests
         run: pnpm test:browser
