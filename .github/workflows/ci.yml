@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
+      - name: Prepare
         run: pnpm prepare
 
       - name: Build
         run: pnpm build
+
+      - name: Browser tests
+        run: pnpm test:browser

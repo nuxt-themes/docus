@@ -22,3 +22,6 @@ dist
 .starters/**/yarn.lock
 .starters/**/package-lock.json
 .starters/**/pnpm-lock.yaml
+
+test-results
+.pnpm-store
