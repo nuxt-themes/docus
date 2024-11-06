@@ -26,7 +26,9 @@
     "generate": "nuxi generate .starters/default",
     "preview": "nuxi preview .starters/default",
     "lint": "eslint .",
-    "release": "release-it"
+    "release": "release-it",
+    "test:browser": "playwright test test/browser",
+    "test:browser:update": "docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.48.0-focal bash -c 'corepack enable && pnpm i && pnpm playwright test test/browser --update-snapshots'"
   },
   "dependencies": {
     "@nuxt-themes/elements": "^0.9.5",
@@ -48,13 +50,16 @@
     "@docsearch/js": "^3.6.3",
     "@nuxt/devtools": "^1.6.0",
     "@nuxt/eslint-config": "^0.6.1",
+    "@nuxt/test-utils": "^3.14.4",
     "@nuxtjs/algolia": "^1.10.2",
+    "@playwright/test": "^1.48.2",
     "@types/node": "^22.8.7",
     "eslint": "^9.14.0",
     "nuxt": "^3.14.159",
     "release-it": "^17.10.0",
     "typescript": "^5.6.3",
     "vite-plugin-inspect": "^0.8.7",
+    "vitest": "^2.1.4",
     "vue": "^3.5.12"
   },
   "pnpm": {

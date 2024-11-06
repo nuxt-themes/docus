@@ -1,7 +1,7 @@
-name: ci-main
+name: autofix.ci
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -25,4 +25,6 @@ jobs:
       - run: pnpm prepare
 
       - name: Browser tests
-        run: pnpm test:browser
+        run: pnpm test:browser --update-snapshots
+
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
