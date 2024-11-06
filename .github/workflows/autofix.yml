@@ -8,8 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.48.2-focal
 
     steps:
       - uses: actions/checkout@v4
@@ -21,6 +19,8 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
+
+      - run: pnpm exec playwright install
 
       - run: pnpm prepare
 
