@@ -49,10 +49,10 @@ importers:
         specifier: ^4.24.0
         version: 4.24.0
       '@docsearch/css':
-        specifier: ^3.6.3
+        specifier: ^3.7.0
         version: 3.7.0
       '@docsearch/js':
-        specifier: ^3.6.3
+        specifier: ^3.7.0
         version: 3.7.0(@algolia/client-search@4.24.0)(search-insights@2.17.2)
       '@nuxt/devtools':
         specifier: ^1.6.0
@@ -70,7 +70,7 @@ importers:
         specifier: ^1.48.2
         version: 1.48.2
       '@types/node':
-        specifier: ^22.8.7
+        specifier: ^22.9.0
         version: 22.9.0
       eslint:
         specifier: ^9.14.0
@@ -109,13 +109,13 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(magicast@0.3.5)(rollup@4.24.4)
       '@types/node':
-        specifier: ^22.8.7
+        specifier: ^22.9.0
         version: 22.9.0
       eslint:
         specifier: ^9.14.0
         version: 9.14.0(jiti@2.4.0)
       nuxt:
-        specifier: ^3.14.0
+        specifier: ^3.14.159
         version: 3.14.159(@parcel/watcher@2.5.0)(@types/node@22.9.0)(eslint@9.14.0(jiti@2.4.0))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
 
 packages:
