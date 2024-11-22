@@ -53,7 +53,7 @@ watch(show, v => (v ? open() : close()))
           </div>
         </div>
 
-        <DocsAsideTree :links="links" />
+        <DocsAsideTree :links="links" @close-nav="show = false" />
       </div>
     </nav>
   </teleport>
