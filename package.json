@@ -38,8 +38,8 @@
     "@nuxt/kit": "^3.14.159",
     "@nuxthq/studio": "^2.2.1",
     "@nuxtjs/color-mode": "^3.5.2",
-    "@vueuse/integrations": "^11.2.0",
-    "@vueuse/nuxt": "^11.2.0",
+    "@vueuse/integrations": "^12.0.0",
+    "@vueuse/nuxt": "^12.0.0",
     "focus-trap": "^7.6.0",
     "fuse.js": "^6.6.2",
     "jiti": "^1.21.6"
