@@ -45,7 +45,7 @@
     "jiti": "^1.21.6"
   },
   "devDependencies": {
-    "@algolia/client-search": "^4.24.0",
+    "@algolia/client-search": "^5.18.0",
     "@docsearch/css": "^3.7.0",
     "@docsearch/js": "^3.7.0",
     "@nuxt/devtools": "^1.6.0",
