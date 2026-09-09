@@ -11,6 +11,10 @@ export interface DocusSeoOrganization {
   logo?: string
   /** Profile URLs (GitHub, X, LinkedIn…). */
   sameAs?: string[]
+  /** Postal address, as a schema.org `PostalAddress`. */
+  address?: Record<string, unknown>
+  /** Ways to reach the organization, as schema.org `ContactPoint` nodes. */
+  contactPoint?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 declare module 'nuxt/schema' {

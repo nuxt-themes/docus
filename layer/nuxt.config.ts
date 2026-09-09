@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxtjs/mcp-toolkit',
+    'nuxt-schema-org',
     'nuxt-og-image',
     'nuxt-llms',
     () => {
