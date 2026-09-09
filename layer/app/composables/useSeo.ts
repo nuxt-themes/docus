@@ -170,7 +170,12 @@ export function useSeo(options: UseSeoOptions) {
     })
   }
 
-  // JSON-LD structured data
+  // JSON-LD structured data.
+  const organization = organizationNode(seoSchema?.organization)
+  if (organization) {
+    useSchemaOrg([organization])
+  }
+
   if (type.value === 'article') {
     useSchemaOrg([
       defineArticle({
@@ -190,12 +195,13 @@ export function useSeo(options: UseSeoOptions) {
   }
   else {
     const name = site.name || title.value
+    const identity = name ? identityNode(seoSchema, name, description.value) : undefined
     useSchemaOrg([
       defineWebSite({
         name,
         description,
       }),
-      ...[organizationNode(seoSchema?.organization), name ? identityNode(seoSchema, name, description.value) : undefined].filter(Boolean),
+      ...(identity ? [identity] : []),
     ])
   }
 }
