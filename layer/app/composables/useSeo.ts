@@ -124,8 +124,11 @@ export function useSeo(options: UseSeoOptions) {
     ogLocale: computed(() => isI18nEnabled.value ? locale.value : undefined),
   })
 
-  // Canonical link, plus the markdown twin as an alternate representation
-  useCanonical(() => route.path === '/' ? '/index.md' : `${route.path}.md`)
+  // Canonical link, plus the markdown twin as an alternate representation. A
+  // page's twin is its own URL plus `.md`, except at the site root, where the
+  // document only has a raw URL.
+  const rawPrefix = useRuntimeConfig().public.agentDiscovery?.rawPrefix || '/raw'
+  useCanonical(() => route.path === '/' ? `${rawPrefix}/index.md` : `${route.path}.md`)
 
   // Hreflang tags for i18n
   useHead({
