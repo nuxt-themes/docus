@@ -13,7 +13,7 @@
     "@vercel/speed-insights": "^2.0.0",
     "docus": "workspace:*",
     "nuxt": "4.6.0",
-    "nuxt-studio": "https://pkg.pr.new/nuxt-studio@37bffdb",
+    "nuxt-studio": "https://pkg.pr.new/nuxt-studio@8c1e6a2",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
