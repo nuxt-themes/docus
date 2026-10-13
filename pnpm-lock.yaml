@@ -252,8 +252,8 @@ importers:
         specifier: 4.6.0
         version: 4.6.0(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@10.2.2)))(@oxc-project/types@0.152.0)(@types/node@26.6.2)(@vue/compiler-sfc@3.5.43)(acorn@8.18.0)(better-sqlite3@12.11.1)(confbox@0.3.1)(db0@0.4.1)(dotenv@17.4.2)(esbuild@0.28.2)(eslint@10.12.0(jiti@2.7.0)(supports-color@10.2.2))(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(lightningcss@1.33.0)(magicast@0.5.5)(mlly@1.8.2)(optionator@0.9.4)(oxc-parser@0.139.0)(rolldown@1.2.12)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.12)(rollup@4.63.4))(rollup@4.63.4)(srvx@0.12.8)(supports-color@10.2.2)(terser@5.51.2)(tsx@4.23.15)(typescript@6.0.3)(vite@8.3.2(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))(vue-tsc@3.3.12(typescript@6.0.3))(yaml@2.9.1)
       nuxt-studio:
-        specifier: https://pkg.pr.new/nuxt-studio@8c1e6a2
-        version: https://pkg.pr.new/nuxt-studio@8c1e6a2(@nuxt/schema@4.6.0)(@oxc-project/types@0.152.0)(confbox@0.3.1)(db0@0.4.1)(dotenv@17.4.2)(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(rolldown@1.2.12)(srvx@0.12.8)(vue@3.5.43(typescript@6.0.3))
+        specifier: https://pkg.pr.new/nuxt-studio@46e0af4
+        version: https://pkg.pr.new/nuxt-studio@46e0af4(@nuxt/schema@4.6.0)(@oxc-project/types@0.152.0)(confbox@0.3.1)(db0@0.4.1)(dotenv@17.4.2)(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(rolldown@1.2.12)(srvx@0.12.8)(vue@3.5.43(typescript@6.0.3))
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -7106,8 +7106,8 @@ packages:
     peerDependencies:
       vue: ^3.5.30
 
-  nuxt-studio@https://pkg.pr.new/nuxt-studio@8c1e6a2:
-    resolution: {integrity: sha512-TbRLgPjlQcnuiED//KZIa5B35N0dA9QSdgwxzL2HFYUasXNfgUo7ccB7xYyW+W5RVo2Gyrlvlmn5QNMM65hvWA==, tarball: https://pkg.pr.new/nuxt-studio@8c1e6a2}
+  nuxt-studio@https://pkg.pr.new/nuxt-studio@46e0af4:
+    resolution: {integrity: sha512-w+IDLWWBRZhobxiQ+zquY3ziinaGqT1VeulbLk9hv9VCGSVPaabCQCgnZoti16HEQEOjU+60lxaD6aPVxgr4ZQ==, tarball: https://pkg.pr.new/nuxt-studio@46e0af4}
     version: 1.7.0
 
   nuxt@4.6.0:
@@ -18607,7 +18607,7 @@ snapshots:
       - vite
       - zod
 
-  nuxt-studio@https://pkg.pr.new/nuxt-studio@8c1e6a2(@nuxt/schema@4.6.0)(@oxc-project/types@0.152.0)(confbox@0.3.1)(db0@0.4.1)(dotenv@17.4.2)(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(rolldown@1.2.12)(srvx@0.12.8)(vue@3.5.43(typescript@6.0.3)):
+  nuxt-studio@https://pkg.pr.new/nuxt-studio@46e0af4(@nuxt/schema@4.6.0)(@oxc-project/types@0.152.0)(confbox@0.3.1)(db0@0.4.1)(dotenv@17.4.2)(giget@3.3.1)(ioredis@5.11.1(supports-color@10.2.2))(rolldown@1.2.12)(srvx@0.12.8)(vue@3.5.43(typescript@6.0.3)):
     dependencies:
       '@ai-sdk/gateway': 4.0.87(zod@4.6.5)
       '@ai-sdk/vue': 4.0.107(vue@3.5.43(typescript@6.0.3))(zod@4.6.5)
