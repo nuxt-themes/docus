@@ -1,5 +1,23 @@
 # Changelog
 
+## [5.15.0](https://github.com/nuxt-content/docus/compare/v5.14.0...v5.15.0) (2026-10-14)
+
+### Bug Fixes
+
+* **docs:** un-indent code fences in components page ([#1465](https://github.com/nuxt-content/docus/issues/1465)) ([40b242a](https://github.com/nuxt-content/docus/commit/40b242a690a4a1762668794bbf8da927684efcb6))
+* **layer:** add accessible names to icon-only buttons + add missing translations ([#1451](https://github.com/nuxt-content/docus/issues/1451)) ([ce6d54b](https://github.com/nuxt-content/docus/commit/ce6d54bb29a7ba725991b34102cfd2f8affbd123))
+* **layer:** external link icon misplacement when truncated ([#1464](https://github.com/nuxt-content/docus/issues/1464)) ([ee912a6](https://github.com/nuxt-content/docus/commit/ee912a691c3f77e850d65cad63efd6ec2720677c))
+* **layer:** use header.logo.favicon for the site favicon ([#1468](https://github.com/nuxt-content/docus/issues/1468)) ([edb6a2b](https://github.com/nuxt-content/docus/commit/edb6a2be789287afb093c3e901f50bea09139d22))
+* **og:** keep commas in og image descriptions ([#1458](https://github.com/nuxt-content/docus/issues/1458)) ([502f479](https://github.com/nuxt-content/docus/commit/502f479e837f780a2e64b6926d55ba4b0563d599))
+
+### Performance Improvements
+
+* **assistant:** load chat dependencies when the panel first opens ([#1453](https://github.com/nuxt-content/docus/issues/1453)) ([dcb54d3](https://github.com/nuxt-content/docus/commit/dcb54d30db9e2ec84067e9d6d8290b79602c1116))
+* **layer:** lazy load + lazily hydrate components ([#1460](https://github.com/nuxt-content/docus/issues/1460)) ([7a4967c](https://github.com/nuxt-content/docus/commit/7a4967c4c104689f16c42c5849579eeef99b131e))
+* **layer:** only bundle the Nuxt UI locales in use ([#1459](https://github.com/nuxt-content/docus/issues/1459)) ([e83a018](https://github.com/nuxt-content/docus/commit/e83a01804268319dfa4d672ab6711a9b3907327c))
+* **layer:** replace `motion-v` with CSS transitions ([#1452](https://github.com/nuxt-content/docus/issues/1452)) ([00603f4](https://github.com/nuxt-content/docus/commit/00603f48372e8671ea2c15456a140cc599f5312c))
+* **layer:** tree-shake schema.org composables from the client ([#1461](https://github.com/nuxt-content/docus/issues/1461)) ([ffe694d](https://github.com/nuxt-content/docus/commit/ffe694deeb37a512415d6d6706d76faba15c05f5))
+
 ## [5.14.0](https://github.com/nuxt-content/docus/compare/v5.13.0...v5.14.0) (2026-10-05)
 
 ### Features
