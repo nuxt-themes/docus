@@ -18,13 +18,14 @@ const nuxtUiLocale = computed(() => uiLocales[getLocaleKey(locale.value)] || (nu
 const lang = computed(() => nuxtUiLocale.value.code)
 const dir = computed(() => nuxtUiLocale.value.dir)
 const collectionName = computed(() => isEnabled.value ? `docs_${getLocaleKey(locale.value)}` : 'docs')
+const favicon = computed(() => appConfig.header?.logo?.favicon || '/favicon.ico')
 
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'icon', href: favicon },
   ],
   htmlAttrs: {
     lang,
