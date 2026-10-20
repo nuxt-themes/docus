@@ -38,6 +38,9 @@ template/pnpm-lock.yaml
 .profile
 *.0x
 
+# Release notes drafts (release-notes skill)
+/v[0-9]*.md
+
 #VSC
 .history
 
