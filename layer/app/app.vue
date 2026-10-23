@@ -68,8 +68,9 @@ const { subNavigationMode } = useSubNavigation(navigation)
     <NuxtLoadingIndicator color="var(--ui-primary)" />
 
     <div class="flex">
+      <!-- Column layout so short pages fit header, main and footer in the viewport -->
       <div
-        class="flex-1 min-w-0"
+        class="flex-1 min-w-0 flex flex-col min-h-svh"
         :class="{ 'docus-sub-header': subNavigationMode === 'header' }"
       >
         <AppHeader v-if="$route.meta.header !== false" />

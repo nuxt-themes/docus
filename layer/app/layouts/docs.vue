@@ -12,7 +12,7 @@ watch(() => route.path, (path) => {
 </script>
 
 <template>
-  <UMain>
+  <UMain class="flex-1 min-h-auto">
     <UContainer>
       <UPage>
         <template #left>

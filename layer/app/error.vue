@@ -60,11 +60,16 @@ provide('navigation', navigation)
 
 <template>
   <UApp :locale="nuxtUiLocale">
-    <AppHeader />
+    <div class="flex flex-col min-h-svh">
+      <AppHeader />
 
-    <UError :error="localizedError" />
+      <UError
+        :error="localizedError"
+        class="flex-1 min-h-auto"
+      />
 
-    <LazyAppFooter hydrate-on-visible />
+      <LazyAppFooter hydrate-on-visible />
+    </div>
 
     <ClientOnly>
       <AppSearch :navigation="navigation" />
